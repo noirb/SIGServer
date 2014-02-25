@@ -1,0 +1,2 @@
+#!/bin/sh -x
+SIGVERSE_JSP_CONF_DIR=@sigetcdir@ @bindir@/sigjsp $@

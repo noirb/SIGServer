@@ -1,0 +1,1 @@
+../../../../commonlib/comm/encoder/GetPointedObject.h

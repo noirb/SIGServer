@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf8"?>
+
+<define-class name="Agent" inherit="Entity.xml">
+
+<attr name="language" type="string" group="model"/>
+<attr name="implementation" type="string" group="model"/>
+
+   <!-- view point(agent coordinate) -->
+<attr name="vpx" type="double" group="viewpoint" value="0.0"/>
+<attr name="vpy" type="double" group="viewpoint" value="0.0"/>
+<attr name="vpz" type="double" group="viewpoint" value="0.0"/>
+
+   <!-- view vector(view coordinate) -->
+<attr name="vvx" type="double" group="viewvector" value="0.0"/>
+<attr name="vvy" type="double" group="viewvector" value="0.0"/>
+<attr name="vvz" type="double" group="viewvector" value="-1.0"/>
+
+   <!-- left-eye point(agent coordinate) -->
+<attr name="lepx" type="double" group="lefteyepoint" value="1.0"/>
+<attr name="lepy" type="double" group="lefteyepoint" value="2.0"/>
+<attr name="lepz" type="double" group="lefteyepoint" value="0.0"/>
+
+   <!-- left-eye vector(view coordinate) -->
+<attr name="levx" type="double" group="lefteyevector" value="0.0"/>
+<attr name="levy" type="double" group="lefteyevector" value="0.0"/>
+<attr name="levz" type="double" group="lefteyevector" value="-1.0"/>
+
+   <!-- right-eye point(agent coordinate) -->
+<attr name="repx" type="double" group="righteyepoint" value="-1.0"/>
+<attr name="repy" type="double" group="righteyepoint" value="2.0"/>
+<attr name="repz" type="double" group="righteyepoint" value="0.0"/>
+
+   <!-- right-eye vector(view coordinate) -->
+<attr name="revx" type="double" group="righteyevector" value="0.0"/>
+<attr name="revy" type="double" group="righteyevector" value="0.0"/>
+<attr name="revz" type="double" group="righteyevector" value="-1.0"/>
+
+   <!-- added by yahara@tome (2011/02/14)-->
+   <!-- camera1 attachment(joint name) -->
+<attr name="ejnt1" type="string" group="camera" value="HEAD_LINK"/>
+
+   <!-- camera1 point(subcamera coordinate) -->
+<attr name="epx1" type="double" group="camera1point" value="0.0"/>
+<attr name="epy1" type="double" group="camera1point" value="0.0"/>
+<attr name="epz1" type="double" group="camera1point" value="0.0"/>
+
+   <!-- camera1 vector(view coordinate) -->
+<attr name="evx1" type="double" group="camera1vector" value="0.0"/>
+<attr name="evy1" type="double" group="camera1vector" value="0.0"/>
+<attr name="evz1" type="double" group="camera1vector" value="0.0"/>
+
+<attr name="ejnt2" type="string" group="camera" value="WAIST_LINK0"/>
+
+   <!-- camera2 point(subcamera coordinate) -->
+<attr name="epx2" type="double" group="camera2point" value="0.0"/>
+<attr name="epy2" type="double" group="camera2point" value="0.0"/>
+<attr name="epz2" type="double" group="camera2point" value="0.0"/>
+
+   <!-- camera2 vector(view coordinate) -->
+<attr name="evx2" type="double" group="camera2vector" value="0.0"/>
+<attr name="evy2" type="double" group="camera2vector" value="0.0"/>
+<attr name="evz2" type="double" group="camera2vector" value="0.0"/>
+
+<attr name="ejnt3" type="string" group="camera" value="LARM_LINK4"/>
+
+   <!-- camera3 point(subcamera coordinate) -->
+<attr name="epx3" type="double" group="camera3point" value="0.0"/>
+<attr name="epy3" type="double" group="camera3point" value="0.0"/>
+<attr name="epz3" type="double" group="camera3point" value="0.0"/>
+
+   <!-- camera3 vector(view coordinate) -->
+<attr name="evx3" type="double" group="camera3vector" value="0.0"/>
+<attr name="evy3" type="double" group="camera3vector" value="0.0"/>
+<attr name="evz3" type="double" group="camera3vector" value="0.0"/>
+
+<attr name="ejnt4" type="string" group="camera" value="RARM_LINK4"/>
+
+   <!-- camera4 point(subcamera coordinate) -->
+<attr name="epx4" type="double" group="camera4point" value="0.0"/>
+<attr name="epy4" type="double" group="camera4point" value="0.0"/>
+<attr name="epz4" type="double" group="camera4point" value="0.0"/>
+
+   <!-- camera4 vector(view coordinate) -->
+<attr name="evx4" type="double" group="camera4vector" value="0.0"/>
+<attr name="evy4" type="double" group="camera4vector" value="0.0"/>
+<attr name="evz4" type="double" group="camera4vector" value="0.0"/>
+
+<attr name="ejnt5" type="string" group="camera" value="WAIST_LINK0"/>
+
+   <!-- camera5 point(subcamera coordinate) -->
+<attr name="epx5" type="double" group="camera5point" value="0.0"/>
+<attr name="epy5" type="double" group="camera5point" value="0.0"/>
+<attr name="epz5" type="double" group="camera5point" value="0.0"/>
+
+   <!-- camera5 vector(view coordinate) -->
+<attr name="evx5" type="double" group="camera5vector" value="0.0"/>
+<attr name="evy5" type="double" group="camera5vector" value="0.0"/>
+<attr name="evz5" type="double" group="camera5vector" value="0.0"/>
+
+<attr name="ejnt6" type="string" group="camera" value="WAIST_LINK0"/>
+
+   <!-- camera6 point(subcamera coordinate) -->
+<attr name="epx6" type="double" group="camera6point" value="0.0"/>
+<attr name="epy6" type="double" group="camera6point" value="0.0"/>
+<attr name="epz6" type="double" group="camera6point" value="0.0"/>
+
+   <!-- camera6 vector(view coordinate) -->
+<attr name="evx6" type="double" group="camera6vector" value="0.0"/>
+<attr name="evy6" type="double" group="camera6vector" value="0.0"/>
+<attr name="evz6" type="double" group="camera6vector" value="0.0"/>
+
+<attr name="ejnt7" type="string" group="camera" value="WAIST_LINK0"/>
+
+   <!-- camera7 point(subcamera coordinate) -->
+<attr name="epx7" type="double" group="camera7point" value="0.0"/>
+<attr name="epy7" type="double" group="camera7point" value="0.0"/>
+<attr name="epz7" type="double" group="camera7point" value="0.0"/>
+
+   <!-- camera7 vector(view coordinate) -->
+<attr name="evx7" type="double" group="camera7vector" value="0.0"/>
+<attr name="evy7" type="double" group="camera7vector" value="0.0"/>
+<attr name="evz7" type="double" group="camera7vector" value="0.0"/>
+
+<attr name="ejnt8" type="string" group="camera" value="WAIST_LINK0"/>
+
+   <!-- camera8 point(subcamera coordinate) -->
+<attr name="epx8" type="double" group="camera8point" value="0.0"/>
+<attr name="epy8" type="double" group="camera8point" value="0.0"/>
+<attr name="epz8" type="double" group="camera8point" value="0.0"/>
+
+   <!-- camera8 vector(view coordinate) -->
+<attr name="evx8" type="double" group="camera8vector" value="0.0"/>
+<attr name="evy8" type="double" group="camera8vector" value="0.0"/>
+<attr name="evz8" type="double" group="camera8vector" value="0.0"/>
+
+<attr name="ejnt9" type="string" group="camera" value="WAIST_LINK0"/>
+
+   <!-- camera9 point(subcamera coordinate) -->
+<attr name="epx9" type="double" group="camera9point" value="0.0"/>
+<attr name="epy9" type="double" group="camera9point" value="0.0"/>
+<attr name="epz9" type="double" group="camera9point" value="0.0"/>
+
+   <!-- camera9 vector(view coordinate) -->
+<attr name="evx9" type="double" group="camera9vector" value="0.0"/>
+<attr name="evy9" type="double" group="camera9vector" value="0.0"/>
+<attr name="evz9" type="double" group="camera9vector" value="0.0"/>
+
+   <!-- field of view -->
+<attr name="FOV" type="double" group="fieldofview" value="45.0"/>
+<attr name="aspectRatio" type="double" group="fieldofview" value="1.5"/>
+
+  <!-- voice reach radius -->
+<attr name="voiceReachRadius" type="double" group="voice" value="5.0"/>
+<attr name="voiceReachRadiusEnable" type="bool" group="voice" value="true"/>
+
+
+<set-attr-value name="agent" value="true"/>
+

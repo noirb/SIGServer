@@ -1,0 +1,23 @@
+# $Id: Makefile.server,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $
+
+DEFINE = -D IRWAS_SIMSERVER -D dDOUBLE -D STRICT_INTERFACE
+DEFINE += -D _DEBUG
+LIBRARIES = -lxerces-c -lode # -lGL -lglut
+#CFLAGS = -O2
+#CFLAGS = -g -Wall
+
+SRCS = $(SERVER_SRCS)
+
+LD_PATH = ld-path.sh
+
+target:
+	$(MAKE) simserver
+	$(MAKE) $(LD_PATH)
+
+
+include Makefile.base
+
+
+$(LD_PATH):
+	echo export LD_LIBRARY_PATH=$(JRELIBDIR) > $@
+	chmod +x $@
