@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGWorldEditor: WguUtil.cpp ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>WguUtil.cpp</h1><a href="_wgu_util_8cpp.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include &lt;windows.h&gt;</span>
+<a name="l00002"></a>00002 <span class="preprocessor">#include "<a class="code" href="_wgu_util_8h.html">WguUtil.h</a>"</span>
+<a name="l00003"></a>00003 
+<a name="l00004"></a>00004 <span class="keyword">namespace </span>Wgu
+<a name="l00005"></a>00005 {
+<a name="l00006"></a><a class="code" href="namespace_wgu.html#c80b973d735802833e47845d25f6b706">00006</a>     <span class="keywordtype">void</span> <a class="code" href="namespace_wgu.html#c80b973d735802833e47845d25f6b706" title="コントロールの位置、サイズを変える">setControlPosition</a>(
+<a name="l00007"></a>00007         HWND hwndParent,
+<a name="l00008"></a>00008         <span class="keywordtype">int</span> controlId,
+<a name="l00009"></a>00009         <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> x2, <span class="keywordtype">int</span> y1, <span class="keywordtype">int</span> y2,
+<a name="l00010"></a>00010         <span class="keywordtype">bool</span> anchorLeft, <span class="keywordtype">bool</span> anchorRight, <span class="keywordtype">bool</span> anchorTop, <span class="keywordtype">bool</span> anchorBottom)
+<a name="l00011"></a>00011     {
+<a name="l00012"></a>00012         HWND hwndCtrl = GetDlgItem(hwndParent, controlId);
+<a name="l00013"></a>00013 
+<a name="l00014"></a>00014         <span class="keywordflow">return</span> <a class="code" href="namespace_wgu.html#7b33e7caa79420f4ccf8db7d76dc2b48" title="ウィンドウの位置、サイズを変更する">Wgu::setWindowPosition</a>(
+<a name="l00015"></a>00015             hwndParent,
+<a name="l00016"></a>00016             hwndCtrl,
+<a name="l00017"></a>00017             x1, x2, y1, y2,
+<a name="l00018"></a>00018             anchorLeft, anchorRight, anchorTop, anchorBottom);
+<a name="l00019"></a>00019     }
+<a name="l00020"></a>00020 
+<a name="l00021"></a><a class="code" href="namespace_wgu.html#7b33e7caa79420f4ccf8db7d76dc2b48">00021</a>     <span class="keywordtype">void</span> <a class="code" href="namespace_wgu.html#7b33e7caa79420f4ccf8db7d76dc2b48" title="ウィンドウの位置、サイズを変更する">setWindowPosition</a>(
+<a name="l00022"></a>00022         HWND hwndParent,
+<a name="l00023"></a>00023         HWND hwnd,
+<a name="l00024"></a>00024         <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> x2, <span class="keywordtype">int</span> y1, <span class="keywordtype">int</span> y2,
+<a name="l00025"></a>00025         <span class="keywordtype">bool</span> anchorLeft, <span class="keywordtype">bool</span> anchorRight, <span class="keywordtype">bool</span> anchorTop, <span class="keywordtype">bool</span> anchorBottom)
+<a name="l00026"></a>00026     {
+<a name="l00027"></a>00027         RECT rParent;
+<a name="l00028"></a>00028         GetClientRect(hwndParent, &amp;rParent);
+<a name="l00029"></a>00029 
+<a name="l00030"></a>00030         RECT r;
+<a name="l00031"></a>00031         GetClientRect(hwnd, &amp;r);
+<a name="l00032"></a>00032 
+<a name="l00033"></a>00033         <span class="keywordtype">int</span> x, y, cx, cy;
+<a name="l00034"></a>00034 
+<a name="l00035"></a>00035         <span class="keywordflow">if</span> (anchorLeft &amp;&amp; anchorRight)
+<a name="l00036"></a>00036         {
+<a name="l00037"></a>00037             <span class="comment">// x1 = 左端からの距離</span>
+<a name="l00038"></a>00038             <span class="comment">// x2 = 右端からの距離</span>
+<a name="l00039"></a>00039             x = x1;
+<a name="l00040"></a>00040             cx = (rParent.right - x2) - x1;
+<a name="l00041"></a>00041         }
+<a name="l00042"></a>00042         <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!anchorLeft &amp;&amp; anchorRight)
+<a name="l00043"></a>00043         {
+<a name="l00044"></a>00044             <span class="comment">// x1 = コントロールの幅</span>
+<a name="l00045"></a>00045             <span class="comment">// x2 = 右端からの距離</span>
+<a name="l00046"></a>00046             x = (rParent.right - x2) - x1;
+<a name="l00047"></a>00047             cx = x1;
+<a name="l00048"></a>00048         }
+<a name="l00049"></a>00049         <span class="keywordflow">else</span> <span class="keywordflow">if</span> (anchorLeft &amp;&amp; !anchorRight)
+<a name="l00050"></a>00050         {
+<a name="l00051"></a>00051             <span class="comment">// x1 = 左端からの距離</span>
+<a name="l00052"></a>00052             <span class="comment">// x2 = コントロールの幅</span>
+<a name="l00053"></a>00053             x = x1;
+<a name="l00054"></a>00054             cx = x2;
+<a name="l00055"></a>00055         }
+<a name="l00056"></a>00056         <span class="keywordflow">else</span>
+<a name="l00057"></a>00057         {
+<a name="l00058"></a>00058 <span class="preprocessor">#if 1</span>
+<a name="l00059"></a>00059 <span class="preprocessor"></span>            <span class="comment">// x1 = 左端からの距離</span>
+<a name="l00060"></a>00060             <span class="comment">// x2 = コントロールの幅</span>
+<a name="l00061"></a>00061             x = x1;
+<a name="l00062"></a>00062             cx = x2;
+<a name="l00063"></a>00063 <span class="preprocessor">#else</span>
+<a name="l00064"></a>00064 <span class="preprocessor"></span>            <span class="comment">// x1 = 左端からの距離</span>
+<a name="l00065"></a>00065             <span class="comment">// x2 = 左端からの距離</span>
+<a name="l00066"></a>00066             x = x1;
+<a name="l00067"></a>00067             cx = x2 - x1;
+<a name="l00068"></a>00068 <span class="preprocessor">#endif</span>
+<a name="l00069"></a>00069 <span class="preprocessor"></span>        }
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071         <span class="keywordflow">if</span> (anchorTop &amp;&amp; anchorBottom)
+<a name="l00072"></a>00072         {
+<a name="l00073"></a>00073             <span class="comment">// y1 = 上端からの距離</span>
+<a name="l00074"></a>00074             <span class="comment">// y2 = 下端からの距離</span>
+<a name="l00075"></a>00075             y = y1;
+<a name="l00076"></a>00076             cy = (rParent.bottom - y2) - y1;
+<a name="l00077"></a>00077         }
+<a name="l00078"></a>00078         <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!anchorTop &amp;&amp; anchorBottom)
+<a name="l00079"></a>00079         {
+<a name="l00080"></a>00080             <span class="comment">// y1 = コントロールの高さ</span>
+<a name="l00081"></a>00081             <span class="comment">// y2 = 下端からの距離</span>
+<a name="l00082"></a>00082             y = (rParent.bottom - y2) - y1;
+<a name="l00083"></a>00083             cy = y1;
+<a name="l00084"></a>00084         }
+<a name="l00085"></a>00085         <span class="keywordflow">else</span> <span class="keywordflow">if</span> (anchorTop &amp;&amp; !anchorBottom)
+<a name="l00086"></a>00086         {
+<a name="l00087"></a>00087             <span class="comment">// y1 = 上端からの距離</span>
+<a name="l00088"></a>00088             <span class="comment">// y2 = コントロールの高さ</span>
+<a name="l00089"></a>00089             y = y1;
+<a name="l00090"></a>00090             cy = y2;
+<a name="l00091"></a>00091         }
+<a name="l00092"></a>00092         <span class="keywordflow">else</span>
+<a name="l00093"></a>00093         {
+<a name="l00094"></a>00094 <span class="preprocessor">#if 1</span>
+<a name="l00095"></a>00095 <span class="preprocessor"></span>            <span class="comment">// y1 = 上端からの距離</span>
+<a name="l00096"></a>00096             <span class="comment">// y2 = コントロールの高さ</span>
+<a name="l00097"></a>00097             y = y1;
+<a name="l00098"></a>00098             cy = y2;
+<a name="l00099"></a>00099 <span class="preprocessor">#else</span>
+<a name="l00100"></a>00100 <span class="preprocessor"></span>            <span class="comment">// y1 = 上端からの距離</span>
+<a name="l00101"></a>00101             <span class="comment">// y2 = 上端からの距離</span>
+<a name="l00102"></a>00102             y = y1;
+<a name="l00103"></a>00103             cy = y2 - y1;
+<a name="l00104"></a>00104 <span class="preprocessor">#endif</span>
+<a name="l00105"></a>00105 <span class="preprocessor"></span>        }
+<a name="l00106"></a>00106 
+<a name="l00107"></a>00107         SetWindowPos(
+<a name="l00108"></a>00108             hwnd,
+<a name="l00109"></a>00109             NULL,
+<a name="l00110"></a>00110             x, y,
+<a name="l00111"></a>00111             cx, cy,
+<a name="l00112"></a>00112             SWP_NOZORDER);
+<a name="l00113"></a>00113     }
+<a name="l00114"></a>00114 }
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>SIGWorldEditorに対してThu Jun 9 10:52:59 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

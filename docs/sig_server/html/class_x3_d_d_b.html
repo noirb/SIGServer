@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: クラス X3DDB</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス X3DDB</h1><!-- doxytag: class="X3DDB" -->
+<p>X3Dファイルデータベースクラス.  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_x3_d_d_b_8h_source.html">X3DDB.h</a>&gt;</code></p>
+
+<p><a href="class_x3_d_d_b-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>構成</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x3_d_d_b_1_1_iterator.html">Iterator</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">X3DDBエントリイテレータクラス.  <a href="class_x3_d_d_b_1_1_iterator.html#_details">[詳細]</a><br/></td></tr>
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x3_d_d_b.html#ad6889d994762f948aa1f11539462ee89">clear</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">格納している情報をクリアする  <a href="#ad6889d994762f948aa1f11539462ee89"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x3_d_d_b.html#a371afa1f4e9c1e44a478738366703236">get</a> (const char *key)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">指定したキーの値を設定する  <a href="#a371afa1f4e9c1e44a478738366703236"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_x3_d_d_b_1_1_iterator.html">Iterator</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x3_d_d_b.html#ab78c12d4b8631a813f05eef77fcb5085">getIterator</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エントリのイテレータを得る  <a href="#ab78c12d4b8631a813f05eef77fcb5085"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x3_d_d_b.html#afc4731e1b4624f591db52ac7c168e17d">set</a> (const char *key, const char *value)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">キーと値を設定する  <a href="#afc4731e1b4624f591db52ac7c168e17d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x3_d_d_b.html#af5b8892739893cd2feff78800677dd1d">size</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エントリの数を得る  <a href="#af5b8892739893cd2feff78800677dd1d"></a><br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>X3Dファイルデータベースクラス. </p>
+<p>エージェントのパーツ、状態に応じたX3Dファイルを管理する。 キー文字列は </p>
+<pre><em>
+    &lt;エージェント名&gt;:&lt;パーツ名&gt;:&lt;状態名&gt;:&lt;状態値&gt;
+ </em></pre><p> パーツ名、状態名、状態値はなくてもキーとして使用できる。 </p>
+
+<p> <a class="el" href="_x3_d_d_b_8h_source.html">X3DDB.h</a> の <a class="el" href="_x3_d_d_b_8h_source.html#l00019">19</a> 行で定義されています。</p>
+<hr/><h2>関数</h2>
+<a class="anchor" id="ad6889d994762f948aa1f11539462ee89"></a><!-- doxytag: member="X3DDB::clear" ref="ad6889d994762f948aa1f11539462ee89" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void X3DDB::clear </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>格納している情報をクリアする </p>
+
+<p> <a class="el" href="_x3_d_d_b_8h_source.html">X3DDB.h</a> の <a class="el" href="_x3_d_d_b_8h_source.html#l00051">51</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a371afa1f4e9c1e44a478738366703236"></a><!-- doxytag: member="X3DDB::get" ref="a371afa1f4e9c1e44a478738366703236" args="(const char *key)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* X3DDB::get </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>key</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>指定したキーの値を設定する </p>
+
+<p> <a class="el" href="_x3_d_d_b_8h_source.html">X3DDB.h</a> の <a class="el" href="_x3_d_d_b_8h_source.html#l00063">63</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ab78c12d4b8631a813f05eef77fcb5085"></a><!-- doxytag: member="X3DDB::getIterator" ref="ab78c12d4b8631a813f05eef77fcb5085" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_x3_d_d_b_1_1_iterator.html">Iterator</a>* X3DDB::getIterator </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>エントリのイテレータを得る </p>
+
+<p> <a class="el" href="_x3_d_d_b_8h_source.html">X3DDB.h</a> の <a class="el" href="_x3_d_d_b_8h_source.html#l00054">54</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="afc4731e1b4624f591db52ac7c168e17d"></a><!-- doxytag: member="X3DDB::set" ref="afc4731e1b4624f591db52ac7c168e17d" args="(const char *key, const char *value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void X3DDB::set </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>value</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>キーと値を設定する </p>
+
+<p> <a class="el" href="_x3_d_d_b_8h_source.html">X3DDB.h</a> の <a class="el" href="_x3_d_d_b_8h_source.html#l00057">57</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="af5b8892739893cd2feff78800677dd1d"></a><!-- doxytag: member="X3DDB::size" ref="af5b8892739893cd2feff78800677dd1d" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int X3DDB::size </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>エントリの数を得る </p>
+
+<p> <a class="el" href="_x3_d_d_b_8h_source.html">X3DDB.h</a> の <a class="el" href="_x3_d_d_b_8h_source.html#l00049">49</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_x3_d_d_b_8h_source.html">X3DDB.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:22 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

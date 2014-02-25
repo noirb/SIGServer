@@ -1,0 +1,412 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGViewer: クラス Sgv::ServiceClerk</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_sgv.html">Sgv</a>::<a class="el" href="class_sgv_1_1_service_clerk.html">ServiceClerk</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Sgv::ServiceClerk</h1><!-- doxytag: class="Sgv::ServiceClerk" -->サービスクラーク  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_sgv_service_clerk_8h_source.html">SgvServiceClerk.h</a>&gt;</code>
+<p>
+
+<p>
+<a href="class_sgv_1_1_service_clerk-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_service_clerk.html#2d8d6ae82fa2be75994168d8cf346995">accept</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コントローラからのサービス要求を受け付ける  <a href="#2d8d6ae82fa2be75994168d8cf346995"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_service_clerk.html#1666cd3bf13a294f2fc74825e2fa1f12">close</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ソケットを閉じる  <a href="#1666cd3bf13a294f2fc74825e2fa1f12"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::list&lt; <a class="el" href="namespace_sgv.html#c3570221bebe732d48d866a4a1962bf3">THREAD_ID</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_service_clerk.html#f23d594333e086755fe8a0e16edbbf84">getRegisterdThreadIds</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">登録されているサービスプロバイダのスレッドidを返す  <a href="#f23d594333e086755fe8a0e16edbbf84"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_service_clerk.html#b13b2b19234778167f6a74b64a955d32">loopingProc</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">スレッド内で無限ループで実行されるメソッド.  <a href="#b13b2b19234778167f6a74b64a955d32"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_service_clerk.html#086fc90ced669078285388cb3760f58a">open</a> (const char *hostname, int port, int nSocketListenTo)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">サービス受付用ソケットを開く  <a href="#086fc90ced669078285388cb3760f58a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_service_clerk.html#d89cafdef222d365887946941b5464de">readyToAccept</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">accept可能状態か？  <a href="#d89cafdef222d365887946941b5464de"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_service_clerk.html#f2709391c560ce9a568af6234aa6c384">registServiceProvider</a> (<a class="el" href="namespace_sgv.html#c3570221bebe732d48d866a4a1962bf3">THREAD_ID</a> tid, <a class="el" href="class_sgv_1_1_service_provider.html">ServiceProvider</a> *pProvider, <a class="el" href="class_sgv_1_1_service_provider_thread.html">ServiceProviderThread</a> *pProviderThread)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">サービスプロバイダを、実行中のサービスプロバイダリストに登録する  <a href="#f2709391c560ce9a568af6234aa6c384"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_service_clerk.html#c683f1f82254c9c7c0723ef795ead7de">removeServiceProvider</a> (<a class="el" href="namespace_sgv.html#c3570221bebe732d48d866a4a1962bf3">THREAD_ID</a> tid)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">サービスプロバイダを、実行中のサービスプロバイダリストから削除する  <a href="#c683f1f82254c9c7c0723ef795ead7de"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_service_clerk.html#420bd3c1141259c472e8040b73d7fe81">ServiceClerk</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#420bd3c1141259c472e8040b73d7fe81"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_service_clerk.html#c1cc79c4200396da62ef2ba6fd16c530">‾ServiceClerk</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#c1cc79c4200396da62ef2ba6fd16c530"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+サービスクラーク 
+<p>
+外部からのサービスの受付を行う． 受け付けたサービスは、サービスプロバイダに処理を委譲する．<p>
+サービスクラークは、実行中のサービスプロバイダのリストを保持している． 処理の終了したサービスプロバイダは、サービスプロバイダのリストから削除される． 
+<p> <a class="el" href="_sgv_service_clerk_8h_source.html">SgvServiceClerk.h</a> の <a class="el" href="_sgv_service_clerk_8h_source.html#l00025">25</a> 行で定義されています。</p>
+<hr><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" name="420bd3c1141259c472e8040b73d7fe81"></a><!-- doxytag: member="Sgv::ServiceClerk::ServiceClerk" ref="420bd3c1141259c472e8040b73d7fe81" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::ServiceClerk::ServiceClerk           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_service_clerk_8cpp_source.html">SgvServiceClerk.cpp</a> の <a class="el" href="_sgv_service_clerk_8cpp_source.html#l00012">12</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>関数</h2>
+<a class="anchor" name="2d8d6ae82fa2be75994168d8cf346995"></a><!-- doxytag: member="Sgv::ServiceClerk::accept" ref="2d8d6ae82fa2be75994168d8cf346995" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Sgv::ServiceClerk::accept           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コントローラからのサービス要求を受け付ける 
+<p>
+サービス要求受付用ソケットに、コントローラからの接続要求が 来ているかをチェックする．もし来ているなら、サービスプロバイダスレッドを 起動する．<p>
+このメソッドは、サービスクラークスレッドのloopingProc()から 定期的に呼び出される．<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd></dd></dl>
+<div class="fragment"><pre class="fragment"> &gt; 0 ... サービスリクエスタからのサービス受付要求があり、処理された
+ = 0 ... サービスリクエスタからのサービス受付要求はなかった
+ &lt; 0 ... エラー
+</pre></div> 
+<p> <a class="el" href="_sgv_service_clerk_8cpp_source.html">SgvServiceClerk.cpp</a> の <a class="el" href="_sgv_service_clerk_8cpp_source.html#l00093">93</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="1666cd3bf13a294f2fc74825e2fa1f12"></a><!-- doxytag: member="Sgv::ServiceClerk::close" ref="1666cd3bf13a294f2fc74825e2fa1f12" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::ServiceClerk::close           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ソケットを閉じる 
+<p>
+
+<p> <a class="el" href="_sgv_service_clerk_8cpp_source.html">SgvServiceClerk.cpp</a> の <a class="el" href="_sgv_service_clerk_8cpp_source.html#l00076">76</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f23d594333e086755fe8a0e16edbbf84"></a><!-- doxytag: member="Sgv::ServiceClerk::getRegisterdThreadIds" ref="f23d594333e086755fe8a0e16edbbf84" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::list&lt; <a class="el" href="namespace_sgv.html#c3570221bebe732d48d866a4a1962bf3">THREAD_ID</a> &gt; Sgv::ServiceClerk::getRegisterdThreadIds           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+登録されているサービスプロバイダのスレッドidを返す 
+<p>
+
+<p> <a class="el" href="_sgv_service_clerk_8cpp_source.html">SgvServiceClerk.cpp</a> の <a class="el" href="_sgv_service_clerk_8cpp_source.html#l00278">278</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b13b2b19234778167f6a74b64a955d32"></a><!-- doxytag: member="Sgv::ServiceClerk::loopingProc" ref="b13b2b19234778167f6a74b64a955d32" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::ServiceClerk::loopingProc           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+スレッド内で無限ループで実行されるメソッド. 
+<p>
+falseを返すとスレッドが終了する<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=スレッド実行継続), false(=スレッドを終了させる) </dd></dl>
+
+<p> <a class="el" href="_sgv_service_clerk_8cpp_source.html">SgvServiceClerk.cpp</a> の <a class="el" href="_sgv_service_clerk_8cpp_source.html#l00175">175</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="086fc90ced669078285388cb3760f58a"></a><!-- doxytag: member="Sgv::ServiceClerk::open" ref="086fc90ced669078285388cb3760f58a" args="(const char *hostname, int port, int nSocketListenTo)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::ServiceClerk::open           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>hostname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>nSocketListenTo</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+サービス受付用ソケットを開く 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hostname</em>&nbsp;</td><td>[i] ホスト名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>port</em>&nbsp;</td><td>[i] ポート番号 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>nSocketListenTo</em>&nbsp;</td><td>[i] 同時に接続を受け付けるソケットの数</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_service_clerk_8cpp_source.html">SgvServiceClerk.cpp</a> の <a class="el" href="_sgv_service_clerk_8cpp_source.html#l00049">49</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="d89cafdef222d365887946941b5464de"></a><!-- doxytag: member="Sgv::ServiceClerk::readyToAccept" ref="d89cafdef222d365887946941b5464de" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::ServiceClerk::readyToAccept           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+accept可能状態か？ 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=可能), false(=不可能) </dd></dl>
+
+<p> <a class="el" href="_sgv_service_clerk_8h_source.html">SgvServiceClerk.h</a> の <a class="el" href="_sgv_service_clerk_8h_source.html#l00054">54</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f2709391c560ce9a568af6234aa6c384"></a><!-- doxytag: member="Sgv::ServiceClerk::registServiceProvider" ref="f2709391c560ce9a568af6234aa6c384" args="(THREAD_ID tid, ServiceProvider *pProvider, ServiceProviderThread *pProviderThread)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::ServiceClerk::registServiceProvider           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_sgv.html#c3570221bebe732d48d866a4a1962bf3">THREAD_ID</a>&nbsp;</td>
+          <td class="paramname"> <em>tid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_service_provider.html">ServiceProvider</a> *&nbsp;</td>
+          <td class="paramname"> <em>pProvider</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_service_provider_thread.html">ServiceProviderThread</a> *&nbsp;</td>
+          <td class="paramname"> <em>pProviderThread</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+サービスプロバイダを、実行中のサービスプロバイダリストに登録する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>tid</em>&nbsp;</td><td>[i] スレッドid </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>pProvider</em>&nbsp;</td><td>[i] サービスプロバイダ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>pProviderThread</em>&nbsp;</td><td>[i] サービスプロバイダスレッド </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_service_clerk_8cpp_source.html">SgvServiceClerk.cpp</a> の <a class="el" href="_sgv_service_clerk_8cpp_source.html#l00240">240</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="c683f1f82254c9c7c0723ef795ead7de"></a><!-- doxytag: member="Sgv::ServiceClerk::removeServiceProvider" ref="c683f1f82254c9c7c0723ef795ead7de" args="(THREAD_ID tid)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::ServiceClerk::removeServiceProvider           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_sgv.html#c3570221bebe732d48d866a4a1962bf3">THREAD_ID</a>&nbsp;</td>
+          <td class="paramname"> <em>tid</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+サービスプロバイダを、実行中のサービスプロバイダリストから削除する 
+<p>
+
+<p> <a class="el" href="_sgv_service_clerk_8cpp_source.html">SgvServiceClerk.cpp</a> の <a class="el" href="_sgv_service_clerk_8cpp_source.html#l00249">249</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="c1cc79c4200396da62ef2ba6fd16c530"></a><!-- doxytag: member="Sgv::ServiceClerk::‾ServiceClerk" ref="c1cc79c4200396da62ef2ba6fd16c530" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::ServiceClerk::‾ServiceClerk           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+デストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_service_clerk_8cpp_source.html">SgvServiceClerk.cpp</a> の <a class="el" href="_sgv_service_clerk_8cpp_source.html#l00030">30</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_sgv_service_clerk_8h_source.html">SgvServiceClerk.h</a><li><a class="el" href="_sgv_service_clerk_8cpp_source.html">SgvServiceClerk.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGViewerに対してThu Jun 9 10:52:15 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

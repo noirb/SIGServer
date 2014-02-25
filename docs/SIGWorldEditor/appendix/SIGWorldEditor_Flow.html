@@ -1,0 +1,246 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
+<link rel="stylesheet" type="text/css" href="../../prj.css"/>
+<title>SIGWorldEditorの設計に関する追加説明</title>
+</head>
+
+<body>
+<h1>主要な処理の流れの解説</h1>
+
+<p>
+主な処理を流れ図と共に解説する．
+</p>
+
+<ul>
+	<li><a href="#Init">初期化</a></li>
+	<li><a href="#SearchXMLFiles">起動時のXMLファイル探索</a></li>
+	<li><a href="#AddEntityToWorld">エンティティの画面への追加</a></li>
+	<li><a href="#DeleteEntity">エンティティの画面からの削除</a></li>
+	<li><a href="#LoadWorldXML">世界ファイルのロード</a></li>
+	<li><a href="#SaveWorldXML">世界ファイルのセーブ</a></li>
+	<li><a href="#ShowEntityAttr">エンティティの属性表示</a></li>
+	<li><a href="#SetEntityAttr">エンティティの属性設定</a></li>
+	<li><a href="#ShowHumanoidJoint">ヒューマノイド形状のジョイント情報表示</a></li>
+	<li><a href="#SetHumanoidJoint">ヒューマノイド形状のジョイント情報設定</a></li>
+	<li><a href="#ShowEntityClassAttr">エンティティクラス定義の表示</a></li>
+	<li><a href="#SetEntityClassAttr">エンティティクラス定義の設定</a></li>
+</ul>
+
+<br><h3><a name="Init">初期化</a></h3>
+
+<p>
+SIGWorldEditorが起動すると、まずWinMain()関数から実行がスタートする．そこではまず、システムの初期化処理が行われる．
+</p>
+
+<p>
+具体的には、メインウィンドウクラスのコンストラクタの実行、システム初期化、メインウィンドウパネルのサイズ調整、の3つが順に実行される．
+</p>
+
+<p>
+初期化が済むと、メッセージループに入る．プログラムが終了するまでこのメッセージループを繰り返して処理する．
+</p>
+
+<p align="center">
+<img border="0" src="StartUp1.jpg">
+</p>
+
+<p>
+メインウィンドウコンストラクタ(MainWindow::MainWindow())では、システムのスタートアップに最低限必要な処理を行う．具体的には、メンバ変数の初期化、ログの初期化の2つである．
+</p>
+
+<p align="center">
+<img border="0" src="StartUp2.jpg">
+</p>
+
+<p>
+メインウィンドウコンストラクタの実行が終わると、次にSIGWorldEditorの初期化(MainWindow::init())に移る．ここでは、システムが起動するための多くの処理が行われる．
+</p>
+
+<p align="center">
+<img border="0" src="StartUp3.jpg">
+</p>
+
+<p>
+初期化の最後では、メインウィンドウの下部、右部にあるパネルの位置調整(MainWindow::adjustControlPos())が呼び出される．
+</p>
+
+<p>
+これは実際のメインウィンドウの表示サイズに応じてパネルのサイズを合わせるための処理である．なお、このパネル位置調整は初期化時だけでなく、ウィンドウサイズの変更時にも行われるため、MainWindow::init()とは独立したメソッドになっている．
+</p>
+
+<p align="center">
+<img border="0" src="StartUp4.jpg">
+</p>
+
+
+<br><h3><a name="SearchXMLFiles">起動時のXMLファイル探索</a></h3>
+
+SIGWorldEditorは起動時に、カレントディレクトリにあるXMLファイルを検索し、世界ファイルとエンティティ定義ファイルの2種類のファイルをリストアップする．
+
+探索においては、該当ファイルを一度すべてパースし、2種類のXMLファイルに特有なXMLタグが含まれているかどうかを調べる．
+
+<p align="center">
+<img border="0" src="SearchXMLFiles.jpg">
+</p>
+
+<br><h3><a name="AddEntityToWorld">エンティティの画面への追加</a></h3>
+
+<p>
+SIGWorldEditorでは、マウス操作により、世界表示ウィンドウ上に任意のエンティティを追加できる．</p>
+
+<p>
+世界表示ウィンドウ上でマウスクリックを行うと、OgreClientWindowクラスのonLButtonDown()メソッドがコールされる．エンティティの追加はまず、世界オブジェクト(XMLWorld)クラスに新しいエンティティを生成し、その後X3D形状を読み込みOgreエンティティを生成することで行われる．
+</p>
+
+<p align="center">
+<img border="0" src="AddEntityToWorld.jpg">
+</p>
+
+<p>
+世界オブジェクトに登録されているエンティティからOgreノードを生成するのは、MainWindow::createEntityNode()メソッドである．</p>
+
+<p>
+createEntityNode()は、まずエンティティからエンティティクラス(XMLEntityClass)を取り出す．エンティティクラスはエンティティ定義XMLファイルに対応するクラスで、X3D形状ファイル名などのクラスの定義情報を保持している．
+</p>
+
+<p>
+取得したX3D形状ファイル名から静止物体またはヒューマノイドのOgreノードを生成する．ヒューマノイド形状は各ジョイントを個別に動かす必要があるため、追加で各ジョイントへのマップが作成される．
+</p>
+
+<p align="center">
+<img border="0" src="CreateEntityNode.jpg">
+</p>
+
+<p>
+なお、MainWindow::createEntityNode()は、XMLファイルをロードする際にも使われる．
+</p>
+
+<br><h3><a name="DeleteEntity">エンティティの削除</a></h3>
+
+<p>
+SIGWorldEditorでは、エンティティをマウスで選択した状態でDeleteキーを押すと、エンティティを削除できる</p>
+
+<p>
+エンティティの削除は、MainWindow::deleteEntity()メソッドにより行われる．エンティティは複数のオブジェクトやマップにわたって登録されているので、それらすべてから消す作業が行われる．
+</p>
+
+<p align="center">
+<img border="0" src="DeleteEntity.jpg">
+</p>
+
+<br><h3><a name="LoadWorldXML">世界ファイルのロード</a></h3>
+
+<p>
+世界ファイルのロードはMainWindow::loadWorldXMLFile()で行われる．
+</p>
+
+<p>
+世界オブジェクト(XMLWorld)のloadFromXML()メソッドで世界ファイルを読み込む．
+次にロードした世界ファイル内のすべてのエンティティについてOgreノードの作成、マップへの登録等を行う．このとき、画面上へのエンティティへの追加でも使われたMainWindow::createEntityNode()メソッドが使用される．</p>
+
+<p align="center">
+<img border="0" src="LoadWorldXML.jpg">
+</p>
+
+<br><h3><a name="SaveWorldXML">世界ファイルのセーブ</a></h3>
+
+<p>
+世界ファイルのセーブはMainWindow::saveWorldXMLFileで行われる．
+</p>
+
+<p>
+操作中の世界情報は世界オブジェクト(XMLWorld)に逐次的に記録されているので、単にXMLWorldのセーブ用メソッドをコールするだけで済む
+</p>
+
+<p align="center">
+<img border="0" src="SaveWorldXML.jpg">
+</p>
+
+<br><h3><a name="ShowEntityAttr">エンティティの属性表示</a></h3>
+
+<p>
+画面上でエンティティをクリックすると、エンティティの属性が表示される．
+</p>
+
+<p>
+クリックしたエンティティからまずエンティティ名を取得し、画面右パネルの選択中エンティティ名表示エリアに名前を表示する．次にエンティティの属性名一覧と値を更新する．
+</p>
+
+<p align="center">
+<img border="0" src="ShowEntityAttr.jpg">
+</p>
+
+<br><h3><a name="SetEntityAttr">エンティティの属性設定</a></h3>
+
+<p>
+画面右パネル上のSetボタンにより、選択中のエンティティの属性値を変更できる．
+</p>
+
+<p>
+ボタンが押されると、選択中のエンティティ名、リストボックス中で選択中の属性名、エディットボックスに入力されている設定値を取得する．次にこれらの情報からエンティティオブジェクトを取り出し、属性値を変更する．
+</p>
+
+<p>
+設定された値のうち、位置、方向、スケール等の情報は即座にOgreノードに反映され、画面の表示形状がリアルタイムで変更される．
+</p>
+
+<p align="center">
+<img border="0" src="SetEntityAttr.jpg">
+</p>
+
+<br><h3><a name="ShowHumanoidJoint">ヒューマノイド形状のジョイント情報表示</a></h3>
+
+<p>
+マウスでクリックしたエンティティがヒューマノイド形状だった場合、右パネルのHumanoidタブに、ジョイントの位置、向きの情報が表示される．</p>
+
+<p>
+ヒューマノイド形状については、ヒューマノイドノードマップに、ジョイント名とそれに対応するOgreノードが登録されている．これを用いてジョイント名から、Ogreノードを取得し、位置と方向パラメータを取り出し、表示している．</p>
+
+<p align="center">
+<img border="0" src="ShowHumanoidJoint.jpg">
+</p>
+
+<br><h3><a name="SetHumanoidJoint">ヒューマノイド形状のジョイント情報設定</a></h3>
+
+<p>
+ジョイント情報の表示と同じ要領で、選択したジョイントの位置、方向パラメータを設定できる．設定したパラメータは即座にOgreノードに反映され、リアルタイムで表示形態が変わる．</p>
+
+<p align="center">
+<img border="0" src="SetHumanoidJoint.jpg">
+</p>
+
+<br><h3><a name="ShowEntityClassAttr">エンティティクラス定義の表示</a></h3>
+
+<p>
+クラスエディタウィンドウを使ってエンティティのクラス定義を編集できる．
+</p>
+
+<p>
+クラス定義の編集では、新しいクラスの作成、既存のクラスの属性の編集、既存のクラスの削除が行える．
+</p>
+
+<p>
+以下にクラス定義の表示の流れを示す．表示にはエンティティクラス名と、属性名が必要である．これらはクラスエディタウィンドウのGUI部品から取り出す．次にエンティティクラス名に対応するエンティティクラス(XMLEntityClass)を取り出す．最後に属性名に対応する値を取り出し、GUIパネル上に表示する.</p>
+
+<p align="center">
+<img border="0" src="ShowEntityClassAttr.jpg">
+</p>
+
+<br><h3><a name="SetEntityClassAttr">エンティティクラス定義の設定</a></h3>
+
+<p>
+エンティティクラスの属性設定では、まず対象となるエンティティクラスの名前、型名、グループ名、値をGUI部品から取り出す．得られた値はエンティティクラス(XMLEntityClass)オブジェクトにセットされる．
+</p>
+
+<p align="center">
+<img border="0" src="SetEntityClassAttr.jpg">
+</p>
+
+<hr><address style="align: right;"><a href="http://www.msi.co.jp"><img src="msilogo.gif" align="middle" border=0
+
+width=139 height=53>（株）数理システム</a>
+</body>
+
+</html>

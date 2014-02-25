@@ -1,0 +1,724 @@
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS"/>
+<link rel="stylesheet" type="text/css" href="prj.css"/>
+<title>世界エディタの操作</title>
+</head>
+
+<p><h1>世界エディタの操作</h1>
+<br>
+世界エディタ(SIGWorldEditor.exe)は、シミュレーション世界をGUIインターフェースにより視覚的に構築するツールです．世界エディタは以下の機能を持ちます．<br>
+
+<ul>
+<li>GUI画面上でシミュレーション世界をデザインできます
+<li>作成した世界を世界ファイル(XML形式)にセーブできます．
+<li>世界ファイルをロードして再編集できます．
+<li>エンティティ定義ファイル(XML形式)を編集できます．
+<li>ヒューマノイド形状のジョイント情報を視覚的に見たり、変更できます．また、ジョイント情報をテキストファイルに出力できます
+</ul>
+
+以下に世界エディタの操作方法を説明します．
+
+<ul>
+<li><a href="#起動画面">起動画面</a></li>
+<li><a href="#メインウィンドウ">メインウィンドウ</a></li>
+<li><a href="#画面下部パネル">画面下部パネル</a></li>
+<li><a href="#画面右部パネル">画面右部パネル</a></li>
+<li><a href="#クラスエディタ">クラスエディタ</a></li>
+<li><a href="#設定ファイル">設定ファイル</a></li>
+<li><a href="#アップロード">サーバーへのファイルのアップロード</a></li>
+</ul>
+<br>
+<p>
+なお、編集したXMLファイルをシミュレーションサーバーにアップロードする機能はありません．
+</p>
+
+<br>
+<h2>
+<a name="起動画面">
+起動画面</a>
+</h2>
+
+<p>
+世界エディタを起動すると以下のような画面が表示されます．
+</p>
+
+<p>
+<div align="center">
+<img src="world_editor_howto1.jpg" width="800" height="600">
+<br>
+</div>
+<br>
+<font size="4">
+(1)　メインウィンドウ
+</font>
+<br>
+<font size="4">
+(2)　画面下部パネル
+</font>
+<br>
+<font size="4">
+(3)　画面右部パネル</font>
+<br>
+<p>以下に各部の説明を行います.</p>
+<br>
+<br>
+<h2>
+<a name="メインウィンドウ">
+メインウィンドウ</a>
+</h2>
+
+<p>
+メインウィンドウは、編集する世界が表示される場所です．
+</p>
+
+<h3>視点の移動</h3>
+マウスの右ボタンをクリックしながらドラッグすると，視点を移動できます<br>
+<br>
+
+<table border=1 align=center>
+	<tr bgcolor="#cccccc">
+		<th>操作</th>
+		<th>SIGWorldEditorの動作</th>
+	</tr>
+	<tr>
+		<td>右ボタンを押しながらドラッグ</td>
+		<td>視点の回転</td>
+	</tr>
+	<tr>
+		<td>右ボタン＋SHIFTキーを押しながらドラッグ</td>
+		<td>視点の移動（上下・左右）</td>
+	</tr>
+	<tr>
+		<td>右ボタン＋CTRLキーを押しながらドラッグ</td>
+		<td>視点の移動（奥行き）</td>
+	</tr>
+</table>
+
+<br>
+<br>
+
+<h3>物体の選択</h3>
+画面右部分の「Add Entity to World」チェックボックスをoffにした状態で、マウスを左クリックすると，カーソルの位置にある物体を選択できます．<br>
+また，左クリックしたままマウスをドラッグすると，物体の移動，回転ができます．<br>
+<br>
+
+<table border=1 align=center>
+	<tr bgcolor="#cccccc">
+		<th>操作</th>
+		<th>SIGWorldEditorの動作</th>
+	</tr>
+	<tr>
+		<td>左ボタンをクリック</td>
+		<td>物体を選択</td>
+	</tr>
+	<tr>
+		<td>左ボタンを押しながらドラッグ</td>
+		<td>物体の回転</td>
+	</tr>
+	<tr>
+		<td>左ボタン＋SHIFTキーを押しながらドラッグ</td>
+		<td>物体の移動（上下・左右）</td>
+	</tr>
+	<tr>
+		<td>左ボタン＋CTRLキーを押しながらドラッグ</td>
+		<td>物体の移動（奥行き）</td>
+	</tr>
+</table>
+
+<br>
+＃ヒューマノイド形状の場合、物体の回転は部位（腕、足等）ごとに行われます<br>
+
+<br>
+<br>
+
+<h3>物体の追加</h3>
+画面右部分の「Add Entity to World」チェックボックスをonにした状態で、クラスリストから追加したいエンティティのクラスを選択し、画面上をクリックすると、選択したクラスのエンティティが世界に追加されます．<br>
+<br>
+
+<table border=1 align=center>
+	<tr bgcolor="#cccccc">
+		<th>操作</th>
+		<th>SIGWorldEditorの動作</th>
+	</tr>
+	<tr>
+		<td>右パネルからクラスを選択し、画面上をマウスの左ボタンでクリック</td>
+		<td>選択したクラスのエンティティが世界に追加される</td>
+	</tr>
+</table>
+
+<br>
+<br>
+
+<h3>物体の削除</h3>
+物体を選択している状態（マウスで左クリック中）にDeleteキーを押すと、物体を削除できます．<br>
+<br>
+
+<table border=1 align=center>
+	<tr bgcolor="#cccccc">
+		<th>操作</th>
+		<th>SIGWorldEditorの動作</th>
+	</tr>
+	<tr>
+		<td>物体をクリックした状態でDeleteボタンを押す</td>
+		<td>物体が削除される</td>
+	</tr>
+</table>
+
+<br>
+<br>
+
+<h2>
+<a name="画面下部パネル">
+画面下部パネル</a>
+</h2>
+
+<p>
+世界ファイルのロード・セーブやクラスエディタの起動を行います<br>
+また、システムからのメッセージ表示エリアがあります<br>
+</p>
+
+<br>
+<div align="center">
+<img src="world_editor_howto_btab1.jpg" width="800" height="100">
+</div>
+<br>
+
+<dl>
+<dt>
+<font size="4">
+「Create New World」ボタン
+</font>
+<dd>
+新しい世界を作成します<br>
+<br>
+
+<dt>
+<font size="4">
+「Load World XML」ボタン
+</font>
+<dd>
+世界XMLファイルをロードします<br>
+<br>
+
+<dt>
+<font size="4">
+「Save World XML」ボタン
+</font>
+<dd>
+編集中の世界XMLファイルにセーブします<br>
+<br>
+
+<dt>
+<font size="4">
+「Save World XML As」ボタン
+</font>
+<dd>
+ファイル名を指定して世界XMLファイルにセーブします<br>
+<br>
+
+<dt>
+<font size="4">
+「Entity Class Editor」ボタン
+</font>
+<dd>
+クラスエディタウィンドウを起動します<br>
+<br>
+
+<dt>
+<font size="4">
+「WorldName」エリア</font>
+<dd>
+編集中の世界の名前です．この名前は世界ファイル(XMLファイル）中のworldタグの値に対応します．（世界ファイル名とは関係ありません）
+<br>
+<br>
+
+<dt>
+<font size="4">
+「移動制限」エリア</font>
+<dd>
+マウスで物体を移動させる際の移動軸制限を設定します．
+チェックを入れた軸方向の移動は行いません．
+<br>
+<br>
+
+<dt>
+<font size="4">
+「回転制限」エリア
+</font>
+<dd>
+マウスで物体を回転させる際の回転軸制限を設定します．
+「なし」が選択されている場合、物体の回転に制限はありません．
+それ以外の項目にチェックが入っている場合は、該当軸周りの回転のみ行えます．
+<br>
+<br>
+
+</dl>
+
+
+<br>
+<br>
+
+<h2>
+<a name="画面右部パネル">
+画面右部パネル</a>
+</h2>
+
+<h3>Entityタブ</h3>
+エンティティの配置、属性値の表示・設定などを行うパネルです<br>
+
+<dl>
+<dt>
+Entity Class List
+<dd>
+画面に配置できるエンティティクラスのリストです．<br><br>
+「Add Entity to World」チェックボックスがonの状態で、メインウィンドウ上をクリックすると、
+このエンティティリストで選択されている物体が世界に追加されます．<br><br>
+新しく世界に追加されるエンティティの名前は自動的に「クラス名.番号」となります．<br>
+</dl>
+
+<div align="left">
+<img src="world_editor_howto_rtab_ent1.jpg">
+</div>
+
+<dl>
+<dt>
+Entity Name
+<dd>
+選択中のエンティティ名が表示されます．エンティティの選択はこのリストボックスで行うか、またはマウスで直接画面上の物体をクリックして行います．
+<br>
+</dl>
+
+<div align="left">
+<img src="world_editor_howto_rtab_ent2.jpg">
+</div>
+
+<br>
+<br>
+
+<dl>
+<dt>
+Attribute Names
+<dd>
+選択中のエンティティの属性名が表示されます．<br>
+属性名をクリックすると「Attribute Value」エリアに属性値が表示されます．<br>
+</dl>
+
+<div align="left">
+<img src="world_editor_howto_rtab_ent3.jpg">
+</div>
+
+<br>
+<br>
+
+<dl>
+<dt>
+Attribute Value
+<dd>
+属性値が表示されます．<br>
+属性値を書き換えて「Set」ボタンを押すと属性値を変更することができます<br>
+</dl>
+
+<div align="left">
+<img src="world_editor_howto_rtab_ent4.jpg">
+</div>
+
+<br>
+<br>
+
+<dl>
+<dt>
+Position, Rotation
+<dd>
+エンティティの属性のうち、位置と方向を特別に表示・設定するエリアです．<br>
+表示中の値を書き換えて「Set Pos」ボタンまたは「Set Rot」ボタンを押すことにより、位置、向きを変更することができます．<br>
+</dl>
+
+<div align="left">
+<img src="world_editor_howto_rtab_ent5.jpg">
+</div>
+
+<br>
+<br>
+<br>
+
+
+<h3>Humanoidタブ</h3>
+<br>
+
+ヒューマノイド形状のジョイント情報の表示・変更などを行うパネルです<br>
+
+<dl>
+<dt>
+Entity Name
+<dd>
+選択中のエンティティ名が表示されます<br>
+</dl>
+
+<div align="left">
+<img src="world_editor_howto_rtab_hu1.jpg">
+</div>
+
+<br>
+<br>
+
+<dl>
+<dt>
+Joint Name
+<dd>
+選択中のヒューマノイドのもつジョイント名が表示されます<br>
+リストボックスからジョイント名を選択すると、そのジョイントの位置、方向パラメータがエディットボックスに表示されます．<br>
+<br>
+位置は「translation」にx, y, zの順で表示されます．<br>
+方向は「rotation」にax, ay, az（部位の軸方向を示すベクトル）とdeg（軸周りの回転角．単位は度）の順で表示されます．<br>
+<br>
+位置、方向パラメータを入力して「Set Joint Param」ボタンを押すと、選択しているジョイントのパラメータを変更できます．
+（注：この変更が反映されるのは画面上だけです．形状ファイルの内容が変更されるわけではありません）
+</dl>
+
+<div align="left">
+<img src="world_editor_howto_rtab_hu2.jpg">
+</div>
+
+
+<dl>
+<dt>
+Joint File Name
+<dd>
+ジョイント情報を書き出すファイル名を指定します．<br>
+「Write Joint Info to File」ボタンを押すと、指定されたファイル(csv形式)に、選択中のヒューマノイドのジョイント情報（ジョイント名、位置、方向）を書き出します．
+</dl>
+
+<div align="left">
+<img src="world_editor_howto_rtab_hu3.jpg">
+</div>
+
+<br>
+ジョイント情報は以下のようなフォーマットで書き出されます．<br>
+
+<pre>
+Robot.1
+CHEST,0.000000,0.350000,0.000000,0.872135,0.395121,0.288548,3.979876
+HEAD_JOINT0,0.000000,-5.000000,0.000000,1.000000,0.000000,0.000000,0.000000
+HEAD_JOINT1,0.000000,0.000000,0.000000,1.000000,0.000000,0.000000,0.000000
+LARM_JOINT0,0.000000,0.000000,0.000000,0.000000,0.000000,1.000000,4.712390
+LARM_JOINT1,-3.500000,25.000000,5.000000,0.577350,0.577350,-0.577350,2.094400
+LARM_JOINT2,0.000000,0.000000,0.000000,-0.099376,0.289069,-0.952136,2.443908
+LARM_JOINT3,0.000000,27.000000,0.000000,0.577350,0.577350,-0.577350,2.094400
+LARM_JOINT4,0.000000,0.000000,0.000000,0.875332,0.177282,-0.449851,2.094906
+LARM_JOINT5,0.000000,-30.000000,0.000000,1.000000,0.000000,0.000000,1.570790
+......
+</pre>
+
+先頭行がエンティティ名（上記の例ではRobot.1）<br>
+2行目以降は、左からジョイント名、位置(x, y, z)、軸ベクトルの方向(ax, ay, az), 軸周りの回転角度(rad)となります．
+<br>
+<br>
+<br>
+
+<h2>
+<a name="クラスエディタ">
+クラスエディタ</a>
+</h2>
+
+<p>クラスエディタはエンティティの定義XMLファイルを編集するウィンドウです</p>
+<p>SIGWorldEditor下部パネルの「Entity Class Editor」ボタンをクリックすると開きます</p>
+
+<p>
+<div align="center">
+<img src="entity_class_editor_howto1.jpg" width="860" height="500">
+<br>
+</div>
+
+<p>
+クラスエディタウィンドウは大きく3つの部分に分かれています．
+</p>
+
+<p>
+左(上図1）がクラスの選択、追加、削除を行う部分、中央(上図2)が属性の表示、追加、削除を行う部分、そして右(上図3)がエンティティに対応するX3D形状ファイルに関する操作を行う部分です．
+</p>
+
+<p>
+また、ウィンドウの最下部には「Close Class Editor」「Save Modified Class」の2つのボタンがあります．
+</p>
+<p>
+「Close Class Editor」はクラスエディタを閉じるボタンです．「Save Modified Class」はクラスエディタで変更したクラス定義をXMLファイルにセーブするボタンです．
+</p>
+
+<h3>Entity Classエリア</h3>
+
+<p>
+Entity Classエリアには、SIGWorldEditor起動時に読み込まれたエンティティ定義（エンティティクラス）のリストが表示されます．このリスト中のクラス名をクリックすると、そのクラスの持つ属性名が右隣の「Attributes」リストに表示されます．
+</p>
+
+<p>
+<div align="left">
+<img src="entity_class_editor_howto2-1.jpg" width="200" height="350">
+<br>
+</div>
+
+<p>
+新しいクラスを作成するには、「name」エリアに新しいクラス名を入力し、「super class」から上位クラスを選びます．super classは指定なし、Entity, Agentの3つから選びます．入力が終わったら「Create Class」ボタンを押すと新しいクラスが作成されます．
+</p>
+
+<p>下図は、Entityを上位クラスとした「MyNewClass」という名前の新しいクラスを作成した例です</p>
+
+<p>
+<div align="left">
+<img src="entity_class_editor_howto2-2.jpg" width="200" height="350">
+<br>
+</div>
+
+<p>
+既存のクラスを削除するには、リスト一覧から消したいクラスを選び、「Delete Class」ボタンを押します.
+</p>
+
+<p>例えば、上記で作成したMyNewClassを消すために「Delete Class」ボタンを押すと、以下のようなダイアログが出ます．ここでYesを押すと対応するXMLファイルが消去されます
+</p>
+
+<p>
+<div align="left">
+<img src="entity_class_editor_howto2-3.jpg" width="460" height="115">
+<br>
+</div>
+
+<h3>Attributesエリア</h3>
+
+<p>
+Attributesエリアでは、クラスの属性の表示・編集が行えます．
+</p>
+
+<p>
+属性名のリストから表示したい属性を選べば、属性名、型名、グループ名、値（デフォルト値）が表示されます．値がない（空）の場合、valueフィールドは空白になります．
+</p>
+
+<p>
+<div align="left">
+<img src="entity_class_editor_howto3-1.jpg" width="200" height="390">
+<br>
+</div>
+
+<p>
+新しい属性を追加したい場合、または既存の属性値を変更したい場合は、name, type, group, valueフィールドに希望の値を入力し、「Set」ボタンを押します．
+</p>
+
+<p>
+属性そのものを削除したい場合は、属性名をリスト中から選んだ状態で「Delete」ボタンを押します</p>
+
+<p>
+なお、属性値を追加・修正・削除しても、ダイアログ下部の「Save Modified Class」が押されるまではXMLファイルには反映されません
+</p>
+
+<h3>X3D Fileエリア</h3>
+
+<p>
+X3D Fileエリアでは、エンティティの表示に使用される形状ファイル(x3dまたはwrl)の設定を編集します．
+</p>
+
+<p>
+<div align="left">
+<img src="entity_class_editor_howto4-1.jpg" width="460" height="470">
+<br>
+</div>
+
+<p>
+エンティティに形状ファイルを関連づけるには、まず設定したいエンティティを選んだ上で、「Shape Files」リストの中から形状ファイルを選び、「＜」ボタンを押します．
+</p>
+
+<p>
+例えば以下は、エンティティに形状ファイルdoll_bear.wrlを関連付けた場合です．
+</p>
+
+<p>
+<div align="left">
+<img src="entity_class_editor_howto4-2.jpg" width="460" height="470">
+<br>
+</div>
+
+<p>
+通常、エンティティにはただ1つの形状ファイルが対応しますが、状態名と状態値を設定することで、2つ以上の形状ファイルに対応させることもできます．</p>
+
+<p>
+複数個の形状ファイルをエンティティに対応させる場合は、上記の形状ファイル設定の手順を複数回繰り返します．各形状ファイルに対する状態名、状態値の設定を行うには「state name」「state value」にそれぞれ値を入力し、「Set」ボタンを押します．</p>
+
+<p>
+下の例は、TV_off.wrlとTV_on.wrlという2つの形状ファイルを設定した例です．<br>
+TV_on.wrlには状態名switch、状態値onが対応しています．</p>
+
+<p>
+<div align="left">
+<img src="entity_class_editor_howto4-3.jpg" width="460" height="470">
+<br>
+</div>
+
+<p>
+エンティティと形状ファイルとの対応関係を削除する場合は、「X3D File」のリストから消したいファイル名を選び、「Delete X3D」ボタンを押します．
+（注：形状ファイル自体を削除するわけではありません．エンティティと形状ファイルの関連付け情報を消すだけです）
+</p>
+
+<p>
+なお、ここでの設定値も、ダイアログ下部の「Save Modified Class」が押されるまではXMLファイルには反映されません．
+</p>
+
+<br>
+<br>
+
+<h2>
+<a name="設定ファイル">
+設定ファイル</a>
+</h2>
+
+<p>
+SIGWorldEditor.exeと同じディレクトリに、SIGWE_startup.cfgがある場合、このファイルを起動時に設定ファイルとして読み込みます．
+</p>
+
+<p>
+また、設定値のうちのいくつかは、アプリケーション終了時にSIGWE_settings.savファイルに保存され、次回起動時に参照されます．
+</p>
+
+<br>
+●設定できる項目<br>
+<br>
+
+<b>MAIN_CAMERA_INIT_POS<br>
+</b>起動時のメインカメラの位置を指定します．<br>
+<br>
+
+
+<b>MAIN_CAMERA_INIT_DIR<br>
+</b>
+起動時のメインカメラの視線方向を指定します．<br>
+<br>
+
+<b>BACK_GROUND_COLOR<br>
+</b>
+メインウィンドウの背景色を指定します．<br>
+<br>
+
+
+<b>MSG_WINDOW_LIMIT_TEXT_SIZE<br>
+</b>
+メッセージウィンドウに表示できる最大の文字数を指定します．0を指定すると最大値(=2GBytes)まで表示します．通常は0にしておけばよいでしょう．<br>
+<br>
+
+<b>SHOW_GROUND_GRID<br>
+</b>
+床のグリッドを表示するか否かを制御します．デフォルトでは表示します．<br>
+<br>
+
+
+<b>GROUND_GRID_PLANE_SIZE<br>
+</b>
+床のグリッドの幅を指定します．デフォルトでは500です．<br>
+<br>
+
+
+<b>GROUND_GRID_SIZE<br>
+</b>
+床のグリッドのメッシュ間隔を指定します．デフォルトでは20です．<br>
+<br>
+
+
+<b>SHOW_AXIS_ARROW<br>
+</b>
+x, y, z軸を示す矢印を表示するか否かを制御します．デフォルトでは表示します．<br>
+<br>
+
+
+<b>AXIS_ARROW_LENGTH<br>
+</b>
+上記矢印の長さを指定します．デフォルトでは10です．<br>
+<br>
+
+<p>また、行の先頭が#で始まる行は、コメントとみなされます．<br>
+<br>
+<br>
+<br>
+[SIGWE_startup.cfgファイルの例]<br>
+<br>
+<font class="example2"><b>
+# ***************************************************<br>
+#<br>
+#	SIGWorldEditor設定ファイル<br>
+#<br>
+# ***************************************************<br>
+<br>
+# ------------------------------------------------<br>
+#  メインカメラの位置と視線方向<br>
+# ------------------------------------------------<br>
+MAIN_CAMERA_INIT_POS=(0, 20, 100)<br>
+MAIN_CAMERA_INIT_DIR=(0, 0, -1)<br>
+<br>
+<br>
+# ------------------------------------------------<br>
+#  スクリーン背景色<br>
+#  R, G, Bの色成分値(0.0以上1.0以下）で与える<br>
+# ------------------------------------------------<br>
+BACK_GROUND_COLOR=(0.7, 0.7, 0.8)<br>
+<br>
+<br>
+# ------------------------------------------------<br>
+#  メッセージ表示領域に表示する最大文字数<br>
+#<br>
+#  0 (default) = max size (2G chars)<br>
+# ------------------------------------------------<br>
+MSG_WINDOW_LIMIT_TEXT_SIZE=0<br>
+<br>
+<br>
+# ------------------------------------------------<br>
+#  地面グリッドの表示スイッチ<br>
+# ------------------------------------------------<br>
+SHOW_GROUND_GRID=true<br>
+<br>
+<br>
+# ------------------------------------------------<br>
+#  地面グリッドのサイズ<br>
+# ------------------------------------------------<br>
+GROUND_GRID_PLANE_SIZE=1000<br>
+GROUND_GRID_SIZE=10<br>
+<br>
+<br>
+# ------------------------------------------------<br>
+#  x, y, z軸矢印の表示スイッチ<br>
+# ------------------------------------------------<br>
+#SHOW_AXIS_ARROW=true<br>
+<br>
+<br>
+# ------------------------------------------------<br>
+#  x, y, z軸矢印の長さ<br>
+# ------------------------------------------------<br>
+AXIS_ARROW_LENGTH=10<br>
+</b>
+</font>
+<br>
+<br>
+<br>
+
+<h2>
+<a name="アップロード">
+サーバーへのファイルのアップロード</a>
+</h2>
+
+<p>
+世界エディタでの編集結果は、以下の2種類のファイルになります．
+</p>
+
+<ul>
+<li>世界ファイル</li>
+<li>エンティティ定義ファイル</li>
+</ul>
+
+<p>
+これらはどちらもXMLファイルです．現状では、SIGWorldEditor.exeのあるディレクトリに作成されます．
+</p>
+
+<p>
+作成した世界、エンティティをシミュレーションサーバーで使うには、これら2種類のファイルをシミュレーションサーバーに転送する必要があります．
+</p>
+
+<p>
+転送先ディレクトリは、シミュレーションサーバーのインストールディレクトリの下のshare/sigverse/data/xmlです．ファイル転送ツール(ftp, scp等)を使って転送してください．
+</p>
+
+<hr><address style="align: right;"><a href="http://www.msi.co.jp"><img src="msilogo.gif" align="middle" border=0
+
+width=139 height=53>（株）数理システム</a>

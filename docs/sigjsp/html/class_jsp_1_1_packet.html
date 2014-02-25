@@ -1,0 +1,606 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>sigjsp: クラス Jsp::Packet</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_jsp.html">Jsp</a>::<a class="el" href="class_jsp_1_1_packet.html">Packet</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Jsp::Packet</h1><!-- doxytag: class="Jsp::Packet" -->SIGVerseの通信パケットを表すクラス.  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_jsp_packet_8h_source.html">JspPacket.h</a>&gt;</code>
+<p>
+
+<p>
+<a href="class_jsp_1_1_packet-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_packet.html#7b7081cfa3f3a4ded5aa24167201ad4f">getData</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">データへのポインタを返す  <a href="#7b7081cfa3f3a4ded5aa24167201ad4f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_packet.html#2a231bbe66f4625864c2e4dbe778a9e1">getLength</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パケットの長さを返す  <a href="#2a231bbe66f4625864c2e4dbe778a9e1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">CommDataType&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_packet.html#60bdf7419cc8be330efb0a5b3e2cd3c5">getType</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パケットのタイプを返す  <a href="#60bdf7419cc8be330efb0a5b3e2cd3c5"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_packet.html#7dde8eb00f40b3825a1a150e1b3dd94c">Packet</a> (int initBufLen)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#7dde8eb00f40b3825a1a150e1b3dd94c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_packet.html#38034869448a0180869448418f21de9f">push</a> (char *p, int len)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">データをバッファに追加  <a href="#38034869448a0180869448418f21de9f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_packet.html#301cf994dcae50be15b1f139b6e6b48c">resize</a> (int newBufLen)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">バッファサイズ変更  <a href="#301cf994dcae50be15b1f139b6e6b48c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_packet.html#4ebb2526a1e674ad6d84ddc58ef6bd0a">writeToFile</a> (const char *fname, bool bAppend)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">現在保持しているパケットデータをファイルに書き出す  <a href="#4ebb2526a1e674ad6d84ddc58ef6bd0a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_packet.html#701a2dc22ffa67b877e6c058b4104047">~Packet</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#701a2dc22ffa67b877e6c058b4104047"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Static Public 変数</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static const unsigned short&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_packet.html#a8e895d3cac84c18c8208e44903b8181">DATA_TYPE</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static const unsigned short&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_packet.html#0593baf99de8e151deaf04b243fa0eac">HEAD_MARK</a> = 0xABCD</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static const int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_packet.html#5114b06007024a64207e7b2ee4113aa6">HEAD_SIZE_LEN</a> = sizeof(<a class="el" href="class_jsp_1_1_packet.html#0593baf99de8e151deaf04b243fa0eac">Packet::HEAD_MARK</a>) + sizeof(<a class="el" href="class_jsp_1_1_packet.html#3138a6b285806cc986a888b365c2de36">Packet::PACKET_SIZE</a>)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static const int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_packet.html#b140a010d1d780fe6cc0994ec6bd5861">HEAD_SIZE_TYPE_LEN</a> = sizeof(<a class="el" href="class_jsp_1_1_packet.html#0593baf99de8e151deaf04b243fa0eac">Packet::HEAD_MARK</a>) + sizeof(<a class="el" href="class_jsp_1_1_packet.html#3138a6b285806cc986a888b365c2de36">Packet::PACKET_SIZE</a>) + sizeof(<a class="el" href="class_jsp_1_1_packet.html#a8e895d3cac84c18c8208e44903b8181">Packet::DATA_TYPE</a>)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static const unsigned short&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_packet.html#3138a6b285806cc986a888b365c2de36">PACKET_SIZE</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static const int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_packet.html#1329059d32337933adc1cd7724ed2af4">TAIL_LEN</a> = sizeof(<a class="el" href="class_jsp_1_1_packet.html#a779b02a0a041f4692aa5ae60b53c421">Packet::TAIL_MARK</a>)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static const unsigned short&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_packet.html#a779b02a0a041f4692aa5ae60b53c421">TAIL_MARK</a> = 0xDCBA</td></tr>
+
+<tr><td colspan="2"><br><h2>Protected メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_packet.html#a60152ae69cf2d2712f11e04994c2eea">allocMemory</a> (int len)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">バッファを確保する  <a href="#a60152ae69cf2d2712f11e04994c2eea"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_packet.html#300c82f9d1c7bc09533e3f70fae20d01">freeMemory</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">バッファを開放する  <a href="#300c82f9d1c7bc09533e3f70fae20d01"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_packet.html#5918f99462b59d59e93b7df72349a2e4">reallocMemory</a> (int newLen)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">バッファの長さを変更（延長）する  <a href="#5918f99462b59d59e93b7df72349a2e4"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Protected 変数</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_packet.html#e943c3863ce6817b459a520718621bb2">m_capacity</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_packet.html#f2f338055f68211e322d7b7ec23d4c27">m_pData</a></td></tr>
+
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+SIGVerseの通信パケットを表すクラス. 
+<p> <a class="el" href="_jsp_packet_8h_source.html">JspPacket.h</a> の <a class="el" href="_jsp_packet_8h_source.html#l00014">14</a> 行で定義されています。</p>
+<hr><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" name="7dde8eb00f40b3825a1a150e1b3dd94c"></a><!-- doxytag: member="Jsp::Packet::Packet" ref="7dde8eb00f40b3825a1a150e1b3dd94c" args="(int initBufLen)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Jsp::Packet::Packet           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>initBufLen</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>initBufLen</em>&nbsp;</td><td>[i] 初期バッファサイズ </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_jsp_packet_8cpp_source.html">JspPacket.cpp</a> の <a class="el" href="_jsp_packet_8cpp_source.html#l00026">26</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="701a2dc22ffa67b877e6c058b4104047"></a><!-- doxytag: member="Jsp::Packet::~Packet" ref="701a2dc22ffa67b877e6c058b4104047" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Jsp::Packet::~Packet           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+デストラクタ 
+<p>
+
+<p> <a class="el" href="_jsp_packet_8cpp_source.html">JspPacket.cpp</a> の <a class="el" href="_jsp_packet_8cpp_source.html#l00036">36</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>関数</h2>
+<a class="anchor" name="a60152ae69cf2d2712f11e04994c2eea"></a><!-- doxytag: member="Jsp::Packet::allocMemory" ref="a60152ae69cf2d2712f11e04994c2eea" args="(int len)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Jsp::Packet::allocMemory           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>len</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+バッファを確保する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>len</em>&nbsp;</td><td>[i] バッファの長さ</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_jsp_packet_8cpp_source.html">JspPacket.cpp</a> の <a class="el" href="_jsp_packet_8cpp_source.html#l00063">63</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="300c82f9d1c7bc09533e3f70fae20d01"></a><!-- doxytag: member="Jsp::Packet::freeMemory" ref="300c82f9d1c7bc09533e3f70fae20d01" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Jsp::Packet::freeMemory           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+バッファを開放する 
+<p>
+
+<p> <a class="el" href="_jsp_packet_8cpp_source.html">JspPacket.cpp</a> の <a class="el" href="_jsp_packet_8cpp_source.html#l00097">97</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="7b7081cfa3f3a4ded5aa24167201ad4f"></a><!-- doxytag: member="Jsp::Packet::getData" ref="7b7081cfa3f3a4ded5aa24167201ad4f" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* Jsp::Packet::getData           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+データへのポインタを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>パケットデータの先頭へのポインタ </dd></dl>
+
+<p> <a class="el" href="_jsp_packet_8h_source.html">JspPacket.h</a> の <a class="el" href="_jsp_packet_8h_source.html#l00055">55</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="2a231bbe66f4625864c2e4dbe778a9e1"></a><!-- doxytag: member="Jsp::Packet::getLength" ref="2a231bbe66f4625864c2e4dbe778a9e1" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Jsp::Packet::getLength           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+パケットの長さを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>パケットの長さ（単位：バイト） </dd></dl>
+
+<p> <a class="el" href="_jsp_packet_8h_source.html">JspPacket.h</a> の <a class="el" href="_jsp_packet_8h_source.html#l00062">62</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="60bdf7419cc8be330efb0a5b3e2cd3c5"></a><!-- doxytag: member="Jsp::Packet::getType" ref="60bdf7419cc8be330efb0a5b3e2cd3c5" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CommDataType Jsp::Packet::getType           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+パケットのタイプを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>パケットタイプ（CommDataTypeを参照） </dd></dl>
+
+<p> <a class="el" href="_jsp_packet_8cpp_source.html">JspPacket.cpp</a> の <a class="el" href="_jsp_packet_8cpp_source.html#l00041">41</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="38034869448a0180869448418f21de9f"></a><!-- doxytag: member="Jsp::Packet::push" ref="38034869448a0180869448418f21de9f" args="(char *p, int len)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Jsp::Packet::push           </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>len</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+データをバッファに追加 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="5918f99462b59d59e93b7df72349a2e4"></a><!-- doxytag: member="Jsp::Packet::reallocMemory" ref="5918f99462b59d59e93b7df72349a2e4" args="(int newLen)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Jsp::Packet::reallocMemory           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>newLen</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+バッファの長さを変更（延長）する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>newLen</em>&nbsp;</td><td>[i] 新しいバッファの長さ</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_jsp_packet_8cpp_source.html">JspPacket.cpp</a> の <a class="el" href="_jsp_packet_8cpp_source.html#l00083">83</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="301cf994dcae50be15b1f139b6e6b48c"></a><!-- doxytag: member="Jsp::Packet::resize" ref="301cf994dcae50be15b1f139b6e6b48c" args="(int newBufLen)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Jsp::Packet::resize           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>newBufLen</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+バッファサイズ変更 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>newBufLen</em>&nbsp;</td><td>[i] 新しいバッファのサイズ</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_jsp_packet_8cpp_source.html">JspPacket.cpp</a> の <a class="el" href="_jsp_packet_8cpp_source.html#l00031">31</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="4ebb2526a1e674ad6d84ddc58ef6bd0a"></a><!-- doxytag: member="Jsp::Packet::writeToFile" ref="4ebb2526a1e674ad6d84ddc58ef6bd0a" args="(const char *fname, bool bAppend)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Jsp::Packet::writeToFile           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>fname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bAppend</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+現在保持しているパケットデータをファイルに書き出す 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>fname</em>&nbsp;</td><td>[i] ファイル名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bAppend</em>&nbsp;</td><td>[i] ファイルに追加で書き込みするか否か</td></tr>
+  </table>
+</dl>
+（注）このメソッドは主にデバッグ用のものである 
+<p> <a class="el" href="_jsp_packet_8cpp_source.html">JspPacket.cpp</a> の <a class="el" href="_jsp_packet_8cpp_source.html#l00053">53</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>変数</h2>
+<a class="anchor" name="a8e895d3cac84c18c8208e44903b8181"></a><!-- doxytag: member="Jsp::Packet::DATA_TYPE" ref="a8e895d3cac84c18c8208e44903b8181" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned short <a class="el" href="class_jsp_1_1_packet.html#a8e895d3cac84c18c8208e44903b8181">Jsp::Packet::DATA_TYPE</a><code> [static]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_jsp_packet_8h_source.html">JspPacket.h</a> の <a class="el" href="_jsp_packet_8h_source.html#l00076">76</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="0593baf99de8e151deaf04b243fa0eac"></a><!-- doxytag: member="Jsp::Packet::HEAD_MARK" ref="0593baf99de8e151deaf04b243fa0eac" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned short <a class="el" href="class_jsp_1_1_packet.html#0593baf99de8e151deaf04b243fa0eac">Jsp::Packet::HEAD_MARK</a> = 0xABCD<code> [static]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_jsp_packet_8h_source.html">JspPacket.h</a> の <a class="el" href="_jsp_packet_8h_source.html#l00074">74</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="5114b06007024a64207e7b2ee4113aa6"></a><!-- doxytag: member="Jsp::Packet::HEAD_SIZE_LEN" ref="5114b06007024a64207e7b2ee4113aa6" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int <a class="el" href="class_jsp_1_1_packet.html#5114b06007024a64207e7b2ee4113aa6">Jsp::Packet::HEAD_SIZE_LEN</a> = sizeof(<a class="el" href="class_jsp_1_1_packet.html#0593baf99de8e151deaf04b243fa0eac">Packet::HEAD_MARK</a>) + sizeof(<a class="el" href="class_jsp_1_1_packet.html#3138a6b285806cc986a888b365c2de36">Packet::PACKET_SIZE</a>)<code> [static]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_jsp_packet_8h_source.html">JspPacket.h</a> の <a class="el" href="_jsp_packet_8h_source.html#l00078">78</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b140a010d1d780fe6cc0994ec6bd5861"></a><!-- doxytag: member="Jsp::Packet::HEAD_SIZE_TYPE_LEN" ref="b140a010d1d780fe6cc0994ec6bd5861" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int <a class="el" href="class_jsp_1_1_packet.html#b140a010d1d780fe6cc0994ec6bd5861">Jsp::Packet::HEAD_SIZE_TYPE_LEN</a> = sizeof(<a class="el" href="class_jsp_1_1_packet.html#0593baf99de8e151deaf04b243fa0eac">Packet::HEAD_MARK</a>) + sizeof(<a class="el" href="class_jsp_1_1_packet.html#3138a6b285806cc986a888b365c2de36">Packet::PACKET_SIZE</a>) + sizeof(<a class="el" href="class_jsp_1_1_packet.html#a8e895d3cac84c18c8208e44903b8181">Packet::DATA_TYPE</a>)<code> [static]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_jsp_packet_8h_source.html">JspPacket.h</a> の <a class="el" href="_jsp_packet_8h_source.html#l00079">79</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="e943c3863ce6817b459a520718621bb2"></a><!-- doxytag: member="Jsp::Packet::m_capacity" ref="e943c3863ce6817b459a520718621bb2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="class_jsp_1_1_packet.html#e943c3863ce6817b459a520718621bb2">Jsp::Packet::m_capacity</a><code> [protected]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_jsp_packet_8h_source.html">JspPacket.h</a> の <a class="el" href="_jsp_packet_8h_source.html#l00085">85</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f2f338055f68211e322d7b7ec23d4c27"></a><!-- doxytag: member="Jsp::Packet::m_pData" ref="f2f338055f68211e322d7b7ec23d4c27" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* <a class="el" href="class_jsp_1_1_packet.html#f2f338055f68211e322d7b7ec23d4c27">Jsp::Packet::m_pData</a><code> [protected]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_jsp_packet_8h_source.html">JspPacket.h</a> の <a class="el" href="_jsp_packet_8h_source.html#l00083">83</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="3138a6b285806cc986a888b365c2de36"></a><!-- doxytag: member="Jsp::Packet::PACKET_SIZE" ref="3138a6b285806cc986a888b365c2de36" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned short <a class="el" href="class_jsp_1_1_packet.html#3138a6b285806cc986a888b365c2de36">Jsp::Packet::PACKET_SIZE</a><code> [static]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_jsp_packet_8h_source.html">JspPacket.h</a> の <a class="el" href="_jsp_packet_8h_source.html#l00075">75</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="1329059d32337933adc1cd7724ed2af4"></a><!-- doxytag: member="Jsp::Packet::TAIL_LEN" ref="1329059d32337933adc1cd7724ed2af4" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int <a class="el" href="class_jsp_1_1_packet.html#1329059d32337933adc1cd7724ed2af4">Jsp::Packet::TAIL_LEN</a> = sizeof(<a class="el" href="class_jsp_1_1_packet.html#a779b02a0a041f4692aa5ae60b53c421">Packet::TAIL_MARK</a>)<code> [static]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_jsp_packet_8h_source.html">JspPacket.h</a> の <a class="el" href="_jsp_packet_8h_source.html#l00080">80</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="a779b02a0a041f4692aa5ae60b53c421"></a><!-- doxytag: member="Jsp::Packet::TAIL_MARK" ref="a779b02a0a041f4692aa5ae60b53c421" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned short <a class="el" href="class_jsp_1_1_packet.html#a779b02a0a041f4692aa5ae60b53c421">Jsp::Packet::TAIL_MARK</a> = 0xDCBA<code> [static]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_jsp_packet_8h_source.html">JspPacket.h</a> の <a class="el" href="_jsp_packet_8h_source.html#l00077">77</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_jsp_packet_8h_source.html">JspPacket.h</a><li><a class="el" href="_jsp_packet_8cpp_source.html">JspPacket.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>sigjspに対してWed Dec 2 15:46:02 2009に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

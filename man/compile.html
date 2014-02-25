@@ -1,0 +1,61 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS"/>
+<link rel="stylesheet" type="text/css" href="prj.css"/>
+<title>シミュレーションサーバのコンパイル</title>
+</head>
+<body>
+<h1>シミュレーションサーバのコンパイル</h1>
+
+<h2>ライブラリ・ツールのインストール</h2>
+<ul>
+  <li>JDK6<br>
+  <p><a href="http://java.sun.com/javase/downloads/index.jsp">Sun のダウンロードサイト</a>よりJDK6 をダウンロードしてシステムにインストールしてください。</p>
+  <li>xerces-c, xerces-c-devel<br>
+	  <p>各ディストリビューションのパッケージシステムにてインストールしてください。</p>
+  <li>ode<br>
+	  <p><a href="http://sourceforge.net/project/showfiles.php?group_id=24884">ODEプロジェクトサイト(sourceforge.net)</a>からode-src-0.8.zipをダウンロードし、以下のようにしてコンパイル・インストールを行います。</p>
+	  <pre>
+	  # cd /usr/local/src
+	  # unzip -x ode-src-0.8.zip
+	  # cd ode-0.8/
+	  #  ./configure --disable-tests --without-x --enable-double-precision
+	  --with-trimesh=opcode --enable-release --enable-shared
+	  # make
+	  # make install
+	  </pre>
+	  <p>シミュレーションは倍精度、trimeshのアルゴリズムはOPCODEを使用します。
+	  Xまたはglut-devel のない環境では--without-x オプションを付けてconfigureを実行します。
+	  </p>
+  <li>julius</li>
+  <p><a href="./julius_sp_start.html">音声認識サービスプロバイダー</a>を使用する場合は<a href="http://julius.sourceforge.jp/">julius</a>をインストールします。またディクテーションキットをダウンロードして、適当な場所に展開してください。</p>
+</ul>
+
+<h2>コンパイル・インストール</h2>
+
+<p>SIGVerse ソースパッケージを展開し、configure スクリプトを実行後、コンパイル・インストールを行います</p>
+
+<pre>
+	% cat sigverse-XXX.tar.gz | tar zxvf -
+	% cd sigverse-XXX/
+	% ./configure --prefix=/usr/local \
+                --with-jvm=/usr/java/jdk1.6.0_12/jre/lib/amd64/server \
+                --with-julius=/usr/local/bin/julius \
+                --with-dictkit=/usr/local/share/dictation-kit-v3.2
+        % make
+        % make install-strip
+</pre>
+
+<p>--prefixオプションでインストール先を指定できます。デフォルトでは/usr/localにインストールされます。</p>
+<p>--with-jvm オプションでは、JDKに含まれているlibjvm.soファイルがあるディレクトリを指定します。上記の例では&lt;javadir&gt;/jre/lib/amd64/serverとなっていますが，これはインストールしたJDKの種類(32bit版、64bit版など)によって異なります。以下のコマンドによりlibjvm.soファイルのあるディレクトリを調べることができます。</p>
+<pre>
+        % find &lt;javadir&gt; -name libjvm.so
+</pre>
+<p>juliusによる音声認識サービスプロバイダーを使用しない場合は、--with-julius --with-dictkitオプションは必要ありません。</p>
+
+<p>
+<!-- hhmts start -->
+Last modified: Mon Mar 08 13:55:00 JST 2010
+<!-- hhmts end -->
+</body>
+</html>

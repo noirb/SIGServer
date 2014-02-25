@@ -1,0 +1,98 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
+<link rel="stylesheet" type="text/css" href="prj.css"/>
+<title>エージェント視点カメラの設定</title>
+</head>
+
+<body>
+
+<p>
+<a name="エージェント視点カメラの設定">
+<h2>エージェント視点カメラの設定</h2>
+</a>
+<br>
+
+<p>
+SIGViewerは、エージェント視点からの画像を画面左上部のサブウィンドウに表示できます．
+
+<p>
+サブウィンドウの個数は、starup.cfgファイルのSUB_CAMERA_NUM設定値により変化します．<br>
+1を設定した場合は1個（＝単眼視点）、2を設定した場合は2個（＝複眼視点）となります．
+</p>
+<br>
+
+<p>
+<a name="単眼視点">
+<h3>単眼視点（サブウィンドウ1個）の場合</h3>
+</a>
+
+<p>
+startup.cfgでSUB_CAMERA_NUM=1とした場合です．この場合、単一視点からの1枚の画像が表示されます．
+</p>
+
+<p align="center">
+<img border="0" src="viewer_sub_camera1.jpg" width="800" height="600">
+</p>
+
+<p>
+このときの視点の位置は、エージェントの以下のプロパティにより決まります．
+</p>
+
+<pre>
+vpx, vpy, vpz
+vvx, vvy, vvz
+</pre>
+
+<p>
+なお、(vpx, vpy, vpz), (vvx, vvy, vvz)は、エージェントの位置(x, y, z)、方向(qw, qx, qy, qz)からの相対値で指定します．
+</p>
+
+<br>
+<br>
+
+<p>
+<a name="複眼視点">
+<h3>複眼視点（サブウィンドウ2個）の場合</h3>
+</a>
+
+<p>
+startup.cfgでSUB_CAMERA_NUM=2とした場合です．この場合は、左目、右目それぞれの視点からの2枚の画像が表示されます．
+</p>
+
+<p align="center">
+<img border="0" src="viewer_sub_camera2.jpg" width="800" height="600">
+
+<p>
+このとき、視点の位置は、以下のプロパティにより決まります．
+</p>
+
+<pre>
+●左目（左側のサブウィンドウ）
+
+lepx, lepy, lepz
+levx, levy, levz
+
+●右目（右側のサブウィンドウ）
+
+repx, repy, repz
+revx, revy, revz
+</pre>
+
+<p>
+なお、左目パラメータ((lepx, lepy, lepz), (levx, levy, levz)),
+右目パラメータ((repx, repy, repz), (revx, revy,revz))の両方とも、
+エージェントの位置(x, y, z)、方向(qw, qx, qy, qz)
+ビューの位置(vpx, vpy, vpz), 方向(vvx, vvy, vvz)
+からの相対値での指定となります．
+</p>
+
+
+<hr><address style="align: right;"><a href="http://www.msi.co.jp"><img src="msilogo.gif" align="middle" border=0
+
+width=139 height=53>（株）数理システム</a>
+
+</body>
+
+</html>

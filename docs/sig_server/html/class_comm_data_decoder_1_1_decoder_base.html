@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: クラス CommDataDecoder::DecoderBase</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="class_comm_data_decoder.html">CommDataDecoder</a>::<a class="el" href="class_comm_data_decoder_1_1_decoder_base.html">DecoderBase</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス CommDataDecoder::DecoderBase</h1><!-- doxytag: class="CommDataDecoder::DecoderBase" -->
+<p>個々のデータデコーダーインターフェース(CommDataDecoder内部で使用)  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_comm_data_decoder_8h_source.html">CommDataDecoder.h</a>&gt;</code></p>
+
+<p><a href="class_comm_data_decoder_1_1_decoder_base-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_comm_data_result.html">Result</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_decoder_1_1_decoder_base.html#a5e8b371961002e5e7b1feee390c786f3">createResult</a> (void *)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">復号データクラスの作成  <a href="#a5e8b371961002e5e7b1feee390c786f3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_comm_data_decoder.html#afe7f466f68137728e4ed0c0f7ebde6b6">DataFreeFunc</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_decoder_1_1_decoder_base.html#a47741f1b8fcc16ea629395053d7dd633">dataFreeFunc</a> ()=0</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">データオブジェクト破棄関数の取得  <a href="#a47741f1b8fcc16ea629395053d7dd633"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="_comm_data_type_8h.html#a587c9199c019f0dba3ce5ebe7a1a0a00">CommDataType</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_decoder_1_1_decoder_base.html#afe81289e6b2bc0f0de34f78f3e3ef755">dataType</a> ()=0</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">データタイプの取得  <a href="#afe81289e6b2bc0f0de34f78f3e3ef755"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_decoder_1_1_decoder_base.html#a2fac11c581fbbc59c1ee6fe75784490d">invoke</a> (<a class="el" href="class_source.html">Source</a> &amp;from)=0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_decoder_1_1_decoder_base.html#a6bb8c32f216e28b7dee1af1cdf14f152">set</a> (CommDataHeader &amp;h, char *data, int n)=0</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">転送されたデータの解析  <a href="#a6bb8c32f216e28b7dee1af1cdf14f152"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_decoder_1_1_decoder_base.html#ae2449e5774ff691df1d6bb437b8626e8">‾DecoderBase</a> ()</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>個々のデータデコーダーインターフェース(CommDataDecoder内部で使用) </p>
+
+<p> <a class="el" href="_comm_data_decoder_8h_source.html">CommDataDecoder.h</a> の <a class="el" href="_comm_data_decoder_8h_source.html#l00097">97</a> 行で定義されています。</p>
+<hr/><h2>関数</h2>
+<a class="anchor" id="a5e8b371961002e5e7b1feee390c786f3"></a><!-- doxytag: member="CommDataDecoder::DecoderBase::createResult" ref="a5e8b371961002e5e7b1feee390c786f3" args="(void *)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_comm_data_result.html">Result</a>* CommDataDecoder::DecoderBase::createResult </td>
+          <td>(</td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>復号データクラスの作成 </p>
+
+</div>
+</div>
+<a class="anchor" id="a47741f1b8fcc16ea629395053d7dd633"></a><!-- doxytag: member="CommDataDecoder::DecoderBase::dataFreeFunc" ref="a47741f1b8fcc16ea629395053d7dd633" args="()=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="class_comm_data_decoder.html#afe7f466f68137728e4ed0c0f7ebde6b6">DataFreeFunc</a> CommDataDecoder::DecoderBase::dataFreeFunc </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>データオブジェクト破棄関数の取得 </p>
+
+</div>
+</div>
+<a class="anchor" id="afe81289e6b2bc0f0de34f78f3e3ef755"></a><!-- doxytag: member="CommDataDecoder::DecoderBase::dataType" ref="afe81289e6b2bc0f0de34f78f3e3ef755" args="()=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="_comm_data_type_8h.html#a587c9199c019f0dba3ce5ebe7a1a0a00">CommDataType</a> CommDataDecoder::DecoderBase::dataType </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>データタイプの取得 </p>
+
+</div>
+</div>
+<a class="anchor" id="a2fac11c581fbbc59c1ee6fe75784490d"></a><!-- doxytag: member="CommDataDecoder::DecoderBase::invoke" ref="a2fac11c581fbbc59c1ee6fe75784490d" args="(Source &amp;from)=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void* CommDataDecoder::DecoderBase::invoke </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>対応するCommDataListenerメソッドの呼び出 し、または復号したデータの取得。 </p>
+
+</div>
+</div>
+<a class="anchor" id="a6bb8c32f216e28b7dee1af1cdf14f152"></a><!-- doxytag: member="CommDataDecoder::DecoderBase::set" ref="a6bb8c32f216e28b7dee1af1cdf14f152" args="(CommDataHeader &amp;h, char *data, int n)=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool CommDataDecoder::DecoderBase::set </td>
+          <td>(</td>
+          <td class="paramtype">CommDataHeader &amp;&nbsp;</td>
+          <td class="paramname"> <em>h</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>n</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>転送されたデータの解析 </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>h</em>&nbsp;</td><td>データヘッダ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>data</em>&nbsp;</td><td>データ領域のデータ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>n</em>&nbsp;</td><td>データ領域サイズ </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ae2449e5774ff691df1d6bb437b8626e8"></a><!-- doxytag: member="CommDataDecoder::DecoderBase::‾DecoderBase" ref="ae2449e5774ff691df1d6bb437b8626e8" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual CommDataDecoder::DecoderBase::‾DecoderBase </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_comm_data_decoder_8h_source.html">CommDataDecoder.h</a> の <a class="el" href="_comm_data_decoder_8h_source.html#l00100">100</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_comm_data_decoder_8h_source.html">CommDataDecoder.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:18 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

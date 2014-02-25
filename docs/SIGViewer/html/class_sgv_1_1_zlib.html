@@ -1,0 +1,483 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGViewer: クラス Sgv::Zlib</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_sgv.html">Sgv</a>::<a class="el" href="class_sgv_1_1_zlib.html">Zlib</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Sgv::Zlib</h1><!-- doxytag: class="Sgv::Zlib" -->データの圧縮・展開用クラス  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_sgv_zlib_8h_source.html">SgvZlib.h</a>&gt;</code>
+<p>
+
+<p>
+<a href="class_sgv_1_1_zlib-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_zlib.html#4f917843ff1f740076a7e020607ac16f">compress</a> (bool bInFile, bool bOutFile)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">圧縮する  <a href="#4f917843ff1f740076a7e020607ac16f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_zlib.html#3cabb062d2eda346af32c8ba369fe6c4">getOutputData</a> (int &amp;len)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">出力データの取得  <a href="#3cabb062d2eda346af32c8ba369fe6c4"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_zlib.html#97f396f9d7997946ea144cb974ce462c">releaseOutputData</a> (int &amp;len)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">出力データの取得  <a href="#97f396f9d7997946ea144cb974ce462c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_zlib.html#836d4c3899f641e86b24b98e5131a7f5">setInputData</a> (char *p, int len)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">入力データの設定  <a href="#836d4c3899f641e86b24b98e5131a7f5"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_zlib.html#9d9cf1e90ec213aa3c77eb74d5e9f418">setInputFile</a> (FILE *inFp)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">入力ファイルの設定  <a href="#9d9cf1e90ec213aa3c77eb74d5e9f418"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_zlib.html#d3c08be3ba54455f4b6ace6af7dc8e06">setInputFile</a> (char *inFile)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">入力ファイルの設定  <a href="#d3c08be3ba54455f4b6ace6af7dc8e06"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_zlib.html#ddd411a2f4e2a0d01c9f22e53477c8fa">setOutputFile</a> (FILE *outFp)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">出力ファイルの設定  <a href="#ddd411a2f4e2a0d01c9f22e53477c8fa"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_zlib.html#baabf29180dc0562e387371ea5c1d0b0">setOutputFile</a> (char *outFile)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">出力ファイルの設定  <a href="#baabf29180dc0562e387371ea5c1d0b0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_zlib.html#098fa40f936935ca9a7ccf70babddbad">uncompress</a> (bool bInFile, bool bOutFile)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">展開する  <a href="#098fa40f936935ca9a7ccf70babddbad"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_zlib.html#550dba9f73191dab0ec40629977db8bd">Zlib</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#550dba9f73191dab0ec40629977db8bd"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_zlib.html#31f9bd18bb6d977f0c761ab397cf10d2">‾Zlib</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#31f9bd18bb6d977f0c761ab397cf10d2"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+データの圧縮・展開用クラス 
+<p>
+データの圧縮、展開を行う． 入力データ、出力データ共に、対象はファイルまたはメモリ上のデータのどちらかが選択できる．<p>
+したがって、<p>
+(1) ファイル入力、ファイル出力でデータ圧縮<p>
+(2) ファイル入力、ファイル出力でデータ展開<p>
+(3) ファイル入力、メモリ出力でデータ圧縮<p>
+(4) ファイル入力、メモリ出力でデータ展開<p>
+(5) メモリ入力、ファイル出力でデータ圧縮<p>
+(6) メモリ入力、ファイル出力でデータ展開<p>
+(7) メモリ入力、メモリ出力でデータ圧縮<p>
+(8) メモリ入力、メモリ出力でデータ展開<p>
+の8通りの操作が行える． 
+<p> <a class="el" href="_sgv_zlib_8h_source.html">SgvZlib.h</a> の <a class="el" href="_sgv_zlib_8h_source.html#l00048">48</a> 行で定義されています。</p>
+<hr><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" name="550dba9f73191dab0ec40629977db8bd"></a><!-- doxytag: member="Sgv::Zlib::Zlib" ref="550dba9f73191dab0ec40629977db8bd" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::Zlib::Zlib           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_zlib_8cpp_source.html">SgvZlib.cpp</a> の <a class="el" href="_sgv_zlib_8cpp_source.html#l00009">9</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>関数</h2>
+<a class="anchor" name="4f917843ff1f740076a7e020607ac16f"></a><!-- doxytag: member="Sgv::Zlib::compress" ref="4f917843ff1f740076a7e020607ac16f" args="(bool bInFile, bool bOutFile)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::Zlib::compress           </td>
+          <td>(</td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bInFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bOutFile</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+圧縮する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>bInFile</em>&nbsp;</td><td>[i] trueの場合ファイルから入力 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bOutFile</em>&nbsp;</td><td>[i] trueの場合ファイルへ出力</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(＝成功), false(＝失敗)</dd></dl>
+bInFileがtrueの場合、圧縮対象となる入力データは <a class="el" href="class_sgv_1_1_zlib.html#d3c08be3ba54455f4b6ace6af7dc8e06" title="入力ファイルの設定">setInputFile()</a>で指定したファイルとなる． bInFileがfalseの場合、圧縮対象となる入力データは <a class="el" href="class_sgv_1_1_zlib.html#836d4c3899f641e86b24b98e5131a7f5" title="入力データの設定">setInputData()</a>で指定したメモリ上のデータとなる．<p>
+bOutFileがtrueの場合、圧縮後の出力データは <a class="el" href="class_sgv_1_1_zlib.html#baabf29180dc0562e387371ea5c1d0b0" title="出力ファイルの設定">setOutputFile()</a>で指定したファイルになる． bOutFileがfalseの場合、圧縮後の出力データはメモリ上に作成される． <a class="el" href="class_sgv_1_1_zlib.html#3cabb062d2eda346af32c8ba369fe6c4" title="出力データの取得">getOutputData()</a>またはreleaseOutputData()で取り出すことが出来る． 
+<p> <a class="el" href="_sgv_zlib_8cpp_source.html">SgvZlib.cpp</a> の <a class="el" href="_sgv_zlib_8cpp_source.html#l00087">87</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="3cabb062d2eda346af32c8ba369fe6c4"></a><!-- doxytag: member="Sgv::Zlib::getOutputData" ref="3cabb062d2eda346af32c8ba369fe6c4" args="(int &amp;len)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * Sgv::Zlib::getOutputData           </td>
+          <td>(</td>
+          <td class="paramtype">int &amp;&nbsp;</td>
+          <td class="paramname"> <em>len</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+出力データの取得 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>len</em>&nbsp;</td><td>[o] 出力データの長さ</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>出力データの先頭へのポインタ</dd></dl>
+圧縮処理または展開処理を行った結果のデータを取り出す．<p>
+このメソッドは、内部で保持する処理済データへのポインタを返すだけである． データの所有権はこのクラスが保持したままである． 呼び出し側は返り値をfreeしてはいけない． 
+<p> <a class="el" href="_sgv_zlib_8cpp_source.html">SgvZlib.cpp</a> の <a class="el" href="_sgv_zlib_8cpp_source.html#l00069">69</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="97f396f9d7997946ea144cb974ce462c"></a><!-- doxytag: member="Sgv::Zlib::releaseOutputData" ref="97f396f9d7997946ea144cb974ce462c" args="(int &amp;len)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * Sgv::Zlib::releaseOutputData           </td>
+          <td>(</td>
+          <td class="paramtype">int &amp;&nbsp;</td>
+          <td class="paramname"> <em>len</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+出力データの取得 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>len</em>&nbsp;</td><td>[o] 出力データの長さ</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>出力データの先頭へのポインタ</dd></dl>
+圧縮処理または展開処理を行った結果のデータを取り出す．<p>
+このメソッドは、内部で保持する処理済データへのポインタを返すと同時に、 データの所有権を放棄する． 呼び出し側は返り値をfreeしなければならない． 
+<p> <a class="el" href="_sgv_zlib_8cpp_source.html">SgvZlib.cpp</a> の <a class="el" href="_sgv_zlib_8cpp_source.html#l00075">75</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="836d4c3899f641e86b24b98e5131a7f5"></a><!-- doxytag: member="Sgv::Zlib::setInputData" ref="836d4c3899f641e86b24b98e5131a7f5" args="(char *p, int len)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::Zlib::setInputData           </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>len</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+入力データの設定 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>p</em>&nbsp;</td><td>[i] データの先頭ポインタ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>len</em>&nbsp;</td><td>[i] データの長さ</td></tr>
+  </table>
+</dl>
+圧縮または展開の入力となるデータを指定する． 
+<p> <a class="el" href="_sgv_zlib_8cpp_source.html">SgvZlib.cpp</a> の <a class="el" href="_sgv_zlib_8cpp_source.html#l00060">60</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="9d9cf1e90ec213aa3c77eb74d5e9f418"></a><!-- doxytag: member="Sgv::Zlib::setInputFile" ref="9d9cf1e90ec213aa3c77eb74d5e9f418" args="(FILE *inFp)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::Zlib::setInputFile           </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&nbsp;</td>
+          <td class="paramname"> <em>inFp</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+入力ファイルの設定 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>inFp</em>&nbsp;</td><td>[i] 入力ファイルのファイルポインタ</td></tr>
+  </table>
+</dl>
+圧縮または展開の入力となるファイルを指定する． 
+<p> <a class="el" href="_sgv_zlib_8cpp_source.html">SgvZlib.cpp</a> の <a class="el" href="_sgv_zlib_8cpp_source.html#l00040">40</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="d3c08be3ba54455f4b6ace6af7dc8e06"></a><!-- doxytag: member="Sgv::Zlib::setInputFile" ref="d3c08be3ba54455f4b6ace6af7dc8e06" args="(char *inFile)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::Zlib::setInputFile           </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>inFile</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+入力ファイルの設定 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>inFile</em>&nbsp;</td><td>[i] 入力ファイル名</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(＝成功), false(＝失敗)</dd></dl>
+圧縮または展開の入力となるファイルを指定する． 
+<p> <a class="el" href="_sgv_zlib_8cpp_source.html">SgvZlib.cpp</a> の <a class="el" href="_sgv_zlib_8cpp_source.html#l00030">30</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="ddd411a2f4e2a0d01c9f22e53477c8fa"></a><!-- doxytag: member="Sgv::Zlib::setOutputFile" ref="ddd411a2f4e2a0d01c9f22e53477c8fa" args="(FILE *outFp)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::Zlib::setOutputFile           </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&nbsp;</td>
+          <td class="paramname"> <em>outFp</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+出力ファイルの設定 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>outFp</em>&nbsp;</td><td>[i] 出力ファイルのファイルポインタ</td></tr>
+  </table>
+</dl>
+圧縮または展開の出力となるファイルを指定する． 
+<p> <a class="el" href="_sgv_zlib_8cpp_source.html">SgvZlib.cpp</a> の <a class="el" href="_sgv_zlib_8cpp_source.html#l00055">55</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="baabf29180dc0562e387371ea5c1d0b0"></a><!-- doxytag: member="Sgv::Zlib::setOutputFile" ref="baabf29180dc0562e387371ea5c1d0b0" args="(char *outFile)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::Zlib::setOutputFile           </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>outFile</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+出力ファイルの設定 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>outFile</em>&nbsp;</td><td>[i] 出力ファイル名</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(＝成功), false(＝失敗)</dd></dl>
+圧縮または展開の出力となるファイルを指定する． 
+<p> <a class="el" href="_sgv_zlib_8cpp_source.html">SgvZlib.cpp</a> の <a class="el" href="_sgv_zlib_8cpp_source.html#l00045">45</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="098fa40f936935ca9a7ccf70babddbad"></a><!-- doxytag: member="Sgv::Zlib::uncompress" ref="098fa40f936935ca9a7ccf70babddbad" args="(bool bInFile, bool bOutFile)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::Zlib::uncompress           </td>
+          <td>(</td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bInFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bOutFile</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+展開する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>bInFile</em>&nbsp;</td><td>[i] trueの場合ファイルから入力 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bOutFile</em>&nbsp;</td><td>[i] trueの場合ファイルへ出力</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(＝成功), false(＝失敗)</dd></dl>
+bInFile, bOutFileの意味はcompress()と同じ 
+<p> <a class="el" href="_sgv_zlib_8cpp_source.html">SgvZlib.cpp</a> の <a class="el" href="_sgv_zlib_8cpp_source.html#l00206">206</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="31f9bd18bb6d977f0c761ab397cf10d2"></a><!-- doxytag: member="Sgv::Zlib::‾Zlib" ref="31f9bd18bb6d977f0c761ab397cf10d2" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::Zlib::‾Zlib           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+デストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_zlib_8cpp_source.html">SgvZlib.cpp</a> の <a class="el" href="_sgv_zlib_8cpp_source.html#l00025">25</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_sgv_zlib_8h_source.html">SgvZlib.h</a><li><a class="el" href="_sgv_zlib_8cpp_source.html">SgvZlib.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGViewerに対してThu Jun 9 10:52:16 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

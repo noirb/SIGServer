@@ -1,0 +1,1737 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGWorldEditor: クラス Sgv::X3D</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_sgv.html">Sgv</a>::<a class="el" href="class_sgv_1_1_x3_d.html">X3D</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Sgv::X3D</h1><!-- doxytag: class="Sgv::X3D" -->X3Dクラス.  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_sgv_x3_d_8h_source.html">SgvX3D.h</a>&gt;</code>
+<p>
+
+<p>
+<a href="class_sgv_1_1_x3_d-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d.html#2025a79c50560e5202b496e957584639">calcShapeHizumis</a> (float &amp;hizumiSphere, float &amp;hizumiCylinder, float &amp;hizumiBox)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">カレントX3Dファイルに対するShapeから形状の歪値を計算する  <a href="#2025a79c50560e5202b496e957584639"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d.html#ee23a13a874944b4ad5c77213e0ab5bd">countLoadedX3DFiles</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">キャッシュに保存されているX3Dファイルの数を返す  <a href="#ee23a13a874944b4ad5c77213e0ab5bd"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">SceneNode *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d.html#fcbcda7ec737505bacc7e045fc92355c">createOpenHRP_Joint_Flat</a> (SceneManager *mgr, SceneNode *rootParentNode, SceneNode *parentNode, const std::string &amp;visObjElemName, CX3DOpenHRPJointNode *pJointNode, std::map&lt; std::string, SceneNode * &gt; &amp;mapPartsNameToSceneNode, bool bUseX3DCenterOfMass, int indent)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">OpenHRPのジョイントノードに対応するシーンノードをフラット構造で作る．.  <a href="#fcbcda7ec737505bacc7e045fc92355c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">SceneNode *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d.html#3fbe267e3b4cfd426e4ed3e1d932d626">createOpenHRP_Joint_Tree</a> (SceneManager *mgr, SceneNode *parentNode, const std::string &amp;visObjElemName, CX3DOpenHRPJointNode *pJointNode, std::map&lt; std::string, SceneNode * &gt; &amp;mapJointNameToSceneNode, std::map&lt; std::string, SceneNode * &gt; &amp;mapPartsNameToSceneNode, bool bUseX3DCenterOfMass, int indent)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">OpenHRPのジョイントノードに対応するシーンノードをツリー構造で作る．.  <a href="#3fbe267e3b4cfd426e4ed3e1d932d626"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">SceneNode *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d.html#f1948ea2b2c0d21dfcb977cf209362e6">createOpenHRP_Segment_Flat</a> (SceneManager *mgr, SceneNode *rootParentNode, SceneNode *parentNode, const std::string &amp;visObjElemName, CX3DOpenHRPSegmentNode *pSegmentNode, std::map&lt; std::string, SceneNode * &gt; &amp;mapPartsNameToSceneNode, bool bUseX3DCenterOfMass, int indent)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">OpenHRPのセグメントノードに対応するシーンノードをフラット構造で作る．.  <a href="#f1948ea2b2c0d21dfcb977cf209362e6"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">SceneNode *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d.html#2e0f0b5f0064fc10ef3fe550e6612ee2">createOpenHRP_Segment_Tree</a> (SceneManager *mgr, SceneNode *parentNode, const std::string &amp;visObjElemName, CX3DOpenHRPSegmentNode *pSegmentNode, std::map&lt; std::string, SceneNode * &gt; &amp;mapPartsNameToSceneNode, bool bUseX3DCenterOfMass, int indent)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">OpenHRPのセグメントノードに対応するシーンノードをツリー構造で作る．.  <a href="#2e0f0b5f0064fc10ef3fe550e6612ee2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">SceneNode *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d.html#22e9f87d08eac50ae7af57c3688a4f1a">createOpenHRP_Shape_Flat</a> (SceneManager *mgr, SceneNode *rootParentNode, SceneNode *parentNode, const std::string &amp;visObjElemName, CX3DShapeNode *pShapeNode, const std::string &amp;parentName, std::map&lt; std::string, SceneNode * &gt; &amp;mapPartsNameToSceneNode, Ogre::Vector3 *pCenterOfMass, int indent)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">OpenHRPのシェープノードに対応するシーンノードをフラット構造で作る．.  <a href="#22e9f87d08eac50ae7af57c3688a4f1a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">SceneNode *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d.html#c8156c17b8c5b8349aaf1848bbff8869">createOpenHRP_Shape_Tree</a> (SceneManager *mgr, SceneNode *parentNode, const std::string &amp;visObjElemName, CX3DShapeNode *pShapeNode, const std::string &amp;parentName, std::map&lt; std::string, SceneNode * &gt; &amp;mapPartsNameToSceneNode, Ogre::Vector3 *pCenterOfMass, int indent)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">OpenHRPのシェープノードに対応するシーンノードをツリー構造で作る．.  <a href="#c8156c17b8c5b8349aaf1848bbff8869"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">SceneNode *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d.html#0fe9d3e4dacb312723cbc76c5db5f743">createOpenHRP_Transform_Flat</a> (SceneManager *mgr, SceneNode *rootParentNode, SceneNode *parentNode, const std::string &amp;visObjElemName, CX3DTransformNode *pTransNode, const std::string &amp;parentName, std::map&lt; std::string, SceneNode * &gt; &amp;mapPartsNameToSceneNode, Ogre::Vector3 *pCenterOfMass, int indent)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">OpenHRPのトランスフォームノードに対応するシーンノードをフラット構造で作る．.  <a href="#0fe9d3e4dacb312723cbc76c5db5f743"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">SceneNode *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d.html#b2eb205f1ace43a0dd970ae7d68dbfff">createOpenHRP_Transform_Tree</a> (SceneManager *mgr, SceneNode *parentNode, const std::string &amp;visObjElemName, CX3DTransformNode *pTransNode, const std::string &amp;parentName, std::map&lt; std::string, SceneNode * &gt; &amp;mapPartsNameToSceneNode, Ogre::Vector3 *pCenterOfMass, int indent)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">OpenHRPのトランスフォームノードに対応するシーンノードをツリー構造で作る．.  <a href="#b2eb205f1ace43a0dd970ae7d68dbfff"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">SceneNode *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d.html#a07d507a6bc1db789d02ff4593cf3e40">createOpenHRPNodes</a> (SceneManager *mgr, SceneNode *parentNode, const std::string &amp;visObjElemName, std::map&lt; std::string, SceneNode * &gt; &amp;mapJointNameToSceneNode, std::map&lt; std::string, SceneNode * &gt; &amp;mapPartsNameToSceneNode, bool bTreeMode, bool bUseX3DCenterOfMass)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">OpenHRPノードを作る.  <a href="#a07d507a6bc1db789d02ff4593cf3e40"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d.html#bad2f8fc3a0813ae5b1248e9e60768d6">createOpenHRPNodes_Flat</a> (SceneManager *mgr, SceneNode *parentNode, const std::string &amp;visObjElemName, std::map&lt; std::string, SceneNode * &gt; &amp;mapPartsNameToSceneNode, bool bUseX3DCenterOfMass)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">フラット構造でOpenHRPノードを作る  <a href="#bad2f8fc3a0813ae5b1248e9e60768d6"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d.html#9da83b8f9578b8d5f5eeb78574f9cf4a">createOpenHRPNodes_Tree</a> (SceneManager *mgr, SceneNode *parentNode, const std::string &amp;visObjElemName, std::map&lt; std::string, SceneNode * &gt; &amp;mapJointNameToSceneNode, std::map&lt; std::string, SceneNode * &gt; &amp;mapPartsNameToSceneNode, bool bUseX3DCenterOfMass)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ツリー構造でOpenHRPノードを作る  <a href="#9da83b8f9578b8d5f5eeb78574f9cf4a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">SceneNode *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d.html#49a6c6773f97a638a7f3fab5b177d4ac">createSimplifiedShapeNode</a> (SceneManager *mgr, SceneNode *parentNode)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">単純形状からOgreノードを作る  <a href="#49a6c6773f97a638a7f3fab5b177d4ac"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">SceneNode *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d.html#ed0de2d25da401a21d7a065e2ef68630">createStaticNode</a> (SceneManager *mgr, SceneNode *parentNode, const std::string &amp;visObjElemName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">カレントX3Dファイルに対するOgreノードを作る  <a href="#ed0de2d25da401a21d7a065e2ef68630"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d.html#50f6d9902ba0dba4acbc5681e63b3c5c">generateSimplifiedShapeFromX3DParseResult</a> (CSimplifiedShape::SHAPE_TYPE stype=CSimplifiedShape::NONE)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">カレントX3Dファイルに対する単純形状を生成する  <a href="#50f6d9902ba0dba4acbc5681e63b3c5c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d.html#67c5cbfe7ee32b06a96265f914b12a42">getCurrentX3DFile</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">カレントX3Dファイル名を得る  <a href="#67c5cbfe7ee32b06a96265f914b12a42"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d.html#ed6f5f41c62e957b39bd6b9c80c0964c">getLoadedX3DFileName</a> (int i)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">キャッシュにロードされているX3Dファイル名を返す  <a href="#ed6f5f41c62e957b39bd6b9c80c0964c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">CSimplifiedShape *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d.html#113d51b7fe60dbf6f76c942b97fe7049">getSimplifiedShape</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">生成した単純形状を得る  <a href="#113d51b7fe60dbf6f76c942b97fe7049"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d.html#d9bb1f6705d2b5f81dd884202e0d53f2">init</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">初期化  <a href="#d9bb1f6705d2b5f81dd884202e0d53f2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d.html#366f39fbf270960e4a5b08ace4c1f10c">isLoadedX3DFile</a> (const char *x3dFileName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">指定のX3Dファイルがロードされているか調べる  <a href="#366f39fbf270960e4a5b08ace4c1f10c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d.html#b27c50c5daaf61853b961569df8ff359">isOpenHRPHumanoidShape</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">カレントX3DファイルはOpenHRPヒューマノイドか？  <a href="#b27c50c5daaf61853b961569df8ff359"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d.html#a9a25241c484f6f67876b956d96330e3">loadX3DFromFile</a> (const char *x3dFileName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">X3D/VRMLファイルをロードする.  <a href="#a9a25241c484f6f67876b956d96330e3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d.html#eb4e5fea481576d5453aa20f13e2033e">setCurrentX3DFile</a> (const char *x3dFileName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">カレントX3Dファイル名を指定する  <a href="#eb4e5fea481576d5453aa20f13e2033e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d.html#4fffe75862f9dba5ad65dc013a57254b">setSimplifiedShape</a> (CSimplifiedShape *ss)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">カレントX3Dファイルに対する単純形状をセットする  <a href="#4fffe75862f9dba5ad65dc013a57254b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d.html#95830258c787af9d77a597a8c81b9d5e">setTransAndRot</a> (SceneNode *pSceneNode, SFVec3f *trans, SFRotation *rot)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">シーンノードの位置、回転を設定するヘルパー関数  <a href="#95830258c787af9d77a597a8c81b9d5e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d.html#bec702ffd665af1c7a6a85be10210803">X3D</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#bec702ffd665af1c7a6a85be10210803"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d.html#e7c2531866413aee9c14b00d64e366f1">‾X3D</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#e7c2531866413aee9c14b00d64e366f1"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Static Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d.html#2a1fe1bf0d32f860625989d30bb56ff0">deleteAllExtEntityInfo</a> (SceneNode *node)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">シーンノードが持っているExtEntityInfoを開放する  <a href="#2a1fe1bf0d32f860625989d30bb56ff0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d.html#d28b8350c8800befef0a92dfff0d3bf1">destroyAllManualObjects</a> (SceneManager *mgr, SceneNode *node)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">シーンノードが持っている全てのManualObjectをシーンマネージャから消す  <a href="#d28b8350c8800befef0a92dfff0d3bf1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d.html#0a87e16ff09e6b041a5d4c6cd1180359">printAllChildrenOfNode</a> (SceneNode *node, int level=0)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">シーンノードのすべての子ノードを列挙  <a href="#0a87e16ff09e6b041a5d4c6cd1180359"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d.html#fe06974c6746034e4f224c4514b9017d">printExtEntityInfo</a> (SceneNode *node, int level=0)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">シーンノードが持っているExtEntityInfoの持っている情報をログに出力する  <a href="#fe06974c6746034e4f224c4514b9017d"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+X3Dクラス. 
+<p>
+X3D形状ファイルに関連する処理<p>
+(1) X3D(VRML)ファイルを読み込む． (2) 読み込んだX3Dファイルの内容からOgreの形状データ(ManualObject)を作る． (3) 読み込んだX3Dファイルの内容から単純形状を作る.<p>
+読み込んだX3Dファイルの内容は、キャッシュに保存される． 例えば100個の異なるX3Dファイルを読み込めば、キャッシュにその100個分の 内部データが蓄積される．<p>
+キャッシュに関連して「カレントX3Dファイル」という概念がある． <a class="el" href="class_sgv_1_1_x3_d.html#a9a25241c484f6f67876b956d96330e3" title="X3D/VRMLファイルをロードする.">loadX3DFromFile()</a>で読み込んだX3Dファイルは、カレントX3Dファイルになる． <a class="el" href="class_sgv_1_1_x3_d.html#67c5cbfe7ee32b06a96265f914b12a42" title="カレントX3Dファイル名を得る">getCurrentX3DFile()</a>やisOpenHRPHumanoidShape()が返す情報は、 カレントX3Dファイルに対するものである． カレントX3Dファイルを変更するには、setCurrentX3DFile()を使う． 
+<p> <a class="el" href="_sgv_x3_d_8h_source.html">SgvX3D.h</a> の <a class="el" href="_sgv_x3_d_8h_source.html#l00042">42</a> 行で定義されています。</p>
+<hr><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" name="bec702ffd665af1c7a6a85be10210803"></a><!-- doxytag: member="Sgv::X3D::X3D" ref="bec702ffd665af1c7a6a85be10210803" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::X3D::X3D           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_x3_d_8cpp_source.html">SgvX3D.cpp</a> の <a class="el" href="_sgv_x3_d_8cpp_source.html#l00050">50</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>関数</h2>
+<a class="anchor" name="2025a79c50560e5202b496e957584639"></a><!-- doxytag: member="Sgv::X3D::calcShapeHizumis" ref="2025a79c50560e5202b496e957584639" args="(float &amp;hizumiSphere, float &amp;hizumiCylinder, float &amp;hizumiBox)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::X3D::calcShapeHizumis           </td>
+          <td>(</td>
+          <td class="paramtype">float &amp;&nbsp;</td>
+          <td class="paramname"> <em>hizumiSphere</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float &amp;&nbsp;</td>
+          <td class="paramname"> <em>hizumiCylinder</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float &amp;&nbsp;</td>
+          <td class="paramname"> <em>hizumiBox</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+カレントX3Dファイルに対するShapeから形状の歪値を計算する 
+<p>
+歪値とは、元々の形状（X3Dファイルに定義されている形状）と そこから生成した単純形状（球、シリンダー、直方体）とが どの程度「近い形か」を表す尺度．<p>
+形状に違いが大きいほど歪値が大きくなる． このことから、歪値が小さい単純形状ほど、元の形状をよく近似していると言える．<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hizumiSphere</em>&nbsp;</td><td>[o] 球に対する歪値 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>hizumiCylinder</em>&nbsp;</td><td>[o] シリンダーに対する歪値 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>hizumiBox</em>&nbsp;</td><td>[o] 直方体に対する歪値 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_x3_d_8cpp_source.html">SgvX3D.cpp</a> の <a class="el" href="_sgv_x3_d_8cpp_source.html#l02508">2508</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="ee23a13a874944b4ad5c77213e0ab5bd"></a><!-- doxytag: member="Sgv::X3D::countLoadedX3DFiles" ref="ee23a13a874944b4ad5c77213e0ab5bd" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Sgv::X3D::countLoadedX3DFiles           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+キャッシュに保存されているX3Dファイルの数を返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>ロードされたX3Dファイルの数 </dd></dl>
+
+<p> <a class="el" href="_sgv_x3_d_8cpp_source.html">SgvX3D.cpp</a> の <a class="el" href="_sgv_x3_d_8cpp_source.html#l00232">232</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="fcbcda7ec737505bacc7e045fc92355c"></a><!-- doxytag: member="Sgv::X3D::createOpenHRP_Joint_Flat" ref="fcbcda7ec737505bacc7e045fc92355c" args="(SceneManager *mgr, SceneNode *rootParentNode, SceneNode *parentNode, const std::string &amp;visObjElemName, CX3DOpenHRPJointNode *pJointNode, std::map&lt; std::string, SceneNode * &gt; &amp;mapPartsNameToSceneNode, bool bUseX3DCenterOfMass, int indent)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SceneNode * Sgv::X3D::createOpenHRP_Joint_Flat           </td>
+          <td>(</td>
+          <td class="paramtype">SceneManager *&nbsp;</td>
+          <td class="paramname"> <em>mgr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SceneNode *&nbsp;</td>
+          <td class="paramname"> <em>rootParentNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SceneNode *&nbsp;</td>
+          <td class="paramname"> <em>parentNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>visObjElemName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">CX3DOpenHRPJointNode *&nbsp;</td>
+          <td class="paramname"> <em>pJointNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::map&lt; std::string, SceneNode * &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>mapPartsNameToSceneNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bUseX3DCenterOfMass</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>indent</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+OpenHRPのジョイントノードに対応するシーンノードをフラット構造で作る．. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>mgr</em>&nbsp;</td><td>[i] Ogreシーンマネージャ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rootParentNode</em>&nbsp;</td><td>[i] ルート親ノード </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>parentNode</em>&nbsp;</td><td>[i] 親ノード </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>visObjElemName</em>&nbsp;</td><td>[i] ビジュアルオブジェクト要素名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>pJointNode</em>&nbsp;</td><td>[i] OpenHRPジョイントノード </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>mapPartsNameToSceneNode</em>&nbsp;</td><td>[io] パーツ名からシーンノードへのマップ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bUseX3DCenterOfMass</em>&nbsp;</td><td>[i] OpenHRPのcenterOfMassフィールドを重心値として使うか否かのフラグ. trueの場合、SEGMENTノードのcenterOfMassフィールドの値を重心値として使う． falseの場合、IndexedFaceSetの頂点データから自動的に重心値を計算し、centerOfMassの代わりに使う </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>indent</em>&nbsp;</td><td>[i] インデントレベル（デバッグ用）</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>作成されたシーンノード </dd></dl>
+
+<p> <a class="el" href="_sgv_x3_d_8cpp_source.html">SgvX3D.cpp</a> の <a class="el" href="_sgv_x3_d_8cpp_source.html#l01771">1771</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="3fbe267e3b4cfd426e4ed3e1d932d626"></a><!-- doxytag: member="Sgv::X3D::createOpenHRP_Joint_Tree" ref="3fbe267e3b4cfd426e4ed3e1d932d626" args="(SceneManager *mgr, SceneNode *parentNode, const std::string &amp;visObjElemName, CX3DOpenHRPJointNode *pJointNode, std::map&lt; std::string, SceneNode * &gt; &amp;mapJointNameToSceneNode, std::map&lt; std::string, SceneNode * &gt; &amp;mapPartsNameToSceneNode, bool bUseX3DCenterOfMass, int indent)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SceneNode * Sgv::X3D::createOpenHRP_Joint_Tree           </td>
+          <td>(</td>
+          <td class="paramtype">SceneManager *&nbsp;</td>
+          <td class="paramname"> <em>mgr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SceneNode *&nbsp;</td>
+          <td class="paramname"> <em>parentNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>visObjElemName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">CX3DOpenHRPJointNode *&nbsp;</td>
+          <td class="paramname"> <em>pJointNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::map&lt; std::string, SceneNode * &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>mapJointNameToSceneNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::map&lt; std::string, SceneNode * &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>mapPartsNameToSceneNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bUseX3DCenterOfMass</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>indent</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+OpenHRPのジョイントノードに対応するシーンノードをツリー構造で作る．. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>mgr</em>&nbsp;</td><td>[i] Ogreシーンマネージャ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>parentNode</em>&nbsp;</td><td>[i] 親ノード </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>visObjElemName</em>&nbsp;</td><td>[i] ビジュアルオブジェクト要素名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>pJointNode</em>&nbsp;</td><td>[i] OpenHRPジョイントノード </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>mapJointNameToSceneNode</em>&nbsp;</td><td>[io] ジョイント名からシーンノードへのマップ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>mapPartsNameToSceneNode</em>&nbsp;</td><td>[io] パーツ名からシーンノードへのマップ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bUseX3DCenterOfMass</em>&nbsp;</td><td>[i] OpenHRPのcenterOfMassフィールドを重心値として使うか否かのフラグ. trueの場合、SEGMENTノードのcenterOfMassフィールドの値を重心値として使う． falseの場合、IndexedFaceSetの頂点データから自動的に重心値を計算し、centerOfMassの代わりに使う </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>indent</em>&nbsp;</td><td>[i] インデントレベル（デバッグ用）</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>作成されたシーンノード </dd></dl>
+
+<p> <a class="el" href="_sgv_x3_d_8cpp_source.html">SgvX3D.cpp</a> の <a class="el" href="_sgv_x3_d_8cpp_source.html#l01243">1243</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f1948ea2b2c0d21dfcb977cf209362e6"></a><!-- doxytag: member="Sgv::X3D::createOpenHRP_Segment_Flat" ref="f1948ea2b2c0d21dfcb977cf209362e6" args="(SceneManager *mgr, SceneNode *rootParentNode, SceneNode *parentNode, const std::string &amp;visObjElemName, CX3DOpenHRPSegmentNode *pSegmentNode, std::map&lt; std::string, SceneNode * &gt; &amp;mapPartsNameToSceneNode, bool bUseX3DCenterOfMass, int indent)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SceneNode * Sgv::X3D::createOpenHRP_Segment_Flat           </td>
+          <td>(</td>
+          <td class="paramtype">SceneManager *&nbsp;</td>
+          <td class="paramname"> <em>mgr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SceneNode *&nbsp;</td>
+          <td class="paramname"> <em>rootParentNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SceneNode *&nbsp;</td>
+          <td class="paramname"> <em>parentNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>visObjElemName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">CX3DOpenHRPSegmentNode *&nbsp;</td>
+          <td class="paramname"> <em>pSegmentNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::map&lt; std::string, SceneNode * &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>mapPartsNameToSceneNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bUseX3DCenterOfMass</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>indent</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+OpenHRPのセグメントノードに対応するシーンノードをフラット構造で作る．. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>mgr</em>&nbsp;</td><td>[i] Ogreシーンマネージャ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rootParentNode</em>&nbsp;</td><td>[i] ルート親ノード </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>parentNode</em>&nbsp;</td><td>[i] 親ノード </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>visObjElemName</em>&nbsp;</td><td>[i] ビジュアルオブジェクト要素名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>pSegmentNode</em>&nbsp;</td><td>[i] OpenHRPセグメントノード </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>mapPartsNameToSceneNode</em>&nbsp;</td><td>[io] パーツ名からシーンノードへのマップ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bUseX3DCenterOfMass</em>&nbsp;</td><td>[i] OpenHRPのcenterOfMassフィールドを重心値として使うか否かのフラグ. trueの場合、SEGMENTノードのcenterOfMassフィールドの値を重心値として使う． falseの場合、IndexedFaceSetの頂点データから自動的に重心値を計算し、centerOfMassの代わりに使う </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>indent</em>&nbsp;</td><td>[i] インデントレベル（デバッグ用）</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>作成されたシーンノード </dd></dl>
+
+<p> <a class="el" href="_sgv_x3_d_8cpp_source.html">SgvX3D.cpp</a> の <a class="el" href="_sgv_x3_d_8cpp_source.html#l01880">1880</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="2e0f0b5f0064fc10ef3fe550e6612ee2"></a><!-- doxytag: member="Sgv::X3D::createOpenHRP_Segment_Tree" ref="2e0f0b5f0064fc10ef3fe550e6612ee2" args="(SceneManager *mgr, SceneNode *parentNode, const std::string &amp;visObjElemName, CX3DOpenHRPSegmentNode *pSegmentNode, std::map&lt; std::string, SceneNode * &gt; &amp;mapPartsNameToSceneNode, bool bUseX3DCenterOfMass, int indent)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SceneNode * Sgv::X3D::createOpenHRP_Segment_Tree           </td>
+          <td>(</td>
+          <td class="paramtype">SceneManager *&nbsp;</td>
+          <td class="paramname"> <em>mgr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SceneNode *&nbsp;</td>
+          <td class="paramname"> <em>parentNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>visObjElemName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">CX3DOpenHRPSegmentNode *&nbsp;</td>
+          <td class="paramname"> <em>pSegmentNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::map&lt; std::string, SceneNode * &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>mapPartsNameToSceneNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bUseX3DCenterOfMass</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>indent</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+OpenHRPのセグメントノードに対応するシーンノードをツリー構造で作る．. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>mgr</em>&nbsp;</td><td>[i] Ogreシーンマネージャ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>parentNode</em>&nbsp;</td><td>[i] 親ノード </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>visObjElemName</em>&nbsp;</td><td>[i] ビジュアルオブジェクト要素名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>pSegmentNode</em>&nbsp;</td><td>[i] OpenHRPセグメントノード </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>mapPartsNameToSceneNode</em>&nbsp;</td><td>[io] パーツ名からシーンノードへのマップ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bUseX3DCenterOfMass</em>&nbsp;</td><td>[i] OpenHRPのcenterOfMassフィールドを重心値として使うか否かのフラグ. trueの場合、SEGMENTノードのcenterOfMassフィールドの値を重心値として使う． falseの場合、IndexedFaceSetの頂点データから自動的に重心値を計算し、centerOfMassの代わりに使う </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>indent</em>&nbsp;</td><td>[i] インデントレベル（デバッグ用）</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>作成されたシーンノード </dd></dl>
+
+<p> <a class="el" href="_sgv_x3_d_8cpp_source.html">SgvX3D.cpp</a> の <a class="el" href="_sgv_x3_d_8cpp_source.html#l01357">1357</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="22e9f87d08eac50ae7af57c3688a4f1a"></a><!-- doxytag: member="Sgv::X3D::createOpenHRP_Shape_Flat" ref="22e9f87d08eac50ae7af57c3688a4f1a" args="(SceneManager *mgr, SceneNode *rootParentNode, SceneNode *parentNode, const std::string &amp;visObjElemName, CX3DShapeNode *pShapeNode, const std::string &amp;parentName, std::map&lt; std::string, SceneNode * &gt; &amp;mapPartsNameToSceneNode, Ogre::Vector3 *pCenterOfMass, int indent)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SceneNode * Sgv::X3D::createOpenHRP_Shape_Flat           </td>
+          <td>(</td>
+          <td class="paramtype">SceneManager *&nbsp;</td>
+          <td class="paramname"> <em>mgr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SceneNode *&nbsp;</td>
+          <td class="paramname"> <em>rootParentNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SceneNode *&nbsp;</td>
+          <td class="paramname"> <em>parentNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>visObjElemName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">CX3DShapeNode *&nbsp;</td>
+          <td class="paramname"> <em>pShapeNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>parentName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::map&lt; std::string, SceneNode * &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>mapPartsNameToSceneNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Ogre::Vector3 *&nbsp;</td>
+          <td class="paramname"> <em>pCenterOfMass</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>indent</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+OpenHRPのシェープノードに対応するシーンノードをフラット構造で作る．. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>mgr</em>&nbsp;</td><td>[i] Ogreシーンマネージャ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rootParentNode</em>&nbsp;</td><td>[i] ルート親ノード </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>parentNode</em>&nbsp;</td><td>[i] 親ノード </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>visObjElemName</em>&nbsp;</td><td>[i] ビジュアルオブジェクト要素名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>pShapeNode</em>&nbsp;</td><td>[i] OpenHRPシェープノード </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>parentName</em>&nbsp;</td><td>[i] 親ノード名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>mapPartsNameToSceneNode</em>&nbsp;</td><td>[io] パーツ名からシーンノードへのマップ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>pCenterOfMass</em>&nbsp;</td><td>[i] 重心座標．NULLを与えた場合は自動的に計算する． </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>indent</em>&nbsp;</td><td>[i] インデントレベル（デバッグ用）</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>作成されたシーンノード </dd></dl>
+
+<p> <a class="el" href="_sgv_x3_d_8cpp_source.html">SgvX3D.cpp</a> の <a class="el" href="_sgv_x3_d_8cpp_source.html#l02062">2062</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="c8156c17b8c5b8349aaf1848bbff8869"></a><!-- doxytag: member="Sgv::X3D::createOpenHRP_Shape_Tree" ref="c8156c17b8c5b8349aaf1848bbff8869" args="(SceneManager *mgr, SceneNode *parentNode, const std::string &amp;visObjElemName, CX3DShapeNode *pShapeNode, const std::string &amp;parentName, std::map&lt; std::string, SceneNode * &gt; &amp;mapPartsNameToSceneNode, Ogre::Vector3 *pCenterOfMass, int indent)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SceneNode * Sgv::X3D::createOpenHRP_Shape_Tree           </td>
+          <td>(</td>
+          <td class="paramtype">SceneManager *&nbsp;</td>
+          <td class="paramname"> <em>mgr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SceneNode *&nbsp;</td>
+          <td class="paramname"> <em>parentNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>visObjElemName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">CX3DShapeNode *&nbsp;</td>
+          <td class="paramname"> <em>pShapeNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>parentName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::map&lt; std::string, SceneNode * &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>mapPartsNameToSceneNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Ogre::Vector3 *&nbsp;</td>
+          <td class="paramname"> <em>pCenterOfMass</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>indent</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+OpenHRPのシェープノードに対応するシーンノードをツリー構造で作る．. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>mgr</em>&nbsp;</td><td>[i] Ogreシーンマネージャ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>parentNode</em>&nbsp;</td><td>[i] 親ノード </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>visObjElemName</em>&nbsp;</td><td>[i] ビジュアルオブジェクト要素名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>pShapeNode</em>&nbsp;</td><td>[i] OpenHRPシェープノード </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>parentName</em>&nbsp;</td><td>[i] 親ノード名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>mapPartsNameToSceneNode</em>&nbsp;</td><td>[io] パーツ名からシーンノードへのマップ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>pCenterOfMass</em>&nbsp;</td><td>[i] 重心座標．NULLを与えた場合は自動的に計算する． </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>indent</em>&nbsp;</td><td>[i] インデントレベル（デバッグ用）</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>作成されたシーンノード </dd></dl>
+
+<p> <a class="el" href="_sgv_x3_d_8cpp_source.html">SgvX3D.cpp</a> の <a class="el" href="_sgv_x3_d_8cpp_source.html#l01534">1534</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="0fe9d3e4dacb312723cbc76c5db5f743"></a><!-- doxytag: member="Sgv::X3D::createOpenHRP_Transform_Flat" ref="0fe9d3e4dacb312723cbc76c5db5f743" args="(SceneManager *mgr, SceneNode *rootParentNode, SceneNode *parentNode, const std::string &amp;visObjElemName, CX3DTransformNode *pTransNode, const std::string &amp;parentName, std::map&lt; std::string, SceneNode * &gt; &amp;mapPartsNameToSceneNode, Ogre::Vector3 *pCenterOfMass, int indent)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SceneNode * Sgv::X3D::createOpenHRP_Transform_Flat           </td>
+          <td>(</td>
+          <td class="paramtype">SceneManager *&nbsp;</td>
+          <td class="paramname"> <em>mgr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SceneNode *&nbsp;</td>
+          <td class="paramname"> <em>rootParentNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SceneNode *&nbsp;</td>
+          <td class="paramname"> <em>parentNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>visObjElemName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">CX3DTransformNode *&nbsp;</td>
+          <td class="paramname"> <em>pTransNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>parentName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::map&lt; std::string, SceneNode * &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>mapPartsNameToSceneNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Ogre::Vector3 *&nbsp;</td>
+          <td class="paramname"> <em>pCenterOfMass</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>indent</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+OpenHRPのトランスフォームノードに対応するシーンノードをフラット構造で作る．. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>mgr</em>&nbsp;</td><td>[i] Ogreシーンマネージャ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rootParentNode</em>&nbsp;</td><td>[i] ルート親ノード </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>parentNode</em>&nbsp;</td><td>[i] 親ノード </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>visObjElemName</em>&nbsp;</td><td>[i] ビジュアルオブジェクト要素名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>pTransNode</em>&nbsp;</td><td>[i] OpenHRPトランスフォームノード </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>parentName</em>&nbsp;</td><td>[i] 親ノード名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>mapPartsNameToSceneNode</em>&nbsp;</td><td>[io] パーツ名からシーンノードへのマップ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>pCenterOfMass</em>&nbsp;</td><td>[i] 重心座標．NULLを与えた場合は自動的に計算する． </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>indent</em>&nbsp;</td><td>[i] インデントレベル（デバッグ用）</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>作成されたシーンノード </dd></dl>
+
+<p> <a class="el" href="_sgv_x3_d_8cpp_source.html">SgvX3D.cpp</a> の <a class="el" href="_sgv_x3_d_8cpp_source.html#l01959">1959</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b2eb205f1ace43a0dd970ae7d68dbfff"></a><!-- doxytag: member="Sgv::X3D::createOpenHRP_Transform_Tree" ref="b2eb205f1ace43a0dd970ae7d68dbfff" args="(SceneManager *mgr, SceneNode *parentNode, const std::string &amp;visObjElemName, CX3DTransformNode *pTransNode, const std::string &amp;parentName, std::map&lt; std::string, SceneNode * &gt; &amp;mapPartsNameToSceneNode, Ogre::Vector3 *pCenterOfMass, int indent)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SceneNode * Sgv::X3D::createOpenHRP_Transform_Tree           </td>
+          <td>(</td>
+          <td class="paramtype">SceneManager *&nbsp;</td>
+          <td class="paramname"> <em>mgr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SceneNode *&nbsp;</td>
+          <td class="paramname"> <em>parentNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>visObjElemName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">CX3DTransformNode *&nbsp;</td>
+          <td class="paramname"> <em>pTransNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>parentName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::map&lt; std::string, SceneNode * &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>mapPartsNameToSceneNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Ogre::Vector3 *&nbsp;</td>
+          <td class="paramname"> <em>pCenterOfMass</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>indent</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+OpenHRPのトランスフォームノードに対応するシーンノードをツリー構造で作る．. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>mgr</em>&nbsp;</td><td>[i] Ogreシーンマネージャ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>parentNode</em>&nbsp;</td><td>[i] 親ノード </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>visObjElemName</em>&nbsp;</td><td>[i] ビジュアルオブジェクト要素名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>pTransNode</em>&nbsp;</td><td>[i] OpenHRPトランスフォームノード </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>parentName</em>&nbsp;</td><td>[i] 親ノード名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>mapPartsNameToSceneNode</em>&nbsp;</td><td>[io] パーツ名からシーンノードへのマップ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>pCenterOfMass</em>&nbsp;</td><td>[i] 重心座標．NULLを与えた場合は自動的に計算する． </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>indent</em>&nbsp;</td><td>[i] インデントレベル（デバッグ用）</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>作成されたシーンノード </dd></dl>
+
+<p> <a class="el" href="_sgv_x3_d_8cpp_source.html">SgvX3D.cpp</a> の <a class="el" href="_sgv_x3_d_8cpp_source.html#l01434">1434</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="a07d507a6bc1db789d02ff4593cf3e40"></a><!-- doxytag: member="Sgv::X3D::createOpenHRPNodes" ref="a07d507a6bc1db789d02ff4593cf3e40" args="(SceneManager *mgr, SceneNode *parentNode, const std::string &amp;visObjElemName, std::map&lt; std::string, SceneNode * &gt; &amp;mapJointNameToSceneNode, std::map&lt; std::string, SceneNode * &gt; &amp;mapPartsNameToSceneNode, bool bTreeMode, bool bUseX3DCenterOfMass)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SceneNode * Sgv::X3D::createOpenHRPNodes           </td>
+          <td>(</td>
+          <td class="paramtype">SceneManager *&nbsp;</td>
+          <td class="paramname"> <em>mgr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SceneNode *&nbsp;</td>
+          <td class="paramname"> <em>parentNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>visObjElemName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::map&lt; std::string, SceneNode * &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>mapJointNameToSceneNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::map&lt; std::string, SceneNode * &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>mapPartsNameToSceneNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bTreeMode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bUseX3DCenterOfMass</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+OpenHRPノードを作る. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>mgr</em>&nbsp;</td><td>[i] Ogreシーンマネージャ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>parentNode</em>&nbsp;</td><td>[i] 親ノード </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>visObjElemName</em>&nbsp;</td><td>[i] ビジュアルオブジェクト要素名（この名前は全Ogreエンティティに設定される） </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>mapJointNameToSceneNode</em>&nbsp;</td><td>[o] ジョイント名とSceneNodeのマップ. ここで、ジョイント名とは、JOINTノードの名前であり、 対応するSceneNodeには、JOINTノードのtranslation, rorationが設定される． bTreeMode=falseの場合は何もセットされない </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>mapPartsNameToSceneNode</em>&nbsp;</td><td>[o] パーツ名とSceneNodeのマップ. ここで、パーツ名とは、SHAPEノードから最も近いSEGMENTノードの名前になり、 対応するSceneNodeには、SHAPEノードの直前の親のTRANSFORMノードのtranslation, rotationが 設定される． </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bTreeMode</em>&nbsp;</td><td>[i] ツリーモード・フラットモードの指定. trueの場合、シーンノードはツリー構造で作られる． ジョイント、パーツ共に対応ノードが作られる． 位置、方向は親からの相対値で指定する． falseの場合、シーンノードはフラットな構造でパーツに対応したノードのみ作られる． ジョイントに対するノードは作成されない． 位置、方向は絶対値で指定する．</td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bUseX3DCenterOfMass</em>&nbsp;</td><td>[i] OpenHRPのcenterOfMassフィールドを重心値として使うか否かのフラグ. trueの場合、SEGMENTノードのcenterOfMassフィールドの値を重心値として使う． falseの場合、IndexedFaceSetの頂点データから自動的に重心値を計算し、centerOfMassの代わりに使う</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>作成されたOpenHRPノード．エラーの場合NULL </dd></dl>
+
+<p> <a class="el" href="_sgv_x3_d_8cpp_source.html">SgvX3D.cpp</a> の <a class="el" href="_sgv_x3_d_8cpp_source.html#l01116">1116</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="bad2f8fc3a0813ae5b1248e9e60768d6"></a><!-- doxytag: member="Sgv::X3D::createOpenHRPNodes_Flat" ref="bad2f8fc3a0813ae5b1248e9e60768d6" args="(SceneManager *mgr, SceneNode *parentNode, const std::string &amp;visObjElemName, std::map&lt; std::string, SceneNode * &gt; &amp;mapPartsNameToSceneNode, bool bUseX3DCenterOfMass)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::X3D::createOpenHRPNodes_Flat           </td>
+          <td>(</td>
+          <td class="paramtype">SceneManager *&nbsp;</td>
+          <td class="paramname"> <em>mgr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SceneNode *&nbsp;</td>
+          <td class="paramname"> <em>parentNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>visObjElemName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::map&lt; std::string, SceneNode * &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>mapPartsNameToSceneNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bUseX3DCenterOfMass</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+フラット構造でOpenHRPノードを作る 
+<p>
+(Segmentに対応するノードだけが作られる）<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>mgr</em>&nbsp;</td><td>[i] Ogreシーンマネージャ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>parentNode</em>&nbsp;</td><td>[i] 親ノード </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>visObjElemName</em>&nbsp;</td><td>[i] ビジュアルオブジェクト要素名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>mapPartsNameToSceneNode</em>&nbsp;</td><td>[io] パーツ名からシーンノードへのマップ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bUseX3DCenterOfMass</em>&nbsp;</td><td>[i] OpenHRPのcenterOfMassフィールドを重心値として使うか否かのフラグ. trueの場合、SEGMENTノードのcenterOfMassフィールドの値を重心値として使う． falseの場合、IndexedFaceSetの頂点データから自動的に重心値を計算し、centerOfMassの代わりに使う</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_x3_d_8cpp_source.html">SgvX3D.cpp</a> の <a class="el" href="_sgv_x3_d_8cpp_source.html#l01683">1683</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="9da83b8f9578b8d5f5eeb78574f9cf4a"></a><!-- doxytag: member="Sgv::X3D::createOpenHRPNodes_Tree" ref="9da83b8f9578b8d5f5eeb78574f9cf4a" args="(SceneManager *mgr, SceneNode *parentNode, const std::string &amp;visObjElemName, std::map&lt; std::string, SceneNode * &gt; &amp;mapJointNameToSceneNode, std::map&lt; std::string, SceneNode * &gt; &amp;mapPartsNameToSceneNode, bool bUseX3DCenterOfMass)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::X3D::createOpenHRPNodes_Tree           </td>
+          <td>(</td>
+          <td class="paramtype">SceneManager *&nbsp;</td>
+          <td class="paramname"> <em>mgr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SceneNode *&nbsp;</td>
+          <td class="paramname"> <em>parentNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>visObjElemName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::map&lt; std::string, SceneNode * &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>mapJointNameToSceneNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::map&lt; std::string, SceneNode * &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>mapPartsNameToSceneNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bUseX3DCenterOfMass</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ツリー構造でOpenHRPノードを作る 
+<p>
+(Joint, Segment両方に対応するノードが作られる）<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>mgr</em>&nbsp;</td><td>[i] Ogreシーンマネージャ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>parentNode</em>&nbsp;</td><td>[i] 親ノード </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>visObjElemName</em>&nbsp;</td><td>[i] ビジュアルオブジェクト要素名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>mapJointNameToSceneNode</em>&nbsp;</td><td>[io] ジョイント名からシーンノードへのマップ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>mapPartsNameToSceneNode</em>&nbsp;</td><td>[io] パーツ名からシーンノードへのマップ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bUseX3DCenterOfMass</em>&nbsp;</td><td>[i] OpenHRPのcenterOfMassフィールドを重心値として使うか否かのフラグ. trueの場合、SEGMENTノードのcenterOfMassフィールドの値を重心値として使う． falseの場合、IndexedFaceSetの頂点データから自動的に重心値を計算し、centerOfMassの代わりに使う</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_x3_d_8cpp_source.html">SgvX3D.cpp</a> の <a class="el" href="_sgv_x3_d_8cpp_source.html#l01168">1168</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="49a6c6773f97a638a7f3fab5b177d4ac"></a><!-- doxytag: member="Sgv::X3D::createSimplifiedShapeNode" ref="49a6c6773f97a638a7f3fab5b177d4ac" args="(SceneManager *mgr, SceneNode *parentNode)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SceneNode * Sgv::X3D::createSimplifiedShapeNode           </td>
+          <td>(</td>
+          <td class="paramtype">SceneManager *&nbsp;</td>
+          <td class="paramname"> <em>mgr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SceneNode *&nbsp;</td>
+          <td class="paramname"> <em>parentNode</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+単純形状からOgreノードを作る 
+<p>
+ノード生成に使われるのは、カレントX3Dファイルに対する単純形状．<p>
+返り値の所有権は呼び出し側に渡す． しかし生成されたノードはparentNodeに属しているので、返り値を直接deleteしてはいけない.<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>mgr</em>&nbsp;</td><td>[i] Ogreシーンマネージャ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>parentNode</em>&nbsp;</td><td>[i] 親ノード</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>生成されたOgreノード（＝単純形状ノード） </dd></dl>
+
+<p> <a class="el" href="_sgv_x3_d_8cpp_source.html">SgvX3D.cpp</a> の <a class="el" href="_sgv_x3_d_8cpp_source.html#l02398">2398</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="ed0de2d25da401a21d7a065e2ef68630"></a><!-- doxytag: member="Sgv::X3D::createStaticNode" ref="ed0de2d25da401a21d7a065e2ef68630" args="(SceneManager *mgr, SceneNode *parentNode, const std::string &amp;visObjElemName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SceneNode * Sgv::X3D::createStaticNode           </td>
+          <td>(</td>
+          <td class="paramtype">SceneManager *&nbsp;</td>
+          <td class="paramname"> <em>mgr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SceneNode *&nbsp;</td>
+          <td class="paramname"> <em>parentNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>visObjElemName</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+カレントX3Dファイルに対するOgreノードを作る 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>mgr</em>&nbsp;</td><td>[i] Ogreシーンマネージャ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>parentNode</em>&nbsp;</td><td>[i] 親ノード </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>visObjElemName</em>&nbsp;</td><td>[i] ビジュアルオブジェクト要素名</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>生成されたOgreノード</dd></dl>
+返り値の所有権は呼び出し側に渡す． しかし生成されたノードはparentNodeに属しているので、返り値を直接deleteしてはいけない. 
+<p> <a class="el" href="_sgv_x3_d_8cpp_source.html">SgvX3D.cpp</a> の <a class="el" href="_sgv_x3_d_8cpp_source.html#l00468">468</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="2a1fe1bf0d32f860625989d30bb56ff0"></a><!-- doxytag: member="Sgv::X3D::deleteAllExtEntityInfo" ref="2a1fe1bf0d32f860625989d30bb56ff0" args="(SceneNode *node)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::X3D::deleteAllExtEntityInfo           </td>
+          <td>(</td>
+          <td class="paramtype">SceneNode *&nbsp;</td>
+          <td class="paramname"> <em>node</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+シーンノードが持っているExtEntityInfoを開放する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>node</em>&nbsp;</td><td>[i] シーンノード</td></tr>
+  </table>
+</dl>
+子ノードもすべてたどって開放される 
+<p> <a class="el" href="_sgv_x3_d_8cpp_source.html">SgvX3D.cpp</a> の <a class="el" href="_sgv_x3_d_8cpp_source.html#l02302">2302</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="d28b8350c8800befef0a92dfff0d3bf1"></a><!-- doxytag: member="Sgv::X3D::destroyAllManualObjects" ref="d28b8350c8800befef0a92dfff0d3bf1" args="(SceneManager *mgr, SceneNode *node)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::X3D::destroyAllManualObjects           </td>
+          <td>(</td>
+          <td class="paramtype">SceneManager *&nbsp;</td>
+          <td class="paramname"> <em>mgr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SceneNode *&nbsp;</td>
+          <td class="paramname"> <em>node</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+シーンノードが持っている全てのManualObjectをシーンマネージャから消す 
+<p>
+このメソッドでManualObjectを消しておかないと、 世界を再構築したとき（ビデオファイルを再ロードしたときなど）に、 （マニュアルオブジェクトに付いた）名前のバッティングで例外が発生する 
+<p> <a class="el" href="_sgv_x3_d_8cpp_source.html">SgvX3D.cpp</a> の <a class="el" href="_sgv_x3_d_8cpp_source.html#l02339">2339</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="50f6d9902ba0dba4acbc5681e63b3c5c"></a><!-- doxytag: member="Sgv::X3D::generateSimplifiedShapeFromX3DParseResult" ref="50f6d9902ba0dba4acbc5681e63b3c5c" args="(CSimplifiedShape::SHAPE_TYPE stype=CSimplifiedShape::NONE)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::X3D::generateSimplifiedShapeFromX3DParseResult           </td>
+          <td>(</td>
+          <td class="paramtype">CSimplifiedShape::SHAPE_TYPE&nbsp;</td>
+          <td class="paramname"> <em>stype</em> = <code>CSimplifiedShape::NONE</code>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+カレントX3Dファイルに対する単純形状を生成する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>stype</em>&nbsp;</td><td>[i] 生成する単純形状の種類． NONEを与えた場合は自動で選択される．</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_x3_d_8cpp_source.html">SgvX3D.cpp</a> の <a class="el" href="_sgv_x3_d_8cpp_source.html#l02370">2370</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="67c5cbfe7ee32b06a96265f914b12a42"></a><!-- doxytag: member="Sgv::X3D::getCurrentX3DFile" ref="67c5cbfe7ee32b06a96265f914b12a42" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * Sgv::X3D::getCurrentX3DFile           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+カレントX3Dファイル名を得る 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>現在のX3Dファイル名 </dd></dl>
+
+<p> <a class="el" href="_sgv_x3_d_8cpp_source.html">SgvX3D.cpp</a> の <a class="el" href="_sgv_x3_d_8cpp_source.html#l00449">449</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="ed6f5f41c62e957b39bd6b9c80c0964c"></a><!-- doxytag: member="Sgv::X3D::getLoadedX3DFileName" ref="ed6f5f41c62e957b39bd6b9c80c0964c" args="(int i)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * Sgv::X3D::getLoadedX3DFileName           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>i</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+キャッシュにロードされているX3Dファイル名を返す 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>i</em>&nbsp;</td><td>[i] インデックス (0&lt;=i&lt;<a class="el" href="class_sgv_1_1_x3_d.html#ee23a13a874944b4ad5c77213e0ab5bd" title="キャッシュに保存されているX3Dファイルの数を返す">countLoadedX3DFiles()</a>)</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>X3Dファイル名．範囲エラーの場合はNULLが返る </dd></dl>
+
+<p> <a class="el" href="_sgv_x3_d_8cpp_source.html">SgvX3D.cpp</a> の <a class="el" href="_sgv_x3_d_8cpp_source.html#l00237">237</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="113d51b7fe60dbf6f76c942b97fe7049"></a><!-- doxytag: member="Sgv::X3D::getSimplifiedShape" ref="113d51b7fe60dbf6f76c942b97fe7049" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CSimplifiedShape * Sgv::X3D::getSimplifiedShape           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+生成した単純形状を得る 
+<p>
+このメソッドは単にgenerateSimplifiedShapeで生成された単純形状へのポインタを返すだけ． このメソッドをコールする前にgenerateSimplifiedShapeを呼び出しておく必要がある．<p>
+返り値の所有権はこのオブジェクトが持っている. 呼び出し側は返り値をdeleteしてはいけない<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>単純形状オブジェクト </dd></dl>
+
+<p> <a class="el" href="_sgv_x3_d_8cpp_source.html">SgvX3D.cpp</a> の <a class="el" href="_sgv_x3_d_8cpp_source.html#l02393">2393</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="d9bb1f6705d2b5f81dd884202e0d53f2"></a><!-- doxytag: member="Sgv::X3D::init" ref="d9bb1f6705d2b5f81dd884202e0d53f2" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::X3D::init           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+初期化 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_x3_d_8cpp_source.html">SgvX3D.cpp</a> の <a class="el" href="_sgv_x3_d_8cpp_source.html#l00081">81</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="366f39fbf270960e4a5b08ace4c1f10c"></a><!-- doxytag: member="Sgv::X3D::isLoadedX3DFile" ref="366f39fbf270960e4a5b08ace4c1f10c" args="(const char *x3dFileName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::X3D::isLoadedX3DFile           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>x3dFileName</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+指定のX3Dファイルがロードされているか調べる 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>x3dFileName</em>&nbsp;</td><td>[i] X3Dファイル名</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=ロード済み), false(=ロードされていない) </dd></dl>
+
+<p> <a class="el" href="_sgv_x3_d_8cpp_source.html">SgvX3D.cpp</a> の <a class="el" href="_sgv_x3_d_8cpp_source.html#l00246">246</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b27c50c5daaf61853b961569df8ff359"></a><!-- doxytag: member="Sgv::X3D::isOpenHRPHumanoidShape" ref="b27c50c5daaf61853b961569df8ff359" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::X3D::isOpenHRPHumanoidShape           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+カレントX3DファイルはOpenHRPヒューマノイドか？ 
+<p>
+カレントX3Dファイルの形状が、 OpenHRPヒューマノイドノードを含んでいた場合trueを返す．<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=ヒューマノイド形状を含む), false(=ヒューマノイド形状を含まない) </dd></dl>
+
+<p> <a class="el" href="_sgv_x3_d_8cpp_source.html">SgvX3D.cpp</a> の <a class="el" href="_sgv_x3_d_8cpp_source.html#l00454">454</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="a9a25241c484f6f67876b956d96330e3"></a><!-- doxytag: member="Sgv::X3D::loadX3DFromFile" ref="a9a25241c484f6f67876b956d96330e3" args="(const char *x3dFileName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::X3D::loadX3DFromFile           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>x3dFileName</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+X3D/VRMLファイルをロードする. 
+<p>
+ロードしたX3Dファイルの内容は、キャッシュに保存される．<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>x3dFileName</em>&nbsp;</td><td>[i] x3dファイル名</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_x3_d_8cpp_source.html">SgvX3D.cpp</a> の <a class="el" href="_sgv_x3_d_8cpp_source.html#l00108">108</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="0a87e16ff09e6b041a5d4c6cd1180359"></a><!-- doxytag: member="Sgv::X3D::printAllChildrenOfNode" ref="0a87e16ff09e6b041a5d4c6cd1180359" args="(SceneNode *node, int level=0)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::X3D::printAllChildrenOfNode           </td>
+          <td>(</td>
+          <td class="paramtype">SceneNode *&nbsp;</td>
+          <td class="paramname"> <em>node</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>level</em> = <code>0</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+シーンノードのすべての子ノードを列挙 
+<p>
+（主にデバッグ用）<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>node</em>&nbsp;</td><td>[i] シーンノード </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>level</em>&nbsp;</td><td>[i] インデントレベル </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_x3_d_8cpp_source.html">SgvX3D.cpp</a> の <a class="el" href="_sgv_x3_d_8cpp_source.html#l02252">2252</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="fe06974c6746034e4f224c4514b9017d"></a><!-- doxytag: member="Sgv::X3D::printExtEntityInfo" ref="fe06974c6746034e4f224c4514b9017d" args="(SceneNode *node, int level=0)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::X3D::printExtEntityInfo           </td>
+          <td>(</td>
+          <td class="paramtype">SceneNode *&nbsp;</td>
+          <td class="paramname"> <em>node</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>level</em> = <code>0</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+シーンノードが持っているExtEntityInfoの持っている情報をログに出力する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>node</em>&nbsp;</td><td>[i] シーンノード </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>level</em>&nbsp;</td><td>[i] インデントレベル </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_x3_d_8cpp_source.html">SgvX3D.cpp</a> の <a class="el" href="_sgv_x3_d_8cpp_source.html#l02272">2272</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="eb4e5fea481576d5453aa20f13e2033e"></a><!-- doxytag: member="Sgv::X3D::setCurrentX3DFile" ref="eb4e5fea481576d5453aa20f13e2033e" args="(const char *x3dFileName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::X3D::setCurrentX3DFile           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>x3dFileName</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+カレントX3Dファイル名を指定する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>x3dFileName</em>&nbsp;</td><td>[i] X3Dファイル名</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗．指定ファイルはロードされていない)</dd></dl>
+<dl class="remark" compact><dt><b>意見:</b></dt><dd><a class="el" href="class_sgv_1_1_x3_d.html#67c5cbfe7ee32b06a96265f914b12a42" title="カレントX3Dファイル名を得る">getCurrentX3DFile()</a>, <a class="el" href="class_sgv_1_1_x3_d.html#b27c50c5daaf61853b961569df8ff359" title="カレントX3DファイルはOpenHRPヒューマノイドか？">isOpenHRPHumanoidShape()</a>等のメソッドの 対象となるX3Dファイル名を指定する． </dd></dl>
+
+<p> <a class="el" href="_sgv_x3_d_8cpp_source.html">SgvX3D.cpp</a> の <a class="el" href="_sgv_x3_d_8cpp_source.html#l00265">265</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="4fffe75862f9dba5ad65dc013a57254b"></a><!-- doxytag: member="Sgv::X3D::setSimplifiedShape" ref="4fffe75862f9dba5ad65dc013a57254b" args="(CSimplifiedShape *ss)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::X3D::setSimplifiedShape           </td>
+          <td>(</td>
+          <td class="paramtype">CSimplifiedShape *&nbsp;</td>
+          <td class="paramname"> <em>ss</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+カレントX3Dファイルに対する単純形状をセットする 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>ss</em>&nbsp;</td><td>[i] 単純形状</td></tr>
+  </table>
+</dl>
+単純形状オブジェクトの所有権はこのオブジェクトに移る． 呼び出し側はもはや引数に渡した単純形状をdeleteしてはいけない． 
+<p> <a class="el" href="_sgv_x3_d_8cpp_source.html">SgvX3D.cpp</a> の <a class="el" href="_sgv_x3_d_8cpp_source.html#l02382">2382</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="95830258c787af9d77a597a8c81b9d5e"></a><!-- doxytag: member="Sgv::X3D::setTransAndRot" ref="95830258c787af9d77a597a8c81b9d5e" args="(SceneNode *pSceneNode, SFVec3f *trans, SFRotation *rot)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::X3D::setTransAndRot           </td>
+          <td>(</td>
+          <td class="paramtype">SceneNode *&nbsp;</td>
+          <td class="paramname"> <em>pSceneNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SFVec3f *&nbsp;</td>
+          <td class="paramname"> <em>trans</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SFRotation *&nbsp;</td>
+          <td class="paramname"> <em>rot</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+シーンノードの位置、回転を設定するヘルパー関数 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>pSceneNode</em>&nbsp;</td><td>[i] シーンノード </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>trans</em>&nbsp;</td><td>[i] 位置 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rot</em>&nbsp;</td><td>[i] 回転 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_x3_d_8cpp_source.html">SgvX3D.cpp</a> の <a class="el" href="_sgv_x3_d_8cpp_source.html#l02234">2234</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="e7c2531866413aee9c14b00d64e366f1"></a><!-- doxytag: member="Sgv::X3D::‾X3D" ref="e7c2531866413aee9c14b00d64e366f1" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::X3D::‾X3D           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+デストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_x3_d_8cpp_source.html">SgvX3D.cpp</a> の <a class="el" href="_sgv_x3_d_8cpp_source.html#l00070">70</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_sgv_x3_d_8h_source.html">SgvX3D.h</a><li><a class="el" href="_sgv_x3_d_8cpp_source.html">SgvX3D.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGWorldEditorに対してThu Jun 9 10:53:01 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

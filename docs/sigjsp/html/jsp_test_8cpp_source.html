@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>sigjsp: jspTest.cpp ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>jspTest.cpp</h1><a href="jsp_test_8cpp.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/////////////////////////////////////////////////////////////</span>
+<a name="l00002"></a>00002 <span class="comment"></span><span class="comment">//</span>
+<a name="l00003"></a>00003 <span class="comment">//  sigjsp test program</span>
+<a name="l00004"></a>00004 <span class="comment">//</span>
+<a name="l00005"></a>00005 <span class="comment">//  this program does following:</span>
+<a name="l00006"></a>00006 <span class="comment">//</span>
+<a name="l00007"></a>00007 <span class="comment">//  (1) connect to sigjsp</span>
+<a name="l00008"></a>00008 <span class="comment">//  (2) send COMM_NS_PINGER_REQUEST or REQUEST_SOUND_RECOG to sigjsp</span>
+<a name="l00009"></a>00009 <span class="comment">//</span>
+<a name="l00010"></a>00010 <span class="comment">//  by sekikawa</span>
+<a name="l00011"></a>00011 <span class="comment">//  2009/04/07</span>
+<a name="l00012"></a>00012 
+<a name="l00013"></a>00013 <span class="preprocessor">#include "<a class="code" href="_jsp_test_client_8h.html">JspTestClient.h</a>"</span>
+<a name="l00014"></a>00014 <span class="preprocessor">#include &lt;stdio.h&gt;</span>
+<a name="l00015"></a>00015 <span class="preprocessor">#include &lt;string.h&gt;</span>
+<a name="l00016"></a>00016 <span class="preprocessor">#include &lt;unistd.h&gt;</span> <span class="comment">// for usleep()</span>
+<a name="l00017"></a>00017 
+<a name="l00018"></a><a class="code" href="jsp_test_8cpp.html#fc2e344bddb1ed87bb534830eb2f71ef">00018</a> <span class="preprocessor">#define JULIUS_SP_PORT      7500</span>
+<a name="l00019"></a>00019 <span class="preprocessor"></span>
+<a name="l00020"></a><a class="code" href="julius__sp_8h.html#0ddf1224851353fc92bfbff6f499fa97">00020</a> <span class="keywordtype">int</span> <a class="code" href="jsp_test_8cpp.html#0ddf1224851353fc92bfbff6f499fa97" title="sigjspメイン関数">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[])
+<a name="l00021"></a>00021 {
+<a name="l00022"></a>00022     <span class="comment">// ----------------------------------------</span>
+<a name="l00023"></a>00023     <span class="comment">//  default port no</span>
+<a name="l00024"></a>00024     <span class="comment">// ----------------------------------------</span>
+<a name="l00025"></a>00025     std::string julius_sp_hostname = <span class="stringliteral">"localhost"</span>;
+<a name="l00026"></a>00026     <span class="keywordtype">int</span> julius_sp_portno = <a class="code" href="jsp_test_8cpp.html#fc2e344bddb1ed87bb534830eb2f71ef">JULIUS_SP_PORT</a>;
+<a name="l00027"></a>00027 
+<a name="l00028"></a>00028     <span class="comment">// ----------------------------------------</span>
+<a name="l00029"></a>00029     <span class="comment">//  help</span>
+<a name="l00030"></a>00030     <span class="comment">// ----------------------------------------</span>
+<a name="l00031"></a>00031     <span class="keywordflow">if</span> ((argc == 2) &amp;&amp; (strcmp(argv[1], <span class="stringliteral">"-h"</span>) == 0)) {
+<a name="l00032"></a>00032         fprintf(stderr, <span class="stringliteral">"usage: %s [-sh &lt;hostname&gt;] [-sp &lt;portno&gt;]\n"</span>, argv[0]);
+<a name="l00033"></a>00033         <span class="keywordflow">return</span> 0;
+<a name="l00034"></a>00034     }
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036     <span class="comment">// ----------------------------------------</span>
+<a name="l00037"></a>00037     <span class="comment">//  check for port specification</span>
+<a name="l00038"></a>00038     <span class="comment">// ----------------------------------------</span>
+<a name="l00039"></a>00039     <span class="keywordtype">bool</span> bJuliusSpHostSpecified = <span class="keyword">false</span>;
+<a name="l00040"></a>00040     <span class="keywordtype">bool</span> bJuliusSpPortSpecified = <span class="keyword">false</span>;
+<a name="l00041"></a>00041     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=1; i&lt;argc; i++)
+<a name="l00042"></a>00042     {
+<a name="l00043"></a>00043         <span class="keywordflow">if</span> (strcmp(argv[i], <span class="stringliteral">"-sh"</span>) == 0)
+<a name="l00044"></a>00044         {
+<a name="l00045"></a>00045             bJuliusSpHostSpecified = <span class="keyword">true</span>;
+<a name="l00046"></a>00046         }
+<a name="l00047"></a>00047         <span class="keywordflow">else</span> <span class="keywordflow">if</span> (strcmp(argv[i], <span class="stringliteral">"-sp"</span>) == 0)
+<a name="l00048"></a>00048         {
+<a name="l00049"></a>00049             bJuliusSpPortSpecified = <span class="keyword">true</span>;
+<a name="l00050"></a>00050         }
+<a name="l00051"></a>00051         <span class="keywordflow">else</span> <span class="keywordflow">if</span> (bJuliusSpHostSpecified)
+<a name="l00052"></a>00052         {
+<a name="l00053"></a>00053             julius_sp_hostname = argv[i];
+<a name="l00054"></a>00054             bJuliusSpHostSpecified = <span class="keyword">false</span>;
+<a name="l00055"></a>00055         }
+<a name="l00056"></a>00056         <span class="keywordflow">else</span> <span class="keywordflow">if</span> (bJuliusSpPortSpecified)
+<a name="l00057"></a>00057         {
+<a name="l00058"></a>00058             julius_sp_portno = atoi(argv[i]);
+<a name="l00059"></a>00059             bJuliusSpPortSpecified = <span class="keyword">false</span>;
+<a name="l00060"></a>00060         }
+<a name="l00061"></a>00061     }
+<a name="l00062"></a>00062 
+<a name="l00063"></a>00063     <span class="comment">// ----------------------------------------</span>
+<a name="l00064"></a>00064     <span class="comment">//  setup for connection to sigjsp</span>
+<a name="l00065"></a>00065     <span class="comment">// ----------------------------------------</span>
+<a name="l00066"></a>00066     <a class="code" href="class_jsp_1_1_test_client.html">Jsp::TestClient</a> jspClient;
+<a name="l00067"></a>00067 
+<a name="l00068"></a>00068     jspClient.<a class="code" href="class_jsp_1_1_test_client.html#41431ec60700825ffb2c4b265bcb89dd">setJuliusSpHostName</a>(julius_sp_hostname.c_str());
+<a name="l00069"></a>00069     jspClient.<a class="code" href="class_jsp_1_1_test_client.html#38d042115879fa23e087e54c049840b6">setJuliusSpPort</a>(julius_sp_portno);
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071     <span class="comment">// ----------------------------------------</span>
+<a name="l00072"></a>00072     <span class="comment">//  do command loop</span>
+<a name="l00073"></a>00073     <span class="comment">// ----------------------------------------</span>
+<a name="l00074"></a>00074     jspClient.<a class="code" href="class_jsp_1_1_test_client.html#da63c81a93d216666de67613f4430aaa">commandLoop</a>();
+<a name="l00075"></a>00075 
+<a name="l00076"></a>00076     <span class="keywordflow">return</span> 0;
+<a name="l00077"></a>00077 }
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>sigjspに対してWed Dec 2 15:46:02 2009に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

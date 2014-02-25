@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: クラス LogTransfer</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス LogTransfer</h1><!-- doxytag: class="LogTransfer" --><!-- doxytag: inherits="Logger::Listener" -->
+<p>ログ転送クラス  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_log_transfer_8h_source.html">LogTransfer.h</a>&gt;</code></p>
+<div class="dynheader">
+LogTransferに対する継承グラフ</div>
+<div class="dynsection">
+<div class="center"><img src="class_log_transfer__inherit__graph.png" border="0" usemap="#_log_transfer_inherit__map" alt="Inheritance graph"/></div>
+<map name="_log_transfer_inherit__map" id="_log_transfer_inherit__map">
+<area shape="rect" href="class_logger_1_1_listener.html" title="ログリスナークラス" alt="" coords="13,83,128,112"/><area shape="rect" href="class_logger_1_1_out_stream.html" title="出力先抽象クラス" alt="" coords="5,5,136,35"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+<div class="dynheader">
+LogTransferのコラボレーション図</div>
+<div class="dynsection">
+<div class="center"><img src="class_log_transfer__coll__graph.png" border="0" usemap="#_log_transfer_coll__map" alt="Collaboration graph"/></div>
+<map name="_log_transfer_coll__map" id="_log_transfer_coll__map">
+<area shape="rect" href="class_logger_1_1_listener.html" title="ログリスナークラス" alt="" coords="521,61,636,91"/><area shape="rect" href="class_logger_1_1_out_stream.html" title="出力先抽象クラス" alt="" coords="215,5,345,35"/><area shape="rect" href="class_server_accept_proc.html" title="クライアントの接続要求に応じるクラス" alt="" coords="515,169,643,199"/><area shape="rect" href="class_comm_data_listener.html" title="CommDataDecoder によるデータ復元結果取得リスナーインターフェース..." alt="" coords="187,59,373,88"/><area shape="rect" href="class_comm_data_listener.html" title="CommDataDecoder によるデータ復元結果取得リスナーインターフェース..." alt="" coords="215,112,345,141"/><area shape="rect" href="class_locker.html" title="pthread ミューテックスによる排他制御用ロッカークラス" alt="" coords="7,195,65,224"/><area shape="rect" href="class_service_name_server.html" title="サービスプロバイダネームサーバクラス" alt="" coords="212,232,348,261"/><area shape="rect" href="class_comm_data_decoder_1_1_packet_sender.html" title="データ送信インターフェース" alt="" coords="168,285,392,315"/><area shape="rect" href="class_sim_world_provider.html" title="シミュレーション世界インスタンスへのアクセサインターフェース..." alt="" coords="219,339,341,368"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+
+<p><a href="class_log_transfer-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>構成</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><b>Entry</b></td></tr>
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_log_transfer.html#a108927098d9ee2d3d9a6ab94b354672e">flush</a> (const std::vector&lt; <a class="el" href="struct_connection.html">Connection</a> * &gt; &amp;clients)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">蓄積したログを転送する  <a href="#a108927098d9ee2d3d9a6ab94b354672e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_log_transfer.html#a6bb37227aec08a6a24e06e1a2c901427">LogTransfer</a> (<a class="el" href="class_server_accept_proc.html">ServerAcceptProc</a> &amp;a)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#a6bb37227aec08a6a24e06e1a2c901427"></a><br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>ログ転送クラス </p>
+<p>クライアントから転送されてきたログをビューアクライアントに転送する </p>
+
+<p> <a class="el" href="_log_transfer_8h_source.html">LogTransfer.h</a> の <a class="el" href="_log_transfer_8h_source.html#l00020">20</a> 行で定義されています。</p>
+<hr/><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" id="a6bb37227aec08a6a24e06e1a2c901427"></a><!-- doxytag: member="LogTransfer::LogTransfer" ref="a6bb37227aec08a6a24e06e1a2c901427" args="(ServerAcceptProc &amp;a)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LogTransfer::LogTransfer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_server_accept_proc.html">ServerAcceptProc</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>a</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コンストラクタ </p>
+
+<p> <a class="el" href="_log_transfer_8h_source.html">LogTransfer.h</a> の <a class="el" href="_log_transfer_8h_source.html#l00034">34</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>関数</h2>
+<a class="anchor" id="a108927098d9ee2d3d9a6ab94b354672e"></a><!-- doxytag: member="LogTransfer::flush" ref="a108927098d9ee2d3d9a6ab94b354672e" args="(const std::vector&lt; Connection * &gt; &amp;clients)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LogTransfer::flush </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="struct_connection.html">Connection</a> * &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>clients</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>蓄積したログを転送する </p>
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_log_transfer_8h_source.html">LogTransfer.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:19 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

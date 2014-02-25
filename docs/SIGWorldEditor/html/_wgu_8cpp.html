@@ -1,0 +1,278 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGWorldEditor: Wgu.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Wgu.cpp</h1><code>#include &quot;<a class="el" href="_wgu_8h_source.html">Wgu.h</a>&quot;</code><br>
+<code>#include &lt;windows.h&gt;</code><br>
+
+<p>
+<a href="_wgu_8cpp_source.html">ソースコードを見る。</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>関数</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">HWND&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_wgu_8cpp.html#c79f83cb9abe2f6de1ba17f7957ff773">CreateMainDialogWindow</a> (HINSTANCE hInst, int dialogId, char *dialogClassName, WNDPROC wndProc)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">HINSTANCE&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_wgu_8cpp.html#2294a09f07cc10edc08efd2040cbee00">GetAppInstance</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">HWND&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_wgu_8cpp.html#e7d48c44eebfc4bc4aaf480c2ccb69b3">GetMainWindow</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_wgu_8cpp.html#9a0d8ea1efb91f0a75b310b79e81ecb8">SetAppInstance</a> (HINSTANCE hInst)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_wgu_8cpp.html#ef3183b3c90e4b9dcc20ecd3537b9840">SetMainWindow</a> (HWND hWnd)</td></tr>
+
+<tr><td colspan="2"><br><h2>変数</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">HBRUSH&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_wgu_8cpp.html#097103d0e7e4dfcd378b65932536db7a">g_brWindowBackground</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">HINSTANCE&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_wgu_8cpp.html#f03f36c7876ed17a936f00434a9236c4">g_hInst</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">HWND&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_wgu_8cpp.html#f6e451d84715c224b60977594e800b81">g_hWnd</a></td></tr>
+
+</table>
+<hr><h2>関数</h2>
+<a class="anchor" name="c79f83cb9abe2f6de1ba17f7957ff773"></a><!-- doxytag: member="Wgu.cpp::CreateMainDialogWindow" ref="c79f83cb9abe2f6de1ba17f7957ff773" args="(HINSTANCE hInst, int dialogId, char *dialogClassName, WNDPROC wndProc)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HWND CreateMainDialogWindow           </td>
+          <td>(</td>
+          <td class="paramtype">HINSTANCE&nbsp;</td>
+          <td class="paramname"> <em>hInst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>dialogId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>dialogClassName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">WNDPROC&nbsp;</td>
+          <td class="paramname"> <em>wndProc</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_wgu_8cpp_source.html">Wgu.cpp</a> の <a class="el" href="_wgu_8cpp_source.html#l00028">28</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="2294a09f07cc10edc08efd2040cbee00"></a><!-- doxytag: member="Wgu.cpp::GetAppInstance" ref="2294a09f07cc10edc08efd2040cbee00" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HINSTANCE GetAppInstance           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_wgu_8cpp_source.html">Wgu.cpp</a> の <a class="el" href="_wgu_8cpp_source.html#l00013">13</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="e7d48c44eebfc4bc4aaf480c2ccb69b3"></a><!-- doxytag: member="Wgu.cpp::GetMainWindow" ref="e7d48c44eebfc4bc4aaf480c2ccb69b3" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HWND GetMainWindow           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_wgu_8cpp_source.html">Wgu.cpp</a> の <a class="el" href="_wgu_8cpp_source.html#l00023">23</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="9a0d8ea1efb91f0a75b310b79e81ecb8"></a><!-- doxytag: member="Wgu.cpp::SetAppInstance" ref="9a0d8ea1efb91f0a75b310b79e81ecb8" args="(HINSTANCE hInst)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SetAppInstance           </td>
+          <td>(</td>
+          <td class="paramtype">HINSTANCE&nbsp;</td>
+          <td class="paramname"> <em>hInst</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_wgu_8cpp_source.html">Wgu.cpp</a> の <a class="el" href="_wgu_8cpp_source.html#l00008">8</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="ef3183b3c90e4b9dcc20ecd3537b9840"></a><!-- doxytag: member="Wgu.cpp::SetMainWindow" ref="ef3183b3c90e4b9dcc20ecd3537b9840" args="(HWND hWnd)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SetMainWindow           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hWnd</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_wgu_8cpp_source.html">Wgu.cpp</a> の <a class="el" href="_wgu_8cpp_source.html#l00018">18</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>変数</h2>
+<a class="anchor" name="097103d0e7e4dfcd378b65932536db7a"></a><!-- doxytag: member="Wgu.cpp::g_brWindowBackground" ref="097103d0e7e4dfcd378b65932536db7a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HBRUSH <a class="el" href="_wgu_8cpp.html#097103d0e7e4dfcd378b65932536db7a">g_brWindowBackground</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_wgu_8cpp_source.html">Wgu.cpp</a> の <a class="el" href="_wgu_8cpp_source.html#l00006">6</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f03f36c7876ed17a936f00434a9236c4"></a><!-- doxytag: member="Wgu.cpp::g_hInst" ref="f03f36c7876ed17a936f00434a9236c4" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HINSTANCE <a class="el" href="_wgu_8cpp.html#f03f36c7876ed17a936f00434a9236c4">g_hInst</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_wgu_8cpp_source.html">Wgu.cpp</a> の <a class="el" href="_wgu_8cpp_source.html#l00004">4</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f6e451d84715c224b60977594e800b81"></a><!-- doxytag: member="Wgu.cpp::g_hWnd" ref="f6e451d84715c224b60977594e800b81" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HWND <a class="el" href="_wgu_8cpp.html#f6e451d84715c224b60977594e800b81">g_hWnd</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_wgu_8cpp_source.html">Wgu.cpp</a> の <a class="el" href="_wgu_8cpp_source.html#l00005">5</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGWorldEditorに対してThu Jun 9 10:52:59 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

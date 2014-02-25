@@ -1,0 +1,892 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGWorldEditor: クラス Sgv::XMLEntity</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_sgv.html">Sgv</a>::<a class="el" href="class_sgv_1_1_x_m_l_entity.html">XMLEntity</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Sgv::XMLEntity</h1><!-- doxytag: class="Sgv::XMLEntity" -->XMLエンティティ.  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_sgv_x_m_l_entity_8h_source.html">SgvXMLEntity.h</a>&gt;</code>
+<p>
+
+<p>
+<a href="class_sgv_1_1_x_m_l_entity-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity.html#e2dbd21da9cd002c11fb01cb89427437">clearAllFlag_DefinedInWorldFile</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">このエンティティのすべての世界内定義存在フラグをクリアする  <a href="#e2dbd21da9cd002c11fb01cb89427437"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">XERCES_CPP_NAMESPACE::DOMElement *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity.html#667553dee002cb880e281d77dd2182f6">createInstNode</a> (XERCES_CPP_NAMESPACE::DOMDocument *doc)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">このエンティティから世界XMLファイル用の instanciateノードを作る  <a href="#667553dee002cb880e281d77dd2182f6"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity.html#7425cb872659a4ffaa99217e0f8caed3">deleteAttr</a> (const char *attrName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">属性を削除する  <a href="#7425cb872659a4ffaa99217e0f8caed3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity.html#e7ed71daf1c437c11a6157e081072240">dump</a> (FILE *fp)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity.html#8636bfe3efedfee2a60502e6063e3a5f">getAttrName</a> (int i)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">i番目の属性名(set-attr-valueタグ)を返す  <a href="#8636bfe3efedfee2a60502e6063e3a5f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::vector&lt; std::string &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity.html#dd06a7429795ba2623ec1da834bfe358">getAttrNames</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">このエンティティの属性名(set-attr-valueタグ)の リストを返す  <a href="#dd06a7429795ba2623ec1da834bfe358"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity.html#9ce5b2d1cd2f5d4d856243cc03ae5e08">getAttrValue</a> (const char *attrName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">属性値(set-attr-valueタグ)を文字列で返す  <a href="#9ce5b2d1cd2f5d4d856243cc03ae5e08"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity.html#3e41bf8a4d4c610df441ab9c0fc64823">getAttrValue</a> (int i)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">i番目の属性値(set-attr-valueタグ)を返す  <a href="#3e41bf8a4d4c610df441ab9c0fc64823"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity.html#27d54507b0b7e65dd5dafaddf3a8ea1b">getAttrValueDouble</a> (const char *attrName, double defaultValue)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">属性値(set-attr-valueタグ)を実数で返す  <a href="#27d54507b0b7e65dd5dafaddf3a8ea1b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity.html#6e6f17052efcd122f2b97d998beef262">getAttrValueInt</a> (const char *attrName, int defaultValue)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">属性値(set-attr-valueタグ)を整数で返す  <a href="#6e6f17052efcd122f2b97d998beef262"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity.html#b2de258903ed4fd1addacf5ebc96dbe1">getClassName</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">このエンティティのクラス名を返す  <a href="#b2de258903ed4fd1addacf5ebc96dbe1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity.html#1899209386005ae480f7a2199f2f9cef">getName</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">このエンティティ名を返す  <a href="#1899209386005ae480f7a2199f2f9cef"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity.html#39d24df7a3b6cce9f6183aeb1207d820">hasAttr</a> (const char *attrName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">属性が存在するか調べる  <a href="#39d24df7a3b6cce9f6183aeb1207d820"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity.html#bc685149e9f5bd6def1e38332004aee9">isDefinedInWorldFile</a> (const char *attrName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">属性が世界ファイル内で定義されているかを調べる  <a href="#bc685149e9f5bd6def1e38332004aee9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity.html#f20fd1e8390c33b82956557f533f8a46">isModified</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">このエンティティの属性値が変更されたか否かを調べる  <a href="#f20fd1e8390c33b82956557f533f8a46"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity.html#e9ac9e3686dd67dda8b69007cc138881">readInstNode</a> (XERCES_CPP_NAMESPACE::DOMNode *instNode, std::vector&lt; std::string &gt; &amp;definedAttrNames)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">世界XMLファイルのinstanciateノードを読み込む  <a href="#e9ac9e3686dd67dda8b69007cc138881"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity.html#fb1ec7f994b1c6501e969de2e3a2faac">setAttrValue</a> (const char *attrName, const char *attrValue)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">属性値を設定する．  <a href="#fb1ec7f994b1c6501e969de2e3a2faac"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity.html#812f880e018195c021b43fe3d5771e7e">setAttrValueDouble</a> (const char *attrName, double value)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">属性値を実数で設定する．  <a href="#812f880e018195c021b43fe3d5771e7e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity.html#068950b1c5ddc8db5195365ee21250f2">setAttrValueInt</a> (const char *attrName, int value)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">属性値を整数で設定する．  <a href="#068950b1c5ddc8db5195365ee21250f2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity.html#f2845123b2e94459a41ce567b021544e">setClassName</a> (const char *className)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">このエンティティのクラス名を設定する  <a href="#f2845123b2e94459a41ce567b021544e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity.html#97a0f37c84967ce98844131659323b97">setDefinedInWorldFile</a> (const char *attrName, bool bDefinedInWorldFile)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">属性の世界内定義の存在フラグを設定する  <a href="#97a0f37c84967ce98844131659323b97"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity.html#9e2a0116c3d2800175df66c543778db0">setModified</a> (bool b)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティの変更フラグを設定する  <a href="#9e2a0116c3d2800175df66c543778db0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity.html#b21070dede3b519b2a1eba115311013a">XMLEntity</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#b21070dede3b519b2a1eba115311013a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity.html#a1765a15d59ee822a8addbb6db548bb8">‾XMLEntity</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#a1765a15d59ee822a8addbb6db548bb8"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+XMLエンティティ. 
+<p>
+世界XMLファイル内の実体に相当． またはXMLEntityClassから生成されるインスタンスと言ってもよい． 
+<p> <a class="el" href="_sgv_x_m_l_entity_8h_source.html">SgvXMLEntity.h</a> の <a class="el" href="_sgv_x_m_l_entity_8h_source.html#l00023">23</a> 行で定義されています。</p>
+<hr><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" name="b21070dede3b519b2a1eba115311013a"></a><!-- doxytag: member="Sgv::XMLEntity::XMLEntity" ref="b21070dede3b519b2a1eba115311013a" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::XMLEntity::XMLEntity           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html">SgvXMLEntity.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html#l00016">16</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>関数</h2>
+<a class="anchor" name="e2dbd21da9cd002c11fb01cb89427437"></a><!-- doxytag: member="Sgv::XMLEntity::clearAllFlag_DefinedInWorldFile" ref="e2dbd21da9cd002c11fb01cb89427437" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::XMLEntity::clearAllFlag_DefinedInWorldFile           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+このエンティティのすべての世界内定義存在フラグをクリアする 
+<p>
+
+<p> <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html">SgvXMLEntity.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html#l00300">300</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="667553dee002cb880e281d77dd2182f6"></a><!-- doxytag: member="Sgv::XMLEntity::createInstNode" ref="667553dee002cb880e281d77dd2182f6" args="(XERCES_CPP_NAMESPACE::DOMDocument *doc)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">XERCES_CPP_NAMESPACE::DOMElement* Sgv::XMLEntity::createInstNode           </td>
+          <td>(</td>
+          <td class="paramtype">XERCES_CPP_NAMESPACE::DOMDocument *&nbsp;</td>
+          <td class="paramname"> <em>doc</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+このエンティティから世界XMLファイル用の instanciateノードを作る 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>doc</em>&nbsp;</td><td>[i] DOMDocumentオブジェクト</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>生成されたinstanciateノード </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="7425cb872659a4ffaa99217e0f8caed3"></a><!-- doxytag: member="Sgv::XMLEntity::deleteAttr" ref="7425cb872659a4ffaa99217e0f8caed3" args="(const char *attrName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::XMLEntity::deleteAttr           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>attrName</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+属性を削除する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>attrName</em>&nbsp;</td><td>[i] 属性名 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html">SgvXMLEntity.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html#l00241">241</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="e7ed71daf1c437c11a6157e081072240"></a><!-- doxytag: member="Sgv::XMLEntity::dump" ref="e7ed71daf1c437c11a6157e081072240" args="(FILE *fp)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::XMLEntity::dump           </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&nbsp;</td>
+          <td class="paramname"> <em>fp</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html">SgvXMLEntity.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html#l00330">330</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="8636bfe3efedfee2a60502e6063e3a5f"></a><!-- doxytag: member="Sgv::XMLEntity::getAttrName" ref="8636bfe3efedfee2a60502e6063e3a5f" args="(int i)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* Sgv::XMLEntity::getAttrName           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>i</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+i番目の属性名(set-attr-valueタグ)を返す 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>i</em>&nbsp;</td><td>[i] インデックス(0&lt;=i&lt;countAttrs())</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>属性名 </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="dd06a7429795ba2623ec1da834bfe358"></a><!-- doxytag: member="Sgv::XMLEntity::getAttrNames" ref="dd06a7429795ba2623ec1da834bfe358" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::string &gt; Sgv::XMLEntity::getAttrNames           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+このエンティティの属性名(set-attr-valueタグ)の リストを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>属性名のリスト </dd></dl>
+
+<p> <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html">SgvXMLEntity.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html#l00153">153</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="9ce5b2d1cd2f5d4d856243cc03ae5e08"></a><!-- doxytag: member="Sgv::XMLEntity::getAttrValue" ref="9ce5b2d1cd2f5d4d856243cc03ae5e08" args="(const char *attrName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * Sgv::XMLEntity::getAttrValue           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>attrName</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+属性値(set-attr-valueタグ)を文字列で返す 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>attrName</em>&nbsp;</td><td>[i] 属性名</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>値（文字列） 存在しない場合はNULLが返る </dd></dl>
+
+<p> <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html">SgvXMLEntity.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html#l00166">166</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="3e41bf8a4d4c610df441ab9c0fc64823"></a><!-- doxytag: member="Sgv::XMLEntity::getAttrValue" ref="3e41bf8a4d4c610df441ab9c0fc64823" args="(int i)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* Sgv::XMLEntity::getAttrValue           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>i</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+i番目の属性値(set-attr-valueタグ)を返す 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>i</em>&nbsp;</td><td>[i] インデックス(0&lt;=i&lt;countAttrs())</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>属性値 </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="27d54507b0b7e65dd5dafaddf3a8ea1b"></a><!-- doxytag: member="Sgv::XMLEntity::getAttrValueDouble" ref="27d54507b0b7e65dd5dafaddf3a8ea1b" args="(const char *attrName, double defaultValue)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Sgv::XMLEntity::getAttrValueDouble           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>attrName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>defaultValue</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+属性値(set-attr-valueタグ)を実数で返す 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>attrName</em>&nbsp;</td><td>[i] 属性名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>defaultValue</em>&nbsp;</td><td>[i] 指定属性が存在しなかったときのデフォルト値</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>値（実数） </dd></dl>
+
+<p> <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html">SgvXMLEntity.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html#l00182">182</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="6e6f17052efcd122f2b97d998beef262"></a><!-- doxytag: member="Sgv::XMLEntity::getAttrValueInt" ref="6e6f17052efcd122f2b97d998beef262" args="(const char *attrName, int defaultValue)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Sgv::XMLEntity::getAttrValueInt           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>attrName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>defaultValue</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+属性値(set-attr-valueタグ)を整数で返す 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>attrName</em>&nbsp;</td><td>[i] 属性名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>defaultValue</em>&nbsp;</td><td>[i] 指定属性が存在しなかったときのデフォルト値</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>値（整数） </dd></dl>
+
+<p> <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html">SgvXMLEntity.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html#l00189">189</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b2de258903ed4fd1addacf5ebc96dbe1"></a><!-- doxytag: member="Sgv::XMLEntity::getClassName" ref="b2de258903ed4fd1addacf5ebc96dbe1" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * Sgv::XMLEntity::getClassName           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+このエンティティのクラス名を返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>クラス名 </dd></dl>
+
+<p> <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html">SgvXMLEntity.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html#l00143">143</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="1899209386005ae480f7a2199f2f9cef"></a><!-- doxytag: member="Sgv::XMLEntity::getName" ref="1899209386005ae480f7a2199f2f9cef" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * Sgv::XMLEntity::getName           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+このエンティティ名を返す 
+<p>
+getAttrValue("name")と同じ<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>エンティティ名 </dd></dl>
+
+<p> <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html">SgvXMLEntity.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html#l00148">148</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="39d24df7a3b6cce9f6183aeb1207d820"></a><!-- doxytag: member="Sgv::XMLEntity::hasAttr" ref="39d24df7a3b6cce9f6183aeb1207d820" args="(const char *attrName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::XMLEntity::hasAttr           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>attrName</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+属性が存在するか調べる 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>attrName</em>&nbsp;</td><td>[i] 属性名</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=存在する), false(=存在しない) </dd></dl>
+
+<p> <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html">SgvXMLEntity.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html#l00234">234</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="bc685149e9f5bd6def1e38332004aee9"></a><!-- doxytag: member="Sgv::XMLEntity::isDefinedInWorldFile" ref="bc685149e9f5bd6def1e38332004aee9" args="(const char *attrName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::XMLEntity::isDefinedInWorldFile           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>attrName</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+属性が世界ファイル内で定義されているかを調べる 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>attrName</em>&nbsp;</td><td>[i] 属性名</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=定義されている), false(=定義されていない)</dd></dl>
+属性名が存在しない場合はfalseが返る． 
+<p> <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html">SgvXMLEntity.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html#l00269">269</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f20fd1e8390c33b82956557f533f8a46"></a><!-- doxytag: member="Sgv::XMLEntity::isModified" ref="f20fd1e8390c33b82956557f533f8a46" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::XMLEntity::isModified           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+このエンティティの属性値が変更されたか否かを調べる 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=変更されている), false(=変更されていない) </dd></dl>
+
+<p> <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html">SgvXMLEntity.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html#l00259">259</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="e9ac9e3686dd67dda8b69007cc138881"></a><!-- doxytag: member="Sgv::XMLEntity::readInstNode" ref="e9ac9e3686dd67dda8b69007cc138881" args="(XERCES_CPP_NAMESPACE::DOMNode *instNode, std::vector&lt; std::string &gt; &amp;definedAttrNames)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::XMLEntity::readInstNode           </td>
+          <td>(</td>
+          <td class="paramtype">XERCES_CPP_NAMESPACE::DOMNode *&nbsp;</td>
+          <td class="paramname"> <em>instNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::string &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>definedAttrNames</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+世界XMLファイルのinstanciateノードを読み込む 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>instNode</em>&nbsp;</td><td>[i] instanciateノード </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>definedAttrNames</em>&nbsp;</td><td>[i] このエンティティクラスで定義されている属性名のリスト （エンティティをXMLファイルから読み出したとき、 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html">SgvXMLEntity.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html#l00035">35</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="fb1ec7f994b1c6501e969de2e3a2faac"></a><!-- doxytag: member="Sgv::XMLEntity::setAttrValue" ref="fb1ec7f994b1c6501e969de2e3a2faac" args="(const char *attrName, const char *attrValue)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::XMLEntity::setAttrValue           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>attrName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>attrValue</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+属性値を設定する． 
+<p>
+属性名が存在しないときは、追加する．<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>attrName</em>&nbsp;</td><td>[i] 属性名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>attrValue</em>&nbsp;</td><td>[i] 属性値 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html">SgvXMLEntity.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html#l00196">196</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="812f880e018195c021b43fe3d5771e7e"></a><!-- doxytag: member="Sgv::XMLEntity::setAttrValueDouble" ref="812f880e018195c021b43fe3d5771e7e" args="(const char *attrName, double value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::XMLEntity::setAttrValueDouble           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>attrName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>value</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+属性値を実数で設定する． 
+<p>
+属性名が存在しないときは、追加する．<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>attrName</em>&nbsp;</td><td>[i] 属性名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>value</em>&nbsp;</td><td>[i] 属性値（実数） </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html">SgvXMLEntity.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html#l00216">216</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="068950b1c5ddc8db5195365ee21250f2"></a><!-- doxytag: member="Sgv::XMLEntity::setAttrValueInt" ref="068950b1c5ddc8db5195365ee21250f2" args="(const char *attrName, int value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::XMLEntity::setAttrValueInt           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>attrName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>value</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+属性値を整数で設定する． 
+<p>
+属性名が存在しないときは、追加する．<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>attrName</em>&nbsp;</td><td>[i] 属性名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>value</em>&nbsp;</td><td>[i] 属性値（整数） </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html">SgvXMLEntity.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html#l00225">225</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f2845123b2e94459a41ce567b021544e"></a><!-- doxytag: member="Sgv::XMLEntity::setClassName" ref="f2845123b2e94459a41ce567b021544e" args="(const char *className)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::XMLEntity::setClassName           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>className</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+このエンティティのクラス名を設定する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>className</em>&nbsp;</td><td>[i] クラス名 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html">SgvXMLEntity.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html#l00138">138</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="97a0f37c84967ce98844131659323b97"></a><!-- doxytag: member="Sgv::XMLEntity::setDefinedInWorldFile" ref="97a0f37c84967ce98844131659323b97" args="(const char *attrName, bool bDefinedInWorldFile)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::XMLEntity::setDefinedInWorldFile           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>attrName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bDefinedInWorldFile</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+属性の世界内定義の存在フラグを設定する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>attrName</em>&nbsp;</td><td>[i] 属性名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bDefinedInWorldFile</em>&nbsp;</td><td>[i] 存在フラグ </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html">SgvXMLEntity.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html#l00285">285</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="9e2a0116c3d2800175df66c543778db0"></a><!-- doxytag: member="Sgv::XMLEntity::setModified" ref="9e2a0116c3d2800175df66c543778db0" args="(bool b)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::XMLEntity::setModified           </td>
+          <td>(</td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>b</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+エンティティの変更フラグを設定する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>b</em>&nbsp;</td><td>[i] true(=変更された), false(=変更されていない) </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html">SgvXMLEntity.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html#l00264">264</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="a1765a15d59ee822a8addbb6db548bb8"></a><!-- doxytag: member="Sgv::XMLEntity::‾XMLEntity" ref="a1765a15d59ee822a8addbb6db548bb8" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::XMLEntity::‾XMLEntity           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+デストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html">SgvXMLEntity.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_8cpp_source.html#l00020">20</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_sgv_x_m_l_entity_8h_source.html">SgvXMLEntity.h</a><li><a class="el" href="_sgv_x_m_l_entity_8cpp_source.html">SgvXMLEntity.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGWorldEditorに対してThu Jun 9 10:53:01 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

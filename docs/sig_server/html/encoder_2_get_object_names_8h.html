@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: GetObjectNames.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>GetObjectNames.h</h1><code>#include &lt;string&gt;</code><br/>
+<code>#include &lt;vector&gt;</code><br/>
+<code>#include &quot;<a class="el" href="_encoder_8h_source.html">Encoder.h</a>&quot;</code><br/>
+<div class="dynheader">
+encoder/GetObjectNames.hのインクルード依存関係図</div>
+<div class="dynsection">
+<div class="center"><img src="encoder_2_get_object_names_8h__incl.png" border="0" usemap="#_get_object_names_8h_map" alt=""/></div>
+<map name="_get_object_names_8h_map" id="_get_object_names_8h">
+<area shape="rect" href="_encoder_8h.html" title="Encoder.h" alt="" coords="223,83,303,112"/><area shape="rect" href="systemdef_8h.html" title="systemdef.h" alt="" coords="83,160,176,189"/><area shape="rect" href="_comm_data_type_8h.html" title="CommDataType.h" alt="" coords="200,160,325,189"/><area shape="rect" href="_comm_data_def_8h.html" title="CommDataDef.h" alt="" coords="349,160,467,189"/></map>
+</div>
+<div class="dynheader">
+このグラフは、どのファイルから直接、間接的にインクルードされているかを示しています。</div>
+<div class="dynsection">
+<div class="center"><img src="encoder_2_get_object_names_8h__dep__incl.png" border="0" usemap="#_get_object_names_8hdep_map" alt=""/></div>
+<map name="_get_object_names_8hdep_map" id="_get_object_names_8hdep">
+<area shape="rect" href="_comm_data_encoder_8h.html" title="CommDataEncoder.h" alt="" coords="5,83,149,112"/><area shape="rect" href="event_2_get_object_names_8h.html" title="GetObjectNames.h" alt="" coords="197,83,328,112"/><area shape="rect" href="_recv_event_8h.html" title="RecvEvent.h" alt="" coords="215,160,311,189"/><area shape="rect" href="_comm_data_listener_8h.html" title="CommDataListener.h" alt="" coords="191,237,335,267"/></map>
+</div>
+
+<p><a href="encoder_2_get_object_names_8h_source.html">ソースコードを見る。</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>構成</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_1_1_get_entity_names_request.html">CommData::GetEntityNamesRequest</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティ名取得リクエストエンコーダークラス  <a href="class_comm_data_1_1_get_entity_names_request.html#_details">[詳細]</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_1_1_get_object_names_request.html">CommData::GetObjectNamesRequest</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">オブジェクト名取得リクエストエンコーダークラス  <a href="class_comm_data_1_1_get_object_names_request.html#_details">[詳細]</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_1_1_get_object_names_result.html">CommData::GetObjectNamesResult</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティ名取得結果エンコーダークラス  <a href="class_comm_data_1_1_get_object_names_result.html#_details">[詳細]</a><br/></td></tr>
+<tr><td colspan="2"><h2>ネームスペース</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">namespace &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_comm_data.html">CommData</a></td></tr>
+<tr><td colspan="2"><h2>型定義</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
+<a class="el" href="class_comm_data_1_1_get_entity_names_request.html">CommData::GetEntityNamesRequest</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="encoder_2_get_object_names_8h.html#aecb47ec060d7861c122e06c10aa52610">CommRequestGetEntityNamesEncoder</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
+<a class="el" href="class_comm_data_1_1_get_object_names_result.html">CommData::GetObjectNamesResult</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="encoder_2_get_object_names_8h.html#af5c2a525c828a43717f05e5ee84abd5e">CommResultGetObjectNamesEncoder</a></td></tr>
+</table>
+<hr/><h2>型定義</h2>
+<a class="anchor" id="aecb47ec060d7861c122e06c10aa52610"></a><!-- doxytag: member="encoder/GetObjectNames.h::CommRequestGetEntityNamesEncoder" ref="aecb47ec060d7861c122e06c10aa52610" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="class_comm_data_1_1_get_entity_names_request.html">CommData::GetEntityNamesRequest</a> <a class="el" href="class_comm_data_1_1_get_entity_names_request.html">CommRequestGetEntityNamesEncoder</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="encoder_2_get_object_names_8h_source.html">encoder/GetObjectNames.h</a> の <a class="el" href="encoder_2_get_object_names_8h_source.html#l00093">93</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="af5c2a525c828a43717f05e5ee84abd5e"></a><!-- doxytag: member="encoder/GetObjectNames.h::CommResultGetObjectNamesEncoder" ref="af5c2a525c828a43717f05e5ee84abd5e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="class_comm_data_1_1_get_object_names_result.html">CommData::GetObjectNamesResult</a> <a class="el" href="class_comm_data_1_1_get_object_names_result.html">CommResultGetObjectNamesEncoder</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="encoder_2_get_object_names_8h_source.html">encoder/GetObjectNames.h</a> の <a class="el" href="encoder_2_get_object_names_8h_source.html#l00095">95</a> 行で定義されています。</p>
+
+</div>
+</div>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:18 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

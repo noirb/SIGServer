@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<body>
+  <define-param name="BODY_LINK1" value="0.125" />
+  <define-param name="BODY_LINK2" value="0.035" />
+  <define-param name="BODY_DIAM" value="0.01" />
+  <define-param name="ARM_LINK1" value="0.111" />
+  <define-param name="ARM_LINK2" value="0.111" />
+  <define-param name="ARM_DIAM" value="0.01" />
+  <define-param name="WAIST_LINK1" value="0.055" />
+  <define-param name="WAIST_LINK2" value="0.035"></define-param>
+  <define-param name="LEG_LINK1" value="0.039"></define-param>
+  <define-param name="LEG_LINK2" value="0.105"></define-param>
+  <define-param name="LEG_LINK3" value="0.105"></define-param>
+  <define-param name="LEG_DIAM" value="0.01"></define-param>
+  <define-param name="FOOT_WIDTH" value="0.20"></define-param>
+  <define-param name="HEAD_LINK1" value="0.103"></define-param>
+  <define-param name="HEAD_LINK2" value="0.015"></define-param>
+  <define-param name="HEAD_RADIUS" value="0.03"></define-param>
+  <joint name="WAIST">
+    <type>free</type>
+    <translation>0 0 0</translation>
+    <children>
+      <segment name="body">
+        <children>
+          <transform>
+            <translation>0 WAIST_LINK1/2 0</translation>
+            <shape>
+              <geometry type="box">
+                <size>BODY_DIAM BODY_LINK1 BODY_DIAM</size>
+              </geometry>
+            </shape>
+          </transform>
+        </children>
+      </segment>
+      <!--body-->
+      <joint name="CHEST">
+        <type>fixed</type>
+        <translation>0 BODY_LINK1 0</translation>
+        <children>
+          <segment name="CHEST_LINK">
+            <children>
+              <transform>
+                <translation>0 (0-BODY_LINK1)/2 0</translation>
+                <shape>
+                  <geometry type="box">
+                    <size>BODY_DIAM BODY_LINK1 BODY_DIAM</size>
+                  </geometry>
+                </shape>
+              </transform>
+            </children>
+          </segment>
+          <!-- WAIST_LINK1 -->
+          <joint name="RARM_JOINT0">
+            <type>hinge</type>
+            <axis>1 0 0</axis>
+            <translation>-ARM_LINK1 0 0</translation>
+            <children>
+              <segment name="RARM_LINK0">
+                <children>
+                  <transform>
+                    <translation>ARM_LINK1/2 0 0</translation>
+                    <shape>
+                      <geometry type="box">
+                        <size>ARM_LINK1 ARM_DIAM ARM_DIAM</size>
+                      </geometry>
+                    </shape>
+                  </transform>
+                </children>
+              </segment>
+              <joint name="RARM_JOINT3">
+                <type>hinge</type>
+                <translation>0 0-ARM_LINK2 0</translation>
+                <children>
+                  <segment name="RARM_LINK1">
+                    <children>
+                      <transform>
+                        <translation>0 ARM_LINK2/2 0</translation>
+                        <shape>
+                          <geometry type="box">
+                            <size>ARM_DIAM ARM_LINK2 ARM_DIAM</size>
+                          </geometry>
+                        </shape>
+                      </transform>
+                    </children>
+                  </segment>
+                </children>
+              </joint>
+              <!-- RARM_JOINT3 -->
+            </children>
+          </joint>
+          <!-- RARM_JOINT0 -->
+          <joint name="LARM_JOINT0">
+            <type>hinge</type>
+            <axis>1 0 0</axis>
+            <translation>ARM_LINK1 0 0</translation>
+            <children>
+              <segment name="LARM_LINK0">
+                <children>
+                  <transform>
+                    <translation>-(ARM_LINK1/2) 0 0</translation>
+                    <shape>
+                      <geometry type="box">
+                        <size>ARM_LINK1 ARM_DIAM ARM_DIAM</size>
+                      </geometry>
+                    </shape>
+                  </transform>
+                </children>
+              </segment>
+              <joint name="LARM_JOINT3">
+                <type>hinge</type>
+                <translation>0 0-ARM_LINK2 0</translation>
+                <children>
+                  <segment name="LARM_LINK1">
+                    <children>
+                      <transform>
+                        <translation>0 ARM_LINK2/2 0</translation>
+                        <shape>
+                          <geometry type="box">
+                            <size>ARM_DIAM ARM_LINK2 ARM_DIAM</size>
+                          </geometry>
+                        </shape>
+                      </transform>
+                    </children>
+                  </segment>
+                </children>
+              </joint>
+              <!-- LARM_JOINT3 -->
+            </children>
+          </joint>
+          <!-- LARM_JOINT0 -->
+          <joint name="HEAD_JOINT1">
+            <type>fixed</type>
+            <translation>0 HEAD_LINK1 0</translation>
+            <children>
+              <joint name="HEAD_JOINT2">
+                <type>fixed</type>
+                <translation>0 0 HEAD_LINK2</translation>
+                <children>
+                  <segment name="HEAD_SPHERE">
+                    <children>
+                      <transform>
+                        <translation>0 HEAD_RADIUS 0</translation>
+                        <shape>
+                          <geometry type="sphere">
+                            <radius>HEAD_RADIUS</radius>
+                          </geometry>
+                        </shape>
+                      </transform>
+                    </children>
+                  </segment>
+                </children>
+              </joint>
+              <!--HEAD_JOINT2 -->
+            </children>
+          </joint>
+          <!--HEAD_JOINT1-->
+        </children>
+      </joint>
+      <!--CHEST -->
+      <joint name="BODY_JOINT1">
+        <type>fixed</type>
+        <translation>0 -WAIST_LINK1 0</translation>
+        <children>
+          <segment name="BODY_LINK1">
+            <children>
+              <transform>
+                <translation>0 WAIST_LINK1/2 0</translation>
+                <shape>
+                  <geometry type="box">
+                    <size>BODY_DIAM WAIST_LINK1 BODY_DIAM</size>
+                  </geometry>
+                </shape>
+              </transform>
+            </children>
+          </segment>
+          <joint name="RLEG_JOINT0">
+            <type>fixed</type>
+            <translation>0 0 WAIST_LINK2</translation>
+            <children>
+              <segment name="RLEG_LINK1">
+                <children>
+                  <transform>
+                    <translation>-LEG_LINK1/2 0 0</translation>
+                    <shape>
+                      <geometry type="box">
+                        <size>LEG_LINK1 LEG_DIAM LEG_DIAM</size>
+                      </geometry>
+                    </shape>
+                  </transform>
+                </children>
+              </segment>
+              <!--RLEG_LINK1-->
+              <joint name="RLEG_JOINT1">
+                <type>hinge</type>
+                <translation>-LEG_LINK1 0 0</translation>
+                <axis>0 1 0</axis>
+                <children>
+                  <joint name="RLEG_JOINT3">
+                    <type>hinge</type>
+                    <translation>0 0 0</translation>
+                    <axis>1 0 0</axis>
+                    <children>
+                      <segment name="RLEG_LINK2">
+                        <children>
+                          <transform>
+                            <translation>0 -LEG_LINK2/2 0</translation>
+                            <shape>
+                              <geometry type="box">
+                                <size>LEG_DIAM LEG_LINK2 LEG_DIAM</size>
+                              </geometry>
+                            </shape>
+                          </transform>
+                        </children>
+                      </segment>
+                      <joint name="RLEG_JOINT4">
+                        <type>hinge</type>
+                        <translation>0 0-LEG_LINK2 0</translation>
+                        <axis>1 0 0</axis>
+                        <children>
+                          <segment name="RLEG_LINK3">
+                            <children>
+                              <transform>
+                                <translation>0 -LEG_LINK3/2 0</translation>
+                                <shape>
+                                  <geometry type="box">
+                                    <size>LEG_DIAM LEG_LINK3 LEG_DIAM</size>
+                                  </geometry>
+                                </shape>
+                              </transform>
+                            </children>
+                          </segment>
+                          <joint name="RLEG_JOINT5">
+                            <type>hinge</type>
+                            <translation>0 0-LEG_LINK3 0</translation>
+                            <axis>1 0 0</axis>
+                            <children>
+                              <joint name="RLEG_JOINT6">
+                                <type>fixed</type>
+                                <translation>0 0 0</translation>
+                                <children>
+                                  <segment name="RLEG_LINK4">
+                                    <children>
+                                      <transform>
+                                        <translation>0 0 0</translation>
+                                        <shape>
+                                          <geometry type="box">
+                                            <size>FOOT_WIDTH 0.01 FOOT_WIDTH</size>
+                                          </geometry>
+                                        </shape>
+                                      </transform>
+                                    </children>
+                                  </segment>
+                                </children>
+                              </joint>
+                              <!--RLEG_JOINT6-->
+                            </children>
+                          </joint>
+                          <!--RLEG_JOINT5-->
+                        </children>
+                      </joint>
+                      <!--RLEG_JOINT4-->
+                    </children>
+                  </joint>
+                  <!--RLEG_JOINT3-->
+                </children>
+              </joint>
+              <!--RLEG_JOINT1-->
+            </children>
+          </joint>
+          <!--RLEG_JOINT0-->
+          <joint name="LLEG_JOINT0">
+            <type>fixed</type>
+            <translation>0 0 WAIST_LINK2</translation>
+            <children>
+              <segment name="LLEG_LINK1">
+                <children>
+                  <transform>
+                    <translation>LEG_LINK1/2 0 0</translation>
+                    <shape>
+                      <geometry type="box">
+                        <size>LEG_LINK1 LEG_DIAM LEG_DIAM</size>
+                      </geometry>
+                    </shape>
+                  </transform>
+                </children>
+              </segment>
+              <joint name="LLEG_JOINT1">
+                <type>hinge</type>
+                <translation>LEG_LINK1 0 0</translation>
+                <axis>0 1 0</axis>
+                <children>
+                  <joint name="LLEG_JOINT3">
+                    <type>hinge</type>
+                    <translation>0 0 0</translation>
+                    <axis>1 0 0</axis>
+                    <children>
+                      <segment name="LLEG_LINK2">
+                        <children>
+                          <transform>
+                            <translation>0 -LEG_LINK2/2 0</translation>
+                            <shape>
+                              <geometry type="box">
+                                <size>LEG_DIAM LEG_LINK2 LEG_DIAM</size>
+                              </geometry>
+                            </shape>
+                          </transform>
+                        </children>
+                      </segment>
+                      <joint name="LLEG_JOINT4">
+                        <type>hinge</type>
+                        <translation>0 0-LEG_LINK2 0</translation>
+                        <axis>1 0 0</axis>
+                        <children>
+                          <segment name="LLEG_LINK3">
+                            <children>
+                              <transform>
+                                <translation>0 -LEG_LINK3/2 0</translation>
+                                <shape>
+                                  <geometry type="box">
+                                    <size>LEG_DIAM LEG_LINK3 LEG_DIAM</size>
+                                  </geometry>
+                                </shape>
+                              </transform>
+                            </children>
+                          </segment>
+                          <joint name="LLEG_JOINT5">
+                            <type>hinge</type>
+                            <translation>0 0-LEG_LINK3 0</translation>
+                            <axis>1 0 0</axis>
+                            <children>
+                              <joint name="LLEG_JOINT6">
+                                <type>fixed</type>
+                                <translation>0 0 0</translation>
+                                <children>
+                                  <segment name="LLEG_LINK4">
+                                    <children>
+                                      <transform>
+                                        <translation>0 0 0</translation>
+                                        <shape>
+                                          <geometry type="box">
+                                            <size>FOOT_WIDTH 0.01 FOOT_WIDTH</size>
+                                          </geometry>
+                                        </shape>
+                                      </transform>
+                                    </children>
+                                  </segment>
+                                </children>
+                              </joint>
+                              <!--LLEG_JOINT6-->
+                            </children>
+                          </joint>
+                          <!--LLEG_JOINT5-->
+                        </children>
+                      </joint>
+                      <!--LLEG_JOINT4-->
+                    </children>
+                  </joint>
+                  <!--LLEG_JOINT3-->
+                </children>
+              </joint>
+              <!--LLEG_JOINT1-->
+            </children>
+          </joint>
+          <!--LLEG_JOINT0-->
+        </children>
+      </joint>
+      <!--BODY_JOINT1-->
+    </children>
+  </joint>
+  <!-- WAIST -->
+</body>

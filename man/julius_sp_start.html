@@ -1,0 +1,72 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
+<link rel="stylesheet" type="text/css" href="prj.css"/>
+<title>音声認識サービスプロバイダの起動</title>
+</head>
+
+<body>
+
+<p align="center"><h1>音声認識サービスプロバイダの起動</h1>
+
+<p>SIGVerseシステムは<a href="http://julius.sourceforge.jp/">julius</a>を用いた音声認識サービスプロバイダを用意しています．エージェントのコントローラは，音声認識サービスにより，音声データから認識されたテキストを得ることができます．</p>
+
+<p>SIGVerseシステムの用意している音声認識サービスプロバイダはsigjspです．sigjspは独立した実行形式のアプリケーションです．音声認識サービスを使用する場合は、シミュレーションサーバを起動した後でsigjspを起動させてください．</p>
+
+<p>sigjspは，自分の存在をシミュレーションサーバに知らせるために，起動時にシミュレーションサーバへアクセスします．シミュレーションサーバのポート番号を以下のように指定して起動します．</p>
+<pre class="cmdsample">
+	% sigjsp.sh -p 6500
+</pre>
+
+<p>ポート番号を指定しないと6000番ポートを使用します。</p>
+
+<br>
+<p>音声認識サービスプロバイダで使用可能はオプションは以下のとおりです。</p>
+
+<pre class="cmdsample">
+	% sigjsp.sh [-s &lt;serverName&gt;] [-p &lt;number&gt;] [-sn &lt;serviceProviderName&gt;] [-sp &lt;number&gt;] [-mp &lt;number&gt;] [-ap &lt;number&gt;] [-e &lt;path&gt;] [-C &lt;config.jconf&gt;]
+
+ OPTION :
+	-s &lt;serverName&gt;  : server host name
+	-p &lt;number&gt;  : server port number
+	-sn &lt;serviceProviderName&gt; : sigjsp service provider name
+	-sp &lt;number&gt; : sigjsp service provider port number
+	-mp &lt;number&gt; : julius module mode port number
+	-ap &lt;number&gt; : julius adinnet port number
+	-e &lt;path&gt;	   : julius location (default: /usr/local/bin/julius)
+	-C &lt;config.jconf;&gt : config file for julius
+</pre>
+
+<p>sigjspはjuliusのモジュールモードを使って通信を行います．また、音声データはadinnetというjuliusの提供するネットワーク経由での音声入力ポートを使用します．モジュールモードでの通信ポート番号は-mpオプションで、adinnetでの通信ポート番号は-apオプションで指定します．</p>
+
+<p>-eオプションはjuliusの実行形式のある位置を絶対パスで指定するために使います．またjulius自身に渡す設定ファイルは-Cオプションで指定します．例えば、</p>
+
+<pre class="cmdsample">
+ % sigjsp.sh -e /usr/local/bin/julius-4.1.2 -C myconf.jconf
+</pre>
+
+<p>と書いた場合、sigjspは、<br>
+/usr/local/bin/julius-4.1.2 -C myconf.jconf<br>
+を実行してjuliusを起動します.
+</p>
+
+<p>コマンドラインオプションを指定せず，sigjsp.confという名前の設定ファイルを使うこともできます. </p>
+
+<p>
+デフォルトでは、sigjspはカレントディレクトリのsigjsp.confを探します．もし、環境変数SIGVERSE_JSP_CONF_DIRが定義されている場合、カレントディレクトリではなく、SIGVERSE_JSP_CONF_DIRディレクトリを探します．
+</p>
+
+<p>
+sigjsp.confとコマンドラインオプションで同一の指定がされた場合は，コマンドラインオプションが優先されます．例えば、シミュレーションサーバのポート番号を、sigjsp.confと-pオプションの両方で指定した場合、-pオプションの値が使われます．
+</p>
+
+<p>juliusに関する設定はjuliusのマニュアル等を参照してください</p>
+
+<hr><address style="align: right;"><a href="http://www.msi.co.jp"><img src="msilogo.gif" align="middle" border=0
+
+width=139 height=53>（株）数理システム</a>
+
+</body>
+
+</html>

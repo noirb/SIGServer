@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGViewer: メンバ一覧</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Sgv::VisObjBase メンバ一覧</h1>これは全メンバの一覧です。<a class="el" href="class_sgv_1_1_vis_obj_base.html">Sgv::VisObjBase</a>継承メンバも含んでいます。<p><table>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_vis_obj_base.html#3b6d5301b9cb5b40cc22ac967f4715e2">createSimplifiedShapeFromCParts</a>(CParts *parts)</td><td><a class="el" href="class_sgv_1_1_vis_obj_base.html">Sgv::VisObjBase</a></td><td><code> [static]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_vis_obj_base.html#098128039dbb22a6578749900d05ec0e">getName</a>()</td><td><a class="el" href="class_sgv_1_1_vis_obj_base.html">Sgv::VisObjBase</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_vis_obj_base.html#bbd113a18be6cfb1bc9c90e8689b1102">getOrientation</a>()=0</td><td><a class="el" href="class_sgv_1_1_vis_obj_base.html">Sgv::VisObjBase</a></td><td><code> [pure virtual]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_vis_obj_base.html#94df6b4e935a3415e02f50e367c5ad99">getPosition</a>()=0</td><td><a class="el" href="class_sgv_1_1_vis_obj_base.html">Sgv::VisObjBase</a></td><td><code> [pure virtual]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_vis_obj_base.html#477943a19c8f6ce40915a78ba7d3b275">getSimObj</a>()</td><td><a class="el" href="class_sgv_1_1_vis_obj_base.html">Sgv::VisObjBase</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_vis_obj_base.html#5ac0609a5b13aa93cf27c2312053a52d">getType</a>()=0</td><td><a class="el" href="class_sgv_1_1_vis_obj_base.html">Sgv::VisObjBase</a></td><td><code> [pure virtual]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_vis_obj_base.html#7e67ef70db370036026af7d777f2d636">hasState</a>()</td><td><a class="el" href="class_sgv_1_1_vis_obj_base.html">Sgv::VisObjBase</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_vis_obj_base.html#eb0ff0592d449206726124c191c4765d">isHumanoid</a>()</td><td><a class="el" href="class_sgv_1_1_vis_obj_base.html">Sgv::VisObjBase</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_vis_obj_base.html#95efc1abf0314b0128d8c7bdc447bb67">isShapeVisible</a>()</td><td><a class="el" href="class_sgv_1_1_vis_obj_base.html">Sgv::VisObjBase</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_vis_obj_base.html#7cd98c1baa629853d94e77aeea6f59dc">isSimplifiedShapeVisible</a>()</td><td><a class="el" href="class_sgv_1_1_vis_obj_base.html">Sgv::VisObjBase</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_vis_obj_base.html#b072f5420fadd3fd81ad7d6bbddc5fce">m_bShowShape</a></td><td><a class="el" href="class_sgv_1_1_vis_obj_base.html">Sgv::VisObjBase</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_vis_obj_base.html#6e853168112e4a24d90489ad3b310d4b">m_bShowSimplifiedShape</a></td><td><a class="el" href="class_sgv_1_1_vis_obj_base.html">Sgv::VisObjBase</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_vis_obj_base.html#75302c70fadb6c2210ad09a9339f5d3b">m_hasState</a></td><td><a class="el" href="class_sgv_1_1_vis_obj_base.html">Sgv::VisObjBase</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_vis_obj_base.html#04854bc80fb8150c43e2e2ff255a98fa">m_name</a></td><td><a class="el" href="class_sgv_1_1_vis_obj_base.html">Sgv::VisObjBase</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_vis_obj_base.html#092102db470a43dc4191a874de73c5a7">m_pSimObj</a></td><td><a class="el" href="class_sgv_1_1_vis_obj_base.html">Sgv::VisObjBase</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_vis_obj_base.html#215fcf7262af307162d13ce7b4a07bb9">m_visObjType</a></td><td><a class="el" href="class_sgv_1_1_vis_obj_base.html">Sgv::VisObjBase</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_vis_obj_base.html#dd8dea012ccf0d107c996787099aca3c">setName</a>(const std::string &amp;name)</td><td><a class="el" href="class_sgv_1_1_vis_obj_base.html">Sgv::VisObjBase</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_vis_obj_base.html#e1a13688c1b2ed06d44e0950eca01d1b">setName</a>(const char *name)</td><td><a class="el" href="class_sgv_1_1_vis_obj_base.html">Sgv::VisObjBase</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_vis_obj_base.html#3e3f080cff05e12e1359f9c88fb638df">setOrientation</a>(Ogre::Quaternion q)=0</td><td><a class="el" href="class_sgv_1_1_vis_obj_base.html">Sgv::VisObjBase</a></td><td><code> [pure virtual]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_vis_obj_base.html#89ca9772ecf3d4db7c7ec450639b1b20">setPosition</a>(double x, double y, double z)=0</td><td><a class="el" href="class_sgv_1_1_vis_obj_base.html">Sgv::VisObjBase</a></td><td><code> [pure virtual]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_vis_obj_base.html#801b832c85fc44dc94cec18f9b10369f">setPosition</a>(Vector3 pos)=0</td><td><a class="el" href="class_sgv_1_1_vis_obj_base.html">Sgv::VisObjBase</a></td><td><code> [pure virtual]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_vis_obj_base.html#92eb1bfe1d3c2149f2aef5fd4c74d1ce">showShape</a>(bool bShow)</td><td><a class="el" href="class_sgv_1_1_vis_obj_base.html">Sgv::VisObjBase</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_vis_obj_base.html#9636f845dc4732dc53cb13892a6a19c1">showSimplifiedShape</a>(bool bShow)</td><td><a class="el" href="class_sgv_1_1_vis_obj_base.html">Sgv::VisObjBase</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_vis_obj_base.html#c6be4b8875dd9f61ca07cc853eb63be3">updateWithSimObj</a>(SimObj *o)=0</td><td><a class="el" href="class_sgv_1_1_vis_obj_base.html">Sgv::VisObjBase</a></td><td><code> [pure virtual]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_vis_obj_base.html#30e229c8e0f412e6e52002716ee1f31f">VIS_OBJ_TYPE</a> Enum</td><td><a class="el" href="class_sgv_1_1_vis_obj_base.html">Sgv::VisObjBase</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_vis_obj_base.html#50de6518b2e4fd253ff05494ef2eb03a">VisObjBase</a>()</td><td><a class="el" href="class_sgv_1_1_vis_obj_base.html">Sgv::VisObjBase</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_vis_obj_base.html#30e229c8e0f412e6e52002716ee1f31f01142a3dd88abb8c44c4f99366dfd25d">VOT_HUMANOID</a> Enum 値</td><td><a class="el" href="class_sgv_1_1_vis_obj_base.html">Sgv::VisObjBase</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_vis_obj_base.html#30e229c8e0f412e6e52002716ee1f31f595bbc02b2e9cdeb2399a2ad1e0bd5e5">VOT_STATIC</a> Enum 値</td><td><a class="el" href="class_sgv_1_1_vis_obj_base.html">Sgv::VisObjBase</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_vis_obj_base.html#43f91494d469c636d9c46831b49f24dc">‾VisObjBase</a>()</td><td><a class="el" href="class_sgv_1_1_vis_obj_base.html">Sgv::VisObjBase</a></td><td><code> [virtual]</code></td></tr>
+</table></div>
+<hr size="1"><address style="text-align: right;"><small>SIGViewerに対してThu Jun 9 10:52:15 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

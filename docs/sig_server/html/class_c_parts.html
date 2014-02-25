@@ -1,0 +1,317 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: クラス CParts</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス CParts</h1><!-- doxytag: class="CParts" --><!-- doxytag: inherits="Parts" -->
+<p>エンティティの部品クラス(クライアントサイドで使用)  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_c_parts_8h_source.html">CParts.h</a>&gt;</code></p>
+<div class="dynheader">
+CPartsに対する継承グラフ</div>
+<div class="dynsection">
+<div class="center"><img src="class_c_parts__inherit__graph.png" border="0" usemap="#_c_parts_inherit__map" alt="Inheritance graph"/></div>
+<map name="_c_parts_inherit__map" id="_c_parts_inherit__map">
+<area shape="rect" href="class_box_parts.html" title="箱形状の部品クラス(クライアントサイドで使用)" alt="" coords="5,160,80,189"/><area shape="rect" href="class_cylinder_parts.html" title="シリンダ形状の部品クラス(クライアントサイドで使用)" alt="" coords="104,160,203,189"/><area shape="rect" href="class_sphere_parts.html" title="球形状の部品クラス(クライアントサイドで使用)" alt="" coords="227,160,317,189"/><area shape="rect" href="class_parts.html" title="エンティティを構成する部品クラス" alt="" coords="128,5,179,35"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+<div class="dynheader">
+CPartsのコラボレーション図</div>
+<div class="dynsection">
+<div class="center"><img src="class_c_parts__coll__graph.png" border="0" usemap="#_c_parts_coll__map" alt="Collaboration graph"/></div>
+<map name="_c_parts_coll__map" id="_c_parts_coll__map">
+<area shape="rect" href="class_parts.html" title="エンティティを構成する部品クラス" alt="" coords="60,101,111,131"/><area shape="rect" href="class_rotation.html" title="回転行列クラス" alt="" coords="5,5,75,35"/><area shape="rect" href="class_position.html" title="3次元位置クラス" alt="" coords="99,5,165,35"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+
+<p><a href="class_c_parts-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_c_parts.html">CParts</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_parts.html#a8e6bdb2b732c5a148d415e3aa311972e">clone</a> ()=0</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">同等の部品クラスオブジェクトを作成する  <a href="#a8e6bdb2b732c5a148d415e3aa311972e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const dReal *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_parts.html#a2d2bc39c552554b34c01e06bc3a1d46c">getPosition</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">位置の取得  <a href="#a2d2bc39c552554b34c01e06bc3a1d46c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const dReal *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_parts.html#ac1280ab257c6b43d91e12d46d70d5900">getQuaternion</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クォータニオンの取得  <a href="#ac1280ab257c6b43d91e12d46d70d5900"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const dReal *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_parts.html#a7a19adaf95212cd65a51bffbe6da67c6">getRotation</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">回転行列の取得  <a href="#a7a19adaf95212cd65a51bffbe6da67c6"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_parts.html#a57bae7a5de339ece0bbff399a04b5fc1">‾CParts</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#a57bae7a5de339ece0bbff399a04b5fc1"></a><br/></td></tr>
+<tr><td colspan="2"><h2>Static Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_c_parts.html">CParts</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_parts.html#ae5f7fbfc3263ed311f18006343fb5906">decode</a> (char *)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">バイナリ化された部品データを復元する  <a href="#ae5f7fbfc3263ed311f18006343fb5906"></a><br/></td></tr>
+<tr><td colspan="2"><h2>Protected メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_parts.html#a947af5c07cc3ab6528306660acd16a3a">CParts</a> (const <a class="el" href="class_c_parts.html">CParts</a> &amp;o)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コピーコンストラクタ  <a href="#a947af5c07cc3ab6528306660acd16a3a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_parts.html#a52507140891a902470fbdfbdb53b0716">CParts</a> (<a class="el" href="_parts_8h.html#a7c3aeaeaa817e70d68d9459826f84f1e">PartsType</a> t, const char *name, const <a class="el" href="class_position.html">Position</a> &amp;pos)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#a52507140891a902470fbdfbdb53b0716"></a><br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>エンティティの部品クラス(クライアントサイドで使用) </p>
+<dl class="see"><dt><b>参照:</b></dt><dd><a class="el" href="class_s_parts.html" title="エンティティの部品クラス(サーバサイドで使用)">SParts</a> </dd></dl>
+
+<p> <a class="el" href="_c_parts_8h_source.html">CParts.h</a> の <a class="el" href="_c_parts_8h_source.html#l00013">13</a> 行で定義されています。</p>
+<hr/><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" id="a52507140891a902470fbdfbdb53b0716"></a><!-- doxytag: member="CParts::CParts" ref="a52507140891a902470fbdfbdb53b0716" args="(PartsType t, const char *name, const Position &amp;pos)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CParts::CParts </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_parts_8h.html#a7c3aeaeaa817e70d68d9459826f84f1e">PartsType</a>&nbsp;</td>
+          <td class="paramname"> <em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_position.html">Position</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>pos</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コンストラクタ </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>t</em>&nbsp;</td><td>部品タイプ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>部品名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>pos</em>&nbsp;</td><td>部品の中心位置 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_c_parts_8h_source.html">CParts.h</a> の <a class="el" href="_c_parts_8h_source.html#l00023">23</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a947af5c07cc3ab6528306660acd16a3a"></a><!-- doxytag: member="CParts::CParts" ref="a947af5c07cc3ab6528306660acd16a3a" args="(const CParts &amp;o)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CParts::CParts </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_c_parts.html">CParts</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>o</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コピーコンストラクタ </p>
+
+<p> <a class="el" href="_c_parts_8h_source.html">CParts.h</a> の <a class="el" href="_c_parts_8h_source.html#l00027">27</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>関数</h2>
+<a class="anchor" id="a8e6bdb2b732c5a148d415e3aa311972e"></a><!-- doxytag: member="CParts::clone" ref="a8e6bdb2b732c5a148d415e3aa311972e" args="()=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="class_c_parts.html">CParts</a>* CParts::clone </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>同等の部品クラスオブジェクトを作成する </p>
+
+</div>
+</div>
+<a class="anchor" id="ae5f7fbfc3263ed311f18006343fb5906"></a><!-- doxytag: member="CParts::decode" ref="ae5f7fbfc3263ed311f18006343fb5906" args="(char *)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_c_parts.html">CParts</a>* CParts::decode </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>バイナリ化された部品データを復元する </p>
+
+</div>
+</div>
+<a class="anchor" id="a2d2bc39c552554b34c01e06bc3a1d46c"></a><!-- doxytag: member="CParts::getPosition" ref="a2d2bc39c552554b34c01e06bc3a1d46c" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const dReal* CParts::getPosition </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>位置の取得 </p>
+
+<p><a class="el" href="class_parts.html#a151e3fb90237808c63c480e1d1dd84ac">Parts</a>を実装しています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ac1280ab257c6b43d91e12d46d70d5900"></a><!-- doxytag: member="CParts::getQuaternion" ref="ac1280ab257c6b43d91e12d46d70d5900" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const dReal* CParts::getQuaternion </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>クォータニオンの取得 </p>
+
+<p><a class="el" href="class_parts.html#a9e64c80362c6627ec2d82f75b53680ed">Parts</a>を実装しています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a7a19adaf95212cd65a51bffbe6da67c6"></a><!-- doxytag: member="CParts::getRotation" ref="a7a19adaf95212cd65a51bffbe6da67c6" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const dReal* CParts::getRotation </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>回転行列の取得 </p>
+
+<p><a class="el" href="class_parts.html#ac833960fcd15120b249d4a1127e0a3fb">Parts</a>を実装しています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a57bae7a5de339ece0bbff399a04b5fc1"></a><!-- doxytag: member="CParts::‾CParts" ref="a57bae7a5de339ece0bbff399a04b5fc1" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual CParts::‾CParts </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>デストラクタ </p>
+
+<p> <a class="el" href="_c_parts_8h_source.html">CParts.h</a> の <a class="el" href="_c_parts_8h_source.html#l00036">36</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_c_parts_8h_source.html">CParts.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:18 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

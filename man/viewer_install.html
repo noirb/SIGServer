@@ -1,0 +1,308 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
+<link rel="stylesheet" type="text/css" href="prj.css"/>
+<title>ビューアのインストール</title>
+</head>
+
+<body>
+
+<h1>ビューアのインストール</h1>
+
+<h3>
+<a name="準備">
+準備</a>
+</h3>
+<br>
+
+以下の説明では，ディレクトリ名の指定で次の略記を使います.
+
+<dl>
+	<dt>[SIGVERSE_PACKAGE]</dt>
+	<dd>
+	SIGVERSEインストールパッケージのトップディレクトリ．
+	</dd>
+</dl>
+
+例えば、配布パッケージ中のbin, doc, srcディレクトリは以下のように表記されます．<br><br>
+
+[SIGVERSE_PACKAGE]/bin<br>
+[SIGVERSE_PACKAGE]/doc<br>
+[SIGVERSE_PACKAGE]/src<br>
+
+<br>
+
+<p>
+<a name="ビューアのインストール"><h2>ビューアのインストール</h2></a>
+
+<p>
+ビューアのインストーラは以下のファイルです．
+</p>
+
+[SIGVERSE_PACKAGE]/bin/SIGViewerSetup/setup.exe<br>
+
+<p>
+このファイルをダブルクリックするとインストーラが起動します．
+</p>
+
+<br>
+<div align="center">
+<img src="viewer_install_welcome.jpg">
+<br>
+</div>
+<br>
+
+<p>
+インストーラは以下の順序で必要なコンポーネント（ライブラリ）をビューア本体をシステムにインストールします．
+</p>
+
+<li>DirectX 9.0cランタイム
+<li>Visual C++ 2005 SP1再配布可能ファイル
+<li>OpenALライブラリ
+<li>JRE(Java Runtime Environment) 1.6.0
+<li>ビューア本体
+</ul>
+
+<p>
+それぞれの項目について以下に説明します．
+</p>
+
+<h3>
+<a name="DirectX 9.0cランタイムのインストール">
+DirectX 9.0cランタイム</a>
+</h3>
+
+<p>
+DirectX 9.0cのランタイムをシステムにインストールします．
+</p>
+
+<br>
+<div align="center">
+<img src="viewer_install_dx9_1.jpg">
+<br>
+</div>
+<br>
+
+<p>
+DirectX 9.0cランタイムがシステムにインストールされていない場合、もしくはインストールされているか不明な場合は「Yes」を選択してください．すでにDirectX 9.0cランタイムがシステムにインストールされている場合は「No」を選択してください．
+</p>
+<p>
+（注）Windows 7またはWindows Vistaの場合、システムに最初からDirectX 10.0以降が入っているため、この段階をスキップしても構いません．
+</p>
+<p>
+「Yes」を選んだ場合、次のようなダイアログが現れます．指示に従ってDirectX 9.0cランタイムをインストールしてください．
+</p>
+
+<br>
+<div align="center">
+<img src="viewer_install_dx9_2.jpg">
+<br>
+</div>
+<br>
+<br>
+
+
+<h3>
+<a name="Visual C++ 2005 SP1再配布可能ファイルのインストール">
+Visual C++ 2005 SP1再配布可能ファイルのインストール</a>
+</h3>
+
+<p>
+Visual C++ 2005ランタイムをシステムにインストールします．
+</p>
+
+<br>
+<div align="center">
+<img src="viewer_install_vc2005rt_1.jpg">
+<br>
+</div>
+<br>
+
+
+「Yes」を選択した場合、以下のようなダイアログが出ます．しばらくしてこれが消えればインストールは終了です．
+（「インストール完了」のようなメッセージは出ませんが，問題ありません）<br>
+<br>
+<div align="center">
+<img src="viewer_install_vc2005rt_2.jpg">
+<br>
+</div>
+<br>
+<br>
+
+<h3>
+<a name="OpenALライブラリのインストール">
+OpenALライブラリのインストール</a>
+</h3>
+
+<p>
+次にOpenALのランタイムライブラリをシステムにインストールします．
+</p>
+
+<br>
+<div align="center">
+<img src="viewer_install_openAL_1.jpg">
+<br>
+</div>
+<br>
+
+<p>
+「Yes」を選択した場合、以下のダイアログが表示されますので、「OK」を押してください．これでインストールが実行されます．
+</p>
+<br>
+<div align="center">
+<img src="viewer_install_openAL_2.jpg">
+<br>
+</div>
+<br>
+
+<h3>
+<a name="JRE 1.6.0のインストール">
+JRE 1.6.0のインストール</a>
+</h3>
+<br>
+
+<br>
+<div align="center">
+<img src="viewer_install_jre160_1.jpg">
+<br>
+</div>
+<br>
+
+<p>
+JRE1.6.0以上がシステムにインストールされていない場合は，「Yes」を選択します．システムにすでにJRE1.6.0以上がインストールされている場合は、「No」を選択します
+</p>
+
+<p>
+「Yes」を選択した場合、JREのインストーラが起動しますので、指示に従ってインストールしてください．
+</p>
+
+<br>
+<div align="center">
+<img src="viewer_install_jre160_2.jpg">
+<br>
+</div>
+<br>
+
+<p>
+（注）場合によってはOpenOfficeのインストールを行うか否かのチェックボックスが出ることがあります. しかしSIGViewerはOpenOfficeは使用しませんので、インストールする必要はありません
+</p>
+
+
+
+<h3>
+<a name="JREのトップディレクトリの指定">
+JREのトップディレクトリの指定</a>
+</h3>
+<br>
+
+<p>
+次に、SIGViewerが使用するJREの場所を指定します．
+</p>
+
+<br>
+<div align="center">
+<img src="viewer_install_jre_path_1.jpg">
+<br>
+</div>
+<br>
+
+<p>
+インストーラは、入力されたJREの場所を基準に、jvm.dllファイルを探します．
+jvm.dllが見つからない場合はメッセージが出ますので、再度JREの場所を指定しなおしてください．</p>
+<br>
+
+<h3>
+<a name="ビューア本体のインストール">
+ビューア本体のインストール</a>
+</h3>
+
+<p>
+次にビューア本体をインストールします．インストール先ディレクトリを入力し、「Next」を押してください．
+（インストール先ディレクトリは任意です）
+</p>
+
+<br>
+<div align="center">
+<img src="viewer_install_SIGViewer_1.jpg">
+<br>
+</div>
+<br>
+<br>
+
+<p>
+いくつかのオプション設定ダイアログ（アイコンをデスクトップ上に作成するか？等）が出た後、以下のようなダイアログが表示されます．「Install」をクリックするとビューア本体のコピーが開始されます．
+</p>
+
+<br>
+<div align="center">
+<img src="viewer_install_SIGViewer_2.jpg">
+<br>
+</div>
+<br>
+<br>
+
+<h3>
+<a name="インストール完了">
+インストール完了</a>
+</h3>
+
+<p>
+次のダイアログが表示されればインストールは完了です
+</p>
+
+<br>
+<div align="center">
+<img src="viewer_install_SIGViewer_4.jpg">
+<br>
+</div>
+<br>
+<br>
+
+<p>
+ビューアの使用方法については、「<a href="viewer_start.html">ビューアの起動</a>」をご覧ください）.
+</p>
+
+<br>
+<br>
+<br>
+<br>
+
+<p><a name="ビューアのアンインストール"><h2>ビューアのアンインストール</h2></a>
+
+<p>
+Windowsのコントロールパネルから「プログラムの追加と削除」を開き、「SIGViewer 1.0」をアンインストールします．
+</p>
+
+<p>
+アンインストールの確認ダイアログが出ますので、本当にアンインストールしてよければ「はい」を押してください
+</p>
+
+<br>
+<div align="center">
+<img src="viewer_uninstall_1.jpg">
+<br>
+</div>
+<br>
+<br>
+
+<p>
+以下のダイアログが出ればアンインストールは完了です
+</p>
+
+<br>
+<div align="center">
+<img src="viewer_uninstall_2.jpg">
+<br>
+</div>
+<br>
+<br>
+
+<br>
+<hr><address style="align: right;"><a href="http://www.msi.co.jp"><img src="msilogo.gif" align="middle" border=0
+
+width=139 height=53>（株）数理システム</a>
+
+</body>
+
+</html>

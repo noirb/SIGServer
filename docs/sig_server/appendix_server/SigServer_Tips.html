@@ -1,0 +1,75 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
+<link rel="stylesheet" type="text/css" href="../../prj.css"/>
+<title>実装上のポイント</title>
+</head>
+
+<body>
+<h1>実装上のポイント</h1>
+
+<h2>新しいプロトコルの追加</h2>
+
+<p>ここでは，SIGVerseシステムへの新しいプロトコル追加の手順を説明する．</p>
+
+<p>SIGVerseにおける転送データタイプには，「リクエスト」・「リクエスト結
+果」・「コントローライベントハンドラの呼び出しリクエスト」の3種類が存在
+する．「リクエスト結果」は「リクエスト」に対する返答であるが、リクエスト
+結果と対になっていないリクエストも存在しうる．</p>
+
+<ol>
+  <li>転送データタイプの追加</li>
+  <p><a href="../html/_comm_data_type_8h.html">CommDataType.h</a>にデータタイプを追加する．</p>
+  <li>エンコーダの作成</li>
+  <p><a href="../html/class_comm_data_encoder.html">CommDataEncoder</a>クラスを継承し、仮想関数となっているpacketNum, encodeメソッドを実装し、エンコーダを作成する．packetNumはデータを分割する数(パケット数)を返す．encodeメソッドは、データをバイナリ化し、ヘッダとフッタを前後につける．packetNumが1より大きい値を返す場合は、分割を考慮に入れてバイナリ化を行う．</p>
+  <p>実装したエンコーダのヘッダファイルを<a href="../html/_comm_data_encoder_8h.html">CommDataEncoder.h</a>ファイル内でインクルードしておく．</p>
+  <li>イベントクラスの作成</li>
+  <p>データに対応するイベントクラスを作成する．</p>
+  <p>setメソッドを用意し、そこでバイナリ化したデータ(ヘッダとフッタを
+  除く)を元のデータに復元する．実装したイベントクラスのヘッダファイル
+  を<a href="../html/_recv_event_8h.html">RecvEvent.h</a>内でインクルードしておく．</p>
+  <li>イベントハンドラの追加</li>
+  <p>データを受信した時に呼び出されるイベントハンドラを用意する．
+  <ul>
+	<li>「リクエスト」・「リクエスト結果」の場合</li>
+  <p><a href="../html/_comm_data_listener_8h.html">CommDataListener</a>
+  にメソッドを追加する．メソッドの第１引数を<a
+  href="../html/_source_8h.html">Source</a>型(転送元を表す)、第２引数を
+  先に作成したイベント型とする．</p>
+	<li>「コントローライベントハンドラの呼び出しリクエスト」の場合</li>
+	<p><a href="../html/_controller_inf_8h.html">ControllerInf</a>インターフェースにメソッドを追加する．</p>
+  </ul>
+  <li><a href="../html/class_comm_data_decoder.html">CommDataDecoder</a>クラスの修正</li>
+
+  <ul>
+	<li>「リクエスト」・「リクエスト結果」の場合</li>
+	<p>CommDataDecoder.cppファイルの適当な場所で次のようにデコーダを宣言し，</p>
+	<pre class="codesample">
+	typedef ListenerInvokeDecoder&lt;COMM_REQUEST_NEWDATA,	RequastNewDataEvent&gt; ReqNewDataD;
+	</pre>
+
+	<p>CommDataDecoder::createDecoderメソッド内で，</p>
+	<pre class="codesample">
+	CREATE_L_DECODER(ReqNewData, &L::recvRequestNewData);
+	</pre>
+	<p>と書く．</p>
+
+	<li>「コントローライベントハンドラの呼び出しリクエスト」の場合</li>
+	<p>CommDataDecoder.cppファイルの適当な場所で次のようにデコーダを宣言し，</p>
+	<pre  class="codesample">
+	 typedef ControllerInvokeDecoder&lt;COMM_NEWMETHOD,  NewMethodEvent&gt; InvokeNewMethodD;
+	</pre>
+	<p>CommDataDecoder::createDecoderメソッド内で，</p>
+	<pre  class="codesample">
+	CREATE_M_DECODER(InvokeNewMethodD, &ControllerInf::onNewMethod);
+	</pre>
+	<p>と書く．</p>
+  </ul>
+</ol>
+<hr><address style="align: right;"><a href="http://www.msi.co.jp"><img src="msilogo.gif" align="middle" border=0
+
+width=139 height=53>（株）数理システム</a>
+</body>
+
+</html>

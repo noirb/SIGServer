@@ -1,0 +1,106 @@
+<html>
+<!-- $Id: usage.html,v 1.1.1.1 2011-03-25 02:18:52 okamoto Exp $ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS"/>
+<link rel="stylesheet" type="text/css" href="prj.css"/>
+<title>シミュレーションサーバの起動</title>
+</head>
+<body>
+<h1>シミュレーションサーバ</h1>
+
+<h2>シミュレーションサーバの起動</h2>
+
+<p>シミュレーションサーバは以下のようにポート番号を指定して起動します。
+ポート番号を指定しないと5678番ポートを使用します。</p>
+
+<pre class="cmdsample">
+	% sigserver.sh -p 6000
+</pre>
+
+
+<p>シミュレーションサーバで使用可能はオプションは以下のとおりです。</p>
+
+<pre class="cmdsample">
+ %	sigserver.sh [-v &lt;number&gt;] [-p &lt;number&gt;] [-c &lt;dir&gt;] [-w &lt;file&gt;]
+
+ OPTION :
+	-p &lt;number&gt;  : server port number
+	-c &lt;dir&gt;	   : data directory (default: ./conf)
+	-w &lt;file&gt;    : world file (default: ./conf/MyWorld.xml)
+	-v &lt;number&gt;  : verbose number
+</pre>
+
+<h2>データディレクトリ</h2>
+<p>sigserver.shは、世界ファイル内他で指定している形状ファイル・設定ファイルについて、-c オプションでユーザの指定したディレクトリまたは-w オプションで指定した世界ファイルのあるディレクトリ(2つを合わせて「ユーザ指定データディレクトリ」と呼ぶ)を検索して該当するファイルをロードします。加えて、sigverseシステムの提供するディレクトリデータディレクトリ(「システムデータディレクトリ」と呼ぶ)も検索しますが、同名のファイルがある場合はユーザ指定データディレクトリのファイルが優先されます。</p>
+<p>/usr/local にインストールした場合、以下の2つのディレクトリがシステムデータディレクトリとなっています。</p>
+<pre>
+   /usr/local/share/sigverse/data/shape
+   /usr/local/share/sigverse/data/xml
+</pre>
+
+<h2>シミュレーションサーバのJava VM設定ファイル</h2>
+
+<p>シミュレーションサーバは、世界ファイルの読み込み時にJavaによる形状パーサーを起動します．この形状パーサーの設定ファイル(X3DParser.cfg)が、サーバーのインストール時にシステムに作成されます．</p>
+
+<p>
+X3DParser.cfgは、サーバーをインストールしたディレクトリ(=configure時の--prefixオプションで指定したディレクトリ)の下の、</p>
+
+<pre>
+share/sigverse/etc/X3DParser.cfg
+</pre>
+
+<p>
+に配置されます．
+</p>
+
+<p>
+（例）インストール先を/home/myname/sigverseとした場合、設定ファイルのパスは
+</p>
+
+<pre>
+/home/myname/sigverse/share/sigverse/etc/X3DParser.cfg
+</pre>
+
+<p>
+となります．
+</p>
+
+<p>
+この設定ファイルの[Others]セクション以下の部分に、java VMへのオプションを直接設定できます．
+</p>
+
+<pre>
+設定ファイル(X3DParser.cfg)の記述例
+-------------------------------------------------------
+#
+# Library Path
+#
+java.library.path=/Work/Irwas/Xj3D/bin
+
+#
+# Class Path
+#
+java.class.path=.;/Work/Irwas/Xj3D/jars/xj3d-all.jar;/WORK/Irwas/irwas-source/irwas-sim/srcs/X3D/parser/java/X3DParser/bin
+
+#
+# Other Options
+#
+[Others]
+-Xmx500M
+-------------------------------------------------------
+</pre>
+
+<p>
+上記の例では、VMの使う最大ヒープサイズを500MBytesに設定しています．
+（-Xmx500Mの部分）
+</p>
+
+<p>
+その他のJava VMの起動オプションについてはJava関連のサイトを参照してください
+</p>
+
+<hr><address style="align: right;"><a href="http://www.msi.co.jp"><img src="msilogo.gif" align="middle" border=0
+width=139 height=53>（株）数理システム</a>
+
+</body>
+</html>

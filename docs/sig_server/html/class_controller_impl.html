@@ -1,0 +1,815 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: クラス ControllerImpl</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス ControllerImpl</h1><!-- doxytag: class="ControllerImpl" --><!-- doxytag: inherits="ControllerInf" -->
+<p>ネットワーク通信コントローラクラス  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_controller_impl_8h_source.html">ControllerImpl.h</a>&gt;</code></p>
+<div class="dynheader">
+ControllerImplに対する継承グラフ</div>
+<div class="dynsection">
+<div class="center"><img src="class_controller_impl__inherit__graph.png" border="0" usemap="#_controller_impl_inherit__map" alt="Inheritance graph"/></div>
+<map name="_controller_impl_inherit__map" id="_controller_impl_inherit__map">
+<area shape="rect" href="class_controller.html" title="ユーザ定義コントローラ基本クラス" alt="" coords="19,160,93,189"/><area shape="rect" href="class_controller_inf.html" title="コントローラインターフェース" alt="" coords="11,5,101,35"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+<div class="dynheader">
+ControllerImplのコラボレーション図</div>
+<div class="dynsection">
+<div class="center"><img src="class_controller_impl__coll__graph.png" border="0" usemap="#_controller_impl_coll__map" alt="Collaboration graph"/></div>
+<map name="_controller_impl_coll__map" id="_controller_impl_coll__map">
+<area shape="rect" href="class_controller_inf.html" title="コントローラインターフェース" alt="" coords="5,101,96,131"/><area shape="rect" href="class_c_t_sim_obj.html" title="シミュレーションサーバ上のエージェントを操作するクラス..." alt="" coords="120,101,200,131"/><area shape="rect" href="class_n_s_lookup.html" title="シミュレーションサーバのサービスプロバイダネームサービスを使用する�..." alt="" coords="120,5,200,35"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+
+<p><a href="class_controller_impl-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller_impl.html#a5bfeff0be324e58e1129bd2c40f2c6cd">attach</a> (const char *server, int port, const char *myname)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller_impl.html#a7eeef1b1770ec90ff0f175442296bf67">broadcastDisplayMessage</a> (int argc, char **argv, int fs, const char *color)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">メッセージをブロードキャストすし、ビューアーでテロップを表示させる  <a href="#a7eeef1b1770ec90ff0f175442296bf67"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller_impl.html#a4d46d1592e8dceae8250c61f4b411f12">broadcastMessage</a> (int argc, char **argv)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">メッセージをブロードキャストする  <a href="#a4d46d1592e8dceae8250c61f4b411f12"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller_impl.html#a0dae72adf8024318d79b3101ee9421b5">detach</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エージェントからコントローラを切離す  <a href="#a0dae72adf8024318d79b3101ee9421b5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller_impl.html#a11c07a758489b94603579a694fe671d6">isAttached</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">サーバ内のエージェントにアタッチしているか？  <a href="#a11c07a758489b94603579a694fe671d6"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller_impl.html#ad39672c814ed8d33b15b1656fe3bfabd">myname</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">アタッチするエージェント名を取得する  <a href="#ad39672c814ed8d33b15b1656fe3bfabd"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller_impl.html#a4dc4f205074d6afece515565fa248f9a">port</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">サーバポート番号を取得する  <a href="#a4dc4f205074d6afece515565fa248f9a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller_impl.html#a9f176223d4cff478bdbc05a8d2952cf0">sendDisplayMessage</a> (const char *to, int argc, char **argv, int fs, const char *color)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">メッセージを送信し、ビューアーでテロップを表示させる  <a href="#a9f176223d4cff478bdbc05a8d2952cf0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller_impl.html#a32b7389023288714e050d1c0a48ffa92">sendDisplayText</a> (double t, const char *to, const char *text, int fs, const char *color, double reachRadius=-1.0)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">他のエージェントにテキストを送信しビューアーでテロップを表示させる  <a href="#a32b7389023288714e050d1c0a48ffa92"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller_impl.html#aa31029aae27e4faf2eb76e61c3eb6710">sendMessage</a> (const char *to, int argc, char **argv)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">メッセージを送信する  <a href="#aa31029aae27e4faf2eb76e61c3eb6710"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller_impl.html#a98cba47265d36b37c26a92b7ae61e831">sendSound</a> (double t, const char *to, <a class="el" href="class_raw_sound.html">RawSound</a> &amp;sound)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">他のエージェントに音声データを送信する  <a href="#a98cba47265d36b37c26a92b7ae61e831"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller_impl.html#a59c604d9265cb43f91840f38cfe37de5">sendText</a> (double t, const char *to, const char *text)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">他のエージェントにテキストを送信する  <a href="#a59c604d9265cb43f91840f38cfe37de5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller_impl.html#a5aedb495c04d92d657e148105aaab3b9">sendText</a> (double t, const char *to, const char *text, double reachRadius)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">他のエージェントにテキストを送信する  <a href="#a5aedb495c04d92d657e148105aaab3b9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller_impl.html#ae4f6fc9e0bf8b249063b90c2125e7bed">server</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">サーバ名を取得する  <a href="#ae4f6fc9e0bf8b249063b90c2125e7bed"></a><br/></td></tr>
+<tr><td colspan="2"><h2>Protected メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller_impl.html#a66191dabddf2e0dc10093723d549c8b4">close_</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller_impl.html#a1a22755badac52dc4ce27b68b8d5fee4">ControllerImpl</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#a1a22755badac52dc4ce27b68b8d5fee4"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_c_t_sim_obj.html">CTSimObj</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller_impl.html#ac9fb63de50583dea64342fbc4b49b977">getCTSimObj</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller_impl.html#a661407f8adc53009b3b0d268bfa48e56">‾ControllerImpl</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#a661407f8adc53009b3b0d268bfa48e56"></a><br/></td></tr>
+<tr><td colspan="2"><h2>Protected 変数</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="systemdef_8h.html#a8dc8083897335125630f1af5dafd5831">SOCKET</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller_impl.html#af50e7cf13c3d03be9fe9af13300bcf0b">m_cmdSock</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="systemdef_8h.html#a8dc8083897335125630f1af5dafd5831">SOCKET</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller_impl.html#a126dd7eaa64bbd1e7922d259eb93bea9">m_dataSock</a></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>ネットワーク通信コントローラクラス </p>
+<p>シミュレーションサーバとの通信を行なうコントローラクラス </p>
+
+<p> <a class="el" href="_controller_impl_8h_source.html">ControllerImpl.h</a> の <a class="el" href="_controller_impl_8h_source.html#l00020">20</a> 行で定義されています。</p>
+<hr/><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" id="a1a22755badac52dc4ce27b68b8d5fee4"></a><!-- doxytag: member="ControllerImpl::ControllerImpl" ref="a1a22755badac52dc4ce27b68b8d5fee4" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ControllerImpl::ControllerImpl </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コンストラクタ </p>
+
+<p> <a class="el" href="_controller_impl_8h_source.html">ControllerImpl.h</a> の <a class="el" href="_controller_impl_8h_source.html#l00048">48</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>関数</h2>
+<a class="anchor" id="a5bfeff0be324e58e1129bd2c40f2c6cd"></a><!-- doxytag: member="ControllerImpl::attach" ref="a5bfeff0be324e58e1129bd2c40f2c6cd" args="(const char *server, int port, const char *myname)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ControllerImpl::attach </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>server</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>myname</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>サーバ内の指定のエージェントにコントローラを割り 当てる</p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>server</em>&nbsp;</td><td>シミュレーションサーバ名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>port</em>&nbsp;</td><td>シミュレーションサーバポート番号 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>myname</em>&nbsp;</td><td>アタッチするエージェント名 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><a class="el" href="class_controller.html#a8337a6d2fcce84371498ea735d733595">Controller</a>で再定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a7eeef1b1770ec90ff0f175442296bf67"></a><!-- doxytag: member="ControllerImpl::broadcastDisplayMessage" ref="a7eeef1b1770ec90ff0f175442296bf67" args="(int argc, char **argv, int fs, const char *color)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ControllerImpl::broadcastDisplayMessage </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&nbsp;</td>
+          <td class="paramname"> <em>argv</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>fs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>color</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>メッセージをブロードキャストすし、ビューアーでテロップを表示させる </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>argc</em>&nbsp;</td><td>文字列数 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>argv</em>&nbsp;</td><td>文字列 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>fs</em>&nbsp;</td><td>テロップのフォントサイズ(NULLの場合は64) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color</em>&nbsp;</td><td>テロップの色(NULLの場合は黒) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a4d46d1592e8dceae8250c61f4b411f12"></a><!-- doxytag: member="ControllerImpl::broadcastMessage" ref="a4d46d1592e8dceae8250c61f4b411f12" args="(int argc, char **argv)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ControllerImpl::broadcastMessage </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&nbsp;</td>
+          <td class="paramname"> <em>argv</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>メッセージをブロードキャストする </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>argc</em>&nbsp;</td><td>文字列数 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>argv</em>&nbsp;</td><td>文字列 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a66191dabddf2e0dc10093723d549c8b4"></a><!-- doxytag: member="ControllerImpl::close_" ref="a66191dabddf2e0dc10093723d549c8b4" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ControllerImpl::close_ </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p><div class="dynheader">
+呼出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_controller_impl_a66191dabddf2e0dc10093723d549c8b4_icgraph.png" border="0" usemap="#class_controller_impl_a66191dabddf2e0dc10093723d549c8b4_icgraph_map" alt=""></div>
+<map name="class_controller_impl_a66191dabddf2e0dc10093723d549c8b4_icgraph_map" id="class_controller_impl_a66191dabddf2e0dc10093723d549c8b4_icgraph">
+<area shape="rect" href="class_controller_impl.html#a0dae72adf8024318d79b3101ee9421b5" title="エージェントからコントローラを切離す" alt="" coords="228,5,375,35"/><area shape="rect" href="class_controller_impl.html#a661407f8adc53009b3b0d268bfa48e56" title="デストラクタ" alt="" coords="204,59,399,88"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a0dae72adf8024318d79b3101ee9421b5"></a><!-- doxytag: member="ControllerImpl::detach" ref="a0dae72adf8024318d79b3101ee9421b5" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ControllerImpl::detach </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>エージェントからコントローラを切離す </p>
+<p>切離し後、サーバとの通信を切断する </p>
+
+<p> <a class="el" href="_controller_impl_8h_source.html">ControllerImpl.h</a> の <a class="el" href="_controller_impl_8h_source.html#l00084">84</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_controller_impl_a0dae72adf8024318d79b3101ee9421b5_cgraph.png" border="0" usemap="#class_controller_impl_a0dae72adf8024318d79b3101ee9421b5_cgraph_map" alt=""></div>
+<map name="class_controller_impl_a0dae72adf8024318d79b3101ee9421b5_cgraph_map" id="class_controller_impl_a0dae72adf8024318d79b3101ee9421b5_cgraph">
+<area shape="rect" href="class_controller_impl.html#a66191dabddf2e0dc10093723d549c8b4" title="ControllerImpl::close_" alt="" coords="204,5,351,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ac9fb63de50583dea64342fbc4b49b977"></a><!-- doxytag: member="ControllerImpl::getCTSimObj" ref="ac9fb63de50583dea64342fbc4b49b977" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_c_t_sim_obj.html">CTSimObj</a>&amp; ControllerImpl::getCTSimObj </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a11c07a758489b94603579a694fe671d6"></a><!-- doxytag: member="ControllerImpl::isAttached" ref="a11c07a758489b94603579a694fe671d6" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ControllerImpl::isAttached </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>サーバ内のエージェントにアタッチしているか？ </p>
+
+<p> <a class="el" href="_controller_impl_8h_source.html">ControllerImpl.h</a> の <a class="el" href="_controller_impl_8h_source.html#l00068">68</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ad39672c814ed8d33b15b1656fe3bfabd"></a><!-- doxytag: member="ControllerImpl::myname" ref="ad39672c814ed8d33b15b1656fe3bfabd" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* ControllerImpl::myname </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>アタッチするエージェント名を取得する </p>
+
+<p> <a class="el" href="_controller_impl_8h_source.html">ControllerImpl.h</a> の <a class="el" href="_controller_impl_8h_source.html#l00065">65</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a4dc4f205074d6afece515565fa248f9a"></a><!-- doxytag: member="ControllerImpl::port" ref="a4dc4f205074d6afece515565fa248f9a" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ControllerImpl::port </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>サーバポート番号を取得する </p>
+
+<p> <a class="el" href="_controller_impl_8h_source.html">ControllerImpl.h</a> の <a class="el" href="_controller_impl_8h_source.html#l00062">62</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a9f176223d4cff478bdbc05a8d2952cf0"></a><!-- doxytag: member="ControllerImpl::sendDisplayMessage" ref="a9f176223d4cff478bdbc05a8d2952cf0" args="(const char *to, int argc, char **argv, int fs, const char *color)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ControllerImpl::sendDisplayMessage </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>to</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&nbsp;</td>
+          <td class="paramname"> <em>argv</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>fs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>color</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>メッセージを送信し、ビューアーでテロップを表示させる </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>to</em>&nbsp;</td><td>送信先エージェント名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>argc</em>&nbsp;</td><td>文字列数 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>argv</em>&nbsp;</td><td>文字列 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>fs</em>&nbsp;</td><td>テロップのフォントサイズ(NULLの場合は64) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color</em>&nbsp;</td><td>テロップの色(NULLの場合は黒) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a32b7389023288714e050d1c0a48ffa92"></a><!-- doxytag: member="ControllerImpl::sendDisplayText" ref="a32b7389023288714e050d1c0a48ffa92" args="(double t, const char *to, const char *text, int fs, const char *color, double reachRadius=&#45;1.0)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ControllerImpl::sendDisplayText </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>to</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>fs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>color</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>reachRadius</em> = <code>-1.0</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>他のエージェントにテキストを送信しビューアーでテロップを表示させる </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>t</em>&nbsp;</td><td>現在の時刻 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>to</em>&nbsp;</td><td>送信先(NULLの場合すべてのエージェントに送信する) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>text</em>&nbsp;</td><td>送信テキスト文字列 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>fs</em>&nbsp;</td><td>テロップのフォントサイズ(NULLの場合は64) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color</em>&nbsp;</td><td>テロップの色(NULLの場合は黒) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aa31029aae27e4faf2eb76e61c3eb6710"></a><!-- doxytag: member="ControllerImpl::sendMessage" ref="aa31029aae27e4faf2eb76e61c3eb6710" args="(const char *to, int argc, char **argv)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ControllerImpl::sendMessage </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>to</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&nbsp;</td>
+          <td class="paramname"> <em>argv</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>メッセージを送信する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>to</em>&nbsp;</td><td>送信先エージェント名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>argc</em>&nbsp;</td><td>文字列数 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>argv</em>&nbsp;</td><td>文字列 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a98cba47265d36b37c26a92b7ae61e831"></a><!-- doxytag: member="ControllerImpl::sendSound" ref="a98cba47265d36b37c26a92b7ae61e831" args="(double t, const char *to, RawSound &amp;sound)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ControllerImpl::sendSound </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>to</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_raw_sound.html">RawSound</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>sound</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>他のエージェントに音声データを送信する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>t</em>&nbsp;</td><td>現在の時刻 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>to</em>&nbsp;</td><td>送信先(NULLの場合すべてのエージェントに送信する) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>text</em>&nbsp;</td><td>音声データ </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a59c604d9265cb43f91840f38cfe37de5"></a><!-- doxytag: member="ControllerImpl::sendText" ref="a59c604d9265cb43f91840f38cfe37de5" args="(double t, const char *to, const char *text)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ControllerImpl::sendText </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>to</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>text</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>他のエージェントにテキストを送信する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>t</em>&nbsp;</td><td>現在の時刻 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>to</em>&nbsp;</td><td>送信先(NULLの場合すべてのエージェントに送信する) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>text</em>&nbsp;</td><td>送信テキスト文字列 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a5aedb495c04d92d657e148105aaab3b9"></a><!-- doxytag: member="ControllerImpl::sendText" ref="a5aedb495c04d92d657e148105aaab3b9" args="(double t, const char *to, const char *text, double reachRadius)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ControllerImpl::sendText </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>to</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>reachRadius</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>他のエージェントにテキストを送信する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>t</em>&nbsp;</td><td>現在の時刻 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>to</em>&nbsp;</td><td>送信先(NULLの場合すべてのエージェントに送信する) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>text</em>&nbsp;</td><td>送信文字列 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>reachRadius</em>&nbsp;</td><td>到達半径 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ae4f6fc9e0bf8b249063b90c2125e7bed"></a><!-- doxytag: member="ControllerImpl::server" ref="ae4f6fc9e0bf8b249063b90c2125e7bed" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* ControllerImpl::server </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>サーバ名を取得する </p>
+
+<p> <a class="el" href="_controller_impl_8h_source.html">ControllerImpl.h</a> の <a class="el" href="_controller_impl_8h_source.html#l00059">59</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a661407f8adc53009b3b0d268bfa48e56"></a><!-- doxytag: member="ControllerImpl::‾ControllerImpl" ref="a661407f8adc53009b3b0d268bfa48e56" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ControllerImpl::‾ControllerImpl </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>デストラクタ </p>
+
+<p> <a class="el" href="_controller_impl_8h_source.html">ControllerImpl.h</a> の <a class="el" href="_controller_impl_8h_source.html#l00053">53</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_controller_impl_a661407f8adc53009b3b0d268bfa48e56_cgraph.png" border="0" usemap="#class_controller_impl_a661407f8adc53009b3b0d268bfa48e56_cgraph_map" alt=""></div>
+<map name="class_controller_impl_a661407f8adc53009b3b0d268bfa48e56_cgraph_map" id="class_controller_impl_a661407f8adc53009b3b0d268bfa48e56_cgraph">
+<area shape="rect" href="class_controller_impl.html#a66191dabddf2e0dc10093723d549c8b4" title="ControllerImpl::close_" alt="" coords="252,5,399,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<hr/><h2>変数</h2>
+<a class="anchor" id="af50e7cf13c3d03be9fe9af13300bcf0b"></a><!-- doxytag: member="ControllerImpl::m_cmdSock" ref="af50e7cf13c3d03be9fe9af13300bcf0b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="systemdef_8h.html#a8dc8083897335125630f1af5dafd5831">SOCKET</a> <a class="el" href="class_controller_impl.html#af50e7cf13c3d03be9fe9af13300bcf0b">ControllerImpl::m_cmdSock</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_controller_impl_8h_source.html">ControllerImpl.h</a> の <a class="el" href="_controller_impl_8h_source.html#l00033">33</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a126dd7eaa64bbd1e7922d259eb93bea9"></a><!-- doxytag: member="ControllerImpl::m_dataSock" ref="a126dd7eaa64bbd1e7922d259eb93bea9" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="systemdef_8h.html#a8dc8083897335125630f1af5dafd5831">SOCKET</a> <a class="el" href="class_controller_impl.html#a126dd7eaa64bbd1e7922d259eb93bea9">ControllerImpl::m_dataSock</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_controller_impl_8h_source.html">ControllerImpl.h</a> の <a class="el" href="_controller_impl_8h_source.html#l00034">34</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_controller_impl_8h_source.html">ControllerImpl.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:18 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

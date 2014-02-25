@@ -1,0 +1,1000 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGViewer: クラス Sgv::Socket</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_sgv.html">Sgv</a>::<a class="el" href="class_sgv_1_1_socket.html">Socket</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Sgv::Socket</h1><!-- doxytag: class="Sgv::Socket" -->ソケットの基本クラス  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_sgv_socket_8h_source.html">SgvSocket.h</a>&gt;</code>
+<p>
+<div class="dynheader">
+Sgv::Socketに対する継承グラフ</div>
+<div class="dynsection">
+
+<p><center><img src="class_sgv_1_1_socket.png" usemap="#Sgv::Socket_map" border="0" alt=""></center>
+<map name="Sgv::Socket_map">
+<area href="class_sgv_1_1_client_socket.html" alt="Sgv::ClientSocket" shape="rect" coords="0,56,117,80">
+<area href="class_sgv_1_1_server_socket.html" alt="Sgv::ServerSocket" shape="rect" coords="127,56,244,80">
+</map>
+</div>
+
+<p>
+<a href="class_sgv_1_1_socket-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_socket.html#d9d80e3cc77fa0e2f05795f0af800d50">close</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ソケットを閉じる  <a href="#d9d80e3cc77fa0e2f05795f0af800d50"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_socket.html#6cef8d7157cd0ee8a3af6396a2a5d79d">connected</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">接続中ならtrueを返す  <a href="#6cef8d7157cd0ee8a3af6396a2a5d79d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_socket.html#842c94d2517ba9c33f60522299cf71d2">hostName</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">接続相手のホスト名を返す  <a href="#842c94d2517ba9c33f60522299cf71d2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_socket.html#9135b3cfc456b4225968e54c36dbb14b">recvData</a> (char *buf, int bufLen, int &amp;recvLen)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ソケットからデータを読み出す  <a href="#9135b3cfc456b4225968e54c36dbb14b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_socket.html#1cd8d81ea4405a3ff88d7555e8012dee">recvPacket</a> (<a class="el" href="class_sgv_1_1_packet.html">Sgv::Packet</a> **ppPacket)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ソケットからデータを読み出し、パケットとして返す  <a href="#1cd8d81ea4405a3ff88d7555e8012dee"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_socket.html#7568f6e346a1300f0a1762f7d6dbdf68">select</a> (bool bReadable, long sec=0, long millisec=0)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ソケットにデータが到着しているかどうかチェックする  <a href="#7568f6e346a1300f0a1762f7d6dbdf68"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_socket.html#02b88d178b36c68e359d003a4f1111b0">sendData</a> (char *buf, int bufLen, int &amp;sentLen)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ソケットにデータを送信する  <a href="#02b88d178b36c68e359d003a4f1111b0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_socket.html#b07c0ab3a464cc92f025e6cd86a5a976">setNonBlockMode</a> (bool bNonBlockingMode)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ソケットのモードを変更する．  <a href="#b07c0ab3a464cc92f025e6cd86a5a976"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">SOCKET&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_socket.html#ccfbb8ea689629d15a03908b1b4a35c9">sock</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ソケット記述子を返す  <a href="#ccfbb8ea689629d15a03908b1b4a35c9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_socket.html#2015b908916cd9093e30ae69e6477447">Socket</a> (SOCKET sock, bool bNonBlockingMode)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#2015b908916cd9093e30ae69e6477447"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_socket.html#4a36fe5bf2b3e53e5f5a4a10ccaeba70">Socket</a> (bool bNonBlockingMode)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#4a36fe5bf2b3e53e5f5a4a10ccaeba70"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_socket.html#038a11376afe35d714eff29c37cfaed0">Socket</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#038a11376afe35d714eff29c37cfaed0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_socket.html#7f0a55ee81eeb182a90bd49b918049cb">‾Socket</a> ()</td></tr>
+
+<tr><td colspan="2"><br><h2>Static Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_socket.html#423ff2ff0c0d1663fd45f2f2832dfed3">cleanupWinsock</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Winsockを閉じる.  <a href="#423ff2ff0c0d1663fd45f2f2832dfed3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_socket.html#53ddae4dcef969060efe7b774e81e0bf">getWinsockErrorDetail</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Winsockエラーコードを返す.  <a href="#53ddae4dcef969060efe7b774e81e0bf"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_socket.html#7a195532fb2e7edef3700986f3f628a2">getWinsockErrorDetailString</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Winsockエラーを文字列表現で返す.  <a href="#7a195532fb2e7edef3700986f3f628a2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_socket.html#0758b6ba8a916d6c856bd2d15cdb04fe">getWinsockErrorString</a> (int errCode)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Winsockエラーコードからエラー内容記述文字列に変換する.  <a href="#0758b6ba8a916d6c856bd2d15cdb04fe"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_socket.html#0d25a4738b316de25d5a7fdc63976d9b">initWinsock</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Winsockを初期化する.  <a href="#0d25a4738b316de25d5a7fdc63976d9b"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Protected メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_socket.html#484e0e36d67b148b6c2f08f0d0a8f3d2">initAllMembers</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">すべてのメンバ変数を初期化する  <a href="#484e0e36d67b148b6c2f08f0d0a8f3d2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_socket.html#8cc7e7add9c81aa4ba0ad0bddd0dfffd">recvPacket_Block</a> (<a class="el" href="class_sgv_1_1_packet.html">Sgv::Packet</a> **ppPacket)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ソケットからデータを受け取り、パケットとして返す（ブロッキングモード）  <a href="#8cc7e7add9c81aa4ba0ad0bddd0dfffd"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_socket.html#85befb4b4481975c2083d020358a7812">recvPacket_NonBlock</a> (<a class="el" href="class_sgv_1_1_packet.html">Sgv::Packet</a> **ppPacket)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ソケットからデータを受け取り、パケットとして返す（ノンブロッキングモード）  <a href="#85befb4b4481975c2083d020358a7812"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Protected 変数</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_socket.html#10de49ee6a66af641e4d8022befa7b42">m_bNonBlockingMode</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">動作モード．ノンブロッキングモードならtrue  <a href="#10de49ee6a66af641e4d8022befa7b42"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_socket.html#a6565f2015ac69cd6b9c65cf2f0a9edb">m_bufLen</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">バッファの長さ  <a href="#a6565f2015ac69cd6b9c65cf2f0a9edb"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_socket.html#4071a31b8d44a9d4ea5e855827452e63">m_connected</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">接続状態．接続中ならtrue  <a href="#4071a31b8d44a9d4ea5e855827452e63"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_socket.html#e09cb997aeea995095438bf2de923cb0">m_hostName</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ホスト名  <a href="#e09cb997aeea995095438bf2de923cb0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_sgv_1_1_packet.html">Sgv::Packet</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_socket.html#6f783ca326afae08f738145fa38d7e62">m_packet</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パケット  <a href="#6f783ca326afae08f738145fa38d7e62"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">SOCKET&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_socket.html#bfa63369d8765407df570e53b0e0ef28">m_sock</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ソケット  <a href="#bfa63369d8765407df570e53b0e0ef28"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_socket.html#3db2a44a1ae4a0ac1e0fdc3e95a097a4">m_totalRecvLen</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">トータルで受信したデータの長さ  <a href="#3db2a44a1ae4a0ac1e0fdc3e95a097a4"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+ソケットの基本クラス 
+<p>
+派生クラスにServerSocketとClientSocketがある．<p>
+ServerSocketは、自らが主体的にソケットをオープンする(サーバーとなる)場合に使う． ClientSocketは、サーバーに接続するためのソケットを作るときに使う． 
+<p> <a class="el" href="_sgv_socket_8h_source.html">SgvSocket.h</a> の <a class="el" href="_sgv_socket_8h_source.html#l00020">20</a> 行で定義されています。</p>
+<hr><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" name="038a11376afe35d714eff29c37cfaed0"></a><!-- doxytag: member="Sgv::Socket::Socket" ref="038a11376afe35d714eff29c37cfaed0" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::Socket::Socket           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_socket_8cpp_source.html">SgvSocket.cpp</a> の <a class="el" href="_sgv_socket_8cpp_source.html#l00014">14</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="4a36fe5bf2b3e53e5f5a4a10ccaeba70"></a><!-- doxytag: member="Sgv::Socket::Socket" ref="4a36fe5bf2b3e53e5f5a4a10ccaeba70" args="(bool bNonBlockingMode)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::Socket::Socket           </td>
+          <td>(</td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bNonBlockingMode</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+ノンブロッキングモードの指定フラグ付き<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>bNonBlockingMode</em>&nbsp;</td><td>[i] true(=ノンブロッキングモード), false(=ブロッキングモード) </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_socket_8cpp_source.html">SgvSocket.cpp</a> の <a class="el" href="_sgv_socket_8cpp_source.html#l00019">19</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="2015b908916cd9093e30ae69e6477447"></a><!-- doxytag: member="Sgv::Socket::Socket" ref="2015b908916cd9093e30ae69e6477447" args="(SOCKET sock, bool bNonBlockingMode)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::Socket::Socket           </td>
+          <td>(</td>
+          <td class="paramtype">SOCKET&nbsp;</td>
+          <td class="paramname"> <em>sock</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bNonBlockingMode</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+ソケット記述子を与えられるコンストラクタ． ノンブロッキングモードの指定も可能．<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>sock</em>&nbsp;</td><td>[i] ソケット記述子 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bNonBlockingMode</em>&nbsp;</td><td>[i] true(=ノンブロッキングモード), false(=ブロッキングモード)</td></tr>
+  </table>
+</dl>
+与えられたソケット記述子を使ってオブジェクトを作成する． 
+<p> <a class="el" href="_sgv_socket_8cpp_source.html">SgvSocket.cpp</a> の <a class="el" href="_sgv_socket_8cpp_source.html#l00041">41</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>関数</h2>
+<a class="anchor" name="423ff2ff0c0d1663fd45f2f2832dfed3"></a><!-- doxytag: member="Sgv::Socket::cleanupWinsock" ref="423ff2ff0c0d1663fd45f2f2832dfed3" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::Socket::cleanupWinsock           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Winsockを閉じる. 
+<p>
+プログラムの終了前に呼べばよい 
+<p> <a class="el" href="_sgv_socket_8cpp_source.html">SgvSocket.cpp</a> の <a class="el" href="_sgv_socket_8cpp_source.html#l00588">588</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="d9d80e3cc77fa0e2f05795f0af800d50"></a><!-- doxytag: member="Sgv::Socket::close" ref="d9d80e3cc77fa0e2f05795f0af800d50" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::Socket::close           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ソケットを閉じる 
+<p>
+
+<p> <a class="el" href="_sgv_socket_8cpp_source.html">SgvSocket.cpp</a> の <a class="el" href="_sgv_socket_8cpp_source.html#l00071">71</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="6cef8d7157cd0ee8a3af6396a2a5d79d"></a><!-- doxytag: member="Sgv::Socket::connected" ref="6cef8d7157cd0ee8a3af6396a2a5d79d" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::Socket::connected           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+接続中ならtrueを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=接続中), false(=切断中) </dd></dl>
+
+<p> <a class="el" href="_sgv_socket_8h_source.html">SgvSocket.h</a> の <a class="el" href="_sgv_socket_8h_source.html#l00216">216</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="53ddae4dcef969060efe7b774e81e0bf"></a><!-- doxytag: member="Sgv::Socket::getWinsockErrorDetail" ref="53ddae4dcef969060efe7b774e81e0bf" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Sgv::Socket::getWinsockErrorDetail           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Winsockエラーコードを返す. 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>Winsockエラーコード</dd></dl>
+ソケット通信におけるエラーコードを返す． エラーコードは整数値である．<p>
+エラーコードを文字列表現に変換するにはgetWinsockErrorString()を使う． 
+<p> <a class="el" href="_sgv_socket_8cpp_source.html">SgvSocket.cpp</a> の <a class="el" href="_sgv_socket_8cpp_source.html#l00599">599</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="7a195532fb2e7edef3700986f3f628a2"></a><!-- doxytag: member="Sgv::Socket::getWinsockErrorDetailString" ref="7a195532fb2e7edef3700986f3f628a2" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * Sgv::Socket::getWinsockErrorDetailString           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Winsockエラーを文字列表現で返す. 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>エラー内容の文字列表現 </dd></dl>
+
+<p> <a class="el" href="_sgv_socket_8cpp_source.html">SgvSocket.cpp</a> の <a class="el" href="_sgv_socket_8cpp_source.html#l00604">604</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="0758b6ba8a916d6c856bd2d15cdb04fe"></a><!-- doxytag: member="Sgv::Socket::getWinsockErrorString" ref="0758b6ba8a916d6c856bd2d15cdb04fe" args="(int errCode)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * Sgv::Socket::getWinsockErrorString           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>errCode</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Winsockエラーコードからエラー内容記述文字列に変換する. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>errCode</em>&nbsp;</td><td>[i] Winsockエラーコード</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>エラー内容の文字列表現 </dd></dl>
+
+<p> <a class="el" href="_sgv_socket_8cpp_source.html">SgvSocket.cpp</a> の <a class="el" href="_sgv_socket_8cpp_source.html#l00609">609</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="842c94d2517ba9c33f60522299cf71d2"></a><!-- doxytag: member="Sgv::Socket::hostName" ref="842c94d2517ba9c33f60522299cf71d2" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* Sgv::Socket::hostName           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+接続相手のホスト名を返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>ホスト名 </dd></dl>
+
+<p> <a class="el" href="_sgv_socket_8h_source.html">SgvSocket.h</a> の <a class="el" href="_sgv_socket_8h_source.html#l00223">223</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="484e0e36d67b148b6c2f08f0d0a8f3d2"></a><!-- doxytag: member="Sgv::Socket::initAllMembers" ref="484e0e36d67b148b6c2f08f0d0a8f3d2" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::Socket::initAllMembers           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+すべてのメンバ変数を初期化する 
+<p>
+コンストラクタ以外から呼んではいけない 
+<p> <a class="el" href="_sgv_socket_8cpp_source.html">SgvSocket.cpp</a> の <a class="el" href="_sgv_socket_8cpp_source.html#l00056">56</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="0d25a4738b316de25d5a7fdc63976d9b"></a><!-- doxytag: member="Sgv::Socket::initWinsock" ref="0d25a4738b316de25d5a7fdc63976d9b" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::Socket::initWinsock           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Winsockを初期化する. 
+<p>
+ソケットを使用する前に、必ず1度呼ばなければならない． 通常はプログラムの起動時にコールしておく．<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_socket_8cpp_source.html">SgvSocket.cpp</a> の <a class="el" href="_sgv_socket_8cpp_source.html#l00571">571</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="9135b3cfc456b4225968e54c36dbb14b"></a><!-- doxytag: member="Sgv::Socket::recvData" ref="9135b3cfc456b4225968e54c36dbb14b" args="(char *buf, int bufLen, int &amp;recvLen)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Sgv::Socket::recvData           </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>bufLen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&nbsp;</td>
+          <td class="paramname"> <em>recvLen</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ソケットからデータを読み出す 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>buf</em>&nbsp;</td><td>[i] データを格納するバッファの先頭 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bufLen</em>&nbsp;</td><td>[i] バッファの長さ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>recvLen</em>&nbsp;</td><td>[o] 受信したデータの長さ</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>ステータス値</dd></dl>
+<div class="fragment"><pre class="fragment"> 1 (=ソケットからデータを受信した)
+ 0 (=ソケットが閉じられた(ブロッキングモードの場合)、有効なデータが届いていない(=ノンブロッキングモードの場合))
+ -1 (=エラー発生)
+</pre></div><p>
+ソケットから読み出されるデータは、最大でbufLenバイト． 実際に読み出されたバイト数はrecvLenに返る. (recvLen &lt;= bufLenが成り立つ) 
+<p> <a class="el" href="_sgv_socket_8cpp_source.html">SgvSocket.cpp</a> の <a class="el" href="_sgv_socket_8cpp_source.html#l00176">176</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="1cd8d81ea4405a3ff88d7555e8012dee"></a><!-- doxytag: member="Sgv::Socket::recvPacket" ref="1cd8d81ea4405a3ff88d7555e8012dee" args="(Sgv::Packet **ppPacket)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Sgv::Socket::recvPacket           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_packet.html">Sgv::Packet</a> **&nbsp;</td>
+          <td class="paramname"> <em>ppPacket</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ソケットからデータを読み出し、パケットとして返す 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>ppPacket</em>&nbsp;</td><td>[i] ソケットから受信したデータ</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>ステータス値</dd></dl>
+<div class="fragment"><pre class="fragment"> 1 (=ソケットからデータを受信した)
+ 0 (=ソケットが閉じられた(ブロッキングモードの場合)、有効なデータが届いていない(=ノンブロッキングモードの場合))
+ -1 (=エラー発生)
+</pre></div><p>
+SIGVerseの通信データは、先頭が0xABCD（ヘッダマーク）で始まり、0xDCBA（テイルマーク）で終わる． このヘッダとテイルで囲まれた一連のデータブロックをパケットと呼ぶ．<p>
+このメソッドではヘッダとテイルの識別を行うため、パケットの受信が簡単に行える．<p>
+受け取ったパケットはppPacketに返る. 呼び出し側はppPacketをdeleteしなければならない<p>
+<div class="fragment"><pre class="fragment"> <a class="code" href="class_sgv_1_1_packet.html" title="パケット（ネットワーク通信の単位となるブロックデータ）...">Sgv::Packet</a> *p = NULL;
+ <span class="keywordflow">for</span> (;;)
+ {
+    <span class="keywordtype">int</span> status = <a class="code" href="class_sgv_1_1_socket.html#1cd8d81ea4405a3ff88d7555e8012dee" title="ソケットからデータを読み出し、パケットとして返す">recvPacket</a>(&amp;p);
+
+    <span class="keywordflow">if</span> (status &lt; 0) {
+            <span class="comment">// エラー</span>
+            exit 1;
+    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (status &gt; 0) {
+            <span class="comment">// 受信完了．データはpに入っている．</span>
+            <span class="keywordflow">break</span>;
+        }
+    }
+ ...
+ <span class="keywordflow">if</span> (p) <span class="keyword">delete</span> p;   <span class="comment">// 受け取ったパケットを解放する</span>
+</pre></div> 
+<p> <a class="el" href="_sgv_socket_8cpp_source.html">SgvSocket.cpp</a> の <a class="el" href="_sgv_socket_8cpp_source.html#l00396">396</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="8cc7e7add9c81aa4ba0ad0bddd0dfffd"></a><!-- doxytag: member="Sgv::Socket::recvPacket_Block" ref="8cc7e7add9c81aa4ba0ad0bddd0dfffd" args="(Sgv::Packet **ppPacket)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Sgv::Socket::recvPacket_Block           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_packet.html">Sgv::Packet</a> **&nbsp;</td>
+          <td class="paramname"> <em>ppPacket</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ソケットからデータを受け取り、パケットとして返す（ブロッキングモード） 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>ppPacket</em>&nbsp;</td><td>[o] 受信したデータ</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>ステータス値</dd></dl>
+<div class="fragment"><pre class="fragment"> 1 = 成功 (読み込んだデータはppPacketに返る）
+ -1 = エラー
+</pre></div> 
+<p> <a class="el" href="_sgv_socket_8cpp_source.html">SgvSocket.cpp</a> の <a class="el" href="_sgv_socket_8cpp_source.html#l00214">214</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="85befb4b4481975c2083d020358a7812"></a><!-- doxytag: member="Sgv::Socket::recvPacket_NonBlock" ref="85befb4b4481975c2083d020358a7812" args="(Sgv::Packet **ppPacket)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Sgv::Socket::recvPacket_NonBlock           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_packet.html">Sgv::Packet</a> **&nbsp;</td>
+          <td class="paramname"> <em>ppPacket</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ソケットからデータを受け取り、パケットとして返す（ノンブロッキングモード） 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>ppPacket</em>&nbsp;</td><td>[o] 受信したデータ</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>ステータス値</dd></dl>
+<div class="fragment"><pre class="fragment"> 1 = 成功 (読み込んだデータはppPacketに返る）
+ 0 = データが届いていない
+ -1 = エラー
+</pre></div><p>
+ノンブロッキングモードの場合、ブロッキングモードと異なり、 ソケットからデータが届かなくてもリターンしてくる（その場合の返り値は0）<p>
+そのため、データが届かなかった場合もブロックせず、 他の処理を続けることができる．（以下のコード例を参照）<p>
+<div class="fragment"><pre class="fragment"> <a class="code" href="class_sgv_1_1_packet.html" title="パケット（ネットワーク通信の単位となるブロックデータ）...">Sgv::Packet</a> *p = NULL;
+ <span class="keywordflow">for</span> (;;)
+ {
+    <span class="keywordtype">int</span> status = <a class="code" href="class_sgv_1_1_socket.html#8cc7e7add9c81aa4ba0ad0bddd0dfffd" title="ソケットからデータを受け取り、パケットとして返す（ブロッキングモー�...">recvPacket_Block</a>(&amp;p);
+
+    <span class="keywordflow">if</span> (status &lt; 0) {
+            <span class="comment">// エラー</span>
+            exit 1;
+    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (status &gt; 0) {
+            <span class="comment">// 受信完了．データはpに入っている．</span>
+            <span class="keywordflow">break</span>;
+        } <span class="keywordflow">else</span> {
+            <span class="comment">// データは届いていなかった．</span>
+            <span class="comment">// 他の処理を行う．</span>
+        }
+    }
+ ...
+ <span class="keywordflow">if</span> (p) <span class="keyword">delete</span> p;
+</pre></div> 
+<p> <a class="el" href="_sgv_socket_8cpp_source.html">SgvSocket.cpp</a> の <a class="el" href="_sgv_socket_8cpp_source.html#l00278">278</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="7568f6e346a1300f0a1762f7d6dbdf68"></a><!-- doxytag: member="Sgv::Socket::select" ref="7568f6e346a1300f0a1762f7d6dbdf68" args="(bool bReadable, long sec=0, long millisec=0)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Sgv::Socket::select           </td>
+          <td>(</td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bReadable</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long&nbsp;</td>
+          <td class="paramname"> <em>sec</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long&nbsp;</td>
+          <td class="paramname"> <em>millisec</em> = <code>0</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ソケットにデータが到着しているかどうかチェックする 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>bReadable</em>&nbsp;</td><td>[i] 読み出しモードのときtrue </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>sec</em>&nbsp;</td><td>[i] タイムアウト値（秒） </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>millisec</em>&nbsp;</td><td>[i] タイムアウト値（ミリ秒）</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>ソケットの状態</dd></dl>
+<div class="fragment"><pre class="fragment"> &gt; 0 ... 読み出し又は書き込み可能
+ = 0 ... データは未到着
+ &lt; 0 ... エラー発生
+</pre></div> 
+<p> <a class="el" href="_sgv_socket_8cpp_source.html">SgvSocket.cpp</a> の <a class="el" href="_sgv_socket_8cpp_source.html#l00099">99</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="02b88d178b36c68e359d003a4f1111b0"></a><!-- doxytag: member="Sgv::Socket::sendData" ref="02b88d178b36c68e359d003a4f1111b0" args="(char *buf, int bufLen, int &amp;sentLen)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::Socket::sendData           </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>bufLen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&nbsp;</td>
+          <td class="paramname"> <em>sentLen</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ソケットにデータを送信する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>buf</em>&nbsp;</td><td>[i] 送信するデータの先頭 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bufLen</em>&nbsp;</td><td>[i] 送信するデータの長さ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>sentLen</em>&nbsp;</td><td>[o] 送信されたデータの長さ</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=送信完了), false(=送信失敗）</dd></dl>
+ソケットにbufからのbufLenバイトを送る.<p>
+実際に送信できたデータ長がsentLenに返る. （sentLen &lt;= bufLenが成り立つ） 
+<p> <a class="el" href="_sgv_socket_8cpp_source.html">SgvSocket.cpp</a> の <a class="el" href="_sgv_socket_8cpp_source.html#l00160">160</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b07c0ab3a464cc92f025e6cd86a5a976"></a><!-- doxytag: member="Sgv::Socket::setNonBlockMode" ref="b07c0ab3a464cc92f025e6cd86a5a976" args="(bool bNonBlockingMode)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::Socket::setNonBlockMode           </td>
+          <td>(</td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bNonBlockingMode</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ソケットのモードを変更する． 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>bNonBlockingMode</em>&nbsp;</td><td>[i] true(=ノンブロッキングモード), false(=ブロッキングモード) </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_socket_8cpp_source.html">SgvSocket.cpp</a> の <a class="el" href="_sgv_socket_8cpp_source.html#l00090">90</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="ccfbb8ea689629d15a03908b1b4a35c9"></a><!-- doxytag: member="Sgv::Socket::sock" ref="ccfbb8ea689629d15a03908b1b4a35c9" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SOCKET Sgv::Socket::sock           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ソケット記述子を返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>ソケット記述子 </dd></dl>
+
+<p> <a class="el" href="_sgv_socket_8h_source.html">SgvSocket.h</a> の <a class="el" href="_sgv_socket_8h_source.html#l00209">209</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="7f0a55ee81eeb182a90bd49b918049cb"></a><!-- doxytag: member="Sgv::Socket::‾Socket" ref="7f0a55ee81eeb182a90bd49b918049cb" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::Socket::‾Socket           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_sgv_socket_8cpp_source.html">SgvSocket.cpp</a> の <a class="el" href="_sgv_socket_8cpp_source.html#l00066">66</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>変数</h2>
+<a class="anchor" name="10de49ee6a66af641e4d8022befa7b42"></a><!-- doxytag: member="Sgv::Socket::m_bNonBlockingMode" ref="10de49ee6a66af641e4d8022befa7b42" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_sgv_1_1_socket.html#10de49ee6a66af641e4d8022befa7b42">Sgv::Socket::m_bNonBlockingMode</a><code> [protected]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+動作モード．ノンブロッキングモードならtrue 
+<p>
+
+<p> <a class="el" href="_sgv_socket_8h_source.html">SgvSocket.h</a> の <a class="el" href="_sgv_socket_8h_source.html#l00239">239</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="a6565f2015ac69cd6b9c65cf2f0a9edb"></a><!-- doxytag: member="Sgv::Socket::m_bufLen" ref="a6565f2015ac69cd6b9c65cf2f0a9edb" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="class_sgv_1_1_socket.html#a6565f2015ac69cd6b9c65cf2f0a9edb">Sgv::Socket::m_bufLen</a><code> [protected]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+バッファの長さ 
+<p>
+
+<p> <a class="el" href="_sgv_socket_8h_source.html">SgvSocket.h</a> の <a class="el" href="_sgv_socket_8h_source.html#l00254">254</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="4071a31b8d44a9d4ea5e855827452e63"></a><!-- doxytag: member="Sgv::Socket::m_connected" ref="4071a31b8d44a9d4ea5e855827452e63" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_sgv_1_1_socket.html#4071a31b8d44a9d4ea5e855827452e63">Sgv::Socket::m_connected</a><code> [protected]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+接続状態．接続中ならtrue 
+<p>
+
+<p> <a class="el" href="_sgv_socket_8h_source.html">SgvSocket.h</a> の <a class="el" href="_sgv_socket_8h_source.html#l00234">234</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="e09cb997aeea995095438bf2de923cb0"></a><!-- doxytag: member="Sgv::Socket::m_hostName" ref="e09cb997aeea995095438bf2de923cb0" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string <a class="el" href="class_sgv_1_1_socket.html#e09cb997aeea995095438bf2de923cb0">Sgv::Socket::m_hostName</a><code> [protected]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ホスト名 
+<p>
+
+<p> <a class="el" href="_sgv_socket_8h_source.html">SgvSocket.h</a> の <a class="el" href="_sgv_socket_8h_source.html#l00244">244</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="6f783ca326afae08f738145fa38d7e62"></a><!-- doxytag: member="Sgv::Socket::m_packet" ref="6f783ca326afae08f738145fa38d7e62" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_sgv_1_1_packet.html">Sgv::Packet</a>* <a class="el" href="class_sgv_1_1_socket.html#6f783ca326afae08f738145fa38d7e62">Sgv::Socket::m_packet</a><code> [protected]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+パケット 
+<p>
+
+<p> <a class="el" href="_sgv_socket_8h_source.html">SgvSocket.h</a> の <a class="el" href="_sgv_socket_8h_source.html#l00249">249</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="bfa63369d8765407df570e53b0e0ef28"></a><!-- doxytag: member="Sgv::Socket::m_sock" ref="bfa63369d8765407df570e53b0e0ef28" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SOCKET <a class="el" href="class_sgv_1_1_socket.html#bfa63369d8765407df570e53b0e0ef28">Sgv::Socket::m_sock</a><code> [protected]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ソケット 
+<p>
+
+<p> <a class="el" href="_sgv_socket_8h_source.html">SgvSocket.h</a> の <a class="el" href="_sgv_socket_8h_source.html#l00229">229</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="3db2a44a1ae4a0ac1e0fdc3e95a097a4"></a><!-- doxytag: member="Sgv::Socket::m_totalRecvLen" ref="3db2a44a1ae4a0ac1e0fdc3e95a097a4" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="class_sgv_1_1_socket.html#3db2a44a1ae4a0ac1e0fdc3e95a097a4">Sgv::Socket::m_totalRecvLen</a><code> [protected]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+トータルで受信したデータの長さ 
+<p>
+
+<p> <a class="el" href="_sgv_socket_8h_source.html">SgvSocket.h</a> の <a class="el" href="_sgv_socket_8h_source.html#l00259">259</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_sgv_socket_8h_source.html">SgvSocket.h</a><li><a class="el" href="_sgv_socket_8cpp_source.html">SgvSocket.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGViewerに対してThu Jun 9 10:52:15 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

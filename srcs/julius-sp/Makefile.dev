@@ -1,0 +1,50 @@
+JULIUS_SP_PROGRAM = sigjsp
+JSP_TEST_PROGRAM = sigjspTest
+RECOGTEST_PROGRAM = recogTest
+
+JULIUS_SP_OBJS = julius_sp.o Jsp.o JspSocket.o JspPacket.o JspRecog.o JspWave.o JspXMLParser.o JspStringUtil.o JspConfigFile.o JspLog.o
+JSP_TEST_OBJS = jspTest.o JspTestClient.o JspSocket.o JspConfigFile.o JspPacket.o JspWave.o JspStringUtil.o JspLog.o
+RECOGTEST_OBJS = recogTest.o JspSocket.o JspLog.o JspRecog.o JspWave.o JspXMLParser.o JspStringUtil.o JspPacket.o
+
+CC = g++
+CFLAGS = -g -Wall
+INCLUDE = -I./ -I./commonlib
+LDFLAGS = -L./ -L./commonlib -lxerces-c -lirwas-common
+
+# *******************************************************
+#  to suppress -DUSE_ODE switch when compling commonlib
+#  (julius_sp never uses ODE)
+# *******************************************************
+DEFINE = -DUSE_ODE -DdDOUBLE -D CONTROLLER -D_DEBUG
+#DEFINE = -DUSE_ODE -DdDOUBLE -D CONTROLLER
+#DEFINE =
+
+all:
+	$(MAKE) lib
+	$(MAKE) $(JULIUS_SP_PROGRAM)
+	$(MAKE) $(JSP_TEST_PROGRAM)
+	$(MAKE) $(RECOGTEST_PROGRAM)
+
+lib:
+	@echo compiling commonlib...;
+	@cd commonlib; $(MAKE) "DEFINE=$(DEFINE)" ; cd ..;
+	@echo Done;
+
+$(JULIUS_SP_PROGRAM):	$(JULIUS_SP_OBJS)
+	$(CC) $(CFLAGS) -o $(JULIUS_SP_PROGRAM) $^ $(INCLUDE) $(LDFLAGS)
+
+$(JSP_TEST_PROGRAM):	$(JSP_TEST_OBJS)
+	$(CC) $(CFLAGS) -o $(JSP_TEST_PROGRAM) $^ $(INCLUDE) $(LDFLAGS)
+
+$(RECOGTEST_PROGRAM):	$(RECOGTEST_OBJS)
+	$(CC) $(CFLAGS) -o $(RECOGTEST_PROGRAM) $^ $(INCLUDE) $(LDFLAGS)
+
+.cpp.o:
+	$(CC) $(CFLAGS) $(INCLUDE) -c $<
+
+clean:
+	$(RM) $(JULIUS_SP_PROGRAM) $(JULIUS_SP_OBJS) $(JSP_TEST_PROGRAM) $(JSP_TEST_OBJS) $(RECOGTEST_PROGRAM) $(RECOGTEST_OBJS) packet.dat
+
+install:
+
+uninstall:

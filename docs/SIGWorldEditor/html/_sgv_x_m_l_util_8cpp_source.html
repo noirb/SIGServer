@@ -1,0 +1,232 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGWorldEditor: SgvXMLUtil.cpp ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>SgvXMLUtil.cpp</h1><a href="_sgv_x_m_l_util_8cpp.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include &lt;iostream&gt;</span>
+<a name="l00002"></a>00002 
+<a name="l00003"></a>00003 <span class="preprocessor">#include "<a class="code" href="_sgv_x_m_l_util_8h.html">SgvXMLUtil.h</a>"</span>
+<a name="l00004"></a>00004 
+<a name="l00005"></a>00005 <span class="comment">//using xercesc::XMLPlatformUtils;</span>
+<a name="l00006"></a>00006 
+<a name="l00007"></a>00007 <span class="keyword">namespace </span>Sgv
+<a name="l00008"></a>00008 {
+<a name="l00009"></a><a class="code" href="namespace_sgv.html#1890625d99b478d608306cb42ae36cc9">00009</a>     <span class="keywordtype">bool</span> <a class="code" href="namespace_sgv.html#1890625d99b478d608306cb42ae36cc9">g_bXMLEngineInitOK</a> = <span class="keyword">false</span>;
+<a name="l00010"></a><a class="code" href="namespace_sgv.html#587eab509d6f7fb00a47cc258338f425">00010</a>     DOMImplementation *<a class="code" href="namespace_sgv.html#587eab509d6f7fb00a47cc258338f425">g_pDOMImpl</a> = NULL;
+<a name="l00011"></a><a class="code" href="namespace_sgv.html#afe76ef41c1bb9f848d930bf6a6a2b9e">00011</a>     DOMLSParser *<a class="code" href="namespace_sgv.html#afe76ef41c1bb9f848d930bf6a6a2b9e">g_pXMLParser</a> = NULL;
+<a name="l00012"></a>00012 
+<a name="l00013"></a><a class="code" href="namespace_sgv.html#58ae38306bf17007bae9e10ad691a9c6">00013</a>     <span class="keywordtype">void</span> <a class="code" href="namespace_sgv.html#58ae38306bf17007bae9e10ad691a9c6" title="XMLエンジン(Xerces)を初期化する.">initXMLEngine</a>()
+<a name="l00014"></a>00014     {
+<a name="l00015"></a>00015         <span class="keywordflow">if</span> (!<a class="code" href="namespace_sgv.html#1890625d99b478d608306cb42ae36cc9">g_bXMLEngineInitOK</a>)
+<a name="l00016"></a>00016         {
+<a name="l00017"></a>00017             <span class="comment">// -----------------------------------------</span>
+<a name="l00018"></a>00018             <span class="comment">//  Xerces初期化</span>
+<a name="l00019"></a>00019             <span class="comment">// -----------------------------------------</span>
+<a name="l00020"></a>00020             XMLPlatformUtils::Initialize();
+<a name="l00021"></a>00021 
+<a name="l00022"></a>00022             <span class="comment">// -----------------------------------------</span>
+<a name="l00023"></a>00023             <span class="comment">//  DOMImplementationオブジェクト作成</span>
+<a name="l00024"></a>00024             <span class="comment">// -----------------------------------------</span>
+<a name="l00025"></a>00025             <span class="keyword">static</span> <span class="keyword">const</span> XMLCh gLS[] = { chLatin_L, chLatin_S, chNull };    <span class="comment">// "LS"</span>
+<a name="l00026"></a>00026             <a class="code" href="namespace_sgv.html#587eab509d6f7fb00a47cc258338f425">g_pDOMImpl</a> = DOMImplementationRegistry::getDOMImplementation(gLS);
+<a name="l00027"></a>00027 
+<a name="l00028"></a>00028             <span class="comment">// -----------------------------------------</span>
+<a name="l00029"></a>00029             <span class="comment">//  パーサー作成</span>
+<a name="l00030"></a>00030             <span class="comment">// -----------------------------------------</span>
+<a name="l00031"></a>00031             <a class="code" href="namespace_sgv.html#afe76ef41c1bb9f848d930bf6a6a2b9e">g_pXMLParser</a> = ((DOMImplementationLS*)<a class="code" href="namespace_sgv.html#587eab509d6f7fb00a47cc258338f425">g_pDOMImpl</a>)-&gt;createLSParser(DOMImplementationLS::MODE_SYNCHRONOUS, 0);
+<a name="l00032"></a>00032 
+<a name="l00033"></a>00033             <a class="code" href="namespace_sgv.html#1890625d99b478d608306cb42ae36cc9">g_bXMLEngineInitOK</a> = <span class="keyword">true</span>;
+<a name="l00034"></a>00034         }
+<a name="l00035"></a>00035     }
+<a name="l00036"></a>00036 
+<a name="l00037"></a><a class="code" href="namespace_sgv.html#2e0b0da6f8144bbeb39684c62426a251">00037</a>     <span class="keywordtype">bool</span> <a class="code" href="namespace_sgv.html#2e0b0da6f8144bbeb39684c62426a251" title="XMLエンジンが初期化されているか？.">isXMLEngineInitOK</a>()
+<a name="l00038"></a>00038     {
+<a name="l00039"></a>00039         <span class="keywordflow">return</span> <a class="code" href="namespace_sgv.html#1890625d99b478d608306cb42ae36cc9">g_bXMLEngineInitOK</a>;
+<a name="l00040"></a>00040     }
+<a name="l00041"></a>00041 
+<a name="l00042"></a><a class="code" href="namespace_sgv.html#c609ab5a90f13956e4dcc92887edf9a0">00042</a>     DOMLSParser *<a class="code" href="namespace_sgv.html#c609ab5a90f13956e4dcc92887edf9a0" title="XMLパーサーを返す.">getXMLParser</a>()
+<a name="l00043"></a>00043     {
+<a name="l00044"></a>00044         <span class="keywordflow">return</span> <a class="code" href="namespace_sgv.html#afe76ef41c1bb9f848d930bf6a6a2b9e">g_pXMLParser</a>;
+<a name="l00045"></a>00045     }
+<a name="l00046"></a>00046 
+<a name="l00047"></a><a class="code" href="namespace_sgv.html#ce4179837954ca3d0497794bf8b52fa8">00047</a>     std::string <a class="code" href="namespace_sgv.html#ce4179837954ca3d0497794bf8b52fa8" title="ノードの値を取り出す">getValue</a>(DOMNode *node)
+<a name="l00048"></a>00048     {
+<a name="l00049"></a>00049         std::string strValue(<span class="stringliteral">""</span>);
+<a name="l00050"></a>00050 
+<a name="l00051"></a>00051         <span class="keywordflow">if</span> (node)
+<a name="l00052"></a>00052         {
+<a name="l00053"></a>00053             DOMNode *textNode = node-&gt;getFirstChild();
+<a name="l00054"></a>00054             <span class="keywordflow">if</span> (textNode &amp;&amp; (textNode-&gt;getNodeType() == DOMNode::TEXT_NODE))
+<a name="l00055"></a>00055             {
+<a name="l00056"></a>00056                 <span class="keyword">const</span> XMLCh *p = textNode-&gt;getNodeValue();
+<a name="l00057"></a>00057                 <span class="keywordflow">if</span> (p)
+<a name="l00058"></a>00058                 {
+<a name="l00059"></a>00059                     <span class="keywordtype">char</span> *value = XMLString::transcode(p);
+<a name="l00060"></a>00060                     XMLString::trim(value);
+<a name="l00061"></a>00061 
+<a name="l00062"></a>00062                     strValue = value;
+<a name="l00063"></a>00063 
+<a name="l00064"></a>00064                     XMLString::release(&amp;value);
+<a name="l00065"></a>00065                 }
+<a name="l00066"></a>00066             }
+<a name="l00067"></a>00067         }
+<a name="l00068"></a>00068 
+<a name="l00069"></a>00069         <span class="keywordflow">return</span> strValue;
+<a name="l00070"></a>00070     }
+<a name="l00071"></a>00071 
+<a name="l00072"></a><a class="code" href="namespace_sgv.html#2d582159861d9c7d81c60d9d47ef1f30">00072</a>     std::string <a class="code" href="namespace_sgv.html#2d582159861d9c7d81c60d9d47ef1f30" title="ノードの指定属性の値を取り出す">getAttrValue</a>(DOMNode *node, <span class="keyword">const</span> <span class="keywordtype">char</span> *attrName)
+<a name="l00073"></a>00073     {
+<a name="l00074"></a>00074         std::string strValue(<span class="stringliteral">""</span>);
+<a name="l00075"></a>00075 
+<a name="l00076"></a>00076         <span class="keywordflow">if</span> (node-&gt;hasAttributes())
+<a name="l00077"></a>00077         {
+<a name="l00078"></a>00078             <span class="comment">// ある．</span>
+<a name="l00079"></a>00079             DOMNamedNodeMap *pAttrs = node-&gt;getAttributes();
+<a name="l00080"></a>00080 
+<a name="l00081"></a>00081             <span class="comment">// name属性を取り出す</span>
+<a name="l00082"></a>00082             DOMAttr *pAttrName = (DOMAttr *)(pAttrs-&gt;getNamedItem(<a class="code" href="class_sgv_1_1_x_str.html">XStr</a>(attrName ? attrName : <span class="stringliteral">""</span>).u()));
+<a name="l00083"></a>00083             <span class="keywordflow">if</span> (pAttrName)
+<a name="l00084"></a>00084             {
+<a name="l00085"></a>00085                 <span class="comment">// name属性の値</span>
+<a name="l00086"></a>00086                 <span class="keywordtype">char</span> *valName = XMLString::transcode(pAttrName-&gt;getValue());
+<a name="l00087"></a>00087 
+<a name="l00088"></a>00088                 strValue = valName;
+<a name="l00089"></a>00089 
+<a name="l00090"></a>00090                 XMLString::release(&amp;valName);
+<a name="l00091"></a>00091             }
+<a name="l00092"></a>00092         }
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094         <span class="keywordflow">return</span> strValue;
+<a name="l00095"></a>00095     }
+<a name="l00096"></a>00096     
+<a name="l00097"></a><a class="code" href="namespace_sgv.html#d092f82de90c7838cca711404de2ce63">00097</a>     DOMDocument *<a class="code" href="namespace_sgv.html#d092f82de90c7838cca711404de2ce63" title="新しいDOMドキュメントオブジェクトを生成する">createNewDOMDocument</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *rootNodeName)
+<a name="l00098"></a>00098     {
+<a name="l00099"></a>00099         <span class="keywordflow">if</span> (!<a class="code" href="namespace_sgv.html#587eab509d6f7fb00a47cc258338f425">g_pDOMImpl</a>) <span class="keywordflow">return</span> NULL;
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101         DOMDocument *doc = <a class="code" href="namespace_sgv.html#587eab509d6f7fb00a47cc258338f425">g_pDOMImpl</a>-&gt;createDocument(
+<a name="l00102"></a>00102             0,  <span class="comment">// root element namespace URI</span>
+<a name="l00103"></a>00103             <a class="code" href="class_sgv_1_1_x_str.html">XStr</a>(rootNodeName ? rootNodeName : <span class="stringliteral">""</span>).u(), <span class="comment">// root element name</span>
+<a name="l00104"></a>00104             0); <span class="comment">// document type object (DTD)</span>
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106         <span class="keywordflow">return</span> doc;
+<a name="l00107"></a>00107     }
+<a name="l00108"></a>00108 
+<a name="l00109"></a><a class="code" href="namespace_sgv.html#48bb009418d5cd12537e44b90c5733ab">00109</a>     <span class="keywordtype">bool</span> <a class="code" href="namespace_sgv.html#48bb009418d5cd12537e44b90c5733ab">writeDOMDocumentToXML</a>(DOMDocument *doc, <span class="keyword">const</span> <span class="keywordtype">char</span> *xmlFileName)
+<a name="l00110"></a>00110     {
+<a name="l00111"></a>00111         <span class="keywordflow">if</span> ((!doc) || (!xmlFileName)) <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00112"></a>00112 
+<a name="l00113"></a>00113         <span class="keywordflow">if</span> (!<a class="code" href="namespace_sgv.html#587eab509d6f7fb00a47cc258338f425">g_pDOMImpl</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00114"></a>00114 
+<a name="l00115"></a>00115         <span class="comment">// -----------------------------------------------</span>
+<a name="l00116"></a>00116         <span class="comment">//  シリアライザ作成</span>
+<a name="l00117"></a>00117         <span class="comment">// -----------------------------------------------</span>
+<a name="l00118"></a>00118         DOMLSSerializer *serial = ((DOMImplementationLS *)<a class="code" href="namespace_sgv.html#587eab509d6f7fb00a47cc258338f425">g_pDOMImpl</a>)-&gt;createLSSerializer();
+<a name="l00119"></a>00119 
+<a name="l00120"></a>00120         <span class="comment">// -----------------------------------------------</span>
+<a name="l00121"></a>00121         <span class="comment">//  プリティプリントをonにする</span>
+<a name="l00122"></a>00122         <span class="comment">// -----------------------------------------------</span>
+<a name="l00123"></a>00123         DOMConfiguration *conf = serial-&gt;getDomConfig();
+<a name="l00124"></a>00124         conf-&gt;setParameter(XMLUni::fgDOMWRTFormatPrettyPrint, <span class="keyword">true</span>);
+<a name="l00125"></a>00125 
+<a name="l00126"></a>00126         <span class="comment">// -----------------------------------------------</span>
+<a name="l00127"></a>00127         <span class="comment">//  出力ファイル指定</span>
+<a name="l00128"></a>00128         <span class="comment">// -----------------------------------------------</span>
+<a name="l00129"></a>00129         DOMLSOutput *outDesc = ((DOMImplementationLS *)<a class="code" href="namespace_sgv.html#587eab509d6f7fb00a47cc258338f425">g_pDOMImpl</a>)-&gt;createLSOutput();
+<a name="l00130"></a>00130         XMLFormatTarget *formTarget = <span class="keyword">new</span> LocalFileFormatTarget(xmlFileName);
+<a name="l00131"></a>00131         outDesc-&gt;setByteStream(formTarget);
+<a name="l00132"></a>00132 
+<a name="l00133"></a>00133         <span class="comment">// -----------------------------------------------</span>
+<a name="l00134"></a>00134         <span class="comment">//  docをXMLファイルに書き出す</span>
+<a name="l00135"></a>00135         <span class="comment">// -----------------------------------------------</span>
+<a name="l00136"></a>00136         serial-&gt;write(doc, outDesc);
+<a name="l00137"></a>00137 
+<a name="l00138"></a>00138         <span class="comment">// -----------------------------------------------</span>
+<a name="l00139"></a>00139         <span class="comment">//  オブジェクト破棄</span>
+<a name="l00140"></a>00140         <span class="comment">//</span>
+<a name="l00141"></a>00141         <span class="comment">//  これらがないと、書き出したファイルのロックが開放されない</span>
+<a name="l00142"></a>00142         <span class="comment">//  （書き込み禁止状態のままになってしまう）</span>
+<a name="l00143"></a>00143         <span class="comment">// -----------------------------------------------</span>
+<a name="l00144"></a>00144         outDesc-&gt;release();
+<a name="l00145"></a>00145         serial-&gt;release();
+<a name="l00146"></a>00146         <span class="keyword">delete</span> formTarget;
+<a name="l00147"></a>00147 
+<a name="l00148"></a>00148         <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00149"></a>00149     }
+<a name="l00150"></a>00150 
+<a name="l00151"></a><a class="code" href="namespace_sgv.html#880a5438da972ce830b90cab2bf50f5b">00151</a>     <span class="keywordtype">void</span> <a class="code" href="namespace_sgv.html#880a5438da972ce830b90cab2bf50f5b" title="XMLエンジンをクリーンアップする.">cleanupXMLEngine</a>()
+<a name="l00152"></a>00152     {
+<a name="l00153"></a>00153         <span class="keywordflow">if</span> (<a class="code" href="namespace_sgv.html#1890625d99b478d608306cb42ae36cc9">g_bXMLEngineInitOK</a>)
+<a name="l00154"></a>00154         {
+<a name="l00155"></a>00155             <span class="comment">// -----------------------------------------</span>
+<a name="l00156"></a>00156             <span class="comment">//  Xercesシャットダウン</span>
+<a name="l00157"></a>00157             <span class="comment">// -----------------------------------------</span>
+<a name="l00158"></a>00158             XMLPlatformUtils::Terminate();
+<a name="l00159"></a>00159 
+<a name="l00160"></a>00160             <a class="code" href="namespace_sgv.html#1890625d99b478d608306cb42ae36cc9">g_bXMLEngineInitOK</a> = <span class="keyword">false</span>;
+<a name="l00161"></a>00161         }
+<a name="l00162"></a>00162     }
+<a name="l00163"></a>00163 }
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>SIGWorldEditorに対してThu Jun 9 10:52:59 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<html>
+<!-- $Id: impl.html,v 1.1.1.1 2011-03-25 02:18:52 okamoto Exp $ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS"/>
+<link rel="stylesheet" type="text/css" href="../prj.css"/>
+<title></title>
+</head>
+
+<body>
+<h1>「何もしないのコントローラ」の作成</h1>
+
+<p>ここでは、エージェントの振舞いを制御するコントローラを作成する手順を説明します。</p>
+
+<h2><a name="empty_controller">コントローラの雛形の作成</a></h2>
+
+<p>コントローラはC++で実装します。次のように、siggenacコマンドを使ってコントローラの雛形を作成します。</p>
+<!--
+<p>まず、'何もしないコントローラ' を作成します。ファイルTestController.cppに、以下のようなコードを書きます。</p>
+-->
+
+<pre class="cmdsample">
+  % siggenac TestController > TestController.cpp
+</pre>
+
+<p>TestController.cppファイルは次のようなっています。このままでは、コントローラはエージェントに対して何も指示を送りません。</p>
+<iframe src="TestController.html" width="100%" height="400"/></iframe>
+
+<h2><a name="compile">コンパイル</a></h2>
+
+<p>作成したファイルをコンパイルして、コントローラバイナリを作成します。コントローラバイナリはShared Library として作成します(-shared -fPICオプション)。</p>
+<p>コンパイルの際には-Dオプションを使ってUSE_ODE, dDOUBLE, CONTROLLERを定義して下さい。</p>
+<pre class="cmdsample">
+  % g++ -shared -o TestController.so -I /user/local/include -DUSE_ODE -DCONTROLLER -DdDOUBLE -fPIC TestController.cpp
+</pre>
+
+<p>
+旧バージョンのSIGVerseで作成したコントローラでは、</p>
+
+<pre class="cmdsample">
+   #include &lt;Controller.h&gt;
+</pre>
+<p>
+のようにインクルードしているヘッダファイル名にsigverseディレクトリが抜けています。このような場合は g++の-I オプションで&lt;installtdir&gt;/include/sigverseを指定します</p>
+
+<pre class="cmdsample">
+  % g++ -shared -o TestController.so -I /user/local/include/sigverse -DUSE_ODE -DCONTROLLER -DdDOUBLE -fPIC TestController.cpp
+</pre>
+
+<h2><a name="attach">エージェントへのアタッチ(テスト実行)</a></h2>
+
+<p>sigrunacは作成したコントローラをシミュレーションサーバ中のエージェントに
+アタッチするためのツールです。sigrunac はコントローラライブラリをダイナミッ
+クリンクし、コントローラの各種イベントハンドラの呼び出しやコントローラに
+必要な機能を提供します。</p>
+
+<p>sigrunac を使用したエージェントへのコントローラのアタッチは以下のように行います</p>
+
+<pre class="cmdsample">
+   % sigrunac -l TestController.so -n Agent1 -p 6000
+</pre>
+
+ <p>runac 起動時には以下のオプションが使用できます。</p>
+<pre class="cmdsample">
+   sigrunac -l &lt;libfile&gt; -n &lt;agentname&gt; [ -p &lt;port&gt; ] [ -h &lt;server&gt; ]
+</pre>
+
+</body>
+</html>

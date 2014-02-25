@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: Attach.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>Attach.h</h1><a href="_attach_8h.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/* $Id: _attach_8h_source.html,v 1.2 2011-12-14 07:55:34 okamoto Exp $ */</span> 
+<a name="l00002"></a>00002 <span class="preprocessor">#ifndef Attach_h</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span><span class="preprocessor">#define Attach_h</span>
+<a name="l00004"></a>00004 <span class="preprocessor"></span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include &quot;<a class="code" href="_encoder_8h.html">Encoder.h</a>&quot;</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include &quot;<a class="code" href="event_2_result_8h.html">Result.h</a>&quot;</span>
+<a name="l00007"></a>00007 
+<a name="l00008"></a>00008 <span class="keyword">class </span><a class="code" href="class_service.html" title="サービスプロバイダの提供するサービスクラス">Service</a>;
+<a name="l00009"></a>00009 <span class="keyword">class </span><a class="code" href="class_x3_d_d_b.html" title="X3Dファイルデータベースクラス.">X3DDB</a>;
+<a name="l00010"></a>00010 
+<a name="l00011"></a><a class="code" href="namespace_comm_data.html">00011</a> <span class="keyword">namespace </span>CommData {
+<a name="l00012"></a>00012 <span class="comment"></span>
+<a name="l00013"></a>00013 <span class="comment">/**</span>
+<a name="l00014"></a>00014 <span class="comment"> * @brief クライアント割り当てリクエストエンコーダー基本クラス</span>
+<a name="l00015"></a>00015 <span class="comment"> */</span>
+<a name="l00016"></a><a class="code" href="class_comm_data_1_1_attach_request.html">00016</a> <span class="keyword">class </span><a class="code" href="class_comm_data_1_1_attach_request.html" title="クライアント割り当てリクエストエンコーダー基本クラス">AttachRequest</a> : <span class="keyword">public</span> <a class="code" href="class_comm_data_encoder.html" title="転送データエンコーダー基本クラス">Encoder</a>
+<a name="l00017"></a>00017 {
+<a name="l00018"></a>00018 <span class="keyword">private</span>:
+<a name="l00019"></a>00019     <span class="keyword">enum</span> { BUFSIZE = 128, };
+<a name="l00020"></a>00020 <span class="keyword">private</span>:
+<a name="l00021"></a>00021     std::string m_name;
+<a name="l00022"></a>00022 <span class="keyword">public</span>:
+<a name="l00023"></a><a class="code" href="class_comm_data_1_1_attach_request.html#a93d685e7609141dde132e09f88efea7f">00023</a>     <a class="code" href="class_comm_data_1_1_attach_request.html#a93d685e7609141dde132e09f88efea7f">AttachRequest</a>(<a class="code" href="_comm_data_type_8h.html#a587c9199c019f0dba3ce5ebe7a1a0a00">CommDataType</a> type,  <span class="keyword">const</span> <span class="keywordtype">char</span> *name)
+<a name="l00024"></a>00024         : <a class="code" href="class_comm_data_encoder.html" title="転送データエンコーダー基本クラス">Encoder</a>(type, BUFSIZE), m_name(name) {;}
+<a name="l00025"></a><a class="code" href="class_comm_data_1_1_attach_request.html#a07d342c69df7588044ba7cfffbd8a1f8">00025</a>     <span class="keyword">virtual</span> <a class="code" href="class_comm_data_1_1_attach_request.html#a07d342c69df7588044ba7cfffbd8a1f8">‾AttachRequest</a>() {;}
+<a name="l00026"></a>00026 
+<a name="l00027"></a><a class="code" href="class_comm_data_1_1_attach_request.html#a485e3f94bacf00dbea32483398bb04c6">00027</a>     <span class="keywordtype">int</span> <a class="code" href="class_comm_data_1_1_attach_request.html#a485e3f94bacf00dbea32483398bb04c6" title="分割パケット数を得る">packetNum</a>() { <span class="keywordflow">return</span> 1; }
+<a name="l00028"></a>00028     <span class="keywordtype">char</span> *<a class="code" href="class_comm_data_1_1_attach_request.html#ac404d4341ff3a513fec055f19283f66b" title="指定したシーケンス番号のデータをエンコードする">encode</a>(<span class="keywordtype">int</span> seq, <span class="keywordtype">int</span> &amp;);
+<a name="l00029"></a>00029 <span class="keyword">protected</span>:
+<a name="l00030"></a>00030     <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="class_comm_data_1_1_attach_request.html#a6f1fe077d0710897ea44d263eb623c2c">moreData</a>(<span class="keywordtype">char</span> *buf) = 0;
+<a name="l00031"></a>00031 };
+<a name="l00032"></a>00032 <span class="comment"></span>
+<a name="l00033"></a>00033 <span class="comment">/**</span>
+<a name="l00034"></a>00034 <span class="comment"> * @brief コントローラ割り当てリクエストエンコーダークラス</span>
+<a name="l00035"></a>00035 <span class="comment"> */</span>
+<a name="l00036"></a><a class="code" href="class_comm_data_1_1_attach_controller_request.html">00036</a> <span class="keyword">class </span><a class="code" href="class_comm_data_1_1_attach_controller_request.html" title="コントローラ割り当てリクエストエンコーダークラス">AttachControllerRequest</a> : <span class="keyword">public</span> <a class="code" href="class_comm_data_1_1_attach_request.html" title="クライアント割り当てリクエストエンコーダー基本クラス">AttachRequest</a>
+<a name="l00037"></a>00037 {
+<a name="l00038"></a>00038 <span class="keyword">public</span>:
+<a name="l00039"></a><a class="code" href="class_comm_data_1_1_attach_controller_request.html#ac5c697f50bd6e035c0b772e761709265">00039</a>     <a class="code" href="class_comm_data_1_1_attach_controller_request.html#ac5c697f50bd6e035c0b772e761709265">AttachControllerRequest</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name)
+<a name="l00040"></a>00040         : <a class="code" href="class_comm_data_1_1_attach_request.html" title="クライアント割り当てリクエストエンコーダー基本クラス">AttachRequest</a>(<a class="code" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a96cef897f927792560a993f6dd901781">COMM_REQUEST_ATTACH_CONTROLLER</a>, name) {;}
+<a name="l00041"></a>00041 <span class="keyword">private</span>:
+<a name="l00042"></a>00042     <span class="keywordtype">int</span> moreData(<span class="keywordtype">char</span> *buf)
+<a name="l00043"></a>00043     {
+<a name="l00044"></a>00044         <span class="keywordflow">return</span> 0;
+<a name="l00045"></a>00045     }
+<a name="l00046"></a>00046 };
+<a name="l00047"></a>00047 <span class="comment"></span>
+<a name="l00048"></a>00048 <span class="comment">/**</span>
+<a name="l00049"></a>00049 <span class="comment"> * @brief コントローラ割り当て結果エンコーダークラス</span>
+<a name="l00050"></a>00050 <span class="comment"> */</span>
+<a name="l00051"></a><a class="code" href="class_comm_data_1_1_attach_controller_result.html">00051</a> <span class="keyword">class </span><a class="code" href="class_comm_data_1_1_attach_controller_result.html" title="コントローラ割り当て結果エンコーダークラス">AttachControllerResult</a> : <span class="keyword">public</span> <a class="code" href="class_comm_data_1_1_result.html" title="リクエスト結果エンコーダークラス">Result</a>
+<a name="l00052"></a>00052 {
+<a name="l00053"></a>00053 <span class="keyword">public</span>:
+<a name="l00054"></a><a class="code" href="class_comm_data_1_1_attach_controller_result.html#a79e5bc4f979b643282879c4d8796d30c">00054</a>     <a class="code" href="class_comm_data_1_1_attach_controller_result.html#a79e5bc4f979b643282879c4d8796d30c">AttachControllerResult</a>(<a class="code" href="_comm_data_type_8h.html#a101d7163bfbe7284eea2334e55aa2bc8">CommResultType</a> r, <span class="keyword">const</span> <span class="keywordtype">char</span> *msg) :
+<a name="l00055"></a>00055         <a class="code" href="class_comm_data_1_1_result.html" title="リクエスト結果エンコーダークラス">Result</a>(<a class="code" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7af8fb0f40ccb63da11b1e87a6389d9eae">COMM_RESULT_ATTACH_CONTROLLER</a>, r, msg) {};
+<a name="l00056"></a>00056 
+<a name="l00057"></a>00057 };
+<a name="l00058"></a>00058 <span class="comment"></span>
+<a name="l00059"></a>00059 <span class="comment">/**</span>
+<a name="l00060"></a>00060 <span class="comment"> * @brief ビュー割り当てリクエストエンコーダークラス</span>
+<a name="l00061"></a>00061 <span class="comment"> */</span>
+<a name="l00062"></a><a class="code" href="class_comm_data_1_1_attach_view_request.html">00062</a> <span class="keyword">class </span><a class="code" href="class_comm_data_1_1_attach_view_request.html" title="ビュー割り当てリクエストエンコーダークラス">AttachViewRequest</a> : <span class="keyword">public</span> <a class="code" href="class_comm_data_1_1_attach_request.html" title="クライアント割り当てリクエストエンコーダー基本クラス">AttachRequest</a>
+<a name="l00063"></a>00063 {
+<a name="l00064"></a>00064 <span class="keyword">private</span>:
+<a name="l00065"></a>00065     <span class="keywordtype">bool</span> m_polling;
+<a name="l00066"></a>00066 <span class="keyword">public</span>:
+<a name="l00067"></a><a class="code" href="class_comm_data_1_1_attach_view_request.html#ad67a789110bffc5a9ecbd0ce8b1342ca">00067</a>     <a class="code" href="class_comm_data_1_1_attach_view_request.html#ad67a789110bffc5a9ecbd0ce8b1342ca">AttachViewRequest</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name)
+<a name="l00068"></a>00068         : <a class="code" href="class_comm_data_1_1_attach_request.html" title="クライアント割り当てリクエストエンコーダー基本クラス">AttachRequest</a>(<a class="code" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7ad645facc5b12955c59adc277d882f301">COMM_REQUEST_ATTACH_VIEW</a>, name), m_polling(false) {;}
+<a name="l00069"></a>00069 
+<a name="l00070"></a><a class="code" href="class_comm_data_1_1_attach_view_request.html#a89c4b6da1fef37c2075d9285d38bf2f2">00070</a>     <a class="code" href="class_comm_data_1_1_attach_view_request.html#ad67a789110bffc5a9ecbd0ce8b1342ca">AttachViewRequest</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name, <span class="keywordtype">bool</span> polling)
+<a name="l00071"></a>00071         : <a class="code" href="class_comm_data_1_1_attach_request.html" title="クライアント割り当てリクエストエンコーダー基本クラス">AttachRequest</a>(<a class="code" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7ad645facc5b12955c59adc277d882f301">COMM_REQUEST_ATTACH_VIEW</a>, name),
+<a name="l00072"></a>00072           m_polling(polling) {;}
+<a name="l00073"></a>00073 
+<a name="l00074"></a>00074 <span class="keyword">private</span>:
+<a name="l00075"></a>00075     <span class="keywordtype">int</span> moreData(<span class="keywordtype">char</span> *buf);
+<a name="l00076"></a>00076 };
+<a name="l00077"></a>00077 <span class="comment"></span>
+<a name="l00078"></a>00078 <span class="comment">/**</span>
+<a name="l00079"></a>00079 <span class="comment"> * @brief ビュー割り当て結果エンコーダークラス</span>
+<a name="l00080"></a>00080 <span class="comment"> */</span>
+<a name="l00081"></a><a class="code" href="class_comm_data_1_1_attach_view_result.html">00081</a> <span class="keyword">class </span><a class="code" href="class_comm_data_1_1_attach_view_result.html" title="ビュー割り当て結果エンコーダークラス">AttachViewResult</a> : <span class="keyword">public</span> <a class="code" href="class_comm_data_encoder.html" title="転送データエンコーダー基本クラス">Encoder</a>
+<a name="l00082"></a>00082 {
+<a name="l00083"></a>00083     <span class="keyword">enum</span> { BUFSIZE = 8192 };
+<a name="l00084"></a>00084 <span class="keyword">private</span>:
+<a name="l00085"></a>00085     <a class="code" href="_comm_data_type_8h.html#a101d7163bfbe7284eea2334e55aa2bc8">CommResultType</a> m_result;
+<a name="l00086"></a>00086     std::string m_msg;
+<a name="l00087"></a>00087     <a class="code" href="class_x3_d_d_b.html" title="X3Dファイルデータベースクラス.">X3DDB</a> &amp;m_db;
+<a name="l00088"></a>00088 <span class="keyword">public</span>:
+<a name="l00089"></a><a class="code" href="class_comm_data_1_1_attach_view_result.html#a8f22eb848ed0fec76058167be5d1cd81">00089</a>     <a class="code" href="class_comm_data_1_1_attach_view_result.html#a8f22eb848ed0fec76058167be5d1cd81">AttachViewResult</a>(<a class="code" href="_comm_data_type_8h.html#a101d7163bfbe7284eea2334e55aa2bc8">CommResultType</a> r, <span class="keyword">const</span> <span class="keywordtype">char</span> *msg, <a class="code" href="class_x3_d_d_b.html" title="X3Dファイルデータベースクラス.">X3DDB</a> &amp;db) :
+<a name="l00090"></a>00090         <a class="code" href="class_comm_data_encoder.html" title="転送データエンコーダー基本クラス">Encoder</a>(<a class="code" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a3ba780bb681b66b5157711a6e2bd808e">COMM_RESULT_ATTACH_VIEW</a>, BUFSIZE),
+<a name="l00091"></a>00091         m_result(r),
+<a name="l00092"></a>00092         m_db(db) {
+<a name="l00093"></a>00093         <span class="keywordflow">if</span> (msg) {
+<a name="l00094"></a>00094             m_msg = msg;
+<a name="l00095"></a>00095         }
+<a name="l00096"></a>00096     }
+<a name="l00097"></a>00097 
+<a name="l00098"></a>00098 <span class="keyword">private</span>:
+<a name="l00099"></a>00099     <span class="keywordtype">int</span> packetNum() { <span class="keywordflow">return</span> 1; }
+<a name="l00100"></a>00100     <span class="keywordtype">char</span> *encode(<span class="keywordtype">int</span> seq, <span class="keywordtype">int</span> &amp;);
+<a name="l00101"></a>00101 };
+<a name="l00102"></a>00102 <span class="comment"></span>
+<a name="l00103"></a>00103 <span class="comment">/**</span>
+<a name="l00104"></a>00104 <span class="comment"> * @brief データポート接続リクエストエンコーダークラス</span>
+<a name="l00105"></a>00105 <span class="comment"> *</span>
+<a name="l00106"></a>00106 <span class="comment"> * サーバとコントローラのデータ転送ポートの接続リクエストを送信する。</span>
+<a name="l00107"></a>00107 <span class="comment"> */</span>
+<a name="l00108"></a><a class="code" href="class_comm_data_1_1_connect_data_port_request.html">00108</a> <span class="keyword">class </span><a class="code" href="class_comm_data_1_1_connect_data_port_request.html" title="データポート接続リクエストエンコーダークラス">ConnectDataPortRequest</a> : <span class="keyword">public</span> <a class="code" href="class_comm_data_1_1_attach_request.html" title="クライアント割り当てリクエストエンコーダー基本クラス">AttachRequest</a>
+<a name="l00109"></a>00109 {
+<a name="l00110"></a>00110 <span class="keyword">public</span>:
+<a name="l00111"></a><a class="code" href="class_comm_data_1_1_connect_data_port_request.html#a35c8cf66f276c815cb6903d66daa2078">00111</a>     <a class="code" href="class_comm_data_1_1_connect_data_port_request.html#a35c8cf66f276c815cb6903d66daa2078">ConnectDataPortRequest</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name)
+<a name="l00112"></a>00112         : <a class="code" href="class_comm_data_1_1_attach_request.html" title="クライアント割り当てリクエストエンコーダー基本クラス">AttachRequest</a>(<a class="code" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a316be738b6bb9600b685e69f26887301">COMM_REQUEST_CONNECT_DATA_PORT</a>, name) {;}
+<a name="l00113"></a>00113 <span class="keyword">private</span>:
+<a name="l00114"></a>00114     <span class="keywordtype">int</span> moreData(<span class="keywordtype">char</span> *buf)
+<a name="l00115"></a>00115     {
+<a name="l00116"></a>00116         <span class="keywordflow">return</span> 0;
+<a name="l00117"></a>00117     }
+<a name="l00118"></a>00118 };
+<a name="l00119"></a>00119 <span class="comment"></span>
+<a name="l00120"></a>00120 <span class="comment">/**</span>
+<a name="l00121"></a>00121 <span class="comment"> * @brief サービスプロバイダ登録リクエストエンコーダークラス</span>
+<a name="l00122"></a>00122 <span class="comment"> */</span>
+<a name="l00123"></a><a class="code" href="class_comm_data_1_1_provide_service_request.html">00123</a> <span class="keyword">class </span><a class="code" href="class_comm_data_1_1_provide_service_request.html" title="サービスプロバイダ登録リクエストエンコーダークラス">ProvideServiceRequest</a> : <span class="keyword">public</span> <a class="code" href="class_comm_data_encoder.html" title="転送データエンコーダー基本クラス">Encoder</a>
+<a name="l00124"></a>00124 {
+<a name="l00125"></a>00125     <span class="keyword">enum</span> { BUFSIZE = 512, };
+<a name="l00126"></a>00126 <span class="keyword">private</span>:
+<a name="l00127"></a>00127     <a class="code" href="class_service.html" title="サービスプロバイダの提供するサービスクラス">Service</a> &amp;m_service;
+<a name="l00128"></a>00128 <span class="keyword">public</span>:
+<a name="l00129"></a><a class="code" href="class_comm_data_1_1_provide_service_request.html#a113eb294d7ef865522df8d89470ae53e">00129</a>     <a class="code" href="class_comm_data_1_1_provide_service_request.html#a113eb294d7ef865522df8d89470ae53e">ProvideServiceRequest</a>(<a class="code" href="class_service.html" title="サービスプロバイダの提供するサービスクラス">Service</a> &amp;service)
+<a name="l00130"></a>00130         : <a class="code" href="class_comm_data_encoder.html" title="転送データエンコーダー基本クラス">Encoder</a>(<a class="code" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7aeefe69fb157fbeab8c4e31d539ffd916">COMM_REQUEST_PROVIDE_SERVICE</a>, BUFSIZE), m_service(service) {;}
+<a name="l00131"></a>00131 <span class="keyword">private</span>:
+<a name="l00132"></a>00132     <span class="keywordtype">int</span> packetNum() { <span class="keywordflow">return</span> 1; }
+<a name="l00133"></a>00133     <span class="keywordtype">char</span> *encode(<span class="keywordtype">int</span> seq, <span class="keywordtype">int</span> &amp;);
+<a name="l00134"></a>00134 };
+<a name="l00135"></a>00135 
+<a name="l00136"></a>00136 } <span class="comment">// namespace </span>
+<a name="l00137"></a>00137 
+<a name="l00138"></a><a class="code" href="_attach_8h.html#a7b115e63da0302d15f5c10185d9700d8">00138</a> <span class="keyword">typedef</span> <a class="code" href="class_comm_data_1_1_attach_controller_request.html" title="コントローラ割り当てリクエストエンコーダークラス">CommData::AttachControllerRequest</a> <a class="code" href="class_comm_data_1_1_attach_controller_request.html" title="コントローラ割り当てリクエストエンコーダークラス">CommRequestAttachModelEncoder</a>;
+<a name="l00139"></a><a class="code" href="_attach_8h.html#a9362694b14e35b696a1757c81bea4439">00139</a> <span class="keyword">typedef</span> <a class="code" href="class_comm_data_1_1_attach_controller_request.html" title="コントローラ割り当てリクエストエンコーダークラス">CommRequestAttachModelEncoder</a> <a class="code" href="class_comm_data_1_1_attach_controller_request.html" title="コントローラ割り当てリクエストエンコーダークラス">CommRequestAttachControllerEncoder</a>;
+<a name="l00140"></a><a class="code" href="_attach_8h.html#a9df98c4535a77b6db13d1904e3dd60b9">00140</a> <span class="keyword">typedef</span> <a class="code" href="class_comm_data_1_1_attach_controller_result.html" title="コントローラ割り当て結果エンコーダークラス">CommData::AttachControllerResult</a> <a class="code" href="class_comm_data_1_1_attach_controller_result.html" title="コントローラ割り当て結果エンコーダークラス">CommResultAttachControllerEncoder</a>;
+<a name="l00141"></a>00141 
+<a name="l00142"></a><a class="code" href="_attach_8h.html#a8eb2aea741dbe35b02a5224dbe05f990">00142</a> <span class="keyword">typedef</span> <a class="code" href="class_comm_data_1_1_attach_view_request.html" title="ビュー割り当てリクエストエンコーダークラス">CommData::AttachViewRequest</a> <a class="code" href="class_comm_data_1_1_attach_view_request.html" title="ビュー割り当てリクエストエンコーダークラス">CommRequestAttachViewEncoder</a>;
+<a name="l00143"></a><a class="code" href="_attach_8h.html#aa82e405403f45b1a8462a50d0619dfa0">00143</a> <span class="keyword">typedef</span> <a class="code" href="class_comm_data_1_1_attach_view_result.html" title="ビュー割り当て結果エンコーダークラス">CommData::AttachViewResult</a> <a class="code" href="class_comm_data_1_1_attach_view_result.html" title="ビュー割り当て結果エンコーダークラス">CommResultAttachViewEncoder</a>;
+<a name="l00144"></a>00144 
+<a name="l00145"></a><a class="code" href="_attach_8h.html#a650dd610ed6304dbf830f7d48a3d1876">00145</a> <span class="keyword">typedef</span> <a class="code" href="class_comm_data_1_1_connect_data_port_request.html" title="データポート接続リクエストエンコーダークラス">CommData::ConnectDataPortRequest</a> <a class="code" href="class_comm_data_1_1_connect_data_port_request.html" title="データポート接続リクエストエンコーダークラス">CommRequestConnectDataPortEncoder</a>;
+<a name="l00146"></a><a class="code" href="_attach_8h.html#ad031fb23bcc9be58040df974a722eb40">00146</a> <span class="keyword">typedef</span> <a class="code" href="class_comm_data_1_1_provide_service_request.html" title="サービスプロバイダ登録リクエストエンコーダークラス">CommData::ProvideServiceRequest</a> <a class="code" href="class_comm_data_1_1_provide_service_request.html" title="サービスプロバイダ登録リクエストエンコーダークラス">CommRequestProvideServiceEncoder</a>;
+<a name="l00147"></a>00147 
+<a name="l00148"></a>00148 <span class="preprocessor">#endif // Attach_h</span>
+<a name="l00149"></a>00149 <span class="preprocessor"></span> 
+</pre></div></div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:18 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

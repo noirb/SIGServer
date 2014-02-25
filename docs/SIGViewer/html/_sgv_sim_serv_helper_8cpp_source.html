@@ -1,0 +1,359 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGViewer: SgvSimServHelper.cpp ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>SgvSimServHelper.cpp</h1><a href="_sgv_sim_serv_helper_8cpp.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include "<a class="code" href="_sgv_sim_serv_helper_8h.html">SgvSimServHelper.h</a>"</span>
+<a name="l00002"></a>00002 <span class="preprocessor">#include "SimWorld.h"</span>
+<a name="l00003"></a>00003 <span class="preprocessor">#include "SimObj.h"</span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include "Parts.h"</span>
+<a name="l00005"></a>00005 
+<a name="l00006"></a>00006 <span class="preprocessor">#if SIGVERSE_1_0</span>
+<a name="l00007"></a>00007 <span class="preprocessor"></span><span class="preprocessor">#include "PartsCmpnt.h"</span>
+<a name="l00008"></a>00008 <span class="preprocessor">#else</span>
+<a name="l00009"></a>00009 <span class="preprocessor"></span><span class="preprocessor">#include "PartsImpl.h"</span>
+<a name="l00010"></a>00010 <span class="preprocessor">#endif</span>
+<a name="l00011"></a>00011 <span class="preprocessor"></span>
+<a name="l00012"></a>00012 <span class="preprocessor">#include &lt;math.h&gt;</span>
+<a name="l00013"></a>00013 
+<a name="l00014"></a>00014 <span class="keyword">namespace </span>Sgv
+<a name="l00015"></a>00015 {
+<a name="l00016"></a>00016     <span class="comment">// ==============================================</span>
+<a name="l00017"></a>00017     <span class="comment">//  SimObj, SimWorld操作用ヘルパー関数</span>
+<a name="l00018"></a>00018     <span class="comment">// ==============================================</span>
+<a name="l00019"></a><a class="code" href="namespace_sgv.html#13da703fab48a2a189214eaacdba3449">00019</a>     <span class="keywordtype">int</span> <a class="code" href="namespace_sgv.html#13da703fab48a2a189214eaacdba3449">g_aid</a> = 1;
+<a name="l00020"></a>00020 
+<a name="l00021"></a><a class="code" href="namespace_sgv.html#862fe70ec6f47adfe579c6e775935d24">00021</a>     Attribute *<a class="code" href="namespace_sgv.html#862fe70ec6f47adfe579c6e775935d24" title="属性オブジェクト（値＝文字列）を生成する">genStringAttr</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name, <span class="keyword">const</span> <span class="keywordtype">char</span> *value, <span class="keyword">const</span> <span class="keywordtype">char</span> *group)
+<a name="l00022"></a>00022     {
+<a name="l00023"></a>00023         Value *v = <span class="keyword">new</span> StringValue();
+<a name="l00024"></a>00024         v-&gt;setString(value);
+<a name="l00025"></a>00025         <span class="keywordflow">return</span> <span class="keyword">new</span> Attribute(name, v, group);
+<a name="l00026"></a>00026     }
+<a name="l00027"></a>00027 
+<a name="l00028"></a><a class="code" href="namespace_sgv.html#3ebc17cac75be53123fb6699c8b813cf">00028</a>     Attribute *<a class="code" href="namespace_sgv.html#3ebc17cac75be53123fb6699c8b813cf" title="属性オブジェクト（値＝論理値）を生成する">genBoolAttr</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name, <span class="keywordtype">bool</span> value, <span class="keyword">const</span> <span class="keywordtype">char</span> *group)
+<a name="l00029"></a>00029     {
+<a name="l00030"></a>00030         Value *v = <span class="keyword">new</span> BoolValue();
+<a name="l00031"></a>00031         v-&gt;setBool(value);
+<a name="l00032"></a>00032         <span class="keywordflow">return</span> <span class="keyword">new</span> Attribute(name, v, group);
+<a name="l00033"></a>00033     }
+<a name="l00034"></a>00034 
+<a name="l00035"></a><a class="code" href="namespace_sgv.html#27c1c33386c71cc8082f9ee1bdee0ef5">00035</a>     Attribute *<a class="code" href="namespace_sgv.html#27c1c33386c71cc8082f9ee1bdee0ef5" title="属性オブジェクト（値＝実数）を生成する">genDoubleAttr</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name, <span class="keywordtype">double</span> value, <span class="keyword">const</span> <span class="keywordtype">char</span> *group)
+<a name="l00036"></a>00036     {
+<a name="l00037"></a>00037         Value *v = <span class="keyword">new</span> DoubleValue();
+<a name="l00038"></a>00038         v-&gt;setDouble(value);
+<a name="l00039"></a>00039         <span class="keywordflow">return</span> <span class="keyword">new</span> Attribute(name, v, group);
+<a name="l00040"></a>00040     }
+<a name="l00041"></a>00041 
+<a name="l00042"></a><a class="code" href="namespace_sgv.html#a8ccca03740d94618834160ac925cd9c">00042</a>     <span class="keywordtype">void</span> <a class="code" href="namespace_sgv.html#a8ccca03740d94618834160ac925cd9c" title="文字列属性をシミュレーションオブジェクトにセットする">setStringAttr</a>(SimObj *o, <span class="keyword">const</span> <span class="keywordtype">char</span> *name, <span class="keyword">const</span> <span class="keywordtype">char</span> *value)
+<a name="l00043"></a>00043     {
+<a name="l00044"></a>00044         Value *v = <span class="keyword">new</span> StringValue();
+<a name="l00045"></a>00045         v-&gt;setString(value);
+<a name="l00046"></a>00046         o-&gt;setAttrValue(name, *v);
+<a name="l00047"></a>00047         <span class="keyword">delete</span> v;
+<a name="l00048"></a>00048     }
+<a name="l00049"></a>00049 
+<a name="l00050"></a><a class="code" href="namespace_sgv.html#72e37354b8f90173879607397d19b524">00050</a>     <span class="keywordtype">void</span> <a class="code" href="namespace_sgv.html#72e37354b8f90173879607397d19b524" title="論理値属性をシミュレーションオブジェクトにセットする">setBoolAttr</a>(SimObj *o, <span class="keyword">const</span> <span class="keywordtype">char</span> *name, <span class="keywordtype">bool</span> value)
+<a name="l00051"></a>00051     {
+<a name="l00052"></a>00052         Value *v = <span class="keyword">new</span> BoolValue();
+<a name="l00053"></a>00053         v-&gt;setBool(value);
+<a name="l00054"></a>00054         o-&gt;setAttrValue(name, *v);
+<a name="l00055"></a>00055         <span class="keyword">delete</span> v;
+<a name="l00056"></a>00056     }
+<a name="l00057"></a>00057 
+<a name="l00058"></a><a class="code" href="namespace_sgv.html#57d99927d2bd3545e177e14ad7d92642">00058</a>     <span class="keywordtype">void</span> <a class="code" href="namespace_sgv.html#57d99927d2bd3545e177e14ad7d92642" title="実数値属性をシミュレーションオブジェクトにセットする">setDoubleAttr</a>(SimObj *o, <span class="keyword">const</span> <span class="keywordtype">char</span> *name, <span class="keywordtype">double</span> value)
+<a name="l00059"></a>00059     {
+<a name="l00060"></a>00060         Value *v = <span class="keyword">new</span> DoubleValue();
+<a name="l00061"></a>00061         v-&gt;setDouble(value);
+<a name="l00062"></a>00062         o-&gt;setAttrValue(name, *v);
+<a name="l00063"></a>00063         <span class="keyword">delete</span> v;
+<a name="l00064"></a>00064     }
+<a name="l00065"></a>00065 
+<a name="l00066"></a><a class="code" href="namespace_sgv.html#6f38261af7bd478bc33c54f8c57a4b81">00066</a>     SimObj *<a class="code" href="namespace_sgv.html#6f38261af7bd478bc33c54f8c57a4b81" title="空のシミュレーションオブジェクトを生成する">genBaseAgent</a>()
+<a name="l00067"></a>00067     {
+<a name="l00068"></a>00068         SimObj *o = <span class="keyword">new</span> SimObj();
+<a name="l00069"></a>00069 
+<a name="l00070"></a>00070 <span class="preprocessor">#if 0</span>
+<a name="l00071"></a>00071 <span class="preprocessor"></span>        <span class="comment">// Entityの持つ属性</span>
+<a name="l00072"></a>00072         o-&gt;push(<a class="code" href="namespace_sgv.html#862fe70ec6f47adfe579c6e775935d24" title="属性オブジェクト（値＝文字列）を生成する">genStringAttr</a>(<span class="stringliteral">"name"</span>, <span class="stringliteral">""</span>, <span class="stringliteral">"general"</span>));
+<a name="l00073"></a>00073         o-&gt;push(<a class="code" href="namespace_sgv.html#862fe70ec6f47adfe579c6e775935d24" title="属性オブジェクト（値＝文字列）を生成する">genStringAttr</a>(<span class="stringliteral">"class"</span>, <span class="stringliteral">"Entity"</span>, <span class="stringliteral">"general"</span>));
+<a name="l00074"></a>00074         o-&gt;push(<a class="code" href="namespace_sgv.html#862fe70ec6f47adfe579c6e775935d24" title="属性オブジェクト（値＝文字列）を生成する">genStringAttr</a>(<span class="stringliteral">"superclass"</span>, <span class="stringliteral">""</span>, <span class="stringliteral">"general"</span>));
+<a name="l00075"></a>00075         o-&gt;push(<a class="code" href="namespace_sgv.html#3ebc17cac75be53123fb6699c8b813cf" title="属性オブジェクト（値＝論理値）を生成する">genBoolAttr</a>(<span class="stringliteral">"dynamics"</span>, <span class="keyword">false</span>, <span class="stringliteral">"simulation"</span>));
+<a name="l00076"></a>00076         o-&gt;push(<a class="code" href="namespace_sgv.html#27c1c33386c71cc8082f9ee1bdee0ef5" title="属性オブジェクト（値＝実数）を生成する">genDoubleAttr</a>(<span class="stringliteral">"x"</span>, 0, <span class="stringliteral">"pos"</span>));
+<a name="l00077"></a>00077         o-&gt;push(<a class="code" href="namespace_sgv.html#27c1c33386c71cc8082f9ee1bdee0ef5" title="属性オブジェクト（値＝実数）を生成する">genDoubleAttr</a>(<span class="stringliteral">"y"</span>, 0, <span class="stringliteral">"pos"</span>));
+<a name="l00078"></a>00078         o-&gt;push(<a class="code" href="namespace_sgv.html#27c1c33386c71cc8082f9ee1bdee0ef5" title="属性オブジェクト（値＝実数）を生成する">genDoubleAttr</a>(<span class="stringliteral">"z"</span>, 0, <span class="stringliteral">"pos"</span>));
+<a name="l00079"></a>00079         o-&gt;push(<a class="code" href="namespace_sgv.html#27c1c33386c71cc8082f9ee1bdee0ef5" title="属性オブジェクト（値＝実数）を生成する">genDoubleAttr</a>(<span class="stringliteral">"fx"</span>, 0, <span class="stringliteral">"force"</span>));
+<a name="l00080"></a>00080         o-&gt;push(<a class="code" href="namespace_sgv.html#27c1c33386c71cc8082f9ee1bdee0ef5" title="属性オブジェクト（値＝実数）を生成する">genDoubleAttr</a>(<span class="stringliteral">"fy"</span>, 0, <span class="stringliteral">"force"</span>));
+<a name="l00081"></a>00081         o-&gt;push(<a class="code" href="namespace_sgv.html#27c1c33386c71cc8082f9ee1bdee0ef5" title="属性オブジェクト（値＝実数）を生成する">genDoubleAttr</a>(<span class="stringliteral">"fz"</span>, 0, <span class="stringliteral">"force"</span>));
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083         <span class="comment">// q=(1, 0, 0, 0)は、回転度数0度の場合のクォータニオン</span>
+<a name="l00084"></a>00084         o-&gt;push(<a class="code" href="namespace_sgv.html#27c1c33386c71cc8082f9ee1bdee0ef5" title="属性オブジェクト（値＝実数）を生成する">genDoubleAttr</a>(<span class="stringliteral">"qw"</span>, 1, <span class="stringliteral">"rot"</span>));
+<a name="l00085"></a>00085         o-&gt;push(<a class="code" href="namespace_sgv.html#27c1c33386c71cc8082f9ee1bdee0ef5" title="属性オブジェクト（値＝実数）を生成する">genDoubleAttr</a>(<span class="stringliteral">"qx"</span>, 0, <span class="stringliteral">"rot"</span>));
+<a name="l00086"></a>00086         o-&gt;push(<a class="code" href="namespace_sgv.html#27c1c33386c71cc8082f9ee1bdee0ef5" title="属性オブジェクト（値＝実数）を生成する">genDoubleAttr</a>(<span class="stringliteral">"qy"</span>, 0, <span class="stringliteral">"rot"</span>));
+<a name="l00087"></a>00087         o-&gt;push(<a class="code" href="namespace_sgv.html#27c1c33386c71cc8082f9ee1bdee0ef5" title="属性オブジェクト（値＝実数）を生成する">genDoubleAttr</a>(<span class="stringliteral">"qz"</span>, 0, <span class="stringliteral">"rot"</span>));
+<a name="l00088"></a>00088 
+<a name="l00089"></a>00089         o-&gt;push(<a class="code" href="namespace_sgv.html#27c1c33386c71cc8082f9ee1bdee0ef5" title="属性オブジェクト（値＝実数）を生成する">genDoubleAttr</a>(<span class="stringliteral">"scalex"</span>, 0, <span class="stringliteral">"scale"</span>));
+<a name="l00090"></a>00090         o-&gt;push(<a class="code" href="namespace_sgv.html#27c1c33386c71cc8082f9ee1bdee0ef5" title="属性オブジェクト（値＝実数）を生成する">genDoubleAttr</a>(<span class="stringliteral">"scaley"</span>, 0, <span class="stringliteral">"scale"</span>));
+<a name="l00091"></a>00091         o-&gt;push(<a class="code" href="namespace_sgv.html#27c1c33386c71cc8082f9ee1bdee0ef5" title="属性オブジェクト（値＝実数）を生成する">genDoubleAttr</a>(<span class="stringliteral">"scalez"</span>, 0, <span class="stringliteral">"scale"</span>));
+<a name="l00092"></a>00092         o-&gt;push(<a class="code" href="namespace_sgv.html#862fe70ec6f47adfe579c6e775935d24" title="属性オブジェクト（値＝文字列）を生成する">genStringAttr</a>(<span class="stringliteral">"visStateAttrName"</span>, <span class="stringliteral">"switch"</span>, <span class="stringliteral">"visState"</span>));
+<a name="l00093"></a>00093         o-&gt;push(<a class="code" href="namespace_sgv.html#862fe70ec6f47adfe579c6e775935d24" title="属性オブジェクト（値＝文字列）を生成する">genStringAttr</a>(<span class="stringliteral">"switch"</span>, <span class="stringliteral">"on"</span>, <span class="stringliteral">"visState"</span>));
+<a name="l00094"></a>00094         o-&gt;push(<a class="code" href="namespace_sgv.html#3ebc17cac75be53123fb6699c8b813cf" title="属性オブジェクト（値＝論理値）を生成する">genBoolAttr</a>(<span class="stringliteral">"x3dCenterOfMass"</span>, <span class="keyword">false</span>, <span class="stringliteral">"x3d"</span>));
+<a name="l00095"></a>00095 
+<a name="l00096"></a>00096         <span class="comment">// Agentの持つ属性</span>
+<a name="l00097"></a>00097         o-&gt;push(<a class="code" href="namespace_sgv.html#862fe70ec6f47adfe579c6e775935d24" title="属性オブジェクト（値＝文字列）を生成する">genStringAttr</a>(<span class="stringliteral">"language"</span>, <span class="stringliteral">""</span>, <span class="stringliteral">"model"</span>));
+<a name="l00098"></a>00098         o-&gt;push(<a class="code" href="namespace_sgv.html#862fe70ec6f47adfe579c6e775935d24" title="属性オブジェクト（値＝文字列）を生成する">genStringAttr</a>(<span class="stringliteral">"implementation"</span>, <span class="stringliteral">""</span>, <span class="stringliteral">"model"</span>));
+<a name="l00099"></a>00099         o-&gt;push(<a class="code" href="namespace_sgv.html#27c1c33386c71cc8082f9ee1bdee0ef5" title="属性オブジェクト（値＝実数）を生成する">genDoubleAttr</a>(<span class="stringliteral">"vpx"</span>, 0, <span class="stringliteral">"viewpoint"</span>));
+<a name="l00100"></a>00100         o-&gt;push(<a class="code" href="namespace_sgv.html#27c1c33386c71cc8082f9ee1bdee0ef5" title="属性オブジェクト（値＝実数）を生成する">genDoubleAttr</a>(<span class="stringliteral">"vpy"</span>, 0, <span class="stringliteral">"viewpoint"</span>));
+<a name="l00101"></a>00101         o-&gt;push(<a class="code" href="namespace_sgv.html#27c1c33386c71cc8082f9ee1bdee0ef5" title="属性オブジェクト（値＝実数）を生成する">genDoubleAttr</a>(<span class="stringliteral">"vpz"</span>, 0, <span class="stringliteral">"viewpoint"</span>));
+<a name="l00102"></a>00102         o-&gt;push(<a class="code" href="namespace_sgv.html#27c1c33386c71cc8082f9ee1bdee0ef5" title="属性オブジェクト（値＝実数）を生成する">genDoubleAttr</a>(<span class="stringliteral">"vvx"</span>, 0, <span class="stringliteral">"viewvector"</span>));
+<a name="l00103"></a>00103         o-&gt;push(<a class="code" href="namespace_sgv.html#27c1c33386c71cc8082f9ee1bdee0ef5" title="属性オブジェクト（値＝実数）を生成する">genDoubleAttr</a>(<span class="stringliteral">"vvy"</span>, 0, <span class="stringliteral">"viewvector"</span>));
+<a name="l00104"></a>00104         o-&gt;push(<a class="code" href="namespace_sgv.html#27c1c33386c71cc8082f9ee1bdee0ef5" title="属性オブジェクト（値＝実数）を生成する">genDoubleAttr</a>(<span class="stringliteral">"vvz"</span>, -1, <span class="stringliteral">"viewvector"</span>));
+<a name="l00105"></a>00105         o-&gt;push(<a class="code" href="namespace_sgv.html#27c1c33386c71cc8082f9ee1bdee0ef5" title="属性オブジェクト（値＝実数）を生成する">genDoubleAttr</a>(<span class="stringliteral">"lepx"</span>, 0, <span class="stringliteral">"lefteyepoint"</span>));
+<a name="l00106"></a>00106         o-&gt;push(<a class="code" href="namespace_sgv.html#27c1c33386c71cc8082f9ee1bdee0ef5" title="属性オブジェクト（値＝実数）を生成する">genDoubleAttr</a>(<span class="stringliteral">"lepy"</span>, 0, <span class="stringliteral">"lefteyepoint"</span>));
+<a name="l00107"></a>00107         o-&gt;push(<a class="code" href="namespace_sgv.html#27c1c33386c71cc8082f9ee1bdee0ef5" title="属性オブジェクト（値＝実数）を生成する">genDoubleAttr</a>(<span class="stringliteral">"lepz"</span>, 0, <span class="stringliteral">"lefteyepoint"</span>));
+<a name="l00108"></a>00108         o-&gt;push(<a class="code" href="namespace_sgv.html#27c1c33386c71cc8082f9ee1bdee0ef5" title="属性オブジェクト（値＝実数）を生成する">genDoubleAttr</a>(<span class="stringliteral">"levx"</span>, 0, <span class="stringliteral">"lefteyevector"</span>));
+<a name="l00109"></a>00109         o-&gt;push(<a class="code" href="namespace_sgv.html#27c1c33386c71cc8082f9ee1bdee0ef5" title="属性オブジェクト（値＝実数）を生成する">genDoubleAttr</a>(<span class="stringliteral">"levy"</span>, 0, <span class="stringliteral">"lefteyevector"</span>));
+<a name="l00110"></a>00110         o-&gt;push(<a class="code" href="namespace_sgv.html#27c1c33386c71cc8082f9ee1bdee0ef5" title="属性オブジェクト（値＝実数）を生成する">genDoubleAttr</a>(<span class="stringliteral">"levz"</span>, 0, <span class="stringliteral">"lefteyevector"</span>));
+<a name="l00111"></a>00111         o-&gt;push(<a class="code" href="namespace_sgv.html#27c1c33386c71cc8082f9ee1bdee0ef5" title="属性オブジェクト（値＝実数）を生成する">genDoubleAttr</a>(<span class="stringliteral">"repx"</span>, 0, <span class="stringliteral">"righteyepoint"</span>));
+<a name="l00112"></a>00112         o-&gt;push(<a class="code" href="namespace_sgv.html#27c1c33386c71cc8082f9ee1bdee0ef5" title="属性オブジェクト（値＝実数）を生成する">genDoubleAttr</a>(<span class="stringliteral">"repy"</span>, 0, <span class="stringliteral">"righteyepoint"</span>));
+<a name="l00113"></a>00113         o-&gt;push(<a class="code" href="namespace_sgv.html#27c1c33386c71cc8082f9ee1bdee0ef5" title="属性オブジェクト（値＝実数）を生成する">genDoubleAttr</a>(<span class="stringliteral">"repz"</span>, 0, <span class="stringliteral">"righteyepoint"</span>));
+<a name="l00114"></a>00114         o-&gt;push(<a class="code" href="namespace_sgv.html#27c1c33386c71cc8082f9ee1bdee0ef5" title="属性オブジェクト（値＝実数）を生成する">genDoubleAttr</a>(<span class="stringliteral">"revx"</span>, 0, <span class="stringliteral">"righteyevector"</span>));
+<a name="l00115"></a>00115         o-&gt;push(<a class="code" href="namespace_sgv.html#27c1c33386c71cc8082f9ee1bdee0ef5" title="属性オブジェクト（値＝実数）を生成する">genDoubleAttr</a>(<span class="stringliteral">"revy"</span>, 0, <span class="stringliteral">"righteyevector"</span>));
+<a name="l00116"></a>00116         o-&gt;push(<a class="code" href="namespace_sgv.html#27c1c33386c71cc8082f9ee1bdee0ef5" title="属性オブジェクト（値＝実数）を生成する">genDoubleAttr</a>(<span class="stringliteral">"revz"</span>, 0, <span class="stringliteral">"righteyevector"</span>));
+<a name="l00117"></a>00117         o-&gt;push(<a class="code" href="namespace_sgv.html#27c1c33386c71cc8082f9ee1bdee0ef5" title="属性オブジェクト（値＝実数）を生成する">genDoubleAttr</a>(<span class="stringliteral">"FOV"</span>, 45.0, <span class="stringliteral">"fieldofview"</span>));
+<a name="l00118"></a>00118         o-&gt;push(<a class="code" href="namespace_sgv.html#27c1c33386c71cc8082f9ee1bdee0ef5" title="属性オブジェクト（値＝実数）を生成する">genDoubleAttr</a>(<span class="stringliteral">"aspectRatio"</span>, 1.5, <span class="stringliteral">"fieldofview"</span>));
+<a name="l00119"></a>00119         o-&gt;push(<a class="code" href="namespace_sgv.html#27c1c33386c71cc8082f9ee1bdee0ef5" title="属性オブジェクト（値＝実数）を生成する">genDoubleAttr</a>(<span class="stringliteral">"voiceReachRadius"</span>, 5.0, <span class="stringliteral">"voice"</span>));
+<a name="l00120"></a>00120         o-&gt;push(<a class="code" href="namespace_sgv.html#3ebc17cac75be53123fb6699c8b813cf" title="属性オブジェクト（値＝論理値）を生成する">genBoolAttr</a>(<span class="stringliteral">"voiceReachRadiusEnable"</span>, <span class="keyword">true</span>, <span class="stringliteral">"voice"</span>));
+<a name="l00121"></a>00121         <span class="comment">// 独自に追加した属性</span>
+<a name="l00122"></a>00122 <span class="comment">//      o-&gt;push(genDoubleAttr("mass", 0, "mass"));</span>
+<a name="l00123"></a>00123 
+<a name="l00124"></a>00124         o-&gt;setId(<a class="code" href="namespace_sgv.html#13da703fab48a2a189214eaacdba3449">g_aid</a>++);
+<a name="l00125"></a>00125 <span class="preprocessor">#endif</span>
+<a name="l00126"></a>00126 <span class="preprocessor"></span>
+<a name="l00127"></a>00127         <span class="keywordflow">return</span> o;
+<a name="l00128"></a>00128     }
+<a name="l00129"></a>00129 
+<a name="l00130"></a><a class="code" href="namespace_sgv.html#b2437e01678e0e0b4c1a7d12e6446c81">00130</a>     <span class="keywordtype">void</span> <a class="code" href="namespace_sgv.html#b2437e01678e0e0b4c1a7d12e6446c81" title="シミュレーションオブジェクトの位置を設定する">setPosition</a>(SimObj *o, <span class="keywordtype">double</span> x, <span class="keywordtype">double</span> y, <span class="keywordtype">double</span> z)
+<a name="l00131"></a>00131     {
+<a name="l00132"></a>00132         <a class="code" href="namespace_sgv.html#57d99927d2bd3545e177e14ad7d92642" title="実数値属性をシミュレーションオブジェクトにセットする">setDoubleAttr</a>(o, <span class="stringliteral">"x"</span>, x);
+<a name="l00133"></a>00133         <a class="code" href="namespace_sgv.html#57d99927d2bd3545e177e14ad7d92642" title="実数値属性をシミュレーションオブジェクトにセットする">setDoubleAttr</a>(o, <span class="stringliteral">"y"</span>, y);
+<a name="l00134"></a>00134         <a class="code" href="namespace_sgv.html#57d99927d2bd3545e177e14ad7d92642" title="実数値属性をシミュレーションオブジェクトにセットする">setDoubleAttr</a>(o, <span class="stringliteral">"z"</span>, z);
+<a name="l00135"></a>00135     }
+<a name="l00136"></a>00136 
+<a name="l00137"></a><a class="code" href="namespace_sgv.html#94df957be49c06747e7c8114afe5bbd7">00137</a>     <span class="keywordtype">void</span> <a class="code" href="namespace_sgv.html#94df957be49c06747e7c8114afe5bbd7">setOrientation</a>(SimObj *o, <span class="keywordtype">double</span> deg, <span class="keywordtype">double</span> ax, <span class="keywordtype">double</span> ay, <span class="keywordtype">double</span> az)
+<a name="l00138"></a>00138     {
+<a name="l00139"></a>00139         <span class="comment">// 回転は軸に対して右ねじ方向（右手の親指を立てた状態で普通に回す方向）</span>
+<a name="l00140"></a>00140         <span class="comment">//</span>
+<a name="l00141"></a>00141         <span class="comment">// なお、Sgv::Quaternionは、（Ogre::Quaternionと異なり）</span>
+<a name="l00142"></a>00142         <span class="comment">// 軸ベクトルを正規化して渡さなくても大丈夫</span>
+<a name="l00143"></a>00143         <span class="comment">// （コンストラクタの中で自動的に正規化する）</span>
+<a name="l00144"></a>00144         <a class="code" href="class_sgv_1_1_quaternion.html" title="クォータニオン">Sgv::Quaternion</a> q(deg, ax, ay, az);
+<a name="l00145"></a>00145 
+<a name="l00146"></a>00146         <a class="code" href="namespace_sgv.html#57d99927d2bd3545e177e14ad7d92642" title="実数値属性をシミュレーションオブジェクトにセットする">setDoubleAttr</a>(o, <span class="stringliteral">"qw"</span>, q.<a class="code" href="class_sgv_1_1_quaternion.html#7e5f47ff18e53646c73ed6d0d71f521d" title="クォータニオンのw要素を返す">qw</a>());
+<a name="l00147"></a>00147         <a class="code" href="namespace_sgv.html#57d99927d2bd3545e177e14ad7d92642" title="実数値属性をシミュレーションオブジェクトにセットする">setDoubleAttr</a>(o, <span class="stringliteral">"qx"</span>, q.<a class="code" href="class_sgv_1_1_quaternion.html#2f061b4484666d62b81e64198b667268" title="クォータニオンのx要素を返す">qx</a>());
+<a name="l00148"></a>00148         <a class="code" href="namespace_sgv.html#57d99927d2bd3545e177e14ad7d92642" title="実数値属性をシミュレーションオブジェクトにセットする">setDoubleAttr</a>(o, <span class="stringliteral">"qy"</span>, q.<a class="code" href="class_sgv_1_1_quaternion.html#b54c7e2d53391db14cf933a2149bbb2a" title="クォータニオンのy要素を返す">qy</a>());
+<a name="l00149"></a>00149         <a class="code" href="namespace_sgv.html#57d99927d2bd3545e177e14ad7d92642" title="実数値属性をシミュレーションオブジェクトにセットする">setDoubleAttr</a>(o, <span class="stringliteral">"qz"</span>, q.<a class="code" href="class_sgv_1_1_quaternion.html#a3a35ca5c2ba47ed521a3c93ffbc98bf" title="クォータニオンのz要素を返す">qz</a>());
+<a name="l00150"></a>00150     }
+<a name="l00151"></a>00151 
+<a name="l00152"></a>00152     <span class="comment">// ==============================================</span>
+<a name="l00153"></a>00153     <span class="comment">//  Quaterninon</span>
+<a name="l00154"></a>00154     <span class="comment">// ==============================================</span>
+<a name="l00155"></a><a class="code" href="class_sgv_1_1_quaternion.html#b813c6227fddc5aeaea43023f111b24a">00155</a>     <a class="code" href="class_sgv_1_1_quaternion.html#b813c6227fddc5aeaea43023f111b24a" title="コンストラクタ">Quaternion::Quaternion</a>()
+<a name="l00156"></a>00156     {
+<a name="l00157"></a>00157         m_qw = 0;
+<a name="l00158"></a>00158         m_qx = 1;
+<a name="l00159"></a>00159         m_qy = 0;
+<a name="l00160"></a>00160         m_qz = 0;
+<a name="l00161"></a>00161     }
+<a name="l00162"></a>00162 
+<a name="l00163"></a><a class="code" href="class_sgv_1_1_quaternion.html#85959bf6b8b9473e357f872593468882">00163</a>     <a class="code" href="class_sgv_1_1_quaternion.html#b813c6227fddc5aeaea43023f111b24a" title="コンストラクタ">Quaternion::Quaternion</a>(<span class="keyword">const</span> <a class="code" href="class_sgv_1_1_quaternion.html" title="クォータニオン">Quaternion</a> &amp;q)
+<a name="l00164"></a>00164     {
+<a name="l00165"></a>00165         m_qw = q.m_qw;
+<a name="l00166"></a>00166         m_qx = q.m_qx;
+<a name="l00167"></a>00167         m_qy = q.m_qy;
+<a name="l00168"></a>00168         m_qz = q.m_qz;
+<a name="l00169"></a>00169     }
+<a name="l00170"></a>00170 
+<a name="l00171"></a><a class="code" href="class_sgv_1_1_quaternion.html#9b5ec7a75b6c9d39dd4233514e9ce288">00171</a>     <a class="code" href="class_sgv_1_1_quaternion.html#b813c6227fddc5aeaea43023f111b24a" title="コンストラクタ">Quaternion::Quaternion</a>(<span class="keywordtype">double</span> deg, <span class="keywordtype">double</span> dx, <span class="keywordtype">double</span> dy, <span class="keywordtype">double</span> dz)
+<a name="l00172"></a>00172     {
+<a name="l00173"></a>00173         <span class="keywordtype">double</span> len = sqrt(dx*dx+dy*dy+dz*dz);
+<a name="l00174"></a>00174 
+<a name="l00175"></a>00175         <span class="keywordflow">if</span> (fabs(len) &gt; 1e-7)
+<a name="l00176"></a>00176         {
+<a name="l00177"></a>00177             <span class="comment">// 軸ベクトルを正規化する</span>
+<a name="l00178"></a>00178             dx = dx / len;
+<a name="l00179"></a>00179             dy = dy / len;
+<a name="l00180"></a>00180             dz = dz / len;
+<a name="l00181"></a>00181 
+<a name="l00182"></a>00182             <span class="keywordtype">double</span> c = cos(3.141592/180*(deg/2));
+<a name="l00183"></a>00183             <span class="keywordtype">double</span> s = sin(3.141592/180*(deg/2));
+<a name="l00184"></a>00184             m_qw = c;
+<a name="l00185"></a>00185             m_qx = s*dx;
+<a name="l00186"></a>00186             m_qy = s*dy;
+<a name="l00187"></a>00187             m_qz = s*dz;
+<a name="l00188"></a>00188         }
+<a name="l00189"></a>00189         <span class="keywordflow">else</span>
+<a name="l00190"></a>00190         {
+<a name="l00191"></a>00191             <span class="comment">// to avoid overflow</span>
+<a name="l00192"></a>00192             m_qw = 0;
+<a name="l00193"></a>00193             m_qx = 1;
+<a name="l00194"></a>00194             m_qy = 0;
+<a name="l00195"></a>00195             m_qz = 0;
+<a name="l00196"></a>00196         }
+<a name="l00197"></a>00197     }
+<a name="l00198"></a>00198 
+<a name="l00199"></a><a class="code" href="class_sgv_1_1_quaternion.html#87512530fc163ad90d6e7214cdd14c39">00199</a>     <a class="code" href="class_sgv_1_1_quaternion.html" title="クォータニオン">Quaternion</a> <a class="code" href="class_sgv_1_1_quaternion.html#87512530fc163ad90d6e7214cdd14c39" title="クォータニオンの積を計算する">Quaternion::mult</a>(<a class="code" href="class_sgv_1_1_quaternion.html" title="クォータニオン">Quaternion</a> &amp;right)
+<a name="l00200"></a>00200     {
+<a name="l00201"></a>00201         <a class="code" href="class_sgv_1_1_quaternion.html" title="クォータニオン">Quaternion</a> ans;
+<a name="l00202"></a>00202 
+<a name="l00203"></a>00203         <span class="keywordtype">double</span> d1, d2, d3, d4; 
+<a name="l00204"></a>00204 
+<a name="l00205"></a>00205         d1 =  m_qw * right.<a class="code" href="class_sgv_1_1_quaternion.html#7e5f47ff18e53646c73ed6d0d71f521d" title="クォータニオンのw要素を返す">qw</a>(); 
+<a name="l00206"></a>00206         d2 = -m_qx * right.<a class="code" href="class_sgv_1_1_quaternion.html#2f061b4484666d62b81e64198b667268" title="クォータニオンのx要素を返す">qx</a>(); 
+<a name="l00207"></a>00207         d3 = -m_qy * right.<a class="code" href="class_sgv_1_1_quaternion.html#b54c7e2d53391db14cf933a2149bbb2a" title="クォータニオンのy要素を返す">qy</a>(); 
+<a name="l00208"></a>00208         d4 = -m_qz * right.<a class="code" href="class_sgv_1_1_quaternion.html#a3a35ca5c2ba47ed521a3c93ffbc98bf" title="クォータニオンのz要素を返す">qz</a>(); 
+<a name="l00209"></a>00209         ans.<a class="code" href="class_sgv_1_1_quaternion.html#7e5f47ff18e53646c73ed6d0d71f521d" title="クォータニオンのw要素を返す">qw</a>(d1+ d2+ d3+ d4);
+<a name="l00210"></a>00210 
+<a name="l00211"></a>00211         d1 =  m_qw * right.<a class="code" href="class_sgv_1_1_quaternion.html#2f061b4484666d62b81e64198b667268" title="クォータニオンのx要素を返す">qx</a>(); 
+<a name="l00212"></a>00212         d2 =  right.<a class="code" href="class_sgv_1_1_quaternion.html#7e5f47ff18e53646c73ed6d0d71f521d" title="クォータニオンのw要素を返す">qw</a>() * m_qx; 
+<a name="l00213"></a>00213         d3 =  m_qy * right.<a class="code" href="class_sgv_1_1_quaternion.html#a3a35ca5c2ba47ed521a3c93ffbc98bf" title="クォータニオンのz要素を返す">qz</a>(); 
+<a name="l00214"></a>00214         d4 = -m_qz * right.<a class="code" href="class_sgv_1_1_quaternion.html#b54c7e2d53391db14cf933a2149bbb2a" title="クォータニオンのy要素を返す">qy</a>(); 
+<a name="l00215"></a>00215         ans.<a class="code" href="class_sgv_1_1_quaternion.html#2f061b4484666d62b81e64198b667268" title="クォータニオンのx要素を返す">qx</a>(d1+ d2+ d3+ d4); 
+<a name="l00216"></a>00216 
+<a name="l00217"></a>00217         d1 =  m_qw * right.<a class="code" href="class_sgv_1_1_quaternion.html#b54c7e2d53391db14cf933a2149bbb2a" title="クォータニオンのy要素を返す">qy</a>(); 
+<a name="l00218"></a>00218         d2 =  right.<a class="code" href="class_sgv_1_1_quaternion.html#7e5f47ff18e53646c73ed6d0d71f521d" title="クォータニオンのw要素を返す">qw</a>() * m_qy; 
+<a name="l00219"></a>00219         d3 =  m_qz * right.<a class="code" href="class_sgv_1_1_quaternion.html#2f061b4484666d62b81e64198b667268" title="クォータニオンのx要素を返す">qx</a>(); 
+<a name="l00220"></a>00220         d4 = -m_qx * right.<a class="code" href="class_sgv_1_1_quaternion.html#a3a35ca5c2ba47ed521a3c93ffbc98bf" title="クォータニオンのz要素を返す">qz</a>(); 
+<a name="l00221"></a>00221         ans.<a class="code" href="class_sgv_1_1_quaternion.html#b54c7e2d53391db14cf933a2149bbb2a" title="クォータニオンのy要素を返す">qy</a>(d1+ d2+ d3+ d4); 
+<a name="l00222"></a>00222 
+<a name="l00223"></a>00223         d1 =  m_qw * right.<a class="code" href="class_sgv_1_1_quaternion.html#a3a35ca5c2ba47ed521a3c93ffbc98bf" title="クォータニオンのz要素を返す">qz</a>(); 
+<a name="l00224"></a>00224         d2 =  right.<a class="code" href="class_sgv_1_1_quaternion.html#7e5f47ff18e53646c73ed6d0d71f521d" title="クォータニオンのw要素を返す">qw</a>() * m_qz; 
+<a name="l00225"></a>00225         d3 =  m_qx * right.<a class="code" href="class_sgv_1_1_quaternion.html#b54c7e2d53391db14cf933a2149bbb2a" title="クォータニオンのy要素を返す">qy</a>(); 
+<a name="l00226"></a>00226         d4 = -m_qy * right.<a class="code" href="class_sgv_1_1_quaternion.html#2f061b4484666d62b81e64198b667268" title="クォータニオンのx要素を返す">qx</a>(); 
+<a name="l00227"></a>00227         ans.<a class="code" href="class_sgv_1_1_quaternion.html#a3a35ca5c2ba47ed521a3c93ffbc98bf" title="クォータニオンのz要素を返す">qz</a>(d1+ d2+ d3+ d4); 
+<a name="l00228"></a>00228 
+<a name="l00229"></a>00229         <span class="keywordflow">return</span> ans; 
+<a name="l00230"></a>00230     }
+<a name="l00231"></a>00231 
+<a name="l00232"></a><a class="code" href="class_sgv_1_1_quaternion.html#3d06dc61344628bbc337aa04759ecf18">00232</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_quaternion.html#3d06dc61344628bbc337aa04759ecf18" title="ベクトル(x, y, z)をこのクォータニオンで回転させたベクトル(outx...">Quaternion::rot</a>(<span class="keywordtype">double</span> x, <span class="keywordtype">double</span> y, <span class="keywordtype">double</span> z, <span class="keywordtype">double</span> &amp;outx, <span class="keywordtype">double</span> &amp;outy, <span class="keywordtype">double</span> &amp;outz)
+<a name="l00233"></a>00233     {
+<a name="l00234"></a>00234         <a class="code" href="class_sgv_1_1_quaternion.html" title="クォータニオン">Quaternion</a> in, q, conjugation, out;
+<a name="l00235"></a>00235 
+<a name="l00236"></a>00236         in.<a class="code" href="class_sgv_1_1_quaternion.html#7e5f47ff18e53646c73ed6d0d71f521d" title="クォータニオンのw要素を返す">qw</a>(0);
+<a name="l00237"></a>00237         in.<a class="code" href="class_sgv_1_1_quaternion.html#2f061b4484666d62b81e64198b667268" title="クォータニオンのx要素を返す">qx</a>(x);
+<a name="l00238"></a>00238         in.<a class="code" href="class_sgv_1_1_quaternion.html#b54c7e2d53391db14cf933a2149bbb2a" title="クォータニオンのy要素を返す">qy</a>(y);
+<a name="l00239"></a>00239         in.<a class="code" href="class_sgv_1_1_quaternion.html#a3a35ca5c2ba47ed521a3c93ffbc98bf" title="クォータニオンのz要素を返す">qz</a>(z);
+<a name="l00240"></a>00240 
+<a name="l00241"></a>00241         q.<a class="code" href="class_sgv_1_1_quaternion.html#7e5f47ff18e53646c73ed6d0d71f521d" title="クォータニオンのw要素を返す">qw</a>(m_qw);
+<a name="l00242"></a>00242         q.<a class="code" href="class_sgv_1_1_quaternion.html#2f061b4484666d62b81e64198b667268" title="クォータニオンのx要素を返す">qx</a>(m_qx);
+<a name="l00243"></a>00243         q.<a class="code" href="class_sgv_1_1_quaternion.html#b54c7e2d53391db14cf933a2149bbb2a" title="クォータニオンのy要素を返す">qy</a>(m_qy);
+<a name="l00244"></a>00244         q.<a class="code" href="class_sgv_1_1_quaternion.html#a3a35ca5c2ba47ed521a3c93ffbc98bf" title="クォータニオンのz要素を返す">qz</a>(m_qz);
+<a name="l00245"></a>00245 
+<a name="l00246"></a>00246         conjugation.<a class="code" href="class_sgv_1_1_quaternion.html#7e5f47ff18e53646c73ed6d0d71f521d" title="クォータニオンのw要素を返す">qw</a>(m_qw);
+<a name="l00247"></a>00247         conjugation.<a class="code" href="class_sgv_1_1_quaternion.html#2f061b4484666d62b81e64198b667268" title="クォータニオンのx要素を返す">qx</a>(-m_qx);
+<a name="l00248"></a>00248         conjugation.<a class="code" href="class_sgv_1_1_quaternion.html#b54c7e2d53391db14cf933a2149bbb2a" title="クォータニオンのy要素を返す">qy</a>(-m_qy);
+<a name="l00249"></a>00249         conjugation.<a class="code" href="class_sgv_1_1_quaternion.html#a3a35ca5c2ba47ed521a3c93ffbc98bf" title="クォータニオンのz要素を返す">qz</a>(-m_qz);
+<a name="l00250"></a>00250 
+<a name="l00251"></a>00251         out = q.<a class="code" href="class_sgv_1_1_quaternion.html#87512530fc163ad90d6e7214cdd14c39" title="クォータニオンの積を計算する">mult</a>(in.<a class="code" href="class_sgv_1_1_quaternion.html#87512530fc163ad90d6e7214cdd14c39" title="クォータニオンの積を計算する">mult</a>(conjugation));
+<a name="l00252"></a>00252 
+<a name="l00253"></a>00253         outx = out.<a class="code" href="class_sgv_1_1_quaternion.html#2f061b4484666d62b81e64198b667268" title="クォータニオンのx要素を返す">qx</a>();
+<a name="l00254"></a>00254         outy = out.<a class="code" href="class_sgv_1_1_quaternion.html#b54c7e2d53391db14cf933a2149bbb2a" title="クォータニオンのy要素を返す">qy</a>();
+<a name="l00255"></a>00255         outz = out.<a class="code" href="class_sgv_1_1_quaternion.html#a3a35ca5c2ba47ed521a3c93ffbc98bf" title="クォータニオンのz要素を返す">qz</a>();
+<a name="l00256"></a>00256     }
+<a name="l00257"></a>00257 <span class="comment"></span>
+<a name="l00258"></a>00258 <span class="comment">    //////////////////////////////////////////////////////////////</span>
+<a name="l00259"></a>00259 <span class="comment"></span>    <span class="comment">//</span>
+<a name="l00260"></a>00260     <span class="comment">// test code</span>
+<a name="l00261"></a>00261 
+<a name="l00262"></a><a class="code" href="namespace_sgv.html#03e26f2489dd1c7a7dd3aa7109fff21c">00262</a>     <span class="keywordtype">void</span> <a class="code" href="namespace_sgv.html#03e26f2489dd1c7a7dd3aa7109fff21c">test_Quaternion_1</a>(<span class="keywordtype">double</span> x1, <span class="keywordtype">double</span> y1, <span class="keywordtype">double</span> z1, <span class="keywordtype">double</span> deg, <span class="keywordtype">double</span> ax, <span class="keywordtype">double</span> ay, <span class="keywordtype">double</span> az)
+<a name="l00263"></a>00263     {
+<a name="l00264"></a>00264         <span class="keywordtype">double</span> x2, y2, z2;
+<a name="l00265"></a>00265 
+<a name="l00266"></a>00266         <span class="comment">// 回転角度、軸</span>
+<a name="l00267"></a>00267         <a class="code" href="class_sgv_1_1_quaternion.html" title="クォータニオン">Quaternion</a> qq(deg, ax, ay, az);
+<a name="l00268"></a>00268 
+<a name="l00269"></a>00269         <span class="comment">// 回転実行</span>
+<a name="l00270"></a>00270         qq.<a class="code" href="class_sgv_1_1_quaternion.html#3d06dc61344628bbc337aa04759ecf18" title="ベクトル(x, y, z)をこのクォータニオンで回転させたベクトル(outx...">rot</a>(x1, y1, z1, x2, y2, z2);
+<a name="l00271"></a>00271 
+<a name="l00272"></a>00272         <span class="comment">// 表示</span>
+<a name="l00273"></a>00273         printf(<span class="stringliteral">"------------------------------------¥n"</span>);
+<a name="l00274"></a>00274         printf(<span class="stringliteral">"in (%f %f %f)¥n"</span>, x1, y1, z1);
+<a name="l00275"></a>00275         printf(<span class="stringliteral">"rot(%f deg, axis=(%f %f %f)¥n"</span>, deg, ax, ay, az);
+<a name="l00276"></a>00276         printf(<span class="stringliteral">"out(%f %f %f)¥n"</span>, x2, y2, z2);
+<a name="l00277"></a>00277     }
+<a name="l00278"></a>00278 
+<a name="l00279"></a><a class="code" href="namespace_sgv.html#b915f3b3039bc54f56f30ed238a55546">00279</a>     <span class="keywordtype">void</span> <a class="code" href="namespace_sgv.html#b915f3b3039bc54f56f30ed238a55546">test_Quaternion</a>()
+<a name="l00280"></a>00280     {
+<a name="l00281"></a>00281         <a class="code" href="namespace_sgv.html#03e26f2489dd1c7a7dd3aa7109fff21c">test_Quaternion_1</a>(0, 1, 0, 30, 1, 0, 0);
+<a name="l00282"></a>00282         <a class="code" href="namespace_sgv.html#03e26f2489dd1c7a7dd3aa7109fff21c">test_Quaternion_1</a>(0, 1, 0, 90, 1, 0, 0);
+<a name="l00283"></a>00283         printf(<span class="stringliteral">"¥n"</span>);
+<a name="l00284"></a>00284         <a class="code" href="namespace_sgv.html#03e26f2489dd1c7a7dd3aa7109fff21c">test_Quaternion_1</a>(1, 0, 0, 30, 0, 1, 0);
+<a name="l00285"></a>00285         <a class="code" href="namespace_sgv.html#03e26f2489dd1c7a7dd3aa7109fff21c">test_Quaternion_1</a>(1, 0, 0, 90, 0, 1, 0);
+<a name="l00286"></a>00286         printf(<span class="stringliteral">"¥n"</span>);
+<a name="l00287"></a>00287         <a class="code" href="namespace_sgv.html#03e26f2489dd1c7a7dd3aa7109fff21c">test_Quaternion_1</a>(1, 0, 0, 30, 0, 0, 1);
+<a name="l00288"></a>00288         <a class="code" href="namespace_sgv.html#03e26f2489dd1c7a7dd3aa7109fff21c">test_Quaternion_1</a>(1, 0, 0, 90, 0, 0, 1);
+<a name="l00289"></a>00289     }
+<a name="l00290"></a>00290 };
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>SIGViewerに対してThu Jun 9 10:52:11 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

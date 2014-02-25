@@ -1,0 +1,322 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: ServerAcceptProc.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>ServerAcceptProc.h</h1><a href="_server_accept_proc_8h.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/* $Id: _server_accept_proc_8h_source.html,v 1.2 2011-12-14 07:55:39 okamoto Exp $ */</span> 
+<a name="l00002"></a>00002 <span class="preprocessor">#ifndef ServerAcceptProc_h</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span><span class="preprocessor">#define ServerAcceptProc_h</span>
+<a name="l00004"></a>00004 <span class="preprocessor"></span>
+<a name="l00005"></a>00005 <span class="preprocessor">#ifdef IRWAS_SIMSERVER</span>
+<a name="l00006"></a>00006 <span class="preprocessor"></span><span class="preprocessor">#include &quot;<a class="code" href="systemdef_8h.html">systemdef.h</a>&quot;</span>
+<a name="l00007"></a>00007 <span class="preprocessor">#include &quot;<a class="code" href="_source_8h.html">Source.h</a>&quot;</span>
+<a name="l00008"></a>00008 <span class="preprocessor">#include &quot;<a class="code" href="_comm_data_decoder_8h.html">CommDataDecoder.h</a>&quot;</span>
+<a name="l00009"></a>00009 <span class="preprocessor">#include &quot;<a class="code" href="_thread_8h.html">Thread.h</a>&quot;</span>
+<a name="l00010"></a>00010 <span class="preprocessor">#include &quot;<a class="code" href="_locker_8h.html">Locker.h</a>&quot;</span>
+<a name="l00011"></a>00011 
+<a name="l00012"></a>00012 <span class="preprocessor">#include &lt;string&gt;</span>
+<a name="l00013"></a>00013 <span class="preprocessor">#include &lt;vector&gt;</span>
+<a name="l00014"></a>00014 <span class="preprocessor">#include &lt;queue&gt;</span>
+<a name="l00015"></a>00015 <span class="preprocessor">#include &lt;map&gt;</span>
+<a name="l00016"></a>00016 
+<a name="l00017"></a>00017 <span class="keyword">class </span><a class="code" href="class_s_sim_world.html" title="シミュレーション世界クラス(サーバサイドで使用)">SSimWorld</a>;
+<a name="l00018"></a>00018 <span class="keyword">class </span><a class="code" href="class_sim_world_provider.html" title="シミュレーション世界インスタンスへのアクセサインターフェース...">SimWorldProvider</a>;
+<a name="l00019"></a>00019 <span class="keyword">class </span><a class="code" href="class_service_name_server.html" title="サービスプロバイダネームサーバクラス">ServiceNameServer</a>;
+<a name="l00020"></a>00020 <span class="comment"></span>
+<a name="l00021"></a>00021 <span class="comment">/**</span>
+<a name="l00022"></a>00022 <span class="comment"> * @brief クライアントコネクションクラス</span>
+<a name="l00023"></a>00023 <span class="comment"> */</span>
+<a name="l00024"></a><a class="code" href="struct_connection.html">00024</a> <span class="keyword">struct </span><a class="code" href="struct_connection.html" title="クライアントコネクションクラス">Connection</a>
+<a name="l00025"></a>00025 {
+<a name="l00026"></a><a class="code" href="struct_connection.html#abbafd5dd00d19e0b19c5f537756e1779">00026</a>     <a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> *<a class="code" href="struct_connection.html#abbafd5dd00d19e0b19c5f537756e1779">source</a>;
+<a name="l00027"></a><a class="code" href="struct_connection.html#a9db1accc6005bdb5a2028ffef63cf77d">00027</a>     <a class="code" href="class_comm_data_decoder.html" title="サーバ-クライアント通信データデコードクラス">CommDataDecoder</a> <a class="code" href="struct_connection.html#a9db1accc6005bdb5a2028ffef63cf77d">decoder</a>;
+<a name="l00028"></a><a class="code" href="struct_connection.html#a0a9c77d9a5ffa7cea6b62f2b68f0d197">00028</a>     <a class="code" href="struct_connection.html#a0a9c77d9a5ffa7cea6b62f2b68f0d197">Connection</a>(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> *s,
+<a name="l00029"></a>00029            <a class="code" href="class_comm_data_listener.html" title="CommDataDecoder によるデータ復元結果取得リスナーインターフェース...">CommDataDecoder::Listener</a> *l,
+<a name="l00030"></a>00030            <a class="code" href="class_comm_data_decoder_1_1_packet_sender.html" title="データ送信インターフェース">CommDataDecoder::PacketSender</a> *sender) : <a class="code" href="struct_connection.html#abbafd5dd00d19e0b19c5f537756e1779">source</a>(s)
+<a name="l00031"></a>00031     {
+<a name="l00032"></a>00032         <a class="code" href="struct_connection.html#a9db1accc6005bdb5a2028ffef63cf77d">decoder</a>.<a class="code" href="class_comm_data_decoder.html#ad34b788a9d321d6d886a6e9d0ce31639" title="リスナーの設定">setListener</a>(l);
+<a name="l00033"></a>00033         <a class="code" href="struct_connection.html#a9db1accc6005bdb5a2028ffef63cf77d">decoder</a>.<a class="code" href="class_comm_data_decoder.html#a1a57326ef2fcae2fc3fac392a7f85d0e" title="PacketSenderの設定.">setPacketSender</a>(sender);
+<a name="l00034"></a>00034     }
+<a name="l00035"></a><a class="code" href="struct_connection.html#abdcebfb7b164ae53b2923c3f9ed06a12">00035</a>     <a class="code" href="struct_connection.html#abdcebfb7b164ae53b2923c3f9ed06a12">‾Connection</a>() {
+<a name="l00036"></a>00036         <a class="code" href="struct_connection.html#abbafd5dd00d19e0b19c5f537756e1779">source</a>-&gt;<a class="code" href="class_source.html#a567c519d7d922f3746d6b6fd9dcf0dec" title="接続を閉じる">close</a>();
+<a name="l00037"></a>00037         <span class="keyword">delete</span> <a class="code" href="struct_connection.html#abbafd5dd00d19e0b19c5f537756e1779">source</a>;
+<a name="l00038"></a>00038     }
+<a name="l00039"></a>00039 };
+<a name="l00040"></a>00040 <span class="comment"></span>
+<a name="l00041"></a>00041 <span class="comment">/**</span>
+<a name="l00042"></a>00042 <span class="comment"> * @brief クライアントの接続要求に応じるクラス</span>
+<a name="l00043"></a>00043 <span class="comment"> */</span>
+<a name="l00044"></a><a class="code" href="class_server_accept_proc.html">00044</a> <span class="keyword">class </span><a class="code" href="class_server_accept_proc.html" title="クライアントの接続要求に応じるクラス">ServerAcceptProc</a> : <span class="keyword">public</span> <a class="code" href="class_comm_data_decoder.html" title="サーバ-クライアント通信データデコードクラス">CommDataDecoder</a>::Listener
+<a name="l00045"></a>00045 {
+<a name="l00046"></a>00046 <span class="keyword">private</span>:
+<a name="l00047"></a>00047     <span class="keyword">typedef</span> std::string S;
+<a name="l00048"></a>00048         
+<a name="l00049"></a>00049 <span class="keyword">private</span>:
+<a name="l00050"></a>00050     <span class="keyword">typedef</span> std::vector&lt;Connection *&gt; ConC;
+<a name="l00051"></a>00051     <span class="keyword">typedef</span> std::vector&lt;Source*&gt; SourceC;
+<a name="l00052"></a>00052 <span class="preprocessor">#ifdef DEPRECATED</span>
+<a name="l00053"></a>00053 <span class="preprocessor"></span>    <span class="keyword">typedef</span> std::queue&lt;Command*&gt; CommandQ;
+<a name="l00054"></a>00054     <span class="keyword">typedef</span> std::map&lt;S, CommandQ*&gt; CommandHash;
+<a name="l00055"></a>00055 <span class="preprocessor">#endif</span>
+<a name="l00056"></a>00056 <span class="preprocessor"></span><span class="keyword">public</span>:
+<a name="l00057"></a><a class="code" href="class_server_accept_proc.html#a214f0c0e052c63cebbb103eb8fd7d841">00057</a>     <span class="keyword">typedef</span> ConC <a class="code" href="class_server_accept_proc.html#a214f0c0e052c63cebbb103eb8fd7d841">C</a>;
+<a name="l00058"></a>00058 <span class="keyword">private</span>:
+<a name="l00059"></a>00059     <span class="keywordtype">int</span> m_sock;
+<a name="l00060"></a>00060     ConC    m_clients;
+<a name="l00061"></a>00061     SourceC m_noneeded;
+<a name="l00062"></a>00062     <a class="code" href="class_locker.html" title="pthread ミューテックスによる排他制御用ロッカークラス">Locker</a>  m_locker;
+<a name="l00063"></a>00063 <span class="preprocessor">#ifdef DEPRECATED</span>
+<a name="l00064"></a>00064 <span class="preprocessor"></span>    CommandHash m_commandH;
+<a name="l00065"></a>00065 <span class="preprocessor">#endif</span>
+<a name="l00066"></a>00066 <span class="preprocessor"></span>
+<a name="l00067"></a>00067     <span class="keywordtype">bool</span> m_startReq;
+<a name="l00068"></a>00068 <span class="keyword">private</span>:
+<a name="l00069"></a>00069     <a class="code" href="class_comm_data_listener.html" title="CommDataDecoder によるデータ復元結果取得リスナーインターフェース...">CommDataDecoder::Listener</a> *m_decoderL;
+<a name="l00070"></a>00070     <a class="code" href="class_comm_data_decoder_1_1_packet_sender.html" title="データ送信インターフェース">CommDataDecoder::PacketSender</a> *m_sender;
+<a name="l00071"></a>00071     <a class="code" href="class_sim_world_provider.html" title="シミュレーション世界インスタンスへのアクセサインターフェース...">SimWorldProvider</a> &amp;m_wProvider;
+<a name="l00072"></a>00072     <a class="code" href="class_service_name_server.html" title="サービスプロバイダネームサーバクラス">ServiceNameServer</a> &amp;m_ns;
+<a name="l00073"></a>00073 <span class="keyword">private</span>:
+<a name="l00074"></a>00074 <span class="preprocessor">#ifdef DEPRECATED</span>
+<a name="l00075"></a>00075 <span class="preprocessor"></span>    CommandQ &amp; getCommandQ(<span class="keyword">const</span> <span class="keywordtype">char</span> *name);
+<a name="l00076"></a>00076 <span class="preprocessor">#endif</span>
+<a name="l00077"></a>00077 <span class="preprocessor"></span>    <span class="keywordtype">void</span>    free_();
+<a name="l00078"></a>00078 <span class="keyword">public</span>:<span class="comment"></span>
+<a name="l00079"></a>00079 <span class="comment">    /**</span>
+<a name="l00080"></a>00080 <span class="comment">     * @brief コンストラクタ</span>
+<a name="l00081"></a>00081 <span class="comment">     * @param sock      監視するソケット</span>
+<a name="l00082"></a>00082 <span class="comment">     * @param provider  SimWorldオブジェクトのアクセサ</span>
+<a name="l00083"></a>00083 <span class="comment">     * @param ns        サービスネームサーバ</span>
+<a name="l00084"></a>00084 <span class="comment">     */</span>
+<a name="l00085"></a><a class="code" href="class_server_accept_proc.html#a3108d2c05680bff31b54ce5165f5c56b">00085</a>  <a class="code" href="class_server_accept_proc.html#a3108d2c05680bff31b54ce5165f5c56b" title="コンストラクタ">ServerAcceptProc</a>(<span class="keywordtype">int</span> sock, <a class="code" href="class_sim_world_provider.html" title="シミュレーション世界インスタンスへのアクセサインターフェース...">SimWorldProvider</a> &amp;provider, <a class="code" href="class_service_name_server.html" title="サービスプロバイダネームサーバクラス">ServiceNameServer</a> &amp;ns) : m_sock(sock), m_wProvider(provider), m_ns(ns), m_startReq(true) {;}<span class="comment"></span>
+<a name="l00086"></a>00086 <span class="comment">    //! デストラクタ</span>
+<a name="l00087"></a><a class="code" href="class_server_accept_proc.html#af5e94b44015864c83f59f4f8ce343935">00087</a> <span class="comment"></span>    <a class="code" href="class_server_accept_proc.html#af5e94b44015864c83f59f4f8ce343935" title="デストラクタ">‾ServerAcceptProc</a>() { free_(); }
+<a name="l00088"></a>00088 <span class="comment"></span>
+<a name="l00089"></a>00089 <span class="comment">    //! 受信したパケットに応じた処理を行なうリスナー実装クラスインスタンスを設定する</span>
+<a name="l00090"></a><a class="code" href="class_server_accept_proc.html#a7b814818700811f7ec97fa7f05311a70">00090</a> <span class="comment"></span>    <span class="keywordtype">void</span> <a class="code" href="class_server_accept_proc.html#a7b814818700811f7ec97fa7f05311a70" title="受信したパケットに応じた処理を行なうリスナー実装クラスインスタンス�...">setDecoderListener</a>(<a class="code" href="class_comm_data_listener.html" title="CommDataDecoder によるデータ復元結果取得リスナーインターフェース...">CommDataDecoder::Listener</a> *l) { m_decoderL = l; }<span class="comment"></span>
+<a name="l00091"></a>00091 <span class="comment">    //! パケット転送を行なうクラスインスタンスを設定する</span>
+<a name="l00092"></a><a class="code" href="class_server_accept_proc.html#a7f49c852ec567c4cb6a0fa386225665d">00092</a> <span class="comment"></span>    <span class="keywordtype">void</span> <a class="code" href="class_server_accept_proc.html#a7f49c852ec567c4cb6a0fa386225665d" title="パケット転送を行なうクラスインスタンスを設定する">setPacketSender</a>(<a class="code" href="class_comm_data_decoder_1_1_packet_sender.html" title="データ送信インターフェース">CommDataDecoder::PacketSender</a> *s) { m_sender = s; }
+<a name="l00093"></a>00093 <span class="comment"></span>
+<a name="l00094"></a>00094 <span class="comment">    //! インスタンス全体にロックを掛ける</span>
+<a name="l00095"></a><a class="code" href="class_server_accept_proc.html#ac0a389b244281dde2808cecf18816992">00095</a> <span class="comment"></span>    <span class="keywordtype">void</span> <a class="code" href="class_server_accept_proc.html#ac0a389b244281dde2808cecf18816992" title="インスタンス全体にロックを掛ける">lock</a>() { m_locker.<a class="code" href="class_locker.html#afbcad2cf8d7ab2cfa728b218f8c516e8" title="ロックを開始する">lock</a>(); }<span class="comment"></span>
+<a name="l00096"></a>00096 <span class="comment">    //! インスタンス全体にかかったロックを解除する</span>
+<a name="l00097"></a><a class="code" href="class_server_accept_proc.html#ad5fb9cc44ac96bd6076d8080f1fa2147">00097</a> <span class="comment"></span>    <span class="keywordtype">void</span> <a class="code" href="class_server_accept_proc.html#ad5fb9cc44ac96bd6076d8080f1fa2147" title="インスタンス全体にかかったロックを解除する">unlock</a>() { m_locker.<a class="code" href="class_locker.html#aafb16768c3b3a911002622b886000882" title="ロックを解除する">unlock</a>(); }
+<a name="l00098"></a>00098 <span class="comment"></span>
+<a name="l00099"></a>00099 <span class="comment">    //! 接続クライアントへのコネクションを取得する</span>
+<a name="l00100"></a><a class="code" href="class_server_accept_proc.html#aa08a10e8e2e0657c87c5c7f4f71ea19d">00100</a> <span class="comment"></span>    <span class="keyword">const</span> <a class="code" href="class_server_accept_proc.html#a214f0c0e052c63cebbb103eb8fd7d841">C</a> &amp;<a class="code" href="class_server_accept_proc.html#aa08a10e8e2e0657c87c5c7f4f71ea19d" title="接続クライアントへのコネクションを取得する">clients</a>() {
+<a name="l00101"></a>00101         <a class="code" href="class_server_accept_proc.html#a2abe467f2e4407d23fec767c30c5c260" title="通信する必要のない接続元を削除する">eraseNoNeeded</a>();
+<a name="l00102"></a>00102         <span class="keywordflow">return</span> m_clients;
+<a name="l00103"></a>00103     }<span class="comment"></span>
+<a name="l00104"></a>00104 <span class="comment">    //! 接続クライアント数を取得する</span>
+<a name="l00105"></a><a class="code" href="class_server_accept_proc.html#a3c68b4659d395a72246fc80e5fefc75e">00105</a> <span class="comment"></span>    <span class="keywordtype">int</span> <a class="code" href="class_server_accept_proc.html#a3c68b4659d395a72246fc80e5fefc75e" title="接続クライアント数を取得する">clientNum</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_clients.size(); }<span class="comment"></span>
+<a name="l00106"></a>00106 <span class="comment">    /**</span>
+<a name="l00107"></a>00107 <span class="comment">     * @brief クライアント接続元情報を取得する</span>
+<a name="l00108"></a>00108 <span class="comment">     * @param name 接続名</span>
+<a name="l00109"></a>00109 <span class="comment">     * @param name 接続元タイプ</span>
+<a name="l00110"></a>00110 <span class="comment">     */</span>
+<a name="l00111"></a>00111     <a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> * <span class="keyword">get</span>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name, <a class="code" href="_source_8h.html#abd482467b5af8258c45cde48b322924b">SourceType</a> type);<span class="comment"></span>
+<a name="l00112"></a>00112 <span class="comment">    /**</span>
+<a name="l00113"></a>00113 <span class="comment">     * @brief クライアント接続元情報を取得する</span>
+<a name="l00114"></a>00114 <span class="comment">     * @param sock ソケット記述子</span>
+<a name="l00115"></a>00115 <span class="comment">     */</span>
+<a name="l00116"></a>00116     <a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> * <span class="keyword">get</span>(<span class="keywordtype">int</span> sock);
+<a name="l00117"></a>00117     <span class="comment"></span>
+<a name="l00118"></a>00118 <span class="comment">    /**</span>
+<a name="l00119"></a>00119 <span class="comment">     * @brief クライアント接続元情報を取得する</span>
+<a name="l00120"></a>00120 <span class="comment">     * @param type 接続元タイプ</span>
+<a name="l00121"></a>00121 <span class="comment">     */</span>
+<a name="l00122"></a>00122     <a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> * <a class="code" href="class_server_accept_proc.html#a16911880df5ca888cd0e373ba94cf2cc" title="クライアント接続元情報を取得する">getByType</a>(<a class="code" href="_source_8h.html#abd482467b5af8258c45cde48b322924b">SourceType</a> type);
+<a name="l00123"></a>00123 <span class="comment"></span>
+<a name="l00124"></a>00124 <span class="comment">    //! 通信する必要のない接続元を追加する</span>
+<a name="l00125"></a><a class="code" href="class_server_accept_proc.html#a335901a8c0b5737ab65d858380042690">00125</a> <span class="comment"></span>    <span class="keywordtype">void</span>    <a class="code" href="class_server_accept_proc.html#a335901a8c0b5737ab65d858380042690" title="通信する必要のない接続元を追加する">pushNoNeeded</a>(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> *source)
+<a name="l00126"></a>00126     {
+<a name="l00127"></a>00127         m_noneeded.push_back(source);
+<a name="l00128"></a>00128     }
+<a name="l00129"></a>00129     
+<a name="l00130"></a>00130 
+<a name="l00131"></a>00131 <span class="preprocessor">#ifdef DEPRECATED</span>
+<a name="l00132"></a>00132 <span class="preprocessor"></span>    <span class="keywordtype">void</span>    push(Command *cmd);
+<a name="l00133"></a>00133     <span class="keywordtype">void</span>    applyCommands(<a class="code" href="class_s_sim_world.html" title="シミュレーション世界クラス(サーバサイドで使用)">SSimWorld</a> &amp;w);
+<a name="l00134"></a>00134 <span class="preprocessor">#endif</span>
+<a name="l00135"></a>00135 <span class="preprocessor"></span><span class="comment">    //! 通信する必要のない接続元を削除する</span>
+<a name="l00136"></a>00136 <span class="comment"></span>    <span class="keywordtype">void</span>    <a class="code" href="class_server_accept_proc.html#a2abe467f2e4407d23fec767c30c5c260" title="通信する必要のない接続元を削除する">eraseNoNeeded</a>();<span class="comment"></span>
+<a name="l00137"></a>00137 <span class="comment">    //! クライアント接続の監視を開始する</span>
+<a name="l00138"></a>00138 <span class="comment"></span>    <span class="keywordtype">void</span>    <a class="code" href="class_server_accept_proc.html#a31ff903287a09c25f1e4eb346a7f0837" title="クライアント接続の監視を開始する">run</a>();
+<a name="l00139"></a>00139 <span class="comment"></span>
+<a name="l00140"></a>00140 <span class="comment">    //! クライアント接続をすべて閉じる</span>
+<a name="l00141"></a>00141 <span class="comment"></span>    <span class="keywordtype">void</span>    <a class="code" href="class_server_accept_proc.html#a41ec9896d9d1b92d2be43a0f24f0a967" title="クライアント接続をすべて閉じる">close</a>();
+<a name="l00142"></a>00142 <span class="keyword">private</span>:
+<a name="l00143"></a>00143     <span class="comment">/*</span>
+<a name="l00144"></a>00144 <span class="comment">     * CommDataDecoder::Listener implementation</span>
+<a name="l00145"></a>00145 <span class="comment">     */</span>
+<a name="l00146"></a>00146     
+<a name="l00147"></a>00147     <span class="keywordtype">void</span> recvRequestAttachController(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_request_attach_controller_event.html" title="コントローラ割り当てリクエストイベントクラス">RequestAttachControllerEvent</a> &amp;evt);
+<a name="l00148"></a>00148     <span class="keywordtype">void</span> recvRequestAttachView(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_request_attach_view_event.html" title="ビュー割り当てリクエストイベントクラス">RequestAttachViewEvent</a> &amp;evt);
+<a name="l00149"></a>00149 
+<a name="l00150"></a>00150     
+<a name="l00151"></a>00151     <span class="keywordtype">void</span> recvRequestProvideService(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_request_provide_service_event.html" title="サービスプロバイダ登録イベント">RequestProvideServiceEvent</a> &amp;evt);
+<a name="l00152"></a>00152     <span class="keywordtype">void</span> recvRequestConnectDataPort(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_request_connect_data_port_event.html" title="データコネクションポート接続イベント">RequestConnectDataPortEvent</a> &amp;evt);
+<a name="l00153"></a>00153     
+<a name="l00154"></a>00154     <span class="keywordtype">void</span> recvResultAttachController(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_result_attach_controller_event.html" title="コントローラ割り当て結果イベントクラス">ResultAttachControllerEvent</a> &amp;evt) {};
+<a name="l00155"></a>00155     <span class="keywordtype">void</span> recvResultAttachView(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_result_attach_view_event.html" title="ビュー割り当て結果イベントクラス">ResultAttachViewEvent</a> &amp;evt) {};
+<a name="l00156"></a>00156 
+<a name="l00157"></a>00157     <span class="comment">//      void recvResultProvideService(Source &amp;from, ResultProvideServiceEvent &amp;evt) {};</span>
+<a name="l00158"></a>00158 
+<a name="l00159"></a>00159     <span class="comment">//      void recvResultConnectDataProt(Source &amp;from, ResultConnectDataPortEvent &amp;evt) {};</span>
+<a name="l00160"></a>00160 
+<a name="l00161"></a>00161     <span class="keywordtype">void</span> recvRequestSimCtrl(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_request_sim_ctrl_event.html" title="シミュレータ操作リクエストイベントクラス">RequestSimCtrlEvent</a> &amp;evt) {};
+<a name="l00162"></a>00162         
+<a name="l00163"></a>00163     <span class="keywordtype">void</span> recvRequestGetAllEntities(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_request_get_all_entities_event.html" title="全エンティティ取得リクエストイベントクラス">RequestGetAllEntitiesEvent</a> &amp;evt) {};
+<a name="l00164"></a>00164     <span class="keywordtype">void</span> recvResultGetAllEntities(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_result_get_all_entities_event.html" title="全エンティティ取得結果イベントクラス">ResultGetAllEntitiesEvent</a> &amp;evt) {};
+<a name="l00165"></a>00165     <span class="keywordtype">void</span> recvRequestUpdateEntities(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_request_update_entities_event.html" title="エンティティ状態更新リクエストエンコーダークラス">RequestUpdateEntitiesEvent</a> &amp;evt) {};
+<a name="l00166"></a>00166     <span class="keywordtype">void</span> recvRequestGetEntity(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_request_get_entity_event.html" title="エンティティ取得リクエストイベントクラス">RequestGetEntityEvent</a> &amp;evt) {};
+<a name="l00167"></a>00167     <span class="keywordtype">void</span> recvResultGetEntity(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_result_get_entity_event.html" title="エンティティ取得結果イベントクラス">ResultGetEntityEvent</a> &amp;evt) {};
+<a name="l00168"></a>00168         
+<a name="l00169"></a>00169     <span class="keywordtype">void</span> recvRequestCaptureViewImage(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_request_capture_view_image_event.html" title="視点画像キャプチャリクエストイベントクラス">RequestCaptureViewImageEvent</a> &amp;evt) {};
+<a name="l00170"></a>00170     <span class="keywordtype">void</span> recvResultCaptureViewImage(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_result_capture_view_image_event.html" title="視点画像キャプチャ結果イベントクラス">ResultCaptureViewImageEvent</a> &amp;eve) {};
+<a name="l00171"></a>00171 
+<a name="l00172"></a>00172     <span class="keywordtype">void</span> recvRequestDetectEntities(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_request_detect_entities_event.html" title="視野内のエンティティ検出リクエストエンコーダークラス">RequestDetectEntitiesEvent</a> &amp;evt) {};
+<a name="l00173"></a>00173     <span class="keywordtype">void</span> recvResultDetectEntities(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_result_detect_entities_event.html" title="視野内のエンティティ検出結果エンコーダークラス">ResultDetectEntitiesEvent</a> &amp;eve) {};
+<a name="l00174"></a>00174 
+<a name="l00175"></a>00175     <span class="comment">//added by okamoto@tome(2011/9/9)</span>
+<a name="l00176"></a>00176     <span class="keywordtype">void</span> recvRequestDistanceSensor(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_request_distance_sensor_event.html" title="視点画像キャプチャリクエストイベントクラス">RequestDistanceSensorEvent</a> &amp;evt) {};
+<a name="l00177"></a>00177 
+<a name="l00178"></a>00178     <span class="comment">//added by okamoto@tome(2011/9/12)</span>
+<a name="l00179"></a>00179     <span class="keywordtype">void</span> recvResultDistanceSensor(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_result_distance_sensor_event.html" title="0次元距離取得">ResultDistanceSensorEvent</a> &amp;evt) {};
+<a name="l00180"></a>00180 
+<a name="l00181"></a>00181     <span class="keywordtype">void</span> recvLogMsg(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_log_msg_event.html" title="ログメッセージリクエストイベントクラス">LogMsgEvent</a> &amp;evt) {};
+<a name="l00182"></a>00182 
+<a name="l00183"></a>00183 <span class="preprocessor">#ifdef DEPRECATED</span>
+<a name="l00184"></a>00184 <span class="preprocessor"></span>    <span class="keywordtype">void</span> recvControllerCommand(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, ControllerCommandEvent &amp;evt) {}
+<a name="l00185"></a>00185 <span class="preprocessor">#endif</span>
+<a name="l00186"></a>00186 <span class="preprocessor"></span>
+<a name="l00187"></a>00187     <span class="keywordtype">void</span> recvRequestNSQuery(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_request_n_s_query_event.html" title="サービス提供先クエリリクエストイベントクラス">RequestNSQueryEvent</a> &amp;) {}
+<a name="l00188"></a>00188     <span class="keywordtype">void</span> recvResultNSQuery(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_result_n_s_query_event.html" title="サービス提供先クエリ結果イベントクラス">ResultNSQueryEvent</a> &amp;) {}
+<a name="l00189"></a>00189 
+<a name="l00190"></a>00190     <span class="keywordtype">void</span> recvRequestNSPinger(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_request_n_s_pinger_event.html" title="サービスプロバイダへのピンガーリクエストイベントクラス...">RequestNSPingerEvent</a> &amp;) {}
+<a name="l00191"></a>00191     <span class="keywordtype">void</span> recvResultNSPinger(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_result_n_s_pinger_event.html" title="サービスプロバイダへのピンガー結果イベントクラス">ResultNSPingerEvent</a> &amp;) {}
+<a name="l00192"></a>00192 
+<a name="l00193"></a>00193     <span class="keywordtype">void</span> recvRequestSetJointAngle(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_request_set_joint_angle_event.html" title="ジョイント角度設定リクエストイベントクラス">RequestSetJointAngleEvent</a> &amp;) {};
+<a name="l00194"></a>00194     
+<a name="l00195"></a>00195     <span class="comment">//added by okamoto@tome (2011/2/18)</span>
+<a name="l00196"></a>00196     <span class="keywordtype">void</span> recvRequestSetJointQuaternion(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_request_set_joint_quaternion_event.html" title="ジョイントクオータニオン設定リクエストイベントクラス">RequestSetJointQuaternionEvent</a> &amp;) {};
+<a name="l00197"></a>00197 
+<a name="l00198"></a>00198     <span class="comment">//added by okamoto@tome (2011/3/3)</span>
+<a name="l00199"></a>00199     <span class="keywordtype">void</span> recvRequestAddJointTorque(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_request_add_joint_torque_event.html" title="ジョイントクオータニオン設定リクエストイベントクラス">RequestAddJointTorqueEvent</a> &amp;) {};
+<a name="l00200"></a>00200 
+<a name="l00201"></a>00201     <span class="comment">//added by okamoto@tome (2011/3/9)</span>
+<a name="l00202"></a>00202     <span class="keywordtype">void</span> recvRequestSetJointVelocity(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_request_set_joint_velocity_event.html" title="ジョイント角速度設定リクエストイベントクラス">RequestSetJointVelocityEvent</a> &amp;) {};
+<a name="l00203"></a>00203 
+<a name="l00204"></a>00204     <span class="keywordtype">void</span> recvRequestSetObjectVelocity(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_request_set_object_velocity_event.html">RequestSetObjectVelocityEvent</a> &amp;) {};
+<a name="l00205"></a>00205 
+<a name="l00206"></a>00206     <span class="comment">//added by okamoto@tome (2011/3/9)</span>
+<a name="l00207"></a>00207     <span class="keywordtype">void</span> recvRequestGetJointAngle(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_request_get_joint_angle_event.html" title="ジョイントの角度取得リクエストイベントクラス">RequestGetJointAngleEvent</a> &amp;) {};
+<a name="l00208"></a>00208     <span class="keywordtype">void</span> recvResultGetJointAngle(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_result_get_joint_angle_event.html" title="ジョイントの角度取得リクエストイベントクラス">ResultGetJointAngleEvent</a> &amp;) {};
+<a name="l00209"></a>00209 
+<a name="l00210"></a>00210     <span class="comment">//adde by okamoto@tome (2011/8/2)</span>
+<a name="l00211"></a>00211     <span class="keywordtype">void</span> recvDisplayText(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_display_text_event.html" title="ログメッセージリクエストイベントクラス">DisplayTextEvent</a> &amp;evt) {};
+<a name="l00212"></a>00212 
+<a name="l00213"></a>00213     <span class="keywordtype">void</span> recvRequestSoundRecog(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_request_sound_recog_event.html" title="音声認識リクエストイベントクラス">RequestSoundRecogEvent</a> &amp;) {};
+<a name="l00214"></a>00214     <span class="keywordtype">void</span> recvResultSoundRecog(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_result_sound_recog_event.html" title="音声認識結果イベントクラス">ResultSoundRecogEvent</a> &amp;) {};
+<a name="l00215"></a>00215     <span class="keywordtype">void</span> recvRequestGetJointForce(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_request_get_joint_force_event.html" title="ジョイントにかかる力取得リクエストイベントクラス">RequestGetJointForceEvent</a> &amp;) {};
+<a name="l00216"></a>00216     <span class="keywordtype">void</span> recvResultGetJointForce(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_result_get_joint_force_event.html" title="ジョイントにかかる力取得結果イベントクラス">ResultGetJointForceEvent</a> &amp;) {};
+<a name="l00217"></a>00217 
+<a name="l00218"></a>00218     <span class="keywordtype">void</span> recvRequestConnectJoint(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_request_connect_joint_event.html" title="パーツ連結リクエストイベントクラス">RequestConnectJointEvent</a> &amp;) {};
+<a name="l00219"></a>00219     <span class="keywordtype">void</span> recvRequestReleaseJoint(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_request_release_joint_event.html" title="連結パーツ解除リクエストイベントクラス">RequestReleaseJointEvent</a> &amp;) {};
+<a name="l00220"></a>00220 
+<a name="l00221"></a>00221     <span class="keywordtype">void</span> recvRequestGetObjectNames(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_request_get_object_names_event.html" title="エンティティ名取得リクエストイベントクラス">RequestGetObjectNamesEvent</a> &amp;) {};
+<a name="l00222"></a>00222     <span class="keywordtype">void</span> recvResultGetObjectNames(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="class_result_get_object_names_event.html" title="エンティティ名取得結果イベントクラス">ResultGetObjectNamesEvent</a> &amp;) {};
+<a name="l00223"></a>00223 };
+<a name="l00224"></a>00224 
+<a name="l00225"></a>00225 <span class="comment"></span>
+<a name="l00226"></a>00226 <span class="comment">/**</span>
+<a name="l00227"></a>00227 <span class="comment"> * @brief ServerAcceptProcの処理ををスレッドで起動する起動するクラス</span>
+<a name="l00228"></a>00228 <span class="comment"> */</span>
+<a name="l00229"></a><a class="code" href="class_accept_thread.html">00229</a> <span class="keyword">class </span><a class="code" href="class_accept_thread.html" title="ServerAcceptProcの処理ををスレッドで起動する起動するクラス.">AcceptThread</a> : <span class="keyword">public</span> Thread&lt;ServerAcceptProc *&gt;
+<a name="l00230"></a>00230 {
+<a name="l00231"></a>00231 <span class="keyword">private</span>:
+<a name="l00232"></a>00232     <span class="keyword">typedef</span> Thread&lt;ServerAcceptProc *&gt; Super;
+<a name="l00233"></a>00233     <span class="keyword">static</span> <span class="keywordtype">void</span> * thread_func(<span class="keywordtype">void</span> *param)
+<a name="l00234"></a>00234     {
+<a name="l00235"></a>00235         <a class="code" href="class_server_accept_proc.html" title="クライアントの接続要求に応じるクラス">ServerAcceptProc</a> *proc = (<a class="code" href="class_server_accept_proc.html" title="クライアントの接続要求に応じるクラス">ServerAcceptProc</a>*)param;
+<a name="l00236"></a>00236         proc-&gt;<a class="code" href="class_server_accept_proc.html#a31ff903287a09c25f1e4eb346a7f0837" title="クライアント接続の監視を開始する">run</a>();
+<a name="l00237"></a>00237         <span class="keywordflow">return</span> 0;
+<a name="l00238"></a>00238     }
+<a name="l00239"></a>00239 <span class="keyword">public</span>:<span class="comment"></span>
+<a name="l00240"></a>00240 <span class="comment">    //! スレッドでの処理を開始する</span>
+<a name="l00241"></a><a class="code" href="class_accept_thread.html#a00468c4f3c34605753e1069823fd2e3b">00241</a> <span class="comment"></span>    <span class="keywordtype">void</span> <a class="code" href="class_accept_thread.html#a00468c4f3c34605753e1069823fd2e3b" title="スレッドでの処理を開始する">run</a>(<a class="code" href="class_server_accept_proc.html" title="クライアントの接続要求に応じるクラス">ServerAcceptProc</a> *proc)
+<a name="l00242"></a>00242     {
+<a name="l00243"></a>00243         <a class="code" href="class_accept_thread.html#a00468c4f3c34605753e1069823fd2e3b" title="スレッドでの処理を開始する">Super::run</a>(thread_func, proc);
+<a name="l00244"></a>00244     }
+<a name="l00245"></a>00245 };
+<a name="l00246"></a>00246 
+<a name="l00247"></a>00247 <span class="preprocessor">#endif // IRWAS_SIMSERVER</span>
+<a name="l00248"></a>00248 <span class="preprocessor"></span>
+<a name="l00249"></a>00249 <span class="preprocessor">#endif // ServerAcceptProc_h</span>
+<a name="l00250"></a>00250 <span class="preprocessor"></span> 
+</pre></div></div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:18 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

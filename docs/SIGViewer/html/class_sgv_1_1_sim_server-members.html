@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGViewer: メンバ一覧</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Sgv::SimServer メンバ一覧</h1>これは全メンバの一覧です。<a class="el" href="class_sgv_1_1_sim_server.html">Sgv::SimServer</a>継承メンバも含んでいます。<p><table>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_sim_server.html#3c1a8d959d56bbcaf1e4b869dba107de">attachView</a>()</td><td><a class="el" href="class_sgv_1_1_sim_server.html">Sgv::SimServer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_sim_server.html#02e5d905967ed6e3dff2179f223db663">close</a>()</td><td><a class="el" href="class_sgv_1_1_sim_server.html">Sgv::SimServer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_sim_server.html#bbfab7e09ad25ce8dabd781a4420d921">connect</a>(const char *simServerName, int port)</td><td><a class="el" href="class_sgv_1_1_sim_server.html">Sgv::SimServer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_sim_server.html#c4f7a3c88dfe904bd44c39de1ffb6d90">connect</a>(std::string simServerName, int port)</td><td><a class="el" href="class_sgv_1_1_sim_server.html">Sgv::SimServer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_sim_server.html#018c4a7024b4594e46bc1f9914d22354">connected</a>()</td><td><a class="el" href="class_sgv_1_1_sim_server.html">Sgv::SimServer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_sim_server.html#5e92de4f26aa5739c77ef6a24c529797">getLatestWorld</a>()</td><td><a class="el" href="class_sgv_1_1_sim_server.html">Sgv::SimServer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_sim_server.html#029795ea91dbed25392498f248bbce25">isNewWorldArrived</a>()</td><td><a class="el" href="class_sgv_1_1_sim_server.html">Sgv::SimServer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_sim_server.html#e290d0d6971cd7232c8f666803b88e11">isViewAttached</a>()</td><td><a class="el" href="class_sgv_1_1_sim_server.html">Sgv::SimServer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_sim_server.html#70962b341f2311c088be3c4f372fcbf2">processOnePacket</a>(CommDataType &amp;dataType, bool bDumpPacket=false)</td><td><a class="el" href="class_sgv_1_1_sim_server.html">Sgv::SimServer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_sim_server.html#f0fb93a5be7475075c3f133aae7f79a1">sendConnectDataPortRequest</a>()</td><td><a class="el" href="class_sgv_1_1_sim_server.html">Sgv::SimServer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_sim_server.html#0c40ee895881d5951df3512fed05d252">sendGetAllEntitiesRequest</a>()</td><td><a class="el" href="class_sgv_1_1_sim_server.html">Sgv::SimServer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_sim_server.html#6fa76319c506d3116162a3b00d9c6992">sendProvideServiceRequest</a>(const char *clerkName, int clerkPort)</td><td><a class="el" href="class_sgv_1_1_sim_server.html">Sgv::SimServer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_sim_server.html#23234c4dadf9e298bfc9f0e701849e77">sendRawSound</a>(RawSound *sound, const char *sendTo)</td><td><a class="el" href="class_sgv_1_1_sim_server.html">Sgv::SimServer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_sim_server.html#ef55af7255038e1a15073ac44dc958d9">sendSimCtrlCommand</a>(SimCtrlCmdType cmd)</td><td><a class="el" href="class_sgv_1_1_sim_server.html">Sgv::SimServer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_sim_server.html#de9b656524328b71ab36edce665326ce">setLatestWorld</a>(SimWorld *w)</td><td><a class="el" href="class_sgv_1_1_sim_server.html">Sgv::SimServer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_sim_server.html#cece3132c476a8e495b15318e92b4e91">setNewWorldArrivedFlag</a>(bool b)</td><td><a class="el" href="class_sgv_1_1_sim_server.html">Sgv::SimServer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_sim_server.html#c8307bf9fdb64d7094c3b8c06882d2d0">setViewAttachedFlag</a>(bool b)</td><td><a class="el" href="class_sgv_1_1_sim_server.html">Sgv::SimServer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_sim_server.html#f3fd992e8452fc4b29bf75626b8aa731">SimServer</a>()</td><td><a class="el" href="class_sgv_1_1_sim_server.html">Sgv::SimServer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_sim_server.html#ffef7983742c9948f215c3190e5c9802">waitUntilNewWorldArrived</a>()</td><td><a class="el" href="class_sgv_1_1_sim_server.html">Sgv::SimServer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_sim_server.html#d1c8ee4efa03fed978aa25c54cd83839">‾SimServer</a>()</td><td><a class="el" href="class_sgv_1_1_sim_server.html">Sgv::SimServer</a></td><td></td></tr>
+</table></div>
+<hr size="1"><address style="text-align: right;"><small>SIGViewerに対してThu Jun 9 10:52:15 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

@@ -1,0 +1,1510 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGViewer: LoadOAL.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>LoadOAL.h</h1><code>#include &lt;al.h&gt;</code><br>
+<code>#include &lt;alc.h&gt;</code><br>
+
+<p>
+<a href="_load_o_a_l_8h_source.html">ソースコードを見る。</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>構成</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_o_p_e_n_a_l_f_n_t_a_b_l_e.html">OPENALFNTABLE</a></td></tr>
+
+<tr><td colspan="2"><br><h2>マクロ定義</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#3f7866ede8616bc3d0d6202f9b0cb514">ALCchar</a>&nbsp;&nbsp;&nbsp;char</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#c9e1e421be6be16969382d355cea321a">ALchar</a>&nbsp;&nbsp;&nbsp;char</td></tr>
+
+<tr><td colspan="2"><br><h2>型定義</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#e92935e29e44fe4031ae201584fcb696">LPALBUFFERDATA</a> )(ALuint bid, ALenum format, const ALvoid *data, ALsizei size, ALsizei freq)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef ALCboolean(ALCAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#268498213f76348f649545354134dcb3">LPALCCLOSEDEVICE</a> )(ALCdevice *device)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef ALCcontext *ALCAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#ca73bfdc8ba4618504549247bd13cd3a">LPALCCREATECONTEXT</a> (ALCdevice *device, const ALCint *attrlist)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALCAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#acdab317907bbc2eb378417d100f75b5">LPALCDESTROYCONTEXT</a> )(ALCcontext *context)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef ALCdevice *(ALCAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#bb4b538de461b8b405b53eeebbb1f58e">LPALCGETCONTEXTSDEVICE</a> )(ALCcontext *context)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef ALCcontext *(ALCAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#eeea4bde4044a5ceda62776e73bdd2e2">LPALCGETCURRENTCONTEXT</a> )(ALCvoid)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef ALCenum(ALCAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#7143e3672dba39133ebe03f755759672">LPALCGETENUMVALUE</a> )(ALCdevice *device, const ALCchar *enumname)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef ALCenum(ALCAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#c8d524579343b2569a504a611aea89ee">LPALCGETERROR</a> )(ALCdevice *device)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALCAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#45799e85552d0bb06ab403656e35a3b3">LPALCGETINTEGERV</a> )(ALCdevice *device, ALCenum param, ALCsizei size, ALCint *dest)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void *(ALCAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#b84bac88a644af107d2f7e5605ca528b">LPALCGETPROCADDRESS</a> )(ALCdevice *device, const ALCchar *funcname)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef const ALCchar <br class="typebreak">
+*(ALCAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#c75efc3e72f0ac2201be66ce933efb85">LPALCGETSTRING</a> )(ALCdevice *device, ALCenum param)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef ALCboolean(ALCAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#1367dacb734318eabcc6656f646a1db8">LPALCISEXTENSIONPRESENT</a> )(ALCdevice *device, const ALCchar *extname)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef ALCboolean(ALCAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#b0787cd037b99c064546d286aed139cc">LPALCMAKECONTEXTCURRENT</a> )(ALCcontext *context)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef ALCdevice *(ALCAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#dae2262b0f618039a25b11088963c490">LPALCOPENDEVICE</a> )(const ALCchar *devicename)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALCAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#9ee681e01ae7abeefe770ce422923bf5">LPALCPROCESSCONTEXT</a> )(ALCcontext *context)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALCAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#d27db8f2c04801505338fbba297f996b">LPALCSUSPENDCONTEXT</a> )(ALCcontext *context)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#e4baf403ad938cd0ce3bd02280f69f66">LPALDELETEBUFFERS</a> )(ALsizei n, const ALuint *buffers)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#81a0138ef42f287f645d0f8a1d57377a">LPALDELETESOURCES</a> )(ALsizei n, const ALuint *sources)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#e06c95e2226bd8e91f5347b8914d8d63">LPALDISABLE</a> )(ALenum capability)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#b8cf46ccfb9a67cdacce0a924a7a14bd">LPALDISTANCEMODEL</a> )(ALenum distanceModel)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#fea007b3135a584e3ae4cfeb8712f916">LPALDOPPLERFACTOR</a> )(ALfloat value)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#12f759d18a8a2dff65bb36042d9f7ccc">LPALDOPPLERVELOCITY</a> )(ALfloat value)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#f79e75a1cb2d7c7505d49e029f131276">LPALENABLE</a> )(ALenum capability)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#53f4437195a525f933a00123b5e47932">LPALGENBUFFERS</a> )(ALsizei n, ALuint *buffers)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#804f2a4e3a310d69b717b2d0b4b56f54">LPALGENSOURCES</a> )(ALsizei n, ALuint *sources)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef ALboolean(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#d1dbd4571d6683d624fb6cb0074f576b">LPALGETBOOLEAN</a> )(ALenum param)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#76e263c384117ef294c48454571e02c7">LPALGETBOOLEANV</a> )(ALenum param, ALboolean *data)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#687572229f5f73f641929550c2e5a459">LPALGETBUFFERF</a> )(ALuint bid, ALenum param, ALfloat *value)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#1471ac6ce40ece619ab857151e113bc9">LPALGETBUFFERI</a> )(ALuint bid, ALenum param, ALint *value)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef ALdouble(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#03fc5754f113e6a4408543b40e9d665d">LPALGETDOUBLE</a> )(ALenum param)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#3a0bc33296b3a948cd5b894cc064ba60">LPALGETDOUBLEV</a> )(ALenum param, ALdouble *data)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef ALenum(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#dfcbbad57d34dbcf7079bc9f8668c8ce">LPALGETENUMVALUE</a> )(const ALchar *ename)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef ALenum(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#9fa80b5858074c3a71c82752cfb373c5">LPALGETERROR</a> )(void)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef ALfloat(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#411e0d7870403d84ccd897641c4b3802">LPALGETFLOAT</a> )(ALenum param)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#61d097e4899dcc40381e3ee9627cc388">LPALGETFLOATV</a> )(ALenum param, ALfloat *data)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef ALint(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#93f648efaa8a5732a56688054affedb9">LPALGETINTEGER</a> )(ALenum param)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#c084b4204017d6f58385506b24a14f08">LPALGETINTEGERV</a> )(ALenum param, ALint *data)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#ebc6a70dfab9fd85b9dcc2d805f14861">LPALGETLISTENER3F</a> )(ALenum param, ALfloat *value1, ALfloat *value2, ALfloat *value3)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#01d9ab60cf8542a2d391b79c4f3f9920">LPALGETLISTENERF</a> )(ALenum param, ALfloat *value)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#7c6a19a6d147ae4d00a5b2dbd6fc8bc8">LPALGETLISTENERFV</a> )(ALenum param, ALfloat *values)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#44dbe68905e05c48ab7c7c74edbffbb6">LPALGETLISTENERI</a> )(ALenum param, ALint *value)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void *(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#ae7aa2acb2f828aab44a31eff67e579f">LPALGETPROCADDRESS</a> )(const ALchar *fname)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#296cee7b9f8f5e40ebcfac6fa891dec1">LPALGETSOURCE3F</a> )(ALuint sid, ALenum param, ALfloat *value1, ALfloat *value2, ALfloat *value3)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#6e30902cdb4af809812f2afdba2640a9">LPALGETSOURCEF</a> )(ALuint sid, ALenum param, ALfloat *value)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#9d56e141047f8b18b6cdedd8e155b251">LPALGETSOURCEFV</a> )(ALuint sid, ALenum param, ALfloat *values)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#65383d5402f4688df7d93d453e30cc04">LPALGETSOURCEI</a> )(ALuint sid, ALenum param, ALint *value)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef const ALchar *(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#03ef2a902de462e3fb30e7990d89eaa5">LPALGETSTRING</a> )(ALenum param)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef ALboolean(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#30153cffabe1c47c7d43d692263bcae8">LPALISBUFFER</a> )(ALuint bid)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef ALboolean(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#ae822d9b997e89cfead94db2cc5714e3">LPALISENABLED</a> )(ALenum capability)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef ALboolean(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#80786eda2c28ef09edb3a84d052086a3">LPALISEXTENSIONPRESENT</a> )(const ALchar *extname)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef ALboolean(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#47c1b09b0c30c8fb3e5b9c9c4991194f">LPALISSOURCE</a> )(ALuint sid)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#7854ce99a97b3b3698ed9cb388f08bf3">LPALLISTENER3F</a> )(ALenum param, ALfloat value1, ALfloat value2, ALfloat value3)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#3dd37fa58c6cc2fc96b5319b8bd397ff">LPALLISTENERF</a> )(ALenum param, ALfloat value)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#054e8ddf18864a7665e140f18a17aa2b">LPALLISTENERFV</a> )(ALenum param, const ALfloat *values)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#acab8cac3de0ba1c04dbc132b9a53535">LPALLISTENERI</a> )(ALenum param, ALint value)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#a3cc77512219a2c0747299ea12013efd">LPALSOURCE3F</a> )(ALuint sid, ALenum param, ALfloat value1, ALfloat value2, ALfloat value3)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#554a9d423c51f8ce3b106aea893faceb">LPALSOURCEF</a> )(ALuint sid, ALenum param, ALfloat value)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#54eebecd42473037984f37faeec7a233">LPALSOURCEFV</a> )(ALuint sid, ALenum param, const ALfloat *values)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#d6ac44f20c98c6f58df5eb1a7bbc1b7f">LPALSOURCEI</a> )(ALuint sid, ALenum param, ALint value)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#94c36145b8fc783d4f74ee66c0655500">LPALSOURCEPAUSE</a> )(ALuint sid)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#8ab6201d8bca2d3e3484346e8ccbd6e3">LPALSOURCEPAUSEV</a> )(ALsizei ns, const ALuint *sids)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#44a8e96fc950904c409733a51bb50358">LPALSOURCEPLAY</a> )(ALuint sid)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#cdd8490902b3d0aa68d2f47de5859116">LPALSOURCEPLAYV</a> )(ALsizei ns, const ALuint *sids)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#da6b77b514d54a0a59e9609ff67b03ae">LPALSOURCEQUEUEBUFFERS</a> )(ALuint sid, ALsizei numEntries, const ALuint *bids)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#879854fac4b2255d15c90918b48e210c">LPALSOURCEREWIND</a> )(ALuint sid)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#adf2dec0ad3544733d71073a0b309ff1">LPALSOURCEREWINDV</a> )(ALsizei ns, const ALuint *sids)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#f58a8c33f0ea9f5a11e6b6662894aedd">LPALSOURCESTOP</a> )(ALuint sid)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#a11741b5e5c7f790f9e495026fa2fb10">LPALSOURCESTOPV</a> )(ALsizei ns, const ALuint *sids)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef void(ALAPIENTRY *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#73623b1eee078cdff84fd5c383b0b2f5">LPALSOURCEUNQUEUEBUFFERS</a> )(ALuint sid, ALsizei numEntries, ALuint *bids)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef struct <a class="el" href="struct_o_p_e_n_a_l_f_n_t_a_b_l_e.html">OPENALFNTABLE</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#cad97dfb4a22353f102fd52d516d8334">LPOPENALFNTABLE</a></td></tr>
+
+<tr><td colspan="2"><br><h2>関数</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">ALboolean&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#b27567b885caca98cc092d488c19c405">LoadOAL10Library</a> (char *szOALFullPathName, <a class="el" href="struct_o_p_e_n_a_l_f_n_t_a_b_l_e.html">LPOPENALFNTABLE</a> lpOALFnTable)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">ALvoid&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_load_o_a_l_8h.html#c0543fdcf6293cbc98f524a17e52d810">UnloadOAL10Library</a> ()</td></tr>
+
+</table>
+<hr><h2>マクロ定義</h2>
+<a class="anchor" name="3f7866ede8616bc3d0d6202f9b0cb514"></a><!-- doxytag: member="LoadOAL.h::ALCchar" ref="3f7866ede8616bc3d0d6202f9b0cb514" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ALCchar&nbsp;&nbsp;&nbsp;char          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00017">17</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="c9e1e421be6be16969382d355cea321a"></a><!-- doxytag: member="LoadOAL.h::ALchar" ref="c9e1e421be6be16969382d355cea321a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ALchar&nbsp;&nbsp;&nbsp;char          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00013">13</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>型定義</h2>
+<a class="anchor" name="e92935e29e44fe4031ae201584fcb696"></a><!-- doxytag: member="LoadOAL.h::LPALBUFFERDATA" ref="e92935e29e44fe4031ae201584fcb696" args=")(ALuint bid, ALenum format, const ALvoid *data, ALsizei size, ALsizei freq)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#e92935e29e44fe4031ae201584fcb696">LPALBUFFERDATA</a>)(ALuint bid, ALenum format, const ALvoid *data, ALsizei size, ALsizei freq)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00070">70</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="268498213f76348f649545354134dcb3"></a><!-- doxytag: member="LoadOAL.h::LPALCCLOSEDEVICE" ref="268498213f76348f649545354134dcb3" args=")(ALCdevice *device)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef ALCboolean(ALCAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#268498213f76348f649545354134dcb3">LPALCCLOSEDEVICE</a>)(ALCdevice *device)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00085">85</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="ca73bfdc8ba4618504549247bd13cd3a"></a><!-- doxytag: member="LoadOAL.h::LPALCCREATECONTEXT" ref="ca73bfdc8ba4618504549247bd13cd3a" args="(ALCdevice *device, const ALCint *attrlist)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef ALCcontext* ALCAPIENTRY* <a class="el" href="_load_o_a_l_8h.html#ca73bfdc8ba4618504549247bd13cd3a">LPALCCREATECONTEXT</a>(ALCdevice *device, const ALCint *attrlist)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00077">77</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="acdab317907bbc2eb378417d100f75b5"></a><!-- doxytag: member="LoadOAL.h::LPALCDESTROYCONTEXT" ref="acdab317907bbc2eb378417d100f75b5" args=")(ALCcontext *context)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALCAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#acdab317907bbc2eb378417d100f75b5">LPALCDESTROYCONTEXT</a>)(ALCcontext *context)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00081">81</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="bb4b538de461b8b405b53eeebbb1f58e"></a><!-- doxytag: member="LoadOAL.h::LPALCGETCONTEXTSDEVICE" ref="bb4b538de461b8b405b53eeebbb1f58e" args=")(ALCcontext *context)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef ALCdevice*(ALCAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#bb4b538de461b8b405b53eeebbb1f58e">LPALCGETCONTEXTSDEVICE</a>)(ALCcontext *context)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00083">83</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="eeea4bde4044a5ceda62776e73bdd2e2"></a><!-- doxytag: member="LoadOAL.h::LPALCGETCURRENTCONTEXT" ref="eeea4bde4044a5ceda62776e73bdd2e2" args=")(ALCvoid)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef ALCcontext*(ALCAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#eeea4bde4044a5ceda62776e73bdd2e2">LPALCGETCURRENTCONTEXT</a>)(ALCvoid)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00082">82</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="7143e3672dba39133ebe03f755759672"></a><!-- doxytag: member="LoadOAL.h::LPALCGETENUMVALUE" ref="7143e3672dba39133ebe03f755759672" args=")(ALCdevice *device, const ALCchar *enumname)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef ALCenum(ALCAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#7143e3672dba39133ebe03f755759672">LPALCGETENUMVALUE</a>)(ALCdevice *device, const ALCchar *enumname)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00089">89</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="c8d524579343b2569a504a611aea89ee"></a><!-- doxytag: member="LoadOAL.h::LPALCGETERROR" ref="c8d524579343b2569a504a611aea89ee" args=")(ALCdevice *device)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef ALCenum(ALCAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#c8d524579343b2569a504a611aea89ee">LPALCGETERROR</a>)(ALCdevice *device)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00086">86</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="45799e85552d0bb06ab403656e35a3b3"></a><!-- doxytag: member="LoadOAL.h::LPALCGETINTEGERV" ref="45799e85552d0bb06ab403656e35a3b3" args=")(ALCdevice *device, ALCenum param, ALCsizei size, ALCint *dest)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALCAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#45799e85552d0bb06ab403656e35a3b3">LPALCGETINTEGERV</a>)(ALCdevice *device, ALCenum param, ALCsizei size, ALCint *dest)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00091">91</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b84bac88a644af107d2f7e5605ca528b"></a><!-- doxytag: member="LoadOAL.h::LPALCGETPROCADDRESS" ref="b84bac88a644af107d2f7e5605ca528b" args=")(ALCdevice *device, const ALCchar *funcname)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void*(ALCAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#b84bac88a644af107d2f7e5605ca528b">LPALCGETPROCADDRESS</a>)(ALCdevice *device, const ALCchar *funcname)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00088">88</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="c75efc3e72f0ac2201be66ce933efb85"></a><!-- doxytag: member="LoadOAL.h::LPALCGETSTRING" ref="c75efc3e72f0ac2201be66ce933efb85" args=")(ALCdevice *device, ALCenum param)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef const ALCchar*(ALCAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#c75efc3e72f0ac2201be66ce933efb85">LPALCGETSTRING</a>)(ALCdevice *device, ALCenum param)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00090">90</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="1367dacb734318eabcc6656f646a1db8"></a><!-- doxytag: member="LoadOAL.h::LPALCISEXTENSIONPRESENT" ref="1367dacb734318eabcc6656f646a1db8" args=")(ALCdevice *device, const ALCchar *extname)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef ALCboolean(ALCAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#1367dacb734318eabcc6656f646a1db8">LPALCISEXTENSIONPRESENT</a>)(ALCdevice *device, const ALCchar *extname)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00087">87</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b0787cd037b99c064546d286aed139cc"></a><!-- doxytag: member="LoadOAL.h::LPALCMAKECONTEXTCURRENT" ref="b0787cd037b99c064546d286aed139cc" args=")(ALCcontext *context)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef ALCboolean(ALCAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#b0787cd037b99c064546d286aed139cc">LPALCMAKECONTEXTCURRENT</a>)(ALCcontext *context)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00078">78</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="dae2262b0f618039a25b11088963c490"></a><!-- doxytag: member="LoadOAL.h::LPALCOPENDEVICE" ref="dae2262b0f618039a25b11088963c490" args=")(const ALCchar *devicename)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef ALCdevice*(ALCAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#dae2262b0f618039a25b11088963c490">LPALCOPENDEVICE</a>)(const ALCchar *devicename)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00084">84</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="9ee681e01ae7abeefe770ce422923bf5"></a><!-- doxytag: member="LoadOAL.h::LPALCPROCESSCONTEXT" ref="9ee681e01ae7abeefe770ce422923bf5" args=")(ALCcontext *context)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALCAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#9ee681e01ae7abeefe770ce422923bf5">LPALCPROCESSCONTEXT</a>)(ALCcontext *context)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00079">79</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="d27db8f2c04801505338fbba297f996b"></a><!-- doxytag: member="LoadOAL.h::LPALCSUSPENDCONTEXT" ref="d27db8f2c04801505338fbba297f996b" args=")(ALCcontext *context)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALCAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#d27db8f2c04801505338fbba297f996b">LPALCSUSPENDCONTEXT</a>)(ALCcontext *context)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00080">80</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="e4baf403ad938cd0ce3bd02280f69f66"></a><!-- doxytag: member="LoadOAL.h::LPALDELETEBUFFERS" ref="e4baf403ad938cd0ce3bd02280f69f66" args=")(ALsizei n, const ALuint *buffers)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#e4baf403ad938cd0ce3bd02280f69f66">LPALDELETEBUFFERS</a>)(ALsizei n, const ALuint *buffers)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00068">68</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="81a0138ef42f287f645d0f8a1d57377a"></a><!-- doxytag: member="LoadOAL.h::LPALDELETESOURCES" ref="81a0138ef42f287f645d0f8a1d57377a" args=")(ALsizei n, const ALuint *sources)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#81a0138ef42f287f645d0f8a1d57377a">LPALDELETESOURCES</a>)(ALsizei n, const ALuint *sources)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00047">47</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="e06c95e2226bd8e91f5347b8914d8d63"></a><!-- doxytag: member="LoadOAL.h::LPALDISABLE" ref="e06c95e2226bd8e91f5347b8914d8d63" args=")(ALenum capability)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#e06c95e2226bd8e91f5347b8914d8d63">LPALDISABLE</a>)(ALenum capability)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00023">23</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b8cf46ccfb9a67cdacce0a924a7a14bd"></a><!-- doxytag: member="LoadOAL.h::LPALDISTANCEMODEL" ref="b8cf46ccfb9a67cdacce0a924a7a14bd" args=")(ALenum distanceModel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#b8cf46ccfb9a67cdacce0a924a7a14bd">LPALDISTANCEMODEL</a>)(ALenum distanceModel)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00075">75</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="fea007b3135a584e3ae4cfeb8712f916"></a><!-- doxytag: member="LoadOAL.h::LPALDOPPLERFACTOR" ref="fea007b3135a584e3ae4cfeb8712f916" args=")(ALfloat value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#fea007b3135a584e3ae4cfeb8712f916">LPALDOPPLERFACTOR</a>)(ALfloat value)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00073">73</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="12f759d18a8a2dff65bb36042d9f7ccc"></a><!-- doxytag: member="LoadOAL.h::LPALDOPPLERVELOCITY" ref="12f759d18a8a2dff65bb36042d9f7ccc" args=")(ALfloat value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#12f759d18a8a2dff65bb36042d9f7ccc">LPALDOPPLERVELOCITY</a>)(ALfloat value)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00074">74</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f79e75a1cb2d7c7505d49e029f131276"></a><!-- doxytag: member="LoadOAL.h::LPALENABLE" ref="f79e75a1cb2d7c7505d49e029f131276" args=")(ALenum capability)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#f79e75a1cb2d7c7505d49e029f131276">LPALENABLE</a>)(ALenum capability)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00022">22</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="53f4437195a525f933a00123b5e47932"></a><!-- doxytag: member="LoadOAL.h::LPALGENBUFFERS" ref="53f4437195a525f933a00123b5e47932" args=")(ALsizei n, ALuint *buffers)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#53f4437195a525f933a00123b5e47932">LPALGENBUFFERS</a>)(ALsizei n, ALuint *buffers)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00067">67</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="804f2a4e3a310d69b717b2d0b4b56f54"></a><!-- doxytag: member="LoadOAL.h::LPALGENSOURCES" ref="804f2a4e3a310d69b717b2d0b4b56f54" args=")(ALsizei n, ALuint *sources)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#804f2a4e3a310d69b717b2d0b4b56f54">LPALGENSOURCES</a>)(ALsizei n, ALuint *sources)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00046">46</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="d1dbd4571d6683d624fb6cb0074f576b"></a><!-- doxytag: member="LoadOAL.h::LPALGETBOOLEAN" ref="d1dbd4571d6683d624fb6cb0074f576b" args=")(ALenum param)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef ALboolean(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#d1dbd4571d6683d624fb6cb0074f576b">LPALGETBOOLEAN</a>)(ALenum param)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00030">30</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="76e263c384117ef294c48454571e02c7"></a><!-- doxytag: member="LoadOAL.h::LPALGETBOOLEANV" ref="76e263c384117ef294c48454571e02c7" args=")(ALenum param, ALboolean *data)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#76e263c384117ef294c48454571e02c7">LPALGETBOOLEANV</a>)(ALenum param, ALboolean *data)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00026">26</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="687572229f5f73f641929550c2e5a459"></a><!-- doxytag: member="LoadOAL.h::LPALGETBUFFERF" ref="687572229f5f73f641929550c2e5a459" args=")(ALuint bid, ALenum param, ALfloat *value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#687572229f5f73f641929550c2e5a459">LPALGETBUFFERF</a>)(ALuint bid, ALenum param, ALfloat *value)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00071">71</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="1471ac6ce40ece619ab857151e113bc9"></a><!-- doxytag: member="LoadOAL.h::LPALGETBUFFERI" ref="1471ac6ce40ece619ab857151e113bc9" args=")(ALuint bid, ALenum param, ALint *value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#1471ac6ce40ece619ab857151e113bc9">LPALGETBUFFERI</a>)(ALuint bid, ALenum param, ALint *value)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00072">72</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="03fc5754f113e6a4408543b40e9d665d"></a><!-- doxytag: member="LoadOAL.h::LPALGETDOUBLE" ref="03fc5754f113e6a4408543b40e9d665d" args=")(ALenum param)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef ALdouble(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#03fc5754f113e6a4408543b40e9d665d">LPALGETDOUBLE</a>)(ALenum param)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00033">33</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="3a0bc33296b3a948cd5b894cc064ba60"></a><!-- doxytag: member="LoadOAL.h::LPALGETDOUBLEV" ref="3a0bc33296b3a948cd5b894cc064ba60" args=")(ALenum param, ALdouble *data)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#3a0bc33296b3a948cd5b894cc064ba60">LPALGETDOUBLEV</a>)(ALenum param, ALdouble *data)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00029">29</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="dfcbbad57d34dbcf7079bc9f8668c8ce"></a><!-- doxytag: member="LoadOAL.h::LPALGETENUMVALUE" ref="dfcbbad57d34dbcf7079bc9f8668c8ce" args=")(const ALchar *ename)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef ALenum(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#dfcbbad57d34dbcf7079bc9f8668c8ce">LPALGETENUMVALUE</a>)(const ALchar *ename)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00037">37</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="9fa80b5858074c3a71c82752cfb373c5"></a><!-- doxytag: member="LoadOAL.h::LPALGETERROR" ref="9fa80b5858074c3a71c82752cfb373c5" args=")(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef ALenum(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#9fa80b5858074c3a71c82752cfb373c5">LPALGETERROR</a>)(void)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00034">34</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="411e0d7870403d84ccd897641c4b3802"></a><!-- doxytag: member="LoadOAL.h::LPALGETFLOAT" ref="411e0d7870403d84ccd897641c4b3802" args=")(ALenum param)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef ALfloat(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#411e0d7870403d84ccd897641c4b3802">LPALGETFLOAT</a>)(ALenum param)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00032">32</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="61d097e4899dcc40381e3ee9627cc388"></a><!-- doxytag: member="LoadOAL.h::LPALGETFLOATV" ref="61d097e4899dcc40381e3ee9627cc388" args=")(ALenum param, ALfloat *data)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#61d097e4899dcc40381e3ee9627cc388">LPALGETFLOATV</a>)(ALenum param, ALfloat *data)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00028">28</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="93f648efaa8a5732a56688054affedb9"></a><!-- doxytag: member="LoadOAL.h::LPALGETINTEGER" ref="93f648efaa8a5732a56688054affedb9" args=")(ALenum param)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef ALint(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#93f648efaa8a5732a56688054affedb9">LPALGETINTEGER</a>)(ALenum param)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00031">31</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="c084b4204017d6f58385506b24a14f08"></a><!-- doxytag: member="LoadOAL.h::LPALGETINTEGERV" ref="c084b4204017d6f58385506b24a14f08" args=")(ALenum param, ALint *data)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#c084b4204017d6f58385506b24a14f08">LPALGETINTEGERV</a>)(ALenum param, ALint *data)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00027">27</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="ebc6a70dfab9fd85b9dcc2d805f14861"></a><!-- doxytag: member="LoadOAL.h::LPALGETLISTENER3F" ref="ebc6a70dfab9fd85b9dcc2d805f14861" args=")(ALenum param, ALfloat *value1, ALfloat *value2, ALfloat *value3)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#ebc6a70dfab9fd85b9dcc2d805f14861">LPALGETLISTENER3F</a>)(ALenum param, ALfloat *value1, ALfloat *value2, ALfloat *value3)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00043">43</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="01d9ab60cf8542a2d391b79c4f3f9920"></a><!-- doxytag: member="LoadOAL.h::LPALGETLISTENERF" ref="01d9ab60cf8542a2d391b79c4f3f9920" args=")(ALenum param, ALfloat *value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#01d9ab60cf8542a2d391b79c4f3f9920">LPALGETLISTENERF</a>)(ALenum param, ALfloat *value)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00042">42</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="7c6a19a6d147ae4d00a5b2dbd6fc8bc8"></a><!-- doxytag: member="LoadOAL.h::LPALGETLISTENERFV" ref="7c6a19a6d147ae4d00a5b2dbd6fc8bc8" args=")(ALenum param, ALfloat *values)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#7c6a19a6d147ae4d00a5b2dbd6fc8bc8">LPALGETLISTENERFV</a>)(ALenum param, ALfloat *values)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00044">44</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="44dbe68905e05c48ab7c7c74edbffbb6"></a><!-- doxytag: member="LoadOAL.h::LPALGETLISTENERI" ref="44dbe68905e05c48ab7c7c74edbffbb6" args=")(ALenum param, ALint *value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#44dbe68905e05c48ab7c7c74edbffbb6">LPALGETLISTENERI</a>)(ALenum param, ALint *value)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00045">45</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="ae7aa2acb2f828aab44a31eff67e579f"></a><!-- doxytag: member="LoadOAL.h::LPALGETPROCADDRESS" ref="ae7aa2acb2f828aab44a31eff67e579f" args=")(const ALchar *fname)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void*(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#ae7aa2acb2f828aab44a31eff67e579f">LPALGETPROCADDRESS</a>)(const ALchar *fname)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00036">36</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="296cee7b9f8f5e40ebcfac6fa891dec1"></a><!-- doxytag: member="LoadOAL.h::LPALGETSOURCE3F" ref="296cee7b9f8f5e40ebcfac6fa891dec1" args=")(ALuint sid, ALenum param, ALfloat *value1, ALfloat *value2, ALfloat *value3)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#296cee7b9f8f5e40ebcfac6fa891dec1">LPALGETSOURCE3F</a>)(ALuint sid, ALenum param, ALfloat *value1, ALfloat *value2, ALfloat *value3)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00054">54</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="6e30902cdb4af809812f2afdba2640a9"></a><!-- doxytag: member="LoadOAL.h::LPALGETSOURCEF" ref="6e30902cdb4af809812f2afdba2640a9" args=")(ALuint sid, ALenum param, ALfloat *value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#6e30902cdb4af809812f2afdba2640a9">LPALGETSOURCEF</a>)(ALuint sid, ALenum param, ALfloat *value)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00053">53</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="9d56e141047f8b18b6cdedd8e155b251"></a><!-- doxytag: member="LoadOAL.h::LPALGETSOURCEFV" ref="9d56e141047f8b18b6cdedd8e155b251" args=")(ALuint sid, ALenum param, ALfloat *values)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#9d56e141047f8b18b6cdedd8e155b251">LPALGETSOURCEFV</a>)(ALuint sid, ALenum param, ALfloat *values)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00055">55</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="65383d5402f4688df7d93d453e30cc04"></a><!-- doxytag: member="LoadOAL.h::LPALGETSOURCEI" ref="65383d5402f4688df7d93d453e30cc04" args=")(ALuint sid, ALenum param, ALint *value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#65383d5402f4688df7d93d453e30cc04">LPALGETSOURCEI</a>)(ALuint sid, ALenum param, ALint *value)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00056">56</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="03ef2a902de462e3fb30e7990d89eaa5"></a><!-- doxytag: member="LoadOAL.h::LPALGETSTRING" ref="03ef2a902de462e3fb30e7990d89eaa5" args=")(ALenum param)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef const ALchar*(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#03ef2a902de462e3fb30e7990d89eaa5">LPALGETSTRING</a>)(ALenum param)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00025">25</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="30153cffabe1c47c7d43d692263bcae8"></a><!-- doxytag: member="LoadOAL.h::LPALISBUFFER" ref="30153cffabe1c47c7d43d692263bcae8" args=")(ALuint bid)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef ALboolean(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#30153cffabe1c47c7d43d692263bcae8">LPALISBUFFER</a>)(ALuint bid)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00069">69</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="ae822d9b997e89cfead94db2cc5714e3"></a><!-- doxytag: member="LoadOAL.h::LPALISENABLED" ref="ae822d9b997e89cfead94db2cc5714e3" args=")(ALenum capability)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef ALboolean(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#ae822d9b997e89cfead94db2cc5714e3">LPALISENABLED</a>)(ALenum capability)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00024">24</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="80786eda2c28ef09edb3a84d052086a3"></a><!-- doxytag: member="LoadOAL.h::LPALISEXTENSIONPRESENT" ref="80786eda2c28ef09edb3a84d052086a3" args=")(const ALchar *extname)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef ALboolean(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#80786eda2c28ef09edb3a84d052086a3">LPALISEXTENSIONPRESENT</a>)(const ALchar *extname)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00035">35</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="47c1b09b0c30c8fb3e5b9c9c4991194f"></a><!-- doxytag: member="LoadOAL.h::LPALISSOURCE" ref="47c1b09b0c30c8fb3e5b9c9c4991194f" args=")(ALuint sid)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef ALboolean(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#47c1b09b0c30c8fb3e5b9c9c4991194f">LPALISSOURCE</a>)(ALuint sid)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00048">48</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="7854ce99a97b3b3698ed9cb388f08bf3"></a><!-- doxytag: member="LoadOAL.h::LPALLISTENER3F" ref="7854ce99a97b3b3698ed9cb388f08bf3" args=")(ALenum param, ALfloat value1, ALfloat value2, ALfloat value3)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#7854ce99a97b3b3698ed9cb388f08bf3">LPALLISTENER3F</a>)(ALenum param, ALfloat value1, ALfloat value2, ALfloat value3)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00039">39</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="3dd37fa58c6cc2fc96b5319b8bd397ff"></a><!-- doxytag: member="LoadOAL.h::LPALLISTENERF" ref="3dd37fa58c6cc2fc96b5319b8bd397ff" args=")(ALenum param, ALfloat value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#3dd37fa58c6cc2fc96b5319b8bd397ff">LPALLISTENERF</a>)(ALenum param, ALfloat value)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00038">38</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="054e8ddf18864a7665e140f18a17aa2b"></a><!-- doxytag: member="LoadOAL.h::LPALLISTENERFV" ref="054e8ddf18864a7665e140f18a17aa2b" args=")(ALenum param, const ALfloat *values)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#054e8ddf18864a7665e140f18a17aa2b">LPALLISTENERFV</a>)(ALenum param, const ALfloat *values)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00040">40</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="acab8cac3de0ba1c04dbc132b9a53535"></a><!-- doxytag: member="LoadOAL.h::LPALLISTENERI" ref="acab8cac3de0ba1c04dbc132b9a53535" args=")(ALenum param, ALint value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#acab8cac3de0ba1c04dbc132b9a53535">LPALLISTENERI</a>)(ALenum param, ALint value)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00041">41</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="a3cc77512219a2c0747299ea12013efd"></a><!-- doxytag: member="LoadOAL.h::LPALSOURCE3F" ref="a3cc77512219a2c0747299ea12013efd" args=")(ALuint sid, ALenum param, ALfloat value1, ALfloat value2, ALfloat value3)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#a3cc77512219a2c0747299ea12013efd">LPALSOURCE3F</a>)(ALuint sid, ALenum param, ALfloat value1, ALfloat value2, ALfloat value3)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00050">50</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="554a9d423c51f8ce3b106aea893faceb"></a><!-- doxytag: member="LoadOAL.h::LPALSOURCEF" ref="554a9d423c51f8ce3b106aea893faceb" args=")(ALuint sid, ALenum param, ALfloat value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#554a9d423c51f8ce3b106aea893faceb">LPALSOURCEF</a>)(ALuint sid, ALenum param, ALfloat value)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00049">49</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="54eebecd42473037984f37faeec7a233"></a><!-- doxytag: member="LoadOAL.h::LPALSOURCEFV" ref="54eebecd42473037984f37faeec7a233" args=")(ALuint sid, ALenum param, const ALfloat *values)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#54eebecd42473037984f37faeec7a233">LPALSOURCEFV</a>)(ALuint sid, ALenum param, const ALfloat *values)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00051">51</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="d6ac44f20c98c6f58df5eb1a7bbc1b7f"></a><!-- doxytag: member="LoadOAL.h::LPALSOURCEI" ref="d6ac44f20c98c6f58df5eb1a7bbc1b7f" args=")(ALuint sid, ALenum param, ALint value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#d6ac44f20c98c6f58df5eb1a7bbc1b7f">LPALSOURCEI</a>)(ALuint sid, ALenum param, ALint value)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00052">52</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="94c36145b8fc783d4f74ee66c0655500"></a><!-- doxytag: member="LoadOAL.h::LPALSOURCEPAUSE" ref="94c36145b8fc783d4f74ee66c0655500" args=")(ALuint sid)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#94c36145b8fc783d4f74ee66c0655500">LPALSOURCEPAUSE</a>)(ALuint sid)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00064">64</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="8ab6201d8bca2d3e3484346e8ccbd6e3"></a><!-- doxytag: member="LoadOAL.h::LPALSOURCEPAUSEV" ref="8ab6201d8bca2d3e3484346e8ccbd6e3" args=")(ALsizei ns, const ALuint *sids)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#8ab6201d8bca2d3e3484346e8ccbd6e3">LPALSOURCEPAUSEV</a>)(ALsizei ns, const ALuint *sids)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00060">60</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="44a8e96fc950904c409733a51bb50358"></a><!-- doxytag: member="LoadOAL.h::LPALSOURCEPLAY" ref="44a8e96fc950904c409733a51bb50358" args=")(ALuint sid)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#44a8e96fc950904c409733a51bb50358">LPALSOURCEPLAY</a>)(ALuint sid)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00061">61</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="cdd8490902b3d0aa68d2f47de5859116"></a><!-- doxytag: member="LoadOAL.h::LPALSOURCEPLAYV" ref="cdd8490902b3d0aa68d2f47de5859116" args=")(ALsizei ns, const ALuint *sids)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#cdd8490902b3d0aa68d2f47de5859116">LPALSOURCEPLAYV</a>)(ALsizei ns, const ALuint *sids)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00057">57</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="da6b77b514d54a0a59e9609ff67b03ae"></a><!-- doxytag: member="LoadOAL.h::LPALSOURCEQUEUEBUFFERS" ref="da6b77b514d54a0a59e9609ff67b03ae" args=")(ALuint sid, ALsizei numEntries, const ALuint *bids)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#da6b77b514d54a0a59e9609ff67b03ae">LPALSOURCEQUEUEBUFFERS</a>)(ALuint sid, ALsizei numEntries, const ALuint *bids)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00065">65</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="879854fac4b2255d15c90918b48e210c"></a><!-- doxytag: member="LoadOAL.h::LPALSOURCEREWIND" ref="879854fac4b2255d15c90918b48e210c" args=")(ALuint sid)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#879854fac4b2255d15c90918b48e210c">LPALSOURCEREWIND</a>)(ALuint sid)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00063">63</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="adf2dec0ad3544733d71073a0b309ff1"></a><!-- doxytag: member="LoadOAL.h::LPALSOURCEREWINDV" ref="adf2dec0ad3544733d71073a0b309ff1" args=")(ALsizei ns, const ALuint *sids)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#adf2dec0ad3544733d71073a0b309ff1">LPALSOURCEREWINDV</a>)(ALsizei ns, const ALuint *sids)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00059">59</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f58a8c33f0ea9f5a11e6b6662894aedd"></a><!-- doxytag: member="LoadOAL.h::LPALSOURCESTOP" ref="f58a8c33f0ea9f5a11e6b6662894aedd" args=")(ALuint sid)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#f58a8c33f0ea9f5a11e6b6662894aedd">LPALSOURCESTOP</a>)(ALuint sid)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00062">62</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="a11741b5e5c7f790f9e495026fa2fb10"></a><!-- doxytag: member="LoadOAL.h::LPALSOURCESTOPV" ref="a11741b5e5c7f790f9e495026fa2fb10" args=")(ALsizei ns, const ALuint *sids)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#a11741b5e5c7f790f9e495026fa2fb10">LPALSOURCESTOPV</a>)(ALsizei ns, const ALuint *sids)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00058">58</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="73623b1eee078cdff84fd5c383b0b2f5"></a><!-- doxytag: member="LoadOAL.h::LPALSOURCEUNQUEUEBUFFERS" ref="73623b1eee078cdff84fd5c383b0b2f5" args=")(ALuint sid, ALsizei numEntries, ALuint *bids)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(ALAPIENTRY * <a class="el" href="_load_o_a_l_8h.html#73623b1eee078cdff84fd5c383b0b2f5">LPALSOURCEUNQUEUEBUFFERS</a>)(ALuint sid, ALsizei numEntries, ALuint *bids)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8h_source.html">LoadOAL.h</a> の <a class="el" href="_load_o_a_l_8h_source.html#l00066">66</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="cad97dfb4a22353f102fd52d516d8334"></a><!-- doxytag: member="LoadOAL.h::LPOPENALFNTABLE" ref="cad97dfb4a22353f102fd52d516d8334" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef  struct <a class="el" href="struct_o_p_e_n_a_l_f_n_t_a_b_l_e.html">OPENALFNTABLE</a> * <a class="el" href="struct_o_p_e_n_a_l_f_n_t_a_b_l_e.html">LPOPENALFNTABLE</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<hr><h2>関数</h2>
+<a class="anchor" name="b27567b885caca98cc092d488c19c405"></a><!-- doxytag: member="LoadOAL.h::LoadOAL10Library" ref="b27567b885caca98cc092d488c19c405" args="(char *szOALFullPathName, LPOPENALFNTABLE lpOALFnTable)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ALboolean LoadOAL10Library           </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>szOALFullPathName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_o_p_e_n_a_l_f_n_t_a_b_l_e.html">LPOPENALFNTABLE</a>&nbsp;</td>
+          <td class="paramname"> <em>lpOALFnTable</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8cpp_source.html">LoadOAL.cpp</a> の <a class="el" href="_load_o_a_l_8cpp_source.html#l00031">31</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="c0543fdcf6293cbc98f524a17e52d810"></a><!-- doxytag: member="LoadOAL.h::UnloadOAL10Library" ref="c0543fdcf6293cbc98f524a17e52d810" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ALvoid UnloadOAL10Library           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_load_o_a_l_8cpp_source.html">LoadOAL.cpp</a> の <a class="el" href="_load_o_a_l_8cpp_source.html#l00520">520</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGViewerに対してThu Jun 9 10:52:13 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

@@ -1,0 +1,553 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: クラス ServerAcceptProc</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス ServerAcceptProc</h1><!-- doxytag: class="ServerAcceptProc" --><!-- doxytag: inherits="CommDataListener" -->
+<p>クライアントの接続要求に応じるクラス  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_server_accept_proc_8h_source.html">ServerAcceptProc.h</a>&gt;</code></p>
+<div class="dynheader">
+ServerAcceptProcに対する継承グラフ</div>
+<div class="dynsection">
+<div class="center"><img src="class_server_accept_proc__inherit__graph.png" border="0" usemap="#_server_accept_proc_inherit__map" alt="Inheritance graph"/></div>
+<map name="_server_accept_proc_inherit__map" id="_server_accept_proc_inherit__map">
+<area shape="rect" href="class_comm_data_listener.html" title="CommDataDecoder によるデータ復元結果取得リスナーインターフェース..." alt="" coords="5,5,192,35"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+<div class="dynheader">
+ServerAcceptProcのコラボレーション図</div>
+<div class="dynsection">
+<div class="center"><img src="class_server_accept_proc__coll__graph.png" border="0" usemap="#_server_accept_proc_coll__map" alt="Collaboration graph"/></div>
+<map name="_server_accept_proc_coll__map" id="_server_accept_proc_coll__map">
+<area shape="rect" href="class_comm_data_listener.html" title="CommDataDecoder によるデータ復元結果取得リスナーインターフェース..." alt="" coords="187,5,373,35"/><area shape="rect" href="class_comm_data_listener.html" title="CommDataDecoder によるデータ復元結果取得リスナーインターフェース..." alt="" coords="215,59,345,88"/><area shape="rect" href="class_locker.html" title="pthread ミューテックスによる排他制御用ロッカークラス" alt="" coords="7,141,65,171"/><area shape="rect" href="class_service_name_server.html" title="サービスプロバイダネームサーバクラス" alt="" coords="212,179,348,208"/><area shape="rect" href="class_comm_data_decoder_1_1_packet_sender.html" title="データ送信インターフェース" alt="" coords="168,232,392,261"/><area shape="rect" href="class_sim_world_provider.html" title="シミュレーション世界インスタンスへのアクセサインターフェース..." alt="" coords="219,285,341,315"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+
+<p><a href="class_server_accept_proc-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Public 型</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef ConC&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server_accept_proc.html#a214f0c0e052c63cebbb103eb8fd7d841">C</a></td></tr>
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server_accept_proc.html#a3c68b4659d395a72246fc80e5fefc75e">clientNum</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">接続クライアント数を取得する  <a href="#a3c68b4659d395a72246fc80e5fefc75e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_server_accept_proc.html#a214f0c0e052c63cebbb103eb8fd7d841">C</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server_accept_proc.html#aa08a10e8e2e0657c87c5c7f4f71ea19d">clients</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">接続クライアントへのコネクションを取得する  <a href="#aa08a10e8e2e0657c87c5c7f4f71ea19d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server_accept_proc.html#a41ec9896d9d1b92d2be43a0f24f0a967">close</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クライアント接続をすべて閉じる  <a href="#a41ec9896d9d1b92d2be43a0f24f0a967"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server_accept_proc.html#a2abe467f2e4407d23fec767c30c5c260">eraseNoNeeded</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">通信する必要のない接続元を削除する  <a href="#a2abe467f2e4407d23fec767c30c5c260"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_source.html">Source</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server_accept_proc.html#a12cd6d26b3525f55f60c951c88113c6a">get</a> (int sock)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クライアント接続元情報を取得する  <a href="#a12cd6d26b3525f55f60c951c88113c6a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_source.html">Source</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server_accept_proc.html#a055d71b69acd1f0d934387638ca44225">get</a> (const char *name, <a class="el" href="_source_8h.html#abd482467b5af8258c45cde48b322924b">SourceType</a> type)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クライアント接続元情報を取得する  <a href="#a055d71b69acd1f0d934387638ca44225"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_source.html">Source</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server_accept_proc.html#a16911880df5ca888cd0e373ba94cf2cc">getByType</a> (<a class="el" href="_source_8h.html#abd482467b5af8258c45cde48b322924b">SourceType</a> type)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クライアント接続元情報を取得する  <a href="#a16911880df5ca888cd0e373ba94cf2cc"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server_accept_proc.html#ac0a389b244281dde2808cecf18816992">lock</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">インスタンス全体にロックを掛ける  <a href="#ac0a389b244281dde2808cecf18816992"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server_accept_proc.html#a335901a8c0b5737ab65d858380042690">pushNoNeeded</a> (<a class="el" href="class_source.html">Source</a> *source)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">通信する必要のない接続元を追加する  <a href="#a335901a8c0b5737ab65d858380042690"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server_accept_proc.html#a31ff903287a09c25f1e4eb346a7f0837">run</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クライアント接続の監視を開始する  <a href="#a31ff903287a09c25f1e4eb346a7f0837"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server_accept_proc.html#a3108d2c05680bff31b54ce5165f5c56b">ServerAcceptProc</a> (int sock, <a class="el" href="class_sim_world_provider.html">SimWorldProvider</a> &amp;provider, <a class="el" href="class_service_name_server.html">ServiceNameServer</a> &amp;ns)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#a3108d2c05680bff31b54ce5165f5c56b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server_accept_proc.html#a7b814818700811f7ec97fa7f05311a70">setDecoderListener</a> (<a class="el" href="class_comm_data_listener.html">CommDataDecoder::Listener</a> *l)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">受信したパケットに応じた処理を行なうリスナー実装クラスインスタンスを設定する  <a href="#a7b814818700811f7ec97fa7f05311a70"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server_accept_proc.html#a7f49c852ec567c4cb6a0fa386225665d">setPacketSender</a> (<a class="el" href="class_comm_data_decoder_1_1_packet_sender.html">CommDataDecoder::PacketSender</a> *s)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パケット転送を行なうクラスインスタンスを設定する  <a href="#a7f49c852ec567c4cb6a0fa386225665d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server_accept_proc.html#ad5fb9cc44ac96bd6076d8080f1fa2147">unlock</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">インスタンス全体にかかったロックを解除する  <a href="#ad5fb9cc44ac96bd6076d8080f1fa2147"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server_accept_proc.html#af5e94b44015864c83f59f4f8ce343935">‾ServerAcceptProc</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#af5e94b44015864c83f59f4f8ce343935"></a><br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>クライアントの接続要求に応じるクラス </p>
+
+<p> <a class="el" href="_server_accept_proc_8h_source.html">ServerAcceptProc.h</a> の <a class="el" href="_server_accept_proc_8h_source.html#l00044">44</a> 行で定義されています。</p>
+<hr/><h2>型定義</h2>
+<a class="anchor" id="a214f0c0e052c63cebbb103eb8fd7d841"></a><!-- doxytag: member="ServerAcceptProc::C" ref="a214f0c0e052c63cebbb103eb8fd7d841" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef ConC <a class="el" href="class_server_accept_proc.html#a214f0c0e052c63cebbb103eb8fd7d841">ServerAcceptProc::C</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_server_accept_proc_8h_source.html">ServerAcceptProc.h</a> の <a class="el" href="_server_accept_proc_8h_source.html#l00057">57</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" id="a3108d2c05680bff31b54ce5165f5c56b"></a><!-- doxytag: member="ServerAcceptProc::ServerAcceptProc" ref="a3108d2c05680bff31b54ce5165f5c56b" args="(int sock, SimWorldProvider &amp;provider, ServiceNameServer &amp;ns)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ServerAcceptProc::ServerAcceptProc </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>sock</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_sim_world_provider.html">SimWorldProvider</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>provider</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_service_name_server.html">ServiceNameServer</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>ns</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コンストラクタ </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>sock</em>&nbsp;</td><td>監視するソケット </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>provider</em>&nbsp;</td><td>SimWorldオブジェクトのアクセサ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>ns</em>&nbsp;</td><td>サービスネームサーバ </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_server_accept_proc_8h_source.html">ServerAcceptProc.h</a> の <a class="el" href="_server_accept_proc_8h_source.html#l00085">85</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>関数</h2>
+<a class="anchor" id="a3c68b4659d395a72246fc80e5fefc75e"></a><!-- doxytag: member="ServerAcceptProc::clientNum" ref="a3c68b4659d395a72246fc80e5fefc75e" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ServerAcceptProc::clientNum </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>接続クライアント数を取得する </p>
+
+<p> <a class="el" href="_server_accept_proc_8h_source.html">ServerAcceptProc.h</a> の <a class="el" href="_server_accept_proc_8h_source.html#l00105">105</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="aa08a10e8e2e0657c87c5c7f4f71ea19d"></a><!-- doxytag: member="ServerAcceptProc::clients" ref="aa08a10e8e2e0657c87c5c7f4f71ea19d" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_server_accept_proc.html#a214f0c0e052c63cebbb103eb8fd7d841">C</a>&amp; ServerAcceptProc::clients </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>接続クライアントへのコネクションを取得する </p>
+
+<p> <a class="el" href="_server_accept_proc_8h_source.html">ServerAcceptProc.h</a> の <a class="el" href="_server_accept_proc_8h_source.html#l00100">100</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_server_accept_proc_aa08a10e8e2e0657c87c5c7f4f71ea19d_cgraph.png" border="0" usemap="#class_server_accept_proc_aa08a10e8e2e0657c87c5c7f4f71ea19d_cgraph_map" alt=""></div>
+<map name="class_server_accept_proc_aa08a10e8e2e0657c87c5c7f4f71ea19d_cgraph_map" id="class_server_accept_proc_aa08a10e8e2e0657c87c5c7f4f71ea19d_cgraph">
+<area shape="rect" href="class_server_accept_proc.html#a2abe467f2e4407d23fec767c30c5c260" title="通信する必要のない接続元を削除する" alt="" coords="228,5,455,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a41ec9896d9d1b92d2be43a0f24f0a967"></a><!-- doxytag: member="ServerAcceptProc::close" ref="a41ec9896d9d1b92d2be43a0f24f0a967" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ServerAcceptProc::close </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>クライアント接続をすべて閉じる </p>
+
+</div>
+</div>
+<a class="anchor" id="a2abe467f2e4407d23fec767c30c5c260"></a><!-- doxytag: member="ServerAcceptProc::eraseNoNeeded" ref="a2abe467f2e4407d23fec767c30c5c260" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ServerAcceptProc::eraseNoNeeded </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>通信する必要のない接続元を削除する </p>
+
+<p><div class="dynheader">
+呼出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_server_accept_proc_a2abe467f2e4407d23fec767c30c5c260_icgraph.png" border="0" usemap="#class_server_accept_proc_a2abe467f2e4407d23fec767c30c5c260_icgraph_map" alt=""></div>
+<map name="class_server_accept_proc_a2abe467f2e4407d23fec767c30c5c260_icgraph_map" id="class_server_accept_proc_a2abe467f2e4407d23fec767c30c5c260_icgraph">
+<area shape="rect" href="class_server_accept_proc.html#aa08a10e8e2e0657c87c5c7f4f71ea19d" title="接続クライアントへのコネクションを取得する" alt="" coords="283,5,456,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a12cd6d26b3525f55f60c951c88113c6a"></a><!-- doxytag: member="ServerAcceptProc::get" ref="a12cd6d26b3525f55f60c951c88113c6a" args="(int sock)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_source.html">Source</a>* ServerAcceptProc::get </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>sock</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>クライアント接続元情報を取得する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>sock</em>&nbsp;</td><td>ソケット記述子 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a055d71b69acd1f0d934387638ca44225"></a><!-- doxytag: member="ServerAcceptProc::get" ref="a055d71b69acd1f0d934387638ca44225" args="(const char *name, SourceType type)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_source.html">Source</a>* ServerAcceptProc::get </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_source_8h.html#abd482467b5af8258c45cde48b322924b">SourceType</a>&nbsp;</td>
+          <td class="paramname"> <em>type</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>クライアント接続元情報を取得する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>接続名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>接続元タイプ </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a16911880df5ca888cd0e373ba94cf2cc"></a><!-- doxytag: member="ServerAcceptProc::getByType" ref="a16911880df5ca888cd0e373ba94cf2cc" args="(SourceType type)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_source.html">Source</a>* ServerAcceptProc::getByType </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_source_8h.html#abd482467b5af8258c45cde48b322924b">SourceType</a>&nbsp;</td>
+          <td class="paramname"> <em>type</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>クライアント接続元情報を取得する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>type</em>&nbsp;</td><td>接続元タイプ </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ac0a389b244281dde2808cecf18816992"></a><!-- doxytag: member="ServerAcceptProc::lock" ref="ac0a389b244281dde2808cecf18816992" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ServerAcceptProc::lock </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>インスタンス全体にロックを掛ける </p>
+
+<p> <a class="el" href="_server_accept_proc_8h_source.html">ServerAcceptProc.h</a> の <a class="el" href="_server_accept_proc_8h_source.html#l00095">95</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_server_accept_proc_ac0a389b244281dde2808cecf18816992_cgraph.png" border="0" usemap="#class_server_accept_proc_ac0a389b244281dde2808cecf18816992_cgraph_map" alt=""></div>
+<map name="class_server_accept_proc_ac0a389b244281dde2808cecf18816992_cgraph_map" id="class_server_accept_proc_ac0a389b244281dde2808cecf18816992_cgraph">
+<area shape="rect" href="class_locker.html#afbcad2cf8d7ab2cfa728b218f8c516e8" title="ロックを開始する" alt="" coords="215,5,305,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a335901a8c0b5737ab65d858380042690"></a><!-- doxytag: member="ServerAcceptProc::pushNoNeeded" ref="a335901a8c0b5737ab65d858380042690" args="(Source *source)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ServerAcceptProc::pushNoNeeded </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> *&nbsp;</td>
+          <td class="paramname"> <em>source</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>通信する必要のない接続元を追加する </p>
+
+<p> <a class="el" href="_server_accept_proc_8h_source.html">ServerAcceptProc.h</a> の <a class="el" href="_server_accept_proc_8h_source.html#l00125">125</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a31ff903287a09c25f1e4eb346a7f0837"></a><!-- doxytag: member="ServerAcceptProc::run" ref="a31ff903287a09c25f1e4eb346a7f0837" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ServerAcceptProc::run </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>クライアント接続の監視を開始する </p>
+
+</div>
+</div>
+<a class="anchor" id="a7b814818700811f7ec97fa7f05311a70"></a><!-- doxytag: member="ServerAcceptProc::setDecoderListener" ref="a7b814818700811f7ec97fa7f05311a70" args="(CommDataDecoder::Listener *l)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ServerAcceptProc::setDecoderListener </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_comm_data_listener.html">CommDataDecoder::Listener</a> *&nbsp;</td>
+          <td class="paramname"> <em>l</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>受信したパケットに応じた処理を行なうリスナー実装クラスインスタンスを設定する </p>
+
+<p> <a class="el" href="_server_accept_proc_8h_source.html">ServerAcceptProc.h</a> の <a class="el" href="_server_accept_proc_8h_source.html#l00090">90</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a7f49c852ec567c4cb6a0fa386225665d"></a><!-- doxytag: member="ServerAcceptProc::setPacketSender" ref="a7f49c852ec567c4cb6a0fa386225665d" args="(CommDataDecoder::PacketSender *s)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ServerAcceptProc::setPacketSender </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_comm_data_decoder_1_1_packet_sender.html">CommDataDecoder::PacketSender</a> *&nbsp;</td>
+          <td class="paramname"> <em>s</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>パケット転送を行なうクラスインスタンスを設定する </p>
+
+<p> <a class="el" href="_server_accept_proc_8h_source.html">ServerAcceptProc.h</a> の <a class="el" href="_server_accept_proc_8h_source.html#l00092">92</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ad5fb9cc44ac96bd6076d8080f1fa2147"></a><!-- doxytag: member="ServerAcceptProc::unlock" ref="ad5fb9cc44ac96bd6076d8080f1fa2147" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ServerAcceptProc::unlock </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>インスタンス全体にかかったロックを解除する </p>
+
+<p> <a class="el" href="_server_accept_proc_8h_source.html">ServerAcceptProc.h</a> の <a class="el" href="_server_accept_proc_8h_source.html#l00097">97</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_server_accept_proc_ad5fb9cc44ac96bd6076d8080f1fa2147_cgraph.png" border="0" usemap="#class_server_accept_proc_ad5fb9cc44ac96bd6076d8080f1fa2147_cgraph_map" alt=""></div>
+<map name="class_server_accept_proc_ad5fb9cc44ac96bd6076d8080f1fa2147_cgraph_map" id="class_server_accept_proc_ad5fb9cc44ac96bd6076d8080f1fa2147_cgraph">
+<area shape="rect" href="class_locker.html#aafb16768c3b3a911002622b886000882" title="ロックを解除する" alt="" coords="227,5,333,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="af5e94b44015864c83f59f4f8ce343935"></a><!-- doxytag: member="ServerAcceptProc::‾ServerAcceptProc" ref="af5e94b44015864c83f59f4f8ce343935" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ServerAcceptProc::‾ServerAcceptProc </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>デストラクタ </p>
+
+<p> <a class="el" href="_server_accept_proc_8h_source.html">ServerAcceptProc.h</a> の <a class="el" href="_server_accept_proc_8h_source.html#l00087">87</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_server_accept_proc_8h_source.html">ServerAcceptProc.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:20 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

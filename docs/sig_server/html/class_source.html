@@ -1,0 +1,698 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: クラス Source</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Source</h1><!-- doxytag: class="Source" -->
+<p>データ転送接続元クラス  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_source_8h_source.html">Source.h</a>&gt;</code></p>
+<div class="dynheader">
+Sourceのコラボレーション図</div>
+<div class="dynsection">
+<div class="center"><img src="class_source__coll__graph.png" border="0" usemap="#_source_coll__map" alt="Collaboration graph"/></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+
+<p><a href="class_source-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>構成</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><b>Locker</b></td></tr>
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source.html#a567c519d7d922f3746d6b6fd9dcf0dec">close</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">接続を閉じる  <a href="#a567c519d7d922f3746d6b6fd9dcf0dec"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source.html#aad4cc68d4e7000ecded4f58fd5a2d091">equals</a> (const <a class="el" href="class_source.html">Source</a> &amp;o)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">同じ接続元であるか？  <a href="#aad4cc68d4e7000ecded4f58fd5a2d091"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source.html#add94d91c5bfef51475595f81f0cc7857">equals</a> (<a class="el" href="systemdef_8h.html#a8dc8083897335125630f1af5dafd5831">SOCKET</a> sock)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source.html#a0cb3ade9266c8b7690bb69c1bd92bfc8">hostname</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">接続元ホスト名を得る  <a href="#a0cb3ade9266c8b7690bb69c1bd92bfc8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source.html#a4f093f0320af3952919a4900c7e89725">ignore</a> (bool b)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">接続の無視を切り替える  <a href="#a4f093f0320af3952919a4900c7e89725"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source.html#a4e3ffb8c9134853bc0fa88d22dc7faf2">ignore</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">接続を無視するか？  <a href="#a4e3ffb8c9134853bc0fa88d22dc7faf2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source.html#ab17828705c1af5169f9fa3ef8bf55aed">isControllerCmd</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">接続タイプがコントローラコマンドか？  <a href="#ab17828705c1af5169f9fa3ef8bf55aed"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source.html#a673de5ca24deb98086ae8492dfd2cfea">isControllerData</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">接続タイプがコントローラデータか？  <a href="#a673de5ca24deb98086ae8492dfd2cfea"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source.html#a3a308b35a418217251bdac5f887fa4f3">isServiceProvider</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">接続タイプがサービスプロバイダか？  <a href="#a3a308b35a418217251bdac5f887fa4f3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source.html#a067bbd8c382523cb5708eda932e4faef">isView</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">接続タイプがビューか？  <a href="#a067bbd8c382523cb5708eda932e4faef"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source.html#a28d24d9a165bad391f71e34edf397dd9">name</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">接続名を得る  <a href="#a28d24d9a165bad391f71e34edf397dd9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source.html#a1e5685ee7c8ae8a51bb5ea254b754145">noType</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">接続タイプが設定されていないか？  <a href="#a1e5685ee7c8ae8a51bb5ea254b754145"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source.html#a8b000aadfff92d08d13446f44dd4648e">propertyEquals</a> (const char *key, const char *val)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">接続プロパティが等しいか？  <a href="#a8b000aadfff92d08d13446f44dd4648e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source.html#af765ee6250d609ecc39c5bfe211ce235">send</a> (char *, int)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source.html#ad869baf1d70d735178ef9c7a991c0a10">send</a> (<a class="el" href="class_comm_data_encoder.html">CommDataEncoder</a> &amp;)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source.html#a1d44ff6eb1d97c38f4fc33cee72a071b">set</a> (<a class="el" href="_source_8h.html#abd482467b5af8258c45cde48b322924b">SourceType</a> type, const char *name)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">接続元タイプ、接続名を設定す  <a href="#a1d44ff6eb1d97c38f4fc33cee72a071b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source.html#a71098a1e8f8f9707c13617bcfb948ab3">setProperty</a> (const char *key, const char *val)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">接続プロパティを設定する  <a href="#a71098a1e8f8f9707c13617bcfb948ab3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="systemdef_8h.html#a8dc8083897335125630f1af5dafd5831">SOCKET</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source.html#a28073205165d10b7ea598ebe33356bc9">socket</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ソケット記述子を返す  <a href="#a28073205165d10b7ea598ebe33356bc9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source.html#a4ade7eb2a62265fcf13328ad4583141a">Source</a> (<a class="el" href="systemdef_8h.html#a8dc8083897335125630f1af5dafd5831">SOCKET</a> sock, const char *hostname)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#a4ade7eb2a62265fcf13328ad4583141a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source.html#a411bf8dc063ee2df1b72d80620adecb5">Source</a> (<a class="el" href="systemdef_8h.html#a8dc8083897335125630f1af5dafd5831">SOCKET</a> sock)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#a411bf8dc063ee2df1b72d80620adecb5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_source_8h.html#abd482467b5af8258c45cde48b322924b">SourceType</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source.html#a7edc939c12cf62619982181d445aa429">type</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">接続タイプを取得する  <a href="#a7edc939c12cf62619982181d445aa429"></a><br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>データ転送接続元クラス </p>
+
+<p> <a class="el" href="_source_8h_source.html">Source.h</a> の <a class="el" href="_source_8h_source.html#l00036">36</a> 行で定義されています。</p>
+<hr/><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" id="a411bf8dc063ee2df1b72d80620adecb5"></a><!-- doxytag: member="Source::Source" ref="a411bf8dc063ee2df1b72d80620adecb5" args="(SOCKET sock)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Source::Source </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="systemdef_8h.html#a8dc8083897335125630f1af5dafd5831">SOCKET</a>&nbsp;</td>
+          <td class="paramname"> <em>sock</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コンストラクタ </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>sock</em>&nbsp;</td><td>接続元ソケット </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_source_8h_source.html">Source.h</a> の <a class="el" href="_source_8h_source.html#l00071">71</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a4ade7eb2a62265fcf13328ad4583141a"></a><!-- doxytag: member="Source::Source" ref="a4ade7eb2a62265fcf13328ad4583141a" args="(SOCKET sock, const char *hostname)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Source::Source </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="systemdef_8h.html#a8dc8083897335125630f1af5dafd5831">SOCKET</a>&nbsp;</td>
+          <td class="paramname"> <em>sock</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>hostname</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コンストラクタ </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>sock</em>&nbsp;</td><td>接続元ソケット </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>hostname</em>&nbsp;</td><td>接続元ホスト名 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_source_8h_source.html">Source.h</a> の <a class="el" href="_source_8h_source.html#l00080">80</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>関数</h2>
+<a class="anchor" id="a567c519d7d922f3746d6b6fd9dcf0dec"></a><!-- doxytag: member="Source::close" ref="a567c519d7d922f3746d6b6fd9dcf0dec" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Source::close </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>接続を閉じる </p>
+
+<p> <a class="el" href="_source_8h_source.html">Source.h</a> の <a class="el" href="_source_8h_source.html#l00149">149</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+呼出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_source_a567c519d7d922f3746d6b6fd9dcf0dec_icgraph.png" border="0" usemap="#class_source_a567c519d7d922f3746d6b6fd9dcf0dec_icgraph_map" alt=""></div>
+<map name="class_source_a567c519d7d922f3746d6b6fd9dcf0dec_icgraph_map" id="class_source_a567c519d7d922f3746d6b6fd9dcf0dec_icgraph">
+<area shape="rect" href="struct_connection.html#abdcebfb7b164ae53b2923c3f9ed06a12" title="Connection::‾Connection" alt="" coords="156,5,321,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aad4cc68d4e7000ecded4f58fd5a2d091"></a><!-- doxytag: member="Source::equals" ref="aad4cc68d4e7000ecded4f58fd5a2d091" args="(const Source &amp;o)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Source::equals </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>o</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>同じ接続元であるか？ </p>
+
+<p> <a class="el" href="_source_8h_source.html">Source.h</a> の <a class="el" href="_source_8h_source.html#l00160">160</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_source_aad4cc68d4e7000ecded4f58fd5a2d091_cgraph.png" border="0" usemap="#class_source_aad4cc68d4e7000ecded4f58fd5a2d091_cgraph_map" alt=""></div>
+<map name="class_source_aad4cc68d4e7000ecded4f58fd5a2d091_cgraph_map" id="class_source_aad4cc68d4e7000ecded4f58fd5a2d091_cgraph">
+<area shape="rect" href="class_source.html#a28d24d9a165bad391f71e34edf397dd9" title="接続名を得る" alt="" coords="164,5,265,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="add94d91c5bfef51475595f81f0cc7857"></a><!-- doxytag: member="Source::equals" ref="add94d91c5bfef51475595f81f0cc7857" args="(SOCKET sock)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Source::equals </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="systemdef_8h.html#a8dc8083897335125630f1af5dafd5831">SOCKET</a>&nbsp;</td>
+          <td class="paramname"> <em>sock</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_source_8h_source.html">Source.h</a> の <a class="el" href="_source_8h_source.html#l00098">98</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a0cb3ade9266c8b7690bb69c1bd92bfc8"></a><!-- doxytag: member="Source::hostname" ref="a0cb3ade9266c8b7690bb69c1bd92bfc8" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* Source::hostname </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>接続元ホスト名を得る </p>
+
+<p> <a class="el" href="_source_8h_source.html">Source.h</a> の <a class="el" href="_source_8h_source.html#l00106">106</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a4f093f0320af3952919a4900c7e89725"></a><!-- doxytag: member="Source::ignore" ref="a4f093f0320af3952919a4900c7e89725" args="(bool b)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Source::ignore </td>
+          <td>(</td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>b</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>接続の無視を切り替える </p>
+
+<p> <a class="el" href="_source_8h_source.html">Source.h</a> の <a class="el" href="_source_8h_source.html#l00111">111</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a4e3ffb8c9134853bc0fa88d22dc7faf2"></a><!-- doxytag: member="Source::ignore" ref="a4e3ffb8c9134853bc0fa88d22dc7faf2" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Source::ignore </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>接続を無視するか？ </p>
+
+<p> <a class="el" href="_source_8h_source.html">Source.h</a> の <a class="el" href="_source_8h_source.html#l00109">109</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ab17828705c1af5169f9fa3ef8bf55aed"></a><!-- doxytag: member="Source::isControllerCmd" ref="ab17828705c1af5169f9fa3ef8bf55aed" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Source::isControllerCmd </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>接続タイプがコントローラコマンドか？ </p>
+
+<p> <a class="el" href="_source_8h_source.html">Source.h</a> の <a class="el" href="_source_8h_source.html#l00120">120</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a673de5ca24deb98086ae8492dfd2cfea"></a><!-- doxytag: member="Source::isControllerData" ref="a673de5ca24deb98086ae8492dfd2cfea" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Source::isControllerData </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>接続タイプがコントローラデータか？ </p>
+
+<p> <a class="el" href="_source_8h_source.html">Source.h</a> の <a class="el" href="_source_8h_source.html#l00122">122</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a3a308b35a418217251bdac5f887fa4f3"></a><!-- doxytag: member="Source::isServiceProvider" ref="a3a308b35a418217251bdac5f887fa4f3" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Source::isServiceProvider </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>接続タイプがサービスプロバイダか？ </p>
+
+<p> <a class="el" href="_source_8h_source.html">Source.h</a> の <a class="el" href="_source_8h_source.html#l00124">124</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a067bbd8c382523cb5708eda932e4faef"></a><!-- doxytag: member="Source::isView" ref="a067bbd8c382523cb5708eda932e4faef" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Source::isView </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>接続タイプがビューか？ </p>
+
+<p> <a class="el" href="_source_8h_source.html">Source.h</a> の <a class="el" href="_source_8h_source.html#l00118">118</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a28d24d9a165bad391f71e34edf397dd9"></a><!-- doxytag: member="Source::name" ref="a28d24d9a165bad391f71e34edf397dd9" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* Source::name </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>接続名を得る </p>
+
+<p> <a class="el" href="_source_8h_source.html">Source.h</a> の <a class="el" href="_source_8h_source.html#l00104">104</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+呼出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_source_a28d24d9a165bad391f71e34edf397dd9_icgraph.png" border="0" usemap="#class_source_a28d24d9a165bad391f71e34edf397dd9_icgraph_map" alt=""></div>
+<map name="class_source_a28d24d9a165bad391f71e34edf397dd9_icgraph_map" id="class_source_a28d24d9a165bad391f71e34edf397dd9_icgraph">
+<area shape="rect" href="class_source.html#aad4cc68d4e7000ecded4f58fd5a2d091" title="同じ接続元であるか？" alt="" coords="159,5,265,35"/><area shape="rect" href="class_source.html#a1d44ff6eb1d97c38f4fc33cee72a071b" title="接続元タイプ、接続名を設定す" alt="" coords="168,59,256,88"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a1e5685ee7c8ae8a51bb5ea254b754145"></a><!-- doxytag: member="Source::noType" ref="a1e5685ee7c8ae8a51bb5ea254b754145" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Source::noType </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>接続タイプが設定されていないか？ </p>
+
+<p> <a class="el" href="_source_8h_source.html">Source.h</a> の <a class="el" href="_source_8h_source.html#l00116">116</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a8b000aadfff92d08d13446f44dd4648e"></a><!-- doxytag: member="Source::propertyEquals" ref="a8b000aadfff92d08d13446f44dd4648e" args="(const char *key, const char *val)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Source::propertyEquals </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>val</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>接続プロパティが等しいか？ </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>key</em>&nbsp;</td><td>プロパティ名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>value</em>&nbsp;</td><td>プロパティ値 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_source_8h_source.html">Source.h</a> の <a class="el" href="_source_8h_source.html#l00142">142</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="af765ee6250d609ecc39c5bfe211ce235"></a><!-- doxytag: member="Source::send" ref="af765ee6250d609ecc39c5bfe211ce235" args="(char *, int)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Source::send </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ad869baf1d70d735178ef9c7a991c0a10"></a><!-- doxytag: member="Source::send" ref="ad869baf1d70d735178ef9c7a991c0a10" args="(CommDataEncoder &amp;)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Source::send </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_comm_data_encoder.html">CommDataEncoder</a> &amp;&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a1d44ff6eb1d97c38f4fc33cee72a071b"></a><!-- doxytag: member="Source::set" ref="a1d44ff6eb1d97c38f4fc33cee72a071b" args="(SourceType type, const char *name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Source::set </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_source_8h.html#abd482467b5af8258c45cde48b322924b">SourceType</a>&nbsp;</td>
+          <td class="paramname"> <em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>name</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>接続元タイプ、接続名を設定す </p>
+
+<p> <a class="el" href="_source_8h_source.html">Source.h</a> の <a class="el" href="_source_8h_source.html#l00086">86</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_source_a1d44ff6eb1d97c38f4fc33cee72a071b_cgraph.png" border="0" usemap="#class_source_a1d44ff6eb1d97c38f4fc33cee72a071b_cgraph_map" alt=""></div>
+<map name="class_source_a1d44ff6eb1d97c38f4fc33cee72a071b_cgraph_map" id="class_source_a1d44ff6eb1d97c38f4fc33cee72a071b_cgraph">
+<area shape="rect" href="class_source.html#a28d24d9a165bad391f71e34edf397dd9" title="接続名を得る" alt="" coords="143,5,244,35"/><area shape="rect" href="class_source.html#a7edc939c12cf62619982181d445aa429" title="接続タイプを取得する" alt="" coords="145,59,241,88"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a71098a1e8f8f9707c13617bcfb948ab3"></a><!-- doxytag: member="Source::setProperty" ref="a71098a1e8f8f9707c13617bcfb948ab3" args="(const char *key, const char *val)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Source::setProperty </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>val</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>接続プロパティを設定する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>key</em>&nbsp;</td><td>プロパティ名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>value</em>&nbsp;</td><td>プロパティ値 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_source_8h_source.html">Source.h</a> の <a class="el" href="_source_8h_source.html#l00132">132</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a28073205165d10b7ea598ebe33356bc9"></a><!-- doxytag: member="Source::socket" ref="a28073205165d10b7ea598ebe33356bc9" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="systemdef_8h.html#a8dc8083897335125630f1af5dafd5831">SOCKET</a> Source::socket </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ソケット記述子を返す </p>
+
+<p> <a class="el" href="_source_8h_source.html">Source.h</a> の <a class="el" href="_source_8h_source.html#l00094">94</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a7edc939c12cf62619982181d445aa429"></a><!-- doxytag: member="Source::type" ref="a7edc939c12cf62619982181d445aa429" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_source_8h.html#abd482467b5af8258c45cde48b322924b">SourceType</a> Source::type </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>接続タイプを取得する </p>
+
+<p> <a class="el" href="_source_8h_source.html">Source.h</a> の <a class="el" href="_source_8h_source.html#l00114">114</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+呼出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_source_a7edc939c12cf62619982181d445aa429_icgraph.png" border="0" usemap="#class_source_a7edc939c12cf62619982181d445aa429_icgraph_map" alt=""></div>
+<map name="class_source_a7edc939c12cf62619982181d445aa429_icgraph_map" id="class_source_a7edc939c12cf62619982181d445aa429_icgraph">
+<area shape="rect" href="class_source.html#a1d44ff6eb1d97c38f4fc33cee72a071b" title="接続元タイプ、接続名を設定す" alt="" coords="149,5,237,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_source_8h_source.html">Source.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:21 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

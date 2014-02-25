@@ -1,0 +1,471 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGWorldEditor: クラス Sgv::OgreX3DPreviewWindow</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_sgv.html">Sgv</a>::<a class="el" href="class_sgv_1_1_ogre_x3_d_preview_window.html">OgreX3DPreviewWindow</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Sgv::OgreX3DPreviewWindow</h1><!-- doxytag: class="Sgv::OgreX3DPreviewWindow" -->クラスエディタウィンドウ内にある X3D形状プレビュー用ウィンドウ  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_sgv_ogre_x3_d_preview_window_8h_source.html">SgvOgreX3DPreviewWindow.h</a>&gt;</code>
+<p>
+
+<p>
+<a href="class_sgv_1_1_ogre_x3_d_preview_window-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_ogre_x3_d_preview_window.html#47bc163d710c2306541747f5e7e0ec5b">create</a> (HINSTANCE hInst, HWND hwndMain, int x, int y, int w, int h)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">X3D形状プレビュー用ウィンドウを作成する.  <a href="#47bc163d710c2306541747f5e7e0ec5b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">HWND&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_ogre_x3_d_preview_window.html#33cc72af78fd6f28d4babdb4a60990d2">getHWND</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">このウィンドウのハンドルを返す  <a href="#33cc72af78fd6f28d4babdb4a60990d2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_ogre_x3_d_preview_window.html#80d2ca39f482413cfb24e2c744b6ff75">OgreX3DPreviewWindow</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#80d2ca39f482413cfb24e2c744b6ff75"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">LRESULT CALLBACK&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_ogre_x3_d_preview_window.html#6731492635dc6c11791e6f285ad54b1f">ogreX3DPreviewWindowProc</a> (HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ウィンドウプロシージャ  <a href="#6731492635dc6c11791e6f285ad54b1f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_ogre_x3_d_preview_window.html#e942dc4d2581f1e5d2ca1d09dc36509b">onLButtonDown</a> (<a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *win, HWND hWnd, int x, int y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">マウス左ボタンが押されると呼ばれる  <a href="#e942dc4d2581f1e5d2ca1d09dc36509b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_ogre_x3_d_preview_window.html#a7ac842e06da9b25b3e2b0e3a7ee4bf5">onLButtonUp</a> (<a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *win)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">マウス左ボタンが離されると呼ばれる  <a href="#a7ac842e06da9b25b3e2b0e3a7ee4bf5"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_ogre_x3_d_preview_window.html#e74a09dccea223c978fa3752986a99d7">onMouseMove</a> (<a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *win, HWND hWnd, int x, int y, bool bLButtonPress, bool bRButtonPress, bool bShiftPress, bool bCtrlPress)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">マウスが移動した際に呼ばれる  <a href="#e74a09dccea223c978fa3752986a99d7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_ogre_x3_d_preview_window.html#fa3a8f6ddbe1cb5e238b3e1d054576ca">‾OgreX3DPreviewWindow</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#fa3a8f6ddbe1cb5e238b3e1d054576ca"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+クラスエディタウィンドウ内にある X3D形状プレビュー用ウィンドウ 
+<p> <a class="el" href="_sgv_ogre_x3_d_preview_window_8h_source.html">SgvOgreX3DPreviewWindow.h</a> の <a class="el" href="_sgv_ogre_x3_d_preview_window_8h_source.html#l00018">18</a> 行で定義されています。</p>
+<hr><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" name="80d2ca39f482413cfb24e2c744b6ff75"></a><!-- doxytag: member="Sgv::OgreX3DPreviewWindow::OgreX3DPreviewWindow" ref="80d2ca39f482413cfb24e2c744b6ff75" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::OgreX3DPreviewWindow::OgreX3DPreviewWindow           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_ogre_x3_d_preview_window_8cpp_source.html">SgvOgreX3DPreviewWindow.cpp</a> の <a class="el" href="_sgv_ogre_x3_d_preview_window_8cpp_source.html#l00011">11</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>関数</h2>
+<a class="anchor" name="47bc163d710c2306541747f5e7e0ec5b"></a><!-- doxytag: member="Sgv::OgreX3DPreviewWindow::create" ref="47bc163d710c2306541747f5e7e0ec5b" args="(HINSTANCE hInst, HWND hwndMain, int x, int y, int w, int h)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::OgreX3DPreviewWindow::create           </td>
+          <td>(</td>
+          <td class="paramtype">HINSTANCE&nbsp;</td>
+          <td class="paramname"> <em>hInst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hwndMain</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>h</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+X3D形状プレビュー用ウィンドウを作成する. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hInst</em>&nbsp;</td><td>[i] アプリケーションインスタンス </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>hwndMain</em>&nbsp;</td><td>[i] メインウィンドウハンドル </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>[i] 位置(x座標) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>[i] 位置(y座標) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>w</em>&nbsp;</td><td>[i] 幅 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>h</em>&nbsp;</td><td>[i] 高さ</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_ogre_x3_d_preview_window_8cpp_source.html">SgvOgreX3DPreviewWindow.cpp</a> の <a class="el" href="_sgv_ogre_x3_d_preview_window_8cpp_source.html#l00021">21</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="33cc72af78fd6f28d4babdb4a60990d2"></a><!-- doxytag: member="Sgv::OgreX3DPreviewWindow::getHWND" ref="33cc72af78fd6f28d4babdb4a60990d2" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HWND Sgv::OgreX3DPreviewWindow::getHWND           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+このウィンドウのハンドルを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>ウィンドウハンドル </dd></dl>
+
+<p> <a class="el" href="_sgv_ogre_x3_d_preview_window_8h_source.html">SgvOgreX3DPreviewWindow.h</a> の <a class="el" href="_sgv_ogre_x3_d_preview_window_8h_source.html#l00054">54</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="6731492635dc6c11791e6f285ad54b1f"></a><!-- doxytag: member="Sgv::OgreX3DPreviewWindow::ogreX3DPreviewWindowProc" ref="6731492635dc6c11791e6f285ad54b1f" args="(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LRESULT CALLBACK Sgv::OgreX3DPreviewWindow::ogreX3DPreviewWindowProc           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hWnd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UINT&nbsp;</td>
+          <td class="paramname"> <em>uMsg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">WPARAM&nbsp;</td>
+          <td class="paramname"> <em>wParam</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">LPARAM&nbsp;</td>
+          <td class="paramname"> <em>lParam</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ウィンドウプロシージャ 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hWnd</em>&nbsp;</td><td>[i] ウィンドウハンドル </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>uMsg</em>&nbsp;</td><td>[i] ウィンドウメッセージ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>wParam</em>&nbsp;</td><td>[i] パラメータ1 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>lParam</em>&nbsp;</td><td>[i] パラメータ2</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>処理コード </dd></dl>
+
+<p> <a class="el" href="_sgv_ogre_x3_d_preview_window_8cpp_source.html">SgvOgreX3DPreviewWindow.cpp</a> の <a class="el" href="_sgv_ogre_x3_d_preview_window_8cpp_source.html#l00155">155</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="e942dc4d2581f1e5d2ca1d09dc36509b"></a><!-- doxytag: member="Sgv::OgreX3DPreviewWindow::onLButtonDown" ref="e942dc4d2581f1e5d2ca1d09dc36509b" args="(MainWindow *win, HWND hWnd, int x, int y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::OgreX3DPreviewWindow::onLButtonDown           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *&nbsp;</td>
+          <td class="paramname"> <em>win</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hWnd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>y</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+マウス左ボタンが押されると呼ばれる 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>win</em>&nbsp;</td><td>[i] メインウィンドウ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>hWnd</em>&nbsp;</td><td>[i] このウィンドウのウィンドウハンドル </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>[i] マウスをクリックした位置 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>[i] マウスをクリックした位置 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_ogre_x3_d_preview_window_8cpp_source.html">SgvOgreX3DPreviewWindow.cpp</a> の <a class="el" href="_sgv_ogre_x3_d_preview_window_8cpp_source.html#l00059">59</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="a7ac842e06da9b25b3e2b0e3a7ee4bf5"></a><!-- doxytag: member="Sgv::OgreX3DPreviewWindow::onLButtonUp" ref="a7ac842e06da9b25b3e2b0e3a7ee4bf5" args="(MainWindow *win)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::OgreX3DPreviewWindow::onLButtonUp           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *&nbsp;</td>
+          <td class="paramname"> <em>win</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+マウス左ボタンが離されると呼ばれる 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>win</em>&nbsp;</td><td>[i] メインウィンドウ </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_ogre_x3_d_preview_window_8cpp_source.html">SgvOgreX3DPreviewWindow.cpp</a> の <a class="el" href="_sgv_ogre_x3_d_preview_window_8cpp_source.html#l00072">72</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="e74a09dccea223c978fa3752986a99d7"></a><!-- doxytag: member="Sgv::OgreX3DPreviewWindow::onMouseMove" ref="e74a09dccea223c978fa3752986a99d7" args="(MainWindow *win, HWND hWnd, int x, int y, bool bLButtonPress, bool bRButtonPress, bool bShiftPress, bool bCtrlPress)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::OgreX3DPreviewWindow::onMouseMove           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *&nbsp;</td>
+          <td class="paramname"> <em>win</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hWnd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bLButtonPress</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bRButtonPress</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bShiftPress</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bCtrlPress</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+マウスが移動した際に呼ばれる 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>win</em>&nbsp;</td><td>[i] メインウィンドウ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>hWnd</em>&nbsp;</td><td>[i] このウィンドウのウィンドウハンドル </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>[i] マウスの位置 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>[i] マウスの位置 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bLButtonPress</em>&nbsp;</td><td>[i] マウス左ボタンを押しているならtrue </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bRButtonPress</em>&nbsp;</td><td>[i] マウス右ボタンを押しているならtrue </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bShiftPress</em>&nbsp;</td><td>[i] シフトキーを押しているならtrue </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bCtrlPress</em>&nbsp;</td><td>[i] コントロールキーを押しているならtrue </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_ogre_x3_d_preview_window_8cpp_source.html">SgvOgreX3DPreviewWindow.cpp</a> の <a class="el" href="_sgv_ogre_x3_d_preview_window_8cpp_source.html#l00077">77</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="fa3a8f6ddbe1cb5e238b3e1d054576ca"></a><!-- doxytag: member="Sgv::OgreX3DPreviewWindow::‾OgreX3DPreviewWindow" ref="fa3a8f6ddbe1cb5e238b3e1d054576ca" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::OgreX3DPreviewWindow::‾OgreX3DPreviewWindow           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+デストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_ogre_x3_d_preview_window_8cpp_source.html">SgvOgreX3DPreviewWindow.cpp</a> の <a class="el" href="_sgv_ogre_x3_d_preview_window_8cpp_source.html#l00017">17</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_sgv_ogre_x3_d_preview_window_8h_source.html">SgvOgreX3DPreviewWindow.h</a><li><a class="el" href="_sgv_ogre_x3_d_preview_window_8cpp_source.html">SgvOgreX3DPreviewWindow.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGWorldEditorに対してThu Jun 9 10:53:00 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGWorldEditor: クラス Wgu::StatusBar</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_wgu.html">Wgu</a>::<a class="el" href="class_wgu_1_1_status_bar.html">StatusBar</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Wgu::StatusBar</h1><!-- doxytag: class="Wgu::StatusBar" -->Win32 APIの簡易ラッパークラス（ステータスバーコントロール）.  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_wgu_status_bar_8h_source.html">WguStatusBar.h</a>&gt;</code>
+<p>
+
+<p>
+<a href="class_wgu_1_1_status_bar-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Static Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_status_bar.html#8f6fdf1bbe7a40634d5c91b7bc5a66ab">adjustSize</a> (HWND hwnd, int newWidth, int newHeight, int statusBarHeight)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ステータスバーのサイズを調整する  <a href="#8f6fdf1bbe7a40634d5c91b7bc5a66ab"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static HWND&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_status_bar.html#4782637983a39654affd2dafc5145ad2">create</a> (HWND hwndParent, int contId)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ステータスバーウィンドウを作る  <a href="#4782637983a39654affd2dafc5145ad2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_status_bar.html#e85462cdcd603261e5e0220617cf19e7">setText</a> (HWND hwnd, char *text)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ステータスバーに文字列をセットする  <a href="#e85462cdcd603261e5e0220617cf19e7"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+Win32 APIの簡易ラッパークラス（ステータスバーコントロール）. 
+<p> <a class="el" href="_wgu_status_bar_8h_source.html">WguStatusBar.h</a> の <a class="el" href="_wgu_status_bar_8h_source.html#l00012">12</a> 行で定義されています。</p>
+<hr><h2>関数</h2>
+<a class="anchor" name="8f6fdf1bbe7a40634d5c91b7bc5a66ab"></a><!-- doxytag: member="Wgu::StatusBar::adjustSize" ref="8f6fdf1bbe7a40634d5c91b7bc5a66ab" args="(HWND hwnd, int newWidth, int newHeight, int statusBarHeight)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::StatusBar::adjustSize           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hwnd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>newWidth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>newHeight</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>statusBarHeight</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ステータスバーのサイズを調整する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hwnd</em>&nbsp;</td><td>[i] ステータスバーウィンドウ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>newWidth</em>&nbsp;</td><td>[i] 幅 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>newHeight</em>&nbsp;</td><td>[i] 表示領域の高さ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>statusBarHeight</em>&nbsp;</td><td>[i] ステータスバー全体の高さ </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_wgu_status_bar_8cpp_source.html">WguStatusBar.cpp</a> の <a class="el" href="_wgu_status_bar_8cpp_source.html#l00038">38</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="4782637983a39654affd2dafc5145ad2"></a><!-- doxytag: member="Wgu::StatusBar::create" ref="4782637983a39654affd2dafc5145ad2" args="(HWND hwndParent, int contId)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HWND Wgu::StatusBar::create           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hwndParent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>contId</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ステータスバーウィンドウを作る 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hwndParent</em>&nbsp;</td><td>[i] 親ウィンドウ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>contId</em>&nbsp;</td><td>[i] コントロールId</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>生成されたステータスバーウィンドウのハンドル </dd></dl>
+
+<p> <a class="el" href="_wgu_status_bar_8cpp_source.html">WguStatusBar.cpp</a> の <a class="el" href="_wgu_status_bar_8cpp_source.html#l00011">11</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="e85462cdcd603261e5e0220617cf19e7"></a><!-- doxytag: member="Wgu::StatusBar::setText" ref="e85462cdcd603261e5e0220617cf19e7" args="(HWND hwnd, char *text)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::StatusBar::setText           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hwnd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>text</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ステータスバーに文字列をセットする 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hwnd</em>&nbsp;</td><td>[i] ステータスバーウィンドウ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>text</em>&nbsp;</td><td>[i] セットする文字列 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_wgu_status_bar_8cpp_source.html">WguStatusBar.cpp</a> の <a class="el" href="_wgu_status_bar_8cpp_source.html#l00033">33</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_wgu_status_bar_8h_source.html">WguStatusBar.h</a><li><a class="el" href="_wgu_status_bar_8cpp_source.html">WguStatusBar.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGWorldEditorに対してThu Jun 9 10:53:01 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

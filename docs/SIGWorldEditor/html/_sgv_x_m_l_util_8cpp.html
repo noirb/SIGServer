@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGWorldEditor: SgvXMLUtil.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>SgvXMLUtil.cpp</h1><code>#include &lt;iostream&gt;</code><br>
+<code>#include &quot;<a class="el" href="_sgv_x_m_l_util_8h_source.html">SgvXMLUtil.h</a>&quot;</code><br>
+
+<p>
+<a href="_sgv_x_m_l_util_8cpp_source.html">ソースコードを見る。</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>ネームスペース</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">namespace &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_sgv.html">Sgv</a></td></tr>
+
+<tr><td colspan="2"><br><h2>関数</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_sgv.html#880a5438da972ce830b90cab2bf50f5b">Sgv::cleanupXMLEngine</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">XMLエンジンをクリーンアップする.  <a href="#880a5438da972ce830b90cab2bf50f5b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">DOMDocument *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_sgv.html#d092f82de90c7838cca711404de2ce63">Sgv::createNewDOMDocument</a> (const char *rootNodeName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">新しいDOMドキュメントオブジェクトを生成する  <a href="#d092f82de90c7838cca711404de2ce63"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_sgv.html#2d582159861d9c7d81c60d9d47ef1f30">Sgv::getAttrValue</a> (DOMNode *node, const char *attrName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ノードの指定属性の値を取り出す  <a href="#2d582159861d9c7d81c60d9d47ef1f30"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_sgv.html#ce4179837954ca3d0497794bf8b52fa8">Sgv::getValue</a> (DOMNode *node)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ノードの値を取り出す  <a href="#ce4179837954ca3d0497794bf8b52fa8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">DOMLSParser *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_sgv.html#c609ab5a90f13956e4dcc92887edf9a0">Sgv::getXMLParser</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">XMLパーサーを返す.  <a href="#c609ab5a90f13956e4dcc92887edf9a0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_sgv.html#58ae38306bf17007bae9e10ad691a9c6">Sgv::initXMLEngine</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">XMLエンジン(Xerces)を初期化する.  <a href="#58ae38306bf17007bae9e10ad691a9c6"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_sgv.html#2e0b0da6f8144bbeb39684c62426a251">Sgv::isXMLEngineInitOK</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">XMLエンジンが初期化されているか？.  <a href="#2e0b0da6f8144bbeb39684c62426a251"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_sgv.html#48bb009418d5cd12537e44b90c5733ab">Sgv::writeDOMDocumentToXML</a> (DOMDocument *doc, const char *xmlFileName)</td></tr>
+
+<tr><td colspan="2"><br><h2>変数</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_sgv.html#1890625d99b478d608306cb42ae36cc9">Sgv::g_bXMLEngineInitOK</a> = false</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">DOMImplementation *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_sgv.html#587eab509d6f7fb00a47cc258338f425">Sgv::g_pDOMImpl</a> = NULL</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">DOMLSParser *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_sgv.html#afe76ef41c1bb9f848d930bf6a6a2b9e">Sgv::g_pXMLParser</a> = NULL</td></tr>
+
+</table>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGWorldEditorに対してThu Jun 9 10:52:59 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

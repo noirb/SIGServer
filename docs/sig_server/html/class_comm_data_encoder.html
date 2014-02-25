@@ -1,0 +1,692 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: クラス CommDataEncoder</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス CommDataEncoder</h1><!-- doxytag: class="CommDataEncoder" -->
+<p>転送データエンコーダー基本クラス  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_encoder_8h_source.html">Encoder.h</a>&gt;</code></p>
+<div class="dynheader">
+CommDataEncoderに対する継承グラフ</div>
+<div class="dynsection">
+<div class="center"><img src="class_comm_data_encoder__inherit__graph.png" border="0" usemap="#_comm_data_encoder_inherit__map" alt="Inheritance graph"/></div>
+<map name="_comm_data_encoder_inherit__map" id="_comm_data_encoder_inherit__map">
+<area shape="rect" href="class_comm_data_1_1_add_joint_torque_request.html" title="ジョイントトルク追加リクエストエンコーダークラス" alt="" coords="197,5,429,35"/><area shape="rect" href="class_comm_data_1_1_attach_request.html" title="クライアント割り当てリクエストエンコーダー基本クラス" alt="" coords="224,59,403,88"/><area shape="rect" href="class_comm_data_1_1_attach_view_result.html" title="ビュー割り当て結果エンコーダークラス" alt="" coords="215,112,412,141"/><area shape="rect" href="class_comm_data_1_1_capture_view_image_request.html" title="視点画像キャプチャリクエストエンコーダークラス" alt="" coords="188,165,439,195"/><area shape="rect" href="class_comm_data_1_1_detect_entities_request.html" title="視野内のエンティティ検出リクエストエンコーダークラス" alt="" coords="201,219,425,248"/><area shape="rect" href="class_comm_data_1_1_detect_entities_result.html" title="視野内のエンティティ検出結果エンコーダークラス" alt="" coords="208,272,419,301"/><area shape="rect" href="class_comm_data_1_1_display_text.html" title="ログメッセージリクエストエンコーダークラス" alt="" coords="232,325,395,355"/><area shape="rect" href="class_comm_data_1_1_distance_sensor_request.html" title="視点(カメラの位置）から視線方向へのオブジェクトまでの距離..." alt="" coords="196,379,431,408"/><area shape="rect" href="class_comm_data_1_1_distance_sensor_result.html" title="視点(カメラの位置）からの距離取得結果エンコーダクラス" alt="" coords="201,432,425,461"/><area shape="rect" href="class_comm_data_1_1_get_attributes_request.html" title="属性取得リクエストエンコーダークラス" alt="" coords="204,485,423,515"/><area shape="rect" href="class_comm_data_1_1_get_attributes_result.html" title="属性取得結果エンコーダークラス" alt="" coords="209,539,417,568"/><area shape="rect" href="class_comm_data_1_1_get_entity_request.html" title="エンティティ取得リクエストエンコーダークラス" alt="" coords="216,592,411,621"/><area shape="rect" href="class_comm_data_1_1_get_entity_result.html" title="エンティティ取得結果エンコーダークラス" alt="" coords="221,645,405,675"/><area shape="rect" href="class_comm_data_1_1_get_joint_angle_request.html" title="ジョイント角度取得リクエストエンコーダークラス(ダイナミクスシミュレ..." alt="" coords="201,699,425,728"/><area shape="rect" href="class_comm_data_1_1_get_joint_angle_result.html" title="ジョイント角度取得リクエストエンコーダークラス(ダイナミクスシミュレ..." alt="" coords="207,752,420,781"/><area shape="rect" href="class_comm_data_1_1_get_object_names_request.html" title="オブジェクト名取得リクエストエンコーダークラス" alt="" coords="192,805,435,835"/><area shape="rect" href="class_comm_data_1_1_get_object_names_result.html" title="エンティティ名取得結果エンコーダークラス" alt="" coords="197,859,429,888"/><area shape="rect" href="class_comm_data_1_1_invoke_on_action.html" title="onAction 呼び出しエンコーダークラス" alt="" coords="220,912,407,941"/><area shape="rect" href="class_comm_data_1_1_invoke_on_collision.html" title="CommData::InvokeOnCollision" alt="" coords="213,965,413,995"/><area shape="rect" href="class_comm_data_1_1_invoke_on_recv_message.html" title="onRecvMessage 呼び出しエンコーダークラス" alt="" coords="197,1019,429,1048"/><area shape="rect" href="class_comm_data_1_1_invoke_on_recv_text.html" title="onRecvText 呼び出しエンコーダークラス" alt="" coords="211,1072,416,1101"/><area shape="rect" href="class_comm_data_1_1_log_msg.html" title="ログメッセージリクエストエンコーダークラス" alt="" coords="244,1125,383,1155"/><area shape="rect" href="class_comm_data_1_1_no_data_encoder.html" title="転送すべきデータのないエンコーダークラス" alt="" coords="221,1179,405,1208"/><area shape="rect" href="class_comm_data_1_1_n_s_pinger_request.html" title="サービスプロバイダへのピンガーリクエストエンコーダークラス..." alt="" coords="215,1232,412,1261"/><area shape="rect" href="class_comm_data_1_1_n_s_pinger_result.html" title="サービスプロバイダへのピンガー結果エンコーダークラス" alt="" coords="220,1285,407,1315"/><area shape="rect" href="class_comm_data_1_1_n_s_query_request.html" title="サービス提供先クエリリクエストエンコーダークラス" alt="" coords="216,1339,411,1368"/><area shape="rect" href="class_comm_data_1_1_n_s_query_result.html" title="サービス提供先クエリ結果エンコーダークラス" alt="" coords="221,1392,405,1421"/><area shape="rect" href="class_comm_data_1_1_provide_service_request.html" title="サービスプロバイダ登録リクエストエンコーダークラス" alt="" coords="199,1445,428,1475"/><area shape="rect" href="class_comm_data_1_1_raw_data_encoder.html" title="生データ(バイナリデータ)のエンコーダークラス" alt="" coords="217,1499,409,1528"/><area shape="rect" href="class_comm_data_1_1_request_connect_joint.html" title="パーツ連結リクエストエンコーダークラス" alt="" coords="204,1552,423,1581"/><area shape="rect" href="class_comm_data_1_1_request_get_joint_force.html" title="ジョイントにかかる力取得リクエストエンコーダークラス" alt="" coords="201,1605,425,1635"/><area shape="rect" href="class_comm_data_1_1_request_release_joint.html" title="連結パーツ解除リクエストエンコーダークラス" alt="" coords="205,1659,421,1688"/><area shape="rect" href="class_comm_data_1_1_result.html" title="リクエスト結果エンコーダークラス" alt="" coords="248,1712,379,1741"/><area shape="rect" href="class_comm_data_1_1_result_get_joint_force.html" title="ジョイントにかかる力取得結果エンコーダークラス" alt="" coords="207,1765,420,1795"/><area shape="rect" href="class_comm_data_1_1_result_sound_recog.html" title="音声認識結果エンコーダークラス" alt="" coords="211,1819,416,1848"/><area shape="rect" href="class_comm_data_1_1_send_endities.html" title="エンティティ情報(属性値を含む)のエンコーダークラス" alt="" coords="228,1872,399,1901"/><area shape="rect" href="class_comm_data_1_1_set_joint_angle_request.html" title="ジョイント角度設定リクエストエンコーダークラス" alt="" coords="201,1925,425,1955"/><area shape="rect" href="class_comm_data_1_1_set_joint_quaternion_request.html" title="ジョイント角度設定リクエストエンコーダークラス" alt="" coords="187,1979,440,2008"/><area shape="rect" href="class_comm_data_1_1_set_joint_velocity_request.html" title="ジョイント角速度設定リクエストエンコーダークラス" alt="" coords="196,2032,431,2061"/><area shape="rect" href="class_comm_data_1_1_set_object_velocity_request.html" title="CommData::SetObjectVelocityRequest" alt="" coords="191,2085,436,2115"/><area shape="rect" href="class_comm_data_1_1_sim_ctrl_request.html" title="シミュレータ操作リクエストエンコーダークラス" alt="" coords="221,2139,405,2168"/><area shape="rect" href="class_comm_data_1_1_attach_controller_request.html" title="コントローラ割り当てリクエストエンコーダークラス" alt="" coords="491,5,725,35"/><area shape="rect" href="class_comm_data_1_1_attach_view_request.html" title="ビュー割り当てリクエストエンコーダークラス" alt="" coords="504,59,712,88"/><area shape="rect" href="class_comm_data_1_1_connect_data_port_request.html" title="データポート接続リクエストエンコーダークラス" alt="" coords="488,112,728,141"/><area shape="rect" href="class_comm_data_1_1_get_entity_names_request.html" title="エンティティ名取得リクエストエンコーダークラス" alt="" coords="489,805,727,835"/><area shape="rect" href="class_comm_data_1_1_get_all_enities_request.html" title="全エンティティ取得リクエストエンコーダークラス" alt="" coords="500,1152,716,1181"/><area shape="rect" href="class_comm_data_1_1_invoke_on_init.html" title="onInit 呼び出しエンコーダークラス" alt="" coords="524,1205,692,1235"/><area shape="rect" href="class_comm_data_1_1_capture_view_image_result.html" title="視点画像キャプチャ結果エンコーダークラス" alt="" coords="488,1499,728,1528"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+
+<p><a href="class_comm_data_encoder-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Public 型</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef int(&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_encoder.html#a2d97ae6d1601263c5fc1b312fdd3f1fa">SendProc</a> )(<a class="el" href="systemdef_8h.html#a8dc8083897335125630f1af5dafd5831">SOCKET</a>, const char *, int)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ソケット通信送信関数型  <a href="#a2d97ae6d1601263c5fc1b312fdd3f1fa"></a><br/></td></tr>
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_encoder.html#a47c89cb9d139061f3899bb844a3a743b">encode</a> (int seq, int &amp;n)=0</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">指定したシーケンス番号のデータをエンコードする  <a href="#a47c89cb9d139061f3899bb844a3a743b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_encoder.html#a344cb12b75da751efed64411a94b4518">packetNum</a> ()=0</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">分割パケット数を得る  <a href="#a344cb12b75da751efed64411a94b4518"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_encoder.html#abcea02aac9a880161d467ee32b364a5a">release</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">バイナリデータの破棄責任を解除する  <a href="#abcea02aac9a880161d467ee32b364a5a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_encoder.html#a37972316e07bca51f13a3997f44387f0">send</a> (<a class="el" href="systemdef_8h.html#a8dc8083897335125630f1af5dafd5831">SOCKET</a> sock)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">データをバイナリ化し、送信する  <a href="#a37972316e07bca51f13a3997f44387f0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_encoder.html#a23fcef8ce7f9327966b835537c0c813d">‾CommDataEncoder</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#a23fcef8ce7f9327966b835537c0c813d"></a><br/></td></tr>
+<tr><td colspan="2"><h2>Static Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_encoder.html#ad1044608baafe646f07bb5bafddba58e">setSendProc</a> (<a class="el" href="class_comm_data_encoder.html#a2d97ae6d1601263c5fc1b312fdd3f1fa">SendProc</a> *p)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ソケット通信送信を設定する  <a href="#ad1044608baafe646f07bb5bafddba58e"></a><br/></td></tr>
+<tr><td colspan="2"><h2>Protected メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_encoder.html#a662dd9dba6a428e6dececf7ffd431576">bufresize</a> (int add, char *ptr)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パケットバッファサイズ  <a href="#a662dd9dba6a428e6dececf7ffd431576"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_encoder.html#a3c3fc47ef0e21a56c81ac8c350e73151">CommDataEncoder</a> (<a class="el" href="_comm_data_type_8h.html#a587c9199c019f0dba3ce5ebe7a1a0a00">CommDataType</a> type, int bufsize)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#a3c3fc47ef0e21a56c81ac8c350e73151"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_encoder.html#a97f1f21ed8efe5b2361cf9480bb9fffe">getFooter</a> (int &amp;n)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パケットに付与するフッタを得る  <a href="#a97f1f21ed8efe5b2361cf9480bb9fffe"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_encoder.html#a27acbffbc7fe666d030dc4847234e2ab">getHeader</a> (int seq, int &amp;n)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パケットに付与するヘッダを得る  <a href="#a27acbffbc7fe666d030dc4847234e2ab"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_encoder.html#afd1f593315773ddb5b3eddd3356ef9c3">setFooter</a> (char *buf)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パケットデータにヘッダ情報を書き込む  <a href="#afd1f593315773ddb5b3eddd3356ef9c3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_encoder.html#a99c4f947b4c424b7d7db66d9031aca42">setForwardTo</a> (const char *to, bool returnImmediate)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">転送先を設定する  <a href="#a99c4f947b4c424b7d7db66d9031aca42"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_encoder.html#a63cbb7524c07413ceeda5513f01a072c">setForwardTo</a> (const char *to, bool returnImmediate, double reachRadius)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">転送先を設定する  <a href="#a63cbb7524c07413ceeda5513f01a072c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_encoder.html#a491e8fd659fe53d788c17079d8201abe">setHeader</a> (char *buf, int seq)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パケットデータにヘッダ情報を書き込む  <a href="#a491e8fd659fe53d788c17079d8201abe"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_encoder.html#a625a5a913ea81fc8a1e2828baed05b59">setPacketSize</a> (char *data, unsigned short n)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パケットデータの該当部分にパケットデータサイズを書き込む  <a href="#a625a5a913ea81fc8a1e2828baed05b59"></a><br/></td></tr>
+<tr><td colspan="2"><h2>Protected 変数</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_encoder.html#a7294823daf9d0efcc6500b11831c5d1b">m_buf</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_encoder.html#a321de8f9b37c4adcfd5f687df96d613b">m_bufsize</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パケットバッファ  <a href="#a321de8f9b37c4adcfd5f687df96d613b"></a><br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>転送データエンコーダー基本クラス </p>
+<p>各転送データ毎にこのクラスを継承したエンコーダークラスを作成し、 そこで転送データタイプに応じて分割パケット数の指定(packetNum関数)、 データのバイナリ化(encode関数)を実装する。 </p>
+
+<p> <a class="el" href="_encoder_8h_source.html">Encoder.h</a> の <a class="el" href="_encoder_8h_source.html#l00025">25</a> 行で定義されています。</p>
+<hr/><h2>型定義</h2>
+<a class="anchor" id="a2d97ae6d1601263c5fc1b312fdd3f1fa"></a><!-- doxytag: member="CommDataEncoder::SendProc" ref="a2d97ae6d1601263c5fc1b312fdd3f1fa" args=")(SOCKET, const char *, int)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int( <a class="el" href="class_comm_data_encoder.html#a2d97ae6d1601263c5fc1b312fdd3f1fa">CommDataEncoder::SendProc</a>)(<a class="el" href="systemdef_8h.html#a8dc8083897335125630f1af5dafd5831">SOCKET</a>, const char *, int)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ソケット通信送信関数型 </p>
+
+<p> <a class="el" href="_encoder_8h_source.html">Encoder.h</a> の <a class="el" href="_encoder_8h_source.html#l00117">117</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" id="a3c3fc47ef0e21a56c81ac8c350e73151"></a><!-- doxytag: member="CommDataEncoder::CommDataEncoder" ref="a3c3fc47ef0e21a56c81ac8c350e73151" args="(CommDataType type, int bufsize)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CommDataEncoder::CommDataEncoder </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_comm_data_type_8h.html#a587c9199c019f0dba3ce5ebe7a1a0a00">CommDataType</a>&nbsp;</td>
+          <td class="paramname"> <em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>bufsize</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コンストラクタ </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>type</em>&nbsp;</td><td>転送データタイプ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bufsize</em>&nbsp;</td><td>バイナリデータを格納するバッファサイズ </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_encoder_8h_source.html">Encoder.h</a> の <a class="el" href="_encoder_8h_source.html#l00065">65</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>関数</h2>
+<a class="anchor" id="a662dd9dba6a428e6dececf7ffd431576"></a><!-- doxytag: member="CommDataEncoder::bufresize" ref="a662dd9dba6a428e6dececf7ffd431576" args="(int add, char *ptr)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* CommDataEncoder::bufresize </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>add</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>ptr</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>パケットバッファサイズ </p>
+<p>バッファを拡張する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>add</em>&nbsp;</td><td>拡張サイズ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>ptr</em>&nbsp;</td><td>現在の書き込み位置 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>戻り値:</b></dt><dd>新しい書き込み位置 </dd></dl>
+
+<p> <a class="el" href="_encoder_8h_source.html">Encoder.h</a> の <a class="el" href="_encoder_8h_source.html#l00046">46</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a47c89cb9d139061f3899bb844a3a743b"></a><!-- doxytag: member="CommDataEncoder::encode" ref="a47c89cb9d139061f3899bb844a3a743b" args="(int seq, int &amp;n)=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual char* CommDataEncoder::encode </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&nbsp;</td>
+          <td class="paramname"> <em>n</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>指定したシーケンス番号のデータをエンコードする </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>seq</em>&nbsp;</td><td>シーケンス番号 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>n</em>&nbsp;</td><td>バイナリデータサイズ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>戻り値:</b></dt><dd>バイナリデータ </dd></dl>
+
+<p><a class="el" href="class_comm_data_1_1_attach_request.html#ac404d4341ff3a513fec055f19283f66b">CommData::AttachRequest</a>, <a class="el" href="class_comm_data_1_1_get_attributes_request.html#a675d6b5772eea22e7d7c1ed803117ab6">CommData::GetAttributesRequest</a>, <a class="el" href="class_comm_data_1_1_get_attributes_result.html#a227a73cc879ed6cbb57fa84f463d154a">CommData::GetAttributesResult</a>, <a class="el" href="class_comm_data_1_1_capture_view_image_request.html#a4aca90c0b47835222cba4a1911cf88bc">CommData::CaptureViewImageRequest</a>, <a class="el" href="class_comm_data_1_1_detect_entities_request.html#afe0dc4044fb9ee510836ff8b670c3332">CommData::DetectEntitiesRequest</a>, <a class="el" href="class_comm_data_1_1_detect_entities_result.html#a2c2250bd1edbdb68d7c5fed5d926df99">CommData::DetectEntitiesResult</a>, <a class="el" href="class_comm_data_1_1_display_text.html#a00af50fc189ff4100f5a5d70afb6f432">CommData::DisplayText</a>, <a class="el" href="class_comm_data_1_1_distance_sensor_request.html#a0f48d8fbe46224815ebdbcae440f2e60">CommData::DistanceSensorRequest</a>, <a class="el" href="class_comm_data_1_1_distance_sensor_result.html#ad0ef62aa70aeb5cc478262da613cbbc1">CommData::DistanceSensorResult</a>, <a class="el" href="class_comm_data_1_1_no_data_encoder.html#a47615deca150bf77c78f632eaa4bc22a">CommData::NoDataEncoder</a>, <a class="el" href="class_comm_data_1_1_raw_data_encoder.html#a02fadc8d7c78f8f628c021385e6d3436">CommData::RawDataEncoder</a>, <a class="el" href="class_comm_data_1_1_send_endities.html#abc0242cdd61851f4241f5b855732e4f9">CommData::SendEndities</a>, <a class="el" href="class_comm_data_1_1_get_entity_request.html#acec6f597d77470b3595062ecc9fe1191">CommData::GetEntityRequest</a>, <a class="el" href="class_comm_data_1_1_get_entity_result.html#a75f31e450ad3d576de2ff8ac94e5da77">CommData::GetEntityResult</a>, <a class="el" href="class_comm_data_1_1_request_get_joint_force.html#ad83064ab2736daeddfc5717dadb7e0c3">CommData::RequestGetJointForce</a>, <a class="el" href="class_comm_data_1_1_result_get_joint_force.html#a9e8dc5ea54e42a630c31e6fa1a85590f">CommData::ResultGetJointForce</a>, <a class="el" href="class_comm_data_1_1_get_object_names_request.html#a5a241ed0a1ebde75f005d9f057232db6">CommData::GetObjectNamesRequest</a>, <a class="el" href="class_comm_data_1_1_get_object_names_result.html#ac182635c30c579bbe2c766e02b9e320c">CommData::GetObjectNamesResult</a>, <a class="el" href="class_comm_data_1_1_invoke_on_action.html#accdbe86dcf2b5d1407656cc0f75ffdf7">CommData::InvokeOnAction</a>, <a class="el" href="class_comm_data_1_1_invoke_on_recv_text.html#adcebf3fa458bd52d0429fc7e6a617119">CommData::InvokeOnRecvText</a>, <a class="el" href="class_comm_data_1_1_invoke_on_recv_message.html#a18a2330ebd338ad41510dbd9be5def5c">CommData::InvokeOnRecvMessage</a>, <a class="el" href="class_comm_data_1_1_invoke_on_collision.html#aab98596ba3a050e94f5eb8687e8303dc">CommData::InvokeOnCollision</a>, <a class="el" href="class_comm_data_1_1_set_joint_angle_request.html#a17bf26223603f47b4012ce9be362a58a">CommData::SetJointAngleRequest</a>, <a class="el" href="class_comm_data_1_1_set_joint_quaternion_request.html#a46ec038cfcaea4c809da0202ad02bfb0">CommData::SetJointQuaternionRequest</a>, <a class="el" href="class_comm_data_1_1_add_joint_torque_request.html#aa7177694a0f4794a0b4deebf6d0875fc">CommData::AddJointTorqueRequest</a>, <a class="el" href="class_comm_data_1_1_set_joint_velocity_request.html#a2bad5c1f5f163c3f08a00c03da70f328">CommData::SetJointVelocityRequest</a>, <a class="el" href="class_comm_data_1_1_set_object_velocity_request.html#adc5e081c0823ce3176aad3c1686ec499">CommData::SetObjectVelocityRequest</a>, <a class="el" href="class_comm_data_1_1_get_joint_angle_request.html#a3ad276d7bf86cb72b4a9a0e9f2612052">CommData::GetJointAngleRequest</a>, <a class="el" href="class_comm_data_1_1_get_joint_angle_result.html#ab5d7a164f8363ffab5b737a908c88454">CommData::GetJointAngleResult</a>, <a class="el" href="class_comm_data_1_1_log_msg.html#af371154abad942878fa53f57b1d7756f">CommData::LogMsg</a>, <a class="el" href="class_comm_data_1_1_n_s_query_request.html#a6c40b7a5383699f544f68bfe8e8675ad">CommData::NSQueryRequest</a>, <a class="el" href="class_comm_data_1_1_n_s_query_result.html#a2c39ca78a59c529c37b0dd809a5a5528">CommData::NSQueryResult</a>, <a class="el" href="class_comm_data_1_1_n_s_pinger_request.html#a55d0623691640d4504b6bb17faa5825b">CommData::NSPingerRequest</a>, <a class="el" href="class_comm_data_1_1_n_s_pinger_result.html#aca16ca9fe8474e1e2aa8562d16af1ecb">CommData::NSPingerResult</a>, <a class="el" href="class_comm_data_1_1_request_release_joint.html#a3bd6a0df69f08b00d8b811eb102667a2">CommData::RequestReleaseJoint</a>, <a class="el" href="class_comm_data_1_1_result.html#a382ba980e764694a71740be2b42d0236">CommData::Result</a>, と <a class="el" href="class_comm_data_1_1_result_sound_recog.html#ae5d7425c518fd869e89638bdc04e5244">CommData::ResultSoundRecog</a>で実装されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a97f1f21ed8efe5b2361cf9480bb9fffe"></a><!-- doxytag: member="CommDataEncoder::getFooter" ref="a97f1f21ed8efe5b2361cf9480bb9fffe" args="(int &amp;n)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* CommDataEncoder::getFooter </td>
+          <td>(</td>
+          <td class="paramtype">int &amp;&nbsp;</td>
+          <td class="paramname"> <em>n</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>パケットに付与するフッタを得る </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>n</em>&nbsp;</td><td>バイナリ化したフッタデータサイズ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>戻り値:</b></dt><dd>バイナリ化したフッタデータ </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a27acbffbc7fe666d030dc4847234e2ab"></a><!-- doxytag: member="CommDataEncoder::getHeader" ref="a27acbffbc7fe666d030dc4847234e2ab" args="(int seq, int &amp;n)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* CommDataEncoder::getHeader </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&nbsp;</td>
+          <td class="paramname"> <em>n</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>パケットに付与するヘッダを得る </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>seq</em>&nbsp;</td><td>シーケンス番号 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>n</em>&nbsp;</td><td>バイナリ化したヘッダデータサイズ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>戻り値:</b></dt><dd>バイナリ化したヘッダデータ </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a344cb12b75da751efed64411a94b4518"></a><!-- doxytag: member="CommDataEncoder::packetNum" ref="a344cb12b75da751efed64411a94b4518" args="()=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual int CommDataEncoder::packetNum </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>分割パケット数を得る </p>
+
+<p><a class="el" href="class_comm_data_1_1_attach_request.html#a485e3f94bacf00dbea32483398bb04c6">CommData::AttachRequest</a>, <a class="el" href="class_comm_data_1_1_get_attributes_request.html#a87da9a30672ce9ce7f94449b51d8ccb0">CommData::GetAttributesRequest</a>, <a class="el" href="class_comm_data_1_1_get_attributes_result.html#aad410e33f2fb0a83208e452ac32b7100">CommData::GetAttributesResult</a>, <a class="el" href="class_comm_data_1_1_capture_view_image_request.html#a9b47742f289c719f5d55556429ffdf78">CommData::CaptureViewImageRequest</a>, <a class="el" href="class_comm_data_1_1_detect_entities_request.html#a343cd3705e302f0cc67b6978585a841c">CommData::DetectEntitiesRequest</a>, <a class="el" href="class_comm_data_1_1_detect_entities_result.html#ab35875f8305acaae7ca9be3488b78fe2">CommData::DetectEntitiesResult</a>, <a class="el" href="class_comm_data_1_1_display_text.html#a69431e079f78f139195b329b590e1170">CommData::DisplayText</a>, <a class="el" href="class_comm_data_1_1_distance_sensor_request.html#acbc8f43f3cdd400a4220cee0fc49f19d">CommData::DistanceSensorRequest</a>, <a class="el" href="class_comm_data_1_1_distance_sensor_result.html#aaf25b745c31b8951eca160d06acca962">CommData::DistanceSensorResult</a>, <a class="el" href="class_comm_data_1_1_no_data_encoder.html#ab85254299216917957d27c503717908f">CommData::NoDataEncoder</a>, <a class="el" href="class_comm_data_1_1_raw_data_encoder.html#a96966ccb7b4769a29b25dbcc93bc2edb">CommData::RawDataEncoder</a>, <a class="el" href="class_comm_data_1_1_send_endities.html#a5777d496889ace96b79065e6577e8578">CommData::SendEndities</a>, <a class="el" href="class_comm_data_1_1_get_entity_request.html#a2a6fea967d919090d540cb9bf1dcca59">CommData::GetEntityRequest</a>, <a class="el" href="class_comm_data_1_1_get_entity_result.html#a603046246ae0689342cb4240fbe9cf5a">CommData::GetEntityResult</a>, <a class="el" href="class_comm_data_1_1_request_get_joint_force.html#ac663db7c5dad5929b171a03a75100fd6">CommData::RequestGetJointForce</a>, <a class="el" href="class_comm_data_1_1_result_get_joint_force.html#aeab5d80e75b364a704afc8d7c56e40a9">CommData::ResultGetJointForce</a>, <a class="el" href="class_comm_data_1_1_get_object_names_request.html#a7bc7e1c5ee17ac757af53e7596d0315c">CommData::GetObjectNamesRequest</a>, <a class="el" href="class_comm_data_1_1_get_object_names_result.html#a0d37ae505197d015b3e0d262abdf5db3">CommData::GetObjectNamesResult</a>, <a class="el" href="class_comm_data_1_1_invoke_on_action.html#a1e5746e0cf817e867fc228627bd365af">CommData::InvokeOnAction</a>, <a class="el" href="class_comm_data_1_1_invoke_on_recv_text.html#a99bafb42cf8e339a38cbc2380a7de1c7">CommData::InvokeOnRecvText</a>, <a class="el" href="class_comm_data_1_1_invoke_on_recv_message.html#abb3016b4f69d3c8ce2bbf93de1af2000">CommData::InvokeOnRecvMessage</a>, <a class="el" href="class_comm_data_1_1_invoke_on_collision.html#a9055bcce129b6b99d503430a6475dd98">CommData::InvokeOnCollision</a>, <a class="el" href="class_comm_data_1_1_set_joint_angle_request.html#a6375394be06728f7f7a4af7380ac9fbd">CommData::SetJointAngleRequest</a>, <a class="el" href="class_comm_data_1_1_set_joint_quaternion_request.html#aa11dcca8db94a7ea49f12e2a282c5bc7">CommData::SetJointQuaternionRequest</a>, <a class="el" href="class_comm_data_1_1_add_joint_torque_request.html#a43edffabe3ba36edca71b2c2ec0119aa">CommData::AddJointTorqueRequest</a>, <a class="el" href="class_comm_data_1_1_set_joint_velocity_request.html#a322bfa0fc1a6f7013be84495e0fe7337">CommData::SetJointVelocityRequest</a>, <a class="el" href="class_comm_data_1_1_set_object_velocity_request.html#a2ab61cc844f9e5a904462a81afc2daf8">CommData::SetObjectVelocityRequest</a>, <a class="el" href="class_comm_data_1_1_get_joint_angle_request.html#a7e604d1662948b1fcda0ac16f3afad36">CommData::GetJointAngleRequest</a>, <a class="el" href="class_comm_data_1_1_get_joint_angle_result.html#a056f31c8b43b057ee1f4c988465f6fe9">CommData::GetJointAngleResult</a>, <a class="el" href="class_comm_data_1_1_log_msg.html#af7093de726ef5fb54c275a8c7c68f559">CommData::LogMsg</a>, <a class="el" href="class_comm_data_1_1_n_s_query_request.html#a66d557d4e6605a4253c3eb94ab2a9d3d">CommData::NSQueryRequest</a>, <a class="el" href="class_comm_data_1_1_n_s_query_result.html#af903a7eb4c3f3a53e882519b9b9f9fcf">CommData::NSQueryResult</a>, <a class="el" href="class_comm_data_1_1_n_s_pinger_request.html#a619b479f3c9695b58fd5cda1056d7b47">CommData::NSPingerRequest</a>, <a class="el" href="class_comm_data_1_1_n_s_pinger_result.html#a65e77e4a5d2027c53b36386a4b91979a">CommData::NSPingerResult</a>, <a class="el" href="class_comm_data_1_1_request_release_joint.html#abd59193fe2b7d19bb2b09b8226b0418f">CommData::RequestReleaseJoint</a>, <a class="el" href="class_comm_data_1_1_result.html#a09410e192de4c46c929041572c739245">CommData::Result</a>, と <a class="el" href="class_comm_data_1_1_result_sound_recog.html#a95dad67d2da3ae8fe49d2b7bc0b34b78">CommData::ResultSoundRecog</a>で実装されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="abcea02aac9a880161d467ee32b364a5a"></a><!-- doxytag: member="CommDataEncoder::release" ref="abcea02aac9a880161d467ee32b364a5a" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual char* CommDataEncoder::release </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>バイナリデータの破棄責任を解除する </p>
+
+<p> <a class="el" href="_encoder_8h_source.html">Encoder.h</a> の <a class="el" href="_encoder_8h_source.html#l00102">102</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a37972316e07bca51f13a3997f44387f0"></a><!-- doxytag: member="CommDataEncoder::send" ref="a37972316e07bca51f13a3997f44387f0" args="(SOCKET sock)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CommDataEncoder::send </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="systemdef_8h.html#a8dc8083897335125630f1af5dafd5831">SOCKET</a>&nbsp;</td>
+          <td class="paramname"> <em>sock</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>データをバイナリ化し、送信する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>sock</em>&nbsp;</td><td>送信先ソケット記述子 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>戻り値:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>&gt;=0</em>&nbsp;</td><td>成功(送信データバイト数) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>&lt;0</em>&nbsp;</td><td>失敗 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="afd1f593315773ddb5b3eddd3356ef9c3"></a><!-- doxytag: member="CommDataEncoder::setFooter" ref="afd1f593315773ddb5b3eddd3356ef9c3" args="(char *buf)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* CommDataEncoder::setFooter </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>buf</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>パケットデータにヘッダ情報を書き込む </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>buf</em>&nbsp;</td><td>パケットデータ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>seq</em>&nbsp;</td><td>シーケンス番号 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>戻り値:</b></dt><dd>パケット内フッタの次のデータ領域 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a99c4f947b4c424b7d7db66d9031aca42"></a><!-- doxytag: member="CommDataEncoder::setForwardTo" ref="a99c4f947b4c424b7d7db66d9031aca42" args="(const char *to, bool returnImmediate)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CommDataEncoder::setForwardTo </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>to</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>returnImmediate</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>転送先を設定する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>to</em>&nbsp;</td><td>転送先(NULLの場合ブロードキャスト) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>returnImmediate</em>&nbsp;</td><td>転送データの結果が送られてくるか？ </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_encoder_8h_source.html">Encoder.h</a> の <a class="el" href="_encoder_8h_source.html#l00081">81</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_comm_data_encoder_a99c4f947b4c424b7d7db66d9031aca42_cgraph.png" border="0" usemap="#class_comm_data_encoder_a99c4f947b4c424b7d7db66d9031aca42_cgraph_map" alt=""></div>
+<map name="class_comm_data_encoder_a99c4f947b4c424b7d7db66d9031aca42_cgraph_map" id="class_comm_data_encoder_a99c4f947b4c424b7d7db66d9031aca42_cgraph">
+<area shape="rect" href="class_comm_data_encoder.html#a63cbb7524c07413ceeda5513f01a072c" title="転送先を設定する" alt="" coords="276,5,495,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a63cbb7524c07413ceeda5513f01a072c"></a><!-- doxytag: member="CommDataEncoder::setForwardTo" ref="a63cbb7524c07413ceeda5513f01a072c" args="(const char *to, bool returnImmediate, double reachRadius)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CommDataEncoder::setForwardTo </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>to</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>returnImmediate</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>reachRadius</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>転送先を設定する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>to</em>&nbsp;</td><td>転送先(NULLの場合ブロードキャスト) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>returnImmediate</em>&nbsp;</td><td>転送データの結果が送られてくるか？ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>reachRadius</em>&nbsp;</td><td>転送範囲(半径) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+呼出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_comm_data_encoder_a63cbb7524c07413ceeda5513f01a072c_icgraph.png" border="0" usemap="#class_comm_data_encoder_a63cbb7524c07413ceeda5513f01a072c_icgraph_map" alt=""></div>
+<map name="class_comm_data_encoder_a63cbb7524c07413ceeda5513f01a072c_icgraph_map" id="class_comm_data_encoder_a63cbb7524c07413ceeda5513f01a072c_icgraph">
+<area shape="rect" href="class_comm_data_1_1_invoke_on_recv_message.html#a3887384b9d4f44c54698199adc239be2" title="コンストラクタ" alt="" coords="276,5,655,35"/><area shape="rect" href="class_comm_data_1_1_invoke_on_recv_sound.html#a9677f46db8286b575fa94800da5245ea" title="コンストラクタ" alt="" coords="292,59,639,88"/><area shape="rect" href="class_comm_data_1_1_invoke_on_recv_text.html#a7704c0384be9ff666430fb6f030c1f4b" title="コンストラクタ" alt="" coords="304,112,627,141"/><area shape="rect" href="class_comm_data_encoder.html#a99c4f947b4c424b7d7db66d9031aca42" title="転送先を設定する" alt="" coords="356,165,575,195"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a491e8fd659fe53d788c17079d8201abe"></a><!-- doxytag: member="CommDataEncoder::setHeader" ref="a491e8fd659fe53d788c17079d8201abe" args="(char *buf, int seq)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* CommDataEncoder::setHeader </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>seq</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>パケットデータにヘッダ情報を書き込む </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>buf</em>&nbsp;</td><td>パケットデータ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>seq</em>&nbsp;</td><td>シーケンス番号 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>戻り値:</b></dt><dd>パケット内ヘッダの次のデータ領域 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a625a5a913ea81fc8a1e2828baed05b59"></a><!-- doxytag: member="CommDataEncoder::setPacketSize" ref="a625a5a913ea81fc8a1e2828baed05b59" args="(char *data, unsigned short n)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CommDataEncoder::setPacketSize </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned short&nbsp;</td>
+          <td class="paramname"> <em>n</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>パケットデータの該当部分にパケットデータサイズを書き込む </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>data</em>&nbsp;</td><td>パケットデータ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>n</em>&nbsp;</td><td>パケットデータサイズ </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ad1044608baafe646f07bb5bafddba58e"></a><!-- doxytag: member="CommDataEncoder::setSendProc" ref="ad1044608baafe646f07bb5bafddba58e" args="(SendProc *p)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void CommDataEncoder::setSendProc </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_comm_data_encoder.html#a2d97ae6d1601263c5fc1b312fdd3f1fa">SendProc</a> *&nbsp;</td>
+          <td class="paramname"> <em>p</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ソケット通信送信を設定する </p>
+<p>動作環境の依存度低減のため、送信処理を分離している。システム使用前に一度呼び出す。 </p>
+
+<p> <a class="el" href="_encoder_8h_source.html">Encoder.h</a> の <a class="el" href="_encoder_8h_source.html#l00123">123</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a23fcef8ce7f9327966b835537c0c813d"></a><!-- doxytag: member="CommDataEncoder::‾CommDataEncoder" ref="a23fcef8ce7f9327966b835537c0c813d" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual CommDataEncoder::‾CommDataEncoder </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>デストラクタ </p>
+
+<p> <a class="el" href="_encoder_8h_source.html">Encoder.h</a> の <a class="el" href="_encoder_8h_source.html#l00087">87</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>変数</h2>
+<a class="anchor" id="a7294823daf9d0efcc6500b11831c5d1b"></a><!-- doxytag: member="CommDataEncoder::m_buf" ref="a7294823daf9d0efcc6500b11831c5d1b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* <a class="el" href="class_comm_data_encoder.html#a7294823daf9d0efcc6500b11831c5d1b">CommDataEncoder::m_buf</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_encoder_8h_source.html">Encoder.h</a> の <a class="el" href="_encoder_8h_source.html#l00036">36</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a321de8f9b37c4adcfd5f687df96d613b"></a><!-- doxytag: member="CommDataEncoder::m_bufsize" ref="a321de8f9b37c4adcfd5f687df96d613b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="class_comm_data_encoder.html#a321de8f9b37c4adcfd5f687df96d613b">CommDataEncoder::m_bufsize</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>パケットバッファ </p>
+
+<p> <a class="el" href="_encoder_8h_source.html">Encoder.h</a> の <a class="el" href="_encoder_8h_source.html#l00037">37</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_encoder_8h_source.html">Encoder.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:18 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

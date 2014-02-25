@@ -1,0 +1,739 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGViewer: クラス Sgv::Serializer</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_sgv.html">Sgv</a>::<a class="el" href="class_sgv_1_1_serializer.html">Serializer</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Sgv::Serializer</h1><!-- doxytag: class="Sgv::Serializer" -->シミュレーション状況の録画・再生のためのシリアライズ用クラス  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_sgv_serializer_8h_source.html">SgvSerializer.h</a>&gt;</code>
+<p>
+
+<p>
+<a href="class_sgv_1_1_serializer-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_serializer.html#f47e948f457dba1b9c7d974b41c88858">clear</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">内部データをすべてクリアする  <a href="#f47e948f457dba1b9c7d974b41c88858"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_serializer.html#07ba4eee3d077015fdaf4c6516d2078b">countWorld</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">現在バイナリデータに格納されている世界の個数を返す  <a href="#07ba4eee3d077015fdaf4c6516d2078b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">SimWorld *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_serializer.html#525b80c2e8c406e85f3b0af4aed9eaac">deserializeWorld</a> (int iWorld, double &amp;t)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">iWorld番目の世界をバイナリデータから実体化(=SimWorld化）する．  <a href="#525b80c2e8c406e85f3b0af4aed9eaac"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_serializer.html#0e3ba38bf3b11e3bcae6092b3d2051fb">dumpMemory</a> (FILE *fp, unsigned char *p, unsigned int size)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">メモリブロックをファイルにダンプする（テスト用）  <a href="#0e3ba38bf3b11e3bcae6092b3d2051fb"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_serializer.html#217292714bdf6b0cf5d2e77dafbfdec7">getBinaryData</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">シリアライズされたバイナリデータへのポインタを得る  <a href="#217292714bdf6b0cf5d2e77dafbfdec7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_serializer.html#e4f29844d850782cfd9d24ebe16b5ac7">getBinarySize</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">シリアライズされたバイナリデータのサイズを得る  <a href="#e4f29844d850782cfd9d24ebe16b5ac7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_serializer.html#e9435654a9160c9f6bd7bacf90b1ffa1">readFromFile</a> (FILE *fp, bool bCompress)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デシリアライズを行う  <a href="#e9435654a9160c9f6bd7bacf90b1ffa1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_serializer.html#818eee14ff91bb535251f15a62dbcf18">readFromFile</a> (const char *inFile, bool bCompress)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デシリアライズを行う  <a href="#818eee14ff91bb535251f15a62dbcf18"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_serializer.html#15a1d84bbfc5a0352d91f42d0f1fd1bb">readX3DNameInfoFrom</a> (<a class="el" href="class_sgv_1_1_x3_d_name_resolver.html">X3DNameResolver</a> &amp;nr)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">引数に与えられたX3DNameResolverの情報を取り出して このオブジェクトにセットする.  <a href="#15a1d84bbfc5a0352d91f42d0f1fd1bb"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_serializer.html#48409c992ce5e9299d383b65a5ff26dc">Serializer</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#48409c992ce5e9299d383b65a5ff26dc"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_serializer.html#970e26aa1a72190d4cfb69847e00b7cb">serializeWorld</a> (double t, SimWorld *w)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">SimWorldをシリアライズしてバッファに追加.  <a href="#970e26aa1a72190d4cfb69847e00b7cb"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_serializer.html#6419f4a1a131d3458bc53c42e1b12a05">test1</a> (const char *outFile)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">テスト（その1）  <a href="#6419f4a1a131d3458bc53c42e1b12a05"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_serializer.html#68f4bffc35ab9d5628c9e9404131de03">test2</a> (const char *outFile)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">テスト（その2）  <a href="#68f4bffc35ab9d5628c9e9404131de03"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_serializer.html#03a315b1f1df7175bb7047be0267eb1f">test3</a> (const char *inFile, const char *outFile)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">テスト（その3）  <a href="#03a315b1f1df7175bb7047be0267eb1f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_serializer.html#2e46b9704ef704a4b2fc727c4fcf2595">writeHeader</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ヘッダ情報をバッファに書く  <a href="#2e46b9704ef704a4b2fc727c4fcf2595"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_serializer.html#2a2c2d1ca15a18e635772996f8e8da98">writeToFile</a> (FILE *fp, bool bCompress)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">バイナリデータをファイルに書き出す  <a href="#2a2c2d1ca15a18e635772996f8e8da98"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_serializer.html#38582fa9a240e28bfac4996f43c4bcf9">writeToFile</a> (const char *outFile, bool bCompress)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">バイナリデータをファイルに書き出す  <a href="#38582fa9a240e28bfac4996f43c4bcf9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_serializer.html#9787c9b06730dc57caadb570100f7bd2">writeX3DNameInfoTo</a> (<a class="el" href="class_sgv_1_1_x3_d_name_resolver.html">X3DNameResolver</a> &amp;nr)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><a class="el" href="class_sgv_1_1_serializer.html#818eee14ff91bb535251f15a62dbcf18" title="デシリアライズを行う">readFromFile()</a>により読み込んだsvdファイルの持っている 「クラス名 --&gt; X3Dファイル名」 のマップ情報を、引数のX3DNameResolverに書き出す  <a href="#9787c9b06730dc57caadb570100f7bd2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_serializer.html#828e7375ef950be05d277c9bd27437e9">‾Serializer</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#828e7375ef950be05d277c9bd27437e9"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+シミュレーション状況の録画・再生のためのシリアライズ用クラス 
+<p>
+録画時には、世界情報がこのクラスに書き込まれ、バイナリ化される． 再生時には、バイナリデータから世界情報が復元される． 
+<p> <a class="el" href="_sgv_serializer_8h_source.html">SgvSerializer.h</a> の <a class="el" href="_sgv_serializer_8h_source.html#l00025">25</a> 行で定義されています。</p>
+<hr><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" name="48409c992ce5e9299d383b65a5ff26dc"></a><!-- doxytag: member="Sgv::Serializer::Serializer" ref="48409c992ce5e9299d383b65a5ff26dc" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::Serializer::Serializer           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_serializer_8cpp_source.html">SgvSerializer.cpp</a> の <a class="el" href="_sgv_serializer_8cpp_source.html#l00032">32</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>関数</h2>
+<a class="anchor" name="f47e948f457dba1b9c7d974b41c88858"></a><!-- doxytag: member="Sgv::Serializer::clear" ref="f47e948f457dba1b9c7d974b41c88858" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::Serializer::clear           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+内部データをすべてクリアする 
+<p>
+確保しているメモリもすべて開放される 
+<p> <a class="el" href="_sgv_serializer_8cpp_source.html">SgvSerializer.cpp</a> の <a class="el" href="_sgv_serializer_8cpp_source.html#l00051">51</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="07ba4eee3d077015fdaf4c6516d2078b"></a><!-- doxytag: member="Sgv::Serializer::countWorld" ref="07ba4eee3d077015fdaf4c6516d2078b" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Sgv::Serializer::countWorld           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+現在バイナリデータに格納されている世界の個数を返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>世界の個数 </dd></dl>
+
+<p> <a class="el" href="_sgv_serializer_8cpp_source.html">SgvSerializer.cpp</a> の <a class="el" href="_sgv_serializer_8cpp_source.html#l00816">816</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="525b80c2e8c406e85f3b0af4aed9eaac"></a><!-- doxytag: member="Sgv::Serializer::deserializeWorld" ref="525b80c2e8c406e85f3b0af4aed9eaac" args="(int iWorld, double &amp;t)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SimWorld * Sgv::Serializer::deserializeWorld           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iWorld</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double &amp;&nbsp;</td>
+          <td class="paramname"> <em>t</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+iWorld番目の世界をバイナリデータから実体化(=SimWorld化）する． 
+<p>
+返り値は不要になってもdeleteしてはいけない．<p>
+開放はこのオブジェクトのclear()かデストラクタで 行われる．<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>iWorld</em>&nbsp;</td><td>[i] 世界インデックス </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>t</em>&nbsp;</td><td>[o] iWorldに対応する時間</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>復元されたシミュレーション世界へのポインタ </dd></dl>
+
+<p> <a class="el" href="_sgv_serializer_8cpp_source.html">SgvSerializer.cpp</a> の <a class="el" href="_sgv_serializer_8cpp_source.html#l00376">376</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="0e3ba38bf3b11e3bcae6092b3d2051fb"></a><!-- doxytag: member="Sgv::Serializer::dumpMemory" ref="0e3ba38bf3b11e3bcae6092b3d2051fb" args="(FILE *fp, unsigned char *p, unsigned int size)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::Serializer::dumpMemory           </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&nbsp;</td>
+          <td class="paramname"> <em>fp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char *&nbsp;</td>
+          <td class="paramname"> <em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&nbsp;</td>
+          <td class="paramname"> <em>size</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+メモリブロックをファイルにダンプする（テスト用） 
+<p>
+
+<p> <a class="el" href="_sgv_serializer_8cpp_source.html">SgvSerializer.cpp</a> の <a class="el" href="_sgv_serializer_8cpp_source.html#l00966">966</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="217292714bdf6b0cf5d2e77dafbfdec7"></a><!-- doxytag: member="Sgv::Serializer::getBinaryData" ref="217292714bdf6b0cf5d2e77dafbfdec7" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char * Sgv::Serializer::getBinaryData           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+シリアライズされたバイナリデータへのポインタを得る 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>バイナリデータへのポインタ </dd></dl>
+
+<p> <a class="el" href="_sgv_serializer_8cpp_source.html">SgvSerializer.cpp</a> の <a class="el" href="_sgv_serializer_8cpp_source.html#l00190">190</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="e4f29844d850782cfd9d24ebe16b5ac7"></a><!-- doxytag: member="Sgv::Serializer::getBinarySize" ref="e4f29844d850782cfd9d24ebe16b5ac7" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int Sgv::Serializer::getBinarySize           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+シリアライズされたバイナリデータのサイズを得る 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>バイナリデータのサイズ(単位:バイト) </dd></dl>
+
+<p> <a class="el" href="_sgv_serializer_8cpp_source.html">SgvSerializer.cpp</a> の <a class="el" href="_sgv_serializer_8cpp_source.html#l00195">195</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="e9435654a9160c9f6bd7bacf90b1ffa1"></a><!-- doxytag: member="Sgv::Serializer::readFromFile" ref="e9435654a9160c9f6bd7bacf90b1ffa1" args="(FILE *fp, bool bCompress)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::Serializer::readFromFile           </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&nbsp;</td>
+          <td class="paramname"> <em>fp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bCompress</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+デシリアライズを行う 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>fp</em>&nbsp;</td><td>[i] 入力ファイルポインタ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bCompress</em>&nbsp;</td><td>[i] true(=圧縮ファイルとして読み込む), false(=通常ファイルとして読み込む)</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_serializer_8cpp_source.html">SgvSerializer.cpp</a> の <a class="el" href="_sgv_serializer_8cpp_source.html#l00244">244</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="818eee14ff91bb535251f15a62dbcf18"></a><!-- doxytag: member="Sgv::Serializer::readFromFile" ref="818eee14ff91bb535251f15a62dbcf18" args="(const char *inFile, bool bCompress)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::Serializer::readFromFile           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>inFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bCompress</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+デシリアライズを行う 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>inFile</em>&nbsp;</td><td>[i] 入力ファイル名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bCompress</em>&nbsp;</td><td>[i] true(=圧縮ファイルとして読み込む), false(=通常ファイルとして読み込む)</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_serializer_8cpp_source.html">SgvSerializer.cpp</a> の <a class="el" href="_sgv_serializer_8cpp_source.html#l00233">233</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="15a1d84bbfc5a0352d91f42d0f1fd1bb"></a><!-- doxytag: member="Sgv::Serializer::readX3DNameInfoFrom" ref="15a1d84bbfc5a0352d91f42d0f1fd1bb" args="(X3DNameResolver &amp;nr)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::Serializer::readX3DNameInfoFrom           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_x3_d_name_resolver.html">X3DNameResolver</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>nr</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+引数に与えられたX3DNameResolverの情報を取り出して このオブジェクトにセットする. 
+<p>
+セットされた情報はsvdファイルのセーブ時にファイルに書き出される<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>nr</em>&nbsp;</td><td>[i] 入力</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_serializer_8cpp_source.html">SgvSerializer.cpp</a> の <a class="el" href="_sgv_serializer_8cpp_source.html#l00063">63</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="970e26aa1a72190d4cfb69847e00b7cb"></a><!-- doxytag: member="Sgv::Serializer::serializeWorld" ref="970e26aa1a72190d4cfb69847e00b7cb" args="(double t, SimWorld *w)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::Serializer::serializeWorld           </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SimWorld *&nbsp;</td>
+          <td class="paramname"> <em>w</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+SimWorldをシリアライズしてバッファに追加. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>t</em>&nbsp;</td><td>[i] 時間 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>w</em>&nbsp;</td><td>[i] シミュレーション世界</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_serializer_8cpp_source.html">SgvSerializer.cpp</a> の <a class="el" href="_sgv_serializer_8cpp_source.html#l00117">117</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="6419f4a1a131d3458bc53c42e1b12a05"></a><!-- doxytag: member="Sgv::Serializer::test1" ref="6419f4a1a131d3458bc53c42e1b12a05" args="(const char *outFile)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::Serializer::test1           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>outFile</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+テスト（その1） 
+<p>
+
+<p> <a class="el" href="_sgv_serializer_8cpp_source.html">SgvSerializer.cpp</a> の <a class="el" href="_sgv_serializer_8cpp_source.html#l00989">989</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="68f4bffc35ab9d5628c9e9404131de03"></a><!-- doxytag: member="Sgv::Serializer::test2" ref="68f4bffc35ab9d5628c9e9404131de03" args="(const char *outFile)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::Serializer::test2           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>outFile</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+テスト（その2） 
+<p>
+
+<p> <a class="el" href="_sgv_serializer_8cpp_source.html">SgvSerializer.cpp</a> の <a class="el" href="_sgv_serializer_8cpp_source.html#l01036">1036</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="03a315b1f1df7175bb7047be0267eb1f"></a><!-- doxytag: member="Sgv::Serializer::test3" ref="03a315b1f1df7175bb7047be0267eb1f" args="(const char *inFile, const char *outFile)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::Serializer::test3           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>inFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>outFile</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+テスト（その3） 
+<p>
+
+<p> <a class="el" href="_sgv_serializer_8cpp_source.html">SgvSerializer.cpp</a> の <a class="el" href="_sgv_serializer_8cpp_source.html#l01066">1066</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="2e46b9704ef704a4b2fc727c4fcf2595"></a><!-- doxytag: member="Sgv::Serializer::writeHeader" ref="2e46b9704ef704a4b2fc727c4fcf2595" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::Serializer::writeHeader           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ヘッダ情報をバッファに書く 
+<p>
+
+<p> <a class="el" href="_sgv_serializer_8cpp_source.html">SgvSerializer.cpp</a> の <a class="el" href="_sgv_serializer_8cpp_source.html#l00099">99</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="2a2c2d1ca15a18e635772996f8e8da98"></a><!-- doxytag: member="Sgv::Serializer::writeToFile" ref="2a2c2d1ca15a18e635772996f8e8da98" args="(FILE *fp, bool bCompress)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::Serializer::writeToFile           </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&nbsp;</td>
+          <td class="paramname"> <em>fp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bCompress</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+バイナリデータをファイルに書き出す 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>fp</em>&nbsp;</td><td>[i] 出力ファイルポインタ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bCompress</em>&nbsp;</td><td>[i] true(=圧縮する), false(=圧縮しない)</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_serializer_8cpp_source.html">SgvSerializer.cpp</a> の <a class="el" href="_sgv_serializer_8cpp_source.html#l00211">211</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="38582fa9a240e28bfac4996f43c4bcf9"></a><!-- doxytag: member="Sgv::Serializer::writeToFile" ref="38582fa9a240e28bfac4996f43c4bcf9" args="(const char *outFile, bool bCompress)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::Serializer::writeToFile           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>outFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bCompress</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+バイナリデータをファイルに書き出す 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>outFile</em>&nbsp;</td><td>[i] 出力ファイル名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bCompress</em>&nbsp;</td><td>[i] true(=圧縮する), false(=圧縮しない)</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_serializer_8cpp_source.html">SgvSerializer.cpp</a> の <a class="el" href="_sgv_serializer_8cpp_source.html#l00200">200</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="9787c9b06730dc57caadb570100f7bd2"></a><!-- doxytag: member="Sgv::Serializer::writeX3DNameInfoTo" ref="9787c9b06730dc57caadb570100f7bd2" args="(X3DNameResolver &amp;nr)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::Serializer::writeX3DNameInfoTo           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_x3_d_name_resolver.html">X3DNameResolver</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>nr</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<a class="el" href="class_sgv_1_1_serializer.html#818eee14ff91bb535251f15a62dbcf18" title="デシリアライズを行う">readFromFile()</a>により読み込んだsvdファイルの持っている 「クラス名 --&gt; X3Dファイル名」 のマップ情報を、引数のX3DNameResolverに書き出す 
+<p>
+このメソッドは、デシリアライズ時に、 svdファイルの内容からX3DNameResolverを復元する際に使われる．<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>nr</em>&nbsp;</td><td>[o] 出力</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_serializer_8cpp_source.html">SgvSerializer.cpp</a> の <a class="el" href="_sgv_serializer_8cpp_source.html#l00083">83</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="828e7375ef950be05d277c9bd27437e9"></a><!-- doxytag: member="Sgv::Serializer::‾Serializer" ref="828e7375ef950be05d277c9bd27437e9" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::Serializer::‾Serializer           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+デストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_serializer_8cpp_source.html">SgvSerializer.cpp</a> の <a class="el" href="_sgv_serializer_8cpp_source.html#l00046">46</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_sgv_serializer_8h_source.html">SgvSerializer.h</a><li><a class="el" href="_sgv_serializer_8cpp_source.html">SgvSerializer.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGViewerに対してThu Jun 9 10:52:15 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

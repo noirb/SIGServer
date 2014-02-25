@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>SIGVerse_Controller: Vector3d.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>Vector3d.h</h1><a href="_vector3d_8h.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/* $Id: _vector3d_8h_source.html,v 1.2 2011-12-14 07:55:14 okamoto Exp $ */</span> 
+<a name="l00002"></a>00002 <span class="preprocessor">#ifndef Vector3d_h</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span><span class="preprocessor">#define Vector3d_h</span>
+<a name="l00004"></a>00004 <span class="preprocessor"></span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include &lt;math.h&gt;</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include &quot;<a class="code" href="_position_8h.html">Position.h</a>&quot;</span>
+<a name="l00007"></a>00007 
+<a name="l00008"></a>00008 <span class="keyword">class </span><a class="code" href="class_rotation.html" title="回転行列クラス">Rotation</a>;
+<a name="l00009"></a>00009 <span class="comment"></span>
+<a name="l00010"></a>00010 <span class="comment">/**</span>
+<a name="l00011"></a>00011 <span class="comment"> * @brief 3次元ベクトルクラス</span>
+<a name="l00012"></a>00012 <span class="comment"> */</span>
+<a name="l00013"></a><a class="code" href="class_vector3d.html">00013</a> <span class="keyword">class </span><a class="code" href="class_vector3d.html" title="3次元ベクトルクラス">Vector3d</a>
+<a name="l00014"></a>00014 {
+<a name="l00015"></a>00015 <span class="keyword">private</span>:
+<a name="l00016"></a>00016     <span class="keywordtype">double</span>  m_x, m_y, m_z;
+<a name="l00017"></a>00017 <span class="keyword">public</span>:<span class="comment"></span>
+<a name="l00018"></a>00018 <span class="comment">    //! コンストラクタ</span>
+<a name="l00019"></a><a class="code" href="class_vector3d.html#aac098d8695c4288e4844835e62945244">00019</a> <span class="comment"></span>    <a class="code" href="class_vector3d.html#aac098d8695c4288e4844835e62945244" title="コンストラクタ">Vector3d</a>() : m_x(0.0), m_y(0.0), m_z(0.0) {;}<span class="comment"></span>
+<a name="l00020"></a>00020 <span class="comment">    /**</span>
+<a name="l00021"></a>00021 <span class="comment">     * @brief コピーコンストラクタ</span>
+<a name="l00022"></a>00022 <span class="comment">     * @param x_ X軸要素</span>
+<a name="l00023"></a>00023 <span class="comment">     * @param y_ Y軸要素</span>
+<a name="l00024"></a>00024 <span class="comment">     * @param z_ Z軸要素</span>
+<a name="l00025"></a>00025 <span class="comment">     */</span>
+<a name="l00026"></a><a class="code" href="class_vector3d.html#ac22cd82cd075d2b855048e0ad58a4256">00026</a>     <a class="code" href="class_vector3d.html#ac22cd82cd075d2b855048e0ad58a4256" title="コピーコンストラクタ">Vector3d</a>(<span class="keywordtype">double</span> x_, <span class="keywordtype">double</span> y_, <span class="keywordtype">double</span> z_) : m_x(x_), m_y(y_), m_z(z_) {;}<span class="comment"></span>
+<a name="l00027"></a>00027 <span class="comment">    //! コピーコンストラクタ</span>
+<a name="l00028"></a><a class="code" href="class_vector3d.html#ab682fcf60b709d723f50598162a5e245">00028</a> <span class="comment"></span>    <a class="code" href="class_vector3d.html#ab682fcf60b709d723f50598162a5e245" title="コピーコンストラクタ">Vector3d</a>(<span class="keyword">const</span> <a class="code" href="class_vector3d.html" title="3次元ベクトルクラス">Vector3d</a> &amp;o) : m_x(o.m_x), m_y(o.m_y), m_z(o.m_z) {;}
+<a name="l00029"></a>00029 <span class="comment"></span>
+<a name="l00030"></a>00030 <span class="comment">    //! 各要素を設定する</span>
+<a name="l00031"></a><a class="code" href="class_vector3d.html#a48b289797e79e11e7dac828f1900321a">00031</a> <span class="comment"></span>    <span class="keywordtype">void</span>    <span class="keyword">set</span>(<span class="keywordtype">double</span> x_, <span class="keywordtype">double</span> y_, <span class="keywordtype">double</span> z_)
+<a name="l00032"></a>00032     {
+<a name="l00033"></a>00033         m_x = x_; m_y = y_; m_z = z_;
+<a name="l00034"></a>00034     }
+<a name="l00035"></a>00035 <span class="comment"></span>
+<a name="l00036"></a>00036 <span class="comment">    /**</span>
+<a name="l00037"></a>00037 <span class="comment">     * @brief ベクトルを平行移動させる</span>
+<a name="l00038"></a>00038 <span class="comment">     * @param v 並進ベクトル</span>
+<a name="l00039"></a>00039 <span class="comment">     */</span>
+<a name="l00040"></a><a class="code" href="class_vector3d.html#a3a8fc529dcae7c73e3e10df694bd390e">00040</a>     <span class="keywordtype">void</span>    <a class="code" href="class_vector3d.html#a3a8fc529dcae7c73e3e10df694bd390e" title="ベクトルを平行移動させる">shift</a>(<span class="keyword">const</span> <a class="code" href="class_vector3d.html" title="3次元ベクトルクラス">Vector3d</a> &amp;v)
+<a name="l00041"></a>00041     {
+<a name="l00042"></a>00042         m_x += v.<a class="code" href="class_vector3d.html#a4e77e669055f31f2b244b1ee37ffa36f" title="X軸要素を設定する.">x</a>(); m_y += v.<a class="code" href="class_vector3d.html#aa543c5f9ab89744357a80dd1ab6031cb" title="Y軸要素を設定する.">y</a>(); m_z += v.<a class="code" href="class_vector3d.html#ac95aee85033af052d24e15975faeea7d" title="Z軸要素を設定する.">z</a>();
+<a name="l00043"></a>00043     }
+<a name="l00044"></a>00044 <span class="comment"></span>
+<a name="l00045"></a>00045 <span class="comment">    /**</span>
+<a name="l00046"></a>00046 <span class="comment">     * @brief ベクトルを平行移動させる</span>
+<a name="l00047"></a>00047 <span class="comment">     * @param x_ 並進ベクトルX軸要素</span>
+<a name="l00048"></a>00048 <span class="comment">     * @param y_ 並進ベクトルY軸要素</span>
+<a name="l00049"></a>00049 <span class="comment">     * @param z_ 並進ベクトルZ軸要素</span>
+<a name="l00050"></a>00050 <span class="comment">     */</span>
+<a name="l00051"></a><a class="code" href="class_vector3d.html#aff387e8541983c00e48fd49a15e6aaec">00051</a>     <span class="keywordtype">void</span>    <a class="code" href="class_vector3d.html#a3a8fc529dcae7c73e3e10df694bd390e" title="ベクトルを平行移動させる">shift</a>(<span class="keywordtype">double</span> x_, <span class="keywordtype">double</span> y_, <span class="keywordtype">double</span> z_)
+<a name="l00052"></a>00052     {
+<a name="l00053"></a>00053         m_x += x_; m_y += y_; m_z += z_;
+<a name="l00054"></a>00054     }
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056     
+<a name="l00057"></a><a class="code" href="class_vector3d.html#a4e77e669055f31f2b244b1ee37ffa36f">00057</a>     <span class="keywordtype">void</span>    <a class="code" href="class_vector3d.html#a4e77e669055f31f2b244b1ee37ffa36f" title="X軸要素を設定する.">x</a>(<span class="keywordtype">double</span> v) { m_x = v; } <span class="comment">//!&lt; X軸要素を設定する</span>
+<a name="l00058"></a><a class="code" href="class_vector3d.html#aa543c5f9ab89744357a80dd1ab6031cb">00058</a> <span class="comment"></span>    <span class="keywordtype">void</span>    <a class="code" href="class_vector3d.html#aa543c5f9ab89744357a80dd1ab6031cb" title="Y軸要素を設定する.">y</a>(<span class="keywordtype">double</span> v) { m_y = v; } <span class="comment">//!&lt; Y軸要素を設定する</span>
+<a name="l00059"></a><a class="code" href="class_vector3d.html#ac95aee85033af052d24e15975faeea7d">00059</a> <span class="comment"></span>    <span class="keywordtype">void</span>    <a class="code" href="class_vector3d.html#ac95aee85033af052d24e15975faeea7d" title="Z軸要素を設定する.">z</a>(<span class="keywordtype">double</span> v) { m_z = v; } <span class="comment">//!&lt; Z軸要素を設定する</span>
+<a name="l00060"></a>00060 <span class="comment"></span>
+<a name="l00061"></a>00061     
+<a name="l00062"></a><a class="code" href="class_vector3d.html#ab6586c96111982d02c099e9f3ad43192">00062</a>     <span class="keywordtype">double</span> <a class="code" href="class_vector3d.html#ab6586c96111982d02c099e9f3ad43192" title="X軸要素を取得する.">x</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_x; } <span class="comment">//!&lt; X軸要素を取得する</span>
+<a name="l00063"></a><a class="code" href="class_vector3d.html#ac8eb4baf468d77d74f500e6ef03ce35f">00063</a> <span class="comment"></span>    <span class="keywordtype">double</span> <a class="code" href="class_vector3d.html#ac8eb4baf468d77d74f500e6ef03ce35f" title="Y軸要素を取得する.">y</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_y; } <span class="comment">//!&lt; Y軸要素を取得する</span>
+<a name="l00064"></a><a class="code" href="class_vector3d.html#ac18348d2f3b81c974e9762cbc72aca2d">00064</a> <span class="comment"></span>    <span class="keywordtype">double</span> <a class="code" href="class_vector3d.html#ac18348d2f3b81c974e9762cbc72aca2d" title="Z軸要素を取得する.">z</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_z; } <span class="comment">//!&lt; Z軸要素を取得する</span>
+<a name="l00065"></a>00065 <span class="comment"></span><span class="comment"></span>
+<a name="l00066"></a>00066 <span class="comment">    //! +=演算子(shiftと等価)</span>
+<a name="l00067"></a><a class="code" href="class_vector3d.html#ae265cb9e90f0ddc3474bbffff895b8c2">00067</a> <span class="comment"></span>    <a class="code" href="class_vector3d.html" title="3次元ベクトルクラス">Vector3d</a> &amp; <a class="code" href="class_vector3d.html#ae265cb9e90f0ddc3474bbffff895b8c2" title="+=演算子(shiftと等価)">operator+=</a>(<span class="keyword">const</span> <a class="code" href="class_vector3d.html" title="3次元ベクトルクラス">Vector3d</a> &amp;o)
+<a name="l00068"></a>00068     {
+<a name="l00069"></a>00069         this-&gt;m_x += o.<a class="code" href="class_vector3d.html#a4e77e669055f31f2b244b1ee37ffa36f" title="X軸要素を設定する.">x</a>();
+<a name="l00070"></a>00070         this-&gt;m_y += o.<a class="code" href="class_vector3d.html#aa543c5f9ab89744357a80dd1ab6031cb" title="Y軸要素を設定する.">y</a>();
+<a name="l00071"></a>00071         this-&gt;m_z += o.<a class="code" href="class_vector3d.html#ac95aee85033af052d24e15975faeea7d" title="Z軸要素を設定する.">z</a>();
+<a name="l00072"></a>00072         <span class="keywordflow">return</span> *<span class="keyword">this</span>;
+<a name="l00073"></a>00073     }
+<a name="l00074"></a>00074 <span class="comment"></span>
+<a name="l00075"></a>00075 <span class="comment">    //! -=演算子(shiftと等価)</span>
+<a name="l00076"></a><a class="code" href="class_vector3d.html#aac3487719c258a9dc82c63c54582e009">00076</a> <span class="comment"></span>    <a class="code" href="class_vector3d.html" title="3次元ベクトルクラス">Vector3d</a> &amp; <a class="code" href="class_vector3d.html#aac3487719c258a9dc82c63c54582e009" title="-=演算子(shiftと等価)">operator-=</a>(<span class="keyword">const</span> <a class="code" href="class_vector3d.html" title="3次元ベクトルクラス">Vector3d</a> &amp;o)
+<a name="l00077"></a>00077     {
+<a name="l00078"></a>00078         this-&gt;m_x -= o.<a class="code" href="class_vector3d.html#a4e77e669055f31f2b244b1ee37ffa36f" title="X軸要素を設定する.">x</a>();
+<a name="l00079"></a>00079         this-&gt;m_y -= o.<a class="code" href="class_vector3d.html#aa543c5f9ab89744357a80dd1ab6031cb" title="Y軸要素を設定する.">y</a>();
+<a name="l00080"></a>00080         this-&gt;m_z -= o.<a class="code" href="class_vector3d.html#ac95aee85033af052d24e15975faeea7d" title="Z軸要素を設定する.">z</a>();
+<a name="l00081"></a>00081         <span class="keywordflow">return</span> *<span class="keyword">this</span>;
+<a name="l00082"></a>00082     }<span class="comment"></span>
+<a name="l00083"></a>00083 <span class="comment">    //! +=演算子(shiftと等価)</span>
+<a name="l00084"></a><a class="code" href="class_vector3d.html#aa881a3038cacd1ba5321eb45a45c8c80">00084</a> <span class="comment"></span>    <a class="code" href="class_vector3d.html" title="3次元ベクトルクラス">Vector3d</a> &amp; <a class="code" href="class_vector3d.html#ae265cb9e90f0ddc3474bbffff895b8c2" title="+=演算子(shiftと等価)">operator+=</a>(<span class="keyword">const</span> <a class="code" href="class_position.html" title="3次元位置クラス">Position</a> &amp;o)
+<a name="l00085"></a>00085     {
+<a name="l00086"></a>00086         this-&gt;m_x += o.<a class="code" href="class_position.html#aa97410c769815bc60c9412f387b555d1" title="X座標値を取得する.">x</a>();
+<a name="l00087"></a>00087         this-&gt;m_y += o.<a class="code" href="class_position.html#a5f7b9c53b81affdcf502f5059a6dc50a" title="Y座標値を取得する.">y</a>();
+<a name="l00088"></a>00088         this-&gt;m_z += o.<a class="code" href="class_position.html#a63f0cb5a9c08ef8af982cc18aa161395" title="Z座標値を取得する.">z</a>();
+<a name="l00089"></a>00089         <span class="keywordflow">return</span> *<span class="keyword">this</span>;
+<a name="l00090"></a>00090     }
+<a name="l00091"></a>00091 <span class="comment"></span>
+<a name="l00092"></a>00092 <span class="comment">    //! -=演算子(shiftと等価)</span>
+<a name="l00093"></a><a class="code" href="class_vector3d.html#a3ee73e796d85fed0a9d5d5063ba5566c">00093</a> <span class="comment"></span>    <a class="code" href="class_vector3d.html" title="3次元ベクトルクラス">Vector3d</a> &amp; <a class="code" href="class_vector3d.html#aac3487719c258a9dc82c63c54582e009" title="-=演算子(shiftと等価)">operator-=</a>(<span class="keyword">const</span> <a class="code" href="class_position.html" title="3次元位置クラス">Position</a> &amp;o)
+<a name="l00094"></a>00094     {
+<a name="l00095"></a>00095         this-&gt;m_x -= o.<a class="code" href="class_position.html#aa97410c769815bc60c9412f387b555d1" title="X座標値を取得する.">x</a>();
+<a name="l00096"></a>00096         this-&gt;m_y -= o.<a class="code" href="class_position.html#a5f7b9c53b81affdcf502f5059a6dc50a" title="Y座標値を取得する.">y</a>();
+<a name="l00097"></a>00097         this-&gt;m_z -= o.<a class="code" href="class_position.html#a63f0cb5a9c08ef8af982cc18aa161395" title="Z座標値を取得する.">z</a>();
+<a name="l00098"></a>00098         <span class="keywordflow">return</span> *<span class="keyword">this</span>;
+<a name="l00099"></a>00099     }
+<a name="l00100"></a>00100 <span class="comment"></span>
+<a name="l00101"></a>00101 <span class="comment">    //! *=演算子(各要素に指定の値を掛ける)</span>
+<a name="l00102"></a><a class="code" href="class_vector3d.html#aec414bd9779530b1a65270350aafb40d">00102</a> <span class="comment"></span>    <a class="code" href="class_vector3d.html" title="3次元ベクトルクラス">Vector3d</a> &amp; <a class="code" href="class_vector3d.html#aec414bd9779530b1a65270350aafb40d" title="*=演算子(各要素に指定の値を掛ける)">operator*=</a>(<span class="keywordtype">double</span> v)
+<a name="l00103"></a>00103     {
+<a name="l00104"></a>00104         this-&gt;m_x *= v;
+<a name="l00105"></a>00105         this-&gt;m_y *= v;
+<a name="l00106"></a>00106         this-&gt;m_z *= v;
+<a name="l00107"></a>00107         <span class="keywordflow">return</span> *<span class="keyword">this</span>;
+<a name="l00108"></a>00108     }
+<a name="l00109"></a>00109 <span class="comment"></span>
+<a name="l00110"></a>00110 <span class="comment">    //! /=演算子(各要素を指定の値で割る)</span>
+<a name="l00111"></a><a class="code" href="class_vector3d.html#ace78202b846fac81c6a496b8faeb905b">00111</a> <span class="comment"></span>    <a class="code" href="class_vector3d.html" title="3次元ベクトルクラス">Vector3d</a> &amp; <a class="code" href="class_vector3d.html#ace78202b846fac81c6a496b8faeb905b" title="/=演算子(各要素を指定の値で割る)">operator/=</a>(<span class="keywordtype">double</span> v)
+<a name="l00112"></a>00112     {
+<a name="l00113"></a>00113         this-&gt;m_x /= v;
+<a name="l00114"></a>00114         this-&gt;m_y /= v;
+<a name="l00115"></a>00115         this-&gt;m_z /= v;
+<a name="l00116"></a>00116         <span class="keywordflow">return</span> *<span class="keyword">this</span>;
+<a name="l00117"></a>00117     }
+<a name="l00118"></a>00118 <span class="comment"></span>
+<a name="l00119"></a>00119 <span class="comment">    //! ベクトルの長さ取得する</span>
+<a name="l00120"></a><a class="code" href="class_vector3d.html#a82081940072a072160ae905751d444e3">00120</a> <span class="comment"></span>    <span class="keywordtype">double</span> <a class="code" href="class_vector3d.html#a82081940072a072160ae905751d444e3" title="ベクトルの長さ取得する">length</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> sqrt(m_x*m_x + m_y*m_y + m_z*m_z); }
+<a name="l00121"></a>00121 <span class="comment"></span>
+<a name="l00122"></a>00122 <span class="comment">    /**</span>
+<a name="l00123"></a>00123 <span class="comment">     * 与えられたベクトルと成す角を得る</span>
+<a name="l00124"></a>00124 <span class="comment">     * @return cosθ(-1〜1の範囲)</span>
+<a name="l00125"></a>00125 <span class="comment">     */</span>
+<a name="l00126"></a><a class="code" href="class_vector3d.html#ad9bdbe6cad60e1b1ca34cca8e7613abc">00126</a>     <span class="keywordtype">double</span> <a class="code" href="class_vector3d.html#ad9bdbe6cad60e1b1ca34cca8e7613abc">angle</a>(<span class="keyword">const</span> <a class="code" href="class_vector3d.html" title="3次元ベクトルクラス">Vector3d</a> &amp;axis)
+<a name="l00127"></a>00127     {
+<a name="l00128"></a>00128         <span class="keywordtype">double</span> prod = m_x*axis.m_x + m_y*axis.m_y + m_z*axis.m_z;
+<a name="l00129"></a>00129         <span class="keywordtype">double</span> v = <a class="code" href="class_vector3d.html#a82081940072a072160ae905751d444e3" title="ベクトルの長さ取得する">length</a>() * axis.<a class="code" href="class_vector3d.html#a82081940072a072160ae905751d444e3" title="ベクトルの長さ取得する">length</a>();
+<a name="l00130"></a>00130         <span class="keywordflow">return</span> prod/v;
+<a name="l00131"></a>00131 
+<a name="l00132"></a>00132     }
+<a name="l00133"></a>00133 <span class="comment"></span>
+<a name="l00134"></a>00134 <span class="comment">    //! ベクトルを規格化する(長さを1にする)</span>
+<a name="l00135"></a><a class="code" href="class_vector3d.html#a3b031247cf3fba0d1370359702e97bd8">00135</a> <span class="comment"></span>    <span class="keywordtype">void</span>    <a class="code" href="class_vector3d.html#a3b031247cf3fba0d1370359702e97bd8" title="ベクトルを規格化する(長さを1にする)">normalize</a>()
+<a name="l00136"></a>00136     {
+<a name="l00137"></a>00137         <span class="keywordtype">double</span> l = <a class="code" href="class_vector3d.html#a82081940072a072160ae905751d444e3" title="ベクトルの長さ取得する">length</a>();
+<a name="l00138"></a>00138         m_x /=l; m_y/=l; m_z/=l;
+<a name="l00139"></a>00139     }
+<a name="l00140"></a>00140 
+<a name="l00141"></a>00141     <span class="comment">/*</span>
+<a name="l00142"></a>00142 <span class="comment">      070809 yoshi</span>
+<a name="l00143"></a>00143 <span class="comment">      shared library で使用するとロードに失敗する </span>
+<a name="l00144"></a>00144 <span class="comment">    */</span><span class="comment"></span>
+<a name="l00145"></a>00145 <span class="comment">    /**</span>
+<a name="l00146"></a>00146 <span class="comment">     * @brief ベクトルを回転する</span>
+<a name="l00147"></a>00147 <span class="comment">     * @param r 回転行列</span>
+<a name="l00148"></a>00148 <span class="comment">     * @return 回転後のベクトル</span>
+<a name="l00149"></a>00149 <span class="comment">     */</span>
+<a name="l00150"></a>00150     <a class="code" href="class_vector3d.html" title="3次元ベクトルクラス">Vector3d</a> &amp; <a class="code" href="class_vector3d.html#acf4caff93dbc854e34063ba5a239bed0" title="ベクトルを回転する">rotate</a>(<span class="keyword">const</span> <a class="code" href="class_rotation.html" title="回転行列クラス">Rotation</a> &amp;r);
+<a name="l00151"></a>00151 };
+<a name="l00152"></a>00152 
+<a name="l00153"></a>00153 
+<a name="l00154"></a>00154 <span class="preprocessor">#endif // Vector3d_h</span>
+<a name="l00155"></a>00155 <span class="preprocessor"></span> 
+</pre></div></div>
+<hr class="footer"/><address style="text-align: right;"><small>SIGVerse_Controllerに対してTue Dec 13 19:10:58 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

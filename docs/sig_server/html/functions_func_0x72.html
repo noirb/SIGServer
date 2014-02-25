@@ -1,0 +1,386 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: 構成メンバ - 関数</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li class="current"><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="functions.html"><span>全て</span></a></li>
+      <li class="current"><a href="functions_func.html"><span>関数</span></a></li>
+      <li><a href="functions_vars.html"><span>変数</span></a></li>
+      <li><a href="functions_type.html"><span>型定義</span></a></li>
+      <li><a href="functions_enum.html"><span>列挙型</span></a></li>
+      <li><a href="functions_eval.html"><span>列挙型の値</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="functions_func.html#index_a"><span>a</span></a></li>
+      <li><a href="functions_func_0x62.html#index_b"><span>b</span></a></li>
+      <li><a href="functions_func_0x63.html#index_c"><span>c</span></a></li>
+      <li><a href="functions_func_0x64.html#index_d"><span>d</span></a></li>
+      <li><a href="functions_func_0x65.html#index_e"><span>e</span></a></li>
+      <li><a href="functions_func_0x66.html#index_f"><span>f</span></a></li>
+      <li><a href="functions_func_0x67.html#index_g"><span>g</span></a></li>
+      <li><a href="functions_func_0x68.html#index_h"><span>h</span></a></li>
+      <li><a href="functions_func_0x69.html#index_i"><span>i</span></a></li>
+      <li><a href="functions_func_0x6a.html#index_j"><span>j</span></a></li>
+      <li><a href="functions_func_0x6b.html#index_k"><span>k</span></a></li>
+      <li><a href="functions_func_0x6c.html#index_l"><span>l</span></a></li>
+      <li><a href="functions_func_0x6d.html#index_m"><span>m</span></a></li>
+      <li><a href="functions_func_0x6e.html#index_n"><span>n</span></a></li>
+      <li><a href="functions_func_0x6f.html#index_o"><span>o</span></a></li>
+      <li><a href="functions_func_0x70.html#index_p"><span>p</span></a></li>
+      <li><a href="functions_func_0x71.html#index_q"><span>q</span></a></li>
+      <li class="current"><a href="functions_func_0x72.html#index_r"><span>r</span></a></li>
+      <li><a href="functions_func_0x73.html#index_s"><span>s</span></a></li>
+      <li><a href="functions_func_0x74.html#index_t"><span>t</span></a></li>
+      <li><a href="functions_func_0x75.html#index_u"><span>u</span></a></li>
+      <li><a href="functions_func_0x76.html#index_v"><span>v</span></a></li>
+      <li><a href="functions_func_0x77.html#index_w"><span>w</span></a></li>
+      <li><a href="functions_func_0x78.html#index_x"><span>x</span></a></li>
+      <li><a href="functions_func_0x79.html#index_y"><span>y</span></a></li>
+      <li><a href="functions_func_0x7a.html#index_z"><span>z</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+&nbsp;
+
+<h3><a class="anchor" id="index_r">- r -</a></h3><ul>
+<li>r()
+: <a class="el" href="class_simple_shape_elem.html#a7a41b58b324779ca0285e81d543dbb04">SimpleShapeElem</a>
+</li>
+<li>radius()
+: <a class="el" href="class_cylinder_parts_cmpnt.html#a81d1a5665475b82e80dde077debbfbb5">CylinderPartsCmpnt</a>
+, <a class="el" href="class_sphere_parts_cmpnt.html#a486dc373d6c3326abcc3b63da2b4d1b6">SpherePartsCmpnt</a>
+, <a class="el" href="class_cylinder_parts_cmpnt.html#a796b620a979d9f2f2653afa1169dcd48">CylinderPartsCmpnt</a>
+</li>
+<li>RawDataEncoder()
+: <a class="el" href="class_comm_data_1_1_raw_data_encoder.html#a494c8af319b7f024ae5c1a483e6dd102">CommData::RawDataEncoder</a>
+</li>
+<li>RawSound()
+: <a class="el" href="class_raw_sound.html#acadddf978e412ffaad1c69363bf5f3d6">RawSound</a>
+</li>
+<li>RawSoundHeader()
+: <a class="el" href="class_raw_sound_header.html#a8f774c7b1ac2ad07fb1486299e2275b4">RawSoundHeader</a>
+</li>
+<li>read()
+: <a class="el" href="class_c_t_reader.html#a78616b484be8f537b4b3a7b6ec8b2a96">CTReader</a>
+, <a class="el" href="class_body_x_m_l_reader.html#a94b5fb095845fe9f54c224846f152798">BodyXMLReader</a>
+, <a class="el" href="class_entity_x_m_l_reader.html#aa97d10965d2bff9859bb95925ddb9a3c">EntityXMLReader</a>
+, <a class="el" href="class_simple_shape_x_m_l_reader.html#a9cfe00513ac2b455c05339bae3d634f5">SimpleShapeXMLReader</a>
+, <a class="el" href="class_world_x_m_l_reader.html#a40ff2aadd4ccc8ea1b87f6bdd75d1ba9">WorldXMLReader</a>
+, <a class="el" href="class_x3_d_file_reader.html#a4782594303e4cf9e3c442a7cb85c59e3">X3DFileReader</a>
+</li>
+<li>readSync()
+: <a class="el" href="class_c_t_reader.html#a565b1d42bf180bcbfeb92d065d4fb361">CTReader</a>
+</li>
+<li>recv()
+: <a class="el" href="class_sim_obj_1_1_request_sender.html#a7f0e1100865161fb70ba46b026157826">SimObj::RequestSender</a>
+</li>
+<li>recvDisplayText()
+: <a class="el" href="class_comm_data_listener.html#ac8bc98ad1877f328a7dc7d961d87d625">CommDataListener</a>
+</li>
+<li>RecvEntitiesEvent()
+: <a class="el" href="class_recv_entities_event.html#aa148e8948e60d60eccdca809b2b9d57d">RecvEntitiesEvent</a>
+</li>
+<li>recvLogMsg()
+: <a class="el" href="class_comm_data_listener.html#a57984996527a7283458ee5bfc8db4faf">CommDataListener</a>
+</li>
+<li>recvRequestAddJointTorque()
+: <a class="el" href="class_comm_data_listener.html#a2ee41cb34be0cbdb994056673f0aaada">CommDataListener</a>
+</li>
+<li>recvRequestAttachController()
+: <a class="el" href="class_comm_data_listener.html#a3aa11912ecb9666afde93b9e7ba6fe05">CommDataListener</a>
+</li>
+<li>recvRequestAttachView()
+: <a class="el" href="class_comm_data_listener.html#abf8dda9f94d19434e7211f426317e1fe">CommDataListener</a>
+</li>
+<li>recvRequestCaptureViewImage()
+: <a class="el" href="class_comm_data_listener.html#a8cb12514d9146e0f502541c44ffde634">CommDataListener</a>
+</li>
+<li>recvRequestConnectDataPort()
+: <a class="el" href="class_comm_data_listener.html#ae971bcad2262813d42947076d1e812b6">CommDataListener</a>
+</li>
+<li>recvRequestConnectJoint()
+: <a class="el" href="class_comm_data_listener.html#abae5d043330e0a66664add945cadbacf">CommDataListener</a>
+</li>
+<li>recvRequestDetectEntities()
+: <a class="el" href="class_comm_data_listener.html#a74b19dde60d9ff74a9d78ae8b45b80bc">CommDataListener</a>
+</li>
+<li>recvRequestDistanceSensor()
+: <a class="el" href="class_comm_data_listener.html#a51209bcaefb77d84597ca10480ffca05">CommDataListener</a>
+</li>
+<li>recvRequestGetAllEntities()
+: <a class="el" href="class_comm_data_listener.html#a5a6b6fe5a53f25217fbf65f62af05058">CommDataListener</a>
+</li>
+<li>recvRequestGetEntity()
+: <a class="el" href="class_comm_data_listener.html#ad2d2cb612b804e7049d5ff1e55bd661a">CommDataListener</a>
+</li>
+<li>recvRequestGetJointAngle()
+: <a class="el" href="class_comm_data_listener.html#a504080856735ca58b4dca9d833206649">CommDataListener</a>
+</li>
+<li>recvRequestGetJointForce()
+: <a class="el" href="class_comm_data_listener.html#a40e0edc69943942e7db5c3e343428149">CommDataListener</a>
+</li>
+<li>recvRequestGetObjectNames()
+: <a class="el" href="class_comm_data_listener.html#a79791d46ed776cc1f69f1f40968856ee">CommDataListener</a>
+</li>
+<li>recvRequestNSPinger()
+: <a class="el" href="class_comm_data_listener.html#a3aa37933d3d41ccf1d3ee1679711b696">CommDataListener</a>
+</li>
+<li>recvRequestNSQuery()
+: <a class="el" href="class_comm_data_listener.html#a60be929b562c4ddec6dd2cfcf0375554">CommDataListener</a>
+</li>
+<li>recvRequestProvideService()
+: <a class="el" href="class_comm_data_listener.html#a8324bdb94dd81f4e907fcd025351fdd9">CommDataListener</a>
+</li>
+<li>recvRequestReleaseJoint()
+: <a class="el" href="class_comm_data_listener.html#ae914c49cba956c4a7250149351503bf6">CommDataListener</a>
+</li>
+<li>recvRequestSetJointAngle()
+: <a class="el" href="class_comm_data_listener.html#a33e86ef26535d63cc2f49a9e335f7568">CommDataListener</a>
+</li>
+<li>recvRequestSetJointQuaternion()
+: <a class="el" href="class_comm_data_listener.html#ae9985fe0071a284119e3abe924ed206b">CommDataListener</a>
+</li>
+<li>recvRequestSetJointVelocity()
+: <a class="el" href="class_comm_data_listener.html#a6ca0da2989c200e2fbfc9f53c0a01e8a">CommDataListener</a>
+</li>
+<li>recvRequestSetObjectVelocity()
+: <a class="el" href="class_comm_data_listener.html#abc23954c8771061751403f3c1a23408e">CommDataListener</a>
+</li>
+<li>recvRequestSimCtrl()
+: <a class="el" href="class_comm_data_listener.html#a9db65806c488b9e191415c1816e0bd75">CommDataListener</a>
+</li>
+<li>recvRequestSoundRecog()
+: <a class="el" href="class_comm_data_listener.html#a0b9271b86c0a175ae29157bc8364723f">CommDataListener</a>
+</li>
+<li>recvRequestUpdateEntities()
+: <a class="el" href="class_comm_data_listener.html#af1f81d33f92d6ea8ccf4b5ffc5898a48">CommDataListener</a>
+</li>
+<li>recvResultAttachController()
+: <a class="el" href="class_comm_data_listener.html#ace777b1c3dd682735b625d8d333681b9">CommDataListener</a>
+</li>
+<li>recvResultAttachView()
+: <a class="el" href="class_comm_data_listener.html#a14b4e462afa943b964d978e8617d7fcc">CommDataListener</a>
+</li>
+<li>recvResultCaptureViewImage()
+: <a class="el" href="class_comm_data_listener.html#a576b92df103ef19549a3527c563d1082">CommDataListener</a>
+</li>
+<li>recvResultDetectEntities()
+: <a class="el" href="class_comm_data_listener.html#ab5985e837728e55839dcaaaadcdfbcaa">CommDataListener</a>
+</li>
+<li>recvResultDistanceSensor()
+: <a class="el" href="class_comm_data_listener.html#a920f80aa6b0bcbe9b12d1401e5160c0b">CommDataListener</a>
+</li>
+<li>recvResultGetAllEntities()
+: <a class="el" href="class_comm_data_listener.html#af67a00f3ce1fe18b0a5d28e2134e6b1c">CommDataListener</a>
+</li>
+<li>recvResultGetEntity()
+: <a class="el" href="class_comm_data_listener.html#a86d17d1e3206c26003a56208d206bec9">CommDataListener</a>
+</li>
+<li>recvResultGetJointAngle()
+: <a class="el" href="class_comm_data_listener.html#a4b7f01e709efd3da5d41437fc481651f">CommDataListener</a>
+</li>
+<li>recvResultGetJointForce()
+: <a class="el" href="class_comm_data_listener.html#abe15e8ddda5727e70fb9e454d687a693">CommDataListener</a>
+</li>
+<li>recvResultGetObjectNames()
+: <a class="el" href="class_comm_data_listener.html#a2bf3f07a95df79b48a2aaef02bacc6f5">CommDataListener</a>
+</li>
+<li>recvResultNSPinger()
+: <a class="el" href="class_comm_data_listener.html#ac603ec6593b8bccfb258b9708724cd45">CommDataListener</a>
+</li>
+<li>recvResultNSQuery()
+: <a class="el" href="class_comm_data_listener.html#a81612d7d0404bc7116da2e34fc9ca638">CommDataListener</a>
+</li>
+<li>recvResultSoundRecog()
+: <a class="el" href="class_comm_data_listener.html#abc388c14d9b547e7773a3508c26e6d18">CommDataListener</a>
+</li>
+<li>RecvSoundEvent()
+: <a class="el" href="class_recv_sound_event.html#ad3f65076fc9dc92ecf923783c70b7d37">RecvSoundEvent</a>
+</li>
+<li>registerService()
+: <a class="el" href="class_service_name_server.html#a0f841373ec43a3be8edda74a031ce724">ServiceNameServer</a>
+</li>
+<li>release()
+: <a class="el" href="class_result_capture_view_image_event.html#aed638d2e9fb3442ae5639b2eabce7d05">ResultCaptureViewImageEvent</a>
+, <a class="el" href="class_result_get_entity_event.html#a1723db21a45a26f5b6d6c988593262fb">ResultGetEntityEvent</a>
+, <a class="el" href="class_comm_data_encoder.html#abcea02aac9a880161d467ee32b364a5a">CommDataEncoder</a>
+, <a class="el" href="class_world_x_m_l_reader.html#a4da6a9738c9dcd841a170efb49e13048">WorldXMLReader</a>
+, <a class="el" href="class_logger_1_1_out_stream.html#a6663fb7960756e1e09b3be95ee042b49">Logger::OutStream</a>
+</li>
+<li>releaseRawSound()
+: <a class="el" href="class_recv_sound_event.html#ac2f44f5c179d991ae15c967fbc8b7d16">RecvSoundEvent</a>
+, <a class="el" href="class_request_sound_recog_event.html#ad5b0f905410cfb6bf97449d79d982bbe">RequestSoundRecogEvent</a>
+</li>
+<li>releaseService()
+: <a class="el" href="class_result_n_s_query_event.html#ad2d5f82c25b0fb36fe173f47286fb8ad">ResultNSQueryEvent</a>
+, <a class="el" href="class_request_provide_service_event.html#a4fd31fb32b05844b958209fd74e3cca3">RequestProvideServiceEvent</a>
+</li>
+<li>releaseText()
+: <a class="el" href="class_result_sound_recog_event.html#aef3a4b4d64eba8776c7dc67ed39fbe7d">ResultSoundRecogEvent</a>
+</li>
+<li>releaseWorld()
+: <a class="el" href="class_result_get_all_entities_event.html#a0cc54a75c85ebbb6089d4048828a7edc">ResultGetAllEntitiesEvent</a>
+</li>
+<li>releaseX3DDb()
+: <a class="el" href="class_result_attach_view_event.html#a44f3d9dd8bc21c170dae09e60d0f4fcb">ResultAttachViewEvent</a>
+</li>
+<li>removeChild()
+: <a class="el" href="class_s_parts.html#a8002331a8270860070cb89e13e2a23f7">SParts</a>
+</li>
+<li>removeJoint()
+: <a class="el" href="class_s_sim_obj.html#a49eea95f1ad270b86b277d4e44f3419e">SSimObj</a>
+</li>
+<li>RequestCaptureViewImageEvent()
+: <a class="el" href="class_request_capture_view_image_event.html#a341566d0675b4cd9acd35581fc123cdf">RequestCaptureViewImageEvent</a>
+</li>
+<li>RequestConnectJoint()
+: <a class="el" href="class_comm_data_1_1_request_connect_joint.html#a290d2d51236f1675db6c4df3cee8642e">CommData::RequestConnectJoint</a>
+</li>
+<li>RequestGetJointForce()
+: <a class="el" href="class_comm_data_1_1_request_get_joint_force.html#a14d32c04f45dfa4c1db4ea0c549c2d26">CommData::RequestGetJointForce</a>
+</li>
+<li>RequestNSPingerEvent()
+: <a class="el" href="class_request_n_s_pinger_event.html#aeabced05a47e4c9d599d56058ef8ce2f">RequestNSPingerEvent</a>
+</li>
+<li>RequestNSQueryEvent()
+: <a class="el" href="class_request_n_s_query_event.html#ac0dd8f232a62c37dc46b2158220f0df4">RequestNSQueryEvent</a>
+</li>
+<li>RequestProvideServiceEvent()
+: <a class="el" href="class_request_provide_service_event.html#aedb604812aab552aa70a9bc878d425b7">RequestProvideServiceEvent</a>
+</li>
+<li>RequestReleaseJoint()
+: <a class="el" href="class_comm_data_1_1_request_release_joint.html#a663aea778c957a71c48b20a139c7897e">CommData::RequestReleaseJoint</a>
+</li>
+<li>RequestSoundRecog()
+: <a class="el" href="class_comm_data_1_1_request_sound_recog.html#aa0ca640d023f7e0fd88646164913f451">CommData::RequestSoundRecog</a>
+</li>
+<li>RequestSoundRecogEvent()
+: <a class="el" href="class_request_sound_recog_event.html#a7c2b93ceecbc614baa687ff542b11fd6">RequestSoundRecogEvent</a>
+</li>
+<li>resetTime()
+: <a class="el" href="class_o_d_e_world.html#aabc88684511ce8cedc83d08e12d48c0d">ODEWorld</a>
+</li>
+<li>result()
+: <a class="el" href="class_result_attach_view_event.html#aae3ae8a94ed132bcb76dc58a2b66d13b">ResultAttachViewEvent</a>
+, <a class="el" href="class_result_event.html#ad5adc41f454e701fb5211f99bcec4dae">ResultEvent</a>
+</li>
+<li>Result()
+: <a class="el" href="class_comm_data_1_1_result.html#abc5171b368d56bc97169c65f0dafcd06">CommData::Result</a>
+</li>
+<li>ResultAttachViewEvent()
+: <a class="el" href="class_result_attach_view_event.html#a33cbab9d71ec5d53668cc236b144929a">ResultAttachViewEvent</a>
+</li>
+<li>ResultCaptureViewImageEvent()
+: <a class="el" href="class_result_capture_view_image_event.html#af4a22ab9348b575eafa7ac151dd0dd9d">ResultCaptureViewImageEvent</a>
+</li>
+<li>ResultDistanceSensorEvent()
+: <a class="el" href="class_result_distance_sensor_event.html#ac87a0eae1f6fba10d6322451b239f8a5">ResultDistanceSensorEvent</a>
+</li>
+<li>ResultGetAllEntitiesEvent()
+: <a class="el" href="class_result_get_all_entities_event.html#a6c550fa799f5ff8f1b9a10e6f946c044">ResultGetAllEntitiesEvent</a>
+</li>
+<li>ResultGetEntityEvent()
+: <a class="el" href="class_result_get_entity_event.html#a28c96bed4b672b8b8e0c5578cb0759d1">ResultGetEntityEvent</a>
+</li>
+<li>ResultGetJointForce()
+: <a class="el" href="class_comm_data_1_1_result_get_joint_force.html#a01f4137b5fca7f5300b71412241629db">CommData::ResultGetJointForce</a>
+</li>
+<li>ResultNSPingerEvent()
+: <a class="el" href="class_result_n_s_pinger_event.html#a54e53cc33d3da57ba1aeade5e4c58c6e">ResultNSPingerEvent</a>
+</li>
+<li>ResultNSQueryEvent()
+: <a class="el" href="class_result_n_s_query_event.html#a712a8132656e94dcc7e4c72b454ea250">ResultNSQueryEvent</a>
+</li>
+<li>ResultSoundRecog()
+: <a class="el" href="class_comm_data_1_1_result_sound_recog.html#a14b09de620d4590d4573166e78d866a3">CommData::ResultSoundRecog</a>
+</li>
+<li>ResultSoundRecogEvent()
+: <a class="el" href="class_result_sound_recog_event.html#aa0a39309920264b6a0ba9f5cdc802e6e">ResultSoundRecogEvent</a>
+</li>
+<li>rotate()
+: <a class="el" href="class_vector3d.html#acf4caff93dbc854e34063ba5a239bed0">Vector3d</a>
+</li>
+<li>Rotation()
+: <a class="el" href="class_rotation.html#a13ea1d345ca0a92c0f09b4de544ca460">Rotation</a>
+</li>
+<li>rotation()
+: <a class="el" href="class_transform.html#afeecbf2b092d1377de9f08755ca7e444">Transform</a>
+</li>
+<li>run()
+: <a class="el" href="class_server_accept_proc.html#a31ff903287a09c25f1e4eb346a7f0837">ServerAcceptProc</a>
+, <a class="el" href="class_accept_thread.html#a00468c4f3c34605753e1069823fd2e3b">AcceptThread</a>
+</li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:18 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>JSP: julius_sp.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>julius_sp.cpp</h1><code>#include &quot;<a class="el" href="julius__sp_8h_source.html">julius_sp.h</a>&quot;</code><br>
+<code>#include &quot;<a class="el" href="_jsp_8h_source.html">Jsp.h</a>&quot;</code><br>
+<code>#include &quot;<a class="el" href="_jsp_string_util_8h_source.html">JspStringUtil.h</a>&quot;</code><br>
+<code>#include &quot;<a class="el" href="_jsp_config_file_8h_source.html">JspConfigFile.h</a>&quot;</code><br>
+<code>#include &quot;<a class="el" href="_jsp_log_8h_source.html">JspLog.h</a>&quot;</code><br>
+<code>#include &lt;stdio.h&gt;</code><br>
+<code>#include &lt;signal.h&gt;</code><br>
+<code>#include &lt;string&gt;</code><br>
+
+<p>
+<a href="julius__sp_8cpp_source.html">ソースコードを見る。</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>関数</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="julius__sp_8cpp.html#913bf76dc1ec73321f3e213a421e74d8">getSignalString</a> (int sig)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">シグナル識別子から対応するシグナル名を返す  <a href="#913bf76dc1ec73321f3e213a421e74d8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="julius__sp_8cpp.html#0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">julius_spメイン関数  <a href="#0ddf1224851353fc92bfbff6f499fa97"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="julius__sp_8cpp.html#7ec67f6aadaaeaf8f83f9120bec96e6a">quitJuliusSp</a> (int sig)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">julius_spを終了する  <a href="#7ec67f6aadaaeaf8f83f9120bec96e6a"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>変数</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_jsp_1_1_julius_service_provider.html">Jsp::JuliusServiceProvider</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="julius__sp_8cpp.html#09905479a129591797b0a0c26a5de3a8">jsp</a></td></tr>
+
+</table>
+<hr><h2>関数</h2>
+<a class="anchor" name="913bf76dc1ec73321f3e213a421e74d8"></a><!-- doxytag: member="julius_sp.cpp::getSignalString" ref="913bf76dc1ec73321f3e213a421e74d8" args="(int sig)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string getSignalString           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>sig</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+シグナル識別子から対応するシグナル名を返す 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>sig</em>&nbsp;</td><td>[i] シグナル識別子</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>シグナル名("SIGHUP", "SIGINT"など) </dd></dl>
+
+<p> <a class="el" href="julius__sp_8cpp_source.html">julius_sp.cpp</a> の <a class="el" href="julius__sp_8cpp_source.html#l00288">288</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="0ddf1224851353fc92bfbff6f499fa97"></a><!-- doxytag: member="julius_sp.cpp::main" ref="0ddf1224851353fc92bfbff6f499fa97" args="(int argc, char *argv[])" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>argv</em>[]</td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+julius_spメイン関数 
+<p>
+
+<p> <a class="el" href="julius__sp_8cpp_source.html">julius_sp.cpp</a> の <a class="el" href="julius__sp_8cpp_source.html#l00012">12</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="7ec67f6aadaaeaf8f83f9120bec96e6a"></a><!-- doxytag: member="julius_sp.cpp::quitJuliusSp" ref="7ec67f6aadaaeaf8f83f9120bec96e6a" args="(int sig)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void quitJuliusSp           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>sig</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+julius_spを終了する 
+<p>
+
+<p> <a class="el" href="julius__sp_8cpp_source.html">julius_sp.cpp</a> の <a class="el" href="julius__sp_8cpp_source.html#l00277">277</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>変数</h2>
+<a class="anchor" name="09905479a129591797b0a0c26a5de3a8"></a><!-- doxytag: member="julius_sp.cpp::jsp" ref="09905479a129591797b0a0c26a5de3a8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_jsp_1_1_julius_service_provider.html">Jsp::JuliusServiceProvider</a> <a class="el" href="julius__sp_8cpp.html#09905479a129591797b0a0c26a5de3a8">jsp</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="julius__sp_8cpp_source.html">julius_sp.cpp</a> の <a class="el" href="julius__sp_8cpp_source.html#l00010">10</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>JSPに対してThu Nov 5 15:22:45 2009に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

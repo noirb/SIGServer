@@ -1,0 +1,666 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGWorldEditor: クラス Sgv::XMLEntityClassManager</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_sgv.html">Sgv</a>::<a class="el" href="class_sgv_1_1_x_m_l_entity_class_manager.html">XMLEntityClassManager</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Sgv::XMLEntityClassManager</h1><!-- doxytag: class="Sgv::XMLEntityClassManager" -->XMLエンティティクラスマネージャ.  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_sgv_x_m_l_entity_class_8h_source.html">SgvXMLEntityClass.h</a>&gt;</code>
+<p>
+
+<p>
+<a href="class_sgv_1_1_x_m_l_entity_class_manager-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_sgv_1_1_x_m_l_entity_class.html">XMLEntityClass</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity_class_manager.html#ef18723cc6016a89c61b0323d13ad70d">addNewEntityClass</a> (const char *className, const char *superClassName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">新しい（空の）クラスを作成し、このオブジェクトに追加．  <a href="#ef18723cc6016a89c61b0323d13ad70d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity_class_manager.html#2296e13a9b1c4f49728cb8d51005e6b3">classNameToFileName</a> (const char *className)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クラス名からクラスファイル名への変換  <a href="#2296e13a9b1c4f49728cb8d51005e6b3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_sgv_1_1_x_m_l_entity.html">XMLEntity</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity_class_manager.html#e1b79dfb2b583523044a9fa017bc8922">createInstance</a> (const char *className)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クラスを元にエンティティを生成する （XMLEntityを作るファクトリー）  <a href="#e1b79dfb2b583523044a9fa017bc8922"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity_class_manager.html#81968d4cfabb644d7486ce9abb295faf">deleteEntityClass</a> (const char *className)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クラスを削除  <a href="#81968d4cfabb644d7486ce9abb295faf"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity_class_manager.html#952c06c7f372bf766176de3a0c9f2f86">disposeLoadedEntityClasses</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ロードしたクラスを破棄する  <a href="#952c06c7f372bf766176de3a0c9f2f86"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity_class_manager.html#0e10dc13b5dfe91bb7ea3ba9817693fe">fileNameToClassName</a> (const char *xmlFileName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クラスファイル名からクラス名への変換  <a href="#0e10dc13b5dfe91bb7ea3ba9817693fe"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::vector&lt; std::string &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity_class_manager.html#223705b08974697b0e792df3c377531e">getAttrNames</a> (const char *className, bool bIncludeSuper)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クラス定義が含むすべての属性名を重複なしで得る  <a href="#223705b08974697b0e792df3c377531e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity_class_manager.html#7e5be768715bef13f0a2c0f5c8ec9bf7">getDefalutValue</a> (const char *className, const char *attrName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クラスの属性のデフォルト値を得る  <a href="#7e5be768715bef13f0a2c0f5c8ec9bf7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_sgv_1_1_x_m_l_entity_class.html">XMLEntityClass</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity_class_manager.html#0e39a9e56a1eac6fae3573eff19fd758">getEntityClass</a> (const char *className)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クラス名からXMLEntityClassを引く  <a href="#0e39a9e56a1eac6fae3573eff19fd758"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_sgv_1_1_x_m_l_entity_class.html">XMLEntityClass</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity_class_manager.html#b78c7c39c1a5e83cc85e4e22ec342fba">getEntityClassFromFileName</a> (const char *xmlFileName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クラスファイル名からXMLEntityClassを引く  <a href="#b78c7c39c1a5e83cc85e4e22ec342fba"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::vector&lt; std::string &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity_class_manager.html#af35c7afab767c4f65cc51ccd25974b3">getEntityClassNames</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クラス名のリストを返す  <a href="#af35c7afab767c4f65cc51ccd25974b3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity_class_manager.html#48fbb0195c28283d24a0129f0bb89562">hasAttr</a> (const char *className, const char *attrName, bool bIncludeSuper)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クラスに指定の属性定義が存在するか調べる  <a href="#48fbb0195c28283d24a0129f0bb89562"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity_class_manager.html#d996223f185028c71ae19559d3c315f4">isModified</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">変更されたクラスがあるか？  <a href="#d996223f185028c71ae19559d3c315f4"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity_class_manager.html#3d8988964453a0d898921c60e24c485c">loadXMLEntityClassFiles</a> (<a class="el" href="class_sgv_1_1_x_m_l_file_list.html">XMLFileList</a> *pFileList)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">XMLファイルリストに列挙されている クラスファイル（複数）をロードする.  <a href="#3d8988964453a0d898921c60e24c485c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::vector&lt; std::string &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity_class_manager.html#3e31b78ba761ca2eb5f2120fa25146c6">saveUpdatedEntityClasses</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">更新されたクラスをXMLファイルにセーブする  <a href="#3e31b78ba761ca2eb5f2120fa25146c6"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity_class_manager.html#c99c498c7f424244fec6783c5a18bdd3">XMLEntityClassManager</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#c99c498c7f424244fec6783c5a18bdd3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_entity_class_manager.html#8419bbad6d9b7f6059248da5f3b1c645">‾XMLEntityClassManager</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#8419bbad6d9b7f6059248da5f3b1c645"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+XMLエンティティクラスマネージャ. 
+<p>
+XMLEntityClassのコンテナ的クラス 
+<p> <a class="el" href="_sgv_x_m_l_entity_class_8h_source.html">SgvXMLEntityClass.h</a> の <a class="el" href="_sgv_x_m_l_entity_class_8h_source.html#l00026">26</a> 行で定義されています。</p>
+<hr><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" name="c99c498c7f424244fec6783c5a18bdd3"></a><!-- doxytag: member="Sgv::XMLEntityClassManager::XMLEntityClassManager" ref="c99c498c7f424244fec6783c5a18bdd3" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::XMLEntityClassManager::XMLEntityClassManager           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_x_m_l_entity_class_8cpp_source.html">SgvXMLEntityClass.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_class_8cpp_source.html#l00028">28</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>関数</h2>
+<a class="anchor" name="ef18723cc6016a89c61b0323d13ad70d"></a><!-- doxytag: member="Sgv::XMLEntityClassManager::addNewEntityClass" ref="ef18723cc6016a89c61b0323d13ad70d" args="(const char *className, const char *superClassName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_sgv_1_1_x_m_l_entity_class.html">XMLEntityClass</a> * Sgv::XMLEntityClassManager::addNewEntityClass           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>className</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>superClassName</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+新しい（空の）クラスを作成し、このオブジェクトに追加． 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>className</em>&nbsp;</td><td>[i] クラス名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>superClassName</em>&nbsp;</td><td>[i] スーパークラス名</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>生成（追加）されたクラスオブジェクト. すでに指定したクラスが存在する場合は何もせず、NULLを返す</dd></dl>
+作成されたクラスオブジェクトの所有権はこのオブジェクトが保持する． 呼び出し側は返り値をdeleteしてはいけない． 
+<p> <a class="el" href="_sgv_x_m_l_entity_class_8cpp_source.html">SgvXMLEntityClass.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_class_8cpp_source.html#l00345">345</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="2296e13a9b1c4f49728cb8d51005e6b3"></a><!-- doxytag: member="Sgv::XMLEntityClassManager::classNameToFileName" ref="2296e13a9b1c4f49728cb8d51005e6b3" args="(const char *className)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * Sgv::XMLEntityClassManager::classNameToFileName           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>className</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+クラス名からクラスファイル名への変換 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>className</em>&nbsp;</td><td>[i] クラス名</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>クラスファイル名．クラス名が見つからなかった場合はNULLが返る </dd></dl>
+
+<p> <a class="el" href="_sgv_x_m_l_entity_class_8cpp_source.html">SgvXMLEntityClass.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_class_8cpp_source.html#l00426">426</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="e1b79dfb2b583523044a9fa017bc8922"></a><!-- doxytag: member="Sgv::XMLEntityClassManager::createInstance" ref="e1b79dfb2b583523044a9fa017bc8922" args="(const char *className)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_sgv_1_1_x_m_l_entity.html">XMLEntity</a> * Sgv::XMLEntityClassManager::createInstance           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>className</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+クラスを元にエンティティを生成する （XMLEntityを作るファクトリー） 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>className</em>&nbsp;</td><td>[i] クラス名</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>生成されたエンティティ</dd></dl>
+生成されたエンティティの所有権は呼び出し側に渡る． 呼び出し側は返り値をdeleteしなければならない 
+<p> <a class="el" href="_sgv_x_m_l_entity_class_8cpp_source.html">SgvXMLEntityClass.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_class_8cpp_source.html#l00140">140</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="81968d4cfabb644d7486ce9abb295faf"></a><!-- doxytag: member="Sgv::XMLEntityClassManager::deleteEntityClass" ref="81968d4cfabb644d7486ce9abb295faf" args="(const char *className)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::XMLEntityClassManager::deleteEntityClass           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>className</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+クラスを削除 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>className</em>&nbsp;</td><td>[i] クラス名 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_x_m_l_entity_class_8cpp_source.html">SgvXMLEntityClass.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_class_8cpp_source.html#l00392">392</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="952c06c7f372bf766176de3a0c9f2f86"></a><!-- doxytag: member="Sgv::XMLEntityClassManager::disposeLoadedEntityClasses" ref="952c06c7f372bf766176de3a0c9f2f86" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::XMLEntityClassManager::disposeLoadedEntityClasses           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ロードしたクラスを破棄する 
+<p>
+
+<p> <a class="el" href="_sgv_x_m_l_entity_class_8cpp_source.html">SgvXMLEntityClass.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_class_8cpp_source.html#l00121">121</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="0e10dc13b5dfe91bb7ea3ba9817693fe"></a><!-- doxytag: member="Sgv::XMLEntityClassManager::fileNameToClassName" ref="0e10dc13b5dfe91bb7ea3ba9817693fe" args="(const char *xmlFileName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * Sgv::XMLEntityClassManager::fileNameToClassName           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>xmlFileName</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+クラスファイル名からクラス名への変換 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>xmlFileName</em>&nbsp;</td><td>[i] クラスファイル名</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>クラス名．クラスファイル名が見つからなかった場合はNULLが返る </dd></dl>
+
+<p> <a class="el" href="_sgv_x_m_l_entity_class_8cpp_source.html">SgvXMLEntityClass.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_class_8cpp_source.html#l00444">444</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="223705b08974697b0e792df3c377531e"></a><!-- doxytag: member="Sgv::XMLEntityClassManager::getAttrNames" ref="223705b08974697b0e792df3c377531e" args="(const char *className, bool bIncludeSuper)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::string &gt; Sgv::XMLEntityClassManager::getAttrNames           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>className</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bIncludeSuper</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+クラス定義が含むすべての属性名を重複なしで得る 
+<p>
+指定したクラス単独か、スーパークラスまで含めて 属性を探索するかを選べる．<p>
+同一属性名が複数クラスに存在しても、返り値には名前は1つしか入らない．<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>className</em>&nbsp;</td><td>[i] クラス名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bIncludeSuper</em>&nbsp;</td><td>[i] true(=スーパークラスも含めて検索), false(=スーパークラスは含めない)</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>属性名のリスト </dd></dl>
+
+<p> <a class="el" href="_sgv_x_m_l_entity_class_8cpp_source.html">SgvXMLEntityClass.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_class_8cpp_source.html#l00221">221</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="7e5be768715bef13f0a2c0f5c8ec9bf7"></a><!-- doxytag: member="Sgv::XMLEntityClassManager::getDefalutValue" ref="7e5be768715bef13f0a2c0f5c8ec9bf7" args="(const char *className, const char *attrName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * Sgv::XMLEntityClassManager::getDefalutValue           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>className</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>attrName</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+クラスの属性のデフォルト値を得る 
+<p>
+スーパークラスまで辿って探索する<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>className</em>&nbsp;</td><td>[i] クラス名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>attrName</em>&nbsp;</td><td>[i] 属性名</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>デフォルト値 </dd></dl>
+
+<p> <a class="el" href="_sgv_x_m_l_entity_class_8cpp_source.html">SgvXMLEntityClass.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_class_8cpp_source.html#l00320">320</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="0e39a9e56a1eac6fae3573eff19fd758"></a><!-- doxytag: member="Sgv::XMLEntityClassManager::getEntityClass" ref="0e39a9e56a1eac6fae3573eff19fd758" args="(const char *className)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_sgv_1_1_x_m_l_entity_class.html">XMLEntityClass</a> * Sgv::XMLEntityClassManager::getEntityClass           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>className</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+クラス名からXMLEntityClassを引く 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>className</em>&nbsp;</td><td>[i] クラス名</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>クラスオブジェクト. 対応するクラスが見つからなかった場合はNULLを返す．</dd></dl>
+クラスオブジェクトの所有権はこのオブジェクトが持つ． 呼び出し側は返り値をdeleteしてはいけない． 
+<p> <a class="el" href="_sgv_x_m_l_entity_class_8cpp_source.html">SgvXMLEntityClass.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_class_8cpp_source.html#l00183">183</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b78c7c39c1a5e83cc85e4e22ec342fba"></a><!-- doxytag: member="Sgv::XMLEntityClassManager::getEntityClassFromFileName" ref="b78c7c39c1a5e83cc85e4e22ec342fba" args="(const char *xmlFileName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_sgv_1_1_x_m_l_entity_class.html">XMLEntityClass</a> * Sgv::XMLEntityClassManager::getEntityClassFromFileName           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>xmlFileName</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+クラスファイル名からXMLEntityClassを引く 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>xmlFileName</em>&nbsp;</td><td>[i] クラスファイル名</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>クラスオブジェクト． 対応するクラスが見つからなかった場合はNULLを返す．</dd></dl>
+クラスオブジェクトの所有権はこのオブジェクトが持つ． 呼び出し側は返り値をdeleteしてはいけない． 
+<p> <a class="el" href="_sgv_x_m_l_entity_class_8cpp_source.html">SgvXMLEntityClass.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_class_8cpp_source.html#l00200">200</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="af35c7afab767c4f65cc51ccd25974b3"></a><!-- doxytag: member="Sgv::XMLEntityClassManager::getEntityClassNames" ref="af35c7afab767c4f65cc51ccd25974b3" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::string &gt; Sgv::XMLEntityClassManager::getEntityClassNames           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+クラス名のリストを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>クラス名のリスト </dd></dl>
+
+<p> <a class="el" href="_sgv_x_m_l_entity_class_8cpp_source.html">SgvXMLEntityClass.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_class_8cpp_source.html#l00207">207</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="48fbb0195c28283d24a0129f0bb89562"></a><!-- doxytag: member="Sgv::XMLEntityClassManager::hasAttr" ref="48fbb0195c28283d24a0129f0bb89562" args="(const char *className, const char *attrName, bool bIncludeSuper)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::XMLEntityClassManager::hasAttr           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>className</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>attrName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bIncludeSuper</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+クラスに指定の属性定義が存在するか調べる 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>className</em>&nbsp;</td><td>[i] クラス名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>attrName</em>&nbsp;</td><td>[i] 属性名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bIncludeSuper</em>&nbsp;</td><td>[i] true(=スーパークラスも含めて検索),</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=存在する), false(=存在しない) </dd></dl>
+
+<p> <a class="el" href="_sgv_x_m_l_entity_class_8cpp_source.html">SgvXMLEntityClass.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_class_8cpp_source.html#l00283">283</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="d996223f185028c71ae19559d3c315f4"></a><!-- doxytag: member="Sgv::XMLEntityClassManager::isModified" ref="d996223f185028c71ae19559d3c315f4" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::XMLEntityClassManager::isModified           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+変更されたクラスがあるか？ 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=ある), false(=ない) </dd></dl>
+
+<p> <a class="el" href="_sgv_x_m_l_entity_class_8cpp_source.html">SgvXMLEntityClass.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_class_8cpp_source.html#l00410">410</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="3d8988964453a0d898921c60e24c485c"></a><!-- doxytag: member="Sgv::XMLEntityClassManager::loadXMLEntityClassFiles" ref="3d8988964453a0d898921c60e24c485c" args="(XMLFileList *pFileList)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Sgv::XMLEntityClassManager::loadXMLEntityClassFiles           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_x_m_l_file_list.html">XMLFileList</a> *&nbsp;</td>
+          <td class="paramname"> <em>pFileList</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+XMLファイルリストに列挙されている クラスファイル（複数）をロードする. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>pFileList</em>&nbsp;</td><td>[i] XMLFileListへのポインタ （クラスファイル名のリストを保持している）</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>読み込んだXMLファイルの数 </dd></dl>
+
+<p> <a class="el" href="_sgv_x_m_l_entity_class_8cpp_source.html">SgvXMLEntityClass.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_class_8cpp_source.html#l00037">37</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="3e31b78ba761ca2eb5f2120fa25146c6"></a><!-- doxytag: member="Sgv::XMLEntityClassManager::saveUpdatedEntityClasses" ref="3e31b78ba761ca2eb5f2120fa25146c6" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::string &gt; Sgv::XMLEntityClassManager::saveUpdatedEntityClasses           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+更新されたクラスをXMLファイルにセーブする 
+<p>
+クラス定義が変更されていないものはセーブされない<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>セーブされたクラス名のリスト </dd></dl>
+
+<p> <a class="el" href="_sgv_x_m_l_entity_class_8cpp_source.html">SgvXMLEntityClass.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_class_8cpp_source.html#l00081">81</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="8419bbad6d9b7f6059248da5f3b1c645"></a><!-- doxytag: member="Sgv::XMLEntityClassManager::‾XMLEntityClassManager" ref="8419bbad6d9b7f6059248da5f3b1c645" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::XMLEntityClassManager::‾XMLEntityClassManager           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+デストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_x_m_l_entity_class_8cpp_source.html">SgvXMLEntityClass.cpp</a> の <a class="el" href="_sgv_x_m_l_entity_class_8cpp_source.html#l00032">32</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_sgv_x_m_l_entity_class_8h_source.html">SgvXMLEntityClass.h</a><li><a class="el" href="_sgv_x_m_l_entity_class_8cpp_source.html">SgvXMLEntityClass.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGWorldEditorに対してThu Jun 9 10:53:01 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

@@ -1,0 +1,1301 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>SIGVerse_Controller: クラス SimObjBase</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス SimObjBase</h1><!-- doxytag: class="SimObjBase" -->
+<p>シミュレーションエンティティ基本クラス  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_sim_obj_base_8h_source.html">SimObjBase.h</a>&gt;</code></p>
+<div class="dynheader">
+SimObjBaseに対する継承グラフ</div>
+<div class="dynsection">
+ <div class="center">
+  <img src="class_sim_obj_base.png" usemap="#SimObjBase_map" alt=""/>
+  <map id="SimObjBase_map" name="SimObjBase_map">
+<area href="class_sim_obj.html" alt="SimObj" shape="rect" coords="0,56,80,80"/>
+</map>
+ </div>
+</div>
+
+<p><a href="class_sim_obj_base-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>構成</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base_1_1_attribute_read_only_exception.html">AttributeReadOnlyException</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">読み込み専用属性の値を設定したときに発生する例外  <a href="class_sim_obj_base_1_1_attribute_read_only_exception.html#_details">[詳細]</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base_1_1_exception.html">Exception</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">例外基本クラス  <a href="class_sim_obj_base_1_1_exception.html#_details">[詳細]</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base_1_1_no_attribute_exception.html">NoAttributeException</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">必要な属性を保持していないときに発生する例外  <a href="class_sim_obj_base_1_1_no_attribute_exception.html#_details">[詳細]</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base_1_1_parts_iterator.html">PartsIterator</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">部品オブジェクトイテレータ  <a href="class_sim_obj_base_1_1_parts_iterator.html#_details">[詳細]</a><br/></td></tr>
+<tr><td colspan="2"><h2>Public 型</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef unsigned&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#a606c14add78595543c118e7ece2953de">Id</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティID型  <a href="#a606c14add78595543c118e7ece2953de"></a><br/></td></tr>
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_sim_obj_base.html#aa078741d41849bf7485f733f142fea92">AttrM</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#a0438f16933b2be15b777c1b9433e8b0a">attrs</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">属性マップを取得する  <a href="#a0438f16933b2be15b777c1b9433e8b0a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#a4b3fdb8a8fc86bfcaa138422280fe4af">checkAttrs</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">必要な属性があるか確認する シミュレーションを実行するのに最低限必要な属性があるか確認する  <a href="#a4b3fdb8a8fc86bfcaa138422280fe4af"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#a9d4c98008deeb62b3067f1b3e6ee162b">classname</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クラス名を得る  <a href="#a9d4c98008deeb62b3067f1b3e6ee162b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#a0300d36ad9656c9ac07b7901f6bc4412">copy</a> (const <a class="el" href="class_sim_obj_base.html">SimObjBase</a> &amp;o)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コピーメソッド  <a href="#a0300d36ad9656c9ac07b7901f6bc4412"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#ac0b90e27775c1ac71b3474407da09ed8">dump</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_attribute.html">Attribute</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#a4f38e5924ac5a4e902bed239da8c6d00">getAttr</a> (const char *name) const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">指定の属性を得る  <a href="#a4f38e5924ac5a4e902bed239da8c6d00"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_vector3d.html">Vector3d</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#a91b5054d5d1dfef47a2e08e2b44508f0">getPosition</a> (<a class="el" href="class_vector3d.html">Vector3d</a> &amp;v)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティの位置を取得する  <a href="#a91b5054d5d1dfef47a2e08e2b44508f0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_sim_obj_base.html#a606c14add78595543c118e7ece2953de">Id</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#ae059e560096b0335a59cf3ca6e08e1b3">id</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティIDを得る  <a href="#ae059e560096b0335a59cf3ca6e08e1b3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#ab8a96e0edd491d0ec520d4f21d663566">isAttached</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コントローラが割り当てられているか？  <a href="#ab8a96e0edd491d0ec520d4f21d663566"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">¥ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#a99483c4a917c566863588b698f761656">NAME</a> (bool b)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#a234a8aee6ad2a749b709258580712bfe">NAME</a> () const </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">¥ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#af8e39828675602d987fe44c6f9bbf6d6">NAME</a> (double v)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#ac89c610417a0a4e29840a4648f876a20">NAME</a> () const </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">¥ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#aa267a23e1eca305038d198b22f17ad74">NAME</a> (const char *v)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#ab84b2148f5aea87be7886330d35e48fc">NAME</a> () const </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#aeade873b9b968ef00102d28e795510a2">name</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティ名を得る  <a href="#aeade873b9b968ef00102d28e795510a2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#a2218f37993d19f078a727cfaa65d9faa">push</a> (<a class="el" href="class_attribute.html">Attribute</a> *attr)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">属性を追加する  <a href="#a2218f37993d19f078a727cfaa65d9faa"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#aa6882ecfdbbc19170de7a275ad8d6e66">setAngularVelocity</a> (double x_, double y_, double z_)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティにかかる角速度を設定する  <a href="#aa6882ecfdbbc19170de7a275ad8d6e66"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#ae3975f55b7f131daa6ac9d3d07d790f3">setAttrValue</a> (const char *name, const <a class="el" href="class_value.html">Value</a> &amp;v)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">属性値を設定する  <a href="#ae3975f55b7f131daa6ac9d3d07d790f3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#a730b336dae64f65814839175ab49a780">setAttrValue</a> (const char *name, const char *v)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">属性値を文字列で設定する  <a href="#a730b336dae64f65814839175ab49a780"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#a53eda7db4fd0915b1e4f2d453fec38d8">setAxisAndAngle</a> (double ax, double ay, double az, double angle, double direct)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">It rotates for the specification of the relative angle.  <a href="#a53eda7db4fd0915b1e4f2d453fec38d8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#a9ab75f1e93ef1f55c29e0cf113b4f4a9">setAxisAndAngle</a> (double ax, double ay, double az, double angle)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティの向きを設定する  <a href="#a9ab75f1e93ef1f55c29e0cf113b4f4a9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#afa6de3d237820c20c9f400952b3e0a02">setEyeJoint</a> (const char *evec)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">目のJointを設定する(2010/11/30 okamoto)  <a href="#afa6de3d237820c20c9f400952b3e0a02"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#ac7c5aef77c8e270b0c72a4e42470b70c">setForce</a> (double fx, double fy, double fz)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティにかかる力を設定する  <a href="#ac7c5aef77c8e270b0c72a4e42470b70c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#a5e6c1053f25ca1ed5636ae922d5ad902">setPosition</a> (double x_, double y_, double z_)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティの位置を設定する  <a href="#a5e6c1053f25ca1ed5636ae922d5ad902"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#a8663645d25b644eeba1702cfb48a7ee7">setPosition</a> (const <a class="el" href="class_vector3d.html">Vector3d</a> &amp;v)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティの位置を設定する  <a href="#a8663645d25b644eeba1702cfb48a7ee7"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#a089b529a7246f73108c9634051ed8fb1">setRotation</a> (const <a class="el" href="class_rotation.html">Rotation</a> &amp;r)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティの向きを設定する  <a href="#a089b529a7246f73108c9634051ed8fb1"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#a1858fd01913d605357305b989904c116">setTorque</a> (double x, double y, double z)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティにかかるトルクを設定する  <a href="#a1858fd01913d605357305b989904c116"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#a68b782648467b98e6b399507ef11bd44">setVelocity</a> (double vx_, double vy_, double vz_)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティにかかる速度を設定する  <a href="#a68b782648467b98e6b399507ef11bd44"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#ab2583905f4a2541e131eea7e42b8742b">toBinary</a> (int &amp;n)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティデータをバイナリ化する  <a href="#ab2583905f4a2541e131eea7e42b8742b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#ad0576ee3a556ea311733096d84aede4c">‾SimObjBase</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#ad0576ee3a556ea311733096d84aede4c"></a><br/></td></tr>
+<tr><td colspan="2"><h2>Protected 型</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom">{ <br/>
+&nbsp;&nbsp;<a class="el" href="class_sim_obj_base.html#ad342114c65d32e51161ca7861ce476b0a210f9c3dda2366a89ebf7ef32ba2ed1a">OP_NOT_SET</a> =  0x0, 
+<a class="el" href="class_sim_obj_base.html#ad342114c65d32e51161ca7861ce476b0ad33ad5bce04aff865751201dce647776">OP_SET_POSITION</a> =  0x1, 
+<a class="el" href="class_sim_obj_base.html#ad342114c65d32e51161ca7861ce476b0a8dedf45a63eb776dbc311195de2704eb">OP_SET_ROTATION</a> =  0x2, 
+<a class="el" href="class_sim_obj_base.html#ad342114c65d32e51161ca7861ce476b0a9d8a43acaf079211be8262e4b8f0f1ad">OP_SET_FORCE</a> =  0x4, 
+<br/>
+&nbsp;&nbsp;<a class="el" href="class_sim_obj_base.html#ad342114c65d32e51161ca7861ce476b0abb215cb0000d5ec363156360d2d7b9dc">OP_SET_ACCEL</a> =  0x8, 
+<a class="el" href="class_sim_obj_base.html#ad342114c65d32e51161ca7861ce476b0a72dad603dfbfb0f351abcfeba4faa989">OP_SET_TORQUE</a> =  0x10, 
+<a class="el" href="class_sim_obj_base.html#ad342114c65d32e51161ca7861ce476b0a963dc0e5581e1639278540a11d8ffd3d">OP_SET_VELOCITY</a> =  0x20, 
+<a class="el" href="class_sim_obj_base.html#ad342114c65d32e51161ca7861ce476b0a07f8abc0339fecc8ebfb062149fdb0e6">OP_SET_ANGULAR_VELOCITY</a> =  0x40
+<br/>
+ }</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef std::map&lt; <a class="el" href="class_sim_obj_base.html#aa12c84a12a4c1427be899298672dc07f">S</a>, <a class="el" href="class_attribute.html">Attribute</a> * &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#aa078741d41849bf7485f733f142fea92">AttrM</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">属性マップ型  <a href="#aa078741d41849bf7485f733f142fea92"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef unsigned&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#a7025b9f998c6ca027c2d175eeb0a7949">Operation</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティ操作型  <a href="#a7025b9f998c6ca027c2d175eeb0a7949"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#aa12c84a12a4c1427be899298672dc07f">S</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">文字列型  <a href="#aa12c84a12a4c1427be899298672dc07f"></a><br/></td></tr>
+<tr><td colspan="2"><h2>Protected メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_sim_obj_base_1_1_parts_iterator.html">PartsIterator</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#a1d6e6656c9ad342a8d04802ed7efb5c3">getPartsIterator</a> ()=0</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パーツイテレータを取得する  <a href="#a1d6e6656c9ad342a8d04802ed7efb5c3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#a4e5ebb965f0a8b7774b83c06194956c5">SimObjBase</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#a4e5ebb965f0a8b7774b83c06194956c5"></a><br/></td></tr>
+<tr><td colspan="2"><h2>Protected 変数</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#a8ec52c7f73d0aa04cd60e710c9ab9f87">m_attached</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コントローラが割り当てられているか？  <a href="#a8ec52c7f73d0aa04cd60e710c9ab9f87"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_sim_obj_base.html#aa078741d41849bf7485f733f142fea92">AttrM</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#aea993ef66f6a5b6f36de2a00788a553c">m_attrs</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">属性マップ  <a href="#aea993ef66f6a5b6f36de2a00788a553c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_sim_obj_base.html#a606c14add78595543c118e7ece2953de">Id</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#a47aefcaf6523ee05901bfe0b45f17176">m_id</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティID。エンティティに割り振られる一意な値。  <a href="#a47aefcaf6523ee05901bfe0b45f17176"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_sim_obj_base.html#a7025b9f998c6ca027c2d175eeb0a7949">Operation</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_obj_base.html#ad99dd8201476f7965a69162da66669d3">m_ops</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">呼び出された操作  <a href="#ad99dd8201476f7965a69162da66669d3"></a><br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>シミュレーションエンティティ基本クラス </p>
+
+<p> <a class="el" href="_sim_obj_base_8h_source.html">SimObjBase.h</a> の <a class="el" href="_sim_obj_base_8h_source.html#l00019">19</a> 行で定義されています。</p>
+<hr/><h2>型定義</h2>
+<a class="anchor" id="aa078741d41849bf7485f733f142fea92"></a><!-- doxytag: member="SimObjBase::AttrM" ref="aa078741d41849bf7485f733f142fea92" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::map&lt;<a class="el" href="class_sim_obj_base.html#aa12c84a12a4c1427be899298672dc07f">S</a>, <a class="el" href="class_attribute.html">Attribute</a>*&gt; <a class="el" href="class_sim_obj_base.html#aa078741d41849bf7485f733f142fea92">SimObjBase::AttrM</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>属性マップ型 </p>
+
+<p> <a class="el" href="_sim_obj_base_8h_source.html">SimObjBase.h</a> の <a class="el" href="_sim_obj_base_8h_source.html#l00097">97</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a606c14add78595543c118e7ece2953de"></a><!-- doxytag: member="SimObjBase::Id" ref="a606c14add78595543c118e7ece2953de" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef unsigned <a class="el" href="class_sim_obj_base.html#a606c14add78595543c118e7ece2953de">SimObjBase::Id</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>エンティティID型 </p>
+
+<p> <a class="el" href="_sim_obj_base_8h_source.html">SimObjBase.h</a> の <a class="el" href="_sim_obj_base_8h_source.html#l00092">92</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a7025b9f998c6ca027c2d175eeb0a7949"></a><!-- doxytag: member="SimObjBase::Operation" ref="a7025b9f998c6ca027c2d175eeb0a7949" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef unsigned <a class="el" href="class_sim_obj_base.html#a7025b9f998c6ca027c2d175eeb0a7949">SimObjBase::Operation</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>エンティティ操作型 </p>
+
+<p> <a class="el" href="_sim_obj_base_8h_source.html">SimObjBase.h</a> の <a class="el" href="_sim_obj_base_8h_source.html#l00089">89</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="aa12c84a12a4c1427be899298672dc07f"></a><!-- doxytag: member="SimObjBase::S" ref="aa12c84a12a4c1427be899298672dc07f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::string <a class="el" href="class_sim_obj_base.html#aa12c84a12a4c1427be899298672dc07f">SimObjBase::S</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>文字列型 </p>
+
+<p> <a class="el" href="_sim_obj_base_8h_source.html">SimObjBase.h</a> の <a class="el" href="_sim_obj_base_8h_source.html#l00095">95</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>列挙型</h2>
+<a class="anchor" id="ad342114c65d32e51161ca7861ce476b0"></a><!-- doxytag: member="SimObjBase::@9" ref="ad342114c65d32e51161ca7861ce476b0" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum<code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>列挙型の値: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="ad342114c65d32e51161ca7861ce476b0a210f9c3dda2366a89ebf7ef32ba2ed1a"></a><!-- doxytag: member="OP_NOT_SET" ref="ad342114c65d32e51161ca7861ce476b0a210f9c3dda2366a89ebf7ef32ba2ed1a" args="" -->OP_NOT_SET</em>&nbsp;</td><td>
+<p>操作なし </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="ad342114c65d32e51161ca7861ce476b0ad33ad5bce04aff865751201dce647776"></a><!-- doxytag: member="OP_SET_POSITION" ref="ad342114c65d32e51161ca7861ce476b0ad33ad5bce04aff865751201dce647776" args="" -->OP_SET_POSITION</em>&nbsp;</td><td>
+<p>位置属性の修正操作 </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="ad342114c65d32e51161ca7861ce476b0a8dedf45a63eb776dbc311195de2704eb"></a><!-- doxytag: member="OP_SET_ROTATION" ref="ad342114c65d32e51161ca7861ce476b0a8dedf45a63eb776dbc311195de2704eb" args="" -->OP_SET_ROTATION</em>&nbsp;</td><td>
+<p>回転属性の修正操作 </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="ad342114c65d32e51161ca7861ce476b0a9d8a43acaf079211be8262e4b8f0f1ad"></a><!-- doxytag: member="OP_SET_FORCE" ref="ad342114c65d32e51161ca7861ce476b0a9d8a43acaf079211be8262e4b8f0f1ad" args="" -->OP_SET_FORCE</em>&nbsp;</td><td>
+<p>力ベクトルの設定操作 </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="ad342114c65d32e51161ca7861ce476b0abb215cb0000d5ec363156360d2d7b9dc"></a><!-- doxytag: member="OP_SET_ACCEL" ref="ad342114c65d32e51161ca7861ce476b0abb215cb0000d5ec363156360d2d7b9dc" args="" -->OP_SET_ACCEL</em>&nbsp;</td><td>
+<p>加速度の設定操作 </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="ad342114c65d32e51161ca7861ce476b0a72dad603dfbfb0f351abcfeba4faa989"></a><!-- doxytag: member="OP_SET_TORQUE" ref="ad342114c65d32e51161ca7861ce476b0a72dad603dfbfb0f351abcfeba4faa989" args="" -->OP_SET_TORQUE</em>&nbsp;</td><td>
+<p>トルクの設定操作 </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="ad342114c65d32e51161ca7861ce476b0a963dc0e5581e1639278540a11d8ffd3d"></a><!-- doxytag: member="OP_SET_VELOCITY" ref="ad342114c65d32e51161ca7861ce476b0a963dc0e5581e1639278540a11d8ffd3d" args="" -->OP_SET_VELOCITY</em>&nbsp;</td><td>
+<p>速度の設定操作 </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="ad342114c65d32e51161ca7861ce476b0a07f8abc0339fecc8ebfb062149fdb0e6"></a><!-- doxytag: member="OP_SET_ANGULAR_VELOCITY" ref="ad342114c65d32e51161ca7861ce476b0a07f8abc0339fecc8ebfb062149fdb0e6" args="" -->OP_SET_ANGULAR_VELOCITY</em>&nbsp;</td><td>
+<p>角速度の設定操作 </p>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p> <a class="el" href="_sim_obj_base_8h_source.html">SimObjBase.h</a> の <a class="el" href="_sim_obj_base_8h_source.html#l00078">78</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" id="a4e5ebb965f0a8b7774b83c06194956c5"></a><!-- doxytag: member="SimObjBase::SimObjBase" ref="a4e5ebb965f0a8b7774b83c06194956c5" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SimObjBase::SimObjBase </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コンストラクタ </p>
+
+</div>
+</div>
+<hr/><h2>関数</h2>
+<a class="anchor" id="a0438f16933b2be15b777c1b9433e8b0a"></a><!-- doxytag: member="SimObjBase::attrs" ref="a0438f16933b2be15b777c1b9433e8b0a" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_sim_obj_base.html#aa078741d41849bf7485f733f142fea92">AttrM</a>&amp; SimObjBase::attrs </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>属性マップを取得する </p>
+
+<p> <a class="el" href="_sim_obj_base_8h_source.html">SimObjBase.h</a> の <a class="el" href="_sim_obj_base_8h_source.html#l00114">114</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a4b3fdb8a8fc86bfcaa138422280fe4af"></a><!-- doxytag: member="SimObjBase::checkAttrs" ref="a4b3fdb8a8fc86bfcaa138422280fe4af" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SimObjBase::checkAttrs </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>必要な属性があるか確認する シミュレーションを実行するのに最低限必要な属性があるか確認する </p>
+<dl><dt><b>戻り値:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>true</em>&nbsp;</td><td>必要な属性を備えている </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>false</em>&nbsp;</td><td>必要な属性が備えてない </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a9d4c98008deeb62b3067f1b3e6ee162b"></a><!-- doxytag: member="SimObjBase::classname" ref="a9d4c98008deeb62b3067f1b3e6ee162b" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* SimObjBase::classname </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>クラス名を得る </p>
+
+<p> <a class="el" href="_sim_obj_base_8h_source.html">SimObjBase.h</a> の <a class="el" href="_sim_obj_base_8h_source.html#l00171">171</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a0300d36ad9656c9ac07b7901f6bc4412"></a><!-- doxytag: member="SimObjBase::copy" ref="a0300d36ad9656c9ac07b7901f6bc4412" args="(const SimObjBase &amp;o)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SimObjBase::copy </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_sim_obj_base.html">SimObjBase</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>o</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コピーメソッド </p>
+
+</div>
+</div>
+<a class="anchor" id="ac0b90e27775c1ac71b3474407da09ed8"></a><!-- doxytag: member="SimObjBase::dump" ref="ac0b90e27775c1ac71b3474407da09ed8" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SimObjBase::dump </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a4f38e5924ac5a4e902bed239da8c6d00"></a><!-- doxytag: member="SimObjBase::getAttr" ref="a4f38e5924ac5a4e902bed239da8c6d00" args="(const char *name) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_attribute.html">Attribute</a>&amp; SimObjBase::getAttr </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>name</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>指定の属性を得る </p>
+
+</div>
+</div>
+<a class="anchor" id="a1d6e6656c9ad342a8d04802ed7efb5c3"></a><!-- doxytag: member="SimObjBase::getPartsIterator" ref="a1d6e6656c9ad342a8d04802ed7efb5c3" args="()=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="class_sim_obj_base_1_1_parts_iterator.html">PartsIterator</a>* SimObjBase::getPartsIterator </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected, pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>パーツイテレータを取得する </p>
+
+<p><a class="el" href="class_sim_obj.html#aec7e335bb69258e4d32cee11c994235c">SimObj</a>で実装されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a91b5054d5d1dfef47a2e08e2b44508f0"></a><!-- doxytag: member="SimObjBase::getPosition" ref="a91b5054d5d1dfef47a2e08e2b44508f0" args="(Vector3d &amp;v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_vector3d.html">Vector3d</a>&amp; SimObjBase::getPosition </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_vector3d.html">Vector3d</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>v</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>エンティティの位置を取得する </p>
+
+<p> <a class="el" href="_sim_obj_base_8h_source.html">SimObjBase.h</a> の <a class="el" href="_sim_obj_base_8h_source.html#l00247">247</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ae059e560096b0335a59cf3ca6e08e1b3"></a><!-- doxytag: member="SimObjBase::id" ref="ae059e560096b0335a59cf3ca6e08e1b3" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_sim_obj_base.html#a606c14add78595543c118e7ece2953de">Id</a> SimObjBase::id </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>エンティティIDを得る </p>
+
+<p> <a class="el" href="_sim_obj_base_8h_source.html">SimObjBase.h</a> の <a class="el" href="_sim_obj_base_8h_source.html#l00160">160</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ab8a96e0edd491d0ec520d4f21d663566"></a><!-- doxytag: member="SimObjBase::isAttached" ref="ab8a96e0edd491d0ec520d4f21d663566" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SimObjBase::isAttached </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コントローラが割り当てられているか？ </p>
+
+<p> <a class="el" href="_sim_obj_base_8h_source.html">SimObjBase.h</a> の <a class="el" href="_sim_obj_base_8h_source.html#l00162">162</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a99483c4a917c566863588b698f761656"></a><!-- doxytag: member="SimObjBase::NAME" ref="a99483c4a917c566863588b698f761656" args="(bool b)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">¥ void SimObjBase::NAME </td>
+          <td>(</td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>b</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_sim_obj_base_8h_source.html">SimObjBase.h</a> の <a class="el" href="_sim_obj_base_8h_source.html#l00191">191</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a234a8aee6ad2a749b709258580712bfe"></a><!-- doxytag: member="SimObjBase::NAME" ref="a234a8aee6ad2a749b709258580712bfe" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SimObjBase::NAME </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_sim_obj_base_8h_source.html">SimObjBase.h</a> の <a class="el" href="_sim_obj_base_8h_source.html#l00190">190</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="af8e39828675602d987fe44c6f9bbf6d6"></a><!-- doxytag: member="SimObjBase::NAME" ref="af8e39828675602d987fe44c6f9bbf6d6" args="(double v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">¥ void SimObjBase::NAME </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>v</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_sim_obj_base_8h_source.html">SimObjBase.h</a> の <a class="el" href="_sim_obj_base_8h_source.html#l00185">185</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ac89c610417a0a4e29840a4648f876a20"></a><!-- doxytag: member="SimObjBase::NAME" ref="ac89c610417a0a4e29840a4648f876a20" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double SimObjBase::NAME </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_sim_obj_base_8h_source.html">SimObjBase.h</a> の <a class="el" href="_sim_obj_base_8h_source.html#l00184">184</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="aa267a23e1eca305038d198b22f17ad74"></a><!-- doxytag: member="SimObjBase::NAME" ref="aa267a23e1eca305038d198b22f17ad74" args="(const char *v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">¥ void SimObjBase::NAME </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>v</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_sim_obj_base_8h_source.html">SimObjBase.h</a> の <a class="el" href="_sim_obj_base_8h_source.html#l00179">179</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ab84b2148f5aea87be7886330d35e48fc"></a><!-- doxytag: member="SimObjBase::NAME" ref="ab84b2148f5aea87be7886330d35e48fc" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* SimObjBase::NAME </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_sim_obj_base_8h_source.html">SimObjBase.h</a> の <a class="el" href="_sim_obj_base_8h_source.html#l00178">178</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="aeade873b9b968ef00102d28e795510a2"></a><!-- doxytag: member="SimObjBase::name" ref="aeade873b9b968ef00102d28e795510a2" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* SimObjBase::name </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>エンティティ名を得る </p>
+
+<p> <a class="el" href="_sim_obj_base_8h_source.html">SimObjBase.h</a> の <a class="el" href="_sim_obj_base_8h_source.html#l00165">165</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a2218f37993d19f078a727cfaa65d9faa"></a><!-- doxytag: member="SimObjBase::push" ref="a2218f37993d19f078a727cfaa65d9faa" args="(Attribute *attr)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SimObjBase::push </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_attribute.html">Attribute</a> *&nbsp;</td>
+          <td class="paramname"> <em>attr</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>属性を追加する </p>
+
+<p><a class="el" href="class_sim_obj.html#a582b9a79f8ee5edc5a9cd1ddeac62b3a">SimObj</a>で再定義されています。</p>
+
+<p> <a class="el" href="_sim_obj_base_8h_source.html">SimObjBase.h</a> の <a class="el" href="_sim_obj_base_8h_source.html#l00117">117</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="aa6882ecfdbbc19170de7a275ad8d6e66"></a><!-- doxytag: member="SimObjBase::setAngularVelocity" ref="aa6882ecfdbbc19170de7a275ad8d6e66" args="(double x_, double y_, double z_)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void SimObjBase::setAngularVelocity </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>x_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>y_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>z_</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>エンティティにかかる角速度を設定する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>x_</em>&nbsp;</td><td>X軸成分[rad/s] </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y_</em>&nbsp;</td><td>Y軸成分[rad/s] </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>z_</em>&nbsp;</td><td>Z軸成分[rad/s] </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ae3975f55b7f131daa6ac9d3d07d790f3"></a><!-- doxytag: member="SimObjBase::setAttrValue" ref="ae3975f55b7f131daa6ac9d3d07d790f3" args="(const char *name, const Value &amp;v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SimObjBase::setAttrValue </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_value.html">Value</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>v</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>属性値を設定する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>属性名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>v</em>&nbsp;</td><td>属性値 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_sim_obj_base_8h_source.html">SimObjBase.h</a> の <a class="el" href="_sim_obj_base_8h_source.html#l00140">140</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a730b336dae64f65814839175ab49a780"></a><!-- doxytag: member="SimObjBase::setAttrValue" ref="a730b336dae64f65814839175ab49a780" args="(const char *name, const char *v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SimObjBase::setAttrValue </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>v</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>属性値を文字列で設定する </p>
+<p>値は文字列で与えるが、属性値の型に応じて適切にパースされる。</p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>属性名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>v</em>&nbsp;</td><td>属性値 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_sim_obj_base_8h_source.html">SimObjBase.h</a> の <a class="el" href="_sim_obj_base_8h_source.html#l00129">129</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a53eda7db4fd0915b1e4f2d453fec38d8"></a><!-- doxytag: member="SimObjBase::setAxisAndAngle" ref="a53eda7db4fd0915b1e4f2d453fec38d8" args="(double ax, double ay, double az, double angle, double direct)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void SimObjBase::setAxisAndAngle </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>ax</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>ay</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>az</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>angle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>direct</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>It rotates for the specification of the relative angle. </p>
+<p>相対角度指定による回転を行います </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>X軸回転有無(四元数虚数部i)/x-axis</em>&nbsp;</td><td>rotation weather(i of quaternion complex part) </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>Y軸回転有無(四元数虚数部j)/y-axis</em>&nbsp;</td><td>rotation weather(j of quaternion complex part) </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>Z軸回転有無(四元数虚数部k)/z-axis</em>&nbsp;</td><td>rotation weather(k of quaternion complex part) </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>指定フラグ(1.0=絶対角度指定,else=相対角度指定)</em>&nbsp;</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a9ab75f1e93ef1f55c29e0cf113b4f4a9"></a><!-- doxytag: member="SimObjBase::setAxisAndAngle" ref="a9ab75f1e93ef1f55c29e0cf113b4f4a9" args="(double ax, double ay, double az, double angle)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void SimObjBase::setAxisAndAngle </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>ax</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>ay</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>az</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>angle</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>エンティティの向きを設定する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>ax</em>&nbsp;</td><td>回転軸のX成分 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>ay</em>&nbsp;</td><td>回転軸のY成分 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>az</em>&nbsp;</td><td>回転軸のZ成分 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>angle</em>&nbsp;</td><td>回転角度 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="afa6de3d237820c20c9f400952b3e0a02"></a><!-- doxytag: member="SimObjBase::setEyeJoint" ref="afa6de3d237820c20c9f400952b3e0a02" args="(const char *evec)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void SimObjBase::setEyeJoint </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>evec</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>目のJointを設定する(2010/11/30 okamoto) </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>eye</em>&nbsp;</td><td>視線ベクトル成分 (vvx, vvy, vvz, levx, ....) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_sim_obj_base_8h_source.html">SimObjBase.h</a> の <a class="el" href="_sim_obj_base_8h_source.html#l00285">285</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ac7c5aef77c8e270b0c72a4e42470b70c"></a><!-- doxytag: member="SimObjBase::setForce" ref="ac7c5aef77c8e270b0c72a4e42470b70c" args="(double fx, double fy, double fz)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void SimObjBase::setForce </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>fx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>fy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>fz</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>エンティティにかかる力を設定する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>fx</em>&nbsp;</td><td>X軸成分 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>fy</em>&nbsp;</td><td>Y軸成分 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>fz</em>&nbsp;</td><td>Z軸成分 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a5e6c1053f25ca1ed5636ae922d5ad902"></a><!-- doxytag: member="SimObjBase::setPosition" ref="a5e6c1053f25ca1ed5636ae922d5ad902" args="(double x_, double y_, double z_)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void SimObjBase::setPosition </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>x_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>y_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>z_</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>エンティティの位置を設定する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>x_</em>&nbsp;</td><td>X座標値 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y_</em>&nbsp;</td><td>Y座標値 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>z_</em>&nbsp;</td><td>Z座標値 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a8663645d25b644eeba1702cfb48a7ee7"></a><!-- doxytag: member="SimObjBase::setPosition" ref="a8663645d25b644eeba1702cfb48a7ee7" args="(const Vector3d &amp;v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void SimObjBase::setPosition </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_vector3d.html">Vector3d</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>v</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>エンティティの位置を設定する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>v</em>&nbsp;</td><td>3次元位置 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a089b529a7246f73108c9634051ed8fb1"></a><!-- doxytag: member="SimObjBase::setRotation" ref="a089b529a7246f73108c9634051ed8fb1" args="(const Rotation &amp;r)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void SimObjBase::setRotation </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_rotation.html">Rotation</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>r</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>エンティティの向きを設定する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>r</em>&nbsp;</td><td>回転行列 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a1858fd01913d605357305b989904c116"></a><!-- doxytag: member="SimObjBase::setTorque" ref="a1858fd01913d605357305b989904c116" args="(double x, double y, double z)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void SimObjBase::setTorque </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>z</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>エンティティにかかるトルクを設定する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>X軸成分 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Y軸成分 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>z</em>&nbsp;</td><td>Z軸成分 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a68b782648467b98e6b399507ef11bd44"></a><!-- doxytag: member="SimObjBase::setVelocity" ref="a68b782648467b98e6b399507ef11bd44" args="(double vx_, double vy_, double vz_)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void SimObjBase::setVelocity </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>vx_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>vy_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>vz_</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>エンティティにかかる速度を設定する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>vx_</em>&nbsp;</td><td>X軸成分 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>vy_</em>&nbsp;</td><td>Y軸成分 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>vz_</em>&nbsp;</td><td>Z軸成分 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ab2583905f4a2541e131eea7e42b8742b"></a><!-- doxytag: member="SimObjBase::toBinary" ref="ab2583905f4a2541e131eea7e42b8742b" args="(int &amp;n)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* SimObjBase::toBinary </td>
+          <td>(</td>
+          <td class="paramtype">int &amp;&nbsp;</td>
+          <td class="paramname"> <em>n</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>エンティティデータをバイナリ化する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>バイナリデータサイズ</em>&nbsp;</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>戻り値:</b></dt><dd>バイナリデータ </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ad0576ee3a556ea311733096d84aede4c"></a><!-- doxytag: member="SimObjBase::‾SimObjBase" ref="ad0576ee3a556ea311733096d84aede4c" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual SimObjBase::‾SimObjBase </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>デストラクタ </p>
+
+</div>
+</div>
+<hr/><h2>変数</h2>
+<a class="anchor" id="a8ec52c7f73d0aa04cd60e710c9ab9f87"></a><!-- doxytag: member="SimObjBase::m_attached" ref="a8ec52c7f73d0aa04cd60e710c9ab9f87" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_sim_obj_base.html#a8ec52c7f73d0aa04cd60e710c9ab9f87">SimObjBase::m_attached</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コントローラが割り当てられているか？ </p>
+
+<p> <a class="el" href="_sim_obj_base_8h_source.html">SimObjBase.h</a> の <a class="el" href="_sim_obj_base_8h_source.html#l00099">99</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="aea993ef66f6a5b6f36de2a00788a553c"></a><!-- doxytag: member="SimObjBase::m_attrs" ref="aea993ef66f6a5b6f36de2a00788a553c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_sim_obj_base.html#aa078741d41849bf7485f733f142fea92">AttrM</a> <a class="el" href="class_sim_obj_base.html#aea993ef66f6a5b6f36de2a00788a553c">SimObjBase::m_attrs</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>属性マップ </p>
+
+<p> <a class="el" href="_sim_obj_base_8h_source.html">SimObjBase.h</a> の <a class="el" href="_sim_obj_base_8h_source.html#l00101">101</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a47aefcaf6523ee05901bfe0b45f17176"></a><!-- doxytag: member="SimObjBase::m_id" ref="a47aefcaf6523ee05901bfe0b45f17176" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_sim_obj_base.html#a606c14add78595543c118e7ece2953de">Id</a> <a class="el" href="class_sim_obj_base.html#a47aefcaf6523ee05901bfe0b45f17176">SimObjBase::m_id</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>エンティティID。エンティティに割り振られる一意な値。 </p>
+
+<p> <a class="el" href="_sim_obj_base_8h_source.html">SimObjBase.h</a> の <a class="el" href="_sim_obj_base_8h_source.html#l00100">100</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ad99dd8201476f7965a69162da66669d3"></a><!-- doxytag: member="SimObjBase::m_ops" ref="ad99dd8201476f7965a69162da66669d3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_sim_obj_base.html#a7025b9f998c6ca027c2d175eeb0a7949">Operation</a> <a class="el" href="class_sim_obj_base.html#ad99dd8201476f7965a69162da66669d3">SimObjBase::m_ops</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>呼び出された操作 </p>
+
+<p> <a class="el" href="_sim_obj_base_8h_source.html">SimObjBase.h</a> の <a class="el" href="_sim_obj_base_8h_source.html#l00102">102</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_sim_obj_base_8h_source.html">SimObjBase.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>SIGVerse_Controllerに対してTue Dec 13 19:10:59 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

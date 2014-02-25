@@ -1,0 +1,672 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>sigjsp: クラス Jsp::JuliusServiceProvider</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_jsp.html">Jsp</a>::<a class="el" href="class_jsp_1_1_julius_service_provider.html">JuliusServiceProvider</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Jsp::JuliusServiceProvider</h1><!-- doxytag: class="Jsp::JuliusServiceProvider" -->音声認識サービスプロバイダ本体  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_jsp_8h_source.html">Jsp.h</a>&gt;</code>
+<p>
+
+<p>
+<a href="class_jsp_1_1_julius_service_provider-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_julius_service_provider.html#443803df2fcd6faf2793f109be54d546">connectToSimServer</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">シミュレーションサーバーに接続する  <a href="#443803df2fcd6faf2793f109be54d546"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_julius_service_provider.html#8c71de4452076f1c7c2b1647a48fb912">getHostIPAddr</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ホストIPアドレスを返す  <a href="#8c71de4452076f1c7c2b1647a48fb912"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_julius_service_provider.html#fe6d0a493dd34b06b1be2642906d2fbc">getHostName</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ホスト名を返す  <a href="#fe6d0a493dd34b06b1be2642906d2fbc"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_julius_service_provider.html#6099e34d10ef5137738509bd1ed37154">invokeJulius</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">juliusを起動する  <a href="#6099e34d10ef5137738509bd1ed37154"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_julius_service_provider.html#1b0bce11c1797c844048bc16f59dad7e">isJuliusAvairable</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">juliusが有効か否かを調べる  <a href="#1b0bce11c1797c844048bc16f59dad7e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_julius_service_provider.html#7c9e0b5cc844dd2b68a84753a7e00edf">JuliusServiceProvider</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#7c9e0b5cc844dd2b68a84753a7e00edf"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_julius_service_provider.html#55f051eced9924f50b8f87b5a4abd6ba">killJulius</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">juliusを終了させる  <a href="#55f051eced9924f50b8f87b5a4abd6ba"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_julius_service_provider.html#02d9927d71de90298911bd5dc21e7ec1">printSettings</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">現在の設定を出力する  <a href="#02d9927d71de90298911bd5dc21e7ec1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_julius_service_provider.html#7ef2bbb9bfc38bb453fb4362ad841a78">recognizeLoop</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">認識ループに入る  <a href="#7ef2bbb9bfc38bb453fb4362ad841a78"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_julius_service_provider.html#7c5ea00ea6efdb446ca35ea3f9c11f88">sendProvideServiceRequest</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">シミュレーションサーバーにサービスリクエストを送信する  <a href="#7c5ea00ea6efdb446ca35ea3f9c11f88"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_julius_service_provider.html#6c21fc0060248efb4c9822617edbfd8a">setDelayTimeForStartJulius</a> (int msec)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">juliusの起動までのウェイト時間  <a href="#6c21fc0060248efb4c9822617edbfd8a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_julius_service_provider.html#427a3a494939cca5bfaea8a1d4b5a974">setJspServiceAcceptPort</a> (int port)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">音声認識サービスを受け付けるポート番号を設定する  <a href="#427a3a494939cca5bfaea8a1d4b5a974"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_julius_service_provider.html#61fa2214fd30f1a7f1c9211f708528c7">setJuliusAdinnetPort</a> (int port)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">juliusのAdinnetポート番号を設定する  <a href="#61fa2214fd30f1a7f1c9211f708528c7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_julius_service_provider.html#7434f76291b97f4e6822334539e7cd96">setJuliusConfFile</a> (const std::string &amp;juliusConfFile)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">julius設定ファイルのパスを設定する  <a href="#7434f76291b97f4e6822334539e7cd96"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_julius_service_provider.html#0849af2c33427edfd18f0f8543da1616">setJuliusModulePort</a> (int port)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">juliusのモジュールポート番号を設定する  <a href="#0849af2c33427edfd18f0f8543da1616"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_julius_service_provider.html#279a22f6de624add6250cd360253079d">setJuliusPath</a> (const std::string &amp;juliusPath)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">julius実行形式へのパスを設定する  <a href="#279a22f6de624add6250cd360253079d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_julius_service_provider.html#8baee81e7fe286d5771968d84c0f4e68">setLoadedSigJspConfFile</a> (const char *pLoadedSigJspConfFile)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ロードしたsigjspの設定ファイルのパスをセットする  <a href="#8baee81e7fe286d5771968d84c0f4e68"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_julius_service_provider.html#48d3efb5891491723ba4d1c8f4152675">setSimServerHostName</a> (const std::string &amp;serverName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">シミュレーションサーバーのホスト名をセットする  <a href="#48d3efb5891491723ba4d1c8f4152675"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_julius_service_provider.html#30ebd5e5af4e035ec8b9af75b247b9c4">setSimServerPort</a> (int port)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">シミュレーションサーバーのポート番号をセットする  <a href="#30ebd5e5af4e035ec8b9af75b247b9c4"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_julius_service_provider.html#04c41a62c9359a1376702489a66a680e">setupServiceAcceptSocket</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">サービス受付ソケットを準備する  <a href="#04c41a62c9359a1376702489a66a680e"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+音声認識サービスプロバイダ本体 
+<p> <a class="el" href="_jsp_8h_source.html">Jsp.h</a> の <a class="el" href="_jsp_8h_source.html#l00014">14</a> 行で定義されています。</p>
+<hr><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" name="7c9e0b5cc844dd2b68a84753a7e00edf"></a><!-- doxytag: member="Jsp::JuliusServiceProvider::JuliusServiceProvider" ref="7c9e0b5cc844dd2b68a84753a7e00edf" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Jsp::JuliusServiceProvider::JuliusServiceProvider           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+
+<p> <a class="el" href="_jsp_8cpp_source.html">Jsp.cpp</a> の <a class="el" href="_jsp_8cpp_source.html#l00024">24</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>関数</h2>
+<a class="anchor" name="443803df2fcd6faf2793f109be54d546"></a><!-- doxytag: member="Jsp::JuliusServiceProvider::connectToSimServer" ref="443803df2fcd6faf2793f109be54d546" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Jsp::JuliusServiceProvider::connectToSimServer           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+シミュレーションサーバーに接続する 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_jsp_8cpp_source.html">Jsp.cpp</a> の <a class="el" href="_jsp_8cpp_source.html#l00284">284</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="8c71de4452076f1c7c2b1647a48fb912"></a><!-- doxytag: member="Jsp::JuliusServiceProvider::getHostIPAddr" ref="8c71de4452076f1c7c2b1647a48fb912" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Jsp::JuliusServiceProvider::getHostIPAddr           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ホストIPアドレスを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>ホストIPアドレス </dd></dl>
+
+<p> <a class="el" href="_jsp_8cpp_source.html">Jsp.cpp</a> の <a class="el" href="_jsp_8cpp_source.html#l00258">258</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="fe6d0a493dd34b06b1be2642906d2fbc"></a><!-- doxytag: member="Jsp::JuliusServiceProvider::getHostName" ref="fe6d0a493dd34b06b1be2642906d2fbc" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Jsp::JuliusServiceProvider::getHostName           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ホスト名を返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>ホスト名 </dd></dl>
+
+<p> <a class="el" href="_jsp_8cpp_source.html">Jsp.cpp</a> の <a class="el" href="_jsp_8cpp_source.html#l00237">237</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="6099e34d10ef5137738509bd1ed37154"></a><!-- doxytag: member="Jsp::JuliusServiceProvider::invokeJulius" ref="6099e34d10ef5137738509bd1ed37154" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Jsp::JuliusServiceProvider::invokeJulius           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+juliusを起動する 
+<p>
+
+<p> <a class="el" href="_jsp_8cpp_source.html">Jsp.cpp</a> の <a class="el" href="_jsp_8cpp_source.html#l00122">122</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="1b0bce11c1797c844048bc16f59dad7e"></a><!-- doxytag: member="Jsp::JuliusServiceProvider::isJuliusAvairable" ref="1b0bce11c1797c844048bc16f59dad7e" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Jsp::JuliusServiceProvider::isJuliusAvairable           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+juliusが有効か否かを調べる 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=julius起動中), false(=juliusは起動していない) </dd></dl>
+
+<p> <a class="el" href="_jsp_8h_source.html">Jsp.h</a> の <a class="el" href="_jsp_8h_source.html#l00108">108</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="55f051eced9924f50b8f87b5a4abd6ba"></a><!-- doxytag: member="Jsp::JuliusServiceProvider::killJulius" ref="55f051eced9924f50b8f87b5a4abd6ba" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Jsp::JuliusServiceProvider::killJulius           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+juliusを終了させる 
+<p>
+
+<p> <a class="el" href="_jsp_8cpp_source.html">Jsp.cpp</a> の <a class="el" href="_jsp_8cpp_source.html#l00226">226</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="02d9927d71de90298911bd5dc21e7ec1"></a><!-- doxytag: member="Jsp::JuliusServiceProvider::printSettings" ref="02d9927d71de90298911bd5dc21e7ec1" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Jsp::JuliusServiceProvider::printSettings           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+現在の設定を出力する 
+<p>
+
+<p> <a class="el" href="_jsp_8cpp_source.html">Jsp.cpp</a> の <a class="el" href="_jsp_8cpp_source.html#l00087">87</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="7ef2bbb9bfc38bb453fb4362ad841a78"></a><!-- doxytag: member="Jsp::JuliusServiceProvider::recognizeLoop" ref="7ef2bbb9bfc38bb453fb4362ad841a78" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Jsp::JuliusServiceProvider::recognizeLoop           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+認識ループに入る 
+<p>
+
+<p> <a class="el" href="_jsp_8cpp_source.html">Jsp.cpp</a> の <a class="el" href="_jsp_8cpp_source.html#l00316">316</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="7c5ea00ea6efdb446ca35ea3f9c11f88"></a><!-- doxytag: member="Jsp::JuliusServiceProvider::sendProvideServiceRequest" ref="7c5ea00ea6efdb446ca35ea3f9c11f88" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Jsp::JuliusServiceProvider::sendProvideServiceRequest           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+シミュレーションサーバーにサービスリクエストを送信する 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_jsp_8cpp_source.html">Jsp.cpp</a> の <a class="el" href="_jsp_8cpp_source.html#l00289">289</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="6c21fc0060248efb4c9822617edbfd8a"></a><!-- doxytag: member="Jsp::JuliusServiceProvider::setDelayTimeForStartJulius" ref="6c21fc0060248efb4c9822617edbfd8a" args="(int msec)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Jsp::JuliusServiceProvider::setDelayTimeForStartJulius           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>msec</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+juliusの起動までのウェイト時間 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>msec</em>&nbsp;</td><td>[i] juliusが起動するまで待つ時間 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_jsp_8cpp_source.html">Jsp.cpp</a> の <a class="el" href="_jsp_8cpp_source.html#l00082">82</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="427a3a494939cca5bfaea8a1d4b5a974"></a><!-- doxytag: member="Jsp::JuliusServiceProvider::setJspServiceAcceptPort" ref="427a3a494939cca5bfaea8a1d4b5a974" args="(int port)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Jsp::JuliusServiceProvider::setJspServiceAcceptPort           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>port</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+音声認識サービスを受け付けるポート番号を設定する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>port</em>&nbsp;</td><td>[i] ポート番号 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_jsp_8cpp_source.html">Jsp.cpp</a> の <a class="el" href="_jsp_8cpp_source.html#l00057">57</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="61fa2214fd30f1a7f1c9211f708528c7"></a><!-- doxytag: member="Jsp::JuliusServiceProvider::setJuliusAdinnetPort" ref="61fa2214fd30f1a7f1c9211f708528c7" args="(int port)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Jsp::JuliusServiceProvider::setJuliusAdinnetPort           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>port</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+juliusのAdinnetポート番号を設定する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>port</em>&nbsp;</td><td>[i] ポート番号 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_jsp_8cpp_source.html">Jsp.cpp</a> の <a class="el" href="_jsp_8cpp_source.html#l00067">67</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="7434f76291b97f4e6822334539e7cd96"></a><!-- doxytag: member="Jsp::JuliusServiceProvider::setJuliusConfFile" ref="7434f76291b97f4e6822334539e7cd96" args="(const std::string &amp;juliusConfFile)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Jsp::JuliusServiceProvider::setJuliusConfFile           </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>juliusConfFile</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+julius設定ファイルのパスを設定する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>juliusConfFile</em>&nbsp;</td><td>[i] 設定ファイルのパス </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_jsp_8cpp_source.html">Jsp.cpp</a> の <a class="el" href="_jsp_8cpp_source.html#l00077">77</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="0849af2c33427edfd18f0f8543da1616"></a><!-- doxytag: member="Jsp::JuliusServiceProvider::setJuliusModulePort" ref="0849af2c33427edfd18f0f8543da1616" args="(int port)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Jsp::JuliusServiceProvider::setJuliusModulePort           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>port</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+juliusのモジュールポート番号を設定する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>port</em>&nbsp;</td><td>[i] ポート番号 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_jsp_8cpp_source.html">Jsp.cpp</a> の <a class="el" href="_jsp_8cpp_source.html#l00062">62</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="279a22f6de624add6250cd360253079d"></a><!-- doxytag: member="Jsp::JuliusServiceProvider::setJuliusPath" ref="279a22f6de624add6250cd360253079d" args="(const std::string &amp;juliusPath)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Jsp::JuliusServiceProvider::setJuliusPath           </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>juliusPath</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+julius実行形式へのパスを設定する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>juliusPath</em>&nbsp;</td><td>[i] juliusのパス </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_jsp_8cpp_source.html">Jsp.cpp</a> の <a class="el" href="_jsp_8cpp_source.html#l00072">72</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="8baee81e7fe286d5771968d84c0f4e68"></a><!-- doxytag: member="Jsp::JuliusServiceProvider::setLoadedSigJspConfFile" ref="8baee81e7fe286d5771968d84c0f4e68" args="(const char *pLoadedSigJspConfFile)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Jsp::JuliusServiceProvider::setLoadedSigJspConfFile           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>pLoadedSigJspConfFile</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ロードしたsigjspの設定ファイルのパスをセットする 
+<p>
+設定ファイルが見つからなかった（ロードに失敗した）場合は NULLを与えること<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>pLoadedSigJspConfFile</em>&nbsp;</td><td>[i] 設定ファイル名 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_jsp_8cpp_source.html">Jsp.cpp</a> の <a class="el" href="_jsp_8cpp_source.html#l00033">33</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="48d3efb5891491723ba4d1c8f4152675"></a><!-- doxytag: member="Jsp::JuliusServiceProvider::setSimServerHostName" ref="48d3efb5891491723ba4d1c8f4152675" args="(const std::string &amp;serverName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Jsp::JuliusServiceProvider::setSimServerHostName           </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>serverName</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+シミュレーションサーバーのホスト名をセットする 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>serverName</em>&nbsp;</td><td>[i] サーバー名 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_jsp_8cpp_source.html">Jsp.cpp</a> の <a class="el" href="_jsp_8cpp_source.html#l00047">47</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="30ebd5e5af4e035ec8b9af75b247b9c4"></a><!-- doxytag: member="Jsp::JuliusServiceProvider::setSimServerPort" ref="30ebd5e5af4e035ec8b9af75b247b9c4" args="(int port)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Jsp::JuliusServiceProvider::setSimServerPort           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>port</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+シミュレーションサーバーのポート番号をセットする 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>port</em>&nbsp;</td><td>[i] ポート番号 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_jsp_8cpp_source.html">Jsp.cpp</a> の <a class="el" href="_jsp_8cpp_source.html#l00052">52</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="04c41a62c9359a1376702489a66a680e"></a><!-- doxytag: member="Jsp::JuliusServiceProvider::setupServiceAcceptSocket" ref="04c41a62c9359a1376702489a66a680e" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Jsp::JuliusServiceProvider::setupServiceAcceptSocket           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+サービス受付ソケットを準備する 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_jsp_8cpp_source.html">Jsp.cpp</a> の <a class="el" href="_jsp_8cpp_source.html#l00311">311</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_jsp_8h_source.html">Jsp.h</a><li><a class="el" href="_jsp_8cpp_source.html">Jsp.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>sigjspに対してWed Dec 2 15:46:02 2009に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

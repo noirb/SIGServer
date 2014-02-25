@@ -1,0 +1,480 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: クラス ODEWorld</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス ODEWorld</h1><!-- doxytag: class="ODEWorld" -->
+<p>ODE 世界オブジェクトのラッパークラス.  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_o_d_e_world_8h_source.html">ODEWorld.h</a>&gt;</code></p>
+<div class="dynheader">
+ODEWorldのコラボレーション図</div>
+<div class="dynsection">
+<div class="center"><img src="class_o_d_e_world__coll__graph.png" border="0" usemap="#_o_d_e_world_coll__map" alt="Collaboration graph"/></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+
+<p><a href="class_o_d_e_world-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>構成</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_o_d_e_world_1_1_collision.html">Collision</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_o_d_e_world_1_1_gravity.html">Gravity</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">重力加速度構造体  <a href="struct_o_d_e_world_1_1_gravity.html#_details">[詳細]</a><br/></td></tr>
+<tr><td colspan="2"><h2>Public 型</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; <a class="el" href="struct_o_d_e_world_1_1_collision.html">Collision</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_d_e_world.html#a0c6cfddff88c36956a4a1622f44d1447">CollisionC</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_d_e_world.html#ae711327419106848ea3809ea29c702a4">S</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; std::string &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_d_e_world.html#ad0d2dfa63aba83e71ee2584e679390d3">WithC</a></td></tr>
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_d_e_world.html#a45f88104f06750156647da95a1618beb">collideWith</a> (const char *, <a class="el" href="class_o_d_e_world.html#ad0d2dfa63aba83e71ee2584e679390d3">WithC</a> &amp;)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">dGeomID&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_d_e_world.html#a799904a3b048add8816be18774264a03">getGround</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">dJointGroupID&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_d_e_world.html#aea3843ac6a44f4851d4b6b9ec1f8be42">jointGroup</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ODE joint group ハンドラを取得する.  <a href="#aea3843ac6a44f4851d4b6b9ec1f8be42"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_d_e_world.html#a5a00c7ee3fcf994bbddbce545f32c198">nextStep</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">シミュレーション時間を進める  <a href="#a5a00c7ee3fcf994bbddbce545f32c198"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_d_e_world.html#aabc88684511ce8cedc83d08e12d48c0d">resetTime</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">シミュレーション時間を0に戻す  <a href="#aabc88684511ce8cedc83d08e12d48c0d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_d_e_world.html#add5c5a547d96c831c89d76cf1178aaa1">setGround</a> (<a class="el" href="class_sim_ground.html">SimGround</a> *ground)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">dSpaceID&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_d_e_world.html#a4e103458b5352d2dab587231079e09f8">space</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ODE space ハンドラを取得する.  <a href="#a4e103458b5352d2dab587231079e09f8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_d_e_world.html#a82f035ea6fc376effe4140fabfe2086d">step</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">1ステップの時間幅を取得する  <a href="#a82f035ea6fc376effe4140fabfe2086d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_d_e_world.html#a54c4093714f9b0c30dcd7252dc8706fc">stepCount</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">シミュレーションステップ回数を取得する  <a href="#a54c4093714f9b0c30dcd7252dc8706fc"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_d_e_world.html#a319d50e6f07c2e0bc523d81a219a4308">time</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">シミュレーション時間を取得する  <a href="#a319d50e6f07c2e0bc523d81a219a4308"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">dWorldID&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_d_e_world.html#af60ae743bb9752ff8b4021c941b781d1">world</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ODE world ハンドラを取得する.  <a href="#af60ae743bb9752ff8b4021c941b781d1"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_d_e_world.html#adda618bf4676630e684f3a86ad39fa13">‾ODEWorld</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#adda618bf4676630e684f3a86ad39fa13"></a><br/></td></tr>
+<tr><td colspan="2"><h2>Static Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_o_d_e_world.html">ODEWorld</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_d_e_world.html#aa41affb41b0533c07068d34ef56049ce">create</a> (const <a class="el" href="struct_o_d_e_world_1_1_gravity.html">Gravity</a> &amp;g, dReal erp)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">インスタンスを生成する  <a href="#aa41affb41b0533c07068d34ef56049ce"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_o_d_e_world.html">ODEWorld</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_d_e_world.html#a049fbdc7fa608cf830a961baee726721">get</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">生成済みのインスタンスを取得する  <a href="#a049fbdc7fa608cf830a961baee726721"></a><br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>ODE 世界オブジェクトのラッパークラス. </p>
+<p>シングルトンとして使用する </p>
+
+<p> <a class="el" href="_o_d_e_world_8h_source.html">ODEWorld.h</a> の <a class="el" href="_o_d_e_world_8h_source.html#l00023">23</a> 行で定義されています。</p>
+<hr/><h2>型定義</h2>
+<a class="anchor" id="a0c6cfddff88c36956a4a1622f44d1447"></a><!-- doxytag: member="ODEWorld::CollisionC" ref="a0c6cfddff88c36956a4a1622f44d1447" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::vector&lt;<a class="el" href="struct_o_d_e_world_1_1_collision.html">Collision</a>&gt; <a class="el" href="class_o_d_e_world.html#a0c6cfddff88c36956a4a1622f44d1447">ODEWorld::CollisionC</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_o_d_e_world_8h_source.html">ODEWorld.h</a> の <a class="el" href="_o_d_e_world_8h_source.html#l00033">33</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ae711327419106848ea3809ea29c702a4"></a><!-- doxytag: member="ODEWorld::S" ref="ae711327419106848ea3809ea29c702a4" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::string <a class="el" href="class_o_d_e_world.html#ae711327419106848ea3809ea29c702a4">ODEWorld::S</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_o_d_e_world_8h_source.html">ODEWorld.h</a> の <a class="el" href="_o_d_e_world_8h_source.html#l00027">27</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ad0d2dfa63aba83e71ee2584e679390d3"></a><!-- doxytag: member="ODEWorld::WithC" ref="ad0d2dfa63aba83e71ee2584e679390d3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::vector&lt;std::string&gt; <a class="el" href="class_o_d_e_world.html#ad0d2dfa63aba83e71ee2584e679390d3">ODEWorld::WithC</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_o_d_e_world_8h_source.html">ODEWorld.h</a> の <a class="el" href="_o_d_e_world_8h_source.html#l00068">68</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>関数</h2>
+<a class="anchor" id="a45f88104f06750156647da95a1618beb"></a><!-- doxytag: member="ODEWorld::collideWith" ref="a45f88104f06750156647da95a1618beb" args="(const char *, WithC &amp;)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ODEWorld::collideWith </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_o_d_e_world.html#ad0d2dfa63aba83e71ee2584e679390d3">WithC</a> &amp;&nbsp;</td>
+          <td class="paramname"></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aa41affb41b0533c07068d34ef56049ce"></a><!-- doxytag: member="ODEWorld::create" ref="aa41affb41b0533c07068d34ef56049ce" args="(const Gravity &amp;g, dReal erp)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_o_d_e_world.html">ODEWorld</a>* ODEWorld::create </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_o_d_e_world_1_1_gravity.html">Gravity</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>erp</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>インスタンスを生成する </p>
+
+</div>
+</div>
+<a class="anchor" id="a049fbdc7fa608cf830a961baee726721"></a><!-- doxytag: member="ODEWorld::get" ref="a049fbdc7fa608cf830a961baee726721" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_o_d_e_world.html">ODEWorld</a>* ODEWorld::get </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>生成済みのインスタンスを取得する </p>
+
+</div>
+</div>
+<a class="anchor" id="a799904a3b048add8816be18774264a03"></a><!-- doxytag: member="ODEWorld::getGround" ref="a799904a3b048add8816be18774264a03" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dGeomID ODEWorld::getGround </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_o_d_e_world_8h_source.html">ODEWorld.h</a> の <a class="el" href="_o_d_e_world_8h_source.html#l00066">66</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="aea3843ac6a44f4851d4b6b9ec1f8be42"></a><!-- doxytag: member="ODEWorld::jointGroup" ref="aea3843ac6a44f4851d4b6b9ec1f8be42" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dJointGroupID ODEWorld::jointGroup </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ODE joint group ハンドラを取得する. </p>
+
+<p> <a class="el" href="_o_d_e_world_8h_source.html">ODEWorld.h</a> の <a class="el" href="_o_d_e_world_8h_source.html#l00052">52</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a5a00c7ee3fcf994bbddbce545f32c198"></a><!-- doxytag: member="ODEWorld::nextStep" ref="a5a00c7ee3fcf994bbddbce545f32c198" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ODEWorld::nextStep </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>シミュレーション時間を進める </p>
+
+</div>
+</div>
+<a class="anchor" id="aabc88684511ce8cedc83d08e12d48c0d"></a><!-- doxytag: member="ODEWorld::resetTime" ref="aabc88684511ce8cedc83d08e12d48c0d" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ODEWorld::resetTime </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>シミュレーション時間を0に戻す </p>
+
+<p> <a class="el" href="_o_d_e_world_8h_source.html">ODEWorld.h</a> の <a class="el" href="_o_d_e_world_8h_source.html#l00056">56</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="add5c5a547d96c831c89d76cf1178aaa1"></a><!-- doxytag: member="ODEWorld::setGround" ref="add5c5a547d96c831c89d76cf1178aaa1" args="(SimGround *ground)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ODEWorld::setGround </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sim_ground.html">SimGround</a> *&nbsp;</td>
+          <td class="paramname"> <em>ground</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_o_d_e_world_8h_source.html">ODEWorld.h</a> の <a class="el" href="_o_d_e_world_8h_source.html#l00064">64</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a4e103458b5352d2dab587231079e09f8"></a><!-- doxytag: member="ODEWorld::space" ref="a4e103458b5352d2dab587231079e09f8" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dSpaceID ODEWorld::space </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ODE space ハンドラを取得する. </p>
+
+<p> <a class="el" href="_o_d_e_world_8h_source.html">ODEWorld.h</a> の <a class="el" href="_o_d_e_world_8h_source.html#l00050">50</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a82f035ea6fc376effe4140fabfe2086d"></a><!-- doxytag: member="ODEWorld::step" ref="a82f035ea6fc376effe4140fabfe2086d" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double ODEWorld::step </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>1ステップの時間幅を取得する </p>
+
+<p> <a class="el" href="_o_d_e_world_8h_source.html">ODEWorld.h</a> の <a class="el" href="_o_d_e_world_8h_source.html#l00060">60</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a54c4093714f9b0c30dcd7252dc8706fc"></a><!-- doxytag: member="ODEWorld::stepCount" ref="a54c4093714f9b0c30dcd7252dc8706fc" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned ODEWorld::stepCount </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>シミュレーションステップ回数を取得する </p>
+
+<p> <a class="el" href="_o_d_e_world_8h_source.html">ODEWorld.h</a> の <a class="el" href="_o_d_e_world_8h_source.html#l00062">62</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a319d50e6f07c2e0bc523d81a219a4308"></a><!-- doxytag: member="ODEWorld::time" ref="a319d50e6f07c2e0bc523d81a219a4308" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double ODEWorld::time </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>シミュレーション時間を取得する </p>
+
+<p> <a class="el" href="_o_d_e_world_8h_source.html">ODEWorld.h</a> の <a class="el" href="_o_d_e_world_8h_source.html#l00058">58</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="af60ae743bb9752ff8b4021c941b781d1"></a><!-- doxytag: member="ODEWorld::world" ref="af60ae743bb9752ff8b4021c941b781d1" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dWorldID ODEWorld::world </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ODE world ハンドラを取得する. </p>
+
+<p> <a class="el" href="_o_d_e_world_8h_source.html">ODEWorld.h</a> の <a class="el" href="_o_d_e_world_8h_source.html#l00048">48</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="adda618bf4676630e684f3a86ad39fa13"></a><!-- doxytag: member="ODEWorld::‾ODEWorld" ref="adda618bf4676630e684f3a86ad39fa13" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ODEWorld::‾ODEWorld </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>デストラクタ </p>
+
+<p> <a class="el" href="_o_d_e_world_8h_source.html">ODEWorld.h</a> の <a class="el" href="_o_d_e_world_8h_source.html#l00046">46</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_o_d_e_world_8h_source.html">ODEWorld.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:19 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

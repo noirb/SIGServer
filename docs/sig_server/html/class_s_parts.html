@@ -1,0 +1,1458 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: クラス SParts</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス SParts</h1><!-- doxytag: class="SParts" --><!-- doxytag: inherits="Parts" -->
+<p>エンティティの部品クラス(サーバサイドで使用)  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_s_parts_8h_source.html">SParts.h</a>&gt;</code></p>
+<div class="dynheader">
+SPartsに対する継承グラフ</div>
+<div class="dynsection">
+<div class="center"><img src="class_s_parts__inherit__graph.png" border="0" usemap="#_s_parts_inherit__map" alt="Inheritance graph"/></div>
+<map name="_s_parts_inherit__map" id="_s_parts_inherit__map">
+<area shape="rect" href="class_s_blind_parts.html" title="見えない部品クラス(サーバサイドで使用)" alt="" coords="5,160,93,189"/><area shape="rect" href="class_s_box_parts.html" title="箱形状の部品クラス(サーバサイドで使用)" alt="" coords="117,160,200,189"/><area shape="rect" href="class_s_cylinder_parts.html" title="シリンダ形状の部品クラス(サーバサイドで使用)" alt="" coords="224,160,331,189"/><area shape="rect" href="class_s_sphere_parts.html" title="球形状の部品クラス(サーバサイドで使用)" alt="" coords="355,160,456,189"/><area shape="rect" href="class_parts.html" title="エンティティを構成する部品クラス" alt="" coords="192,5,243,35"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+<div class="dynheader">
+SPartsのコラボレーション図</div>
+<div class="dynsection">
+<div class="center"><img src="class_s_parts__coll__graph.png" border="0" usemap="#_s_parts_coll__map" alt="Collaboration graph"/></div>
+<map name="_s_parts_coll__map" id="_s_parts_coll__map">
+<area shape="rect" href="class_parts.html" title="エンティティを構成する部品クラス" alt="" coords="77,120,128,149"/><area shape="rect" href="class_rotation.html" title="回転行列クラス" alt="" coords="101,5,171,35"/><area shape="rect" href="class_joint.html" title="部品同士を繋ぐ関節クラス" alt="" coords="152,120,200,149"/><area shape="rect" href="class_position.html" title="3次元位置クラス" alt="" coords="5,5,72,35"/><area shape="rect" href="class_vector3d.html" title="3次元ベクトルクラス" alt="" coords="200,5,272,35"/><area shape="rect" href="class_o_d_e_obj.html" title="ODEにおけるシミュレーションオブジェクトラッパークラス." alt="" coords="248,120,315,149"/><area shape="rect" href="class_sim_obj_base.html" title="シミュレーションエンティティ基本クラス" alt="" coords="339,120,432,149"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+
+<p><a href="class_s_parts-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>構成</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_s_parts_1_1_child.html">Child</a></td></tr>
+<tr><td colspan="2"><h2>Public 型</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; <a class="el" href="struct_s_parts_1_1_child.html">Child</a> * &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#a0b2fdbec815c0439c70e69e6c5780a69">ChildC</a></td></tr>
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#ab147c6daaf762016b93293c1b313ed4a">build</a> (const <a class="el" href="class_vector3d.html">Vector3d</a> &amp;v, const <a class="el" href="class_rotation.html">Rotation</a> &amp;r, bool dynamics)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パーツとジョイントの結合を行う  <a href="#ab147c6daaf762016b93293c1b313ed4a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#a4584bb51608802ba60b8b769c8f3cef8">calcPosture</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">各部品の位置・方向を計算する  <a href="#a4584bb51608802ba60b8b769c8f3cef8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#a0f8aaac302f1e867c73a8e4dd93b01f2">dump</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">SPartsの内容ダンプ.  <a href="#a0f8aaac302f1e867c73a8e4dd93b01f2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#a9abd68e6162a3059cc93dd86fefd23f6">dumpConnectionInfo</a> (int level)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#ac1cf16222278ef0fb0291e48b082b422">dumpODEInfo</a> (int level)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#a4c394771a6cf20364e0dea75a8d9ad30">enableDynamics</a> (bool b)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">物理計算の有効/無効を切り替える  <a href="#a4c394771a6cf20364e0dea75a8d9ad30"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_s_parts.html#a0b2fdbec815c0439c70e69e6c5780a69">ChildC</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#a7704baa9b1fc7819f5a97fadf315a417">getChild</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">子ジョイントを取得 added by okamoto (2011/2/18)  <a href="#a7704baa9b1fc7819f5a97fadf315a417"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const dReal *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#ac5ddd193573c59946910ce0ca04f3825">getForce</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パーツに作用している力を得る  <a href="#ac5ddd193573c59946910ce0ca04f3825"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#a0fe9cc617214e158a4937d19b6c717a9">getMass</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">重量を得る  <a href="#a0fe9cc617214e158a4937d19b6c717a9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_sim_obj_base.html">SimObjBase</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#ad0a2e589d1397c1380f4f3687663bdba">getParent</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_joint.html">Joint</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#af1ccc69f65cf00036109ebcf1c3aefd7">getParentJoint</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">親ジョイントを得る  <a href="#af1ccc69f65cf00036109ebcf1c3aefd7"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const dReal *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#ac9425bd059c4565c1a21826f1b1c063c">getPosition</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">現在の位置を得る  <a href="#ac9425bd059c4565c1a21826f1b1c063c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const dReal *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#a50261427cdd123283df564fe9623c4fb">getQuaternion</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">現在の回転(クォータニオン)を得る  <a href="#a50261427cdd123283df564fe9623c4fb"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const dReal *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#a67c2ca68807e57c96f77f3b9aa23d8e8">getRotation</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">現在の回転(回転行列)を得る  <a href="#a67c2ca68807e57c96f77f3b9aa23d8e8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const dReal *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#a91d91e378e85abae745f7aefb012d326">getTorque</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パーツに作用しているトルクを得る  <a href="#a91d91e378e85abae745f7aefb012d326"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_o_d_e_obj.html">ODEObj</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#a2fe6702da92d547ff5fbe48f88567711">odeobj</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ODE Bodyのラッパークラスを取得する.  <a href="#a2fe6702da92d547ff5fbe48f88567711"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#aede32793a4ac099418d25223bb2e7f41">printIndent</a> (int level)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#a41bfaaad8a95fcae5628ead9f8299c8b">pushChild</a> (<a class="el" href="class_joint.html">Joint</a> *nextj, <a class="el" href="class_s_parts.html">SParts</a> *nextp)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">子ジョイント・子パーツを設定する  <a href="#a41bfaaad8a95fcae5628ead9f8299c8b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#afa738e7b71121cae3467c261a49337e2">pushChild</a> (<a class="el" href="class_joint.html">Joint</a> *currj, <a class="el" href="class_joint.html">Joint</a> *nextj, <a class="el" href="class_s_parts.html">SParts</a> *nextp)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">子ジョイント・子パーツを設定する  <a href="#afa738e7b71121cae3467c261a49337e2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#a8002331a8270860070cb89e13e2a23f7">removeChild</a> (<a class="el" href="class_joint.html">Joint</a> *nextj)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">子ジョイントを削除する  <a href="#a8002331a8270860070cb89e13e2a23f7"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#aec23c140f369dd8fa8dc12388d4acddf">sameParent</a> (const <a class="el" href="class_s_parts.html">SParts</a> &amp;o)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#ae4f2329ae72d5ec1e9acd7dd6a3e9bf9">set</a> (dWorldID w, dSpaceID s)=0</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ODEの world space オブジェクトを設定する.  <a href="#ae4f2329ae72d5ec1e9acd7dd6a3e9bf9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#ae8511a1fd690cb16b2899bea249f9590">setAngularVelocity</a> (dReal x, dReal y, dReal z)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#a917ed53db04e47fbcbddc498eb6af504">setForce</a> (dReal fx, dReal fy, dReal fz)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パーツに作用する外力を設定する  <a href="#a917ed53db04e47fbcbddc498eb6af504"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#ac7528e3323fa0903b06ac0cef1ca845f">setInitialPosition</a> (const <a class="el" href="class_vector3d.html">Vector3d</a> &amp;v)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パーツの位置(エージェント座標系)を設定する  <a href="#ac7528e3323fa0903b06ac0cef1ca845f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#a400adb542b79a8da208e8b1b3f529397">setInitialPosition</a> (double x, double y, double z)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パーツの位置(エージェント座標系)を設定する  <a href="#a400adb542b79a8da208e8b1b3f529397"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#ac99922e4340b520afa81b259b94c2345">setInitialQuaternion</a> (<a class="el" href="class_rotation.html">Rotation</a> &amp;r)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エージェント座標系におけるパーツの向き(回転行列)を設定する  <a href="#ac99922e4340b520afa81b259b94c2345"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#a578b701469881e9335df296656a5a42b">setInitialQuaternion</a> (dReal q0, dReal q1, dReal q2, dReal q3)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エージェント座標系におけるパーツの向き(クォータニオン)を設定する  <a href="#a578b701469881e9335df296656a5a42b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#abea652378e30b4dc0972706a22539866">setMass</a> (double mass)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">重量を設定する added by okamoto  (2011/10/5)  <a href="#abea652378e30b4dc0972706a22539866"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#acb193fefc92cc8f898850b829130dbbb">setODEPos</a> (double x, double y, double z)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ODE形状の位置設定 added by okamoto (2011/10/4).  <a href="#acb193fefc92cc8f898850b829130dbbb"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#afad329031bc5608a6f6d62c95bc7056c">setParent</a> (<a class="el" href="class_sim_obj_base.html">SimObjBase</a> *p)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">このパーツが構成するエンティティを設定する  <a href="#afad329031bc5608a6f6d62c95bc7056c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#a7edcc3594e638f5a025d59597a87530c">setParentJoint</a> (<a class="el" href="class_joint.html">Joint</a> *j)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">親ジョイントを設定する  <a href="#a7edcc3594e638f5a025d59597a87530c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#a28ad27e08c494963e88bd6250d157b55">setPosition</a> (const <a class="el" href="class_vector3d.html">Vector3d</a> &amp;v)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">世界座標系における位置を設定する(BODYのみ指定可能)  <a href="#a28ad27e08c494963e88bd6250d157b55"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#a8412260c04f7566b732c4fa134fd9d81">setQuaternion</a> (dReal, dReal, dReal, dReal)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">世界座標系における向き(クォータニオン)を設定する  <a href="#a8412260c04f7566b732c4fa134fd9d81"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#a8710b7066f07d9cfe9020b5fba9d40bc">setQuaternion</a> (const dReal *q)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">世界座標系における向き(クォータニオン)を設定する  <a href="#a8710b7066f07d9cfe9020b5fba9d40bc"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#afdb5b4fd26a088889330cb9bf292a736">setRotation</a> (const <a class="el" href="class_rotation.html">Rotation</a> &amp;r)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">世界座標系における向き(回転行列)を設定する  <a href="#afdb5b4fd26a088889330cb9bf292a736"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#a6acf01511c3cac719074f28b82e98677">setTorque</a> (dReal tx, dReal ty, dReal tz)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パーツに作用するトルクを設定する  <a href="#a6acf01511c3cac719074f28b82e98677"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#a699ac029382a1d699ca95af7a4368b8e">setVelocity</a> (dReal vx, dReal vy, dReal vz)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#a2e2ed4d1227844dab8ba48c22f129cba">‾SParts</a> ()</td></tr>
+<tr><td colspan="2"><h2>Protected メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#acdb7082c2d1b0bd7d69cc0a2c9a096a1">SParts</a> (<a class="el" href="_parts_8h.html#a7c3aeaeaa817e70d68d9459826f84f1e">PartsType</a> t, const char *name, const <a class="el" href="class_position.html">Position</a> &amp;pos)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#acdb7082c2d1b0bd7d69cc0a2c9a096a1"></a><br/></td></tr>
+<tr><td colspan="2"><h2>Protected 変数</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_s_parts.html#a0b2fdbec815c0439c70e69e6c5780a69">ChildC</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#a40e9fd7d3eac554b651a9814bb757496">m_children</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#a1b2a3bf3f998bd2df93e5ae4d14d2e3b">m_mass</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_o_d_e_obj.html">ODEObj</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#a97a39edb673802271c60812935dbf2e7">m_odeobj</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_sim_obj_base.html">SimObjBase</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#adf018457dc724ddf503f4bcd08c1a411">m_parent</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_joint.html">Joint</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#a4b84a104a54f33e8083bebb6c61b3163">m_parentJoint</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#aebabba287b9e65fc22c7fac8585ac421">m_posx</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#a165bf34423e7c87262a948a8ba0fe4eb">m_posy</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_parts.html#a43b0004b0a0c4c55f8a96d68fa35b4d3">m_posz</a></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>エンティティの部品クラス(サーバサイドで使用) </p>
+<p><b>このクラスで使用する語句の意味</b> </p>
+<dl>
+<dt>親ジョイント・パーツ</dt>
+<dd>エージェントの中心部分(body)に繋がるジョイント・パーツ </dd>
+<dt>子ジョイント・パーツ</dt>
+<dd>エージェントの中心部分とは逆方向のジョイント・パーツ </dd>
+</dl>
+<dl class="see"><dt><b>参照:</b></dt><dd><a class="el" href="class_c_parts.html" title="エンティティの部品クラス(クライアントサイドで使用)">CParts</a> </dd></dl>
+
+<p> <a class="el" href="_s_parts_8h_source.html">SParts.h</a> の <a class="el" href="_s_parts_8h_source.html#l00024">24</a> 行で定義されています。</p>
+<hr/><h2>型定義</h2>
+<a class="anchor" id="a0b2fdbec815c0439c70e69e6c5780a69"></a><!-- doxytag: member="SParts::ChildC" ref="a0b2fdbec815c0439c70e69e6c5780a69" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::vector&lt;<a class="el" href="struct_s_parts_1_1_child.html">Child</a> *&gt; <a class="el" href="class_s_parts.html#a0b2fdbec815c0439c70e69e6c5780a69">SParts::ChildC</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_s_parts_8h_source.html">SParts.h</a> の <a class="el" href="_s_parts_8h_source.html#l00035">35</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" id="acdb7082c2d1b0bd7d69cc0a2c9a096a1"></a><!-- doxytag: member="SParts::SParts" ref="acdb7082c2d1b0bd7d69cc0a2c9a096a1" args="(PartsType t, const char *name, const Position &amp;pos)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SParts::SParts </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_parts_8h.html#a7c3aeaeaa817e70d68d9459826f84f1e">PartsType</a>&nbsp;</td>
+          <td class="paramname"> <em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_position.html">Position</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>pos</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コンストラクタ </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>t</em>&nbsp;</td><td>部品タイプ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>部品名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>pos</em>&nbsp;</td><td>位置(エージェント座標系) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/><h2>関数</h2>
+<a class="anchor" id="ab147c6daaf762016b93293c1b313ed4a"></a><!-- doxytag: member="SParts::build" ref="ab147c6daaf762016b93293c1b313ed4a" args="(const Vector3d &amp;v, const Rotation &amp;r, bool dynamics)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SParts::build </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_vector3d.html">Vector3d</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_rotation.html">Rotation</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>r</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>dynamics</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>パーツとジョイントの結合を行う </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>v</em>&nbsp;</td><td>エージェントの中心の位置(世界座標系) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>r</em>&nbsp;</td><td>エージェントの向き(世界座標系)  物理計算を有効にするか？ </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a4584bb51608802ba60b8b769c8f3cef8"></a><!-- doxytag: member="SParts::calcPosture" ref="a4584bb51608802ba60b8b769c8f3cef8" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SParts::calcPosture </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>各部品の位置・方向を計算する </p>
+<p>物理計算が無効のときのみ呼び出し可能 </p>
+
+</div>
+</div>
+<a class="anchor" id="a0f8aaac302f1e867c73a8e4dd93b01f2"></a><!-- doxytag: member="SParts::dump" ref="a0f8aaac302f1e867c73a8e4dd93b01f2" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SParts::dump </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>SPartsの内容ダンプ. </p>
+
+<p><a class="el" href="class_parts.html#a64166dcae1ea73409b3df2930a92e691">Parts</a>を再定義しています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a9abd68e6162a3059cc93dd86fefd23f6"></a><!-- doxytag: member="SParts::dumpConnectionInfo" ref="a9abd68e6162a3059cc93dd86fefd23f6" args="(int level)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SParts::dumpConnectionInfo </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>level</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac1cf16222278ef0fb0291e48b082b422"></a><!-- doxytag: member="SParts::dumpODEInfo" ref="ac1cf16222278ef0fb0291e48b082b422" args="(int level)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SParts::dumpODEInfo </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>level</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a4c394771a6cf20364e0dea75a8d9ad30"></a><!-- doxytag: member="SParts::enableDynamics" ref="a4c394771a6cf20364e0dea75a8d9ad30" args="(bool b)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SParts::enableDynamics </td>
+          <td>(</td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>b</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>物理計算の有効/無効を切り替える </p>
+
+</div>
+</div>
+<a class="anchor" id="a7704baa9b1fc7819f5a97fadf315a417"></a><!-- doxytag: member="SParts::getChild" ref="a7704baa9b1fc7819f5a97fadf315a417" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_s_parts.html#a0b2fdbec815c0439c70e69e6c5780a69">ChildC</a> SParts::getChild </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>子ジョイントを取得 added by okamoto (2011/2/18) </p>
+
+<p> <a class="el" href="_s_parts_8h_source.html">SParts.h</a> の <a class="el" href="_s_parts_8h_source.html#l00103">103</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ac5ddd193573c59946910ce0ca04f3825"></a><!-- doxytag: member="SParts::getForce" ref="ac5ddd193573c59946910ce0ca04f3825" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const dReal* SParts::getForce </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>パーツに作用している力を得る </p>
+
+</div>
+</div>
+<a class="anchor" id="a0fe9cc617214e158a4937d19b6c717a9"></a><!-- doxytag: member="SParts::getMass" ref="a0fe9cc617214e158a4937d19b6c717a9" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double SParts::getMass </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>重量を得る </p>
+
+</div>
+</div>
+<a class="anchor" id="ad0a2e589d1397c1380f4f3687663bdba"></a><!-- doxytag: member="SParts::getParent" ref="ad0a2e589d1397c1380f4f3687663bdba" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_sim_obj_base.html">SimObjBase</a>* SParts::getParent </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_s_parts_8h_source.html">SParts.h</a> の <a class="el" href="_s_parts_8h_source.html#l00100">100</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="af1ccc69f65cf00036109ebcf1c3aefd7"></a><!-- doxytag: member="SParts::getParentJoint" ref="af1ccc69f65cf00036109ebcf1c3aefd7" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_joint.html">Joint</a>* SParts::getParentJoint </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>親ジョイントを得る </p>
+
+<p> <a class="el" href="_s_parts_8h_source.html">SParts.h</a> の <a class="el" href="_s_parts_8h_source.html#l00062">62</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ac9425bd059c4565c1a21826f1b1c063c"></a><!-- doxytag: member="SParts::getPosition" ref="ac9425bd059c4565c1a21826f1b1c063c" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const dReal* SParts::getPosition </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>現在の位置を得る </p>
+
+<p><a class="el" href="class_parts.html#a151e3fb90237808c63c480e1d1dd84ac">Parts</a>を実装しています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a50261427cdd123283df564fe9623c4fb"></a><!-- doxytag: member="SParts::getQuaternion" ref="a50261427cdd123283df564fe9623c4fb" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const dReal* SParts::getQuaternion </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>現在の回転(クォータニオン)を得る </p>
+
+<p><a class="el" href="class_parts.html#a9e64c80362c6627ec2d82f75b53680ed">Parts</a>を実装しています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a67c2ca68807e57c96f77f3b9aa23d8e8"></a><!-- doxytag: member="SParts::getRotation" ref="a67c2ca68807e57c96f77f3b9aa23d8e8" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const dReal* SParts::getRotation </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>現在の回転(回転行列)を得る </p>
+
+<p><a class="el" href="class_parts.html#ac833960fcd15120b249d4a1127e0a3fb">Parts</a>を実装しています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a91d91e378e85abae745f7aefb012d326"></a><!-- doxytag: member="SParts::getTorque" ref="a91d91e378e85abae745f7aefb012d326" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const dReal* SParts::getTorque </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>パーツに作用しているトルクを得る </p>
+
+</div>
+</div>
+<a class="anchor" id="a2fe6702da92d547ff5fbe48f88567711"></a><!-- doxytag: member="SParts::odeobj" ref="a2fe6702da92d547ff5fbe48f88567711" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_o_d_e_obj.html">ODEObj</a>&amp; SParts::odeobj </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ODE Bodyのラッパークラスを取得する. </p>
+
+<p> <a class="el" href="_s_parts_8h_source.html">SParts.h</a> の <a class="el" href="_s_parts_8h_source.html#l00150">150</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="aede32793a4ac099418d25223bb2e7f41"></a><!-- doxytag: member="SParts::printIndent" ref="aede32793a4ac099418d25223bb2e7f41" args="(int level)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SParts::printIndent </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>level</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a41bfaaad8a95fcae5628ead9f8299c8b"></a><!-- doxytag: member="SParts::pushChild" ref="a41bfaaad8a95fcae5628ead9f8299c8b" args="(Joint *nextj, SParts *nextp)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SParts::pushChild </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_joint.html">Joint</a> *&nbsp;</td>
+          <td class="paramname"> <em>nextj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_s_parts.html">SParts</a> *&nbsp;</td>
+          <td class="paramname"> <em>nextp</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>子ジョイント・子パーツを設定する </p>
+<p>このパーツはダミーパーツとし、手前のパーツと次のパーツを接続する</p>
+<p>のように接続する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>currj</em>&nbsp;</td><td></td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>nextj</em>&nbsp;</td><td></td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>nextp</em>&nbsp;</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_s_parts_8h_source.html">SParts.h</a> の <a class="el" href="_s_parts_8h_source.html#l00089">89</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="afa738e7b71121cae3467c261a49337e2"></a><!-- doxytag: member="SParts::pushChild" ref="afa738e7b71121cae3467c261a49337e2" args="(Joint *currj, Joint *nextj, SParts *nextp)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SParts::pushChild </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_joint.html">Joint</a> *&nbsp;</td>
+          <td class="paramname"> <em>currj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_joint.html">Joint</a> *&nbsp;</td>
+          <td class="paramname"> <em>nextj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_s_parts.html">SParts</a> *&nbsp;</td>
+          <td class="paramname"> <em>nextp</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>子ジョイント・子パーツを設定する </p>
+<p>currj -&gt; &lt;this&gt; -&gt; nextj -&gt; nextp</p>
+<p>のように接続する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>currj</em>&nbsp;</td><td></td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>nextj</em>&nbsp;</td><td></td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>nextp</em>&nbsp;</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_s_parts_8h_source.html">SParts.h</a> の <a class="el" href="_s_parts_8h_source.html#l00074">74</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a8002331a8270860070cb89e13e2a23f7"></a><!-- doxytag: member="SParts::removeChild" ref="a8002331a8270860070cb89e13e2a23f7" args="(Joint *nextj)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SParts::removeChild </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_joint.html">Joint</a> *&nbsp;</td>
+          <td class="paramname"> <em>nextj</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>子ジョイントを削除する </p>
+
+</div>
+</div>
+<a class="anchor" id="aec23c140f369dd8fa8dc12388d4acddf"></a><!-- doxytag: member="SParts::sameParent" ref="aec23c140f369dd8fa8dc12388d4acddf" args="(const SParts &amp;o)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SParts::sameParent </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_s_parts.html">SParts</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>o</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ae4f2329ae72d5ec1e9acd7dd6a3e9bf9"></a><!-- doxytag: member="SParts::set" ref="ae4f2329ae72d5ec1e9acd7dd6a3e9bf9" args="(dWorldID w, dSpaceID s)=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void SParts::set </td>
+          <td>(</td>
+          <td class="paramtype">dWorldID&nbsp;</td>
+          <td class="paramname"> <em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">dSpaceID&nbsp;</td>
+          <td class="paramname"> <em>s</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ODEの world space オブジェクトを設定する. </p>
+
+</div>
+</div>
+<a class="anchor" id="ae8511a1fd690cb16b2899bea249f9590"></a><!-- doxytag: member="SParts::setAngularVelocity" ref="ae8511a1fd690cb16b2899bea249f9590" args="(dReal x, dReal y, dReal z)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SParts::setAngularVelocity </td>
+          <td>(</td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>z</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>最大角速度を設定する パーツに作用する角速度を設定する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>角速度のX軸成分 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a917ed53db04e47fbcbddc498eb6af504"></a><!-- doxytag: member="SParts::setForce" ref="a917ed53db04e47fbcbddc498eb6af504" args="(dReal fx, dReal fy, dReal fz)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SParts::setForce </td>
+          <td>(</td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>fx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>fy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>fz</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>パーツに作用する外力を設定する </p>
+
+</div>
+</div>
+<a class="anchor" id="ac7528e3323fa0903b06ac0cef1ca845f"></a><!-- doxytag: member="SParts::setInitialPosition" ref="ac7528e3323fa0903b06ac0cef1ca845f" args="(const Vector3d &amp;v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SParts::setInitialPosition </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_vector3d.html">Vector3d</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>v</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>パーツの位置(エージェント座標系)を設定する </p>
+
+<p> <a class="el" href="_s_parts_8h_source.html">SParts.h</a> の <a class="el" href="_s_parts_8h_source.html#l00170">170</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_s_parts_ac7528e3323fa0903b06ac0cef1ca845f_cgraph.png" border="0" usemap="#class_s_parts_ac7528e3323fa0903b06ac0cef1ca845f_cgraph_map" alt=""></div>
+<map name="class_s_parts_ac7528e3323fa0903b06ac0cef1ca845f_cgraph_map" id="class_s_parts_ac7528e3323fa0903b06ac0cef1ca845f_cgraph">
+<area shape="rect" href="class_position.html#a6bf294381a4d9805a1cea299ec2ffc86" title="各座標値を設定する" alt="" coords="219,5,312,35"/><area shape="rect" href="class_vector3d.html#a4e77e669055f31f2b244b1ee37ffa36f" title="X軸要素を設定する." alt="" coords="221,59,309,88"/><area shape="rect" href="class_vector3d.html#aa543c5f9ab89744357a80dd1ab6031cb" title="Y軸要素を設定する." alt="" coords="221,112,309,141"/><area shape="rect" href="class_vector3d.html#ac95aee85033af052d24e15975faeea7d" title="Z軸要素を設定する." alt="" coords="221,165,309,195"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a400adb542b79a8da208e8b1b3f529397"></a><!-- doxytag: member="SParts::setInitialPosition" ref="a400adb542b79a8da208e8b1b3f529397" args="(double x, double y, double z)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SParts::setInitialPosition </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>z</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>パーツの位置(エージェント座標系)を設定する </p>
+
+<p> <a class="el" href="_s_parts_8h_source.html">SParts.h</a> の <a class="el" href="_s_parts_8h_source.html#l00164">164</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_s_parts_a400adb542b79a8da208e8b1b3f529397_cgraph.png" border="0" usemap="#class_s_parts_a400adb542b79a8da208e8b1b3f529397_cgraph_map" alt=""></div>
+<map name="class_s_parts_a400adb542b79a8da208e8b1b3f529397_cgraph_map" id="class_s_parts_a400adb542b79a8da208e8b1b3f529397_cgraph">
+<area shape="rect" href="class_position.html#a6bf294381a4d9805a1cea299ec2ffc86" title="各座標値を設定する" alt="" coords="219,5,312,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ac99922e4340b520afa81b259b94c2345"></a><!-- doxytag: member="SParts::setInitialQuaternion" ref="ac99922e4340b520afa81b259b94c2345" args="(Rotation &amp;r)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SParts::setInitialQuaternion </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_rotation.html">Rotation</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>r</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>エージェント座標系におけるパーツの向き(回転行列)を設定する </p>
+
+<p> <a class="el" href="_s_parts_8h_source.html">SParts.h</a> の <a class="el" href="_s_parts_8h_source.html#l00179">179</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_s_parts_ac99922e4340b520afa81b259b94c2345_cgraph.png" border="0" usemap="#class_s_parts_ac99922e4340b520afa81b259b94c2345_cgraph_map" alt=""></div>
+<map name="class_s_parts_ac99922e4340b520afa81b259b94c2345_cgraph_map" id="class_s_parts_ac99922e4340b520afa81b259b94c2345_cgraph">
+<area shape="rect" href="class_rotation.html#a16f2a4fefbd48c756a0c9ad7be85ee1f" title="クォータニオンを取得する" alt="" coords="284,5,367,35"/><area shape="rect" href="class_s_parts.html#a578b701469881e9335df296656a5a42b" title="エージェント座標系におけるパーツの向き(クォータニオン)を設定する..." alt="" coords="236,59,415,88"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a578b701469881e9335df296656a5a42b"></a><!-- doxytag: member="SParts::setInitialQuaternion" ref="a578b701469881e9335df296656a5a42b" args="(dReal q0, dReal q1, dReal q2, dReal q3)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SParts::setInitialQuaternion </td>
+          <td>(</td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>q0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>q1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>q2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>q3</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>エージェント座標系におけるパーツの向き(クォータニオン)を設定する </p>
+
+<p><div class="dynheader">
+呼出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_s_parts_a578b701469881e9335df296656a5a42b_icgraph.png" border="0" usemap="#class_s_parts_a578b701469881e9335df296656a5a42b_icgraph_map" alt=""></div>
+<map name="class_s_parts_a578b701469881e9335df296656a5a42b_icgraph_map" id="class_s_parts_a578b701469881e9335df296656a5a42b_icgraph">
+<area shape="rect" href="class_s_parts.html#ac99922e4340b520afa81b259b94c2345" title="エージェント座標系におけるパーツの向き(回転行列)を設定する..." alt="" coords="236,5,415,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="abea652378e30b4dc0972706a22539866"></a><!-- doxytag: member="SParts::setMass" ref="abea652378e30b4dc0972706a22539866" args="(double mass)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SParts::setMass </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>mass</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>重量を設定する added by okamoto  (2011/10/5) </p>
+
+</div>
+</div>
+<a class="anchor" id="acb193fefc92cc8f898850b829130dbbb"></a><!-- doxytag: member="SParts::setODEPos" ref="acb193fefc92cc8f898850b829130dbbb" args="(double x, double y, double z)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SParts::setODEPos </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>z</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ODE形状の位置設定 added by okamoto (2011/10/4). </p>
+
+<p> <a class="el" href="_s_parts_8h_source.html">SParts.h</a> の <a class="el" href="_s_parts_8h_source.html#l00108">108</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="afad329031bc5608a6f6d62c95bc7056c"></a><!-- doxytag: member="SParts::setParent" ref="afad329031bc5608a6f6d62c95bc7056c" args="(SimObjBase *p)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SParts::setParent </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sim_obj_base.html">SimObjBase</a> *&nbsp;</td>
+          <td class="paramname"> <em>p</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>このパーツが構成するエンティティを設定する </p>
+
+<p> <a class="el" href="_s_parts_8h_source.html">SParts.h</a> の <a class="el" href="_s_parts_8h_source.html#l00098">98</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+呼出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_s_parts_afad329031bc5608a6f6d62c95bc7056c_icgraph.png" border="0" usemap="#class_s_parts_afad329031bc5608a6f6d62c95bc7056c_icgraph_map" alt=""></div>
+<map name="class_s_parts_afad329031bc5608a6f6d62c95bc7056c_icgraph_map" id="class_s_parts_afad329031bc5608a6f6d62c95bc7056c_icgraph">
+<area shape="rect" href="class_s_sim_obj.html#a026485ef973043e72e00775192db2580" title="エンティティを構成する部品を追加する" alt="" coords="179,5,288,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a7edcc3594e638f5a025d59597a87530c"></a><!-- doxytag: member="SParts::setParentJoint" ref="a7edcc3594e638f5a025d59597a87530c" args="(Joint *j)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SParts::setParentJoint </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_joint.html">Joint</a> *&nbsp;</td>
+          <td class="paramname"> <em>j</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>親ジョイントを設定する </p>
+
+<p> <a class="el" href="_s_parts_8h_source.html">SParts.h</a> の <a class="el" href="_s_parts_8h_source.html#l00056">56</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a28ad27e08c494963e88bd6250d157b55"></a><!-- doxytag: member="SParts::setPosition" ref="a28ad27e08c494963e88bd6250d157b55" args="(const Vector3d &amp;v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SParts::setPosition </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_vector3d.html">Vector3d</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>v</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>世界座標系における位置を設定する(BODYのみ指定可能) </p>
+
+</div>
+</div>
+<a class="anchor" id="a8412260c04f7566b732c4fa134fd9d81"></a><!-- doxytag: member="SParts::setQuaternion" ref="a8412260c04f7566b732c4fa134fd9d81" args="(dReal, dReal, dReal, dReal)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SParts::setQuaternion </td>
+          <td>(</td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>世界座標系における向き(クォータニオン)を設定する </p>
+
+<p><a class="el" href="class_parts.html#a620adf6b2e0794d0c9cc60d3280c7dec">Parts</a>を実装しています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a8710b7066f07d9cfe9020b5fba9d40bc"></a><!-- doxytag: member="SParts::setQuaternion" ref="a8710b7066f07d9cfe9020b5fba9d40bc" args="(const dReal *q)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SParts::setQuaternion </td>
+          <td>(</td>
+          <td class="paramtype">const dReal *&nbsp;</td>
+          <td class="paramname"> <em>q</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>世界座標系における向き(クォータニオン)を設定する </p>
+
+<p> <a class="el" href="_s_parts_8h_source.html">SParts.h</a> の <a class="el" href="_s_parts_8h_source.html#l00225">225</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+呼出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_s_parts_a8710b7066f07d9cfe9020b5fba9d40bc_icgraph.png" border="0" usemap="#class_s_parts_a8710b7066f07d9cfe9020b5fba9d40bc_icgraph_map" alt=""></div>
+<map name="class_s_parts_a8710b7066f07d9cfe9020b5fba9d40bc_icgraph_map" id="class_s_parts_a8710b7066f07d9cfe9020b5fba9d40bc_icgraph">
+<area shape="rect" href="class_s_parts.html#afdb5b4fd26a088889330cb9bf292a736" title="世界座標系における向き(回転行列)を設定する" alt="" coords="204,5,337,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="afdb5b4fd26a088889330cb9bf292a736"></a><!-- doxytag: member="SParts::setRotation" ref="afdb5b4fd26a088889330cb9bf292a736" args="(const Rotation &amp;r)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SParts::setRotation </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_rotation.html">Rotation</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>r</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>世界座標系における向き(回転行列)を設定する </p>
+
+<p> <a class="el" href="_s_parts_8h_source.html">SParts.h</a> の <a class="el" href="_s_parts_8h_source.html#l00218">218</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_s_parts_afdb5b4fd26a088889330cb9bf292a736_cgraph.png" border="0" usemap="#class_s_parts_afdb5b4fd26a088889330cb9bf292a736_cgraph_map" alt=""></div>
+<map name="class_s_parts_afdb5b4fd26a088889330cb9bf292a736_cgraph_map" id="class_s_parts_afdb5b4fd26a088889330cb9bf292a736_cgraph">
+<area shape="rect" href="class_rotation.html#a16f2a4fefbd48c756a0c9ad7be85ee1f" title="クォータニオンを取得する" alt="" coords="223,5,305,35"/><area shape="rect" href="class_s_parts.html#a8710b7066f07d9cfe9020b5fba9d40bc" title="世界座標系における向き(クォータニオン)を設定する" alt="" coords="189,59,339,88"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a6acf01511c3cac719074f28b82e98677"></a><!-- doxytag: member="SParts::setTorque" ref="a6acf01511c3cac719074f28b82e98677" args="(dReal tx, dReal ty, dReal tz)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SParts::setTorque </td>
+          <td>(</td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>tx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>ty</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>tz</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>パーツに作用するトルクを設定する </p>
+
+</div>
+</div>
+<a class="anchor" id="a699ac029382a1d699ca95af7a4368b8e"></a><!-- doxytag: member="SParts::setVelocity" ref="a699ac029382a1d699ca95af7a4368b8e" args="(dReal vx, dReal vy, dReal vz)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SParts::setVelocity </td>
+          <td>(</td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>vx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>vy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>vz</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>パーツに作用する速度を設定する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>vx</em>&nbsp;</td><td>速度のX成分 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>vy</em>&nbsp;</td><td>速度のY成分 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>vz</em>&nbsp;</td><td>速度のZ成分 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a2e2ed4d1227844dab8ba48c22f129cba"></a><!-- doxytag: member="SParts::‾SParts" ref="a2e2ed4d1227844dab8ba48c22f129cba" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual SParts::‾SParts </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<hr/><h2>変数</h2>
+<a class="anchor" id="a40e9fd7d3eac554b651a9814bb757496"></a><!-- doxytag: member="SParts::m_children" ref="a40e9fd7d3eac554b651a9814bb757496" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_s_parts.html#a0b2fdbec815c0439c70e69e6c5780a69">ChildC</a> <a class="el" href="class_s_parts.html#a40e9fd7d3eac554b651a9814bb757496">SParts::m_children</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_s_parts_8h_source.html">SParts.h</a> の <a class="el" href="_s_parts_8h_source.html#l00040">40</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a1b2a3bf3f998bd2df93e5ae4d14d2e3b"></a><!-- doxytag: member="SParts::m_mass" ref="a1b2a3bf3f998bd2df93e5ae4d14d2e3b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="class_s_parts.html#a1b2a3bf3f998bd2df93e5ae4d14d2e3b">SParts::m_mass</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_s_parts_8h_source.html">SParts.h</a> の <a class="el" href="_s_parts_8h_source.html#l00042">42</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a97a39edb673802271c60812935dbf2e7"></a><!-- doxytag: member="SParts::m_odeobj" ref="a97a39edb673802271c60812935dbf2e7" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_o_d_e_obj.html">ODEObj</a>* <a class="el" href="class_s_parts.html#a97a39edb673802271c60812935dbf2e7">SParts::m_odeobj</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_s_parts_8h_source.html">SParts.h</a> の <a class="el" href="_s_parts_8h_source.html#l00037">37</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="adf018457dc724ddf503f4bcd08c1a411"></a><!-- doxytag: member="SParts::m_parent" ref="adf018457dc724ddf503f4bcd08c1a411" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_sim_obj_base.html">SimObjBase</a>* <a class="el" href="class_s_parts.html#adf018457dc724ddf503f4bcd08c1a411">SParts::m_parent</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_s_parts_8h_source.html">SParts.h</a> の <a class="el" href="_s_parts_8h_source.html#l00038">38</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a4b84a104a54f33e8083bebb6c61b3163"></a><!-- doxytag: member="SParts::m_parentJoint" ref="a4b84a104a54f33e8083bebb6c61b3163" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_joint.html">Joint</a>* <a class="el" href="class_s_parts.html#a4b84a104a54f33e8083bebb6c61b3163">SParts::m_parentJoint</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_s_parts_8h_source.html">SParts.h</a> の <a class="el" href="_s_parts_8h_source.html#l00039">39</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="aebabba287b9e65fc22c7fac8585ac421"></a><!-- doxytag: member="SParts::m_posx" ref="aebabba287b9e65fc22c7fac8585ac421" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="class_s_parts.html#aebabba287b9e65fc22c7fac8585ac421">SParts::m_posx</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_s_parts_8h_source.html">SParts.h</a> の <a class="el" href="_s_parts_8h_source.html#l00041">41</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a165bf34423e7c87262a948a8ba0fe4eb"></a><!-- doxytag: member="SParts::m_posy" ref="a165bf34423e7c87262a948a8ba0fe4eb" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="class_s_parts.html#a165bf34423e7c87262a948a8ba0fe4eb">SParts::m_posy</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_s_parts_8h_source.html">SParts.h</a> の <a class="el" href="_s_parts_8h_source.html#l00041">41</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a43b0004b0a0c4c55f8a96d68fa35b4d3"></a><!-- doxytag: member="SParts::m_posz" ref="a43b0004b0a0c4c55f8a96d68fa35b4d3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="class_s_parts.html#a43b0004b0a0c4c55f8a96d68fa35b4d3">SParts::m_posz</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_s_parts_8h_source.html">SParts.h</a> の <a class="el" href="_s_parts_8h_source.html#l00041">41</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_s_parts_8h_source.html">SParts.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:21 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

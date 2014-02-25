@@ -1,0 +1,199 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGWorldEditor: WguComboBox.cpp ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>WguComboBox.cpp</h1><a href="_wgu_combo_box_8cpp.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include "<a class="code" href="_wgu_combo_box_8h.html">WguComboBox.h</a>"</span>
+<a name="l00002"></a>00002 <span class="preprocessor">#include &lt;windows.h&gt;</span>
+<a name="l00003"></a>00003 <span class="preprocessor">#include &lt;stdio.h&gt;</span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include &lt;stdarg.h&gt;</span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include &lt;string&gt;</span>
+<a name="l00006"></a>00006 
+<a name="l00007"></a>00007 <span class="keyword">namespace </span>Wgu
+<a name="l00008"></a>00008 {<span class="comment"></span>
+<a name="l00009"></a>00009 <span class="comment">    ////////////////////////////////////////////////////////////////</span>
+<a name="l00010"></a>00010 <span class="comment"></span>    <span class="comment">//</span>
+<a name="l00011"></a>00011     <span class="comment">//  ComboBox</span>
+<a name="l00012"></a>00012 
+<a name="l00013"></a><a class="code" href="class_wgu_1_1_combo_box.html#70ec758c425c98bd5bc4efe0edced83e">00013</a>     HWND <a class="code" href="class_wgu_1_1_combo_box.html#70ec758c425c98bd5bc4efe0edced83e" title="コンボボックスコントロールを作る">ComboBox::create</a>(
+<a name="l00014"></a>00014         HWND hwndParent,
+<a name="l00015"></a>00015         <span class="keywordtype">int</span> contId,
+<a name="l00016"></a>00016         <span class="keywordtype">char</span> *caption,
+<a name="l00017"></a>00017         <span class="keywordtype">int</span> x,
+<a name="l00018"></a>00018         <span class="keywordtype">int</span> y,
+<a name="l00019"></a>00019         <span class="keywordtype">int</span> w,
+<a name="l00020"></a>00020         <span class="keywordtype">int</span> h)
+<a name="l00021"></a>00021     {
+<a name="l00022"></a>00022         HINSTANCE hInst = ::GetModuleHandle(NULL);
+<a name="l00023"></a>00023         <span class="keywordflow">if</span> (!hInst) <span class="keywordflow">return</span> NULL;
+<a name="l00024"></a>00024 
+<a name="l00025"></a>00025         HWND hwnd = ::CreateWindow(
+<a name="l00026"></a>00026             <span class="stringliteral">"COMBOBOX"</span>,
+<a name="l00027"></a>00027             caption,
+<a name="l00028"></a>00028             WS_VISIBLE | WS_CHILD,
+<a name="l00029"></a>00029             x, y,
+<a name="l00030"></a>00030             w, h,
+<a name="l00031"></a>00031             hwndParent,
+<a name="l00032"></a>00032             (HMENU)contId,
+<a name="l00033"></a>00033             hInst,
+<a name="l00034"></a>00034             NULL);
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036         <span class="keywordflow">return</span> hwnd;
+<a name="l00037"></a>00037     }
+<a name="l00038"></a>00038 
+<a name="l00039"></a><a class="code" href="class_wgu_1_1_combo_box.html#2daff1d3ecf67f51283ddc36a88f00ed">00039</a>     <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_combo_box.html#2daff1d3ecf67f51283ddc36a88f00ed" title="コンボボックスをクリアする">ComboBox::clear</a>(HWND hwnd)
+<a name="l00040"></a>00040     {
+<a name="l00041"></a>00041         ::SendMessage(hwnd, CB_RESETCONTENT, (WPARAM)0, (LPARAM)0);
+<a name="l00042"></a>00042     }
+<a name="l00043"></a>00043 
+<a name="l00044"></a><a class="code" href="class_wgu_1_1_combo_box.html#ee45c734132a3dba4ac2b4999e2104ab">00044</a>     <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_combo_box.html#ee45c734132a3dba4ac2b4999e2104ab" title="コンボボックスに文字列を追加する">ComboBox::addString</a>(HWND hwnd, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, ...)
+<a name="l00045"></a>00045     {
+<a name="l00046"></a>00046         <span class="keywordtype">char</span> text[1024];
+<a name="l00047"></a>00047         va_list arg;
+<a name="l00048"></a>00048 
+<a name="l00049"></a>00049         va_start(arg, format);
+<a name="l00050"></a>00050         vsprintf_s(text, format, arg);
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052         ::SendMessage(hwnd, CB_ADDSTRING, (WPARAM)0, (LPARAM)text);
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054         va_end(arg);
+<a name="l00055"></a>00055     }
+<a name="l00056"></a>00056 
+<a name="l00057"></a><a class="code" href="class_wgu_1_1_combo_box.html#b65a2ef9cc564af3a7544e1413fdddbe">00057</a>     <span class="keywordtype">int</span> <a class="code" href="class_wgu_1_1_combo_box.html#b65a2ef9cc564af3a7544e1413fdddbe" title="コンボボックスのリストボックス領域に登録されている文字列の個数を返�...">ComboBox::getCount</a>(HWND hwnd)
+<a name="l00058"></a>00058     {
+<a name="l00059"></a>00059         LRESULT result = ::SendMessage(hwnd, CB_GETCOUNT, (WPARAM)0, (LPARAM)0);
+<a name="l00060"></a>00060 
+<a name="l00061"></a>00061         <span class="keywordflow">return</span> (result != CB_ERR) ? (int)result : -1;
+<a name="l00062"></a>00062     }
+<a name="l00063"></a>00063 
+<a name="l00064"></a><a class="code" href="class_wgu_1_1_combo_box.html#66cec0805ba02e4f97d20674b80c2a7b">00064</a>     <span class="keywordtype">int</span> <a class="code" href="class_wgu_1_1_combo_box.html#66cec0805ba02e4f97d20674b80c2a7b" title="選択項目の番号を返す">ComboBox::getCurSel</a>(HWND hwnd)
+<a name="l00065"></a>00065     {
+<a name="l00066"></a>00066         <span class="keywordtype">int</span> index = ::SendMessage(hwnd, CB_GETCURSEL, 0, 0);
+<a name="l00067"></a>00067 
+<a name="l00068"></a>00068         <span class="keywordflow">return</span> (index != CB_ERR) ? index : -1;
+<a name="l00069"></a>00069     }
+<a name="l00070"></a>00070 
+<a name="l00071"></a><a class="code" href="class_wgu_1_1_combo_box.html#bbee5e263e5ea45df8e73e9e9ca4ca65">00071</a>     <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_combo_box.html#bbee5e263e5ea45df8e73e9e9ca4ca65" title="指定番号の項目を選択状態にする">ComboBox::setCurSel</a>(HWND hwnd, <span class="keywordtype">int</span> i)
+<a name="l00072"></a>00072     {
+<a name="l00073"></a>00073         ::SendMessage(hwnd, CB_SETCURSEL, (WPARAM)i, 0);
+<a name="l00074"></a>00074     }
+<a name="l00075"></a>00075 
+<a name="l00076"></a><a class="code" href="class_wgu_1_1_combo_box.html#b25c7506fe5fe023daadaafb178afaec">00076</a>     std::string <a class="code" href="class_wgu_1_1_combo_box.html#b25c7506fe5fe023daadaafb178afaec" title="現在選択されている項目の文字列を返す">ComboBox::getText</a>(HWND hwnd)
+<a name="l00077"></a>00077     {
+<a name="l00078"></a>00078         <span class="keywordtype">char</span> buf[256];
+<a name="l00079"></a>00079 
+<a name="l00080"></a>00080         ::SendMessage(hwnd, WM_GETTEXT, (LPARAM)<span class="keyword">sizeof</span>(buf), (LPARAM)buf);
+<a name="l00081"></a>00081 
+<a name="l00082"></a>00082         std::string retString(buf);
+<a name="l00083"></a>00083         <span class="keywordflow">return</span> retString;
+<a name="l00084"></a>00084     }
+<a name="l00085"></a>00085 
+<a name="l00086"></a><a class="code" href="class_wgu_1_1_combo_box.html#d07c5739f380394840e54cef4aa519c3">00086</a>     std::string <a class="code" href="class_wgu_1_1_combo_box.html#b25c7506fe5fe023daadaafb178afaec" title="現在選択されている項目の文字列を返す">ComboBox::getText</a>(HWND hwnd, <span class="keywordtype">int</span> i)
+<a name="l00087"></a>00087     {
+<a name="l00088"></a>00088         std::string retString(<span class="stringliteral">""</span>);
+<a name="l00089"></a>00089         <span class="keywordtype">char</span> *buf = NULL;
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091         <span class="keywordtype">int</span> len = ::SendMessage(hwnd, CB_GETLBTEXTLEN, (WPARAM)i, (LPARAM)0);
+<a name="l00092"></a>00092         <span class="keywordflow">if</span> (len == CB_ERR) <span class="keywordflow">return</span> retString;
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094         buf = (<span class="keywordtype">char</span> *)malloc(<span class="keyword">sizeof</span>(<span class="keywordtype">char</span>) * (len+1));
+<a name="l00095"></a>00095         <span class="keywordflow">if</span> (!buf) <span class="keywordflow">return</span> retString;
+<a name="l00096"></a>00096 
+<a name="l00097"></a>00097         ::SendMessage(hwnd, CB_GETLBTEXT, (WPARAM)i, (LPARAM)buf);
+<a name="l00098"></a>00098 
+<a name="l00099"></a>00099         retString = buf;
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101         free(buf);
+<a name="l00102"></a>00102         <span class="keywordflow">return</span> retString;
+<a name="l00103"></a>00103     }
+<a name="l00104"></a>00104 
+<a name="l00105"></a><a class="code" href="class_wgu_1_1_combo_box.html#5e725f56d096691e4340771579b0816f">00105</a>     <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_combo_box.html#5e725f56d096691e4340771579b0816f" title="コンボボックス上の、指定文字列を選択する">ComboBox::selectString</a>(HWND hwnd, <span class="keyword">const</span> <span class="keywordtype">char</span> *selString)
+<a name="l00106"></a>00106     {
+<a name="l00107"></a>00107         ::SendMessage(hwnd, CB_SELECTSTRING, (WPARAM)-1, (LPARAM)selString);
+<a name="l00108"></a>00108     }
+<a name="l00109"></a>00109 
+<a name="l00110"></a><a class="code" href="class_wgu_1_1_combo_box.html#6c109a6baf9f9dc6c09abfa170761cd4">00110</a>     <span class="keywordtype">int</span> <a class="code" href="class_wgu_1_1_combo_box.html#6c109a6baf9f9dc6c09abfa170761cd4" title="文字列を検索する">ComboBox::findString</a>(HWND hwnd, <span class="keyword">const</span> <span class="keywordtype">char</span> *pString)
+<a name="l00111"></a>00111     {
+<a name="l00112"></a>00112         <span class="keywordtype">int</span> index = ::SendMessage(hwnd, CB_FINDSTRINGEXACT, (WPARAM)-1, (LPARAM)pString);
+<a name="l00113"></a>00113 
+<a name="l00114"></a>00114         <span class="keywordflow">return</span> (index != CB_ERR) ? index : -1;
+<a name="l00115"></a>00115     }
+<a name="l00116"></a>00116 
+<a name="l00117"></a><a class="code" href="class_wgu_1_1_combo_box.html#8b2fe1c5e877327ea0f3165c0cb7b982">00117</a>     <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_combo_box.html#8b2fe1c5e877327ea0f3165c0cb7b982" title="コンボボックスの指定位置の文字列を消去する">ComboBox::deleteString</a>(HWND hwnd, <span class="keywordtype">int</span> i)
+<a name="l00118"></a>00118     {
+<a name="l00119"></a>00119         ::SendMessage(hwnd, CB_DELETESTRING, (WPARAM)i, (LPARAM)0);
+<a name="l00120"></a>00120     }
+<a name="l00121"></a>00121 
+<a name="l00122"></a><a class="code" href="class_wgu_1_1_combo_box.html#dfbe578332ced688945249919c87b4da">00122</a>     <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_combo_box.html#8b2fe1c5e877327ea0f3165c0cb7b982" title="コンボボックスの指定位置の文字列を消去する">ComboBox::deleteString</a>(HWND hwnd, <span class="keyword">const</span> <span class="keywordtype">char</span> *delString)
+<a name="l00123"></a>00123     {
+<a name="l00124"></a>00124         <span class="keywordtype">int</span> index = <a class="code" href="class_wgu_1_1_combo_box.html#6c109a6baf9f9dc6c09abfa170761cd4" title="文字列を検索する">ComboBox::findString</a>(hwnd, delString);
+<a name="l00125"></a>00125         <span class="keywordflow">if</span> (index &gt;= 0)
+<a name="l00126"></a>00126         {
+<a name="l00127"></a>00127             <a class="code" href="class_wgu_1_1_combo_box.html#8b2fe1c5e877327ea0f3165c0cb7b982" title="コンボボックスの指定位置の文字列を消去する">ComboBox::deleteString</a>(hwnd, index);
+<a name="l00128"></a>00128         }
+<a name="l00129"></a>00129     }
+<a name="l00130"></a>00130 }
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>SIGWorldEditorに対してThu Jun 9 10:52:59 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

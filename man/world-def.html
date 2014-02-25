@@ -1,0 +1,422 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS"/>
+<link rel="stylesheet" type="text/css" href="prj.css"/>
+<title>世界ファイルの作成</title>
+</head>
+<body>
+
+<h1>世界ファイルの作成</h1>
+
+<p>ここではシミュレーションサーバで構成する仮想世界を記述する世界ファイ
+ルを作成するにあたり、必要な項目を解説します。</p>
+
+<h2><a name="coord">座標系</a></h2>
+
+<p>本システムでは以下の3つの座標系を使用しています。</p>
+
+<h3>世界座標系</h3>
+
+<p>エージェント・エンティティの位置などを表わす座標系です。鉛直上向きが
++Y方向になっています。</p>
+
+<h3>エージェント座標系</h3>
+<p>エージェントやエンティティの部位の位置を表す座標系です。エージェントまたはエンティティの中心を原点とし、エージェントは+Z方向に直
+面し、+Y方向が上で、+Xがエージェントの左となっています。</p>
+
+<h3>視線座標系</h3>
+
+<p>エージェントの視点からみた物体の座標位置を表します。エージェントの視点を原点とし、エージェントの正面を-Z方向、右を+X方向、
+上を+Y方向とします。</p>
+
+<img src="coodinates.jpg">
+
+<h2><a name="defclass">エージェント・エンティティクラスの定義</a></h2>
+
+<h3>定義</h3>
+
+<p>「エージェント」、「エンティティ」をそれぞれ以下のように定義します。</p>
+
+<ul>
+ <li><font class="defword">エージェント(Agent)</font>
+	  <p>自律動作する物体</p>
+ <li><font class="defword">エンティティ(Entity)</font>
+	  <p>エージェント以外の、静的な(自律動作しない)物体</p>
+</ul>
+
+<h3>XMLファイルによるクラスの定義</h3>
+
+<p>仮想世界内に登場させる物体については、XMLファイルにより定義を行います。
+ユーザが新たな性質を持った物体を仮想世界内に登場させる場合には、それに応
+じたクラスをXML形式で定義する必要があります。</p>
+<p>Entityクラス、Agentクラスに
+ついてはそれぞれ定義がなされています(<a
+href="../srcs/simserver/conf/Entity.xml">Entity.xml</a>, <a href="../srcs/simserver/conf/Agent.xml">Agent.xml</a>)。<font class="warning">これらのファイルは変更しないで下さい。</font></p>
+
+<h3>継承関係</h3>
+
+<p>Agentクラスは自律動作を行う・感覚機能を持っていることを除けば、Entity
+クラスと同じ性質を持っています。そのため、AgentクラスはEntityクラスを継
+承しています。</p>
+
+<p>Entity クラスは仮想世界内に存在する物体の基底クラスです。すべてのクラ
+スは、直接的・間接的にEntityクラスを継承する必要があります。新たに自律動
+作するクラスを作成する場合はAgentクラスを、静的なクラスを作成する場合は
+Entityクラスを継承してください。</p>
+
+<img src="entity-agent.jpg" alt="Entityクラス、Agentクラス、定義クラス">
+
+<h2><a name="shape">エージェント・エンティティの形状</a></h2>
+
+<p>エージェント・エンティティの形状は形状ファイルによって記述し、クラス定義の際に形状ファイルを指定します</p>
+<h3>形状ファイル</h3>
+
+<p>エージェントまたはエンティティの形状は、形状はX3DファイルまたはHAnimeの構造をベースにした独自XML形式のファイ
+ルで指定します。</p>
+
+<h3>クラス定義時の形状ファイルの指定</h3>
+
+<p>クラス定義時に、使用する形状ファイルを指定します。以下の例は、Robotクラスです。robot-body.xmlという形状ファイルをRobotクラスで使用するよう指定します。</p>
+
+<h4>X3D形状ファイルの指定</h4>
+<pre class="xmlsample">
+&lt;?xml version="1.0" encoding="utf8"?&gt;
+&lt;define-class name="Robot" inherit="Agent.xml"&gt;
+
+   &lt;x3d&gt;
+	  &lt;filename&gt;robot.x3d&lt;/filename&gt;
+   &lt;/x3d&gt;
+
+&lt;/define-class&gt;
+</pre>
+
+<h4>独自XML形状ファイルの指定</h4>
+<pre class="xmlsample">
+&lt;?xml version="1.0" encoding="utf8"?&gt;
+&lt;define-class name="Robot" inherit="Agent.xml"&gt;
+
+   &lt;body filename="robot-body.xml"/&gt;
+
+&lt;/define-class&gt;
+</pre>
+
+<h3>X3D形状ファイル</h3>
+
+<p>X3D形状ファイルで以下の項目を設定します。</p>
+<h4>関節の回転軸の設定</h4>
+<p>コントローラで関節の角度を指定可能になります。回転軸は
+jointタグ内のjointAxisタグで指定します。</p>
+
+<pre class="xmlsample">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+
+&lt;X3D profile="Immersive" version="3.0"&gt;
+...
+  &lt;ProtoInstance name='Joint' DEF="WAIST_JOINT1" containerField='children'&gt;
+
+	&lt;fieldValue name='name' value='WAIST_JOINT1' /&gt;
+
+	&lt;fieldValue name='translation' value='15.0 0.0 0.0' /&gt;
+
+	&lt;fieldValue name='jointType' value='rotate' /&gt;
+
+	<font class="sourcecomment">&lt;!-- WAIST_JOINT1 の回転軸は(1.0, 0.0, 0.0)。jointTypeが"rotate"の場合有効 --&gt;</font>
+	&lt;fieldValue name='jointAxis' value='1.0 0.0 0.0' /&gt;
+
+	&lt;fieldValue name='jointId' value='26.0' /&gt;
+  ...;
+  &lt;/ProtoInstance&gt;
+</pre>
+
+<h3>単純形状の明示的記述</h3>
+
+<p>
+物理シミュレーションの際、衝突判定等に使われる形状のことをSIGVerseでは「単純形状」と呼びます．
+これは画面表示に使われる複雑な形状ではなく、直方体、球といった極めて単純な形をしています．
+</p>
+
+<p>
+SIGVerseでは、表示用形状(X3Dファイル)から自動的に単純形状を算出し、物理シミュレーションに使いますが、この単純形状を明示的に定義することもできます．
+</p>
+
+<p>
+記述には2つの方法があります．
+</p>
+
+<ul>
+ <li>(1) &lt;simpleShape&gt;タグによる直接定義
+ <li>(2) &lt;simpleShapeFile&gt; および &lt;simpleShapeDesc&gt; タグによる間接定義
+</ul>
+
+<p>
+(1)は、エンティティ定義ファイル内で直接単純形状を記述する方法です．<br>
+(2)は、あらかじめ別ファイルで定義した単純形状記述を、エンティティ定義ファイル内から間接参照する方法です．
+</p>
+
+<p>
+エンティティ定義ファイル内に上記(1), (2)の記述がない場合は、単純形状は自動計算されます．
+</p>
+
+<p>
+以下に例を示します．
+</p>
+
+<p>
+<b>(1) &lt;simpleShape&gt;タグによる直接定義</b>
+</p>
+
+===(例1)=======================================================<br>
+[seApple1.xml]<br>
+<pre class="xmlsample">
+-------------------------------------------------------------
+&lt;?xml version="1.0" encoding="utf8"?&gt;
+
+&lt;define-class name="Apple" inherit="Entity.xml"&gt;
+
+&lt;!-- derived class from Entity.xml ALWAYS NEEDS body tag --&gt;
+&lt;!-- (otherwise simserver.sh crashes) --&gt;
+	&lt;body filename="dummy-body-orig.xml"/&gt;
+	<font class="emphasis">
+	&lt;simpleShape type="sphere"&gt;
+		&lt;position x="0" y="0" z="0"/&gt;
+		&lt;size r="3"/&gt;
+	&lt;/simpleShape&gt;
+	</font>
+	&lt;x3d&gt;
+		&lt;filename&gt;apple.wrl&lt;/filename&gt;
+	&lt;/x3d&gt;
+
+&lt;/define-class&gt;
+-------------------------------------------------------------
+</pre>
+===============================================================<br>
+
+この例では、クラス名"Apple"エンティティの単純形状として球(=sphere)を指定しています．<br>
+位置(position)はエンティティの中心座標からの変位を表し、半径(r)は球の大きさを示しています．
+
+<p>
+単純形状として使えるものには以下の3種類があります．
+</p>
+
+<ul>
+ <li>球 (type="sphere")
+ <li>円筒 (type="cylinder")
+ <li>直方体 (type="box")
+</ul>
+
+<p>
+[円筒による定義の例]<br>
+円筒の場合、rで底面の円の半径を、hで円筒の高さを記述します．
+</p>
+
+<pre class="xmlsample">
+	<font class="emphasis">
+	&lt;simpleShape type="cylinder"&gt;
+		&lt;position x="0" y="0" z="0"/&gt;
+		&lt;size r="3" h="10"/&gt;
+	&lt;/simpleShape&gt;
+	</font>
+</pre>
+
+<p>
+[直方体による定義の例]<br>
+直方体の場合、sx, sy, szで直方体の辺の長さを記述します．
+</p>
+
+<pre class="xmlsample">
+	<font class="emphasis">
+	&lt;simpleShape type="box"&gt;
+		&lt;position x="0" y="0" z="0"/&gt;
+		&lt;size sx="2" sy="5" sz="3"/&gt;
+	&lt;/simpleShape&gt;
+	</font>
+</pre>
+
+<p>
+<b>(2) &lt;simpleShapeFile&gt;および&lt;simpleShapeDesc&gt;タグによる間接定義</b>
+</p>
+
+<p>
+&lt;simpleShapeFile&gt;タグにより、単純形状定義のみ記述された他のファイルを参照することができます．
+参照されたファイル内では&lt;simpleShapeDesc&gt;タグにより単純形状を定義します．
+</p>
+
+===(例2)=======================================================<br>
+[seApple.xml]<br>
+<pre class="xmlsample">
+-------------------------------------------------------------
+&lt;?xml version="1.0" encoding="utf8"?&gt;
+
+&lt;define-class name="Apple" inherit="Entity.xml"&gt;
+
+&lt;!-- derived class from Entity.xml ALWAYS NEEDS body tag --&gt;
+&lt;!-- (otherwise simserver.sh crashes) --&gt;
+	&lt;body filename="dummy-body-orig.xml"/&gt;
+	<font class="emphasis">
+	&lt;simpleShapeFile&gt;ssApple.xml&lt;/simpleShapeFile&gt;
+	</font>
+	&lt;x3d&gt;
+		&lt;filename&gt;apple.wrl&lt;/filename&gt;
+	&lt;/x3d&gt;
+
+&lt;/define-class&gt;
+-------------------------------------------------------------
+</pre>
+
+<br>
+[ssApple.xml]<br>
+<pre class="xmlsample">
+-------------------------------------------------------------
+&lt;?xml version="1.0" encoding="UTF-8" standalone="no" ?&gt;
+<font class="emphasis">
+&lt;simpleShapeDesc&gt;
+	&lt;parts name="body" type="sphere"&gt;
+		&lt;position x="0" y="0" z="0"/&gt;
+		&lt;size r="2"/&gt;
+	&lt;/parts&gt;
+&lt;/simpleShapeDesc&gt;
+</font>
+-------------------------------------------------------------
+</pre>
+===============================================================<br>
+
+<p>
+この例では、エンティティ定義ファイル(seApple.xml)の中で、単純形状定義ファイル(ssApple.xml)を参照しています．
+</p>
+
+<p>
+単純形状定義ファイルでは、simpleShapeDescタグを用いて単純形状を定義します．
+記述方法はsimpleShapeタグとほとんど同じですが、name属性により単純形状を適用するパーツ名を指定できます．これはヒューマノイド形状のように、パーツが複数がある場合に対応するための機能です．
+simpleShapeタグの場合は、パーツ名の指定はできません（自動的に"body"になります）
+</p>
+
+<p>
+次の例は、パーツごとに単純形状を指定するものです.パーツ名（例えばWAIST_LINK0など）ごとに個別の単純形状を指定しています．
+</p>
+===(例3)=======================================================<br>
+[seRobot-nii.xml]<br>
+<pre class="xmlsample">
+-------------------------------------------------------------
+&lt;?xml version="1.0" encoding="utf8"?&gt;
+&lt;define-class name="Robot" inherit="Agent.xml"&gt;
+
+	&lt;set-attr-value name="scalex" value="0.7"/&gt;
+	&lt;set-attr-value name="scaley" value="0.7"/&gt;
+	&lt;set-attr-value name="scalez" value="0.7"/&gt;
+	<font class="emphasis">
+	&lt;simpleShapeFile&gt;ssRobot-nii.xml&lt;/simpleShapeFile&gt;
+	</font>
+	&lt;x3d&gt;
+		&lt;filename&gt;nii_robot.x3d&lt;/filename&gt;
+	&lt;/x3d&gt;
+
+&lt;/define-class&gt;
+-------------------------------------------------------------
+</pre>
+
+
+[ssRobot-nii.xml]<br>
+<pre class="xmlsample">
+-------------------------------------------------------------
+&lt;?xml version="1.0" encoding="UTF-8" standalone="no" ?&gt;
+<font class="emphasis">
+&lt;simpleShapeDesc&gt;
+	&lt;parts name="WAIST_LINK0" type="box"&gt;
+		&lt;position x="0" y="-1" z="0"/&gt;
+		&lt;size sx="30" sy="13" sz="22"/&gt;
+	&lt;/parts&gt;
+	&lt;parts name="WAIST_LINK1" type="box"&gt;
+		&lt;position x="0" y="12" z="1"/&gt;
+		&lt;size sx="25" sy="23" sz="20"/&gt;
+	&lt;/parts&gt;
+	&lt;parts name="WAIST_LINK2" type="box"&gt;
+		&lt;position x="0" y="0" z="0"/&gt;
+		&lt;size sx="0.05" sy="0.4" sz="0.05"/&gt;
+	&lt;/parts&gt;
+	&lt;parts name="WAIST_LINK3" type="box"&gt;
+		&lt;position x="0" y="3.5" z="-1"/&gt;
+		&lt;size sx="50" sy="35" sz="25"/&gt;
+	&lt;/parts&gt;
+	....
+&lt;/simpleShapeDesc&gt;
+</font>
+-------------------------------------------------------------
+</pre>
+===============================================================<br>
+
+<p>
+なお、SIGVerseでは、エンティティの持つ状態値に応じて、
+表示される形状を切り替えることができますが、
+単純形状に関しては1つのエンティティにつきただ1つの単純形状となります
+（＝状態によって単純形状を切り替えることはできません）
+</p>
+
+<p>
+以下のTVクラスは、2つの形状ファイル(TV_on.wrl, TV_off.wrl)を状態変数で変えられるように定義していますが、単純形状はただ1つとなっています．
+</p>
+
+===(例4)=======================================================<br>
+<br>
+[seTV.xml]<br>
+<pre class="xmlsample">
+&lt;?xml version="1.0" encoding="UTF-8" standalone="no" ?&gt;
+&lt;define-class name="TV" inherit="Agent.xml"&gt;
+
+	&lt;!--derived class from Entity.xml ALWAYS NEEDS body tag--&gt;
+	&lt;!--(otherwise sigserver.sh crashes)--&gt;
+	&lt;body filename="dummy-body.xml"/&gt;
+
+	&lt;attr group="visState" name="switch" type="string" value="on"/&gt;
+<font class="emphasis">
+	&lt;simpleShape type="box"&gt;
+		&lt;position x="0" y="0" z="0"/&gt;
+		&lt;size sx="15" sy="10" sz="3"/&gt;
+	&lt;/simpleShape&gt;
+</font>
+	&lt;x3d&gt;
+		&lt;filename&gt;TV_on.wrl&lt;/filename&gt;
+		&lt;state name="switch" value="on"/&gt;
+	&lt;/x3d&gt;
+
+	&lt;x3d&gt;
+		&lt;filename&gt;TV_off.wrl&lt;/filename&gt;
+		&lt;state name="switch" value="off"/&gt;
+	&lt;/x3d&gt;
+
+&lt;/define-class&gt;
+</pre>
+===============================================================<br>
+
+<h2><a name="worldfile">世界ファイル</a></h2>
+
+<p>仮想世界の初期状態はXML 形式で記述します(<a href="world-sample.html">世界ファイルサンプル</a>)
+。<p>
+<ul>
+ <li>世界の定義(&lt;world&gt;)
+	  <p>worldタグ内に世界性質、登場させるエージェント・エンティティを記述します。<font class="attrname">name</font>属性で世界に名前を付けることができます</p>
+
+ <li>重力加速度の指定(&lt;gravity&gt;)
+	  <p>x, y, z 方向の重力加速度をそれぞれ指定します。</p>
+ <li>インスタンスの生成(&lt;instanciate&gt;)
+	   <p>worldタグ内でinstanciate タグを使用して、エージェントまたはエンティティを世界内に登場させます。その際に、<font class="attrname">set-attr-name</font>
+	   タグを使用して<font class="attrname">名前(name)</font>,
+	   <font class="attrname">初期位置(x, y, z)</font>の各値を指定します。ODEによる物理シミュレーションによる外力を無効にするには<font
+	   class="attrname">dynamics</font>を<font class="attrvalue">false</font>にします</p>
+
+ <li>エージェントコントローラの指定
+
+	  <p><font class="attrname">implementation</font>属性にコントローラ
+	   ライブラリを指定することで、エージェントに対してコントローラを割
+	   り当てることができます。<font class="attrname">language</font>属
+	   性値は、今のところ<font class="attrvalue">c++</font>のみ有効です</p>
+</ul>
+
+<iframe class="source" src="world-sample.html"></iframe>
+
+
+
+<hr><address style="align: right;"><a href="http://www.msi.co.jp"><img src="msilogo.gif" align="middle" border=0
+width=139 height=53>（株）数理システム</a>
+
+</body>
+</html>

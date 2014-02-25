@@ -1,0 +1,602 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGWorldEditor: クラス Wgu::ComboBox</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_wgu.html">Wgu</a>::<a class="el" href="class_wgu_1_1_combo_box.html">ComboBox</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Wgu::ComboBox</h1><!-- doxytag: class="Wgu::ComboBox" -->Win32 APIの簡易ラッパークラス（コンボボックスコントロール）.  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_wgu_combo_box_8h_source.html">WguComboBox.h</a>&gt;</code>
+<p>
+
+<p>
+<a href="class_wgu_1_1_combo_box-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Static Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_combo_box.html#ee45c734132a3dba4ac2b4999e2104ab">addString</a> (HWND hwnd, const char *format,...)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンボボックスに文字列を追加する  <a href="#ee45c734132a3dba4ac2b4999e2104ab"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_combo_box.html#2daff1d3ecf67f51283ddc36a88f00ed">clear</a> (HWND hwnd)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンボボックスをクリアする  <a href="#2daff1d3ecf67f51283ddc36a88f00ed"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static HWND&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_combo_box.html#70ec758c425c98bd5bc4efe0edced83e">create</a> (HWND hwndParent, int contId, char *caption, int x, int y, int w, int h)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンボボックスコントロールを作る  <a href="#70ec758c425c98bd5bc4efe0edced83e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_combo_box.html#dfbe578332ced688945249919c87b4da">deleteString</a> (HWND hwnd, const char *delString)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンボボックスから文字列を消去する  <a href="#dfbe578332ced688945249919c87b4da"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_combo_box.html#8b2fe1c5e877327ea0f3165c0cb7b982">deleteString</a> (HWND hwnd, int i)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンボボックスの指定位置の文字列を消去する  <a href="#8b2fe1c5e877327ea0f3165c0cb7b982"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_combo_box.html#6c109a6baf9f9dc6c09abfa170761cd4">findString</a> (HWND hwnd, const char *pString)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">文字列を検索する  <a href="#6c109a6baf9f9dc6c09abfa170761cd4"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_combo_box.html#b65a2ef9cc564af3a7544e1413fdddbe">getCount</a> (HWND hwnd)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンボボックスのリストボックス領域に登録されている文字列の個数を返す  <a href="#b65a2ef9cc564af3a7544e1413fdddbe"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_combo_box.html#66cec0805ba02e4f97d20674b80c2a7b">getCurSel</a> (HWND hwnd)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">選択項目の番号を返す  <a href="#66cec0805ba02e4f97d20674b80c2a7b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_combo_box.html#d07c5739f380394840e54cef4aa519c3">getText</a> (HWND hwnd, int i)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">指定項目の文字列を返す  <a href="#d07c5739f380394840e54cef4aa519c3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_combo_box.html#b25c7506fe5fe023daadaafb178afaec">getText</a> (HWND hwnd)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">現在選択されている項目の文字列を返す  <a href="#b25c7506fe5fe023daadaafb178afaec"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_combo_box.html#5e725f56d096691e4340771579b0816f">selectString</a> (HWND hwnd, const char *selString)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンボボックス上の、指定文字列を選択する  <a href="#5e725f56d096691e4340771579b0816f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_combo_box.html#bbee5e263e5ea45df8e73e9e9ca4ca65">setCurSel</a> (HWND hwnd, int i)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">指定番号の項目を選択状態にする  <a href="#bbee5e263e5ea45df8e73e9e9ca4ca65"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+Win32 APIの簡易ラッパークラス（コンボボックスコントロール）. 
+<p> <a class="el" href="_wgu_combo_box_8h_source.html">WguComboBox.h</a> の <a class="el" href="_wgu_combo_box_8h_source.html#l00013">13</a> 行で定義されています。</p>
+<hr><h2>関数</h2>
+<a class="anchor" name="ee45c734132a3dba4ac2b4999e2104ab"></a><!-- doxytag: member="Wgu::ComboBox::addString" ref="ee45c734132a3dba4ac2b4999e2104ab" args="(HWND hwnd, const char *format,...)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::ComboBox::addString           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hwnd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>...</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンボボックスに文字列を追加する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hwnd</em>&nbsp;</td><td>[i] コンボボックスのウィンドウハンドル </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>format</em>&nbsp;</td><td>[i] 文字列（printf風フォーマットが使える） </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_wgu_combo_box_8cpp_source.html">WguComboBox.cpp</a> の <a class="el" href="_wgu_combo_box_8cpp_source.html#l00044">44</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="2daff1d3ecf67f51283ddc36a88f00ed"></a><!-- doxytag: member="Wgu::ComboBox::clear" ref="2daff1d3ecf67f51283ddc36a88f00ed" args="(HWND hwnd)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::ComboBox::clear           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hwnd</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンボボックスをクリアする 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hwnd</em>&nbsp;</td><td>[i] コンボボックスのウィンドウハンドル </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_wgu_combo_box_8cpp_source.html">WguComboBox.cpp</a> の <a class="el" href="_wgu_combo_box_8cpp_source.html#l00039">39</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="70ec758c425c98bd5bc4efe0edced83e"></a><!-- doxytag: member="Wgu::ComboBox::create" ref="70ec758c425c98bd5bc4efe0edced83e" args="(HWND hwndParent, int contId, char *caption, int x, int y, int w, int h)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HWND Wgu::ComboBox::create           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hwndParent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>contId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>caption</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>h</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンボボックスコントロールを作る 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hwndParent</em>&nbsp;</td><td>[i] 親ウィンドウ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>contId</em>&nbsp;</td><td>[i] コントロールId </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>caption</em>&nbsp;</td><td>[i] ボタンのキャプション文字列 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>[i] 横(x方向)位置 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>[i] 縦(y方向)位置 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>w</em>&nbsp;</td><td>[i] 幅 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>h</em>&nbsp;</td><td>[i] 高さ</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>生成されたコンボボックスコントロールのウィンドウハンドル </dd></dl>
+
+<p> <a class="el" href="_wgu_combo_box_8cpp_source.html">WguComboBox.cpp</a> の <a class="el" href="_wgu_combo_box_8cpp_source.html#l00013">13</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="dfbe578332ced688945249919c87b4da"></a><!-- doxytag: member="Wgu::ComboBox::deleteString" ref="dfbe578332ced688945249919c87b4da" args="(HWND hwnd, const char *delString)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::ComboBox::deleteString           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hwnd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>delString</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンボボックスから文字列を消去する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hwnd</em>&nbsp;</td><td>[i] コンボボックスのウィンドウハンドル </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>delString</em>&nbsp;</td><td>[i] 消去する文字列 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_wgu_combo_box_8cpp_source.html">WguComboBox.cpp</a> の <a class="el" href="_wgu_combo_box_8cpp_source.html#l00122">122</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="8b2fe1c5e877327ea0f3165c0cb7b982"></a><!-- doxytag: member="Wgu::ComboBox::deleteString" ref="8b2fe1c5e877327ea0f3165c0cb7b982" args="(HWND hwnd, int i)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::ComboBox::deleteString           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hwnd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>i</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンボボックスの指定位置の文字列を消去する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hwnd</em>&nbsp;</td><td>[i] コンボボックスのウィンドウハンドル </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>i</em>&nbsp;</td><td>[i] 項目番号(0以上、getCount()未満) </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_wgu_combo_box_8cpp_source.html">WguComboBox.cpp</a> の <a class="el" href="_wgu_combo_box_8cpp_source.html#l00117">117</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="6c109a6baf9f9dc6c09abfa170761cd4"></a><!-- doxytag: member="Wgu::ComboBox::findString" ref="6c109a6baf9f9dc6c09abfa170761cd4" args="(HWND hwnd, const char *pString)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Wgu::ComboBox::findString           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hwnd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>pString</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+文字列を検索する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hwnd</em>&nbsp;</td><td>[i] コンボボックスのウィンドウハンドル </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>pString</em>&nbsp;</td><td>[i] 検索対象文字列</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>インデックス(&gt;=0)．見つからなかった場合は-1</dd></dl>
+（注）検索対象にはエディットボックス中の文字列は含まれない 
+<p> <a class="el" href="_wgu_combo_box_8cpp_source.html">WguComboBox.cpp</a> の <a class="el" href="_wgu_combo_box_8cpp_source.html#l00110">110</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b65a2ef9cc564af3a7544e1413fdddbe"></a><!-- doxytag: member="Wgu::ComboBox::getCount" ref="b65a2ef9cc564af3a7544e1413fdddbe" args="(HWND hwnd)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Wgu::ComboBox::getCount           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hwnd</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンボボックスのリストボックス領域に登録されている文字列の個数を返す 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hwnd</em>&nbsp;</td><td>[i] コンボボックスのウィンドウハンドル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>項目の個数（＝文字列の数）．失敗した場合は-1 </dd></dl>
+
+<p> <a class="el" href="_wgu_combo_box_8cpp_source.html">WguComboBox.cpp</a> の <a class="el" href="_wgu_combo_box_8cpp_source.html#l00057">57</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="66cec0805ba02e4f97d20674b80c2a7b"></a><!-- doxytag: member="Wgu::ComboBox::getCurSel" ref="66cec0805ba02e4f97d20674b80c2a7b" args="(HWND hwnd)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Wgu::ComboBox::getCurSel           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hwnd</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+選択項目の番号を返す 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hwnd</em>&nbsp;</td><td>[i] コンボボックスのウィンドウハンドル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>選択されている項目の番号(&gt;=0)．選択項目がなければ-1を返す </dd></dl>
+
+<p> <a class="el" href="_wgu_combo_box_8cpp_source.html">WguComboBox.cpp</a> の <a class="el" href="_wgu_combo_box_8cpp_source.html#l00064">64</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="d07c5739f380394840e54cef4aa519c3"></a><!-- doxytag: member="Wgu::ComboBox::getText" ref="d07c5739f380394840e54cef4aa519c3" args="(HWND hwnd, int i)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Wgu::ComboBox::getText           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hwnd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>i</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+指定項目の文字列を返す 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hwnd</em>&nbsp;</td><td>[i] コンボボックスのウィンドウハンドル </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>i</em>&nbsp;</td><td>[i] 項目番号(0以上、getCount()未満)</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>指定項目の文字列．項目番号が無効の時は空文字列("")が返る </dd></dl>
+
+<p> <a class="el" href="_wgu_combo_box_8cpp_source.html">WguComboBox.cpp</a> の <a class="el" href="_wgu_combo_box_8cpp_source.html#l00086">86</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b25c7506fe5fe023daadaafb178afaec"></a><!-- doxytag: member="Wgu::ComboBox::getText" ref="b25c7506fe5fe023daadaafb178afaec" args="(HWND hwnd)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Wgu::ComboBox::getText           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hwnd</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+現在選択されている項目の文字列を返す 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hwnd</em>&nbsp;</td><td>[i] コンボボックスのウィンドウハンドル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>選択されている項目の文字列．何も選択されていなければ空文字列("")が返る． </dd></dl>
+
+<p> <a class="el" href="_wgu_combo_box_8cpp_source.html">WguComboBox.cpp</a> の <a class="el" href="_wgu_combo_box_8cpp_source.html#l00076">76</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="5e725f56d096691e4340771579b0816f"></a><!-- doxytag: member="Wgu::ComboBox::selectString" ref="5e725f56d096691e4340771579b0816f" args="(HWND hwnd, const char *selString)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::ComboBox::selectString           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hwnd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>selString</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンボボックス上の、指定文字列を選択する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hwnd</em>&nbsp;</td><td>[i] コンボボックスのウィンドウハンドル </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>selString</em>&nbsp;</td><td>[i] 選択文字列 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_wgu_combo_box_8cpp_source.html">WguComboBox.cpp</a> の <a class="el" href="_wgu_combo_box_8cpp_source.html#l00105">105</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="bbee5e263e5ea45df8e73e9e9ca4ca65"></a><!-- doxytag: member="Wgu::ComboBox::setCurSel" ref="bbee5e263e5ea45df8e73e9e9ca4ca65" args="(HWND hwnd, int i)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::ComboBox::setCurSel           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hwnd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>i</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+指定番号の項目を選択状態にする 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hwnd</em>&nbsp;</td><td>[i] コンボボックスのウィンドウハンドル </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>i</em>&nbsp;</td><td>[i] 項目番号(0&lt;=i&lt;<a class="el" href="class_wgu_1_1_combo_box.html#b65a2ef9cc564af3a7544e1413fdddbe" title="コンボボックスのリストボックス領域に登録されている文字列の個数を返�...">getCount()</a>) </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_wgu_combo_box_8cpp_source.html">WguComboBox.cpp</a> の <a class="el" href="_wgu_combo_box_8cpp_source.html#l00071">71</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_wgu_combo_box_8h_source.html">WguComboBox.h</a><li><a class="el" href="_wgu_combo_box_8cpp_source.html">WguComboBox.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGWorldEditorに対してThu Jun 9 10:53:01 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: ViewImage.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>ViewImage.h</h1><a href="_view_image_8h.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/* $Id: _view_image_8h_source.html,v 1.2 2011-12-14 07:55:40 okamoto Exp $ */</span> 
+<a name="l00002"></a>00002 <span class="preprocessor">#ifndef ViewImage_h</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span><span class="preprocessor">#define ViewImage_h</span>
+<a name="l00004"></a>00004 <span class="preprocessor"></span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include &quot;<a class="code" href="_view_image_info_8h.html">ViewImageInfo.h</a>&quot;</span>
+<a name="l00006"></a>00006 <span class="comment"></span>
+<a name="l00007"></a>00007 <span class="comment">/**</span>
+<a name="l00008"></a>00008 <span class="comment"> * @brief 視覚データクラス</span>
+<a name="l00009"></a>00009 <span class="comment"> */</span>
+<a name="l00010"></a><a class="code" href="class_view_image.html">00010</a> <span class="keyword">class </span><a class="code" href="class_view_image.html" title="視覚データクラス">ViewImage</a>
+<a name="l00011"></a>00011 {
+<a name="l00012"></a>00012  <span class="keyword">private</span>:
+<a name="l00013"></a>00013         <a class="code" href="class_view_image_info.html" title="画像データ情報クラス">ViewImageInfo</a>   m_info;
+<a name="l00014"></a>00014     <span class="keywordtype">char</span> *      m_buf;
+<a name="l00015"></a>00015     <span class="keywordtype">int</span>     m_buflen;
+<a name="l00016"></a>00016     
+<a name="l00017"></a>00017     <span class="keywordtype">double</span> m_fov;
+<a name="l00018"></a>00018     <span class="keywordtype">double</span> m_ar;   <span class="comment">//aspect ratio</span>
+<a name="l00019"></a>00019 <span class="keyword">public</span>:<span class="comment"></span>
+<a name="l00020"></a>00020 <span class="comment">    /**</span>
+<a name="l00021"></a>00021 <span class="comment">     *  @brief コンストラクタ</span>
+<a name="l00022"></a>00022 <span class="comment">     *</span>
+<a name="l00023"></a>00023 <span class="comment">     *  @param info 視覚データ情報</span>
+<a name="l00024"></a>00024 <span class="comment">     */</span>
+<a name="l00025"></a><a class="code" href="class_view_image.html#a476726e2639d40c4b192b5cfbb03cd7d">00025</a>     <a class="code" href="class_view_image.html#a476726e2639d40c4b192b5cfbb03cd7d" title="コンストラクタ">ViewImage</a>(<span class="keyword">const</span> <a class="code" href="class_view_image_info.html" title="画像データ情報クラス">ViewImageInfo</a> &amp;info)
+<a name="l00026"></a>00026         : m_info(info), m_buf(0), m_buflen(0)
+<a name="l00027"></a>00027     {
+<a name="l00028"></a>00028         m_buflen = calcBufferSize(info);
+<a name="l00029"></a>00029         m_buf = <span class="keyword">new</span> <span class="keywordtype">char</span> [m_buflen];
+<a name="l00030"></a>00030     }
+<a name="l00031"></a>00031 <span class="comment"></span>
+<a name="l00032"></a>00032 <span class="comment">    //! デストラクタ</span>
+<a name="l00033"></a><a class="code" href="class_view_image.html#a323f4489525d2625f0e52dfb9db31422">00033</a> <span class="comment"></span>    <a class="code" href="class_view_image.html#a323f4489525d2625f0e52dfb9db31422" title="デストラクタ">‾ViewImage</a>() {
+<a name="l00034"></a>00034         <span class="keywordflow">if</span> (m_buf) {
+<a name="l00035"></a>00035             <span class="keyword">delete</span> [] m_buf; m_buf = 0;
+<a name="l00036"></a>00036         }
+<a name="l00037"></a>00037     }
+<a name="l00038"></a>00038 
+<a name="l00039"></a>00039 <span class="keyword">private</span>:
+<a name="l00040"></a>00040     <span class="comment">// sekikawa(2007/10/12)</span>
+<a name="l00041"></a>00041     <span class="keywordtype">int</span> getWidthBytes(<span class="keywordtype">int</span> width, <span class="keywordtype">int</span> bytesPerOnePixel);
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043     <span class="keywordtype">int</span> calcBufferSize(<span class="keyword">const</span> <a class="code" href="class_view_image_info.html" title="画像データ情報クラス">ViewImageInfo</a> &amp;info);
+<a name="l00044"></a>00044 
+<a name="l00045"></a>00045 <span class="keyword">public</span>:<span class="comment"></span>
+<a name="l00046"></a>00046 <span class="comment">    //! 視覚データ情報の取得</span>
+<a name="l00047"></a><a class="code" href="class_view_image.html#a0eb1e4e6e4e7780cb43520ab60c21821">00047</a> <span class="comment"></span>    <span class="keyword">const</span> <a class="code" href="class_view_image_info.html" title="画像データ情報クラス">ViewImageInfo</a> &amp; <a class="code" href="class_view_image.html#a0eb1e4e6e4e7780cb43520ab60c21821" title="視覚データ情報の取得">getInfo</a>() { <span class="keywordflow">return</span> m_info; }
+<a name="l00048"></a>00048 <span class="comment"></span>
+<a name="l00049"></a>00049 <span class="comment">    //! 画像の幅(pixel)の取得</span>
+<a name="l00050"></a><a class="code" href="class_view_image.html#ab1eb86f32483bc471918c344751e94af">00050</a> <span class="comment"></span>    <span class="keywordtype">int</span>  <a class="code" href="class_view_image.html#ab1eb86f32483bc471918c344751e94af" title="画像の幅(pixel)の取得">getWidth</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_info.<a class="code" href="class_view_image_info.html#a42ebd21fc95068aa262b206be3daf374" title="画像の幅(pixel)を得る">getWidth</a>(); }<span class="comment"></span>
+<a name="l00051"></a>00051 <span class="comment">    //! 画像の高さ(pixel)の取得</span>
+<a name="l00052"></a><a class="code" href="class_view_image.html#aa4c39e6213384695245cbc911463379b">00052</a> <span class="comment"></span>    <span class="keywordtype">int</span>  <a class="code" href="class_view_image.html#aa4c39e6213384695245cbc911463379b" title="画像の高さ(pixel)の取得">getHeight</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_info.<a class="code" href="class_view_image_info.html#ad81986b39d8615880267010b15dbe50e" title="画像の高さ(pixel)を得る">getHeight</a>(); }<span class="comment"></span>
+<a name="l00053"></a>00053 <span class="comment">    //! 画像データの取得</span>
+<a name="l00054"></a><a class="code" href="class_view_image.html#a04465a71abbf3c23c77af74438b378fb">00054</a> <span class="comment"></span>    <span class="keywordtype">char</span> * <a class="code" href="class_view_image.html#a04465a71abbf3c23c77af74438b378fb" title="画像データの取得">getBuffer</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_buf; }<span class="comment"></span>
+<a name="l00055"></a>00055 <span class="comment">    //! 画像データ長の取得</span>
+<a name="l00056"></a><a class="code" href="class_view_image.html#a65c1fa0b47563e5542a3ef0a28a1ac59">00056</a> <span class="comment"></span>    <span class="keywordtype">int</span>   <a class="code" href="class_view_image.html#a65c1fa0b47563e5542a3ef0a28a1ac59" title="画像データ長の取得">getBufferLength</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_buflen; }<span class="comment"></span>
+<a name="l00057"></a>00057 <span class="comment">    //! 視野角設定</span>
+<a name="l00058"></a><a class="code" href="class_view_image.html#ab60670e315926bcdd5f97788c7c80b19">00058</a> <span class="comment"></span>    <span class="keywordtype">void</span> <a class="code" href="class_view_image.html#ab60670e315926bcdd5f97788c7c80b19" title="視野角設定">setFOVy</a>(<span class="keywordtype">double</span> fov){ m_fov = fov;} <span class="comment"></span>
+<a name="l00059"></a>00059 <span class="comment">    //! アスペクト比設定</span>
+<a name="l00060"></a><a class="code" href="class_view_image.html#afa3d8123ad6639f97774686296fc3ca1">00060</a> <span class="comment"></span>    <span class="keywordtype">void</span> <a class="code" href="class_view_image.html#afa3d8123ad6639f97774686296fc3ca1" title="アスペクト比設定">setAspectRatio</a>(<span class="keywordtype">double</span> ar){ m_ar = ar;}<span class="comment"></span>
+<a name="l00061"></a>00061 <span class="comment">    //! 視野角取得</span>
+<a name="l00062"></a><a class="code" href="class_view_image.html#a08ed9831a4bf004325ec41e4bea9c275">00062</a> <span class="comment"></span>    <span class="keywordtype">double</span> <a class="code" href="class_view_image.html#a08ed9831a4bf004325ec41e4bea9c275" title="視野角取得">getFOVy</a>(){ <span class="keywordflow">return</span> m_fov;} <span class="comment"></span>
+<a name="l00063"></a>00063 <span class="comment">    //! アスペクト比取得</span>
+<a name="l00064"></a><a class="code" href="class_view_image.html#a96d20382f240417630f4f3cadd7704ee">00064</a> <span class="comment"></span>    <span class="keywordtype">double</span> <a class="code" href="class_view_image.html#a96d20382f240417630f4f3cadd7704ee" title="アスペクト比取得">getAspectRatio</a>(){ <span class="keywordflow">return</span> m_ar;}
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066     <span class="comment">//virtual void setDimension(int n){} </span>
+<a name="l00067"></a>00067 <span class="comment"></span>
+<a name="l00068"></a>00068 <span class="comment">    /**</span>
+<a name="l00069"></a>00069 <span class="comment">     * @brief 画像データを Windows ビットマップ形式で保存する</span>
+<a name="l00070"></a>00070 <span class="comment">     *</span>
+<a name="l00071"></a>00071 <span class="comment">     * @param fname 保存先ファイル名</span>
+<a name="l00072"></a>00072 <span class="comment">     */</span>
+<a name="l00073"></a>00073     
+<a name="l00074"></a>00074     <span class="keywordtype">bool</span>    <a class="code" href="class_view_image.html#a86c15dd8fe197d91b26e0503f578d98f" title="画像データを Windows ビットマップ形式で保存する">saveAsWindowsBMP</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *fname);
+<a name="l00075"></a>00075 
+<a name="l00076"></a>00076 <span class="preprocessor">#ifdef WIN32</span>
+<a name="l00077"></a>00077 <span class="preprocessor"></span>    <span class="comment">// sekikawa(2007/10/12)</span>
+<a name="l00078"></a>00078     <span class="comment">// convert RGBA format to BGR and turn y-axis upside down</span>
+<a name="l00079"></a>00079     <span class="keywordtype">void</span> setBitImageAsWindowsBMP(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *bitImage);
+<a name="l00080"></a>00080 <span class="preprocessor">#endif</span>
+<a name="l00081"></a>00081 <span class="preprocessor"></span>
+<a name="l00082"></a>00082 <span class="preprocessor">#if (defined _DEBUG || defined UNIT_TEST || defined IRWAS_TEST_CLIENT)</span>
+<a name="l00083"></a>00083 <span class="preprocessor"></span>    <span class="keyword">static</span> <a class="code" href="class_view_image.html" title="視覚データクラス">ViewImage</a> *createSample();
+<a name="l00084"></a>00084 <span class="preprocessor">#endif</span>
+<a name="l00085"></a>00085 <span class="preprocessor"></span>};
+<a name="l00086"></a>00086 
+<a name="l00087"></a><a class="code" href="class_depth_image.html">00087</a> <span class="keyword">class </span><a class="code" href="class_depth_image.html">DepthImage</a> : <span class="keyword">public</span> <a class="code" href="class_view_image.html" title="視覚データクラス">ViewImage</a>
+<a name="l00088"></a>00088 {
+<a name="l00089"></a>00089  <span class="keyword">public</span>:
+<a name="l00090"></a><a class="code" href="class_depth_image.html#a7d1da692a6660abf03c95b49f02e3d18">00090</a>  <a class="code" href="class_depth_image.html#a7d1da692a6660abf03c95b49f02e3d18">DepthImage</a>(<span class="keyword">const</span> <a class="code" href="class_view_image_info.html" title="画像データ情報クラス">ViewImageInfo</a> &amp;info)
+<a name="l00091"></a>00091    : <a class="code" href="class_view_image.html" title="視覚データクラス">ViewImage</a>(info)
+<a name="l00092"></a>00092   {
+<a name="l00093"></a>00093   }<span class="comment"></span>
+<a name="l00094"></a>00094 <span class="comment">  //! ピクセルの位置からdepthデータ取得</span>
+<a name="l00095"></a>00095 <span class="comment"></span>  <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code" href="class_depth_image.html#a2db0ceb7f1afed01aee9e17a20a372eb" title="ピクセルの位置からdepthデータ取得">getDepthFromPixel</a>(<span class="keywordtype">int</span> w, <span class="keywordtype">int</span> h=0);
+<a name="l00096"></a>00096 <span class="comment"></span>
+<a name="l00097"></a>00097 <span class="comment">  //! ピクセルの位置から距離データ取得</span>
+<a name="l00098"></a>00098 <span class="comment"></span>  <span class="keywordtype">double</span> <a class="code" href="class_depth_image.html#aedf80ce8058f50676bbfe0b317d87740" title="ピクセルの位置から距離データ取得">getDistanceFromPixel</a>(<span class="keywordtype">int</span> w, <span class="keywordtype">int</span> h=0);
+<a name="l00099"></a>00099 <span class="comment"></span>
+<a name="l00100"></a>00100 <span class="comment">  //! 方向（角度）から距離データ取得</span>
+<a name="l00101"></a>00101 <span class="comment"></span>  <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code" href="class_depth_image.html#a3f16030f0fe8318c7b97ff7cd8cf3228" title="方向（角度）から距離データ取得">getDepthFromAngle</a>(<span class="keywordtype">double</span> theta, <span class="keywordtype">double</span> phi=0);
+<a name="l00102"></a>00102 
+<a name="l00103"></a><a class="code" href="class_depth_image.html#abe9024655f36d242214f8815ada19912">00103</a>   <span class="keywordtype">void</span> <a class="code" href="class_depth_image.html#abe9024655f36d242214f8815ada19912">setDimension</a>(<span class="keywordtype">int</span> dim){m_dim = dim;}
+<a name="l00104"></a>00104  <span class="keyword">private</span>:
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106   <span class="comment">//dimension</span>
+<a name="l00107"></a>00107   <span class="keywordtype">int</span> m_dim;
+<a name="l00108"></a>00108 
+<a name="l00109"></a>00109 };
+<a name="l00110"></a>00110 
+<a name="l00111"></a>00111 <span class="preprocessor">#endif // ViewImage_h</span>
+<a name="l00112"></a>00112 <span class="preprocessor"></span> 
+</pre></div></div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:18 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

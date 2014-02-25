@@ -1,0 +1,58 @@
+<html>
+<head>
+  <title>STDIN</title>
+</head>
+<body bgcolor="#ffffff" text="#000000">
+<pre>
+<a name="line1"> 1</a> <font color="0000ff"><strong>#include <font color="#008000">&lt;sigverse/Controller.h&gt;</font></strong></font>
+<a name="line2"> 2</a> <font color="0000ff"><strong>#include <font color="#008000">&lt;sigverse/SimObj.h&gt;</font></strong></font>
+<a name="line3"> 3</a> <font color="0000ff"><strong>#include <font color="#008000">&lt;sigverse/Logger.h&gt;</font></strong></font>
+<a name="line4"> 4</a> 
+<a name="line5"> 5</a> 
+<a name="line6"> 6</a> <strong>class</strong> <font color="#2040a0">RobotController</font> <font color="4444FF">:</font> <strong>public</strong> <font color="#2040a0">Controller</font>
+<a name="line7"> 7</a> <font color="4444FF"><strong>{</strong></font>
+<a name="line8"> 8</a> <strong>public</strong><font color="4444FF">:</font>
+<a name="line9"> 9</a> 	<strong>double</strong> <font color="#2040a0">onAction</font><font color="4444FF">(</font><font color="#2040a0">ActionEvent</font> <font color="4444FF">&amp;</font><font color="#2040a0">evt</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<a name="line10">10</a> <font color="4444FF"><strong>}</strong></font><font color="4444FF">;</font>
+<a name="line11">11</a> 
+<a name="line12">12</a> <strong>double</strong> <font color="#2040a0">RobotController</font><font color="4444FF">:</font><font color="4444FF">:</font><font color="#2040a0">onAction</font><font color="4444FF">(</font><font color="#2040a0">ActionEvent</font> <font color="4444FF">&amp;</font><font color="#2040a0">evt</font><font color="4444FF">)</font>
+<a name="line13">13</a> <font color="4444FF"><strong>{</strong></font>
+<a name="line14">14</a> 	<font color="#2040a0">try</font> <font color="4444FF"><strong>{</strong></font>
+<a name="line15">15</a> 		<strong>typedef</strong> <font color="#2040a0">std</font><font color="4444FF">:</font><font color="4444FF">:</font><font color="#2040a0">vector</font><font color="4444FF">&lt;</font><font color="#2040a0">std</font><font color="4444FF">:</font><font color="4444FF">:</font><font color="#2040a0">string</font><font color="4444FF">&gt;</font> <font color="#2040a0">C</font><font color="4444FF">;</font>
+<a name="line16">16</a> 		<font color="#2040a0">C</font> <font color="#2040a0">agents</font><font color="4444FF">;</font>
+<a name="line17">17</a> 
+<a name="line18">18</a> 		<strong>bool</strong> <font color="#2040a0">b</font> <font color="4444FF">=</font> <font color="#2040a0">detectEntities</font><font color="4444FF">(</font><font color="#2040a0">agents</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<a name="line19">19</a> 		<strong>if</strong> <font color="4444FF">(</font><font color="#2040a0">b</font> <font color="4444FF">&amp;</font><font color="4444FF">&amp;</font> <font color="#2040a0">agents</font>.<font color="#2040a0">size</font><font color="4444FF">(</font><font color="4444FF">)</font> <font color="4444FF">&gt;</font> <font color="#FF0000">0</font><font color="4444FF">)</font> <font color="4444FF"><strong>{</strong></font>
+<a name="line20">20</a> 			<strong>for</strong> <font color="4444FF">(</font><font color="#2040a0">C</font><font color="4444FF">:</font><font color="4444FF">:</font><font color="#2040a0">iterator</font> <font color="#2040a0">i</font><font color="4444FF">=</font><font color="#2040a0">agents</font>.<font color="#2040a0">begin</font><font color="4444FF">(</font><font color="4444FF">)</font><font color="4444FF">;</font> <font color="#2040a0">i</font><font color="4444FF">!</font><font color="4444FF">=</font><font color="#2040a0">agents</font>.<font color="#2040a0">end</font><font color="4444FF">(</font><font color="4444FF">)</font><font color="4444FF">;</font> <font color="#2040a0">i</font><font color="4444FF">+</font><font color="4444FF">+</font><font color="4444FF">)</font> <font color="4444FF"><strong>{</strong></font>
+<a name="line21">21</a> 				<font color="#2040a0">std</font><font color="4444FF">:</font><font color="4444FF">:</font><font color="#2040a0">string</font> <font color="#2040a0">name</font> <font color="4444FF">=</font> <font color="4444FF">*</font><font color="#2040a0">i</font><font color="4444FF">;</font>
+<a name="line22">22</a> 				<font color="#2040a0">LOG_MSG</font><font color="4444FF">(</font><font color="4444FF">(</font><font color="#008000">&quot;detected %s<font color="#77dd77">\n</font>&quot;</font>, <font color="#2040a0">name</font>.<font color="#2040a0">c_str</font><font color="4444FF">(</font><font color="4444FF">)</font><font color="4444FF">)</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<a name="line23">23</a> 				<font color="#2040a0">SimObj</font> <font color="4444FF">*</font><font color="#2040a0">obj</font> <font color="4444FF">=</font> <font color="#2040a0">getObj</font><font color="4444FF">(</font><font color="#2040a0">name</font>.<font color="#2040a0">c_str</font><font color="4444FF">(</font><font color="4444FF">)</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<a name="line24">24</a> 				<strong>if</strong> <font color="4444FF">(</font><font color="4444FF">!</font><font color="#2040a0">obj</font><font color="4444FF">)</font> <font color="4444FF"><strong>{</strong></font>
+<a name="line25">25</a> 					<font color="#2040a0">LOG_ERR</font><font color="4444FF">(</font><font color="4444FF">(</font><font color="#008000">&quot;cannot get object&quot;</font><font color="4444FF">)</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<a name="line26">26</a> 				<font color="4444FF"><strong>}</strong></font>
+<a name="line27">27</a> 				
+<a name="line28">28</a> 				<font color="#444444">// ...;</font>
+<a name="line29">29</a> 
+<a name="line30">30</a> 			<font color="4444FF"><strong>}</strong></font>
+<a name="line31">31</a> 
+<a name="line32">32</a> 		<font color="4444FF"><strong>}</strong></font> <strong>else</strong> <font color="4444FF"><strong>{</strong></font>
+<a name="line33">33</a> 			<font color="#2040a0">LOG_MSG</font><font color="4444FF">(</font><font color="4444FF">(</font><font color="#008000">&quot;no object in front of me&quot;</font><font color="4444FF">)</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<a name="line34">34</a> 		<font color="4444FF"><strong>}</strong></font>
+<a name="line35">35</a> 		
+<a name="line36">36</a> 	<font color="4444FF"><strong>}</strong></font> <strong>catch</strong><font color="4444FF">(</font><font color="#2040a0">SimObj</font><font color="4444FF">:</font><font color="4444FF">:</font><font color="#2040a0">Exception</font> <font color="4444FF">&amp;</font><font color="4444FF">)</font> <font color="4444FF"><strong>{</strong></font>
+<a name="line37">37</a> 		<font color="#2040a0">LOG_ERR</font><font color="4444FF">(</font><font color="4444FF">(</font><font color="#008000">&quot;Exception&quot;</font><font color="4444FF">)</font><font color="4444FF">)</font><font color="4444FF">;</font>
+<a name="line38">38</a> 	<font color="4444FF"><strong>}</strong></font>
+<a name="line39">39</a> 
+<a name="line40">40</a> 	<strong>return</strong> <font color="#FF0000">2.0</font><font color="4444FF">;</font>
+<a name="line41">41</a> <font color="4444FF"><strong>}</strong></font>
+<a name="line42">42</a> 
+<a name="line43">43</a> <strong>extern</strong> <font color="#008000">&quot;C&quot;</font>  <font color="#2040a0">Controller</font> <font color="4444FF">*</font> <font color="#2040a0">createController</font> <font color="4444FF">(</font><font color="4444FF">)</font>
+<a name="line44">44</a> <font color="4444FF"><strong>{</strong></font>
+<a name="line45">45</a> 	<strong>return</strong> <strong>new</strong> <font color="#2040a0">RobotController</font><font color="4444FF">;</font>
+<a name="line46">46</a> <font color="4444FF"><strong>}</strong></font>
+
+</pre>
+<hr>
+syntax highlighted by <a href="http://www.palfrader.org/code2html">Code2HTML</a>, v. 0.9.1
+</body>
+</html>

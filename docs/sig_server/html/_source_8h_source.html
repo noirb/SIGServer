@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: Source.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>Source.h</h1><a href="_source_8h.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/* $Id: _source_8h_source.html,v 1.2 2011-12-14 07:55:40 okamoto Exp $ */</span> 
+<a name="l00002"></a>00002 <span class="preprocessor">#ifndef Source_h</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span><span class="preprocessor">#define Source_h</span>
+<a name="l00004"></a>00004 <span class="preprocessor"></span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include &quot;<a class="code" href="systemdef_8h.html">systemdef.h</a>&quot;</span>
+<a name="l00006"></a>00006 
+<a name="l00007"></a>00007 <span class="preprocessor">#include &lt;string&gt;</span>
+<a name="l00008"></a>00008 <span class="preprocessor">#include &lt;map&gt;</span>
+<a name="l00009"></a>00009 
+<a name="l00010"></a>00010 <span class="preprocessor">#include &lt;string.h&gt;</span>
+<a name="l00011"></a>00011 
+<a name="l00012"></a>00012 <span class="preprocessor">#ifndef WIN32</span>
+<a name="l00013"></a>00013 <span class="preprocessor"></span><span class="preprocessor">#include &lt;sys/socket.h&gt;</span>
+<a name="l00014"></a>00014 <span class="preprocessor">#endif</span>
+<a name="l00015"></a>00015 <span class="preprocessor"></span>
+<a name="l00016"></a>00016 <span class="preprocessor">#ifdef EXEC_SIMULATION</span>
+<a name="l00017"></a>00017 <span class="preprocessor"></span><span class="preprocessor">#include &lt;pthread.h&gt;</span>
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019 <span class="keyword">class </span><a class="code" href="class_comm_data_encoder.html" title="転送データエンコーダー基本クラス">CommDataEncoder</a>;
+<a name="l00020"></a>00020 <span class="preprocessor">#endif</span>
+<a name="l00021"></a>00021 <span class="preprocessor"></span>
+<a name="l00022"></a>00022 <span class="keyword">enum</span> {
+<a name="l00023"></a><a class="code" href="_source_8h.html#af9bdc3014f3d54c426b6d2df10de4960ae5d8965ed569af3dc0a4b52cb61222e8">00023</a>     <a class="code" href="_source_8h.html#af9bdc3014f3d54c426b6d2df10de4960ae5d8965ed569af3dc0a4b52cb61222e8">SOURCE_TYPE_NOT_SET</a> = -1,
+<a name="l00024"></a><a class="code" href="_source_8h.html#af9bdc3014f3d54c426b6d2df10de4960ad9b21426fe41d24242471ca4bb4b6257">00024</a>     <a class="code" href="_source_8h.html#af9bdc3014f3d54c426b6d2df10de4960ad9b21426fe41d24242471ca4bb4b6257">SOURCE_TYPE_SIMSERVER</a>,
+<a name="l00025"></a><a class="code" href="_source_8h.html#af9bdc3014f3d54c426b6d2df10de4960a4705eec1a2e1a6eb355116a202eadec0">00025</a>     <a class="code" href="_source_8h.html#af9bdc3014f3d54c426b6d2df10de4960a4705eec1a2e1a6eb355116a202eadec0">SOURCE_TYPE_VIEW</a>,
+<a name="l00026"></a><a class="code" href="_source_8h.html#af9bdc3014f3d54c426b6d2df10de4960a796ebd6b6b788622b6306d299225320a">00026</a>     <a class="code" href="_source_8h.html#af9bdc3014f3d54c426b6d2df10de4960a796ebd6b6b788622b6306d299225320a">SOURCE_TYPE_CONTROLLER_CMD</a>,
+<a name="l00027"></a><a class="code" href="_source_8h.html#af9bdc3014f3d54c426b6d2df10de4960ace4a805c926c1dc158040764e2825668">00027</a>     <a class="code" href="_source_8h.html#af9bdc3014f3d54c426b6d2df10de4960ace4a805c926c1dc158040764e2825668">SOURCE_TYPE_CONTROLLER_DATA</a>,
+<a name="l00028"></a><a class="code" href="_source_8h.html#af9bdc3014f3d54c426b6d2df10de4960a0714360198d740693dd06571ee54b85f">00028</a>     <a class="code" href="_source_8h.html#af9bdc3014f3d54c426b6d2df10de4960a0714360198d740693dd06571ee54b85f">SOURCE_TYPE_SERVICE_PROVIDER</a>,
+<a name="l00029"></a><a class="code" href="_source_8h.html#af9bdc3014f3d54c426b6d2df10de4960a25559a2853b65ef2c1069463f8746c18">00029</a>     <a class="code" href="_source_8h.html#af9bdc3014f3d54c426b6d2df10de4960a25559a2853b65ef2c1069463f8746c18">SOURCE_TYPE_NUN</a>,
+<a name="l00030"></a>00030 };
+<a name="l00031"></a><a class="code" href="_source_8h.html#abd482467b5af8258c45cde48b322924b">00031</a> <span class="keyword">typedef</span> <span class="keywordtype">signed</span> <a class="code" href="_source_8h.html#abd482467b5af8258c45cde48b322924b">SourceType</a>;
+<a name="l00032"></a>00032 <span class="comment"></span>
+<a name="l00033"></a>00033 <span class="comment">/**</span>
+<a name="l00034"></a>00034 <span class="comment"> * @brief データ転送接続元クラス</span>
+<a name="l00035"></a>00035 <span class="comment"> */</span>
+<a name="l00036"></a><a class="code" href="class_source.html">00036</a> <span class="keyword">class </span><a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a>
+<a name="l00037"></a>00037 {
+<a name="l00038"></a>00038 <span class="keyword">private</span>:
+<a name="l00039"></a>00039 <span class="preprocessor">#ifdef EXEC_SIMULATION</span>
+<a name="l00040"></a>00040 <span class="preprocessor"></span>    <span class="keyword">class </span><a class="code" href="class_locker.html#a66bf47f8d636ede98aece2bd22de2dcd">Locker</a>
+<a name="l00041"></a>00041     {
+<a name="l00042"></a>00042     <span class="keyword">private</span>:
+<a name="l00043"></a>00043         pthread_mutex_t m_mutex;
+<a name="l00044"></a>00044     <span class="keyword">public</span>:
+<a name="l00045"></a>00045         Locker() { pthread_mutex_init(&amp;m_mutex, 0); }
+<a name="l00046"></a>00046         ‾Locker() { pthread_mutex_destroy(&amp;m_mutex); }
+<a name="l00047"></a>00047         <span class="keywordtype">void</span>    lock() { pthread_mutex_lock(&amp;m_mutex); }
+<a name="l00048"></a>00048         <span class="keywordtype">void</span>    unlock() { pthread_mutex_unlock(&amp;m_mutex); }
+<a name="l00049"></a>00049             
+<a name="l00050"></a>00050     };
+<a name="l00051"></a>00051 <span class="preprocessor">#endif</span>
+<a name="l00052"></a>00052 <span class="preprocessor"></span>    <span class="keyword">typedef</span> std::string S;
+<a name="l00053"></a>00053     <span class="keyword">typedef</span> std::map&lt;S, S&gt; M;
+<a name="l00054"></a>00054 <span class="keyword">private</span>:
+<a name="l00055"></a>00055     <a class="code" href="_source_8h.html#abd482467b5af8258c45cde48b322924b">SourceType</a>  m_type;
+<a name="l00056"></a>00056     S       m_name;
+<a name="l00057"></a>00057     <a class="code" href="systemdef_8h.html#a8dc8083897335125630f1af5dafd5831">SOCKET</a>      m_sock;
+<a name="l00058"></a>00058     S       m_hostname;
+<a name="l00059"></a>00059     <span class="keywordtype">bool</span>        m_ignore;
+<a name="l00060"></a>00060     M       m_properties;
+<a name="l00061"></a>00061 <span class="preprocessor">#ifdef EXEC_SIMULATION</span>
+<a name="l00062"></a>00062 <span class="preprocessor"></span>    Locker      m_locker;
+<a name="l00063"></a>00063 <span class="preprocessor">#endif</span>
+<a name="l00064"></a>00064 <span class="preprocessor"></span>    
+<a name="l00065"></a>00065 <span class="keyword">public</span>:<span class="comment"></span>
+<a name="l00066"></a>00066 <span class="comment">    /**</span>
+<a name="l00067"></a>00067 <span class="comment">     * @brief コンストラクタ</span>
+<a name="l00068"></a>00068 <span class="comment">     *</span>
+<a name="l00069"></a>00069 <span class="comment">     * @param sock 接続元ソケット</span>
+<a name="l00070"></a>00070 <span class="comment">     */</span>
+<a name="l00071"></a><a class="code" href="class_source.html#a411bf8dc063ee2df1b72d80620adecb5">00071</a>     <a class="code" href="class_source.html#a411bf8dc063ee2df1b72d80620adecb5" title="コンストラクタ">Source</a>(<a class="code" href="systemdef_8h.html#a8dc8083897335125630f1af5dafd5831">SOCKET</a> sock)
+<a name="l00072"></a>00072         : m_type(<a class="code" href="_source_8h.html#af9bdc3014f3d54c426b6d2df10de4960ae5d8965ed569af3dc0a4b52cb61222e8">SOURCE_TYPE_NOT_SET</a>), m_sock(sock), m_ignore(false) {;}
+<a name="l00073"></a>00073     <span class="comment"></span>
+<a name="l00074"></a>00074 <span class="comment">    /**</span>
+<a name="l00075"></a>00075 <span class="comment">     * @brief コンストラクタ</span>
+<a name="l00076"></a>00076 <span class="comment">     *</span>
+<a name="l00077"></a>00077 <span class="comment">     * @param sock      接続元ソケット</span>
+<a name="l00078"></a>00078 <span class="comment">     * @param hostname  接続元ホスト名</span>
+<a name="l00079"></a>00079 <span class="comment">     */</span>
+<a name="l00080"></a><a class="code" href="class_source.html#a4ade7eb2a62265fcf13328ad4583141a">00080</a>     <a class="code" href="class_source.html#a411bf8dc063ee2df1b72d80620adecb5" title="コンストラクタ">Source</a>(<a class="code" href="systemdef_8h.html#a8dc8083897335125630f1af5dafd5831">SOCKET</a> sock, <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="class_source.html#a0cb3ade9266c8b7690bb69c1bd92bfc8" title="接続元ホスト名を得る">hostname</a>) 
+<a name="l00081"></a>00081         : m_type(<a class="code" href="_source_8h.html#af9bdc3014f3d54c426b6d2df10de4960ae5d8965ed569af3dc0a4b52cb61222e8">SOURCE_TYPE_NOT_SET</a>), m_sock(sock), m_hostname(hostname), m_ignore(false) {;}
+<a name="l00082"></a>00082 <span class="comment"></span>
+<a name="l00083"></a>00083 <span class="comment">    /**</span>
+<a name="l00084"></a>00084 <span class="comment">     * @brief 接続元タイプ、接続名を設定す</span>
+<a name="l00085"></a>00085 <span class="comment">     */</span>
+<a name="l00086"></a><a class="code" href="class_source.html#a1d44ff6eb1d97c38f4fc33cee72a071b">00086</a>     <span class="keywordtype">void</span>    <span class="keyword">set</span>(<a class="code" href="_source_8h.html#abd482467b5af8258c45cde48b322924b">SourceType</a> <a class="code" href="class_source.html#a7edc939c12cf62619982181d445aa429" title="接続タイプを取得する">type</a>, <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="class_source.html#a28d24d9a165bad391f71e34edf397dd9" title="接続名を得る">name</a>) {
+<a name="l00087"></a>00087         m_type = <a class="code" href="class_source.html#a7edc939c12cf62619982181d445aa429" title="接続タイプを取得する">type</a>;
+<a name="l00088"></a>00088         <span class="keywordflow">if</span> (<a class="code" href="class_source.html#a28d24d9a165bad391f71e34edf397dd9" title="接続名を得る">name</a>) {
+<a name="l00089"></a>00089             m_name = <a class="code" href="class_source.html#a28d24d9a165bad391f71e34edf397dd9" title="接続名を得る">name</a>;
+<a name="l00090"></a>00090         }
+<a name="l00091"></a>00091     }
+<a name="l00092"></a>00092 <span class="comment"></span>
+<a name="l00093"></a>00093 <span class="comment">    //! ソケット記述子を返す</span>
+<a name="l00094"></a><a class="code" href="class_source.html#a28073205165d10b7ea598ebe33356bc9">00094</a> <span class="comment"></span>    <a class="code" href="systemdef_8h.html#a8dc8083897335125630f1af5dafd5831">SOCKET</a>  <a class="code" href="class_source.html#a28073205165d10b7ea598ebe33356bc9" title="ソケット記述子を返す">socket</a>() { <span class="keywordflow">return</span> m_sock; }
+<a name="l00095"></a>00095 <span class="preprocessor">#ifdef EXEC_SIMULATION</span>
+<a name="l00096"></a>00096 <span class="preprocessor"></span>    <span class="keywordtype">int</span> <a class="code" href="class_source.html#ad869baf1d70d735178ef9c7a991c0a10">send</a>(<a class="code" href="class_comm_data_encoder.html" title="転送データエンコーダー基本クラス">CommDataEncoder</a> &amp;);
+<a name="l00097"></a>00097     <span class="keywordtype">int</span> <a class="code" href="class_source.html#ad869baf1d70d735178ef9c7a991c0a10">send</a>(<span class="keywordtype">char</span> *, <span class="keywordtype">int</span>);
+<a name="l00098"></a><a class="code" href="class_source.html#add94d91c5bfef51475595f81f0cc7857">00098</a>     <span class="keywordtype">bool</span>    <a class="code" href="class_source.html#add94d91c5bfef51475595f81f0cc7857">equals</a>(<a class="code" href="systemdef_8h.html#a8dc8083897335125630f1af5dafd5831">SOCKET</a> sock) {
+<a name="l00099"></a>00099         <span class="keywordflow">return</span> m_sock == sock? <span class="keyword">true</span>: <span class="keyword">false</span>;
+<a name="l00100"></a>00100     }
+<a name="l00101"></a>00101 <span class="preprocessor">#endif</span>
+<a name="l00102"></a>00102 <span class="preprocessor"></span><span class="comment"></span>
+<a name="l00103"></a>00103 <span class="comment">    //! 接続名を得る</span>
+<a name="l00104"></a><a class="code" href="class_source.html#a28d24d9a165bad391f71e34edf397dd9">00104</a> <span class="comment"></span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="class_source.html#a28d24d9a165bad391f71e34edf397dd9" title="接続名を得る">name</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_name.length() &gt; 0? m_name.c_str(): <span class="stringliteral">&quot;&quot;</span>; }<span class="comment"></span>
+<a name="l00105"></a>00105 <span class="comment">    //! 接続元ホスト名を得る</span>
+<a name="l00106"></a><a class="code" href="class_source.html#a0cb3ade9266c8b7690bb69c1bd92bfc8">00106</a> <span class="comment"></span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="class_source.html#a0cb3ade9266c8b7690bb69c1bd92bfc8" title="接続元ホスト名を得る">hostname</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_hostname.c_str(); }
+<a name="l00107"></a>00107 <span class="comment"></span>
+<a name="l00108"></a>00108 <span class="comment">    //! 接続を無視するか？</span>
+<a name="l00109"></a><a class="code" href="class_source.html#a4e3ffb8c9134853bc0fa88d22dc7faf2">00109</a> <span class="comment"></span>    <span class="keywordtype">bool</span>    <a class="code" href="class_source.html#a4e3ffb8c9134853bc0fa88d22dc7faf2" title="接続を無視するか？">ignore</a>() { <span class="keywordflow">return</span> m_ignore; }<span class="comment"></span>
+<a name="l00110"></a>00110 <span class="comment">    //! 接続の無視を切り替える</span>
+<a name="l00111"></a><a class="code" href="class_source.html#a4f093f0320af3952919a4900c7e89725">00111</a> <span class="comment"></span>    <span class="keywordtype">void</span>    <a class="code" href="class_source.html#a4f093f0320af3952919a4900c7e89725" title="接続の無視を切り替える">ignore</a>(<span class="keywordtype">bool</span> b) { m_ignore = b; }
+<a name="l00112"></a>00112 <span class="comment"></span>
+<a name="l00113"></a>00113 <span class="comment">    //! 接続タイプを取得する</span>
+<a name="l00114"></a><a class="code" href="class_source.html#a7edc939c12cf62619982181d445aa429">00114</a> <span class="comment"></span>    <a class="code" href="_source_8h.html#abd482467b5af8258c45cde48b322924b">SourceType</a> <a class="code" href="class_source.html#a7edc939c12cf62619982181d445aa429" title="接続タイプを取得する">type</a>() { <span class="keywordflow">return</span> m_type; }<span class="comment"></span>
+<a name="l00115"></a>00115 <span class="comment">    //! 接続タイプが設定されていないか？</span>
+<a name="l00116"></a><a class="code" href="class_source.html#a1e5685ee7c8ae8a51bb5ea254b754145">00116</a> <span class="comment"></span>    <span class="keywordtype">bool</span>    <a class="code" href="class_source.html#a1e5685ee7c8ae8a51bb5ea254b754145" title="接続タイプが設定されていないか？">noType</a>() { <span class="keywordflow">return</span> m_type == <a class="code" href="_source_8h.html#af9bdc3014f3d54c426b6d2df10de4960ae5d8965ed569af3dc0a4b52cb61222e8">SOURCE_TYPE_NOT_SET</a>? <span class="keyword">true</span>: <span class="keyword">false</span>; }<span class="comment"></span>
+<a name="l00117"></a>00117 <span class="comment">    //! 接続タイプがビューか？</span>
+<a name="l00118"></a><a class="code" href="class_source.html#a067bbd8c382523cb5708eda932e4faef">00118</a> <span class="comment"></span>    <span class="keywordtype">bool</span>    <a class="code" href="class_source.html#a067bbd8c382523cb5708eda932e4faef" title="接続タイプがビューか？">isView</a>() { <span class="keywordflow">return</span> m_type == <a class="code" href="_source_8h.html#af9bdc3014f3d54c426b6d2df10de4960a4705eec1a2e1a6eb355116a202eadec0">SOURCE_TYPE_VIEW</a>? <span class="keyword">true</span>: <span class="keyword">false</span>; }<span class="comment"></span>
+<a name="l00119"></a>00119 <span class="comment">    //! 接続タイプがコントローラコマンドか？</span>
+<a name="l00120"></a><a class="code" href="class_source.html#ab17828705c1af5169f9fa3ef8bf55aed">00120</a> <span class="comment"></span>    <span class="keywordtype">bool</span>    <a class="code" href="class_source.html#ab17828705c1af5169f9fa3ef8bf55aed" title="接続タイプがコントローラコマンドか？">isControllerCmd</a>() { <span class="keywordflow">return</span> m_type == <a class="code" href="_source_8h.html#af9bdc3014f3d54c426b6d2df10de4960a796ebd6b6b788622b6306d299225320a">SOURCE_TYPE_CONTROLLER_CMD</a>? <span class="keyword">true</span>: <span class="keyword">false</span>; }<span class="comment"></span>
+<a name="l00121"></a>00121 <span class="comment">    //! 接続タイプがコントローラデータか？</span>
+<a name="l00122"></a><a class="code" href="class_source.html#a673de5ca24deb98086ae8492dfd2cfea">00122</a> <span class="comment"></span>    <span class="keywordtype">bool</span>    <a class="code" href="class_source.html#a673de5ca24deb98086ae8492dfd2cfea" title="接続タイプがコントローラデータか？">isControllerData</a>() { <span class="keywordflow">return</span> m_type == <a class="code" href="_source_8h.html#af9bdc3014f3d54c426b6d2df10de4960ace4a805c926c1dc158040764e2825668">SOURCE_TYPE_CONTROLLER_DATA</a>? <span class="keyword">true</span>: <span class="keyword">false</span>; }<span class="comment"></span>
+<a name="l00123"></a>00123 <span class="comment">    //! 接続タイプがサービスプロバイダか？</span>
+<a name="l00124"></a><a class="code" href="class_source.html#a3a308b35a418217251bdac5f887fa4f3">00124</a> <span class="comment"></span>    <span class="keywordtype">bool</span>    <a class="code" href="class_source.html#a3a308b35a418217251bdac5f887fa4f3" title="接続タイプがサービスプロバイダか？">isServiceProvider</a>() { <span class="keywordflow">return</span> m_type == <a class="code" href="_source_8h.html#af9bdc3014f3d54c426b6d2df10de4960a0714360198d740693dd06571ee54b85f">SOURCE_TYPE_SERVICE_PROVIDER</a>? <span class="keyword">true</span>: <span class="keyword">false</span>; }
+<a name="l00125"></a>00125 <span class="comment"></span>
+<a name="l00126"></a>00126 <span class="comment">    /**</span>
+<a name="l00127"></a>00127 <span class="comment">     * @brief 接続プロパティを設定する</span>
+<a name="l00128"></a>00128 <span class="comment">     * @param key プロパティ名</span>
+<a name="l00129"></a>00129 <span class="comment">     * @param value プロパティ値</span>
+<a name="l00130"></a>00130 <span class="comment">     */</span>
+<a name="l00131"></a>00131 
+<a name="l00132"></a><a class="code" href="class_source.html#a71098a1e8f8f9707c13617bcfb948ab3">00132</a>     <span class="keywordtype">void</span>    <a class="code" href="class_source.html#a71098a1e8f8f9707c13617bcfb948ab3" title="接続プロパティを設定する">setProperty</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *key, <span class="keyword">const</span> <span class="keywordtype">char</span> *val)
+<a name="l00133"></a>00133     {
+<a name="l00134"></a>00134         m_properties[S(key)] = S(val);
+<a name="l00135"></a>00135     }
+<a name="l00136"></a>00136 <span class="comment"></span>
+<a name="l00137"></a>00137 <span class="comment">    /** </span>
+<a name="l00138"></a>00138 <span class="comment">     * @brief 接続プロパティが等しいか？</span>
+<a name="l00139"></a>00139 <span class="comment">     * @param key プロパティ名</span>
+<a name="l00140"></a>00140 <span class="comment">     * @param value プロパティ値</span>
+<a name="l00141"></a>00141 <span class="comment">     */</span>
+<a name="l00142"></a><a class="code" href="class_source.html#a8b000aadfff92d08d13446f44dd4648e">00142</a>     <span class="keywordtype">bool</span>    <a class="code" href="class_source.html#a8b000aadfff92d08d13446f44dd4648e" title="接続プロパティが等しいか？">propertyEquals</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *key,  <span class="keyword">const</span> <span class="keywordtype">char</span> *val)
+<a name="l00143"></a>00143     {
+<a name="l00144"></a>00144         M::iterator i = m_properties.find(S(key));
+<a name="l00145"></a>00145         <span class="keywordflow">if</span> (i == m_properties.end()) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }
+<a name="l00146"></a>00146         <span class="keywordflow">return</span> strcmp(i-&gt;second.c_str(), val) == 0? <span class="keyword">true</span>: <span class="keyword">false</span>;
+<a name="l00147"></a>00147     }<span class="comment"></span>
+<a name="l00148"></a>00148 <span class="comment">    //! 接続を閉じる</span>
+<a name="l00149"></a><a class="code" href="class_source.html#a567c519d7d922f3746d6b6fd9dcf0dec">00149</a> <span class="comment"></span>    <span class="keywordtype">void</span>    <a class="code" href="class_source.html#a567c519d7d922f3746d6b6fd9dcf0dec" title="接続を閉じる">close</a>() {
+<a name="l00150"></a>00150 <span class="preprocessor">#ifdef WIN32</span>
+<a name="l00151"></a>00151 <span class="preprocessor"></span>        closesocket(m_sock);
+<a name="l00152"></a>00152         m_sock = SOCKET_ERROR;
+<a name="l00153"></a>00153 <span class="preprocessor">#else</span>
+<a name="l00154"></a>00154 <span class="preprocessor"></span>        <span class="comment">// 書き込みを行なうソケットではclose ではなくshutdown</span>
+<a name="l00155"></a>00155         shutdown(m_sock, 1);
+<a name="l00156"></a>00156         m_sock = -1; 
+<a name="l00157"></a>00157 <span class="preprocessor">#endif</span>
+<a name="l00158"></a>00158 <span class="preprocessor"></span>    }<span class="comment"></span>
+<a name="l00159"></a>00159 <span class="comment">    //! 同じ接続元であるか？</span>
+<a name="l00160"></a><a class="code" href="class_source.html#aad4cc68d4e7000ecded4f58fd5a2d091">00160</a> <span class="comment"></span>    <span class="keywordtype">bool</span>    <a class="code" href="class_source.html#add94d91c5bfef51475595f81f0cc7857">equals</a>(<span class="keyword">const</span> <a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;o)
+<a name="l00161"></a>00161     {
+<a name="l00162"></a>00162         <span class="keywordflow">return</span> strcmp(o.<a class="code" href="class_source.html#a28d24d9a165bad391f71e34edf397dd9" title="接続名を得る">name</a>(), <a class="code" href="class_source.html#a28d24d9a165bad391f71e34edf397dd9" title="接続名を得る">name</a>()) == 0? <span class="keyword">true</span>: <span class="keyword">false</span>;
+<a name="l00163"></a>00163     }
+<a name="l00164"></a>00164 };
+<a name="l00165"></a>00165 
+<a name="l00166"></a>00166 <span class="preprocessor">#endif // Source_h</span>
+<a name="l00167"></a>00167 <span class="preprocessor"></span> 
+</pre></div></div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:18 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

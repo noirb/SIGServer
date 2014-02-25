@@ -1,0 +1,499 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>SIGVerse_Controller: Logger.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Logger.h</h1><code>#include &quot;<a class="el" href="systemdef_8h_source.html">systemdef.h</a>&quot;</code><br/>
+<code>#include &lt;vector&gt;</code><br/>
+
+<p><a href="_logger_8h_source.html">ソースコードを見る。</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>構成</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logger.html">Logger</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ログクラス  <a href="class_logger.html#_details">[詳細]</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logger_1_1_listener.html">Logger::Listener</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ログリスナークラス  <a href="class_logger_1_1_listener.html#_details">[詳細]</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logger_1_1_out_stream.html">Logger::OutStream</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">出力先抽象クラス  <a href="class_logger_1_1_out_stream.html#_details">[詳細]</a><br/></td></tr>
+<tr><td colspan="2"><h2>マクロ定義</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_logger_8h.html#a3be31d30ea3387e1ec8e96eac0da8a7b">LOG_DEBUG1</a>(MSG)&nbsp;&nbsp;&nbsp;LOG_PRINT(LOG_DEBUG1, MSG)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_logger_8h.html#a9bee46861c4aba1aea2037138debb515">LOG_DEBUG2</a>(MSG)&nbsp;&nbsp;&nbsp;LOG_PRINT(LOG_DEBUG2, MSG)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_logger_8h.html#a83e691ea5753cff1081ff97bb40ea460">LOG_DEBUG3</a>(MSG)&nbsp;&nbsp;&nbsp;LOG_PRINT(LOG_DEBUG3, MSG)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_logger_8h.html#a60cb7dfd79afaf904277d4dd555ca4e2">LOG_DISPLAY</a>(MSG)&nbsp;&nbsp;&nbsp;LOG_PRINT(LOG_DISPLAY, MSG)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_logger_8h.html#af6a7454396001c3d0416e82f34758b82">LOG_ERR</a>(MSG)&nbsp;&nbsp;&nbsp;LOG_PRINT(LOG_ERRMSG, MSG)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_logger_8h.html#aced66975c154ea0e2a8ec3bc818b4e08">LOG_ERROR</a>&nbsp;&nbsp;&nbsp;LOG_ERR</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_logger_8h.html#ae74137e6d1c719d4c111e91a9f066dba">LOG_FILE</a>(FNAME)&nbsp;&nbsp;&nbsp;Logger::get().pushFile(FNAME)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_logger_8h.html#a055ce9bcd3d36c5910d7cf03c1be7260">LOG_LEVEL_INCR</a>(L, INCR)&nbsp;&nbsp;&nbsp;L = LOG_LEVEL_MIN(L + INCR, LOG_ALL)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_logger_8h.html#ae618e332490bc98fec2990c9d48fc4ea">LOG_LEVEL_MIN</a>(A, B)&nbsp;&nbsp;&nbsp;( (A) &lt; (B)? (A): (B) )</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_logger_8h.html#ab6ca1c208a33e6282ce8cba58b1466ef">LOG_LISTENER</a>(S)&nbsp;&nbsp;&nbsp;Logger::get().pushListener(S)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_logger_8h.html#a868e6c1f422cabeab835fe2182ea3f8d">LOG_MSG</a>(MSG)&nbsp;&nbsp;&nbsp;LOG_PRINT(LOG_MSG, MSG)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_logger_8h.html#a0f2646b96fe58aa8c60c8548c1aa51f4">LOG_OUTPUT_LEVEL</a>(L)&nbsp;&nbsp;&nbsp;Logger::get().setOutputLevel(L)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_logger_8h.html#a53600e667c097ee1f85b9a96fe9e9f4c">LOG_PRINT</a>(L, MSG)&nbsp;&nbsp;&nbsp;{ <a class="el" href="class_logger.html">Logger</a> &amp;l_ = Logger::get(); l_.setLevel(L); l_.print MSG; }</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_logger_8h.html#a844a48d79a0ed8ceae8ab543d9779e4b">LOG_SOCKET</a>(S)&nbsp;&nbsp;&nbsp;Logger::get().pushSocket(S)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_logger_8h.html#a84231c13e2d4b5961495d625a1112827">LOG_STDOUT</a>()&nbsp;&nbsp;&nbsp;Logger::get().pushSTDOUT()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_logger_8h.html#aed3c19fdf7635d979eff473c9611926f">LOG_SYS</a>&nbsp;&nbsp;&nbsp;LOG_SYSTEM</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_logger_8h.html#a6c04ef93b058ea3cd056768c47e0bcfb">LOG_SYSTEM</a>(MSG)&nbsp;&nbsp;&nbsp;LOG_PRINT(LOG_SYSTEM, MSG)</td></tr>
+<tr><td colspan="2"><h2>列挙型</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom">{ <br/>
+&nbsp;&nbsp;<a class="el" href="_logger_8h.html#a99fb83031ce9923c84392b4e92f956b5a50741f30286738bfb86b14e4764651c6">LOG_ERRMSG</a> =  0, 
+<a class="el" href="_logger_8h.html#a99fb83031ce9923c84392b4e92f956b5a96bb25c973dde470bb4b837c7522bfcd">LOG_SYSTEM</a>, 
+<a class="el" href="_logger_8h.html#a99fb83031ce9923c84392b4e92f956b5a6aca8dedaa2e55070ed336ba4f167b26">LOG_MSG</a>, 
+<a class="el" href="_logger_8h.html#a99fb83031ce9923c84392b4e92f956b5a0839be90c02c83fe315c2ff2ffee3d39">LOG_DEBUG1</a>, 
+<br/>
+&nbsp;&nbsp;<a class="el" href="_logger_8h.html#a99fb83031ce9923c84392b4e92f956b5a9e4db63d3d5bff1ffb3565c8ec0c9332">LOG_DEBUG2</a>, 
+<a class="el" href="_logger_8h.html#a99fb83031ce9923c84392b4e92f956b5aff593ad9fb9630cf8a580895ab591b72">LOG_DEBUG3</a>, 
+<a class="el" href="_logger_8h.html#a99fb83031ce9923c84392b4e92f956b5a0428418d27d8ed770672dacabfa867c6">LOG_DISPLAY</a>, 
+<a class="el" href="_logger_8h.html#a99fb83031ce9923c84392b4e92f956b5a87cff070224b283d7aace436723245fc">LOG_ALL</a>
+<br/>
+ }</td></tr>
+</table>
+<hr/><h2>マクロ定義</h2>
+<a class="anchor" id="a3be31d30ea3387e1ec8e96eac0da8a7b"></a><!-- doxytag: member="Logger.h::LOG_DEBUG1" ref="a3be31d30ea3387e1ec8e96eac0da8a7b" args="(MSG)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LOG_DEBUG1</td>
+          <td>(</td>
+          <td class="paramtype">MSG&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;LOG_PRINT(LOG_DEBUG1, MSG)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_logger_8h_source.html">Logger.h</a> の <a class="el" href="_logger_8h_source.html#l00113">113</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a9bee46861c4aba1aea2037138debb515"></a><!-- doxytag: member="Logger.h::LOG_DEBUG2" ref="a9bee46861c4aba1aea2037138debb515" args="(MSG)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LOG_DEBUG2</td>
+          <td>(</td>
+          <td class="paramtype">MSG&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;LOG_PRINT(LOG_DEBUG2, MSG)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_logger_8h_source.html">Logger.h</a> の <a class="el" href="_logger_8h_source.html#l00114">114</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a83e691ea5753cff1081ff97bb40ea460"></a><!-- doxytag: member="Logger.h::LOG_DEBUG3" ref="a83e691ea5753cff1081ff97bb40ea460" args="(MSG)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LOG_DEBUG3</td>
+          <td>(</td>
+          <td class="paramtype">MSG&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;LOG_PRINT(LOG_DEBUG3, MSG)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_logger_8h_source.html">Logger.h</a> の <a class="el" href="_logger_8h_source.html#l00115">115</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a60cb7dfd79afaf904277d4dd555ca4e2"></a><!-- doxytag: member="Logger.h::LOG_DISPLAY" ref="a60cb7dfd79afaf904277d4dd555ca4e2" args="(MSG)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LOG_DISPLAY</td>
+          <td>(</td>
+          <td class="paramtype">MSG&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;LOG_PRINT(LOG_DISPLAY, MSG)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_logger_8h_source.html">Logger.h</a> の <a class="el" href="_logger_8h_source.html#l00117">117</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="af6a7454396001c3d0416e82f34758b82"></a><!-- doxytag: member="Logger.h::LOG_ERR" ref="af6a7454396001c3d0416e82f34758b82" args="(MSG)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LOG_ERR</td>
+          <td>(</td>
+          <td class="paramtype">MSG&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;LOG_PRINT(LOG_ERRMSG, MSG)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_logger_8h_source.html">Logger.h</a> の <a class="el" href="_logger_8h_source.html#l00106">106</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="aced66975c154ea0e2a8ec3bc818b4e08"></a><!-- doxytag: member="Logger.h::LOG_ERROR" ref="aced66975c154ea0e2a8ec3bc818b4e08" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LOG_ERROR&nbsp;&nbsp;&nbsp;LOG_ERR</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_logger_8h_source.html">Logger.h</a> の <a class="el" href="_logger_8h_source.html#l00107">107</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ae74137e6d1c719d4c111e91a9f066dba"></a><!-- doxytag: member="Logger.h::LOG_FILE" ref="ae74137e6d1c719d4c111e91a9f066dba" args="(FNAME)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LOG_FILE</td>
+          <td>(</td>
+          <td class="paramtype">FNAME&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;Logger::get().pushFile(FNAME)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_logger_8h_source.html">Logger.h</a> の <a class="el" href="_logger_8h_source.html#l00095">95</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a055ce9bcd3d36c5910d7cf03c1be7260"></a><!-- doxytag: member="Logger.h::LOG_LEVEL_INCR" ref="a055ce9bcd3d36c5910d7cf03c1be7260" args="(L, INCR)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LOG_LEVEL_INCR</td>
+          <td>(</td>
+          <td class="paramtype">L, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">INCR&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;L = LOG_LEVEL_MIN(L + INCR, LOG_ALL)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_logger_8h_source.html">Logger.h</a> の <a class="el" href="_logger_8h_source.html#l00101">101</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ae618e332490bc98fec2990c9d48fc4ea"></a><!-- doxytag: member="Logger.h::LOG_LEVEL_MIN" ref="ae618e332490bc98fec2990c9d48fc4ea" args="(A, B)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LOG_LEVEL_MIN</td>
+          <td>(</td>
+          <td class="paramtype">A, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">B&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;( (A) &lt; (B)? (A): (B) )</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_logger_8h_source.html">Logger.h</a> の <a class="el" href="_logger_8h_source.html#l00100">100</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ab6ca1c208a33e6282ce8cba58b1466ef"></a><!-- doxytag: member="Logger.h::LOG_LISTENER" ref="ab6ca1c208a33e6282ce8cba58b1466ef" args="(S)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LOG_LISTENER</td>
+          <td>(</td>
+          <td class="paramtype">S&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;Logger::get().pushListener(S)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_logger_8h_source.html">Logger.h</a> の <a class="el" href="_logger_8h_source.html#l00097">97</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a868e6c1f422cabeab835fe2182ea3f8d"></a><!-- doxytag: member="Logger.h::LOG_MSG" ref="a868e6c1f422cabeab835fe2182ea3f8d" args="(MSG)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LOG_MSG</td>
+          <td>(</td>
+          <td class="paramtype">MSG&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;LOG_PRINT(LOG_MSG, MSG)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_logger_8h_source.html">Logger.h</a> の <a class="el" href="_logger_8h_source.html#l00109">109</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a0f2646b96fe58aa8c60c8548c1aa51f4"></a><!-- doxytag: member="Logger.h::LOG_OUTPUT_LEVEL" ref="a0f2646b96fe58aa8c60c8548c1aa51f4" args="(L)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LOG_OUTPUT_LEVEL</td>
+          <td>(</td>
+          <td class="paramtype">L&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;Logger::get().setOutputLevel(L)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_logger_8h_source.html">Logger.h</a> の <a class="el" href="_logger_8h_source.html#l00099">99</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a53600e667c097ee1f85b9a96fe9e9f4c"></a><!-- doxytag: member="Logger.h::LOG_PRINT" ref="a53600e667c097ee1f85b9a96fe9e9f4c" args="(L, MSG)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LOG_PRINT</td>
+          <td>(</td>
+          <td class="paramtype">L, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">MSG&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;{ <a class="el" href="class_logger.html">Logger</a> &amp;l_ = Logger::get(); l_.setLevel(L); l_.print MSG; }</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_logger_8h_source.html">Logger.h</a> の <a class="el" href="_logger_8h_source.html#l00104">104</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a844a48d79a0ed8ceae8ab543d9779e4b"></a><!-- doxytag: member="Logger.h::LOG_SOCKET" ref="a844a48d79a0ed8ceae8ab543d9779e4b" args="(S)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LOG_SOCKET</td>
+          <td>(</td>
+          <td class="paramtype">S&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;Logger::get().pushSocket(S)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_logger_8h_source.html">Logger.h</a> の <a class="el" href="_logger_8h_source.html#l00096">96</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a84231c13e2d4b5961495d625a1112827"></a><!-- doxytag: member="Logger.h::LOG_STDOUT" ref="a84231c13e2d4b5961495d625a1112827" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LOG_STDOUT</td>
+          <td>(</td>
+&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;Logger::get().pushSTDOUT()</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_logger_8h_source.html">Logger.h</a> の <a class="el" href="_logger_8h_source.html#l00094">94</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="aed3c19fdf7635d979eff473c9611926f"></a><!-- doxytag: member="Logger.h::LOG_SYS" ref="aed3c19fdf7635d979eff473c9611926f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LOG_SYS&nbsp;&nbsp;&nbsp;LOG_SYSTEM</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_logger_8h_source.html">Logger.h</a> の <a class="el" href="_logger_8h_source.html#l00111">111</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a6c04ef93b058ea3cd056768c47e0bcfb"></a><!-- doxytag: member="Logger.h::LOG_SYSTEM" ref="a6c04ef93b058ea3cd056768c47e0bcfb" args="(MSG)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LOG_SYSTEM</td>
+          <td>(</td>
+          <td class="paramtype">MSG&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;LOG_PRINT(LOG_SYSTEM, MSG)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_logger_8h_source.html">Logger.h</a> の <a class="el" href="_logger_8h_source.html#l00110">110</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>列挙型</h2>
+<a class="anchor" id="a99fb83031ce9923c84392b4e92f956b5"></a><!-- doxytag: member="Logger.h::@2" ref="a99fb83031ce9923c84392b4e92f956b5" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>列挙型の値: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="a99fb83031ce9923c84392b4e92f956b5a50741f30286738bfb86b14e4764651c6"></a><!-- doxytag: member="LOG_ERRMSG" ref="a99fb83031ce9923c84392b4e92f956b5a50741f30286738bfb86b14e4764651c6" args="" -->LOG_ERRMSG</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a99fb83031ce9923c84392b4e92f956b5a96bb25c973dde470bb4b837c7522bfcd"></a><!-- doxytag: member="LOG_SYSTEM" ref="a99fb83031ce9923c84392b4e92f956b5a96bb25c973dde470bb4b837c7522bfcd" args="" -->LOG_SYSTEM</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a99fb83031ce9923c84392b4e92f956b5a6aca8dedaa2e55070ed336ba4f167b26"></a><!-- doxytag: member="LOG_MSG" ref="a99fb83031ce9923c84392b4e92f956b5a6aca8dedaa2e55070ed336ba4f167b26" args="" -->LOG_MSG</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a99fb83031ce9923c84392b4e92f956b5a0839be90c02c83fe315c2ff2ffee3d39"></a><!-- doxytag: member="LOG_DEBUG1" ref="a99fb83031ce9923c84392b4e92f956b5a0839be90c02c83fe315c2ff2ffee3d39" args="" -->LOG_DEBUG1</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a99fb83031ce9923c84392b4e92f956b5a9e4db63d3d5bff1ffb3565c8ec0c9332"></a><!-- doxytag: member="LOG_DEBUG2" ref="a99fb83031ce9923c84392b4e92f956b5a9e4db63d3d5bff1ffb3565c8ec0c9332" args="" -->LOG_DEBUG2</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a99fb83031ce9923c84392b4e92f956b5aff593ad9fb9630cf8a580895ab591b72"></a><!-- doxytag: member="LOG_DEBUG3" ref="a99fb83031ce9923c84392b4e92f956b5aff593ad9fb9630cf8a580895ab591b72" args="" -->LOG_DEBUG3</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a99fb83031ce9923c84392b4e92f956b5a0428418d27d8ed770672dacabfa867c6"></a><!-- doxytag: member="LOG_DISPLAY" ref="a99fb83031ce9923c84392b4e92f956b5a0428418d27d8ed770672dacabfa867c6" args="" -->LOG_DISPLAY</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a99fb83031ce9923c84392b4e92f956b5a87cff070224b283d7aace436723245fc"></a><!-- doxytag: member="LOG_ALL" ref="a99fb83031ce9923c84392b4e92f956b5a87cff070224b283d7aace436723245fc" args="" -->LOG_ALL</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p> <a class="el" href="_logger_8h_source.html">Logger.h</a> の <a class="el" href="_logger_8h_source.html#l00009">9</a> 行で定義されています。</p>
+
+</div>
+</div>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>SIGVerse_Controllerに対してTue Dec 13 19:10:58 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

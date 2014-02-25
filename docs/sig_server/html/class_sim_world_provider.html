@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: クラス SimWorldProvider</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス SimWorldProvider</h1><!-- doxytag: class="SimWorldProvider" -->
+<p>シミュレーション世界インスタンスへのアクセサインターフェース  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_sim_world_provider_8h_source.html">SimWorldProvider.h</a>&gt;</code></p>
+
+<p><a href="class_sim_world_provider-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_world_provider.html#a4fb6c448b7d34de01adfafb09e964836">calcDistance</a> (const char *name1, const char *name2)=0</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">2つのエンティティの距離を計算する  <a href="#a4fb6c448b7d34de01adfafb09e964836"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_s_sim_world.html">SSimWorld</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_world_provider.html#a9421fec8acddeb39a4eaa3c308738f13">create</a> ()=0</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">シミュレーション世界を作成する  <a href="#a9421fec8acddeb39a4eaa3c308738f13"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_s_sim_world.html">SSimWorld</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_world_provider.html#adc3c5389d6e8467e763dcddec3246c07">get</a> ()=0</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">シミュレーション世界を取得する  <a href="#adc3c5389d6e8467e763dcddec3246c07"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_x3_d_d_b.html">X3DDB</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_world_provider.html#a589fad28736c9bdb3f69f57478e32881">getX3DDB</a> ()=0</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">X3DDBを取得する.  <a href="#a589fad28736c9bdb3f69f57478e32881"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sim_world_provider.html#a927f3c0dea2ffe83080a519aecf30153">‾SimWorldProvider</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#a927f3c0dea2ffe83080a519aecf30153"></a><br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>シミュレーション世界インスタンスへのアクセサインターフェース </p>
+
+<p> <a class="el" href="_sim_world_provider_8h_source.html">SimWorldProvider.h</a> の <a class="el" href="_sim_world_provider_8h_source.html#l00011">11</a> 行で定義されています。</p>
+<hr/><h2>関数</h2>
+<a class="anchor" id="a4fb6c448b7d34de01adfafb09e964836"></a><!-- doxytag: member="SimWorldProvider::calcDistance" ref="a4fb6c448b7d34de01adfafb09e964836" args="(const char *name1, const char *name2)=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual double SimWorldProvider::calcDistance </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>name1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>name2</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>2つのエンティティの距離を計算する </p>
+
+</div>
+</div>
+<a class="anchor" id="a9421fec8acddeb39a4eaa3c308738f13"></a><!-- doxytag: member="SimWorldProvider::create" ref="a9421fec8acddeb39a4eaa3c308738f13" args="()=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="class_s_sim_world.html">SSimWorld</a>* SimWorldProvider::create </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>シミュレーション世界を作成する </p>
+
+</div>
+</div>
+<a class="anchor" id="adc3c5389d6e8467e763dcddec3246c07"></a><!-- doxytag: member="SimWorldProvider::get" ref="adc3c5389d6e8467e763dcddec3246c07" args="()=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="class_s_sim_world.html">SSimWorld</a>* SimWorldProvider::get </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>シミュレーション世界を取得する </p>
+
+</div>
+</div>
+<a class="anchor" id="a589fad28736c9bdb3f69f57478e32881"></a><!-- doxytag: member="SimWorldProvider::getX3DDB" ref="a589fad28736c9bdb3f69f57478e32881" args="()=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="class_x3_d_d_b.html">X3DDB</a>&amp; SimWorldProvider::getX3DDB </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>X3DDBを取得する. </p>
+
+</div>
+</div>
+<a class="anchor" id="a927f3c0dea2ffe83080a519aecf30153"></a><!-- doxytag: member="SimWorldProvider::‾SimWorldProvider" ref="a927f3c0dea2ffe83080a519aecf30153" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual SimWorldProvider::‾SimWorldProvider </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>デストラクタ </p>
+
+<p> <a class="el" href="_sim_world_provider_8h_source.html">SimWorldProvider.h</a> の <a class="el" href="_sim_world_provider_8h_source.html#l00015">15</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_sim_world_provider_8h_source.html">SimWorldProvider.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:20 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

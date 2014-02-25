@@ -1,0 +1,225 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGWorldEditor: WguFileDialog.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>WguFileDialog.h</h1><a href="_wgu_file_dialog_8h.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef _WGU_FILE_DIALOG_H_</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define _WGU_FILE_DIALOG_H_</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include &lt;windows.h&gt;</span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include &lt;vector&gt;</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include &lt;string&gt;</span>
+<a name="l00007"></a>00007 
+<a name="l00008"></a>00008 <span class="keyword">namespace </span>Wgu
+<a name="l00009"></a>00009 {<span class="comment"></span>
+<a name="l00010"></a>00010 <span class="comment">    //////////////////////////////////////////////////////////////////////</span>
+<a name="l00011"></a>00011 <span class="comment"></span>    <span class="comment">//</span><span class="comment"></span>
+<a name="l00012"></a>00012 <span class="comment">    /// @brief ファイルオープン・セーブダイアログのベースクラス</span>
+<a name="l00013"></a>00013 <span class="comment">    ///</span>
+<a name="l00014"></a><a class="code" href="class_wgu_1_1_file_dialog.html">00014</a> <span class="comment"></span>    <span class="keyword">class </span><a class="code" href="class_wgu_1_1_file_dialog.html" title="ファイルオープン・セーブダイアログのベースクラス">FileDialog</a>
+<a name="l00015"></a>00015     {
+<a name="l00016"></a>00016     <span class="keyword">public</span>:
+<a name="l00017"></a>00017         <a class="code" href="class_wgu_1_1_file_dialog.html#e48870366f57a797589135ff602c15d0">FileDialog</a>();
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019         <span class="comment">// ----------------------------------------------------------</span><span class="comment"></span>
+<a name="l00020"></a>00020 <span class="comment">        /// @brief ファイル選択フィルタをクリアする</span>
+<a name="l00021"></a>00021 <span class="comment"></span>        <span class="comment">// ----------------------------------------------------------</span>
+<a name="l00022"></a>00022         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_file_dialog.html#90933d5751e7f410280799bbc31a7c6f" title="ファイル選択フィルタをクリアする">clearFilter</a>();
+<a name="l00023"></a>00023 
+<a name="l00024"></a>00024         <span class="comment">// ----------------------------------------------------------</span><span class="comment"></span>
+<a name="l00025"></a>00025 <span class="comment">        /// @brief ファイル選択フィルタにエントリを追加する</span>
+<a name="l00026"></a>00026 <span class="comment">        ///</span>
+<a name="l00027"></a>00027 <span class="comment">        /// @param str [i] フィルタ文字列("C++ Source(*.cpp)"など)</span>
+<a name="l00028"></a>00028 <span class="comment">        /// @param ext [i] 拡張子("*.cpp"など)</span>
+<a name="l00029"></a>00029 <span class="comment"></span>        <span class="comment">// ----------------------------------------------------------</span>
+<a name="l00030"></a>00030         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_file_dialog.html#d1f1536e0c6003c3b5080e5e5f802ad6" title="ファイル選択フィルタにエントリを追加する">addFilter</a>(<span class="keywordtype">char</span> *str, <span class="keywordtype">char</span> *ext);
+<a name="l00031"></a>00031 
+<a name="l00032"></a>00032         <span class="comment">// ----------------------------------------------------------</span><span class="comment"></span>
+<a name="l00033"></a>00033 <span class="comment">        /// @brief 拡張子を省略した際に付加するデフォルトの拡張子を設定する</span>
+<a name="l00034"></a>00034 <span class="comment">        ///</span>
+<a name="l00035"></a>00035 <span class="comment">        /// @param defExt [i] デフォルトの拡張子("cpp"など)</span>
+<a name="l00036"></a>00036 <span class="comment">        ///</span>
+<a name="l00037"></a>00037 <span class="comment">        /// （注）defExtにピリオドを含めてはいけない</span>
+<a name="l00038"></a>00038 <span class="comment"></span>        <span class="comment">// ----------------------------------------------------------</span>
+<a name="l00039"></a>00039         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_file_dialog.html#ca432060b9e279455056ba6a6fe06be8" title="拡張子を省略した際に付加するデフォルトの拡張子を設定する...">setDefaultExtension</a>(<span class="keywordtype">char</span> *defExt);
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041         <span class="comment">// ----------------------------------------------------------</span><span class="comment"></span>
+<a name="l00042"></a>00042 <span class="comment">        /// @brief 選択ファイル名のセット</span>
+<a name="l00043"></a>00043 <span class="comment">        ///</span>
+<a name="l00044"></a>00044 <span class="comment">        /// @param file [i] ファイル名</span>
+<a name="l00045"></a>00045 <span class="comment"></span>        <span class="comment">// ----------------------------------------------------------</span>
+<a name="l00046"></a>00046         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_file_dialog.html#849502e2c1c0a37bd2ff0c2bb1e69c04" title="選択ファイル名のセット">setFile</a>(<span class="keywordtype">char</span> *file);
+<a name="l00047"></a>00047 
+<a name="l00048"></a>00048         <span class="comment">// ----------------------------------------------------------</span><span class="comment"></span>
+<a name="l00049"></a>00049 <span class="comment">        /// @brief 初期表示ディレクトリの設定</span>
+<a name="l00050"></a>00050 <span class="comment">        ///</span>
+<a name="l00051"></a>00051 <span class="comment">        /// @param initialDir [i] 最初にダイアログを開いたときに表示するディレクトリパス</span>
+<a name="l00052"></a>00052 <span class="comment"></span>        <span class="comment">// ----------------------------------------------------------</span>
+<a name="l00053"></a>00053         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_file_dialog.html#8c0d176971a9e0588861ed91483e3ebb" title="初期表示ディレクトリの設定">setInitialDirectory</a>(<span class="keywordtype">char</span> *initialDir);
+<a name="l00054"></a>00054 
+<a name="l00055"></a>00055         <span class="comment">// ----------------------------------------------------------</span><span class="comment"></span>
+<a name="l00056"></a>00056 <span class="comment">        /// @brief ファイルの複数選択フラグのセット</span>
+<a name="l00057"></a>00057 <span class="comment">        ///</span>
+<a name="l00058"></a>00058 <span class="comment">        /// @param b [i] true(=複数選択可), false(=一つのファイルのみ選択可）</span>
+<a name="l00059"></a>00059 <span class="comment"></span>        <span class="comment">// ----------------------------------------------------------</span>
+<a name="l00060"></a>00060         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_file_dialog.html#886efb045bd7d47d76d786d9ab5d7da6" title="ファイルの複数選択フラグのセット">setAllowMultiSelect</a>(<span class="keywordtype">bool</span> b);
+<a name="l00061"></a>00061 
+<a name="l00062"></a>00062         <span class="comment">// ----------------------------------------------------------</span><span class="comment"></span>
+<a name="l00063"></a>00063 <span class="comment">        /// @brief 存在しないファイルも選択可能にするか</span>
+<a name="l00064"></a>00064 <span class="comment">        ///</span>
+<a name="l00065"></a>00065 <span class="comment">        /// @param b [i] true(=存在しないファイルは選択できない), false(=ファイルは存在しなくても良い)</span>
+<a name="l00066"></a>00066 <span class="comment"></span>        <span class="comment">// ----------------------------------------------------------</span>
+<a name="l00067"></a>00067         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_file_dialog.html#e53bd9d0e1f9e5bedd896056f1deb9c4" title="存在しないファイルも選択可能にするか">setFileMustExist</a>(<span class="keywordtype">bool</span> b);
+<a name="l00068"></a>00068 
+<a name="l00069"></a>00069         <span class="comment">// ----------------------------------------------------------</span><span class="comment"></span>
+<a name="l00070"></a>00070 <span class="comment">        /// @brief 選択されたファイルのあるディレクトリ名を得る</span>
+<a name="l00071"></a>00071 <span class="comment">        ///</span>
+<a name="l00072"></a>00072 <span class="comment">        /// @return ディレクトリ名</span>
+<a name="l00073"></a>00073 <span class="comment"></span>        <span class="comment">// ----------------------------------------------------------</span>
+<a name="l00074"></a>00074         <span class="keyword">virtual</span> <span class="keywordtype">char</span> *<a class="code" href="class_wgu_1_1_file_dialog.html#bbd4ae71fcce6a55fb8c3f6c5799fcfb" title="選択されたファイルのあるディレクトリ名を得る">getDirectory</a>();
+<a name="l00075"></a>00075 
+<a name="l00076"></a>00076         <span class="comment">// ----------------------------------------------------------</span><span class="comment"></span>
+<a name="l00077"></a>00077 <span class="comment">        /// @brief 選択されたファイルの個数を得る</span>
+<a name="l00078"></a>00078 <span class="comment">        ///</span>
+<a name="l00079"></a>00079 <span class="comment">        /// @return 選択されたファイルの個数</span>
+<a name="l00080"></a>00080 <span class="comment"></span>        <span class="comment">// ----------------------------------------------------------</span>
+<a name="l00081"></a>00081         <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="class_wgu_1_1_file_dialog.html#199b9e86129803196cc9fa762002c7c1" title="選択されたファイルの個数を得る">countFiles</a>();
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083         <span class="comment">// ----------------------------------------------------------</span><span class="comment"></span>
+<a name="l00084"></a>00084 <span class="comment">        /// @brief ファイル名の取得</span>
+<a name="l00085"></a>00085 <span class="comment">        ///</span>
+<a name="l00086"></a>00086 <span class="comment">        /// @param i [i] インデックス(0以上、countFiles()未満)</span>
+<a name="l00087"></a>00087 <span class="comment">        ///</span>
+<a name="l00088"></a>00088 <span class="comment">        /// @return ファイル名（ファイル名のみ．ディレクトリ名は含まない）</span>
+<a name="l00089"></a>00089 <span class="comment"></span>        <span class="comment">// ----------------------------------------------------------</span>
+<a name="l00090"></a>00090         <span class="keyword">virtual</span> <span class="keywordtype">char</span> *<a class="code" href="class_wgu_1_1_file_dialog.html#a8eb651c73a4a080b01d31445005fcf0" title="ファイル名の取得">getFile</a>(<span class="keywordtype">int</span> i);
+<a name="l00091"></a>00091 
+<a name="l00092"></a>00092         <span class="comment">// ----------------------------------------------------------</span><span class="comment"></span>
+<a name="l00093"></a>00093 <span class="comment">        /// @brief パス名の取得</span>
+<a name="l00094"></a>00094 <span class="comment">        ///</span>
+<a name="l00095"></a>00095 <span class="comment">        /// @param i [i] インデックス(0以上、countFiles()未満)</span>
+<a name="l00096"></a>00096 <span class="comment">        ///</span>
+<a name="l00097"></a>00097 <span class="comment">        /// @return パス名（ディレクトリ＋ファイル）</span>
+<a name="l00098"></a>00098 <span class="comment"></span>        <span class="comment">// ----------------------------------------------------------</span>
+<a name="l00099"></a>00099         <span class="keyword">virtual</span> <span class="keywordtype">char</span> *<a class="code" href="class_wgu_1_1_file_dialog.html#fb7687a631d4a7cb290765d3d810f566" title="パス名の取得">getPath</a>(<span class="keywordtype">int</span> i);   <span class="comment">// directory + file</span>
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101     <span class="keyword">protected</span>:
+<a name="l00102"></a><a class="code" href="class_wgu_1_1_file_dialog.html#6fed3b5e6653b2bbf336f25efeda2b99">00102</a>         std::vector&lt;std::string&gt; <a class="code" href="class_wgu_1_1_file_dialog.html#6fed3b5e6653b2bbf336f25efeda2b99">m_filterStrs</a>;
+<a name="l00103"></a><a class="code" href="class_wgu_1_1_file_dialog.html#1d9f28f794c929c19a9e7085242d3100">00103</a>         std::vector&lt;std::string&gt; <a class="code" href="class_wgu_1_1_file_dialog.html#1d9f28f794c929c19a9e7085242d3100">m_filterExts</a>;
+<a name="l00104"></a><a class="code" href="class_wgu_1_1_file_dialog.html#054d1266d38040d62004c15136e40700">00104</a>         <span class="keywordtype">char</span> *<a class="code" href="class_wgu_1_1_file_dialog.html#054d1266d38040d62004c15136e40700">m_pFilterString</a>;
+<a name="l00105"></a><a class="code" href="class_wgu_1_1_file_dialog.html#53dfb21aa98a0fe7af8df3158b723e1a">00105</a>         std::string <a class="code" href="class_wgu_1_1_file_dialog.html#53dfb21aa98a0fe7af8df3158b723e1a">m_defExt</a>;
+<a name="l00106"></a><a class="code" href="class_wgu_1_1_file_dialog.html#dfab0db715de77454b1ee1745a8f0d43">00106</a>         <span class="keywordtype">char</span> <a class="code" href="class_wgu_1_1_file_dialog.html#dfab0db715de77454b1ee1745a8f0d43">m_file</a>[4096];
+<a name="l00107"></a><a class="code" href="class_wgu_1_1_file_dialog.html#2addcfe0515b73e4366690421e7501ad">00107</a>         <span class="keywordtype">char</span> <a class="code" href="class_wgu_1_1_file_dialog.html#2addcfe0515b73e4366690421e7501ad">m_fileTitle</a>[1024];
+<a name="l00108"></a><a class="code" href="class_wgu_1_1_file_dialog.html#d789692fd306a997a8ab78df8def1dd4">00108</a>         <span class="keywordtype">char</span> <a class="code" href="class_wgu_1_1_file_dialog.html#d789692fd306a997a8ab78df8def1dd4">m_initialDir</a>[_MAX_PATH];
+<a name="l00109"></a><a class="code" href="class_wgu_1_1_file_dialog.html#a2110b8d0ec6f943ed2a71601d6768e0">00109</a>         <span class="keywordtype">bool</span> <a class="code" href="class_wgu_1_1_file_dialog.html#a2110b8d0ec6f943ed2a71601d6768e0">m_bAllowMultiSelect</a>;
+<a name="l00110"></a><a class="code" href="class_wgu_1_1_file_dialog.html#1ea6fd42b657dea44f37c3a93c5c0860">00110</a>         <span class="keywordtype">bool</span> <a class="code" href="class_wgu_1_1_file_dialog.html#1ea6fd42b657dea44f37c3a93c5c0860">m_bFileMustExist</a>;
+<a name="l00111"></a><a class="code" href="class_wgu_1_1_file_dialog.html#1ca57908552bd018ab84888c20c9cd41">00111</a>         std::string <a class="code" href="class_wgu_1_1_file_dialog.html#1ca57908552bd018ab84888c20c9cd41">m_selectedDir</a>;
+<a name="l00112"></a><a class="code" href="class_wgu_1_1_file_dialog.html#ee54b2e9a58dda1797e033e1bbfccbfa">00112</a>         std::vector&lt;std::string&gt; <a class="code" href="class_wgu_1_1_file_dialog.html#ee54b2e9a58dda1797e033e1bbfccbfa">m_selectedFiles</a>;
+<a name="l00113"></a>00113 
+<a name="l00114"></a>00114         <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_file_dialog.html#c6ae336177c638a617a33092ced5ef68">makeFilterString</a>();
+<a name="l00115"></a>00115         <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_file_dialog.html#2b5286d16142801f7f5664ae0e88b73d">allocFilterString</a>(<span class="keywordtype">int</span> nbyte);
+<a name="l00116"></a>00116         <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_file_dialog.html#3338a491d0b11d8a0676f1528899c305">freeFilterString</a>();
+<a name="l00117"></a>00117     };
+<a name="l00118"></a>00118 <span class="comment"></span>
+<a name="l00119"></a>00119 <span class="comment">    //////////////////////////////////////////////////////////////////////</span>
+<a name="l00120"></a>00120 <span class="comment"></span>    <span class="comment">//</span><span class="comment"></span>
+<a name="l00121"></a>00121 <span class="comment">    /// @brief Win32 APIの簡易ラッパークラス</span>
+<a name="l00122"></a>00122 <span class="comment">    ///（ファイルオープンダイアログ）</span>
+<a name="l00123"></a>00123 <span class="comment"></span>    <span class="comment">//</span>
+<a name="l00124"></a><a class="code" href="class_wgu_1_1_file_open_dialog.html">00124</a>     <span class="keyword">class </span><a class="code" href="class_wgu_1_1_file_open_dialog.html" title="Win32 APIの簡易ラッパークラス （ファイルオープンダイアログ）...">FileOpenDialog</a> : <span class="keyword">public</span> <a class="code" href="class_wgu_1_1_file_dialog.html" title="ファイルオープン・セーブダイアログのベースクラス">FileDialog</a>
+<a name="l00125"></a>00125     {
+<a name="l00126"></a>00126     <span class="keyword">public</span>:
+<a name="l00127"></a>00127         <a class="code" href="class_wgu_1_1_file_open_dialog.html#c8cea44b66a485e8e640961f7201b52e">FileOpenDialog</a>();
+<a name="l00128"></a>00128 
+<a name="l00129"></a>00129         <span class="comment">// ----------------------------------------------------------</span><span class="comment"></span>
+<a name="l00130"></a>00130 <span class="comment">        /// @brief ダイアログを表示する</span>
+<a name="l00131"></a>00131 <span class="comment">        ///</span>
+<a name="l00132"></a>00132 <span class="comment">        /// @param hwndParent [i] 親ウィンドウ</span>
+<a name="l00133"></a>00133 <span class="comment"></span>        <span class="comment">// ----------------------------------------------------------</span>
+<a name="l00134"></a>00134         <span class="keywordtype">bool</span> <a class="code" href="class_wgu_1_1_file_open_dialog.html#540205ce3a67e8ad9d8cf8b2676c42c3" title="ダイアログを表示する">showDialog</a>(HWND hwndParent);
+<a name="l00135"></a>00135     };
+<a name="l00136"></a>00136 <span class="comment"></span>
+<a name="l00137"></a>00137 <span class="comment">    //////////////////////////////////////////////////////////////////////</span>
+<a name="l00138"></a>00138 <span class="comment"></span>    <span class="comment">//</span><span class="comment"></span>
+<a name="l00139"></a>00139 <span class="comment">    /// @brief Win32 APIの簡易ラッパークラス</span>
+<a name="l00140"></a>00140 <span class="comment">    ///（ファイルセーブダイアログ）</span>
+<a name="l00141"></a>00141 <span class="comment">    ///</span>
+<a name="l00142"></a><a class="code" href="class_wgu_1_1_file_save_dialog.html">00142</a> <span class="comment"></span>    <span class="keyword">class </span><a class="code" href="class_wgu_1_1_file_save_dialog.html" title="Win32 APIの簡易ラッパークラス （ファイルセーブダイアログ）...">FileSaveDialog</a> : <span class="keyword">public</span> <a class="code" href="class_wgu_1_1_file_dialog.html" title="ファイルオープン・セーブダイアログのベースクラス">FileDialog</a>
+<a name="l00143"></a>00143     {
+<a name="l00144"></a>00144     <span class="keyword">public</span>:
+<a name="l00145"></a>00145         <a class="code" href="class_wgu_1_1_file_save_dialog.html#afbec12545e833819e1762365379236c">FileSaveDialog</a>();
+<a name="l00146"></a>00146 
+<a name="l00147"></a>00147         <span class="comment">// ----------------------------------------------------------</span><span class="comment"></span>
+<a name="l00148"></a>00148 <span class="comment">        /// @brief ダイアログを表示する</span>
+<a name="l00149"></a>00149 <span class="comment">        ///</span>
+<a name="l00150"></a>00150 <span class="comment">        /// @param hwndParent [i] 親ウィンドウ</span>
+<a name="l00151"></a>00151 <span class="comment"></span>        <span class="comment">// ----------------------------------------------------------</span>
+<a name="l00152"></a>00152         <span class="keywordtype">bool</span> <a class="code" href="class_wgu_1_1_file_save_dialog.html#0bbb0e0af99f385d9c6d9efc13c67f52" title="ダイアログを表示する">showDialog</a>(HWND hwndParent);
+<a name="l00153"></a>00153     };
+<a name="l00154"></a>00154 }
+<a name="l00155"></a>00155 
+<a name="l00156"></a>00156 <span class="preprocessor">#endif</span>
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>SIGWorldEditorに対してThu Jun 9 10:52:59 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

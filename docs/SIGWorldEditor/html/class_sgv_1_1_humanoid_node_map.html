@@ -1,0 +1,320 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGWorldEditor: クラス Sgv::HumanoidNodeMap</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_sgv.html">Sgv</a>::<a class="el" href="class_sgv_1_1_humanoid_node_map.html">HumanoidNodeMap</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Sgv::HumanoidNodeMap</h1><!-- doxytag: class="Sgv::HumanoidNodeMap" -->ヒューマノイド形状における、ジョイント名、パーツ名と それらに対応するOgreノードのマップ  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_sgv_humanoid_node_map_8h_source.html">SgvHumanoidNodeMap.h</a>&gt;</code>
+<p>
+
+<p>
+<a href="class_sgv_1_1_humanoid_node_map-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::map&lt; std::string, <br class="typebreak">
+SceneNode * &gt; &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_humanoid_node_map.html#7eb2b2008b0b05a87881d51cf557c9c8">getJointMap</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ジョイント名とOgreノードのマップへの参照を返す  <a href="#7eb2b2008b0b05a87881d51cf557c9c8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::vector&lt; std::string &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_humanoid_node_map.html#8cd2def70a76a98c4acff715a95fb5e3">getJointNames</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ジョイント名のリストを得る  <a href="#8cd2def70a76a98c4acff715a95fb5e3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">SceneNode *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_humanoid_node_map.html#0b79b2391df3c0c794d3d05e8c822b49">getJointNode</a> (const char *jointName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ジョイント名からOgreノードを引く  <a href="#0b79b2391df3c0c794d3d05e8c822b49"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::map&lt; std::string, <br class="typebreak">
+SceneNode * &gt; &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_humanoid_node_map.html#f89e5d439fbeacf768272a8500cef3e8">getPartsMap</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パーツ名とOgreノードのマップへの参照を返す  <a href="#f89e5d439fbeacf768272a8500cef3e8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::vector&lt; std::string &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_humanoid_node_map.html#ed9dfc7d49d30b443a39bd1c1d89239c">getPartsNames</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パーツ名のリストを得る  <a href="#ed9dfc7d49d30b443a39bd1c1d89239c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">SceneNode *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_humanoid_node_map.html#595147c471350b9608c38171188eaf00">getPartsNode</a> (const char *partsName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パーツ名からOgreノードを引く  <a href="#595147c471350b9608c38171188eaf00"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_humanoid_node_map.html#afa79ff270347e48705c9a09dccbd219">HumanoidNodeMap</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#afa79ff270347e48705c9a09dccbd219"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_humanoid_node_map.html#fb51594cd0ed6b4b543d47f8f2ce9430">‾HumanoidNodeMap</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#fb51594cd0ed6b4b543d47f8f2ce9430"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+ヒューマノイド形状における、ジョイント名、パーツ名と それらに対応するOgreノードのマップ 
+<p> <a class="el" href="_sgv_humanoid_node_map_8h_source.html">SgvHumanoidNodeMap.h</a> の <a class="el" href="_sgv_humanoid_node_map_8h_source.html#l00017">17</a> 行で定義されています。</p>
+<hr><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" name="afa79ff270347e48705c9a09dccbd219"></a><!-- doxytag: member="Sgv::HumanoidNodeMap::HumanoidNodeMap" ref="afa79ff270347e48705c9a09dccbd219" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::HumanoidNodeMap::HumanoidNodeMap           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_humanoid_node_map_8cpp_source.html">SgvHumanoidNodeMap.cpp</a> の <a class="el" href="_sgv_humanoid_node_map_8cpp_source.html#l00009">9</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>関数</h2>
+<a class="anchor" name="7eb2b2008b0b05a87881d51cf557c9c8"></a><!-- doxytag: member="Sgv::HumanoidNodeMap::getJointMap" ref="7eb2b2008b0b05a87881d51cf557c9c8" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;std::string, SceneNode *&gt;&amp; Sgv::HumanoidNodeMap::getJointMap           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ジョイント名とOgreノードのマップへの参照を返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>マップへの参照 </dd></dl>
+
+<p> <a class="el" href="_sgv_humanoid_node_map_8h_source.html">SgvHumanoidNodeMap.h</a> の <a class="el" href="_sgv_humanoid_node_map_8h_source.html#l00067">67</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="8cd2def70a76a98c4acff715a95fb5e3"></a><!-- doxytag: member="Sgv::HumanoidNodeMap::getJointNames" ref="8cd2def70a76a98c4acff715a95fb5e3" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::string &gt; Sgv::HumanoidNodeMap::getJointNames           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ジョイント名のリストを得る 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>ジョイント名一覧 </dd></dl>
+
+<p> <a class="el" href="_sgv_humanoid_node_map_8cpp_source.html">SgvHumanoidNodeMap.cpp</a> の <a class="el" href="_sgv_humanoid_node_map_8cpp_source.html#l00018">18</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="0b79b2391df3c0c794d3d05e8c822b49"></a><!-- doxytag: member="Sgv::HumanoidNodeMap::getJointNode" ref="0b79b2391df3c0c794d3d05e8c822b49" args="(const char *jointName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SceneNode * Sgv::HumanoidNodeMap::getJointNode           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>jointName</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ジョイント名からOgreノードを引く 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>jointName</em>&nbsp;</td><td>[i] ジョイント名</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>ジョイント名に対するOgreノード </dd></dl>
+
+<p> <a class="el" href="_sgv_humanoid_node_map_8cpp_source.html">SgvHumanoidNodeMap.cpp</a> の <a class="el" href="_sgv_humanoid_node_map_8cpp_source.html#l00044">44</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f89e5d439fbeacf768272a8500cef3e8"></a><!-- doxytag: member="Sgv::HumanoidNodeMap::getPartsMap" ref="f89e5d439fbeacf768272a8500cef3e8" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;std::string, SceneNode *&gt;&amp; Sgv::HumanoidNodeMap::getPartsMap           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+パーツ名とOgreノードのマップへの参照を返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>マップへの参照 </dd></dl>
+
+<p> <a class="el" href="_sgv_humanoid_node_map_8h_source.html">SgvHumanoidNodeMap.h</a> の <a class="el" href="_sgv_humanoid_node_map_8h_source.html#l00074">74</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="ed9dfc7d49d30b443a39bd1c1d89239c"></a><!-- doxytag: member="Sgv::HumanoidNodeMap::getPartsNames" ref="ed9dfc7d49d30b443a39bd1c1d89239c" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::string &gt; Sgv::HumanoidNodeMap::getPartsNames           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+パーツ名のリストを得る 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>パーツ名一覧 </dd></dl>
+
+<p> <a class="el" href="_sgv_humanoid_node_map_8cpp_source.html">SgvHumanoidNodeMap.cpp</a> の <a class="el" href="_sgv_humanoid_node_map_8cpp_source.html#l00031">31</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="595147c471350b9608c38171188eaf00"></a><!-- doxytag: member="Sgv::HumanoidNodeMap::getPartsNode" ref="595147c471350b9608c38171188eaf00" args="(const char *partsName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SceneNode * Sgv::HumanoidNodeMap::getPartsNode           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>partsName</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+パーツ名からOgreノードを引く 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>partsName</em>&nbsp;</td><td>[i] パーツ名</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>パーツ名に対するOgreノード </dd></dl>
+
+<p> <a class="el" href="_sgv_humanoid_node_map_8cpp_source.html">SgvHumanoidNodeMap.cpp</a> の <a class="el" href="_sgv_humanoid_node_map_8cpp_source.html#l00061">61</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="fb51594cd0ed6b4b543d47f8f2ce9430"></a><!-- doxytag: member="Sgv::HumanoidNodeMap::‾HumanoidNodeMap" ref="fb51594cd0ed6b4b543d47f8f2ce9430" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::HumanoidNodeMap::‾HumanoidNodeMap           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+デストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_humanoid_node_map_8cpp_source.html">SgvHumanoidNodeMap.cpp</a> の <a class="el" href="_sgv_humanoid_node_map_8cpp_source.html#l00013">13</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_sgv_humanoid_node_map_8h_source.html">SgvHumanoidNodeMap.h</a><li><a class="el" href="_sgv_humanoid_node_map_8cpp_source.html">SgvHumanoidNodeMap.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGWorldEditorに対してThu Jun 9 10:53:00 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: クラス ResultAttachViewEvent</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス ResultAttachViewEvent</h1><!-- doxytag: class="ResultAttachViewEvent" -->
+<p>ビュー割り当て結果イベントクラス  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_result_attach_8h_source.html">ResultAttach.h</a>&gt;</code></p>
+<div class="dynheader">
+ResultAttachViewEventのコラボレーション図</div>
+<div class="dynsection">
+<div class="center"><img src="class_result_attach_view_event__coll__graph.png" border="0" usemap="#_result_attach_view_event_coll__map" alt="Collaboration graph"/></div>
+<map name="_result_attach_view_event_coll__map" id="_result_attach_view_event_coll__map">
+<area shape="rect" href="class_x3_d_d_b.html" title="X3Dファイルデータベースクラス." alt="" coords="52,5,116,35"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+
+<p><a href="class_result_attach_view_event-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_result_attach_view_event.html#a76a7346a67c5bc9f5602c0182e1197e8">errmsg</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エラー文字列を取得する  <a href="#a76a7346a67c5bc9f5602c0182e1197e8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_x3_d_d_b.html">X3DDB</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_result_attach_view_event.html#a3687585b1fb7409aa0c3f4a825c36324">getX3DDB</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><a class="el" href="class_x3_d_d_b.html" title="X3Dファイルデータベースクラス.">X3DDB</a> を取得する.  <a href="#a3687585b1fb7409aa0c3f4a825c36324"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_x3_d_d_b.html">X3DDB</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_result_attach_view_event.html#a44f3d9dd8bc21c170dae09e60d0f4fcb">releaseX3DDb</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><a class="el" href="class_x3_d_d_b.html" title="X3Dファイルデータベースクラス.">X3DDB</a> を取得し、破棄責任を放棄させる.  <a href="#a44f3d9dd8bc21c170dae09e60d0f4fcb"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_comm_data_type_8h.html#a101d7163bfbe7284eea2334e55aa2bc8">CommResultType</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_result_attach_view_event.html#aae3ae8a94ed132bcb76dc58a2b66d13b">result</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">結果を取得する  <a href="#aae3ae8a94ed132bcb76dc58a2b66d13b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_result_attach_view_event.html#a33cbab9d71ec5d53668cc236b144929a">ResultAttachViewEvent</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_result_attach_view_event.html#a6296926d3402b29a9272a905fcaf0bbe">set</a> (int packetNum, int seq, char *data, int n)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_result_attach_view_event.html#a3d0b46f533c8036a4e45a8f965613a17">‾ResultAttachViewEvent</a> ()</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>ビュー割り当て結果イベントクラス </p>
+
+<p> <a class="el" href="_result_attach_8h_source.html">ResultAttach.h</a> の <a class="el" href="_result_attach_8h_source.html#l00014">14</a> 行で定義されています。</p>
+<hr/><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" id="a33cbab9d71ec5d53668cc236b144929a"></a><!-- doxytag: member="ResultAttachViewEvent::ResultAttachViewEvent" ref="a33cbab9d71ec5d53668cc236b144929a" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ResultAttachViewEvent::ResultAttachViewEvent </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_result_attach_8h_source.html">ResultAttach.h</a> の <a class="el" href="_result_attach_8h_source.html#l00023">23</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>関数</h2>
+<a class="anchor" id="a76a7346a67c5bc9f5602c0182e1197e8"></a><!-- doxytag: member="ResultAttachViewEvent::errmsg" ref="a76a7346a67c5bc9f5602c0182e1197e8" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* ResultAttachViewEvent::errmsg </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>エラー文字列を取得する </p>
+
+<p> <a class="el" href="_result_attach_8h_source.html">ResultAttach.h</a> の <a class="el" href="_result_attach_8h_source.html#l00029">29</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a3687585b1fb7409aa0c3f4a825c36324"></a><!-- doxytag: member="ResultAttachViewEvent::getX3DDB" ref="a3687585b1fb7409aa0c3f4a825c36324" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_x3_d_d_b.html">X3DDB</a>* ResultAttachViewEvent::getX3DDB </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p><a class="el" href="class_x3_d_d_b.html" title="X3Dファイルデータベースクラス.">X3DDB</a> を取得する. </p>
+<p>接続成功時のみ取得可能。 </p>
+
+<p> <a class="el" href="_result_attach_8h_source.html">ResultAttach.h</a> の <a class="el" href="_result_attach_8h_source.html#l00035">35</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a44f3d9dd8bc21c170dae09e60d0f4fcb"></a><!-- doxytag: member="ResultAttachViewEvent::releaseX3DDb" ref="a44f3d9dd8bc21c170dae09e60d0f4fcb" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_x3_d_d_b.html">X3DDB</a>* ResultAttachViewEvent::releaseX3DDb </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p><a class="el" href="class_x3_d_d_b.html" title="X3Dファイルデータベースクラス.">X3DDB</a> を取得し、破棄責任を放棄させる. </p>
+
+<p> <a class="el" href="_result_attach_8h_source.html">ResultAttach.h</a> の <a class="el" href="_result_attach_8h_source.html#l00039">39</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="aae3ae8a94ed132bcb76dc58a2b66d13b"></a><!-- doxytag: member="ResultAttachViewEvent::result" ref="aae3ae8a94ed132bcb76dc58a2b66d13b" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_comm_data_type_8h.html#a101d7163bfbe7284eea2334e55aa2bc8">CommResultType</a> ResultAttachViewEvent::result </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>結果を取得する </p>
+
+<p> <a class="el" href="_result_attach_8h_source.html">ResultAttach.h</a> の <a class="el" href="_result_attach_8h_source.html#l00027">27</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a6296926d3402b29a9272a905fcaf0bbe"></a><!-- doxytag: member="ResultAttachViewEvent::set" ref="a6296926d3402b29a9272a905fcaf0bbe" args="(int packetNum, int seq, char *data, int n)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ResultAttachViewEvent::set </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>packetNum</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>n</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a3d0b46f533c8036a4e45a8f965613a17"></a><!-- doxytag: member="ResultAttachViewEvent::‾ResultAttachViewEvent" ref="a3d0b46f533c8036a4e45a8f965613a17" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ResultAttachViewEvent::‾ResultAttachViewEvent </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_result_attach_8h_source.html">ResultAttach.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:19 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

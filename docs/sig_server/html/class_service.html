@@ -1,0 +1,380 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: クラス Service</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Service</h1><!-- doxytag: class="Service" -->
+<p>サービスプロバイダの提供するサービスクラス  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_service_8h_source.html">Service.h</a>&gt;</code></p>
+
+<p><a href="class_service-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Public 型</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom">{ <br/>
+&nbsp;&nbsp;<a class="el" href="class_service.html#a9feccccb9f9c12298cf61702471c489aa28ae24a9334d83b97c652b1053642cba">SERVICE_KIND_NOT_SET</a> =  0x00, 
+<a class="el" href="class_service.html#a9feccccb9f9c12298cf61702471c489aa0f34cd5f6ac87338c774aef81a85f540">CAPTURE_VIEW</a> =  0x01, 
+<a class="el" href="class_service.html#a9feccccb9f9c12298cf61702471c489aad7271e6aa843efa0e24613091d08a599">DETECT_ENTITIES</a> =  0x02, 
+<a class="el" href="class_service.html#a9feccccb9f9c12298cf61702471c489aaecde562c62cabaffe6ad650b3fe437f9">SOUND_RECOG</a> =  0x04, 
+<br/>
+&nbsp;&nbsp;<a class="el" href="class_service.html#a9feccccb9f9c12298cf61702471c489aa45c646a7d20c94757609574ac3202675">DISTANCE_SENSOR</a> =  0x05
+<br/>
+ }</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><p>サービスの種類 </p>
+ <a href="class_service.html#a9feccccb9f9c12298cf61702471c489a">[詳細]</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_service.html#a98c6f0ab3f2850314582a432f5d38b88">Kind</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">サービスの種類型  <a href="#a98c6f0ab3f2850314582a432f5d38b88"></a><br/></td></tr>
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_service.html#aeae7c1bd33ae2ae6433f9d79df50ec7e">hostname</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">サービス提供元のホスト名を取得する  <a href="#aeae7c1bd33ae2ae6433f9d79df50ec7e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_service.html#ac4cc74991f139526a3c67da1d01f8342">hostname</a> (const char *h)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">サービス提供元のホスト名を設定する  <a href="#ac4cc74991f139526a3c67da1d01f8342"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_service.html#a98c6f0ab3f2850314582a432f5d38b88">Kind</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_service.html#adc18e2e031ea2807bd4696e38a961bf6">kind</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">サービスの種類を取得する  <a href="#adc18e2e031ea2807bd4696e38a961bf6"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_service.html#a354c13693a0d62e452073f5f3b96f45d">name</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">サービス提供者名を取得する  <a href="#a354c13693a0d62e452073f5f3b96f45d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_service.html#aefef63cf5c53a83975840256c54e9b5c">port</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">サービス提供元のポート番号を取得する  <a href="#aefef63cf5c53a83975840256c54e9b5c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_service.html#a1416be08145b1065465429aed97b10a1">Service</a> (const char *name_, <a class="el" href="class_service.html#a98c6f0ab3f2850314582a432f5d38b88">Kind</a> k, const char *h, int p)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#a1416be08145b1065465429aed97b10a1"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_service.html#a5d53f5ac18ec1d2c2e0cfd039f086918">Service</a> (const char *name_, <a class="el" href="class_service.html#a98c6f0ab3f2850314582a432f5d38b88">Kind</a> k, int p)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#a5d53f5ac18ec1d2c2e0cfd039f086918"></a><br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>サービスプロバイダの提供するサービスクラス </p>
+
+<p> <a class="el" href="_service_8h_source.html">Service.h</a> の <a class="el" href="_service_8h_source.html#l00010">10</a> 行で定義されています。</p>
+<hr/><h2>型定義</h2>
+<a class="anchor" id="a98c6f0ab3f2850314582a432f5d38b88"></a><!-- doxytag: member="Service::Kind" ref="a98c6f0ab3f2850314582a432f5d38b88" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef unsigned int <a class="el" href="class_service.html#a98c6f0ab3f2850314582a432f5d38b88">Service::Kind</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>サービスの種類型 </p>
+
+<p> <a class="el" href="_service_8h_source.html">Service.h</a> の <a class="el" href="_service_8h_source.html#l00022">22</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>列挙型</h2>
+<a class="anchor" id="a9feccccb9f9c12298cf61702471c489a"></a><!-- doxytag: member="Service::@16" ref="a9feccccb9f9c12298cf61702471c489a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>サービスの種類 </p>
+<dl><dt><b>列挙型の値: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="a9feccccb9f9c12298cf61702471c489aa28ae24a9334d83b97c652b1053642cba"></a><!-- doxytag: member="SERVICE_KIND_NOT_SET" ref="a9feccccb9f9c12298cf61702471c489aa28ae24a9334d83b97c652b1053642cba" args="" -->SERVICE_KIND_NOT_SET</em>&nbsp;</td><td>
+<p>設定なし </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a9feccccb9f9c12298cf61702471c489aa0f34cd5f6ac87338c774aef81a85f540"></a><!-- doxytag: member="CAPTURE_VIEW" ref="a9feccccb9f9c12298cf61702471c489aa0f34cd5f6ac87338c774aef81a85f540" args="" -->CAPTURE_VIEW</em>&nbsp;</td><td>
+<p>視点からの画像キャプチャ </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a9feccccb9f9c12298cf61702471c489aad7271e6aa843efa0e24613091d08a599"></a><!-- doxytag: member="DETECT_ENTITIES" ref="a9feccccb9f9c12298cf61702471c489aad7271e6aa843efa0e24613091d08a599" args="" -->DETECT_ENTITIES</em>&nbsp;</td><td>
+<p>視野内のエンティティ検出 </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a9feccccb9f9c12298cf61702471c489aaecde562c62cabaffe6ad650b3fe437f9"></a><!-- doxytag: member="SOUND_RECOG" ref="a9feccccb9f9c12298cf61702471c489aaecde562c62cabaffe6ad650b3fe437f9" args="" -->SOUND_RECOG</em>&nbsp;</td><td>
+<p>音声認識 </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a9feccccb9f9c12298cf61702471c489aa45c646a7d20c94757609574ac3202675"></a><!-- doxytag: member="DISTANCE_SENSOR" ref="a9feccccb9f9c12298cf61702471c489aa45c646a7d20c94757609574ac3202675" args="" -->DISTANCE_SENSOR</em>&nbsp;</td><td>
+<p>距離センサ </p>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p> <a class="el" href="_service_8h_source.html">Service.h</a> の <a class="el" href="_service_8h_source.html#l00014">14</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" id="a5d53f5ac18ec1d2c2e0cfd039f086918"></a><!-- doxytag: member="Service::Service" ref="a5d53f5ac18ec1d2c2e0cfd039f086918" args="(const char *name_, Kind k, int p)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Service::Service </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>name_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_service.html#a98c6f0ab3f2850314582a432f5d38b88">Kind</a>&nbsp;</td>
+          <td class="paramname"> <em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>p</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コンストラクタ </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>サービス提供者名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>k</em>&nbsp;</td><td>サービスの種類 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>p</em>&nbsp;</td><td>サービス元のポート番号 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_service_8h_source.html">Service.h</a> の <a class="el" href="_service_8h_source.html#l00054">54</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a1416be08145b1065465429aed97b10a1"></a><!-- doxytag: member="Service::Service" ref="a1416be08145b1065465429aed97b10a1" args="(const char *name_, Kind k, const char *h, int p)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Service::Service </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>name_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_service.html#a98c6f0ab3f2850314582a432f5d38b88">Kind</a>&nbsp;</td>
+          <td class="paramname"> <em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>h</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>p</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コンストラクタ </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>サービス提供者名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>k</em>&nbsp;</td><td>サービスの種類 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>h</em>&nbsp;</td><td>サービス元のホスト名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>p</em>&nbsp;</td><td>サービス元のポート番号 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_service_8h_source.html">Service.h</a> の <a class="el" href="_service_8h_source.html#l00066">66</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>関数</h2>
+<a class="anchor" id="aeae7c1bd33ae2ae6433f9d79df50ec7e"></a><!-- doxytag: member="Service::hostname" ref="aeae7c1bd33ae2ae6433f9d79df50ec7e" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* Service::hostname </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>サービス提供元のホスト名を取得する </p>
+
+<p> <a class="el" href="_service_8h_source.html">Service.h</a> の <a class="el" href="_service_8h_source.html#l00042">42</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ac4cc74991f139526a3c67da1d01f8342"></a><!-- doxytag: member="Service::hostname" ref="ac4cc74991f139526a3c67da1d01f8342" args="(const char *h)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Service::hostname </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>h</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>サービス提供元のホスト名を設定する </p>
+
+<p> <a class="el" href="_service_8h_source.html">Service.h</a> の <a class="el" href="_service_8h_source.html#l00038">38</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="adc18e2e031ea2807bd4696e38a961bf6"></a><!-- doxytag: member="Service::kind" ref="adc18e2e031ea2807bd4696e38a961bf6" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_service.html#a98c6f0ab3f2850314582a432f5d38b88">Kind</a> Service::kind </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>サービスの種類を取得する </p>
+
+<p> <a class="el" href="_service_8h_source.html">Service.h</a> の <a class="el" href="_service_8h_source.html#l00035">35</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a354c13693a0d62e452073f5f3b96f45d"></a><!-- doxytag: member="Service::name" ref="a354c13693a0d62e452073f5f3b96f45d" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* Service::name </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>サービス提供者名を取得する </p>
+
+<p> <a class="el" href="_service_8h_source.html">Service.h</a> の <a class="el" href="_service_8h_source.html#l00033">33</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="aefef63cf5c53a83975840256c54e9b5c"></a><!-- doxytag: member="Service::port" ref="aefef63cf5c53a83975840256c54e9b5c" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Service::port </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>サービス提供元のポート番号を取得する </p>
+
+<p> <a class="el" href="_service_8h_source.html">Service.h</a> の <a class="el" href="_service_8h_source.html#l00046">46</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_service_8h_source.html">Service.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:20 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

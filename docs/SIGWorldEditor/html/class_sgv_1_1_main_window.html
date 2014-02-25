@@ -1,0 +1,2102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGWorldEditor: クラス Sgv::MainWindow</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_sgv.html">Sgv</a>::<a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Sgv::MainWindow</h1><!-- doxytag: class="Sgv::MainWindow" -->SIGWorldEditorメインウィンドウ.  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_sgv_main_window_8h_source.html">SgvMainWindow.h</a>&gt;</code>
+<p>
+
+<p>
+<a href="class_sgv_1_1_main_window-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public 型</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#1ecbb9937591d6d08e4fbb8472f3af42">BOTTOM_PANEL</a> { <a class="el" href="class_sgv_1_1_main_window.html#1ecbb9937591d6d08e4fbb8472f3af428c497d8c89db72e69d7cbb6520c0d069">BP_MSG</a> =  0
+ }</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">下部パネルが含むタブの識別子  <a href="class_sgv_1_1_main_window.html#1ecbb9937591d6d08e4fbb8472f3af42">[詳細]</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#299b12fb4b0795a1cc0ceda102b80adb">QueryFlags</a> { <a class="el" href="class_sgv_1_1_main_window.html#299b12fb4b0795a1cc0ceda102b80adba2e42948de7f17a4aab01e68c4a41a59">SELECTION_TARGET</a> =  1 &lt;&lt; 0, 
+<a class="el" href="class_sgv_1_1_main_window.html#299b12fb4b0795a1cc0ceda102b80adb090072cffc84bd81caf6bb9b8623b720">NO_SELECTION_TARGET</a> =  1 &lt;&lt; 1
+ }</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ogreクエリーマスクフラグ.  <a href="class_sgv_1_1_main_window.html#299b12fb4b0795a1cc0ceda102b80adb">[詳細]</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#2bf8f9d263a72fcffe68b65b14f324e3">RIGHT_PANEL</a> { <a class="el" href="class_sgv_1_1_main_window.html#2bf8f9d263a72fcffe68b65b14f324e33bf97f7c9ac0cd59829aec95ea5bd2fe">RP_ENTITY</a> =  0, 
+<a class="el" href="class_sgv_1_1_main_window.html#2bf8f9d263a72fcffe68b65b14f324e3a6021cd182882b06dd4fb0404a04edee">RP_HUMANOID</a> =  1
+ }</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">右パネルが含むタブの識別子  <a href="class_sgv_1_1_main_window.html#2bf8f9d263a72fcffe68b65b14f324e3">[詳細]</a><br></td></tr>
+<tr><td colspan="2"><br><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#b9e2b81b65b5fd86b7b33a5b7a876779">adjustControlPositions</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パネルのサイズをメインウィンドウのサイズに合わせて変更する  <a href="#b9e2b81b65b5fd86b7b33a5b7a876779"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#ed91e2335b1d1d977fc3b28d96698c17">clearWorld</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">世界をクリアする  <a href="#ed91e2335b1d1d977fc3b28d96698c17"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">SceneNode *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#fcc750e6018341297305b836c1a8e8b8">createArrow</a> (SceneNode *parentNode, char *name, ColourValue arrowColor, double length)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">矢印を作成する  <a href="#fcc750e6018341297305b836c1a8e8b8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">SceneNode *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#1efe71d8255792ddc8d25ccc65238a19">createEntityNode</a> (const char *entName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">XMLエンティティからOgreシーンノードを作る．.  <a href="#1efe71d8255792ddc8d25ccc65238a19"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">SceneNode *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#6a1e6d71c06a83154bafa68eab118af3">createPlane</a> (SceneNode *parentNode, int planeSize, int planeStep, const char *planeName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">平面グリッドを作成する  <a href="#6a1e6d71c06a83154bafa68eab118af3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#78b08b8b5fecc75b6dab54aa65e43a08">deleteEntity</a> (const char *entName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティを削除する  <a href="#78b08b8b5fecc75b6dab54aa65e43a08"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">HINSTANCE&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#3fad5e4b6b1299ff792bb12651f1dfde">getAppInstance</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">アプリケーションのインスタンスハンドルを返す  <a href="#3fad5e4b6b1299ff792bb12651f1dfde"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#dd90f01a2357bc760b7578e5d48224e5">getAxisFixStateOnMoving</a> (bool &amp;bXAxisFix, bool &amp;bYAxisFix, bool &amp;bZAxisFix)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#460aba75fd2d45dca937832de8bd727f">getAxisFixStateOnRotation</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_wgu_1_1_multi_panel.html">Wgu::MultiPanel</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#867fb02f87c38e2ab3bb95afa826109d">getBottomPanel</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">メインウィンドウ下のパネルへのポインタを得る  <a href="#867fb02f87c38e2ab3bb95afa826109d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">HWND&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#621cfd3a9a6fc2de5ce9a09a5150f2a3">getBottomPanelHWND</a> (int iTab)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">メインウィンドウ下のパネルのウィンドウハンドルを得る  <a href="#621cfd3a9a6fc2de5ce9a09a5150f2a3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_wgu_1_1_base_panel_proc.html">Wgu::BasePanelProc</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#3a973b7677c1d4903c5c15026abef4d3">getBottomPanelProc</a> (int iTab)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">メインウィンドウ下のパネルのパネルプロシージャを得る  <a href="#3a973b7677c1d4903c5c15026abef4d3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Camera *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#a93a9caabf260f0ec50bb7695c46d4bc">getCamera</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">カメラを返す  <a href="#a93a9caabf260f0ec50bb7695c46d4bc"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_sgv_1_1_class_editor_window.html">Sgv::ClassEditorWindow</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#0a067b7a9a632edebf85d4bc35180249">getClassEditorWindow</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クラスエディタウィンドウを返す  <a href="#0a067b7a9a632edebf85d4bc35180249"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#b1f34d0d37ba3734051701d741397182">getCurrSelectedEntName</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">現在マウスで選択中のエンティティ名を返す  <a href="#b1f34d0d37ba3734051701d741397182"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_sgv_1_1_x_m_l_entity.html">XMLEntity</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#8bdee739a3dcea96be64ab5791afc122">getEntity</a> (const char *entName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティ名からXMLEntityを引く  <a href="#8bdee739a3dcea96be64ab5791afc122"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_sgv_1_1_x_m_l_entity_class_manager.html">XMLEntityClassManager</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#198a0e7e17ce0100915a6fb4077dfc13">getEntityClassManager</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">XMLエンティティクラスマネージャを返す.  <a href="#198a0e7e17ce0100915a6fb4077dfc13"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">SceneNode *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#fa8ef5695a4c2a3bfcf93cf1e0d9a08f">getEntityNode</a> (const char *entName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティ名からOgreノードを引く． 見つからないときはNULLが返る  <a href="#fa8ef5695a4c2a3bfcf93cf1e0d9a08f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_sgv_1_1_humanoid_node_map.html">HumanoidNodeMap</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#9349a668ce565c540a171af8f48278c0">getHumanoidNodeMap</a> (const char *entName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティ名からHumanoidNodeMapを引く． エンティティがヒューマノイドでない（＝静止物のとき）はNULLが返る．  <a href="#9349a668ce565c540a171af8f48278c0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">HWND&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#7f96976d6582a23639c4f2a2cb0fb69c">getHWND</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">メインウィンドウハンドルを返す  <a href="#7f96976d6582a23639c4f2a2cb0fb69c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">FILE *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#304ce7f3464567977f16a62a0bb0e3c8">getLogFp</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ログファイルのファイルポインタを返す  <a href="#304ce7f3464567977f16a62a0bb0e3c8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">SceneNode *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#4a9db2c6831ba0071f4f22bd16fa1f3e">getMainShapeNode</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">メインシェープノードを得る  <a href="#4a9db2c6831ba0071f4f22bd16fa1f3e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">SceneNode *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#bd3893f78964eccbea2adb32e847deea">getNodeAtScreenCoord</a> (int x, int y, <a class="el" href="class_sgv_1_1_ext_entity_info.html">ExtEntityInfo</a> **ppExtInfo=NULL)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ウィンドウの(x, y)にあるエンティティの属するノードを返す  <a href="#bd3893f78964eccbea2adb32e847deea"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_sgv_1_1_ogre_client_window.html">Sgv::OgreClientWindow</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#7a52cdce718551696499887dfd95f96e">getOgreClientWindow</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ogreクライアントウィンドウを返す.  <a href="#7a52cdce718551696499887dfd95f96e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Root *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#df000f46ec7eab11879c800cfcaef3c8">getOgreRootObject</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ogreルートオブジェクトを返す.  <a href="#df000f46ec7eab11879c800cfcaef3c8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">SceneNode *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#cd615bb8e27c134f8307edb7b5e0b669">getOtherShapeNode</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">メインシェープノードに属さないノードを得る  <a href="#cd615bb8e27c134f8307edb7b5e0b669"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">RenderWindow *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#eca223c55c685258b7819ce02877e23e">getRenderWindow</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">レンダーウィンドウを返す  <a href="#eca223c55c685258b7819ce02877e23e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#8e20f5bd705a326548dd8850bdd64189">getRenderWindowHeight</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">レンダーウィンドウの高さを得る  <a href="#8e20f5bd705a326548dd8850bdd64189"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#f68b13945d869c00ce21576f203e3afc">getRenderWindowWidth</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">レンダーウィンドウの幅を得る  <a href="#f68b13945d869c00ce21576f203e3afc"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_wgu_1_1_multi_panel.html">Wgu::MultiPanel</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#313ea2852ef7eddcf6f9baf461d2ecdc">getRightPanel</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">メインウィンドウ右のパネルへのポインタを得る  <a href="#313ea2852ef7eddcf6f9baf461d2ecdc"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">HWND&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#0ed03549f9c9959ad30044eab57faf5b">getRightPanelHWND</a> (int iTab)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">メインウィンドウ右のパネルのウィンドウハンドルを得る  <a href="#0ed03549f9c9959ad30044eab57faf5b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_wgu_1_1_base_panel_proc.html">Wgu::BasePanelProc</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#7c26a938ac8f241d743c89cce327c950">getRightPanelProc</a> (int iTab)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">メインウィンドウ右のパネルのパネルプロシージャを得る  <a href="#7c26a938ac8f241d743c89cce327c950"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">SceneNode *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#0ea729577bdad5c88b2caba4f3336161">getRootNode</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ルートノードを返す  <a href="#0ea729577bdad5c88b2caba4f3336161"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">SceneManager *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#b0bd9b7de5df4f1e4f6173a200a36a1f">getSceneMgr</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">シーンマネージャを返す  <a href="#b0bd9b7de5df4f1e4f6173a200a36a1f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">HWND&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#60acfad71a549c8308f632e951c736f8">getStatusBarHWND</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ステータスバーのウィンドウハンドルを返す  <a href="#60acfad71a549c8308f632e951c736f8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_sgv_1_1_x_m_l_world.html">XMLWorld</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#75486201d0534b616edc3ef7cb761309">getWorld</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">XML世界オブジェクトを返す.  <a href="#75486201d0534b616edc3ef7cb761309"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#dcf92c7faee2025be3b6e480642e7a83">getWorldFileName</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">現在編集中の世界XMLファイル名を返す 最後にロードまたはセーブしたファイル名となる．  <a href="#dcf92c7faee2025be3b6e480642e7a83"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_sgv_1_1_x3_d.html">Sgv::X3D</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#ee441ed66e10fa0d6e43e6dedf10fc87">getX3D</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">X3Dオブジェクトへのポインタを得る.  <a href="#ee441ed66e10fa0d6e43e6dedf10fc87"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_sgv_1_1_x_m_l_file_list.html">XMLFileList</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#6ea7387a13a043a95e3d2d9cdb39db98">getXMLFileList</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">XMLファイルリストを返す.  <a href="#6ea7387a13a043a95e3d2d9cdb39db98"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#b0125985efb1940d01cb4c541e6abafb">init</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">SIGWorldEditorシステムを初期化する.  <a href="#b0125985efb1940d01cb4c541e6abafb"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#f6aee34d32e3292944c75e79483501a2">isCurrSelectedEntityHumanoid</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">現在マウスで選択中のエンティティ名はヒューマノイドか？  <a href="#f6aee34d32e3292944c75e79483501a2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#0678dc33ac30d0ef469429d1ea09117d">isEntitySelecting</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">現在マウスでエンティティを選択中か？  <a href="#0678dc33ac30d0ef469429d1ea09117d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#2f854a4ed8c0424c9c446fc01508a5ad">isShapeAddMode</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">形状追加モードか？  <a href="#2f854a4ed8c0424c9c446fc01508a5ad"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#009b6166b28db8f52fded780c57a2889">loadWorldXMLFile</a> (const char *worldXMLFile)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">世界XMLファイルのロード  <a href="#009b6166b28db8f52fded780c57a2889"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#bff5cdf19ccf9c2411772c61521b4f9e">MainWindow</a> (HINSTANCE hInst, LPSTR strCmdLine)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#bff5cdf19ccf9c2411772c61521b4f9e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">LRESULT CALLBACK&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#facf3194423a58b6858af6bd420bfc1e">mainWndProc</a> (HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">メインウィンドウプロシージャ  <a href="#facf3194423a58b6858af6bd420bfc1e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#1c1fa10588fad4a949874d38a27a66ce">printMsg</a> (const char *format,...)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">メッセージ表示領域にメッセージを追加する．  <a href="#1c1fa10588fad4a949874d38a27a66ce"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#4c595b439680ff79b3b2dbe47f4d6fc8">process</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">定期的処理  <a href="#4c595b439680ff79b3b2dbe47f4d6fc8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#6f394c4e4ce52e0194d8daecdb6d9bd8">readSettingsFile</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">前回起動時の設定状態保存ファイル(SIGWE_settings.sav)を読み込む  <a href="#6f394c4e4ce52e0194d8daecdb6d9bd8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#f38fbf4b332b82b3c7908c6834bcb90c">readStartupConfigFile</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">設定ファイル(SIGWE_startup.cfg)を読み込む  <a href="#f38fbf4b332b82b3c7908c6834bcb90c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#bf9be714baf6b1346f9843d35a843337">saveSettingsFile</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">現在の設定値をSIGWE_settings.savに書き込む  <a href="#bf9be714baf6b1346f9843d35a843337"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#2d0223dc4f576579b8ddb2d30e00769b">saveWorldXMLFile</a> (const char *worldXMLFile)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">世界XMLファイルへのセーブ  <a href="#2d0223dc4f576579b8ddb2d30e00769b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#fd7d10da91726217361b4d0df02e9a31">searchXMLFileList</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">カレントディレクトリにあるXMLファイルを検索し、 世界XMLファイル名、エンティティ定義XMLファイル名を リストアップする  <a href="#fd7d10da91726217361b4d0df02e9a31"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#0d9dcaaa28eb7b797a5748ed31e3285d">setCurrSelectedEntityIsHumanoid</a> (bool bHumanoid)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">現在マウスで選択中のエンティティはヒューマノイドである  <a href="#0d9dcaaa28eb7b797a5748ed31e3285d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#a956268d9ae24abab4e1ef124225e3bf">setCurrSelectedEntName</a> (const char *entName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">現在マウスで選択中のエンティティ名をセット． NULLを与えると選択クリア  <a href="#a956268d9ae24abab4e1ef124225e3bf"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#f0500d4c818e563d2108ce34cf28b3ca">showClassEditorWindow</a> (bool bShow)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クラスエディタウィンドウの表示状態を変更する  <a href="#f0500d4c818e563d2108ce34cf28b3ca"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#1dc2e5cf847eed2f331656cd076680f3">showWaitCursor</a> (bool b)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">マウスカーソルの形状を設定する  <a href="#1dc2e5cf847eed2f331656cd076680f3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#19791b7d758cb6105a798404f0cfb2f6">updateEntityWithNode</a> (const char *entName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">XMLエンティティをOgreノードで更新.  <a href="#19791b7d758cb6105a798404f0cfb2f6"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#e4fc39d8bb151c3fed3d4b0d0e81a090">updateMainWindowTitle</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">メインウィンドウタイトルバーを更新する  <a href="#e4fc39d8bb151c3fed3d4b0d0e81a090"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#4a273df556961eee252f60998f51cdcc">updateNodeWithEntity</a> (const char *entName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">OgreノードをXMLエンティティで更新.  <a href="#4a273df556961eee252f60998f51cdcc"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#50ada0e01a384a938a52b2b701a36793">updateWorldWithClassDefinition</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クラス定義の変更を世界に反映させる  <a href="#50ada0e01a384a938a52b2b701a36793"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_main_window.html#b99a0936f61d70889739462101fc635f">‾MainWindow</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#b99a0936f61d70889739462101fc635f"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+SIGWorldEditorメインウィンドウ. 
+<p> <a class="el" href="_sgv_main_window_8h_source.html">SgvMainWindow.h</a> の <a class="el" href="_sgv_main_window_8h_source.html#l00030">30</a> 行で定義されています。</p>
+<hr><h2>列挙型</h2>
+<a class="anchor" name="1ecbb9937591d6d08e4fbb8472f3af42"></a><!-- doxytag: member="Sgv::MainWindow::BOTTOM_PANEL" ref="1ecbb9937591d6d08e4fbb8472f3af42" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_sgv_1_1_main_window.html#1ecbb9937591d6d08e4fbb8472f3af42">Sgv::MainWindow::BOTTOM_PANEL</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+下部パネルが含むタブの識別子 
+<p>
+<dl compact><dt><b>列挙型の値: </b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" name="1ecbb9937591d6d08e4fbb8472f3af428c497d8c89db72e69d7cbb6520c0d069"></a><!-- doxytag: member="BP_MSG" ref="1ecbb9937591d6d08e4fbb8472f3af428c497d8c89db72e69d7cbb6520c0d069" args="" -->BP_MSG</em>&nbsp;</td><td>
+メッセージタブ </td></tr>
+</table>
+</dl>
+
+<p> <a class="el" href="_sgv_main_window_8h_source.html">SgvMainWindow.h</a> の <a class="el" href="_sgv_main_window_8h_source.html#l00225">225</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="299b12fb4b0795a1cc0ceda102b80adb"></a><!-- doxytag: member="Sgv::MainWindow::QueryFlags" ref="299b12fb4b0795a1cc0ceda102b80adb" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_sgv_1_1_main_window.html#299b12fb4b0795a1cc0ceda102b80adb">Sgv::MainWindow::QueryFlags</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Ogreクエリーマスクフラグ. 
+<p>
+OgreエンティティにsetQueryFlags()メソッドでフラグを設定しておくと RaySceneQuery等のクエリーを行うときに、検索対象に含めたり 外したりの選択をすることができる． <dl compact><dt><b>列挙型の値: </b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" name="299b12fb4b0795a1cc0ceda102b80adba2e42948de7f17a4aab01e68c4a41a59"></a><!-- doxytag: member="SELECTION_TARGET" ref="299b12fb4b0795a1cc0ceda102b80adba2e42948de7f17a4aab01e68c4a41a59" args="" -->SELECTION_TARGET</em>&nbsp;</td><td>
+クエリー検索対象にする </td></tr>
+<tr><td valign="top"><em><a class="anchor" name="299b12fb4b0795a1cc0ceda102b80adb090072cffc84bd81caf6bb9b8623b720"></a><!-- doxytag: member="NO_SELECTION_TARGET" ref="299b12fb4b0795a1cc0ceda102b80adb090072cffc84bd81caf6bb9b8623b720" args="" -->NO_SELECTION_TARGET</em>&nbsp;</td><td>
+クエリー検索対象にしない </td></tr>
+</table>
+</dl>
+
+<p> <a class="el" href="_sgv_main_window_8h_source.html">SgvMainWindow.h</a> の <a class="el" href="_sgv_main_window_8h_source.html#l00557">557</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="2bf8f9d263a72fcffe68b65b14f324e3"></a><!-- doxytag: member="Sgv::MainWindow::RIGHT_PANEL" ref="2bf8f9d263a72fcffe68b65b14f324e3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_sgv_1_1_main_window.html#2bf8f9d263a72fcffe68b65b14f324e3">Sgv::MainWindow::RIGHT_PANEL</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+右パネルが含むタブの識別子 
+<p>
+<dl compact><dt><b>列挙型の値: </b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" name="2bf8f9d263a72fcffe68b65b14f324e33bf97f7c9ac0cd59829aec95ea5bd2fe"></a><!-- doxytag: member="RP_ENTITY" ref="2bf8f9d263a72fcffe68b65b14f324e33bf97f7c9ac0cd59829aec95ea5bd2fe" args="" -->RP_ENTITY</em>&nbsp;</td><td>
+エンティティ属性表示、設定パネル </td></tr>
+<tr><td valign="top"><em><a class="anchor" name="2bf8f9d263a72fcffe68b65b14f324e3a6021cd182882b06dd4fb0404a04edee"></a><!-- doxytag: member="RP_HUMANOID" ref="2bf8f9d263a72fcffe68b65b14f324e3a6021cd182882b06dd4fb0404a04edee" args="" -->RP_HUMANOID</em>&nbsp;</td><td>
+ヒューマノイド関節情報表示パネル </td></tr>
+</table>
+</dl>
+
+<p> <a class="el" href="_sgv_main_window_8h_source.html">SgvMainWindow.h</a> の <a class="el" href="_sgv_main_window_8h_source.html#l00216">216</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" name="bff5cdf19ccf9c2411772c61521b4f9e"></a><!-- doxytag: member="Sgv::MainWindow::MainWindow" ref="bff5cdf19ccf9c2411772c61521b4f9e" args="(HINSTANCE hInst, LPSTR strCmdLine)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::MainWindow::MainWindow           </td>
+          <td>(</td>
+          <td class="paramtype">HINSTANCE&nbsp;</td>
+          <td class="paramname"> <em>hInst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">LPSTR&nbsp;</td>
+          <td class="paramname"> <em>strCmdLine</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hInst</em>&nbsp;</td><td>[i] アプリケーションインスタンスハンドル </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>strCmdLine</em>&nbsp;</td><td>[i] コマンドライン引数 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l00029">29</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>関数</h2>
+<a class="anchor" name="b9e2b81b65b5fd86b7b33a5b7a876779"></a><!-- doxytag: member="Sgv::MainWindow::adjustControlPositions" ref="b9e2b81b65b5fd86b7b33a5b7a876779" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::MainWindow::adjustControlPositions           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+パネルのサイズをメインウィンドウのサイズに合わせて変更する 
+<p>
+
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l01218">1218</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="ed91e2335b1d1d977fc3b28d96698c17"></a><!-- doxytag: member="Sgv::MainWindow::clearWorld" ref="ed91e2335b1d1d977fc3b28d96698c17" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::MainWindow::clearWorld           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+世界をクリアする 
+<p>
+
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l00672">672</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="fcc750e6018341297305b836c1a8e8b8"></a><!-- doxytag: member="Sgv::MainWindow::createArrow" ref="fcc750e6018341297305b836c1a8e8b8" args="(SceneNode *parentNode, char *name, ColourValue arrowColor, double length)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SceneNode * Sgv::MainWindow::createArrow           </td>
+          <td>(</td>
+          <td class="paramtype">SceneNode *&nbsp;</td>
+          <td class="paramname"> <em>parentNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ColourValue&nbsp;</td>
+          <td class="paramname"> <em>arrowColor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>length</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+矢印を作成する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>parentNode</em>&nbsp;</td><td>[i] 親ノード </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>[i] 矢印オブジェクトにつける名前 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>arrowColor</em>&nbsp;</td><td>[i] 矢印の色 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>length</em>&nbsp;</td><td>[i] 矢印の長さ</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>矢印のシーンノード</dd></dl>
+（注）nameはユニークなものでなければならない（重複した場合は作成に失敗する） 
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l01266">1266</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="1efe71d8255792ddc8d25ccc65238a19"></a><!-- doxytag: member="Sgv::MainWindow::createEntityNode" ref="1efe71d8255792ddc8d25ccc65238a19" args="(const char *entName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SceneNode * Sgv::MainWindow::createEntityNode           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>entName</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+XMLエンティティからOgreシーンノードを作る．. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>entName</em>&nbsp;</td><td>[i] エンティティ名</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>シーンノード</dd></dl>
+エンティティに対するOgreノードを作る． エンティティはXMLWorldに存在している必要がある． また、各種マップにも登録する． 
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l00917">917</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="6a1e6d71c06a83154bafa68eab118af3"></a><!-- doxytag: member="Sgv::MainWindow::createPlane" ref="6a1e6d71c06a83154bafa68eab118af3" args="(SceneNode *parentNode, int planeSize, int planeStep, const char *planeName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SceneNode * Sgv::MainWindow::createPlane           </td>
+          <td>(</td>
+          <td class="paramtype">SceneNode *&nbsp;</td>
+          <td class="paramname"> <em>parentNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>planeSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>planeStep</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>planeName</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+平面グリッドを作成する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>parentNode</em>&nbsp;</td><td>[i] 親ノード </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>planeSize</em>&nbsp;</td><td>[i] 平面のサイズ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>planeStep</em>&nbsp;</td><td>[i] グリッドの間隔 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>planeName</em>&nbsp;</td><td>[i] 平面オブジェクトにつける名前</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>平面のシーンノード</dd></dl>
+（注）planeNameはユニークなものでなければならない（重複した場合は作成に失敗する） 
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l01319">1319</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="78b08b8b5fecc75b6dab54aa65e43a08"></a><!-- doxytag: member="Sgv::MainWindow::deleteEntity" ref="78b08b8b5fecc75b6dab54aa65e43a08" args="(const char *entName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::MainWindow::deleteEntity           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>entName</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+エンティティを削除する 
+<p>
+XML世界, ノードマップその他関連するすべての箇所から消す<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>entName</em>&nbsp;</td><td>[i] エンティティ名 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l01012">1012</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="3fad5e4b6b1299ff792bb12651f1dfde"></a><!-- doxytag: member="Sgv::MainWindow::getAppInstance" ref="3fad5e4b6b1299ff792bb12651f1dfde" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HINSTANCE Sgv::MainWindow::getAppInstance           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+アプリケーションのインスタンスハンドルを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>インスタンスハンドル </dd></dl>
+
+<p> <a class="el" href="_sgv_main_window_8h_source.html">SgvMainWindow.h</a> の <a class="el" href="_sgv_main_window_8h_source.html#l00080">80</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="dd90f01a2357bc760b7578e5d48224e5"></a><!-- doxytag: member="Sgv::MainWindow::getAxisFixStateOnMoving" ref="dd90f01a2357bc760b7578e5d48224e5" args="(bool &amp;bXAxisFix, bool &amp;bYAxisFix, bool &amp;bZAxisFix)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::MainWindow::getAxisFixStateOnMoving           </td>
+          <td>(</td>
+          <td class="paramtype">bool &amp;&nbsp;</td>
+          <td class="paramname"> <em>bXAxisFix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool &amp;&nbsp;</td>
+          <td class="paramname"> <em>bYAxisFix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool &amp;&nbsp;</td>
+          <td class="paramname"> <em>bZAxisFix</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l01125">1125</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="460aba75fd2d45dca937832de8bd727f"></a><!-- doxytag: member="Sgv::MainWindow::getAxisFixStateOnRotation" ref="460aba75fd2d45dca937832de8bd727f" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Sgv::MainWindow::getAxisFixStateOnRotation           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l01138">1138</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="867fb02f87c38e2ab3bb95afa826109d"></a><!-- doxytag: member="Sgv::MainWindow::getBottomPanel" ref="867fb02f87c38e2ab3bb95afa826109d" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_wgu_1_1_multi_panel.html">Wgu::MultiPanel</a>* Sgv::MainWindow::getBottomPanel           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+メインウィンドウ下のパネルへのポインタを得る 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>下部パネルへのポインタ </dd></dl>
+
+<p> <a class="el" href="_sgv_main_window_8h_source.html">SgvMainWindow.h</a> の <a class="el" href="_sgv_main_window_8h_source.html#l00242">242</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="621cfd3a9a6fc2de5ce9a09a5150f2a3"></a><!-- doxytag: member="Sgv::MainWindow::getBottomPanelHWND" ref="621cfd3a9a6fc2de5ce9a09a5150f2a3" args="(int iTab)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HWND Sgv::MainWindow::getBottomPanelHWND           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iTab</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+メインウィンドウ下のパネルのウィンドウハンドルを得る 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>iTab</em>&nbsp;</td><td>[i] タブ番号</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>ウィンドウハンドル </dd></dl>
+
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l00657">657</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="3a973b7677c1d4903c5c15026abef4d3"></a><!-- doxytag: member="Sgv::MainWindow::getBottomPanelProc" ref="3a973b7677c1d4903c5c15026abef4d3" args="(int iTab)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_wgu_1_1_base_panel_proc.html">Wgu::BasePanelProc</a> * Sgv::MainWindow::getBottomPanelProc           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iTab</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+メインウィンドウ下のパネルのパネルプロシージャを得る 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>iTab</em>&nbsp;</td><td>[i] タブ番号</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>パネルプロシージャ </dd></dl>
+
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l00667">667</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="a93a9caabf260f0ec50bb7695c46d4bc"></a><!-- doxytag: member="Sgv::MainWindow::getCamera" ref="a93a9caabf260f0ec50bb7695c46d4bc" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Camera* Sgv::MainWindow::getCamera           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+カメラを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>カメラ </dd></dl>
+
+<p> <a class="el" href="_sgv_main_window_8h_source.html">SgvMainWindow.h</a> の <a class="el" href="_sgv_main_window_8h_source.html#l00176">176</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="0a067b7a9a632edebf85d4bc35180249"></a><!-- doxytag: member="Sgv::MainWindow::getClassEditorWindow" ref="0a067b7a9a632edebf85d4bc35180249" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_sgv_1_1_class_editor_window.html">Sgv::ClassEditorWindow</a>* Sgv::MainWindow::getClassEditorWindow           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+クラスエディタウィンドウを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>クラスエディタウィンドウ </dd></dl>
+
+<p> <a class="el" href="_sgv_main_window_8h_source.html">SgvMainWindow.h</a> の <a class="el" href="_sgv_main_window_8h_source.html#l00188">188</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b1f34d0d37ba3734051701d741397182"></a><!-- doxytag: member="Sgv::MainWindow::getCurrSelectedEntName" ref="b1f34d0d37ba3734051701d741397182" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * Sgv::MainWindow::getCurrSelectedEntName           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+現在マウスで選択中のエンティティ名を返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>現在選択中のエンティティ名（選択されていない場合はNULL） </dd></dl>
+
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l01096">1096</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="8bdee739a3dcea96be64ab5791afc122"></a><!-- doxytag: member="Sgv::MainWindow::getEntity" ref="8bdee739a3dcea96be64ab5791afc122" args="(const char *entName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_sgv_1_1_x_m_l_entity.html">XMLEntity</a> * Sgv::MainWindow::getEntity           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>entName</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+エンティティ名からXMLEntityを引く 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>entName</em>&nbsp;</td><td>[i] エンティティ名</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd><a class="el" href="class_sgv_1_1_x_m_l_entity.html" title="XMLエンティティ.">XMLEntity</a> </dd></dl>
+
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l00817">817</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="198a0e7e17ce0100915a6fb4077dfc13"></a><!-- doxytag: member="Sgv::MainWindow::getEntityClassManager" ref="198a0e7e17ce0100915a6fb4077dfc13" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_sgv_1_1_x_m_l_entity_class_manager.html">XMLEntityClassManager</a>* Sgv::MainWindow::getEntityClassManager           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+XMLエンティティクラスマネージャを返す. 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>XMLエンティティクラスマネージャ </dd></dl>
+
+<p> <a class="el" href="_sgv_main_window_8h_source.html">SgvMainWindow.h</a> の <a class="el" href="_sgv_main_window_8h_source.html#l00320">320</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="fa8ef5695a4c2a3bfcf93cf1e0d9a08f"></a><!-- doxytag: member="Sgv::MainWindow::getEntityNode" ref="fa8ef5695a4c2a3bfcf93cf1e0d9a08f" args="(const char *entName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SceneNode * Sgv::MainWindow::getEntityNode           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>entName</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+エンティティ名からOgreノードを引く． 見つからないときはNULLが返る 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>entName</em>&nbsp;</td><td>[i] エンティティ名</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>Ogreノード </dd></dl>
+
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l00822">822</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="9349a668ce565c540a171af8f48278c0"></a><!-- doxytag: member="Sgv::MainWindow::getHumanoidNodeMap" ref="9349a668ce565c540a171af8f48278c0" args="(const char *entName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_sgv_1_1_humanoid_node_map.html">HumanoidNodeMap</a> * Sgv::MainWindow::getHumanoidNodeMap           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>entName</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+エンティティ名からHumanoidNodeMapを引く． エンティティがヒューマノイドでない（＝静止物のとき）はNULLが返る． 
+<p>
+指定エンティティが見つからないときもNULLが返る<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>entName</em>&nbsp;</td><td>[i] エンティティ名</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd><a class="el" href="class_sgv_1_1_humanoid_node_map.html" title="ヒューマノイド形状における、ジョイント名、パーツ名と それらに対応す...">HumanoidNodeMap</a> </dd></dl>
+
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l00839">839</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="7f96976d6582a23639c4f2a2cb0fb69c"></a><!-- doxytag: member="Sgv::MainWindow::getHWND" ref="7f96976d6582a23639c4f2a2cb0fb69c" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HWND Sgv::MainWindow::getHWND           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+メインウィンドウハンドルを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>メインウィンドウハンドル </dd></dl>
+
+<p> <a class="el" href="_sgv_main_window_8h_source.html">SgvMainWindow.h</a> の <a class="el" href="_sgv_main_window_8h_source.html#l00087">87</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="304ce7f3464567977f16a62a0bb0e3c8"></a><!-- doxytag: member="Sgv::MainWindow::getLogFp" ref="304ce7f3464567977f16a62a0bb0e3c8" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FILE* Sgv::MainWindow::getLogFp           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ログファイルのファイルポインタを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>ログファイルのファイルポインタ </dd></dl>
+
+<p> <a class="el" href="_sgv_main_window_8h_source.html">SgvMainWindow.h</a> の <a class="el" href="_sgv_main_window_8h_source.html#l00569">569</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="4a9db2c6831ba0071f4f22bd16fa1f3e"></a><!-- doxytag: member="Sgv::MainWindow::getMainShapeNode" ref="4a9db2c6831ba0071f4f22bd16fa1f3e" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SceneNode* Sgv::MainWindow::getMainShapeNode           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+メインシェープノードを得る 
+<p>
+このノードの子ノードは、マウスによるクリック選択の対象となる． また、世界の再ロード時にこのノード以下のノードはすべて消去される．<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>メインシェープノードへのポインタ </dd></dl>
+
+<p> <a class="el" href="_sgv_main_window_8h_source.html">SgvMainWindow.h</a> の <a class="el" href="_sgv_main_window_8h_source.html#l00157">157</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="bd3893f78964eccbea2adb32e847deea"></a><!-- doxytag: member="Sgv::MainWindow::getNodeAtScreenCoord" ref="bd3893f78964eccbea2adb32e847deea" args="(int x, int y, ExtEntityInfo **ppExtInfo=NULL)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SceneNode * Sgv::MainWindow::getNodeAtScreenCoord           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_ext_entity_info.html">ExtEntityInfo</a> **&nbsp;</td>
+          <td class="paramname"> <em>ppExtInfo</em> = <code>NULL</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ウィンドウの(x, y)にあるエンティティの属するノードを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>シーンノード（何も指し示していない場合はNULLが返る）</dd></dl>
+x, yはウィンドウサイズを基準とする値<p>
+(ex) <div class="fragment"><pre class="fragment">    (x, y)=(0, 0) スクリーン左上隅
+    (x, y)=(639, 399) スクリーン右下隅
+
+    #ウィンドウサイズが(640, 400)の場合
+</pre></div><p>
+ppExtInfoを与え、かつピックアップされたエンティティが 拡張情報(<a class="el" href="class_sgv_1_1_ext_entity_info.html" title="Ogreエンティティに持たせる追加情報.">ExtEntityInfo</a>)を持っていた場合は、そのエンティティが 保持しているExtEntityInfoへのポインタがppExtInfoに返る （この値をdeleteしてはいけない） 
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l01368">1368</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="7a52cdce718551696499887dfd95f96e"></a><!-- doxytag: member="Sgv::MainWindow::getOgreClientWindow" ref="7a52cdce718551696499887dfd95f96e" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_sgv_1_1_ogre_client_window.html">Sgv::OgreClientWindow</a>* Sgv::MainWindow::getOgreClientWindow           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Ogreクライアントウィンドウを返す. 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>Ogreクライアントウィンドウへのポインタ</dd></dl>
+Ogreクライアントウィンドウとは、 Ogre3Dライブラリにより3次元画像がレンダリングされる 画面中央のウィンドウのことである 
+<p> <a class="el" href="_sgv_main_window_8h_source.html">SgvMainWindow.h</a> の <a class="el" href="_sgv_main_window_8h_source.html#l00112">112</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="df000f46ec7eab11879c800cfcaef3c8"></a><!-- doxytag: member="Sgv::MainWindow::getOgreRootObject" ref="df000f46ec7eab11879c800cfcaef3c8" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Root* Sgv::MainWindow::getOgreRootObject           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Ogreルートオブジェクトを返す. 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>Ogreルートオブジェクト </dd></dl>
+
+<p> <a class="el" href="_sgv_main_window_8h_source.html">SgvMainWindow.h</a> の <a class="el" href="_sgv_main_window_8h_source.html#l00101">101</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="cd615bb8e27c134f8307edb7b5e0b669"></a><!-- doxytag: member="Sgv::MainWindow::getOtherShapeNode" ref="cd615bb8e27c134f8307edb7b5e0b669" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SceneNode* Sgv::MainWindow::getOtherShapeNode           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+メインシェープノードに属さないノードを得る 
+<p>
+このノードの子ノードは、マウスによるクリック選択の対象にならない． また、世界の再ロード時にもこのノード以下のノードは消去されない．<p>
+地面グリッドや、x, y, z軸の表示矢印などの特殊なノードがこのノードに属する．<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>その他のシェープノードへのポインタ </dd></dl>
+
+<p> <a class="el" href="_sgv_main_window_8h_source.html">SgvMainWindow.h</a> の <a class="el" href="_sgv_main_window_8h_source.html#l00169">169</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="eca223c55c685258b7819ce02877e23e"></a><!-- doxytag: member="Sgv::MainWindow::getRenderWindow" ref="eca223c55c685258b7819ce02877e23e" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">RenderWindow* Sgv::MainWindow::getRenderWindow           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+レンダーウィンドウを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>レンダーウィンドウ </dd></dl>
+
+<p> <a class="el" href="_sgv_main_window_8h_source.html">SgvMainWindow.h</a> の <a class="el" href="_sgv_main_window_8h_source.html#l00126">126</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="8e20f5bd705a326548dd8850bdd64189"></a><!-- doxytag: member="Sgv::MainWindow::getRenderWindowHeight" ref="8e20f5bd705a326548dd8850bdd64189" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Sgv::MainWindow::getRenderWindowHeight           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+レンダーウィンドウの高さを得る 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>レンダーウィンドウの高さ </dd></dl>
+
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l00647">647</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f68b13945d869c00ce21576f203e3afc"></a><!-- doxytag: member="Sgv::MainWindow::getRenderWindowWidth" ref="f68b13945d869c00ce21576f203e3afc" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Sgv::MainWindow::getRenderWindowWidth           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+レンダーウィンドウの幅を得る 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>レンダーウィンドウの幅 </dd></dl>
+
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l00642">642</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="313ea2852ef7eddcf6f9baf461d2ecdc"></a><!-- doxytag: member="Sgv::MainWindow::getRightPanel" ref="313ea2852ef7eddcf6f9baf461d2ecdc" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_wgu_1_1_multi_panel.html">Wgu::MultiPanel</a>* Sgv::MainWindow::getRightPanel           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+メインウィンドウ右のパネルへのポインタを得る 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>右パネルへのポインタ </dd></dl>
+
+<p> <a class="el" href="_sgv_main_window_8h_source.html">SgvMainWindow.h</a> の <a class="el" href="_sgv_main_window_8h_source.html#l00235">235</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="0ed03549f9c9959ad30044eab57faf5b"></a><!-- doxytag: member="Sgv::MainWindow::getRightPanelHWND" ref="0ed03549f9c9959ad30044eab57faf5b" args="(int iTab)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HWND Sgv::MainWindow::getRightPanelHWND           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iTab</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+メインウィンドウ右のパネルのウィンドウハンドルを得る 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>iTab</em>&nbsp;</td><td>[i] タブ番号</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>ウィンドウハンドル </dd></dl>
+
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l00652">652</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="7c26a938ac8f241d743c89cce327c950"></a><!-- doxytag: member="Sgv::MainWindow::getRightPanelProc" ref="7c26a938ac8f241d743c89cce327c950" args="(int iTab)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_wgu_1_1_base_panel_proc.html">Wgu::BasePanelProc</a> * Sgv::MainWindow::getRightPanelProc           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iTab</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+メインウィンドウ右のパネルのパネルプロシージャを得る 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>iTab</em>&nbsp;</td><td>[i] タブ番号</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>パネルプロシージャ </dd></dl>
+
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l00662">662</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="0ea729577bdad5c88b2caba4f3336161"></a><!-- doxytag: member="Sgv::MainWindow::getRootNode" ref="0ea729577bdad5c88b2caba4f3336161" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SceneNode* Sgv::MainWindow::getRootNode           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ルートノードを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>ルートノード </dd></dl>
+
+<p> <a class="el" href="_sgv_main_window_8h_source.html">SgvMainWindow.h</a> の <a class="el" href="_sgv_main_window_8h_source.html#l00147">147</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b0bd9b7de5df4f1e4f6173a200a36a1f"></a><!-- doxytag: member="Sgv::MainWindow::getSceneMgr" ref="b0bd9b7de5df4f1e4f6173a200a36a1f" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SceneManager* Sgv::MainWindow::getSceneMgr           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+シーンマネージャを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>シーンマネージャ </dd></dl>
+
+<p> <a class="el" href="_sgv_main_window_8h_source.html">SgvMainWindow.h</a> の <a class="el" href="_sgv_main_window_8h_source.html#l00119">119</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="60acfad71a549c8308f632e951c736f8"></a><!-- doxytag: member="Sgv::MainWindow::getStatusBarHWND" ref="60acfad71a549c8308f632e951c736f8" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HWND Sgv::MainWindow::getStatusBarHWND           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ステータスバーのウィンドウハンドルを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>ステータスバーのウィンドウハンドル </dd></dl>
+
+<p> <a class="el" href="_sgv_main_window_8h_source.html">SgvMainWindow.h</a> の <a class="el" href="_sgv_main_window_8h_source.html#l00094">94</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="75486201d0534b616edc3ef7cb761309"></a><!-- doxytag: member="Sgv::MainWindow::getWorld" ref="75486201d0534b616edc3ef7cb761309" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_sgv_1_1_x_m_l_world.html">XMLWorld</a>* Sgv::MainWindow::getWorld           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+XML世界オブジェクトを返す. 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>XML世界 </dd></dl>
+
+<p> <a class="el" href="_sgv_main_window_8h_source.html">SgvMainWindow.h</a> の <a class="el" href="_sgv_main_window_8h_source.html#l00358">358</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="dcf92c7faee2025be3b6e480642e7a83"></a><!-- doxytag: member="Sgv::MainWindow::getWorldFileName" ref="dcf92c7faee2025be3b6e480642e7a83" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * Sgv::MainWindow::getWorldFileName           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+現在編集中の世界XMLファイル名を返す 最後にロードまたはセーブしたファイル名となる． 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>世界XMLファイル名 </dd></dl>
+
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l00812">812</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="ee441ed66e10fa0d6e43e6dedf10fc87"></a><!-- doxytag: member="Sgv::MainWindow::getX3D" ref="ee441ed66e10fa0d6e43e6dedf10fc87" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_sgv_1_1_x3_d.html">Sgv::X3D</a>* Sgv::MainWindow::getX3D           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+X3Dオブジェクトへのポインタを得る. 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>X3Dオブジェクトへのポインタ </dd></dl>
+
+<p> <a class="el" href="_sgv_main_window_8h_source.html">SgvMainWindow.h</a> の <a class="el" href="_sgv_main_window_8h_source.html#l00206">206</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="6ea7387a13a043a95e3d2d9cdb39db98"></a><!-- doxytag: member="Sgv::MainWindow::getXMLFileList" ref="6ea7387a13a043a95e3d2d9cdb39db98" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_sgv_1_1_x_m_l_file_list.html">XMLFileList</a>* Sgv::MainWindow::getXMLFileList           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+XMLファイルリストを返す. 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>XMLファイルリスト </dd></dl>
+
+<p> <a class="el" href="_sgv_main_window_8h_source.html">SgvMainWindow.h</a> の <a class="el" href="_sgv_main_window_8h_source.html#l00313">313</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b0125985efb1940d01cb4c541e6abafb"></a><!-- doxytag: member="Sgv::MainWindow::init" ref="b0125985efb1940d01cb4c541e6abafb" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::MainWindow::init           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+SIGWorldEditorシステムを初期化する. 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l00262">262</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f6aee34d32e3292944c75e79483501a2"></a><!-- doxytag: member="Sgv::MainWindow::isCurrSelectedEntityHumanoid" ref="f6aee34d32e3292944c75e79483501a2" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::MainWindow::isCurrSelectedEntityHumanoid           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+現在マウスで選択中のエンティティ名はヒューマノイドか？ 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=Yes), false(=No)</dd></dl>
+現在選択中のエンティティがあるか否かに関わらず、フラグの値を返すだけ 
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l01111">1111</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="0678dc33ac30d0ef469429d1ea09117d"></a><!-- doxytag: member="Sgv::MainWindow::isEntitySelecting" ref="0678dc33ac30d0ef469429d1ea09117d" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::MainWindow::isEntitySelecting           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+現在マウスでエンティティを選択中か？ 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=選択中), false(=選択されていない) </dd></dl>
+
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l01101">1101</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="2f854a4ed8c0424c9c446fc01508a5ad"></a><!-- doxytag: member="Sgv::MainWindow::isShapeAddMode" ref="2f854a4ed8c0424c9c446fc01508a5ad" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::MainWindow::isShapeAddMode           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+形状追加モードか？ 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=Yes), false(=No) </dd></dl>
+
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l01116">1116</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="009b6166b28db8f52fded780c57a2889"></a><!-- doxytag: member="Sgv::MainWindow::loadWorldXMLFile" ref="009b6166b28db8f52fded780c57a2889" args="(const char *worldXMLFile)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::MainWindow::loadWorldXMLFile           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>worldXMLFile</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+世界XMLファイルのロード 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>worldXMLFile</em>&nbsp;</td><td>[i] 世界XMLファイル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l00688">688</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="facf3194423a58b6858af6bd420bfc1e"></a><!-- doxytag: member="Sgv::MainWindow::mainWndProc" ref="facf3194423a58b6858af6bd420bfc1e" args="(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LRESULT CALLBACK Sgv::MainWindow::mainWndProc           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hWnd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UINT&nbsp;</td>
+          <td class="paramname"> <em>uMsg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">WPARAM&nbsp;</td>
+          <td class="paramname"> <em>wParam</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">LPARAM&nbsp;</td>
+          <td class="paramname"> <em>lParam</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+メインウィンドウプロシージャ 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hWnd</em>&nbsp;</td><td>[i] ウィンドウハンドル </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>uMsg</em>&nbsp;</td><td>[i] ウィンドウメッセージ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>wParam</em>&nbsp;</td><td>[i] パラメータ1 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>lParam</em>&nbsp;</td><td>[i] パラメータ2</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>処理コード </dd></dl>
+
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l01425">1425</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="1c1fa10588fad4a949874d38a27a66ce"></a><!-- doxytag: member="Sgv::MainWindow::printMsg" ref="1c1fa10588fad4a949874d38a27a66ce" args="(const char *format,...)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::MainWindow::printMsg           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>...</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+メッセージ表示領域にメッセージを追加する． 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>format</em>&nbsp;</td><td>[i] メッセージ（printf風フォーマット使用可能） </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l01181">1181</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="4c595b439680ff79b3b2dbe47f4d6fc8"></a><!-- doxytag: member="Sgv::MainWindow::process" ref="4c595b439680ff79b3b2dbe47f4d6fc8" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::MainWindow::process           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+定期的処理 
+<p>
+メッセージループでアイドル状態のときに行う処理. 
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l01415">1415</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="6f394c4e4ce52e0194d8daecdb6d9bd8"></a><!-- doxytag: member="Sgv::MainWindow::readSettingsFile" ref="6f394c4e4ce52e0194d8daecdb6d9bd8" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::MainWindow::readSettingsFile           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+前回起動時の設定状態保存ファイル(SIGWE_settings.sav)を読み込む 
+<p>
+
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l00087">87</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f38fbf4b332b82b3c7908c6834bcb90c"></a><!-- doxytag: member="Sgv::MainWindow::readStartupConfigFile" ref="f38fbf4b332b82b3c7908c6834bcb90c" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::MainWindow::readStartupConfigFile           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+設定ファイル(SIGWE_startup.cfg)を読み込む 
+<p>
+
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l00122">122</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="bf9be714baf6b1346f9843d35a843337"></a><!-- doxytag: member="Sgv::MainWindow::saveSettingsFile" ref="bf9be714baf6b1346f9843d35a843337" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::MainWindow::saveSettingsFile           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+現在の設定値をSIGWE_settings.savに書き込む 
+<p>
+
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l00098">98</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="2d0223dc4f576579b8ddb2d30e00769b"></a><!-- doxytag: member="Sgv::MainWindow::saveWorldXMLFile" ref="2d0223dc4f576579b8ddb2d30e00769b" args="(const char *worldXMLFile)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::MainWindow::saveWorldXMLFile           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>worldXMLFile</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+世界XMLファイルへのセーブ 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>worldXMLFile</em>&nbsp;</td><td>[i] 世界XMLファイル.</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l00786">786</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="fd7d10da91726217361b4d0df02e9a31"></a><!-- doxytag: member="Sgv::MainWindow::searchXMLFileList" ref="fd7d10da91726217361b4d0df02e9a31" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::MainWindow::searchXMLFileList           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+カレントディレクトリにあるXMLファイルを検索し、 世界XMLファイル名、エンティティ定義XMLファイル名を リストアップする 
+<p>
+
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l00619">619</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="0d9dcaaa28eb7b797a5748ed31e3285d"></a><!-- doxytag: member="Sgv::MainWindow::setCurrSelectedEntityIsHumanoid" ref="0d9dcaaa28eb7b797a5748ed31e3285d" args="(bool bHumanoid)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::MainWindow::setCurrSelectedEntityIsHumanoid           </td>
+          <td>(</td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bHumanoid</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+現在マウスで選択中のエンティティはヒューマノイドである 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>bHumanoid</em>&nbsp;</td><td>[i] true(=Yes), false(=No) </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l01106">1106</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="a956268d9ae24abab4e1ef124225e3bf"></a><!-- doxytag: member="Sgv::MainWindow::setCurrSelectedEntName" ref="a956268d9ae24abab4e1ef124225e3bf" args="(const char *entName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::MainWindow::setCurrSelectedEntName           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>entName</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+現在マウスで選択中のエンティティ名をセット． NULLを与えると選択クリア 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>entName</em>&nbsp;</td><td>[i] 現在選択中のエンティティ名 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l01082">1082</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f0500d4c818e563d2108ce34cf28b3ca"></a><!-- doxytag: member="Sgv::MainWindow::showClassEditorWindow" ref="f0500d4c818e563d2108ce34cf28b3ca" args="(bool bShow)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::MainWindow::showClassEditorWindow           </td>
+          <td>(</td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bShow</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+クラスエディタウィンドウの表示状態を変更する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>bShow</em>&nbsp;</td><td>[i] true(=表示), false(=非表示) </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l00509">509</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="1dc2e5cf847eed2f331656cd076680f3"></a><!-- doxytag: member="Sgv::MainWindow::showWaitCursor" ref="1dc2e5cf847eed2f331656cd076680f3" args="(bool b)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::MainWindow::showWaitCursor           </td>
+          <td>(</td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>b</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+マウスカーソルの形状を設定する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>b</em>&nbsp;</td><td>[i] true(=砂時計カーソル), false(=通常カーソル) </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l01156">1156</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="19791b7d758cb6105a798404f0cfb2f6"></a><!-- doxytag: member="Sgv::MainWindow::updateEntityWithNode" ref="19791b7d758cb6105a798404f0cfb2f6" args="(const char *entName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::MainWindow::updateEntityWithNode           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>entName</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+XMLエンティティをOgreノードで更新. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>entName</em>&nbsp;</td><td>[i] エンティティ名</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l00856">856</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="e4fc39d8bb151c3fed3d4b0d0e81a090"></a><!-- doxytag: member="Sgv::MainWindow::updateMainWindowTitle" ref="e4fc39d8bb151c3fed3d4b0d0e81a090" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::MainWindow::updateMainWindowTitle           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+メインウィンドウタイトルバーを更新する 
+<p>
+タイトルバーには現在編集中の世界XMLファイル名が表示される 
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l01207">1207</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="4a273df556961eee252f60998f51cdcc"></a><!-- doxytag: member="Sgv::MainWindow::updateNodeWithEntity" ref="4a273df556961eee252f60998f51cdcc" args="(const char *entName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::MainWindow::updateNodeWithEntity           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>entName</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+OgreノードをXMLエンティティで更新. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>entName</em>&nbsp;</td><td>[i] エンティティ名</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l00885">885</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="50ada0e01a384a938a52b2b701a36793"></a><!-- doxytag: member="Sgv::MainWindow::updateWorldWithClassDefinition" ref="50ada0e01a384a938a52b2b701a36793" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::MainWindow::updateWorldWithClassDefinition           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+クラス定義の変更を世界に反映させる 
+<p>
+
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l01060">1060</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b99a0936f61d70889739462101fc635f"></a><!-- doxytag: member="Sgv::MainWindow::‾MainWindow" ref="b99a0936f61d70889739462101fc635f" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::MainWindow::‾MainWindow           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+デストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a> の <a class="el" href="_sgv_main_window_8cpp_source.html#l00083">83</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_sgv_main_window_8h_source.html">SgvMainWindow.h</a><li><a class="el" href="_sgv_main_window_8cpp_source.html">SgvMainWindow.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGWorldEditorに対してThu Jun 9 10:53:00 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

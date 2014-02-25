@@ -1,0 +1,429 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGWorldEditor: SgvXMLEntity.cpp ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>SgvXMLEntity.cpp</h1><a href="_sgv_x_m_l_entity_8cpp.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include "<a class="code" href="_sgv_x_m_l_entity_8h.html">SgvXMLEntity.h</a>"</span>
+<a name="l00002"></a>00002 <span class="preprocessor">#include "<a class="code" href="_sgv_x_m_l_util_8h.html">SgvXMLUtil.h</a>"</span>
+<a name="l00003"></a>00003 <span class="preprocessor">#include "<a class="code" href="_sgv_log_8h.html">SgvLog.h</a>"</span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include &lt;xercesc/util/PlatformUtils.hpp&gt;</span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include &lt;xercesc/dom/DOM.hpp&gt;</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include &lt;xercesc/parsers/XercesDOMParser.hpp&gt;</span>
+<a name="l00007"></a>00007 <span class="preprocessor">#include "DOMTreeErrorReporter.hpp"</span>
+<a name="l00008"></a>00008 <span class="preprocessor">#include "DOMPrintFilter.hpp"</span>
+<a name="l00009"></a>00009 <span class="preprocessor">#include "DOMPrintErrorHandler.hpp"</span>
+<a name="l00010"></a>00010 <span class="preprocessor">#include &lt;iostream&gt;</span>
+<a name="l00011"></a>00011 
+<a name="l00012"></a>00012 <span class="keyword">namespace </span>Sgv
+<a name="l00013"></a>00013 {<span class="comment"></span>
+<a name="l00014"></a>00014 <span class="comment">    ///////////////////////////////////////////////////////////////////</span>
+<a name="l00015"></a>00015 <span class="comment"></span>    <span class="comment">//</span>
+<a name="l00016"></a><a class="code" href="class_sgv_1_1_x_m_l_entity.html#b21070dede3b519b2a1eba115311013a">00016</a>     <a class="code" href="class_sgv_1_1_x_m_l_entity.html#b21070dede3b519b2a1eba115311013a" title="コンストラクタ">XMLEntity::XMLEntity</a>() : m_className(<span class="stringliteral">""</span>)
+<a name="l00017"></a>00017     {
+<a name="l00018"></a>00018     }
+<a name="l00019"></a>00019 
+<a name="l00020"></a><a class="code" href="class_sgv_1_1_x_m_l_entity.html#a1765a15d59ee822a8addbb6db548bb8">00020</a>     <a class="code" href="class_sgv_1_1_x_m_l_entity.html#a1765a15d59ee822a8addbb6db548bb8" title="デストラクタ">XMLEntity::‾XMLEntity</a>()
+<a name="l00021"></a>00021     {
+<a name="l00022"></a>00022         std::map&lt;std::string, XMLEntityAttrElem *&gt;::iterator i;
+<a name="l00023"></a>00023         <span class="keywordflow">for</span> (i=m_mapNameToAttrElems.begin(); i!=m_mapNameToAttrElems.end(); i++)
+<a name="l00024"></a>00024         {
+<a name="l00025"></a>00025             <a class="code" href="class_sgv_1_1_x_m_l_entity_attr_elem.html" title="XMLエンティティが含む1つの属性値.">XMLEntityAttrElem</a> *e = i-&gt;second;
+<a name="l00026"></a>00026             <span class="keywordflow">if</span> (e)
+<a name="l00027"></a>00027             {
+<a name="l00028"></a>00028                 <span class="keyword">delete</span> e;
+<a name="l00029"></a>00029             }
+<a name="l00030"></a>00030         }
+<a name="l00031"></a>00031 
+<a name="l00032"></a>00032         m_mapNameToAttrElems.clear();
+<a name="l00033"></a>00033     }
+<a name="l00034"></a>00034 
+<a name="l00035"></a><a class="code" href="class_sgv_1_1_x_m_l_entity.html#e9ac9e3686dd67dda8b69007cc138881">00035</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_x_m_l_entity.html#e9ac9e3686dd67dda8b69007cc138881" title="世界XMLファイルのinstanciateノードを読み込む">XMLEntity::readInstNode</a>(XERCES_CPP_NAMESPACE::DOMNode *instNode, std::vector&lt;std::string&gt; &amp;definedAttrNames)
+<a name="l00036"></a>00036     {
+<a name="l00037"></a>00037         DOMNodeList *children = instNode-&gt;getChildNodes();
+<a name="l00038"></a>00038 
+<a name="l00039"></a>00039         <span class="keywordtype">int</span> n = children-&gt;getLength();
+<a name="l00040"></a>00040         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;n; i++)
+<a name="l00041"></a>00041         {
+<a name="l00042"></a>00042             DOMNode *child = children-&gt;item(i);
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044             <span class="keywordtype">char</span> *childName = XMLString::transcode(child-&gt;getNodeName());
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046             <span class="keywordflow">if</span> (childName)
+<a name="l00047"></a>00047             {
+<a name="l00048"></a>00048                 <span class="keywordflow">if</span> (strcmp(childName, <span class="stringliteral">"set-attr-value"</span>) == 0)
+<a name="l00049"></a>00049                 {
+<a name="l00050"></a>00050                     std::string strName = <a class="code" href="class_sgv_1_1_x_m_l_entity.html#3e41bf8a4d4c610df441ab9c0fc64823" title="i番目の属性値(set-attr-valueタグ)を返す">Sgv::getAttrValue</a>(child, <span class="stringliteral">"name"</span>);
+<a name="l00051"></a>00051                     std::string strValue = <a class="code" href="class_sgv_1_1_x_m_l_entity.html#3e41bf8a4d4c610df441ab9c0fc64823" title="i番目の属性値(set-attr-valueタグ)を返す">Sgv::getAttrValue</a>(child, <span class="stringliteral">"value"</span>);
+<a name="l00052"></a>00052 
+<a name="l00053"></a>00053                     <span class="comment">// strName(=属性名)がdefinedAttrNamesの中にあるか調べる</span>
+<a name="l00054"></a>00054                     <span class="keywordtype">bool</span> bFound = <span class="keyword">false</span>;
+<a name="l00055"></a>00055                     std::vector&lt;std::string&gt;::iterator itr;
+<a name="l00056"></a>00056                     <span class="keywordflow">for</span> (itr=definedAttrNames.begin(); itr!=definedAttrNames.end(); itr++)
+<a name="l00057"></a>00057                     {
+<a name="l00058"></a>00058                         <span class="keyword">const</span> <span class="keywordtype">char</span> *p = itr-&gt;c_str();
+<a name="l00059"></a>00059                         <span class="keywordflow">if</span> (strcmp(p, strName.c_str())==0)
+<a name="l00060"></a>00060                         {
+<a name="l00061"></a>00061                             bFound = <span class="keyword">true</span>;
+<a name="l00062"></a>00062                             <span class="keywordflow">break</span>;
+<a name="l00063"></a>00063                         }
+<a name="l00064"></a>00064                     }
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066                     <span class="keywordflow">if</span> (bFound)
+<a name="l00067"></a>00067                     {
+<a name="l00068"></a>00068                         <span class="comment">// strNameはdefinedAttrNamesの中にあった．</span>
+<a name="l00069"></a>00069                         <span class="comment">// 属性値を登録する．</span>
+<a name="l00070"></a>00070                         <a class="code" href="class_sgv_1_1_x_m_l_entity.html#fb1ec7f994b1c6501e969de2e3a2faac" title="属性値を設定する．">setAttrValue</a>(strName.c_str(), strValue.c_str());
+<a name="l00071"></a>00071                     }
+<a name="l00072"></a>00072                     <span class="keywordflow">else</span>
+<a name="l00073"></a>00073                     {
+<a name="l00074"></a>00074                         <span class="comment">// 世界ファイル中の属性名が、クラス定義にない．</span>
+<a name="l00075"></a>00075                         <span class="comment">// この属性値は無視する．</span>
+<a name="l00076"></a>00076                         <a class="code" href="class_sgv_1_1_log.html#5e05b61c611e6611bdb22726f826d209" title="ログへ文字列を出力（書式指定可能．改行付き）">Log::println</a>(<span class="stringliteral">"attribute (%s) does not exit in class definition. this attribute was ignored."</span>, strName.c_str());
+<a name="l00077"></a>00077                     }
+<a name="l00078"></a>00078                 }
+<a name="l00079"></a>00079 
+<a name="l00080"></a>00080                 XMLString::release(&amp;childName);
+<a name="l00081"></a>00081             }
+<a name="l00082"></a>00082         }
+<a name="l00083"></a>00083 
+<a name="l00084"></a>00084         <span class="comment">// ロードした直後なので、このエンティティの変更フラグをクリアしておく</span>
+<a name="l00085"></a>00085         <a class="code" href="class_sgv_1_1_x_m_l_entity.html#9e2a0116c3d2800175df66c543778db0" title="エンティティの変更フラグを設定する">setModified</a>(<span class="keyword">false</span>);
+<a name="l00086"></a>00086     }
+<a name="l00087"></a>00087 
+<a name="l00088"></a>00088     DOMElement *<a class="code" href="class_sgv_1_1_x_m_l_entity.html#667553dee002cb880e281d77dd2182f6" title="このエンティティから世界XMLファイル用の instanciateノードを作る...">XMLEntity::createInstNode</a>(DOMDocument *doc)
+<a name="l00089"></a>00089     {
+<a name="l00090"></a>00090         <span class="keywordflow">if</span> (!doc) <span class="keywordflow">return</span> NULL;
+<a name="l00091"></a>00091 
+<a name="l00092"></a>00092         DOMElement *eInst = doc-&gt;createElement(<a class="code" href="class_sgv_1_1_x_str.html">XStr</a>(<span class="stringliteral">"instanciate"</span>).u());
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094         std::vector&lt;std::string&gt; attrNames = <a class="code" href="class_sgv_1_1_x_m_l_entity.html#dd06a7429795ba2623ec1da834bfe358" title="このエンティティの属性名(set-attr-valueタグ)の リストを返す">getAttrNames</a>();
+<a name="l00095"></a>00095         std::vector&lt;std::string&gt;::iterator i;
+<a name="l00096"></a>00096         <span class="keywordflow">for</span> (i=attrNames.begin(); i!=attrNames.end(); i++)
+<a name="l00097"></a>00097         {
+<a name="l00098"></a>00098             <span class="keyword">const</span> <span class="keywordtype">char</span> *pAttrName = i-&gt;c_str();
+<a name="l00099"></a>00099             <span class="keywordtype">bool</span> bDefinedInWorldFile = <a class="code" href="class_sgv_1_1_x_m_l_entity.html#bc685149e9f5bd6def1e38332004aee9" title="属性が世界ファイル内で定義されているかを調べる">isDefinedInWorldFile</a>(pAttrName);
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101             <span class="comment">// 世界ファイル内に存在する属性のみ書き出す</span>
+<a name="l00102"></a>00102             <span class="keywordflow">if</span> (bDefinedInWorldFile)
+<a name="l00103"></a>00103             {
+<a name="l00104"></a>00104                 <span class="keyword">const</span> <span class="keywordtype">char</span> *pAttrValue = <a class="code" href="class_sgv_1_1_x_m_l_entity.html#3e41bf8a4d4c610df441ab9c0fc64823" title="i番目の属性値(set-attr-valueタグ)を返す">getAttrValue</a>(pAttrName);
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106                 DOMElement *e = doc-&gt;createElement(<a class="code" href="class_sgv_1_1_x_str.html">XStr</a>(<span class="stringliteral">"set-attr-value"</span>).u());
+<a name="l00107"></a>00107                 e-&gt;setAttribute(<a class="code" href="class_sgv_1_1_x_str.html">XStr</a>(<span class="stringliteral">"name"</span>).u(), <a class="code" href="class_sgv_1_1_x_str.html">XStr</a>(pAttrName).u());
+<a name="l00108"></a>00108                 e-&gt;setAttribute(<a class="code" href="class_sgv_1_1_x_str.html">XStr</a>(<span class="stringliteral">"value"</span>).u(), <a class="code" href="class_sgv_1_1_x_str.html">XStr</a>(pAttrValue).u());
+<a name="l00109"></a>00109                 eInst-&gt;appendChild(e);
+<a name="l00110"></a>00110             }
+<a name="l00111"></a>00111         }
+<a name="l00112"></a>00112 
+<a name="l00113"></a>00113         <span class="keywordflow">return</span> eInst;
+<a name="l00114"></a>00114     }
+<a name="l00115"></a>00115 
+<a name="l00116"></a>00116     <span class="keywordtype">void</span> XMLEntity::addAttrFromDOMNode(DOMNode *attrNode)
+<a name="l00117"></a>00117     {
+<a name="l00118"></a>00118         <span class="keywordflow">if</span> (!attrNode) <span class="keywordflow">return</span>;
+<a name="l00119"></a>00119 
+<a name="l00120"></a>00120         std::string strName = <a class="code" href="class_sgv_1_1_x_m_l_entity.html#3e41bf8a4d4c610df441ab9c0fc64823" title="i番目の属性値(set-attr-valueタグ)を返す">Sgv::getAttrValue</a>(attrNode, <span class="stringliteral">"name"</span>);
+<a name="l00121"></a>00121         std::string strValue = <a class="code" href="class_sgv_1_1_x_m_l_entity.html#3e41bf8a4d4c610df441ab9c0fc64823" title="i番目の属性値(set-attr-valueタグ)を返す">Sgv::getAttrValue</a>(attrNode, <span class="stringliteral">"value"</span>);
+<a name="l00122"></a>00122 
+<a name="l00123"></a>00123         addAttrEntry(strName.c_str(), strValue.c_str());
+<a name="l00124"></a>00124     }
+<a name="l00125"></a>00125 
+<a name="l00126"></a>00126     <span class="keywordtype">void</span> XMLEntity::addAttrEntry(<span class="keyword">const</span> <span class="keywordtype">char</span> *attrName, <span class="keyword">const</span> <span class="keywordtype">char</span> *attrValue)
+<a name="l00127"></a>00127     {
+<a name="l00128"></a>00128         <span class="keywordflow">if</span> (!attrName || !*attrName) <span class="keywordflow">return</span>;
+<a name="l00129"></a>00129 
+<a name="l00130"></a>00130         XMLEntityAttrElem *pOld = findAttrElem(attrName);
+<a name="l00131"></a>00131         <span class="keywordflow">if</span> (pOld) <span class="keywordflow">return</span>;   <span class="comment">// すでに存在する</span>
+<a name="l00132"></a>00132 
+<a name="l00133"></a>00133         XMLEntityAttrElem *pNew = <span class="keyword">new</span> XMLEntityAttrElem(attrValue, <span class="keyword">false</span>);
+<a name="l00134"></a>00134 
+<a name="l00135"></a>00135         m_mapNameToAttrElems[attrName] = pNew;
+<a name="l00136"></a>00136     }
+<a name="l00137"></a>00137 
+<a name="l00138"></a><a class="code" href="class_sgv_1_1_x_m_l_entity.html#f2845123b2e94459a41ce567b021544e">00138</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_x_m_l_entity.html#f2845123b2e94459a41ce567b021544e" title="このエンティティのクラス名を設定する">XMLEntity::setClassName</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *className)
+<a name="l00139"></a>00139     {
+<a name="l00140"></a>00140         m_className = className ? className : <span class="stringliteral">""</span>;
+<a name="l00141"></a>00141     }
+<a name="l00142"></a>00142 
+<a name="l00143"></a><a class="code" href="class_sgv_1_1_x_m_l_entity.html#b2de258903ed4fd1addacf5ebc96dbe1">00143</a>     <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="class_sgv_1_1_x_m_l_entity.html#b2de258903ed4fd1addacf5ebc96dbe1" title="このエンティティのクラス名を返す">XMLEntity::getClassName</a>()
+<a name="l00144"></a>00144     {
+<a name="l00145"></a>00145         <span class="keywordflow">return</span> m_className.c_str();
+<a name="l00146"></a>00146     }
+<a name="l00147"></a>00147 
+<a name="l00148"></a><a class="code" href="class_sgv_1_1_x_m_l_entity.html#1899209386005ae480f7a2199f2f9cef">00148</a>     <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="class_sgv_1_1_x_m_l_entity.html#1899209386005ae480f7a2199f2f9cef" title="このエンティティ名を返す">XMLEntity::getName</a>()
+<a name="l00149"></a>00149     {
+<a name="l00150"></a>00150         <span class="keywordflow">return</span> <a class="code" href="class_sgv_1_1_x_m_l_entity.html#3e41bf8a4d4c610df441ab9c0fc64823" title="i番目の属性値(set-attr-valueタグ)を返す">getAttrValue</a>(<span class="stringliteral">"name"</span>);
+<a name="l00151"></a>00151     }
+<a name="l00152"></a>00152 
+<a name="l00153"></a><a class="code" href="class_sgv_1_1_x_m_l_entity.html#dd06a7429795ba2623ec1da834bfe358">00153</a>     std::vector&lt;std::string&gt; <a class="code" href="class_sgv_1_1_x_m_l_entity.html#dd06a7429795ba2623ec1da834bfe358" title="このエンティティの属性名(set-attr-valueタグ)の リストを返す">XMLEntity::getAttrNames</a>()
+<a name="l00154"></a>00154     {
+<a name="l00155"></a>00155         std::vector&lt;std::string&gt; attrNames;
+<a name="l00156"></a>00156 
+<a name="l00157"></a>00157         std::map&lt;std::string, XMLEntityAttrElem *&gt;::iterator i;
+<a name="l00158"></a>00158         <span class="keywordflow">for</span> (i=m_mapNameToAttrElems.begin(); i!=m_mapNameToAttrElems.end(); i++)
+<a name="l00159"></a>00159         {
+<a name="l00160"></a>00160             attrNames.push_back(i-&gt;first);
+<a name="l00161"></a>00161         }
+<a name="l00162"></a>00162 
+<a name="l00163"></a>00163         <span class="keywordflow">return</span> attrNames;
+<a name="l00164"></a>00164     }
+<a name="l00165"></a>00165 
+<a name="l00166"></a><a class="code" href="class_sgv_1_1_x_m_l_entity.html#9ce5b2d1cd2f5d4d856243cc03ae5e08">00166</a>     <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="class_sgv_1_1_x_m_l_entity.html#3e41bf8a4d4c610df441ab9c0fc64823" title="i番目の属性値(set-attr-valueタグ)を返す">XMLEntity::getAttrValue</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *attrName)
+<a name="l00167"></a>00167     {
+<a name="l00168"></a>00168         <a class="code" href="class_sgv_1_1_x_m_l_entity_attr_elem.html" title="XMLエンティティが含む1つの属性値.">XMLEntityAttrElem</a> *e = findAttrElem(attrName);
+<a name="l00169"></a>00169         <span class="keywordflow">if</span> (e)
+<a name="l00170"></a>00170         {
+<a name="l00171"></a>00171             <span class="comment">// attrNameに対応するエントリが存在．</span>
+<a name="l00172"></a>00172             <span class="comment">// 値を返す．</span>
+<a name="l00173"></a>00173             <span class="keywordflow">return</span> e-&gt;<a class="code" href="class_sgv_1_1_x_m_l_entity_attr_elem.html#6cb55f6bc1e5a55fa8c2c81b0ecda619" title="属性値を返す">getValue</a>();
+<a name="l00174"></a>00174         }
+<a name="l00175"></a>00175         <span class="keywordflow">else</span>
+<a name="l00176"></a>00176         {
+<a name="l00177"></a>00177             <span class="comment">// attrNameに対応するエントリは存在しない．</span>
+<a name="l00178"></a>00178             <span class="keywordflow">return</span> NULL;
+<a name="l00179"></a>00179         }
+<a name="l00180"></a>00180     }
+<a name="l00181"></a>00181 
+<a name="l00182"></a><a class="code" href="class_sgv_1_1_x_m_l_entity.html#27d54507b0b7e65dd5dafaddf3a8ea1b">00182</a>     <span class="keywordtype">double</span> <a class="code" href="class_sgv_1_1_x_m_l_entity.html#27d54507b0b7e65dd5dafaddf3a8ea1b" title="属性値(set-attr-valueタグ)を実数で返す">XMLEntity::getAttrValueDouble</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *attrName, <span class="keywordtype">double</span> defaultValue)
+<a name="l00183"></a>00183     {
+<a name="l00184"></a>00184         <span class="keyword">const</span> <span class="keywordtype">char</span> *v = <a class="code" href="class_sgv_1_1_x_m_l_entity.html#3e41bf8a4d4c610df441ab9c0fc64823" title="i番目の属性値(set-attr-valueタグ)を返す">getAttrValue</a>(attrName);
+<a name="l00185"></a>00185 
+<a name="l00186"></a>00186         <span class="keywordflow">return</span> v ? atof(v) : defaultValue;
+<a name="l00187"></a>00187     }
+<a name="l00188"></a>00188 
+<a name="l00189"></a><a class="code" href="class_sgv_1_1_x_m_l_entity.html#6e6f17052efcd122f2b97d998beef262">00189</a>     <span class="keywordtype">int</span> <a class="code" href="class_sgv_1_1_x_m_l_entity.html#6e6f17052efcd122f2b97d998beef262" title="属性値(set-attr-valueタグ)を整数で返す">XMLEntity::getAttrValueInt</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *attrName, <span class="keywordtype">int</span> defaultValue)
+<a name="l00190"></a>00190     {
+<a name="l00191"></a>00191         <span class="keyword">const</span> <span class="keywordtype">char</span> *v = <a class="code" href="class_sgv_1_1_x_m_l_entity.html#3e41bf8a4d4c610df441ab9c0fc64823" title="i番目の属性値(set-attr-valueタグ)を返す">getAttrValue</a>(attrName);
+<a name="l00192"></a>00192 
+<a name="l00193"></a>00193         <span class="keywordflow">return</span> v ? atoi(v) : defaultValue;
+<a name="l00194"></a>00194     }
+<a name="l00195"></a>00195 
+<a name="l00196"></a><a class="code" href="class_sgv_1_1_x_m_l_entity.html#fb1ec7f994b1c6501e969de2e3a2faac">00196</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_x_m_l_entity.html#fb1ec7f994b1c6501e969de2e3a2faac" title="属性値を設定する．">XMLEntity::setAttrValue</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *attrName, <span class="keyword">const</span> <span class="keywordtype">char</span> *attrValue)
+<a name="l00197"></a>00197     {
+<a name="l00198"></a>00198         <a class="code" href="class_sgv_1_1_x_m_l_entity_attr_elem.html" title="XMLエンティティが含む1つの属性値.">XMLEntityAttrElem</a> *e = findAttrElem(attrName);
+<a name="l00199"></a>00199         <span class="keywordflow">if</span> (e)
+<a name="l00200"></a>00200         {
+<a name="l00201"></a>00201             <span class="comment">// attrNameに対応するエントリが存在．</span>
+<a name="l00202"></a>00202             <span class="comment">// 値を書き換えるだけ</span>
+<a name="l00203"></a>00203             e-&gt;<a class="code" href="class_sgv_1_1_x_m_l_entity_attr_elem.html#62d2cdf55d5afae69bc6bf02d5b873ae" title="属性値を設定する">setValue</a>(attrValue);
+<a name="l00204"></a>00204         }
+<a name="l00205"></a>00205         <span class="keywordflow">else</span>
+<a name="l00206"></a>00206         {
+<a name="l00207"></a>00207             <span class="comment">// attrNameに対応するエントリは存在しない．</span>
+<a name="l00208"></a>00208             <span class="comment">// 新しいエントリを追加する</span>
+<a name="l00209"></a>00209             addAttrEntry(attrName, attrValue);
+<a name="l00210"></a>00210         }
+<a name="l00211"></a>00211 
+<a name="l00212"></a>00212         <a class="code" href="class_sgv_1_1_x_m_l_entity.html#97a0f37c84967ce98844131659323b97" title="属性の世界内定義の存在フラグを設定する">setDefinedInWorldFile</a>(attrName, <span class="keyword">true</span>);
+<a name="l00213"></a>00213         <a class="code" href="class_sgv_1_1_x_m_l_entity.html#9e2a0116c3d2800175df66c543778db0" title="エンティティの変更フラグを設定する">setModified</a>(<span class="keyword">true</span>);
+<a name="l00214"></a>00214     }
+<a name="l00215"></a>00215 
+<a name="l00216"></a><a class="code" href="class_sgv_1_1_x_m_l_entity.html#812f880e018195c021b43fe3d5771e7e">00216</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_x_m_l_entity.html#812f880e018195c021b43fe3d5771e7e" title="属性値を実数で設定する．">XMLEntity::setAttrValueDouble</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *attrName, <span class="keywordtype">double</span> value)
+<a name="l00217"></a>00217     {
+<a name="l00218"></a>00218         <span class="keywordtype">char</span> buf[128];
+<a name="l00219"></a>00219 
+<a name="l00220"></a>00220         sprintf(buf, <span class="stringliteral">"%f"</span>, value);
+<a name="l00221"></a>00221 
+<a name="l00222"></a>00222         <a class="code" href="class_sgv_1_1_x_m_l_entity.html#fb1ec7f994b1c6501e969de2e3a2faac" title="属性値を設定する．">setAttrValue</a>(attrName, buf);
+<a name="l00223"></a>00223     }
+<a name="l00224"></a>00224 
+<a name="l00225"></a><a class="code" href="class_sgv_1_1_x_m_l_entity.html#068950b1c5ddc8db5195365ee21250f2">00225</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_x_m_l_entity.html#068950b1c5ddc8db5195365ee21250f2" title="属性値を整数で設定する．">XMLEntity::setAttrValueInt</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *attrName, <span class="keywordtype">int</span> value)
+<a name="l00226"></a>00226     {
+<a name="l00227"></a>00227         <span class="keywordtype">char</span> buf[128];
+<a name="l00228"></a>00228 
+<a name="l00229"></a>00229         sprintf(buf, <span class="stringliteral">"%d"</span>, value);
+<a name="l00230"></a>00230 
+<a name="l00231"></a>00231         <a class="code" href="class_sgv_1_1_x_m_l_entity.html#fb1ec7f994b1c6501e969de2e3a2faac" title="属性値を設定する．">setAttrValue</a>(attrName, buf);
+<a name="l00232"></a>00232     }
+<a name="l00233"></a>00233 
+<a name="l00234"></a><a class="code" href="class_sgv_1_1_x_m_l_entity.html#39d24df7a3b6cce9f6183aeb1207d820">00234</a>     <span class="keywordtype">bool</span> <a class="code" href="class_sgv_1_1_x_m_l_entity.html#39d24df7a3b6cce9f6183aeb1207d820" title="属性が存在するか調べる">XMLEntity::hasAttr</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *attrName)
+<a name="l00235"></a>00235     {
+<a name="l00236"></a>00236         <a class="code" href="class_sgv_1_1_x_m_l_entity_attr_elem.html" title="XMLエンティティが含む1つの属性値.">XMLEntityAttrElem</a> *p = findAttrElem(attrName);
+<a name="l00237"></a>00237 
+<a name="l00238"></a>00238         <span class="keywordflow">return</span> p ? <span class="keyword">true</span> : <span class="keyword">false</span>;
+<a name="l00239"></a>00239     }
+<a name="l00240"></a>00240 
+<a name="l00241"></a><a class="code" href="class_sgv_1_1_x_m_l_entity.html#7425cb872659a4ffaa99217e0f8caed3">00241</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_x_m_l_entity.html#7425cb872659a4ffaa99217e0f8caed3" title="属性を削除する">XMLEntity::deleteAttr</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *attrName)
+<a name="l00242"></a>00242     {
+<a name="l00243"></a>00243         std::map&lt;std::string, XMLEntityAttrElem *&gt;::iterator i;
+<a name="l00244"></a>00244 
+<a name="l00245"></a>00245         i = m_mapNameToAttrElems.find(attrName ? attrName : <span class="stringliteral">""</span>);
+<a name="l00246"></a>00246         <span class="keywordflow">if</span> (i != m_mapNameToAttrElems.end())
+<a name="l00247"></a>00247         {
+<a name="l00248"></a>00248             <span class="comment">// 発見</span>
+<a name="l00249"></a>00249 
+<a name="l00250"></a>00250             <span class="comment">// 消す</span>
+<a name="l00251"></a>00251             <a class="code" href="class_sgv_1_1_x_m_l_entity_attr_elem.html" title="XMLエンティティが含む1つの属性値.">XMLEntityAttrElem</a> *p = i-&gt;second;
+<a name="l00252"></a>00252             <span class="keywordflow">if</span> (p) <span class="keyword">delete</span> p;
+<a name="l00253"></a>00253 
+<a name="l00254"></a>00254             <span class="comment">// マップからも消す</span>
+<a name="l00255"></a>00255             m_mapNameToAttrElems.erase(i);
+<a name="l00256"></a>00256         }
+<a name="l00257"></a>00257     }
+<a name="l00258"></a>00258 
+<a name="l00259"></a><a class="code" href="class_sgv_1_1_x_m_l_entity.html#f20fd1e8390c33b82956557f533f8a46">00259</a>     <span class="keywordtype">bool</span> <a class="code" href="class_sgv_1_1_x_m_l_entity.html#f20fd1e8390c33b82956557f533f8a46" title="このエンティティの属性値が変更されたか否かを調べる">XMLEntity::isModified</a>()
+<a name="l00260"></a>00260     {
+<a name="l00261"></a>00261         <span class="keywordflow">return</span> m_bModified;
+<a name="l00262"></a>00262     }
+<a name="l00263"></a>00263 
+<a name="l00264"></a><a class="code" href="class_sgv_1_1_x_m_l_entity.html#9e2a0116c3d2800175df66c543778db0">00264</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_x_m_l_entity.html#9e2a0116c3d2800175df66c543778db0" title="エンティティの変更フラグを設定する">XMLEntity::setModified</a>(<span class="keywordtype">bool</span> b)
+<a name="l00265"></a>00265     {
+<a name="l00266"></a>00266         m_bModified = b;
+<a name="l00267"></a>00267     }
+<a name="l00268"></a>00268 
+<a name="l00269"></a><a class="code" href="class_sgv_1_1_x_m_l_entity.html#bc685149e9f5bd6def1e38332004aee9">00269</a>     <span class="keywordtype">bool</span> <a class="code" href="class_sgv_1_1_x_m_l_entity.html#bc685149e9f5bd6def1e38332004aee9" title="属性が世界ファイル内で定義されているかを調べる">XMLEntity::isDefinedInWorldFile</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *attrName)
+<a name="l00270"></a>00270     {
+<a name="l00271"></a>00271         <a class="code" href="class_sgv_1_1_x_m_l_entity_attr_elem.html" title="XMLエンティティが含む1つの属性値.">XMLEntityAttrElem</a> *e = findAttrElem(attrName);
+<a name="l00272"></a>00272         <span class="keywordflow">if</span> (e)
+<a name="l00273"></a>00273         {
+<a name="l00274"></a>00274             <span class="comment">// attrNameに対応するエントリが存在．</span>
+<a name="l00275"></a>00275             <span class="comment">// 変更フラグの値を返す</span>
+<a name="l00276"></a>00276             <span class="keywordflow">return</span> e-&gt;<a class="code" href="class_sgv_1_1_x_m_l_entity_attr_elem.html#1158845000a0bdb8ba48dec76789da70" title="世界ファイル内での定義存在フラグを返す">isDefinedInWorldFile</a>();
+<a name="l00277"></a>00277         }
+<a name="l00278"></a>00278         <span class="keywordflow">else</span>
+<a name="l00279"></a>00279         {
+<a name="l00280"></a>00280             <span class="comment">// 見つからなかった場合はfalseを返す</span>
+<a name="l00281"></a>00281             <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00282"></a>00282         }
+<a name="l00283"></a>00283     }
+<a name="l00284"></a>00284 
+<a name="l00285"></a><a class="code" href="class_sgv_1_1_x_m_l_entity.html#97a0f37c84967ce98844131659323b97">00285</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_x_m_l_entity.html#97a0f37c84967ce98844131659323b97" title="属性の世界内定義の存在フラグを設定する">XMLEntity::setDefinedInWorldFile</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *attrName, <span class="keywordtype">bool</span> bDefinedInWorldFile)
+<a name="l00286"></a>00286     {
+<a name="l00287"></a>00287         <a class="code" href="class_sgv_1_1_x_m_l_entity_attr_elem.html" title="XMLエンティティが含む1つの属性値.">XMLEntityAttrElem</a> *e = findAttrElem(attrName);
+<a name="l00288"></a>00288         <span class="keywordflow">if</span> (e)
+<a name="l00289"></a>00289         {
+<a name="l00290"></a>00290             <span class="comment">// attrNameに対応するエントリが存在．</span>
+<a name="l00291"></a>00291             <span class="comment">// 値を書き換えるだけ</span>
+<a name="l00292"></a>00292             e-&gt;<a class="code" href="class_sgv_1_1_x_m_l_entity_attr_elem.html#b4666282e158350e2c72cba43f51ee2d" title="世界ファイル内での定義存在を設定する">setDefinedInWorldFile</a>(bDefinedInWorldFile);
+<a name="l00293"></a>00293         }
+<a name="l00294"></a>00294         <span class="keywordflow">else</span>
+<a name="l00295"></a>00295         {
+<a name="l00296"></a>00296             <span class="comment">// 見つからなかった場合は何もしない</span>
+<a name="l00297"></a>00297         }
+<a name="l00298"></a>00298     }
+<a name="l00299"></a>00299 
+<a name="l00300"></a><a class="code" href="class_sgv_1_1_x_m_l_entity.html#e2dbd21da9cd002c11fb01cb89427437">00300</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_x_m_l_entity.html#e2dbd21da9cd002c11fb01cb89427437" title="このエンティティのすべての世界内定義存在フラグをクリアする...">XMLEntity::clearAllFlag_DefinedInWorldFile</a>()
+<a name="l00301"></a>00301     {
+<a name="l00302"></a>00302         std::map&lt;std::string, XMLEntityAttrElem *&gt;::iterator i;
+<a name="l00303"></a>00303         <span class="keywordflow">for</span> (i=m_mapNameToAttrElems.begin(); i!=m_mapNameToAttrElems.end(); i++)
+<a name="l00304"></a>00304         {
+<a name="l00305"></a>00305             <a class="code" href="class_sgv_1_1_x_m_l_entity_attr_elem.html" title="XMLエンティティが含む1つの属性値.">XMLEntityAttrElem</a> *e = i-&gt;second;
+<a name="l00306"></a>00306             <span class="keywordflow">if</span> (e)
+<a name="l00307"></a>00307             {
+<a name="l00308"></a>00308                 e-&gt;<a class="code" href="class_sgv_1_1_x_m_l_entity_attr_elem.html#b4666282e158350e2c72cba43f51ee2d" title="世界ファイル内での定義存在を設定する">setDefinedInWorldFile</a>(<span class="keyword">false</span>);
+<a name="l00309"></a>00309             }
+<a name="l00310"></a>00310         }
+<a name="l00311"></a>00311     }
+<a name="l00312"></a>00312 
+<a name="l00313"></a>00313     <a class="code" href="class_sgv_1_1_x_m_l_entity_attr_elem.html" title="XMLエンティティが含む1つの属性値.">XMLEntityAttrElem</a> *XMLEntity::findAttrElem(<span class="keyword">const</span> <span class="keywordtype">char</span> *attrName)
+<a name="l00314"></a>00314     {
+<a name="l00315"></a>00315         std::map&lt;std::string, XMLEntityAttrElem *&gt;::iterator i;
+<a name="l00316"></a>00316 
+<a name="l00317"></a>00317         i = m_mapNameToAttrElems.find(attrName ? attrName : <span class="stringliteral">""</span>);
+<a name="l00318"></a>00318         <span class="keywordflow">if</span> (i != m_mapNameToAttrElems.end())
+<a name="l00319"></a>00319         {
+<a name="l00320"></a>00320             <span class="comment">// attrNameに対応するエントリが存在</span>
+<a name="l00321"></a>00321             <span class="keywordflow">return</span> i-&gt;second;
+<a name="l00322"></a>00322         }
+<a name="l00323"></a>00323         <span class="keywordflow">else</span>
+<a name="l00324"></a>00324         {
+<a name="l00325"></a>00325             <span class="comment">// attrNameに対応するエントリは存在しない</span>
+<a name="l00326"></a>00326             <span class="keywordflow">return</span> NULL;
+<a name="l00327"></a>00327         }
+<a name="l00328"></a>00328     }
+<a name="l00329"></a>00329 
+<a name="l00330"></a><a class="code" href="class_sgv_1_1_x_m_l_entity.html#e7ed71daf1c437c11a6157e081072240">00330</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_x_m_l_entity.html#e7ed71daf1c437c11a6157e081072240">XMLEntity::dump</a>(FILE *fp)
+<a name="l00331"></a>00331     {
+<a name="l00332"></a>00332         fprintf(fp, <span class="stringliteral">"*** entity(%s) (class=%s) ***¥n"</span>, <a class="code" href="class_sgv_1_1_x_m_l_entity.html#3e41bf8a4d4c610df441ab9c0fc64823" title="i番目の属性値(set-attr-valueタグ)を返す">getAttrValue</a>(<span class="stringliteral">"name"</span>), <a class="code" href="class_sgv_1_1_x_m_l_entity.html#b2de258903ed4fd1addacf5ebc96dbe1" title="このエンティティのクラス名を返す">getClassName</a>());
+<a name="l00333"></a>00333 
+<a name="l00334"></a>00334         std::vector&lt;std::string&gt; attrNames = <a class="code" href="class_sgv_1_1_x_m_l_entity.html#dd06a7429795ba2623ec1da834bfe358" title="このエンティティの属性名(set-attr-valueタグ)の リストを返す">getAttrNames</a>();
+<a name="l00335"></a>00335         std::vector&lt;std::string&gt;::iterator i;
+<a name="l00336"></a>00336         <span class="keywordflow">for</span> (i=attrNames.begin(); i!=attrNames.end(); i++)
+<a name="l00337"></a>00337         {
+<a name="l00338"></a>00338             <span class="keyword">const</span> <span class="keywordtype">char</span> *attrName = i-&gt;c_str();
+<a name="l00339"></a>00339             <span class="keywordtype">bool</span> bDefinedInWorldFile = <a class="code" href="class_sgv_1_1_x_m_l_entity.html#bc685149e9f5bd6def1e38332004aee9" title="属性が世界ファイル内で定義されているかを調べる">isDefinedInWorldFile</a>(attrName);
+<a name="l00340"></a>00340             fprintf(fp, <span class="stringliteral">"¥t(%s)=(%s) %s¥n"</span>,
+<a name="l00341"></a>00341                 attrName,
+<a name="l00342"></a>00342                 <a class="code" href="class_sgv_1_1_x_m_l_entity.html#3e41bf8a4d4c610df441ab9c0fc64823" title="i番目の属性値(set-attr-valueタグ)を返す">getAttrValue</a>(attrName),
+<a name="l00343"></a>00343                 bDefinedInWorldFile ? <span class="stringliteral">"defined in WorldFile"</span> : <span class="stringliteral">""</span>);
+<a name="l00344"></a>00344         }
+<a name="l00345"></a>00345     }
+<a name="l00346"></a>00346 <span class="comment"></span>
+<a name="l00347"></a>00347 <span class="comment">    ///////////////////////////////////////////////////////////////////////</span>
+<a name="l00348"></a>00348 <span class="comment"></span>    <span class="comment">//</span>
+<a name="l00349"></a><a class="code" href="class_sgv_1_1_x_m_l_entity_attr_elem.html#fd3b71b1e7dd8ae29cbcf4e758298a17">00349</a>     <a class="code" href="class_sgv_1_1_x_m_l_entity_attr_elem.html#fd3b71b1e7dd8ae29cbcf4e758298a17" title="コンストラクタ">XMLEntityAttrElem::XMLEntityAttrElem</a>() :
+<a name="l00350"></a>00350         m_value(<span class="stringliteral">""</span>),
+<a name="l00351"></a>00351         m_bDefinedInWorldFile(false)
+<a name="l00352"></a>00352     {
+<a name="l00353"></a>00353     }
+<a name="l00354"></a>00354 
+<a name="l00355"></a><a class="code" href="class_sgv_1_1_x_m_l_entity_attr_elem.html#d32075d353dce8373a0f743db5d5734d">00355</a>     <a class="code" href="class_sgv_1_1_x_m_l_entity_attr_elem.html#fd3b71b1e7dd8ae29cbcf4e758298a17" title="コンストラクタ">XMLEntityAttrElem::XMLEntityAttrElem</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *pValue, <span class="keywordtype">bool</span> bDefinedInWorldFile) :
+<a name="l00356"></a>00356         m_bDefinedInWorldFile(bDefinedInWorldFile)
+<a name="l00357"></a>00357     {
+<a name="l00358"></a>00358         m_value = pValue ? pValue : <span class="stringliteral">""</span>;
+<a name="l00359"></a>00359     }
+<a name="l00360"></a>00360 }
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>SIGWorldEditorに対してThu Jun 9 10:52:59 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

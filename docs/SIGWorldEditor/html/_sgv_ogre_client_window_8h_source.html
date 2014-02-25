@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGWorldEditor: SgvOgreClientWindow.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>SgvOgreClientWindow.h</h1><a href="_sgv_ogre_client_window_8h.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef _SGV_OGRE_CLIENT_WINDOW_H_</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define _SGV_OGRE_CLIENT_WINDOW_H_</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include &lt;windows.h&gt;</span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include "Ogre.h"</span>
+<a name="l00006"></a>00006 
+<a name="l00007"></a>00007 <span class="keyword">using namespace </span>Ogre;
+<a name="l00008"></a>00008 
+<a name="l00009"></a>00009 <span class="keyword">namespace </span>Sgv
+<a name="l00010"></a>00010 {
+<a name="l00011"></a>00011     <span class="keyword">class </span>MainWindow;
+<a name="l00012"></a>00012 <span class="comment"></span>
+<a name="l00013"></a>00013 <span class="comment">    ////////////////////////////////////////////////////////////////</span>
+<a name="l00014"></a>00014 <span class="comment"></span>    <span class="comment">//</span><span class="comment"></span>
+<a name="l00015"></a>00015 <span class="comment">    /// @brief メインウィンドウ内のOgre形状表示用ウィンドウ</span>
+<a name="l00016"></a>00016 <span class="comment">    ///</span>
+<a name="l00017"></a><a class="code" href="class_sgv_1_1_ogre_client_window.html">00017</a> <span class="comment"></span>    <span class="keyword">class </span><a class="code" href="class_sgv_1_1_ogre_client_window.html" title="メインウィンドウ内のOgre形状表示用ウィンドウ">OgreClientWindow</a>
+<a name="l00018"></a>00018     {
+<a name="l00019"></a>00019     <span class="keyword">public</span>:
+<a name="l00020"></a>00020         <span class="comment">// -------------------------------------------------------</span><span class="comment"></span>
+<a name="l00021"></a>00021 <span class="comment">        /// @brief コンストラクタ</span>
+<a name="l00022"></a>00022 <span class="comment"></span>        <span class="comment">// -------------------------------------------------------</span>
+<a name="l00023"></a>00023         <a class="code" href="class_sgv_1_1_ogre_client_window.html#c06eeea644004392226a05d6e7d57045" title="コンストラクタ">OgreClientWindow</a>();
+<a name="l00024"></a>00024 
+<a name="l00025"></a>00025         <span class="comment">// -------------------------------------------------------</span><span class="comment"></span>
+<a name="l00026"></a>00026 <span class="comment">        /// @brief デストラクタ</span>
+<a name="l00027"></a>00027 <span class="comment"></span>        <span class="comment">// -------------------------------------------------------</span>
+<a name="l00028"></a>00028         <span class="keyword">virtual</span> <a class="code" href="class_sgv_1_1_ogre_client_window.html#79d7ab6f6a86d96f273d44b2649aa2b6" title="デストラクタ">‾OgreClientWindow</a>();
+<a name="l00029"></a>00029 
+<a name="l00030"></a>00030         <span class="comment">// ============================================================</span>
+<a name="l00031"></a>00031         <span class="comment">//  ウィンドウ作成、操作</span>
+<a name="l00032"></a>00032         <span class="comment">// ============================================================</span>
+<a name="l00033"></a>00033 
+<a name="l00034"></a>00034         <span class="comment">// -------------------------------------------------------</span><span class="comment"></span>
+<a name="l00035"></a>00035 <span class="comment">        /// @brief Ogreクライアントウィンドウを作成する</span>
+<a name="l00036"></a>00036 <span class="comment">        ///</span>
+<a name="l00037"></a>00037 <span class="comment">        /// @param hInst [i] アプリケーションインスタンス</span>
+<a name="l00038"></a>00038 <span class="comment">        /// @param hwndMain [i] メインウィンドウハンドル</span>
+<a name="l00039"></a>00039 <span class="comment">        /// @param x [i] 位置(x座標)</span>
+<a name="l00040"></a>00040 <span class="comment">        /// @param y [i] 位置(y座標)</span>
+<a name="l00041"></a>00041 <span class="comment">        /// @param w [i] 幅</span>
+<a name="l00042"></a>00042 <span class="comment">        /// @param h [i] 高さ</span>
+<a name="l00043"></a>00043 <span class="comment">        ///</span>
+<a name="l00044"></a>00044 <span class="comment">        /// @return true(=成功), false(=失敗)</span>
+<a name="l00045"></a>00045 <span class="comment"></span>        <span class="comment">// -------------------------------------------------------</span>
+<a name="l00046"></a>00046         <span class="keywordtype">bool</span> <a class="code" href="class_sgv_1_1_ogre_client_window.html#d8991f80ea875bc1e9a9ec726e02019f" title="Ogreクライアントウィンドウを作成する.">create</a>(HINSTANCE hInst, HWND hwndMain, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> w, <span class="keywordtype">int</span> h);
+<a name="l00047"></a>00047 
+<a name="l00048"></a>00048         <span class="comment">// -------------------------------------------------------</span><span class="comment"></span>
+<a name="l00049"></a>00049 <span class="comment">        /// @brief このウィンドウのウィンドウハンドルを返す</span>
+<a name="l00050"></a>00050 <span class="comment">        ///</span>
+<a name="l00051"></a>00051 <span class="comment">        /// @return ウィンドウハンドル</span>
+<a name="l00052"></a>00052 <span class="comment"></span>        <span class="comment">// -------------------------------------------------------</span>
+<a name="l00053"></a><a class="code" href="class_sgv_1_1_ogre_client_window.html#7c5d649dc0da35914b3d925671f487be">00053</a>         HWND <a class="code" href="class_sgv_1_1_ogre_client_window.html#7c5d649dc0da35914b3d925671f487be" title="このウィンドウのウィンドウハンドルを返す">getHWND</a>() { <span class="keywordflow">return</span> m_hwndOgreClient; }
+<a name="l00054"></a>00054 
+<a name="l00055"></a>00055         <span class="comment">// -------------------------------------------------------</span><span class="comment"></span>
+<a name="l00056"></a>00056 <span class="comment">        /// @brief 現在選択中のノードがあればそれを消す</span>
+<a name="l00057"></a>00057 <span class="comment">        ///</span>
+<a name="l00058"></a>00058 <span class="comment">        /// @param win [i] メインウィンドウ</span>
+<a name="l00059"></a>00059 <span class="comment"></span>        <span class="comment">// -------------------------------------------------------</span>
+<a name="l00060"></a>00060         <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_ogre_client_window.html#9e5645b9797bdeb909f3ea465f52f264" title="現在選択中のノードがあればそれを消す">deleteSelectedNode</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win);
+<a name="l00061"></a>00061 
+<a name="l00062"></a>00062         <span class="comment">// ===============================================================</span>
+<a name="l00063"></a>00063         <span class="comment">//  イベントハンドラ</span>
+<a name="l00064"></a>00064         <span class="comment">// ===============================================================</span>
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066         <span class="comment">// ---------------------------------------------------</span><span class="comment"></span>
+<a name="l00067"></a>00067 <span class="comment">        /// @brief マウス左ボタンが押されると呼ばれる</span>
+<a name="l00068"></a>00068 <span class="comment">        ///</span>
+<a name="l00069"></a>00069 <span class="comment">        /// @param win [i] メインウィンドウ</span>
+<a name="l00070"></a>00070 <span class="comment">        /// @param hWnd [i] このウィンドウのウィンドウハンドル</span>
+<a name="l00071"></a>00071 <span class="comment">        /// @param x [i] マウスをクリックした位置</span>
+<a name="l00072"></a>00072 <span class="comment">        /// @param y [i] マウスをクリックした位置</span>
+<a name="l00073"></a>00073 <span class="comment"></span>        <span class="comment">// ---------------------------------------------------</span>
+<a name="l00074"></a>00074         <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_ogre_client_window.html#1511eb924e07ec3b4072886ec71bf5a8" title="マウス左ボタンが押されると呼ばれる">onLButtonDown</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win, HWND hWnd, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);
+<a name="l00075"></a>00075 
+<a name="l00076"></a>00076         <span class="comment">// ---------------------------------------------------</span><span class="comment"></span>
+<a name="l00077"></a>00077 <span class="comment">        /// @brief マウス左ボタンが離されると呼ばれる</span>
+<a name="l00078"></a>00078 <span class="comment">        ///</span>
+<a name="l00079"></a>00079 <span class="comment">        /// @param win [i] メインウィンドウ</span>
+<a name="l00080"></a>00080 <span class="comment"></span>        <span class="comment">// ---------------------------------------------------</span>
+<a name="l00081"></a>00081         <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_ogre_client_window.html#6011dd85d9edf2f86ebea0ec311adc1a" title="マウス左ボタンが離されると呼ばれる">onLButtonUp</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win);
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083         <span class="comment">// ---------------------------------------------------</span><span class="comment"></span>
+<a name="l00084"></a>00084 <span class="comment">        /// @brief マウス右ボタンが押されると呼ばれる</span>
+<a name="l00085"></a>00085 <span class="comment">        ///</span>
+<a name="l00086"></a>00086 <span class="comment">        /// @param win [i] メインウィンドウ</span>
+<a name="l00087"></a>00087 <span class="comment">        /// @param hWnd [i] このウィンドウのウィンドウハンドル</span>
+<a name="l00088"></a>00088 <span class="comment">        /// @param x [i] マウスをクリックした位置</span>
+<a name="l00089"></a>00089 <span class="comment">        /// @param y [i] マウスをクリックした位置</span>
+<a name="l00090"></a>00090 <span class="comment"></span>        <span class="comment">// ---------------------------------------------------</span>
+<a name="l00091"></a>00091         <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_ogre_client_window.html#3018aa823e5e13df3e9e8dfbeac2c154" title="マウス右ボタンが押されると呼ばれる">onRButtonDown</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win, HWND hWnd, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093         <span class="comment">// ---------------------------------------------------</span><span class="comment"></span>
+<a name="l00094"></a>00094 <span class="comment">        /// @brief マウス右ボタンが離されると呼ばれる</span>
+<a name="l00095"></a>00095 <span class="comment">        ///</span>
+<a name="l00096"></a>00096 <span class="comment">        /// @param win [i] メインウィンドウ</span>
+<a name="l00097"></a>00097 <span class="comment"></span>        <span class="comment">// ---------------------------------------------------</span>
+<a name="l00098"></a>00098         <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_ogre_client_window.html#350458094c93718e5eb8f469f569ee34" title="マウス右ボタンが離されると呼ばれる">onRButtonUp</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win);
+<a name="l00099"></a>00099 
+<a name="l00100"></a>00100         <span class="comment">// ---------------------------------------------------</span><span class="comment"></span>
+<a name="l00101"></a>00101 <span class="comment">        /// @brief マウスが移動した際に呼ばれる</span>
+<a name="l00102"></a>00102 <span class="comment">        ///</span>
+<a name="l00103"></a>00103 <span class="comment">        /// @param win [i] メインウィンドウ</span>
+<a name="l00104"></a>00104 <span class="comment">        /// @param hWnd [i] このウィンドウのウィンドウハンドル</span>
+<a name="l00105"></a>00105 <span class="comment">        /// @param x [i] マウスの位置</span>
+<a name="l00106"></a>00106 <span class="comment">        /// @param y [i] マウスの位置</span>
+<a name="l00107"></a>00107 <span class="comment">        /// @param bLButtonPress [i] マウス左ボタンを押しているならtrue</span>
+<a name="l00108"></a>00108 <span class="comment">        /// @param bRButtonPress [i] マウス右ボタンを押しているならtrue</span>
+<a name="l00109"></a>00109 <span class="comment">        /// @param bShiftPress [i] シフトキーを押しているならtrue</span>
+<a name="l00110"></a>00110 <span class="comment">        /// @param bCtrlPress [i] コントロールキーを押しているならtrue</span>
+<a name="l00111"></a>00111 <span class="comment"></span>        <span class="comment">// ---------------------------------------------------</span>
+<a name="l00112"></a>00112         <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_ogre_client_window.html#428860726abc21de3c65a1a71ccb3ea0" title="マウスが移動した際に呼ばれる">onMouseMove</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win, HWND hWnd, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">bool</span> bLButtonPress, <span class="keywordtype">bool</span> bRButtonPress, <span class="keywordtype">bool</span> bShiftPress, <span class="keywordtype">bool</span> bCtrlPress);
+<a name="l00113"></a>00113 
+<a name="l00114"></a>00114         <span class="comment">// ---------------------------------------------------</span><span class="comment"></span>
+<a name="l00115"></a>00115 <span class="comment">        /// @brief Deleteキーが押されると呼ばれる</span>
+<a name="l00116"></a>00116 <span class="comment">        ///</span>
+<a name="l00117"></a>00117 <span class="comment">        /// @param win [i] メインウィンドウ</span>
+<a name="l00118"></a>00118 <span class="comment"></span>        <span class="comment">// ---------------------------------------------------</span>
+<a name="l00119"></a>00119         <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_ogre_client_window.html#26c7ba3843ac451127a5f91a4a8e8842" title="Deleteキーが押されると呼ばれる.">onKeyDown_Delete</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win);
+<a name="l00120"></a>00120 
+<a name="l00121"></a>00121         <span class="comment">// -------------------------------------------------------</span><span class="comment"></span>
+<a name="l00122"></a>00122 <span class="comment">        /// @brief ウィンドウプロシージャ</span>
+<a name="l00123"></a>00123 <span class="comment">        ///</span>
+<a name="l00124"></a>00124 <span class="comment">        /// @param hWnd [i] ウィンドウハンドル</span>
+<a name="l00125"></a>00125 <span class="comment">        /// @param uMsg [i] ウィンドウメッセージ</span>
+<a name="l00126"></a>00126 <span class="comment">        /// @param wParam [i] パラメータ1</span>
+<a name="l00127"></a>00127 <span class="comment">        /// @param lParam [i] パラメータ2</span>
+<a name="l00128"></a>00128 <span class="comment">        ///</span>
+<a name="l00129"></a>00129 <span class="comment">        /// @return 処理コード</span>
+<a name="l00130"></a>00130 <span class="comment"></span>        <span class="comment">// -------------------------------------------------------</span>
+<a name="l00131"></a>00131         LRESULT CALLBACK <a class="code" href="class_sgv_1_1_ogre_client_window.html#537ccf64a02c9971a13914f99a56d1be" title="ウィンドウプロシージャ">ogreClientWndProc</a>(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+<a name="l00132"></a>00132 
+<a name="l00133"></a>00133     <span class="keyword">private</span>:
+<a name="l00134"></a>00134         HWND m_hwndOgreClient;
+<a name="l00135"></a>00135         <span class="keywordtype">bool</span> m_bLeftMousePressing;
+<a name="l00136"></a>00136         <span class="keywordtype">bool</span> m_bRightMousePressing;
+<a name="l00137"></a>00137         <span class="keywordtype">int</span> m_xLastMousePos;
+<a name="l00138"></a>00138         <span class="keywordtype">int</span> m_yLastMousePos;
+<a name="l00139"></a>00139         Vector3 m_TranslateVector;
+<a name="l00140"></a>00140         SceneNode *m_selNode;
+<a name="l00141"></a>00141     };
+<a name="l00142"></a>00142 
+<a name="l00143"></a>00143     LRESULT CALLBACK <a class="code" href="namespace_sgv.html#4ac68f3d32088c812166145f0aa69b55">fOgreClientWndProc</a>(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+<a name="l00144"></a>00144 }
+<a name="l00145"></a>00145 
+<a name="l00146"></a>00146 <span class="preprocessor">#endif</span>
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>SIGWorldEditorに対してThu Jun 9 10:52:58 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

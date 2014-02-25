@@ -1,0 +1,302 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGViewer: クラス Sgv::ServiceProvider</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_sgv.html">Sgv</a>::<a class="el" href="class_sgv_1_1_service_provider.html">ServiceProvider</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Sgv::ServiceProvider</h1><!-- doxytag: class="Sgv::ServiceProvider" -->サービスプロバイダ  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_sgv_service_provider_8h_source.html">SgvServiceProvider.h</a>&gt;</code>
+<p>
+
+<p>
+<a href="class_sgv_1_1_service_provider-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_service_provider.html#b0090c86abcc6ba4694bcdc9aaf46a0b">getRunningState</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">現在の実行状態を返す  <a href="#b0090c86abcc6ba4694bcdc9aaf46a0b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_service_provider.html#9729cbb401898ca021c29130cbc194a1">loopingProc</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">スレッド内で無限ループで実行されるメソッド  <a href="#9729cbb401898ca021c29130cbc194a1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_service_provider.html#550a9b993d0fea54fa45c440c3e0e3b4">processOnePacket</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">サービス要求相手からのパケットを処理する  <a href="#550a9b993d0fea54fa45c440c3e0e3b4"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_service_provider.html#347ed2d19b599e4f20d6e753b6a872cb">sendNSPingerResult</a> (bool active)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">PINGを打ってきた相手に返答する.  <a href="#347ed2d19b599e4f20d6e753b6a872cb"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_service_provider.html#0a3d7ee72041007d073813089684c991">ServiceProvider</a> (<a class="el" href="class_sgv_1_1_socket.html">Socket</a> *pSock)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#0a3d7ee72041007d073813089684c991"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_service_provider.html#5c7b2b6737c2c070ed9ef00e559ee779">setRunningState</a> (bool bRunning)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">実行状態のセット  <a href="#5c7b2b6737c2c070ed9ef00e559ee779"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_service_provider.html#2b1886b0c42e974729b94bc26fac1f3e">‾ServiceProvider</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#2b1886b0c42e974729b94bc26fac1f3e"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+サービスプロバイダ 
+<p>
+サービスクラークが受け付けたサービスを実際に処理するクラス 
+<p> <a class="el" href="_sgv_service_provider_8h_source.html">SgvServiceProvider.h</a> の <a class="el" href="_sgv_service_provider_8h_source.html#l00020">20</a> 行で定義されています。</p>
+<hr><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" name="0a3d7ee72041007d073813089684c991"></a><!-- doxytag: member="Sgv::ServiceProvider::ServiceProvider" ref="0a3d7ee72041007d073813089684c991" args="(Socket *pSock)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::ServiceProvider::ServiceProvider           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_socket.html">Socket</a> *&nbsp;</td>
+          <td class="paramname"> <em>pSock</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>pSock</em>&nbsp;</td><td>[i] サービス要求相手のソケット </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_service_provider_8cpp_source.html">SgvServiceProvider.cpp</a> の <a class="el" href="_sgv_service_provider_8cpp_source.html#l00021">21</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>関数</h2>
+<a class="anchor" name="b0090c86abcc6ba4694bcdc9aaf46a0b"></a><!-- doxytag: member="Sgv::ServiceProvider::getRunningState" ref="b0090c86abcc6ba4694bcdc9aaf46a0b" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::ServiceProvider::getRunningState           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+現在の実行状態を返す 
+<p>
+
+<p> <a class="el" href="_sgv_service_provider_8h_source.html">SgvServiceProvider.h</a> の <a class="el" href="_sgv_service_provider_8h_source.html#l00089">89</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="9729cbb401898ca021c29130cbc194a1"></a><!-- doxytag: member="Sgv::ServiceProvider::loopingProc" ref="9729cbb401898ca021c29130cbc194a1" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::ServiceProvider::loopingProc           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+スレッド内で無限ループで実行されるメソッド 
+<p>
+falseを返すとスレッドが終了する<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=スレッド実行継続), false(=スレッドを終了させる) </dd></dl>
+
+<p> <a class="el" href="_sgv_service_provider_8cpp_source.html">SgvServiceProvider.cpp</a> の <a class="el" href="_sgv_service_provider_8cpp_source.html#l00125">125</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="550a9b993d0fea54fa45c440c3e0e3b4"></a><!-- doxytag: member="Sgv::ServiceProvider::processOnePacket" ref="550a9b993d0fea54fa45c440c3e0e3b4" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Sgv::ServiceProvider::processOnePacket           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+サービス要求相手からのパケットを処理する 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd></dd></dl>
+<div class="fragment"><pre class="fragment"> &gt; 0 ... サービスリクエスタからのデータがあり、処理された
+ = 0 ... サービスリクエスタからのデータは届いていなかった
+ &lt; 0 ... エラー
+</pre></div> 
+<p> <a class="el" href="_sgv_service_provider_8cpp_source.html">SgvServiceProvider.cpp</a> の <a class="el" href="_sgv_service_provider_8cpp_source.html#l00075">75</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="347ed2d19b599e4f20d6e753b6a872cb"></a><!-- doxytag: member="Sgv::ServiceProvider::sendNSPingerResult" ref="347ed2d19b599e4f20d6e753b6a872cb" args="(bool active)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::ServiceProvider::sendNSPingerResult           </td>
+          <td>(</td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>active</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+PINGを打ってきた相手に返答する. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>active</em>&nbsp;</td><td>[i] true(=サービス受け付けok), false(=サービスは受け付けられない)</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=送信成功), false(=送信失敗)</dd></dl>
+SIGVerseのプロトコルの取り決めにより、 シミュレーションサーバは、 コントローラからのサービス受け付け要求を受けると、 サービスを提供するはずのサービスプロバイダが 実際に「生きているか」を調べるために PINGをサービスプロバイダに送ってくる．<p>
+このメソッドはそのPING要求に返答するものである． 
+<p> <a class="el" href="_sgv_service_provider_8cpp_source.html">SgvServiceProvider.cpp</a> の <a class="el" href="_sgv_service_provider_8cpp_source.html#l00059">59</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="5c7b2b6737c2c070ed9ef00e559ee779"></a><!-- doxytag: member="Sgv::ServiceProvider::setRunningState" ref="5c7b2b6737c2c070ed9ef00e559ee779" args="(bool bRunning)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::ServiceProvider::setRunningState           </td>
+          <td>(</td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bRunning</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+実行状態のセット 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>bRunning</em>&nbsp;</td><td>[i] true(=スレッド実行継続), false(=スレッド実行終了)</td></tr>
+  </table>
+</dl>
+このメソッドで実行状態をfalseにセットすると <a class="el" href="class_sgv_1_1_service_provider.html#9729cbb401898ca021c29130cbc194a1" title="スレッド内で無限ループで実行されるメソッド">loopingProc()</a>がfalseを返すようになる． （＝スレッドを終了できる） 
+<p> <a class="el" href="_sgv_service_provider_8h_source.html">SgvServiceProvider.h</a> の <a class="el" href="_sgv_service_provider_8h_source.html#l00084">84</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="2b1886b0c42e974729b94bc26fac1f3e"></a><!-- doxytag: member="Sgv::ServiceProvider::‾ServiceProvider" ref="2b1886b0c42e974729b94bc26fac1f3e" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::ServiceProvider::‾ServiceProvider           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+デストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_service_provider_8cpp_source.html">SgvServiceProvider.cpp</a> の <a class="el" href="_sgv_service_provider_8cpp_source.html#l00036">36</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_sgv_service_provider_8h_source.html">SgvServiceProvider.h</a><li><a class="el" href="_sgv_service_provider_8cpp_source.html">SgvServiceProvider.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGViewerに対してThu Jun 9 10:52:15 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

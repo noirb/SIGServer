@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>SIGVerse_Controller: メンバ一覧</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>ControllerImpl メンバ一覧</h1>これは全メンバの一覧です。<a class="el" href="class_controller_impl.html">ControllerImpl</a>継承メンバも含んでいます。<table>
+  <tr class="memlist"><td><a class="el" href="class_controller_impl.html#a5bfeff0be324e58e1129bd2c40f2c6cd">attach</a>(const char *server, int port, const char *myname)</td><td><a class="el" href="class_controller_impl.html">ControllerImpl</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_controller_impl.html#a7eeef1b1770ec90ff0f175442296bf67">broadcastDisplayMessage</a>(int argc, char **argv, int fs, const char *color)</td><td><a class="el" href="class_controller_impl.html">ControllerImpl</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_controller_impl.html#a4d46d1592e8dceae8250c61f4b411f12">broadcastMessage</a>(int argc, char **argv)</td><td><a class="el" href="class_controller_impl.html">ControllerImpl</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_controller_impl.html#a66191dabddf2e0dc10093723d549c8b4">close_</a>()</td><td><a class="el" href="class_controller_impl.html">ControllerImpl</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_controller_impl.html#a1a22755badac52dc4ce27b68b8d5fee4">ControllerImpl</a>()</td><td><a class="el" href="class_controller_impl.html">ControllerImpl</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_controller_impl.html#a0dae72adf8024318d79b3101ee9421b5">detach</a>()</td><td><a class="el" href="class_controller_impl.html">ControllerImpl</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_controller_impl.html#ac9fb63de50583dea64342fbc4b49b977">getCTSimObj</a>()</td><td><a class="el" href="class_controller_impl.html">ControllerImpl</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_controller_impl.html#a11c07a758489b94603579a694fe671d6">isAttached</a>()</td><td><a class="el" href="class_controller_impl.html">ControllerImpl</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_controller_inf.html#a3dde92b8047dcdfef8a3a7e15e262028">isProcessing</a>()=0</td><td><a class="el" href="class_controller_inf.html">ControllerInf</a></td><td><code> [pure virtual]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_controller_impl.html#af50e7cf13c3d03be9fe9af13300bcf0b">m_cmdSock</a></td><td><a class="el" href="class_controller_impl.html">ControllerImpl</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_controller_impl.html#a126dd7eaa64bbd1e7922d259eb93bea9">m_dataSock</a></td><td><a class="el" href="class_controller_impl.html">ControllerImpl</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_controller_impl.html#ad39672c814ed8d33b15b1656fe3bfabd">myname</a>()</td><td><a class="el" href="class_controller_impl.html">ControllerImpl</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_controller_inf.html#a4a6c43dd62eaa0eafec547860565caf4">onAction</a>(ActionEvent &amp;evt)</td><td><a class="el" href="class_controller_inf.html">ControllerInf</a></td><td><code> [virtual]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_controller_inf.html#a819a73b6b2b0ce0d528f7e8eac58ea5c">onCollision</a>(CollisionEvent &amp;evt)</td><td><a class="el" href="class_controller_inf.html">ControllerInf</a></td><td><code> [virtual]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_controller_inf.html#a188672cd8963ab59c6c029ecca79bee6">onInit</a>(InitEvent &amp;evt)</td><td><a class="el" href="class_controller_inf.html">ControllerInf</a></td><td><code> [virtual]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_controller_inf.html#a9fec4b3faaa648a8891d91c669385ba9">onPostEvent</a>()=0</td><td><a class="el" href="class_controller_inf.html">ControllerInf</a></td><td><code> [pure virtual]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_controller_inf.html#a2d91569dbc9dcf053935fbb214c0ce9c">onPreEvent</a>()=0</td><td><a class="el" href="class_controller_inf.html">ControllerInf</a></td><td><code> [pure virtual]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_controller_inf.html#a610890e1463b6643edf0e1fd8ed40396">onRecvMessage</a>(RecvMessageEvent &amp;evt)</td><td><a class="el" href="class_controller_inf.html">ControllerInf</a></td><td><code> [virtual]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_controller_inf.html#a3263bd2eed95e0465cd42b8881e86222">onRecvSound</a>(RecvSoundEvent &amp;evt)</td><td><a class="el" href="class_controller_inf.html">ControllerInf</a></td><td><code> [virtual]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_controller_inf.html#a996f2bf9a8b5a6d201f25aa7905ebd64">onRecvText</a>(RecvTextEvent &amp;evt)</td><td><a class="el" href="class_controller_inf.html">ControllerInf</a></td><td><code> [virtual]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_controller_impl.html#a4dc4f205074d6afece515565fa248f9a">port</a>()</td><td><a class="el" href="class_controller_impl.html">ControllerImpl</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_controller_impl.html#a9f176223d4cff478bdbc05a8d2952cf0">sendDisplayMessage</a>(const char *to, int argc, char **argv, int fs, const char *color)</td><td><a class="el" href="class_controller_impl.html">ControllerImpl</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_controller_impl.html#a32b7389023288714e050d1c0a48ffa92">sendDisplayText</a>(double t, const char *to, const char *text, int fs, const char *color, double reachRadius=-1.0)</td><td><a class="el" href="class_controller_impl.html">ControllerImpl</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_controller_impl.html#aa31029aae27e4faf2eb76e61c3eb6710">sendMessage</a>(const char *to, int argc, char **argv)</td><td><a class="el" href="class_controller_impl.html">ControllerImpl</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_controller_impl.html#a98cba47265d36b37c26a92b7ae61e831">sendSound</a>(double t, const char *to, RawSound &amp;sound)</td><td><a class="el" href="class_controller_impl.html">ControllerImpl</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_controller_impl.html#a5aedb495c04d92d657e148105aaab3b9">sendText</a>(double t, const char *to, const char *text, double reachRadius)</td><td><a class="el" href="class_controller_impl.html">ControllerImpl</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_controller_impl.html#a59c604d9265cb43f91840f38cfe37de5">sendText</a>(double t, const char *to, const char *text)</td><td><a class="el" href="class_controller_impl.html">ControllerImpl</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_controller_impl.html#ae4f6fc9e0bf8b249063b90c2125e7bed">server</a>()</td><td><a class="el" href="class_controller_impl.html">ControllerImpl</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_controller_impl.html#a661407f8adc53009b3b0d268bfa48e56">‾ControllerImpl</a>()</td><td><a class="el" href="class_controller_impl.html">ControllerImpl</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_controller_inf.html#ae093e3c682507a336c04b1e1cf4518c3">‾ControllerInf</a>()</td><td><a class="el" href="class_controller_inf.html">ControllerInf</a></td><td><code> [virtual]</code></td></tr>
+</table></div>
+<hr class="footer"/><address style="text-align: right;"><small>SIGVerse_Controllerに対してTue Dec 13 19:10:58 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

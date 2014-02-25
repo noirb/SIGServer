@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: MessageSender.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>MessageSender.h</h1><a href="_message_sender_8h.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/* $Id: _message_sender_8h_source.html,v 1.2 2011-12-14 07:55:37 okamoto Exp $ */</span>
+<a name="l00002"></a>00002 <span class="preprocessor">#ifndef MessageSender_h</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span><span class="preprocessor">#define MessageSender_h</span>
+<a name="l00004"></a>00004 <span class="preprocessor"></span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include &lt;string&gt;</span>
+<a name="l00006"></a>00006 
+<a name="l00007"></a>00007 <span class="preprocessor">#include &quot;<a class="code" href="_raw_sound_8h.html">RawSound.h</a>&quot;</span>
+<a name="l00008"></a>00008 <span class="preprocessor">#include &quot;<a class="code" href="systemdef_8h.html">systemdef.h</a>&quot;</span>
+<a name="l00009"></a>00009 <span class="comment"></span>
+<a name="l00010"></a>00010 <span class="comment">/**</span>
+<a name="l00011"></a>00011 <span class="comment"> * @brief エージェントにメッセージを送信するクラス</span>
+<a name="l00012"></a>00012 <span class="comment"> *</span>
+<a name="l00013"></a>00013 <span class="comment"> * シミュレーションサーバに接続し、指定のまたはすべてのエー</span>
+<a name="l00014"></a>00014 <span class="comment"> * ジェントにメッセージを送信する。</span>
+<a name="l00015"></a>00015 <span class="comment"> */</span>
+<a name="l00016"></a><a class="code" href="class_message_sender.html">00016</a> <span class="keyword">class </span><a class="code" href="class_message_sender.html" title="エージェントにメッセージを送信するクラス">MessageSender</a>
+<a name="l00017"></a>00017 {
+<a name="l00018"></a>00018 <span class="keyword">private</span>:
+<a name="l00019"></a>00019     <span class="keyword">typedef</span> std::string S;
+<a name="l00020"></a>00020 <span class="keyword">private</span>:
+<a name="l00021"></a>00021     S   m_name;
+<a name="l00022"></a>00022     <a class="code" href="systemdef_8h.html#a8dc8083897335125630f1af5dafd5831">SOCKET</a>  m_sock;
+<a name="l00023"></a>00023     <span class="keywordtype">bool</span>    m_close;
+<a name="l00024"></a>00024 <span class="keyword">public</span>:<span class="comment"></span>
+<a name="l00025"></a>00025 <span class="comment">    /**</span>
+<a name="l00026"></a>00026 <span class="comment">     * @brief コンストラクタ</span>
+<a name="l00027"></a>00027 <span class="comment">     * @param myname   自身の名前</span>
+<a name="l00028"></a>00028 <span class="comment">     * @param s        ソケット</span>
+<a name="l00029"></a>00029 <span class="comment">     */</span>
+<a name="l00030"></a><a class="code" href="class_message_sender.html#a2c45258b0a05b76728694a0d44fff8dd">00030</a>     <a class="code" href="class_message_sender.html#a2c45258b0a05b76728694a0d44fff8dd" title="コンストラクタ">MessageSender</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *myname, <a class="code" href="systemdef_8h.html#a8dc8083897335125630f1af5dafd5831">SOCKET</a> s) : m_name(myname), m_sock(s), m_close(false) {}
+<a name="l00031"></a>00031 <span class="comment"></span>
+<a name="l00032"></a>00032 <span class="comment">    /**</span>
+<a name="l00033"></a>00033 <span class="comment">     * @brief コンストラクタ</span>
+<a name="l00034"></a>00034 <span class="comment">     * @param myname   自身の名前</span>
+<a name="l00035"></a>00035 <span class="comment">     */</span>
+<a name="l00036"></a><a class="code" href="class_message_sender.html#afdb3abfcf9f384487061cbb140a85e69">00036</a>     <a class="code" href="class_message_sender.html#afdb3abfcf9f384487061cbb140a85e69" title="コンストラクタ">MessageSender</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *myname) : m_name(myname), m_sock(-1), m_close(true) {}
+<a name="l00037"></a>00037 <span class="comment"></span>
+<a name="l00038"></a>00038 <span class="comment">    //! デストラクタ</span>
+<a name="l00039"></a>00039 <span class="comment"></span>    <a class="code" href="class_message_sender.html#a621735a6d0ced9b61da425e131323484" title="デストラクタ">‾MessageSender</a>();
+<a name="l00040"></a>00040 <span class="comment"></span>
+<a name="l00041"></a>00041 <span class="comment">    /**</span>
+<a name="l00042"></a>00042 <span class="comment">     * @brief 指定のサーバに接続する</span>
+<a name="l00043"></a>00043 <span class="comment">     * @param server シミュレーションサーバ名(IPアドレスまたはホスト名)</span>
+<a name="l00044"></a>00044 <span class="comment">     * @param  port  シミュレーションサーバポート番号</span>
+<a name="l00045"></a>00045 <span class="comment">     * @retval true  成功</span>
+<a name="l00046"></a>00046 <span class="comment">     * @retval false 失敗</span>
+<a name="l00047"></a>00047 <span class="comment">     */</span>
+<a name="l00048"></a>00048     <span class="keywordtype">bool</span> <a class="code" href="class_message_sender.html#a566d6e9958dd84f969c9cd80d338ea36" title="指定のサーバに接続する">connect</a>(<span class="keywordtype">char</span> *server, <span class="keywordtype">int</span> port);
+<a name="l00049"></a>00049 <span class="comment"></span>
+<a name="l00050"></a>00050 <span class="comment">    /**</span>
+<a name="l00051"></a>00051 <span class="comment">     * @brief 指定のエージェントにメッセージを送信する</span>
+<a name="l00052"></a>00052 <span class="comment">     * @param to 送信先エージェント</span>
+<a name="l00053"></a>00053 <span class="comment">     * @param n  メッセージ文字列数</span>
+<a name="l00054"></a>00054 <span class="comment">     * @param strs メッセージ文字列</span>
+<a name="l00055"></a>00055 <span class="comment">     * @retval true  成功</span>
+<a name="l00056"></a>00056 <span class="comment">     * @retval false 失敗</span>
+<a name="l00057"></a>00057 <span class="comment">     */</span>
+<a name="l00058"></a>00058     <span class="keywordtype">bool</span> <a class="code" href="class_message_sender.html#ab3165a930f8a66f7364f549adb7e2f74" title="指定のエージェントにメッセージを送信する">sendto</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *to, <span class="keywordtype">int</span> n, <span class="keywordtype">char</span> **strs);
+<a name="l00059"></a>00059 <span class="comment"></span>
+<a name="l00060"></a>00060 <span class="comment">    /**</span>
+<a name="l00061"></a>00061 <span class="comment">     * @brief メッセージをブロードキャストする</span>
+<a name="l00062"></a>00062 <span class="comment">     * @param n  メッセージ文字列数</span>
+<a name="l00063"></a>00063 <span class="comment">     * @param strs メッセージ文字列</span>
+<a name="l00064"></a>00064 <span class="comment">     * @retval true  成功</span>
+<a name="l00065"></a>00065 <span class="comment">     * @retval false 失敗</span>
+<a name="l00066"></a>00066 <span class="comment">     */</span>
+<a name="l00067"></a>00067     <span class="keywordtype">bool</span> <a class="code" href="class_message_sender.html#a8dd76d1af4efa0ad683cbaf9d4173b93" title="メッセージをブロードキャストする">broadcast</a>(<span class="keywordtype">int</span> n, <span class="keywordtype">char</span> **strs);
+<a name="l00068"></a>00068 };
+<a name="l00069"></a>00069 
+<a name="l00070"></a>00070 <span class="comment">// begin(FIX20110401)</span><span class="comment"></span>
+<a name="l00071"></a>00071 <span class="comment">/**</span>
+<a name="l00072"></a>00072 <span class="comment"> * @brief エージェントに音声データを送信するクラス</span>
+<a name="l00073"></a>00073 <span class="comment"> */</span>
+<a name="l00074"></a><a class="code" href="class_sound_sender.html">00074</a> <span class="keyword">class </span><a class="code" href="class_sound_sender.html" title="エージェントに音声データを送信するクラス">SoundSender</a>
+<a name="l00075"></a>00075 {
+<a name="l00076"></a>00076 <span class="keyword">private</span>:
+<a name="l00077"></a>00077     <span class="keyword">typedef</span> std::string S;
+<a name="l00078"></a>00078 
+<a name="l00079"></a>00079     S m_name;
+<a name="l00080"></a>00080     <a class="code" href="systemdef_8h.html#a8dc8083897335125630f1af5dafd5831">SOCKET</a> m_sock;
+<a name="l00081"></a>00081     <span class="keywordtype">bool</span> m_close;
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083 <span class="keyword">public</span>:<span class="comment"></span>
+<a name="l00084"></a>00084 <span class="comment">    /**</span>
+<a name="l00085"></a>00085 <span class="comment">     * @brief コンストラクタ</span>
+<a name="l00086"></a>00086 <span class="comment">     * @param myname 自身の名前</span>
+<a name="l00087"></a>00087 <span class="comment">     * @param s ソケット</span>
+<a name="l00088"></a>00088 <span class="comment">     */</span>
+<a name="l00089"></a><a class="code" href="class_sound_sender.html#a03ec1d1b94508f14e742b96a175a42f3">00089</a>     <a class="code" href="class_sound_sender.html#a03ec1d1b94508f14e742b96a175a42f3" title="コンストラクタ">SoundSender</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *myname, <a class="code" href="systemdef_8h.html#a8dc8083897335125630f1af5dafd5831">SOCKET</a> s) :
+<a name="l00090"></a>00090         m_name(myname), m_sock(s), m_close(false)
+<a name="l00091"></a>00091     {}
+<a name="l00092"></a>00092 <span class="comment"></span>
+<a name="l00093"></a>00093 <span class="comment">    /**</span>
+<a name="l00094"></a>00094 <span class="comment">     * @brief コンストラクタ</span>
+<a name="l00095"></a>00095 <span class="comment">     * @param myname 自身の名前</span>
+<a name="l00096"></a>00096 <span class="comment">     */</span>
+<a name="l00097"></a><a class="code" href="class_sound_sender.html#a68fd0c395b4975de7e0208366993736c">00097</a>     <a class="code" href="class_sound_sender.html#a03ec1d1b94508f14e742b96a175a42f3" title="コンストラクタ">SoundSender</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *myname) :
+<a name="l00098"></a>00098         m_name(myname), m_sock(-1), m_close(true)
+<a name="l00099"></a>00099     {}
+<a name="l00100"></a>00100 <span class="comment"></span>
+<a name="l00101"></a>00101 <span class="comment">    //! デストラクタ</span>
+<a name="l00102"></a>00102 <span class="comment"></span>    <a class="code" href="class_sound_sender.html#a2ec9c638580e4ac14fc9b9bfd0e6395a" title="デストラクタ">‾SoundSender</a>();
+<a name="l00103"></a>00103 <span class="comment"></span>
+<a name="l00104"></a>00104 <span class="comment">    /**</span>
+<a name="l00105"></a>00105 <span class="comment">     * @brief 指定のサーバに接続する</span>
+<a name="l00106"></a>00106 <span class="comment">     * @param server シミュレーションサーバ名(IPアドレスまたはホスト名)</span>
+<a name="l00107"></a>00107 <span class="comment">     * @param  port  シミュレーションサーバポート番号</span>
+<a name="l00108"></a>00108 <span class="comment">     * @retval true  成功</span>
+<a name="l00109"></a>00109 <span class="comment">     * @retval false 失敗</span>
+<a name="l00110"></a>00110 <span class="comment">     */</span>
+<a name="l00111"></a>00111     <span class="keywordtype">bool</span> <a class="code" href="class_sound_sender.html#af7a0663d00b6c7f43eb545410ea220b8" title="指定のサーバに接続する">connect</a>(<span class="keywordtype">char</span> *server, <span class="keywordtype">int</span> port);
+<a name="l00112"></a>00112 <span class="comment"></span>
+<a name="l00113"></a>00113 <span class="comment">    /**</span>
+<a name="l00114"></a>00114 <span class="comment">     * @brief 指定のエージェントに音声データを送信する</span>
+<a name="l00115"></a>00115 <span class="comment">     * @param to 送信先エージェント</span>
+<a name="l00116"></a>00116 <span class="comment">     * @param sound 音声データ</span>
+<a name="l00117"></a>00117 <span class="comment">     * @retval true  成功</span>
+<a name="l00118"></a>00118 <span class="comment">     * @retval false 失敗</span>
+<a name="l00119"></a>00119 <span class="comment">     */</span>
+<a name="l00120"></a>00120     <span class="keywordtype">bool</span> <a class="code" href="class_sound_sender.html#a5290d3cc1dde6e56633612230d4d4d82" title="指定のエージェントに音声データを送信する">sendto</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *to, <a class="code" href="class_raw_sound.html" title="音声データクラス">RawSound</a> &amp;sound);
+<a name="l00121"></a>00121 };
+<a name="l00122"></a>00122 <span class="comment">// end(FIX20110401)</span>
+<a name="l00123"></a>00123 
+<a name="l00124"></a>00124 <span class="preprocessor">#endif // MessageSender_h</span>
+<a name="l00125"></a>00125 <span class="preprocessor"></span>
+</pre></div></div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:18 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

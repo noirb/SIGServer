@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: クラス ResultCaptureViewImageEvent</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス ResultCaptureViewImageEvent</h1><!-- doxytag: class="ResultCaptureViewImageEvent" -->
+<p>視点画像キャプチャ結果イベントクラス  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_result_capture_view_image_8h_source.html">ResultCaptureViewImage.h</a>&gt;</code></p>
+<div class="dynheader">
+ResultCaptureViewImageEventのコラボレーション図</div>
+<div class="dynsection">
+<div class="center"><img src="class_result_capture_view_image_event__coll__graph.png" border="0" usemap="#_result_capture_view_image_event_coll__map" alt="Collaboration graph"/></div>
+<map name="_result_capture_view_image_event_coll__map" id="_result_capture_view_image_event_coll__map">
+<area shape="rect" href="class_view_image.html" title="視覚データクラス" alt="" coords="63,101,148,131"/><area shape="rect" href="class_view_image_info.html" title="画像データ情報クラス" alt="" coords="52,5,159,35"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+
+<p><a href="class_result_capture_view_image_event-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_view_image.html">ViewImage</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_result_capture_view_image_event.html#aed638d2e9fb3442ae5639b2eabce7d05">release</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">画像データの取得・破棄責任の解放  <a href="#aed638d2e9fb3442ae5639b2eabce7d05"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_result_capture_view_image_event.html#af4a22ab9348b575eafa7ac151dd0dd9d">ResultCaptureViewImageEvent</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_result_capture_view_image_event.html#abf254f26cdd783ae07c986b84b980c78">set</a> (int packetNum, int seq, char *data, int n)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_result_capture_view_image_event.html#ad53f00ac4b57827d84b8b69c46b0e96b">‾ResultCaptureViewImageEvent</a> ()</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>視点画像キャプチャ結果イベントクラス </p>
+<dl class="see"><dt><b>参照:</b></dt><dd><a class="el" href="class_comm_data_1_1_capture_view_image_result.html" title="視点画像キャプチャ結果エンコーダークラス">CommData::CaptureViewImageResult</a> </dd></dl>
+
+<p> <a class="el" href="_result_capture_view_image_8h_source.html">ResultCaptureViewImage.h</a> の <a class="el" href="_result_capture_view_image_8h_source.html#l00013">13</a> 行で定義されています。</p>
+<hr/><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" id="af4a22ab9348b575eafa7ac151dd0dd9d"></a><!-- doxytag: member="ResultCaptureViewImageEvent::ResultCaptureViewImageEvent" ref="af4a22ab9348b575eafa7ac151dd0dd9d" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ResultCaptureViewImageEvent::ResultCaptureViewImageEvent </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_result_capture_view_image_8h_source.html">ResultCaptureViewImage.h</a> の <a class="el" href="_result_capture_view_image_8h_source.html#l00023">23</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>関数</h2>
+<a class="anchor" id="aed638d2e9fb3442ae5639b2eabce7d05"></a><!-- doxytag: member="ResultCaptureViewImageEvent::release" ref="aed638d2e9fb3442ae5639b2eabce7d05" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_view_image.html">ViewImage</a>* ResultCaptureViewImageEvent::release </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>画像データの取得・破棄責任の解放 </p>
+<p>このメソッド呼び出し後、画像データは自動的に破棄 されない。データを受けとった側が責任をもって破棄 (delete)すること。 </p>
+
+<p> <a class="el" href="_result_capture_view_image_8h_source.html">ResultCaptureViewImage.h</a> の <a class="el" href="_result_capture_view_image_8h_source.html#l00034">34</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="abf254f26cdd783ae07c986b84b980c78"></a><!-- doxytag: member="ResultCaptureViewImageEvent::set" ref="abf254f26cdd783ae07c986b84b980c78" args="(int packetNum, int seq, char *data, int n)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ResultCaptureViewImageEvent::set </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>packetNum</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>n</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ad53f00ac4b57827d84b8b69c46b0e96b"></a><!-- doxytag: member="ResultCaptureViewImageEvent::‾ResultCaptureViewImageEvent" ref="ad53f00ac4b57827d84b8b69c46b0e96b" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ResultCaptureViewImageEvent::‾ResultCaptureViewImageEvent </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_result_capture_view_image_8h_source.html">ResultCaptureViewImage.h</a> の <a class="el" href="_result_capture_view_image_8h_source.html#l00024">24</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_result_capture_view_image_8h_source.html">ResultCaptureViewImage.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:19 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

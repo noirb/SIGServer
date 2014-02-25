@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: メンバ一覧</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>CTSimObj メンバ一覧</h1>これは全メンバの一覧です。<a class="el" href="class_c_t_sim_obj.html">CTSimObj</a>継承メンバも含んでいます。<table>
+  <tr class="memlist"><td><a class="el" href="class_c_t_sim_obj.html#a76890938a33591c9c6198c6c1f28b244">broadcastMessage</a>(int argc, char **arggv)</td><td><a class="el" href="class_c_t_sim_obj.html">CTSimObj</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_c_t_sim_obj.html#a00e0759e3e5c8546e8614b27da8a4890">captureView</a>(ColorBitType cbtype, ImageDataSize size, int id=1)</td><td><a class="el" href="class_c_t_sim_obj.html">CTSimObj</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_c_t_sim_obj.html#ac29a34432fb46da05b14d2f6c1a616d0">connect</a>(const char *hostname, int port, const char *agentName)</td><td><a class="el" href="class_c_t_sim_obj.html">CTSimObj</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_c_t_sim_obj.html#a08cd330a324f0c1253d47de3211d3797">CTSimObj</a>(SOCKET sock, const char *myname)</td><td><a class="el" href="class_c_t_sim_obj.html">CTSimObj</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_c_t_sim_obj.html#a9ca084a43d9afb431f5e83143010032f">CTSimObj</a>()</td><td><a class="el" href="class_c_t_sim_obj.html">CTSimObj</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_c_t_sim_obj.html#a59f84051b7709f71fbee890546f3e5f8">detectEntities</a>(EntityNameC &amp;v, int id=1)</td><td><a class="el" href="class_c_t_sim_obj.html">CTSimObj</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_c_t_sim_obj.html#a3194116f38ea9cb75693bd438d625de2">distanceSensor</a>(double start, double end, int id=1)</td><td><a class="el" href="class_c_t_sim_obj.html">CTSimObj</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_c_t_sim_obj.html#aa3964933c7dab4ef814e8fe045da3c2d">distanceSensorD</a>(double start, double end, int id=1, bool map=false)</td><td><a class="el" href="class_c_t_sim_obj.html">CTSimObj</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_c_t_sim_obj.html#a0c69f241e50bbe6b27a7e31635a1d0eb">EntityNameC</a> typedef</td><td><a class="el" href="class_c_t_sim_obj.html">CTSimObj</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_c_t_sim_obj.html#a46f1c5e5379f7cd12f27fd60d2575424">getAllEntities</a>(EntityNameC &amp;v)</td><td><a class="el" href="class_c_t_sim_obj.html">CTSimObj</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_c_t_sim_obj.html#a958fff6380b716c0ad8c6aa66c89931b">getText</a>(RawSound &amp;)</td><td><a class="el" href="class_c_t_sim_obj.html">CTSimObj</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_c_t_sim_obj.html#a24a68cfa0bf5767ef0fd2ad18ed76169">sendMessage</a>(const char *to, int argc, char **argv)</td><td><a class="el" href="class_c_t_sim_obj.html">CTSimObj</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_c_t_sim_obj.html#a9f5e5319cdf468fbf38cd675e5c928fb">sendSound</a>(double t, const char *to, RawSound &amp;sound)</td><td><a class="el" href="class_c_t_sim_obj.html">CTSimObj</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_c_t_sim_obj.html#afd7bdb11c800a9a6877b02ba3d2087ba">sendText</a>(double t, const char *to, const char *text)</td><td><a class="el" href="class_c_t_sim_obj.html">CTSimObj</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_c_t_sim_obj.html#a28c0d20ac6a46b63eebace2828905429">sendText</a>(double t, const char *to, const char *text, double reachRadius)</td><td><a class="el" href="class_c_t_sim_obj.html">CTSimObj</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_c_t_sim_obj.html#acc443e23452f8a541df708b5cb3f7a4a">‾CTSimObj</a>()</td><td><a class="el" href="class_c_t_sim_obj.html">CTSimObj</a></td><td></td></tr>
+</table></div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:18 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

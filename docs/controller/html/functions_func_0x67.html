@@ -1,0 +1,299 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>SIGVerse_Controller: 構成メンバ - 関数</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li class="current"><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="functions.html"><span>全て</span></a></li>
+      <li class="current"><a href="functions_func.html"><span>関数</span></a></li>
+      <li><a href="functions_vars.html"><span>変数</span></a></li>
+      <li><a href="functions_type.html"><span>型定義</span></a></li>
+      <li><a href="functions_eval.html"><span>列挙型の値</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="functions_func.html#index_a"><span>a</span></a></li>
+      <li><a href="functions_func_0x62.html#index_b"><span>b</span></a></li>
+      <li><a href="functions_func_0x63.html#index_c"><span>c</span></a></li>
+      <li><a href="functions_func_0x64.html#index_d"><span>d</span></a></li>
+      <li><a href="functions_func_0x65.html#index_e"><span>e</span></a></li>
+      <li><a href="functions_func_0x66.html#index_f"><span>f</span></a></li>
+      <li class="current"><a href="functions_func_0x67.html#index_g"><span>g</span></a></li>
+      <li><a href="functions_func_0x69.html#index_i"><span>i</span></a></li>
+      <li><a href="functions_func_0x6c.html#index_l"><span>l</span></a></li>
+      <li><a href="functions_func_0x6d.html#index_m"><span>m</span></a></li>
+      <li><a href="functions_func_0x6e.html#index_n"><span>n</span></a></li>
+      <li><a href="functions_func_0x6f.html#index_o"><span>o</span></a></li>
+      <li><a href="functions_func_0x70.html#index_p"><span>p</span></a></li>
+      <li><a href="functions_func_0x71.html#index_q"><span>q</span></a></li>
+      <li><a href="functions_func_0x72.html#index_r"><span>r</span></a></li>
+      <li><a href="functions_func_0x73.html#index_s"><span>s</span></a></li>
+      <li><a href="functions_func_0x74.html#index_t"><span>t</span></a></li>
+      <li><a href="functions_func_0x76.html#index_v"><span>v</span></a></li>
+      <li><a href="functions_func_0x78.html#index_x"><span>x</span></a></li>
+      <li><a href="functions_func_0x79.html#index_y"><span>y</span></a></li>
+      <li><a href="functions_func_0x7a.html#index_z"><span>z</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+&nbsp;
+
+<h3><a class="anchor" id="index_g">- g -</a></h3><ul>
+<li>get()
+: <a class="el" href="class_logger.html#a6b82e3118a6f29c899e51e9a038dae75">Logger</a>
+</li>
+<li>getAllEntities()
+: <a class="el" href="class_controller.html#ad404285a4313fb62775358cb97b7f2e2">Controller</a>
+</li>
+<li>getAspectRatio()
+: <a class="el" href="class_view_image.html#a96d20382f240417630f4f3cadd7704ee">ViewImage</a>
+</li>
+<li>getAttr()
+: <a class="el" href="class_sim_obj_base.html#a4f38e5924ac5a4e902bed239da8c6d00">SimObjBase</a>
+</li>
+<li>getAxleLength()
+: <a class="el" href="class_dynamics_controller.html#a98628b6672a34fba28051c9a9e9617b6">DynamicsController</a>
+, <a class="el" href="class_controller.html#a743afff941265e2eaa49c32631d4cbfc">Controller</a>
+</li>
+<li>getBitPerSample()
+: <a class="el" href="class_raw_sound_header.html#a073d29388bacb0f01da5903ccbd35215">RawSoundHeader</a>
+</li>
+<li>getBool()
+: <a class="el" href="class_value.html#a27144a2b88beb6048c49d5c757173f10">Value</a>
+</li>
+<li>getBuffer()
+: <a class="el" href="class_view_image.html#a04465a71abbf3c23c77af74438b378fb">ViewImage</a>
+</li>
+<li>getBufferLength()
+: <a class="el" href="class_view_image.html#a65c1fa0b47563e5542a3ef0a28a1ac59">ViewImage</a>
+</li>
+<li>getBytesPerOnePixel()
+: <a class="el" href="class_view_image_info.html#ac7cab539e4cbc37d5cfdf43e74d8bc7d">ViewImageInfo</a>
+</li>
+<li>getChannelNum()
+: <a class="el" href="class_raw_sound_header.html#a13fa4d81b0a881e586bd4d75cc76b0c4">RawSoundHeader</a>
+</li>
+<li>getColorBitType()
+: <a class="el" href="class_view_image_info.html#a4c8d2e04ea7e854fac951d68ce4c4932">ViewImageInfo</a>
+</li>
+<li>getCTSimObj()
+: <a class="el" href="class_controller_impl.html#ac9fb63de50583dea64342fbc4b49b977">ControllerImpl</a>
+</li>
+<li>getCurrentLeftWheelSpeed()
+: <a class="el" href="class_dynamics_controller.html#ae260e0438af0a4383177ff5c4894952c">DynamicsController</a>
+</li>
+<li>getCurrentRightWheelSpeed()
+: <a class="el" href="class_dynamics_controller.html#a2007f1c18264b10aba9a8f1f53266419">DynamicsController</a>
+</li>
+<li>getData()
+: <a class="el" href="class_raw_sound.html#aee674b71438d52d23b37d1ae8f09f178">RawSound</a>
+</li>
+<li>getDataLen()
+: <a class="el" href="class_raw_sound.html#a2c55ceedf0d1b10f2a3916b76f8afe3c">RawSound</a>
+</li>
+<li>getDataType()
+: <a class="el" href="class_view_image_info.html#ab0b513a28c924fd70ec7544fbcbb0d10">ViewImageInfo</a>
+</li>
+<li>getDepthFromAngle()
+: <a class="el" href="class_depth_image.html#a3f16030f0fe8318c7b97ff7cd8cf3228">DepthImage</a>
+</li>
+<li>getDepthFromPixel()
+: <a class="el" href="class_depth_image.html#a2db0ceb7f1afed01aee9e17a20a372eb">DepthImage</a>
+</li>
+<li>getDistanceFromPixel()
+: <a class="el" href="class_depth_image.html#aedf80ce8058f50676bbfe0b317d87740">DepthImage</a>
+</li>
+<li>getDouble()
+: <a class="el" href="class_attribute.html#aa21a68af0ff2c99f7c872852ddc85dd7">Attribute</a>
+, <a class="el" href="class_value.html#abeafe2fb6e2d26c7dd96c22ca039a2f6">Value</a>
+</li>
+<li>getEncode()
+: <a class="el" href="class_text.html#af4b8e4c44dca9eb09f04f8d859d9033b">Text</a>
+</li>
+<li>getEndian()
+: <a class="el" href="class_raw_sound_header.html#a790b04aa4893dc8d5e1c0753ea9c7b27">RawSoundHeader</a>
+</li>
+<li>getForce()
+: <a class="el" href="class_joint_force.html#a65d69dbf64ac8b3d0fe01b2a1e4f20d3">JointForce</a>
+</li>
+<li>getFOVy()
+: <a class="el" href="class_view_image.html#a08ed9831a4bf004325ec41e4bea9c275">ViewImage</a>
+</li>
+<li>getHeader()
+: <a class="el" href="class_raw_sound.html#a4308f0ba352ef2bdcb61e6fdae14d919">RawSound</a>
+</li>
+<li>getHeight()
+: <a class="el" href="class_view_image_info.html#ad81986b39d8615880267010b15dbe50e">ViewImageInfo</a>
+, <a class="el" href="class_view_image.html#aa4c39e6213384695245cbc911463379b">ViewImage</a>
+</li>
+<li>getInfo()
+: <a class="el" href="class_view_image.html#a0eb1e4e6e4e7780cb43520ab60c21821">ViewImage</a>
+</li>
+<li>getInt()
+: <a class="el" href="class_value.html#a7d63f40d7453ea662612719b74936985">Value</a>
+</li>
+<li>getLeftEncoderNoise()
+: <a class="el" href="class_dynamics_controller.html#a60987b1bbc460f2d5c916ac3c44bdf33">DynamicsController</a>
+, <a class="el" href="class_controller.html#a809452363bc8fce9b7fa43a7cfae783f">Controller</a>
+</li>
+<li>getLeftSlipNoise()
+: <a class="el" href="class_dynamics_controller.html#a1499bd49a2198c16d9854e743c1736aa">DynamicsController</a>
+</li>
+<li>getLeftWheelRadius()
+: <a class="el" href="class_dynamics_controller.html#a02754f16c425d90f4a8588b3e0ca0a3e">DynamicsController</a>
+, <a class="el" href="class_controller.html#a321dd0083cfb1ffb4dfd59e53485cf9f">Controller</a>
+</li>
+<li>getObj()
+: <a class="el" href="class_controller.html#adc50f0b13ae6175fe2e689314b97726d">Controller</a>
+</li>
+<li>getParts()
+: <a class="el" href="class_sim_obj.html#a441d3eced24914db82dfb3cb0404e5b9">SimObj</a>
+</li>
+<li>getPartsCollection()
+: <a class="el" href="class_sim_obj.html#a8716f260273eb3e9bcfcda9321252b6d">SimObj</a>
+</li>
+<li>getPartsIterator()
+: <a class="el" href="class_sim_obj.html#aec7e335bb69258e4d32cee11c994235c">SimObj</a>
+, <a class="el" href="class_sim_obj_base.html#a1d6e6656c9ad342a8d04802ed7efb5c3">SimObjBase</a>
+</li>
+<li>getPartsName()
+: <a class="el" href="class_joint_force.html#a9c2b3daa93148662d86de696a9210a92">JointForce</a>
+</li>
+<li>getPosition()
+: <a class="el" href="class_c_parts.html#a2d2bc39c552554b34c01e06bc3a1d46c">CParts</a>
+, <a class="el" href="class_parts.html#a151e3fb90237808c63c480e1d1dd84ac">Parts</a>
+, <a class="el" href="class_sim_obj_base.html#a91b5054d5d1dfef47a2e08e2b44508f0">SimObjBase</a>
+</li>
+<li>getQuaternion()
+: <a class="el" href="class_parts.html#a9e64c80362c6627ec2d82f75b53680ed">Parts</a>
+, <a class="el" href="class_c_parts.html#ac1280ab257c6b43d91e12d46d70d5900">CParts</a>
+</li>
+<li>getRand()
+: <a class="el" href="class_controller.html#ac6b1a9ac2618e01f303330ba5fcb5d05">Controller</a>
+</li>
+<li>getRightEncoderNoise()
+: <a class="el" href="class_dynamics_controller.html#ad5d6d97e2e820c4fb65b859704d23bea">DynamicsController</a>
+, <a class="el" href="class_controller.html#ac43ac6bae3ff7dfb3357ea1309126b47">Controller</a>
+</li>
+<li>getRightSlipNoise()
+: <a class="el" href="class_dynamics_controller.html#a44598f24497a045cd0cb1d3380f21e2c">DynamicsController</a>
+</li>
+<li>getRightWheelRadius()
+: <a class="el" href="class_controller.html#ac16206d99667e36a00a4e3f7350b1589">Controller</a>
+, <a class="el" href="class_dynamics_controller.html#a632f31808b955df81c6b97d4929bb1b5">DynamicsController</a>
+, <a class="el" href="class_controller.html#a55c375e61f1e1aac81acacad6ab70db1">Controller</a>
+</li>
+<li>getRotation()
+: <a class="el" href="class_c_parts.html#a7a19adaf95212cd65a51bffbe6da67c6">CParts</a>
+, <a class="el" href="class_parts.html#ac833960fcd15120b249d4a1127e0a3fb">Parts</a>
+</li>
+<li>getSamplingRate()
+: <a class="el" href="class_raw_sound_header.html#a5036d2eaf273724284d8006e4837021b">RawSoundHeader</a>
+</li>
+<li>getString()
+: <a class="el" href="class_text.html#a683097bcfdcb4ddffbe5066352f4e3af">Text</a>
+, <a class="el" href="class_value.html#afa7ad4565ce3536f36d9f93eedc155f3">Value</a>
+</li>
+<li>getText()
+: <a class="el" href="class_controller.html#a2c5841cdea28180c020275319dc40ed0">Controller</a>
+</li>
+<li>getTorque()
+: <a class="el" href="class_joint_force.html#af237d27da861caf379da709de7b6603f">JointForce</a>
+</li>
+<li>getType()
+: <a class="el" href="class_parts.html#aec48d1f272be6f7e67a350345eda3473">Parts</a>
+</li>
+<li>getTypeString()
+: <a class="el" href="class_value.html#a37f0851800d3916a9a10609957727d69">Value</a>
+</li>
+<li>getWidth()
+: <a class="el" href="class_view_image.html#ab1eb86f32483bc471918c344751e94af">ViewImage</a>
+, <a class="el" href="class_view_image_info.html#a42ebd21fc95068aa262b206be3daf374">ViewImageInfo</a>
+</li>
+<li>givePosition()
+: <a class="el" href="class_parts.html#a28c4d88618f3d1688924f8f0593596f0">Parts</a>
+</li>
+<li>giveQuaternion()
+: <a class="el" href="class_parts.html#ac68217e6acbc9fa25b48a58ca2fc208c">Parts</a>
+</li>
+<li>giveRadius()
+: <a class="el" href="class_sphere_parts.html#aff4344f8b2dc0e4a97ec7b893a01d50e">SphereParts</a>
+</li>
+<li>giveSize()
+: <a class="el" href="class_cylinder_parts.html#a21137d6ceed9e59dea381221155b1501">CylinderParts</a>
+, <a class="el" href="class_box_parts.html#ae9676545064756355b2ecf1d30c79c5c">BoxParts</a>
+</li>
+<li>group()
+: <a class="el" href="class_attribute.html#a329dcf8391e82991e640920af88df180">Attribute</a>
+</li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>SIGVerse_Controllerに対してTue Dec 13 19:10:58 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

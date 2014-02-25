@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: ResultAttach.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>ResultAttach.h</h1><a href="_result_attach_8h.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/* $Id: _result_attach_8h_source.html,v 1.2 2011-12-14 07:55:38 okamoto Exp $ */</span> 
+<a name="l00002"></a>00002 <span class="preprocessor">#ifndef Comm_Event_ResultAttach_h</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span><span class="preprocessor">#define Comm_Event_ResultAttach_h</span>
+<a name="l00004"></a>00004 <span class="preprocessor"></span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include &lt;string&gt;</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include &quot;<a class="code" href="_comm_data_type_8h.html">CommDataType.h</a>&quot;</span>
+<a name="l00007"></a>00007 <span class="preprocessor">#include &quot;<a class="code" href="event_2_result_8h.html">Result.h</a>&quot;</span>
+<a name="l00008"></a>00008 
+<a name="l00009"></a>00009 <span class="keyword">class </span><a class="code" href="class_x3_d_d_b.html" title="X3Dファイルデータベースクラス.">X3DDB</a>;
+<a name="l00010"></a>00010 <span class="comment"></span>
+<a name="l00011"></a>00011 <span class="comment">/**</span>
+<a name="l00012"></a>00012 <span class="comment"> * @brief ビュー割り当て結果イベントクラス</span>
+<a name="l00013"></a>00013 <span class="comment"> */</span>
+<a name="l00014"></a><a class="code" href="class_result_attach_view_event.html">00014</a> <span class="keyword">class </span><a class="code" href="class_result_attach_view_event.html" title="ビュー割り当て結果イベントクラス">ResultAttachViewEvent</a>
+<a name="l00015"></a>00015 {
+<a name="l00016"></a>00016 <span class="keyword">private</span>:
+<a name="l00017"></a>00017     <a class="code" href="_comm_data_type_8h.html#a101d7163bfbe7284eea2334e55aa2bc8">CommResultType</a> m_result;
+<a name="l00018"></a>00018     std::string    m_errmsg;
+<a name="l00019"></a>00019     <a class="code" href="class_x3_d_d_b.html" title="X3Dファイルデータベースクラス.">X3DDB</a> *m_db;
+<a name="l00020"></a>00020 <span class="keyword">public</span>:
+<a name="l00021"></a>00021     <span class="keywordtype">bool</span>    <span class="keyword">set</span>(<span class="keywordtype">int</span> packetNum, <span class="keywordtype">int</span> seq, <span class="keywordtype">char</span> *data, <span class="keywordtype">int</span> n);
+<a name="l00022"></a>00022 <span class="keyword">public</span>:
+<a name="l00023"></a><a class="code" href="class_result_attach_view_event.html#a33cbab9d71ec5d53668cc236b144929a">00023</a>     <a class="code" href="class_result_attach_view_event.html#a33cbab9d71ec5d53668cc236b144929a">ResultAttachViewEvent</a>() : m_db(NULL) {}
+<a name="l00024"></a>00024     <a class="code" href="class_result_attach_view_event.html#a3d0b46f533c8036a4e45a8f965613a17">‾ResultAttachViewEvent</a>();
+<a name="l00025"></a>00025 <span class="comment"></span>
+<a name="l00026"></a>00026 <span class="comment">    //! 結果を取得する</span>
+<a name="l00027"></a><a class="code" href="class_result_attach_view_event.html#aae3ae8a94ed132bcb76dc58a2b66d13b">00027</a> <span class="comment"></span>    <a class="code" href="_comm_data_type_8h.html#a101d7163bfbe7284eea2334e55aa2bc8">CommResultType</a> <a class="code" href="class_result_attach_view_event.html#aae3ae8a94ed132bcb76dc58a2b66d13b" title="結果を取得する">result</a>() { <span class="keywordflow">return</span> m_result; }<span class="comment"></span>
+<a name="l00028"></a>00028 <span class="comment">    //! エラー文字列を取得する</span>
+<a name="l00029"></a><a class="code" href="class_result_attach_view_event.html#a76a7346a67c5bc9f5602c0182e1197e8">00029</a> <span class="comment"></span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="class_result_attach_view_event.html#a76a7346a67c5bc9f5602c0182e1197e8" title="エラー文字列を取得する">errmsg</a>() { <span class="keywordflow">return</span> m_errmsg.length() &gt; 0? m_errmsg.c_str(): 0; }<span class="comment"></span>
+<a name="l00030"></a>00030 <span class="comment">    /**</span>
+<a name="l00031"></a>00031 <span class="comment">     * @brief X3DDB を取得する</span>
+<a name="l00032"></a>00032 <span class="comment">     *</span>
+<a name="l00033"></a>00033 <span class="comment">     * 接続成功時のみ取得可能。</span>
+<a name="l00034"></a>00034 <span class="comment">     */</span>
+<a name="l00035"></a><a class="code" href="class_result_attach_view_event.html#a3687585b1fb7409aa0c3f4a825c36324">00035</a>     <a class="code" href="class_x3_d_d_b.html" title="X3Dファイルデータベースクラス.">X3DDB</a> *<a class="code" href="class_result_attach_view_event.html#a3687585b1fb7409aa0c3f4a825c36324" title="X3DDB を取得する.">getX3DDB</a>() { <span class="keywordflow">return</span> m_db; }<span class="comment"></span>
+<a name="l00036"></a>00036 <span class="comment">    /**</span>
+<a name="l00037"></a>00037 <span class="comment">     * @brief X3DDB を取得し、破棄責任を放棄させる</span>
+<a name="l00038"></a>00038 <span class="comment">     */</span>
+<a name="l00039"></a><a class="code" href="class_result_attach_view_event.html#a44f3d9dd8bc21c170dae09e60d0f4fcb">00039</a>     <a class="code" href="class_x3_d_d_b.html" title="X3Dファイルデータベースクラス.">X3DDB</a> *<a class="code" href="class_result_attach_view_event.html#a44f3d9dd8bc21c170dae09e60d0f4fcb" title="X3DDB を取得し、破棄責任を放棄させる.">releaseX3DDb</a>() {
+<a name="l00040"></a>00040         <a class="code" href="class_x3_d_d_b.html" title="X3Dファイルデータベースクラス.">X3DDB</a> *tmp = m_db;
+<a name="l00041"></a>00041         m_db = NULL;
+<a name="l00042"></a>00042         <span class="keywordflow">return</span> tmp;
+<a name="l00043"></a>00043     }
+<a name="l00044"></a>00044         
+<a name="l00045"></a>00045 };
+<a name="l00046"></a>00046 
+<a name="l00047"></a>00047 <span class="comment"></span>
+<a name="l00048"></a>00048 <span class="comment">/**</span>
+<a name="l00049"></a>00049 <span class="comment"> * @brief コントローラ割り当て結果イベントクラス</span>
+<a name="l00050"></a>00050 <span class="comment"> *</span>
+<a name="l00051"></a>00051 <span class="comment"> */</span>
+<a name="l00052"></a><a class="code" href="class_result_attach_controller_event.html">00052</a> <span class="keyword">class </span><a class="code" href="class_result_attach_controller_event.html" title="コントローラ割り当て結果イベントクラス">ResultAttachControllerEvent</a> : <span class="keyword">public</span> <a class="code" href="class_result_event.html" title="リクエスト結果イベントクラス">ResultEvent</a> {};
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054 <span class="preprocessor">#endif // Comm_Event_ResultAttach_h</span>
+<a name="l00055"></a>00055 <span class="preprocessor"></span>
+<a name="l00056"></a>00056 
+<a name="l00057"></a>00057  
+</pre></div></div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:18 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

@@ -1,0 +1,669 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: 構成メンバ - 関数</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li class="current"><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="functions.html"><span>全て</span></a></li>
+      <li class="current"><a href="functions_func.html"><span>関数</span></a></li>
+      <li><a href="functions_vars.html"><span>変数</span></a></li>
+      <li><a href="functions_type.html"><span>型定義</span></a></li>
+      <li><a href="functions_enum.html"><span>列挙型</span></a></li>
+      <li><a href="functions_eval.html"><span>列挙型の値</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="functions_func.html#index_a"><span>a</span></a></li>
+      <li><a href="functions_func_0x62.html#index_b"><span>b</span></a></li>
+      <li><a href="functions_func_0x63.html#index_c"><span>c</span></a></li>
+      <li><a href="functions_func_0x64.html#index_d"><span>d</span></a></li>
+      <li><a href="functions_func_0x65.html#index_e"><span>e</span></a></li>
+      <li><a href="functions_func_0x66.html#index_f"><span>f</span></a></li>
+      <li class="current"><a href="functions_func_0x67.html#index_g"><span>g</span></a></li>
+      <li><a href="functions_func_0x68.html#index_h"><span>h</span></a></li>
+      <li><a href="functions_func_0x69.html#index_i"><span>i</span></a></li>
+      <li><a href="functions_func_0x6a.html#index_j"><span>j</span></a></li>
+      <li><a href="functions_func_0x6b.html#index_k"><span>k</span></a></li>
+      <li><a href="functions_func_0x6c.html#index_l"><span>l</span></a></li>
+      <li><a href="functions_func_0x6d.html#index_m"><span>m</span></a></li>
+      <li><a href="functions_func_0x6e.html#index_n"><span>n</span></a></li>
+      <li><a href="functions_func_0x6f.html#index_o"><span>o</span></a></li>
+      <li><a href="functions_func_0x70.html#index_p"><span>p</span></a></li>
+      <li><a href="functions_func_0x71.html#index_q"><span>q</span></a></li>
+      <li><a href="functions_func_0x72.html#index_r"><span>r</span></a></li>
+      <li><a href="functions_func_0x73.html#index_s"><span>s</span></a></li>
+      <li><a href="functions_func_0x74.html#index_t"><span>t</span></a></li>
+      <li><a href="functions_func_0x75.html#index_u"><span>u</span></a></li>
+      <li><a href="functions_func_0x76.html#index_v"><span>v</span></a></li>
+      <li><a href="functions_func_0x77.html#index_w"><span>w</span></a></li>
+      <li><a href="functions_func_0x78.html#index_x"><span>x</span></a></li>
+      <li><a href="functions_func_0x79.html#index_y"><span>y</span></a></li>
+      <li><a href="functions_func_0x7a.html#index_z"><span>z</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+&nbsp;
+
+<h3><a class="anchor" id="index_g">- g -</a></h3><ul>
+<li>geom()
+: <a class="el" href="class_o_d_e_obj.html#a8bc36eb5d3f1edf451fbf8f0901b5a72">ODEObj</a>
+</li>
+<li>GeometryParser()
+: <a class="el" href="class_geometry_parser.html#ac6f8cf8a04a1ae84f835644dd311457f">GeometryParser</a>
+</li>
+<li>get()
+: <a class="el" href="class_server_accept_proc.html#a055d71b69acd1f0d934387638ca44225">ServerAcceptProc</a>
+, <a class="el" href="class_simple_shape_d_b.html#a1814bbcd678ab939d55305814de48844">SimpleShapeDB</a>
+, <a class="el" href="class_logger.html#a6b82e3118a6f29c899e51e9a038dae75">Logger</a>
+, <a class="el" href="class_server_accept_proc.html#a12cd6d26b3525f55f60c951c88113c6a">ServerAcceptProc</a>
+, <a class="el" href="class_x3_d_d_b.html#a371afa1f4e9c1e44a478738366703236">X3DDB</a>
+, <a class="el" href="class_o_d_e_world.html#a049fbdc7fa608cf830a961baee726721">ODEWorld</a>
+, <a class="el" href="class_sim_world_provider.html#adc3c5389d6e8467e763dcddec3246c07">SimWorldProvider</a>
+, <a class="el" href="class_simple_shape.html#a872f877af5e6d8ce0e5a4003c1d68d83">SimpleShape</a>
+</li>
+<li>getAgentName()
+: <a class="el" href="class_request_add_joint_torque_event.html#ac31df6352ceee0acd4c207611eab29b4">RequestAddJointTorqueEvent</a>
+, <a class="el" href="class_request_set_joint_velocity_event.html#af366e201ed56ca8f847e3549a488dca6">RequestSetJointVelocityEvent</a>
+, <a class="el" href="class_request_set_object_velocity_event.html#adcc371167b9ca2061b865230d6001c4e">RequestSetObjectVelocityEvent</a>
+, <a class="el" href="class_request_get_joint_angle_event.html#ad9e7c4cfa341f14eb6088f3be19a2181">RequestGetJointAngleEvent</a>
+, <a class="el" href="class_request_release_joint_event.html#a8ecb3a9c6b68b431ec8bb4211eb9e78c">RequestReleaseJointEvent</a>
+, <a class="el" href="class_request_attach_controller_event.html#ac1f50120891eba8ebeb8fba4fea7b79c">RequestAttachControllerEvent</a>
+, <a class="el" href="class_request_connect_joint_event.html#abaf208f283b106c5920a1039083ab997">RequestConnectJointEvent</a>
+, <a class="el" href="class_request_capture_view_image_event.html#a25d5c910cfaca0f79807aacdbbdc0e39">RequestCaptureViewImageEvent</a>
+, <a class="el" href="class_request_distance_sensor_event.html#af22067f522a421b1036bd6f11f18f6d2">RequestDistanceSensorEvent</a>
+, <a class="el" href="class_request_detect_entities_event.html#a508537c99817c87710a0f0b262d38327">RequestDetectEntitiesEvent</a>
+, <a class="el" href="class_request_get_joint_force_event.html#a336bfc258286adff4c9d8bc6fb0563c9">RequestGetJointForceEvent</a>
+, <a class="el" href="class_request_set_joint_angle_event.html#ae463754b80a574fba90a18427fad9119">RequestSetJointAngleEvent</a>
+, <a class="el" href="class_request_set_joint_quaternion_event.html#a03af14134632156c5439691dbe29a954">RequestSetJointQuaternionEvent</a>
+</li>
+<li>getAgentPartsName()
+: <a class="el" href="class_request_connect_joint_event.html#a6af371951a9d0c889db474155de7da65">RequestConnectJointEvent</a>
+</li>
+<li>getAgents()
+: <a class="el" href="class_request_get_object_names_event.html#a0a5a2c976177a881f21d828a81cc119f">RequestGetObjectNamesEvent</a>
+</li>
+<li>GetAllEnitiesRequest()
+: <a class="el" href="class_comm_data_1_1_get_all_enities_request.html#a9ddbbbd120ca7a251fe99e07df721509">CommData::GetAllEnitiesRequest</a>
+</li>
+<li>getAllEntities()
+: <a class="el" href="class_controller.html#ad404285a4313fb62775358cb97b7f2e2">Controller</a>
+, <a class="el" href="class_c_t_sim_obj.html#a46f1c5e5379f7cd12f27fd60d2575424">CTSimObj</a>
+</li>
+<li>GetAllEntitiesResult()
+: <a class="el" href="class_comm_data_1_1_get_all_entities_result.html#af092680d9a8dd4e1355657a9afff0eac">CommData::GetAllEntitiesResult</a>
+</li>
+<li>getAllPartsNames()
+: <a class="el" href="class_simple_shape.html#af4b348b56271439064595020bf670fae">SimpleShape</a>
+</li>
+<li>getAnchor()
+: <a class="el" href="class_joint.html#a815b32faa7061515d5b03abd4f5cd7fa">Joint</a>
+</li>
+<li>getAngle()
+: <a class="el" href="class_hinge_joint.html#a84c88d16922a6583e0b21be1ee4fc289">HingeJoint</a>
+, <a class="el" href="class_request_set_joint_angle_event.html#a1c2338f315190a6ea751e420be27b7e0">RequestSetJointAngleEvent</a>
+, <a class="el" href="class_result_get_joint_angle_event.html#ab79a57b39bdacf8e35a2d09f98cc0767">ResultGetJointAngleEvent</a>
+</li>
+<li>getAspectRatio()
+: <a class="el" href="class_view_image.html#a96d20382f240417630f4f3cadd7704ee">ViewImage</a>
+</li>
+<li>getAttr()
+: <a class="el" href="class_sim_obj_base.html#a4f38e5924ac5a4e902bed239da8c6d00">SimObjBase</a>
+</li>
+<li>getAttribute()
+: <a class="el" href="class_x_m_l_utils.html#a9ef631dff5b28dc94f5fb17428cf85d4">XMLUtils</a>
+</li>
+<li>GetAttributesRequest()
+: <a class="el" href="class_comm_data_1_1_get_attributes_request.html#a128f13e6d32b97c1220628119302a4b5">CommData::GetAttributesRequest</a>
+</li>
+<li>GetAttributesResult()
+: <a class="el" href="class_comm_data_1_1_get_attributes_result.html#a209d34b2bbf902476da46f03ae92ee17">CommData::GetAttributesResult</a>
+</li>
+<li>getAttrName()
+: <a class="el" href="class_request_get_attributes_event.html#a397e6533b3d4ff727720e41e618182cc">RequestGetAttributesEvent</a>
+</li>
+<li>getAttrNum()
+: <a class="el" href="class_request_get_attributes_event.html#aa1b6c0943cf2a73a2cc87c873a41e0fe">RequestGetAttributesEvent</a>
+</li>
+<li>getAxisX()
+: <a class="el" href="class_hinge_joint.html#a58b2830d5876b349ee1e1e8bddfc469c">HingeJoint</a>
+</li>
+<li>getAxisY()
+: <a class="el" href="class_hinge_joint.html#ab4d30b367b9c21ccf5c2f44733801d7e">HingeJoint</a>
+</li>
+<li>getAxisZ()
+: <a class="el" href="class_hinge_joint.html#a57ff59e9cda1a280463add59401c6cad">HingeJoint</a>
+</li>
+<li>getAxleLength()
+: <a class="el" href="class_dynamics_controller.html#a98628b6672a34fba28051c9a9e9617b6">DynamicsController</a>
+, <a class="el" href="class_controller.html#a743afff941265e2eaa49c32631d4cbfc">Controller</a>
+</li>
+<li>getBitPerSample()
+: <a class="el" href="class_raw_sound_header.html#a073d29388bacb0f01da5903ccbd35215">RawSoundHeader</a>
+</li>
+<li>getBody()
+: <a class="el" href="class_s_sim_obj.html#a0e52df058799009cfbdee5a197d1fd99">SSimObj</a>
+</li>
+<li>getBodyFactory()
+: <a class="el" href="class_sgv_1_1_x3_d_sim_obj_creator.html#ac9b9987a01ba9ab86d011cd5df111ad8">Sgv::X3DSimObjCreator</a>
+</li>
+<li>getBool()
+: <a class="el" href="class_value.html#a27144a2b88beb6048c49d5c757173f10">Value</a>
+</li>
+<li>getBounce()
+: <a class="el" href="class_o_d_e_obj.html#ac1ead91a06ebce05cd78cf5d62cfa8e8">ODEObj</a>
+</li>
+<li>getBuffer()
+: <a class="el" href="class_view_image.html#a04465a71abbf3c23c77af74438b378fb">ViewImage</a>
+</li>
+<li>getBufferLength()
+: <a class="el" href="class_view_image.html#a65c1fa0b47563e5542a3ef0a28a1ac59">ViewImage</a>
+</li>
+<li>getBytesPerOnePixel()
+: <a class="el" href="class_view_image_info.html#ac7cab539e4cbc37d5cfdf43e74d8bc7d">ViewImageInfo</a>
+</li>
+<li>getByType()
+: <a class="el" href="class_server_accept_proc.html#a16911880df5ca888cd0e373ba94cf2cc">ServerAcceptProc</a>
+</li>
+<li>getCaller()
+: <a class="el" href="class_recv_sound_event.html#a0311e1719164623f498a808853fe67bc">RecvSoundEvent</a>
+, <a class="el" href="class_recv_text_event.html#a34a6ef80229c09062932a79cc95b8746">RecvTextEvent</a>
+</li>
+<li>getChannelNum()
+: <a class="el" href="class_raw_sound_header.html#a13fa4d81b0a881e586bd4d75cc76b0c4">RawSoundHeader</a>
+</li>
+<li>getChild()
+: <a class="el" href="class_s_parts.html#a7704baa9b1fc7819f5a97fadf315a417">SParts</a>
+, <a class="el" href="class_sgv_1_1_test_node.html#a514f3840efecb05409f270cd2559eb21">Sgv::TestNode</a>
+</li>
+<li>getColor()
+: <a class="el" href="class_display_text_event.html#a488ad2c2c10e55115467014c73680088">DisplayTextEvent</a>
+</li>
+<li>getColorBitType()
+: <a class="el" href="class_view_image_info.html#a4c8d2e04ea7e854fac951d68ce4c4932">ViewImageInfo</a>
+</li>
+<li>getCtrlCmd()
+: <a class="el" href="class_request_sim_ctrl_event.html#a3d62b8fb5036980d78f046e9a0d9fee3">RequestSimCtrlEvent</a>
+</li>
+<li>getCTSimObj()
+: <a class="el" href="class_controller_impl.html#ac9fb63de50583dea64342fbc4b49b977">ControllerImpl</a>
+</li>
+<li>getCurrentLeftWheelSpeed()
+: <a class="el" href="class_dynamics_controller.html#ae260e0438af0a4383177ff5c4894952c">DynamicsController</a>
+</li>
+<li>getCurrentRightWheelSpeed()
+: <a class="el" href="class_dynamics_controller.html#a2007f1c18264b10aba9a8f1f53266419">DynamicsController</a>
+</li>
+<li>getData()
+: <a class="el" href="class_raw_sound.html#aee674b71438d52d23b37d1ae8f09f178">RawSound</a>
+, <a class="el" href="class_comm_data_1_1_raw_data_encoder.html#a0a767350f6844b8114e422ea015e6941">CommData::RawDataEncoder</a>
+</li>
+<li>getDataHeader()
+: <a class="el" href="class_comm_data_1_1_raw_data_encoder.html#a83f0a28bafdf47d88d8460d5bec04a9b">CommData::RawDataEncoder</a>
+</li>
+<li>getDataLen()
+: <a class="el" href="class_raw_sound.html#a2c55ceedf0d1b10f2a3916b76f8afe3c">RawSound</a>
+, <a class="el" href="class_comm_data_1_1_raw_data_encoder.html#af6daef42adf17b989ff45a4a9a8c633d">CommData::RawDataEncoder</a>
+</li>
+<li>getDataType()
+: <a class="el" href="class_view_image_info.html#ab0b513a28c924fd70ec7544fbcbb0d10">ViewImageInfo</a>
+</li>
+<li>getDepthFromAngle()
+: <a class="el" href="class_depth_image.html#a3f16030f0fe8318c7b97ff7cd8cf3228">DepthImage</a>
+</li>
+<li>getDepthFromPixel()
+: <a class="el" href="class_depth_image.html#a2db0ceb7f1afed01aee9e17a20a372eb">DepthImage</a>
+</li>
+<li>getDetected()
+: <a class="el" href="class_result_detect_entities_event.html#ac49edb947678263c877abb33d4b99863">ResultDetectEntitiesEvent</a>
+</li>
+<li>getDetectedCount()
+: <a class="el" href="class_result_detect_entities_event.html#aaadd0ba760a812de9e9a1d3d5dcd6c1e">ResultDetectEntitiesEvent</a>
+</li>
+<li>getDimension()
+: <a class="el" href="class_request_distance_sensor_event.html#af016be4235bd577d879cb435daea7a16">RequestDistanceSensorEvent</a>
+</li>
+<li>getDirectory()
+: <a class="el" href="class_filename_d_b.html#a1b4c3f5828a134657c01dfc78e2b10b2">FilenameDB</a>
+</li>
+<li>getDistance()
+: <a class="el" href="class_result_distance_sensor_event.html#a60bb269ac16853bd0a04d97ceb26ff8e">ResultDistanceSensorEvent</a>
+</li>
+<li>getDistanceFromPixel()
+: <a class="el" href="class_depth_image.html#aedf80ce8058f50676bbfe0b317d87740">DepthImage</a>
+</li>
+<li>getDouble()
+: <a class="el" href="class_attribute.html#aa21a68af0ff2c99f7c872852ddc85dd7">Attribute</a>
+, <a class="el" href="class_value.html#abeafe2fb6e2d26c7dd96c22ca039a2f6">Value</a>
+</li>
+<li>getEncode()
+: <a class="el" href="class_text.html#af4b8e4c44dca9eb09f04f8d859d9033b">Text</a>
+, <a class="el" href="class_recv_text_event.html#a66d4d44ea6477a8213db256fcbdadf8b">RecvTextEvent</a>
+</li>
+<li>getEnd()
+: <a class="el" href="class_request_distance_sensor_event.html#ad91221c04733876286a1c4c136ceccd3">RequestDistanceSensorEvent</a>
+</li>
+<li>getEndian()
+: <a class="el" href="class_raw_sound_header.html#a790b04aa4893dc8d5e1c0753ea9c7b27">RawSoundHeader</a>
+</li>
+<li>getEntities()
+: <a class="el" href="class_request_get_object_names_event.html#a727e2cb0d13fae80e8a35fa5d5852afb">RequestGetObjectNamesEvent</a>
+</li>
+<li>GetEntityNamesRequest()
+: <a class="el" href="class_comm_data_1_1_get_entity_names_request.html#a055376f08a52daf3bd730266322bd6ae">CommData::GetEntityNamesRequest</a>
+</li>
+<li>GetEntityRequest()
+: <a class="el" href="class_comm_data_1_1_get_entity_request.html#a0d4ec7c066424fa40b595379db10c944">CommData::GetEntityRequest</a>
+</li>
+<li>GetEntityResult()
+: <a class="el" href="class_comm_data_1_1_get_entity_result.html#a9f38b3dc7c5c3f74073decae86ffc5fb">CommData::GetEntityResult</a>
+</li>
+<li>getFontSize()
+: <a class="el" href="class_display_text_event.html#a2fd69b9cdf158b340d101371efab42a9">DisplayTextEvent</a>
+</li>
+<li>getFooter()
+: <a class="el" href="class_comm_data_encoder.html#a97f1f21ed8efe5b2361cf9480bb9fffe">CommDataEncoder</a>
+</li>
+<li>getForce()
+: <a class="el" href="class_s_parts.html#ac5ddd193573c59946910ce0ca04f3825">SParts</a>
+, <a class="el" href="class_joint_force.html#a65d69dbf64ac8b3d0fe01b2a1e4f20d3">JointForce</a>
+</li>
+<li>getFOVy()
+: <a class="el" href="class_view_image.html#a08ed9831a4bf004325ec41e4bea9c275">ViewImage</a>
+</li>
+<li>getGeom()
+: <a class="el" href="class_sim_ground.html#a8715c3553105397fb9dd55b6adcbfe86">SimGround</a>
+</li>
+<li>getGround()
+: <a class="el" href="class_o_d_e_world.html#a799904a3b048add8816be18774264a03">ODEWorld</a>
+</li>
+<li>getHeader()
+: <a class="el" href="class_raw_sound.html#a4308f0ba352ef2bdcb61e6fdae14d919">RawSound</a>
+, <a class="el" href="class_comm_data_encoder.html#a27acbffbc7fe666d030dc4847234e2ab">CommDataEncoder</a>
+</li>
+<li>getHeight()
+: <a class="el" href="class_view_image.html#aa4c39e6213384695245cbc911463379b">ViewImage</a>
+, <a class="el" href="class_view_image_info.html#ad81986b39d8615880267010b15dbe50e">ViewImageInfo</a>
+</li>
+<li>getId()
+: <a class="el" href="class_request_detect_entities_event.html#a5a6a7186dee59029f6b6a43450d30730">RequestDetectEntitiesEvent</a>
+, <a class="el" href="class_request_capture_view_image_event.html#a44ead8c8708b9833e2d9dc01f7386fc8">RequestCaptureViewImageEvent</a>
+, <a class="el" href="class_request_distance_sensor_event.html#a85f419bf7570bf1402ced58b13f21fd9">RequestDistanceSensorEvent</a>
+</li>
+<li>getImageInfo()
+: <a class="el" href="class_request_capture_view_image_event.html#aad91d76ea56f92264954d7028475bebb">RequestCaptureViewImageEvent</a>
+</li>
+<li>getInfo()
+: <a class="el" href="class_view_image.html#a0eb1e4e6e4e7780cb43520ab60c21821">ViewImage</a>
+</li>
+<li>getInstance()
+: <a class="el" href="class_o_d_e_object_container.html#a414d05a663d64882ff6393f17c462310">ODEObjectContainer</a>
+</li>
+<li>getInt()
+: <a class="el" href="class_value.html#a7d63f40d7453ea662612719b74936985">Value</a>
+</li>
+<li>getIterator()
+: <a class="el" href="class_x3_d_d_b.html#ab78c12d4b8631a813f05eef77fcb5085">X3DDB</a>
+</li>
+<li>getJoint()
+: <a class="el" href="class_s_sim_obj.html#a9e6683463be42105a54b04a5deadad58">SSimObj</a>
+, <a class="el" href="class_joint_parser.html#a97a6b417fdab3846cf9b386cd22e9bf7">JointParser</a>
+, <a class="el" href="class_sgv_1_1_test_node.html#aa92093a9cc8df83e94c9a6a7a65c517c">Sgv::TestNode</a>
+</li>
+<li>GetJointAngleRequest()
+: <a class="el" href="class_comm_data_1_1_get_joint_angle_request.html#a373233dab7da63e1491f1f444dc737b5">CommData::GetJointAngleRequest</a>
+</li>
+<li>GetJointAngleResult()
+: <a class="el" href="class_comm_data_1_1_get_joint_angle_result.html#a41520e2da4e9812b9bef28c3a8b1d279">CommData::GetJointAngleResult</a>
+</li>
+<li>getJointForce()
+: <a class="el" href="class_result_get_joint_force_event.html#a410562e914ae5f1d089cbfb174ee57f5">ResultGetJointForceEvent</a>
+</li>
+<li>getJointForceNum()
+: <a class="el" href="class_result_get_joint_force_event.html#a943d97e9e31f4fdc2d460489c48a12c1">ResultGetJointForceEvent</a>
+</li>
+<li>getJointForces()
+: <a class="el" href="class_joint.html#a514e33e19baf927f4272b3a1cab0c72c">Joint</a>
+, <a class="el" href="class_comm_data_1_1_result_get_joint_force.html#a2ee791be014e4183feb6c0e57efbaa7a">CommData::ResultGetJointForce</a>
+</li>
+<li>getJointName()
+: <a class="el" href="class_request_release_joint_event.html#ab7ff170e637e65b6d35d2952a6f89480">RequestReleaseJointEvent</a>
+, <a class="el" href="class_request_connect_joint_event.html#a3075400bfb494bcef44a658e9568f2d4">RequestConnectJointEvent</a>
+, <a class="el" href="class_request_get_joint_force_event.html#af12da9e769ad9c350210f1332a093959">RequestGetJointForceEvent</a>
+, <a class="el" href="class_request_set_joint_angle_event.html#afbba9606967ff8f35804c5028cc2349d">RequestSetJointAngleEvent</a>
+, <a class="el" href="class_request_set_joint_quaternion_event.html#a8164b2ebfaf525945c765fe7ecb251ec">RequestSetJointQuaternionEvent</a>
+, <a class="el" href="class_request_add_joint_torque_event.html#a6bf1a31cdfac9570552f5db413ee75d8">RequestAddJointTorqueEvent</a>
+, <a class="el" href="class_request_set_joint_velocity_event.html#ae2f2f006b7fb63c50233cd3a36fb6c1b">RequestSetJointVelocityEvent</a>
+, <a class="el" href="class_request_get_joint_angle_event.html#aadfa3c212ce3e90e53a867b33140627b">RequestGetJointAngleEvent</a>
+</li>
+<li>getJointSize()
+: <a class="el" href="class_s_sim_obj.html#abcb523edba0824915d4d5eb9eaa994f5">SSimObj</a>
+</li>
+<li>getJointType()
+: <a class="el" href="class_sgv_1_1_test_node.html#ae650abe7c46748fa4b7270422b91fa7c">Sgv::TestNode</a>
+</li>
+<li>getKey()
+: <a class="el" href="class_read_task.html#a398a6271837f231547bca91dc711ef2f">ReadTask</a>
+</li>
+<li>getLeftEncoderNoise()
+: <a class="el" href="class_dynamics_controller.html#a60987b1bbc460f2d5c916ac3c44bdf33">DynamicsController</a>
+, <a class="el" href="class_controller.html#a809452363bc8fce9b7fa43a7cfae783f">Controller</a>
+</li>
+<li>getLeftSlipNoise()
+: <a class="el" href="class_dynamics_controller.html#a1499bd49a2198c16d9854e743c1736aa">DynamicsController</a>
+</li>
+<li>getLeftWheelRadius()
+: <a class="el" href="class_controller.html#a321dd0083cfb1ffb4dfd59e53485cf9f">Controller</a>
+, <a class="el" href="class_dynamics_controller.html#a02754f16c425d90f4a8588b3e0ca0a3e">DynamicsController</a>
+</li>
+<li>getLength()
+: <a class="el" href="class_s_cylinder_parts.html#abda864da66bb74b93c7d773bd574d83f">SCylinderParts</a>
+</li>
+<li>getMass()
+: <a class="el" href="class_s_parts.html#a0fe9cc617214e158a4937d19b6c717a9">SParts</a>
+</li>
+<li>getMax()
+: <a class="el" href="class_request_set_joint_velocity_event.html#a34194912a858f82266656117f89946ce">RequestSetJointVelocityEvent</a>
+, <a class="el" href="class_request_set_object_velocity_event.html#a9b0292656c457707e410a88e3a64eeab">RequestSetObjectVelocityEvent</a>
+</li>
+<li>getMu1()
+: <a class="el" href="class_o_d_e_obj.html#ab5b767add971cda157b964b6d8f5d61b">ODEObj</a>
+</li>
+<li>getMu2()
+: <a class="el" href="class_o_d_e_obj.html#ae1e4fed9d8e69d5e728eea68ffd78609">ODEObj</a>
+</li>
+<li>getName()
+: <a class="el" href="class_sgv_1_1_test_node.html#a2d346cbe1ac5eda5a9317c0050995712">Sgv::TestNode</a>
+, <a class="el" href="class_request_attach_event.html#ad2814887b04e883243877a6b6a58c559">RequestAttachEvent</a>
+</li>
+<li>getNextTime()
+: <a class="el" href="class_comm_data_decoder.html#a72182b4899b120cbde62bfe74c49db34">CommDataDecoder</a>
+</li>
+<li>getObj()
+: <a class="el" href="class_controller.html#adc50f0b13ae6175fe2e689314b97726d">Controller</a>
+, <a class="el" href="class_sim_world.html#a594ca3d58cf38e2271155292aa65e972">SimWorld</a>
+</li>
+<li>getObjById()
+: <a class="el" href="class_sim_world.html#af2646c134c71844f155dcdf00ecd3bc9">SimWorld</a>
+</li>
+<li>GetObjectNamesRequest()
+: <a class="el" href="class_comm_data_1_1_get_object_names_request.html#adf95366d1787c9352d06ce495a342ce9">CommData::GetObjectNamesRequest</a>
+</li>
+<li>GetObjectNamesResult()
+: <a class="el" href="class_comm_data_1_1_get_object_names_result.html#a478768c7d39fd7eceb02d72c955be9ae">CommData::GetObjectNamesResult</a>
+</li>
+<li>getODEObjFromGeomID()
+: <a class="el" href="class_o_d_e_object_container.html#a1afd2f1f2f607d5e3c3464bb61b764cf">ODEObjectContainer</a>
+</li>
+<li>getoffset()
+: <a class="el" href="class_request_set_joint_quaternion_event.html#ad937eb5dba5c6a1daeab6ea80c83e233">RequestSetJointQuaternionEvent</a>
+</li>
+<li>getOrientation()
+: <a class="el" href="class_sgv_1_1_test_node.html#abd30db711bbae9c7697e213751cc411c">Sgv::TestNode</a>
+</li>
+<li>getParent()
+: <a class="el" href="class_sgv_1_1_test_node.html#a1b9b9037f66d44828d7d35ef83fda5d0">Sgv::TestNode</a>
+, <a class="el" href="class_s_parts.html#ad0a2e589d1397c1380f4f3687663bdba">SParts</a>
+</li>
+<li>getParentJoint()
+: <a class="el" href="class_s_parts.html#af1ccc69f65cf00036109ebcf1c3aefd7">SParts</a>
+</li>
+<li>getParts()
+: <a class="el" href="class_joint.html#a111b952fa9a5603125a3d28207fc9b4a">Joint</a>
+, <a class="el" href="class_sim_obj.html#a441d3eced24914db82dfb3cb0404e5b9">SimObj</a>
+, <a class="el" href="class_joint_parser.html#aeebc5133ba6a1d252a528ce5f541862f">JointParser</a>
+</li>
+<li>getPartsCollection()
+: <a class="el" href="class_sim_obj.html#a8716f260273eb3e9bcfcda9321252b6d">SimObj</a>
+</li>
+<li>getPartsIterator()
+: <a class="el" href="class_sim_obj.html#aec7e335bb69258e4d32cee11c994235c">SimObj</a>
+, <a class="el" href="class_sim_obj_base.html#a1d6e6656c9ad342a8d04802ed7efb5c3">SimObjBase</a>
+</li>
+<li>getPartsName()
+: <a class="el" href="class_joint_force.html#a9c2b3daa93148662d86de696a9210a92">JointForce</a>
+, <a class="el" href="class_request_set_object_velocity_event.html#a34a20523ed77e45e8ebe83e5a625301e">RequestSetObjectVelocityEvent</a>
+</li>
+<li>getPath()
+: <a class="el" href="class_filename_d_b.html#a81b6dccc24973186417c75bf1cffc961">FilenameDB</a>
+</li>
+<li>getPosition()
+: <a class="el" href="class_parts.html#a151e3fb90237808c63c480e1d1dd84ac">Parts</a>
+, <a class="el" href="class_s_parts.html#ac9425bd059c4565c1a21826f1b1c063c">SParts</a>
+, <a class="el" href="class_sgv_1_1_test_node.html#a4ef1148da09b30a2a2c381a31688c68e">Sgv::TestNode</a>
+, <a class="el" href="class_sim_obj_base.html#a91b5054d5d1dfef47a2e08e2b44508f0">SimObjBase</a>
+, <a class="el" href="class_c_parts.html#a2d2bc39c552554b34c01e06bc3a1d46c">CParts</a>
+</li>
+<li>getProviderName()
+: <a class="el" href="class_request_provide_service_event.html#a9a61bc19914f7689703a3b57bcada9d2">RequestProvideServiceEvent</a>
+</li>
+<li>getQuaternion()
+: <a class="el" href="class_c_parts.html#ac1280ab257c6b43d91e12d46d70d5900">CParts</a>
+, <a class="el" href="class_s_parts.html#a50261427cdd123283df564fe9623c4fb">SParts</a>
+, <a class="el" href="class_parts.html#a9e64c80362c6627ec2d82f75b53680ed">Parts</a>
+</li>
+<li>getqw()
+: <a class="el" href="class_request_set_joint_quaternion_event.html#a120c10b8ac26f08a54198064b6d6be73">RequestSetJointQuaternionEvent</a>
+</li>
+<li>getqx()
+: <a class="el" href="class_request_set_joint_quaternion_event.html#a27ae20d125e1e31087316f2554fd4e23">RequestSetJointQuaternionEvent</a>
+</li>
+<li>getqy()
+: <a class="el" href="class_request_set_joint_quaternion_event.html#a9492f1e966fd6ec8b8bfdde4b3f802ee">RequestSetJointQuaternionEvent</a>
+</li>
+<li>getqz()
+: <a class="el" href="class_request_set_joint_quaternion_event.html#aacf2e53b180870e088202ae77acd929b">RequestSetJointQuaternionEvent</a>
+</li>
+<li>getRadius()
+: <a class="el" href="class_s_sphere_parts.html#a191249364c1d788a664ca53f768b8feb">SSphereParts</a>
+, <a class="el" href="class_s_cylinder_parts.html#aaa9cdaf50419b7562a85911756b35982">SCylinderParts</a>
+</li>
+<li>getRand()
+: <a class="el" href="class_controller.html#ac6b1a9ac2618e01f303330ba5fcb5d05">Controller</a>
+</li>
+<li>getRawSound()
+: <a class="el" href="class_recv_sound_event.html#aa67f1f340623c321da7a64ca1aec5664">RecvSoundEvent</a>
+, <a class="el" href="class_request_sound_recog_event.html#ab7c5b5a0e79bf6341352472b06f1ab15">RequestSoundRecogEvent</a>
+</li>
+<li>getRightEncoderNoise()
+: <a class="el" href="class_controller.html#ac43ac6bae3ff7dfb3357ea1309126b47">Controller</a>
+, <a class="el" href="class_dynamics_controller.html#ad5d6d97e2e820c4fb65b859704d23bea">DynamicsController</a>
+, <a class="el" href="class_controller.html#abd6a06b539806af63168109b20a5bc32">Controller</a>
+</li>
+<li>getRightSlipNoise()
+: <a class="el" href="class_dynamics_controller.html#a44598f24497a045cd0cb1d3380f21e2c">DynamicsController</a>
+</li>
+<li>getRightWheelRadius()
+: <a class="el" href="class_dynamics_controller.html#a632f31808b955df81c6b97d4929bb1b5">DynamicsController</a>
+, <a class="el" href="class_controller.html#ac16206d99667e36a00a4e3f7350b1589">Controller</a>
+</li>
+<li>getRotation()
+: <a class="el" href="class_c_parts.html#a7a19adaf95212cd65a51bffbe6da67c6">CParts</a>
+, <a class="el" href="class_joint.html#a7a013fb7a18a82ad355f71bd4fe2e0fd">Joint</a>
+, <a class="el" href="class_s_parts.html#a67c2ca68807e57c96f77f3b9aa23d8e8">SParts</a>
+, <a class="el" href="class_parts.html#ac833960fcd15120b249d4a1127e0a3fb">Parts</a>
+</li>
+<li>getSamplingRate()
+: <a class="el" href="class_raw_sound_header.html#a5036d2eaf273724284d8006e4837021b">RawSoundHeader</a>
+</li>
+<li>getSBody()
+: <a class="el" href="class_s_sim_obj.html#a84d9ced91ad4c02a91c41701780eb42a">SSimObj</a>
+</li>
+<li>getSender()
+: <a class="el" href="class_recv_message_event.html#a0bef85aff8fc8c1a0f802f13eb6c7ca5">RecvMessageEvent</a>
+</li>
+<li>getService()
+: <a class="el" href="class_request_provide_service_event.html#adac6e3dccfe882816b054fbbe99f98b8">RequestProvideServiceEvent</a>
+</li>
+<li>getSize()
+: <a class="el" href="class_filename_d_b.html#a75644ef032dfaba69c9c68e29c49e81a">FilenameDB</a>
+, <a class="el" href="class_s_box_parts.html#a110a8ad441bfabf091ac24be7d382bbb">SBoxParts</a>
+, <a class="el" href="class_recv_message_event.html#a1ca5615a5bc1d94eac5de05fbf9a9e2a">RecvMessageEvent</a>
+</li>
+<li>getSlip1()
+: <a class="el" href="class_o_d_e_obj.html#ab47b16e78619e048ab86bc7207280e97">ODEObj</a>
+</li>
+<li>getSlip2()
+: <a class="el" href="class_o_d_e_obj.html#ad3b18aaddd0aa72a33e6c104c9231671">ODEObj</a>
+</li>
+<li>getSObj()
+: <a class="el" href="class_body_factory.html#ae46df61f0ce3b7c49626f966facc4d21">BodyFactory</a>
+, <a class="el" href="class_s_sim_world.html#a9679472fa3757e3a8256b91d32d1fcab">SSimWorld</a>
+</li>
+<li>getSoftCfm()
+: <a class="el" href="class_o_d_e_obj.html#a24c538b7e685fc699453d1140b0ad232">ODEObj</a>
+</li>
+<li>getSoftErp()
+: <a class="el" href="class_o_d_e_obj.html#a606e0626de4794481a05f8345d721730">ODEObj</a>
+</li>
+<li>getSParts()
+: <a class="el" href="class_s_sim_obj.html#a418bbbe693c62c864e1ede5addbd1c93">SSimObj</a>
+, <a class="el" href="class_sgv_1_1_test_node.html#ad30bd5926534d0c5df880dfa57425226">Sgv::TestNode</a>
+</li>
+<li>getSSimObj()
+: <a class="el" href="class_x3_d_file_reader.html#a6c7aabf258d1bc190ac075d12a539bc4">X3DFileReader</a>
+</li>
+<li>getStart()
+: <a class="el" href="class_request_distance_sensor_event.html#a6f94df793930bf23a0b44212e6452b3c">RequestDistanceSensorEvent</a>
+</li>
+<li>getString()
+: <a class="el" href="class_value.html#afa7ad4565ce3536f36d9f93eedc155f3">Value</a>
+, <a class="el" href="class_recv_message_event.html#adb6a5e9fef82414edf73a2fe77886bef">RecvMessageEvent</a>
+, <a class="el" href="class_text.html#a683097bcfdcb4ddffbe5066352f4e3af">Text</a>
+</li>
+<li>getTargetName()
+: <a class="el" href="class_request_connect_joint_event.html#a011e8d05012a25fb646f720a286c2dc1">RequestConnectJointEvent</a>
+</li>
+<li>getTargetPartsName()
+: <a class="el" href="class_request_connect_joint_event.html#a7145c762dd738d04a60ce1e78030e3d7">RequestConnectJointEvent</a>
+</li>
+<li>getTaskCol()
+: <a class="el" href="class_read_task_container.html#af6f345df589c1314169aa9aac6586615">ReadTaskContainer</a>
+</li>
+<li>getText()
+: <a class="el" href="class_recv_text_event.html#ad6960fd6ca379b069d1ca63e0a9503a2">RecvTextEvent</a>
+, <a class="el" href="class_result_sound_recog_event.html#aab39d9cf2dfc0e593cfc6561d399ef5c">ResultSoundRecogEvent</a>
+, <a class="el" href="class_c_t_sim_obj.html#a958fff6380b716c0ad8c6aa66c89931b">CTSimObj</a>
+, <a class="el" href="class_controller.html#a2c5841cdea28180c020275319dc40ed0">Controller</a>
+</li>
+<li>getTorque()
+: <a class="el" href="class_request_add_joint_torque_event.html#a25223d8135cee27dde1c480064879a48">RequestAddJointTorqueEvent</a>
+, <a class="el" href="class_s_parts.html#a91d91e378e85abae745f7aefb012d326">SParts</a>
+, <a class="el" href="class_joint_force.html#af237d27da861caf379da709de7b6603f">JointForce</a>
+</li>
+<li>getType()
+: <a class="el" href="class_sgv_1_1_test_node.html#a31095922c36d1bfbc7403bcbfb95aac4">Sgv::TestNode</a>
+, <a class="el" href="class_parts.html#aec48d1f272be6f7e67a350345eda3473">Parts</a>
+, <a class="el" href="class_simple_shape_elem.html#aed694f0c7cfffe07556664878e982a2d">SimpleShapeElem</a>
+</li>
+<li>getTypeString()
+: <a class="el" href="class_value.html#a37f0851800d3916a9a10609957727d69">Value</a>
+</li>
+<li>getVelocity()
+: <a class="el" href="class_request_set_object_velocity_event.html#a175df5cb0baf05f4e3f418056a619993">RequestSetObjectVelocityEvent</a>
+, <a class="el" href="class_request_set_joint_velocity_event.html#a8fee82ca90d2a7806b96b68bab7da49d">RequestSetJointVelocityEvent</a>
+</li>
+<li>getViewName()
+: <a class="el" href="class_request_attach_view_event.html#a9735fc038076e0a78f9081aecd2dc189">RequestAttachViewEvent</a>
+</li>
+<li>getWidth()
+: <a class="el" href="class_view_image.html#ab1eb86f32483bc471918c344751e94af">ViewImage</a>
+, <a class="el" href="class_view_image_info.html#a42ebd21fc95068aa262b206be3daf374">ViewImageInfo</a>
+</li>
+<li>getWith()
+: <a class="el" href="class_collision_event.html#a525834ce58141ebcdf7eea368e91e331">CollisionEvent</a>
+</li>
+<li>getX3DDB()
+: <a class="el" href="class_sim_world_provider.html#a589fad28736c9bdb3f69f57478e32881">SimWorldProvider</a>
+, <a class="el" href="class_result_attach_view_event.html#a3687585b1fb7409aa0c3f4a825c36324">ResultAttachViewEvent</a>
+</li>
+<li>givePosition()
+: <a class="el" href="class_parts.html#a28c4d88618f3d1688924f8f0593596f0">Parts</a>
+</li>
+<li>giveQuaternion()
+: <a class="el" href="class_parts.html#ac68217e6acbc9fa25b48a58ca2fc208c">Parts</a>
+</li>
+<li>giveRadius()
+: <a class="el" href="class_sphere_parts.html#aff4344f8b2dc0e4a97ec7b893a01d50e">SphereParts</a>
+</li>
+<li>giveSize()
+: <a class="el" href="class_cylinder_parts.html#a21137d6ceed9e59dea381221155b1501">CylinderParts</a>
+, <a class="el" href="class_box_parts.html#ae9676545064756355b2ecf1d30c79c5c">BoxParts</a>
+</li>
+<li>Gravity()
+: <a class="el" href="struct_o_d_e_world_1_1_gravity.html#aa54b2d830df9f008e651fadb17878d8d">ODEWorld::Gravity</a>
+</li>
+<li>group()
+: <a class="el" href="class_attribute.html#a329dcf8391e82991e640920af88df180">Attribute</a>
+</li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:18 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

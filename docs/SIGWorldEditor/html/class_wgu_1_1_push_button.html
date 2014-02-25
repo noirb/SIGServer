@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGWorldEditor: クラス Wgu::PushButton</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_wgu.html">Wgu</a>::<a class="el" href="class_wgu_1_1_push_button.html">PushButton</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Wgu::PushButton</h1><!-- doxytag: class="Wgu::PushButton" -->Win32 APIの簡易ラッパークラス（プッシュボタンコントロール）.  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_wgu_push_button_8h_source.html">WguPushButton.h</a>&gt;</code>
+<p>
+
+<p>
+<a href="class_wgu_1_1_push_button-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Static Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static HWND&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_push_button.html#f6b8fbd716eeeb4a22de0e5ddbcf2ba9">create</a> (HWND hwndParent, int contId, char *caption, int x, int y, int w, int h)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">プッシュボタンコントロールを作る  <a href="#f6b8fbd716eeeb4a22de0e5ddbcf2ba9"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+Win32 APIの簡易ラッパークラス（プッシュボタンコントロール）. 
+<p> <a class="el" href="_wgu_push_button_8h_source.html">WguPushButton.h</a> の <a class="el" href="_wgu_push_button_8h_source.html#l00012">12</a> 行で定義されています。</p>
+<hr><h2>関数</h2>
+<a class="anchor" name="f6b8fbd716eeeb4a22de0e5ddbcf2ba9"></a><!-- doxytag: member="Wgu::PushButton::create" ref="f6b8fbd716eeeb4a22de0e5ddbcf2ba9" args="(HWND hwndParent, int contId, char *caption, int x, int y, int w, int h)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HWND Wgu::PushButton::create           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hwndParent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>contId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>caption</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>h</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+プッシュボタンコントロールを作る 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hwndParent</em>&nbsp;</td><td>[i] 親ウィンドウ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>contId</em>&nbsp;</td><td>[i] コントロールId </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>caption</em>&nbsp;</td><td>[i] ボタンのキャプション文字列 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>[i] 横(x方向)位置 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>[i] 縦(y方向)位置 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>w</em>&nbsp;</td><td>[i] 幅 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>h</em>&nbsp;</td><td>[i] 高さ</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>生成されたプッシュボタンコントロールのウィンドウハンドル </dd></dl>
+
+<p> <a class="el" href="_wgu_push_button_8cpp_source.html">WguPushButton.cpp</a> の <a class="el" href="_wgu_push_button_8cpp_source.html#l00009">9</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_wgu_push_button_8h_source.html">WguPushButton.h</a><li><a class="el" href="_wgu_push_button_8cpp_source.html">WguPushButton.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGWorldEditorに対してThu Jun 9 10:53:01 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: メンバ一覧</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>ServerAcceptProc メンバ一覧</h1>これは全メンバの一覧です。<a class="el" href="class_server_accept_proc.html">ServerAcceptProc</a>継承メンバも含んでいます。<table>
+  <tr class="memlist"><td><a class="el" href="class_server_accept_proc.html#a214f0c0e052c63cebbb103eb8fd7d841">C</a> typedef</td><td><a class="el" href="class_server_accept_proc.html">ServerAcceptProc</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_server_accept_proc.html#a3c68b4659d395a72246fc80e5fefc75e">clientNum</a>() const </td><td><a class="el" href="class_server_accept_proc.html">ServerAcceptProc</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_server_accept_proc.html#aa08a10e8e2e0657c87c5c7f4f71ea19d">clients</a>()</td><td><a class="el" href="class_server_accept_proc.html">ServerAcceptProc</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_server_accept_proc.html#a41ec9896d9d1b92d2be43a0f24f0a967">close</a>()</td><td><a class="el" href="class_server_accept_proc.html">ServerAcceptProc</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_server_accept_proc.html#a2abe467f2e4407d23fec767c30c5c260">eraseNoNeeded</a>()</td><td><a class="el" href="class_server_accept_proc.html">ServerAcceptProc</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_server_accept_proc.html#a055d71b69acd1f0d934387638ca44225">get</a>(const char *name, SourceType type)</td><td><a class="el" href="class_server_accept_proc.html">ServerAcceptProc</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_server_accept_proc.html#a12cd6d26b3525f55f60c951c88113c6a">get</a>(int sock)</td><td><a class="el" href="class_server_accept_proc.html">ServerAcceptProc</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_server_accept_proc.html#a16911880df5ca888cd0e373ba94cf2cc">getByType</a>(SourceType type)</td><td><a class="el" href="class_server_accept_proc.html">ServerAcceptProc</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_server_accept_proc.html#ac0a389b244281dde2808cecf18816992">lock</a>()</td><td><a class="el" href="class_server_accept_proc.html">ServerAcceptProc</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_server_accept_proc.html#a335901a8c0b5737ab65d858380042690">pushNoNeeded</a>(Source *source)</td><td><a class="el" href="class_server_accept_proc.html">ServerAcceptProc</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_server_accept_proc.html#a31ff903287a09c25f1e4eb346a7f0837">run</a>()</td><td><a class="el" href="class_server_accept_proc.html">ServerAcceptProc</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_server_accept_proc.html#a3108d2c05680bff31b54ce5165f5c56b">ServerAcceptProc</a>(int sock, SimWorldProvider &amp;provider, ServiceNameServer &amp;ns)</td><td><a class="el" href="class_server_accept_proc.html">ServerAcceptProc</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_server_accept_proc.html#a7b814818700811f7ec97fa7f05311a70">setDecoderListener</a>(CommDataDecoder::Listener *l)</td><td><a class="el" href="class_server_accept_proc.html">ServerAcceptProc</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_server_accept_proc.html#a7f49c852ec567c4cb6a0fa386225665d">setPacketSender</a>(CommDataDecoder::PacketSender *s)</td><td><a class="el" href="class_server_accept_proc.html">ServerAcceptProc</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_server_accept_proc.html#ad5fb9cc44ac96bd6076d8080f1fa2147">unlock</a>()</td><td><a class="el" href="class_server_accept_proc.html">ServerAcceptProc</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_comm_data_listener.html#a42eafa81359f1e652020ea733e1c007e">‾CommDataListener</a>()</td><td><a class="el" href="class_comm_data_listener.html">CommDataListener</a></td><td><code> [virtual]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_server_accept_proc.html#af5e94b44015864c83f59f4f8ce343935">‾ServerAcceptProc</a>()</td><td><a class="el" href="class_server_accept_proc.html">ServerAcceptProc</a></td><td></td></tr>
+</table></div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:20 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

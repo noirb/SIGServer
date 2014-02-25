@@ -1,0 +1,243 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
+<link rel="stylesheet" type="text/css" href="../../prj.css"/>
+<title>SIGViewerの設計に関する追加説明</title>
+</head>
+
+<body>
+<h1>ソース解読上のポイント</h1>
+
+<p>
+ソースコードを読む際のポイントを解説する．
+</p>
+
+<br><h3>X3Dファイルの読み込みから、Ogreノード作成（物体表示）のしくみについて</h3>
+
+<p>
+X3D::loadX3DFromFile()は、X3D形式の形状ファイル(.x3d, .vrml)を読み込み、物体形状のノード情報をX3Dクラス内部に読み込むだけの働きしかしない．（このメソッドだけでOgre形状が生成されるわけではない）
+</p>
+
+<p>
+X3D::loadX3DFromFile()は読み込み時に、ロードしたファイルにOpenHRPノードが含まれるか否かをチェックし、m_bLoadedFileIsOpenHRPHumanoidフラグにセットされる．この情報はX3D::isOpenHRPHumanoidShape()で取り出せる．
+</p>
+
+<p>
+ロードした形状データからOgreノードを作成（＝画面に形状として表示）するのは、X3D::createOgreManualObjectFromShapes()およびX3D::createOpenHRPNodes()の2つのメソッドである．それぞれ、ロードした形状がOpenHRPによるヒューマノイドか否かによって呼び出し側が分けてコールする．
+</p>
+
+<pre class="codesample">
+<font class="example2">
+[例]
+X3D *px3d = new X3D();
+px3d->loadX3DFromFile("myshape.x3d");
+if (px3d->isOpenHRPHumanoidShape())
+{
+	// myshapeはOpenHRP形状を含んでいる．
+	px3d->createOpenHRPNodes(...)
+}
+else
+{
+	// myshapeはOpenHRP形状を含んでいない．
+	px3d->createOgreManualObjectFromShapes();
+}
+</font>
+</pre>
+
+<p>
+このように、ロードしたファイルがOpenHRP形状か否かによって、Ogreノードの作成方法が変わる．
+</p>
+
+<br><h3>CenterOfMassについて</h3>
+
+<p>
+CenterOfMassはOpenHRPのヒューマノイド形状で定義されているフィールドの一つであり、形状の重心点を表す．
+</p>
+
+<p>
+SIGViewerの形状作成メソッドの中には、bUseX3DCenterOfMassというフラグを取るものがある．
+例えばX3D::createOpenHRPNodesはそのようなものの一つである．
+</p>
+
+<p>
+このメソッドはOpenHRP形状ファイルからOgreノードを作るものだが、その際、bUseX3DCenterOfMassにより、OpenHRP形状ファイル上で指定されているCenterOfMassフィールドの値を重心点として使うか、を制御する．このフラグをtrueにすれば、重心点はOpenHRP形状ファイルに記述されている値になる．一方falseにした場合は、CenterOfMassフィールドの値は使われず、形状データの持つ頂点座標から自動的に計算される．
+</p>
+
+<br><h3>ExtEntityInfoの保持する情報について</h3>
+
+<p>
+Ogreライブラリにおいて、表示物体の形状を保持するのはOgre::Entityクラスであるが、このOgre::Entityクラスに、任意のデータ（正確にはOgre::UserDefinedObjectクラスの派生クラス）を関連付けることができる．
+</p>
+
+<p>
+SIGViewerではこの仕組みを用い、各形状固有の情報をExtEntityInfoに持たせている．
+</p>
+
+<p>
+ExtEntityInfoの持つ主な情報には以下のものがある．
+</p>
+
+<ul>
+<li>(1) ビジュアルオブジェクト名 (visObjElemName)</li>
+<li>(2) パーツ名(partsName)</li>
+<li>(3) 音声到達半径 (voiceReachRadius)</li>
+<li>(4) 音声到達半径有効フラグ (enableVoiceReachRadius)</li>
+</ul>
+
+<p>
+(1)は形状の持つ名前である．これは世界ファイル(XML)での各インスタンスにつけた名前と同じものである．
+主に、マウスで物体をクリックしたときに、選択した物体を識別するために使っている．
+</p>
+
+<p>
+(2)はヒューマノイド形状についてのみ意味を持つ．ヒューマノイド形状は頭、腕、胴体など複数の部位からなる．これらの部位は、独立に移動させる必要があるため、各部位ごとに個別のOgreエンティティで表現している．パーツ名はこの部位の名前であり、OpenHRPのx3d形状ファイル中の、SEGMENTノードの名前と同じものになる．
+</p>
+
+<p>
+(3), (4)はエージェントからの発話行動をシミュレーションする際に使われる．
+</p>
+
+
+<br><h3>ネットワークからのパケット受信とコールされるイベントハンドラについて</h3>
+
+<p>
+ネットワークを介して受け取ったパケットは、デコーダに渡され、最終的にパケットの種類に応じたイベントハンドラが起動されるが、その仕組みは以下のようになっている．
+</p>
+
+<ul>
+<li>(1) イベントリスナークラス(CommDataDecoder::Listener)から独自のイベントハンドラクラス(Eと略記する)を派生させる．</li>
+<li>(2) 受け取りたいイベントのハンドラをEに実装する．</li>
+<li>(3) デコーダクラス(CommDataDecoder)のsetListener()メソッドで、Eをデコーダにセットする．</li>
+<li>(4) デコーダクラスにネットワークから受け取ったパケットを流し込む．</li>
+---&gt; パケットの種類に応じてEのハンドラメソッドがコールされる．
+</ul>
+
+<p>
+例として、ServiceProviderクラスのコードで説明する．
+</p>
+
+<p>
+ServiceProviderクラスはm_decoderにデコーダ(CommDataDecoderクラス)を、m_pEventListenerにイベントハンドラ(ServiceProviderEventListenerクラス)を持っている．
+</p>
+
+<pre class="codesample">
+<font class="example2">
+class ServiceProvider
+{
+...
+private:
+	CommDataDecoder m_decoder;
+	ServiceProviderEventListener *m_pEventListener;
+};
+</font>
+</pre>
+
+<p>
+ServiceProviderEventListenerクラスには、3つのイベントハンドラが定義されている．それぞれ、COMM_NS_PINGER_RESULTパケット、COMM_REQUEST_CAPTURE_VIEW_IMAGEパケット、COMM_REQUEST_DETECT_ENTITIESパケットに対するハンドラである．
+</p>
+
+<pre class="codesample">
+<font class="example2">
+class ServiceProviderEventListener : public CommDataDecoder::Listener
+{
+...
+private:
+	void recvRequestNSPinger(Source &from, RequestNSPingerEvent &evt);
+	void recvRequestCaptureViewImage(Source &from, RequestCaptureViewImageEvent &evt);
+	void recvRequestDetectEntities(Source &from, RequestDetectEntitiesEvent &evt);
+};
+</font>
+</pre>
+
+<p>
+ServiceProviderクラスのコンストラクタでデコーダにリスナーをセットしている．
+</p>
+
+<pre class="codesample">
+<font class="example2">
+ServiceProvider::ServiceProvider(Socket *pSock) : m_pSock(pSock), m_bRunning(false)
+{
+	...
+	// event listenerおよびdecoderの設定
+	m_pEventListener = new ServiceProviderEventListener(this);
+	m_decoder.setListener(m_pEventListener);
+}
+</font>
+</pre>
+
+<p>
+これでパケット受信によってイベントハンドラがコールされる準備は整った．
+</p>
+
+<p>
+ネットワークから受け取ったパケットを受け取ったら、デコーダのpush()メソッドをコールする．すると、パケットの種類に応じてイベントハンドラがコールされる．
+</p>
+
+<pre class="codesample">
+<font class="example2">
+int ServiceProvider::processOnePacket()
+{
+	Packet *packet = NULL;
+
+	int status = m_pSock->recvPacket(&packet);
+	if (status > 0)
+	{
+		m_decoder.push(*m_pSource, packet->getData(), packet->getLength());
+		...
+	}
+}
+
+void ServiceProviderEventListener::recvRequestNSPinger(Source &from, RequestNSPingerEvent &evt)
+{
+	// COMM_NS_PINGER_RESULTイベントが来るとここが呼ばれる
+}
+
+void ServiceProviderEventListener::recvRequestCaptureViewImage(Source &from, RequestCaptureViewImageEvent &evt)
+{
+	// COMM_REQUEST_CAPTURE_VIEW_IMAGEイベントが来るとここが呼ばれる
+}
+
+void ServiceProviderEventListener::recvRequestDetectEntities(Source &from, RequestDetectEntitiesEvent &evt)
+{
+	// COMM_REQUEST_DETECT_ENTITIESイベントが来るとここが呼ばれる
+}
+</font>
+</pre>
+
+<p>
+このような仕組みで、ネットワークから受信したデータに対する処理が行われる．
+</p>
+
+<br><h3>X3Dクラスでヒューマノイド形状(OpenHRP形状）からOgreノードを生成する際のTreeModeとFlatModeについて</h3>
+
+<p>
+X3DクラスのOgreノード作成メソッドであるX3D::createOpenHRPNodesには、bTreeModeという引数がある．
+</p>
+
+<p>
+このフラグは、OpenHRP形状データから、Ogreノードを作る際の、ノードの親子関係を指定するフラグである．
+</p>
+
+<p>
+bTreeMode=true(Treeモード)でコールした場合、作成されるノードはOpenHRPでの各セグメント間の親子関係がそのまま反映されたものとなる．
+</p>
+
+<p>
+一方、bTreeMode=false(Flatモード)でコールした場合、全体を表すノードの下に、すべてのセグメント（に対応するノード）がフラットにならぶ構造になる．
+</p>
+
+<p>
+シミュレーションサーバーから送られてくるSimObjは、複数のパーツからなるが、それらのパーツの位置は絶対位置になっている．すなわちパーツ同士に親子関係はない．例えば肩、腕、手首といった部分は、それぞれ親子関係を持っていると考えられるが、ビューアに送られている段階では、もはや親子関係は存在せず、それぞれがバラバラな「部分」という扱いになっている．
+</p>
+
+<p>
+このことにより、SimObjの座標値をOgreノードにセットする際には、トップノードに直属するフラットな子ノードの集合という構造で作り、各子ノードには直接対応するパーツの絶対座標を指定するようになっている．
+</p>
+
+<hr><address style="align: right;"><a href="http://www.msi.co.jp"><img src="msilogo.gif" align="middle" border=0
+
+width=139 height=53>（株）数理システム</a>
+</body>
+
+</html>

@@ -1,0 +1,446 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: CommDataType.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>CommDataType.h</h1><div class="dynheader">
+このグラフは、どのファイルから直接、間接的にインクルードされているかを示しています。</div>
+<div class="dynsection">
+<div class="center"><img src="_comm_data_type_8h__dep__incl.png" border="0" usemap="#_comm_data_type_8hdep_map" alt=""/></div>
+<map name="_comm_data_type_8hdep_map" id="_comm_data_type_8hdep">
+<area shape="rect" href="_comm_data_decoder_8h.html" title="CommDataDecoder.h" alt="" coords="2763,160,2907,189"/><area shape="rect" href="_comm_data_result_8h.html" title="CommDataResult.h" alt="" coords="2729,83,2863,112"/><area shape="rect" href="_attach_8h.html" title="Attach.h" alt="" coords="3136,160,3205,189"/><area shape="rect" href="_encoder_8h.html" title="Encoder.h" alt="" coords="1516,83,1596,112"/><area shape="rect" href="_request_sim_ctrl_8h.html" title="RequestSimCtrl.h" alt="" coords="3199,83,3321,112"/><area shape="rect" href="event_2_result_8h.html" title="Result.h" alt="" coords="2937,83,3007,112"/><area shape="rect" href="_result_attach_8h.html" title="ResultAttach.h" alt="" coords="3005,160,3112,189"/><area shape="rect" href="_packet_forward_8h.html" title="PacketForward.h" alt="" coords="2636,237,2753,267"/><area shape="rect" href="_server_accept_proc_8h.html" title="ServerAcceptProc.h" alt="" coords="2777,237,2916,267"/><area shape="rect" href="_world_simulator_8h.html" title="WorldSimulator.h" alt="" coords="2380,237,2500,267"/><area shape="rect" href="_c_t_reader_8h.html" title="CTReader.h" alt="" coords="2524,237,2612,267"/><area shape="rect" href="_comm_data_encoder_8h.html" title="CommDataEncoder.h" alt="" coords="2188,237,2332,267"/><area shape="rect" href="encoder_2_attrs_8h.html" title="Attrs.h" alt="" coords="1691,160,1749,189"/><area shape="rect" href="_capture_view_image_8h.html" title="CaptureViewImage.h" alt="" coords="1773,160,1915,189"/><area shape="rect" href="encoder_2_connect_joint_8h.html" title="ConnectJoint.h" alt="" coords="1939,160,2045,189"/><area shape="rect" href="encoder_2_detect_entities_8h.html" title="DetectEntities.h" alt="" coords="2069,160,2181,189"/><area shape="rect" href="encoder_2_display_text_8h.html" title="DisplayText.h" alt="" coords="2205,160,2304,189"/><area shape="rect" href="_distance_sensor_8h.html" title="DistanceSensor.h" alt="" coords="2328,160,2451,189"/><area shape="rect" href="_entities_8h.html" title="Entities.h" alt="" coords="2475,160,2549,189"/><area shape="rect" href="_entity_8h.html" title="Entity.h" alt="" coords="2573,160,2637,189"/><area shape="rect" href="encoder_2_get_joint_force_8h.html" title="GetJointForce.h" alt="" coords="160,160,275,189"/><area shape="rect" href="encoder_2_get_object_names_8h.html" title="GetObjectNames.h" alt="" coords="5,160,136,189"/><area shape="rect" href="_invoke_method_8h.html" title="InvokeMethod.h" alt="" coords="299,160,413,189"/><area shape="rect" href="_invoke_on_recv_sound_8h.html" title="InvokeOnRecvSound.h" alt="" coords="437,160,592,189"/><area shape="rect" href="encoder_2_joint_angle_8h.html" title="JointAngle.h" alt="" coords="616,160,709,189"/><area shape="rect" href="encoder_2_joint_quaternion_8h.html" title="JointQuaternion.h" alt="" coords="733,160,856,189"/><area shape="rect" href="encoder_2_joint_torque_8h.html" title="JointTorque.h" alt="" coords="880,160,979,189"/><area shape="rect" href="encoder_2_log_msg_8h.html" title="LogMsg.h" alt="" coords="1003,160,1080,189"/><area shape="rect" href="encoder_2_name_service_8h.html" title="NameService.h" alt="" coords="1104,160,1213,189"/><area shape="rect" href="encoder_2_release_joint_8h.html" title="ReleaseJoint.h" alt="" coords="1237,160,1344,189"/><area shape="rect" href="encoder_2_result_8h.html" title="Result.h" alt="" coords="1368,160,1437,189"/><area shape="rect" href="_sim_ctrl_8h.html" title="SimCtrl.h" alt="" coords="1461,160,1536,189"/><area shape="rect" href="encoder_2_sound_recog_8h.html" title="SoundRecog.h" alt="" coords="1560,160,1667,189"/><area shape="rect" href="event_2_get_object_names_8h.html" title="GetObjectNames.h" alt="" coords="1024,237,1155,267"/><area shape="rect" href="_recv_event_8h.html" title="RecvEvent.h" alt="" coords="2960,315,3056,344"/><area shape="rect" href="_comm_data_listener_8h.html" title="CommDataListener.h" alt="" coords="2936,392,3080,421"/></map>
+</div>
+
+<p><a href="_comm_data_type_8h_source.html">ソースコードを見る。</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>型定義</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef unsigned short&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_comm_data_type_8h.html#a587c9199c019f0dba3ce5ebe7a1a0a00">CommDataType</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef unsigned short&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_comm_data_type_8h.html#a101d7163bfbe7284eea2334e55aa2bc8">CommResultType</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef short&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_comm_data_type_8h.html#a36d44cf591fbff865f9eef137d6431de">ServiceType</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef short&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_comm_data_type_8h.html#a68c991796d6a2c83d41420f176852bd7">SimCtrlCmdType</a></td></tr>
+<tr><td colspan="2"><h2>列挙型</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom">{ <br/>
+&nbsp;&nbsp;<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a4f673b6959c07f3f2bf751666d048f89">COMM_DATA_TYPE_NOT_SET</a> =  -1, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a2898b40e18df9a57a41ab570186fc187">COMM_REQUEST_SIM_CTRL</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7aa6d48f517c5c6d3a6912e59e97702391">COMM_REQUEST_GET_ALL_ENTITIES</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7acb284cfa3d29d49b7c36529f48e13c0f">COMM_RESULT_GET_ALL_ENTITIES</a>, 
+<br/>
+&nbsp;&nbsp;<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7ad78d10078a8e94878f2c9129f1dff104">COMM_REQUEST_GET_ENTITY</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7abf5f6e98fadcaf3d451e624f031ff615">COMM_RESULT_GET_ENTITY</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a4224d47a578f0bf696a9da173ff15871">COMM_REQUEST_UPDATE_ENTITIES</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a4e0d00586bc24b27a6df3ebe9b7fdbe7">COMM_REQUEST_CAPTURE_VIEW_IMAGE</a>, 
+<br/>
+&nbsp;&nbsp;<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7ad0643d0068a0fdbc373605919faa13cf">COMM_RESULT_CAPTURE_VIEW_IMAGE</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7af5745c8aafaf382c3b3c1a43c36ef566">COMM_REQUEST_DETECT_ENTITIES</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7ae4b3e9bf6645930371792fe4d582cd5e">COMM_RESULT_DETECT_ENTITIES</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a96cef897f927792560a993f6dd901781">COMM_REQUEST_ATTACH_CONTROLLER</a>, 
+<br/>
+&nbsp;&nbsp;<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7af8fb0f40ccb63da11b1e87a6389d9eae">COMM_RESULT_ATTACH_CONTROLLER</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7ad645facc5b12955c59adc277d882f301">COMM_REQUEST_ATTACH_VIEW</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a3ba780bb681b66b5157711a6e2bd808e">COMM_RESULT_ATTACH_VIEW</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a316be738b6bb9600b685e69f26887301">COMM_REQUEST_CONNECT_DATA_PORT</a>, 
+<br/>
+&nbsp;&nbsp;<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a3189dfe865f0bcb23132a7c8471284c2">COMM_RESULT_CONNECT_DATA_PORT</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7aeefe69fb157fbeab8c4e31d539ffd916">COMM_REQUEST_PROVIDE_SERVICE</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7ad06ee5757e3d5faffd85a2e707b75178">COMM_RESULT_PROVIDE_SERVICE</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a3e070526a5abfd5c62794ebc90db7a6c">COMM_REQUEST_GET_ATTRIBUTES</a>, 
+<br/>
+&nbsp;&nbsp;<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7ac6cebd97595d2fd9f6e59b915512eac8">COMM_RESULT_GET_ATTRIBUTES</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a4740bb1da789e727af4bd228e26871a7">COMM_REQUEST_SET_ATTRIBUTES</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7acea664cda3f1d033d6502b42274c6e03">COMM_REQUEST_SET_JOINT_ANGLE</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a8076e5a9cfa7b06dcacf74976149db41">COMM_REQUEST_SOUND_RECOG</a>, 
+<br/>
+&nbsp;&nbsp;<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7acfccf0dd809f7840df9e7ed7cf9043aa">COMM_RESULT_SOUND_RECOG</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7afa01759eb8aaa787ba4c92a1ed5f5ad7">COMM_REQUEST_CONNECT_JOINT</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a8d6b55578499c5b2b46a910ff84aac60">COMM_REQUEST_RELEASE_JOINT</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a6e4f8c59172d1507956c567eb3594756">COMM_REQUEST_GET_JOINT_FORCE</a>, 
+<br/>
+&nbsp;&nbsp;<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7aa888188964ac9a5d517e0dbda930a3e7">COMM_RESULT_GET_JOINT_FORCE</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7ae3ca3bc355506db0e3f08b8eae82a41e">COMM_INVOKE_CONTROLLER_ON_INIT</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a3cb225123a990713c78f079b5c12ef05">COMM_INVOKE_CONTROLLER_ON_ACTION</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a66c6430db18f6ae90ef2232e0fae0b32">COMM_INVOKE_CONTROLLER_ON_RECV_TEXT</a>, 
+<br/>
+&nbsp;&nbsp;<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7abf8fda646499ae0d09f68f016e887206">COMM_INVOKE_CONTROLLER_ON_RECV_SOUND</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a2a1155e0ba8d8ec920ce021b490f7e0a">COMM_INVOKE_CONTROLLER_ON_RECV_MESSAGE</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7abe83b141dcc3ffcbdafbf0cfc0851967">COMM_LOG_MSG</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a243afbb56ca84f6cb731335cb5fb2c2a">COMM_CONTROLLER_COMMAND</a>, 
+<br/>
+&nbsp;&nbsp;<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a68cadbcb12a1390bf83dbdb3bf151d73">COMM_NS_QUERY_REQUEST</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a34bd677ddc9af9b3a28d10ddc4ba1433">COMM_NS_QUERY_RESULT</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7aa31aba0e67956c4ec0e1b64281e9f538">COMM_NS_PINGER_REQUEST</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a69b521a8e7f3871759852ac5238a9e6a">COMM_NS_PINGER_RESULT</a>, 
+<br/>
+&nbsp;&nbsp;<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7af6df2883d7817145eb8e95b6f81f6896">COMM_REQUEST_X3DDB</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7ab0d90f619794a4f1736e150ed612b2af">COMM_RESULT_X3DDB</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7aa2ab720f7786fdfc34d1d78c8102db52">COMM_REQUEST_GET_OBJECT_NAMES</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a1919eee9d9dd2f6c16667e2ca7127fbc">COMM_RESULT_GET_OBJECT_NAMES</a>, 
+<br/>
+&nbsp;&nbsp;<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a65b60567ba779db87d1238ccd2400959">COMM_INVOKE_CONTROLLER_ON_COLLISION</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a39d60b3d61ee223f44a960474557245b">COMM_REQUEST_SET_JOINT_QUATERNION</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a14f1fd4b9467c8febdea93090a41bc40">COMM_REQUEST_ADD_JOINT_TORQUE</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a46faa63a7846751ad90b50972a6a3b94">COMM_REQUEST_SET_JOINT_VELOCITY</a>, 
+<br/>
+&nbsp;&nbsp;<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a0b0dd59a0382ffaee8cedced55265c40">COMM_REQUEST_SET_OBJECT_VELOCITY</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a1ee57a15587a63e31fe0147addef220e">COMM_REQUEST_GET_JOINT_ANGLE</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a826e6a98054744cc62eded11a02e605a">COMM_RESULT_GET_JOINT_ANGLE</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a9ca60267c8e975f3595fe5af2dcaed66">COMM_DISPLAY_TEXT</a>, 
+<br/>
+&nbsp;&nbsp;<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a16ee67e997bbe8981bad6d294e234992">COMM_REQUEST_DISTANCE_SENSOR</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a9353c92d9cf3faa9efd772b6975c6f9a">COMM_RESULT_DISTANCE_SENSOR</a>, 
+<a class="el" href="_comm_data_type_8h.html#adf764cbdea00d65edcd07bb9953ad2b7adba0f05f7fd5e43a5f35888cbc6748e2">COMM_DATA_TYPE_NUM</a>
+<br/>
+ }</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="_comm_data_type_8h.html#a99fb83031ce9923c84392b4e92f956b5ae9f49085f56d037e3661c8373596afe4">COMM_RESULT_OK</a> =  0, 
+<a class="el" href="_comm_data_type_8h.html#a99fb83031ce9923c84392b4e92f956b5a64ee3eeb877199e98c4c389efdd0040d">COMM_RESULT_ERROR</a>, 
+<a class="el" href="_comm_data_type_8h.html#a99fb83031ce9923c84392b4e92f956b5a5f2b6694d28001ffe1f9db7d9e637b4a">COMM_RESULT_NO_AGENT</a>
+ }</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom">{ <br/>
+&nbsp;&nbsp;<a class="el" href="_comm_data_type_8h.html#abc6126af1d45847bc59afa0aa3216b04afbbeae5014a5461e1900b9c1c9cfd07f">SIM_CTRL_COMMAND_NOT_SET</a> =  -1, 
+<a class="el" href="_comm_data_type_8h.html#abc6126af1d45847bc59afa0aa3216b04af3546229281dfcd13bde32758b83ca9e">SIM_CTRL_COMMAND_START</a>, 
+<a class="el" href="_comm_data_type_8h.html#abc6126af1d45847bc59afa0aa3216b04a6b4adfe1d944a9d31ff0bf489731bc3a">SIM_CTRL_COMMAND_STOP</a>, 
+<a class="el" href="_comm_data_type_8h.html#abc6126af1d45847bc59afa0aa3216b04adca37cd13f68bc2ba612452047e296d1">SIM_CTRL_COMMAND_RESET</a>, 
+<br/>
+&nbsp;&nbsp;<a class="el" href="_comm_data_type_8h.html#abc6126af1d45847bc59afa0aa3216b04aec41792a2aa504ffdf0a977d268c24fe">SIM_CTRL_COMMAND_RESTART</a>
+<br/>
+ }</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="_comm_data_type_8h.html#adc29c2ff13d900c2f185ee95427fb06caa40e9bc4d50ca20f42fb8a0bce480be1">SERVICE_CAPTURE_VIEW</a> =  0x01, 
+<a class="el" href="_comm_data_type_8h.html#adc29c2ff13d900c2f185ee95427fb06ca5ca742ed3728ec41b7f062b88a5107ad">SERVICE_DISTANCE_SENSOR</a> =  0x05
+ }</td></tr>
+</table>
+<hr/><h2>型定義</h2>
+<a class="anchor" id="a587c9199c019f0dba3ce5ebe7a1a0a00"></a><!-- doxytag: member="CommDataType.h::CommDataType" ref="a587c9199c019f0dba3ce5ebe7a1a0a00" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef unsigned short <a class="el" href="_comm_data_type_8h.html#a587c9199c019f0dba3ce5ebe7a1a0a00">CommDataType</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_comm_data_type_8h_source.html">CommDataType.h</a> の <a class="el" href="_comm_data_type_8h_source.html#l00114">114</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a101d7163bfbe7284eea2334e55aa2bc8"></a><!-- doxytag: member="CommDataType.h::CommResultType" ref="a101d7163bfbe7284eea2334e55aa2bc8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef unsigned short <a class="el" href="_comm_data_type_8h.html#a101d7163bfbe7284eea2334e55aa2bc8">CommResultType</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_comm_data_type_8h_source.html">CommDataType.h</a> の <a class="el" href="_comm_data_type_8h_source.html#l00115">115</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a36d44cf591fbff865f9eef137d6431de"></a><!-- doxytag: member="CommDataType.h::ServiceType" ref="a36d44cf591fbff865f9eef137d6431de" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef short <a class="el" href="_comm_data_type_8h.html#a36d44cf591fbff865f9eef137d6431de">ServiceType</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_comm_data_type_8h_source.html">CommDataType.h</a> の <a class="el" href="_comm_data_type_8h_source.html#l00139">139</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a68c991796d6a2c83d41420f176852bd7"></a><!-- doxytag: member="CommDataType.h::SimCtrlCmdType" ref="a68c991796d6a2c83d41420f176852bd7" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef short <a class="el" href="_comm_data_type_8h.html#a68c991796d6a2c83d41420f176852bd7">SimCtrlCmdType</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_comm_data_type_8h_source.html">CommDataType.h</a> の <a class="el" href="_comm_data_type_8h_source.html#l00132">132</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>列挙型</h2>
+<a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7"></a><!-- doxytag: member="CommDataType.h::@1" ref="adf764cbdea00d65edcd07bb9953ad2b7" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>列挙型の値: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7a4f673b6959c07f3f2bf751666d048f89"></a><!-- doxytag: member="COMM_DATA_TYPE_NOT_SET" ref="adf764cbdea00d65edcd07bb9953ad2b7a4f673b6959c07f3f2bf751666d048f89" args="" -->COMM_DATA_TYPE_NOT_SET</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7a2898b40e18df9a57a41ab570186fc187"></a><!-- doxytag: member="COMM_REQUEST_SIM_CTRL" ref="adf764cbdea00d65edcd07bb9953ad2b7a2898b40e18df9a57a41ab570186fc187" args="" -->COMM_REQUEST_SIM_CTRL</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7aa6d48f517c5c6d3a6912e59e97702391"></a><!-- doxytag: member="COMM_REQUEST_GET_ALL_ENTITIES" ref="adf764cbdea00d65edcd07bb9953ad2b7aa6d48f517c5c6d3a6912e59e97702391" args="" -->COMM_REQUEST_GET_ALL_ENTITIES</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7acb284cfa3d29d49b7c36529f48e13c0f"></a><!-- doxytag: member="COMM_RESULT_GET_ALL_ENTITIES" ref="adf764cbdea00d65edcd07bb9953ad2b7acb284cfa3d29d49b7c36529f48e13c0f" args="" -->COMM_RESULT_GET_ALL_ENTITIES</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7ad78d10078a8e94878f2c9129f1dff104"></a><!-- doxytag: member="COMM_REQUEST_GET_ENTITY" ref="adf764cbdea00d65edcd07bb9953ad2b7ad78d10078a8e94878f2c9129f1dff104" args="" -->COMM_REQUEST_GET_ENTITY</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7abf5f6e98fadcaf3d451e624f031ff615"></a><!-- doxytag: member="COMM_RESULT_GET_ENTITY" ref="adf764cbdea00d65edcd07bb9953ad2b7abf5f6e98fadcaf3d451e624f031ff615" args="" -->COMM_RESULT_GET_ENTITY</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7a4224d47a578f0bf696a9da173ff15871"></a><!-- doxytag: member="COMM_REQUEST_UPDATE_ENTITIES" ref="adf764cbdea00d65edcd07bb9953ad2b7a4224d47a578f0bf696a9da173ff15871" args="" -->COMM_REQUEST_UPDATE_ENTITIES</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7a4e0d00586bc24b27a6df3ebe9b7fdbe7"></a><!-- doxytag: member="COMM_REQUEST_CAPTURE_VIEW_IMAGE" ref="adf764cbdea00d65edcd07bb9953ad2b7a4e0d00586bc24b27a6df3ebe9b7fdbe7" args="" -->COMM_REQUEST_CAPTURE_VIEW_IMAGE</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7ad0643d0068a0fdbc373605919faa13cf"></a><!-- doxytag: member="COMM_RESULT_CAPTURE_VIEW_IMAGE" ref="adf764cbdea00d65edcd07bb9953ad2b7ad0643d0068a0fdbc373605919faa13cf" args="" -->COMM_RESULT_CAPTURE_VIEW_IMAGE</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7af5745c8aafaf382c3b3c1a43c36ef566"></a><!-- doxytag: member="COMM_REQUEST_DETECT_ENTITIES" ref="adf764cbdea00d65edcd07bb9953ad2b7af5745c8aafaf382c3b3c1a43c36ef566" args="" -->COMM_REQUEST_DETECT_ENTITIES</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7ae4b3e9bf6645930371792fe4d582cd5e"></a><!-- doxytag: member="COMM_RESULT_DETECT_ENTITIES" ref="adf764cbdea00d65edcd07bb9953ad2b7ae4b3e9bf6645930371792fe4d582cd5e" args="" -->COMM_RESULT_DETECT_ENTITIES</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7a96cef897f927792560a993f6dd901781"></a><!-- doxytag: member="COMM_REQUEST_ATTACH_CONTROLLER" ref="adf764cbdea00d65edcd07bb9953ad2b7a96cef897f927792560a993f6dd901781" args="" -->COMM_REQUEST_ATTACH_CONTROLLER</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7af8fb0f40ccb63da11b1e87a6389d9eae"></a><!-- doxytag: member="COMM_RESULT_ATTACH_CONTROLLER" ref="adf764cbdea00d65edcd07bb9953ad2b7af8fb0f40ccb63da11b1e87a6389d9eae" args="" -->COMM_RESULT_ATTACH_CONTROLLER</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7ad645facc5b12955c59adc277d882f301"></a><!-- doxytag: member="COMM_REQUEST_ATTACH_VIEW" ref="adf764cbdea00d65edcd07bb9953ad2b7ad645facc5b12955c59adc277d882f301" args="" -->COMM_REQUEST_ATTACH_VIEW</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7a3ba780bb681b66b5157711a6e2bd808e"></a><!-- doxytag: member="COMM_RESULT_ATTACH_VIEW" ref="adf764cbdea00d65edcd07bb9953ad2b7a3ba780bb681b66b5157711a6e2bd808e" args="" -->COMM_RESULT_ATTACH_VIEW</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7a316be738b6bb9600b685e69f26887301"></a><!-- doxytag: member="COMM_REQUEST_CONNECT_DATA_PORT" ref="adf764cbdea00d65edcd07bb9953ad2b7a316be738b6bb9600b685e69f26887301" args="" -->COMM_REQUEST_CONNECT_DATA_PORT</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7a3189dfe865f0bcb23132a7c8471284c2"></a><!-- doxytag: member="COMM_RESULT_CONNECT_DATA_PORT" ref="adf764cbdea00d65edcd07bb9953ad2b7a3189dfe865f0bcb23132a7c8471284c2" args="" -->COMM_RESULT_CONNECT_DATA_PORT</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7aeefe69fb157fbeab8c4e31d539ffd916"></a><!-- doxytag: member="COMM_REQUEST_PROVIDE_SERVICE" ref="adf764cbdea00d65edcd07bb9953ad2b7aeefe69fb157fbeab8c4e31d539ffd916" args="" -->COMM_REQUEST_PROVIDE_SERVICE</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7ad06ee5757e3d5faffd85a2e707b75178"></a><!-- doxytag: member="COMM_RESULT_PROVIDE_SERVICE" ref="adf764cbdea00d65edcd07bb9953ad2b7ad06ee5757e3d5faffd85a2e707b75178" args="" -->COMM_RESULT_PROVIDE_SERVICE</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7a3e070526a5abfd5c62794ebc90db7a6c"></a><!-- doxytag: member="COMM_REQUEST_GET_ATTRIBUTES" ref="adf764cbdea00d65edcd07bb9953ad2b7a3e070526a5abfd5c62794ebc90db7a6c" args="" -->COMM_REQUEST_GET_ATTRIBUTES</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7ac6cebd97595d2fd9f6e59b915512eac8"></a><!-- doxytag: member="COMM_RESULT_GET_ATTRIBUTES" ref="adf764cbdea00d65edcd07bb9953ad2b7ac6cebd97595d2fd9f6e59b915512eac8" args="" -->COMM_RESULT_GET_ATTRIBUTES</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7a4740bb1da789e727af4bd228e26871a7"></a><!-- doxytag: member="COMM_REQUEST_SET_ATTRIBUTES" ref="adf764cbdea00d65edcd07bb9953ad2b7a4740bb1da789e727af4bd228e26871a7" args="" -->COMM_REQUEST_SET_ATTRIBUTES</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7acea664cda3f1d033d6502b42274c6e03"></a><!-- doxytag: member="COMM_REQUEST_SET_JOINT_ANGLE" ref="adf764cbdea00d65edcd07bb9953ad2b7acea664cda3f1d033d6502b42274c6e03" args="" -->COMM_REQUEST_SET_JOINT_ANGLE</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7a8076e5a9cfa7b06dcacf74976149db41"></a><!-- doxytag: member="COMM_REQUEST_SOUND_RECOG" ref="adf764cbdea00d65edcd07bb9953ad2b7a8076e5a9cfa7b06dcacf74976149db41" args="" -->COMM_REQUEST_SOUND_RECOG</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7acfccf0dd809f7840df9e7ed7cf9043aa"></a><!-- doxytag: member="COMM_RESULT_SOUND_RECOG" ref="adf764cbdea00d65edcd07bb9953ad2b7acfccf0dd809f7840df9e7ed7cf9043aa" args="" -->COMM_RESULT_SOUND_RECOG</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7afa01759eb8aaa787ba4c92a1ed5f5ad7"></a><!-- doxytag: member="COMM_REQUEST_CONNECT_JOINT" ref="adf764cbdea00d65edcd07bb9953ad2b7afa01759eb8aaa787ba4c92a1ed5f5ad7" args="" -->COMM_REQUEST_CONNECT_JOINT</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7a8d6b55578499c5b2b46a910ff84aac60"></a><!-- doxytag: member="COMM_REQUEST_RELEASE_JOINT" ref="adf764cbdea00d65edcd07bb9953ad2b7a8d6b55578499c5b2b46a910ff84aac60" args="" -->COMM_REQUEST_RELEASE_JOINT</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7a6e4f8c59172d1507956c567eb3594756"></a><!-- doxytag: member="COMM_REQUEST_GET_JOINT_FORCE" ref="adf764cbdea00d65edcd07bb9953ad2b7a6e4f8c59172d1507956c567eb3594756" args="" -->COMM_REQUEST_GET_JOINT_FORCE</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7aa888188964ac9a5d517e0dbda930a3e7"></a><!-- doxytag: member="COMM_RESULT_GET_JOINT_FORCE" ref="adf764cbdea00d65edcd07bb9953ad2b7aa888188964ac9a5d517e0dbda930a3e7" args="" -->COMM_RESULT_GET_JOINT_FORCE</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7ae3ca3bc355506db0e3f08b8eae82a41e"></a><!-- doxytag: member="COMM_INVOKE_CONTROLLER_ON_INIT" ref="adf764cbdea00d65edcd07bb9953ad2b7ae3ca3bc355506db0e3f08b8eae82a41e" args="" -->COMM_INVOKE_CONTROLLER_ON_INIT</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7a3cb225123a990713c78f079b5c12ef05"></a><!-- doxytag: member="COMM_INVOKE_CONTROLLER_ON_ACTION" ref="adf764cbdea00d65edcd07bb9953ad2b7a3cb225123a990713c78f079b5c12ef05" args="" -->COMM_INVOKE_CONTROLLER_ON_ACTION</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7a66c6430db18f6ae90ef2232e0fae0b32"></a><!-- doxytag: member="COMM_INVOKE_CONTROLLER_ON_RECV_TEXT" ref="adf764cbdea00d65edcd07bb9953ad2b7a66c6430db18f6ae90ef2232e0fae0b32" args="" -->COMM_INVOKE_CONTROLLER_ON_RECV_TEXT</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7abf8fda646499ae0d09f68f016e887206"></a><!-- doxytag: member="COMM_INVOKE_CONTROLLER_ON_RECV_SOUND" ref="adf764cbdea00d65edcd07bb9953ad2b7abf8fda646499ae0d09f68f016e887206" args="" -->COMM_INVOKE_CONTROLLER_ON_RECV_SOUND</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7a2a1155e0ba8d8ec920ce021b490f7e0a"></a><!-- doxytag: member="COMM_INVOKE_CONTROLLER_ON_RECV_MESSAGE" ref="adf764cbdea00d65edcd07bb9953ad2b7a2a1155e0ba8d8ec920ce021b490f7e0a" args="" -->COMM_INVOKE_CONTROLLER_ON_RECV_MESSAGE</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7abe83b141dcc3ffcbdafbf0cfc0851967"></a><!-- doxytag: member="COMM_LOG_MSG" ref="adf764cbdea00d65edcd07bb9953ad2b7abe83b141dcc3ffcbdafbf0cfc0851967" args="" -->COMM_LOG_MSG</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7a243afbb56ca84f6cb731335cb5fb2c2a"></a><!-- doxytag: member="COMM_CONTROLLER_COMMAND" ref="adf764cbdea00d65edcd07bb9953ad2b7a243afbb56ca84f6cb731335cb5fb2c2a" args="" -->COMM_CONTROLLER_COMMAND</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7a68cadbcb12a1390bf83dbdb3bf151d73"></a><!-- doxytag: member="COMM_NS_QUERY_REQUEST" ref="adf764cbdea00d65edcd07bb9953ad2b7a68cadbcb12a1390bf83dbdb3bf151d73" args="" -->COMM_NS_QUERY_REQUEST</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7a34bd677ddc9af9b3a28d10ddc4ba1433"></a><!-- doxytag: member="COMM_NS_QUERY_RESULT" ref="adf764cbdea00d65edcd07bb9953ad2b7a34bd677ddc9af9b3a28d10ddc4ba1433" args="" -->COMM_NS_QUERY_RESULT</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7aa31aba0e67956c4ec0e1b64281e9f538"></a><!-- doxytag: member="COMM_NS_PINGER_REQUEST" ref="adf764cbdea00d65edcd07bb9953ad2b7aa31aba0e67956c4ec0e1b64281e9f538" args="" -->COMM_NS_PINGER_REQUEST</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7a69b521a8e7f3871759852ac5238a9e6a"></a><!-- doxytag: member="COMM_NS_PINGER_RESULT" ref="adf764cbdea00d65edcd07bb9953ad2b7a69b521a8e7f3871759852ac5238a9e6a" args="" -->COMM_NS_PINGER_RESULT</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7af6df2883d7817145eb8e95b6f81f6896"></a><!-- doxytag: member="COMM_REQUEST_X3DDB" ref="adf764cbdea00d65edcd07bb9953ad2b7af6df2883d7817145eb8e95b6f81f6896" args="" -->COMM_REQUEST_X3DDB</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7ab0d90f619794a4f1736e150ed612b2af"></a><!-- doxytag: member="COMM_RESULT_X3DDB" ref="adf764cbdea00d65edcd07bb9953ad2b7ab0d90f619794a4f1736e150ed612b2af" args="" -->COMM_RESULT_X3DDB</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7aa2ab720f7786fdfc34d1d78c8102db52"></a><!-- doxytag: member="COMM_REQUEST_GET_OBJECT_NAMES" ref="adf764cbdea00d65edcd07bb9953ad2b7aa2ab720f7786fdfc34d1d78c8102db52" args="" -->COMM_REQUEST_GET_OBJECT_NAMES</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7a1919eee9d9dd2f6c16667e2ca7127fbc"></a><!-- doxytag: member="COMM_RESULT_GET_OBJECT_NAMES" ref="adf764cbdea00d65edcd07bb9953ad2b7a1919eee9d9dd2f6c16667e2ca7127fbc" args="" -->COMM_RESULT_GET_OBJECT_NAMES</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7a65b60567ba779db87d1238ccd2400959"></a><!-- doxytag: member="COMM_INVOKE_CONTROLLER_ON_COLLISION" ref="adf764cbdea00d65edcd07bb9953ad2b7a65b60567ba779db87d1238ccd2400959" args="" -->COMM_INVOKE_CONTROLLER_ON_COLLISION</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7a39d60b3d61ee223f44a960474557245b"></a><!-- doxytag: member="COMM_REQUEST_SET_JOINT_QUATERNION" ref="adf764cbdea00d65edcd07bb9953ad2b7a39d60b3d61ee223f44a960474557245b" args="" -->COMM_REQUEST_SET_JOINT_QUATERNION</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7a14f1fd4b9467c8febdea93090a41bc40"></a><!-- doxytag: member="COMM_REQUEST_ADD_JOINT_TORQUE" ref="adf764cbdea00d65edcd07bb9953ad2b7a14f1fd4b9467c8febdea93090a41bc40" args="" -->COMM_REQUEST_ADD_JOINT_TORQUE</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7a46faa63a7846751ad90b50972a6a3b94"></a><!-- doxytag: member="COMM_REQUEST_SET_JOINT_VELOCITY" ref="adf764cbdea00d65edcd07bb9953ad2b7a46faa63a7846751ad90b50972a6a3b94" args="" -->COMM_REQUEST_SET_JOINT_VELOCITY</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7a0b0dd59a0382ffaee8cedced55265c40"></a><!-- doxytag: member="COMM_REQUEST_SET_OBJECT_VELOCITY" ref="adf764cbdea00d65edcd07bb9953ad2b7a0b0dd59a0382ffaee8cedced55265c40" args="" -->COMM_REQUEST_SET_OBJECT_VELOCITY</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7a1ee57a15587a63e31fe0147addef220e"></a><!-- doxytag: member="COMM_REQUEST_GET_JOINT_ANGLE" ref="adf764cbdea00d65edcd07bb9953ad2b7a1ee57a15587a63e31fe0147addef220e" args="" -->COMM_REQUEST_GET_JOINT_ANGLE</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7a826e6a98054744cc62eded11a02e605a"></a><!-- doxytag: member="COMM_RESULT_GET_JOINT_ANGLE" ref="adf764cbdea00d65edcd07bb9953ad2b7a826e6a98054744cc62eded11a02e605a" args="" -->COMM_RESULT_GET_JOINT_ANGLE</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7a9ca60267c8e975f3595fe5af2dcaed66"></a><!-- doxytag: member="COMM_DISPLAY_TEXT" ref="adf764cbdea00d65edcd07bb9953ad2b7a9ca60267c8e975f3595fe5af2dcaed66" args="" -->COMM_DISPLAY_TEXT</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7a16ee67e997bbe8981bad6d294e234992"></a><!-- doxytag: member="COMM_REQUEST_DISTANCE_SENSOR" ref="adf764cbdea00d65edcd07bb9953ad2b7a16ee67e997bbe8981bad6d294e234992" args="" -->COMM_REQUEST_DISTANCE_SENSOR</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7a9353c92d9cf3faa9efd772b6975c6f9a"></a><!-- doxytag: member="COMM_RESULT_DISTANCE_SENSOR" ref="adf764cbdea00d65edcd07bb9953ad2b7a9353c92d9cf3faa9efd772b6975c6f9a" args="" -->COMM_RESULT_DISTANCE_SENSOR</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7adba0f05f7fd5e43a5f35888cbc6748e2"></a><!-- doxytag: member="COMM_DATA_TYPE_NUM" ref="adf764cbdea00d65edcd07bb9953ad2b7adba0f05f7fd5e43a5f35888cbc6748e2" args="" -->COMM_DATA_TYPE_NUM</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p> <a class="el" href="_comm_data_type_8h_source.html">CommDataType.h</a> の <a class="el" href="_comm_data_type_8h_source.html#l00005">5</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a99fb83031ce9923c84392b4e92f956b5"></a><!-- doxytag: member="CommDataType.h::@2" ref="a99fb83031ce9923c84392b4e92f956b5" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>列挙型の値: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="a99fb83031ce9923c84392b4e92f956b5ae9f49085f56d037e3661c8373596afe4"></a><!-- doxytag: member="COMM_RESULT_OK" ref="a99fb83031ce9923c84392b4e92f956b5ae9f49085f56d037e3661c8373596afe4" args="" -->COMM_RESULT_OK</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a99fb83031ce9923c84392b4e92f956b5a64ee3eeb877199e98c4c389efdd0040d"></a><!-- doxytag: member="COMM_RESULT_ERROR" ref="a99fb83031ce9923c84392b4e92f956b5a64ee3eeb877199e98c4c389efdd0040d" args="" -->COMM_RESULT_ERROR</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a99fb83031ce9923c84392b4e92f956b5a5f2b6694d28001ffe1f9db7d9e637b4a"></a><!-- doxytag: member="COMM_RESULT_NO_AGENT" ref="a99fb83031ce9923c84392b4e92f956b5a5f2b6694d28001ffe1f9db7d9e637b4a" args="" -->COMM_RESULT_NO_AGENT</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p> <a class="el" href="_comm_data_type_8h_source.html">CommDataType.h</a> の <a class="el" href="_comm_data_type_8h_source.html#l00108">108</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="abc6126af1d45847bc59afa0aa3216b04"></a><!-- doxytag: member="CommDataType.h::@3" ref="abc6126af1d45847bc59afa0aa3216b04" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>列挙型の値: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="abc6126af1d45847bc59afa0aa3216b04afbbeae5014a5461e1900b9c1c9cfd07f"></a><!-- doxytag: member="SIM_CTRL_COMMAND_NOT_SET" ref="abc6126af1d45847bc59afa0aa3216b04afbbeae5014a5461e1900b9c1c9cfd07f" args="" -->SIM_CTRL_COMMAND_NOT_SET</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="abc6126af1d45847bc59afa0aa3216b04af3546229281dfcd13bde32758b83ca9e"></a><!-- doxytag: member="SIM_CTRL_COMMAND_START" ref="abc6126af1d45847bc59afa0aa3216b04af3546229281dfcd13bde32758b83ca9e" args="" -->SIM_CTRL_COMMAND_START</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="abc6126af1d45847bc59afa0aa3216b04a6b4adfe1d944a9d31ff0bf489731bc3a"></a><!-- doxytag: member="SIM_CTRL_COMMAND_STOP" ref="abc6126af1d45847bc59afa0aa3216b04a6b4adfe1d944a9d31ff0bf489731bc3a" args="" -->SIM_CTRL_COMMAND_STOP</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="abc6126af1d45847bc59afa0aa3216b04adca37cd13f68bc2ba612452047e296d1"></a><!-- doxytag: member="SIM_CTRL_COMMAND_RESET" ref="abc6126af1d45847bc59afa0aa3216b04adca37cd13f68bc2ba612452047e296d1" args="" -->SIM_CTRL_COMMAND_RESET</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="abc6126af1d45847bc59afa0aa3216b04aec41792a2aa504ffdf0a977d268c24fe"></a><!-- doxytag: member="SIM_CTRL_COMMAND_RESTART" ref="abc6126af1d45847bc59afa0aa3216b04aec41792a2aa504ffdf0a977d268c24fe" args="" -->SIM_CTRL_COMMAND_RESTART</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p> <a class="el" href="_comm_data_type_8h_source.html">CommDataType.h</a> の <a class="el" href="_comm_data_type_8h_source.html#l00124">124</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="adc29c2ff13d900c2f185ee95427fb06c"></a><!-- doxytag: member="CommDataType.h::@4" ref="adc29c2ff13d900c2f185ee95427fb06c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>列挙型の値: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="adc29c2ff13d900c2f185ee95427fb06caa40e9bc4d50ca20f42fb8a0bce480be1"></a><!-- doxytag: member="SERVICE_CAPTURE_VIEW" ref="adc29c2ff13d900c2f185ee95427fb06caa40e9bc4d50ca20f42fb8a0bce480be1" args="" -->SERVICE_CAPTURE_VIEW</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adc29c2ff13d900c2f185ee95427fb06ca5ca742ed3728ec41b7f062b88a5107ad"></a><!-- doxytag: member="SERVICE_DISTANCE_SENSOR" ref="adc29c2ff13d900c2f185ee95427fb06ca5ca742ed3728ec41b7f062b88a5107ad" args="" -->SERVICE_DISTANCE_SENSOR</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p> <a class="el" href="_comm_data_type_8h_source.html">CommDataType.h</a> の <a class="el" href="_comm_data_type_8h_source.html#l00134">134</a> 行で定義されています。</p>
+
+</div>
+</div>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:18 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

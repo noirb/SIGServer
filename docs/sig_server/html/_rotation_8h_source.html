@@ -1,0 +1,245 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: Rotation.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>Rotation.h</h1><a href="_rotation_8h.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/* $Id: _rotation_8h_source.html,v 1.2 2011-12-14 07:55:38 okamoto Exp $ */</span> 
+<a name="l00002"></a>00002 <span class="preprocessor">#ifndef Rotation_h</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span><span class="preprocessor">#define Rotation_h</span>
+<a name="l00004"></a>00004 <span class="preprocessor"></span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include &quot;<a class="code" href="systemdef_8h.html">systemdef.h</a>&quot;</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include &lt;string.h&gt;</span>
+<a name="l00007"></a>00007 
+<a name="l00008"></a>00008 <span class="preprocessor">#ifdef USE_ODE</span>
+<a name="l00009"></a>00009 <span class="preprocessor"></span><span class="preprocessor">#include &lt;ode/ode.h&gt;</span>
+<a name="l00010"></a>00010 <span class="preprocessor">#endif</span>
+<a name="l00011"></a>00011 <span class="preprocessor"></span>
+<a name="l00012"></a>00012 <span class="preprocessor">#include &quot;<a class="code" href="_vector3d_8h.html">Vector3d.h</a>&quot;</span>
+<a name="l00013"></a>00013 
+<a name="l00014"></a>00014 <span class="keyword">enum</span> {
+<a name="l00015"></a><a class="code" href="_rotation_8h.html#aba01db17f4a2bfbc3db60dc172972a25a732e223b5719a78b20211523db8592d2">00015</a>     <a class="code" href="_rotation_8h.html#aba01db17f4a2bfbc3db60dc172972a25a732e223b5719a78b20211523db8592d2">ROTATION_TYPE_NOT_SET</a> = -1,
+<a name="l00016"></a><a class="code" href="_rotation_8h.html#aba01db17f4a2bfbc3db60dc172972a25a308180577c83ba8dc086e81d34076ce4">00016</a>     <a class="code" href="_rotation_8h.html#aba01db17f4a2bfbc3db60dc172972a25a308180577c83ba8dc086e81d34076ce4">ROTATION_TYPE_QUATERNION</a>,
+<a name="l00017"></a><a class="code" href="_rotation_8h.html#aba01db17f4a2bfbc3db60dc172972a25a59bfe654af5f730f8c274f2b0ba81265">00017</a>     <a class="code" href="_rotation_8h.html#aba01db17f4a2bfbc3db60dc172972a25a59bfe654af5f730f8c274f2b0ba81265">ROTATION_TYPE_NUM</a>,
+<a name="l00018"></a>00018 };
+<a name="l00019"></a>00019 
+<a name="l00020"></a><a class="code" href="_rotation_8h.html#afd1950d25c1e728d41d3005913bd9d79">00020</a> <span class="keyword">typedef</span> <span class="keywordtype">short</span> <a class="code" href="_rotation_8h.html#afd1950d25c1e728d41d3005913bd9d79">RotationType</a>;
+<a name="l00021"></a>00021 <span class="comment"></span>
+<a name="l00022"></a>00022 <span class="comment">/**</span>
+<a name="l00023"></a>00023 <span class="comment"> * @brief 回転行列クラス</span>
+<a name="l00024"></a>00024 <span class="comment"> */</span>
+<a name="l00025"></a><a class="code" href="class_rotation.html">00025</a> <span class="keyword">class </span><a class="code" href="class_rotation.html" title="回転行列クラス">Rotation</a>
+<a name="l00026"></a>00026 {
+<a name="l00027"></a>00027 <span class="keyword">private</span>:
+<a name="l00028"></a>00028     dQuaternion m_q;
+<a name="l00029"></a>00029 <span class="preprocessor">#ifdef USE_ODE</span>
+<a name="l00030"></a>00030 <span class="preprocessor"></span>    dMatrix3    m_m;
+<a name="l00031"></a>00031 <span class="preprocessor">#endif</span>
+<a name="l00032"></a>00032 <span class="preprocessor"></span><span class="keyword">private</span>:
+<a name="l00033"></a>00033     <span class="keywordtype">void</span>    makeMatrix()
+<a name="l00034"></a>00034     {
+<a name="l00035"></a>00035 <span class="preprocessor">#ifdef USE_ODE</span>
+<a name="l00036"></a>00036 <span class="preprocessor"></span>        dQtoR(m_q, m_m);
+<a name="l00037"></a>00037 <span class="preprocessor">#endif</span>
+<a name="l00038"></a>00038 <span class="preprocessor"></span>    }
+<a name="l00039"></a>00039 <span class="keyword">public</span>:<span class="comment"></span>
+<a name="l00040"></a>00040 <span class="comment">    //! コンストラクタ</span>
+<a name="l00041"></a>00041 <span class="comment"></span>    <a class="code" href="class_rotation.html#a13ea1d345ca0a92c0f09b4de544ca460" title="コンストラクタ">Rotation</a>();<span class="comment"></span>
+<a name="l00042"></a>00042 <span class="comment">    //! コピーコンストラクタ</span>
+<a name="l00043"></a>00043 <span class="comment"></span>    <a class="code" href="class_rotation.html#a13ea1d345ca0a92c0f09b4de544ca460" title="コンストラクタ">Rotation</a>(<span class="keyword">const</span> <a class="code" href="class_rotation.html" title="回転行列クラス">Rotation</a> &amp;o);
+<a name="l00044"></a>00044 <span class="comment"></span>
+<a name="l00045"></a>00045 <span class="comment">    //! クォータニオンを設定する</span>
+<a name="l00046"></a><a class="code" href="class_rotation.html#a073f88cf2c64ff2fd06227202dc107ec">00046</a> <span class="comment"></span>    <span class="keywordtype">void</span>    <a class="code" href="class_rotation.html#a073f88cf2c64ff2fd06227202dc107ec" title="クォータニオンを設定する">setQuaternion</a>(<span class="keyword">const</span> dReal *<a class="code" href="class_rotation.html#a16f2a4fefbd48c756a0c9ad7be85ee1f" title="クォータニオンを取得する">q</a>)
+<a name="l00047"></a>00047     {
+<a name="l00048"></a>00048         <a class="code" href="class_rotation.html#a073f88cf2c64ff2fd06227202dc107ec" title="クォータニオンを設定する">setQuaternion</a>(q[0], q[1], q[2], q[3]);
+<a name="l00049"></a>00049     }<span class="comment"></span>
+<a name="l00050"></a>00050 <span class="comment">    //! クォータニオンを設定する</span>
+<a name="l00051"></a><a class="code" href="class_rotation.html#af82e4a9047d00e7d64665c83861ec91e">00051</a> <span class="comment"></span>    <span class="keywordtype">void</span>    <a class="code" href="class_rotation.html#a073f88cf2c64ff2fd06227202dc107ec" title="クォータニオンを設定する">setQuaternion</a>(dReal w, dReal x, dReal y, dReal z)
+<a name="l00052"></a>00052     {
+<a name="l00053"></a>00053         <span class="keywordtype">int</span> i=0; 
+<a name="l00054"></a>00054         m_q[i] = w; i++;
+<a name="l00055"></a>00055         m_q[i] = x; i++;
+<a name="l00056"></a>00056         m_q[i] = y; i++;
+<a name="l00057"></a>00057         m_q[i] = z; i++;
+<a name="l00058"></a>00058 
+<a name="l00059"></a>00059         makeMatrix();
+<a name="l00060"></a>00060     }
+<a name="l00061"></a>00061 <span class="comment"></span>
+<a name="l00062"></a>00062 <span class="comment">    //! クォータニオンを取得する added by okamoto@tome 2011/2/22</span>
+<a name="l00063"></a><a class="code" href="class_rotation.html#a6436543fa95f3e00e9c084bf1cba6d4d">00063</a> <span class="comment"></span>    dReal   <a class="code" href="class_rotation.html#a6436543fa95f3e00e9c084bf1cba6d4d" title="クォータニオンを取得する added by okamoto 2011/2/22">qw</a>(){<span class="keywordflow">return</span> m_q[0];}
+<a name="l00064"></a><a class="code" href="class_rotation.html#ac08ab7a28066f2422c6832256483b5c6">00064</a>     dReal   <a class="code" href="class_rotation.html#ac08ab7a28066f2422c6832256483b5c6">qx</a>(){<span class="keywordflow">return</span> m_q[1];}
+<a name="l00065"></a><a class="code" href="class_rotation.html#a6b9d09dbb69f9ffcc76c8252ad6dfdbe">00065</a>     dReal   <a class="code" href="class_rotation.html#a6b9d09dbb69f9ffcc76c8252ad6dfdbe">qy</a>(){<span class="keywordflow">return</span> m_q[2];}
+<a name="l00066"></a><a class="code" href="class_rotation.html#affd113d9d65476425219d56560aeb12e">00066</a>     dReal   <a class="code" href="class_rotation.html#affd113d9d65476425219d56560aeb12e">qz</a>(){<span class="keywordflow">return</span> m_q[3];}
+<a name="l00067"></a>00067 
+<a name="l00068"></a>00068 <span class="comment"></span>
+<a name="l00069"></a>00069 <span class="comment">    //! クォータニオンを取得する</span>
+<a name="l00070"></a><a class="code" href="class_rotation.html#a16f2a4fefbd48c756a0c9ad7be85ee1f">00070</a> <span class="comment"></span>    <span class="keyword">const</span>   dReal * <a class="code" href="class_rotation.html#a16f2a4fefbd48c756a0c9ad7be85ee1f" title="クォータニオンを取得する">q</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_q; }
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072 <span class="preprocessor">#ifdef USE_ODE</span>
+<a name="l00073"></a>00073 <span class="preprocessor"></span><span class="comment">    //! 回転軸と角度を指定して回転行列を作成する</span>
+<a name="l00074"></a><a class="code" href="class_rotation.html#aa386c9788d1e64e24d4b846451444c87">00074</a> <span class="comment"></span>    <span class="keywordtype">void</span>    <a class="code" href="class_rotation.html#aa386c9788d1e64e24d4b846451444c87" title="回転軸と角度を指定して回転行列を作成する">setAxisAndAngle</a>(<span class="keywordtype">double</span> ax, <span class="keywordtype">double</span> ay, <span class="keywordtype">double</span> az, <span class="keywordtype">double</span> angle)
+<a name="l00075"></a>00075     {
+<a name="l00076"></a>00076         dQFromAxisAndAngle(m_q, ax, ay, az, angle);
+<a name="l00077"></a>00077         makeMatrix();
+<a name="l00078"></a>00078     }
+<a name="l00079"></a>00079 <span class="comment"></span>
+<a name="l00080"></a>00080 <span class="comment">        /*!</span>
+<a name="l00081"></a>00081 <span class="comment">         * @brief It rotates for the specification of the relative angle.</span>
+<a name="l00082"></a>00082 <span class="comment">         * @brief 相対角度指定による回転を行います</span>
+<a name="l00083"></a>00083 <span class="comment">         * @param[in] X軸回転有無(四元数虚数部i)/x-axis rotation weather(i of quaternion complex part)</span>
+<a name="l00084"></a>00084 <span class="comment">         * @param[in] Y軸回転有無(四元数虚数部j)/y-axis rotation weather(j of quaternion complex part)</span>
+<a name="l00085"></a>00085 <span class="comment">         * @param[in] Z軸回転有無(四元数虚数部k)/z-axis rotation weather(k of quaternion complex part)</span>
+<a name="l00086"></a>00086 <span class="comment">         * @param[in] 絶対角度指定,相対角度指定フラグ(1.0=絶対角度指定,else=相対角度指定)</span>
+<a name="l00087"></a>00087 <span class="comment">         */</span>
+<a name="l00088"></a><a class="code" href="class_rotation.html#a5353c0a5520d5860c4a43aac4aea0c6c">00088</a>         <span class="keywordtype">void</span>    <a class="code" href="class_rotation.html#aa386c9788d1e64e24d4b846451444c87" title="回転軸と角度を指定して回転行列を作成する">setAxisAndAngle</a>(<span class="keywordtype">double</span> ax, <span class="keywordtype">double</span> ay, <span class="keywordtype">double</span> az, <span class="keywordtype">double</span> angle, <span class="keywordtype">double</span> direct)
+<a name="l00089"></a>00089         {
+<a name="l00090"></a>00090       <span class="keywordflow">if</span> (direct == 1.0) {
+<a name="l00091"></a>00091         <span class="comment">// It rotates absolutely for the specification of the angle.</span>
+<a name="l00092"></a>00092         <span class="comment">// 既存処理、絶対角度を適応します</span>
+<a name="l00093"></a>00093         dQFromAxisAndAngle(m_q, ax, ay, az, angle);
+<a name="l00094"></a>00094         makeMatrix();
+<a name="l00095"></a>00095       } <span class="keywordflow">else</span> {
+<a name="l00096"></a>00096         <span class="comment">// It rotates for the specification of the relative angle.</span>
+<a name="l00097"></a>00097         <span class="comment">// 新規処理、現在の角度に相対角度を適応します</span>
+<a name="l00098"></a>00098         dQuaternion qt1, qt2;
+<a name="l00099"></a>00099         dQFromAxisAndAngle(qt1, ax, ay, az, angle);
+<a name="l00100"></a>00100         dQMultiply0(qt2, <a class="code" href="class_rotation.html#a16f2a4fefbd48c756a0c9ad7be85ee1f" title="クォータニオンを取得する">q</a>(), qt1); <span class="comment">// 前回との差分を変動させる事に注意</span>
+<a name="l00101"></a>00101         <a class="code" href="class_rotation.html#a073f88cf2c64ff2fd06227202dc107ec" title="クォータニオンを設定する">setQuaternion</a>(qt2[0], qt2[1], qt2[2], qt2[3]);
+<a name="l00102"></a>00102       }
+<a name="l00103"></a>00103         }
+<a name="l00104"></a>00104 <span class="comment"></span>
+<a name="l00105"></a>00105 <span class="comment">    //! 回転行列を得る</span>
+<a name="l00106"></a><a class="code" href="class_rotation.html#a02102f86ed3b95deb4da2230839d0802">00106</a> <span class="comment"></span>    <span class="keyword">const</span> dReal * <a class="code" href="class_rotation.html#a02102f86ed3b95deb4da2230839d0802" title="回転行列を得る">matrix</a>()<span class="keyword"> const</span>
+<a name="l00107"></a>00107 <span class="keyword">    </span>{
+<a name="l00108"></a>00108         <span class="keywordflow">return</span> m_m;
+<a name="l00109"></a>00109     }<span class="comment"></span>
+<a name="l00110"></a>00110 <span class="comment">    /**</span>
+<a name="l00111"></a>00111 <span class="comment">     * @brief 回転行列を得る</span>
+<a name="l00112"></a>00112 <span class="comment">     *</span>
+<a name="l00113"></a>00113 <span class="comment">     * @param r 行番号</span>
+<a name="l00114"></a>00114 <span class="comment">     * @param c 列番号</span>
+<a name="l00115"></a>00115 <span class="comment">     */</span>
+<a name="l00116"></a>00116 
+<a name="l00117"></a><a class="code" href="class_rotation.html#a8dd049e1c49268f6478cf5355c5150cb">00117</a>     dReal <a class="code" href="class_rotation.html#a8dd049e1c49268f6478cf5355c5150cb" title="回転行列を得る">operator()</a>(<span class="keywordtype">int</span> r, <span class="keywordtype">int</span> c)<span class="keyword">  const </span>{
+<a name="l00118"></a>00118         <span class="keywordflow">return</span> m_m[r*4 + c];
+<a name="l00119"></a>00119     }
+<a name="l00120"></a>00120 <span class="comment"></span>
+<a name="l00121"></a>00121 <span class="comment">    /**</span>
+<a name="l00122"></a>00122 <span class="comment">     * @brief 指定の行に右からベクトルを掛けたときの値を算出する</span>
+<a name="l00123"></a>00123 <span class="comment">         *</span>
+<a name="l00124"></a>00124 <span class="comment">     * @param row ベクトルを作用させる行</span>
+<a name="l00125"></a>00125 <span class="comment">     * @param v ベクトル</span>
+<a name="l00126"></a>00126 <span class="comment">     */</span>
+<a name="l00127"></a><a class="code" href="class_rotation.html#a6b4b464b6508ceb5cb5598c1ea7715d5">00127</a>     dReal   <a class="code" href="class_rotation.html#a6b4b464b6508ceb5cb5598c1ea7715d5" title="指定の行に右からベクトルを掛けたときの値を算出する">apply</a>(<span class="keywordtype">int</span> row, <span class="keyword">const</span> <a class="code" href="class_vector3d.html" title="3次元ベクトルクラス">Vector3d</a> &amp;v)<span class="keyword"> const</span>
+<a name="l00128"></a>00128 <span class="keyword">    </span>{
+<a name="l00129"></a>00129         <span class="keyword">const</span> <a class="code" href="class_rotation.html" title="回転行列クラス">Rotation</a> &amp;r = *<span class="keyword">this</span>;
+<a name="l00130"></a>00130         <span class="keywordflow">return</span> r(row, 0)*v.<a class="code" href="class_vector3d.html#a4e77e669055f31f2b244b1ee37ffa36f" title="X軸要素を設定する.">x</a>()  + r(row, 1)*v.<a class="code" href="class_vector3d.html#aa543c5f9ab89744357a80dd1ab6031cb" title="Y軸要素を設定する.">y</a>() + r(row, 2)*v.<a class="code" href="class_vector3d.html#ac95aee85033af052d24e15975faeea7d" title="Z軸要素を設定する.">z</a>();
+<a name="l00131"></a>00131     }
+<a name="l00132"></a>00132     <span class="comment"></span>
+<a name="l00133"></a>00133 <span class="comment">    /**</span>
+<a name="l00134"></a>00134 <span class="comment">     * @brief 右からベクトルを掛けたときのベクトルを算出する</span>
+<a name="l00135"></a>00135 <span class="comment">         *</span>
+<a name="l00136"></a>00136 <span class="comment">     * @param v 作用させるベクトル</span>
+<a name="l00137"></a>00137 <span class="comment">     * @param o 結果用ベクトル</span>
+<a name="l00138"></a>00138 <span class="comment">     */</span>
+<a name="l00139"></a><a class="code" href="class_rotation.html#a75025c2e0456531e30e8fc736f44165b">00139</a>     <a class="code" href="class_vector3d.html" title="3次元ベクトルクラス">Vector3d</a> &amp; <a class="code" href="class_rotation.html#a6b4b464b6508ceb5cb5598c1ea7715d5" title="指定の行に右からベクトルを掛けたときの値を算出する">apply</a>(<span class="keyword">const</span> <a class="code" href="class_vector3d.html" title="3次元ベクトルクラス">Vector3d</a> &amp;v, <a class="code" href="class_vector3d.html" title="3次元ベクトルクラス">Vector3d</a> &amp;o)<span class="keyword"> const</span>
+<a name="l00140"></a>00140 <span class="keyword">    </span>{
+<a name="l00141"></a>00141         o.<a class="code" href="class_vector3d.html#a4e77e669055f31f2b244b1ee37ffa36f" title="X軸要素を設定する.">x</a>(<a class="code" href="class_rotation.html#a6b4b464b6508ceb5cb5598c1ea7715d5" title="指定の行に右からベクトルを掛けたときの値を算出する">apply</a>(0, v));
+<a name="l00142"></a>00142         o.<a class="code" href="class_vector3d.html#aa543c5f9ab89744357a80dd1ab6031cb" title="Y軸要素を設定する.">y</a>(<a class="code" href="class_rotation.html#a6b4b464b6508ceb5cb5598c1ea7715d5" title="指定の行に右からベクトルを掛けたときの値を算出する">apply</a>(1, v));
+<a name="l00143"></a>00143         o.<a class="code" href="class_vector3d.html#ac95aee85033af052d24e15975faeea7d" title="Z軸要素を設定する.">z</a>(<a class="code" href="class_rotation.html#a6b4b464b6508ceb5cb5598c1ea7715d5" title="指定の行に右からベクトルを掛けたときの値を算出する">apply</a>(2, v));
+<a name="l00144"></a>00144         <span class="keywordflow">return</span> o;
+<a name="l00145"></a>00145     }
+<a name="l00146"></a>00146 <span class="comment"></span>
+<a name="l00147"></a>00147 <span class="comment">    /**</span>
+<a name="l00148"></a>00148 <span class="comment">     * @brief 右からベクトルを掛けたときのベクトルを算出する</span>
+<a name="l00149"></a>00149 <span class="comment">     *</span>
+<a name="l00150"></a>00150 <span class="comment">     * 結果は引数で与えたベクトルに格納する。</span>
+<a name="l00151"></a>00151 <span class="comment">         *</span>
+<a name="l00152"></a>00152 <span class="comment">     * @param v 作用させるベクトル</span>
+<a name="l00153"></a>00153 <span class="comment">     */</span>
+<a name="l00154"></a><a class="code" href="class_rotation.html#aa35316d1605d328ab4ea8919d13a5eee">00154</a>     <a class="code" href="class_vector3d.html" title="3次元ベクトルクラス">Vector3d</a> &amp; <a class="code" href="class_rotation.html#a6b4b464b6508ceb5cb5598c1ea7715d5" title="指定の行に右からベクトルを掛けたときの値を算出する">apply</a>(<a class="code" href="class_vector3d.html" title="3次元ベクトルクラス">Vector3d</a> &amp;v)<span class="keyword"> const</span>
+<a name="l00155"></a>00155 <span class="keyword">    </span>{
+<a name="l00156"></a>00156         <a class="code" href="class_vector3d.html" title="3次元ベクトルクラス">Vector3d</a> v_;
+<a name="l00157"></a>00157         v_.<a class="code" href="class_vector3d.html#a4e77e669055f31f2b244b1ee37ffa36f" title="X軸要素を設定する.">x</a>(<a class="code" href="class_rotation.html#a6b4b464b6508ceb5cb5598c1ea7715d5" title="指定の行に右からベクトルを掛けたときの値を算出する">apply</a>(0, v));
+<a name="l00158"></a>00158         v_.<a class="code" href="class_vector3d.html#aa543c5f9ab89744357a80dd1ab6031cb" title="Y軸要素を設定する.">y</a>(<a class="code" href="class_rotation.html#a6b4b464b6508ceb5cb5598c1ea7715d5" title="指定の行に右からベクトルを掛けたときの値を算出する">apply</a>(1, v));
+<a name="l00159"></a>00159         v_.<a class="code" href="class_vector3d.html#ac95aee85033af052d24e15975faeea7d" title="Z軸要素を設定する.">z</a>(<a class="code" href="class_rotation.html#a6b4b464b6508ceb5cb5598c1ea7715d5" title="指定の行に右からベクトルを掛けたときの値を算出する">apply</a>(2, v));
+<a name="l00160"></a>00160         v = v_;
+<a name="l00161"></a>00161         <span class="keywordflow">return</span> v;
+<a name="l00162"></a>00162     }
+<a name="l00163"></a>00163 <span class="comment"></span>
+<a name="l00164"></a>00164 <span class="comment">    //! *演算子(行列同士のかけ算)</span>
+<a name="l00165"></a>00165 <span class="comment"></span>    <a class="code" href="class_rotation.html" title="回転行列クラス">Rotation</a> &amp; <a class="code" href="class_rotation.html#a698c41245c9e5500fdf600c61419b805" title="*演算子(行列同士のかけ算)">operator*=</a>(<span class="keyword">const</span> <a class="code" href="class_rotation.html" title="回転行列クラス">Rotation</a> &amp;o);<span class="comment"></span>
+<a name="l00166"></a>00166 <span class="comment">    //! コピー演算子</span>
+<a name="l00167"></a>00167 <span class="comment"></span>    <a class="code" href="class_rotation.html" title="回転行列クラス">Rotation</a> &amp; <a class="code" href="class_rotation.html#ae3ece7b7b59c181590e4a3ae61a1ded2" title="コピー演算子">operator=</a>(<span class="keyword">const</span> <a class="code" href="class_rotation.html" title="回転行列クラス">Rotation</a> &amp;o);
+<a name="l00168"></a>00168 <span class="preprocessor">#endif</span>
+<a name="l00169"></a>00169 <span class="preprocessor"></span>};
+<a name="l00170"></a>00170 
+<a name="l00171"></a>00171 
+<a name="l00172"></a>00172 <span class="preprocessor">#endif // Rotation_h</span>
+<a name="l00173"></a>00173 <span class="preprocessor"></span> 
+</pre></div></div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:18 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

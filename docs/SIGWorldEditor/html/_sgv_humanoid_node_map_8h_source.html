@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGWorldEditor: SgvHumanoidNodeMap.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>SgvHumanoidNodeMap.h</h1><a href="_sgv_humanoid_node_map_8h.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef _SGV_HUMANOID_NODE_MAP_H_</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define _SGV_HUMANOID_NODE_MAP_H_</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include "Ogre.h"</span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include &lt;string&gt;</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include &lt;map&gt;</span>
+<a name="l00007"></a>00007 
+<a name="l00008"></a>00008 <span class="keyword">using namespace </span>Ogre;
+<a name="l00009"></a>00009 
+<a name="l00010"></a>00010 <span class="keyword">namespace </span>Sgv
+<a name="l00011"></a>00011 {<span class="comment"></span>
+<a name="l00012"></a>00012 <span class="comment">    ////////////////////////////////////////////////////////////////</span>
+<a name="l00013"></a>00013 <span class="comment"></span>    <span class="comment">//</span><span class="comment"></span>
+<a name="l00014"></a>00014 <span class="comment">    /// @brief ヒューマノイド形状における、ジョイント名、パーツ名と</span>
+<a name="l00015"></a>00015 <span class="comment">    /// それらに対応するOgreノードのマップ</span>
+<a name="l00016"></a>00016 <span class="comment">    ///</span>
+<a name="l00017"></a><a class="code" href="class_sgv_1_1_humanoid_node_map.html">00017</a> <span class="comment"></span>    <span class="keyword">class </span><a class="code" href="class_sgv_1_1_humanoid_node_map.html" title="ヒューマノイド形状における、ジョイント名、パーツ名と それらに対応す...">HumanoidNodeMap</a>
+<a name="l00018"></a>00018     {
+<a name="l00019"></a>00019     <span class="keyword">public</span>:
+<a name="l00020"></a>00020         <span class="comment">// -------------------------------------------------------</span><span class="comment"></span>
+<a name="l00021"></a>00021 <span class="comment">        /// @brief コンストラクタ</span>
+<a name="l00022"></a>00022 <span class="comment"></span>        <span class="comment">// -------------------------------------------------------</span>
+<a name="l00023"></a>00023         <a class="code" href="class_sgv_1_1_humanoid_node_map.html#afa79ff270347e48705c9a09dccbd219" title="コンストラクタ">HumanoidNodeMap</a>();
+<a name="l00024"></a>00024 
+<a name="l00025"></a>00025         <span class="comment">// -------------------------------------------------------</span><span class="comment"></span>
+<a name="l00026"></a>00026 <span class="comment">        /// @brief デストラクタ</span>
+<a name="l00027"></a>00027 <span class="comment"></span>        <span class="comment">// -------------------------------------------------------</span>
+<a name="l00028"></a>00028         <a class="code" href="class_sgv_1_1_humanoid_node_map.html#fb51594cd0ed6b4b543d47f8f2ce9430" title="デストラクタ">‾HumanoidNodeMap</a>();
+<a name="l00029"></a>00029 
+<a name="l00030"></a>00030         <span class="comment">// -------------------------------------------------------</span><span class="comment"></span>
+<a name="l00031"></a>00031 <span class="comment">        /// @brief ジョイント名のリストを得る</span>
+<a name="l00032"></a>00032 <span class="comment">        ///</span>
+<a name="l00033"></a>00033 <span class="comment">        /// @return ジョイント名一覧</span>
+<a name="l00034"></a>00034 <span class="comment"></span>        <span class="comment">// -------------------------------------------------------</span>
+<a name="l00035"></a>00035         std::vector&lt;std::string&gt; <a class="code" href="class_sgv_1_1_humanoid_node_map.html#8cd2def70a76a98c4acff715a95fb5e3" title="ジョイント名のリストを得る">getJointNames</a>();
+<a name="l00036"></a>00036 
+<a name="l00037"></a>00037         <span class="comment">// -------------------------------------------------------</span><span class="comment"></span>
+<a name="l00038"></a>00038 <span class="comment">        /// @brief パーツ名のリストを得る</span>
+<a name="l00039"></a>00039 <span class="comment">        ///</span>
+<a name="l00040"></a>00040 <span class="comment">        /// @return パーツ名一覧</span>
+<a name="l00041"></a>00041 <span class="comment"></span>        <span class="comment">// -------------------------------------------------------</span>
+<a name="l00042"></a>00042         std::vector&lt;std::string&gt; <a class="code" href="class_sgv_1_1_humanoid_node_map.html#ed9dfc7d49d30b443a39bd1c1d89239c" title="パーツ名のリストを得る">getPartsNames</a>();
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044         <span class="comment">// -------------------------------------------------------</span><span class="comment"></span>
+<a name="l00045"></a>00045 <span class="comment">        /// @brief ジョイント名からOgreノードを引く</span>
+<a name="l00046"></a>00046 <span class="comment">        ///</span>
+<a name="l00047"></a>00047 <span class="comment">        /// @param jointName [i] ジョイント名</span>
+<a name="l00048"></a>00048 <span class="comment">        ///</span>
+<a name="l00049"></a>00049 <span class="comment">        /// @return ジョイント名に対するOgreノード</span>
+<a name="l00050"></a>00050 <span class="comment"></span>        <span class="comment">// -------------------------------------------------------</span>
+<a name="l00051"></a>00051         SceneNode *<a class="code" href="class_sgv_1_1_humanoid_node_map.html#0b79b2391df3c0c794d3d05e8c822b49" title="ジョイント名からOgreノードを引く">getJointNode</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *jointName);
+<a name="l00052"></a>00052 
+<a name="l00053"></a>00053         <span class="comment">// -------------------------------------------------------</span><span class="comment"></span>
+<a name="l00054"></a>00054 <span class="comment">        /// @brief パーツ名からOgreノードを引く</span>
+<a name="l00055"></a>00055 <span class="comment">        ///</span>
+<a name="l00056"></a>00056 <span class="comment">        /// @param partsName [i] パーツ名</span>
+<a name="l00057"></a>00057 <span class="comment">        ///</span>
+<a name="l00058"></a>00058 <span class="comment">        /// @return パーツ名に対するOgreノード</span>
+<a name="l00059"></a>00059 <span class="comment"></span>        <span class="comment">// -------------------------------------------------------</span>
+<a name="l00060"></a>00060         SceneNode *<a class="code" href="class_sgv_1_1_humanoid_node_map.html#595147c471350b9608c38171188eaf00" title="パーツ名からOgreノードを引く">getPartsNode</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *partsName);
+<a name="l00061"></a>00061 
+<a name="l00062"></a>00062         <span class="comment">// -------------------------------------------------------</span><span class="comment"></span>
+<a name="l00063"></a>00063 <span class="comment">        /// @brief ジョイント名とOgreノードのマップへの参照を返す</span>
+<a name="l00064"></a>00064 <span class="comment">        ///</span>
+<a name="l00065"></a>00065 <span class="comment">        /// @return マップへの参照</span>
+<a name="l00066"></a>00066 <span class="comment"></span>        <span class="comment">// -------------------------------------------------------</span>
+<a name="l00067"></a><a class="code" href="class_sgv_1_1_humanoid_node_map.html#7eb2b2008b0b05a87881d51cf557c9c8">00067</a>         std::map&lt;std::string, SceneNode *&gt;&amp; <a class="code" href="class_sgv_1_1_humanoid_node_map.html#7eb2b2008b0b05a87881d51cf557c9c8" title="ジョイント名とOgreノードのマップへの参照を返す">getJointMap</a>() { <span class="keywordflow">return</span> m_mapJointNameToSceneNode; }
+<a name="l00068"></a>00068 
+<a name="l00069"></a>00069         <span class="comment">// -------------------------------------------------------</span><span class="comment"></span>
+<a name="l00070"></a>00070 <span class="comment">        /// @brief パーツ名とOgreノードのマップへの参照を返す</span>
+<a name="l00071"></a>00071 <span class="comment">        ///</span>
+<a name="l00072"></a>00072 <span class="comment">        /// @return マップへの参照</span>
+<a name="l00073"></a>00073 <span class="comment"></span>        <span class="comment">// -------------------------------------------------------</span>
+<a name="l00074"></a><a class="code" href="class_sgv_1_1_humanoid_node_map.html#f89e5d439fbeacf768272a8500cef3e8">00074</a>         std::map&lt;std::string, SceneNode *&gt;&amp; <a class="code" href="class_sgv_1_1_humanoid_node_map.html#f89e5d439fbeacf768272a8500cef3e8" title="パーツ名とOgreノードのマップへの参照を返す">getPartsMap</a>() { <span class="keywordflow">return</span> m_mapPartsNameToSceneNode; }
+<a name="l00075"></a>00075 
+<a name="l00076"></a>00076     <span class="keyword">private</span>:
+<a name="l00077"></a>00077         <span class="comment">// ------------------------------------------------</span><span class="comment"></span>
+<a name="l00078"></a>00078 <span class="comment">        /// @brief ジョイント名からOgreノードへのマップ</span>
+<a name="l00079"></a>00079 <span class="comment"></span>        <span class="comment">// ------------------------------------------------</span>
+<a name="l00080"></a>00080         std::map&lt;std::string, SceneNode *&gt; m_mapJointNameToSceneNode;
+<a name="l00081"></a>00081 
+<a name="l00082"></a>00082         <span class="comment">// ------------------------------------------------</span><span class="comment"></span>
+<a name="l00083"></a>00083 <span class="comment">        /// @brief パーツ名からOgreノードへのマップ</span>
+<a name="l00084"></a>00084 <span class="comment"></span>        <span class="comment">// ------------------------------------------------</span>
+<a name="l00085"></a>00085         std::map&lt;std::string, SceneNode *&gt; m_mapPartsNameToSceneNode;
+<a name="l00086"></a>00086     };
+<a name="l00087"></a>00087 }
+<a name="l00088"></a>00088 
+<a name="l00089"></a>00089 <span class="preprocessor">#endif</span>
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>SIGWorldEditorに対してThu Jun 9 10:52:58 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

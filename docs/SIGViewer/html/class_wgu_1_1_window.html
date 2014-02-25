@@ -1,0 +1,258 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGViewer: クラス Wgu::Window</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_wgu.html">Wgu</a>::<a class="el" href="class_wgu_1_1_window.html">Window</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Wgu::Window</h1><!-- doxytag: class="Wgu::Window" -->Win32 APIの簡易ラッパークラス（ウィンドウ操作関連）.  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_wgu_window_8h_source.html">WguWindow.h</a>&gt;</code>
+<p>
+
+<p>
+<a href="class_wgu_1_1_window-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Static Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static HFONT&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_window.html#18eef5777163ac4bdc44b786a5331130">createFont</a> (char *faceName, int fontSize, bool bold)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">GDIフォントオブジェクトを作成する.  <a href="#18eef5777163ac4bdc44b786a5331130"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_window.html#a69cdacb4854201df1ff246039d35ff2">getText</a> (HWND hwnd)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ウィンドウに表示されている文字列を得る  <a href="#a69cdacb4854201df1ff246039d35ff2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_window.html#20d565e6616ab67d61754cc3ffd4af59">setFont</a> (HWND hwnd, HFONT hfont)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ウィンドウのフォントをセットする  <a href="#20d565e6616ab67d61754cc3ffd4af59"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_window.html#3a22b7333b4ffdb93f9df0fe6879cdce">setText</a> (HWND hwnd, char *text)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ウィンドウにテキスト文字列をセットする  <a href="#3a22b7333b4ffdb93f9df0fe6879cdce"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+Win32 APIの簡易ラッパークラス（ウィンドウ操作関連）. 
+<p> <a class="el" href="_wgu_window_8h_source.html">WguWindow.h</a> の <a class="el" href="_wgu_window_8h_source.html#l00012">12</a> 行で定義されています。</p>
+<hr><h2>関数</h2>
+<a class="anchor" name="18eef5777163ac4bdc44b786a5331130"></a><!-- doxytag: member="Wgu::Window::createFont" ref="18eef5777163ac4bdc44b786a5331130" args="(char *faceName, int fontSize, bool bold)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HFONT Wgu::Window::createFont           </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>faceName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>fontSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bold</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+GDIフォントオブジェクトを作成する. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>faceName</em>&nbsp;</td><td>[i] フォントフェイス名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>fontSize</em>&nbsp;</td><td>[i] フォントサイズ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bold</em>&nbsp;</td><td>[i] ボールド体にするときtrue</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>GDIフォントオブジェクト </dd></dl>
+
+<p> <a class="el" href="_wgu_window_8cpp_source.html">WguWindow.cpp</a> の <a class="el" href="_wgu_window_8cpp_source.html#l00012">12</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="a69cdacb4854201df1ff246039d35ff2"></a><!-- doxytag: member="Wgu::Window::getText" ref="a69cdacb4854201df1ff246039d35ff2" args="(HWND hwnd)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Wgu::Window::getText           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hwnd</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ウィンドウに表示されている文字列を得る 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hwnd</em>&nbsp;</td><td>[i] 対象ウィンドウ </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>ウィンドウの表示文字列 </dd></dl>
+
+<p> <a class="el" href="_wgu_window_8cpp_source.html">WguWindow.cpp</a> の <a class="el" href="_wgu_window_8cpp_source.html#l00051">51</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="20d565e6616ab67d61754cc3ffd4af59"></a><!-- doxytag: member="Wgu::Window::setFont" ref="20d565e6616ab67d61754cc3ffd4af59" args="(HWND hwnd, HFONT hfont)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::Window::setFont           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hwnd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">HFONT&nbsp;</td>
+          <td class="paramname"> <em>hfont</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ウィンドウのフォントをセットする 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hwnd</em>&nbsp;</td><td>[i] 対象ウィンドウ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>hfont</em>&nbsp;</td><td>[i] ウィンドウにセットするフォント </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_wgu_window_8cpp_source.html">WguWindow.cpp</a> の <a class="el" href="_wgu_window_8cpp_source.html#l00041">41</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="3a22b7333b4ffdb93f9df0fe6879cdce"></a><!-- doxytag: member="Wgu::Window::setText" ref="3a22b7333b4ffdb93f9df0fe6879cdce" args="(HWND hwnd, char *text)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::Window::setText           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hwnd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>text</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ウィンドウにテキスト文字列をセットする 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hwnd</em>&nbsp;</td><td>[i] 対象ウィンドウ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>text</em>&nbsp;</td><td>[i] ウィンドウにセットする文字列 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_wgu_window_8cpp_source.html">WguWindow.cpp</a> の <a class="el" href="_wgu_window_8cpp_source.html#l00046">46</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_wgu_window_8h_source.html">WguWindow.h</a><li><a class="el" href="_wgu_window_8cpp_source.html">WguWindow.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGViewerに対してThu Jun 9 10:52:16 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

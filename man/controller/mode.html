@@ -1,0 +1,37 @@
+<html>
+<!-- $Id: mode.html,v 1.1.1.1 2011-03-25 02:18:52 okamoto Exp $ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS"/>
+<link rel="stylesheet" type="text/css" href="../prj.css"/>
+<title></title>
+</head>
+
+<body>
+<h1>移動モードと制御モード</h1>
+
+<p>シミュレーションを実行する際には、エージェント毎にそれぞれ<span class="keyword">制御モード</span>と<span class="keyword">移動モード
+</span>の設定を行うことができます。</p>
+
+<h2>制御モード</h2>
+
+<p>ODEによる物理シミュレーションを有効(<font class="attrname">dynamics</font>を<font class="attrvalue">true</font>)
+にすると、エージェントは制御モードになります。制御モードのエージェントは、コントローラにより絶対位置や向きを直接指
+定することはできません。力やトルクなどの外力によってエージェントの位置・姿勢をコントロールします。</p>
+
+<h2>移動モード</h2>
+
+<p>ODEによる物理シミュレーションを無効(<font class="attrname">dynamics</font>を<font class="attrvalue">false</font>)
+にすると、エージェントは制御モードになります。移動モードのエージェントは、コントローラによりエージェント絶対位置や
+向き、関節の角度を直接指定することができますが、力やトルクを与えたり、パーツにかかる圧力を検出することができません。</p>
+
+<p>
+<!-- hhmts start -->
+Last modified: Mon Feb 25 11:13:10 JST 2008
+<!-- hhmts end -->
+</p>
+
+<hr/><address style="align: right;"><a href="http://www.msi.co.jp"><img src="../msilogo.gif" align="middle" border=0 
+width=139 height=53>（株）数理システム</a>
+
+</body>
+</html>

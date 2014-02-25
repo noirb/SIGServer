@@ -1,0 +1,335 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: クラス XMLUtils</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス XMLUtils</h1><!-- doxytag: class="XMLUtils" -->
+<p>XMLパース時のユーティリティクラス.  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_x_m_l_utils_8h_source.html">XMLUtils.h</a>&gt;</code></p>
+
+<p><a href="class_x_m_l_utils-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>構成</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_m_l_utils_1_1_exception.html">Exception</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">例外基本クラス  <a href="class_x_m_l_utils_1_1_exception.html#_details">[詳細]</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_m_l_utils_1_1_no_attribute_exception.html">NoAttributeException</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">必要な属性がないことを通知する例外クラス  <a href="class_x_m_l_utils_1_1_no_attribute_exception.html#_details">[詳細]</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_m_l_utils_1_1_no_child_node_exception.html">NoChildNodeException</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">子ノードがないことを通知する例外クラス  <a href="class_x_m_l_utils_1_1_no_child_node_exception.html#_details">[詳細]</a><br/></td></tr>
+<tr><td colspan="2"><h2>Static Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_m_l_utils.html#a9c3cf510b87cb110cc63458d031d47d2">dumpAttributeList</a> (const xercesc::AttributeList &amp;attrs)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">属性値リストをダンプする  <a href="#a9c3cf510b87cb110cc63458d031d47d2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_m_l_utils.html#a9ef631dff5b28dc94f5fb17428cf85d4">getAttribute</a> (xercesc::DOMNode &amp;n, const char *attrname)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">指定の属性値を取得する  <a href="#a9ef631dff5b28dc94f5fb17428cf85d4"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static double *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_m_l_utils.html#ab3ec6a8cc527a4e559f63c913055ff4c">parseAxis</a> (xercesc::DOMNode &amp;n)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">axis ノードのテキスト値を配列サイズ3の数値ベクトルとして返す  <a href="#ab3ec6a8cc527a4e559f63c913055ff4c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_m_l_utils.html#a46f31b28dbdca7f9deda21ae2df8783d">parseJointType</a> (xercesc::DOMNode &amp;target)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">jointノードのジョイントタイプを表す値を取得する  <a href="#a46f31b28dbdca7f9deda21ae2df8783d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static double *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_m_l_utils.html#a63d2eb4e878f6964c8e1888a575a8803">parseLimitOrientation</a> (xercesc::DOMNode &amp;n)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">limitOrientation ノードのテキスト値を配列サイズ4の数値ベクトルとして返す  <a href="#a63d2eb4e878f6964c8e1888a575a8803"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_m_l_utils.html#a18641580454b87526b2dec051c1c2a7c">parseRadius</a> (xercesc::DOMNode &amp;n, <a class="el" href="class_eval.html">Eval</a> &amp;)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">size ノードのテキスト値を数値として返す  <a href="#a18641580454b87526b2dec051c1c2a7c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static double *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_m_l_utils.html#a0ef11d807d3124d72ad6dd9ffb138448">parseRotation</a> (xercesc::DOMNode &amp;n)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">rotation ノードのテキスト値を配列サイズ4の数値ベクトルとして返す  <a href="#a0ef11d807d3124d72ad6dd9ffb138448"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static double *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_m_l_utils.html#a376c7fb1c0510d48a1dc418b2f7c5315">parseSize</a> (xercesc::DOMNode &amp;n, <a class="el" href="class_eval.html">Eval</a> &amp;)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">size ノードのテキスト値を配列サイズ3の数値ベクトルとして返す  <a href="#a376c7fb1c0510d48a1dc418b2f7c5315"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static double *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_m_l_utils.html#ac193f6275550ff5bd01483aa493e57c9">parseTranslation</a> (xercesc::DOMNode &amp;n, <a class="el" href="class_eval.html">Eval</a> &amp;)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">translation ノードのテキスト値を配列サイズ 3の数値ベクトルとして返す  <a href="#ac193f6275550ff5bd01483aa493e57c9"></a><br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>XMLパース時のユーティリティクラス. </p>
+
+<p> <a class="el" href="_x_m_l_utils_8h_source.html">XMLUtils.h</a> の <a class="el" href="_x_m_l_utils_8h_source.html#l00014">14</a> 行で定義されています。</p>
+<hr/><h2>関数</h2>
+<a class="anchor" id="a9c3cf510b87cb110cc63458d031d47d2"></a><!-- doxytag: member="XMLUtils::dumpAttributeList" ref="a9c3cf510b87cb110cc63458d031d47d2" args="(const xercesc::AttributeList &amp;attrs)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void XMLUtils::dumpAttributeList </td>
+          <td>(</td>
+          <td class="paramtype">const xercesc::AttributeList &amp;&nbsp;</td>
+          <td class="paramname"> <em>attrs</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>属性値リストをダンプする </p>
+
+</div>
+</div>
+<a class="anchor" id="a9ef631dff5b28dc94f5fb17428cf85d4"></a><!-- doxytag: member="XMLUtils::getAttribute" ref="a9ef631dff5b28dc94f5fb17428cf85d4" args="(xercesc::DOMNode &amp;n, const char *attrname)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static char* XMLUtils::getAttribute </td>
+          <td>(</td>
+          <td class="paramtype">xercesc::DOMNode &amp;&nbsp;</td>
+          <td class="paramname"> <em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>attrname</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>指定の属性値を取得する </p>
+
+</div>
+</div>
+<a class="anchor" id="ab3ec6a8cc527a4e559f63c913055ff4c"></a><!-- doxytag: member="XMLUtils::parseAxis" ref="ab3ec6a8cc527a4e559f63c913055ff4c" args="(xercesc::DOMNode &amp;n)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static double* XMLUtils::parseAxis </td>
+          <td>(</td>
+          <td class="paramtype">xercesc::DOMNode &amp;&nbsp;</td>
+          <td class="paramname"> <em>n</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>axis ノードのテキスト値を配列サイズ3の数値ベクトルとして返す </p>
+
+</div>
+</div>
+<a class="anchor" id="a46f31b28dbdca7f9deda21ae2df8783d"></a><!-- doxytag: member="XMLUtils::parseJointType" ref="a46f31b28dbdca7f9deda21ae2df8783d" args="(xercesc::DOMNode &amp;target)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static char* XMLUtils::parseJointType </td>
+          <td>(</td>
+          <td class="paramtype">xercesc::DOMNode &amp;&nbsp;</td>
+          <td class="paramname"> <em>target</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>jointノードのジョイントタイプを表す値を取得する </p>
+
+</div>
+</div>
+<a class="anchor" id="a63d2eb4e878f6964c8e1888a575a8803"></a><!-- doxytag: member="XMLUtils::parseLimitOrientation" ref="a63d2eb4e878f6964c8e1888a575a8803" args="(xercesc::DOMNode &amp;n)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static double* XMLUtils::parseLimitOrientation </td>
+          <td>(</td>
+          <td class="paramtype">xercesc::DOMNode &amp;&nbsp;</td>
+          <td class="paramname"> <em>n</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>limitOrientation ノードのテキスト値を配列サイズ4の数値ベクトルとして返す </p>
+
+</div>
+</div>
+<a class="anchor" id="a18641580454b87526b2dec051c1c2a7c"></a><!-- doxytag: member="XMLUtils::parseRadius" ref="a18641580454b87526b2dec051c1c2a7c" args="(xercesc::DOMNode &amp;n, Eval &amp;)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static double XMLUtils::parseRadius </td>
+          <td>(</td>
+          <td class="paramtype">xercesc::DOMNode &amp;&nbsp;</td>
+          <td class="paramname"> <em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_eval.html">Eval</a> &amp;&nbsp;</td>
+          <td class="paramname"></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>size ノードのテキスト値を数値として返す </p>
+
+</div>
+</div>
+<a class="anchor" id="a0ef11d807d3124d72ad6dd9ffb138448"></a><!-- doxytag: member="XMLUtils::parseRotation" ref="a0ef11d807d3124d72ad6dd9ffb138448" args="(xercesc::DOMNode &amp;n)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static double* XMLUtils::parseRotation </td>
+          <td>(</td>
+          <td class="paramtype">xercesc::DOMNode &amp;&nbsp;</td>
+          <td class="paramname"> <em>n</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>rotation ノードのテキスト値を配列サイズ4の数値ベクトルとして返す </p>
+
+</div>
+</div>
+<a class="anchor" id="a376c7fb1c0510d48a1dc418b2f7c5315"></a><!-- doxytag: member="XMLUtils::parseSize" ref="a376c7fb1c0510d48a1dc418b2f7c5315" args="(xercesc::DOMNode &amp;n, Eval &amp;)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static double* XMLUtils::parseSize </td>
+          <td>(</td>
+          <td class="paramtype">xercesc::DOMNode &amp;&nbsp;</td>
+          <td class="paramname"> <em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_eval.html">Eval</a> &amp;&nbsp;</td>
+          <td class="paramname"></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>size ノードのテキスト値を配列サイズ3の数値ベクトルとして返す </p>
+
+</div>
+</div>
+<a class="anchor" id="ac193f6275550ff5bd01483aa493e57c9"></a><!-- doxytag: member="XMLUtils::parseTranslation" ref="ac193f6275550ff5bd01483aa493e57c9" args="(xercesc::DOMNode &amp;n, Eval &amp;)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static double* XMLUtils::parseTranslation </td>
+          <td>(</td>
+          <td class="paramtype">xercesc::DOMNode &amp;&nbsp;</td>
+          <td class="paramname"> <em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_eval.html">Eval</a> &amp;&nbsp;</td>
+          <td class="paramname"></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>translation ノードのテキスト値を配列サイズ 3の数値ベクトルとして返す </p>
+<p>数式文字列があった場合評価を行なう </p>
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_x_m_l_utils_8h_source.html">XMLUtils.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:22 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

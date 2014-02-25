@@ -1,0 +1,196 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGViewer: SgvThread.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>SgvThread.h</h1><a href="_sgv_thread_8h.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef _SGV_THREAD_H_</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define _SGV_THREAD_H_</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include &lt;windows.h&gt;</span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include &lt;process.h&gt;</span>
+<a name="l00006"></a>00006 <span class="comment"></span>
+<a name="l00007"></a>00007 <span class="comment">////////////////////////////////////////////////////////////////////////////////</span>
+<a name="l00008"></a>00008 <span class="comment"></span>
+<a name="l00009"></a>00009 <span class="keyword">namespace </span>Sgv
+<a name="l00010"></a>00010 {
+<a name="l00011"></a>00011     <span class="keyword">template</span>&lt;<span class="keyword">class</span> ParamType&gt;
+<a name="l00012"></a><a class="code" href="class_sgv_1_1_thread.html">00012</a>     <span class="keyword">class </span><a class="code" href="class_sgv_1_1_thread.html">Thread</a>
+<a name="l00013"></a>00013     {
+<a name="l00014"></a>00014     <span class="keyword">public</span>:
+<a name="l00015"></a><a class="code" href="class_sgv_1_1_thread.html#42f614d5befcd1da7cfe7ff542ad00f8">00015</a>         <span class="keyword">typedef</span> UINT <a class="code" href="class_sgv_1_1_thread.html#42f614d5befcd1da7cfe7ff542ad00f8">RetType</a>;
+<a name="l00016"></a><a class="code" href="class_sgv_1_1_thread.html#7d475bf3a65607adc4778a28725b3345">00016</a>         <span class="keyword">typedef</span> <a class="code" href="class_sgv_1_1_thread.html#42f614d5befcd1da7cfe7ff542ad00f8">RetType</a> (*<a class="code" href="class_sgv_1_1_thread.html#7d475bf3a65607adc4778a28725b3345">ThreadFuncType</a>)(LPVOID);
+<a name="l00017"></a>00017 
+<a name="l00018"></a><a class="code" href="class_sgv_1_1_thread.html#f746d5abde29c6d5f8b059d31ef76099">00018</a>         <a class="code" href="class_sgv_1_1_thread.html#f746d5abde29c6d5f8b059d31ef76099">Thread</a>() : <a class="code" href="class_sgv_1_1_thread.html#314ca01bfbdf625e7bf23d745cc69bd3">m_thread</a>(0), <a class="code" href="class_sgv_1_1_thread.html#7c46196a36b34653b1008a816e32d972">m_threadId</a>(0) {}
+<a name="l00019"></a><a class="code" href="class_sgv_1_1_thread.html#d96592c7c5be4f6866559e10c5e7feb4">00019</a>         <span class="keyword">virtual</span> <a class="code" href="class_sgv_1_1_thread.html#d96592c7c5be4f6866559e10c5e7feb4">‾Thread</a>()
+<a name="l00020"></a>00020         {
+<a name="l00021"></a>00021             <a class="code" href="class_sgv_1_1_thread.html#12abd82416910e1142602db13864f0be">terminate</a>();
+<a name="l00022"></a>00022             freeThread();
+<a name="l00023"></a>00023         }
+<a name="l00024"></a>00024 
+<a name="l00025"></a>00025         <span class="keywordtype">bool</span> <a class="code" href="class_sgv_1_1_thread.html#d737812f0f48a60216a0f50eb2c82db0">run</a>();
+<a name="l00026"></a>00026         <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_thread.html#0177e3e6f575e2a94056031457ab969b">pause</a>();
+<a name="l00027"></a>00027         <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_thread.html#fa51a2f1684a742da0b620001af6517a">wait</a>();
+<a name="l00028"></a>00028         <span class="keywordtype">bool</span> <a class="code" href="class_sgv_1_1_thread.html#e64690da3654ffe67c3ae7c2855e4839">running</a>();
+<a name="l00029"></a>00029         <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_thread.html#12abd82416910e1142602db13864f0be">terminate</a>();
+<a name="l00030"></a>00030 
+<a name="l00031"></a><a class="code" href="class_sgv_1_1_thread.html#99f7e9ee672d323cd0e623e4379f23a0">00031</a>         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_sgv_1_1_thread.html#99f7e9ee672d323cd0e623e4379f23a0">getThreadId</a>() { <span class="keywordflow">return</span> <a class="code" href="class_sgv_1_1_thread.html#7c46196a36b34653b1008a816e32d972">m_threadId</a>; }
+<a name="l00032"></a>00032 
+<a name="l00033"></a>00033     <span class="keyword">protected</span>:
+<a name="l00034"></a><a class="code" href="class_sgv_1_1_thread.html#314ca01bfbdf625e7bf23d745cc69bd3">00034</a>         HANDLE <a class="code" href="class_sgv_1_1_thread.html#314ca01bfbdf625e7bf23d745cc69bd3">m_thread</a>;
+<a name="l00035"></a><a class="code" href="class_sgv_1_1_thread.html#7c46196a36b34653b1008a816e32d972">00035</a>         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_sgv_1_1_thread.html#7c46196a36b34653b1008a816e32d972">m_threadId</a>;
+<a name="l00036"></a>00036 
+<a name="l00037"></a>00037         <span class="keywordtype">bool</span> <a class="code" href="class_sgv_1_1_thread.html#79a603207b08dd65b857cfdada430945">create</a>(<a class="code" href="class_sgv_1_1_thread.html#7d475bf3a65607adc4778a28725b3345">ThreadFuncType</a> proc, ParamType param);
+<a name="l00038"></a>00038 
+<a name="l00039"></a>00039     <span class="keyword">private</span>:
+<a name="l00040"></a>00040         <span class="keywordtype">void</span> freeThread()
+<a name="l00041"></a>00041         {
+<a name="l00042"></a>00042             <span class="keywordflow">if</span> (<a class="code" href="class_sgv_1_1_thread.html#314ca01bfbdf625e7bf23d745cc69bd3">m_thread</a>)
+<a name="l00043"></a>00043             {
+<a name="l00044"></a>00044                 CloseHandle(<a class="code" href="class_sgv_1_1_thread.html#314ca01bfbdf625e7bf23d745cc69bd3">m_thread</a>);
+<a name="l00045"></a>00045                 <a class="code" href="class_sgv_1_1_thread.html#314ca01bfbdf625e7bf23d745cc69bd3">m_thread</a> = 0;
+<a name="l00046"></a>00046             }
+<a name="l00047"></a>00047         }
+<a name="l00048"></a>00048     };
+<a name="l00049"></a>00049 <span class="comment"></span>
+<a name="l00050"></a>00050 <span class="comment">    ////////////////////////////////////////////////////////////////////////////////</span>
+<a name="l00051"></a>00051 <span class="comment"></span>
+<a name="l00052"></a><a class="code" href="namespace_sgv.html#342a4f96ef180998357a431b86789081">00052</a>     <span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> int (_stdcall *<a class="code" href="namespace_sgv.html#342a4f96ef180998357a431b86789081">BEGINTHREADEXPROC</a>)(<span class="keywordtype">void</span> *);
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054     <span class="keyword">template</span>&lt;<span class="keyword">class</span> ParamType&gt;
+<a name="l00055"></a><a class="code" href="class_sgv_1_1_thread.html#79a603207b08dd65b857cfdada430945">00055</a>     <span class="keywordtype">bool</span> <a class="code" href="class_sgv_1_1_thread.html#79a603207b08dd65b857cfdada430945">Thread&lt;ParamType&gt;::create</a>(ThreadFuncType proc, ParamType param)
+<a name="l00056"></a>00056     {
+<a name="l00057"></a>00057         freeThread();
+<a name="l00058"></a>00058         LPVOID lpParam = <span class="keyword">reinterpret_cast&lt;</span>LPVOID<span class="keyword">&gt;</span>(param);
+<a name="l00059"></a>00059 
+<a name="l00060"></a>00060         <span class="comment">// スレッド作成後、 必要な設定を行ってから実行</span>
+<a name="l00061"></a>00061         <a class="code" href="class_sgv_1_1_thread.html#314ca01bfbdf625e7bf23d745cc69bd3">m_thread</a> = (HANDLE)_beginthreadex(NULL, 0, (<a class="code" href="namespace_sgv.html#342a4f96ef180998357a431b86789081">BEGINTHREADEXPROC</a>)proc, lpParam, CREATE_SUSPENDED, &amp;<a class="code" href="class_sgv_1_1_thread.html#7c46196a36b34653b1008a816e32d972">m_threadId</a>);
+<a name="l00062"></a>00062 
+<a name="l00063"></a>00063         <span class="keywordflow">return</span> <a class="code" href="class_sgv_1_1_thread.html#314ca01bfbdf625e7bf23d745cc69bd3">m_thread</a> ? <span class="keyword">true</span> : <span class="keyword">false</span>;
+<a name="l00064"></a>00064     }
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066     <span class="keyword">template</span>&lt;<span class="keyword">class</span> ParamType&gt;
+<a name="l00067"></a><a class="code" href="class_sgv_1_1_thread.html#d737812f0f48a60216a0f50eb2c82db0">00067</a>     <span class="keywordtype">bool</span> <a class="code" href="class_sgv_1_1_thread.html#d737812f0f48a60216a0f50eb2c82db0">Thread&lt;ParamType&gt;::run</a>()
+<a name="l00068"></a>00068     {
+<a name="l00069"></a>00069         <span class="keywordflow">if</span> (!<a class="code" href="class_sgv_1_1_thread.html#314ca01bfbdf625e7bf23d745cc69bd3">m_thread</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071         ResumeThread(<a class="code" href="class_sgv_1_1_thread.html#314ca01bfbdf625e7bf23d745cc69bd3">m_thread</a>);
+<a name="l00072"></a>00072 
+<a name="l00073"></a>00073         <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00074"></a>00074     }
+<a name="l00075"></a>00075 
+<a name="l00076"></a>00076     <span class="keyword">template</span>&lt;<span class="keyword">class</span> ParamType&gt;
+<a name="l00077"></a><a class="code" href="class_sgv_1_1_thread.html#0177e3e6f575e2a94056031457ab969b">00077</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_thread.html#0177e3e6f575e2a94056031457ab969b">Thread&lt;ParamType&gt;::pause</a>()
+<a name="l00078"></a>00078     {
+<a name="l00079"></a>00079         <span class="keywordflow">if</span> (!<a class="code" href="class_sgv_1_1_thread.html#314ca01bfbdf625e7bf23d745cc69bd3">m_thread</a>) <span class="keywordflow">return</span>;
+<a name="l00080"></a>00080 
+<a name="l00081"></a>00081         SuspendThread(<a class="code" href="class_sgv_1_1_thread.html#314ca01bfbdf625e7bf23d745cc69bd3">m_thread</a>);
+<a name="l00082"></a>00082     }
+<a name="l00083"></a>00083 
+<a name="l00084"></a>00084     <span class="keyword">template</span>&lt;<span class="keyword">class</span> ParamType&gt;
+<a name="l00085"></a><a class="code" href="class_sgv_1_1_thread.html#fa51a2f1684a742da0b620001af6517a">00085</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_thread.html#fa51a2f1684a742da0b620001af6517a">Thread&lt;ParamType&gt;::wait</a>()
+<a name="l00086"></a>00086     {
+<a name="l00087"></a>00087         <span class="keywordflow">if</span> (!<a class="code" href="class_sgv_1_1_thread.html#314ca01bfbdf625e7bf23d745cc69bd3">m_thread</a>) <span class="keywordflow">return</span>;
+<a name="l00088"></a>00088 
+<a name="l00089"></a>00089         WaitForSingleObject(<a class="code" href="class_sgv_1_1_thread.html#314ca01bfbdf625e7bf23d745cc69bd3">m_thread</a>, INFINITE);
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091         freeThread();
+<a name="l00092"></a>00092     }
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094     <span class="keyword">template</span>&lt;<span class="keyword">class</span> ParamType&gt;
+<a name="l00095"></a><a class="code" href="class_sgv_1_1_thread.html#e64690da3654ffe67c3ae7c2855e4839">00095</a>     <span class="keywordtype">bool</span> <a class="code" href="class_sgv_1_1_thread.html#e64690da3654ffe67c3ae7c2855e4839">Thread&lt;ParamType&gt;::running</a>()
+<a name="l00096"></a>00096     {
+<a name="l00097"></a>00097         <span class="keywordflow">if</span> (!<a class="code" href="class_sgv_1_1_thread.html#314ca01bfbdf625e7bf23d745cc69bd3">m_thread</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00098"></a>00098 
+<a name="l00099"></a>00099         DWORD status;
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101         GetExitCodeThread(<a class="code" href="class_sgv_1_1_thread.html#314ca01bfbdf625e7bf23d745cc69bd3">m_thread</a>, &amp;status);
+<a name="l00102"></a>00102 
+<a name="l00103"></a>00103         <span class="keywordflow">if</span> (status != STILL_ACTIVE)
+<a name="l00104"></a>00104         {
+<a name="l00105"></a>00105             freeThread();
+<a name="l00106"></a>00106             <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00107"></a>00107         }
+<a name="l00108"></a>00108 
+<a name="l00109"></a>00109         <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00110"></a>00110     }
+<a name="l00111"></a>00111 
+<a name="l00112"></a>00112     <span class="keyword">template</span>&lt;<span class="keyword">class</span> ParamType&gt;
+<a name="l00113"></a><a class="code" href="class_sgv_1_1_thread.html#12abd82416910e1142602db13864f0be">00113</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_thread.html#12abd82416910e1142602db13864f0be">Thread&lt;ParamType&gt;::terminate</a>()
+<a name="l00114"></a>00114     {
+<a name="l00115"></a>00115         <span class="keywordflow">if</span> (<a class="code" href="class_sgv_1_1_thread.html#314ca01bfbdf625e7bf23d745cc69bd3">m_thread</a>)
+<a name="l00116"></a>00116         {
+<a name="l00117"></a>00117             <span class="keywordflow">if</span> (<a class="code" href="class_sgv_1_1_thread.html#e64690da3654ffe67c3ae7c2855e4839">running</a>())
+<a name="l00118"></a>00118             {
+<a name="l00119"></a>00119                 TerminateThread(<a class="code" href="class_sgv_1_1_thread.html#314ca01bfbdf625e7bf23d745cc69bd3">m_thread</a>, 1);
+<a name="l00120"></a>00120             }
+<a name="l00121"></a>00121 
+<a name="l00122"></a>00122             freeThread();
+<a name="l00123"></a>00123         }
+<a name="l00124"></a>00124     }
+<a name="l00125"></a>00125 };
+<a name="l00126"></a>00126 
+<a name="l00127"></a>00127 <span class="preprocessor">#endif // _SGV_THREAD_H_</span>
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>SIGViewerに対してThu Jun 9 10:52:12 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

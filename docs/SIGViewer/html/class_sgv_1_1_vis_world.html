@@ -1,0 +1,464 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGViewer: クラス Sgv::VisWorld</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_sgv.html">Sgv</a>::<a class="el" href="class_sgv_1_1_vis_world.html">VisWorld</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Sgv::VisWorld</h1><!-- doxytag: class="Sgv::VisWorld" -->ビジュアルワールド  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_sgv_vis_world_8h_source.html">SgvVisWorld.h</a>&gt;</code>
+<p>
+
+<p>
+<a href="class_sgv_1_1_vis_world-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_world.html#a201c5949c7d784b46a2253c59176504">addVisObj</a> (<a class="el" href="class_sgv_1_1_vis_obj_base.html">VisObjBase</a> *vo)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">VisObjを追加.  <a href="#a201c5949c7d784b46a2253c59176504"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_world.html#365e7d47fa45a2c48486aa46eb537964">clear</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">登録されているVisObjをすべてdeleteし、 マップをクリアする  <a href="#365e7d47fa45a2c48486aa46eb537964"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_sgv_1_1_vis_obj_base.html">VisObjBase</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_world.html#dc7b9858467847fd628480b97076c3fa">createVisObj</a> (SceneManager *mgr, SceneNode *parentNode, SimObj *pSimObj, bool bShowSimplifiedShape)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">SimObjからVisObjを生成 （デシリアライズでファイルから復元したSimObjを使って生成するため）.  <a href="#dc7b9858467847fd628480b97076c3fa"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::vector&lt; std::string &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_world.html#be63c360197e12e2bcc19c3541411ee5">getRegisteredVisObjNames</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">登録されているVisObj名のリストを返す  <a href="#be63c360197e12e2bcc19c3541411ee5"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_sgv_1_1_vis_obj_base.html">VisObjBase</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_world.html#b6d1f528dc633b56df902b0d0a79aeaf">getVisObj</a> (const char *visObjName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">VisObj名から対応するVisObjを引く.  <a href="#b6d1f528dc633b56df902b0d0a79aeaf"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_sgv_1_1_vis_obj_base.html">VisObjBase</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_world.html#a37bbb3ea4b2af120293df21296ed372">getVisObj</a> (std::string &amp;visObjName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">VisObj名から対応するVisObjを引く.  <a href="#a37bbb3ea4b2af120293df21296ed372"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">SimWorld *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_world.html#3509833351fd4d1ee982a7d51d3629dd">makeSimWorld</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">VisWorldが持つVisObjの含むSimObjからSimWorldを生成.  <a href="#3509833351fd4d1ee982a7d51d3629dd"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_world.html#af41825b65f2e98e8b166e943dd81980">showShapes</a> (char *visObjName, bool bShow)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">形状の表示切替  <a href="#af41825b65f2e98e8b166e943dd81980"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_world.html#da8d7e6965ff94694f961b97991c6f7c">showSimplifiedShapes</a> (char *visObjName, bool bShow)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">単純形状の表示切替  <a href="#da8d7e6965ff94694f961b97991c6f7c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_world.html#49650e86c6971464ffa3c26f6d0aa97c">VisWorld</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#49650e86c6971464ffa3c26f6d0aa97c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_world.html#4c53a26392550bda1fd6c6cff004b6e8">‾VisWorld</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#4c53a26392550bda1fd6c6cff004b6e8"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+ビジュアルワールド 
+<p> <a class="el" href="_sgv_vis_world_8h_source.html">SgvVisWorld.h</a> の <a class="el" href="_sgv_vis_world_8h_source.html#l00024">24</a> 行で定義されています。</p>
+<hr><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" name="49650e86c6971464ffa3c26f6d0aa97c"></a><!-- doxytag: member="Sgv::VisWorld::VisWorld" ref="49650e86c6971464ffa3c26f6d0aa97c" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::VisWorld::VisWorld           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_vis_world_8cpp_source.html">SgvVisWorld.cpp</a> の <a class="el" href="_sgv_vis_world_8cpp_source.html#l00030">30</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>関数</h2>
+<a class="anchor" name="a201c5949c7d784b46a2253c59176504"></a><!-- doxytag: member="Sgv::VisWorld::addVisObj" ref="a201c5949c7d784b46a2253c59176504" args="(VisObjBase *vo)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::VisWorld::addVisObj           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_vis_obj_base.html">VisObjBase</a> *&nbsp;</td>
+          <td class="paramname"> <em>vo</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+VisObjを追加. 
+<p>
+VisObjの所有権はこのオブジェクトに渡る. <dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>vo</em>&nbsp;</td><td>[i] ビジュアルオブジェクト</td></tr>
+  </table>
+</dl>
+追加後は、名前でVisObjを引けるようになる. 同一の名前のVisObjがすでに登録されていた場合は、 既存のVisObjはdeleteされ、新しいものに置き換えられる． 
+<p> <a class="el" href="_sgv_vis_world_8cpp_source.html">SgvVisWorld.cpp</a> の <a class="el" href="_sgv_vis_world_8cpp_source.html#l00233">233</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="365e7d47fa45a2c48486aa46eb537964"></a><!-- doxytag: member="Sgv::VisWorld::clear" ref="365e7d47fa45a2c48486aa46eb537964" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::VisWorld::clear           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+登録されているVisObjをすべてdeleteし、 マップをクリアする 
+<p>
+
+<p> <a class="el" href="_sgv_vis_world_8cpp_source.html">SgvVisWorld.cpp</a> の <a class="el" href="_sgv_vis_world_8cpp_source.html#l00217">217</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="dc7b9858467847fd628480b97076c3fa"></a><!-- doxytag: member="Sgv::VisWorld::createVisObj" ref="dc7b9858467847fd628480b97076c3fa" args="(SceneManager *mgr, SceneNode *parentNode, SimObj *pSimObj, bool bShowSimplifiedShape)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_sgv_1_1_vis_obj_base.html">VisObjBase</a> * Sgv::VisWorld::createVisObj           </td>
+          <td>(</td>
+          <td class="paramtype">SceneManager *&nbsp;</td>
+          <td class="paramname"> <em>mgr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SceneNode *&nbsp;</td>
+          <td class="paramname"> <em>parentNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SimObj *&nbsp;</td>
+          <td class="paramname"> <em>pSimObj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bShowSimplifiedShape</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+SimObjからVisObjを生成 （デシリアライズでファイルから復元したSimObjを使って生成するため）. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>mgr</em>&nbsp;</td><td>[i] Ogreシーンマネージャ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>parentNode</em>&nbsp;</td><td>[i] 親ノード </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>pSimObj</em>&nbsp;</td><td>[i] シミュレーションオブジェクト </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bShowSimplifiedShape</em>&nbsp;</td><td>[i] 単純形状の表示スイッチ</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>ビジュアルオブジェクト</dd></dl>
+生成されたVisObjの名前はSimObjの名前（＝o-&gt;name()）になる<p>
+返り値の所有権は呼び出し側に渡る （呼び出し側はdelete責任を負う） 
+<p> <a class="el" href="_sgv_vis_world_8cpp_source.html">SgvVisWorld.cpp</a> の <a class="el" href="_sgv_vis_world_8cpp_source.html#l00042">42</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="be63c360197e12e2bcc19c3541411ee5"></a><!-- doxytag: member="Sgv::VisWorld::getRegisteredVisObjNames" ref="be63c360197e12e2bcc19c3541411ee5" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::string &gt; Sgv::VisWorld::getRegisteredVisObjNames           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+登録されているVisObj名のリストを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>ビジュアルオブジェクト名のベクトル </dd></dl>
+
+<p> <a class="el" href="_sgv_vis_world_8cpp_source.html">SgvVisWorld.cpp</a> の <a class="el" href="_sgv_vis_world_8cpp_source.html#l00272">272</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b6d1f528dc633b56df902b0d0a79aeaf"></a><!-- doxytag: member="Sgv::VisWorld::getVisObj" ref="b6d1f528dc633b56df902b0d0a79aeaf" args="(const char *visObjName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_sgv_1_1_vis_obj_base.html">VisObjBase</a> * Sgv::VisWorld::getVisObj           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>visObjName</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+VisObj名から対応するVisObjを引く. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>visObjName</em>&nbsp;</td><td>[i] ビジュアルオブジェクト名</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>ビジュアルオブジェクト</dd></dl>
+見つからなかった場合はNULLが返る 
+<p> <a class="el" href="_sgv_vis_world_8cpp_source.html">SgvVisWorld.cpp</a> の <a class="el" href="_sgv_vis_world_8cpp_source.html#l00256">256</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="a37bbb3ea4b2af120293df21296ed372"></a><!-- doxytag: member="Sgv::VisWorld::getVisObj" ref="a37bbb3ea4b2af120293df21296ed372" args="(std::string &amp;visObjName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_sgv_1_1_vis_obj_base.html">VisObjBase</a> * Sgv::VisWorld::getVisObj           </td>
+          <td>(</td>
+          <td class="paramtype">std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>visObjName</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+VisObj名から対応するVisObjを引く. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>visObjName</em>&nbsp;</td><td>[i] ビジュアルオブジェクト名</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>ビジュアルオブジェクト</dd></dl>
+見つからなかった場合はNULLが返る 
+<p> <a class="el" href="_sgv_vis_world_8cpp_source.html">SgvVisWorld.cpp</a> の <a class="el" href="_sgv_vis_world_8cpp_source.html#l00251">251</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="3509833351fd4d1ee982a7d51d3629dd"></a><!-- doxytag: member="Sgv::VisWorld::makeSimWorld" ref="3509833351fd4d1ee982a7d51d3629dd" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SimWorld * Sgv::VisWorld::makeSimWorld           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+VisWorldが持つVisObjの含むSimObjからSimWorldを生成. 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>SimWorld </dd></dl>
+
+<p> <a class="el" href="_sgv_vis_world_8cpp_source.html">SgvVisWorld.cpp</a> の <a class="el" href="_sgv_vis_world_8cpp_source.html#l00285">285</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="af41825b65f2e98e8b166e943dd81980"></a><!-- doxytag: member="Sgv::VisWorld::showShapes" ref="af41825b65f2e98e8b166e943dd81980" args="(char *visObjName, bool bShow)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::VisWorld::showShapes           </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>visObjName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bShow</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+形状の表示切替 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>visObjName</em>&nbsp;</td><td>[i] ビジュアルオブジェクト名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bShow</em>&nbsp;</td><td>[i] true(=表示する), false(=表示しない)</td></tr>
+  </table>
+</dl>
+visObjNameにNULLを与えた場合、すべてのvisObjの状態を変える 
+<p> <a class="el" href="_sgv_vis_world_8cpp_source.html">SgvVisWorld.cpp</a> の <a class="el" href="_sgv_vis_world_8cpp_source.html#l00308">308</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="da8d7e6965ff94694f961b97991c6f7c"></a><!-- doxytag: member="Sgv::VisWorld::showSimplifiedShapes" ref="da8d7e6965ff94694f961b97991c6f7c" args="(char *visObjName, bool bShow)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::VisWorld::showSimplifiedShapes           </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>visObjName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bShow</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+単純形状の表示切替 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>visObjName</em>&nbsp;</td><td>[i] ビジュアルオブジェクト名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bShow</em>&nbsp;</td><td>[i] true(=表示する), false(=表示しない)</td></tr>
+  </table>
+</dl>
+visObjNameにNULLを与えた場合、すべてのvisObjの状態を変える 
+<p> <a class="el" href="_sgv_vis_world_8cpp_source.html">SgvVisWorld.cpp</a> の <a class="el" href="_sgv_vis_world_8cpp_source.html#l00334">334</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="4c53a26392550bda1fd6c6cff004b6e8"></a><!-- doxytag: member="Sgv::VisWorld::‾VisWorld" ref="4c53a26392550bda1fd6c6cff004b6e8" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::VisWorld::‾VisWorld           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+デストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_vis_world_8cpp_source.html">SgvVisWorld.cpp</a> の <a class="el" href="_sgv_vis_world_8cpp_source.html#l00035">35</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_sgv_vis_world_8h_source.html">SgvVisWorld.h</a><li><a class="el" href="_sgv_vis_world_8cpp_source.html">SgvVisWorld.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGViewerに対してThu Jun 9 10:52:16 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

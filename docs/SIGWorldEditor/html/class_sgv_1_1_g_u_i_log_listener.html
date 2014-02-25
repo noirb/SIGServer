@@ -1,0 +1,338 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGWorldEditor: クラス Sgv::GUILogListener</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_sgv.html">Sgv</a>::<a class="el" href="class_sgv_1_1_g_u_i_log_listener.html">GUILogListener</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Sgv::GUILogListener</h1><!-- doxytag: class="Sgv::GUILogListener" --><!-- doxytag: inherits="Sgv::LogListener" -->GUIログ.  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_sgv_log_8h_source.html">SgvLog.h</a>&gt;</code>
+<p>
+<div class="dynheader">
+Sgv::GUILogListenerに対する継承グラフ</div>
+<div class="dynsection">
+
+<p><center><img src="class_sgv_1_1_g_u_i_log_listener.png" usemap="#Sgv::GUILogListener_map" border="0" alt=""></center>
+<map name="Sgv::GUILogListener_map">
+<area href="class_sgv_1_1_log_listener.html" alt="Sgv::LogListener" shape="rect" coords="0,0,126,24">
+</map>
+</div>
+
+<p>
+<a href="class_sgv_1_1_g_u_i_log_listener-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_g_u_i_log_listener.html#e72b9ecc183d8fd5894e82bf5254a852">close</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ログを閉じる  <a href="#e72b9ecc183d8fd5894e82bf5254a852"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_g_u_i_log_listener.html#9bc03f6c83a33917e362270ee58887e9">flush</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ログをフラッシュする  <a href="#9bc03f6c83a33917e362270ee58887e9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_g_u_i_log_listener.html#62cef45e6e53761a04d716456c0a6957">GUILogListener</a> (HWND hwndEdit)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#62cef45e6e53761a04d716456c0a6957"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_g_u_i_log_listener.html#3ad6fdfb319cf76060bb106363eaae56">GUILogListener</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#3ad6fdfb319cf76060bb106363eaae56"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_g_u_i_log_listener.html#38ef53913abafc84eea59572d2aea650">print</a> (char *str)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エディットコントロールへ文字列を出力（改行なし）  <a href="#38ef53913abafc84eea59572d2aea650"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_g_u_i_log_listener.html#f190fb709f69f1f3b19ed9e0152926c1">println</a> (char *str)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エディットコントロールへ文字列を出力（改行付き）  <a href="#f190fb709f69f1f3b19ed9e0152926c1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_sgv_1_1_log_listener.html#4b6a0120243da9324200c6afab36075d">TYPE</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_g_u_i_log_listener.html#787bd6f190a589553f663c108cd01b55">type</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ログのタイプを返す  <a href="#787bd6f190a589553f663c108cd01b55"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_g_u_i_log_listener.html#5a21c674a5ad6ebe0b610be4de21b055">‾GUILogListener</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#5a21c674a5ad6ebe0b610be4de21b055"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+GUIログ. 
+<p> <a class="el" href="_sgv_log_8h_source.html">SgvLog.h</a> の <a class="el" href="_sgv_log_8h_source.html#l00144">144</a> 行で定義されています。</p>
+<hr><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" name="3ad6fdfb319cf76060bb106363eaae56"></a><!-- doxytag: member="Sgv::GUILogListener::GUILogListener" ref="3ad6fdfb319cf76060bb106363eaae56" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::GUILogListener::GUILogListener           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_log_8cpp_source.html">SgvLog.cpp</a> の <a class="el" href="_sgv_log_8cpp_source.html#l00094">94</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="62cef45e6e53761a04d716456c0a6957"></a><!-- doxytag: member="Sgv::GUILogListener::GUILogListener" ref="62cef45e6e53761a04d716456c0a6957" args="(HWND hwndEdit)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::GUILogListener::GUILogListener           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hwndEdit</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hwndEdit</em>&nbsp;</td><td>[i] ログ出力先エディットコントロールのウィンドウハンドル </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_log_8cpp_source.html">SgvLog.cpp</a> の <a class="el" href="_sgv_log_8cpp_source.html#l00098">98</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>関数</h2>
+<a class="anchor" name="e72b9ecc183d8fd5894e82bf5254a852"></a><!-- doxytag: member="Sgv::GUILogListener::close" ref="e72b9ecc183d8fd5894e82bf5254a852" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::GUILogListener::close           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ログを閉じる 
+<p>
+
+<p><a class="el" href="class_sgv_1_1_log_listener.html#77f659f81f1297484e8d84d8e67e02f9">Sgv::LogListener</a>を実装しています。</p>
+
+<p> <a class="el" href="_sgv_log_8cpp_source.html">SgvLog.cpp</a> の <a class="el" href="_sgv_log_8cpp_source.html#l00125">125</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="9bc03f6c83a33917e362270ee58887e9"></a><!-- doxytag: member="Sgv::GUILogListener::flush" ref="9bc03f6c83a33917e362270ee58887e9" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::GUILogListener::flush           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ログをフラッシュする 
+<p>
+
+<p><a class="el" href="class_sgv_1_1_log_listener.html#e9980fa2e26576dcdf1519008300c7ca">Sgv::LogListener</a>を実装しています。</p>
+
+<p> <a class="el" href="_sgv_log_8cpp_source.html">SgvLog.cpp</a> の <a class="el" href="_sgv_log_8cpp_source.html#l00120">120</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="38ef53913abafc84eea59572d2aea650"></a><!-- doxytag: member="Sgv::GUILogListener::print" ref="38ef53913abafc84eea59572d2aea650" args="(char *str)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::GUILogListener::print           </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>str</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+エディットコントロールへ文字列を出力（改行なし） 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>str</em>&nbsp;</td><td>[i] 文字列 </td></tr>
+  </table>
+</dl>
+
+<p><a class="el" href="class_sgv_1_1_log_listener.html#4e533f46fea183e521b78a34e629a3d1">Sgv::LogListener</a>を実装しています。</p>
+
+<p> <a class="el" href="_sgv_log_8cpp_source.html">SgvLog.cpp</a> の <a class="el" href="_sgv_log_8cpp_source.html#l00106">106</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f190fb709f69f1f3b19ed9e0152926c1"></a><!-- doxytag: member="Sgv::GUILogListener::println" ref="f190fb709f69f1f3b19ed9e0152926c1" args="(char *str)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::GUILogListener::println           </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>str</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+エディットコントロールへ文字列を出力（改行付き） 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>str</em>&nbsp;</td><td>[i] 文字列 </td></tr>
+  </table>
+</dl>
+
+<p><a class="el" href="class_sgv_1_1_log_listener.html#8b5d55cae2c2f28a007f97436e561c9c">Sgv::LogListener</a>を実装しています。</p>
+
+<p> <a class="el" href="_sgv_log_8cpp_source.html">SgvLog.cpp</a> の <a class="el" href="_sgv_log_8cpp_source.html#l00111">111</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="787bd6f190a589553f663c108cd01b55"></a><!-- doxytag: member="Sgv::GUILogListener::type" ref="787bd6f190a589553f663c108cd01b55" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_sgv_1_1_log_listener.html#4b6a0120243da9324200c6afab36075d">TYPE</a> Sgv::GUILogListener::type           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ログのタイプを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>ログタイプ(=GUI_LOG) </dd></dl>
+
+<p><a class="el" href="class_sgv_1_1_log_listener.html#e1ff7ab713ba8230cda62392162b38bf">Sgv::LogListener</a>を実装しています。</p>
+
+<p> <a class="el" href="_sgv_log_8h_source.html">SgvLog.h</a> の <a class="el" href="_sgv_log_8h_source.html#l00169">169</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="5a21c674a5ad6ebe0b610be4de21b055"></a><!-- doxytag: member="Sgv::GUILogListener::‾GUILogListener" ref="5a21c674a5ad6ebe0b610be4de21b055" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::GUILogListener::‾GUILogListener           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+デストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_log_8cpp_source.html">SgvLog.cpp</a> の <a class="el" href="_sgv_log_8cpp_source.html#l00102">102</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_sgv_log_8h_source.html">SgvLog.h</a><li><a class="el" href="_sgv_log_8cpp_source.html">SgvLog.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGWorldEditorに対してThu Mar 4 17:29:09 2010に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

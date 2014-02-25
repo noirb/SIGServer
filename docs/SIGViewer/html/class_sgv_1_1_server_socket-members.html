@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGViewer: メンバ一覧</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Sgv::ServerSocket メンバ一覧</h1>これは全メンバの一覧です。<a class="el" href="class_sgv_1_1_server_socket.html">Sgv::ServerSocket</a>継承メンバも含んでいます。<p><table>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_server_socket.html#24f6cc65b1ca76e3b34ab420764dc96a">accept</a>(Socket **ppSocket)</td><td><a class="el" href="class_sgv_1_1_server_socket.html">Sgv::ServerSocket</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_server_socket.html#36eb567dc92f3f235f1674cd4a3142b4">bind</a>(const char *hostname, int port)</td><td><a class="el" href="class_sgv_1_1_server_socket.html">Sgv::ServerSocket</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_socket.html#423ff2ff0c0d1663fd45f2f2832dfed3">cleanupWinsock</a>()</td><td><a class="el" href="class_sgv_1_1_socket.html">Sgv::Socket</a></td><td><code> [static]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_socket.html#d9d80e3cc77fa0e2f05795f0af800d50">close</a>()</td><td><a class="el" href="class_sgv_1_1_socket.html">Sgv::Socket</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_socket.html#6cef8d7157cd0ee8a3af6396a2a5d79d">connected</a>()</td><td><a class="el" href="class_sgv_1_1_socket.html">Sgv::Socket</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_socket.html#53ddae4dcef969060efe7b774e81e0bf">getWinsockErrorDetail</a>()</td><td><a class="el" href="class_sgv_1_1_socket.html">Sgv::Socket</a></td><td><code> [static]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_socket.html#7a195532fb2e7edef3700986f3f628a2">getWinsockErrorDetailString</a>()</td><td><a class="el" href="class_sgv_1_1_socket.html">Sgv::Socket</a></td><td><code> [static]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_socket.html#0758b6ba8a916d6c856bd2d15cdb04fe">getWinsockErrorString</a>(int errCode)</td><td><a class="el" href="class_sgv_1_1_socket.html">Sgv::Socket</a></td><td><code> [static]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_socket.html#842c94d2517ba9c33f60522299cf71d2">hostName</a>()</td><td><a class="el" href="class_sgv_1_1_socket.html">Sgv::Socket</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_socket.html#484e0e36d67b148b6c2f08f0d0a8f3d2">initAllMembers</a>()</td><td><a class="el" href="class_sgv_1_1_socket.html">Sgv::Socket</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_socket.html#0d25a4738b316de25d5a7fdc63976d9b">initWinsock</a>()</td><td><a class="el" href="class_sgv_1_1_socket.html">Sgv::Socket</a></td><td><code> [static]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_server_socket.html#12b70f0c4f6f74441fdb4fcf4c047406">listen</a>(int nSocketListenTo)</td><td><a class="el" href="class_sgv_1_1_server_socket.html">Sgv::ServerSocket</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_socket.html#10de49ee6a66af641e4d8022befa7b42">m_bNonBlockingMode</a></td><td><a class="el" href="class_sgv_1_1_socket.html">Sgv::Socket</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_socket.html#a6565f2015ac69cd6b9c65cf2f0a9edb">m_bufLen</a></td><td><a class="el" href="class_sgv_1_1_socket.html">Sgv::Socket</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_socket.html#4071a31b8d44a9d4ea5e855827452e63">m_connected</a></td><td><a class="el" href="class_sgv_1_1_socket.html">Sgv::Socket</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_socket.html#e09cb997aeea995095438bf2de923cb0">m_hostName</a></td><td><a class="el" href="class_sgv_1_1_socket.html">Sgv::Socket</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_socket.html#6f783ca326afae08f738145fa38d7e62">m_packet</a></td><td><a class="el" href="class_sgv_1_1_socket.html">Sgv::Socket</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_socket.html#bfa63369d8765407df570e53b0e0ef28">m_sock</a></td><td><a class="el" href="class_sgv_1_1_socket.html">Sgv::Socket</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_socket.html#3db2a44a1ae4a0ac1e0fdc3e95a097a4">m_totalRecvLen</a></td><td><a class="el" href="class_sgv_1_1_socket.html">Sgv::Socket</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_socket.html#9135b3cfc456b4225968e54c36dbb14b">recvData</a>(char *buf, int bufLen, int &amp;recvLen)</td><td><a class="el" href="class_sgv_1_1_socket.html">Sgv::Socket</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_socket.html#1cd8d81ea4405a3ff88d7555e8012dee">recvPacket</a>(Sgv::Packet **ppPacket)</td><td><a class="el" href="class_sgv_1_1_socket.html">Sgv::Socket</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_socket.html#8cc7e7add9c81aa4ba0ad0bddd0dfffd">recvPacket_Block</a>(Sgv::Packet **ppPacket)</td><td><a class="el" href="class_sgv_1_1_socket.html">Sgv::Socket</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_socket.html#85befb4b4481975c2083d020358a7812">recvPacket_NonBlock</a>(Sgv::Packet **ppPacket)</td><td><a class="el" href="class_sgv_1_1_socket.html">Sgv::Socket</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_socket.html#7568f6e346a1300f0a1762f7d6dbdf68">select</a>(bool bReadable, long sec=0, long millisec=0)</td><td><a class="el" href="class_sgv_1_1_socket.html">Sgv::Socket</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_socket.html#02b88d178b36c68e359d003a4f1111b0">sendData</a>(char *buf, int bufLen, int &amp;sentLen)</td><td><a class="el" href="class_sgv_1_1_socket.html">Sgv::Socket</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_server_socket.html#399b02eacfaf52e1e74178ecd9536e23">ServerSocket</a>(bool bNonBlockingMode=false)</td><td><a class="el" href="class_sgv_1_1_server_socket.html">Sgv::ServerSocket</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_server_socket.html#aea8a5d56c271045edc6ccdfc391b1cb">ServerSocket</a>(SOCKET sock, bool bNonBlockingMode=false)</td><td><a class="el" href="class_sgv_1_1_server_socket.html">Sgv::ServerSocket</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_socket.html#b07c0ab3a464cc92f025e6cd86a5a976">setNonBlockMode</a>(bool bNonBlockingMode)</td><td><a class="el" href="class_sgv_1_1_socket.html">Sgv::Socket</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_socket.html#ccfbb8ea689629d15a03908b1b4a35c9">sock</a>()</td><td><a class="el" href="class_sgv_1_1_socket.html">Sgv::Socket</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_socket.html#038a11376afe35d714eff29c37cfaed0">Socket</a>()</td><td><a class="el" href="class_sgv_1_1_socket.html">Sgv::Socket</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_socket.html#4a36fe5bf2b3e53e5f5a4a10ccaeba70">Socket</a>(bool bNonBlockingMode)</td><td><a class="el" href="class_sgv_1_1_socket.html">Sgv::Socket</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_socket.html#2015b908916cd9093e30ae69e6477447">Socket</a>(SOCKET sock, bool bNonBlockingMode)</td><td><a class="el" href="class_sgv_1_1_socket.html">Sgv::Socket</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_socket.html#7f0a55ee81eeb182a90bd49b918049cb">‾Socket</a>()</td><td><a class="el" href="class_sgv_1_1_socket.html">Sgv::Socket</a></td><td><code> [virtual]</code></td></tr>
+</table></div>
+<hr size="1"><address style="text-align: right;"><small>SIGViewerに対してThu Jun 9 10:52:15 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

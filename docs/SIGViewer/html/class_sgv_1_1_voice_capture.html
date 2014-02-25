@@ -1,0 +1,342 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGViewer: クラス Sgv::VoiceCapture</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_sgv.html">Sgv</a>::<a class="el" href="class_sgv_1_1_voice_capture.html">VoiceCapture</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Sgv::VoiceCapture</h1><!-- doxytag: class="Sgv::VoiceCapture" -->音声データキャプチャ用クラス  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_sgv_voice_capture_8h_source.html">SgvVoiceCapture.h</a>&gt;</code>
+<p>
+
+<p>
+<a href="class_sgv_1_1_voice_capture-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_voice_capture.html#2f4422967c9ba567cc21f3ade5b75ec7">doCapture</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">キャプチャした音声データを内部バッファに転送する．  <a href="#2f4422967c9ba567cc21f3ade5b75ec7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_voice_capture.html#8ed709644d11c96601fee9aa7d4eb41c">endCapture</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">キャプチャ終了  <a href="#8ed709644d11c96601fee9aa7d4eb41c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_voice_capture.html#309f12f431298a04555e9488de2a8f98">getCaptureDataPtr</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">キャプチャした音声データの先頭へのポインタを返す  <a href="#309f12f431298a04555e9488de2a8f98"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_voice_capture.html#ef111cc66e9952067c7e82d7545a2085">getCaptureDataSize</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">キャプチャした音声データのサイズを返す  <a href="#ef111cc66e9952067c7e82d7545a2085"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_voice_capture.html#0f10f2e182fe35fad140fbb4d9f958f2">init</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">初期化する  <a href="#0f10f2e182fe35fad140fbb4d9f958f2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_voice_capture.html#03aa59a3891eebc00ba967a0a0d98c8c">startCapture</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">キャプチャ開始  <a href="#03aa59a3891eebc00ba967a0a0d98c8c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_voice_capture.html#e33dd89d5f4def64b5e4f8829b6f405f">VoiceCapture</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#e33dd89d5f4def64b5e4f8829b6f405f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_voice_capture.html#36d083b07f548c6c520d143213942e39">writeCaptureDataToFile</a> (const char *waveFile)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">音声データをファイルにwav形式で書き出す  <a href="#36d083b07f548c6c520d143213942e39"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_voice_capture.html#ee3e223c9ca33d395a625d7ffe6ac016">‾VoiceCapture</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#ee3e223c9ca33d395a625d7ffe6ac016"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+音声データキャプチャ用クラス 
+<p> <a class="el" href="_sgv_voice_capture_8h_source.html">SgvVoiceCapture.h</a> の <a class="el" href="_sgv_voice_capture_8h_source.html#l00048">48</a> 行で定義されています。</p>
+<hr><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" name="e33dd89d5f4def64b5e4f8829b6f405f"></a><!-- doxytag: member="Sgv::VoiceCapture::VoiceCapture" ref="e33dd89d5f4def64b5e4f8829b6f405f" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::VoiceCapture::VoiceCapture           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_voice_capture_8cpp_source.html">SgvVoiceCapture.cpp</a> の <a class="el" href="_sgv_voice_capture_8cpp_source.html#l00007">7</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>関数</h2>
+<a class="anchor" name="2f4422967c9ba567cc21f3ade5b75ec7"></a><!-- doxytag: member="Sgv::VoiceCapture::doCapture" ref="2f4422967c9ba567cc21f3ade5b75ec7" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::VoiceCapture::doCapture           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+キャプチャした音声データを内部バッファに転送する． 
+<p>
+このメソッドは、キャプチャ中にタイマーなどで定期的に呼び出す必要がある． 
+<p> <a class="el" href="_sgv_voice_capture_8cpp_source.html">SgvVoiceCapture.cpp</a> の <a class="el" href="_sgv_voice_capture_8cpp_source.html#l00135">135</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="8ed709644d11c96601fee9aa7d4eb41c"></a><!-- doxytag: member="Sgv::VoiceCapture::endCapture" ref="8ed709644d11c96601fee9aa7d4eb41c" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::VoiceCapture::endCapture           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+キャプチャ終了 
+<p>
+
+<p> <a class="el" href="_sgv_voice_capture_8cpp_source.html">SgvVoiceCapture.cpp</a> の <a class="el" href="_sgv_voice_capture_8cpp_source.html#l00157">157</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="309f12f431298a04555e9488de2a8f98"></a><!-- doxytag: member="Sgv::VoiceCapture::getCaptureDataPtr" ref="309f12f431298a04555e9488de2a8f98" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* Sgv::VoiceCapture::getCaptureDataPtr           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+キャプチャした音声データの先頭へのポインタを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>音声データへのポインタ </dd></dl>
+
+<p> <a class="el" href="_sgv_voice_capture_8h_source.html">SgvVoiceCapture.h</a> の <a class="el" href="_sgv_voice_capture_8h_source.html#l00088">88</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="ef111cc66e9952067c7e82d7545a2085"></a><!-- doxytag: member="Sgv::VoiceCapture::getCaptureDataSize" ref="ef111cc66e9952067c7e82d7545a2085" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Sgv::VoiceCapture::getCaptureDataSize           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+キャプチャした音声データのサイズを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>音声データのサイズ（単位：バイト） </dd></dl>
+
+<p> <a class="el" href="_sgv_voice_capture_8h_source.html">SgvVoiceCapture.h</a> の <a class="el" href="_sgv_voice_capture_8h_source.html#l00095">95</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="0f10f2e182fe35fad140fbb4d9f958f2"></a><!-- doxytag: member="Sgv::VoiceCapture::init" ref="0f10f2e182fe35fad140fbb4d9f958f2" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::VoiceCapture::init           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+初期化する 
+<p>
+
+<p> <a class="el" href="_sgv_voice_capture_8cpp_source.html">SgvVoiceCapture.cpp</a> の <a class="el" href="_sgv_voice_capture_8cpp_source.html#l00041">41</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="03aa59a3891eebc00ba967a0a0d98c8c"></a><!-- doxytag: member="Sgv::VoiceCapture::startCapture" ref="03aa59a3891eebc00ba967a0a0d98c8c" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::VoiceCapture::startCapture           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+キャプチャ開始 
+<p>
+
+<p> <a class="el" href="_sgv_voice_capture_8cpp_source.html">SgvVoiceCapture.cpp</a> の <a class="el" href="_sgv_voice_capture_8cpp_source.html#l00104">104</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="36d083b07f548c6c520d143213942e39"></a><!-- doxytag: member="Sgv::VoiceCapture::writeCaptureDataToFile" ref="36d083b07f548c6c520d143213942e39" args="(const char *waveFile)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::VoiceCapture::writeCaptureDataToFile           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>waveFile</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+音声データをファイルにwav形式で書き出す 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>waveFile</em>&nbsp;</td><td>[i] wavファイル名</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗)</dd></dl>
+<div class="fragment"><pre class="fragment">     <a class="code" href="class_sgv_1_1_voice_capture.html#e33dd89d5f4def64b5e4f8829b6f405f" title="コンストラクタ">VoiceCapture</a> vc;
+
+     vc.startCapture(); <span class="comment">// 録音開始</span>
+     Sleep(5000);       <span class="comment">// 5秒待つ</span>
+     vc.endCapture();   <span class="comment">// 録音終了</span>
+
+     vc.writeCaptureDataToFile(<span class="stringliteral">"sample.wav"</span>);   <span class="comment">// wavファイルにセーブ</span>
+</pre></div> 
+<p> <a class="el" href="_sgv_voice_capture_8cpp_source.html">SgvVoiceCapture.cpp</a> の <a class="el" href="_sgv_voice_capture_8cpp_source.html#l00201">201</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="ee3e223c9ca33d395a625d7ffe6ac016"></a><!-- doxytag: member="Sgv::VoiceCapture::‾VoiceCapture" ref="ee3e223c9ca33d395a625d7ffe6ac016" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::VoiceCapture::‾VoiceCapture           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+デストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_voice_capture_8cpp_source.html">SgvVoiceCapture.cpp</a> の <a class="el" href="_sgv_voice_capture_8cpp_source.html#l00020">20</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_sgv_voice_capture_8h_source.html">SgvVoiceCapture.h</a><li><a class="el" href="_sgv_voice_capture_8cpp_source.html">SgvVoiceCapture.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGViewerに対してThu Jun 9 10:52:16 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

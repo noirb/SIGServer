@@ -1,0 +1,542 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGViewer: クラス Sgv::Quaternion</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_sgv.html">Sgv</a>::<a class="el" href="class_sgv_1_1_quaternion.html">Quaternion</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Sgv::Quaternion</h1><!-- doxytag: class="Sgv::Quaternion" -->クォータニオン  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_sgv_sim_serv_helper_8h_source.html">SgvSimServHelper.h</a>&gt;</code>
+<p>
+
+<p>
+<a href="class_sgv_1_1_quaternion-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_sgv_1_1_quaternion.html">Quaternion</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_quaternion.html#87512530fc163ad90d6e7214cdd14c39">mult</a> (<a class="el" href="class_sgv_1_1_quaternion.html">Quaternion</a> &amp;right)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クォータニオンの積を計算する  <a href="#87512530fc163ad90d6e7214cdd14c39"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_quaternion.html#9b5ec7a75b6c9d39dd4233514e9ce288">Quaternion</a> (double deg, double dx, double dy, double dz)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#9b5ec7a75b6c9d39dd4233514e9ce288"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_quaternion.html#85959bf6b8b9473e357f872593468882">Quaternion</a> (const <a class="el" href="class_sgv_1_1_quaternion.html">Quaternion</a> &amp;q)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コピーコンストラクタ  <a href="#85959bf6b8b9473e357f872593468882"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_quaternion.html#b813c6227fddc5aeaea43023f111b24a">Quaternion</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#b813c6227fddc5aeaea43023f111b24a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_quaternion.html#a2a5a5c709f827d8cf761c2f7b8de88b">qw</a> (double value)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クォータニオンのw要素をセットする  <a href="#a2a5a5c709f827d8cf761c2f7b8de88b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_quaternion.html#7e5f47ff18e53646c73ed6d0d71f521d">qw</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クォータニオンのw要素を返す  <a href="#7e5f47ff18e53646c73ed6d0d71f521d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_quaternion.html#7bbf4f685ece62602edebd5ec831bd99">qx</a> (double value)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クォータニオンのx要素をセットする  <a href="#7bbf4f685ece62602edebd5ec831bd99"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_quaternion.html#2f061b4484666d62b81e64198b667268">qx</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クォータニオンのx要素を返す  <a href="#2f061b4484666d62b81e64198b667268"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_quaternion.html#e35064e7207f43b5ce6a6b590ec34917">qy</a> (double value)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クォータニオンのy要素をセットする  <a href="#e35064e7207f43b5ce6a6b590ec34917"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_quaternion.html#b54c7e2d53391db14cf933a2149bbb2a">qy</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クォータニオンのy要素を返す  <a href="#b54c7e2d53391db14cf933a2149bbb2a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_quaternion.html#d90ce8494048a3b252d4b75740f10a72">qz</a> (double value)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クォータニオンのz要素をセットする  <a href="#d90ce8494048a3b252d4b75740f10a72"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_quaternion.html#a3a35ca5c2ba47ed521a3c93ffbc98bf">qz</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クォータニオンのz要素を返す  <a href="#a3a35ca5c2ba47ed521a3c93ffbc98bf"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_quaternion.html#3d06dc61344628bbc337aa04759ecf18">rot</a> (double x, double y, double z, double &amp;outx, double &amp;outy, double &amp;outz)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ベクトル(x, y, z)をこのクォータニオンで回転させたベクトル(outx, outy, outz)を計算する  <a href="#3d06dc61344628bbc337aa04759ecf18"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+クォータニオン 
+<p> <a class="el" href="_sgv_sim_serv_helper_8h_source.html">SgvSimServHelper.h</a> の <a class="el" href="_sgv_sim_serv_helper_8h_source.html#l00115">115</a> 行で定義されています。</p>
+<hr><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" name="b813c6227fddc5aeaea43023f111b24a"></a><!-- doxytag: member="Sgv::Quaternion::Quaternion" ref="b813c6227fddc5aeaea43023f111b24a" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::Quaternion::Quaternion           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_sim_serv_helper_8cpp_source.html">SgvSimServHelper.cpp</a> の <a class="el" href="_sgv_sim_serv_helper_8cpp_source.html#l00155">155</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="85959bf6b8b9473e357f872593468882"></a><!-- doxytag: member="Sgv::Quaternion::Quaternion" ref="85959bf6b8b9473e357f872593468882" args="(const Quaternion &amp;q)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::Quaternion::Quaternion           </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_sgv_1_1_quaternion.html">Quaternion</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>q</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コピーコンストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_sim_serv_helper_8cpp_source.html">SgvSimServHelper.cpp</a> の <a class="el" href="_sgv_sim_serv_helper_8cpp_source.html#l00163">163</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="9b5ec7a75b6c9d39dd4233514e9ce288"></a><!-- doxytag: member="Sgv::Quaternion::Quaternion" ref="9b5ec7a75b6c9d39dd4233514e9ce288" args="(double deg, double dx, double dy, double dz)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::Quaternion::Quaternion           </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>deg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>dx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>dy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>dz</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+回転軸とその周りの角度からクォータニオンを計算する．<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>deg</em>&nbsp;</td><td>[i] 角度（単位＝度） </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>dx</em>&nbsp;</td><td>[i] 軸ベクトル(x要素) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>dy</em>&nbsp;</td><td>[i] 軸ベクトル(y要素) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>dz</em>&nbsp;</td><td>[i] 軸ベクトル(z要素) </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_sim_serv_helper_8cpp_source.html">SgvSimServHelper.cpp</a> の <a class="el" href="_sgv_sim_serv_helper_8cpp_source.html#l00171">171</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>関数</h2>
+<a class="anchor" name="87512530fc163ad90d6e7214cdd14c39"></a><!-- doxytag: member="Sgv::Quaternion::mult" ref="87512530fc163ad90d6e7214cdd14c39" args="(Quaternion &amp;right)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_sgv_1_1_quaternion.html">Quaternion</a> Sgv::Quaternion::mult           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_quaternion.html">Quaternion</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>right</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+クォータニオンの積を計算する 
+<p>
+結果はこのオブジェクトに右からrightをかけたもの．<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>right</em>&nbsp;</td><td>[i] クォータニオン</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>積 </dd></dl>
+
+<p> <a class="el" href="_sgv_sim_serv_helper_8cpp_source.html">SgvSimServHelper.cpp</a> の <a class="el" href="_sgv_sim_serv_helper_8cpp_source.html#l00199">199</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="a2a5a5c709f827d8cf761c2f7b8de88b"></a><!-- doxytag: member="Sgv::Quaternion::qw" ref="a2a5a5c709f827d8cf761c2f7b8de88b" args="(double value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::Quaternion::qw           </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>value</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+クォータニオンのw要素をセットする 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>value</em>&nbsp;</td><td>[i] w要素 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_sim_serv_helper_8h_source.html">SgvSimServHelper.h</a> の <a class="el" href="_sgv_sim_serv_helper_8h_source.html#l00173">173</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="7e5f47ff18e53646c73ed6d0d71f521d"></a><!-- doxytag: member="Sgv::Quaternion::qw" ref="7e5f47ff18e53646c73ed6d0d71f521d" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Sgv::Quaternion::qw           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+クォータニオンのw要素を返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>w要素 </dd></dl>
+
+<p> <a class="el" href="_sgv_sim_serv_helper_8h_source.html">SgvSimServHelper.h</a> の <a class="el" href="_sgv_sim_serv_helper_8h_source.html#l00145">145</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="7bbf4f685ece62602edebd5ec831bd99"></a><!-- doxytag: member="Sgv::Quaternion::qx" ref="7bbf4f685ece62602edebd5ec831bd99" args="(double value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::Quaternion::qx           </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>value</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+クォータニオンのx要素をセットする 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>value</em>&nbsp;</td><td>[i] x要素 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_sim_serv_helper_8h_source.html">SgvSimServHelper.h</a> の <a class="el" href="_sgv_sim_serv_helper_8h_source.html#l00180">180</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="2f061b4484666d62b81e64198b667268"></a><!-- doxytag: member="Sgv::Quaternion::qx" ref="2f061b4484666d62b81e64198b667268" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Sgv::Quaternion::qx           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+クォータニオンのx要素を返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>x要素 </dd></dl>
+
+<p> <a class="el" href="_sgv_sim_serv_helper_8h_source.html">SgvSimServHelper.h</a> の <a class="el" href="_sgv_sim_serv_helper_8h_source.html#l00152">152</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="e35064e7207f43b5ce6a6b590ec34917"></a><!-- doxytag: member="Sgv::Quaternion::qy" ref="e35064e7207f43b5ce6a6b590ec34917" args="(double value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::Quaternion::qy           </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>value</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+クォータニオンのy要素をセットする 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>value</em>&nbsp;</td><td>[i] y要素 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_sim_serv_helper_8h_source.html">SgvSimServHelper.h</a> の <a class="el" href="_sgv_sim_serv_helper_8h_source.html#l00187">187</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b54c7e2d53391db14cf933a2149bbb2a"></a><!-- doxytag: member="Sgv::Quaternion::qy" ref="b54c7e2d53391db14cf933a2149bbb2a" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Sgv::Quaternion::qy           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+クォータニオンのy要素を返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>y要素 </dd></dl>
+
+<p> <a class="el" href="_sgv_sim_serv_helper_8h_source.html">SgvSimServHelper.h</a> の <a class="el" href="_sgv_sim_serv_helper_8h_source.html#l00159">159</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="d90ce8494048a3b252d4b75740f10a72"></a><!-- doxytag: member="Sgv::Quaternion::qz" ref="d90ce8494048a3b252d4b75740f10a72" args="(double value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::Quaternion::qz           </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>value</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+クォータニオンのz要素をセットする 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>value</em>&nbsp;</td><td>[i] z要素 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_sim_serv_helper_8h_source.html">SgvSimServHelper.h</a> の <a class="el" href="_sgv_sim_serv_helper_8h_source.html#l00194">194</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="a3a35ca5c2ba47ed521a3c93ffbc98bf"></a><!-- doxytag: member="Sgv::Quaternion::qz" ref="a3a35ca5c2ba47ed521a3c93ffbc98bf" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Sgv::Quaternion::qz           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+クォータニオンのz要素を返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>z要素 </dd></dl>
+
+<p> <a class="el" href="_sgv_sim_serv_helper_8h_source.html">SgvSimServHelper.h</a> の <a class="el" href="_sgv_sim_serv_helper_8h_source.html#l00166">166</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="3d06dc61344628bbc337aa04759ecf18"></a><!-- doxytag: member="Sgv::Quaternion::rot" ref="3d06dc61344628bbc337aa04759ecf18" args="(double x, double y, double z, double &amp;outx, double &amp;outy, double &amp;outz)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::Quaternion::rot           </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double &amp;&nbsp;</td>
+          <td class="paramname"> <em>outx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double &amp;&nbsp;</td>
+          <td class="paramname"> <em>outy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double &amp;&nbsp;</td>
+          <td class="paramname"> <em>outz</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ベクトル(x, y, z)をこのクォータニオンで回転させたベクトル(outx, outy, outz)を計算する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>[i] 入力ベクトル(x要素) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>[i] 入力ベクトル(y要素) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>z</em>&nbsp;</td><td>[i] 入力ベクトル(z要素) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>outx</em>&nbsp;</td><td>[o] 出力ベクトル(x要素) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>outy</em>&nbsp;</td><td>[o] 出力ベクトル(y要素) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>outz</em>&nbsp;</td><td>[o] 出力ベクトル(z要素) </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_sim_serv_helper_8cpp_source.html">SgvSimServHelper.cpp</a> の <a class="el" href="_sgv_sim_serv_helper_8cpp_source.html#l00232">232</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_sgv_sim_serv_helper_8h_source.html">SgvSimServHelper.h</a><li><a class="el" href="_sgv_sim_serv_helper_8cpp_source.html">SgvSimServHelper.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGViewerに対してThu Jun 9 10:52:15 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

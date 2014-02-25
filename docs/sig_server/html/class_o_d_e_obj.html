@@ -1,0 +1,422 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: クラス ODEObj</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス ODEObj</h1><!-- doxytag: class="ODEObj" -->
+<p>ODEにおけるシミュレーションオブジェクトラッパークラス.  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_o_d_e_obj_8h_source.html">ODEObj.h</a>&gt;</code></p>
+
+<p><a href="class_o_d_e_obj-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">dBodyID&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_d_e_obj.html#ada70336cd124107613359e73d34f931d">body</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">dGeomID&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_d_e_obj.html#a8bc36eb5d3f1edf451fbf8f0901b5a72">geom</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_d_e_obj.html#ac1ead91a06ebce05cd78cf5d62cfa8e8">getBounce</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_d_e_obj.html#ab5b767add971cda157b964b6d8f5d61b">getMu1</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_d_e_obj.html#ae1e4fed9d8e69d5e728eea68ffd78609">getMu2</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_d_e_obj.html#ab47b16e78619e048ab86bc7207280e97">getSlip1</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_d_e_obj.html#ad3b18aaddd0aa72a33e6c104c9231671">getSlip2</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_d_e_obj.html#a24c538b7e685fc699453d1140b0ad232">getSoftCfm</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_d_e_obj.html#a606e0626de4794481a05f8345d721730">getSoftErp</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_d_e_obj.html#aa69a6f3688b2e4d6b65dd4bafaa3a969">ODEObj</a> (dWorldID world)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_d_e_obj.html#a113f4a23c29d5badbdd0790f990da570">ODEObj</a> (dWorldID world, dGeomID geom_)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_d_e_obj.html#a66de53a73a0bd0bffb2a03cd6780adcf">ODEObj</a> (dWorldID world, dGeomID geom_, double surfaceMu1, double surfaceMu2, double surfaceSlip1, double surfaceSlip2, double surfaceSoftErp, double surfaceSoftCfm, double surfaceBounce)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_d_e_obj.html#a919c9af21aba8324090a07d7316e5903">‾ODEObj</a> ()</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>ODEにおけるシミュレーションオブジェクトラッパークラス. </p>
+<p>1つのオブジェクトに対応するODE のdBodyID dGeomIDインスタ ンスを保持する。 </p>
+
+<p> <a class="el" href="_o_d_e_obj_8h_source.html">ODEObj.h</a> の <a class="el" href="_o_d_e_obj_8h_source.html#l00022">22</a> 行で定義されています。</p>
+<hr/><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" id="a66de53a73a0bd0bffb2a03cd6780adcf"></a><!-- doxytag: member="ODEObj::ODEObj" ref="a66de53a73a0bd0bffb2a03cd6780adcf" args="(dWorldID world, dGeomID geom_, double surfaceMu1, double surfaceMu2, double surfaceSlip1, double surfaceSlip2, double surfaceSoftErp, double surfaceSoftCfm, double surfaceBounce)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ODEObj::ODEObj </td>
+          <td>(</td>
+          <td class="paramtype">dWorldID&nbsp;</td>
+          <td class="paramname"> <em>world</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">dGeomID&nbsp;</td>
+          <td class="paramname"> <em>geom_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>surfaceMu1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>surfaceMu2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>surfaceSlip1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>surfaceSlip2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>surfaceSoftErp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>surfaceSoftCfm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>surfaceBounce</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_o_d_e_obj_8h_source.html">ODEObj.h</a> の <a class="el" href="_o_d_e_obj_8h_source.html#l00041">41</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a113f4a23c29d5badbdd0790f990da570"></a><!-- doxytag: member="ODEObj::ODEObj" ref="a113f4a23c29d5badbdd0790f990da570" args="(dWorldID world, dGeomID geom_)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ODEObj::ODEObj </td>
+          <td>(</td>
+          <td class="paramtype">dWorldID&nbsp;</td>
+          <td class="paramname"> <em>world</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">dGeomID&nbsp;</td>
+          <td class="paramname"> <em>geom_</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_o_d_e_obj_8h_source.html">ODEObj.h</a> の <a class="el" href="_o_d_e_obj_8h_source.html#l00064">64</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="aa69a6f3688b2e4d6b65dd4bafaa3a969"></a><!-- doxytag: member="ODEObj::ODEObj" ref="aa69a6f3688b2e4d6b65dd4bafaa3a969" args="(dWorldID world)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ODEObj::ODEObj </td>
+          <td>(</td>
+          <td class="paramtype">dWorldID&nbsp;</td>
+          <td class="paramname"> <em>world</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_o_d_e_obj_8h_source.html">ODEObj.h</a> の <a class="el" href="_o_d_e_obj_8h_source.html#l00070">70</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>関数</h2>
+<a class="anchor" id="ada70336cd124107613359e73d34f931d"></a><!-- doxytag: member="ODEObj::body" ref="ada70336cd124107613359e73d34f931d" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dBodyID ODEObj::body </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get dBodyID </p>
+
+<p> <a class="el" href="_o_d_e_obj_8h_source.html">ODEObj.h</a> の <a class="el" href="_o_d_e_obj_8h_source.html#l00090">90</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a8bc36eb5d3f1edf451fbf8f0901b5a72"></a><!-- doxytag: member="ODEObj::geom" ref="a8bc36eb5d3f1edf451fbf8f0901b5a72" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dGeomID ODEObj::geom </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get dGeomID </p>
+
+<p> <a class="el" href="_o_d_e_obj_8h_source.html">ODEObj.h</a> の <a class="el" href="_o_d_e_obj_8h_source.html#l00098">98</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ac1ead91a06ebce05cd78cf5d62cfa8e8"></a><!-- doxytag: member="ODEObj::getBounce" ref="ac1ead91a06ebce05cd78cf5d62cfa8e8" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double ODEObj::getBounce </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_o_d_e_obj_8h_source.html">ODEObj.h</a> の <a class="el" href="_o_d_e_obj_8h_source.html#l00132">132</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ab5b767add971cda157b964b6d8f5d61b"></a><!-- doxytag: member="ODEObj::getMu1" ref="ab5b767add971cda157b964b6d8f5d61b" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double ODEObj::getMu1 </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>進行方向の摩擦係数を取得 </p>
+
+<p> <a class="el" href="_o_d_e_obj_8h_source.html">ODEObj.h</a> の <a class="el" href="_o_d_e_obj_8h_source.html#l00105">105</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ae1e4fed9d8e69d5e728eea68ffd78609"></a><!-- doxytag: member="ODEObj::getMu2" ref="ae1e4fed9d8e69d5e728eea68ffd78609" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double ODEObj::getMu2 </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>進行方向に対して直角な方向の摩擦係数を取得 </p>
+
+<p> <a class="el" href="_o_d_e_obj_8h_source.html">ODEObj.h</a> の <a class="el" href="_o_d_e_obj_8h_source.html#l00112">112</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ab47b16e78619e048ab86bc7207280e97"></a><!-- doxytag: member="ODEObj::getSlip1" ref="ab47b16e78619e048ab86bc7207280e97" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double ODEObj::getSlip1 </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_o_d_e_obj_8h_source.html">ODEObj.h</a> の <a class="el" href="_o_d_e_obj_8h_source.html#l00116">116</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ad3b18aaddd0aa72a33e6c104c9231671"></a><!-- doxytag: member="ODEObj::getSlip2" ref="ad3b18aaddd0aa72a33e6c104c9231671" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double ODEObj::getSlip2 </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_o_d_e_obj_8h_source.html">ODEObj.h</a> の <a class="el" href="_o_d_e_obj_8h_source.html#l00120">120</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a24c538b7e685fc699453d1140b0ad232"></a><!-- doxytag: member="ODEObj::getSoftCfm" ref="a24c538b7e685fc699453d1140b0ad232" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double ODEObj::getSoftCfm </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_o_d_e_obj_8h_source.html">ODEObj.h</a> の <a class="el" href="_o_d_e_obj_8h_source.html#l00128">128</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a606e0626de4794481a05f8345d721730"></a><!-- doxytag: member="ODEObj::getSoftErp" ref="a606e0626de4794481a05f8345d721730" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double ODEObj::getSoftErp </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_o_d_e_obj_8h_source.html">ODEObj.h</a> の <a class="el" href="_o_d_e_obj_8h_source.html#l00124">124</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a919c9af21aba8324090a07d7316e5903"></a><!-- doxytag: member="ODEObj::‾ODEObj" ref="a919c9af21aba8324090a07d7316e5903" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ODEObj::‾ODEObj </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_o_d_e_obj_8h_source.html">ODEObj.h</a> の <a class="el" href="_o_d_e_obj_8h_source.html#l00075">75</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_o_d_e_obj_8h_source.html">ODEObj.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:19 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

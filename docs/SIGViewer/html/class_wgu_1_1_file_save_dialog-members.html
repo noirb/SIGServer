@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGViewer: メンバ一覧</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Wgu::FileSaveDialog メンバ一覧</h1>これは全メンバの一覧です。<a class="el" href="class_wgu_1_1_file_save_dialog.html">Wgu::FileSaveDialog</a>継承メンバも含んでいます。<p><table>
+  <tr class="memlist"><td><a class="el" href="class_wgu_1_1_file_dialog.html#d1f1536e0c6003c3b5080e5e5f802ad6">addFilter</a>(char *str, char *ext)</td><td><a class="el" href="class_wgu_1_1_file_dialog.html">Wgu::FileDialog</a></td><td><code> [virtual]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_wgu_1_1_file_dialog.html#2b5286d16142801f7f5664ae0e88b73d">allocFilterString</a>(int nbyte)</td><td><a class="el" href="class_wgu_1_1_file_dialog.html">Wgu::FileDialog</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_wgu_1_1_file_dialog.html#90933d5751e7f410280799bbc31a7c6f">clearFilter</a>()</td><td><a class="el" href="class_wgu_1_1_file_dialog.html">Wgu::FileDialog</a></td><td><code> [virtual]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_wgu_1_1_file_dialog.html#199b9e86129803196cc9fa762002c7c1">countFiles</a>()</td><td><a class="el" href="class_wgu_1_1_file_dialog.html">Wgu::FileDialog</a></td><td><code> [virtual]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_wgu_1_1_file_dialog.html#e48870366f57a797589135ff602c15d0">FileDialog</a>()</td><td><a class="el" href="class_wgu_1_1_file_dialog.html">Wgu::FileDialog</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_wgu_1_1_file_save_dialog.html#afbec12545e833819e1762365379236c">FileSaveDialog</a>()</td><td><a class="el" href="class_wgu_1_1_file_save_dialog.html">Wgu::FileSaveDialog</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_wgu_1_1_file_dialog.html#3338a491d0b11d8a0676f1528899c305">freeFilterString</a>()</td><td><a class="el" href="class_wgu_1_1_file_dialog.html">Wgu::FileDialog</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_wgu_1_1_file_dialog.html#bbd4ae71fcce6a55fb8c3f6c5799fcfb">getDirectory</a>()</td><td><a class="el" href="class_wgu_1_1_file_dialog.html">Wgu::FileDialog</a></td><td><code> [virtual]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_wgu_1_1_file_dialog.html#a8eb651c73a4a080b01d31445005fcf0">getFile</a>(int i)</td><td><a class="el" href="class_wgu_1_1_file_dialog.html">Wgu::FileDialog</a></td><td><code> [virtual]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_wgu_1_1_file_dialog.html#fb7687a631d4a7cb290765d3d810f566">getPath</a>(int i)</td><td><a class="el" href="class_wgu_1_1_file_dialog.html">Wgu::FileDialog</a></td><td><code> [virtual]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_wgu_1_1_file_dialog.html#a2110b8d0ec6f943ed2a71601d6768e0">m_bAllowMultiSelect</a></td><td><a class="el" href="class_wgu_1_1_file_dialog.html">Wgu::FileDialog</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_wgu_1_1_file_dialog.html#1ea6fd42b657dea44f37c3a93c5c0860">m_bFileMustExist</a></td><td><a class="el" href="class_wgu_1_1_file_dialog.html">Wgu::FileDialog</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_wgu_1_1_file_dialog.html#dfab0db715de77454b1ee1745a8f0d43">m_file</a></td><td><a class="el" href="class_wgu_1_1_file_dialog.html">Wgu::FileDialog</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_wgu_1_1_file_dialog.html#2addcfe0515b73e4366690421e7501ad">m_fileTitle</a></td><td><a class="el" href="class_wgu_1_1_file_dialog.html">Wgu::FileDialog</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_wgu_1_1_file_dialog.html#1d9f28f794c929c19a9e7085242d3100">m_filterExts</a></td><td><a class="el" href="class_wgu_1_1_file_dialog.html">Wgu::FileDialog</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_wgu_1_1_file_dialog.html#6fed3b5e6653b2bbf336f25efeda2b99">m_filterStrs</a></td><td><a class="el" href="class_wgu_1_1_file_dialog.html">Wgu::FileDialog</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_wgu_1_1_file_dialog.html#d789692fd306a997a8ab78df8def1dd4">m_initialDir</a></td><td><a class="el" href="class_wgu_1_1_file_dialog.html">Wgu::FileDialog</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_wgu_1_1_file_dialog.html#054d1266d38040d62004c15136e40700">m_pFilterString</a></td><td><a class="el" href="class_wgu_1_1_file_dialog.html">Wgu::FileDialog</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_wgu_1_1_file_dialog.html#1ca57908552bd018ab84888c20c9cd41">m_selectedDir</a></td><td><a class="el" href="class_wgu_1_1_file_dialog.html">Wgu::FileDialog</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_wgu_1_1_file_dialog.html#ee54b2e9a58dda1797e033e1bbfccbfa">m_selectedFiles</a></td><td><a class="el" href="class_wgu_1_1_file_dialog.html">Wgu::FileDialog</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_wgu_1_1_file_dialog.html#c6ae336177c638a617a33092ced5ef68">makeFilterString</a>()</td><td><a class="el" href="class_wgu_1_1_file_dialog.html">Wgu::FileDialog</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_wgu_1_1_file_dialog.html#886efb045bd7d47d76d786d9ab5d7da6">setAllowMultiSelect</a>(bool b)</td><td><a class="el" href="class_wgu_1_1_file_dialog.html">Wgu::FileDialog</a></td><td><code> [virtual]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_wgu_1_1_file_dialog.html#849502e2c1c0a37bd2ff0c2bb1e69c04">setFile</a>(char *file)</td><td><a class="el" href="class_wgu_1_1_file_dialog.html">Wgu::FileDialog</a></td><td><code> [virtual]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_wgu_1_1_file_dialog.html#e53bd9d0e1f9e5bedd896056f1deb9c4">setFileMustExist</a>(bool b)</td><td><a class="el" href="class_wgu_1_1_file_dialog.html">Wgu::FileDialog</a></td><td><code> [virtual]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_wgu_1_1_file_dialog.html#8c0d176971a9e0588861ed91483e3ebb">setInitialDirectory</a>(char *initialDir)</td><td><a class="el" href="class_wgu_1_1_file_dialog.html">Wgu::FileDialog</a></td><td><code> [virtual]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_wgu_1_1_file_save_dialog.html#0bbb0e0af99f385d9c6d9efc13c67f52">showDialog</a>(HWND hwndParent)</td><td><a class="el" href="class_wgu_1_1_file_save_dialog.html">Wgu::FileSaveDialog</a></td><td></td></tr>
+</table></div>
+<hr size="1"><address style="text-align: right;"><small>SIGViewerに対してThu Jun 9 10:52:16 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

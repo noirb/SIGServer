@@ -1,0 +1,611 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>SIGVerse_Controller: Controller.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>Controller.h</h1><a href="_controller_8h.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/* $Id: _controller_8h_source.html,v 1.2 2011-12-14 07:55:13 okamoto Exp $ */</span> 
+<a name="l00002"></a>00002 <span class="preprocessor">#ifndef Controller_h</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span><span class="preprocessor">#define Controller_h</span>
+<a name="l00004"></a>00004 <span class="preprocessor"></span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include &lt;string&gt;</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include &lt;vector&gt;</span>
+<a name="l00007"></a>00007 <span class="preprocessor">#include &lt;map&gt;</span>
+<a name="l00008"></a>00008 
+<a name="l00009"></a>00009 <span class="preprocessor">#include &quot;<a class="code" href="_controller_impl_8h.html">ControllerImpl.h</a>&quot;</span>
+<a name="l00010"></a>00010 <span class="preprocessor">#include &quot;<a class="code" href="_view_image_info_8h.html">ViewImageInfo.h</a>&quot;</span>
+<a name="l00011"></a>00011 <span class="preprocessor">#include &quot;<a class="code" href="_sim_obj_8h.html">SimObj.h</a>&quot;</span>
+<a name="l00012"></a>00012 
+<a name="l00013"></a>00013 <span class="comment">//#include &quot;DynamicsController.h&quot;</span>
+<a name="l00014"></a>00014 
+<a name="l00015"></a>00015 
+<a name="l00016"></a>00016 <span class="keyword">class </span><a class="code" href="class_view_image.html" title="視覚データクラス">ViewImage</a>;
+<a name="l00017"></a>00017 <span class="keyword">class </span><a class="code" href="class_depth_image.html">DepthImage</a>;
+<a name="l00018"></a>00018 <span class="keyword">class </span><a class="code" href="class_text.html" title="テキストデータクラス">Text</a>;
+<a name="l00019"></a>00019 <span class="keyword">class </span><a class="code" href="class_raw_sound.html" title="音声データクラス">RawSound</a>;
+<a name="l00020"></a>00020 
+<a name="l00021"></a>00021 
+<a name="l00022"></a>00022 
+<a name="l00023"></a>00023 
+<a name="l00024"></a>00024 
+<a name="l00025"></a><a class="code" href="class_dynamics_controller.html">00025</a> <span class="keyword">class </span><a class="code" href="class_dynamics_controller.html">DynamicsController</a> {
+<a name="l00026"></a>00026 <span class="keyword">public</span>:
+<a name="l00027"></a>00027     <a class="code" href="class_dynamics_controller.html#a4db1dbe3cb0e977f5aa2d4ac6a25fb30">DynamicsController</a>();<span class="comment"></span>
+<a name="l00028"></a>00028 <span class="comment">    /**</span>
+<a name="l00029"></a>00029 <span class="comment">     * @brief Webots互換のパラメータを設定します。変数の先頭にleftがつくものは左側車輪の設定、rightのつくものは右側車輪の設定</span>
+<a name="l00030"></a>00030 <span class="comment">     *</span>
+<a name="l00031"></a>00031 <span class="comment">     * @param leftWheelName          車輪のジョイント名</span>
+<a name="l00032"></a>00032 <span class="comment">     * @param leftMotorConsumption   車輪の消費電力(W)</span>
+<a name="l00033"></a>00033 <span class="comment">     * @param leftWheelMaxSpeed      車輪の最大角速度(rad/s)</span>
+<a name="l00034"></a>00034 <span class="comment">     * @param leftWheelSpeedUnit     wb_differential_wheels_set_speed で設定される速度の単位をセット(rad/s)</span>
+<a name="l00035"></a>00035 <span class="comment">     * @param leftSlipNoise          一様分布にしたがう車輪のスリップ(0.0 - 1.0)</span>
+<a name="l00036"></a>00036 <span class="comment">     * @param leftEncoderResolution  1[rad]あたりどの程度のスリップが生じるか</span>
+<a name="l00037"></a>00037 <span class="comment">     * @param leftMaxForce           最大トルク</span>
+<a name="l00038"></a>00038 <span class="comment">     * @param rightWheelName         車輪のジョイント名</span>
+<a name="l00039"></a>00039 <span class="comment">     * @param rightMotorConsumption  車輪の消費電力(W)</span>
+<a name="l00040"></a>00040 <span class="comment">     * @param rightWheelMaxSpeed     車輪の最大角速度(rad/s)</span>
+<a name="l00041"></a>00041 <span class="comment">     * @param rightWheelSpeedUnit    wb_differential_wheels_set_speed で設定される速度の単位をセット(rad/s)</span>
+<a name="l00042"></a>00042 <span class="comment">     * @param rightSlipNoise         一様分布にしたがう車輪のスリップ(0.0 - 1.0)</span>
+<a name="l00043"></a>00043 <span class="comment">     * @param rightEncoderResolution 1[rad]あたりどの程度のスリップが生じるか</span>
+<a name="l00044"></a>00044 <span class="comment">     * @param rightMaxForce          最大トルク</span>
+<a name="l00045"></a>00045 <span class="comment">     * @param axleLength             車輪間の距離</span>
+<a name="l00046"></a>00046 <span class="comment">     */</span>
+<a name="l00047"></a>00047     <span class="keywordtype">void</span> <a class="code" href="class_dynamics_controller.html#ac9ae0c1a3c44a066d01b784d2afa4e7a" title="Webots互換のパラメータを設定します。変数の先頭にleftがつくものは左側車...">setWheelProperty</a>(
+<a name="l00048"></a>00048         <a class="code" href="class_sim_obj.html" title="エンティティに対応するクラス(クライアントサイドで使用)">SimObj</a> *my,
+<a name="l00049"></a>00049         <span class="keywordtype">char</span>   *leftWheelName,
+<a name="l00050"></a>00050         <span class="keywordtype">double</span> leftMotorConsumption,
+<a name="l00051"></a>00051         <span class="keywordtype">double</span> leftWheelMaxSpeed,
+<a name="l00052"></a>00052         <span class="keywordtype">double</span> leftWheelSpeedUnit,
+<a name="l00053"></a>00053         <span class="keywordtype">double</span> leftSlipNoise,
+<a name="l00054"></a>00054         <span class="keywordtype">double</span> leftEncoderResolution,
+<a name="l00055"></a>00055         <span class="keywordtype">double</span> leftMaxForce,
+<a name="l00056"></a>00056         <span class="keywordtype">char</span>   *rightWheelName,
+<a name="l00057"></a>00057         <span class="keywordtype">double</span> rightMotorConsumption,
+<a name="l00058"></a>00058         <span class="keywordtype">double</span> rightWheelMaxSpeed,
+<a name="l00059"></a>00059         <span class="keywordtype">double</span> rightWheelSpeedUnit,
+<a name="l00060"></a>00060         <span class="keywordtype">double</span> rightSlipNoise,
+<a name="l00061"></a>00061         <span class="keywordtype">double</span> rightEncoderResolution,
+<a name="l00062"></a>00062         <span class="keywordtype">double</span> rightMaxForce
+<a name="l00063"></a>00063     );
+<a name="l00064"></a>00064 <span class="comment"></span>
+<a name="l00065"></a>00065 <span class="comment">    /**</span>
+<a name="l00066"></a>00066 <span class="comment">     * 左右の車輪にそれぞれことなるスピードを与える</span>
+<a name="l00067"></a>00067 <span class="comment">     * @param left 左車輪の角速度</span>
+<a name="l00068"></a>00068 <span class="comment">     * @param right 右車輪の角速度</span>
+<a name="l00069"></a>00069 <span class="comment">     */</span>
+<a name="l00070"></a>00070     <span class="keywordtype">void</span> <a class="code" href="class_dynamics_controller.html#ab0d6335ffd02a7967ac13885196b6ddf">differentialWheelsSetSpeed</a>(<a class="code" href="class_sim_obj.html" title="エンティティに対応するクラス(クライアントサイドで使用)">SimObj</a> *my,<span class="keywordtype">double</span> left,<span class="keywordtype">double</span> right);
+<a name="l00071"></a>00071 <span class="comment"></span>
+<a name="l00072"></a>00072 <span class="comment">    /**</span>
+<a name="l00073"></a>00073 <span class="comment">     * 車軸の長さを取得します</span>
+<a name="l00074"></a>00074 <span class="comment">     */</span>
+<a name="l00075"></a>00075     <span class="keywordtype">double</span> <a class="code" href="class_dynamics_controller.html#a98628b6672a34fba28051c9a9e9617b6">getAxleLength</a>();
+<a name="l00076"></a>00076 <span class="comment"></span>
+<a name="l00077"></a>00077 <span class="comment">    /**</span>
+<a name="l00078"></a>00078 <span class="comment">     * 左車輪の半径を取得します</span>
+<a name="l00079"></a>00079 <span class="comment">     */</span>
+<a name="l00080"></a>00080     <span class="keywordtype">double</span> <a class="code" href="class_dynamics_controller.html#a02754f16c425d90f4a8588b3e0ca0a3e">getLeftWheelRadius</a>(<a class="code" href="class_sim_obj.html" title="エンティティに対応するクラス(クライアントサイドで使用)">SimObj</a> *my);
+<a name="l00081"></a>00081 <span class="comment"></span>
+<a name="l00082"></a>00082 <span class="comment">    /**</span>
+<a name="l00083"></a>00083 <span class="comment">     * 右車輪の半径を取得します</span>
+<a name="l00084"></a>00084 <span class="comment">     */</span>
+<a name="l00085"></a>00085     <span class="keywordtype">double</span> <a class="code" href="class_dynamics_controller.html#a632f31808b955df81c6b97d4929bb1b5">getRightWheelRadius</a>(<a class="code" href="class_sim_obj.html" title="エンティティに対応するクラス(クライアントサイドで使用)">SimObj</a> *my);
+<a name="l00086"></a>00086 <span class="comment"></span>
+<a name="l00087"></a>00087 <span class="comment">    /**</span>
+<a name="l00088"></a>00088 <span class="comment">     * 左車輪のノイズ蓄積量を取得します</span>
+<a name="l00089"></a>00089 <span class="comment">     */</span>
+<a name="l00090"></a>00090     <span class="keywordtype">double</span> <a class="code" href="class_dynamics_controller.html#a60987b1bbc460f2d5c916ac3c44bdf33">getLeftEncoderNoise</a>();
+<a name="l00091"></a>00091 <span class="comment"></span>
+<a name="l00092"></a>00092 <span class="comment">    /**</span>
+<a name="l00093"></a>00093 <span class="comment">     * 右車輪のノイズ蓄積量を取得します</span>
+<a name="l00094"></a>00094 <span class="comment">     */</span>
+<a name="l00095"></a>00095     <span class="keywordtype">double</span> <a class="code" href="class_dynamics_controller.html#ad5d6d97e2e820c4fb65b859704d23bea">getRightEncoderNoise</a>();
+<a name="l00096"></a>00096 <span class="comment"></span>
+<a name="l00097"></a>00097 <span class="comment">    /**</span>
+<a name="l00098"></a>00098 <span class="comment">     * 左車輪のスリップを取得します</span>
+<a name="l00099"></a>00099 <span class="comment">     */</span>
+<a name="l00100"></a>00100     <span class="keywordtype">double</span> <a class="code" href="class_dynamics_controller.html#a1499bd49a2198c16d9854e743c1736aa">getLeftSlipNoise</a>();
+<a name="l00101"></a>00101 <span class="comment"></span>
+<a name="l00102"></a>00102 <span class="comment">    /**</span>
+<a name="l00103"></a>00103 <span class="comment">     * 右車輪のスリップを取得します</span>
+<a name="l00104"></a>00104 <span class="comment">     */</span>
+<a name="l00105"></a>00105     <span class="keywordtype">double</span> <a class="code" href="class_dynamics_controller.html#a44598f24497a045cd0cb1d3380f21e2c">getRightSlipNoise</a>();
+<a name="l00106"></a>00106 <span class="comment"></span>
+<a name="l00107"></a>00107 <span class="comment">    /**</span>
+<a name="l00108"></a>00108 <span class="comment">     * 現在の左車輪のスピードを取得します</span>
+<a name="l00109"></a>00109 <span class="comment">     */</span>
+<a name="l00110"></a>00110     <span class="keywordtype">double</span> <a class="code" href="class_dynamics_controller.html#ae260e0438af0a4383177ff5c4894952c">getCurrentLeftWheelSpeed</a>();
+<a name="l00111"></a>00111 <span class="comment"></span>
+<a name="l00112"></a>00112 <span class="comment">    /**</span>
+<a name="l00113"></a>00113 <span class="comment">     * 現在の右車輪のスピードを取得します</span>
+<a name="l00114"></a>00114 <span class="comment">     */</span>
+<a name="l00115"></a>00115     <span class="keywordtype">double</span> <a class="code" href="class_dynamics_controller.html#a2007f1c18264b10aba9a8f1f53266419">getCurrentRightWheelSpeed</a>();
+<a name="l00116"></a>00116 
+<a name="l00117"></a>00117 <span class="keyword">private</span>:
+<a name="l00118"></a>00118 
+<a name="l00119"></a><a class="code" href="_controller_8h.html#af270a96662132d0385cb6b4637c5a689">00119</a> <span class="preprocessor">    #define ACCURACY (0.00000001)</span>
+<a name="l00120"></a>00120 <span class="preprocessor"></span><span class="comment"></span>
+<a name="l00121"></a>00121 <span class="comment">    /** 左側の車輪の名前 */</span>
+<a name="l00122"></a>00122     <span class="keywordtype">char</span>   *leftWheelName;<span class="comment"></span>
+<a name="l00123"></a>00123 <span class="comment">    /** 左車輪の電力[W] */</span>
+<a name="l00124"></a>00124     <span class="keywordtype">double</span> leftMotorConsumption;<span class="comment"></span>
+<a name="l00125"></a>00125 <span class="comment">    /** 左車輪の最大角速度[rad/s] */</span>
+<a name="l00126"></a>00126     <span class="keywordtype">double</span> leftWheelMaxSpeed;<span class="comment"></span>
+<a name="l00127"></a>00127 <span class="comment">    /** 左車輪の速度単位設定 */</span>
+<a name="l00128"></a>00128     <span class="keywordtype">double</span> leftWheelSpeedUnit;<span class="comment"></span>
+<a name="l00129"></a>00129 <span class="comment">    /** 左車輪のすべり */</span>
+<a name="l00130"></a>00130     <span class="keywordtype">double</span> leftSlipNoise;<span class="comment"></span>
+<a name="l00131"></a>00131 <span class="comment">    /** 左車輪のスリップノイズの蓄積量 */</span>
+<a name="l00132"></a>00132     <span class="comment">//double leftCumulativeNoise;</span><span class="comment"></span>
+<a name="l00133"></a>00133 <span class="comment">    /** 1[rad]あたりどの程度のスリップが生じるか */</span>
+<a name="l00134"></a>00134     <span class="keywordtype">double</span> leftEncoderResolution;<span class="comment"></span>
+<a name="l00135"></a>00135 <span class="comment">    /** 最大トルク */</span>
+<a name="l00136"></a>00136     <span class="keywordtype">double</span> leftMaxForce;<span class="comment"></span>
+<a name="l00137"></a>00137 <span class="comment">    /** 右側の車輪の名前 */</span>
+<a name="l00138"></a>00138     <span class="keywordtype">char</span>   *rightWheelName;<span class="comment"></span>
+<a name="l00139"></a>00139 <span class="comment">    /** 右側のモータの消費電力 */</span>
+<a name="l00140"></a>00140     <span class="keywordtype">double</span> rightMotorConsumption;<span class="comment"></span>
+<a name="l00141"></a>00141 <span class="comment">    /** 右側のホイールの最大角速度 */</span>
+<a name="l00142"></a>00142     <span class="keywordtype">double</span> rightWheelMaxSpeed;<span class="comment"></span>
+<a name="l00143"></a>00143 <span class="comment">    /** 右車輪の速度単位設定 */</span>
+<a name="l00144"></a>00144     <span class="keywordtype">double</span> rightWheelSpeedUnit;
+<a name="l00145"></a>00145     <span class="keywordtype">double</span> rightSlipNoise;
+<a name="l00146"></a>00146     <span class="comment">//double rightCumulativeNoise;</span>
+<a name="l00147"></a>00147     <span class="keywordtype">double</span> rightEncoderResolution;
+<a name="l00148"></a>00148     <span class="keywordtype">double</span> rightMaxForce;
+<a name="l00149"></a>00149 
+<a name="l00150"></a>00150 <span class="comment"></span>
+<a name="l00151"></a>00151 <span class="comment">    /** 車輪間の距離 */</span>
+<a name="l00152"></a>00152     <span class="keywordtype">double</span> axleLength;<span class="comment"></span>
+<a name="l00153"></a>00153 <span class="comment">    /** 左車輪の半径[m] */</span>
+<a name="l00154"></a>00154     <span class="keywordtype">double</span> leftWheelRadius;<span class="comment"></span>
+<a name="l00155"></a>00155 <span class="comment">    /** 右側のホイールの半径 */</span>
+<a name="l00156"></a>00156     <span class="keywordtype">double</span> rightWheelRadius;<span class="comment"></span>
+<a name="l00157"></a>00157 <span class="comment">    /** 左車輪のノイズの蓄積 */</span>
+<a name="l00158"></a>00158     <span class="keywordtype">double</span> leftEncoderNoise;<span class="comment"></span>
+<a name="l00159"></a>00159 <span class="comment">    /** 右車輪のノイズの蓄積 */</span>
+<a name="l00160"></a>00160     <span class="keywordtype">double</span> rightEncoderNoise;
+<a name="l00161"></a>00161 <span class="comment"></span>
+<a name="l00162"></a>00162 <span class="comment">    /** 現在の左車輪の速度 */</span>
+<a name="l00163"></a>00163     <span class="keywordtype">double</span> currentLeftWheelSpeed;<span class="comment"></span>
+<a name="l00164"></a>00164 <span class="comment">    /** 現在の右車輪の速度 */</span>
+<a name="l00165"></a>00165     <span class="keywordtype">double</span> currentRightWheelSpeed;
+<a name="l00166"></a>00166 
+<a name="l00167"></a>00167 };
+<a name="l00168"></a>00168 
+<a name="l00169"></a>00169 
+<a name="l00170"></a>00170 
+<a name="l00171"></a>00171 
+<a name="l00172"></a>00172 <span class="comment"></span>
+<a name="l00173"></a>00173 <span class="comment">/**</span>
+<a name="l00174"></a>00174 <span class="comment"> * @brief ユーザ定義コントローラ基本クラス</span>
+<a name="l00175"></a>00175 <span class="comment"> *</span>
+<a name="l00176"></a>00176 <span class="comment"> * エージェントコントローラはこのクラスを継承したクラスを作</span>
+<a name="l00177"></a>00177 <span class="comment"> * 成し、そこにエージェントの振舞いを記述する。</span>
+<a name="l00178"></a>00178 <span class="comment"> */</span>
+<a name="l00179"></a><a class="code" href="class_controller.html">00179</a> <span class="keyword">class </span><a class="code" href="class_controller.html" title="ユーザ定義コントローラ基本クラス">Controller</a> : <span class="keyword">public</span> <a class="code" href="class_controller_impl.html" title="ネットワーク通信コントローラクラス">ControllerImpl</a>, <span class="keyword">public</span> <a class="code" href="class_sim_obj.html" title="エンティティに対応するクラス(クライアントサイドで使用)">SimObj</a>::RequestSender
+<a name="l00180"></a>00180 {
+<a name="l00181"></a>00181 <span class="keyword">private</span>:
+<a name="l00182"></a>00182     <span class="keyword">typedef</span> <a class="code" href="class_controller_impl.html" title="ネットワーク通信コントローラクラス">ControllerImpl</a> <a class="code" href="class_controller_impl.html" title="ネットワーク通信コントローラクラス">Super</a>;
+<a name="l00183"></a>00183     <span class="keyword">typedef</span> std::string S;
+<a name="l00184"></a>00184     <span class="keyword">typedef</span> std::map&lt;S, SimObj*&gt; M;
+<a name="l00185"></a>00185     
+<a name="l00186"></a>00186 <span class="keyword">private</span>:
+<a name="l00187"></a>00187     M       m_objs;
+<a name="l00188"></a>00188     <span class="keywordtype">bool</span>        m_in;
+<a name="l00189"></a>00189 <span class="keyword">private</span>:
+<a name="l00190"></a>00190     <a class="code" href="class_sim_obj.html" title="エンティティに対応するクラス(クライアントサイドで使用)">SimObj</a> *    find(<span class="keyword">const</span> <span class="keywordtype">char</span> *name)
+<a name="l00191"></a>00191     {
+<a name="l00192"></a>00192         <span class="keywordflow">return</span> m_objs[name];
+<a name="l00193"></a>00193     }
+<a name="l00194"></a>00194     <span class="keywordtype">void</span>    updateObjs();
+<a name="l00195"></a>00195     <span class="keywordtype">void</span>    clearObjs();
+<a name="l00196"></a>00196 <span class="keyword">private</span>:
+<a name="l00197"></a>00197     <span class="keywordtype">bool</span>            send(CommDataEncoder &amp;);
+<a name="l00198"></a>00198     CommDataResult *    recv(<span class="keywordtype">int</span> bufsize);
+<a name="l00199"></a>00199 
+<a name="l00200"></a>00200 <span class="keyword">protected</span>:<span class="comment"></span>
+<a name="l00201"></a>00201 <span class="comment">    //! コンストラクタ</span>
+<a name="l00202"></a>00202 <span class="comment"></span>    <a class="code" href="class_controller.html#a95c56822d667e94b031451729ce069a9" title="コンストラクタ">Controller</a>();
+<a name="l00203"></a>00203 <span class="comment"></span>
+<a name="l00204"></a>00204 <span class="comment">    /**</span>
+<a name="l00205"></a>00205 <span class="comment">     * 0 - 1までの一様分布の乱数を生成します</span>
+<a name="l00206"></a>00206 <span class="comment">     */</span>
+<a name="l00207"></a>00207     <span class="keywordtype">double</span> <a class="code" href="class_controller.html#ac6b1a9ac2618e01f303330ba5fcb5d05">getRand</a>();
+<a name="l00208"></a>00208 <span class="comment"></span>
+<a name="l00209"></a>00209 <span class="comment">    /**</span>
+<a name="l00210"></a>00210 <span class="comment">     * @brief Webots互換のパラメータを設定します。変数の先頭にleftがつくものは左側車輪の設定、rightのつくものは右側車輪の設定</span>
+<a name="l00211"></a>00211 <span class="comment">     *</span>
+<a name="l00212"></a>00212 <span class="comment">     * @param leftWheelName          車輪のジョイント名</span>
+<a name="l00213"></a>00213 <span class="comment">     * @param leftMotorConsumption   車輪の消費電力(W)</span>
+<a name="l00214"></a>00214 <span class="comment">     * @param leftWheelRadius        車輪の半径(m)</span>
+<a name="l00215"></a>00215 <span class="comment">     * @param leftWheelMaxSpeed      車輪の最大角速度(rad/s)</span>
+<a name="l00216"></a>00216 <span class="comment">     * @param leftWheelSpeedUnit     wb_differential_wheels_set_speed で設定される速度の単位をセット(rad/s)</span>
+<a name="l00217"></a>00217 <span class="comment">     * @param leftSlipNoise          一様分布にしたがう車輪のスリップ(0.0 - 1.0)</span>
+<a name="l00218"></a>00218 <span class="comment">     * @param leftEncoderNoise       スリップノイズの蓄積</span>
+<a name="l00219"></a>00219 <span class="comment">     * @param leftEncoderResolution  1[rad]あたりどの程度のスリップが生じるか</span>
+<a name="l00220"></a>00220 <span class="comment">     * @param leftMaxForce           最大トルク</span>
+<a name="l00221"></a>00221 <span class="comment">     * @param rightWheelName         車輪のジョイント名</span>
+<a name="l00222"></a>00222 <span class="comment">     * @param rightMotorConsumption  車輪の消費電力(W)</span>
+<a name="l00223"></a>00223 <span class="comment">     * @param rightWheelRadius       車輪の半径(m)</span>
+<a name="l00224"></a>00224 <span class="comment">     * @param rightWheelMaxSpeed     車輪の最大角速度(rad/s)</span>
+<a name="l00225"></a>00225 <span class="comment">     * @param rightWheelSpeedUnit    wb_differential_wheels_set_speed で設定される速度の単位をセット(rad/s)</span>
+<a name="l00226"></a>00226 <span class="comment">     * @param rightSlipNoise         一様分布にしたがう車輪のスリップ(0.0 - 1.0)</span>
+<a name="l00227"></a>00227 <span class="comment">     * @param rightEncoderNoise      スリップノイズの蓄積</span>
+<a name="l00228"></a>00228 <span class="comment">     * @param rightEncoderResolution 1[rad]あたりどの程度のスリップが生じるか</span>
+<a name="l00229"></a>00229 <span class="comment">     * @param rightMaxForce          最大トルク</span>
+<a name="l00230"></a>00230 <span class="comment">     */</span>
+<a name="l00231"></a>00231     <span class="keywordtype">void</span> <a class="code" href="class_controller.html#a1eca10016c761429d6d86bf07644221b" title="Webots互換のパラメータを設定します。変数の先頭にleftがつくものは左側車...">setWheelProperty</a>(
+<a name="l00232"></a>00232         <span class="keywordtype">char</span>   *leftWheelName,
+<a name="l00233"></a>00233         <span class="keywordtype">double</span> leftMotorConsumption,
+<a name="l00234"></a>00234         <span class="keywordtype">double</span> leftWheelMaxSpeed,
+<a name="l00235"></a>00235         <span class="keywordtype">double</span> leftWheelSpeedUnit,
+<a name="l00236"></a>00236         <span class="keywordtype">double</span> leftSlipNoise,
+<a name="l00237"></a>00237         <span class="keywordtype">double</span> leftEncoderResolution,
+<a name="l00238"></a>00238         <span class="keywordtype">double</span> leftMaxForce,
+<a name="l00239"></a>00239         <span class="keywordtype">char</span>   *rightWheelName,
+<a name="l00240"></a>00240         <span class="keywordtype">double</span> rightMotorConsumption,
+<a name="l00241"></a>00241         <span class="keywordtype">double</span> rightWheelMaxSpeed,
+<a name="l00242"></a>00242         <span class="keywordtype">double</span> rightWheelSpeedUnit,
+<a name="l00243"></a>00243         <span class="keywordtype">double</span> rightSlipNoise,
+<a name="l00244"></a>00244         <span class="keywordtype">double</span> rightEncoderResolution,
+<a name="l00245"></a>00245         <span class="keywordtype">double</span> rightMaxForce
+<a name="l00246"></a>00246     );
+<a name="l00247"></a>00247 <span class="comment"></span>
+<a name="l00248"></a>00248 <span class="comment">    /**</span>
+<a name="l00249"></a>00249 <span class="comment">     * @brief Webots互換のパラメータを設定します。変数の先頭にleftがつくものは左側車輪の設定、rightのつくものは右側車輪の設定</span>
+<a name="l00250"></a>00250 <span class="comment">     *</span>
+<a name="l00251"></a>00251 <span class="comment">     * @param objectName             エージェントの名前</span>
+<a name="l00252"></a>00252 <span class="comment">     * @param leftWheelName          車輪のジョイント名</span>
+<a name="l00253"></a>00253 <span class="comment">     * @param leftMotorConsumption   車輪の消費電力(W)</span>
+<a name="l00254"></a>00254 <span class="comment">     * @param leftWheelRadius        車輪の半径(m)</span>
+<a name="l00255"></a>00255 <span class="comment">     * @param leftWheelMaxSpeed      車輪の最大角速度(rad/s)</span>
+<a name="l00256"></a>00256 <span class="comment">     * @param leftWheelSpeedUnit     wb_differential_wheels_set_speed で設定される速度の単位をセット(rad/s)</span>
+<a name="l00257"></a>00257 <span class="comment">     * @param leftSlipNoise          一様分布にしたがう車輪のスリップ(0.0 - 1.0)</span>
+<a name="l00258"></a>00258 <span class="comment">     * @param leftEncoderNoise       スリップノイズの蓄積</span>
+<a name="l00259"></a>00259 <span class="comment">     * @param leftEncoderResolution  1[rad]あたりどの程度のスリップが生じるか</span>
+<a name="l00260"></a>00260 <span class="comment">     * @param leftMaxForce           最大トルク</span>
+<a name="l00261"></a>00261 <span class="comment">     * @param rightWheelName         車輪のジョイント名</span>
+<a name="l00262"></a>00262 <span class="comment">     * @param rightMotorConsumption  車輪の消費電力(W)</span>
+<a name="l00263"></a>00263 <span class="comment">     * @param rightWheelRadius       車輪の半径(m)</span>
+<a name="l00264"></a>00264 <span class="comment">     * @param rightWheelMaxSpeed     車輪の最大角速度(rad/s)</span>
+<a name="l00265"></a>00265 <span class="comment">     * @param rightWheelSpeedUnit    wb_differential_wheels_set_speed で設定される速度の単位をセット(rad/s)</span>
+<a name="l00266"></a>00266 <span class="comment">     * @param rightSlipNoise         一様分布にしたがう車輪のスリップ(0.0 - 1.0)</span>
+<a name="l00267"></a>00267 <span class="comment">     * @param rightEncoderNoise      スリップノイズの蓄積</span>
+<a name="l00268"></a>00268 <span class="comment">     * @param rightEncoderResolution 1[rad]あたりどの程度のスリップが生じるか</span>
+<a name="l00269"></a>00269 <span class="comment">     * @param rightMaxForce          最大トルク</span>
+<a name="l00270"></a>00270 <span class="comment">     */</span>
+<a name="l00271"></a>00271     <span class="keywordtype">void</span> <a class="code" href="class_controller.html#a1eca10016c761429d6d86bf07644221b" title="Webots互換のパラメータを設定します。変数の先頭にleftがつくものは左側車...">setWheelProperty</a>(
+<a name="l00272"></a>00272         <span class="keyword">const</span> <span class="keywordtype">char</span>   *objectName,
+<a name="l00273"></a>00273         <span class="keywordtype">char</span>   *leftWheelName,
+<a name="l00274"></a>00274         <span class="keywordtype">double</span> leftMotorConsumption,
+<a name="l00275"></a>00275         <span class="keywordtype">double</span> leftWheelMaxSpeed,
+<a name="l00276"></a>00276         <span class="keywordtype">double</span> leftWheelSpeedUnit,
+<a name="l00277"></a>00277         <span class="keywordtype">double</span> leftSlipNoise,
+<a name="l00278"></a>00278         <span class="keywordtype">double</span> leftEncoderResolution,
+<a name="l00279"></a>00279         <span class="keywordtype">double</span> leftMaxForce,
+<a name="l00280"></a>00280         <span class="keywordtype">char</span>   *rightWheelName,
+<a name="l00281"></a>00281         <span class="keywordtype">double</span> rightMotorConsumption,
+<a name="l00282"></a>00282         <span class="keywordtype">double</span> rightWheelMaxSpeed,
+<a name="l00283"></a>00283         <span class="keywordtype">double</span> rightWheelSpeedUnit,
+<a name="l00284"></a>00284         <span class="keywordtype">double</span> rightSlipNoise,
+<a name="l00285"></a>00285         <span class="keywordtype">double</span> rightEncoderResolution,
+<a name="l00286"></a>00286         <span class="keywordtype">double</span> rightMaxForce
+<a name="l00287"></a>00287     );
+<a name="l00288"></a>00288 <span class="comment"></span>
+<a name="l00289"></a>00289 <span class="comment">    /**</span>
+<a name="l00290"></a>00290 <span class="comment">     * 自分自身の車軸の長さを取得します</span>
+<a name="l00291"></a>00291 <span class="comment">     */</span>
+<a name="l00292"></a>00292     <span class="keywordtype">double</span> <a class="code" href="class_controller.html#a743afff941265e2eaa49c32631d4cbfc">getAxleLength</a>();
+<a name="l00293"></a>00293 <span class="comment"></span>
+<a name="l00294"></a>00294 <span class="comment">    /**</span>
+<a name="l00295"></a>00295 <span class="comment">     * 車軸の長さを取得します</span>
+<a name="l00296"></a>00296 <span class="comment">     */</span>
+<a name="l00297"></a>00297     <span class="keywordtype">double</span> <a class="code" href="class_controller.html#a743afff941265e2eaa49c32631d4cbfc">getAxleLength</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *simObjName);
+<a name="l00298"></a>00298 <span class="comment"></span>
+<a name="l00299"></a>00299 <span class="comment">    /**</span>
+<a name="l00300"></a>00300 <span class="comment">     * 自分自身の左車輪の半径を取得します</span>
+<a name="l00301"></a>00301 <span class="comment">     */</span>
+<a name="l00302"></a>00302     <span class="keywordtype">double</span> <a class="code" href="class_controller.html#a321dd0083cfb1ffb4dfd59e53485cf9f">getLeftWheelRadius</a>();
+<a name="l00303"></a>00303 <span class="comment"></span>
+<a name="l00304"></a>00304 <span class="comment">    /**</span>
+<a name="l00305"></a>00305 <span class="comment">     * 左車輪の半径を取得します</span>
+<a name="l00306"></a>00306 <span class="comment">     */</span>
+<a name="l00307"></a>00307     <span class="keywordtype">double</span> <a class="code" href="class_controller.html#a321dd0083cfb1ffb4dfd59e53485cf9f">getLeftWheelRadius</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *simObjName);
+<a name="l00308"></a>00308 <span class="comment"></span>
+<a name="l00309"></a>00309 <span class="comment">    /**</span>
+<a name="l00310"></a>00310 <span class="comment">     * 自分自身の右車輪の半径を取得します</span>
+<a name="l00311"></a>00311 <span class="comment">     */</span>
+<a name="l00312"></a>00312     <span class="keywordtype">double</span> <a class="code" href="class_controller.html#ac16206d99667e36a00a4e3f7350b1589">getRightWheelRadius</a>();
+<a name="l00313"></a>00313 <span class="comment"></span>
+<a name="l00314"></a>00314 <span class="comment">    /**</span>
+<a name="l00315"></a>00315 <span class="comment">     * 右車輪の半径を取得します</span>
+<a name="l00316"></a>00316 <span class="comment">     */</span>
+<a name="l00317"></a>00317     <span class="keywordtype">double</span> <a class="code" href="class_controller.html#ac16206d99667e36a00a4e3f7350b1589">getRightWheelRadius</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *simObjName);
+<a name="l00318"></a>00318 <span class="comment"></span>
+<a name="l00319"></a>00319 <span class="comment">    /**</span>
+<a name="l00320"></a>00320 <span class="comment">     * 自分自身の左車輪のエンコーダのノイズ蓄積量を取得します</span>
+<a name="l00321"></a>00321 <span class="comment">     */</span>
+<a name="l00322"></a>00322     <span class="keywordtype">double</span> <a class="code" href="class_controller.html#a809452363bc8fce9b7fa43a7cfae783f">getLeftEncoderNoise</a>();
+<a name="l00323"></a>00323 <span class="comment"></span>
+<a name="l00324"></a>00324 <span class="comment">    /**</span>
+<a name="l00325"></a>00325 <span class="comment">     * 左車輪のエンコーダのノイズ蓄積量を取得します</span>
+<a name="l00326"></a>00326 <span class="comment">     */</span>
+<a name="l00327"></a>00327     <span class="keywordtype">double</span> <a class="code" href="class_controller.html#a809452363bc8fce9b7fa43a7cfae783f">getLeftEncoderNoise</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *simObjName);
+<a name="l00328"></a>00328 <span class="comment"></span>
+<a name="l00329"></a>00329 <span class="comment">    /**</span>
+<a name="l00330"></a>00330 <span class="comment">     * 自分自身の右車輪のエンコーダのノイズ蓄積量を取得します</span>
+<a name="l00331"></a>00331 <span class="comment">     */</span>
+<a name="l00332"></a>00332     <span class="keywordtype">double</span> <a class="code" href="class_controller.html#ac43ac6bae3ff7dfb3357ea1309126b47">getRightEncoderNoise</a>();
+<a name="l00333"></a>00333 <span class="comment"></span>
+<a name="l00334"></a>00334 <span class="comment">    /**</span>
+<a name="l00335"></a>00335 <span class="comment">     * 右車輪のエンコーダのノイズ蓄積量を取得します</span>
+<a name="l00336"></a>00336 <span class="comment">     */</span>
+<a name="l00337"></a>00337     <span class="keywordtype">double</span> <a class="code" href="class_controller.html#ac43ac6bae3ff7dfb3357ea1309126b47">getRightEncoderNoise</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *simObjName);
+<a name="l00338"></a>00338 <span class="comment"></span>
+<a name="l00339"></a>00339 <span class="comment">    /**</span>
+<a name="l00340"></a>00340 <span class="comment">     * 自分自身の左右の車輪にそれぞれことなるスピードを与える</span>
+<a name="l00341"></a>00341 <span class="comment">     * @param left 左車輪の角速度</span>
+<a name="l00342"></a>00342 <span class="comment">     * @param right 右車輪の角速度</span>
+<a name="l00343"></a>00343 <span class="comment">     */</span>
+<a name="l00344"></a>00344     <span class="keywordtype">void</span> <a class="code" href="class_controller.html#a80d79cecbece270dafbc1b36fba0953f">differentialWheelsSetSpeed</a>(<span class="keywordtype">double</span> left,<span class="keywordtype">double</span> right);
+<a name="l00345"></a>00345 <span class="comment"></span>
+<a name="l00346"></a>00346 <span class="comment">    /**</span>
+<a name="l00347"></a>00347 <span class="comment">     * 左右の車輪にそれぞれことなるスピードを与える</span>
+<a name="l00348"></a>00348 <span class="comment">     * @param simObjName SimObjの名前</span>
+<a name="l00349"></a>00349 <span class="comment">     * @param left 左車輪の角速度</span>
+<a name="l00350"></a>00350 <span class="comment">     * @param right 右車輪の角速度</span>
+<a name="l00351"></a>00351 <span class="comment">     */</span>
+<a name="l00352"></a>00352     <span class="keywordtype">void</span> <a class="code" href="class_controller.html#a80d79cecbece270dafbc1b36fba0953f">differentialWheelsSetSpeed</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *simObjName,<span class="keywordtype">double</span> left,<span class="keywordtype">double</span> right);
+<a name="l00353"></a>00353 <span class="comment"></span>
+<a name="l00354"></a>00354 <span class="comment">    /**</span>
+<a name="l00355"></a>00355 <span class="comment">     * @brief 指定のエンティティを取得する</span>
+<a name="l00356"></a>00356 <span class="comment">     * @param name エンティティ名</span>
+<a name="l00357"></a>00357 <span class="comment">     */</span>
+<a name="l00358"></a>00358     <a class="code" href="class_sim_obj.html" title="エンティティに対応するクラス(クライアントサイドで使用)">SimObj</a> *    <a class="code" href="class_controller.html#adc50f0b13ae6175fe2e689314b97726d" title="指定のエンティティを取得する">getObj</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name);
+<a name="l00359"></a>00359 <span class="comment"></span>
+<a name="l00360"></a>00360 <span class="comment">    /**</span>
+<a name="l00361"></a>00361 <span class="comment">     * @brief エージェント視点画像を取得する(サービスプロバイダによる)</span>
+<a name="l00362"></a>00362 <span class="comment">     *</span>
+<a name="l00363"></a>00363 <span class="comment">     * @param cbtype 画像タイプ</span>
+<a name="l00364"></a>00364 <span class="comment">     * @param size   画像サイズ</span>
+<a name="l00365"></a>00365 <span class="comment">     *</span>
+<a name="l00366"></a>00366 <span class="comment">     * @retval != NULL 画像データ</span>
+<a name="l00367"></a>00367 <span class="comment">     * @retval NULL    失敗</span>
+<a name="l00368"></a>00368 <span class="comment">     */</span>
+<a name="l00369"></a>00369     <a class="code" href="class_view_image.html" title="視覚データクラス">ViewImage</a> *     <a class="code" href="class_controller.html#a5c35f7f490513b2cd55e50d5a6bd794b" title="エージェント視点画像を取得する(サービスプロバイダによる)...">captureView</a>(<a class="code" href="_view_image_info_8h.html#a9af7c151827aefd5a6197ea77dd7244e">ColorBitType</a> cbtype, <a class="code" href="_view_image_info_8h.html#acfd49da85d15732194ec51155a2c9ecf">ImageDataSize</a> size);
+<a name="l00370"></a>00370 <span class="comment"></span>
+<a name="l00371"></a>00371 <span class="comment">    /**</span>
+<a name="l00372"></a>00372 <span class="comment">     * @brief エージェント視点画像を取得する(サービスプロバイダによる)</span>
+<a name="l00373"></a>00373 <span class="comment">     *</span>
+<a name="l00374"></a>00374 <span class="comment">     * @param cbtype 画像タイプ</span>
+<a name="l00375"></a>00375 <span class="comment">     * @param size   画像サイズ</span>
+<a name="l00376"></a>00376 <span class="comment">     * @param id     カメラID</span>
+<a name="l00377"></a>00377 <span class="comment">     *</span>
+<a name="l00378"></a>00378 <span class="comment">     * @retval != NULL 画像データ</span>
+<a name="l00379"></a>00379 <span class="comment">     * @retval NULL    失敗</span>
+<a name="l00380"></a>00380 <span class="comment">     */</span>
+<a name="l00381"></a>00381     <a class="code" href="class_view_image.html" title="視覚データクラス">ViewImage</a> *     <a class="code" href="class_controller.html#a5c35f7f490513b2cd55e50d5a6bd794b" title="エージェント視点画像を取得する(サービスプロバイダによる)...">captureView</a>(<a class="code" href="_view_image_info_8h.html#a9af7c151827aefd5a6197ea77dd7244e">ColorBitType</a> cbtype, <a class="code" href="_view_image_info_8h.html#acfd49da85d15732194ec51155a2c9ecf">ImageDataSize</a> size, <span class="keywordtype">int</span> <span class="keywordtype">id</span>);
+<a name="l00382"></a>00382 <span class="comment"></span>
+<a name="l00383"></a>00383 <span class="comment">    /**</span>
+<a name="l00384"></a>00384 <span class="comment">     * @brief 視野内に存在するエンティティの検出(サービスプロバイダによる)</span>
+<a name="l00385"></a>00385 <span class="comment">     *</span>
+<a name="l00386"></a>00386 <span class="comment">     * @param v エンティティ名を格納するコンテナ</span>
+<a name="l00387"></a>00387 <span class="comment">     * @retval true 成功</span>
+<a name="l00388"></a>00388 <span class="comment">     * @retval false 失敗</span>
+<a name="l00389"></a>00389 <span class="comment">     */</span>
+<a name="l00390"></a>00390     <span class="keywordtype">bool</span>            <a class="code" href="class_controller.html#a23962ac15188b5079d3c404aac87d07c" title="視野内に存在するエンティティの検出(サービスプロバイダによる)...">detectEntities</a>(std::vector&lt;std::string&gt; &amp;v);
+<a name="l00391"></a>00391 <span class="comment"></span>
+<a name="l00392"></a>00392 <span class="comment">    /**</span>
+<a name="l00393"></a>00393 <span class="comment">     * @brief 視野内に存在するエンティティの検出(サービスプロバイダによる)</span>
+<a name="l00394"></a>00394 <span class="comment">     *</span>
+<a name="l00395"></a>00395 <span class="comment">     * @param v エンティティ名を格納するコンテナ</span>
+<a name="l00396"></a>00396 <span class="comment">     * @param id カメラID</span>
+<a name="l00397"></a>00397 <span class="comment">     * @retval true 成功</span>
+<a name="l00398"></a>00398 <span class="comment">     * @retval false 失敗</span>
+<a name="l00399"></a>00399 <span class="comment">     */</span>
+<a name="l00400"></a>00400     <span class="keywordtype">bool</span>            <a class="code" href="class_controller.html#a23962ac15188b5079d3c404aac87d07c" title="視野内に存在するエンティティの検出(サービスプロバイダによる)...">detectEntities</a>(std::vector&lt;std::string&gt; &amp;v, <span class="keywordtype">int</span> <span class="keywordtype">id</span>);
+<a name="l00401"></a>00401 
+<a name="l00402"></a>00402     <span class="comment">//added by okamoto@tome(2011/9/8)</span><span class="comment"></span>
+<a name="l00403"></a>00403 <span class="comment">    /**</span>
+<a name="l00404"></a>00404 <span class="comment">     * @brief カメラ視線にあるオブジェクトまでの距離を得る</span>
+<a name="l00405"></a>00405 <span class="comment">     * @param id カメラID</span>
+<a name="l00406"></a>00406 <span class="comment">     */</span>
+<a name="l00407"></a>00407     <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code" href="class_controller.html#a5869f28ff6f8d75111a6be4b565deeb3" title="カメラ視線にあるオブジェクトまでの距離を得る">distanceSensor</a>(<span class="keywordtype">double</span> start = 0.0, <span class="keywordtype">double</span> end = 255.0, <span class="keywordtype">int</span> <span class="keywordtype">id</span> = 1);
+<a name="l00408"></a>00408 
+<a name="l00409"></a>00409     <span class="comment">//added by okamoto@tome(2011/9/8)</span><span class="comment"></span>
+<a name="l00410"></a>00410 <span class="comment">    /**</span>
+<a name="l00411"></a>00411 <span class="comment">     * @brief カメラ視線にあるオブジェクトまでの1次元距離データを得る</span>
+<a name="l00412"></a>00412 <span class="comment">     * @param id カメラID</span>
+<a name="l00413"></a>00413 <span class="comment">     */</span>
+<a name="l00414"></a>00414     <a class="code" href="class_depth_image.html">DepthImage</a> *<a class="code" href="class_controller.html#a17f0ac1abe7acf655323e4c5b4979cf9" title="カメラ視線にあるオブジェクトまでの1次元距離データを得る...">distanceSensor1D</a>(<span class="keywordtype">double</span> start = 0.0, <span class="keywordtype">double</span> end = 255.0, <span class="keywordtype">int</span> <span class="keywordtype">id</span> = 1, <a class="code" href="_view_image_info_8h.html#acfd49da85d15732194ec51155a2c9ecf">ImageDataSize</a> size = <a class="code" href="_view_image_info_8h.html#acfd49da85d15732194ec51155a2c9ecfaf7fae486a4e882ac97224751d0abb46a">IMAGE_320X1</a>);
+<a name="l00415"></a>00415 
+<a name="l00416"></a>00416     <span class="comment">//added by okamoto@tome(2011/9/16)</span><span class="comment"></span>
+<a name="l00417"></a>00417 <span class="comment">    /**</span>
+<a name="l00418"></a>00418 <span class="comment">     * @brief カメラ視線にあるオブジェクトまでの2次元距離データを得る</span>
+<a name="l00419"></a>00419 <span class="comment">     * @param id カメラID</span>
+<a name="l00420"></a>00420 <span class="comment">     */</span>
+<a name="l00421"></a>00421     <a class="code" href="class_depth_image.html">DepthImage</a> *<a class="code" href="class_controller.html#a28224f4d47cfb49ce1d05ecc4b9d0dd3" title="カメラ視線にあるオブジェクトまでの2次元距離データを得る...">distanceSensor2D</a>(<span class="keywordtype">double</span> start = 0.0, <span class="keywordtype">double</span> end = 255.0, <span class="keywordtype">int</span> <span class="keywordtype">id</span> = 1, <a class="code" href="_view_image_info_8h.html#acfd49da85d15732194ec51155a2c9ecf">ImageDataSize</a> size = <a class="code" href="_view_image_info_8h.html#acfd49da85d15732194ec51155a2c9ecfa0c52f5df985aee22b8e6bea1104b21d1">IMAGE_320X240</a>);
+<a name="l00422"></a>00422 <span class="comment"></span>
+<a name="l00423"></a>00423 <span class="comment">    /**</span>
+<a name="l00424"></a>00424 <span class="comment"></span>
+<a name="l00425"></a>00425 <span class="comment">     * @brief 音声データを音声認識処理に掛ける</span>
+<a name="l00426"></a>00426 <span class="comment">     *</span>
+<a name="l00427"></a>00427 <span class="comment">     * 音声認識サービスプロバイダに音声データを転送し、音声認識結果(テキスト)を得る。</span>
+<a name="l00428"></a>00428 <span class="comment">     *</span>
+<a name="l00429"></a>00429 <span class="comment">     * @param sound  recvSoundメソッドにより取得した音声データ</span>
+<a name="l00430"></a>00430 <span class="comment">     *</span>
+<a name="l00431"></a>00431 <span class="comment">     * @retval !=NULL 成功</span>
+<a name="l00432"></a>00432 <span class="comment">     * @retval NULL 失敗</span>
+<a name="l00433"></a>00433 <span class="comment">     */</span>
+<a name="l00434"></a>00434     <a class="code" href="class_text.html" title="テキストデータクラス">Text</a> *      <a class="code" href="class_controller.html#a2c5841cdea28180c020275319dc40ed0" title="音声データを音声認識処理に掛ける">getText</a>(<a class="code" href="class_raw_sound.html" title="音声データクラス">RawSound</a> &amp;sound);
+<a name="l00435"></a>00435 <span class="comment"></span>
+<a name="l00436"></a>00436 <span class="comment">    /**</span>
+<a name="l00437"></a>00437 <span class="comment">     * @brief シミュレーション世界内に存在するすべてのエンティティの名前を取得する</span>
+<a name="l00438"></a>00438 <span class="comment">     * </span>
+<a name="l00439"></a>00439 <span class="comment">     * @param v エンティティ名を格納するコンテナ</span>
+<a name="l00440"></a>00440 <span class="comment">     * @retval true 成功</span>
+<a name="l00441"></a>00441 <span class="comment">     * @retval false 失敗</span>
+<a name="l00442"></a>00442 <span class="comment">     */</span>
+<a name="l00443"></a>00443     <span class="keywordtype">bool</span>        <a class="code" href="class_controller.html#ad404285a4313fb62775358cb97b7f2e2" title="シミュレーション世界内に存在するすべてのエンティティの名前を取得す�...">getAllEntities</a>(std::vector&lt;std::string&gt; &amp;v);
+<a name="l00444"></a>00444 
+<a name="l00445"></a><a class="code" href="class_controller.html#a179a4bc8df8e277597d98ade0eff3ecf">00445</a>     <span class="keywordtype">bool</span>    <a class="code" href="class_controller.html#a179a4bc8df8e277597d98ade0eff3ecf" title="コントローラが処理中であるか？">isProcessing</a>()
+<a name="l00446"></a>00446     {
+<a name="l00447"></a>00447         <span class="keywordflow">return</span> m_in;
+<a name="l00448"></a>00448     }
+<a name="l00449"></a><a class="code" href="class_controller.html#a513ccb6ce4ae984bacea4afee9c1af30">00449</a>     <span class="keywordtype">void</span>    <a class="code" href="class_controller.html#a513ccb6ce4ae984bacea4afee9c1af30" title="コールバック関数を呼び出す前の処理を実装する">onPreEvent</a>()
+<a name="l00450"></a>00450     {
+<a name="l00451"></a>00451         m_in = <span class="keyword">true</span>;
+<a name="l00452"></a>00452     }
+<a name="l00453"></a><a class="code" href="class_controller.html#aa74fe000a8fc2d2f0f969e378c8be1ea">00453</a>     <span class="keywordtype">void</span>    <a class="code" href="class_controller.html#aa74fe000a8fc2d2f0f969e378c8be1ea" title="コールバック関数を呼び出した後の処理を実装する">onPostEvent</a>()
+<a name="l00454"></a>00454     {
+<a name="l00455"></a>00455         updateObjs();
+<a name="l00456"></a>00456         clearObjs();
+<a name="l00457"></a>00457         m_in = <span class="keyword">false</span>;
+<a name="l00458"></a>00458     }
+<a name="l00459"></a>00459 <span class="keyword">private</span>:
+<a name="l00460"></a>00460     <span class="keyword">typedef</span> std::map&lt;std::string, DynamicsController*&gt; DYNAMICS_CONTROLLER_LIST;
+<a name="l00461"></a>00461     DYNAMICS_CONTROLLER_LIST dynamicsDataList;
+<a name="l00462"></a>00462 
+<a name="l00463"></a>00463 
+<a name="l00464"></a>00464     <span class="keywordtype">void</span>    add(<a class="code" href="class_sim_obj.html" title="エンティティに対応するクラス(クライアントサイドで使用)">SimObj</a> *obj);
+<a name="l00465"></a>00465 <span class="comment"></span>
+<a name="l00466"></a>00466 <span class="comment">    /**</span>
+<a name="l00467"></a>00467 <span class="comment">     * 車両のダイナミクスを利用するかどうか</span>
+<a name="l00468"></a>00468 <span class="comment">     */</span>
+<a name="l00469"></a>00469     <span class="keyword">enum</span>{
+<a name="l00470"></a>00470         MODE_NOT_USE_WHEEL = 0, <span class="comment">//  車両ダイナミクスを使わない</span>
+<a name="l00471"></a>00471         MODE_USE_WHEEL      <span class="comment">//  車両ダイナミクスを使用</span>
+<a name="l00472"></a>00472     };<span class="comment"></span>
+<a name="l00473"></a>00473 <span class="comment">    /**</span>
+<a name="l00474"></a>00474 <span class="comment">     * 車両力学モードのフラグ</span>
+<a name="l00475"></a>00475 <span class="comment">     */</span>
+<a name="l00476"></a>00476     <span class="keywordtype">int</span> dynamicsMode;
+<a name="l00477"></a>00477 
+<a name="l00478"></a>00478     <span class="keywordtype">void</span> slipWheel();
+<a name="l00479"></a>00479 <span class="comment"></span>
+<a name="l00480"></a>00480 <span class="comment">    /**</span>
+<a name="l00481"></a>00481 <span class="comment">     * 左車輪をスリップさせます。</span>
+<a name="l00482"></a>00482 <span class="comment">     * スリップ量はleftSlipNoiseから算出される。</span>
+<a name="l00483"></a>00483 <span class="comment">     */</span>
+<a name="l00484"></a>00484     <span class="comment">//void slipLeftWheel();</span>
+<a name="l00485"></a>00485 <span class="comment"></span>
+<a name="l00486"></a>00486 <span class="comment">    /**</span>
+<a name="l00487"></a>00487 <span class="comment">     * 右車輪をスリップさせます。</span>
+<a name="l00488"></a>00488 <span class="comment">     * スリップ量はleftSlipNoiseから算出される。</span>
+<a name="l00489"></a>00489 <span class="comment">     */</span>
+<a name="l00490"></a>00490     <span class="comment">//void slipRightWheel();</span>
+<a name="l00491"></a>00491 <span class="comment"></span>
+<a name="l00492"></a>00492 <span class="comment">    /**</span>
+<a name="l00493"></a>00493 <span class="comment">     * 角速度と電力から、トルクを算出する。</span>
+<a name="l00494"></a>00494 <span class="comment">     * モータの計算式は下記の式に従うとする。</span>
+<a name="l00495"></a>00495 <span class="comment">     *             T</span>
+<a name="l00496"></a>00496 <span class="comment">     * P = F・rω = ーー ・ rω = 2πTf</span>
+<a name="l00497"></a>00497 <span class="comment">     *             r</span>
+<a name="l00498"></a>00498 <span class="comment">     * P : 消費電力[W]</span>
+<a name="l00499"></a>00499 <span class="comment">     * F : タイヤにかかる力[N]</span>
+<a name="l00500"></a>00500 <span class="comment">     * r : タイヤの半径[m]</span>
+<a name="l00501"></a>00501 <span class="comment">     * ω : 角周波数[rad/sec]</span>
+<a name="l00502"></a>00502 <span class="comment">     * T : トルク[N・m]</span>
+<a name="l00503"></a>00503 <span class="comment">     * f : 周波数(回転数)[Hz]</span>
+<a name="l00504"></a>00504 <span class="comment">     *</span>
+<a name="l00505"></a>00505 <span class="comment">     * @param motorConsumption モータの電力[W]</span>
+<a name="l00506"></a>00506 <span class="comment">     * @param radius 車輪の半径[m]</span>
+<a name="l00507"></a>00507 <span class="comment">     * @param wheelSpeed 車輪の角速度[rad/sec]</span>
+<a name="l00508"></a>00508 <span class="comment">     * @return 車輪にかかるトルク[N・m]</span>
+<a name="l00509"></a>00509 <span class="comment">     */</span>
+<a name="l00510"></a>00510     <span class="comment">//double getTorqueFromMotor(double motorConsumption,double radius,double wheelSpeed);</span>
+<a name="l00511"></a>00511 <span class="comment"></span>
+<a name="l00512"></a>00512 <span class="comment">    /**</span>
+<a name="l00513"></a>00513 <span class="comment">     * @brief モータを動かします</span>
+<a name="l00514"></a>00514 <span class="comment">     * @param jointName        ジョイント名</span>
+<a name="l00515"></a>00515 <span class="comment">     * @param motorConsumption 電力[W]</span>
+<a name="l00516"></a>00516 <span class="comment">     */</span>
+<a name="l00517"></a>00517     <span class="comment">//void moveMotor(char *jointName,double motorConsumption);</span>
+<a name="l00518"></a>00518 
+<a name="l00519"></a>00519 <span class="keyword">public</span>:<span class="comment"></span>
+<a name="l00520"></a>00520 <span class="comment">    /**</span>
+<a name="l00521"></a>00521 <span class="comment">     * @brief エージェントにコントローラを割り当てる</span>
+<a name="l00522"></a>00522 <span class="comment">     *</span>
+<a name="l00523"></a>00523 <span class="comment">     * シミュレーションサーバに接続し、指定したエージェントに当コントローラを割り当てる</span>
+<a name="l00524"></a>00524 <span class="comment">     *</span>
+<a name="l00525"></a>00525 <span class="comment">     * @param server  シミュレーションサーバ(IPアドレスまたはホスト名)</span>
+<a name="l00526"></a>00526 <span class="comment">     * @param port    シミュレーションサーバポート番号</span>
+<a name="l00527"></a>00527 <span class="comment">     * @param myname  エージェント名</span>
+<a name="l00528"></a>00528 <span class="comment">     * </span>
+<a name="l00529"></a>00529 <span class="comment">     */</span>
+<a name="l00530"></a>00530     <span class="keywordtype">bool</span>    <a class="code" href="class_controller.html#a8337a6d2fcce84371498ea735d733595" title="モータを動かします">attach</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="class_controller_impl.html#ae4f6fc9e0bf8b249063b90c2125e7bed" title="サーバ名を取得する">server</a>, <span class="keywordtype">int</span> <a class="code" href="class_controller_impl.html#a4dc4f205074d6afece515565fa248f9a" title="サーバポート番号を取得する">port</a>, <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="class_controller_impl.html#ad39672c814ed8d33b15b1656fe3bfabd" title="アタッチするエージェント名を取得する">myname</a>);<span class="comment"></span>
+<a name="l00531"></a>00531 <span class="comment">    //! コントローラループ関数</span>
+<a name="l00532"></a>00532 <span class="comment"></span>    <span class="keywordtype">void</span>    <a class="code" href="class_controller.html#affb696850a07009d3f460622f8bddfc1" title="コントローラループ関数">loopMain</a>();
+<a name="l00533"></a>00533 <span class="comment"></span>
+<a name="l00534"></a>00534 <span class="comment">    //!! コントローラ初期化関数</span>
+<a name="l00535"></a>00535 <span class="comment"></span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_controller.html#a457bce90003968aa32a60d550a374de5" title="! コントローラ初期化関数">init</a>();
+<a name="l00536"></a>00536 };
+<a name="l00537"></a>00537 
+<a name="l00538"></a>00538 
+<a name="l00539"></a>00539 <span class="preprocessor">#endif // Controller_h</span>
+<a name="l00540"></a>00540 <span class="preprocessor"></span> 
+</pre></div></div>
+<hr class="footer"/><address style="text-align: right;"><small>SIGVerse_Controllerに対してTue Dec 13 19:10:58 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

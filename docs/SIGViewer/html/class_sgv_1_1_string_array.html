@@ -1,0 +1,319 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGViewer: クラス Sgv::StringArray</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_sgv.html">Sgv</a>::<a class="el" href="class_sgv_1_1_string_array.html">StringArray</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Sgv::StringArray</h1><!-- doxytag: class="Sgv::StringArray" -->文字列配列クラス  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_sgv_string_util_8h_source.html">SgvStringUtil.h</a>&gt;</code>
+<p>
+
+<p>
+<a href="class_sgv_1_1_string_array-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_string_array.html#a0c04d0c62914ab7eb3c4ca079a92e0b">add</a> (const char *format,...)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">配列に文字列を追加する．printf()風のフォーマット文字列が使える．  <a href="#a0c04d0c62914ab7eb3c4ca079a92e0b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_string_array.html#57efa58dd11d8149ae68a01acbbe8342">add</a> (const std::string &amp;str)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">配列に文字列を追加する  <a href="#57efa58dd11d8149ae68a01acbbe8342"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_string_array.html#33d9a5440144d8d33b6469cd614a6167">clear</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">文字列配列をクリアする  <a href="#33d9a5440144d8d33b6469cd614a6167"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_string_array.html#fc73138c5b4a04b9b063f0ef6f7d60ec">count</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">文字列の個数を返す  <a href="#fc73138c5b4a04b9b063f0ef6f7d60ec"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">char **&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_string_array.html#6b24fd0974be61874a9e6e9e2aad72f1">getArray</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">文字列配列をchar **の形式で返す．  <a href="#6b24fd0974be61874a9e6e9e2aad72f1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_string_array.html#4d588120b8ed67ec253e08c4fdc5a254">StringArray</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#4d588120b8ed67ec253e08c4fdc5a254"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_string_array.html#73a52c4430100dc3a1cc64a90384e612">‾StringArray</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#73a52c4430100dc3a1cc64a90384e612"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+文字列配列クラス 
+<p>
+主にMessageSenderに渡すパラメータに使う 
+<p> <a class="el" href="_sgv_string_util_8h_source.html">SgvStringUtil.h</a> の <a class="el" href="_sgv_string_util_8h_source.html#l00187">187</a> 行で定義されています。</p>
+<hr><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" name="4d588120b8ed67ec253e08c4fdc5a254"></a><!-- doxytag: member="Sgv::StringArray::StringArray" ref="4d588120b8ed67ec253e08c4fdc5a254" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::StringArray::StringArray           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_string_util_8cpp_source.html">SgvStringUtil.cpp</a> の <a class="el" href="_sgv_string_util_8cpp_source.html#l00214">214</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>関数</h2>
+<a class="anchor" name="a0c04d0c62914ab7eb3c4ca079a92e0b"></a><!-- doxytag: member="Sgv::StringArray::add" ref="a0c04d0c62914ab7eb3c4ca079a92e0b" args="(const char *format,...)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::StringArray::add           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>...</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+配列に文字列を追加する．printf()風のフォーマット文字列が使える． 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>format</em>&nbsp;</td><td>[i] 文字列</td></tr>
+  </table>
+</dl>
+<div class="fragment"><pre class="fragment">     <a class="code" href="class_sgv_1_1_string_array.html#4d588120b8ed67ec253e08c4fdc5a254" title="コンストラクタ">StringArray</a> sa;
+     sa.add(<span class="stringliteral">"%d + %d = %d¥n"</span>, 1, 2, 3);
+</pre></div> 
+<p> <a class="el" href="_sgv_string_util_8cpp_source.html">SgvStringUtil.cpp</a> の <a class="el" href="_sgv_string_util_8cpp_source.html#l00239">239</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="57efa58dd11d8149ae68a01acbbe8342"></a><!-- doxytag: member="Sgv::StringArray::add" ref="57efa58dd11d8149ae68a01acbbe8342" args="(const std::string &amp;str)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::StringArray::add           </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>str</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+配列に文字列を追加する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>str</em>&nbsp;</td><td>[i] 文字列 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_string_util_8cpp_source.html">SgvStringUtil.cpp</a> の <a class="el" href="_sgv_string_util_8cpp_source.html#l00233">233</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="33d9a5440144d8d33b6469cd614a6167"></a><!-- doxytag: member="Sgv::StringArray::clear" ref="33d9a5440144d8d33b6469cd614a6167" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::StringArray::clear           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+文字列配列をクリアする 
+<p>
+
+<p> <a class="el" href="_sgv_string_util_8cpp_source.html">SgvStringUtil.cpp</a> の <a class="el" href="_sgv_string_util_8cpp_source.html#l00227">227</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="fc73138c5b4a04b9b063f0ef6f7d60ec"></a><!-- doxytag: member="Sgv::StringArray::count" ref="fc73138c5b4a04b9b063f0ef6f7d60ec" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Sgv::StringArray::count           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+文字列の個数を返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>文字列の個数</dd></dl>
+<div class="fragment"><pre class="fragment">     <a class="code" href="class_sgv_1_1_string_array.html#4d588120b8ed67ec253e08c4fdc5a254" title="コンストラクタ">StringArray</a> sa;
+
+     sa.add(<span class="stringliteral">"dog"</span>);
+     sa.add(<span class="stringliteral">"cat"</span>);
+
+     printf(<span class="stringliteral">"%d¥n"</span>, sa.count());   <span class="comment">// 2</span>
+</pre></div> 
+<p> <a class="el" href="_sgv_string_util_8cpp_source.html">SgvStringUtil.cpp</a> の <a class="el" href="_sgv_string_util_8cpp_source.html#l00253">253</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="6b24fd0974be61874a9e6e9e2aad72f1"></a><!-- doxytag: member="Sgv::StringArray::getArray" ref="6b24fd0974be61874a9e6e9e2aad72f1" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char ** Sgv::StringArray::getArray           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+文字列配列をchar **の形式で返す． 
+<p>
+呼び出し側は、返り値のポインタをfreeしてはいけない．<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>文字列配列</dd></dl>
+<div class="fragment"><pre class="fragment">     <a class="code" href="class_sgv_1_1_string_array.html#4d588120b8ed67ec253e08c4fdc5a254" title="コンストラクタ">StringArray</a> sa;
+
+     sa.add(<span class="stringliteral">"one"</span>);
+     sa.add(<span class="stringliteral">"two"</span>);
+     sa.add(<span class="stringliteral">"three"</span>);
+
+     <span class="keywordtype">char</span> **pp = sa.getArray();
+     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;sa.count(); i++)
+     {
+        printf(<span class="stringliteral">"%s¥n"</span>, pp[i]); <span class="comment">// "one", "two", "three"が順に表示される</span>
+     }
+</pre></div> 
+<p> <a class="el" href="_sgv_string_util_8cpp_source.html">SgvStringUtil.cpp</a> の <a class="el" href="_sgv_string_util_8cpp_source.html#l00258">258</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="73a52c4430100dc3a1cc64a90384e612"></a><!-- doxytag: member="Sgv::StringArray::‾StringArray" ref="73a52c4430100dc3a1cc64a90384e612" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::StringArray::‾StringArray           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+デストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_string_util_8cpp_source.html">SgvStringUtil.cpp</a> の <a class="el" href="_sgv_string_util_8cpp_source.html#l00222">222</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_sgv_string_util_8h_source.html">SgvStringUtil.h</a><li><a class="el" href="_sgv_string_util_8cpp_source.html">SgvStringUtil.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGViewerに対してThu Jun 9 10:52:15 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGViewer: 構造体 WAVEHEADER</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>構造体 WAVEHEADER</h1><!-- doxytag: class="WAVEHEADER" -->waveファイルヘッダ情報  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_sgv_voice_capture_8h_source.html">SgvVoiceCapture.h</a>&gt;</code>
+<p>
+
+<p>
+<a href="struct_w_a_v_e_h_e_a_d_e_r-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public 変数</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">long&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_a_v_e_h_e_a_d_e_r.html#93173147432c9445b00a547d4732b02e">lDataSize</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">波形データサイズ  <a href="#93173147432c9445b00a547d4732b02e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">long&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_a_v_e_h_e_a_d_e_r.html#457bb09efbb02b88cf22234c3e3fedb4">lFmtSize</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">fmtチャンクサイズ  <a href="#457bb09efbb02b88cf22234c3e3fedb4"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">long&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_a_v_e_h_e_a_d_e_r.html#4ff43626ff84a02c47ae2f2be85ac746">lRIFFSize</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">このメンバ以下のサイズ(=waveファイルサイズ-8)  <a href="#4ff43626ff84a02c47ae2f2be85ac746"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_a_v_e_h_e_a_d_e_r.html#cd547ab842739d675a1186130f83a077">szData</a> [4]</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">dataチャンクサイズ  <a href="#cd547ab842739d675a1186130f83a077"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_a_v_e_h_e_a_d_e_r.html#04dbda6d97c83d7992b4e1608593924a">szFmt</a> [4]</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">fmtチャンクタグ  <a href="#04dbda6d97c83d7992b4e1608593924a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_a_v_e_h_e_a_d_e_r.html#4d331a0528a0fee0db0034de4c9461a0">szRIFF</a> [4]</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">RIFFヘッダタグ.  <a href="#4d331a0528a0fee0db0034de4c9461a0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_a_v_e_h_e_a_d_e_r.html#b2a9e44066946f48510f9bc8978de997">szWave</a> [4]</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">waveヘッダタグ  <a href="#b2a9e44066946f48510f9bc8978de997"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">WAVEFORMATEX&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_w_a_v_e_h_e_a_d_e_r.html#7355eaf2376b547aaf2120193f6bce16">wfex</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">WAVEFORMATEX構造体.  <a href="#7355eaf2376b547aaf2120193f6bce16"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+waveファイルヘッダ情報 
+<p> <a class="el" href="_sgv_voice_capture_8h_source.html">SgvVoiceCapture.h</a> の <a class="el" href="_sgv_voice_capture_8h_source.html#l00015">15</a> 行で定義されています。</p>
+<hr><h2>変数</h2>
+<a class="anchor" name="93173147432c9445b00a547d4732b02e"></a><!-- doxytag: member="WAVEHEADER::lDataSize" ref="93173147432c9445b00a547d4732b02e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long <a class="el" href="struct_w_a_v_e_h_e_a_d_e_r.html#93173147432c9445b00a547d4732b02e">WAVEHEADER::lDataSize</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+波形データサイズ 
+<p>
+
+<p> <a class="el" href="_sgv_voice_capture_8h_source.html">SgvVoiceCapture.h</a> の <a class="el" href="_sgv_voice_capture_8h_source.html#l00039">39</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="457bb09efbb02b88cf22234c3e3fedb4"></a><!-- doxytag: member="WAVEHEADER::lFmtSize" ref="457bb09efbb02b88cf22234c3e3fedb4" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long <a class="el" href="struct_w_a_v_e_h_e_a_d_e_r.html#457bb09efbb02b88cf22234c3e3fedb4">WAVEHEADER::lFmtSize</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+fmtチャンクサイズ 
+<p>
+
+<p> <a class="el" href="_sgv_voice_capture_8h_source.html">SgvVoiceCapture.h</a> の <a class="el" href="_sgv_voice_capture_8h_source.html#l00030">30</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="4ff43626ff84a02c47ae2f2be85ac746"></a><!-- doxytag: member="WAVEHEADER::lRIFFSize" ref="4ff43626ff84a02c47ae2f2be85ac746" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long <a class="el" href="struct_w_a_v_e_h_e_a_d_e_r.html#4ff43626ff84a02c47ae2f2be85ac746">WAVEHEADER::lRIFFSize</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+このメンバ以下のサイズ(=waveファイルサイズ-8) 
+<p>
+
+<p> <a class="el" href="_sgv_voice_capture_8h_source.html">SgvVoiceCapture.h</a> の <a class="el" href="_sgv_voice_capture_8h_source.html#l00021">21</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="cd547ab842739d675a1186130f83a077"></a><!-- doxytag: member="WAVEHEADER::szData" ref="cd547ab842739d675a1186130f83a077" args="[4]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char <a class="el" href="struct_w_a_v_e_h_e_a_d_e_r.html#cd547ab842739d675a1186130f83a077">WAVEHEADER::szData</a>[4]          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+dataチャンクサイズ 
+<p>
+
+<p> <a class="el" href="_sgv_voice_capture_8h_source.html">SgvVoiceCapture.h</a> の <a class="el" href="_sgv_voice_capture_8h_source.html#l00036">36</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="04dbda6d97c83d7992b4e1608593924a"></a><!-- doxytag: member="WAVEHEADER::szFmt" ref="04dbda6d97c83d7992b4e1608593924a" args="[4]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char <a class="el" href="struct_w_a_v_e_h_e_a_d_e_r.html#04dbda6d97c83d7992b4e1608593924a">WAVEHEADER::szFmt</a>[4]          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+fmtチャンクタグ 
+<p>
+
+<p> <a class="el" href="_sgv_voice_capture_8h_source.html">SgvVoiceCapture.h</a> の <a class="el" href="_sgv_voice_capture_8h_source.html#l00027">27</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="4d331a0528a0fee0db0034de4c9461a0"></a><!-- doxytag: member="WAVEHEADER::szRIFF" ref="4d331a0528a0fee0db0034de4c9461a0" args="[4]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char <a class="el" href="struct_w_a_v_e_h_e_a_d_e_r.html#4d331a0528a0fee0db0034de4c9461a0">WAVEHEADER::szRIFF</a>[4]          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+RIFFヘッダタグ. 
+<p>
+
+<p> <a class="el" href="_sgv_voice_capture_8h_source.html">SgvVoiceCapture.h</a> の <a class="el" href="_sgv_voice_capture_8h_source.html#l00018">18</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b2a9e44066946f48510f9bc8978de997"></a><!-- doxytag: member="WAVEHEADER::szWave" ref="b2a9e44066946f48510f9bc8978de997" args="[4]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char <a class="el" href="struct_w_a_v_e_h_e_a_d_e_r.html#b2a9e44066946f48510f9bc8978de997">WAVEHEADER::szWave</a>[4]          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+waveヘッダタグ 
+<p>
+
+<p> <a class="el" href="_sgv_voice_capture_8h_source.html">SgvVoiceCapture.h</a> の <a class="el" href="_sgv_voice_capture_8h_source.html#l00024">24</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="7355eaf2376b547aaf2120193f6bce16"></a><!-- doxytag: member="WAVEHEADER::wfex" ref="7355eaf2376b547aaf2120193f6bce16" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">WAVEFORMATEX <a class="el" href="struct_w_a_v_e_h_e_a_d_e_r.html#7355eaf2376b547aaf2120193f6bce16">WAVEHEADER::wfex</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+WAVEFORMATEX構造体. 
+<p>
+
+<p> <a class="el" href="_sgv_voice_capture_8h_source.html">SgvVoiceCapture.h</a> の <a class="el" href="_sgv_voice_capture_8h_source.html#l00033">33</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>この構造体の説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_sgv_voice_capture_8h_source.html">SgvVoiceCapture.h</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGViewerに対してThu Jun 9 10:52:14 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

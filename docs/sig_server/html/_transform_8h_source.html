@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: Transform.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>Transform.h</h1><a href="_transform_8h.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/* $Id: _transform_8h_source.html,v 1.2 2011-12-14 07:55:40 okamoto Exp $ */</span> 
+<a name="l00002"></a>00002 <span class="preprocessor">#ifndef Transform_h</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span><span class="preprocessor">#define Transform_h</span>
+<a name="l00004"></a>00004 <span class="preprocessor"></span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include &quot;<a class="code" href="_rotation_8h.html">Rotation.h</a>&quot;</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include &quot;<a class="code" href="_vector3d_8h.html">Vector3d.h</a>&quot;</span>
+<a name="l00007"></a>00007 <span class="comment"></span>
+<a name="l00008"></a>00008 <span class="comment">/**</span>
+<a name="l00009"></a>00009 <span class="comment"> * @brief ノードのある位置のベクトル遷移・回転を表わすクラス</span>
+<a name="l00010"></a>00010 <span class="comment"> *</span>
+<a name="l00011"></a>00011 <span class="comment"> * アフィン変換と等価の処理を行なう。</span>
+<a name="l00012"></a>00012 <span class="comment"> */</span>
+<a name="l00013"></a><a class="code" href="class_transform.html">00013</a> <span class="keyword">class </span><a class="code" href="class_transform.html" title="ノードのある位置のベクトル遷移・回転を表わすクラス">Transform</a> {
+<a name="l00014"></a>00014 <span class="keyword">private</span>:
+<a name="l00015"></a>00015     <a class="code" href="class_rotation.html" title="回転行列クラス">Rotation</a> m_rot;
+<a name="l00016"></a>00016     <a class="code" href="class_vector3d.html" title="3次元ベクトルクラス">Vector3d</a> m_v;
+<a name="l00017"></a>00017 <span class="keyword">public</span>:
+<a name="l00018"></a><a class="code" href="class_transform.html#aa08ca4266efabc768973cdeea51945ab">00018</a>     <a class="code" href="class_transform.html#aa08ca4266efabc768973cdeea51945ab">Transform</a>() : m_v(0.0, 0.0, 0.0) { }
+<a name="l00019"></a><a class="code" href="class_transform.html#ab7edd61d0d45cc4a2445f101e6dfb829">00019</a>     <a class="code" href="class_transform.html#ab7edd61d0d45cc4a2445f101e6dfb829">Transform</a>(<span class="keywordtype">double</span> x, <span class="keywordtype">double</span> y, <span class="keywordtype">double</span> z) : m_v(x, y, z) { }
+<a name="l00020"></a><a class="code" href="class_transform.html#a8df99ff78f265923cd472a2bf4f92caf">00020</a>     <a class="code" href="class_transform.html#a8df99ff78f265923cd472a2bf4f92caf">Transform</a>(<span class="keyword">const</span> <a class="code" href="class_transform.html" title="ノードのある位置のベクトル遷移・回転を表わすクラス">Transform</a> &amp;o) : m_rot(o.m_rot), m_v(o.m_v) {;}
+<a name="l00021"></a>00021 <span class="comment"></span>
+<a name="l00022"></a>00022 <span class="comment">    //! 指定したベクトル分だけシフトする</span>
+<a name="l00023"></a><a class="code" href="class_transform.html#af10b0309e66b995b3d6a9d1f2d484df4">00023</a> <span class="comment"></span>    <span class="keywordtype">void</span>    <a class="code" href="class_transform.html#af10b0309e66b995b3d6a9d1f2d484df4" title="指定したベクトル分だけシフトする">push</a>(<span class="keyword">const</span> <a class="code" href="class_vector3d.html" title="3次元ベクトルクラス">Vector3d</a> &amp;v) {
+<a name="l00024"></a>00024         m_v.<a class="code" href="class_vector3d.html#a3a8fc529dcae7c73e3e10df694bd390e" title="ベクトルを平行移動させる">shift</a>(v);
+<a name="l00025"></a>00025     }
+<a name="l00026"></a>00026         <span class="comment"></span>
+<a name="l00027"></a>00027 <span class="comment">    //! 回転する</span>
+<a name="l00028"></a><a class="code" href="class_transform.html#ada886001a783eb1c2c08257715ab8bd0">00028</a> <span class="comment"></span>    <span class="keywordtype">void</span>    <a class="code" href="class_transform.html#af10b0309e66b995b3d6a9d1f2d484df4" title="指定したベクトル分だけシフトする">push</a>(<span class="keyword">const</span> <a class="code" href="class_rotation.html" title="回転行列クラス">Rotation</a> &amp;r)
+<a name="l00029"></a>00029     {
+<a name="l00030"></a>00030         <a class="code" href="class_rotation.html" title="回転行列クラス">Rotation</a> rr(r);
+<a name="l00031"></a>00031         rr *= m_rot;
+<a name="l00032"></a>00032         m_rot = rr;
+<a name="l00033"></a>00033     }
+<a name="l00034"></a>00034 <span class="comment"></span>
+<a name="l00035"></a>00035 <span class="comment">    //! 並進ベクトルを得る</span>
+<a name="l00036"></a><a class="code" href="class_transform.html#a7e2bf6a073130b6a2ffdf1b9baa37df3">00036</a> <span class="comment"></span>    <span class="keyword">const</span> <a class="code" href="class_vector3d.html" title="3次元ベクトルクラス">Vector3d</a> &amp; <a class="code" href="class_transform.html#a7e2bf6a073130b6a2ffdf1b9baa37df3" title="並進ベクトルを得る">translation</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_v; }<span class="comment"></span>
+<a name="l00037"></a>00037 <span class="comment">    //! 回転行列を得る</span>
+<a name="l00038"></a><a class="code" href="class_transform.html#afeecbf2b092d1377de9f08755ca7e444">00038</a> <span class="comment"></span>    <span class="keyword">const</span> <a class="code" href="class_rotation.html" title="回転行列クラス">Rotation</a> &amp; <a class="code" href="class_transform.html#afeecbf2b092d1377de9f08755ca7e444" title="回転行列を得る">rotation</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_rot; }
+<a name="l00039"></a>00039 <span class="comment"></span>
+<a name="l00040"></a>00040 <span class="comment">    //! ベクトルに対して、遷移・回転を作用させる</span>
+<a name="l00041"></a><a class="code" href="class_transform.html#ad3b9b6ec80308373f03998d255be7131">00041</a> <span class="comment"></span>    <a class="code" href="class_vector3d.html" title="3次元ベクトルクラス">Vector3d</a> &amp;<a class="code" href="class_transform.html#ad3b9b6ec80308373f03998d255be7131" title="ベクトルに対して、遷移・回転を作用させる">apply</a>(<a class="code" href="class_vector3d.html" title="3次元ベクトルクラス">Vector3d</a> &amp;v)
+<a name="l00042"></a>00042     {
+<a name="l00043"></a>00043         v.<a class="code" href="class_vector3d.html#acf4caff93dbc854e34063ba5a239bed0" title="ベクトルを回転する">rotate</a>(m_rot);
+<a name="l00044"></a>00044         v += m_v;
+<a name="l00045"></a>00045         <span class="keywordflow">return</span> v;
+<a name="l00046"></a>00046     }
+<a name="l00047"></a>00047 };
+<a name="l00048"></a>00048 
+<a name="l00049"></a>00049 <span class="preprocessor">#endif // Transform_h</span>
+<a name="l00050"></a>00050 <span class="preprocessor"></span> 
+</pre></div></div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:18 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

@@ -1,0 +1,521 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: クラス CommDataDecoder</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス CommDataDecoder</h1><!-- doxytag: class="CommDataDecoder" -->
+<p>サーバ-クライアント通信データデコードクラス  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_comm_data_decoder_8h_source.html">CommDataDecoder.h</a>&gt;</code></p>
+<div class="dynheader">
+CommDataDecoderのコラボレーション図</div>
+<div class="dynsection">
+<div class="center"><img src="class_comm_data_decoder__coll__graph.png" border="0" usemap="#_comm_data_decoder_coll__map" alt="Collaboration graph"/></div>
+<map name="_comm_data_decoder_coll__map" id="_comm_data_decoder_coll__map">
+<area shape="rect" href="class_comm_data_listener.html" title="CommDataDecoder によるデータ復元結果取得リスナーインターフェース..." alt="" coords="52,5,183,35"/><area shape="rect" href="class_controller_inf.html" title="コントローラインターフェース" alt="" coords="72,59,163,88"/><area shape="rect" href="class_comm_data_decoder_1_1_packet_sender.html" title="データ送信インターフェース" alt="" coords="5,112,229,141"/><area shape="rect" href="class_comm_data_decoder_1_1_decoder_base.html" title="個々のデータデコーダーインターフェース(CommDataDecoder内部で使用)..." alt="" coords="8,165,227,195"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+
+<p><a href="class_comm_data_decoder-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>構成</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_decoder_1_1_decoder_base.html">DecoderBase</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">個々のデータデコーダーインターフェース(CommDataDecoder内部で使用)  <a href="class_comm_data_decoder_1_1_decoder_base.html#_details">[詳細]</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_decoder_1_1_packet_sender.html">PacketSender</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">データ送信インターフェース  <a href="class_comm_data_decoder_1_1_packet_sender.html#_details">[詳細]</a><br/></td></tr>
+<tr><td colspan="2"><h2>Public 型</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
+<a class="el" href="class_comm_data_result.html#a90ba6e66ef202d72770bccab618220c4">CommDataResult::DataFreeFunc</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_decoder.html#afe7f466f68137728e4ed0c0f7ebde6b6">DataFreeFunc</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_comm_data_listener.html">CommDataListener</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_decoder.html#afd6ebf1fd812c193d15c4d649bee2e77">L</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_comm_data_listener.html">CommDataListener</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_decoder.html#ae026f1b4e820f213faa0d9e7f9dd6a56">Listener</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_comm_data_result.html">CommDataResult</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_decoder.html#a4d7edefea1e9e5ed55f067ee80f36110">Result</a></td></tr>
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_decoder.html#a00192364fbf9c1471945385e8f1a3c9a">clear</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">復号終了処理  <a href="#a00192364fbf9c1471945385e8f1a3c9a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_decoder.html#a6bbbc00517ac46de99c4cbd599cfc463">CommDataDecoder</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#a6bbbc00517ac46de99c4cbd599cfc463"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_decoder.html#a72182b4899b120cbde62bfe74c49db34">getNextTime</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">次の時刻を取得する(内部で使用)  <a href="#a72182b4899b120cbde62bfe74c49db34"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_comm_data_result.html">Result</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_decoder.html#a1d20d5386de3f223425ed9c4ba79b802">push</a> (<a class="el" href="class_source.html">Source</a> &amp;from, char *data, int n, int &amp;decodedBytes)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">受信データを復号する 受信したデータを復号し、復号したデータを返り値と して取得する。  <a href="#a1d20d5386de3f223425ed9c4ba79b802"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_decoder.html#a6619bf4a485dc0126213699fa2abf8a1">push</a> (<a class="el" href="class_source.html">Source</a> &amp;from, char *data, int n)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">受信データを復号する 受信したデータを復号し、受信処理を非同期で行なう  <a href="#a6619bf4a485dc0126213699fa2abf8a1"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_decoder.html#aac019712756df62472685244944d3203">setController</a> (<a class="el" href="class_controller_inf.html">ControllerInf</a> *c)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コントローラの設定  <a href="#aac019712756df62472685244944d3203"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_decoder.html#ad34b788a9d321d6d886a6e9d0ce31639">setListener</a> (<a class="el" href="class_comm_data_listener.html">Listener</a> *l)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">リスナーの設定  <a href="#ad34b788a9d321d6d886a6e9d0ce31639"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_decoder.html#a90caf0b844c2f8b3eedeba3513dcb11d">setNextTime</a> (double t)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">次の時刻を設定する(内部で使用)  <a href="#a90caf0b844c2f8b3eedeba3513dcb11d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_decoder.html#a1a57326ef2fcae2fc3fac392a7f85d0e">setPacketSender</a> (<a class="el" href="class_comm_data_decoder_1_1_packet_sender.html">PacketSender</a> *s)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">PacketSenderの設定.  <a href="#a1a57326ef2fcae2fc3fac392a7f85d0e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_decoder.html#add199adfc6532dd12982e9dc6fccc3a5">‾CommDataDecoder</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#add199adfc6532dd12982e9dc6fccc3a5"></a><br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>サーバ-クライアント通信データデコードクラス </p>
+<p>サーバクライアント間の通信データのうち、SIGVerseシステムで規程しているプロトコルにより 転送されたデータを復号する。呼び出し側では、デコーダーが復元したデータを、同期方式、非 同期方式の2通りの方法で取得できる。</p>
+<dl>
+<dt>pushメソッドの返り値として取得する場合(同期方式) </dt>
+<dd><pre></pre><pre>        <a class="el" href="class_comm_data_decoder.html" title="サーバ-クライアント通信データデコードクラス">CommDataDecoder</a> decoder;
+        <a class="el" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;src = ..
+	char * buf = ...;
+	int size = ...;
+	int decoded = 0
+	typedef <a class="el" href="class_comm_data_decoder.html#a4d7edefea1e9e5ed55f067ee80f36110">CommDataDecoder::Result</a> Result;
+	Result *res = decoder.push(src, buf, size, decoded);
+	if (decoded &gt; 0 &amp;&amp; res != NULL) {
+		if (res-&gt;type() ==  COMM_RESULT_GET_ALL_ENTITIES) {
+		    <a class="el" href="class_result_get_all_entities_event.html" title="全エンティティ取得結果イベントクラス">ResultGetAllEntitiesEvent</a> * evt =  (<a class="el" href="class_result_get_all_entities_event.html" title="全エンティティ取得結果イベントクラス">ResultGetAllEntitiesEvent</a> * evt) res-&gt;data();
+		}
+	}
+    </pre> </dd>
+<dt><a class="el" href="class_comm_data_listener.html" title="CommDataDecoder によるデータ復元結果取得リスナーインターフェース...">CommDataListener</a> を通じて取得する場合(非同期方式) </dt>
+<dd><pre>
+        class CommDataListnerImpl : public <a class="el" href="class_comm_data_listener.html" title="CommDataDecoder によるデータ復元結果取得リスナーインターフェース...">CommDataListener</a>
+	{
+	private:
+	     recvResultGetAllEntities(Source &amp;from, ResultGetAllEntitiesEvent &amp;evt) {
+	         ...; // 受信時の処理
+	     }
+	};
+	CommDataListenerImpl impl;
+        <a class="el" href="class_comm_data_decoder.html" title="サーバ-クライアント通信データデコードクラス">CommDataDecoder</a> decoder;
+	decoder.setDecoderListener(&amp;impl);</pre><pre>        <a class="el" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;src = ..
+	char * buf = ...;
+	int size = ...;
+	int decoded decoder.push(src, buf, size);</pre><pre>    </pre> </dd>
+</dl>
+
+<p> <a class="el" href="_comm_data_decoder_8h_source.html">CommDataDecoder.h</a> の <a class="el" href="_comm_data_decoder_8h_source.html#l00062">62</a> 行で定義されています。</p>
+<hr/><h2>型定義</h2>
+<a class="anchor" id="afe7f466f68137728e4ed0c0f7ebde6b6"></a><!-- doxytag: member="CommDataDecoder::DataFreeFunc" ref="afe7f466f68137728e4ed0c0f7ebde6b6" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="class_comm_data_result.html#a90ba6e66ef202d72770bccab618220c4">CommDataResult::DataFreeFunc</a> <a class="el" href="class_comm_data_decoder.html#afe7f466f68137728e4ed0c0f7ebde6b6">CommDataDecoder::DataFreeFunc</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_comm_data_decoder_8h_source.html">CommDataDecoder.h</a> の <a class="el" href="_comm_data_decoder_8h_source.html#l00068">68</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="afd6ebf1fd812c193d15c4d649bee2e77"></a><!-- doxytag: member="CommDataDecoder::L" ref="afd6ebf1fd812c193d15c4d649bee2e77" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="class_comm_data_listener.html">CommDataListener</a> <a class="el" href="class_comm_data_listener.html">CommDataDecoder::L</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_comm_data_decoder_8h_source.html">CommDataDecoder.h</a> の <a class="el" href="_comm_data_decoder_8h_source.html#l00066">66</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ae026f1b4e820f213faa0d9e7f9dd6a56"></a><!-- doxytag: member="CommDataDecoder::Listener" ref="ae026f1b4e820f213faa0d9e7f9dd6a56" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="class_comm_data_listener.html">CommDataListener</a> <a class="el" href="class_comm_data_listener.html">CommDataDecoder::Listener</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_comm_data_decoder_8h_source.html">CommDataDecoder.h</a> の <a class="el" href="_comm_data_decoder_8h_source.html#l00065">65</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a4d7edefea1e9e5ed55f067ee80f36110"></a><!-- doxytag: member="CommDataDecoder::Result" ref="a4d7edefea1e9e5ed55f067ee80f36110" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="class_comm_data_result.html">CommDataResult</a> <a class="el" href="class_comm_data_result.html">CommDataDecoder::Result</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_comm_data_decoder_8h_source.html">CommDataDecoder.h</a> の <a class="el" href="_comm_data_decoder_8h_source.html#l00067">67</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" id="a6bbbc00517ac46de99c4cbd599cfc463"></a><!-- doxytag: member="CommDataDecoder::CommDataDecoder" ref="a6bbbc00517ac46de99c4cbd599cfc463" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CommDataDecoder::CommDataDecoder </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コンストラクタ </p>
+
+<p> <a class="el" href="_comm_data_decoder_8h_source.html">CommDataDecoder.h</a> の <a class="el" href="_comm_data_decoder_8h_source.html#l00131">131</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>関数</h2>
+<a class="anchor" id="a00192364fbf9c1471945385e8f1a3c9a"></a><!-- doxytag: member="CommDataDecoder::clear" ref="a00192364fbf9c1471945385e8f1a3c9a" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CommDataDecoder::clear </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>復号終了処理 </p>
+
+</div>
+</div>
+<a class="anchor" id="a72182b4899b120cbde62bfe74c49db34"></a><!-- doxytag: member="CommDataDecoder::getNextTime" ref="a72182b4899b120cbde62bfe74c49db34" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CommDataDecoder::getNextTime </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>次の時刻を取得する(内部で使用) </p>
+
+<p> <a class="el" href="_comm_data_decoder_8h_source.html">CommDataDecoder.h</a> の <a class="el" href="_comm_data_decoder_8h_source.html#l00184">184</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a1d20d5386de3f223425ed9c4ba79b802"></a><!-- doxytag: member="CommDataDecoder::push" ref="a1d20d5386de3f223425ed9c4ba79b802" args="(Source &amp;from, char *data, int n, int &amp;decodedBytes)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_comm_data_result.html">Result</a>* CommDataDecoder::push </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&nbsp;</td>
+          <td class="paramname"> <em>decodedBytes</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>受信データを復号する 受信したデータを復号し、復号したデータを返り値と して取得する。 </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>from</em>&nbsp;</td><td>転送元 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>data</em>&nbsp;</td><td>受信データ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>n</em>&nbsp;</td><td>受信データサイズ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>decoderbase</em>&nbsp;</td><td>復号したデータサイズ</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>戻り値:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>!=</em>&nbsp;</td><td>NULL : 成功(復号したデータ) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>NULL</em>&nbsp;</td><td>: 失敗 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a6619bf4a485dc0126213699fa2abf8a1"></a><!-- doxytag: member="CommDataDecoder::push" ref="a6619bf4a485dc0126213699fa2abf8a1" args="(Source &amp;from, char *data, int n)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CommDataDecoder::push </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>n</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>受信データを復号する 受信したデータを復号し、受信処理を非同期で行なう </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>from</em>&nbsp;</td><td>転送元 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>data</em>&nbsp;</td><td>受信データ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>n</em>&nbsp;</td><td>受信データサイズ</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>戻り値:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>&gt;=</em>&nbsp;</td><td>0 : 成功(復号したバイト数) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>&lt;</em>&nbsp;</td><td>0 : 失敗 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aac019712756df62472685244944d3203"></a><!-- doxytag: member="CommDataDecoder::setController" ref="aac019712756df62472685244944d3203" args="(ControllerInf *c)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CommDataDecoder::setController </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_controller_inf.html">ControllerInf</a> *&nbsp;</td>
+          <td class="paramname"> <em>c</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コントローラの設定 </p>
+
+<p> <a class="el" href="_comm_data_decoder_8h_source.html">CommDataDecoder.h</a> の <a class="el" href="_comm_data_decoder_8h_source.html#l00143">143</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ad34b788a9d321d6d886a6e9d0ce31639"></a><!-- doxytag: member="CommDataDecoder::setListener" ref="ad34b788a9d321d6d886a6e9d0ce31639" args="(Listener *l)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CommDataDecoder::setListener </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_comm_data_listener.html">Listener</a> *&nbsp;</td>
+          <td class="paramname"> <em>l</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>リスナーの設定 </p>
+<p>通信結果に対する処理を実装したCommDataListener実 装オブジェクトの設定 </p>
+
+<p> <a class="el" href="_comm_data_decoder_8h_source.html">CommDataDecoder.h</a> の <a class="el" href="_comm_data_decoder_8h_source.html#l00141">141</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+呼出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_comm_data_decoder_ad34b788a9d321d6d886a6e9d0ce31639_icgraph.png" border="0" usemap="#class_comm_data_decoder_ad34b788a9d321d6d886a6e9d0ce31639_icgraph_map" alt=""></div>
+<map name="class_comm_data_decoder_ad34b788a9d321d6d886a6e9d0ce31639_icgraph_map" id="class_comm_data_decoder_ad34b788a9d321d6d886a6e9d0ce31639_icgraph">
+<area shape="rect" href="struct_connection.html#a0a9c77d9a5ffa7cea6b62f2b68f0d197" title="Connection::Connection" alt="" coords="261,5,421,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a90caf0b844c2f8b3eedeba3513dcb11d"></a><!-- doxytag: member="CommDataDecoder::setNextTime" ref="a90caf0b844c2f8b3eedeba3513dcb11d" args="(double t)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CommDataDecoder::setNextTime </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>t</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>次の時刻を設定する(内部で使用) </p>
+
+<p> <a class="el" href="_comm_data_decoder_8h_source.html">CommDataDecoder.h</a> の <a class="el" href="_comm_data_decoder_8h_source.html#l00179">179</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a1a57326ef2fcae2fc3fac392a7f85d0e"></a><!-- doxytag: member="CommDataDecoder::setPacketSender" ref="a1a57326ef2fcae2fc3fac392a7f85d0e" args="(PacketSender *s)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CommDataDecoder::setPacketSender </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_comm_data_decoder_1_1_packet_sender.html">PacketSender</a> *&nbsp;</td>
+          <td class="paramname"> <em>s</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>PacketSenderの設定. </p>
+
+<p> <a class="el" href="_comm_data_decoder_8h_source.html">CommDataDecoder.h</a> の <a class="el" href="_comm_data_decoder_8h_source.html#l00145">145</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+呼出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_comm_data_decoder_a1a57326ef2fcae2fc3fac392a7f85d0e_icgraph.png" border="0" usemap="#class_comm_data_decoder_a1a57326ef2fcae2fc3fac392a7f85d0e_icgraph_map" alt=""></div>
+<map name="class_comm_data_decoder_a1a57326ef2fcae2fc3fac392a7f85d0e_icgraph_map" id="class_comm_data_decoder_a1a57326ef2fcae2fc3fac392a7f85d0e_icgraph">
+<area shape="rect" href="struct_connection.html#a0a9c77d9a5ffa7cea6b62f2b68f0d197" title="Connection::Connection" alt="" coords="296,5,456,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="add199adfc6532dd12982e9dc6fccc3a5"></a><!-- doxytag: member="CommDataDecoder::‾CommDataDecoder" ref="add199adfc6532dd12982e9dc6fccc3a5" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CommDataDecoder::‾CommDataDecoder </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>デストラクタ </p>
+
+<p> <a class="el" href="_comm_data_decoder_8h_source.html">CommDataDecoder.h</a> の <a class="el" href="_comm_data_decoder_8h_source.html#l00133">133</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_comm_data_decoder_8h_source.html">CommDataDecoder.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:18 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

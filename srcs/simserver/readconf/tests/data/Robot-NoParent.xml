@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf8"?>
+<define-class name="Robot" inherit="NoParent.xml">
+
+
+</define-class>

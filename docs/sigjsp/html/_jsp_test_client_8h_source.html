@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>sigjsp: JspTestClient.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>JspTestClient.h</h1><a href="_jsp_test_client_8h.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef _JSP_TEST_CLIENT_H_</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define _JSP_TEST_CLIENT_H_</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include "<a class="code" href="_jsp_socket_8h.html">JspSocket.h</a>"</span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include "CommDataDecoder.h"</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include "CommDataListener.h"</span>
+<a name="l00007"></a>00007 <span class="preprocessor">#include &lt;string&gt;</span>
+<a name="l00008"></a>00008 
+<a name="l00009"></a>00009 <span class="keyword">namespace </span>Jsp
+<a name="l00010"></a>00010 {
+<a name="l00011"></a><a class="code" href="class_jsp_1_1_test_client.html">00011</a>     <span class="keyword">class </span><a class="code" href="class_jsp_1_1_test_client.html">TestClient</a> : <span class="keyword">public</span> CommDataDecoder::Listener
+<a name="l00012"></a>00012     {
+<a name="l00013"></a>00013     <span class="keyword">public</span>:
+<a name="l00014"></a>00014         <a class="code" href="class_jsp_1_1_test_client.html#d43b43e2a796e606385d9e40133cdcd9">TestClient</a>();
+<a name="l00015"></a>00015 
+<a name="l00016"></a>00016         <span class="keywordtype">void</span> <a class="code" href="class_jsp_1_1_test_client.html#41431ec60700825ffb2c4b265bcb89dd">setJuliusSpHostName</a>(<span class="keyword">const</span> std::string &amp;hostName);
+<a name="l00017"></a>00017         <span class="keywordtype">void</span> <a class="code" href="class_jsp_1_1_test_client.html#38d042115879fa23e087e54c049840b6">setJuliusSpPort</a>(<span class="keywordtype">int</span> port);
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019         <span class="keywordtype">void</span> <a class="code" href="class_jsp_1_1_test_client.html#d24f7b043f09045121504219b8d96338">printSettings</a>();
+<a name="l00020"></a>00020         <span class="keywordtype">void</span> <a class="code" href="class_jsp_1_1_test_client.html#66b4e1efbe623edf79e50cb4bb27ec56">showHelp</a>();
+<a name="l00021"></a>00021 
+<a name="l00022"></a>00022         <span class="keywordtype">void</span> <a class="code" href="class_jsp_1_1_test_client.html#da63c81a93d216666de67613f4430aaa">commandLoop</a>();
+<a name="l00023"></a>00023 
+<a name="l00024"></a>00024         <span class="keywordtype">void</span> <a class="code" href="class_jsp_1_1_test_client.html#90b0b7045c5b821640493ce91f3ffba4">ping</a>();
+<a name="l00025"></a>00025         <span class="keywordtype">void</span> <a class="code" href="class_jsp_1_1_test_client.html#3b8a1674d4842e20f6c8c7faa8d1c208">soundRecog</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *waveFile);
+<a name="l00026"></a>00026 
+<a name="l00027"></a>00027         <span class="keywordtype">bool</span> <a class="code" href="class_jsp_1_1_test_client.html#2442ab5fe7db2ec251a87e83580e094f">connectToJuliusSp</a>();
+<a name="l00028"></a>00028         <span class="keywordtype">void</span> <a class="code" href="class_jsp_1_1_test_client.html#098c13422750cd01ecc727290e1bf9ca">receiveResultFromJuliusSp</a>();
+<a name="l00029"></a>00029 
+<a name="l00030"></a>00030     <span class="keyword">private</span>:
+<a name="l00031"></a>00031         std::string m_juliusSpHostName;
+<a name="l00032"></a>00032         <span class="keywordtype">int</span> m_juliusSpPort;
+<a name="l00033"></a>00033         <a class="code" href="class_jsp_1_1_socket.html" title="ソケットクラス">Jsp::Socket</a> m_sockJuliusSp;
+<a name="l00034"></a>00034 
+<a name="l00035"></a>00035         <span class="keywordtype">bool</span> m_resultReached;
+<a name="l00036"></a>00036 
+<a name="l00037"></a>00037         <span class="keywordtype">void</span> recvResultNSPinger(Source &amp;from, ResultNSPingerEvent &amp;);
+<a name="l00038"></a>00038         <span class="keywordtype">void</span> recvResultSoundRecog(Source &amp;from, ResultSoundRecogEvent &amp;);
+<a name="l00039"></a>00039     };
+<a name="l00040"></a>00040 };
+<a name="l00041"></a>00041 
+<a name="l00042"></a>00042 <span class="preprocessor">#endif</span>
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>sigjspに対してWed Dec 2 15:46:02 2009に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

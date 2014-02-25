@@ -1,0 +1,69 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS"/>
+<link rel="stylesheet" type="text/css" href="prj.css"/>
+<title>世界ファイルサンプル</title>
+</head>
+<body>
+
+<h1>世界ファイルサンプル</h1>
+<pre class="xmlsample">
+
+&lt;?xml version="1.0" encoding="utf8"?&gt;
+<font class="sourcecomment">&lt;!-- 名前は"myworld"。 --&gt;</font>
+&lt;world name="myworld"&gt;
+
+  <font class="sourcecomment">&lt!--; 重力加速度を指定--&gt;</font>
+  &lt;gravity x="0.0" y="-9.8" z="0.0"/&gt;
+
+  <font class="sourcecomment">&lt;!-- Robot.xml において定義したエージェントインスタンスを作成--&gt;</font>
+  &lt;instanciate class="Robot.xml"&gt;
+    <font class="sourcecomment">&lt;!-- set-attr-value で属性値を指定 --&gt;</font>
+
+    <font class="sourcecomment">&lt;!-- エージェント名はRobot1 --&gt;</font>
+    &lt;set-attr-value name="name" value="Robot1"/&gt;
+    <font class="sourcecomment">&lt;!-- 物理シミュレーションを適用するか？ --&gt;</font>
+    &lt;set-attr-value name="dynamics" value="true"/&gt;
+
+    <font class="sourcecomment">&lt;!-- 最初の位置を(3.0, 0.3, 2.2)に設定--&gt;</font>
+    &lt;set-attr-value name="x" value="3.0"/&gt;
+    &lt;set-attr-value name="y" value="0.3"/&gt;
+    &lt;set-attr-value name="z" value="2.2"/&gt;
+
+    <font class="sourcecomment">&lt;!-- コントローラの指定 --&gt;</font>
+    &lt;set-attr-value name="language" value="c++"/&gt;
+    &lt;set-attr-value name="implementation" value="../model/samples/JointTest.so"/&gt; 
+
+  &lt;/instanciate&gt;
+
+  <font class="sourcecomment">&lt;!-- Robot.xml において定義したエージェントインスタンスを作成--&gt;</font>
+  &lt;instanciate class="Robot.xml"&gt;
+
+    <font class="sourcecomment">&lt;!-- エージェント名はRobot2 --&gt;</font>
+    &lt;set-attr-value name="name" value="Robot2"/&gt;
+    &lt;set-attr-value name="dynamics" value="true"/&gt;
+    &lt;set-attr-value name="language" value="c++"/&gt;
+    &lt;set-attr-value name="implementation" value="../model/samples/GoAround.so"/&gt; 
+
+    <font class="sourcecomment">&lt;!-- 最初の位置を(3.0, 5.0, 2.0)に設定--&gt;</font>
+    &lt;set-attr-value name="x" value="3.0"/&gt;
+    &lt;set-attr-value name="y" value="5.0"/&gt;
+    &lt;set-attr-value name="z" value="2.0"/&gt;
+  &lt;/instanciate&gt;
+
+  <font class="sourcecomment">&lt;!-- Desk.xmlにおいて定義した机エンティティインスタンスを作成 --&gt;</font>
+  &lt;instanciate class="Desk.xml"&gt;
+
+    &lt;set-attr-value name="name" value="Desk1"/&gt;
+    
+    <font class="sourcecomment">&lt;!-- 最初の位置を(-10.0, 2.0, 2.0)に設定--&gt;</font>
+    &lt;set-attr-value name="x" value="-10.0"/&gt;
+    &lt;set-attr-value name="y" value="2.0"/&gt;
+    &lt;set-attr-value name="z" value="2.0"/&gt;
+  &lt;/instanciate&gt;
+
+&lt;/world&gt;
+</pre>
+
+</body>
+</html>

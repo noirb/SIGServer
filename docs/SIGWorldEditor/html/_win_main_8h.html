@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGWorldEditor: WinMain.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>WinMain.h</h1><code>#include &lt;windows.h&gt;</code><br>
+<code>#include &quot;<a class="el" href="_sgv_main_window_8h_source.html">SgvMainWindow.h</a>&quot;</code><br>
+
+<p>
+<a href="_win_main_8h_source.html">ソースコードを見る。</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>関数</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_sgv_1_1_main_window.html">Sgv::MainWindow</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_win_main_8h.html#a1f71e109d72283d62f1c97bc2e722d0">GetMainWindow</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">INT WINAPI&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_win_main_8h.html#2922bc5d5c2d77a3020cfbf9df12aab0">WinMain</a> (HINSTANCE hInst, HINSTANCE, LPSTR strCmdLine, INT)</td></tr>
+
+</table>
+<hr><h2>関数</h2>
+<a class="anchor" name="a1f71e109d72283d62f1c97bc2e722d0"></a><!-- doxytag: member="WinMain.h::GetMainWindow" ref="a1f71e109d72283d62f1c97bc2e722d0" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_sgv_1_1_main_window.html">Sgv::MainWindow</a>* GetMainWindow           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_wgu_8cpp_source.html">Wgu.cpp</a> の <a class="el" href="_wgu_8cpp_source.html#l00023">23</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="2922bc5d5c2d77a3020cfbf9df12aab0"></a><!-- doxytag: member="WinMain.h::WinMain" ref="2922bc5d5c2d77a3020cfbf9df12aab0" args="(HINSTANCE hInst, HINSTANCE, LPSTR strCmdLine, INT)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">INT WINAPI WinMain           </td>
+          <td>(</td>
+          <td class="paramtype">HINSTANCE&nbsp;</td>
+          <td class="paramname"> <em>hInst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">HINSTANCE&nbsp;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">LPSTR&nbsp;</td>
+          <td class="paramname"> <em>strCmdLine</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">INT&nbsp;</td>
+          <td class="paramname"></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_win_main_8cpp_source.html">WinMain.cpp</a> の <a class="el" href="_win_main_8cpp_source.html#l00029">29</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGWorldEditorに対してThu Jun 9 10:53:00 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

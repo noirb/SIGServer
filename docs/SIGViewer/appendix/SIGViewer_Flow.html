@@ -1,0 +1,471 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
+<link rel="stylesheet" type="text/css" href="../../prj.css"/>
+<title>SIGViewerの設計に関する追加説明</title>
+</head>
+
+<body>
+<h1>主要な処理の流れの解説</h1>
+
+<p>
+主な処理を流れ図と共に解説する．
+</p>
+
+<ul>
+	<li><a href="#Init">初期化</a></li>
+	<li><a href="#MessageLoop">メッセージループ</a></li>
+	<li><a href="#ProcessPacketFromSimServer">シミュレーションサーバーから受信したパケットの処理</a></li>
+	<li><a href="#SimWorldToVisWorld1">シミュレーションワールド (SimWorld)からビジュアルワールド(VisWorld)を作成する</a></li>
+	<li><a href="#SimWorldToVisWorld2">シミュレーションワールド (SimWorld)でビジュアルワールド(VisWorld)を更新する</a></li>
+	<li><a href="#ProcessServiceQueue">サービス要求に対するメインスレッドの処理</a></li>
+	<li><a href="#ConnectToServer">シミュレーションサーバーへの接続</a></li>
+	<li><a href="#ServiceClerk">サービスクラークの処理</a></li>
+	<li><a href="#ServiceProvider">サービスプロバイダの処理</a></li>
+	<li><a href="#DetectEntities">detectEntitiesの処理</a></li>
+	<li><a href="#CaptureViewImage">captureViewImageの処理</a></li>
+	<li><a href="#GetNodeAtScreenCode">getNodeAtScreenCoordの処理</a></li>
+	<li><a href="#VideoPlay">ビデオファイル再生、録画時の処理</a></li>
+	<li><a href="#VideoTimerProc">ビデオ操作用タイマーのイベントハンドラの処理</a></li>
+</ul>
+
+<br><h3><a name="Init">初期化</a></h3>
+
+<p>
+ビューアが起動されると、まずWinMain()関数から実行がスタートする．そこではまず、システムの初期化処理が行われる．
+</p>
+
+<p>
+具体的には、メインウィンドウクラスのコンストラクタの実行、システム初期化、メインウィンドウパネルのサイズ調整、の3つが順に実行される．
+</p>
+
+<p align="center">
+<img border="0" src="StartUp1.jpg">
+</p>
+
+<p>
+メインウィンドウコンストラクタ(MainWindow::MainWindow())では、システムのスタートアップに最低限必要な処理を行う．具体的には、ログの初期化、WinSockライブラリの初期化、メンバ変数の初期化、の3つである．
+</p>
+
+<p align="center">
+<img border="0" src="StartUp2.jpg">
+</p>
+
+<p>
+アプリケーション初期化が終わると、次にビューアの初期化(MainWindow::init())に移る．ここでは、ビューアが起動するための多くの処理が行われる．
+</p>
+
+<p align="center">
+<img border="0" src="StartUp3.jpg">
+</p>
+
+<p>
+初期化の最後では、メインウィンドウの下部、右部にあるパネルの位置調整(MainWindow::adjustControlPos())が呼び出される．
+</p>
+
+<p>
+これは実際のメインウィンドウの表示サイズに応じてパネルのサイズを合わせるための処理である．</p>
+
+
+<p>
+なお、このパネル位置調整は初期化時だけでなく、ウィンドウサイズの変更時にも行われる．
+</p>
+
+<p align="center">
+<img border="0" src="AdjustControlPos.jpg">
+</p>
+
+<br><h3><a name="MessageLoop">メッセージループ</a></h3>
+
+<p>
+SIGViewerは初期化処理が済むと、定期的な処理を行うループに入る．これをメッセージループと呼ぶ．
+</p>
+
+<p>
+メッセージループはWinMain() [WinMain.cpp]の後半部分にある．
+</p>
+
+<p>
+メッセージループでは最初に、OS (Windows)からのメッセージが届いていないかをPeekMessage() APIにより調べる．メッセージが届いていれば、GetMessage(), TranslateMessage()等のWin32 APIによりメッセージ処理を行う．
+</p>
+
+<p>
+メッセージが届いていない（＝アイドル状態）の場合は、MainWindow::process()メソッドを呼び出し、シミュレーションサーバーとの通信、画面の更新などを行う．
+</p>
+
+<p>
+ユーザーによりアプリケーションが終了されるまで、このループが延々と繰り返される．
+</p>
+
+<p align="center">
+<img border="0" src="MessageLoop1.jpg">
+</p>
+
+<p>
+MainWindow::process()は、SIGViewerのメインスレッドにおける実質的な主要部分であり、アプリケーションが終了するまで、繰り返し実行される．
+</p>
+
+<p>
+MainWindows::process()は以下の4つの処理を行う．
+</p>
+
+<ul>
+<li>(1) シミュレーションサーバーから受け取ったパケットの処理</li>
+<li>(2) 画面上で選択中のエンティティに関する処理</li>
+<li>(3) サービスプロバイダからの要求の処理</li>
+<li>(4) マイクからの音声データキャプチャ処理</li>
+</ul>
+
+<p>
+(1)ではシミュレーションサーバーから送信されたパケットを受け取り、パケットの内容に従ってしかるべき処理を行う．処理の実体はMainWindow::processPacketFromSimServer()である．シミュレーションサーバーから新しい世界(=SimWorld)が届いた場合、それを画面に反映させる(=VisWorldを更新する）処理もここで行っている．
+</p>
+
+<p>
+(2)では、マウスにより選択されたエンティティがある場合に行う処理である．選択されたエンティティの属性（名前、位置、方向等）の表示、サブウィンドウの更新、エージェント視点内に存在する物体の列挙などを行う．
+</p>
+
+<p>
+(3)は、サービスプロバイダスレッドからの要求を処理する部分である．Ogreライブラリの機能を用いて各種サービスを実行し、その結果をサービスプロバイダに返す．サービスプロバイダスレッドは、メインスレッドとは別のスレッドで実行されているため、要求の受け取りと結果の返還にはキューを使っている．
+</p>
+
+<p>
+(4)では、マイクからの音声取り込み処理を行っている．取り込みにはOpenALライブラリの機能を用いている．
+</p>
+
+<p align="center">
+<img border="0" src="MessageLoop2.jpg">
+</p>
+
+<br><h3><a name="ProcessPacketFromSimServer">シミュレーションサーバーから受信したパケットの処理</a></h3>
+
+<p>
+シミュレーションサーバーから受信したパケットの処理はMainWindow::processPacketFromSimServer()で行われる．
+</p>
+
+<p>
+このメソッドはまず、初回コール時にシミュレーションサーバーに対してGET_ALL_ENTITIES要求を送る．これはシミュレーションサーバーに対する「現在のシミュレーション世界情報を送って欲しい」という要求である．
+</p>
+
+<p>
+次にシミュレーションサーバーからのGET_ALL_ENTITIESに対する返答が来ているか否かをチェックする．シミュレーションサーバーはビューアとは全く独立に（非同期に）動いているため、この時点で必ずしも返答が来ているとは限らない．
+</p>
+
+<p>
+もし返答が来ていれば、（すなわちシミュレーション世界が届いていれば）それをビューア上の世界表現であるVisWorldに反映させる．
+</p>
+
+<p align="center">
+<img border="0" src="ProcessPacketFromSimServer.jpg">
+</p>
+
+<br><h3><a name="SimWorldToVisWorld1">シミュレーションワールド (SimWorld)からビジュアルワールド(VisWorld)を作成する</a></h3>
+
+<p>
+シミュレーションワールド(SimWorld)とは、シミュレーションサーバー内での世界の情報を格納しているオブジェクトである．シミュレーションサーバー上では、物体形状を表示する必要はないため、SimWorldは形状に関する情報は持っていない．
+</p>
+
+<p>
+一方、ビューア上では、世界を実際に「目に見える形に」表示する必要がある．そのため、SimWorldが保持していない形状情報を持つ「ビューア上での」世界を用意する必要がある．このビューア上での世界をビジュアルワールド(VisWorld)と呼んでいる．
+</p>
+
+<p>
+シミュレーションサーバーからSimWorldを最初に受け取った際には、まだVisWorldは存在しない．
+MainWindow::createVisWorldFromSimWorld()はSimWorldと、x3d物体形状データからVisWorldを作りだす部分である．
+</p>
+
+<p align="center">
+<img border="0" src="SimWorldToVisWorld1.jpg">
+</p>
+
+<p>
+MainWindow::createVisWorldFromSimWorldはSimWorldを受け取ると、SimWorldの持つSimObjを1つ取り出す．SimObjはSimWorld中の個々のシミュレーションオブジェクト（エンティティまたはエージェント）を表すオブジェクトである．
+</p>
+
+<p>
+次に取り出したSimObjからVisObjを作成する．これはVisWorld::createVisObj()により実行される．</p>
+
+<p>
+作成されたVisObjはVisWorldに追加される．
+</p>
+
+<p>
+以上の処理がSimWorldの保持するすべてのSimObjについて繰り返される．最終的にSimWorldに対応するVisWorldが生成される．
+</p>
+
+
+<br><h3><a name="SimWorldToVisWorld2">シミュレーションワールド (SimWorld)でビジュアルワールド(VisWorld)を更新する</a></h3>
+
+<p>
+ビューアは、進行中のシミュレーションを画面に反映させるため、定期的にシミュレーションサーバーからシミュレーションワールド(SimWorld)を受け取る．SimWorldを画面に反映させる際、すでにVisWorldが生成されている場合、（すなわちSimWorldを受け取るのが2回目以降の場合）、新たにSimWorldからVisWorldをしなおす必要はなく、単に各シミュレーションオブジェクトの位置、方向等のパラメータを変更するだけでよい．この更新処理を行うのがMainWindow::updateVisWorldWithSimWorld()である．
+</p>
+
+<p align="center">
+<img border="0" src="SimWorldToVisWorld2.jpg">
+</p>
+
+<p>
+大まかな流れは前述のMainWindow::createVisWorldFromSimWorldと同じである．シミューレションサーバーから受け取ったSimWorldから一つずつSimObjを取り出して更新を繰り返す．
+</p>
+
+<p>
+異なるのは、SimObjからVisObjを作ることはせず、すでに存在するVisObjの属性をSimObjに合わせて変えるだけという点である．
+</p>
+
+<p>
+更新処理は位置等のパラメータ値の変更だけで済むため、処理時間はcreateVisWorldFromSimWorld()に比べて非常に短い．
+</p>
+
+
+<br><h3><a name="ProcessServiceQueue">サービス要求に対するメインスレッドの処理</a></h3>
+
+<p>
+MainWindow::processServiceQueue()は、サービスプロバイダスレッドからサービスキューを通して要求された、各種サービスを実行する部分である．ここでは、要求されているサービスの内容に応じた処理（DetectEntitiesサービスまたはCaptureViewImageサービス）を実行し、結果を再びサービスキューに返す作業を行う．
+</p>
+
+<p align="center">
+<img border="0" src="ProcessServiceQueue.jpg">
+</p>
+
+
+<br><h3><a name="ConnectToServer">シミュレーションサーバーへの接続</a></h3>
+
+<p>
+GUI画面の「接続」ボタンを押した場合の処理は、以下の2つである．
+</p>
+
+<p>
+1つ目は、シミュレーションサーバーとの通信用ソケットの確立である．
+これはMainWindow::connectToSimServer()が行う．
+</p>
+
+<p>
+2つ目は、サービスクラークの起動である．
+これはMainWindow::startServiceClerk()が行う．
+</p>
+
+<p align="center">
+<img border="0" src="ConnectToServer1.jpg">
+</p>
+
+<p>
+MainWindow::connectToSimServer()は、シミュレーションサーバーとの通信ポートを開く．通信には複数のポートを使うため、それぞれについて個別にソケットをオープンする．
+</p>
+
+<p align="center">
+<img border="0" src="ConnectToServer2.jpg">
+</p>
+
+<p>
+MainWindow::startServiceClerk()は、サービスクラークとして接続を受け付けるためのソケットをオープンする．コントローラからのサービス接続要求はこのソケットで受け取る．
+</p>
+
+<p>
+次にサービス要求を監視するためのスレッド（サービスクラークスレッド）を起動する．サービスクラークでのサービス要求監視は、メインスレッドとは独立したスレッドで行われるため、メインスレッドでの処理負荷とは無関係にサービス要求を受け取ることができる．
+</p>
+
+<p align="center">
+<img border="0" src="ConnectToServer3.jpg">
+</p>
+
+
+<br><h3><a name="ServiceClerk">サービスクラークの処理</a></h3>
+
+<p>
+サービスクラークにおける接続要求の監視は、メインスレッドとは独立したスレッド（サービスクラークスレッド）として実行される．（下図のlooping_proc()部分)
+</p>
+
+<p align="center">
+<img border="0" src="ServiceClerk1.jpg">
+</p>
+
+<p>
+サービスクラークはコントローラからサービス接続要求を受け取ると、サービスプロバイダスレッドを起動し、その後の処理をサービスプロバイダに委譲する．また、サービス処理が完了したサービスプロバイダがあれば、後始末処理を行う．
+</p>
+
+<p align="center">
+<img border="0" src="ServiceClerk2.jpg">
+</p>
+
+<p>
+ServiceClerk::accept()では、まずコントローラからの接続要求が来ているかどうかをチェックする．
+接続要求が来ている(=accept()が成功した)場合、サービスプロバイダを作成し、サービスプロバイダスレッドを起動させる．また、現在起動中のサービスプロバイダのリストにも追加する．
+</p>
+
+<p align="center">
+<img border="0" src="ServiceClerk3.jpg">
+</p>
+
+<br><h3><a name="ServiceProvider">サービスプロバイダの処理</a></h3>
+
+<p>
+コントローラからのサービス要求は、前述のサービスクラークで受付られ、サービスプロバイダが具体的処理を引き継ぐ．
+</p>
+
+<p>
+サービスプロバイダもサービスクラークと同じくスレッドとして起動され、スレッドループの中でコントローラとの通信を行う．この部分の処理の仕組みはサービスクラークと全く同一である．
+</p>
+
+<p align="center">
+<img border="0" src="ServiceProvider1.jpg">
+</p>
+
+<p>
+サービスプロバイダスレッドのlooping_proc()では、主に2つの処理を行う．
+</p>
+
+<ol>
+<li>(1) コントローラからの処理要求内容を受け取り、メインスレッドのサービスキューに処理要求をプッシュする．</li>
+<li>(2) メインスレッドから処理結果が届いているかをチェックし、もし届いていればそれをコントローラに返信する．</li>
+</ol>
+
+<p>
+コントローラからの処理要求を直接サービスプロバイダスレッドで処理せず、キューを介してメインスレッドに処理させているのは、ビューアが使用している3次元グラフィックライブラリOgreがスレッドセーフになっていないためである．
+</p>
+
+<p align="center">
+<img border="0" src="ServiceProvider2.jpg">
+</p>
+
+<p>
+コントローラからのサービス要求の受信はServiceProvider::processOnePacket()で行っているが、メインスレッドへのサービスキューへのプッシュのはデコーダのイベントハンドラ（ServiceProviderEventListenerクラスのrecvRequestCaptureViewImageおよびrecvRequestDetectEntities)で行っているので注意が必要である．
+</p>
+
+<p align="center">
+<img border="0" src="ServiceProvider3.jpg">
+</p>
+
+
+<br><h3><a name="DetectEntities">detectEntitiesの処理</a></h3>
+
+<p>
+DetectEntitiesサービスは、ビューアがサービスプロバイダとして提供するサービスの一つである．このサービスは指定したエージェントの視点から見える物体を列挙する．
+</p>
+
+<p>
+DetectEntitesサービスの実体はMainWindow::detectEntitiesInsideAgentFieldOfView()に実装されている．
+</p>
+
+<p align="center">
+<img border="0" src="DetectEntities1.jpg">
+</p>
+
+<p>
+このメソッドはまず指定エージェントの視点の位置、視線方向等を得る．その値をdetectEntities専用のカメラのパラメータにセットする．
+</p>
+
+<p>
+次に探索用の視界ピラミッドを作成する．エンティティの探索は、OgreライブラリのVolumeQuery::execute()メソッドによって行われる．このメソッドは、与えられた視界ピラミッド内に含まれるOgreエンティティをすべて列挙する．
+</p>
+
+<p>
+探索結果には視野ピラミッド内のエンティティはすべて列挙されているが、その中には、エンティティが他のエンティティの影に隠れて見えないものも含まれている．それを除去するため、detectEntitiesBetweenAgent補助メソッドを使う．
+</p>
+
+<p>
+MainWindow::detectEntitiesBetweenAgents()は、2つのエンティティ名を引数に取り、それら2つのエンティティを結ぶ線分と交差するエンティティを列挙する．
+</p>
+
+<p>
+MainWindow::detectEntieiesInsideAgentFieldOfView()は、もともとの基準となったエージェント(=Agent1)と、その視界内に発見された物体(=Agent2)を引数としてこのメソッドをコールする．もし返り値に物体が1つでもあれば、Agent1からAgent2の視線上に障害物を持つことになるので、Agent2を結果のリストから除外する．このようにしてAgent1の視界内に入り、かつ他の物体に隠されないものだけが列挙される．
+</p>
+
+<p align="center">
+<img border="0" src="DetectEntities2.jpg">
+</p>
+
+
+<br><h3><a name="CaptureViewImage">captureViewImageの処理</a></h3>
+
+<p>
+ビューアがサービスプロバイダとして提供するもう一つのサービスが、エージェント視点から世界を眺めたスクリーンショットを撮影するCaptureViewImageサービスである．CaptureViewImageサービスの本体はMainWindow::getScrshotFromAgentEye()であるが、その前に初期化処理時に若干の準備を行っている．
+</p>
+
+<p>
+以下にまず準備段階での処理の流れ(MainWindow::setupOgreSystem()内)を示す．
+</p>
+
+<p align="center">
+<img border="0" src="CaptureViewImage1.jpg">
+</p>
+
+<p>
+Ogreのスクリーンショット撮影のしくみは少々変わっていて、まずレンダーシステムからテクスチャオブジェクトを作成する．このとき、テクスチャ名を明示的に与える．（SIGViewerではSCRSHOT_TEXTURE_NAMEで定義している）．後に、実際にスクリーンショットを撮るときは、このテクスチャ名が必要になる．
+</p>
+
+<p>
+テクスチャを作成したら、テクスチャにビューポートを追加する．このとき、カメラが必要になる．
+</p>
+
+
+<p>
+実際にスクリーンショットを撮るのはMainWindow::getScrshotFromAgentEye()である．
+</p>
+
+<p>
+面白いのは、テクスチャマネージャに対して、初期化時に用意したテクスチャ名を要求すると、その時点でのカメラからのスクリーンショットの「写し」が取られて、それがテクスチャとして返ってくる、というしくみである．（これはOgre独特のアーキテクチャと言える）
+</p>
+
+<p>
+テクスチャが取り出せれば、画像のビットパターンをそこから得るのは容易である．画像イメージはViewImageクラスのオブジェクト（Windows BMPフォーマット)として呼び出し元に返される．
+</p>
+
+<p align="center">
+<img border="0" src="CaptureViewImage2.jpg">
+</p>
+
+<br><h3><a name="GetNodeAtScreenCode">getNodeAtScreenCoordの処理</a></h3>
+
+<p>
+MainWindow::getNodeAtScreenCoord()はビューアのスクリーン上においてマウスでクリックした部分にある物体を特定するメソッドである．
+</p>
+
+<p align="center">
+<img border="0" src="GetNodeAtScreenCoord.jpg">
+</p>
+
+<p>
+メソッドの引数には、スクリーン上の座標(x, y)が与えられる．これはマウスでクリックした点の、画面上の座標である．
+</p>
+
+<p>
+スクリーン座標(x, y)と、カメラの座標から、OgreライブラリのRayオブジェクトとRaySceneQueryオブジェクトを作成する．RaySceneQueryの実行によりRayと交わるOgreエンティティを列挙する．
+</p>
+
+
+<br><h3><a name="VideoPlay">ビデオファイル再生、録画時の処理</a></h3>
+
+<p>
+ビデオ再生（録画）がGUIパネルにより指示された場合の処理は比較的単純で、ビデオ操作状態を示す状態変数(MainWindow::m_videoState)を「再生中」または「録画中」状態にセットするだけである．実際の再生・録画処理は、ビデオ処理用のタイマーのイベントハンドラで行われる．
+</p>
+
+
+<p align="center">
+<img border="0" src="VideoPlay.jpg">
+</p>
+
+
+<br><h3><a name="VideoTimerProc">ビデオ操作用タイマーのイベントハンドラの処理</a></h3>
+
+<p>
+ビデオ用タイマーのイベントハンドラでは、ビデオの「再生」「録画」状態に対する処理が行われる．
+</p>
+
+<p>
+「再生中」状態の場合、ビデオ記録ファイルから、現在のフレーム番号に対応する世界を復活させ、画面に表示させる．その後、フレーム番号をインクリメントする．フレーム番号が最終フレームに到達したらタイマーを停止させる．
+</p>
+
+<p>
+「録画中」状態の場合は、逆に現在表示中の世界をシリアライズし、バイナリデータに変換する．
+</p>
+
+<p align="center">
+<img border="0" src="VideoTimerProc.jpg">
+</p>
+
+<hr><address style="align: right;"><a href="http://www.msi.co.jp"><img src="msilogo.gif" align="middle" border=0
+
+width=139 height=53>（株）数理システム</a>
+</body>
+
+</html>

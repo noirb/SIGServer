@@ -1,0 +1,580 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGWorldEditor: WguPanel.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>WguPanel.h</h1><a href="_wgu_panel_8h.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef _WGU_WIN_PANEL_H_</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define _WGU_WIN_PANEL_H_</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include "<a class="code" href="_sgv_x_m_l_entity_8h.html">SgvXMLEntity.h</a>"</span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include "<a class="code" href="_sgv_x_m_l_entity_class_8h.html">SgvXMLEntityClass.h</a>"</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include "<a class="code" href="_sgv_x_m_l_world_8h.html">SgvXMLWorld.h</a>"</span>
+<a name="l00007"></a>00007 <span class="preprocessor">#include "<a class="code" href="_sgv_x_m_l_file_list_8h.html">SgvXMLFileList.h</a>"</span>
+<a name="l00008"></a>00008 <span class="preprocessor">#include "<a class="code" href="_sgv_humanoid_node_map_8h.html">SgvHumanoidNodeMap.h</a>"</span>
+<a name="l00009"></a>00009 <span class="preprocessor">#include "Ogre.h"</span>
+<a name="l00010"></a>00010 <span class="preprocessor">#include &lt;windows.h&gt;</span>
+<a name="l00011"></a>00011 <span class="preprocessor">#include &lt;vector&gt;</span>
+<a name="l00012"></a>00012 
+<a name="l00013"></a>00013 <span class="keyword">namespace </span>Sgv
+<a name="l00014"></a>00014 {
+<a name="l00015"></a>00015     <span class="keyword">class </span><a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a>;
+<a name="l00016"></a>00016         <span class="comment">// MainWindow *を引数に取るメソッドの宣言があるため</span>
+<a name="l00017"></a>00017         <span class="comment">// （コンパイルを通すためだけの処置）</span>
+<a name="l00018"></a>00018 }
+<a name="l00019"></a>00019 
+<a name="l00020"></a>00020 <span class="keyword">using namespace </span>Sgv;
+<a name="l00021"></a>00021 <span class="keyword">using namespace </span>Ogre;
+<a name="l00022"></a>00022 
+<a name="l00023"></a>00023 <span class="keyword">namespace </span>Wgu
+<a name="l00024"></a>00024 {<span class="comment"></span>
+<a name="l00025"></a>00025 <span class="comment">    ////////////////////////////////////////////////////////////////</span>
+<a name="l00026"></a>00026 <span class="comment"></span>    <span class="comment">//</span>
+<a name="l00027"></a>00027     <span class="comment">//  パネル用ウィンドウプロシージャの雛形</span>
+<a name="l00028"></a>00028     <span class="comment">//</span>
+<a name="l00029"></a>00029     <span class="keywordtype">int</span> CALLBACK <a class="code" href="namespace_wgu.html#ea854a8c3a79bc7ded44e37beb8d990a">PanelWndProc_None</a>(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+<a name="l00030"></a>00030     <span class="keywordtype">int</span> CALLBACK <a class="code" href="namespace_wgu.html#f715e00864fd44e434b34d5aa66ef0ef">PanelWndProc_Bottom_Msg</a>(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+<a name="l00031"></a>00031     <span class="keywordtype">int</span> CALLBACK <a class="code" href="namespace_wgu.html#b8429081766f0f8769d483b25da08612">PanelWndProc_Right_Entity</a>(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+<a name="l00032"></a>00032     <span class="keywordtype">int</span> CALLBACK <a class="code" href="namespace_wgu.html#2eaea06bbc5c053d3b6319dd607f4407">PanelWndProc_Right_Humanoid</a>(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+<a name="l00033"></a>00033 <span class="comment"></span>
+<a name="l00034"></a>00034 <span class="comment">    ////////////////////////////////////////////////////////////////</span>
+<a name="l00035"></a>00035 <span class="comment"></span>    <span class="comment">//</span><span class="comment"></span>
+<a name="l00036"></a>00036 <span class="comment">    /// @brief パネルプロシージャベースクラス</span>
+<a name="l00037"></a>00037 <span class="comment">    ///</span>
+<a name="l00038"></a><a class="code" href="class_wgu_1_1_base_panel_proc.html">00038</a> <span class="comment"></span>    <span class="keyword">class </span><a class="code" href="class_wgu_1_1_base_panel_proc.html" title="パネルプロシージャベースクラス">BasePanelProc</a>
+<a name="l00039"></a>00039     {
+<a name="l00040"></a>00040     <span class="keyword">public</span>:
+<a name="l00041"></a>00041         <span class="comment">// --------------------------------------------------------</span><span class="comment"></span>
+<a name="l00042"></a>00042 <span class="comment">        /// @brief コンストラクタ</span>
+<a name="l00043"></a>00043 <span class="comment"></span>        <span class="comment">// --------------------------------------------------------</span>
+<a name="l00044"></a><a class="code" href="class_wgu_1_1_base_panel_proc.html#3fb438be893f584886cab08e2e4ce4b7">00044</a>         <a class="code" href="class_wgu_1_1_base_panel_proc.html#3fb438be893f584886cab08e2e4ce4b7" title="コンストラクタ">BasePanelProc</a>() : <a class="code" href="class_wgu_1_1_base_panel_proc.html#c771583f588bac25c0a0703693890285">m_dlgProc</a>(NULL), <a class="code" href="class_wgu_1_1_base_panel_proc.html#9bf598ba438f440aee33fc0a7087f4c8">m_hwndPanel</a>(NULL) {}
+<a name="l00045"></a>00045         
+<a name="l00046"></a>00046         <span class="comment">// --------------------------------------------------------</span><span class="comment"></span>
+<a name="l00047"></a>00047 <span class="comment">        /// @brief ダイアログプロシージャをセットする</span>
+<a name="l00048"></a>00048 <span class="comment">        ///</span>
+<a name="l00049"></a>00049 <span class="comment">        /// @param dlgProc [i] ダイアログプロシージャへのポインタ</span>
+<a name="l00050"></a>00050 <span class="comment"></span>        <span class="comment">// --------------------------------------------------------</span>
+<a name="l00051"></a><a class="code" href="class_wgu_1_1_base_panel_proc.html#e05f1a58e62beaf4d43d67afd383c691">00051</a>         <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_base_panel_proc.html#e05f1a58e62beaf4d43d67afd383c691" title="ダイアログプロシージャをセットする">setDlgProc</a>(DLGPROC dlgProc) { <a class="code" href="class_wgu_1_1_base_panel_proc.html#c771583f588bac25c0a0703693890285">m_dlgProc</a> = dlgProc; }
+<a name="l00052"></a>00052 
+<a name="l00053"></a>00053         <span class="comment">// --------------------------------------------------------</span><span class="comment"></span>
+<a name="l00054"></a>00054 <span class="comment">        /// @brief ダイアログプロシージャを得る</span>
+<a name="l00055"></a>00055 <span class="comment">        ///</span>
+<a name="l00056"></a>00056 <span class="comment">        /// @return ダイアログプロシージャ</span>
+<a name="l00057"></a>00057 <span class="comment"></span>        <span class="comment">// --------------------------------------------------------</span>
+<a name="l00058"></a><a class="code" href="class_wgu_1_1_base_panel_proc.html#3d9f350a0fc473e71fd8a37f25a6efea">00058</a>         DLGPROC <a class="code" href="class_wgu_1_1_base_panel_proc.html#3d9f350a0fc473e71fd8a37f25a6efea" title="ダイアログプロシージャを得る">getDlgProc</a>() { <span class="keywordflow">return</span> <a class="code" href="class_wgu_1_1_base_panel_proc.html#c771583f588bac25c0a0703693890285">m_dlgProc</a>; }
+<a name="l00059"></a>00059 
+<a name="l00060"></a>00060         <span class="comment">// --------------------------------------------------------</span><span class="comment"></span>
+<a name="l00061"></a>00061 <span class="comment">        /// @brief パネルのウィンドウハンドルをセットする</span>
+<a name="l00062"></a>00062 <span class="comment">        ///</span>
+<a name="l00063"></a>00063 <span class="comment">        /// @param hwndPanel [i] パネルのウィンドウハンドル</span>
+<a name="l00064"></a>00064 <span class="comment"></span>        <span class="comment">// --------------------------------------------------------</span>
+<a name="l00065"></a><a class="code" href="class_wgu_1_1_base_panel_proc.html#e823afefeb217aeecc7563df08dfbf56">00065</a>         <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_base_panel_proc.html#e823afefeb217aeecc7563df08dfbf56" title="パネルのウィンドウハンドルをセットする">setPanelHWND</a>(HWND hwndPanel) { <a class="code" href="class_wgu_1_1_base_panel_proc.html#9bf598ba438f440aee33fc0a7087f4c8">m_hwndPanel</a> = hwndPanel; }
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067         <span class="comment">// --------------------------------------------------------</span><span class="comment"></span>
+<a name="l00068"></a>00068 <span class="comment">        /// @brief パネルのウィンドウハンドルを返す</span>
+<a name="l00069"></a>00069 <span class="comment">        ///</span>
+<a name="l00070"></a>00070 <span class="comment">        /// @return パネルのウィンドウハンドル</span>
+<a name="l00071"></a>00071 <span class="comment"></span>        <span class="comment">// --------------------------------------------------------</span>
+<a name="l00072"></a><a class="code" href="class_wgu_1_1_base_panel_proc.html#aced9dfd1f4e29563894a9858e4f1315">00072</a>         HWND <a class="code" href="class_wgu_1_1_base_panel_proc.html#aced9dfd1f4e29563894a9858e4f1315" title="パネルのウィンドウハンドルを返す">getPanelHWND</a>() { <span class="keywordflow">return</span> <a class="code" href="class_wgu_1_1_base_panel_proc.html#9bf598ba438f440aee33fc0a7087f4c8">m_hwndPanel</a>; }
+<a name="l00073"></a>00073 
+<a name="l00074"></a>00074     <span class="keyword">protected</span>:
+<a name="l00075"></a><a class="code" href="class_wgu_1_1_base_panel_proc.html#c771583f588bac25c0a0703693890285">00075</a>         DLGPROC <a class="code" href="class_wgu_1_1_base_panel_proc.html#c771583f588bac25c0a0703693890285">m_dlgProc</a>;
+<a name="l00076"></a><a class="code" href="class_wgu_1_1_base_panel_proc.html#9bf598ba438f440aee33fc0a7087f4c8">00076</a>         HWND <a class="code" href="class_wgu_1_1_base_panel_proc.html#9bf598ba438f440aee33fc0a7087f4c8">m_hwndPanel</a>;
+<a name="l00077"></a>00077     };
+<a name="l00078"></a>00078 <span class="comment"></span>
+<a name="l00079"></a>00079 <span class="comment">    ////////////////////////////////////////////////////////////////</span>
+<a name="l00080"></a>00080 <span class="comment"></span>    <span class="comment">//</span><span class="comment"></span>
+<a name="l00081"></a>00081 <span class="comment">    /// @brief パネルプロシージャクラス（右パネル：エンティティ）</span>
+<a name="l00082"></a>00082 <span class="comment">    ///</span>
+<a name="l00083"></a><a class="code" href="class_wgu_1_1_right_panel_proc___entity.html">00083</a> <span class="comment"></span>    <span class="keyword">class </span><a class="code" href="class_wgu_1_1_right_panel_proc___entity.html" title="パネルプロシージャクラス（右パネル：エンティティ）">RightPanelProc_Entity</a> : <span class="keyword">public</span> <a class="code" href="class_wgu_1_1_base_panel_proc.html" title="パネルプロシージャベースクラス">BasePanelProc</a>
+<a name="l00084"></a>00084     {
+<a name="l00085"></a>00085     <span class="keyword">public</span>:
+<a name="l00086"></a>00086         <span class="comment">// --------------------------------------------------------</span><span class="comment"></span>
+<a name="l00087"></a>00087 <span class="comment">        /// @brief クラス名一覧リストボックスの内容をセットする</span>
+<a name="l00088"></a>00088 <span class="comment">        /// （EntityとAgentクラスは除く）</span>
+<a name="l00089"></a>00089 <span class="comment">        ///</span>
+<a name="l00090"></a>00090 <span class="comment">        /// @param win [i] メインウィンドウ</span>
+<a name="l00091"></a>00091 <span class="comment"></span>        <span class="comment">// --------------------------------------------------------</span>
+<a name="l00092"></a>00092         <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_right_panel_proc___entity.html#4aa3519118eb969a55b9387219c35788" title="クラス名一覧リストボックスの内容をセットする （EntityとAgentクラスは除�...">setClassList</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win);
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094         <span class="comment">// --------------------------------------------------------</span><span class="comment"></span>
+<a name="l00095"></a>00095 <span class="comment">        /// @brief 現在選択中のクラス名を得る</span>
+<a name="l00096"></a>00096 <span class="comment"></span>        <span class="comment">// --------------------------------------------------------</span>
+<a name="l00097"></a>00097         std::string <a class="code" href="class_wgu_1_1_right_panel_proc___entity.html#a79ad51d6c90150d392f52db3777b516" title="現在選択中のクラス名を得る">getSelectedEntityClassName</a>();
+<a name="l00098"></a>00098 
+<a name="l00099"></a>00099         <span class="comment">// --------------------------------------------------------</span><span class="comment"></span>
+<a name="l00100"></a>00100 <span class="comment">        /// @brief 現在選択中のエンティティ名を得る</span>
+<a name="l00101"></a>00101 <span class="comment"></span>        <span class="comment">// --------------------------------------------------------</span>
+<a name="l00102"></a>00102         std::string <a class="code" href="class_wgu_1_1_right_panel_proc___entity.html#6994423bef14f81b293c28bdc5c28c64" title="現在選択中のエンティティ名を得る">getSelectedEntityName</a>();
+<a name="l00103"></a>00103 
+<a name="l00104"></a>00104         <span class="comment">// --------------------------------------------------------</span><span class="comment"></span>
+<a name="l00105"></a>00105 <span class="comment">        /// @brief 現在選択中の属性名を得る</span>
+<a name="l00106"></a>00106 <span class="comment"></span>        <span class="comment">// --------------------------------------------------------</span>
+<a name="l00107"></a>00107         std::string <a class="code" href="class_wgu_1_1_right_panel_proc___entity.html#7f2707a1576e579e6d9c0c0c94bbd2dd" title="現在選択中の属性名を得る">getSelectedAttrName</a>();
+<a name="l00108"></a>00108 
+<a name="l00109"></a>00109         <span class="comment">// --------------------------------------------------------</span><span class="comment"></span>
+<a name="l00110"></a>00110 <span class="comment">        /// @brief エンティティ名選択コンボボックスをクリアする</span>
+<a name="l00111"></a>00111 <span class="comment"></span>        <span class="comment">// --------------------------------------------------------</span>
+<a name="l00112"></a>00112         <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_right_panel_proc___entity.html#b6432c547320b84e16d18205cc9de319" title="エンティティ名選択コンボボックスをクリアする">clearEntityNameSelector</a>();
+<a name="l00113"></a>00113 
+<a name="l00114"></a>00114         <span class="comment">// ------------------------------------------------------------</span><span class="comment"></span>
+<a name="l00115"></a>00115 <span class="comment">        /// @brief エンティティ名選択コンボボックスに新しいエンティティ名を追加する</span>
+<a name="l00116"></a>00116 <span class="comment">        /// さらに追加したエンティティ名を選択状態にする</span>
+<a name="l00117"></a>00117 <span class="comment">        ///</span>
+<a name="l00118"></a>00118 <span class="comment">        /// @param entName [i] エンティティ名</span>
+<a name="l00119"></a>00119 <span class="comment"></span>        <span class="comment">// ------------------------------------------------------------</span>
+<a name="l00120"></a>00120         <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_right_panel_proc___entity.html#a5326532c49357b993214f6ba5697692" title="エンティティ名選択コンボボックスに新しいエンティティ名を追�...">addNewEntityNameToEntityNameSelector</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *entName);
+<a name="l00121"></a>00121 
+<a name="l00122"></a>00122         <span class="comment">// ------------------------------------------------------------</span><span class="comment"></span>
+<a name="l00123"></a>00123 <span class="comment">        /// @brief エンティティ名選択コンボボックスからエンティティ名を削除する</span>
+<a name="l00124"></a>00124 <span class="comment">        ///</span>
+<a name="l00125"></a>00125 <span class="comment">        /// @param entName [i] エンティティ名</span>
+<a name="l00126"></a>00126 <span class="comment"></span>        <span class="comment">// ------------------------------------------------------------</span>
+<a name="l00127"></a>00127         <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_right_panel_proc___entity.html#53af5e75dbff6731205b5b32e3ea128e" title="エンティティ名選択コンボボックスからエンティティ名を削除する...">deleteEntityNameFromEntityNameSelector</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *entName);
+<a name="l00128"></a>00128 
+<a name="l00129"></a>00129         <span class="comment">// ------------------------------------------------------------</span><span class="comment"></span>
+<a name="l00130"></a>00130 <span class="comment">        /// @brief エンティティ名選択コンボボックスで</span>
+<a name="l00131"></a>00131 <span class="comment">        /// 指定エンティティ名を選択状態にする</span>
+<a name="l00132"></a>00132 <span class="comment">        ///</span>
+<a name="l00133"></a>00133 <span class="comment">        /// @param entName [i] エンティティ名</span>
+<a name="l00134"></a>00134 <span class="comment"></span>        <span class="comment">// ------------------------------------------------------------</span>
+<a name="l00135"></a>00135         <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_right_panel_proc___entity.html#8c7376b431208f66afb7f1fc9b2eb21d" title="エンティティ名選択コンボボックスで 指定エンティティ名を選択状態にす...">selectEntityNameOnEntityNameSelector</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *entName);
+<a name="l00136"></a>00136 
+<a name="l00137"></a>00137         <span class="comment">// --------------------------------------------------------</span><span class="comment"></span>
+<a name="l00138"></a>00138 <span class="comment">        /// @brief エンティティの持つ属性を表示する</span>
+<a name="l00139"></a>00139 <span class="comment">        ///</span>
+<a name="l00140"></a>00140 <span class="comment">        /// @param win [i] メインウィンドウ</span>
+<a name="l00141"></a>00141 <span class="comment">        /// @param ent [i] エンティティ</span>
+<a name="l00142"></a>00142 <span class="comment"></span>        <span class="comment">// --------------------------------------------------------</span>
+<a name="l00143"></a>00143         <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_right_panel_proc___entity.html#5ffdf1a1ab7fbdc49978279efa0930ff" title="エンティティの持つ属性を表示する">showEntityAttributes</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win, <a class="code" href="class_sgv_1_1_x_m_l_entity.html" title="XMLエンティティ.">XMLEntity</a> *ent);
+<a name="l00144"></a>00144 
+<a name="l00145"></a>00145         <span class="comment">// --------------------------------------------------------</span><span class="comment"></span>
+<a name="l00146"></a>00146 <span class="comment">        /// @brief エンティティの属性値を表示する</span>
+<a name="l00147"></a>00147 <span class="comment">        ///</span>
+<a name="l00148"></a>00148 <span class="comment">        /// @param win [i] メインウィンドウ</span>
+<a name="l00149"></a>00149 <span class="comment">        /// @param ent [i] エンティティ</span>
+<a name="l00150"></a>00150 <span class="comment">        /// @param attrName [i] 表示する属性名</span>
+<a name="l00151"></a>00151 <span class="comment"></span>        <span class="comment">// --------------------------------------------------------</span>
+<a name="l00152"></a>00152         <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_right_panel_proc___entity.html#8adcf03bb2bd7c93fd8c43681a0d151d" title="エンティティの属性値を表示する">showEntityAttributeValue</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win, <a class="code" href="class_sgv_1_1_x_m_l_entity.html" title="XMLエンティティ.">XMLEntity</a> *ent, <span class="keyword">const</span> <span class="keywordtype">char</span> *attrName);
+<a name="l00153"></a>00153 
+<a name="l00154"></a>00154         <span class="comment">// --------------------------------------------------------</span><span class="comment"></span>
+<a name="l00155"></a>00155 <span class="comment">        /// @brief エディットボックスからエンティティの属性値を得る</span>
+<a name="l00156"></a>00156 <span class="comment">        ///</span>
+<a name="l00157"></a>00157 <span class="comment">        /// @return 属性値</span>
+<a name="l00158"></a>00158 <span class="comment"></span>        <span class="comment">// --------------------------------------------------------</span>
+<a name="l00159"></a>00159         std::string <a class="code" href="class_wgu_1_1_right_panel_proc___entity.html#75ef283768fa985774db8857d983fa80" title="エディットボックスからエンティティの属性値を得る">getAttrValue</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win);
+<a name="l00160"></a>00160 
+<a name="l00161"></a>00161         <span class="comment">// --------------------------------------------------------</span><span class="comment"></span>
+<a name="l00162"></a>00162 <span class="comment">        /// @brief エンティティの位置、方向を専用のエディットボックスに表示する</span>
+<a name="l00163"></a>00163 <span class="comment">        ///</span>
+<a name="l00164"></a>00164 <span class="comment">        /// @param ent [i] エンティティ</span>
+<a name="l00165"></a>00165 <span class="comment"></span>        <span class="comment">// --------------------------------------------------------</span>
+<a name="l00166"></a>00166         <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_right_panel_proc___entity.html#d851338f7746593ee99e13739a793f0d" title="エンティティの位置、方向を専用のエディットボックスに表示する...">showEntityPosAndOrientation</a>(<a class="code" href="class_sgv_1_1_x_m_l_entity.html" title="XMLエンティティ.">XMLEntity</a> *ent);
+<a name="l00167"></a>00167 
+<a name="l00168"></a>00168         <span class="comment">// --------------------------------------------------------</span><span class="comment"></span>
+<a name="l00169"></a>00169 <span class="comment">        /// @brief エンティティの位置、方向を専用のエディットボックスに表示する</span>
+<a name="l00170"></a>00170 <span class="comment">        ///</span>
+<a name="l00171"></a>00171 <span class="comment">        /// @param pos [i] エンティティの位置</span>
+<a name="l00172"></a>00172 <span class="comment">        /// @param q [i] エンティティの方向</span>
+<a name="l00173"></a>00173 <span class="comment"></span>        <span class="comment">// --------------------------------------------------------</span>
+<a name="l00174"></a>00174         <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_right_panel_proc___entity.html#d851338f7746593ee99e13739a793f0d" title="エンティティの位置、方向を専用のエディットボックスに表示する...">showEntityPosAndOrientation</a>(Vector3 pos, Quaternion q);
+<a name="l00175"></a>00175 
+<a name="l00176"></a>00176         <span class="comment">// ============================================================</span>
+<a name="l00177"></a>00177         <span class="comment">//  イベントハンドラ</span>
+<a name="l00178"></a>00178         <span class="comment">// ============================================================</span>
+<a name="l00179"></a>00179 
+<a name="l00180"></a>00180         <span class="comment">// -------------------------------------------------------</span><span class="comment"></span>
+<a name="l00181"></a>00181 <span class="comment">        /// @brief エンティティ名選択コンボボックスが変わった</span>
+<a name="l00182"></a>00182 <span class="comment">        ///</span>
+<a name="l00183"></a>00183 <span class="comment">        /// @param win [i] メインウィンドウ</span>
+<a name="l00184"></a>00184 <span class="comment"></span>        <span class="comment">// -------------------------------------------------------</span>
+<a name="l00185"></a>00185         <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_right_panel_proc___entity.html#5de7229c1df89377c7bc243d870e6a27" title="エンティティ名選択コンボボックスが変わった">onSelChange_EntityName</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win);
+<a name="l00186"></a>00186 
+<a name="l00187"></a>00187         <span class="comment">// -------------------------------------------------------</span><span class="comment"></span>
+<a name="l00188"></a>00188 <span class="comment">        /// @brief 属性選択リストボックスが選択された</span>
+<a name="l00189"></a>00189 <span class="comment">        ///</span>
+<a name="l00190"></a>00190 <span class="comment">        /// @param win [i] メインウィンドウ</span>
+<a name="l00191"></a>00191 <span class="comment"></span>        <span class="comment">// -------------------------------------------------------</span>
+<a name="l00192"></a>00192         <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_right_panel_proc___entity.html#6750a3f45480b29785fac4d8fdace466" title="属性選択リストボックスが選択された">onSelChange_Attrs</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win);
+<a name="l00193"></a>00193 
+<a name="l00194"></a>00194         <span class="comment">// -------------------------------------------------------</span><span class="comment"></span>
+<a name="l00195"></a>00195 <span class="comment">        /// @brief 属性値設定ボタンが押された</span>
+<a name="l00196"></a>00196 <span class="comment">        ///</span>
+<a name="l00197"></a>00197 <span class="comment">        /// @param win [i] メインウィンドウ</span>
+<a name="l00198"></a>00198 <span class="comment"></span>        <span class="comment">// -------------------------------------------------------</span>
+<a name="l00199"></a>00199         <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_right_panel_proc___entity.html#09b66e194ba4acdf3417f5ff5b1c1c0b" title="属性値設定ボタンが押された">onButtonPress_SetValue</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win);
+<a name="l00200"></a>00200 
+<a name="l00201"></a>00201         <span class="comment">// -------------------------------------------------------</span><span class="comment"></span>
+<a name="l00202"></a>00202 <span class="comment">        /// @brief 位置設定ボタンが押された</span>
+<a name="l00203"></a>00203 <span class="comment">        ///</span>
+<a name="l00204"></a>00204 <span class="comment">        /// @param win [i] メインウィンドウ</span>
+<a name="l00205"></a>00205 <span class="comment"></span>        <span class="comment">// -------------------------------------------------------</span>
+<a name="l00206"></a>00206         <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_right_panel_proc___entity.html#f480fdb53d1294ddc2d442b117e67249" title="位置設定ボタンが押された">onButtonPress_SetPosition</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win);
+<a name="l00207"></a>00207 
+<a name="l00208"></a>00208         <span class="comment">// -------------------------------------------------------</span><span class="comment"></span>
+<a name="l00209"></a>00209 <span class="comment">        /// @brief 方向設定ボタンが押された</span>
+<a name="l00210"></a>00210 <span class="comment">        ///</span>
+<a name="l00211"></a>00211 <span class="comment">        /// @param win [i] メインウィンドウ</span>
+<a name="l00212"></a>00212 <span class="comment"></span>        <span class="comment">// -------------------------------------------------------</span>
+<a name="l00213"></a>00213         <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_right_panel_proc___entity.html#b163167e92f42187a22f95e2e9bc9dda" title="方向設定ボタンが押された">onButtonPress_SetOrientation</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win);
+<a name="l00214"></a>00214     };
+<a name="l00215"></a>00215 <span class="comment"></span>
+<a name="l00216"></a>00216 <span class="comment">    ////////////////////////////////////////////////////////////////</span>
+<a name="l00217"></a>00217 <span class="comment"></span>    <span class="comment">//</span><span class="comment"></span>
+<a name="l00218"></a>00218 <span class="comment">    /// @brief パネルプロシージャクラス（右パネル：ヒューマノイド）</span>
+<a name="l00219"></a>00219 <span class="comment">    ///</span>
+<a name="l00220"></a><a class="code" href="class_wgu_1_1_right_panel_proc___humanoid.html">00220</a> <span class="comment"></span>    <span class="keyword">class </span><a class="code" href="class_wgu_1_1_right_panel_proc___humanoid.html" title="パネルプロシージャクラス（右パネル：ヒューマノイド）">RightPanelProc_Humanoid</a> : <span class="keyword">public</span> <a class="code" href="class_wgu_1_1_base_panel_proc.html" title="パネルプロシージャベースクラス">BasePanelProc</a>
+<a name="l00221"></a>00221     {
+<a name="l00222"></a>00222     <span class="keyword">public</span>:
+<a name="l00223"></a>00223         <span class="comment">// --------------------------------------------------------</span><span class="comment"></span>
+<a name="l00224"></a>00224 <span class="comment">        /// @brief ジョイント情報をセットする</span>
+<a name="l00225"></a>00225 <span class="comment">        ///</span>
+<a name="l00226"></a>00226 <span class="comment">        /// @param entName [i] （ヒューマノイド）エンティティ名</span>
+<a name="l00227"></a>00227 <span class="comment">        /// @param pNodeMap [i] ノードマップ</span>
+<a name="l00228"></a>00228 <span class="comment">        ///（ヒューマノイドエンティティの持つジョイント名と対応するOgreノードのマップ）</span>
+<a name="l00229"></a>00229 <span class="comment"></span>        <span class="comment">// --------------------------------------------------------</span>
+<a name="l00230"></a>00230         <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_right_panel_proc___humanoid.html#119d7c8e7adf39dc512b58a3f4ff2b14" title="ジョイント情報をセットする">setInfo</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *entName, <a class="code" href="class_sgv_1_1_humanoid_node_map.html" title="ヒューマノイド形状における、ジョイント名、パーツ名と それらに対応す...">HumanoidNodeMap</a> *pNodeMap);
+<a name="l00231"></a>00231 
+<a name="l00232"></a>00232         <span class="comment">// --------------------------------------------------------</span><span class="comment"></span>
+<a name="l00233"></a>00233 <span class="comment">        /// @brief ジョイント位置、方向を表示する</span>
+<a name="l00234"></a>00234 <span class="comment">        ///</span>
+<a name="l00235"></a>00235 <span class="comment">        /// @param pos [i] 位置</span>
+<a name="l00236"></a>00236 <span class="comment">        /// @param q [i] 方向</span>
+<a name="l00237"></a>00237 <span class="comment"></span>        <span class="comment">// --------------------------------------------------------</span>
+<a name="l00238"></a>00238         <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_right_panel_proc___humanoid.html#1dbfb08a6bf93acaf43b5e96f2c81c70" title="ジョイント位置、方向を表示する">showJointPosAndOrientation</a>(Vector3 pos, Quaternion q);
+<a name="l00239"></a>00239 
+<a name="l00240"></a>00240         <span class="comment">// --------------------------------------------------------</span><span class="comment"></span>
+<a name="l00241"></a>00241 <span class="comment">        /// @brief 現在選択されているジョイントの位置、方向の値を再描画する</span>
+<a name="l00242"></a>00242 <span class="comment">        ///</span>
+<a name="l00243"></a>00243 <span class="comment">        /// @param win [i] メインウィンドウ</span>
+<a name="l00244"></a>00244 <span class="comment"></span>        <span class="comment">// --------------------------------------------------------</span>
+<a name="l00245"></a>00245         <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_right_panel_proc___humanoid.html#e49211f4ff6b1b61f9582738e04d443a" title="現在選択されているジョイントの位置、方向の値を再描画する...">redrawCurrSelectedJointPosAndOrientation</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win);
+<a name="l00246"></a>00246 
+<a name="l00247"></a>00247         <span class="comment">// --------------------------------------------------------</span><span class="comment"></span>
+<a name="l00248"></a>00248 <span class="comment">        /// @brief 現在選択されているエンティティ名を返す</span>
+<a name="l00249"></a>00249 <span class="comment">        ///</span>
+<a name="l00250"></a>00250 <span class="comment">        /// @return エンティティ名</span>
+<a name="l00251"></a>00251 <span class="comment"></span>        <span class="comment">// --------------------------------------------------------</span>
+<a name="l00252"></a>00252         std::string <a class="code" href="class_wgu_1_1_right_panel_proc___humanoid.html#a96d6461542f8c9fb66d6579fd623785" title="現在選択されているエンティティ名を返す">getSelectedEntityName</a>();
+<a name="l00253"></a>00253 
+<a name="l00254"></a>00254         <span class="comment">// --------------------------------------------------------</span><span class="comment"></span>
+<a name="l00255"></a>00255 <span class="comment">        /// @brief 現在選択されているジョイント名を返す</span>
+<a name="l00256"></a>00256 <span class="comment">        ///</span>
+<a name="l00257"></a>00257 <span class="comment">        /// @param jointName [o] ジョイント名</span>
+<a name="l00258"></a>00258 <span class="comment">        ///</span>
+<a name="l00259"></a>00259 <span class="comment">        /// @return true(=成功), false(=選択されているジョイントがない)</span>
+<a name="l00260"></a>00260 <span class="comment"></span>        <span class="comment">// --------------------------------------------------------</span>
+<a name="l00261"></a>00261         <span class="keywordtype">bool</span> <a class="code" href="class_wgu_1_1_right_panel_proc___humanoid.html#fbf06ab5a490cd15c3a04f880f44fef0" title="現在選択されているジョイント名を返す">getSelectedJointName</a>(std::string &amp;jointName);
+<a name="l00262"></a>00262 
+<a name="l00263"></a>00263         <span class="comment">// --------------------------------------------------------</span><span class="comment"></span>
+<a name="l00264"></a>00264 <span class="comment">        /// @brief ジョイント位置と方向を得る</span>
+<a name="l00265"></a>00265 <span class="comment">        ///</span>
+<a name="l00266"></a>00266 <span class="comment">        /// @param pos [o] 位置</span>
+<a name="l00267"></a>00267 <span class="comment">        /// @param q [o] 方向</span>
+<a name="l00268"></a>00268 <span class="comment">        ///</span>
+<a name="l00269"></a>00269 <span class="comment">        /// @return true(=成功), false(=失敗. 入力値をパースできなかった)</span>
+<a name="l00270"></a>00270 <span class="comment"></span>        <span class="comment">// --------------------------------------------------------</span>
+<a name="l00271"></a>00271         <span class="keywordtype">bool</span> <a class="code" href="class_wgu_1_1_right_panel_proc___humanoid.html#f166dcd78d8f6b92a3a76bd3a05442f3" title="ジョイント位置と方向を得る">getJointPosAndOrientation</a>(Vector3&amp; pos, Quaternion&amp; q);
+<a name="l00272"></a>00272 
+<a name="l00273"></a>00273         <span class="comment">// ============================================================</span>
+<a name="l00274"></a>00274         <span class="comment">//  イベントハンドラ</span>
+<a name="l00275"></a>00275         <span class="comment">// ============================================================</span>
+<a name="l00276"></a>00276 
+<a name="l00277"></a>00277         <span class="comment">// -------------------------------------------------------</span><span class="comment"></span>
+<a name="l00278"></a>00278 <span class="comment">        /// @brief ジョイントリストの選択項目が変わった</span>
+<a name="l00279"></a>00279 <span class="comment">        ///</span>
+<a name="l00280"></a>00280 <span class="comment">        /// @param win [i] メインウィンドウ</span>
+<a name="l00281"></a>00281 <span class="comment"></span>        <span class="comment">// -------------------------------------------------------</span>
+<a name="l00282"></a>00282         <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_right_panel_proc___humanoid.html#53be0700329604249f94728d83a14fb2" title="ジョイントリストの選択項目が変わった">onSelChange_JointList</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win);
+<a name="l00283"></a>00283 
+<a name="l00284"></a>00284         <span class="comment">// -------------------------------------------------------</span><span class="comment"></span>
+<a name="l00285"></a>00285 <span class="comment">        /// @brief ジョイントパラメータ設定ボタンが押された</span>
+<a name="l00286"></a>00286 <span class="comment">        ///</span>
+<a name="l00287"></a>00287 <span class="comment">        /// @param win [i] メインウィンドウ</span>
+<a name="l00288"></a>00288 <span class="comment"></span>        <span class="comment">// -------------------------------------------------------</span>
+<a name="l00289"></a>00289         <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_right_panel_proc___humanoid.html#04df27d1a7815dce6d78b10855d835f7" title="ジョイントパラメータ設定ボタンが押された">onButtonPress_SetJointParam</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win);
+<a name="l00290"></a>00290 
+<a name="l00291"></a>00291         <span class="comment">// -------------------------------------------------------</span><span class="comment"></span>
+<a name="l00292"></a>00292 <span class="comment">        /// @brief ジョイント情報ファイル出力ボタンが押された</span>
+<a name="l00293"></a>00293 <span class="comment">        ///</span>
+<a name="l00294"></a>00294 <span class="comment">        /// @param win [i] メインウィンドウ</span>
+<a name="l00295"></a>00295 <span class="comment"></span>        <span class="comment">// -------------------------------------------------------</span>
+<a name="l00296"></a>00296         <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_right_panel_proc___humanoid.html#5ec29e71697ec3403fd1b730b7c04a48" title="ジョイント情報ファイル出力ボタンが押された">onButtonPress_WriteJointInfo</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win);
+<a name="l00297"></a>00297     };
+<a name="l00298"></a>00298 <span class="comment"></span>
+<a name="l00299"></a>00299 <span class="comment">    ////////////////////////////////////////////////////////////////</span>
+<a name="l00300"></a>00300 <span class="comment"></span>    <span class="comment">//</span><span class="comment"></span>
+<a name="l00301"></a>00301 <span class="comment">    /// @brief パネルプロシージャクラス（下部パネル：メッセージ）</span>
+<a name="l00302"></a>00302 <span class="comment">    ///</span>
+<a name="l00303"></a><a class="code" href="class_wgu_1_1_bottom_panel_proc___msg.html">00303</a> <span class="comment"></span>    <span class="keyword">class </span><a class="code" href="class_wgu_1_1_bottom_panel_proc___msg.html" title="パネルプロシージャクラス（下部パネル：メッセージ）">BottomPanelProc_Msg</a> : <span class="keyword">public</span> <a class="code" href="class_wgu_1_1_base_panel_proc.html" title="パネルプロシージャベースクラス">BasePanelProc</a>
+<a name="l00304"></a>00304     {
+<a name="l00305"></a>00305     <span class="keyword">public</span>:
+<a name="l00306"></a>00306         <span class="comment">// --------------------------------------------------------</span><span class="comment"></span>
+<a name="l00307"></a>00307 <span class="comment">        /// @brief コントロールの表示状態の初期化</span>
+<a name="l00308"></a>00308 <span class="comment">        ///</span>
+<a name="l00309"></a>00309 <span class="comment">        /// @param bShowTestControls [i] テスト用GUIコントロールの表示フラグ</span>
+<a name="l00310"></a>00310 <span class="comment"></span>        <span class="comment">// --------------------------------------------------------</span>
+<a name="l00311"></a>00311         <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_bottom_panel_proc___msg.html#d14ff7b30ac4d2eaf5a3dc5a9b0e0f5a" title="コントロールの表示状態の初期化">init</a>(<span class="keywordtype">bool</span> bShowTestControls);
+<a name="l00312"></a>00312 
+<a name="l00313"></a>00313         <span class="comment">// --------------------------------------------------------</span><span class="comment"></span>
+<a name="l00314"></a>00314 <span class="comment">        /// @brief 世界名をエディットコントロールにセットする</span>
+<a name="l00315"></a>00315 <span class="comment">        ///</span>
+<a name="l00316"></a>00316 <span class="comment">        /// @param worldName [i] 世界名</span>
+<a name="l00317"></a>00317 <span class="comment"></span>        <span class="comment">// -------------------------------------------------------</span>
+<a name="l00318"></a>00318         <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_bottom_panel_proc___msg.html#709941808c9e56814179bfabc73fce18" title="世界名をエディットコントロールにセットする">setWorldName</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *worldName);
+<a name="l00319"></a>00319 
+<a name="l00320"></a>00320         <span class="comment">// --------------------------------------------------------</span><span class="comment"></span>
+<a name="l00321"></a>00321 <span class="comment">        /// @brief 世界名をエディットコントロールから取得する</span>
+<a name="l00322"></a>00322 <span class="comment">        ///</span>
+<a name="l00323"></a>00323 <span class="comment">        /// @return 世界名</span>
+<a name="l00324"></a>00324 <span class="comment"></span>        <span class="comment">// -------------------------------------------------------</span>
+<a name="l00325"></a>00325         std::string <a class="code" href="class_wgu_1_1_bottom_panel_proc___msg.html#43493a3ba1b07dffa3459e1811de48f1" title="世界名をエディットコントロールから取得する">getWorldName</a>();
+<a name="l00326"></a>00326 
+<a name="l00327"></a>00327         <span class="comment">// -------------------------------------------------------</span><span class="comment"></span>
+<a name="l00328"></a>00328 <span class="comment">        /// @brief 現在編集中の世界がセーブされていなければセーブを即すダイアログを出す</span>
+<a name="l00329"></a>00329 <span class="comment">        /// セーブすると答えればセーブする</span>
+<a name="l00330"></a>00330 <span class="comment">        ///</span>
+<a name="l00331"></a>00331 <span class="comment">        /// @return true(=次に進んでよい), false(=キャンセルボタンが押された)</span>
+<a name="l00332"></a>00332 <span class="comment"></span>        <span class="comment">// -------------------------------------------------------</span>
+<a name="l00333"></a>00333         <span class="keywordtype">bool</span> <a class="code" href="class_wgu_1_1_bottom_panel_proc___msg.html#fa3777da188f86c9fcc4cabcafd3518d" title="現在編集中の世界がセーブされていなければセーブを即すダイアログを出�...">saveWorldIfModified</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win);
+<a name="l00334"></a>00334 
+<a name="l00335"></a>00335         <span class="comment">// ============================================================</span>
+<a name="l00336"></a>00336         <span class="comment">//  イベントハンドラ</span>
+<a name="l00337"></a>00337         <span class="comment">// ============================================================</span>
+<a name="l00338"></a>00338 
+<a name="l00339"></a>00339         <span class="comment">// -------------------------------------------------------</span><span class="comment"></span>
+<a name="l00340"></a>00340 <span class="comment">        /// @brief 新規世界作成ボタンが押された</span>
+<a name="l00341"></a>00341 <span class="comment">        ///</span>
+<a name="l00342"></a>00342 <span class="comment">        /// @param win [i] メインウィンドウ</span>
+<a name="l00343"></a>00343 <span class="comment"></span>        <span class="comment">// -------------------------------------------------------</span>
+<a name="l00344"></a>00344         <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_bottom_panel_proc___msg.html#cd02955fa94eefdb0b74fb4efed0649a" title="新規世界作成ボタンが押された">onCreateNewWorld</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win);
+<a name="l00345"></a>00345 
+<a name="l00346"></a>00346         <span class="comment">// -------------------------------------------------------</span><span class="comment"></span>
+<a name="l00347"></a>00347 <span class="comment">        /// @brief 世界XMLロードボタンが押された</span>
+<a name="l00348"></a>00348 <span class="comment">        ///</span>
+<a name="l00349"></a>00349 <span class="comment">        /// @param win [i] メインウィンドウ</span>
+<a name="l00350"></a>00350 <span class="comment"></span>        <span class="comment">// -------------------------------------------------------</span>
+<a name="l00351"></a>00351         <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_bottom_panel_proc___msg.html#3f03a765cb59eb5a40739a7ee3c3303d" title="世界XMLロードボタンが押された">onLoadWorldXML</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win);
+<a name="l00352"></a>00352 
+<a name="l00353"></a>00353         <span class="comment">// -------------------------------------------------------</span><span class="comment"></span>
+<a name="l00354"></a>00354 <span class="comment">        /// @brief 世界XMLセーブボタンが押された</span>
+<a name="l00355"></a>00355 <span class="comment">        ///</span>
+<a name="l00356"></a>00356 <span class="comment">        /// @param win [i] メインウィンドウ</span>
+<a name="l00357"></a>00357 <span class="comment">        ///</span>
+<a name="l00358"></a>00358 <span class="comment">        /// @return true(=セーブ完了), false(=セーブ失敗)</span>
+<a name="l00359"></a>00359 <span class="comment"></span>        <span class="comment">// -------------------------------------------------------</span>
+<a name="l00360"></a>00360         <span class="keywordtype">bool</span> <a class="code" href="class_wgu_1_1_bottom_panel_proc___msg.html#158c70e46080b29e54f3a8d8b3d4298a" title="世界XMLセーブボタンが押された">onSaveWorldXML</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win);
+<a name="l00361"></a>00361 
+<a name="l00362"></a>00362         <span class="comment">// -------------------------------------------------------</span><span class="comment"></span>
+<a name="l00363"></a>00363 <span class="comment">        /// @brief 世界XMLセーブボタンが押された</span>
+<a name="l00364"></a>00364 <span class="comment">        ///</span>
+<a name="l00365"></a>00365 <span class="comment">        /// @param win [i] メインウィンドウ</span>
+<a name="l00366"></a>00366 <span class="comment">        ///</span>
+<a name="l00367"></a>00367 <span class="comment">        /// @return true(=セーブ完了), false(=セーブ失敗)</span>
+<a name="l00368"></a>00368 <span class="comment"></span>        <span class="comment">// -------------------------------------------------------</span>
+<a name="l00369"></a>00369         <span class="keywordtype">bool</span> <a class="code" href="class_wgu_1_1_bottom_panel_proc___msg.html#2c930def27316e934f9bc43f6326d8c0" title="世界XMLセーブボタンが押された">onSaveAsWorldXML</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win);
+<a name="l00370"></a>00370 
+<a name="l00371"></a>00371         <span class="comment">// -------------------------------------------------------</span><span class="comment"></span>
+<a name="l00372"></a>00372 <span class="comment">        /// @brief クラスエディタ起動ボタンが押された</span>
+<a name="l00373"></a>00373 <span class="comment">        ///</span>
+<a name="l00374"></a>00374 <span class="comment">        /// @param win [i] メインウィンドウ</span>
+<a name="l00375"></a>00375 <span class="comment"></span>        <span class="comment">// -------------------------------------------------------</span>
+<a name="l00376"></a>00376         <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_bottom_panel_proc___msg.html#bbeed728594759d3b3dd24bc77485349" title="クラスエディタ起動ボタンが押された">onLaunchClassEditor</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win);
+<a name="l00377"></a>00377 
+<a name="l00378"></a>00378         <span class="comment">// -------------------------------------------------------</span><span class="comment"></span>
+<a name="l00379"></a>00379 <span class="comment">        /// @brief テストコード実行ボタンが押された</span>
+<a name="l00380"></a>00380 <span class="comment">        ///</span>
+<a name="l00381"></a>00381 <span class="comment">        /// @param win [i] メインウィンドウ</span>
+<a name="l00382"></a>00382 <span class="comment"></span>        <span class="comment">// -------------------------------------------------------</span>
+<a name="l00383"></a>00383         <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_bottom_panel_proc___msg.html#364af03c29338ec21226bcb8a727b26b" title="テストコード実行ボタンが押された">onExecTest</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win);
+<a name="l00384"></a>00384     };
+<a name="l00385"></a>00385 <span class="comment"></span>
+<a name="l00386"></a>00386 <span class="comment">    ////////////////////////////////////////////////////////////////</span>
+<a name="l00387"></a>00387 <span class="comment"></span>    <span class="comment">//</span><span class="comment"></span>
+<a name="l00388"></a>00388 <span class="comment">    /// @brief Win32 APIの簡易ラッパークラス（パネルのベースクラス）</span>
+<a name="l00389"></a>00389 <span class="comment">    ///</span>
+<a name="l00390"></a><a class="code" href="class_wgu_1_1_base_panel.html">00390</a> <span class="comment"></span>    <span class="keyword">class </span><a class="code" href="class_wgu_1_1_base_panel.html" title="Win32 APIの簡易ラッパークラス（パネルのベースクラス）.">BasePanel</a>
+<a name="l00391"></a>00391     {
+<a name="l00392"></a>00392     <span class="keyword">public</span>:
+<a name="l00393"></a>00393         <span class="comment">// ------------------------------------------------------------</span><span class="comment"></span>
+<a name="l00394"></a>00394 <span class="comment">        /// @brief パネルのベースクラスのコンストラクタ</span>
+<a name="l00395"></a>00395 <span class="comment"></span>        <span class="comment">// ------------------------------------------------------------</span>
+<a name="l00396"></a><a class="code" href="class_wgu_1_1_base_panel.html#141c3cfdb416f5bc9ffe67b195724a45">00396</a>         <a class="code" href="class_wgu_1_1_base_panel.html#141c3cfdb416f5bc9ffe67b195724a45" title="パネルのベースクラスのコンストラクタ">BasePanel</a>() : <a class="code" href="class_wgu_1_1_base_panel.html#f29e8750665c004cd44b94d3626fd972">m_hwndParent</a>(NULL) {}
+<a name="l00397"></a>00397 
+<a name="l00398"></a>00398         <span class="comment">// ------------------------------------------------------------</span><span class="comment"></span>
+<a name="l00399"></a>00399 <span class="comment">        /// @brief 親ウィンドウハンドルの取得</span>
+<a name="l00400"></a>00400 <span class="comment">        ///</span>
+<a name="l00401"></a>00401 <span class="comment">        /// @return 親ウィンドウハンドル</span>
+<a name="l00402"></a>00402 <span class="comment"></span>        <span class="comment">// ------------------------------------------------------------</span>
+<a name="l00403"></a><a class="code" href="class_wgu_1_1_base_panel.html#ed5a99e9c69c95db33bb6596e3c641da">00403</a>         HWND <a class="code" href="class_wgu_1_1_base_panel.html#ed5a99e9c69c95db33bb6596e3c641da" title="親ウィンドウハンドルの取得">getParentHWND</a>() { <span class="keywordflow">return</span> <a class="code" href="class_wgu_1_1_base_panel.html#f29e8750665c004cd44b94d3626fd972">m_hwndParent</a>; }
+<a name="l00404"></a>00404 
+<a name="l00405"></a>00405     <span class="keyword">protected</span>:
+<a name="l00406"></a><a class="code" href="class_wgu_1_1_base_panel.html#f29e8750665c004cd44b94d3626fd972">00406</a>         HWND <a class="code" href="class_wgu_1_1_base_panel.html#f29e8750665c004cd44b94d3626fd972">m_hwndParent</a>;
+<a name="l00407"></a>00407     };
+<a name="l00408"></a>00408 <span class="comment"></span>
+<a name="l00409"></a>00409 <span class="comment">    ////////////////////////////////////////////////////////////////</span>
+<a name="l00410"></a>00410 <span class="comment"></span>    <span class="comment">//</span><span class="comment"></span>
+<a name="l00411"></a>00411 <span class="comment">    /// @brief Win32 APIの簡易ラッパークラス（シングルパネル）</span>
+<a name="l00412"></a>00412 <span class="comment">    ///</span>
+<a name="l00413"></a><a class="code" href="class_wgu_1_1_single_panel.html">00413</a> <span class="comment"></span>    <span class="keyword">class </span><a class="code" href="class_wgu_1_1_single_panel.html" title="Win32 APIの簡易ラッパークラス（シングルパネル）.">SinglePanel</a> : <span class="keyword">public</span> <a class="code" href="class_wgu_1_1_base_panel.html" title="Win32 APIの簡易ラッパークラス（パネルのベースクラス）.">BasePanel</a>
+<a name="l00414"></a>00414     {
+<a name="l00415"></a>00415     <span class="keyword">public</span>:
+<a name="l00416"></a>00416         <span class="comment">// ------------------------------------------------------------</span><span class="comment"></span>
+<a name="l00417"></a>00417 <span class="comment">        /// @brief シングルパネルのコンストラクタ</span>
+<a name="l00418"></a>00418 <span class="comment">        ///</span>
+<a name="l00419"></a>00419 <span class="comment">        /// @param hwndParent [i] 親ウィンドウハンドル</span>
+<a name="l00420"></a>00420 <span class="comment">        /// @param templateId [i] ダイアログテンプレートId</span>
+<a name="l00421"></a>00421 <span class="comment">        /// @param dlgProc [i] ダイアログプロシージャへのポインタ</span>
+<a name="l00422"></a>00422 <span class="comment">        /// @param x [i] パネルの表示位置（親ウィンドウ左上からの相対位置）</span>
+<a name="l00423"></a>00423 <span class="comment">        /// @param y [i] パネルの表示位置（親ウィンドウ左上からの相対位置）</span>
+<a name="l00424"></a>00424 <span class="comment"></span>        <span class="comment">// ------------------------------------------------------------</span>
+<a name="l00425"></a>00425         <a class="code" href="class_wgu_1_1_single_panel.html#09da2a53cb4087d7b155fc0fe5024120" title="シングルパネルのコンストラクタ">SinglePanel</a>(HWND hwndParent, <span class="keywordtype">int</span> templateId, DLGPROC dlgProc, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);
+<a name="l00426"></a>00426 
+<a name="l00427"></a>00427         <span class="comment">// ------------------------------------------------------------</span><span class="comment"></span>
+<a name="l00428"></a>00428 <span class="comment">        /// @brief パネルのウィンドウハンドルの取得</span>
+<a name="l00429"></a>00429 <span class="comment">        ///</span>
+<a name="l00430"></a>00430 <span class="comment">        /// @return ウィンドウハンドル</span>
+<a name="l00431"></a>00431 <span class="comment"></span>        <span class="comment">// ------------------------------------------------------------</span>
+<a name="l00432"></a><a class="code" href="class_wgu_1_1_single_panel.html#cb24b882a5020425ba8cffa3a121076b">00432</a>         HWND <a class="code" href="class_wgu_1_1_single_panel.html#cb24b882a5020425ba8cffa3a121076b" title="パネルのウィンドウハンドルの取得">getPanelHWND</a>() { <span class="keywordflow">return</span> <a class="code" href="class_wgu_1_1_single_panel.html#1f77fa4ad3d95e8d3001806e47b5349c">m_hTabDlg</a>; }
+<a name="l00433"></a>00433 
+<a name="l00434"></a>00434     <span class="keyword">protected</span>:
+<a name="l00435"></a><a class="code" href="class_wgu_1_1_single_panel.html#1f77fa4ad3d95e8d3001806e47b5349c">00435</a>         HWND <a class="code" href="class_wgu_1_1_single_panel.html#1f77fa4ad3d95e8d3001806e47b5349c">m_hTabDlg</a>;
+<a name="l00436"></a>00436     };
+<a name="l00437"></a>00437 <span class="comment"></span>
+<a name="l00438"></a>00438 <span class="comment">    ////////////////////////////////////////////////////////////////</span>
+<a name="l00439"></a>00439 <span class="comment"></span>    <span class="comment">//</span><span class="comment"></span>
+<a name="l00440"></a>00440 <span class="comment">    /// @brief Win32 APIの簡易ラッパークラス（マルチパネル）</span>
+<a name="l00441"></a>00441 <span class="comment">    ///</span>
+<a name="l00442"></a><a class="code" href="class_wgu_1_1_multi_panel.html">00442</a> <span class="comment"></span>    <span class="keyword">class </span><a class="code" href="class_wgu_1_1_multi_panel.html" title="Win32 APIの簡易ラッパークラス（マルチパネル）.">MultiPanel</a> : <span class="keyword">public</span> <a class="code" href="class_wgu_1_1_base_panel.html" title="Win32 APIの簡易ラッパークラス（パネルのベースクラス）.">BasePanel</a>
+<a name="l00443"></a>00443     {
+<a name="l00444"></a>00444     <span class="keyword">public</span>:
+<a name="l00445"></a>00445         <span class="comment">// ------------------------------------------------------------</span><span class="comment"></span>
+<a name="l00446"></a>00446 <span class="comment">        /// @brief マルチパネルのコンストラクタ</span>
+<a name="l00447"></a>00447 <span class="comment">        ///</span>
+<a name="l00448"></a>00448 <span class="comment">        /// @param hwndParent [i] 親ウィンドウハンドル</span>
+<a name="l00449"></a>00449 <span class="comment">        /// @param bShowTab [i] タブを表示するか</span>
+<a name="l00450"></a>00450 <span class="comment"></span>        <span class="comment">// ------------------------------------------------------------</span>
+<a name="l00451"></a>00451         <a class="code" href="class_wgu_1_1_multi_panel.html#d973988568c899bd3b5a7e0d5e21df68" title="マルチパネルのコンストラクタ">MultiPanel</a>(HWND hwndParent, <span class="keywordtype">bool</span> bShowTab);
+<a name="l00452"></a>00452 
+<a name="l00453"></a>00453         <span class="comment">// ------------------------------------------------------------</span><span class="comment"></span>
+<a name="l00454"></a>00454 <span class="comment">        /// @brief マルチパネルのデストラクタ</span>
+<a name="l00455"></a>00455 <span class="comment">        ///</span>
+<a name="l00456"></a>00456 <span class="comment">        /// 保持しているパネルプロシージャオブジェクトは破棄される</span>
+<a name="l00457"></a>00457 <span class="comment"></span>        <span class="comment">// ------------------------------------------------------------</span>
+<a name="l00458"></a>00458         <a class="code" href="class_wgu_1_1_multi_panel.html#5e8633c8d560dcf1aae53d62faba4147" title="マルチパネルのデストラクタ">‾MultiPanel</a>();
+<a name="l00459"></a>00459 
+<a name="l00460"></a>00460         <span class="comment">// ------------------------------------------------------------</span><span class="comment"></span>
+<a name="l00461"></a>00461 <span class="comment">        /// @brief パネルを追加する</span>
+<a name="l00462"></a>00462 <span class="comment">        ///</span>
+<a name="l00463"></a>00463 <span class="comment">        /// @param title [i] タブコントロールに追加するタブに表示するタイトル</span>
+<a name="l00464"></a>00464 <span class="comment">        /// @param templateId [i] ダイアログテンプレートId</span>
+<a name="l00465"></a>00465 <span class="comment">        /// @param pPanelProc [i] パネルプロシージャへのポインタ</span>
+<a name="l00466"></a>00466 <span class="comment">        /// @param x [i] パネルの表示位置（親ウィンドウ左上からの相対位置）</span>
+<a name="l00467"></a>00467 <span class="comment">        /// @param y [i] パネルの表示位置（親ウィンドウ左上からの相対位置）</span>
+<a name="l00468"></a>00468 <span class="comment">        ///</span>
+<a name="l00469"></a>00469 <span class="comment">        /// @return 追加されたパネルの番号（エラーの場合-1）</span>
+<a name="l00470"></a>00470 <span class="comment"></span>        <span class="comment">// ------------------------------------------------------------</span>
+<a name="l00471"></a>00471         <span class="keywordtype">int</span> <a class="code" href="class_wgu_1_1_multi_panel.html#ab9adf45a86976327c7f09efbe8b7777" title="パネルを追加する">addPanel</a>(<span class="keywordtype">char</span> *title, <span class="keywordtype">int</span> templateId, <a class="code" href="class_wgu_1_1_base_panel_proc.html" title="パネルプロシージャベースクラス">BasePanelProc</a> *pPanelProc, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);
+<a name="l00472"></a>00472 
+<a name="l00473"></a>00473         <span class="comment">// ------------------------------------------------------------</span><span class="comment"></span>
+<a name="l00474"></a>00474 <span class="comment">        /// @brief パネルの個数を返す</span>
+<a name="l00475"></a>00475 <span class="comment">        ///</span>
+<a name="l00476"></a>00476 <span class="comment">        /// @return パネルの個数</span>
+<a name="l00477"></a>00477 <span class="comment"></span>        <span class="comment">// ------------------------------------------------------------</span>
+<a name="l00478"></a>00478         <span class="keywordtype">int</span> <a class="code" href="class_wgu_1_1_multi_panel.html#48e3649f37a76785867caac4440d9390" title="パネルの個数を返す">countPanels</a>();
+<a name="l00479"></a>00479 
+<a name="l00480"></a>00480         <span class="comment">// ------------------------------------------------------------</span><span class="comment"></span>
+<a name="l00481"></a>00481 <span class="comment">        /// @brief パネルを選択する</span>
+<a name="l00482"></a>00482 <span class="comment">        ///</span>
+<a name="l00483"></a>00483 <span class="comment">        /// @param iPanel [i] パネル番号(0以上、countPanels()未満)</span>
+<a name="l00484"></a>00484 <span class="comment"></span>        <span class="comment">// ------------------------------------------------------------</span>
+<a name="l00485"></a>00485         <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_multi_panel.html#e920f231d122da567e0c93629f910f64" title="パネルを選択する">selectPanel</a>(<span class="keywordtype">int</span> iPanel);
+<a name="l00486"></a>00486 
+<a name="l00487"></a>00487         <span class="comment">// ------------------------------------------------------------</span><span class="comment"></span>
+<a name="l00488"></a>00488 <span class="comment">        /// @brief 指定パネルのウィンドウハンドルの取得</span>
+<a name="l00489"></a>00489 <span class="comment">        ///</span>
+<a name="l00490"></a>00490 <span class="comment">        /// @param iPanel [i] パネル番号(0以上、countPanels()未満)</span>
+<a name="l00491"></a>00491 <span class="comment">        ///</span>
+<a name="l00492"></a>00492 <span class="comment">        /// @return ウィンドウハンドル</span>
+<a name="l00493"></a>00493 <span class="comment"></span>        <span class="comment">// ------------------------------------------------------------</span>
+<a name="l00494"></a>00494         HWND <a class="code" href="class_wgu_1_1_multi_panel.html#5a3c8894227d6ee10572eac2f0deb550" title="指定パネルのウィンドウハンドルの取得">getPanelHWND</a>(<span class="keywordtype">int</span> iPanel);
+<a name="l00495"></a>00495 
+<a name="l00496"></a>00496         <span class="comment">// ------------------------------------------------------------</span><span class="comment"></span>
+<a name="l00497"></a>00497 <span class="comment">        /// @brief 指定パネルのパネルプロシージャオブジェクトの取得</span>
+<a name="l00498"></a>00498 <span class="comment">        ///</span>
+<a name="l00499"></a>00499 <span class="comment">        /// @param iPanel [i] パネル番号(0以上、countPanels()未満)</span>
+<a name="l00500"></a>00500 <span class="comment">        ///</span>
+<a name="l00501"></a>00501 <span class="comment">        /// @return パネルプロシージャオブジェクト</span>
+<a name="l00502"></a>00502 <span class="comment"></span>        <span class="comment">// ------------------------------------------------------------</span>
+<a name="l00503"></a>00503         <a class="code" href="class_wgu_1_1_base_panel_proc.html" title="パネルプロシージャベースクラス">BasePanelProc</a> *<a class="code" href="class_wgu_1_1_multi_panel.html#d8795521f61c7e939e568cd46545697e" title="指定パネルのパネルプロシージャオブジェクトの取得">getPanelProc</a>(<span class="keywordtype">int</span> iPanel);
+<a name="l00504"></a>00504 
+<a name="l00505"></a>00505     <span class="keyword">protected</span>:
+<a name="l00506"></a><a class="code" href="class_wgu_1_1_multi_panel.html#966a8ab596de5f9da865861c03d77755">00506</a>         std::vector&lt;BasePanelProc *&gt; <a class="code" href="class_wgu_1_1_multi_panel.html#966a8ab596de5f9da865861c03d77755">m_panelProcs</a>;
+<a name="l00507"></a><a class="code" href="class_wgu_1_1_multi_panel.html#3986225ca9362c4f7d0e0694ee3f1f13">00507</a>         <span class="keywordtype">bool</span> <a class="code" href="class_wgu_1_1_multi_panel.html#3986225ca9362c4f7d0e0694ee3f1f13">m_bShowTab</a>;
+<a name="l00508"></a>00508     };
+<a name="l00509"></a>00509 }
+<a name="l00510"></a>00510 
+<a name="l00511"></a>00511 <span class="preprocessor">#endif</span>
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>SIGWorldEditorに対してThu Jun 9 10:52:59 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

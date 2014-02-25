@@ -1,0 +1,1411 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: クラス CommDataListener</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス CommDataListener</h1><!-- doxytag: class="CommDataListener" -->
+<p><a class="el" href="class_comm_data_decoder.html" title="サーバ-クライアント通信データデコードクラス">CommDataDecoder</a> によるデータ復元結果取得リスナーインターフェース.  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a>&gt;</code></p>
+<div class="dynheader">
+CommDataListenerに対する継承グラフ</div>
+<div class="dynsection">
+<div class="center"><img src="class_comm_data_listener__inherit__graph.png" border="0" usemap="#_comm_data_listener_inherit__map" alt="Inheritance graph"/></div>
+<map name="_comm_data_listener_inherit__map" id="_comm_data_listener_inherit__map">
+<area shape="rect" href="class_server_accept_proc.html" title="クライアントの接続要求に応じるクラス" alt="" coords="7,83,135,112"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+
+<p><a href="class_comm_data_listener-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#ac8bc98ad1877f328a7dc7d961d87d625">recvDisplayText</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_display_text_event.html">DisplayTextEvent</a> &amp;evt)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_LOG_MSG.  <a href="#ac8bc98ad1877f328a7dc7d961d87d625"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#a57984996527a7283458ee5bfc8db4faf">recvLogMsg</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_log_msg_event.html">LogMsgEvent</a> &amp;evt)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_LOG_MSG.  <a href="#a57984996527a7283458ee5bfc8db4faf"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#a2ee41cb34be0cbdb994056673f0aaada">recvRequestAddJointTorque</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_request_add_joint_torque_event.html">RequestAddJointTorqueEvent</a> &amp;)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_ADD_JOINT_TORQUE added by okamoto (2011/3/3).  <a href="#a2ee41cb34be0cbdb994056673f0aaada"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#a3aa11912ecb9666afde93b9e7ba6fe05">recvRequestAttachController</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_request_attach_controller_event.html">RequestAttachControllerEvent</a> &amp;evt)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_ATTACH_CONTROLLER.  <a href="#a3aa11912ecb9666afde93b9e7ba6fe05"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#abf8dda9f94d19434e7211f426317e1fe">recvRequestAttachView</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_request_attach_view_event.html">RequestAttachViewEvent</a> &amp;evt)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_ATTACH_VIEW.  <a href="#abf8dda9f94d19434e7211f426317e1fe"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#a8cb12514d9146e0f502541c44ffde634">recvRequestCaptureViewImage</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_request_capture_view_image_event.html">RequestCaptureViewImageEvent</a> &amp;evt)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_CAPTURE_VIEW_IMAGE.  <a href="#a8cb12514d9146e0f502541c44ffde634"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#ae971bcad2262813d42947076d1e812b6">recvRequestConnectDataPort</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_request_connect_data_port_event.html">RequestConnectDataPortEvent</a> &amp;evt)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_CONNECT_DATA_PORT.  <a href="#ae971bcad2262813d42947076d1e812b6"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#abae5d043330e0a66664add945cadbacf">recvRequestConnectJoint</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_request_connect_joint_event.html">RequestConnectJointEvent</a> &amp;)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_CONNECT_JOINT.  <a href="#abae5d043330e0a66664add945cadbacf"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#a74b19dde60d9ff74a9d78ae8b45b80bc">recvRequestDetectEntities</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_request_detect_entities_event.html">RequestDetectEntitiesEvent</a> &amp;evt)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_DETECT_ENTITIES.  <a href="#a74b19dde60d9ff74a9d78ae8b45b80bc"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#a51209bcaefb77d84597ca10480ffca05">recvRequestDistanceSensor</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_request_distance_sensor_event.html">RequestDistanceSensorEvent</a> &amp;evt)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_DISTANCE_SENSOR.  <a href="#a51209bcaefb77d84597ca10480ffca05"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#a5a6b6fe5a53f25217fbf65f62af05058">recvRequestGetAllEntities</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_request_get_all_entities_event.html">RequestGetAllEntitiesEvent</a> &amp;evt)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_GET_ALL_ENTITIES.  <a href="#a5a6b6fe5a53f25217fbf65f62af05058"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#ad2d2cb612b804e7049d5ff1e55bd661a">recvRequestGetEntity</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_request_get_entity_event.html">RequestGetEntityEvent</a> &amp;evt)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_GET_ENTITY.  <a href="#ad2d2cb612b804e7049d5ff1e55bd661a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#a504080856735ca58b4dca9d833206649">recvRequestGetJointAngle</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_request_get_joint_angle_event.html">RequestGetJointAngleEvent</a> &amp;)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_RESULT_GET_JOINT_ANGLE added by okamoto (2011/3/9).  <a href="#a504080856735ca58b4dca9d833206649"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#a40e0edc69943942e7db5c3e343428149">recvRequestGetJointForce</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_request_get_joint_force_event.html">RequestGetJointForceEvent</a> &amp;)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_GET_JOINT_FORCE.  <a href="#a40e0edc69943942e7db5c3e343428149"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#a79791d46ed776cc1f69f1f40968856ee">recvRequestGetObjectNames</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_request_get_object_names_event.html">RequestGetObjectNamesEvent</a> &amp;)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_GET_OBJECT_NAMES.  <a href="#a79791d46ed776cc1f69f1f40968856ee"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#a3aa37933d3d41ccf1d3ee1679711b696">recvRequestNSPinger</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_request_n_s_pinger_event.html">RequestNSPingerEvent</a> &amp;)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_NS_PINGER_REQUEST.  <a href="#a3aa37933d3d41ccf1d3ee1679711b696"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#a60be929b562c4ddec6dd2cfcf0375554">recvRequestNSQuery</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_request_n_s_query_event.html">RequestNSQueryEvent</a> &amp;)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_NS_QUERY_REQUEST.  <a href="#a60be929b562c4ddec6dd2cfcf0375554"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#a8324bdb94dd81f4e907fcd025351fdd9">recvRequestProvideService</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_request_provide_service_event.html">RequestProvideServiceEvent</a> &amp;evt)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_PROVIDE_SERVICE.  <a href="#a8324bdb94dd81f4e907fcd025351fdd9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#ae914c49cba956c4a7250149351503bf6">recvRequestReleaseJoint</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_request_release_joint_event.html">RequestReleaseJointEvent</a> &amp;)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_RELEASE_JOINT.  <a href="#ae914c49cba956c4a7250149351503bf6"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#a33e86ef26535d63cc2f49a9e335f7568">recvRequestSetJointAngle</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_request_set_joint_angle_event.html">RequestSetJointAngleEvent</a> &amp;)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_SET_JOINT_ANGLE.  <a href="#a33e86ef26535d63cc2f49a9e335f7568"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#ae9985fe0071a284119e3abe924ed206b">recvRequestSetJointQuaternion</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_request_set_joint_quaternion_event.html">RequestSetJointQuaternionEvent</a> &amp;)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_SET_JOINT_QUATERNION added by okamoto (2011/2/18).  <a href="#ae9985fe0071a284119e3abe924ed206b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#a6ca0da2989c200e2fbfc9f53c0a01e8a">recvRequestSetJointVelocity</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_request_set_joint_velocity_event.html">RequestSetJointVelocityEvent</a> &amp;)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_SET_JOINT_VELOCITY added by okamoto (2011/3/9).  <a href="#a6ca0da2989c200e2fbfc9f53c0a01e8a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#abc23954c8771061751403f3c1a23408e">recvRequestSetObjectVelocity</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_request_set_object_velocity_event.html">RequestSetObjectVelocityEvent</a> &amp;)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#a9db65806c488b9e191415c1816e0bd75">recvRequestSimCtrl</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_request_sim_ctrl_event.html">RequestSimCtrlEvent</a> &amp;evt)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_SIM_CTRL.  <a href="#a9db65806c488b9e191415c1816e0bd75"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#a0b9271b86c0a175ae29157bc8364723f">recvRequestSoundRecog</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_request_sound_recog_event.html">RequestSoundRecogEvent</a> &amp;)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_SOUND_RECOG.  <a href="#a0b9271b86c0a175ae29157bc8364723f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#af1f81d33f92d6ea8ccf4b5ffc5898a48">recvRequestUpdateEntities</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_request_update_entities_event.html">RequestUpdateEntitiesEvent</a> &amp;evt)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_UPDATE_ENTITIES.  <a href="#af1f81d33f92d6ea8ccf4b5ffc5898a48"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#ace777b1c3dd682735b625d8d333681b9">recvResultAttachController</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_result_attach_controller_event.html">ResultAttachControllerEvent</a> &amp;evt)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_RESULT_ATTACH_CONTROLLER.  <a href="#ace777b1c3dd682735b625d8d333681b9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#a14b4e462afa943b964d978e8617d7fcc">recvResultAttachView</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_result_attach_view_event.html">ResultAttachViewEvent</a> &amp;evt)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_RESULT_ATTACH_VIEW.  <a href="#a14b4e462afa943b964d978e8617d7fcc"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#a576b92df103ef19549a3527c563d1082">recvResultCaptureViewImage</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_result_capture_view_image_event.html">ResultCaptureViewImageEvent</a> &amp;evt)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_RESULT_CAPTURE_VIEW_IMAGE.  <a href="#a576b92df103ef19549a3527c563d1082"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#ab5985e837728e55839dcaaaadcdfbcaa">recvResultDetectEntities</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_result_detect_entities_event.html">ResultDetectEntitiesEvent</a> &amp;evt)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_RESULT_DETECT_ENTITIES.  <a href="#ab5985e837728e55839dcaaaadcdfbcaa"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#a920f80aa6b0bcbe9b12d1401e5160c0b">recvResultDistanceSensor</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_result_distance_sensor_event.html">ResultDistanceSensorEvent</a> &amp;evt)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_RESULT_DISTANCE_SENSOR.  <a href="#a920f80aa6b0bcbe9b12d1401e5160c0b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#af67a00f3ce1fe18b0a5d28e2134e6b1c">recvResultGetAllEntities</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_result_get_all_entities_event.html">ResultGetAllEntitiesEvent</a> &amp;evt)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_RESULT_GET_ALL_ENTITIES.  <a href="#af67a00f3ce1fe18b0a5d28e2134e6b1c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#a86d17d1e3206c26003a56208d206bec9">recvResultGetEntity</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_result_get_entity_event.html">ResultGetEntityEvent</a> &amp;evt)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_RESULT_GET_ENTITY.  <a href="#a86d17d1e3206c26003a56208d206bec9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#a4b7f01e709efd3da5d41437fc481651f">recvResultGetJointAngle</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_result_get_joint_angle_event.html">ResultGetJointAngleEvent</a> &amp;)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#abe15e8ddda5727e70fb9e454d687a693">recvResultGetJointForce</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_result_get_joint_force_event.html">ResultGetJointForceEvent</a> &amp;)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_RESULT_GET_JOINT_FORCE.  <a href="#abe15e8ddda5727e70fb9e454d687a693"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#a2bf3f07a95df79b48a2aaef02bacc6f5">recvResultGetObjectNames</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_result_get_object_names_event.html">ResultGetObjectNamesEvent</a> &amp;)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_RESULT_GET_JOINT_FORCE.  <a href="#a2bf3f07a95df79b48a2aaef02bacc6f5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#ac603ec6593b8bccfb258b9708724cd45">recvResultNSPinger</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_result_n_s_pinger_event.html">ResultNSPingerEvent</a> &amp;)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_NS_PINGER_REQUEST.  <a href="#ac603ec6593b8bccfb258b9708724cd45"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#a81612d7d0404bc7116da2e34fc9ca638">recvResultNSQuery</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_result_n_s_query_event.html">ResultNSQueryEvent</a> &amp;)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_NS_QUERY_RESULT.  <a href="#a81612d7d0404bc7116da2e34fc9ca638"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#abc388c14d9b547e7773a3508c26e6d18">recvResultSoundRecog</a> (<a class="el" href="class_source.html">Source</a> &amp;from, <a class="el" href="class_result_sound_recog_event.html">ResultSoundRecogEvent</a> &amp;)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_RESULT_SOUND_RECOG.  <a href="#abc388c14d9b547e7773a3508c26e6d18"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html#a42eafa81359f1e652020ea733e1c007e">‾CommDataListener</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#a42eafa81359f1e652020ea733e1c007e"></a><br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p><a class="el" href="class_comm_data_decoder.html" title="サーバ-クライアント通信データデコードクラス">CommDataDecoder</a> によるデータ復元結果取得リスナーインターフェース. </p>
+<p>データ復元時に、それぞれCommDataTypeに対応したメソッドがコールバックされる。 </p>
+<ol>
+<li>
+第1引数 fromはデータの転送元 </li>
+<li>
+第2引数 evt には復元したデータが含まれる(データを含まないシグナルだけの呼び出しもある) </li>
+</ol>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00018">18</a> 行で定義されています。</p>
+<hr/><h2>関数</h2>
+<a class="anchor" id="ac8bc98ad1877f328a7dc7d961d87d625"></a><!-- doxytag: member="CommDataListener::recvDisplayText" ref="ac8bc98ad1877f328a7dc7d961d87d625" args="(Source &amp;from, DisplayTextEvent &amp;evt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvDisplayText </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_display_text_event.html">DisplayTextEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>evt</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>COMM_LOG_MSG. </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00151">151</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a57984996527a7283458ee5bfc8db4faf"></a><!-- doxytag: member="CommDataListener::recvLogMsg" ref="a57984996527a7283458ee5bfc8db4faf" args="(Source &amp;from, LogMsgEvent &amp;evt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvLogMsg </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_log_msg_event.html">LogMsgEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>evt</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>COMM_LOG_MSG. </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00148">148</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a2ee41cb34be0cbdb994056673f0aaada"></a><!-- doxytag: member="CommDataListener::recvRequestAddJointTorque" ref="a2ee41cb34be0cbdb994056673f0aaada" args="(Source &amp;from, RequestAddJointTorqueEvent &amp;)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvRequestAddJointTorque </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_request_add_joint_torque_event.html">RequestAddJointTorqueEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>COMM_REQUEST_ADD_JOINT_TORQUE added by okamoto (2011/3/3). </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00172">172</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a3aa11912ecb9666afde93b9e7ba6fe05"></a><!-- doxytag: member="CommDataListener::recvRequestAttachController" ref="a3aa11912ecb9666afde93b9e7ba6fe05" args="(Source &amp;from, RequestAttachControllerEvent &amp;evt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvRequestAttachController </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_request_attach_controller_event.html">RequestAttachControllerEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>evt</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>COMM_REQUEST_ATTACH_CONTROLLER. </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00113">113</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="abf8dda9f94d19434e7211f426317e1fe"></a><!-- doxytag: member="CommDataListener::recvRequestAttachView" ref="abf8dda9f94d19434e7211f426317e1fe" args="(Source &amp;from, RequestAttachViewEvent &amp;evt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvRequestAttachView </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_request_attach_view_event.html">RequestAttachViewEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>evt</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>COMM_REQUEST_ATTACH_VIEW. </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00118">118</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a8cb12514d9146e0f502541c44ffde634"></a><!-- doxytag: member="CommDataListener::recvRequestCaptureViewImage" ref="a8cb12514d9146e0f502541c44ffde634" args="(Source &amp;from, RequestCaptureViewImageEvent &amp;evt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvRequestCaptureViewImage </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_request_capture_view_image_event.html">RequestCaptureViewImageEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>evt</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>COMM_REQUEST_CAPTURE_VIEW_IMAGE. </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00130">130</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ae971bcad2262813d42947076d1e812b6"></a><!-- doxytag: member="CommDataListener::recvRequestConnectDataPort" ref="ae971bcad2262813d42947076d1e812b6" args="(Source &amp;from, RequestConnectDataPortEvent &amp;evt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvRequestConnectDataPort </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_request_connect_data_port_event.html">RequestConnectDataPortEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>evt</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>COMM_REQUEST_CONNECT_DATA_PORT. </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00126">126</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="abae5d043330e0a66664add945cadbacf"></a><!-- doxytag: member="CommDataListener::recvRequestConnectJoint" ref="abae5d043330e0a66664add945cadbacf" args="(Source &amp;from, RequestConnectJointEvent &amp;)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvRequestConnectJoint </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_request_connect_joint_event.html">RequestConnectJointEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>COMM_REQUEST_CONNECT_JOINT. </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00193">193</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a74b19dde60d9ff74a9d78ae8b45b80bc"></a><!-- doxytag: member="CommDataListener::recvRequestDetectEntities" ref="a74b19dde60d9ff74a9d78ae8b45b80bc" args="(Source &amp;from, RequestDetectEntitiesEvent &amp;evt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvRequestDetectEntities </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_request_detect_entities_event.html">RequestDetectEntitiesEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>evt</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>COMM_REQUEST_DETECT_ENTITIES. </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00136">136</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a51209bcaefb77d84597ca10480ffca05"></a><!-- doxytag: member="CommDataListener::recvRequestDistanceSensor" ref="a51209bcaefb77d84597ca10480ffca05" args="(Source &amp;from, RequestDistanceSensorEvent &amp;evt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvRequestDistanceSensor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_request_distance_sensor_event.html">RequestDistanceSensorEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>evt</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>COMM_REQUEST_DISTANCE_SENSOR. </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00142">142</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a5a6b6fe5a53f25217fbf65f62af05058"></a><!-- doxytag: member="CommDataListener::recvRequestGetAllEntities" ref="a5a6b6fe5a53f25217fbf65f62af05058" args="(Source &amp;from, RequestGetAllEntitiesEvent &amp;evt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvRequestGetAllEntities </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_request_get_all_entities_event.html">RequestGetAllEntitiesEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>evt</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>COMM_REQUEST_GET_ALL_ENTITIES. </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00102">102</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ad2d2cb612b804e7049d5ff1e55bd661a"></a><!-- doxytag: member="CommDataListener::recvRequestGetEntity" ref="ad2d2cb612b804e7049d5ff1e55bd661a" args="(Source &amp;from, RequestGetEntityEvent &amp;evt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvRequestGetEntity </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_request_get_entity_event.html">RequestGetEntityEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>evt</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>COMM_REQUEST_GET_ENTITY. </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00108">108</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a504080856735ca58b4dca9d833206649"></a><!-- doxytag: member="CommDataListener::recvRequestGetJointAngle" ref="a504080856735ca58b4dca9d833206649" args="(Source &amp;from, RequestGetJointAngleEvent &amp;)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvRequestGetJointAngle </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_request_get_joint_angle_event.html">RequestGetJointAngleEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>COMM_RESULT_GET_JOINT_ANGLE added by okamoto (2011/3/9). </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00180">180</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a40e0edc69943942e7db5c3e343428149"></a><!-- doxytag: member="CommDataListener::recvRequestGetJointForce" ref="a40e0edc69943942e7db5c3e343428149" args="(Source &amp;from, RequestGetJointForceEvent &amp;)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvRequestGetJointForce </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_request_get_joint_force_event.html">RequestGetJointForceEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>COMM_REQUEST_GET_JOINT_FORCE. </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00188">188</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a79791d46ed776cc1f69f1f40968856ee"></a><!-- doxytag: member="CommDataListener::recvRequestGetObjectNames" ref="a79791d46ed776cc1f69f1f40968856ee" args="(Source &amp;from, RequestGetObjectNamesEvent &amp;)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvRequestGetObjectNames </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_request_get_object_names_event.html">RequestGetObjectNamesEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>COMM_REQUEST_GET_OBJECT_NAMES. </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00198">198</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a3aa37933d3d41ccf1d3ee1679711b696"></a><!-- doxytag: member="CommDataListener::recvRequestNSPinger" ref="a3aa37933d3d41ccf1d3ee1679711b696" args="(Source &amp;from, RequestNSPingerEvent &amp;)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvRequestNSPinger </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_request_n_s_pinger_event.html">RequestNSPingerEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>COMM_NS_PINGER_REQUEST. </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00161">161</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a60be929b562c4ddec6dd2cfcf0375554"></a><!-- doxytag: member="CommDataListener::recvRequestNSQuery" ref="a60be929b562c4ddec6dd2cfcf0375554" args="(Source &amp;from, RequestNSQueryEvent &amp;)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvRequestNSQuery </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_request_n_s_query_event.html">RequestNSQueryEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>COMM_NS_QUERY_REQUEST. </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00156">156</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a8324bdb94dd81f4e907fcd025351fdd9"></a><!-- doxytag: member="CommDataListener::recvRequestProvideService" ref="a8324bdb94dd81f4e907fcd025351fdd9" args="(Source &amp;from, RequestProvideServiceEvent &amp;evt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvRequestProvideService </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_request_provide_service_event.html">RequestProvideServiceEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>evt</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>COMM_REQUEST_PROVIDE_SERVICE. </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00123">123</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ae914c49cba956c4a7250149351503bf6"></a><!-- doxytag: member="CommDataListener::recvRequestReleaseJoint" ref="ae914c49cba956c4a7250149351503bf6" args="(Source &amp;from, RequestReleaseJointEvent &amp;)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvRequestReleaseJoint </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_request_release_joint_event.html">RequestReleaseJointEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>COMM_REQUEST_RELEASE_JOINT. </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00195">195</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a33e86ef26535d63cc2f49a9e335f7568"></a><!-- doxytag: member="CommDataListener::recvRequestSetJointAngle" ref="a33e86ef26535d63cc2f49a9e335f7568" args="(Source &amp;from, RequestSetJointAngleEvent &amp;)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvRequestSetJointAngle </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_request_set_joint_angle_event.html">RequestSetJointAngleEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>COMM_REQUEST_SET_JOINT_ANGLE. </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00166">166</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ae9985fe0071a284119e3abe924ed206b"></a><!-- doxytag: member="CommDataListener::recvRequestSetJointQuaternion" ref="ae9985fe0071a284119e3abe924ed206b" args="(Source &amp;from, RequestSetJointQuaternionEvent &amp;)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvRequestSetJointQuaternion </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_request_set_joint_quaternion_event.html">RequestSetJointQuaternionEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>COMM_REQUEST_SET_JOINT_QUATERNION added by okamoto (2011/2/18). </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00169">169</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a6ca0da2989c200e2fbfc9f53c0a01e8a"></a><!-- doxytag: member="CommDataListener::recvRequestSetJointVelocity" ref="a6ca0da2989c200e2fbfc9f53c0a01e8a" args="(Source &amp;from, RequestSetJointVelocityEvent &amp;)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvRequestSetJointVelocity </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_request_set_joint_velocity_event.html">RequestSetJointVelocityEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>COMM_REQUEST_SET_JOINT_VELOCITY added by okamoto (2011/3/9). </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00175">175</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="abc23954c8771061751403f3c1a23408e"></a><!-- doxytag: member="CommDataListener::recvRequestSetObjectVelocity" ref="abc23954c8771061751403f3c1a23408e" args="(Source &amp;from, RequestSetObjectVelocityEvent &amp;)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvRequestSetObjectVelocity </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_request_set_object_velocity_event.html">RequestSetObjectVelocityEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00177">177</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a9db65806c488b9e191415c1816e0bd75"></a><!-- doxytag: member="CommDataListener::recvRequestSimCtrl" ref="a9db65806c488b9e191415c1816e0bd75" args="(Source &amp;from, RequestSimCtrlEvent &amp;evt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvRequestSimCtrl </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_request_sim_ctrl_event.html">RequestSimCtrlEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>evt</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>COMM_REQUEST_SIM_CTRL. </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00099">99</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a0b9271b86c0a175ae29157bc8364723f"></a><!-- doxytag: member="CommDataListener::recvRequestSoundRecog" ref="a0b9271b86c0a175ae29157bc8364723f" args="(Source &amp;from, RequestSoundRecogEvent &amp;)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvRequestSoundRecog </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_request_sound_recog_event.html">RequestSoundRecogEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>COMM_REQUEST_SOUND_RECOG. </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00184">184</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="af1f81d33f92d6ea8ccf4b5ffc5898a48"></a><!-- doxytag: member="CommDataListener::recvRequestUpdateEntities" ref="af1f81d33f92d6ea8ccf4b5ffc5898a48" args="(Source &amp;from, RequestUpdateEntitiesEvent &amp;evt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvRequestUpdateEntities </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_request_update_entities_event.html">RequestUpdateEntitiesEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>evt</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>COMM_REQUEST_UPDATE_ENTITIES. </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00106">106</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ace777b1c3dd682735b625d8d333681b9"></a><!-- doxytag: member="CommDataListener::recvResultAttachController" ref="ace777b1c3dd682735b625d8d333681b9" args="(Source &amp;from, ResultAttachControllerEvent &amp;evt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvResultAttachController </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_result_attach_controller_event.html">ResultAttachControllerEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>evt</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>COMM_RESULT_ATTACH_CONTROLLER. </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00115">115</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a14b4e462afa943b964d978e8617d7fcc"></a><!-- doxytag: member="CommDataListener::recvResultAttachView" ref="a14b4e462afa943b964d978e8617d7fcc" args="(Source &amp;from, ResultAttachViewEvent &amp;evt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvResultAttachView </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_result_attach_view_event.html">ResultAttachViewEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>evt</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>COMM_RESULT_ATTACH_VIEW. </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00120">120</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a576b92df103ef19549a3527c563d1082"></a><!-- doxytag: member="CommDataListener::recvResultCaptureViewImage" ref="a576b92df103ef19549a3527c563d1082" args="(Source &amp;from, ResultCaptureViewImageEvent &amp;evt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvResultCaptureViewImage </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_result_capture_view_image_event.html">ResultCaptureViewImageEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>evt</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>COMM_RESULT_CAPTURE_VIEW_IMAGE. </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00133">133</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ab5985e837728e55839dcaaaadcdfbcaa"></a><!-- doxytag: member="CommDataListener::recvResultDetectEntities" ref="ab5985e837728e55839dcaaaadcdfbcaa" args="(Source &amp;from, ResultDetectEntitiesEvent &amp;evt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvResultDetectEntities </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_result_detect_entities_event.html">ResultDetectEntitiesEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>evt</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>COMM_RESULT_DETECT_ENTITIES. </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00139">139</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a920f80aa6b0bcbe9b12d1401e5160c0b"></a><!-- doxytag: member="CommDataListener::recvResultDistanceSensor" ref="a920f80aa6b0bcbe9b12d1401e5160c0b" args="(Source &amp;from, ResultDistanceSensorEvent &amp;evt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvResultDistanceSensor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_result_distance_sensor_event.html">ResultDistanceSensorEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>evt</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>COMM_RESULT_DISTANCE_SENSOR. </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00145">145</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="af67a00f3ce1fe18b0a5d28e2134e6b1c"></a><!-- doxytag: member="CommDataListener::recvResultGetAllEntities" ref="af67a00f3ce1fe18b0a5d28e2134e6b1c" args="(Source &amp;from, ResultGetAllEntitiesEvent &amp;evt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvResultGetAllEntities </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_result_get_all_entities_event.html">ResultGetAllEntitiesEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>evt</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>COMM_RESULT_GET_ALL_ENTITIES. </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00104">104</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a86d17d1e3206c26003a56208d206bec9"></a><!-- doxytag: member="CommDataListener::recvResultGetEntity" ref="a86d17d1e3206c26003a56208d206bec9" args="(Source &amp;from, ResultGetEntityEvent &amp;evt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvResultGetEntity </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_result_get_entity_event.html">ResultGetEntityEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>evt</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>COMM_RESULT_GET_ENTITY. </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00110">110</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a4b7f01e709efd3da5d41437fc481651f"></a><!-- doxytag: member="CommDataListener::recvResultGetJointAngle" ref="a4b7f01e709efd3da5d41437fc481651f" args="(Source &amp;from, ResultGetJointAngleEvent &amp;)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvResultGetJointAngle </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_result_get_joint_angle_event.html">ResultGetJointAngleEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00181">181</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="abe15e8ddda5727e70fb9e454d687a693"></a><!-- doxytag: member="CommDataListener::recvResultGetJointForce" ref="abe15e8ddda5727e70fb9e454d687a693" args="(Source &amp;from, ResultGetJointForceEvent &amp;)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvResultGetJointForce </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_result_get_joint_force_event.html">ResultGetJointForceEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>COMM_RESULT_GET_JOINT_FORCE. </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00190">190</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a2bf3f07a95df79b48a2aaef02bacc6f5"></a><!-- doxytag: member="CommDataListener::recvResultGetObjectNames" ref="a2bf3f07a95df79b48a2aaef02bacc6f5" args="(Source &amp;from, ResultGetObjectNamesEvent &amp;)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvResultGetObjectNames </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_result_get_object_names_event.html">ResultGetObjectNamesEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>COMM_RESULT_GET_JOINT_FORCE. </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00200">200</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ac603ec6593b8bccfb258b9708724cd45"></a><!-- doxytag: member="CommDataListener::recvResultNSPinger" ref="ac603ec6593b8bccfb258b9708724cd45" args="(Source &amp;from, ResultNSPingerEvent &amp;)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvResultNSPinger </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_result_n_s_pinger_event.html">ResultNSPingerEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>COMM_NS_PINGER_REQUEST. </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00163">163</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a81612d7d0404bc7116da2e34fc9ca638"></a><!-- doxytag: member="CommDataListener::recvResultNSQuery" ref="a81612d7d0404bc7116da2e34fc9ca638" args="(Source &amp;from, ResultNSQueryEvent &amp;)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvResultNSQuery </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_result_n_s_query_event.html">ResultNSQueryEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>COMM_NS_QUERY_RESULT. </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00158">158</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="abc388c14d9b547e7773a3508c26e6d18"></a><!-- doxytag: member="CommDataListener::recvResultSoundRecog" ref="abc388c14d9b547e7773a3508c26e6d18" args="(Source &amp;from, ResultSoundRecogEvent &amp;)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CommDataListener::recvResultSoundRecog </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_source.html">Source</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_result_sound_recog_event.html">ResultSoundRecogEvent</a> &amp;&nbsp;</td>
+          <td class="paramname"></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>COMM_RESULT_SOUND_RECOG. </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00186">186</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a42eafa81359f1e652020ea733e1c007e"></a><!-- doxytag: member="CommDataListener::‾CommDataListener" ref="a42eafa81359f1e652020ea733e1c007e" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual CommDataListener::‾CommDataListener </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>デストラクタ </p>
+
+<p> <a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a> の <a class="el" href="_comm_data_listener_8h_source.html#l00022">22</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_comm_data_listener_8h_source.html">CommDataListener.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:18 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>SIGVerse_Controller: Position.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>Position.h</h1><a href="_position_8h.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/* $Id: _position_8h_source.html,v 1.2 2011-12-14 07:55:13 okamoto Exp $ */</span> 
+<a name="l00002"></a>00002 <span class="preprocessor">#ifndef Position_h</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span><span class="preprocessor">#define Position_h</span>
+<a name="l00004"></a>00004 <span class="preprocessor"></span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include &quot;<a class="code" href="systemdef_8h.html">systemdef.h</a>&quot;</span>
+<a name="l00006"></a>00006 
+<a name="l00007"></a>00007 <span class="comment">// added by sekikawa (2009/3/24)</span>
+<a name="l00008"></a>00008 <span class="comment">// compile error occurred (memcpy() not found) when USE_ODE not defined.</span>
+<a name="l00009"></a>00009 <span class="preprocessor">#include &lt;string.h&gt;</span>
+<a name="l00010"></a>00010 
+<a name="l00011"></a>00011 <span class="preprocessor">#ifdef USE_ODE</span>
+<a name="l00012"></a>00012 <span class="preprocessor"></span><span class="preprocessor">#include &quot;ode/ode.h&quot;</span>
+<a name="l00013"></a>00013 <span class="preprocessor">#endif</span>
+<a name="l00014"></a>00014 <span class="preprocessor"></span>
+<a name="l00015"></a>00015 <span class="preprocessor">#ifdef UNIT_TEST</span>
+<a name="l00016"></a>00016 <span class="preprocessor"></span><span class="preprocessor">#include &lt;math.h&gt;</span>
+<a name="l00017"></a>00017 <span class="preprocessor">#include &lt;float.h&gt;</span>
+<a name="l00018"></a>00018 <span class="preprocessor">#endif</span>
+<a name="l00019"></a>00019 <span class="preprocessor"></span><span class="comment"></span>
+<a name="l00020"></a>00020 <span class="comment">/**</span>
+<a name="l00021"></a>00021 <span class="comment"> * @brief 3次元位置クラス</span>
+<a name="l00022"></a>00022 <span class="comment"> *</span>
+<a name="l00023"></a>00023 <span class="comment"> * シミュレーション世界内の位置を表す。</span>
+<a name="l00024"></a>00024 <span class="comment"> * 位置を表す変数の型は、ODEを使用する場合ODEに従う。ODEを使</span>
+<a name="l00025"></a>00025 <span class="comment"> * 用しない場合はdouble型。</span>
+<a name="l00026"></a>00026 <span class="comment"> * </span>
+<a name="l00027"></a>00027 <span class="comment"> */</span>
+<a name="l00028"></a><a class="code" href="class_position.html">00028</a> <span class="keyword">class </span><a class="code" href="class_position.html" title="3次元位置クラス">Position</a>
+<a name="l00029"></a>00029 {
+<a name="l00030"></a>00030 <span class="keyword">private</span>:
+<a name="l00031"></a>00031     <span class="keyword">enum</span> { DIMENSION = 3,};
+<a name="l00032"></a>00032 <span class="keyword">private</span>:
+<a name="l00033"></a>00033     dReal m_values[DIMENSION];
+<a name="l00034"></a>00034 <span class="keyword">public</span>:<span class="comment"></span>
+<a name="l00035"></a>00035 <span class="comment">    //! コンストラクタ</span>
+<a name="l00036"></a><a class="code" href="class_position.html#a369a577425f8ba02e8750d04b6a088db">00036</a> <span class="comment"></span>    <a class="code" href="class_position.html#a369a577425f8ba02e8750d04b6a088db" title="コンストラクタ">Position</a>() {
+<a name="l00037"></a>00037         <span class="keyword">set</span>(0.0, 0.0, 0.0);
+<a name="l00038"></a>00038     }
+<a name="l00039"></a>00039     <span class="comment"></span>
+<a name="l00040"></a>00040 <span class="comment">    /**</span>
+<a name="l00041"></a>00041 <span class="comment">     * @brief コンストラクタ</span>
+<a name="l00042"></a>00042 <span class="comment">     * @param x X座標値</span>
+<a name="l00043"></a>00043 <span class="comment">     * @param y Y座標値</span>
+<a name="l00044"></a>00044 <span class="comment">     * @param z Z座標値</span>
+<a name="l00045"></a>00045 <span class="comment">     */</span>
+<a name="l00046"></a><a class="code" href="class_position.html#a58e11f2471391ee3fe5c586f30e063bc">00046</a>     <a class="code" href="class_position.html#a369a577425f8ba02e8750d04b6a088db" title="コンストラクタ">Position</a>(dReal x_, dReal y_, dReal z_) 
+<a name="l00047"></a>00047     {
+<a name="l00048"></a>00048         <span class="keyword">set</span>(x_, y_, z_);
+<a name="l00049"></a>00049     }<span class="comment"></span>
+<a name="l00050"></a>00050 <span class="comment">    //! コピーコンストラクタ</span>
+<a name="l00051"></a><a class="code" href="class_position.html#aeb40e999ce900e099a94026a5201231c">00051</a> <span class="comment"></span>    <a class="code" href="class_position.html#a369a577425f8ba02e8750d04b6a088db" title="コンストラクタ">Position</a>(<span class="keyword">const</span> <a class="code" href="class_position.html" title="3次元位置クラス">Position</a> &amp;o) 
+<a name="l00052"></a>00052     {
+<a name="l00053"></a>00053         copy(o);
+<a name="l00054"></a>00054     }<span class="comment"></span>
+<a name="l00055"></a>00055 <span class="comment">    /**</span>
+<a name="l00056"></a>00056 <span class="comment">     * @brief 各座標値を設定する</span>
+<a name="l00057"></a>00057 <span class="comment">     * @param x X座標値</span>
+<a name="l00058"></a>00058 <span class="comment">     * @param y Y座標値</span>
+<a name="l00059"></a>00059 <span class="comment">     * @param z Z座標値</span>
+<a name="l00060"></a>00060 <span class="comment">     */</span>
+<a name="l00061"></a><a class="code" href="class_position.html#a6bf294381a4d9805a1cea299ec2ffc86">00061</a>     <span class="keywordtype">void</span>    <span class="keyword">set</span>(dReal x_, dReal y_, dReal z_)
+<a name="l00062"></a>00062     {
+<a name="l00063"></a>00063         m_values[0] = x_;
+<a name="l00064"></a>00064         m_values[1] = y_;
+<a name="l00065"></a>00065         m_values[2] = z_;
+<a name="l00066"></a>00066     }<span class="comment"></span>
+<a name="l00067"></a>00067 <span class="comment">    //! 座標値を取得する</span>
+<a name="l00068"></a><a class="code" href="class_position.html#a0c952efa01c48d17c0b30a406e9e737b">00068</a> <span class="comment"></span>    <span class="keyword">const</span> dReal * <a class="code" href="class_position.html#a0c952efa01c48d17c0b30a406e9e737b" title="座標値を取得する">values</a>() { <span class="keywordflow">return</span> m_values; }
+<a name="l00069"></a>00069 <span class="comment"></span>
+<a name="l00070"></a>00070 <span class="comment">    //! X座標値を取得する</span>
+<a name="l00071"></a><a class="code" href="class_position.html#aa97410c769815bc60c9412f387b555d1">00071</a> <span class="comment"></span>    dReal <a class="code" href="class_position.html#aa97410c769815bc60c9412f387b555d1" title="X座標値を取得する.">x</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_values[0]; }<span class="comment"></span>
+<a name="l00072"></a>00072 <span class="comment">    //! Y座標値を取得する</span>
+<a name="l00073"></a><a class="code" href="class_position.html#a5f7b9c53b81affdcf502f5059a6dc50a">00073</a> <span class="comment"></span>    dReal <a class="code" href="class_position.html#a5f7b9c53b81affdcf502f5059a6dc50a" title="Y座標値を取得する.">y</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_values[1]; }<span class="comment"></span>
+<a name="l00074"></a>00074 <span class="comment">    //! Z座標値を取得する</span>
+<a name="l00075"></a><a class="code" href="class_position.html#a63f0cb5a9c08ef8af982cc18aa161395">00075</a> <span class="comment"></span>    dReal <a class="code" href="class_position.html#a63f0cb5a9c08ef8af982cc18aa161395" title="Z座標値を取得する.">z</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_values[2]; }
+<a name="l00076"></a>00076 <span class="comment"></span>
+<a name="l00077"></a>00077 <span class="comment">    //! X座標値を設定する</span>
+<a name="l00078"></a><a class="code" href="class_position.html#aca015be646785e4e9ace38789befd9e2">00078</a> <span class="comment"></span>    <span class="keywordtype">void</span> <a class="code" href="class_position.html#aca015be646785e4e9ace38789befd9e2" title="X座標値を設定する.">x</a>(dReal v) { m_values[0] = v; }<span class="comment"></span>
+<a name="l00079"></a>00079 <span class="comment">    //! Y座標値を設定する</span>
+<a name="l00080"></a><a class="code" href="class_position.html#ae47e18dd8257b2377947d6ca9bae102b">00080</a> <span class="comment"></span>    <span class="keywordtype">void</span> <a class="code" href="class_position.html#ae47e18dd8257b2377947d6ca9bae102b" title="Y座標値を設定する.">y</a>(dReal v) { m_values[1] = v; }<span class="comment"></span>
+<a name="l00081"></a>00081 <span class="comment">    //! Z座標値を設定する</span>
+<a name="l00082"></a><a class="code" href="class_position.html#a43f5e9b3d8d1ab780c821dfc6817721d">00082</a> <span class="comment"></span>    <span class="keywordtype">void</span> <a class="code" href="class_position.html#a43f5e9b3d8d1ab780c821dfc6817721d" title="Z座標値を設定する.">z</a>(dReal v) { m_values[2] = v; }
+<a name="l00083"></a>00083 
+<a name="l00084"></a>00084 <span class="preprocessor">#ifdef IRWAS_TEST_CLIENT</span>
+<a name="l00085"></a>00085 <span class="preprocessor"></span>    dReal glx()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="class_position.html#aa97410c769815bc60c9412f387b555d1" title="X座標値を取得する.">x</a>(); }
+<a name="l00086"></a>00086     dReal gly()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="class_position.html#a5f7b9c53b81affdcf502f5059a6dc50a" title="Y座標値を取得する.">y</a>(); }
+<a name="l00087"></a>00087     dReal glz()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="class_position.html#a63f0cb5a9c08ef8af982cc18aa161395" title="Z座標値を取得する.">z</a>(); }
+<a name="l00088"></a>00088 <span class="preprocessor">#endif</span>
+<a name="l00089"></a>00089 <span class="preprocessor"></span><span class="comment"></span>
+<a name="l00090"></a>00090 <span class="comment">    //! コピー演算子</span>
+<a name="l00091"></a><a class="code" href="class_position.html#a5b54e195bf2e3277348c9ff84b9e05a4">00091</a> <span class="comment"></span>    <a class="code" href="class_position.html" title="3次元位置クラス">Position</a> &amp;<a class="code" href="class_position.html#a5b54e195bf2e3277348c9ff84b9e05a4" title="コピー演算子">operator=</a>(<span class="keyword">const</span> <a class="code" href="class_position.html" title="3次元位置クラス">Position</a> &amp;o) {
+<a name="l00092"></a>00092         copy(o);
+<a name="l00093"></a>00093         <span class="keywordflow">return</span> *<span class="keyword">this</span>;
+<a name="l00094"></a>00094     }
+<a name="l00095"></a>00095 
+<a name="l00096"></a>00096 <span class="keyword">private</span>:
+<a name="l00097"></a>00097     <span class="keywordtype">void</span> copy(<span class="keyword">const</span> <a class="code" href="class_position.html" title="3次元位置クラス">Position</a> &amp;o){
+<a name="l00098"></a>00098         memcpy(m_values, o.m_values, <span class="keyword">sizeof</span>(m_values[0])*DIMENSION);
+<a name="l00099"></a>00099     }
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101 <span class="keyword">public</span>:
+<a name="l00102"></a>00102 <span class="preprocessor">#ifdef UNIT_TEST</span>
+<a name="l00103"></a>00103 <span class="preprocessor"></span>    <span class="keywordtype">bool</span> operator==(<span class="keyword">const</span> <a class="code" href="class_position.html" title="3次元位置クラス">Position</a> &amp;o) {
+<a name="l00104"></a>00104         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;DIMENSION; i++) {
+<a name="l00105"></a>00105             <span class="keywordflow">if</span> (fabs(m_values[i] - o.m_values[i]) &gt; DBL_EPSILON) {
+<a name="l00106"></a>00106                 <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00107"></a>00107             }
+<a name="l00108"></a>00108         }
+<a name="l00109"></a>00109         <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00110"></a>00110     }
+<a name="l00111"></a>00111 <span class="preprocessor">#endif</span>
+<a name="l00112"></a>00112 <span class="preprocessor"></span>};
+<a name="l00113"></a>00113 
+<a name="l00114"></a>00114 
+<a name="l00115"></a>00115 <span class="preprocessor">#endif // Position_h</span>
+<a name="l00116"></a>00116 <span class="preprocessor"></span> 
+</pre></div></div>
+<hr class="footer"/><address style="text-align: right;"><small>SIGVerse_Controllerに対してTue Dec 13 19:10:58 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

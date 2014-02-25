@@ -1,0 +1,260 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: CommDataDecoder.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>CommDataDecoder.h</h1><a href="_comm_data_decoder_8h.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/* $Id: _comm_data_decoder_8h_source.html,v 1.2 2011-12-14 07:55:35 okamoto Exp $ */</span> 
+<a name="l00002"></a>00002 <span class="preprocessor">#ifndef CommDataDecoder_h</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span><span class="preprocessor">#define CommDataDecoder_h</span>
+<a name="l00004"></a>00004 <span class="preprocessor"></span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include &lt;string&gt;</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include &lt;map&gt;</span>
+<a name="l00007"></a>00007 
+<a name="l00008"></a>00008 <span class="preprocessor">#include &quot;<a class="code" href="_comm_data_def_8h.html">CommDataDef.h</a>&quot;</span>
+<a name="l00009"></a>00009 <span class="preprocessor">#include &quot;<a class="code" href="_comm_data_listener_8h.html">CommDataListener.h</a>&quot;</span>
+<a name="l00010"></a>00010 <span class="preprocessor">#include &quot;<a class="code" href="_comm_data_result_8h.html">CommDataResult.h</a>&quot;</span>
+<a name="l00011"></a>00011 
+<a name="l00012"></a>00012 <span class="keyword">class </span><a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a>;
+<a name="l00013"></a>00013 <span class="keyword">class </span><a class="code" href="class_controller_inf.html" title="コントローラインターフェース">ControllerInf</a>;
+<a name="l00014"></a>00014 <span class="keyword">class </span>CommDataHeader;
+<a name="l00015"></a>00015 <span class="comment"></span>
+<a name="l00016"></a>00016 <span class="comment">/**</span>
+<a name="l00017"></a>00017 <span class="comment"> * @brief サーバ-クライアント通信データデコードクラス</span>
+<a name="l00018"></a>00018 <span class="comment"> *</span>
+<a name="l00019"></a>00019 <span class="comment"> * サーバクライアント間の通信データのうち、SIGVerseシステムで規程しているプロトコルにより</span>
+<a name="l00020"></a>00020 <span class="comment"> * 転送されたデータを復号する。呼び出し側では、デコーダーが復元したデータを、同期方式、非</span>
+<a name="l00021"></a>00021 <span class="comment"> * 同期方式の2通りの方法で取得できる。</span>
+<a name="l00022"></a>00022 <span class="comment"></span>
+<a name="l00023"></a>00023 <span class="comment">   &lt;dl&gt;</span>
+<a name="l00024"></a>00024 <span class="comment">   &lt;dt&gt;pushメソッドの返り値として取得する場合(同期方式)&lt;/dt&gt;</span>
+<a name="l00025"></a>00025 <span class="comment">   &lt;dd&gt;&lt;pre&gt;</span>
+<a name="l00026"></a>00026 <span class="comment"></span>
+<a name="l00027"></a>00027 <span class="comment">        CommDataDecoder decoder;</span>
+<a name="l00028"></a>00028 <span class="comment">        Source &amp;src = ..</span>
+<a name="l00029"></a>00029 <span class="comment">    char * buf = ...;</span>
+<a name="l00030"></a>00030 <span class="comment">    int size = ...;</span>
+<a name="l00031"></a>00031 <span class="comment">    int decoded = 0</span>
+<a name="l00032"></a>00032 <span class="comment">    typedef CommDataDecoder::Result Result;</span>
+<a name="l00033"></a>00033 <span class="comment">    Result *res = decoder.push(src, buf, size, decoded);</span>
+<a name="l00034"></a>00034 <span class="comment">    if (decoded &gt; 0 &amp;&amp; res != NULL) {</span>
+<a name="l00035"></a>00035 <span class="comment">        if (res-&gt;type() ==  COMM_RESULT_GET_ALL_ENTITIES) {</span>
+<a name="l00036"></a>00036 <span class="comment">            ResultGetAllEntitiesEvent * evt =  (ResultGetAllEntitiesEvent * evt) res-&gt;data();</span>
+<a name="l00037"></a>00037 <span class="comment">        }</span>
+<a name="l00038"></a>00038 <span class="comment">    }</span>
+<a name="l00039"></a>00039 <span class="comment">    &lt;/pre&gt;&lt;/dd&gt;</span>
+<a name="l00040"></a>00040 <span class="comment">   &lt;dt&gt;CommDataListener を通じて取得する場合(非同期方式)&lt;/dt&gt;</span>
+<a name="l00041"></a>00041 <span class="comment">   &lt;dd&gt;&lt;pre&gt;</span>
+<a name="l00042"></a>00042 <span class="comment">        class CommDataListnerImpl : public CommDataListener</span>
+<a name="l00043"></a>00043 <span class="comment">    {</span>
+<a name="l00044"></a>00044 <span class="comment">    private:</span>
+<a name="l00045"></a>00045 <span class="comment">         recvResultGetAllEntities(Source &amp;from, ResultGetAllEntitiesEvent &amp;evt) {</span>
+<a name="l00046"></a>00046 <span class="comment">             ...; // 受信時の処理</span>
+<a name="l00047"></a>00047 <span class="comment">         }</span>
+<a name="l00048"></a>00048 <span class="comment">    };</span>
+<a name="l00049"></a>00049 <span class="comment">    CommDataListenerImpl impl;</span>
+<a name="l00050"></a>00050 <span class="comment">        CommDataDecoder decoder;</span>
+<a name="l00051"></a>00051 <span class="comment">    decoder.setDecoderListener(&amp;impl);</span>
+<a name="l00052"></a>00052 <span class="comment">    </span>
+<a name="l00053"></a>00053 <span class="comment">        Source &amp;src = ..</span>
+<a name="l00054"></a>00054 <span class="comment">    char * buf = ...;</span>
+<a name="l00055"></a>00055 <span class="comment">    int size = ...;</span>
+<a name="l00056"></a>00056 <span class="comment">    int decoded decoder.push(src, buf, size);</span>
+<a name="l00057"></a>00057 <span class="comment"></span>
+<a name="l00058"></a>00058 <span class="comment">    &lt;/pre&gt;&lt;/dd&gt;</span>
+<a name="l00059"></a>00059 <span class="comment">    &lt;/dl&gt;</span>
+<a name="l00060"></a>00060 <span class="comment"> * </span>
+<a name="l00061"></a>00061 <span class="comment"> */</span>
+<a name="l00062"></a><a class="code" href="class_comm_data_decoder.html">00062</a> <span class="keyword">class </span><a class="code" href="class_comm_data_decoder.html" title="サーバ-クライアント通信データデコードクラス">CommDataDecoder</a>
+<a name="l00063"></a>00063 {
+<a name="l00064"></a>00064 <span class="keyword">public</span>:
+<a name="l00065"></a><a class="code" href="class_comm_data_decoder.html#ae026f1b4e820f213faa0d9e7f9dd6a56">00065</a>     <span class="keyword">typedef</span> <a class="code" href="class_comm_data_listener.html" title="CommDataDecoder によるデータ復元結果取得リスナーインターフェース...">CommDataListener</a> <a class="code" href="class_comm_data_listener.html" title="CommDataDecoder によるデータ復元結果取得リスナーインターフェース...">Listener</a>;
+<a name="l00066"></a><a class="code" href="class_comm_data_decoder.html#afd6ebf1fd812c193d15c4d649bee2e77">00066</a>     <span class="keyword">typedef</span> <a class="code" href="class_comm_data_listener.html" title="CommDataDecoder によるデータ復元結果取得リスナーインターフェース...">CommDataListener</a> <a class="code" href="class_comm_data_listener.html" title="CommDataDecoder によるデータ復元結果取得リスナーインターフェース...">L</a>;
+<a name="l00067"></a><a class="code" href="class_comm_data_decoder.html#a4d7edefea1e9e5ed55f067ee80f36110">00067</a>     <span class="keyword">typedef</span> <a class="code" href="class_comm_data_result.html" title="CommDataDecoder により復号したデータを返り値として受け取るためのクラス...">CommDataResult</a>   <a class="code" href="class_comm_data_result.html" title="CommDataDecoder により復号したデータを返り値として受け取るためのクラス...">Result</a>;
+<a name="l00068"></a><a class="code" href="class_comm_data_decoder.html#afe7f466f68137728e4ed0c0f7ebde6b6">00068</a>     <span class="keyword">typedef</span> <a class="code" href="class_comm_data_result.html#a90ba6e66ef202d72770bccab618220c4" title="データフリー関数型">CommDataResult::DataFreeFunc</a> <a class="code" href="class_comm_data_decoder.html#afe7f466f68137728e4ed0c0f7ebde6b6">DataFreeFunc</a>;
+<a name="l00069"></a>00069 <span class="comment"></span>
+<a name="l00070"></a>00070 <span class="comment">    /**</span>
+<a name="l00071"></a>00071 <span class="comment">     * @brief データ送信インターフェース</span>
+<a name="l00072"></a>00072 <span class="comment">     */</span>
+<a name="l00073"></a><a class="code" href="class_comm_data_decoder_1_1_packet_sender.html">00073</a>     <span class="keyword">class </span><a class="code" href="class_comm_data_decoder_1_1_packet_sender.html" title="データ送信インターフェース">PacketSender</a> {
+<a name="l00074"></a>00074     <span class="keyword">public</span>:
+<a name="l00075"></a><a class="code" href="class_comm_data_decoder_1_1_packet_sender.html#ac0295cb6c65cf5a02e1483188eaae2d5">00075</a>         <span class="keyword">virtual</span> <a class="code" href="class_comm_data_decoder_1_1_packet_sender.html#ac0295cb6c65cf5a02e1483188eaae2d5">‾PacketSender</a>() {;}<span class="comment"></span>
+<a name="l00076"></a>00076 <span class="comment">        /**</span>
+<a name="l00077"></a>00077 <span class="comment">         * @brief データを他のクライアントに転送する</span>
+<a name="l00078"></a>00078 <span class="comment">         *</span>
+<a name="l00079"></a>00079 <span class="comment">         * 転送されてきたデータに転送フラグが</span>
+<a name="l00080"></a>00080 <span class="comment">             *  付いている場合呼び出される。</span>
+<a name="l00081"></a>00081 <span class="comment">         *</span>
+<a name="l00082"></a>00082 <span class="comment">         * @param from 転送元</span>
+<a name="l00083"></a>00083 <span class="comment">         * @param type データタイプ</span>
+<a name="l00084"></a>00084 <span class="comment">         * @param to 転送先クライアント名</span>
+<a name="l00085"></a>00085 <span class="comment">         * @param bytes データサイズ</span>
+<a name="l00086"></a>00086 <span class="comment">         * @param data データサイズ</span>
+<a name="l00087"></a>00087 <span class="comment">         * @param returnImmediate 転送後の処理結果を受けとるか？</span>
+<a name="l00088"></a>00088 <span class="comment">         * @param reachRadius 転送範囲(半径)</span>
+<a name="l00089"></a>00089 <span class="comment">         */</span>
+<a name="l00090"></a>00090         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_comm_data_decoder_1_1_packet_sender.html#a1929420f73df0042599a6bbde421cf03" title="データを他のクライアントに転送する">forward</a>(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <a class="code" href="_comm_data_type_8h.html#a587c9199c019f0dba3ce5ebe7a1a0a00">CommDataType</a> type, <span class="keyword">const</span> <span class="keywordtype">char</span> *to, <span class="keywordtype">int</span> bytes, <span class="keywordtype">char</span> *data, <span class="keywordtype">bool</span> returnImmediate, <span class="keywordtype">double</span> reachRadius) = 0;
+<a name="l00091"></a>00091     };
+<a name="l00092"></a>00092 <span class="keyword">public</span>:
+<a name="l00093"></a>00093 <span class="comment"></span>
+<a name="l00094"></a>00094 <span class="comment">    /**</span>
+<a name="l00095"></a>00095 <span class="comment">     * @brief 個々のデータデコーダーインターフェース(CommDataDecoder内部で使用)</span>
+<a name="l00096"></a>00096 <span class="comment">     */</span>
+<a name="l00097"></a><a class="code" href="class_comm_data_decoder_1_1_decoder_base.html">00097</a>     <span class="keyword">class </span><a class="code" href="class_comm_data_decoder_1_1_decoder_base.html" title="個々のデータデコーダーインターフェース(CommDataDecoder内部で使用)...">DecoderBase</a>
+<a name="l00098"></a>00098     {
+<a name="l00099"></a>00099     <span class="keyword">public</span>:
+<a name="l00100"></a><a class="code" href="class_comm_data_decoder_1_1_decoder_base.html#ae2449e5774ff691df1d6bb437b8626e8">00100</a>         <span class="keyword">virtual</span> <a class="code" href="class_comm_data_decoder_1_1_decoder_base.html#ae2449e5774ff691df1d6bb437b8626e8">‾DecoderBase</a>() {;}<span class="comment"></span>
+<a name="l00101"></a>00101 <span class="comment">        /**</span>
+<a name="l00102"></a>00102 <span class="comment">         * @brief 転送されたデータの解析</span>
+<a name="l00103"></a>00103 <span class="comment">         * @param h データヘッダ</span>
+<a name="l00104"></a>00104 <span class="comment">         * @param data データ領域のデータ</span>
+<a name="l00105"></a>00105 <span class="comment">         * @param n データ領域サイズ</span>
+<a name="l00106"></a>00106 <span class="comment">         */</span>
+<a name="l00107"></a>00107         <span class="keyword">virtual</span> <span class="keywordtype">bool</span>    <span class="keyword">set</span> (CommDataHeader &amp;h, <span class="keywordtype">char</span> *data, <span class="keywordtype">int</span> n) = 0;<span class="comment"></span>
+<a name="l00108"></a>00108 <span class="comment">        /**</span>
+<a name="l00109"></a>00109 <span class="comment">         * 対応するCommDataListenerメソッドの呼び出</span>
+<a name="l00110"></a>00110 <span class="comment">           し、または復号したデータの取得。</span>
+<a name="l00111"></a>00111 <span class="comment">         */</span>
+<a name="l00112"></a>00112         <span class="keyword">virtual</span> <span class="keywordtype">void</span> *   <a class="code" href="class_comm_data_decoder_1_1_decoder_base.html#a2fac11c581fbbc59c1ee6fe75784490d">invoke</a>(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from) = 0;<span class="comment"></span>
+<a name="l00113"></a>00113 <span class="comment">        //! データタイプの取得</span>
+<a name="l00114"></a>00114 <span class="comment"></span>        <span class="keyword">virtual</span> <a class="code" href="_comm_data_type_8h.html#a587c9199c019f0dba3ce5ebe7a1a0a00">CommDataType</a> <a class="code" href="class_comm_data_decoder_1_1_decoder_base.html#afe81289e6b2bc0f0de34f78f3e3ef755" title="データタイプの取得">dataType</a>() = 0;<span class="comment"></span>
+<a name="l00115"></a>00115 <span class="comment">        //! データオブジェクト破棄関数の取得</span>
+<a name="l00116"></a>00116 <span class="comment"></span>        <span class="keyword">virtual</span> <a class="code" href="class_comm_data_decoder.html#afe7f466f68137728e4ed0c0f7ebde6b6">DataFreeFunc</a> <a class="code" href="class_comm_data_decoder_1_1_decoder_base.html#a47741f1b8fcc16ea629395053d7dd633" title="データオブジェクト破棄関数の取得">dataFreeFunc</a>() = 0;<span class="comment"></span>
+<a name="l00117"></a>00117 <span class="comment">        //! 復号データクラスの作成</span>
+<a name="l00118"></a>00118 <span class="comment"></span>        <a class="code" href="class_comm_data_result.html" title="CommDataDecoder により復号したデータを返り値として受け取るためのクラス...">Result</a> *<a class="code" href="class_comm_data_decoder_1_1_decoder_base.html#a5e8b371961002e5e7b1feee390c786f3" title="復号データクラスの作成">createResult</a>(<span class="keywordtype">void</span> *);
+<a name="l00119"></a>00119     };
+<a name="l00120"></a>00120 <span class="keyword">private</span>:
+<a name="l00121"></a>00121     <a class="code" href="class_comm_data_decoder.html#afd6ebf1fd812c193d15c4d649bee2e77">L</a>   *m_l;
+<a name="l00122"></a>00122     <a class="code" href="class_controller_inf.html" title="コントローラインターフェース">ControllerInf</a> *m_ctrl;
+<a name="l00123"></a>00123     PacketSender *m_sender;
+<a name="l00124"></a>00124     <span class="keywordtype">double</span>  m_nextTime;
+<a name="l00125"></a>00125     DecoderBase *m_decoder;
+<a name="l00126"></a>00126 <span class="keyword">private</span>:
+<a name="l00127"></a>00127     <span class="keywordtype">void</span>    free_();
+<a name="l00128"></a>00128     DecoderBase *createDecoder(<a class="code" href="_comm_data_type_8h.html#a587c9199c019f0dba3ce5ebe7a1a0a00">CommDataType</a> type);
+<a name="l00129"></a>00129 <span class="keyword">public</span>:<span class="comment"></span>
+<a name="l00130"></a>00130 <span class="comment">    //! コンストラクタ</span>
+<a name="l00131"></a><a class="code" href="class_comm_data_decoder.html#a6bbbc00517ac46de99c4cbd599cfc463">00131</a> <span class="comment"></span>    <a class="code" href="class_comm_data_decoder.html#a6bbbc00517ac46de99c4cbd599cfc463" title="コンストラクタ">CommDataDecoder</a>() : m_l(0), m_ctrl(0), m_sender(0), m_nextTime(0.0), m_decoder(0) {;}<span class="comment"></span>
+<a name="l00132"></a>00132 <span class="comment">    //! デストラクタ</span>
+<a name="l00133"></a><a class="code" href="class_comm_data_decoder.html#add199adfc6532dd12982e9dc6fccc3a5">00133</a> <span class="comment"></span>    <a class="code" href="class_comm_data_decoder.html#add199adfc6532dd12982e9dc6fccc3a5" title="デストラクタ">‾CommDataDecoder</a>() { free_(); }
+<a name="l00134"></a>00134 <span class="comment"></span>
+<a name="l00135"></a>00135 <span class="comment">    /**</span>
+<a name="l00136"></a>00136 <span class="comment">     * @brief リスナーの設定</span>
+<a name="l00137"></a>00137 <span class="comment">     *</span>
+<a name="l00138"></a>00138 <span class="comment">     * 通信結果に対する処理を実装したCommDataListener実</span>
+<a name="l00139"></a>00139 <span class="comment">     * 装オブジェクトの設定</span>
+<a name="l00140"></a>00140 <span class="comment">     */</span>
+<a name="l00141"></a><a class="code" href="class_comm_data_decoder.html#ad34b788a9d321d6d886a6e9d0ce31639">00141</a>     <span class="keywordtype">void</span>    <a class="code" href="class_comm_data_decoder.html#ad34b788a9d321d6d886a6e9d0ce31639" title="リスナーの設定">setListener</a>(<a class="code" href="class_comm_data_listener.html" title="CommDataDecoder によるデータ復元結果取得リスナーインターフェース...">Listener</a> *l) { m_l = l; }<span class="comment"></span>
+<a name="l00142"></a>00142 <span class="comment">    //! コントローラの設定</span>
+<a name="l00143"></a><a class="code" href="class_comm_data_decoder.html#aac019712756df62472685244944d3203">00143</a> <span class="comment"></span>    <span class="keywordtype">void</span>    <a class="code" href="class_comm_data_decoder.html#aac019712756df62472685244944d3203" title="コントローラの設定">setController</a>(<a class="code" href="class_controller_inf.html" title="コントローラインターフェース">ControllerInf</a> *c) { m_ctrl = c; }<span class="comment"></span>
+<a name="l00144"></a>00144 <span class="comment">    //! PacketSenderの設定</span>
+<a name="l00145"></a><a class="code" href="class_comm_data_decoder.html#a1a57326ef2fcae2fc3fac392a7f85d0e">00145</a> <span class="comment"></span>    <span class="keywordtype">void</span>    <a class="code" href="class_comm_data_decoder.html#a1a57326ef2fcae2fc3fac392a7f85d0e" title="PacketSenderの設定.">setPacketSender</a>(<a class="code" href="class_comm_data_decoder_1_1_packet_sender.html" title="データ送信インターフェース">PacketSender</a> *s) { m_sender = s; }
+<a name="l00146"></a>00146 <span class="comment"></span>
+<a name="l00147"></a>00147 <span class="comment">    /**</span>
+<a name="l00148"></a>00148 <span class="comment">     * @brief 受信データを復号する</span>
+<a name="l00149"></a>00149 <span class="comment">     * 受信したデータを復号し、受信処理を非同期で行なう</span>
+<a name="l00150"></a>00150 <span class="comment">     *</span>
+<a name="l00151"></a>00151 <span class="comment">     * @param from 転送元</span>
+<a name="l00152"></a>00152 <span class="comment">     * @param data 受信データ</span>
+<a name="l00153"></a>00153 <span class="comment">     * @param n    受信データサイズ</span>
+<a name="l00154"></a>00154 <span class="comment">     *</span>
+<a name="l00155"></a>00155 <span class="comment">     * @retval &gt;= 0 : 成功(復号したバイト数)</span>
+<a name="l00156"></a>00156 <span class="comment">     * @retval &lt; 0 :  失敗</span>
+<a name="l00157"></a>00157 <span class="comment">     */</span>
+<a name="l00158"></a>00158         <span class="keywordtype">int</span>     <a class="code" href="class_comm_data_decoder.html#a6619bf4a485dc0126213699fa2abf8a1" title="受信データを復号する 受信したデータを復号し、受信処理を非同期で行な...">push</a>(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <span class="keywordtype">char</span> *data, <span class="keywordtype">int</span> n);
+<a name="l00159"></a>00159 <span class="comment"></span>
+<a name="l00160"></a>00160 <span class="comment">    /**</span>
+<a name="l00161"></a>00161 <span class="comment">     * @brief 受信データを復号する</span>
+<a name="l00162"></a>00162 <span class="comment">     * 受信したデータを復号し、復号したデータを返り値と</span>
+<a name="l00163"></a>00163 <span class="comment">     * して取得する。</span>
+<a name="l00164"></a>00164 <span class="comment">     *</span>
+<a name="l00165"></a>00165 <span class="comment">     * @param from 転送元</span>
+<a name="l00166"></a>00166 <span class="comment">     * @param data 受信データ</span>
+<a name="l00167"></a>00167 <span class="comment">     * @param n    受信データサイズ</span>
+<a name="l00168"></a>00168 <span class="comment">     * @param decoderbase 復号したデータサイズ</span>
+<a name="l00169"></a>00169 <span class="comment">     *</span>
+<a name="l00170"></a>00170 <span class="comment">     * @retval != NULL : 成功(復号したデータ)</span>
+<a name="l00171"></a>00171 <span class="comment">     * @retval  NULL : 失敗</span>
+<a name="l00172"></a>00172 <span class="comment">     */</span>
+<a name="l00173"></a>00173 
+<a name="l00174"></a>00174         <a class="code" href="class_comm_data_decoder.html#a4d7edefea1e9e5ed55f067ee80f36110">Result</a> * <a class="code" href="class_comm_data_decoder.html#a6619bf4a485dc0126213699fa2abf8a1" title="受信データを復号する 受信したデータを復号し、受信処理を非同期で行な...">push</a>(<a class="code" href="class_source.html" title="データ転送接続元クラス">Source</a> &amp;from, <span class="keywordtype">char</span> *data, <span class="keywordtype">int</span> n, <span class="keywordtype">int</span> &amp;decodedBytes);<span class="comment"></span>
+<a name="l00175"></a>00175 <span class="comment">    //! 復号終了処理</span>
+<a name="l00176"></a>00176 <span class="comment"></span>    <span class="keywordtype">void</span>    <a class="code" href="class_comm_data_decoder.html#a00192364fbf9c1471945385e8f1a3c9a" title="復号終了処理">clear</a>();
+<a name="l00177"></a>00177 <span class="comment"></span>
+<a name="l00178"></a>00178 <span class="comment">    //! 次の時刻を設定する(内部で使用)</span>
+<a name="l00179"></a><a class="code" href="class_comm_data_decoder.html#a90caf0b844c2f8b3eedeba3513dcb11d">00179</a> <span class="comment"></span>    <span class="keywordtype">void</span>    <a class="code" href="class_comm_data_decoder.html#a90caf0b844c2f8b3eedeba3513dcb11d" title="次の時刻を設定する(内部で使用)">setNextTime</a>(<span class="keywordtype">double</span> t)
+<a name="l00180"></a>00180     {
+<a name="l00181"></a>00181         m_nextTime = t;
+<a name="l00182"></a>00182     }<span class="comment"></span>
+<a name="l00183"></a>00183 <span class="comment">    //! 次の時刻を取得する(内部で使用)</span>
+<a name="l00184"></a><a class="code" href="class_comm_data_decoder.html#a72182b4899b120cbde62bfe74c49db34">00184</a> <span class="comment"></span>    <span class="keywordtype">double</span>  <a class="code" href="class_comm_data_decoder.html#a72182b4899b120cbde62bfe74c49db34" title="次の時刻を取得する(内部で使用)">getNextTime</a>() { <span class="keywordflow">return</span> m_nextTime; }
+<a name="l00185"></a>00185 };
+<a name="l00186"></a>00186 
+<a name="l00187"></a>00187 <span class="preprocessor">#endif // CommDataDecoder_h</span>
+<a name="l00188"></a>00188 <span class="preprocessor"></span> 
+</pre></div></div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:18 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

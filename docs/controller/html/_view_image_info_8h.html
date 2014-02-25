@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>SIGVerse_Controller: ViewImageInfo.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>ViewImageInfo.h</h1><code>#include &lt;assert.h&gt;</code><br/>
+
+<p><a href="_view_image_info_8h_source.html">ソースコードを見る。</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>構成</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_image_info.html">ViewImageInfo</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">画像データ情報クラス  <a href="class_view_image_info.html#_details">[詳細]</a><br/></td></tr>
+<tr><td colspan="2"><h2>型定義</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef unsigned short&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_view_image_info_8h.html#a9af7c151827aefd5a6197ea77dd7244e">ColorBitType</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef unsigned short&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_view_image_info_8h.html#a681fa4eef74cf2facfa0892aaa5574b1">ImageDataType</a></td></tr>
+<tr><td colspan="2"><h2>列挙型</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="_view_image_info_8h.html#a05589fbab0657f08285ebdfe93f5ec9ea5377962d794d8ac93da683f7158f9579">IMAGE_DATA_TYPE_ANY</a> =  0, 
+<a class="el" href="_view_image_info_8h.html#a05589fbab0657f08285ebdfe93f5ec9ea0225c8107c4a70eb539489eecf180292">IMAGE_DATA_WINDOWS_BMP</a>
+ }</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="_view_image_info_8h.html#a16af7b253440dadd46a80a4b9fddba4da4a37a25b767124a1e695661ff40d158f">COLORBIT_ANY</a> =  0, 
+<a class="el" href="_view_image_info_8h.html#a16af7b253440dadd46a80a4b9fddba4dadbe250a5f3c6a3677843f4c6bc77a467">COLORBIT_24</a>, 
+<a class="el" href="_view_image_info_8h.html#a16af7b253440dadd46a80a4b9fddba4da1b03b1e2d53d48b3f0ed43e2928ad0fe">DEPTHBIT_8</a>
+ }</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_view_image_info_8h.html#acfd49da85d15732194ec51155a2c9ecf">ImageDataSize</a> { <a class="el" href="_view_image_info_8h.html#acfd49da85d15732194ec51155a2c9ecfa0c52f5df985aee22b8e6bea1104b21d1">IMAGE_320X240</a> =  0, 
+<a class="el" href="_view_image_info_8h.html#acfd49da85d15732194ec51155a2c9ecfaf7fae486a4e882ac97224751d0abb46a">IMAGE_320X1</a>
+ }</td></tr>
+</table>
+<hr/><h2>型定義</h2>
+<a class="anchor" id="a9af7c151827aefd5a6197ea77dd7244e"></a><!-- doxytag: member="ViewImageInfo.h::ColorBitType" ref="a9af7c151827aefd5a6197ea77dd7244e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef unsigned short <a class="el" href="_view_image_info_8h.html#a9af7c151827aefd5a6197ea77dd7244e">ColorBitType</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_view_image_info_8h_source.html">ViewImageInfo.h</a> の <a class="el" href="_view_image_info_8h_source.html#l00015">15</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a681fa4eef74cf2facfa0892aaa5574b1"></a><!-- doxytag: member="ViewImageInfo.h::ImageDataType" ref="a681fa4eef74cf2facfa0892aaa5574b1" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef unsigned short <a class="el" href="_view_image_info_8h.html#a681fa4eef74cf2facfa0892aaa5574b1">ImageDataType</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_view_image_info_8h_source.html">ViewImageInfo.h</a> の <a class="el" href="_view_image_info_8h_source.html#l00007">7</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>列挙型</h2>
+<a class="anchor" id="a05589fbab0657f08285ebdfe93f5ec9e"></a><!-- doxytag: member="ViewImageInfo.h::@13" ref="a05589fbab0657f08285ebdfe93f5ec9e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>列挙型の値: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="a05589fbab0657f08285ebdfe93f5ec9ea5377962d794d8ac93da683f7158f9579"></a><!-- doxytag: member="IMAGE_DATA_TYPE_ANY" ref="a05589fbab0657f08285ebdfe93f5ec9ea5377962d794d8ac93da683f7158f9579" args="" -->IMAGE_DATA_TYPE_ANY</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a05589fbab0657f08285ebdfe93f5ec9ea0225c8107c4a70eb539489eecf180292"></a><!-- doxytag: member="IMAGE_DATA_WINDOWS_BMP" ref="a05589fbab0657f08285ebdfe93f5ec9ea0225c8107c4a70eb539489eecf180292" args="" -->IMAGE_DATA_WINDOWS_BMP</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p> <a class="el" href="_view_image_info_8h_source.html">ViewImageInfo.h</a> の <a class="el" href="_view_image_info_8h_source.html#l00009">9</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a16af7b253440dadd46a80a4b9fddba4d"></a><!-- doxytag: member="ViewImageInfo.h::@14" ref="a16af7b253440dadd46a80a4b9fddba4d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>列挙型の値: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="a16af7b253440dadd46a80a4b9fddba4da4a37a25b767124a1e695661ff40d158f"></a><!-- doxytag: member="COLORBIT_ANY" ref="a16af7b253440dadd46a80a4b9fddba4da4a37a25b767124a1e695661ff40d158f" args="" -->COLORBIT_ANY</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a16af7b253440dadd46a80a4b9fddba4dadbe250a5f3c6a3677843f4c6bc77a467"></a><!-- doxytag: member="COLORBIT_24" ref="a16af7b253440dadd46a80a4b9fddba4dadbe250a5f3c6a3677843f4c6bc77a467" args="" -->COLORBIT_24</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a16af7b253440dadd46a80a4b9fddba4da1b03b1e2d53d48b3f0ed43e2928ad0fe"></a><!-- doxytag: member="DEPTHBIT_8" ref="a16af7b253440dadd46a80a4b9fddba4da1b03b1e2d53d48b3f0ed43e2928ad0fe" args="" -->DEPTHBIT_8</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p> <a class="el" href="_view_image_info_8h_source.html">ViewImageInfo.h</a> の <a class="el" href="_view_image_info_8h_source.html#l00017">17</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="acfd49da85d15732194ec51155a2c9ecf"></a><!-- doxytag: member="ViewImageInfo.h::ImageDataSize" ref="acfd49da85d15732194ec51155a2c9ecf" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="_view_image_info_8h.html#acfd49da85d15732194ec51155a2c9ecf">ImageDataSize</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>列挙型の値: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="acfd49da85d15732194ec51155a2c9ecfa0c52f5df985aee22b8e6bea1104b21d1"></a><!-- doxytag: member="IMAGE_320X240" ref="acfd49da85d15732194ec51155a2c9ecfa0c52f5df985aee22b8e6bea1104b21d1" args="" -->IMAGE_320X240</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="acfd49da85d15732194ec51155a2c9ecfaf7fae486a4e882ac97224751d0abb46a"></a><!-- doxytag: member="IMAGE_320X1" ref="acfd49da85d15732194ec51155a2c9ecfaf7fae486a4e882ac97224751d0abb46a" args="" -->IMAGE_320X1</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p> <a class="el" href="_view_image_info_8h_source.html">ViewImageInfo.h</a> の <a class="el" href="_view_image_info_8h_source.html#l00023">23</a> 行で定義されています。</p>
+
+</div>
+</div>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>SIGVerse_Controllerに対してTue Dec 13 19:10:58 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

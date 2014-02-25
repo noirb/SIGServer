@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: 構成</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li class="current"><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>構成</h1>クラス、構造体、共用体、インタフェースの説明です。<table>
+  <tr><td class="indexkey"><a class="el" href="class_accept_thread.html">AcceptThread</a></td><td class="indexvalue">ServerAcceptProcの処理ををスレッドで起動する起動するクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_action_event.html">ActionEvent</a></td><td class="indexvalue">コントローラonAction イベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_attribute.html">Attribute</a></td><td class="indexvalue">属性クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_ball_joint.html">BallJoint</a></td><td class="indexvalue">ボール関節(BALL)クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_body_factory.html">BodyFactory</a></td><td class="indexvalue">エンティティの形状・構成を通知するインターフェース </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_body_x_m_l_reader.html">BodyXMLReader</a></td><td class="indexvalue">エンティティの形状を表すXMLファイルを読み込むクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_bool_value.html">BoolValue</a></td><td class="indexvalue">Bool型属性値クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_box_parts.html">BoxParts</a></td><td class="indexvalue">箱形状の部品クラス(クライアントサイドで使用) </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_box_parts_cmpnt.html">BoxPartsCmpnt</a></td><td class="indexvalue">箱形状パーツデータクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_collision_event.html">CollisionEvent</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_add_joint_torque_request.html">CommData::AddJointTorqueRequest</a></td><td class="indexvalue">ジョイントトルク追加リクエストエンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_attach_controller_request.html">CommData::AttachControllerRequest</a></td><td class="indexvalue">コントローラ割り当てリクエストエンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_attach_controller_result.html">CommData::AttachControllerResult</a></td><td class="indexvalue">コントローラ割り当て結果エンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_attach_request.html">CommData::AttachRequest</a></td><td class="indexvalue">クライアント割り当てリクエストエンコーダー基本クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_attach_view_request.html">CommData::AttachViewRequest</a></td><td class="indexvalue">ビュー割り当てリクエストエンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_attach_view_result.html">CommData::AttachViewResult</a></td><td class="indexvalue">ビュー割り当て結果エンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_capture_view_image_request.html">CommData::CaptureViewImageRequest</a></td><td class="indexvalue">視点画像キャプチャリクエストエンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_capture_view_image_result.html">CommData::CaptureViewImageResult</a></td><td class="indexvalue">視点画像キャプチャ結果エンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_connect_data_port_request.html">CommData::ConnectDataPortRequest</a></td><td class="indexvalue">データポート接続リクエストエンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_detect_entities_request.html">CommData::DetectEntitiesRequest</a></td><td class="indexvalue">視野内のエンティティ検出リクエストエンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_detect_entities_result.html">CommData::DetectEntitiesResult</a></td><td class="indexvalue">視野内のエンティティ検出結果エンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_display_text.html">CommData::DisplayText</a></td><td class="indexvalue">ログメッセージリクエストエンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_distance_sensor_request.html">CommData::DistanceSensorRequest</a></td><td class="indexvalue">視点(カメラの位置）から視線方向へのオブジェクトまでの距離 </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_distance_sensor_result.html">CommData::DistanceSensorResult</a></td><td class="indexvalue">視点(カメラの位置）からの距離取得結果エンコーダクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_get_all_enities_request.html">CommData::GetAllEnitiesRequest</a></td><td class="indexvalue">全エンティティ取得リクエストエンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_get_all_entities_result.html">CommData::GetAllEntitiesResult</a></td><td class="indexvalue">全エンティティ取得結果エンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_get_attributes_request.html">CommData::GetAttributesRequest</a></td><td class="indexvalue">属性取得リクエストエンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_get_attributes_result.html">CommData::GetAttributesResult</a></td><td class="indexvalue">属性取得結果エンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_get_entity_names_request.html">CommData::GetEntityNamesRequest</a></td><td class="indexvalue">エンティティ名取得リクエストエンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_get_entity_request.html">CommData::GetEntityRequest</a></td><td class="indexvalue">エンティティ取得リクエストエンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_get_entity_result.html">CommData::GetEntityResult</a></td><td class="indexvalue">エンティティ取得結果エンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_get_joint_angle_request.html">CommData::GetJointAngleRequest</a></td><td class="indexvalue">ジョイント角度取得リクエストエンコーダークラス(ダイナミクスシミュレーション時） </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_get_joint_angle_result.html">CommData::GetJointAngleResult</a></td><td class="indexvalue">ジョイント角度取得リクエストエンコーダークラス(ダイナミクスシミュレーション時） </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_get_object_names_request.html">CommData::GetObjectNamesRequest</a></td><td class="indexvalue">オブジェクト名取得リクエストエンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_get_object_names_result.html">CommData::GetObjectNamesResult</a></td><td class="indexvalue">エンティティ名取得結果エンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_invoke_on_action.html">CommData::InvokeOnAction</a></td><td class="indexvalue">OnAction 呼び出しエンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_invoke_on_collision.html">CommData::InvokeOnCollision</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_invoke_on_init.html">CommData::InvokeOnInit</a></td><td class="indexvalue">OnInit 呼び出しエンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_invoke_on_recv_message.html">CommData::InvokeOnRecvMessage</a></td><td class="indexvalue">OnRecvMessage 呼び出しエンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_invoke_on_recv_sound.html">CommData::InvokeOnRecvSound</a></td><td class="indexvalue">OnRecvSound 呼び出しエンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_invoke_on_recv_text.html">CommData::InvokeOnRecvText</a></td><td class="indexvalue">OnRecvText 呼び出しエンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_log_msg.html">CommData::LogMsg</a></td><td class="indexvalue">ログメッセージリクエストエンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_no_data_encoder.html">CommData::NoDataEncoder</a></td><td class="indexvalue">転送すべきデータのないエンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_n_s_pinger_request.html">CommData::NSPingerRequest</a></td><td class="indexvalue">サービスプロバイダへのピンガーリクエストエンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_n_s_pinger_result.html">CommData::NSPingerResult</a></td><td class="indexvalue">サービスプロバイダへのピンガー結果エンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_n_s_query_request.html">CommData::NSQueryRequest</a></td><td class="indexvalue">サービス提供先クエリリクエストエンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_n_s_query_result.html">CommData::NSQueryResult</a></td><td class="indexvalue">サービス提供先クエリ結果エンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_provide_service_request.html">CommData::ProvideServiceRequest</a></td><td class="indexvalue">サービスプロバイダ登録リクエストエンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_raw_data_encoder.html">CommData::RawDataEncoder</a></td><td class="indexvalue">生データ(バイナリデータ)のエンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_request_connect_joint.html">CommData::RequestConnectJoint</a></td><td class="indexvalue">パーツ連結リクエストエンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_request_get_joint_force.html">CommData::RequestGetJointForce</a></td><td class="indexvalue">ジョイントにかかる力取得リクエストエンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_request_release_joint.html">CommData::RequestReleaseJoint</a></td><td class="indexvalue">連結パーツ解除リクエストエンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_request_sound_recog.html">CommData::RequestSoundRecog</a></td><td class="indexvalue">音声認識リクエストエンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_result.html">CommData::Result</a></td><td class="indexvalue">リクエスト結果エンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_result_get_joint_force.html">CommData::ResultGetJointForce</a></td><td class="indexvalue">ジョイントにかかる力取得結果エンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_result_sound_recog.html">CommData::ResultSoundRecog</a></td><td class="indexvalue">音声認識結果エンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_send_endities.html">CommData::SendEndities</a></td><td class="indexvalue">エンティティ情報(属性値を含む)のエンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_set_joint_angle_request.html">CommData::SetJointAngleRequest</a></td><td class="indexvalue">ジョイント角度設定リクエストエンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_set_joint_quaternion_request.html">CommData::SetJointQuaternionRequest</a></td><td class="indexvalue">ジョイント角度設定リクエストエンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_set_joint_velocity_request.html">CommData::SetJointVelocityRequest</a></td><td class="indexvalue">ジョイント角速度設定リクエストエンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_set_object_velocity_request.html">CommData::SetObjectVelocityRequest</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_sim_ctrl_request.html">CommData::SimCtrlRequest</a></td><td class="indexvalue">シミュレータ操作リクエストエンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_1_1_update_entities_request.html">CommData::UpdateEntitiesRequest</a></td><td class="indexvalue">エンティティ状態更新リクエストエンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_decoder.html">CommDataDecoder</a></td><td class="indexvalue">サーバ-クライアント通信データデコードクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_decoder_1_1_decoder_base.html">CommDataDecoder::DecoderBase</a></td><td class="indexvalue">個々のデータデコーダーインターフェース(CommDataDecoder内部で使用) </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_decoder_1_1_packet_sender.html">CommDataDecoder::PacketSender</a></td><td class="indexvalue">データ送信インターフェース </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_encoder.html">CommDataEncoder</a></td><td class="indexvalue">転送データエンコーダー基本クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_listener.html">CommDataListener</a></td><td class="indexvalue"><a class="el" href="class_comm_data_decoder.html" title="サーバ-クライアント通信データデコードクラス">CommDataDecoder</a> によるデータ復元結果取得リスナーインターフェース </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_comm_data_result.html">CommDataResult</a></td><td class="indexvalue"><a class="el" href="class_comm_data_decoder.html" title="サーバ-クライアント通信データデコードクラス">CommDataDecoder</a> により復号したデータを返り値として受け取るためのクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="struct_connection.html">Connection</a></td><td class="indexvalue">クライアントコネクションクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_controller.html">Controller</a></td><td class="indexvalue">ユーザ定義コントローラ基本クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_controller_event.html">ControllerEvent</a></td><td class="indexvalue">コントローライベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_controller_impl.html">ControllerImpl</a></td><td class="indexvalue">ネットワーク通信コントローラクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_controller_inf.html">ControllerInf</a></td><td class="indexvalue">コントローラインターフェース </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_c_parts.html">CParts</a></td><td class="indexvalue">エンティティの部品クラス(クライアントサイドで使用) </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_c_t_reader.html">CTReader</a></td><td class="indexvalue">クライアントからのデータ受信を行なうクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_c_t_reader_1_1_connection_closed_exception.html">CTReader::ConnectionClosedException</a></td><td class="indexvalue">ソケットが接続先でクローズされた時に発生する例外 </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_c_t_sim_obj.html">CTSimObj</a></td><td class="indexvalue">シミュレーションサーバ上のエージェントを操作するクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_cylinder_parts.html">CylinderParts</a></td><td class="indexvalue">シリンダ形状の部品クラス(クライアントサイドで使用) </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_cylinder_parts_cmpnt.html">CylinderPartsCmpnt</a></td><td class="indexvalue">シリンダー形状パーツデータクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_depth_image.html">DepthImage</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_display_text_event.html">DisplayTextEvent</a></td><td class="indexvalue">ログメッセージリクエストイベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_double_value.html">DoubleValue</a></td><td class="indexvalue">Double型属性値クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_dynamics_controller.html">DynamicsController</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_entity_x_m_l_reader.html">EntityXMLReader</a></td><td class="indexvalue">エンティティ定義ファイルロードクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_eval.html">Eval</a></td><td class="indexvalue">数式を表す文字列を評価するクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_eval_1_1_exception.html">Eval::Exception</a></td><td class="indexvalue">表記の正しくない数式例外クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_filename_d_b.html">FilenameDB</a></td><td class="indexvalue">ファイル名データベースクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_fixed_joint.html">FixedJoint</a></td><td class="indexvalue">固定関節(FIXED)クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_geometry_parser.html">GeometryParser</a></td><td class="indexvalue">エンティティ形状を表すXMLファイルのgeometryノードをパースするクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_hinge_joint.html">HingeJoint</a></td><td class="indexvalue">ヒンジ関節(HING) </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_init_event.html">InitEvent</a></td><td class="indexvalue">コントローラonInit イベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_joint.html">Joint</a></td><td class="indexvalue">部品同士を繋ぐ関節クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_joint_force.html">JointForce</a></td><td class="indexvalue">パーツにかかる力を表すクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_joint_parser.html">JointParser</a></td><td class="indexvalue">エンティティ形状を表すXMLファイルのjointノードをパースするクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_locker.html">Locker</a></td><td class="indexvalue">Pthread ミューテックスによる排他制御用ロッカークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_logger.html">Logger</a></td><td class="indexvalue">ログクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_logger_1_1_listener.html">Logger::Listener</a></td><td class="indexvalue">ログリスナークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_logger_1_1_out_stream.html">Logger::OutStream</a></td><td class="indexvalue">出力先抽象クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_log_msg_event.html">LogMsgEvent</a></td><td class="indexvalue">ログメッセージリクエストイベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_log_transfer.html">LogTransfer</a></td><td class="indexvalue">ログ転送クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_message_sender.html">MessageSender</a></td><td class="indexvalue">エージェントにメッセージを送信するクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_no_data_event.html">NoDataEvent</a></td><td class="indexvalue">データのないイベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_n_s_lookup.html">NSLookup</a></td><td class="indexvalue">シミュレーションサーバのサービスプロバイダネームサービスを使用するクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_n_s_lookup_1_1_provider.html">NSLookup::Provider</a></td><td class="indexvalue">サービスプロバイダクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_o_d_e_obj.html">ODEObj</a></td><td class="indexvalue">ODEにおけるシミュレーションオブジェクトラッパークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_o_d_e_object_container.html">ODEObjectContainer</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_o_d_e_world.html">ODEWorld</a></td><td class="indexvalue">ODE 世界オブジェクトのラッパークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="struct_o_d_e_world_1_1_collision.html">ODEWorld::Collision</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="struct_o_d_e_world_1_1_gravity.html">ODEWorld::Gravity</a></td><td class="indexvalue">重力加速度構造体 </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_packet_forward.html">PacketForward</a></td><td class="indexvalue">パケット転送クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_parts.html">Parts</a></td><td class="indexvalue">エンティティを構成する部品クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_parts_cmpnt.html">PartsCmpnt</a></td><td class="indexvalue">パーツを構成する要素インターフェース </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_position.html">Position</a></td><td class="indexvalue">3次元位置クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_raw_sound.html">RawSound</a></td><td class="indexvalue">音声データクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_raw_sound_header.html">RawSoundHeader</a></td><td class="indexvalue">音声データヘッダクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_read_task.html">ReadTask</a></td><td class="indexvalue">設定ファイル読み込みタスクインターフェース </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_read_task_container.html">ReadTaskContainer</a></td><td class="indexvalue">設定ファイル読み込みタスクコンテナインターフェース </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_recv_entities_event.html">RecvEntitiesEvent</a></td><td class="indexvalue">エンティティ取得リクエストイベント基本クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_recv_message_event.html">RecvMessageEvent</a></td><td class="indexvalue">コントローラonRecvMessage イベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_recv_sound_event.html">RecvSoundEvent</a></td><td class="indexvalue">コントローラ onRecvSound イベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_recv_text_event.html">RecvTextEvent</a></td><td class="indexvalue">コントローラonRecvTextイベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_request_add_joint_torque_event.html">RequestAddJointTorqueEvent</a></td><td class="indexvalue">ジョイントクオータニオン設定リクエストイベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_request_attach_controller_event.html">RequestAttachControllerEvent</a></td><td class="indexvalue">コントローラ割り当てリクエストイベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_request_attach_event.html">RequestAttachEvent</a></td><td class="indexvalue">割り当て基本クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_request_attach_view_event.html">RequestAttachViewEvent</a></td><td class="indexvalue">ビュー割り当てリクエストイベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_request_capture_view_image_event.html">RequestCaptureViewImageEvent</a></td><td class="indexvalue">視点画像キャプチャリクエストイベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_request_connect_data_port_event.html">RequestConnectDataPortEvent</a></td><td class="indexvalue">データコネクションポート接続イベント </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_request_connect_joint_event.html">RequestConnectJointEvent</a></td><td class="indexvalue">パーツ連結リクエストイベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_request_detect_entities_event.html">RequestDetectEntitiesEvent</a></td><td class="indexvalue">視野内のエンティティ検出リクエストエンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_request_distance_sensor_event.html">RequestDistanceSensorEvent</a></td><td class="indexvalue">視点画像キャプチャリクエストイベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_request_get_all_entities_event.html">RequestGetAllEntitiesEvent</a></td><td class="indexvalue">全エンティティ取得リクエストイベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_request_get_attributes_event.html">RequestGetAttributesEvent</a></td><td class="indexvalue">属性取得リクエストイベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_request_get_entity_event.html">RequestGetEntityEvent</a></td><td class="indexvalue">エンティティ取得リクエストイベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_request_get_joint_angle_event.html">RequestGetJointAngleEvent</a></td><td class="indexvalue">ジョイントの角度取得リクエストイベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_request_get_joint_force_event.html">RequestGetJointForceEvent</a></td><td class="indexvalue">ジョイントにかかる力取得リクエストイベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_request_get_object_names_event.html">RequestGetObjectNamesEvent</a></td><td class="indexvalue">エンティティ名取得リクエストイベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_request_n_s_pinger_event.html">RequestNSPingerEvent</a></td><td class="indexvalue">サービスプロバイダへのピンガーリクエストイベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_request_n_s_query_event.html">RequestNSQueryEvent</a></td><td class="indexvalue">サービス提供先クエリリクエストイベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_request_provide_service_event.html">RequestProvideServiceEvent</a></td><td class="indexvalue">サービスプロバイダ登録イベント </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_request_release_joint_event.html">RequestReleaseJointEvent</a></td><td class="indexvalue">連結パーツ解除リクエストイベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_request_set_joint_angle_event.html">RequestSetJointAngleEvent</a></td><td class="indexvalue">ジョイント角度設定リクエストイベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_request_set_joint_quaternion_event.html">RequestSetJointQuaternionEvent</a></td><td class="indexvalue">ジョイントクオータニオン設定リクエストイベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_request_set_joint_velocity_event.html">RequestSetJointVelocityEvent</a></td><td class="indexvalue">ジョイント角速度設定リクエストイベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_request_set_object_velocity_event.html">RequestSetObjectVelocityEvent</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_request_sim_ctrl_event.html">RequestSimCtrlEvent</a></td><td class="indexvalue">シミュレータ操作リクエストイベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_request_sound_recog_event.html">RequestSoundRecogEvent</a></td><td class="indexvalue">音声認識リクエストイベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_request_update_entities_event.html">RequestUpdateEntitiesEvent</a></td><td class="indexvalue">エンティティ状態更新リクエストエンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_result_attach_controller_event.html">ResultAttachControllerEvent</a></td><td class="indexvalue">コントローラ割り当て結果イベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_result_attach_view_event.html">ResultAttachViewEvent</a></td><td class="indexvalue">ビュー割り当て結果イベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_result_capture_view_image_event.html">ResultCaptureViewImageEvent</a></td><td class="indexvalue">視点画像キャプチャ結果イベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_result_detect_entities_event.html">ResultDetectEntitiesEvent</a></td><td class="indexvalue">視野内のエンティティ検出結果エンコーダークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_result_distance_sensor_event.html">ResultDistanceSensorEvent</a></td><td class="indexvalue">0次元距離取得 </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_result_event.html">ResultEvent</a></td><td class="indexvalue">リクエスト結果イベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_result_get_all_entities_event.html">ResultGetAllEntitiesEvent</a></td><td class="indexvalue">全エンティティ取得結果イベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_result_get_entity_event.html">ResultGetEntityEvent</a></td><td class="indexvalue">エンティティ取得結果イベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_result_get_joint_angle_event.html">ResultGetJointAngleEvent</a></td><td class="indexvalue">ジョイントの角度取得リクエストイベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_result_get_joint_force_event.html">ResultGetJointForceEvent</a></td><td class="indexvalue">ジョイントにかかる力取得結果イベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_result_get_object_names_event.html">ResultGetObjectNamesEvent</a></td><td class="indexvalue">エンティティ名取得結果イベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_result_n_s_pinger_event.html">ResultNSPingerEvent</a></td><td class="indexvalue">サービスプロバイダへのピンガー結果イベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_result_n_s_query_event.html">ResultNSQueryEvent</a></td><td class="indexvalue">サービス提供先クエリ結果イベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_result_sound_recog_event.html">ResultSoundRecogEvent</a></td><td class="indexvalue">音声認識結果イベントクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_rotation.html">Rotation</a></td><td class="indexvalue">回転行列クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_s_blind_parts.html">SBlindParts</a></td><td class="indexvalue">見えない部品クラス(サーバサイドで使用) </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_s_box_parts.html">SBoxParts</a></td><td class="indexvalue">箱形状の部品クラス(サーバサイドで使用) </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_s_cylinder_parts.html">SCylinderParts</a></td><td class="indexvalue">シリンダ形状の部品クラス(サーバサイドで使用) </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_segment_parser.html">SegmentParser</a></td><td class="indexvalue">エンティティ形状を表すXMLファイルのsegmentノードをパースするクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_server_accept_proc.html">ServerAcceptProc</a></td><td class="indexvalue">クライアントの接続要求に応じるクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_service.html">Service</a></td><td class="indexvalue">サービスプロバイダの提供するサービスクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_service_name_server.html">ServiceNameServer</a></td><td class="indexvalue">サービスプロバイダネームサーバクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_sgv_1_1_log.html">Sgv::Log</a></td><td class="indexvalue">ログ出力クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_sgv_1_1_test_node.html">Sgv::TestNode</a></td><td class="indexvalue">OpenHRPの階層構造を保持するためのノード </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_sgv_1_1_x3_d_sim_obj_creator.html">Sgv::X3DSimObjCreator</a></td><td class="indexvalue">X3D形状からSSimObj（特にSParts）を生成するためのクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_sim_ground.html">SimGround</a></td><td class="indexvalue">シミュレーション地面クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_sim_obj.html">SimObj</a></td><td class="indexvalue">エンティティに対応するクラス(クライアントサイドで使用) </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_sim_obj_1_1_request_sender.html">SimObj::RequestSender</a></td><td class="indexvalue">パケット送受信インターフェース </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_sim_obj_base.html">SimObjBase</a></td><td class="indexvalue">シミュレーションエンティティ基本クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_sim_obj_base_1_1_attribute_read_only_exception.html">SimObjBase::AttributeReadOnlyException</a></td><td class="indexvalue">読み込み専用属性の値を設定したときに発生する例外 </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_sim_obj_base_1_1_exception.html">SimObjBase::Exception</a></td><td class="indexvalue">例外基本クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_sim_obj_base_1_1_no_attribute_exception.html">SimObjBase::NoAttributeException</a></td><td class="indexvalue">必要な属性を保持していないときに発生する例外 </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_sim_obj_base_1_1_parts_iterator.html">SimObjBase::PartsIterator</a></td><td class="indexvalue">部品オブジェクトイテレータ </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_simple_shape.html">SimpleShape</a></td><td class="indexvalue">1つのエンティティクラスの持つ単純形状の集合 </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_simple_shape_d_b.html">SimpleShapeDB</a></td><td class="indexvalue">全ての単純形状の情報 </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_simple_shape_elem.html">SimpleShapeElem</a></td><td class="indexvalue">1つのパーツに対応する単純形状 </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_simple_shape_x_m_l_reader.html">SimpleShapeXMLReader</a></td><td class="indexvalue">単純形状定義ファイルロードクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_sim_world.html">SimWorld</a></td><td class="indexvalue">シミュレーション世界クラス(サーバサイドで使用) </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_sim_world_provider.html">SimWorldProvider</a></td><td class="indexvalue">シミュレーション世界インスタンスへのアクセサインターフェース </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_size.html">Size</a></td><td class="indexvalue">シミュレーション世界内における3次元直方体の大きさを表すクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_sound_sender.html">SoundSender</a></td><td class="indexvalue">エージェントに音声データを送信するクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_source.html">Source</a></td><td class="indexvalue">データ転送接続元クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_s_parts.html">SParts</a></td><td class="indexvalue">エンティティの部品クラス(サーバサイドで使用) </td></tr>
+  <tr><td class="indexkey"><a class="el" href="struct_s_parts_1_1_child.html">SParts::Child</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_sphere_parts.html">SphereParts</a></td><td class="indexvalue">球形状の部品クラス(クライアントサイドで使用) </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_sphere_parts_cmpnt.html">SpherePartsCmpnt</a></td><td class="indexvalue">球形状パーツデータクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_s_sim_obj.html">SSimObj</a></td><td class="indexvalue">エンティティに対応するクラス(サーバサイドで使用) </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_s_sim_obj_builder.html">SSimObjBuilder</a></td><td class="indexvalue">エンティティオブジェクトに必要な要素を設定するクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_s_sim_world.html">SSimWorld</a></td><td class="indexvalue">シミュレーション世界クラス(サーバサイドで使用) </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_s_sphere_parts.html">SSphereParts</a></td><td class="indexvalue">球形状の部品クラス(サーバサイドで使用) </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_string_value.html">StringValue</a></td><td class="indexvalue">文字列型属性値クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_text.html">Text</a></td><td class="indexvalue">テキストデータクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_transform.html">Transform</a></td><td class="indexvalue">ノードのある位置のベクトル遷移・回転を表わすクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_transform_stack.html">TransformStack</a></td><td class="indexvalue"><a class="el" href="class_transform.html" title="ノードのある位置のベクトル遷移・回転を表わすクラス">Transform</a> インスタンスのスタッククラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_value.html">Value</a></td><td class="indexvalue">属性値クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_vector3d.html">Vector3d</a></td><td class="indexvalue">3次元ベクトルクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_view_image.html">ViewImage</a></td><td class="indexvalue">視覚データクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_view_image_info.html">ViewImageInfo</a></td><td class="indexvalue">画像データ情報クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_world_simulator.html">WorldSimulator</a></td><td class="indexvalue">シミュレータクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_world_x_m_l_reader.html">WorldXMLReader</a></td><td class="indexvalue">世界ファイルを読み込むクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_x3_d_d_b.html">X3DDB</a></td><td class="indexvalue">X3Dファイルデータベースクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_x3_d_d_b_1_1_iterator.html">X3DDB::Iterator</a></td><td class="indexvalue">X3DDBエントリイテレータクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_x3_d_file_reader.html">X3DFileReader</a></td><td class="indexvalue">X3DまたはVRMLファイルをエンティティの形状としてロードするクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_x_m_l_utils.html">XMLUtils</a></td><td class="indexvalue">XMLパース時のユーティリティクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_x_m_l_utils_1_1_exception.html">XMLUtils::Exception</a></td><td class="indexvalue">例外基本クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_x_m_l_utils_1_1_no_attribute_exception.html">XMLUtils::NoAttributeException</a></td><td class="indexvalue">必要な属性がないことを通知する例外クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_x_m_l_utils_1_1_no_child_node_exception.html">XMLUtils::NoChildNodeException</a></td><td class="indexvalue">子ノードがないことを通知する例外クラス </td></tr>
+</table>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:18 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

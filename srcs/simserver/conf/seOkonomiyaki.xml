@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf8"?>
+<define-class name="Okonomiyaki" inherit="Agent.xml">
+
+<!-- derived class from Entity.xml ALWAYS NEEDS body tag -->
+<!-- (otherwise simserver.sh crashes) -->
+   <body filename="dummy-body.xml"/>
+
+   <attr name="visual" type="string" group="visState"/>
+
+   <x3d>
+	   <filename>oknomiyaki_aonori.wrl</filename>
+	   <state name="visual" value="aonori"/>
+   </x3d>
+   <x3d>
+	   <filename>oknomiyaki_finish.wrl</filename>
+	   <state name="visual" value="finish"/>
+   </x3d>
+   <x3d>
+	   <filename>oknomiyaki_koge.wrl</filename>
+	   <state name="visual" value="koge"/>
+   </x3d>
+   <x3d>
+	   <filename>oknomiyaki_mayonnaise.wrl</filename>
+	   <state name="visual" value="mayonnaise"/>
+   </x3d>
+   <x3d>
+	   <filename>oknomiyaki_okaka.wrl</filename>
+	   <state name="visual" value="okaka"/>
+   </x3d>
+   <x3d>
+	   <filename>oknomiyaki_rare.wrl</filename>
+	   <state name="visual" value="rare"/>
+   </x3d>
+   <x3d>
+	   <filename>oknomiyaki_sauce.wrl</filename>
+	   <state name="visual" value="sauce"/>
+   </x3d>
+</define-class>

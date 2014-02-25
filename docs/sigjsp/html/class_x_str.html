@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>sigjsp: クラス XStr</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス XStr</h1><!-- doxytag: class="XStr" -->XML標準文字列(Unicode)からASCII文字列を取り出すためのクラス.  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="xstr_8h_source.html">xstr.h</a>&gt;</code>
+<p>
+
+<p>
+<a href="class_x_str-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_str.html#dd02cb71a25ae68ed510b5827ff8596f">getString</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">XML標準文字列(=Unicode)からASCII文字列を取り出す.  <a href="#dd02cb71a25ae68ed510b5827ff8596f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_str.html#da56d8276f5c4e13d2c70b2a4a41c783">XStr</a> (const XMLCh *const str)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#da56d8276f5c4e13d2c70b2a4a41c783"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_str.html#b074bfa05718dfc5ca536007357e9eb1">XStr</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#b074bfa05718dfc5ca536007357e9eb1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_str.html#c259a9f1088961438fc189a55979ddc0">~XStr</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#c259a9f1088961438fc189a55979ddc0"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+XML標準文字列(Unicode)からASCII文字列を取り出すためのクラス. 
+<p>
+juliusからの認識結果(XML)をコンソールに表示する際などに使う 
+<p> <a class="el" href="xstr_8h_source.html">xstr.h</a> の <a class="el" href="xstr_8h_source.html#l00014">14</a> 行で定義されています。</p>
+<hr><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" name="b074bfa05718dfc5ca536007357e9eb1"></a><!-- doxytag: member="XStr::XStr" ref="b074bfa05718dfc5ca536007357e9eb1" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">XStr::XStr           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+
+<p> <a class="el" href="xstr_8h_source.html">xstr.h</a> の <a class="el" href="xstr_8h_source.html#l00019">19</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="da56d8276f5c4e13d2c70b2a4a41c783"></a><!-- doxytag: member="XStr::XStr" ref="da56d8276f5c4e13d2c70b2a4a41c783" args="(const XMLCh *const str)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">XStr::XStr           </td>
+          <td>(</td>
+          <td class="paramtype">const XMLCh *const &nbsp;</td>
+          <td class="paramname"> <em>str</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>str</em>&nbsp;</td><td>[i] XML標準文字列(=Unicode) </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="xstr_8h_source.html">xstr.h</a> の <a class="el" href="xstr_8h_source.html#l00026">26</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="c259a9f1088961438fc189a55979ddc0"></a><!-- doxytag: member="XStr::~XStr" ref="c259a9f1088961438fc189a55979ddc0" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">XStr::~XStr           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+デストラクタ 
+<p>
+
+<p> <a class="el" href="xstr_8h_source.html">xstr.h</a> の <a class="el" href="xstr_8h_source.html#l00035">35</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>関数</h2>
+<a class="anchor" name="dd02cb71a25ae68ed510b5827ff8596f"></a><!-- doxytag: member="XStr::getString" ref="dd02cb71a25ae68ed510b5827ff8596f" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* XStr::getString           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+XML標準文字列(=Unicode)からASCII文字列を取り出す. 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>ASCII文字列</dd></dl>
+（注）返り値の文字列の所有権はこのオブジェクトにある． 返り値をfreeしてはいけない． 
+<p> <a class="el" href="xstr_8h_source.html">xstr.h</a> の <a class="el" href="xstr_8h_source.html#l00050">50</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="xstr_8h_source.html">xstr.h</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>sigjspに対してWed Dec 2 15:46:02 2009に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

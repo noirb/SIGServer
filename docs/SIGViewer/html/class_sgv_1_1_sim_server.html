@@ -1,0 +1,731 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGViewer: クラス Sgv::SimServer</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_sgv.html">Sgv</a>::<a class="el" href="class_sgv_1_1_sim_server.html">SimServer</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Sgv::SimServer</h1><!-- doxytag: class="Sgv::SimServer" -->シミュレーションサーバとの通信  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_sgv_sim_server_8h_source.html">SgvSimServer.h</a>&gt;</code>
+<p>
+
+<p>
+<a href="class_sgv_1_1_sim_server-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_sim_server.html#3c1a8d959d56bbcaf1e4b869dba107de">attachView</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">シミュレーションサーバにビューアアタッチ要求を送信する  <a href="#3c1a8d959d56bbcaf1e4b869dba107de"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_sim_server.html#02e5d905967ed6e3dff2179f223db663">close</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">シミュレーションサーバとの接続を切る  <a href="#02e5d905967ed6e3dff2179f223db663"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_sim_server.html#c4f7a3c88dfe904bd44c39de1ffb6d90">connect</a> (std::string simServerName, int port)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">シミュレーションサーバに接続する  <a href="#c4f7a3c88dfe904bd44c39de1ffb6d90"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_sim_server.html#bbfab7e09ad25ce8dabd781a4420d921">connect</a> (const char *simServerName, int port)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">シミュレーションサーバに接続する  <a href="#bbfab7e09ad25ce8dabd781a4420d921"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_sim_server.html#018c4a7024b4594e46bc1f9914d22354">connected</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">シミュレーションサーバとの接続中ならtrueを返す  <a href="#018c4a7024b4594e46bc1f9914d22354"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">SimWorld *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_sim_server.html#5e92de4f26aa5739c77ef6a24c529797">getLatestWorld</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">シミュレーションサーバから届いた最新のSimWorldを返す  <a href="#5e92de4f26aa5739c77ef6a24c529797"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_sim_server.html#029795ea91dbed25392498f248bbce25">isNewWorldArrived</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">最新のSimWorldがシミュレーションサーバから届いているならtrueを返す  <a href="#029795ea91dbed25392498f248bbce25"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_sim_server.html#e290d0d6971cd7232c8f666803b88e11">isViewAttached</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ビューアがアタッチされているならtrueを返す  <a href="#e290d0d6971cd7232c8f666803b88e11"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_sim_server.html#70962b341f2311c088be3c4f372fcbf2">processOnePacket</a> (CommDataType &amp;dataType, bool bDumpPacket=false)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ソケットからのパケットを処理する  <a href="#70962b341f2311c088be3c4f372fcbf2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_sim_server.html#f0fb93a5be7475075c3f133aae7f79a1">sendConnectDataPortRequest</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_CONNECT_DATA_PORTをシミュレーションサーバに送る.  <a href="#f0fb93a5be7475075c3f133aae7f79a1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_sim_server.html#0c40ee895881d5951df3512fed05d252">sendGetAllEntitiesRequest</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_GET_ALL_ENTITIESをシミュレーションサーバに送る.  <a href="#0c40ee895881d5951df3512fed05d252"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_sim_server.html#6fa76319c506d3116162a3b00d9c6992">sendProvideServiceRequest</a> (const char *clerkName, int clerkPort)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_PROVIDE_SERVICEをシミュレーションサーバに送る.  <a href="#6fa76319c506d3116162a3b00d9c6992"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_sim_server.html#23234c4dadf9e298bfc9f0e701849e77">sendRawSound</a> (RawSound *sound, const char *sendTo)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">音声データを送信する  <a href="#23234c4dadf9e298bfc9f0e701849e77"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_sim_server.html#ef55af7255038e1a15073ac44dc958d9">sendSimCtrlCommand</a> (SimCtrlCmdType cmd)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コントロールコマンドをシミュレーションサーバに送る  <a href="#ef55af7255038e1a15073ac44dc958d9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_sim_server.html#de9b656524328b71ab36edce665326ce">setLatestWorld</a> (SimWorld *w)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">最新のSimWorldをこのオブジェクトにセットする  <a href="#de9b656524328b71ab36edce665326ce"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_sim_server.html#cece3132c476a8e495b15318e92b4e91">setNewWorldArrivedFlag</a> (bool b)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">最新のSimWorldが届いたことを示すフラグをセットする．  <a href="#cece3132c476a8e495b15318e92b4e91"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_sim_server.html#c8307bf9fdb64d7094c3b8c06882d2d0">setViewAttachedFlag</a> (bool b)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ビューアのアタッチ状況をセットする  <a href="#c8307bf9fdb64d7094c3b8c06882d2d0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_sim_server.html#f3fd992e8452fc4b29bf75626b8aa731">SimServer</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#f3fd992e8452fc4b29bf75626b8aa731"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_sim_server.html#ffef7983742c9948f215c3190e5c9802">waitUntilNewWorldArrived</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">新しいSimWorldがシミュレーションサーバから届くまで待つ  <a href="#ffef7983742c9948f215c3190e5c9802"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_sim_server.html#d1c8ee4efa03fed978aa25c54cd83839">‾SimServer</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#d1c8ee4efa03fed978aa25c54cd83839"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+シミュレーションサーバとの通信 
+<p> <a class="el" href="_sgv_sim_server_8h_source.html">SgvSimServer.h</a> の <a class="el" href="_sgv_sim_server_8h_source.html#l00020">20</a> 行で定義されています。</p>
+<hr><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" name="f3fd992e8452fc4b29bf75626b8aa731"></a><!-- doxytag: member="Sgv::SimServer::SimServer" ref="f3fd992e8452fc4b29bf75626b8aa731" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::SimServer::SimServer           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_sim_server_8cpp_source.html">SgvSimServer.cpp</a> の <a class="el" href="_sgv_sim_server_8cpp_source.html#l00028">28</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>関数</h2>
+<a class="anchor" name="3c1a8d959d56bbcaf1e4b869dba107de"></a><!-- doxytag: member="Sgv::SimServer::attachView" ref="3c1a8d959d56bbcaf1e4b869dba107de" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::SimServer::attachView           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+シミュレーションサーバにビューアアタッチ要求を送信する 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=ビューのアタッチに成功した), false(=アタッチ失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_sim_server_8cpp_source.html">SgvSimServer.cpp</a> の <a class="el" href="_sgv_sim_server_8cpp_source.html#l00173">173</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="02e5d905967ed6e3dff2179f223db663"></a><!-- doxytag: member="Sgv::SimServer::close" ref="02e5d905967ed6e3dff2179f223db663" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::SimServer::close           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+シミュレーションサーバとの接続を切る 
+<p>
+
+<p> <a class="el" href="_sgv_sim_server_8cpp_source.html">SgvSimServer.cpp</a> の <a class="el" href="_sgv_sim_server_8cpp_source.html#l00102">102</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="c4f7a3c88dfe904bd44c39de1ffb6d90"></a><!-- doxytag: member="Sgv::SimServer::connect" ref="c4f7a3c88dfe904bd44c39de1ffb6d90" args="(std::string simServerName, int port)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::SimServer::connect           </td>
+          <td>(</td>
+          <td class="paramtype">std::string&nbsp;</td>
+          <td class="paramname"> <em>simServerName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>port</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+シミュレーションサーバに接続する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>simServerName</em>&nbsp;</td><td>[i] シミュレーションサーバのホスト名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>port</em>&nbsp;</td><td>[i] シミュレーションサーバのポート番号</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_sim_server_8cpp_source.html">SgvSimServer.cpp</a> の <a class="el" href="_sgv_sim_server_8cpp_source.html#l00097">97</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="bbfab7e09ad25ce8dabd781a4420d921"></a><!-- doxytag: member="Sgv::SimServer::connect" ref="bbfab7e09ad25ce8dabd781a4420d921" args="(const char *simServerName, int port)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::SimServer::connect           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>simServerName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>port</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+シミュレーションサーバに接続する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>simServerName</em>&nbsp;</td><td>[i] シミュレーションサーバのホスト名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>port</em>&nbsp;</td><td>[i] シミュレーションサーバのポート番号</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_sim_server_8cpp_source.html">SgvSimServer.cpp</a> の <a class="el" href="_sgv_sim_server_8cpp_source.html#l00071">71</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="018c4a7024b4594e46bc1f9914d22354"></a><!-- doxytag: member="Sgv::SimServer::connected" ref="018c4a7024b4594e46bc1f9914d22354" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::SimServer::connected           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+シミュレーションサーバとの接続中ならtrueを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=接続中), false(=切断中) </dd></dl>
+
+<p> <a class="el" href="_sgv_sim_server_8cpp_source.html">SgvSimServer.cpp</a> の <a class="el" href="_sgv_sim_server_8cpp_source.html#l00117">117</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="5e92de4f26aa5739c77ef6a24c529797"></a><!-- doxytag: member="Sgv::SimServer::getLatestWorld" ref="5e92de4f26aa5739c77ef6a24c529797" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SimWorld * Sgv::SimServer::getLatestWorld           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+シミュレーションサーバから届いた最新のSimWorldを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>最新のSimWorldへのポインタ</dd></dl>
+（注）返り値の所有権はこのオブジェクトが保持している． 返り値をdeleteしてはいけない． 
+<p> <a class="el" href="_sgv_sim_server_8cpp_source.html">SgvSimServer.cpp</a> の <a class="el" href="_sgv_sim_server_8cpp_source.html#l00313">313</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="029795ea91dbed25392498f248bbce25"></a><!-- doxytag: member="Sgv::SimServer::isNewWorldArrived" ref="029795ea91dbed25392498f248bbce25" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::SimServer::isNewWorldArrived           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+最新のSimWorldがシミュレーションサーバから届いているならtrueを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=届いている), false(=届いていない) </dd></dl>
+
+<p> <a class="el" href="_sgv_sim_server_8cpp_source.html">SgvSimServer.cpp</a> の <a class="el" href="_sgv_sim_server_8cpp_source.html#l00343">343</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="e290d0d6971cd7232c8f666803b88e11"></a><!-- doxytag: member="Sgv::SimServer::isViewAttached" ref="e290d0d6971cd7232c8f666803b88e11" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::SimServer::isViewAttached           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ビューアがアタッチされているならtrueを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=アタッチされている), false(=アタッチされていない)</dd></dl>
+シミュレーションサーバーに出したアタッチ要求が サーバー側に認識されている場合にtrueとなる． 
+<p> <a class="el" href="_sgv_sim_server_8h_source.html">SgvSimServer.h</a> の <a class="el" href="_sgv_sim_server_8h_source.html#l00094">94</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="70962b341f2311c088be3c4f372fcbf2"></a><!-- doxytag: member="Sgv::SimServer::processOnePacket" ref="70962b341f2311c088be3c4f372fcbf2" args="(CommDataType &amp;dataType, bool bDumpPacket=false)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Sgv::SimServer::processOnePacket           </td>
+          <td>(</td>
+          <td class="paramtype">CommDataType &amp;&nbsp;</td>
+          <td class="paramname"> <em>dataType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bDumpPacket</em> = <code>false</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ソケットからのパケットを処理する 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>パケットの処理結果</dd></dl>
+&gt; 0 .... 有効なパケットが処理された （この場合、処理されたパケットの種類がdataTypeに返る）<p>
+== 0 ... パケットを構成する十分なデータが届いていなかった.<p>
+&lt; 0 .... ソケット通信エラー発生 
+<p> <a class="el" href="_sgv_sim_server_8cpp_source.html">SgvSimServer.cpp</a> の <a class="el" href="_sgv_sim_server_8cpp_source.html#l00124">124</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f0fb93a5be7475075c3f133aae7f79a1"></a><!-- doxytag: member="Sgv::SimServer::sendConnectDataPortRequest" ref="f0fb93a5be7475075c3f133aae7f79a1" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::SimServer::sendConnectDataPortRequest           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_REQUEST_CONNECT_DATA_PORTをシミュレーションサーバに送る. 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=送信成功), false(=送信失敗)</dd></dl>
+<dl class="see" compact><dt><b>参照:</b></dt><dd>CommDataType.h </dd></dl>
+
+<p> <a class="el" href="_sgv_sim_server_8cpp_source.html">SgvSimServer.cpp</a> の <a class="el" href="_sgv_sim_server_8cpp_source.html#l00236">236</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="0c40ee895881d5951df3512fed05d252"></a><!-- doxytag: member="Sgv::SimServer::sendGetAllEntitiesRequest" ref="0c40ee895881d5951df3512fed05d252" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::SimServer::sendGetAllEntitiesRequest           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_REQUEST_GET_ALL_ENTITIESをシミュレーションサーバに送る. 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=送信成功), false(=送信失敗)</dd></dl>
+<dl class="see" compact><dt><b>参照:</b></dt><dd>CommDataType.h </dd></dl>
+
+<p> <a class="el" href="_sgv_sim_server_8cpp_source.html">SgvSimServer.cpp</a> の <a class="el" href="_sgv_sim_server_8cpp_source.html#l00221">221</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="6fa76319c506d3116162a3b00d9c6992"></a><!-- doxytag: member="Sgv::SimServer::sendProvideServiceRequest" ref="6fa76319c506d3116162a3b00d9c6992" args="(const char *clerkName, int clerkPort)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::SimServer::sendProvideServiceRequest           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>clerkName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>clerkPort</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_REQUEST_PROVIDE_SERVICEをシミュレーションサーバに送る. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>clerkName</em>&nbsp;</td><td>[i] サービスクラーク名（＝ビューアのホスト名） </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>clerkPort</em>&nbsp;</td><td>[i] サービスクラークポート番号（＝ビューアのポート番号）</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=送信成功), false(=送信失敗)</dd></dl>
+<dl class="see" compact><dt><b>参照:</b></dt><dd>CommDataType.h </dd></dl>
+
+<p> <a class="el" href="_sgv_sim_server_8cpp_source.html">SgvSimServer.cpp</a> の <a class="el" href="_sgv_sim_server_8cpp_source.html#l00249">249</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="23234c4dadf9e298bfc9f0e701849e77"></a><!-- doxytag: member="Sgv::SimServer::sendRawSound" ref="23234c4dadf9e298bfc9f0e701849e77" args="(RawSound *sound, const char *sendTo)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::SimServer::sendRawSound           </td>
+          <td>(</td>
+          <td class="paramtype">RawSound *&nbsp;</td>
+          <td class="paramname"> <em>sound</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>sendTo</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+音声データを送信する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>sound</em>&nbsp;</td><td>[i] 音声データ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>sendTo</em>&nbsp;</td><td>[i] 送信先</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=送信成功), false(=送信失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_sim_server_8cpp_source.html">SgvSimServer.cpp</a> の <a class="el" href="_sgv_sim_server_8cpp_source.html#l00282">282</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="ef55af7255038e1a15073ac44dc958d9"></a><!-- doxytag: member="Sgv::SimServer::sendSimCtrlCommand" ref="ef55af7255038e1a15073ac44dc958d9" args="(SimCtrlCmdType cmd)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::SimServer::sendSimCtrlCommand           </td>
+          <td>(</td>
+          <td class="paramtype">SimCtrlCmdType&nbsp;</td>
+          <td class="paramname"> <em>cmd</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コントロールコマンドをシミュレーションサーバに送る 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>cmd</em>&nbsp;</td><td>[i] コントロールコマンド</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=送信成功), false(=送信失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_sim_server_8cpp_source.html">SgvSimServer.cpp</a> の <a class="el" href="_sgv_sim_server_8cpp_source.html#l00202">202</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="de9b656524328b71ab36edce665326ce"></a><!-- doxytag: member="Sgv::SimServer::setLatestWorld" ref="de9b656524328b71ab36edce665326ce" args="(SimWorld *w)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::SimServer::setLatestWorld           </td>
+          <td>(</td>
+          <td class="paramtype">SimWorld *&nbsp;</td>
+          <td class="paramname"> <em>w</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+最新のSimWorldをこのオブジェクトにセットする 
+<p>
+SimServerEventListenerがイベントの処理結果をこのクラスに書き込むために使う．<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>w</em>&nbsp;</td><td>[i] 最新のSimWorld </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_sim_server_8cpp_source.html">SgvSimServer.cpp</a> の <a class="el" href="_sgv_sim_server_8cpp_source.html#l00302">302</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="cece3132c476a8e495b15318e92b4e91"></a><!-- doxytag: member="Sgv::SimServer::setNewWorldArrivedFlag" ref="cece3132c476a8e495b15318e92b4e91" args="(bool b)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::SimServer::setNewWorldArrivedFlag           </td>
+          <td>(</td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>b</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+最新のSimWorldが届いたことを示すフラグをセットする． 
+<p>
+SimServerEventListenerがイベントの処理結果をこのクラスに書き込むために使う．<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>b</em>&nbsp;</td><td>[i] true(=最新のSimWorldが到着した), false(=最新のSimWorldは到着していない) </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_sim_server_8cpp_source.html">SgvSimServer.cpp</a> の <a class="el" href="_sgv_sim_server_8cpp_source.html#l00338">338</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="c8307bf9fdb64d7094c3b8c06882d2d0"></a><!-- doxytag: member="Sgv::SimServer::setViewAttachedFlag" ref="c8307bf9fdb64d7094c3b8c06882d2d0" args="(bool b)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::SimServer::setViewAttachedFlag           </td>
+          <td>(</td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>b</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ビューアのアタッチ状況をセットする 
+<p>
+SimServerEventListenerがイベントの処理結果をこのクラスに書き込むために使う．<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>b</em>&nbsp;</td><td>[i] ビューアアタッチフラグ </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_sim_server_8h_source.html">SgvSimServer.h</a> の <a class="el" href="_sgv_sim_server_8h_source.html#l00183">183</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="ffef7983742c9948f215c3190e5c9802"></a><!-- doxytag: member="Sgv::SimServer::waitUntilNewWorldArrived" ref="ffef7983742c9948f215c3190e5c9802" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::SimServer::waitUntilNewWorldArrived           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+新しいSimWorldがシミュレーションサーバから届くまで待つ 
+<p>
+
+<p> <a class="el" href="_sgv_sim_server_8cpp_source.html">SgvSimServer.cpp</a> の <a class="el" href="_sgv_sim_server_8cpp_source.html#l00318">318</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="d1c8ee4efa03fed978aa25c54cd83839"></a><!-- doxytag: member="Sgv::SimServer::‾SimServer" ref="d1c8ee4efa03fed978aa25c54cd83839" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::SimServer::‾SimServer           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+デストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_sim_server_8cpp_source.html">SgvSimServer.cpp</a> の <a class="el" href="_sgv_sim_server_8cpp_source.html#l00044">44</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_sgv_sim_server_8h_source.html">SgvSimServer.h</a><li><a class="el" href="_sgv_sim_server_8cpp_source.html">SgvSimServer.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGViewerに対してThu Jun 9 10:52:15 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: Source.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Source.h</h1><code>#include &quot;<a class="el" href="systemdef_8h_source.html">systemdef.h</a>&quot;</code><br/>
+<code>#include &lt;string&gt;</code><br/>
+<code>#include &lt;map&gt;</code><br/>
+<code>#include &lt;string.h&gt;</code><br/>
+<code>#include &lt;sys/socket.h&gt;</code><br/>
+<code>#include &lt;pthread.h&gt;</code><br/>
+<div class="dynheader">
+Source.hのインクルード依存関係図</div>
+<div class="dynsection">
+<div class="center"><img src="_source_8h__incl.png" border="0" usemap="#_source_8h_map" alt=""/></div>
+<map name="_source_8h_map" id="_source_8h">
+<area shape="rect" href="systemdef_8h.html" title="systemdef.h" alt="" coords="5,83,99,112"/></map>
+</div>
+<div class="dynheader">
+このグラフは、どのファイルから直接、間接的にインクルードされているかを示しています。</div>
+<div class="dynsection">
+<div class="center"><img src="_source_8h__dep__incl.png" border="0" usemap="#_source_8hdep_map" alt=""/></div>
+<map name="_source_8hdep_map" id="_source_8hdep">
+<area shape="rect" href="_server_accept_proc_8h.html" title="ServerAcceptProc.h" alt="" coords="5,83,144,112"/><area shape="rect" href="_c_t_reader_8h.html" title="CTReader.h" alt="" coords="192,83,280,112"/></map>
+</div>
+
+<p><a href="_source_8h_source.html">ソースコードを見る。</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>構成</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source.html">Source</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">データ転送接続元クラス  <a href="class_source.html#_details">[詳細]</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><b>Source::Locker</b></td></tr>
+<tr><td colspan="2"><h2>型定義</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef signed&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_source_8h.html#abd482467b5af8258c45cde48b322924b">SourceType</a></td></tr>
+<tr><td colspan="2"><h2>列挙型</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom">{ <br/>
+&nbsp;&nbsp;<a class="el" href="_source_8h.html#af9bdc3014f3d54c426b6d2df10de4960ae5d8965ed569af3dc0a4b52cb61222e8">SOURCE_TYPE_NOT_SET</a> =  -1, 
+<a class="el" href="_source_8h.html#af9bdc3014f3d54c426b6d2df10de4960ad9b21426fe41d24242471ca4bb4b6257">SOURCE_TYPE_SIMSERVER</a>, 
+<a class="el" href="_source_8h.html#af9bdc3014f3d54c426b6d2df10de4960a4705eec1a2e1a6eb355116a202eadec0">SOURCE_TYPE_VIEW</a>, 
+<a class="el" href="_source_8h.html#af9bdc3014f3d54c426b6d2df10de4960a796ebd6b6b788622b6306d299225320a">SOURCE_TYPE_CONTROLLER_CMD</a>, 
+<br/>
+&nbsp;&nbsp;<a class="el" href="_source_8h.html#af9bdc3014f3d54c426b6d2df10de4960ace4a805c926c1dc158040764e2825668">SOURCE_TYPE_CONTROLLER_DATA</a>, 
+<a class="el" href="_source_8h.html#af9bdc3014f3d54c426b6d2df10de4960a0714360198d740693dd06571ee54b85f">SOURCE_TYPE_SERVICE_PROVIDER</a>, 
+<a class="el" href="_source_8h.html#af9bdc3014f3d54c426b6d2df10de4960a25559a2853b65ef2c1069463f8746c18">SOURCE_TYPE_NUN</a>
+<br/>
+ }</td></tr>
+</table>
+<hr/><h2>型定義</h2>
+<a class="anchor" id="abd482467b5af8258c45cde48b322924b"></a><!-- doxytag: member="Source.h::SourceType" ref="abd482467b5af8258c45cde48b322924b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef signed <a class="el" href="_source_8h.html#abd482467b5af8258c45cde48b322924b">SourceType</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_source_8h_source.html">Source.h</a> の <a class="el" href="_source_8h_source.html#l00031">31</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>列挙型</h2>
+<a class="anchor" id="af9bdc3014f3d54c426b6d2df10de4960"></a><!-- doxytag: member="Source.h::@19" ref="af9bdc3014f3d54c426b6d2df10de4960" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>列挙型の値: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="af9bdc3014f3d54c426b6d2df10de4960ae5d8965ed569af3dc0a4b52cb61222e8"></a><!-- doxytag: member="SOURCE_TYPE_NOT_SET" ref="af9bdc3014f3d54c426b6d2df10de4960ae5d8965ed569af3dc0a4b52cb61222e8" args="" -->SOURCE_TYPE_NOT_SET</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="af9bdc3014f3d54c426b6d2df10de4960ad9b21426fe41d24242471ca4bb4b6257"></a><!-- doxytag: member="SOURCE_TYPE_SIMSERVER" ref="af9bdc3014f3d54c426b6d2df10de4960ad9b21426fe41d24242471ca4bb4b6257" args="" -->SOURCE_TYPE_SIMSERVER</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="af9bdc3014f3d54c426b6d2df10de4960a4705eec1a2e1a6eb355116a202eadec0"></a><!-- doxytag: member="SOURCE_TYPE_VIEW" ref="af9bdc3014f3d54c426b6d2df10de4960a4705eec1a2e1a6eb355116a202eadec0" args="" -->SOURCE_TYPE_VIEW</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="af9bdc3014f3d54c426b6d2df10de4960a796ebd6b6b788622b6306d299225320a"></a><!-- doxytag: member="SOURCE_TYPE_CONTROLLER_CMD" ref="af9bdc3014f3d54c426b6d2df10de4960a796ebd6b6b788622b6306d299225320a" args="" -->SOURCE_TYPE_CONTROLLER_CMD</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="af9bdc3014f3d54c426b6d2df10de4960ace4a805c926c1dc158040764e2825668"></a><!-- doxytag: member="SOURCE_TYPE_CONTROLLER_DATA" ref="af9bdc3014f3d54c426b6d2df10de4960ace4a805c926c1dc158040764e2825668" args="" -->SOURCE_TYPE_CONTROLLER_DATA</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="af9bdc3014f3d54c426b6d2df10de4960a0714360198d740693dd06571ee54b85f"></a><!-- doxytag: member="SOURCE_TYPE_SERVICE_PROVIDER" ref="af9bdc3014f3d54c426b6d2df10de4960a0714360198d740693dd06571ee54b85f" args="" -->SOURCE_TYPE_SERVICE_PROVIDER</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="af9bdc3014f3d54c426b6d2df10de4960a25559a2853b65ef2c1069463f8746c18"></a><!-- doxytag: member="SOURCE_TYPE_NUN" ref="af9bdc3014f3d54c426b6d2df10de4960a25559a2853b65ef2c1069463f8746c18" args="" -->SOURCE_TYPE_NUN</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p> <a class="el" href="_source_8h_source.html">Source.h</a> の <a class="el" href="_source_8h_source.html#l00022">22</a> 行で定義されています。</p>
+
+</div>
+</div>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:18 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

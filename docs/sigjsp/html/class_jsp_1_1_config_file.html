@@ -1,0 +1,283 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>sigjsp: クラス Jsp::ConfigFile</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_jsp.html">Jsp</a>::<a class="el" href="class_jsp_1_1_config_file.html">ConfigFile</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Jsp::ConfigFile</h1><!-- doxytag: class="Jsp::ConfigFile" -->設定ファイルクラス  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_jsp_config_file_8h_source.html">JspConfigFile.h</a>&gt;</code>
+<p>
+
+<p>
+<a href="class_jsp_1_1_config_file-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_config_file.html#94ae397c7ef4a2954f65f3b9939c56d1">ConfigFile</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#94ae397c7ef4a2954f65f3b9939c56d1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_config_file.html#9854054089f47c601ddab9b34475f5ff">getStringValue</a> (const char *name)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">指定された名前に対応する値を返す  <a href="#9854054089f47c601ddab9b34475f5ff"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_config_file.html#55a5289fa1394a5e55078984da4352c1">load</a> (const char *configFile)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">設定ファイルを読み込む  <a href="#55a5289fa1394a5e55078984da4352c1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_config_file.html#3d87c084ff21de1bb3c3de3e160ec044">~ConfigFile</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#3d87c084ff21de1bb3c3de3e160ec044"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Static Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_config_file.html#f821217ef6f20dda54c3030a29464687">stripNLAtLineEnd</a> (std::string str)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">行末の改行記号を取り去る  <a href="#f821217ef6f20dda54c3030a29464687"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_config_file.html#dc00b55d227ffc430935c363eb081743">trim</a> (std::string str)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">文字列の前後のスペースを除去する  <a href="#dc00b55d227ffc430935c363eb081743"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+設定ファイルクラス 
+<p>
+Windowsのiniファイルに類似のフォーマットで書く．<p>
+記述例： <div class="fragment"><pre class="fragment"><span class="preprocessor"> # コメント(#は行の先頭に必要)</span>
+<span class="preprocessor"></span> KEY1=VALUE1
+ KEY2=VALUE2
+ ...
+</pre></div> 
+<p> <a class="el" href="_jsp_config_file_8h_source.html">JspConfigFile.h</a> の <a class="el" href="_jsp_config_file_8h_source.html#l00026">26</a> 行で定義されています。</p>
+<hr><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" name="94ae397c7ef4a2954f65f3b9939c56d1"></a><!-- doxytag: member="Jsp::ConfigFile::ConfigFile" ref="94ae397c7ef4a2954f65f3b9939c56d1" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Jsp::ConfigFile::ConfigFile           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+
+<p> <a class="el" href="_jsp_config_file_8cpp_source.html">JspConfigFile.cpp</a> の <a class="el" href="_jsp_config_file_8cpp_source.html#l00009">9</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="3d87c084ff21de1bb3c3de3e160ec044"></a><!-- doxytag: member="Jsp::ConfigFile::~ConfigFile" ref="3d87c084ff21de1bb3c3de3e160ec044" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Jsp::ConfigFile::~ConfigFile           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+デストラクタ 
+<p>
+
+<p> <a class="el" href="_jsp_config_file_8cpp_source.html">JspConfigFile.cpp</a> の <a class="el" href="_jsp_config_file_8cpp_source.html#l00014">14</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>関数</h2>
+<a class="anchor" name="9854054089f47c601ddab9b34475f5ff"></a><!-- doxytag: member="Jsp::ConfigFile::getStringValue" ref="9854054089f47c601ddab9b34475f5ff" args="(const char *name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * Jsp::ConfigFile::getStringValue           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>name</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+指定された名前に対応する値を返す 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>キー名 </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>キー名に対応する値．キー名が存在しなければNULLが返る． </dd></dl>
+
+<p> <a class="el" href="_jsp_config_file_8cpp_source.html">JspConfigFile.cpp</a> の <a class="el" href="_jsp_config_file_8cpp_source.html#l00101">101</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="55a5289fa1394a5e55078984da4352c1"></a><!-- doxytag: member="Jsp::ConfigFile::load" ref="55a5289fa1394a5e55078984da4352c1" args="(const char *configFile)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Jsp::ConfigFile::load           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>configFile</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+設定ファイルを読み込む 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>configFile</em>&nbsp;</td><td>設定ファイル名 </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true=読み込み成功, false=読み込み失敗 </dd></dl>
+
+<p> <a class="el" href="_jsp_config_file_8cpp_source.html">JspConfigFile.cpp</a> の <a class="el" href="_jsp_config_file_8cpp_source.html#l00018">18</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f821217ef6f20dda54c3030a29464687"></a><!-- doxytag: member="Jsp::ConfigFile::stripNLAtLineEnd" ref="f821217ef6f20dda54c3030a29464687" args="(std::string str)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Jsp::ConfigFile::stripNLAtLineEnd           </td>
+          <td>(</td>
+          <td class="paramtype">std::string&nbsp;</td>
+          <td class="paramname"> <em>str</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+行末の改行記号を取り去る 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>str</em>&nbsp;</td><td>文字列 </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>行末の改行を取り除いた文字列 （改行記号がなければstrをそのまま返す） </dd></dl>
+
+<p> <a class="el" href="_jsp_config_file_8cpp_source.html">JspConfigFile.cpp</a> の <a class="el" href="_jsp_config_file_8cpp_source.html#l00086">86</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="dc00b55d227ffc430935c363eb081743"></a><!-- doxytag: member="Jsp::ConfigFile::trim" ref="dc00b55d227ffc430935c363eb081743" args="(std::string str)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Jsp::ConfigFile::trim           </td>
+          <td>(</td>
+          <td class="paramtype">std::string&nbsp;</td>
+          <td class="paramname"> <em>str</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+文字列の前後のスペースを除去する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>str</em>&nbsp;</td><td>文字列 </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>strの前後のスペースを除去した文字列 </dd></dl>
+
+<p> <a class="el" href="_jsp_config_file_8cpp_source.html">JspConfigFile.cpp</a> の <a class="el" href="_jsp_config_file_8cpp_source.html#l00071">71</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_jsp_config_file_8h_source.html">JspConfigFile.h</a><li><a class="el" href="_jsp_config_file_8cpp_source.html">JspConfigFile.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>sigjspに対してWed Dec 2 15:46:02 2009に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

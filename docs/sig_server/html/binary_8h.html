@@ -1,0 +1,678 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: binary.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>binary.h</h1><code>#include &lt;arpa/inet.h&gt;</code><br/>
+<div class="dynheader">
+binary.hのインクルード依存関係図</div>
+<div class="dynsection">
+<div class="center"><img src="binary_8h__incl.png" border="0" usemap="#binary_8h_map" alt=""/></div>
+</div>
+
+<p><a href="binary_8h_source.html">ソースコードを見る。</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>マクロ定義</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary_8h.html#a62854aca4a13f733f70c6a8d762e9dd6">BINARY_FREE_STRING</a>(P)&nbsp;&nbsp;&nbsp;binary_free_string(&amp;P)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary_8h.html#acafb5b38c50b5612668ff27c7bf0fa48">BINARY_GET_BOOL</a>(PTR)&nbsp;&nbsp;&nbsp;*(bool*)PTR</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary_8h.html#a67630ac8b65217a2e4f2813ffc4d4d0c">BINARY_GET_BOOL_INCR</a>(PTR)&nbsp;&nbsp;&nbsp;BINARY_GET_BOOL(PTR); PTR += sizeof(bool);</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary_8h.html#a08649d5a51555e79eb9c5ff22b566888">BINARY_GET_DATA_L</a>(PTR, TYPE)&nbsp;&nbsp;&nbsp;ntohl( *(TYPE*)PTR )</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary_8h.html#a8a6aa491ee4c3e9a4367b0c1296e194c">BINARY_GET_DATA_L_INCR</a>(PTR, TYPE)&nbsp;&nbsp;&nbsp;ntohl( *(TYPE*)PTR ); PTR += sizeof(TYPE)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary_8h.html#a750f9fee96c0d1eb1450d94ffc978513">BINARY_GET_DATA_S</a>(PTR, TYPE)&nbsp;&nbsp;&nbsp;ntohs( *(TYPE*)PTR )</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary_8h.html#a786dccf243637f66178d30578933c00b">BINARY_GET_DATA_S_INCR</a>(PTR, TYPE)&nbsp;&nbsp;&nbsp;ntohs( *(TYPE*)PTR ); PTR += sizeof(TYPE)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary_8h.html#a3051f7abc5dfb5dd10df47a0512106da">BINARY_GET_DOUBLE</a>(PTR)&nbsp;&nbsp;&nbsp;*(double*)PTR</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary_8h.html#a7418971d72ee81dcd893b7edaae9eb4d">BINARY_GET_DOUBLE_INCR</a>(PTR)&nbsp;&nbsp;&nbsp;BINARY_GET_DOUBLE(PTR); PTR += sizeof(double);</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary_8h.html#a127b343f52ab1e93dcbccaadaecd2134">BINARY_GET_FLOAT</a>(PTR)&nbsp;&nbsp;&nbsp;*(float*)PTR</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary_8h.html#a562c2b814f057aab9f6db10419712435">BINARY_GET_FLOAT_INCR</a>(PTR)&nbsp;&nbsp;&nbsp;BINARY_GET_FLOAT(PTR); PTR += sizeof(float);</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary_8h.html#a9dc6058a0f00039dcec18f8589f83ab9">BINARY_GET_STRING_INCR</a>(PTR)&nbsp;&nbsp;&nbsp;binary_get_string_incr(&amp;PTR)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary_8h.html#a5a09925b47e1a38c93afa7b93c1521d2">BINARY_SET_BOOL_INCR</a>(PTR, V)&nbsp;&nbsp;&nbsp;{ bool v_ = V; memcpy(PTR, &amp;v_, sizeof (V)); PTR += sizeof(V); }</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary_8h.html#a08ceb9f4daf5f2b4e9d589642082cf75">BINARY_SET_DATA_L</a>(PTR, TYPE, V)&nbsp;&nbsp;&nbsp;*(TYPE*)(PTR) = htonl(V)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary_8h.html#af97c9ab508d2cefc72fdba18e86e955e">BINARY_SET_DATA_L_INCR</a>(PTR, TYPE, V)&nbsp;&nbsp;&nbsp;BINARY_SET_DATA_L(PTR, TYPE, V); PTR += sizeof(TYPE);</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary_8h.html#a0293a0115005c1a5f362222df8d1f00c">BINARY_SET_DATA_S</a>(PTR, TYPE, V)&nbsp;&nbsp;&nbsp;*(TYPE*)(PTR) = htons(V)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary_8h.html#aec603e35886ac9bc4b05df0339412f92">BINARY_SET_DATA_S_INCR</a>(PTR, TYPE, V)&nbsp;&nbsp;&nbsp;BINARY_SET_DATA_S(PTR, TYPE, V); PTR += sizeof(TYPE);</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary_8h.html#a2cefff9fe8ed8db26dbe599a99d092cd">BINARY_SET_DOUBLE_INCR</a>(PTR, V)&nbsp;&nbsp;&nbsp;{ double v_ = V; memcpy(PTR, &amp;v_, sizeof(V)); PTR += sizeof(V); }</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary_8h.html#a86276569a396807799f0465b291488be">BINARY_SET_FLOAT_INCR</a>(PTR, V)&nbsp;&nbsp;&nbsp;{ float v_ = V; memcpy(PTR, &amp;v_, sizeof(V)); PTR += sizeof(V); }</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary_8h.html#a11b7dc6d4ca3282bd0b7d506783c466e">BINARY_SET_STRING_INCR</a>(PTR, STR)&nbsp;&nbsp;&nbsp;¥</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary_8h.html#a9ce1b847ca2ac2571ae155ad2b20b0c8">BINARY_SKIP_STRING</a>(PTR)&nbsp;&nbsp;&nbsp;{ char *PP_ = BINARY_GET_STRING_INCR(PTR); BINARY_FREE_STRING(PP_); }</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary_8h.html#ab4ff500ed74be6ba2ce59f8b4c595a99">BINARY_STRING_EXT_LEN</a>(STRLEN)&nbsp;&nbsp;&nbsp;( ( 1 + (STRLEN)/4)*4 )</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary_8h.html#a1519f5babcb3aa9d0e80f10a3e112f29">BINARY_STRING_LEN</a>(STRLEN)&nbsp;&nbsp;&nbsp;( 4 + BINARY_STRING_EXT_LEN(STRLEN) )</td></tr>
+<tr><td colspan="2"><h2>型定義</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef unsigned short&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary_8h.html#a5b6a16b4bab2ae2fa12771c763c08fc8">DataLengthType</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef unsigned short&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary_8h.html#a598f13e6cf7e1ec0349e91036d10b0d6">DataOffsetType</a></td></tr>
+<tr><td colspan="2"><h2>関数</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="binary_8h.html#ab36c93d9873c4cc4f042a08d766d1934">binary_free_string</a> (char **p)</td></tr>
+</table>
+<hr/><h2>マクロ定義</h2>
+<a class="anchor" id="a62854aca4a13f733f70c6a8d762e9dd6"></a><!-- doxytag: member="binary.h::BINARY_FREE_STRING" ref="a62854aca4a13f733f70c6a8d762e9dd6" args="(P)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BINARY_FREE_STRING</td>
+          <td>(</td>
+          <td class="paramtype">P&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;binary_free_string(&amp;P)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="binary_8h_source.html">binary.h</a> の <a class="el" href="binary_8h_source.html#l00053">53</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="acafb5b38c50b5612668ff27c7bf0fa48"></a><!-- doxytag: member="binary.h::BINARY_GET_BOOL" ref="acafb5b38c50b5612668ff27c7bf0fa48" args="(PTR)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BINARY_GET_BOOL</td>
+          <td>(</td>
+          <td class="paramtype">PTR&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;*(bool*)PTR</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a67630ac8b65217a2e4f2813ffc4d4d0c"></a><!-- doxytag: member="binary.h::BINARY_GET_BOOL_INCR" ref="a67630ac8b65217a2e4f2813ffc4d4d0c" args="(PTR)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BINARY_GET_BOOL_INCR</td>
+          <td>(</td>
+          <td class="paramtype">PTR&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;BINARY_GET_BOOL(PTR); PTR += sizeof(bool);</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a08649d5a51555e79eb9c5ff22b566888"></a><!-- doxytag: member="binary.h::BINARY_GET_DATA_L" ref="a08649d5a51555e79eb9c5ff22b566888" args="(PTR, TYPE)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BINARY_GET_DATA_L</td>
+          <td>(</td>
+          <td class="paramtype">PTR, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TYPE&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;ntohl( *(TYPE*)PTR )</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a8a6aa491ee4c3e9a4367b0c1296e194c"></a><!-- doxytag: member="binary.h::BINARY_GET_DATA_L_INCR" ref="a8a6aa491ee4c3e9a4367b0c1296e194c" args="(PTR, TYPE)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BINARY_GET_DATA_L_INCR</td>
+          <td>(</td>
+          <td class="paramtype">PTR, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TYPE&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;ntohl( *(TYPE*)PTR ); PTR += sizeof(TYPE)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a750f9fee96c0d1eb1450d94ffc978513"></a><!-- doxytag: member="binary.h::BINARY_GET_DATA_S" ref="a750f9fee96c0d1eb1450d94ffc978513" args="(PTR, TYPE)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BINARY_GET_DATA_S</td>
+          <td>(</td>
+          <td class="paramtype">PTR, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TYPE&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;ntohs( *(TYPE*)PTR )</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a786dccf243637f66178d30578933c00b"></a><!-- doxytag: member="binary.h::BINARY_GET_DATA_S_INCR" ref="a786dccf243637f66178d30578933c00b" args="(PTR, TYPE)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BINARY_GET_DATA_S_INCR</td>
+          <td>(</td>
+          <td class="paramtype">PTR, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TYPE&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;ntohs( *(TYPE*)PTR ); PTR += sizeof(TYPE)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a3051f7abc5dfb5dd10df47a0512106da"></a><!-- doxytag: member="binary.h::BINARY_GET_DOUBLE" ref="a3051f7abc5dfb5dd10df47a0512106da" args="(PTR)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BINARY_GET_DOUBLE</td>
+          <td>(</td>
+          <td class="paramtype">PTR&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;*(double*)PTR</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a7418971d72ee81dcd893b7edaae9eb4d"></a><!-- doxytag: member="binary.h::BINARY_GET_DOUBLE_INCR" ref="a7418971d72ee81dcd893b7edaae9eb4d" args="(PTR)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BINARY_GET_DOUBLE_INCR</td>
+          <td>(</td>
+          <td class="paramtype">PTR&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;BINARY_GET_DOUBLE(PTR); PTR += sizeof(double);</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a127b343f52ab1e93dcbccaadaecd2134"></a><!-- doxytag: member="binary.h::BINARY_GET_FLOAT" ref="a127b343f52ab1e93dcbccaadaecd2134" args="(PTR)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BINARY_GET_FLOAT</td>
+          <td>(</td>
+          <td class="paramtype">PTR&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;*(float*)PTR</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a562c2b814f057aab9f6db10419712435"></a><!-- doxytag: member="binary.h::BINARY_GET_FLOAT_INCR" ref="a562c2b814f057aab9f6db10419712435" args="(PTR)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BINARY_GET_FLOAT_INCR</td>
+          <td>(</td>
+          <td class="paramtype">PTR&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;BINARY_GET_FLOAT(PTR); PTR += sizeof(float);</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a9dc6058a0f00039dcec18f8589f83ab9"></a><!-- doxytag: member="binary.h::BINARY_GET_STRING_INCR" ref="a9dc6058a0f00039dcec18f8589f83ab9" args="(PTR)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BINARY_GET_STRING_INCR</td>
+          <td>(</td>
+          <td class="paramtype">PTR&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;binary_get_string_incr(&amp;PTR)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="binary_8h_source.html">binary.h</a> の <a class="el" href="binary_8h_source.html#l00049">49</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a5a09925b47e1a38c93afa7b93c1521d2"></a><!-- doxytag: member="binary.h::BINARY_SET_BOOL_INCR" ref="a5a09925b47e1a38c93afa7b93c1521d2" args="(PTR, V)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BINARY_SET_BOOL_INCR</td>
+          <td>(</td>
+          <td class="paramtype">PTR, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">V&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;{ bool v_ = V; memcpy(PTR, &amp;v_, sizeof (V)); PTR += sizeof(V); }</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a08ceb9f4daf5f2b4e9d589642082cf75"></a><!-- doxytag: member="binary.h::BINARY_SET_DATA_L" ref="a08ceb9f4daf5f2b4e9d589642082cf75" args="(PTR, TYPE, V)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BINARY_SET_DATA_L</td>
+          <td>(</td>
+          <td class="paramtype">PTR, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TYPE, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">V&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;*(TYPE*)(PTR) = htonl(V)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="binary_8h_source.html">binary.h</a> の <a class="el" href="binary_8h_source.html#l00018">18</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="af97c9ab508d2cefc72fdba18e86e955e"></a><!-- doxytag: member="binary.h::BINARY_SET_DATA_L_INCR" ref="af97c9ab508d2cefc72fdba18e86e955e" args="(PTR, TYPE, V)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BINARY_SET_DATA_L_INCR</td>
+          <td>(</td>
+          <td class="paramtype">PTR, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TYPE, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">V&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;BINARY_SET_DATA_L(PTR, TYPE, V); PTR += sizeof(TYPE);</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="binary_8h_source.html">binary.h</a> の <a class="el" href="binary_8h_source.html#l00021">21</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a0293a0115005c1a5f362222df8d1f00c"></a><!-- doxytag: member="binary.h::BINARY_SET_DATA_S" ref="a0293a0115005c1a5f362222df8d1f00c" args="(PTR, TYPE, V)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BINARY_SET_DATA_S</td>
+          <td>(</td>
+          <td class="paramtype">PTR, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TYPE, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">V&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;*(TYPE*)(PTR) = htons(V)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="binary_8h_source.html">binary.h</a> の <a class="el" href="binary_8h_source.html#l00017">17</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="aec603e35886ac9bc4b05df0339412f92"></a><!-- doxytag: member="binary.h::BINARY_SET_DATA_S_INCR" ref="aec603e35886ac9bc4b05df0339412f92" args="(PTR, TYPE, V)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BINARY_SET_DATA_S_INCR</td>
+          <td>(</td>
+          <td class="paramtype">PTR, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TYPE, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">V&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;BINARY_SET_DATA_S(PTR, TYPE, V); PTR += sizeof(TYPE);</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="binary_8h_source.html">binary.h</a> の <a class="el" href="binary_8h_source.html#l00020">20</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a2cefff9fe8ed8db26dbe599a99d092cd"></a><!-- doxytag: member="binary.h::BINARY_SET_DOUBLE_INCR" ref="a2cefff9fe8ed8db26dbe599a99d092cd" args="(PTR, V)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BINARY_SET_DOUBLE_INCR</td>
+          <td>(</td>
+          <td class="paramtype">PTR, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">V&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;{ double v_ = V; memcpy(PTR, &amp;v_, sizeof(V)); PTR += sizeof(V); }</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a86276569a396807799f0465b291488be"></a><!-- doxytag: member="binary.h::BINARY_SET_FLOAT_INCR" ref="a86276569a396807799f0465b291488be" args="(PTR, V)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BINARY_SET_FLOAT_INCR</td>
+          <td>(</td>
+          <td class="paramtype">PTR, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">V&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;{ float v_ = V; memcpy(PTR, &amp;v_, sizeof(V)); PTR += sizeof(V); }</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a11b7dc6d4ca3282bd0b7d506783c466e"></a><!-- doxytag: member="binary.h::BINARY_SET_STRING_INCR" ref="a11b7dc6d4ca3282bd0b7d506783c466e" args="(PTR, STR)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BINARY_SET_STRING_INCR</td>
+          <td>(</td>
+          <td class="paramtype">PTR, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">STR&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;¥</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="binary_8h_source.html">binary.h</a> の <a class="el" href="binary_8h_source.html#l00023">23</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a9ce1b847ca2ac2571ae155ad2b20b0c8"></a><!-- doxytag: member="binary.h::BINARY_SKIP_STRING" ref="a9ce1b847ca2ac2571ae155ad2b20b0c8" args="(PTR)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BINARY_SKIP_STRING</td>
+          <td>(</td>
+          <td class="paramtype">PTR&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;{ char *PP_ = BINARY_GET_STRING_INCR(PTR); BINARY_FREE_STRING(PP_); }</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="binary_8h_source.html">binary.h</a> の <a class="el" href="binary_8h_source.html#l00051">51</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ab4ff500ed74be6ba2ce59f8b4c595a99"></a><!-- doxytag: member="binary.h::BINARY_STRING_EXT_LEN" ref="ab4ff500ed74be6ba2ce59f8b4c595a99" args="(STRLEN)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BINARY_STRING_EXT_LEN</td>
+          <td>(</td>
+          <td class="paramtype">STRLEN&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;( ( 1 + (STRLEN)/4)*4 )</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="binary_8h_source.html">binary.h</a> の <a class="el" href="binary_8h_source.html#l00014">14</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a1519f5babcb3aa9d0e80f10a3e112f29"></a><!-- doxytag: member="binary.h::BINARY_STRING_LEN" ref="a1519f5babcb3aa9d0e80f10a3e112f29" args="(STRLEN)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BINARY_STRING_LEN</td>
+          <td>(</td>
+          <td class="paramtype">STRLEN&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;( 4 + BINARY_STRING_EXT_LEN(STRLEN) )</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="binary_8h_source.html">binary.h</a> の <a class="el" href="binary_8h_source.html#l00015">15</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>型定義</h2>
+<a class="anchor" id="a5b6a16b4bab2ae2fa12771c763c08fc8"></a><!-- doxytag: member="binary.h::DataLengthType" ref="a5b6a16b4bab2ae2fa12771c763c08fc8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef unsigned short <a class="el" href="binary_8h.html#a5b6a16b4bab2ae2fa12771c763c08fc8">DataLengthType</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="binary_8h_source.html">binary.h</a> の <a class="el" href="binary_8h_source.html#l00011">11</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a598f13e6cf7e1ec0349e91036d10b0d6"></a><!-- doxytag: member="binary.h::DataOffsetType" ref="a598f13e6cf7e1ec0349e91036d10b0d6" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef unsigned short <a class="el" href="binary_8h.html#a598f13e6cf7e1ec0349e91036d10b0d6">DataOffsetType</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="binary_8h_source.html">binary.h</a> の <a class="el" href="binary_8h_source.html#l00012">12</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>関数</h2>
+<a class="anchor" id="ab36c93d9873c4cc4f042a08d766d1934"></a><!-- doxytag: member="binary.h::binary_free_string" ref="ab36c93d9873c4cc4f042a08d766d1934" args="(char **p)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void binary_free_string </td>
+          <td>(</td>
+          <td class="paramtype">char **&nbsp;</td>
+          <td class="paramname"> <em>p</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:18 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

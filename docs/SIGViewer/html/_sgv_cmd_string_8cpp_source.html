@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGViewer: SgvCmdString.cpp ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>SgvCmdString.cpp</h1><a href="_sgv_cmd_string_8cpp.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include "<a class="code" href="_sgv_cmd_string_8h.html">SgvCmdString.h</a>"</span>
+<a name="l00002"></a>00002 <span class="preprocessor">#include "stdio.h"</span>
+<a name="l00003"></a>00003 <span class="preprocessor">#include &lt;string&gt;</span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include &lt;vector&gt;</span>
+<a name="l00005"></a>00005 
+<a name="l00006"></a><a class="code" href="namespace_sgv.html">00006</a> <span class="keyword">namespace </span>Sgv
+<a name="l00007"></a>00007 {
+<a name="l00008"></a><a class="code" href="class_sgv_1_1_cmd_string.html#97df139a2440dc7c5888f43115b4cd42">00008</a>     <a class="code" href="class_sgv_1_1_cmd_string.html#97df139a2440dc7c5888f43115b4cd42" title="コンストラクタ">CmdString::CmdString</a>()
+<a name="l00009"></a>00009     {
+<a name="l00010"></a>00010         <a class="code" href="class_sgv_1_1_cmd_string.html#38612a41efb21dde635f47c1dbb5a760" title="このオブジェクトの内容をクリアする">clear</a>();
+<a name="l00011"></a>00011     }
+<a name="l00012"></a>00012 
+<a name="l00013"></a><a class="code" href="class_sgv_1_1_cmd_string.html#55464c0964ccae8ec54be664f0d259aa">00013</a>     <a class="code" href="class_sgv_1_1_cmd_string.html#97df139a2440dc7c5888f43115b4cd42" title="コンストラクタ">CmdString::CmdString</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *cmd)
+<a name="l00014"></a>00014     {
+<a name="l00015"></a>00015         <a class="code" href="class_sgv_1_1_cmd_string.html#38612a41efb21dde635f47c1dbb5a760" title="このオブジェクトの内容をクリアする">clear</a>();
+<a name="l00016"></a>00016 
+<a name="l00017"></a>00017         <a class="code" href="class_sgv_1_1_cmd_string.html#fe0918cc2e2092a48bcf6fe420f7c88d" title="コマンドライン引数を分解する">decomp</a>(cmd);
+<a name="l00018"></a>00018     }
+<a name="l00019"></a>00019 
+<a name="l00020"></a><a class="code" href="class_sgv_1_1_cmd_string.html#38612a41efb21dde635f47c1dbb5a760">00020</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_cmd_string.html#38612a41efb21dde635f47c1dbb5a760" title="このオブジェクトの内容をクリアする">CmdString::clear</a>()
+<a name="l00021"></a>00021     {
+<a name="l00022"></a>00022         m_cmds.clear();
+<a name="l00023"></a>00023     }
+<a name="l00024"></a>00024 
+<a name="l00025"></a><a class="code" href="class_sgv_1_1_cmd_string.html#d5840b9456e09e5f413ae4f8a21ba00c">00025</a>     <span class="keywordtype">int</span> <a class="code" href="class_sgv_1_1_cmd_string.html#d5840b9456e09e5f413ae4f8a21ba00c" title="分解された引数の個数を返す">CmdString::count</a>()
+<a name="l00026"></a>00026     {
+<a name="l00027"></a>00027         <span class="keywordflow">return</span> m_cmds.size();
+<a name="l00028"></a>00028     }
+<a name="l00029"></a>00029 
+<a name="l00030"></a><a class="code" href="class_sgv_1_1_cmd_string.html#5694314795aa332330f2a5e9ea80afbc">00030</a>     <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="class_sgv_1_1_cmd_string.html#5694314795aa332330f2a5e9ea80afbc" title="i番目の引数を返す">CmdString::get</a>(<span class="keywordtype">int</span> i)
+<a name="l00031"></a>00031     {
+<a name="l00032"></a>00032         <span class="keywordflow">if</span> (i&lt;0 || i&gt;=m_cmds.size()) <span class="keywordflow">return</span> NULL;
+<a name="l00033"></a>00033 
+<a name="l00034"></a>00034         <span class="keywordflow">return</span> m_cmds[i].c_str();
+<a name="l00035"></a>00035     }
+<a name="l00036"></a>00036 
+<a name="l00037"></a><a class="code" href="class_sgv_1_1_cmd_string.html#5f018b5117cde24cab9662fe667ab421">00037</a>     <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="class_sgv_1_1_cmd_string.html#5f018b5117cde24cab9662fe667ab421" title="分解する前のオリジナル引数を返す">CmdString::originalString</a>()
+<a name="l00038"></a>00038     {
+<a name="l00039"></a>00039         <span class="keywordflow">return</span> m_orig.c_str();
+<a name="l00040"></a>00040     }
+<a name="l00041"></a>00041 
+<a name="l00042"></a><a class="code" href="class_sgv_1_1_cmd_string.html#fe0918cc2e2092a48bcf6fe420f7c88d">00042</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_cmd_string.html#fe0918cc2e2092a48bcf6fe420f7c88d" title="コマンドライン引数を分解する">CmdString::decomp</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *cmd)
+<a name="l00043"></a>00043     {
+<a name="l00044"></a>00044         <span class="keywordtype">char</span> seps[] = <span class="stringliteral">" ¥t"</span>;
+<a name="l00045"></a>00045         <span class="keywordtype">char</span> *buf = strdup(cmd);
+<a name="l00046"></a>00046 
+<a name="l00047"></a>00047         <span class="keywordflow">if</span> (!buf) <span class="keywordflow">return</span>;
+<a name="l00048"></a>00048 
+<a name="l00049"></a>00049         m_orig = buf;
+<a name="l00050"></a>00050         <a class="code" href="class_sgv_1_1_cmd_string.html#38612a41efb21dde635f47c1dbb5a760" title="このオブジェクトの内容をクリアする">clear</a>();
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052         <span class="keywordtype">char</span> *token = strtok(buf, seps);
+<a name="l00053"></a>00053         <span class="keywordflow">while</span> (token)
+<a name="l00054"></a>00054         {
+<a name="l00055"></a>00055             m_cmds.push_back(token);
+<a name="l00056"></a>00056 
+<a name="l00057"></a>00057             token = strtok(NULL, seps);
+<a name="l00058"></a>00058         }
+<a name="l00059"></a>00059     }
+<a name="l00060"></a>00060 };
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>SIGViewerに対してThu Jun 9 10:52:11 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

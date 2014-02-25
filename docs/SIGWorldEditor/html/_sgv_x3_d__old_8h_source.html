@@ -1,0 +1,189 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGWorldEditor: SgvX3D_old.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>SgvX3D_old.h</h1><a href="_sgv_x3_d__old_8h.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef _SGV_X3D_H_</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define _SGV_X3D_H_</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include "Ogre.h"</span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include "CX3DParser.h"</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include "CX3DShapeNode.h"</span>
+<a name="l00007"></a>00007 <span class="preprocessor">#include "CX3DTransformNode.h"</span>
+<a name="l00008"></a>00008 <span class="preprocessor">#include "CX3DIndexedFaceSetNode.h"</span>
+<a name="l00009"></a>00009 <span class="preprocessor">#include "CSimplifiedShape.h"</span>
+<a name="l00010"></a>00010 
+<a name="l00011"></a><a class="code" href="_sgv_x3_d__old_8h.html#a3b7c3d910576c1c0be867d375efac58">00011</a> <span class="preprocessor">#define MAX_POINTS_PER_ONE_POLYGON  1000</span>
+<a name="l00012"></a>00012 <span class="preprocessor"></span>
+<a name="l00013"></a>00013 <span class="keyword">using namespace </span>Ogre;
+<a name="l00014"></a>00014 
+<a name="l00015"></a>00015 <span class="keyword">namespace </span>Sgv
+<a name="l00016"></a>00016 {<span class="comment"></span>
+<a name="l00017"></a>00017 <span class="comment">    ////////////////////////////////////////////////////////////</span>
+<a name="l00018"></a>00018 <span class="comment"></span>    <span class="comment">//</span>
+<a name="l00019"></a>00019     <span class="comment">//  X3D</span>
+<a name="l00020"></a>00020     <span class="comment">//</span>
+<a name="l00021"></a>00021     <span class="comment">//  X3D形状ファイルに関連する処理</span>
+<a name="l00022"></a>00022     <span class="comment">//</span>
+<a name="l00023"></a>00023     <span class="comment">//  (1) X3DからOgreの形状データ(ManualObject)を作る</span>
+<a name="l00024"></a>00024     <span class="comment">//  (2) X3Dから単純形状を作る</span>
+<a name="l00025"></a>00025     <span class="comment">//  等</span>
+<a name="l00026"></a>00026     <span class="comment">//</span>
+<a name="l00027"></a>00027     <span class="keyword">class </span>X3D
+<a name="l00028"></a>00028     {
+<a name="l00029"></a>00029     <span class="keyword">public</span>:
+<a name="l00030"></a>00030         <a class="code" href="class_sgv_1_1_x3_d.html#bec702ffd665af1c7a6a85be10210803" title="コンストラクタ">X3D</a>();
+<a name="l00031"></a>00031         <span class="keyword">virtual</span> <a class="code" href="class_sgv_1_1_x3_d.html#e7c2531866413aee9c14b00d64e366f1" title="デストラクタ">‾X3D</a>();
+<a name="l00032"></a>00032 
+<a name="l00033"></a>00033         <span class="comment">// -------------------------------------</span>
+<a name="l00034"></a>00034         <span class="comment">//  初期化</span>
+<a name="l00035"></a>00035         <span class="comment">// -------------------------------------</span>
+<a name="l00036"></a>00036         <span class="keywordtype">bool</span> <a class="code" href="class_sgv_1_1_x3_d.html#d9bb1f6705d2b5f81dd884202e0d53f2" title="初期化">init</a>();
+<a name="l00037"></a>00037 
+<a name="l00038"></a>00038         <span class="comment">// -------------------------------------</span>
+<a name="l00039"></a>00039         <span class="comment">//  X3D/VRMLファイルをロードする</span>
+<a name="l00040"></a>00040         <span class="comment">//  同時にShapeノードの探索を行い、</span>
+<a name="l00041"></a>00041         <span class="comment">//  メンバ変数に反映させる</span>
+<a name="l00042"></a>00042         <span class="comment">// -------------------------------------</span>
+<a name="l00043"></a>00043         <span class="keywordtype">bool</span> <a class="code" href="class_sgv_1_1_x3_d.html#a9a25241c484f6f67876b956d96330e3" title="X3D/VRMLファイルをロードする.">loadX3DFromFile</a>(<span class="keywordtype">char</span> *x3dFileName);
+<a name="l00044"></a>00044 
+<a name="l00045"></a>00045         <span class="comment">// -------------------------------------</span>
+<a name="l00046"></a>00046         <span class="comment">//  Shapeを返す</span>
+<a name="l00047"></a>00047         <span class="comment">// -------------------------------------</span>
+<a name="l00048"></a>00048         MFNode *<a class="code" href="class_sgv_1_1_x3_d.html#807f0aa60ac0b82482f5c54bfa6451f5" title="Shapeを返す.">getShapes</a>();
+<a name="l00049"></a>00049 
+<a name="l00050"></a>00050         <span class="comment">// -------------------------------------</span>
+<a name="l00051"></a>00051         <span class="comment">//  形状のOgreノードを作る</span>
+<a name="l00052"></a>00052         <span class="comment">// -------------------------------------</span>
+<a name="l00053"></a>00053         SceneNode *<a class="code" href="class_sgv_1_1_x3_d.html#432a93b29bafd899d042594cda1bbac7">createOgreManualObjectNodeFromShapes</a>(
+<a name="l00054"></a>00054             SceneManager *mgr,
+<a name="l00055"></a>00055             SceneNode *parentNode);
+<a name="l00056"></a>00056 
+<a name="l00057"></a>00057         <span class="comment">// --------------------------------------</span>
+<a name="l00058"></a>00058         <span class="comment">//  単純形状を生成する</span>
+<a name="l00059"></a>00059         <span class="comment">// --------------------------------------</span>
+<a name="l00060"></a>00060         <span class="keywordtype">bool</span> <a class="code" href="class_sgv_1_1_x3_d.html#266896aa88b25ecc3b8cc09e5cd45177" title="単純形状を生成する">generateSimplifiedShape</a>(CSimplifiedShape::SHAPE_TYPE stype = CSimplifiedShape::NONE);
+<a name="l00061"></a>00061 
+<a name="l00062"></a>00062         <span class="comment">// --------------------------------------</span>
+<a name="l00063"></a>00063         <span class="comment">//  生成した単純形状を得る</span>
+<a name="l00064"></a>00064         <span class="comment">// --------------------------------------</span>
+<a name="l00065"></a>00065         CSimplifiedShape *<a class="code" href="class_sgv_1_1_x3_d.html#113d51b7fe60dbf6f76c942b97fe7049" title="生成した単純形状を得る">getSimplifiedShape</a>();
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067         <span class="comment">// --------------------------------------</span>
+<a name="l00068"></a>00068         <span class="comment">//  単純形状からOgreノードを作る</span>
+<a name="l00069"></a>00069         <span class="comment">// --------------------------------------</span>
+<a name="l00070"></a>00070         SceneNode *<a class="code" href="class_sgv_1_1_x3_d.html#49a6c6773f97a638a7f3fab5b177d4ac" title="単純形状からOgreノードを作る">createSimplifiedShapeNode</a>(
+<a name="l00071"></a>00071             SceneManager *mgr, 
+<a name="l00072"></a>00072             SceneNode *parentNode);
+<a name="l00073"></a>00073 
+<a name="l00074"></a>00074         <span class="comment">// -------------------------------------</span>
+<a name="l00075"></a>00075         <span class="comment">//  現在ロードしているShapeから</span>
+<a name="l00076"></a>00076         <span class="comment">//  各形状の歪値を計算する</span>
+<a name="l00077"></a>00077         <span class="comment">// -------------------------------------</span>
+<a name="l00078"></a>00078         <span class="keywordtype">bool</span> <a class="code" href="class_sgv_1_1_x3_d.html#2025a79c50560e5202b496e957584639" title="現在ロードしているShapeから各形状の歪値を計算する">calcShapeHizumis</a>(<span class="keywordtype">float</span>&amp; hizumiSphere, <span class="keywordtype">float</span>&amp; hizumiCylinder, <span class="keywordtype">float</span>&amp; hizumiBox);
+<a name="l00079"></a>00079 
+<a name="l00080"></a>00080     <span class="keyword">private</span>:
+<a name="l00081"></a>00081         <span class="keywordtype">bool</span> m_bInitOk;
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083         CX3DParser *m_pParser;
+<a name="l00084"></a>00084         CX3DTransformNode *m_pRootTrans;
+<a name="l00085"></a>00085         MFNode *m_pShapeNodes;
+<a name="l00086"></a>00086         CSimplifiedShape *m_pSimplifiedShape;
+<a name="l00087"></a>00087 
+<a name="l00088"></a>00088         <span class="comment">// ========================================</span>
+<a name="l00089"></a>00089         <span class="comment">//  ヘルパー関数</span>
+<a name="l00090"></a>00090         <span class="comment">// ========================================</span>
+<a name="l00091"></a>00091 
+<a name="l00092"></a>00092         <span class="comment">// --------------------------------------------</span>
+<a name="l00093"></a>00093         <span class="comment">// 呼び出すたびにEntity用の名前を自動生成する</span>
+<a name="l00094"></a>00094         <span class="comment">// --------------------------------------------</span>
+<a name="l00095"></a>00095         <span class="keywordtype">char</span> *genEntityName();
+<a name="l00096"></a>00096 
+<a name="l00097"></a>00097         <span class="comment">// --------------------------------------</span>
+<a name="l00098"></a>00098         <span class="comment">//  1つのShapeに対するOgreノードを作る</span>
+<a name="l00099"></a>00099         <span class="comment">// --------------------------------------</span>
+<a name="l00100"></a>00100         SceneNode *createOgreManualObjectNodeFromShape(
+<a name="l00101"></a>00101             SceneManager *mgr,
+<a name="l00102"></a>00102             SceneNode *parentNode,
+<a name="l00103"></a>00103             <span class="keywordtype">int</span> iShape,
+<a name="l00104"></a>00104             Vector3&amp; g);
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106         <span class="comment">// --------------------------------------</span>
+<a name="l00107"></a>00107         <span class="comment">//  X3DのIndexedFaceSetノードから</span>
+<a name="l00108"></a>00108         <span class="comment">//  OgreのManualObjectを作る</span>
+<a name="l00109"></a>00109         <span class="comment">// --------------------------------------</span>
+<a name="l00110"></a>00110         ManualObject *createOgreManualObjectFromIndexedFaceSet(
+<a name="l00111"></a>00111             SceneManager *mgr,
+<a name="l00112"></a>00112             <span class="keywordtype">char</span> *objName,
+<a name="l00113"></a>00113             CX3DIndexedFaceSetNode *faceSet,
+<a name="l00114"></a>00114             <span class="keywordtype">char</span> *materialName,
+<a name="l00115"></a>00115             Vector3&amp; g);
+<a name="l00116"></a>00116 
+<a name="l00117"></a>00117     };
+<a name="l00118"></a>00118 };
+<a name="l00119"></a>00119 
+<a name="l00120"></a>00120 <span class="preprocessor">#endif</span>
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>SIGWorldEditorに対してWed Feb 24 17:40:55 2010に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

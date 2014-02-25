@@ -1,0 +1,230 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>sigjsp: クラス Jsp::Wave</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_jsp.html">Jsp</a>::<a class="el" href="class_jsp_1_1_wave.html">Wave</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Jsp::Wave</h1><!-- doxytag: class="Jsp::Wave" -->音声データ(waveファイル)クラス  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_jsp_wave_8h_source.html">JspWave.h</a>&gt;</code>
+<p>
+
+<p>
+<a href="class_jsp_1_1_wave-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_wave.html#473a9386bb750d54a37f0b34c90c98e5">getWaveDataLen</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">読み込んだ音声データの長さを返す  <a href="#473a9386bb750d54a37f0b34c90c98e5"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_wave.html#8e278182aa590ea902653c36f9a6bfbe">getWaveDataPtr</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">読み込んだ音声データへのポインタを返す  <a href="#8e278182aa590ea902653c36f9a6bfbe"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_wave.html#e7bf7b268ceff116fce37488341788d9">loadFromFile</a> (const char *waveFile)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">音声ファイル(.wav)を読み込む  <a href="#e7bf7b268ceff116fce37488341788d9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_wave.html#4578a1970b50451e54bdcecc2edffb59">Wave</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#4578a1970b50451e54bdcecc2edffb59"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jsp_1_1_wave.html#c7c62c3ca6ba717174baf477c7ed153b">~Wave</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#c7c62c3ca6ba717174baf477c7ed153b"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+音声データ(waveファイル)クラス 
+<p> <a class="el" href="_jsp_wave_8h_source.html">JspWave.h</a> の <a class="el" href="_jsp_wave_8h_source.html#l00009">9</a> 行で定義されています。</p>
+<hr><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" name="4578a1970b50451e54bdcecc2edffb59"></a><!-- doxytag: member="Jsp::Wave::Wave" ref="4578a1970b50451e54bdcecc2edffb59" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Jsp::Wave::Wave           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+
+<p> <a class="el" href="_jsp_wave_8cpp_source.html">JspWave.cpp</a> の <a class="el" href="_jsp_wave_8cpp_source.html#l00014">14</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="c7c62c3ca6ba717174baf477c7ed153b"></a><!-- doxytag: member="Jsp::Wave::~Wave" ref="c7c62c3ca6ba717174baf477c7ed153b" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Jsp::Wave::~Wave           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+デストラクタ 
+<p>
+
+<p> <a class="el" href="_jsp_wave_8cpp_source.html">JspWave.cpp</a> の <a class="el" href="_jsp_wave_8cpp_source.html#l00019">19</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>関数</h2>
+<a class="anchor" name="473a9386bb750d54a37f0b34c90c98e5"></a><!-- doxytag: member="Jsp::Wave::getWaveDataLen" ref="473a9386bb750d54a37f0b34c90c98e5" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Jsp::Wave::getWaveDataLen           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+読み込んだ音声データの長さを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>音声データの長さ（単位：バイト） </dd></dl>
+
+<p> <a class="el" href="_jsp_wave_8h_source.html">JspWave.h</a> の <a class="el" href="_jsp_wave_8h_source.html#l00042">42</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="8e278182aa590ea902653c36f9a6bfbe"></a><!-- doxytag: member="Jsp::Wave::getWaveDataPtr" ref="8e278182aa590ea902653c36f9a6bfbe" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* Jsp::Wave::getWaveDataPtr           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+読み込んだ音声データへのポインタを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>音声データの先頭へのポインタ </dd></dl>
+
+<p> <a class="el" href="_jsp_wave_8h_source.html">JspWave.h</a> の <a class="el" href="_jsp_wave_8h_source.html#l00035">35</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="e7bf7b268ceff116fce37488341788d9"></a><!-- doxytag: member="Jsp::Wave::loadFromFile" ref="e7bf7b268ceff116fce37488341788d9" args="(const char *waveFile)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Jsp::Wave::loadFromFile           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>waveFile</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+音声ファイル(.wav)を読み込む 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>waveFile</em>&nbsp;</td><td>wavファイル名 </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_jsp_wave_8cpp_source.html">JspWave.cpp</a> の <a class="el" href="_jsp_wave_8cpp_source.html#l00032">32</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_jsp_wave_8h_source.html">JspWave.h</a><li><a class="el" href="_jsp_wave_8cpp_source.html">JspWave.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>sigjspに対してWed Dec 2 15:46:02 2009に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

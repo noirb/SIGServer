@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: クラス RequestSimCtrlEvent</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス RequestSimCtrlEvent</h1><!-- doxytag: class="RequestSimCtrlEvent" -->
+<p>シミュレータ操作リクエストイベントクラス  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_request_sim_ctrl_8h_source.html">RequestSimCtrl.h</a>&gt;</code></p>
+
+<p><a href="class_request_sim_ctrl_event-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_comm_data_type_8h.html#a68c991796d6a2c83d41420f176852bd7">SimCtrlCmdType</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_request_sim_ctrl_event.html#a3d62b8fb5036980d78f046e9a0d9fee3">getCtrlCmd</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">シミュレータ操作タイプを取得する  <a href="#a3d62b8fb5036980d78f046e9a0d9fee3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_request_sim_ctrl_event.html#abbba40bbcee517b0fefbc4444a322655">set</a> (int packetNum, int seq, char *data, int n)</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>シミュレータ操作リクエストイベントクラス </p>
+<dl class="see"><dt><b>参照:</b></dt><dd><a class="el" href="class_comm_data_1_1_sim_ctrl_request.html" title="シミュレータ操作リクエストエンコーダークラス">CommData::SimCtrlRequest</a> </dd></dl>
+
+<p> <a class="el" href="_request_sim_ctrl_8h_source.html">RequestSimCtrl.h</a> の <a class="el" href="_request_sim_ctrl_8h_source.html#l00014">14</a> 行で定義されています。</p>
+<hr/><h2>関数</h2>
+<a class="anchor" id="a3d62b8fb5036980d78f046e9a0d9fee3"></a><!-- doxytag: member="RequestSimCtrlEvent::getCtrlCmd" ref="a3d62b8fb5036980d78f046e9a0d9fee3" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_comm_data_type_8h.html#a68c991796d6a2c83d41420f176852bd7">SimCtrlCmdType</a> RequestSimCtrlEvent::getCtrlCmd </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>シミュレータ操作タイプを取得する </p>
+
+<p> <a class="el" href="_request_sim_ctrl_8h_source.html">RequestSimCtrl.h</a> の <a class="el" href="_request_sim_ctrl_8h_source.html#l00022">22</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="abbba40bbcee517b0fefbc4444a322655"></a><!-- doxytag: member="RequestSimCtrlEvent::set" ref="abbba40bbcee517b0fefbc4444a322655" args="(int packetNum, int seq, char *data, int n)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool RequestSimCtrlEvent::set </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>packetNum</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>n</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_request_sim_ctrl_8h_source.html">RequestSimCtrl.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:19 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

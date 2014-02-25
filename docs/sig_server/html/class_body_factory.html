@@ -1,0 +1,331 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: クラス BodyFactory</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス BodyFactory</h1><!-- doxytag: class="BodyFactory" -->
+<p>エンティティの形状・構成を通知するインターフェース  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_body_factory_8h_source.html">BodyFactory.h</a>&gt;</code></p>
+<div class="dynheader">
+BodyFactoryに対する継承グラフ</div>
+<div class="dynsection">
+<div class="center"><img src="class_body_factory__inherit__graph.png" border="0" usemap="#_body_factory_inherit__map" alt="Inheritance graph"/></div>
+<map name="_body_factory_inherit__map" id="_body_factory_inherit__map">
+<area shape="rect" href="class_s_sim_obj_builder.html" title="エンティティオブジェクトに必要な要素を設定するクラス" alt="" coords="5,83,117,112"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+
+<p><a href="class_body_factory-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_body_factory.html#a97593ee19ef5a03259f2ab6161954347">addJoint</a> (<a class="el" href="class_joint.html">Joint</a> *)=0</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">関節を追加する  <a href="#a97593ee19ef5a03259f2ab6161954347"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_body_factory.html#a124970ad2cbc11ae8f9d8f16a25f555a">addParts</a> (<a class="el" href="class_s_parts.html">SParts</a> *)=0</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">部品を追加する  <a href="#a124970ad2cbc11ae8f9d8f16a25f555a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_position.html">Position</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_body_factory.html#a5693ecbc1f0e9f4e48efac74dbfaa20d">applyScaleP</a> (<a class="el" href="class_position.html">Position</a> &amp;)=0</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">位置に対するスケールを設定する  <a href="#a5693ecbc1f0e9f4e48efac74dbfaa20d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_size.html">Size</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_body_factory.html#a29ebf55f82de5c6fd716ae6edb92efe1">applyScaleS</a> (<a class="el" href="class_size.html">Size</a> &amp;)=0</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">サイズに対するスケールを設定する  <a href="#a29ebf55f82de5c6fd716ae6edb92efe1"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_vector3d.html">Vector3d</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_body_factory.html#aa046d9a359e10ca32fdd2ffa1a7dd7d4">applyScaleV</a> (<a class="el" href="class_vector3d.html">Vector3d</a> &amp;)=0</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ベクトルに対するスケールを設定する  <a href="#aa046d9a359e10ca32fdd2ffa1a7dd7d4"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_body_factory.html#ac1bf4b4f3b062fa4ded7a6ab87449089">connect</a> (<a class="el" href="class_joint.html">Joint</a> *joint, <a class="el" href="class_s_parts.html">SParts</a> *p1, <a class="el" href="class_s_parts.html">SParts</a> *p2)=0</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">部品と関節を繋げる  <a href="#ac1bf4b4f3b062fa4ded7a6ab87449089"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_body_factory.html#aaa4d4ea78f3efbb3d886ea197b83ee35">connect2</a> (<a class="el" href="class_joint.html">Joint</a> *parentJ, <a class="el" href="class_joint.html">Joint</a> *sibJ, <a class="el" href="class_s_parts.html">SParts</a> *sibP, <a class="el" href="class_s_parts.html">SParts</a> *childP)=0</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">部品と関節を繋げる  <a href="#aaa4d4ea78f3efbb3d886ea197b83ee35"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_s_sim_obj.html">SSimObj</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_body_factory.html#ae46df61f0ce3b7c49626f966facc4d21">getSObj</a> ()=0</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">対象となるエンティティを取得する  <a href="#ae46df61f0ce3b7c49626f966facc4d21"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_body_factory.html#ad79b44db136ff8c76b9bc931c3c1a1ff">‾BodyFactory</a> ()</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>エンティティの形状・構成を通知するインターフェース </p>
+
+<p> <a class="el" href="_body_factory_8h_source.html">BodyFactory.h</a> の <a class="el" href="_body_factory_8h_source.html#l00016">16</a> 行で定義されています。</p>
+<hr/><h2>関数</h2>
+<a class="anchor" id="a97593ee19ef5a03259f2ab6161954347"></a><!-- doxytag: member="BodyFactory::addJoint" ref="a97593ee19ef5a03259f2ab6161954347" args="(Joint *)=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool BodyFactory::addJoint </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_joint.html">Joint</a> *&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>関節を追加する </p>
+
+</div>
+</div>
+<a class="anchor" id="a124970ad2cbc11ae8f9d8f16a25f555a"></a><!-- doxytag: member="BodyFactory::addParts" ref="a124970ad2cbc11ae8f9d8f16a25f555a" args="(SParts *)=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool BodyFactory::addParts </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_s_parts.html">SParts</a> *&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>部品を追加する </p>
+
+</div>
+</div>
+<a class="anchor" id="a5693ecbc1f0e9f4e48efac74dbfaa20d"></a><!-- doxytag: member="BodyFactory::applyScaleP" ref="a5693ecbc1f0e9f4e48efac74dbfaa20d" args="(Position &amp;)=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="class_position.html">Position</a>&amp; BodyFactory::applyScaleP </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_position.html">Position</a> &amp;&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>位置に対するスケールを設定する </p>
+
+</div>
+</div>
+<a class="anchor" id="a29ebf55f82de5c6fd716ae6edb92efe1"></a><!-- doxytag: member="BodyFactory::applyScaleS" ref="a29ebf55f82de5c6fd716ae6edb92efe1" args="(Size &amp;)=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="class_size.html">Size</a>&amp; BodyFactory::applyScaleS </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_size.html">Size</a> &amp;&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>サイズに対するスケールを設定する </p>
+
+</div>
+</div>
+<a class="anchor" id="aa046d9a359e10ca32fdd2ffa1a7dd7d4"></a><!-- doxytag: member="BodyFactory::applyScaleV" ref="aa046d9a359e10ca32fdd2ffa1a7dd7d4" args="(Vector3d &amp;)=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="class_vector3d.html">Vector3d</a>&amp; BodyFactory::applyScaleV </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_vector3d.html">Vector3d</a> &amp;&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ベクトルに対するスケールを設定する </p>
+
+</div>
+</div>
+<a class="anchor" id="ac1bf4b4f3b062fa4ded7a6ab87449089"></a><!-- doxytag: member="BodyFactory::connect" ref="ac1bf4b4f3b062fa4ded7a6ab87449089" args="(Joint *joint, SParts *p1, SParts *p2)=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void BodyFactory::connect </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_joint.html">Joint</a> *&nbsp;</td>
+          <td class="paramname"> <em>joint</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_s_parts.html">SParts</a> *&nbsp;</td>
+          <td class="paramname"> <em>p1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_s_parts.html">SParts</a> *&nbsp;</td>
+          <td class="paramname"> <em>p2</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>部品と関節を繋げる </p>
+
+</div>
+</div>
+<a class="anchor" id="aaa4d4ea78f3efbb3d886ea197b83ee35"></a><!-- doxytag: member="BodyFactory::connect2" ref="aaa4d4ea78f3efbb3d886ea197b83ee35" args="(Joint *parentJ, Joint *sibJ, SParts *sibP, SParts *childP)=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void BodyFactory::connect2 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_joint.html">Joint</a> *&nbsp;</td>
+          <td class="paramname"> <em>parentJ</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_joint.html">Joint</a> *&nbsp;</td>
+          <td class="paramname"> <em>sibJ</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_s_parts.html">SParts</a> *&nbsp;</td>
+          <td class="paramname"> <em>sibP</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_s_parts.html">SParts</a> *&nbsp;</td>
+          <td class="paramname"> <em>childP</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>部品と関節を繋げる </p>
+
+</div>
+</div>
+<a class="anchor" id="ae46df61f0ce3b7c49626f966facc4d21"></a><!-- doxytag: member="BodyFactory::getSObj" ref="ae46df61f0ce3b7c49626f966facc4d21" args="()=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="class_s_sim_obj.html">SSimObj</a>&amp; BodyFactory::getSObj </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>対象となるエンティティを取得する </p>
+
+</div>
+</div>
+<a class="anchor" id="ad79b44db136ff8c76b9bc931c3c1a1ff"></a><!-- doxytag: member="BodyFactory::‾BodyFactory" ref="ad79b44db136ff8c76b9bc931c3c1a1ff" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual BodyFactory::‾BodyFactory </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_body_factory_8h_source.html">BodyFactory.h</a> の <a class="el" href="_body_factory_8h_source.html#l00019">19</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_body_factory_8h_source.html">BodyFactory.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:18 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

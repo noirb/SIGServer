@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGViewer: メンバ一覧</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Sgv::Serializer メンバ一覧</h1>これは全メンバの一覧です。<a class="el" href="class_sgv_1_1_serializer.html">Sgv::Serializer</a>継承メンバも含んでいます。<p><table>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_serializer.html#f47e948f457dba1b9c7d974b41c88858">clear</a>()</td><td><a class="el" href="class_sgv_1_1_serializer.html">Sgv::Serializer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_serializer.html#07ba4eee3d077015fdaf4c6516d2078b">countWorld</a>()</td><td><a class="el" href="class_sgv_1_1_serializer.html">Sgv::Serializer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_serializer.html#525b80c2e8c406e85f3b0af4aed9eaac">deserializeWorld</a>(int iWorld, double &amp;t)</td><td><a class="el" href="class_sgv_1_1_serializer.html">Sgv::Serializer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_serializer.html#0e3ba38bf3b11e3bcae6092b3d2051fb">dumpMemory</a>(FILE *fp, unsigned char *p, unsigned int size)</td><td><a class="el" href="class_sgv_1_1_serializer.html">Sgv::Serializer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_serializer.html#217292714bdf6b0cf5d2e77dafbfdec7">getBinaryData</a>()</td><td><a class="el" href="class_sgv_1_1_serializer.html">Sgv::Serializer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_serializer.html#e4f29844d850782cfd9d24ebe16b5ac7">getBinarySize</a>()</td><td><a class="el" href="class_sgv_1_1_serializer.html">Sgv::Serializer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_serializer.html#818eee14ff91bb535251f15a62dbcf18">readFromFile</a>(const char *inFile, bool bCompress)</td><td><a class="el" href="class_sgv_1_1_serializer.html">Sgv::Serializer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_serializer.html#e9435654a9160c9f6bd7bacf90b1ffa1">readFromFile</a>(FILE *fp, bool bCompress)</td><td><a class="el" href="class_sgv_1_1_serializer.html">Sgv::Serializer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_serializer.html#15a1d84bbfc5a0352d91f42d0f1fd1bb">readX3DNameInfoFrom</a>(X3DNameResolver &amp;nr)</td><td><a class="el" href="class_sgv_1_1_serializer.html">Sgv::Serializer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_serializer.html#48409c992ce5e9299d383b65a5ff26dc">Serializer</a>()</td><td><a class="el" href="class_sgv_1_1_serializer.html">Sgv::Serializer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_serializer.html#970e26aa1a72190d4cfb69847e00b7cb">serializeWorld</a>(double t, SimWorld *w)</td><td><a class="el" href="class_sgv_1_1_serializer.html">Sgv::Serializer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_serializer.html#6419f4a1a131d3458bc53c42e1b12a05">test1</a>(const char *outFile)</td><td><a class="el" href="class_sgv_1_1_serializer.html">Sgv::Serializer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_serializer.html#68f4bffc35ab9d5628c9e9404131de03">test2</a>(const char *outFile)</td><td><a class="el" href="class_sgv_1_1_serializer.html">Sgv::Serializer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_serializer.html#03a315b1f1df7175bb7047be0267eb1f">test3</a>(const char *inFile, const char *outFile)</td><td><a class="el" href="class_sgv_1_1_serializer.html">Sgv::Serializer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_serializer.html#2e46b9704ef704a4b2fc727c4fcf2595">writeHeader</a>()</td><td><a class="el" href="class_sgv_1_1_serializer.html">Sgv::Serializer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_serializer.html#38582fa9a240e28bfac4996f43c4bcf9">writeToFile</a>(const char *outFile, bool bCompress)</td><td><a class="el" href="class_sgv_1_1_serializer.html">Sgv::Serializer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_serializer.html#2a2c2d1ca15a18e635772996f8e8da98">writeToFile</a>(FILE *fp, bool bCompress)</td><td><a class="el" href="class_sgv_1_1_serializer.html">Sgv::Serializer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_serializer.html#9787c9b06730dc57caadb570100f7bd2">writeX3DNameInfoTo</a>(X3DNameResolver &amp;nr)</td><td><a class="el" href="class_sgv_1_1_serializer.html">Sgv::Serializer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_serializer.html#828e7375ef950be05d277c9bd27437e9">‾Serializer</a>()</td><td><a class="el" href="class_sgv_1_1_serializer.html">Sgv::Serializer</a></td><td><code> [virtual]</code></td></tr>
+</table></div>
+<hr size="1"><address style="text-align: right;"><small>SIGViewerに対してThu Jun 9 10:52:15 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

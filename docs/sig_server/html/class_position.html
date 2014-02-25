@@ -1,0 +1,467 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: クラス Position</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Position</h1><!-- doxytag: class="Position" -->
+<p>3次元位置クラス  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_position_8h_source.html">Position.h</a>&gt;</code></p>
+<div class="dynheader">
+Positionに対する継承グラフ</div>
+<div class="dynsection">
+<div class="center"><img src="class_position__inherit__graph.png" border="0" usemap="#_position_inherit__map" alt="Inheritance graph"/></div>
+<map name="_position_inherit__map" id="_position_inherit__map">
+<area shape="rect" href="class_size.html" title="シミュレーション世界内における3次元直方体の大きさを表すクラス..." alt="" coords="15,83,63,112"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+
+<p><a href="class_position-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_position.html">Position</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_position.html#a5b54e195bf2e3277348c9ff84b9e05a4">operator=</a> (const <a class="el" href="class_position.html">Position</a> &amp;o)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コピー演算子  <a href="#a5b54e195bf2e3277348c9ff84b9e05a4"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_position.html#aeb40e999ce900e099a94026a5201231c">Position</a> (const <a class="el" href="class_position.html">Position</a> &amp;o)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コピーコンストラクタ  <a href="#aeb40e999ce900e099a94026a5201231c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_position.html#a58e11f2471391ee3fe5c586f30e063bc">Position</a> (dReal x_, dReal y_, dReal z_)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#a58e11f2471391ee3fe5c586f30e063bc"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_position.html#a369a577425f8ba02e8750d04b6a088db">Position</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#a369a577425f8ba02e8750d04b6a088db"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_position.html#a6bf294381a4d9805a1cea299ec2ffc86">set</a> (dReal x_, dReal y_, dReal z_)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">各座標値を設定する  <a href="#a6bf294381a4d9805a1cea299ec2ffc86"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const dReal *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_position.html#a0c952efa01c48d17c0b30a406e9e737b">values</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">座標値を取得する  <a href="#a0c952efa01c48d17c0b30a406e9e737b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_position.html#aca015be646785e4e9ace38789befd9e2">x</a> (dReal v)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">X座標値を設定する.  <a href="#aca015be646785e4e9ace38789befd9e2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">dReal&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_position.html#aa97410c769815bc60c9412f387b555d1">x</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">X座標値を取得する.  <a href="#aa97410c769815bc60c9412f387b555d1"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_position.html#ae47e18dd8257b2377947d6ca9bae102b">y</a> (dReal v)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Y座標値を設定する.  <a href="#ae47e18dd8257b2377947d6ca9bae102b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">dReal&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_position.html#a5f7b9c53b81affdcf502f5059a6dc50a">y</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Y座標値を取得する.  <a href="#a5f7b9c53b81affdcf502f5059a6dc50a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_position.html#a43f5e9b3d8d1ab780c821dfc6817721d">z</a> (dReal v)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Z座標値を設定する.  <a href="#a43f5e9b3d8d1ab780c821dfc6817721d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">dReal&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_position.html#a63f0cb5a9c08ef8af982cc18aa161395">z</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Z座標値を取得する.  <a href="#a63f0cb5a9c08ef8af982cc18aa161395"></a><br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>3次元位置クラス </p>
+<p>シミュレーション世界内の位置を表す。 位置を表す変数の型は、ODEを使用する場合ODEに従う。ODEを使 用しない場合はdouble型。 </p>
+
+<p> <a class="el" href="_position_8h_source.html">Position.h</a> の <a class="el" href="_position_8h_source.html#l00028">28</a> 行で定義されています。</p>
+<hr/><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" id="a369a577425f8ba02e8750d04b6a088db"></a><!-- doxytag: member="Position::Position" ref="a369a577425f8ba02e8750d04b6a088db" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Position::Position </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コンストラクタ </p>
+
+<p> <a class="el" href="_position_8h_source.html">Position.h</a> の <a class="el" href="_position_8h_source.html#l00036">36</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a58e11f2471391ee3fe5c586f30e063bc"></a><!-- doxytag: member="Position::Position" ref="a58e11f2471391ee3fe5c586f30e063bc" args="(dReal x_, dReal y_, dReal z_)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Position::Position </td>
+          <td>(</td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>x_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>y_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>z_</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コンストラクタ </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>X座標値 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Y座標値 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>z</em>&nbsp;</td><td>Z座標値 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_position_8h_source.html">Position.h</a> の <a class="el" href="_position_8h_source.html#l00046">46</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="aeb40e999ce900e099a94026a5201231c"></a><!-- doxytag: member="Position::Position" ref="aeb40e999ce900e099a94026a5201231c" args="(const Position &amp;o)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Position::Position </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_position.html">Position</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>o</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コピーコンストラクタ </p>
+
+<p> <a class="el" href="_position_8h_source.html">Position.h</a> の <a class="el" href="_position_8h_source.html#l00051">51</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>関数</h2>
+<a class="anchor" id="a5b54e195bf2e3277348c9ff84b9e05a4"></a><!-- doxytag: member="Position::operator=" ref="a5b54e195bf2e3277348c9ff84b9e05a4" args="(const Position &amp;o)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_position.html">Position</a>&amp; Position::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_position.html">Position</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>o</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コピー演算子 </p>
+
+<p> <a class="el" href="_position_8h_source.html">Position.h</a> の <a class="el" href="_position_8h_source.html#l00091">91</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a6bf294381a4d9805a1cea299ec2ffc86"></a><!-- doxytag: member="Position::set" ref="a6bf294381a4d9805a1cea299ec2ffc86" args="(dReal x_, dReal y_, dReal z_)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Position::set </td>
+          <td>(</td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>x_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>y_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>z_</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>各座標値を設定する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>X座標値 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Y座標値 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>z</em>&nbsp;</td><td>Z座標値 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_position_8h_source.html">Position.h</a> の <a class="el" href="_position_8h_source.html#l00061">61</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+呼出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_position_a6bf294381a4d9805a1cea299ec2ffc86_icgraph.png" border="0" usemap="#class_position_a6bf294381a4d9805a1cea299ec2ffc86_icgraph_map" alt=""></div>
+<map name="class_position_a6bf294381a4d9805a1cea299ec2ffc86_icgraph_map" id="class_position_a6bf294381a4d9805a1cea299ec2ffc86_icgraph">
+<area shape="rect" href="class_s_parts.html#a400adb542b79a8da208e8b1b3f529397" title="パーツの位置(エージェント座標系)を設定する" alt="" coords="148,5,311,35"/><area shape="rect" href="class_box_parts_cmpnt.html#a0b782ff275d305fef28629af87c3f282" title="箱のサイズをセットする" alt="" coords="157,59,301,88"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a0c952efa01c48d17c0b30a406e9e737b"></a><!-- doxytag: member="Position::values" ref="a0c952efa01c48d17c0b30a406e9e737b" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const dReal* Position::values </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>座標値を取得する </p>
+
+<p> <a class="el" href="_position_8h_source.html">Position.h</a> の <a class="el" href="_position_8h_source.html#l00068">68</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="aca015be646785e4e9ace38789befd9e2"></a><!-- doxytag: member="Position::x" ref="aca015be646785e4e9ace38789befd9e2" args="(dReal v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Position::x </td>
+          <td>(</td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>v</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>X座標値を設定する. </p>
+
+<p> <a class="el" href="_position_8h_source.html">Position.h</a> の <a class="el" href="_position_8h_source.html#l00078">78</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="aa97410c769815bc60c9412f387b555d1"></a><!-- doxytag: member="Position::x" ref="aa97410c769815bc60c9412f387b555d1" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dReal Position::x </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>X座標値を取得する. </p>
+
+<p> <a class="el" href="_position_8h_source.html">Position.h</a> の <a class="el" href="_position_8h_source.html#l00071">71</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+呼出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_position_aa97410c769815bc60c9412f387b555d1_icgraph.png" border="0" usemap="#class_position_aa97410c769815bc60c9412f387b555d1_icgraph_map" alt=""></div>
+<map name="class_position_aa97410c769815bc60c9412f387b555d1_icgraph_map" id="class_position_aa97410c769815bc60c9412f387b555d1_icgraph">
+<area shape="rect" href="class_box_parts_cmpnt.html#af8b0553b70d229d0d8252c04e71fb4b0" title="保持している情報（サイズ）の表示" alt="" coords="136,5,288,35"/><area shape="rect" href="class_vector3d.html#aa881a3038cacd1ba5321eb45a45c8c80" title="+=演算子(shiftと等価)" alt="" coords="140,59,284,88"/><area shape="rect" href="class_vector3d.html#a3ee73e796d85fed0a9d5d5063ba5566c" title="&#45;=演算子(shiftと等価)" alt="" coords="143,112,281,141"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ae47e18dd8257b2377947d6ca9bae102b"></a><!-- doxytag: member="Position::y" ref="ae47e18dd8257b2377947d6ca9bae102b" args="(dReal v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Position::y </td>
+          <td>(</td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>v</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Y座標値を設定する. </p>
+
+<p> <a class="el" href="_position_8h_source.html">Position.h</a> の <a class="el" href="_position_8h_source.html#l00080">80</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a5f7b9c53b81affdcf502f5059a6dc50a"></a><!-- doxytag: member="Position::y" ref="a5f7b9c53b81affdcf502f5059a6dc50a" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dReal Position::y </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Y座標値を取得する. </p>
+
+<p> <a class="el" href="_position_8h_source.html">Position.h</a> の <a class="el" href="_position_8h_source.html#l00073">73</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+呼出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_position_a5f7b9c53b81affdcf502f5059a6dc50a_icgraph.png" border="0" usemap="#class_position_a5f7b9c53b81affdcf502f5059a6dc50a_icgraph_map" alt=""></div>
+<map name="class_position_a5f7b9c53b81affdcf502f5059a6dc50a_icgraph_map" id="class_position_a5f7b9c53b81affdcf502f5059a6dc50a_icgraph">
+<area shape="rect" href="class_box_parts_cmpnt.html#af8b0553b70d229d0d8252c04e71fb4b0" title="保持している情報（サイズ）の表示" alt="" coords="136,5,288,35"/><area shape="rect" href="class_vector3d.html#aa881a3038cacd1ba5321eb45a45c8c80" title="+=演算子(shiftと等価)" alt="" coords="140,59,284,88"/><area shape="rect" href="class_vector3d.html#a3ee73e796d85fed0a9d5d5063ba5566c" title="&#45;=演算子(shiftと等価)" alt="" coords="143,112,281,141"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a43f5e9b3d8d1ab780c821dfc6817721d"></a><!-- doxytag: member="Position::z" ref="a43f5e9b3d8d1ab780c821dfc6817721d" args="(dReal v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Position::z </td>
+          <td>(</td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>v</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Z座標値を設定する. </p>
+
+<p> <a class="el" href="_position_8h_source.html">Position.h</a> の <a class="el" href="_position_8h_source.html#l00082">82</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a63f0cb5a9c08ef8af982cc18aa161395"></a><!-- doxytag: member="Position::z" ref="a63f0cb5a9c08ef8af982cc18aa161395" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dReal Position::z </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Z座標値を取得する. </p>
+
+<p> <a class="el" href="_position_8h_source.html">Position.h</a> の <a class="el" href="_position_8h_source.html#l00075">75</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+呼出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_position_a63f0cb5a9c08ef8af982cc18aa161395_icgraph.png" border="0" usemap="#class_position_a63f0cb5a9c08ef8af982cc18aa161395_icgraph_map" alt=""></div>
+<map name="class_position_a63f0cb5a9c08ef8af982cc18aa161395_icgraph_map" id="class_position_a63f0cb5a9c08ef8af982cc18aa161395_icgraph">
+<area shape="rect" href="class_box_parts_cmpnt.html#af8b0553b70d229d0d8252c04e71fb4b0" title="保持している情報（サイズ）の表示" alt="" coords="136,5,288,35"/><area shape="rect" href="class_vector3d.html#aa881a3038cacd1ba5321eb45a45c8c80" title="+=演算子(shiftと等価)" alt="" coords="140,59,284,88"/><area shape="rect" href="class_vector3d.html#a3ee73e796d85fed0a9d5d5063ba5566c" title="&#45;=演算子(shiftと等価)" alt="" coords="143,112,281,141"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_position_8h_source.html">Position.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:19 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

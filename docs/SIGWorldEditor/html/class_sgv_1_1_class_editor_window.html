@@ -1,0 +1,1397 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGWorldEditor: クラス Sgv::ClassEditorWindow</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_sgv.html">Sgv</a>::<a class="el" href="class_sgv_1_1_class_editor_window.html">ClassEditorWindow</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Sgv::ClassEditorWindow</h1><!-- doxytag: class="Sgv::ClassEditorWindow" -->クラスエディタウィンドウ  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_sgv_class_editor_window_8h_source.html">SgvClassEditorWindow.h</a>&gt;</code>
+<p>
+
+<p>
+<a href="class_sgv_1_1_class_editor_window-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#9cca8b257142059af150d75bd3b61132">ClassEditorWindow</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#9cca8b257142059af150d75bd3b61132"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">LRESULT CALLBACK&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#cb2c18cf8bf3839c0877570f7da720ae">classEditorWndProc</a> (HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ウィンドウプロシージャ  <a href="#cb2c18cf8bf3839c0877570f7da720ae"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#6e027670f4f3ec9b73d94f05c7cc3bab">create</a> (<a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *win, int dialogResourceId, char *dialogClassName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クラスエディタウィンドウを作成する  <a href="#6e027670f4f3ec9b73d94f05c7cc3bab"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Camera *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#c19c484f28e08e2544a328551960a20b">getCamera</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">カメラを返す  <a href="#c19c484f28e08e2544a328551960a20b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">HWND&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#08473ecabab5da6acb2e17f95dc0c12e">getHWND</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">このウィンドウのウィンドウハンドルを返す  <a href="#08473ecabab5da6acb2e17f95dc0c12e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_sgv_1_1_ogre_x3_d_preview_window.html">OgreX3DPreviewWindow</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#cc3a81f8eaa04101bb58b27ac444588c">getOgreX3DPreviewWindow</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">X3D形状プレビューウィンドウオブジェクトを返す.  <a href="#cc3a81f8eaa04101bb58b27ac444588c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Quaternion&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#02ea9e0478ccd490de46435e85d17230">getPreviewNodeOrientation</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">プレビュー形状ノードの方向を得る  <a href="#02ea9e0478ccd490de46435e85d17230"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Vector3&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#548a04013e9fb52e1b135a900842cfbe">getPreviewNodePosition</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">プレビュー形状ノードの位置を得る  <a href="#548a04013e9fb52e1b135a900842cfbe"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">RenderWindow *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#a05a47c6d2f123263c96bb176b7d401d">getRenderWindow</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">レンダーウィンドウを返す  <a href="#a05a47c6d2f123263c96bb176b7d401d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">SceneNode *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#f06927bfd6eb06e08ef578e9ae963c0b">getRootNode</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ルートノードを返す  <a href="#f06927bfd6eb06e08ef578e9ae963c0b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">SceneManager *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#05246268dfc41465aa201bc769305ec8">getSceneMgr</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">シーンマネージャを返す  <a href="#05246268dfc41465aa201bc769305ec8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#95e86fcf767de4c7d0839fe79fcc9838">getSelectedAttrName</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">現在選択されている属性名を得る  <a href="#95e86fcf767de4c7d0839fe79fcc9838"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_sgv_1_1_x_m_l_entity_class.html">XMLEntityClass</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#cd09af48f26c4c38db2d3e20be79b16f">getSelectedEntityClass</a> (<a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *win)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">現在クラス名一覧リストボックスで選択されている エンティティクラスのオブジェクトを返す  <a href="#cd09af48f26c4c38db2d3e20be79b16f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">SceneNode *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#c7d9ded1c2904ee0a62e2c59049ff45a">getX3DPreviewNode</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">プレビュー形状ノードを得る  <a href="#c7d9ded1c2904ee0a62e2c59049ff45a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#4250aea6af2e77b1490d34c91118c3c0">init</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">このウィンドウ上のGUIコントロールを初期化する  <a href="#4250aea6af2e77b1490d34c91118c3c0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#27d914dc6f411e077fb93ef2581017f7">onButtonPress_AddX3DFile</a> (<a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *win)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">X3Dファイル追加ボタンを押した.  <a href="#27d914dc6f411e077fb93ef2581017f7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#1c7665984b4637c040727de457479372">onButtonPress_CreateClass</a> (<a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *win)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クラス作成ボタンを押した  <a href="#1c7665984b4637c040727de457479372"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#29ab159519068a3cf2bb5e65992450f8">onButtonPress_DelAttr</a> (<a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *win)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">属性削除ボタンを押した  <a href="#29ab159519068a3cf2bb5e65992450f8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#a4ddcdb2ed43302e43ed3d02e0e2cd29">onButtonPress_DeleteClass</a> (<a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *win)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クラス削除ボタンを押した  <a href="#a4ddcdb2ed43302e43ed3d02e0e2cd29"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#9300eb067b0f782bcf67dc9f70efd6de">onButtonPress_DeleteX3DFile</a> (<a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *win)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">X3Dファイル削除ボタンを押した.  <a href="#9300eb067b0f782bcf67dc9f70efd6de"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#6569b1f9fd717173c555741e46799894">onButtonPress_QuitDialog</a> (<a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *win)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クラスダイアログ終了ボタンを押した  <a href="#6569b1f9fd717173c555741e46799894"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#b669cdbe17b11419f9e5fb6ff9f06357">onButtonPress_Save</a> (<a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *win)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クラス情報セーブボタンを押した  <a href="#b669cdbe17b11419f9e5fb6ff9f06357"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#ffe9b98ecccc9db1a591c40f7aace928">onButtonPress_SetAttr</a> (<a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *win)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">属性値セットボタンを押した  <a href="#ffe9b98ecccc9db1a591c40f7aace928"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#f5fb01e12cb972160ee66bf965fae13f">onButtonPress_SetX3DFileState</a> (<a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *win)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">X3D状態名変更ボタンを押した.  <a href="#f5fb01e12cb972160ee66bf965fae13f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#1565ceac33700ab7d786c0a29e10e563">onButtonPress_X3DFileDown</a> (<a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *win)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">X3Dファイル名の下移動ボタンを押した.  <a href="#1565ceac33700ab7d786c0a29e10e563"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#b55896306af2a08874c8a58396925639">onButtonPress_X3DFileUp</a> (<a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *win)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">X3Dファイル名の上移動ボタンを押した.  <a href="#b55896306af2a08874c8a58396925639"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#93e12077c54513b8f18bb98567827107">onSelChange_Attrs</a> (<a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *win)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">属性選択リストボックスを押した  <a href="#93e12077c54513b8f18bb98567827107"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#228b2d27915d311a825ff1b77a86dd34">onSelChange_Classes</a> (<a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *win)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クラス選択リストボックスを押した  <a href="#228b2d27915d311a825ff1b77a86dd34"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#1d1afcc9664dd76667a00ec3279c23a5">onSelChange_X3DFiles</a> (<a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *win)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">X3Dファイル名リストボックスを押した.  <a href="#1d1afcc9664dd76667a00ec3279c23a5"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#86ea5f56f5c3606ab0baa36aac288e87">onSelChange_X3DPreviewFileSelected</a> (<a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *win)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">プレビュー用X3Dファイル名リストを選んだ  <a href="#86ea5f56f5c3606ab0baa36aac288e87"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#163b9fae3c0366f6ca4fc208a10447a0">setClassList</a> (<a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *win)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クラス名一覧をリストボックスに設定する  <a href="#163b9fae3c0366f6ca4fc208a10447a0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#062f4620a3948ac0456588688d9f2e42">setPreviewNodeOrientation</a> (Quaternion q)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">プレビュー形状ノードの方向を設定する  <a href="#062f4620a3948ac0456588688d9f2e42"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#bc79f229afacb30070f651965fa0895d">setPreviewNodePosition</a> (Vector3 pos)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">プレビュー形状ノードの位置を設定する  <a href="#bc79f229afacb30070f651965fa0895d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#b49ae5d0a200b5680a2b9bc37dcaf87c">setX3DFileList</a> (<a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *win)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">プレビュー用のX3Dファイル名リストボックスを設定する  <a href="#b49ae5d0a200b5680a2b9bc37dcaf87c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#f100f2485900eafa8fd2a416309c0fc0">show</a> (bool bShow)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ウィンドウの表示・非表示の設定  <a href="#f100f2485900eafa8fd2a416309c0fc0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#771e2ff014a0a3207285c1cc5ffa902a">showEntityClassAttributeDetail</a> (<a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *win, <a class="el" href="class_sgv_1_1_x_m_l_entity_class.html">XMLEntityClass</a> *pc, const char *attrName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クラスの属性の値を表示する  <a href="#771e2ff014a0a3207285c1cc5ffa902a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#8defbe8e3171ad8a72ac7b3f6d00d7b9">showEntityClassAttributes</a> (<a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *win, <a class="el" href="class_sgv_1_1_x_m_l_entity_class.html">XMLEntityClass</a> *pc)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クラスの属性名を表示する  <a href="#8defbe8e3171ad8a72ac7b3f6d00d7b9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#fd6c1c7957f6c3a41ed12c86ffe30ee2">showEntityClassName</a> (<a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *win, <a class="el" href="class_sgv_1_1_x_m_l_entity_class.html">XMLEntityClass</a> *pc)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クラス名とスーパークラス名を表示する  <a href="#fd6c1c7957f6c3a41ed12c86ffe30ee2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#ee85cebfa509c2245cd0d632ac6dbe78">showEntityX3DFiles</a> (<a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *win, <a class="el" href="class_sgv_1_1_x_m_l_entity_class.html">XMLEntityClass</a> *pc)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クラスのX3Dファイル情報を表示する  <a href="#ee85cebfa509c2245cd0d632ac6dbe78"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_class_editor_window.html#dae6460ae0c032858825bc25a6efa8de">‾ClassEditorWindow</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#dae6460ae0c032858825bc25a6efa8de"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+クラスエディタウィンドウ 
+<p> <a class="el" href="_sgv_class_editor_window_8h_source.html">SgvClassEditorWindow.h</a> の <a class="el" href="_sgv_class_editor_window_8h_source.html#l00026">26</a> 行で定義されています。</p>
+<hr><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" name="9cca8b257142059af150d75bd3b61132"></a><!-- doxytag: member="Sgv::ClassEditorWindow::ClassEditorWindow" ref="9cca8b257142059af150d75bd3b61132" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::ClassEditorWindow::ClassEditorWindow           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_class_editor_window_8cpp_source.html">SgvClassEditorWindow.cpp</a> の <a class="el" href="_sgv_class_editor_window_8cpp_source.html#l00019">19</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>関数</h2>
+<a class="anchor" name="cb2c18cf8bf3839c0877570f7da720ae"></a><!-- doxytag: member="Sgv::ClassEditorWindow::classEditorWndProc" ref="cb2c18cf8bf3839c0877570f7da720ae" args="(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LRESULT CALLBACK Sgv::ClassEditorWindow::classEditorWndProc           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hWnd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UINT&nbsp;</td>
+          <td class="paramname"> <em>uMsg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">WPARAM&nbsp;</td>
+          <td class="paramname"> <em>wParam</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">LPARAM&nbsp;</td>
+          <td class="paramname"> <em>lParam</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ウィンドウプロシージャ 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hWnd</em>&nbsp;</td><td>[i] ウィンドウハンドル </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>uMsg</em>&nbsp;</td><td>[i] ウィンドウメッセージ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>wParam</em>&nbsp;</td><td>[i] パラメータ1 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>lParam</em>&nbsp;</td><td>[i] パラメータ2</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>処理コード </dd></dl>
+
+<p> <a class="el" href="_sgv_class_editor_window_8cpp_source.html">SgvClassEditorWindow.cpp</a> の <a class="el" href="_sgv_class_editor_window_8cpp_source.html#l00925">925</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="6e027670f4f3ec9b73d94f05c7cc3bab"></a><!-- doxytag: member="Sgv::ClassEditorWindow::create" ref="6e027670f4f3ec9b73d94f05c7cc3bab" args="(MainWindow *win, int dialogResourceId, char *dialogClassName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::ClassEditorWindow::create           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *&nbsp;</td>
+          <td class="paramname"> <em>win</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>dialogResourceId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>dialogClassName</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+クラスエディタウィンドウを作成する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>win</em>&nbsp;</td><td>[i] メインウィンドウ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>dialogResourceId</em>&nbsp;</td><td>[i] ダイアログリソースID </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>dialogClassName</em>&nbsp;</td><td>[i] ダイアログクラス名</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_class_editor_window_8cpp_source.html">SgvClassEditorWindow.cpp</a> の <a class="el" href="_sgv_class_editor_window_8cpp_source.html#l00048">48</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="c19c484f28e08e2544a328551960a20b"></a><!-- doxytag: member="Sgv::ClassEditorWindow::getCamera" ref="c19c484f28e08e2544a328551960a20b" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Camera* Sgv::ClassEditorWindow::getCamera           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+カメラを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>カメラ </dd></dl>
+
+<p> <a class="el" href="_sgv_class_editor_window_8h_source.html">SgvClassEditorWindow.h</a> の <a class="el" href="_sgv_class_editor_window_8h_source.html#l00100">100</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="08473ecabab5da6acb2e17f95dc0c12e"></a><!-- doxytag: member="Sgv::ClassEditorWindow::getHWND" ref="08473ecabab5da6acb2e17f95dc0c12e" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HWND Sgv::ClassEditorWindow::getHWND           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+このウィンドウのウィンドウハンドルを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>ウィンドウハンドル </dd></dl>
+
+<p> <a class="el" href="_sgv_class_editor_window_8h_source.html">SgvClassEditorWindow.h</a> の <a class="el" href="_sgv_class_editor_window_8h_source.html#l00068">68</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="cc3a81f8eaa04101bb58b27ac444588c"></a><!-- doxytag: member="Sgv::ClassEditorWindow::getOgreX3DPreviewWindow" ref="cc3a81f8eaa04101bb58b27ac444588c" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_sgv_1_1_ogre_x3_d_preview_window.html">OgreX3DPreviewWindow</a>* Sgv::ClassEditorWindow::getOgreX3DPreviewWindow           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+X3D形状プレビューウィンドウオブジェクトを返す. 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>X3D形状プレビューウィンドウ </dd></dl>
+
+<p> <a class="el" href="_sgv_class_editor_window_8h_source.html">SgvClassEditorWindow.h</a> の <a class="el" href="_sgv_class_editor_window_8h_source.html#l00075">75</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="02ea9e0478ccd490de46435e85d17230"></a><!-- doxytag: member="Sgv::ClassEditorWindow::getPreviewNodeOrientation" ref="02ea9e0478ccd490de46435e85d17230" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Quaternion Sgv::ClassEditorWindow::getPreviewNodeOrientation           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+プレビュー形状ノードの方向を得る 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>方向（クォータニオン） </dd></dl>
+
+<p> <a class="el" href="_sgv_class_editor_window_8cpp_source.html">SgvClassEditorWindow.cpp</a> の <a class="el" href="_sgv_class_editor_window_8cpp_source.html#l00344">344</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="548a04013e9fb52e1b135a900842cfbe"></a><!-- doxytag: member="Sgv::ClassEditorWindow::getPreviewNodePosition" ref="548a04013e9fb52e1b135a900842cfbe" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector3 Sgv::ClassEditorWindow::getPreviewNodePosition           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+プレビュー形状ノードの位置を得る 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>位置 </dd></dl>
+
+<p> <a class="el" href="_sgv_class_editor_window_8cpp_source.html">SgvClassEditorWindow.cpp</a> の <a class="el" href="_sgv_class_editor_window_8cpp_source.html#l00329">329</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="a05a47c6d2f123263c96bb176b7d401d"></a><!-- doxytag: member="Sgv::ClassEditorWindow::getRenderWindow" ref="a05a47c6d2f123263c96bb176b7d401d" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">RenderWindow* Sgv::ClassEditorWindow::getRenderWindow           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+レンダーウィンドウを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>レンダーウィンドウ </dd></dl>
+
+<p> <a class="el" href="_sgv_class_editor_window_8h_source.html">SgvClassEditorWindow.h</a> の <a class="el" href="_sgv_class_editor_window_8h_source.html#l00093">93</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f06927bfd6eb06e08ef578e9ae963c0b"></a><!-- doxytag: member="Sgv::ClassEditorWindow::getRootNode" ref="f06927bfd6eb06e08ef578e9ae963c0b" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SceneNode* Sgv::ClassEditorWindow::getRootNode           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ルートノードを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>ルートノード </dd></dl>
+
+<p> <a class="el" href="_sgv_class_editor_window_8h_source.html">SgvClassEditorWindow.h</a> の <a class="el" href="_sgv_class_editor_window_8h_source.html#l00107">107</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="05246268dfc41465aa201bc769305ec8"></a><!-- doxytag: member="Sgv::ClassEditorWindow::getSceneMgr" ref="05246268dfc41465aa201bc769305ec8" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SceneManager* Sgv::ClassEditorWindow::getSceneMgr           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+シーンマネージャを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>シーンマネージャ </dd></dl>
+
+<p> <a class="el" href="_sgv_class_editor_window_8h_source.html">SgvClassEditorWindow.h</a> の <a class="el" href="_sgv_class_editor_window_8h_source.html#l00086">86</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="95e86fcf767de4c7d0839fe79fcc9838"></a><!-- doxytag: member="Sgv::ClassEditorWindow::getSelectedAttrName" ref="95e86fcf767de4c7d0839fe79fcc9838" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Sgv::ClassEditorWindow::getSelectedAttrName           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+現在選択されている属性名を得る 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>属性名 </dd></dl>
+
+<p> <a class="el" href="_sgv_class_editor_window_8cpp_source.html">SgvClassEditorWindow.cpp</a> の <a class="el" href="_sgv_class_editor_window_8cpp_source.html#l00212">212</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="cd09af48f26c4c38db2d3e20be79b16f"></a><!-- doxytag: member="Sgv::ClassEditorWindow::getSelectedEntityClass" ref="cd09af48f26c4c38db2d3e20be79b16f" args="(MainWindow *win)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_sgv_1_1_x_m_l_entity_class.html">XMLEntityClass</a> * Sgv::ClassEditorWindow::getSelectedEntityClass           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *&nbsp;</td>
+          <td class="paramname"> <em>win</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+現在クラス名一覧リストボックスで選択されている エンティティクラスのオブジェクトを返す 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>win</em>&nbsp;</td><td>[i] メインウィンドウ</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>エンティティクラス </dd></dl>
+
+<p> <a class="el" href="_sgv_class_editor_window_8cpp_source.html">SgvClassEditorWindow.cpp</a> の <a class="el" href="_sgv_class_editor_window_8cpp_source.html#l00192">192</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="c7d9ded1c2904ee0a62e2c59049ff45a"></a><!-- doxytag: member="Sgv::ClassEditorWindow::getX3DPreviewNode" ref="c7d9ded1c2904ee0a62e2c59049ff45a" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SceneNode * Sgv::ClassEditorWindow::getX3DPreviewNode           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+プレビュー形状ノードを得る 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>プレビューノード </dd></dl>
+
+<p> <a class="el" href="_sgv_class_editor_window_8cpp_source.html">SgvClassEditorWindow.cpp</a> の <a class="el" href="_sgv_class_editor_window_8cpp_source.html#l00324">324</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="4250aea6af2e77b1490d34c91118c3c0"></a><!-- doxytag: member="Sgv::ClassEditorWindow::init" ref="4250aea6af2e77b1490d34c91118c3c0" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::ClassEditorWindow::init           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+このウィンドウ上のGUIコントロールを初期化する 
+<p>
+
+<p> <a class="el" href="_sgv_class_editor_window_8cpp_source.html">SgvClassEditorWindow.cpp</a> の <a class="el" href="_sgv_class_editor_window_8cpp_source.html#l00156">156</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="27d914dc6f411e077fb93ef2581017f7"></a><!-- doxytag: member="Sgv::ClassEditorWindow::onButtonPress_AddX3DFile" ref="27d914dc6f411e077fb93ef2581017f7" args="(MainWindow *win)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::ClassEditorWindow::onButtonPress_AddX3DFile           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *&nbsp;</td>
+          <td class="paramname"> <em>win</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+X3Dファイル追加ボタンを押した. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>win</em>&nbsp;</td><td>[i] メインウィンドウ </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_class_editor_window_8cpp_source.html">SgvClassEditorWindow.cpp</a> の <a class="el" href="_sgv_class_editor_window_8cpp_source.html#l00742">742</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="1c7665984b4637c040727de457479372"></a><!-- doxytag: member="Sgv::ClassEditorWindow::onButtonPress_CreateClass" ref="1c7665984b4637c040727de457479372" args="(MainWindow *win)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::ClassEditorWindow::onButtonPress_CreateClass           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *&nbsp;</td>
+          <td class="paramname"> <em>win</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+クラス作成ボタンを押した 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>win</em>&nbsp;</td><td>[i] メインウィンドウ </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_class_editor_window_8cpp_source.html">SgvClassEditorWindow.cpp</a> の <a class="el" href="_sgv_class_editor_window_8cpp_source.html#l00379">379</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="29ab159519068a3cf2bb5e65992450f8"></a><!-- doxytag: member="Sgv::ClassEditorWindow::onButtonPress_DelAttr" ref="29ab159519068a3cf2bb5e65992450f8" args="(MainWindow *win)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::ClassEditorWindow::onButtonPress_DelAttr           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *&nbsp;</td>
+          <td class="paramname"> <em>win</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+属性削除ボタンを押した 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>win</em>&nbsp;</td><td>[i] メインウィンドウ </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_class_editor_window_8cpp_source.html">SgvClassEditorWindow.cpp</a> の <a class="el" href="_sgv_class_editor_window_8cpp_source.html#l00548">548</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="a4ddcdb2ed43302e43ed3d02e0e2cd29"></a><!-- doxytag: member="Sgv::ClassEditorWindow::onButtonPress_DeleteClass" ref="a4ddcdb2ed43302e43ed3d02e0e2cd29" args="(MainWindow *win)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::ClassEditorWindow::onButtonPress_DeleteClass           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *&nbsp;</td>
+          <td class="paramname"> <em>win</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+クラス削除ボタンを押した 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>win</em>&nbsp;</td><td>[i] メインウィンドウ </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_class_editor_window_8cpp_source.html">SgvClassEditorWindow.cpp</a> の <a class="el" href="_sgv_class_editor_window_8cpp_source.html#l00423">423</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="9300eb067b0f782bcf67dc9f70efd6de"></a><!-- doxytag: member="Sgv::ClassEditorWindow::onButtonPress_DeleteX3DFile" ref="9300eb067b0f782bcf67dc9f70efd6de" args="(MainWindow *win)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::ClassEditorWindow::onButtonPress_DeleteX3DFile           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *&nbsp;</td>
+          <td class="paramname"> <em>win</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+X3Dファイル削除ボタンを押した. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>win</em>&nbsp;</td><td>[i] メインウィンドウ </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_class_editor_window_8cpp_source.html">SgvClassEditorWindow.cpp</a> の <a class="el" href="_sgv_class_editor_window_8cpp_source.html#l00775">775</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="6569b1f9fd717173c555741e46799894"></a><!-- doxytag: member="Sgv::ClassEditorWindow::onButtonPress_QuitDialog" ref="6569b1f9fd717173c555741e46799894" args="(MainWindow *win)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::ClassEditorWindow::onButtonPress_QuitDialog           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *&nbsp;</td>
+          <td class="paramname"> <em>win</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+クラスダイアログ終了ボタンを押した 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>win</em>&nbsp;</td><td>[i] メインウィンドウ</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=ダイアログ終了), false(=ダイアログ終了はキャンセル） </dd></dl>
+
+<p> <a class="el" href="_sgv_class_editor_window_8cpp_source.html">SgvClassEditorWindow.cpp</a> の <a class="el" href="_sgv_class_editor_window_8cpp_source.html#l00893">893</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b669cdbe17b11419f9e5fb6ff9f06357"></a><!-- doxytag: member="Sgv::ClassEditorWindow::onButtonPress_Save" ref="b669cdbe17b11419f9e5fb6ff9f06357" args="(MainWindow *win)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::ClassEditorWindow::onButtonPress_Save           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *&nbsp;</td>
+          <td class="paramname"> <em>win</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+クラス情報セーブボタンを押した 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>win</em>&nbsp;</td><td>[i] メインウィンドウ </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_class_editor_window_8cpp_source.html">SgvClassEditorWindow.cpp</a> の <a class="el" href="_sgv_class_editor_window_8cpp_source.html#l00871">871</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="ffe9b98ecccc9db1a591c40f7aace928"></a><!-- doxytag: member="Sgv::ClassEditorWindow::onButtonPress_SetAttr" ref="ffe9b98ecccc9db1a591c40f7aace928" args="(MainWindow *win)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::ClassEditorWindow::onButtonPress_SetAttr           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *&nbsp;</td>
+          <td class="paramname"> <em>win</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+属性値セットボタンを押した 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>win</em>&nbsp;</td><td>[i] メインウィンドウ </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_class_editor_window_8cpp_source.html">SgvClassEditorWindow.cpp</a> の <a class="el" href="_sgv_class_editor_window_8cpp_source.html#l00500">500</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f5fb01e12cb972160ee66bf965fae13f"></a><!-- doxytag: member="Sgv::ClassEditorWindow::onButtonPress_SetX3DFileState" ref="f5fb01e12cb972160ee66bf965fae13f" args="(MainWindow *win)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::ClassEditorWindow::onButtonPress_SetX3DFileState           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *&nbsp;</td>
+          <td class="paramname"> <em>win</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+X3D状態名変更ボタンを押した. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>win</em>&nbsp;</td><td>[i] メインウィンドウ </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_class_editor_window_8cpp_source.html">SgvClassEditorWindow.cpp</a> の <a class="el" href="_sgv_class_editor_window_8cpp_source.html#l00706">706</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="1565ceac33700ab7d786c0a29e10e563"></a><!-- doxytag: member="Sgv::ClassEditorWindow::onButtonPress_X3DFileDown" ref="1565ceac33700ab7d786c0a29e10e563" args="(MainWindow *win)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::ClassEditorWindow::onButtonPress_X3DFileDown           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *&nbsp;</td>
+          <td class="paramname"> <em>win</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+X3Dファイル名の下移動ボタンを押した. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>win</em>&nbsp;</td><td>[i] メインウィンドウ </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_class_editor_window_8cpp_source.html">SgvClassEditorWindow.cpp</a> の <a class="el" href="_sgv_class_editor_window_8cpp_source.html#l00663">663</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b55896306af2a08874c8a58396925639"></a><!-- doxytag: member="Sgv::ClassEditorWindow::onButtonPress_X3DFileUp" ref="b55896306af2a08874c8a58396925639" args="(MainWindow *win)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::ClassEditorWindow::onButtonPress_X3DFileUp           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *&nbsp;</td>
+          <td class="paramname"> <em>win</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+X3Dファイル名の上移動ボタンを押した. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>win</em>&nbsp;</td><td>[i] メインウィンドウ </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_class_editor_window_8cpp_source.html">SgvClassEditorWindow.cpp</a> の <a class="el" href="_sgv_class_editor_window_8cpp_source.html#l00620">620</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="93e12077c54513b8f18bb98567827107"></a><!-- doxytag: member="Sgv::ClassEditorWindow::onSelChange_Attrs" ref="93e12077c54513b8f18bb98567827107" args="(MainWindow *win)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::ClassEditorWindow::onSelChange_Attrs           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *&nbsp;</td>
+          <td class="paramname"> <em>win</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+属性選択リストボックスを押した 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>win</em>&nbsp;</td><td>[i] メインウィンドウ </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_class_editor_window_8cpp_source.html">SgvClassEditorWindow.cpp</a> の <a class="el" href="_sgv_class_editor_window_8cpp_source.html#l00479">479</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="228b2d27915d311a825ff1b77a86dd34"></a><!-- doxytag: member="Sgv::ClassEditorWindow::onSelChange_Classes" ref="228b2d27915d311a825ff1b77a86dd34" args="(MainWindow *win)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::ClassEditorWindow::onSelChange_Classes           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *&nbsp;</td>
+          <td class="paramname"> <em>win</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+クラス選択リストボックスを押した 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>win</em>&nbsp;</td><td>[i] メインウィンドウ </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_class_editor_window_8cpp_source.html">SgvClassEditorWindow.cpp</a> の <a class="el" href="_sgv_class_editor_window_8cpp_source.html#l00359">359</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="1d1afcc9664dd76667a00ec3279c23a5"></a><!-- doxytag: member="Sgv::ClassEditorWindow::onSelChange_X3DFiles" ref="1d1afcc9664dd76667a00ec3279c23a5" args="(MainWindow *win)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::ClassEditorWindow::onSelChange_X3DFiles           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *&nbsp;</td>
+          <td class="paramname"> <em>win</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+X3Dファイル名リストボックスを押した. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>win</em>&nbsp;</td><td>[i] メインウィンドウ </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_class_editor_window_8cpp_source.html">SgvClassEditorWindow.cpp</a> の <a class="el" href="_sgv_class_editor_window_8cpp_source.html#l00588">588</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="86ea5f56f5c3606ab0baa36aac288e87"></a><!-- doxytag: member="Sgv::ClassEditorWindow::onSelChange_X3DPreviewFileSelected" ref="86ea5f56f5c3606ab0baa36aac288e87" args="(MainWindow *win)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::ClassEditorWindow::onSelChange_X3DPreviewFileSelected           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *&nbsp;</td>
+          <td class="paramname"> <em>win</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+プレビュー用X3Dファイル名リストを選んだ 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>win</em>&nbsp;</td><td>[i] メインウィンドウ</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=ダイアログ終了), false(=ダイアログ終了はキャンセル） </dd></dl>
+
+<p> <a class="el" href="_sgv_class_editor_window_8cpp_source.html">SgvClassEditorWindow.cpp</a> の <a class="el" href="_sgv_class_editor_window_8cpp_source.html#l00809">809</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="163b9fae3c0366f6ca4fc208a10447a0"></a><!-- doxytag: member="Sgv::ClassEditorWindow::setClassList" ref="163b9fae3c0366f6ca4fc208a10447a0" args="(MainWindow *win)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::ClassEditorWindow::setClassList           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *&nbsp;</td>
+          <td class="paramname"> <em>win</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+クラス名一覧をリストボックスに設定する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>win</em>&nbsp;</td><td>[i] メインウィンドウ </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_class_editor_window_8cpp_source.html">SgvClassEditorWindow.cpp</a> の <a class="el" href="_sgv_class_editor_window_8cpp_source.html#l00176">176</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="062f4620a3948ac0456588688d9f2e42"></a><!-- doxytag: member="Sgv::ClassEditorWindow::setPreviewNodeOrientation" ref="062f4620a3948ac0456588688d9f2e42" args="(Quaternion q)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::ClassEditorWindow::setPreviewNodeOrientation           </td>
+          <td>(</td>
+          <td class="paramtype">Quaternion&nbsp;</td>
+          <td class="paramname"> <em>q</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+プレビュー形状ノードの方向を設定する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>q</em>&nbsp;</td><td>[i] 方向（クォータニオン） </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_class_editor_window_8cpp_source.html">SgvClassEditorWindow.cpp</a> の <a class="el" href="_sgv_class_editor_window_8cpp_source.html#l00349">349</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="bc79f229afacb30070f651965fa0895d"></a><!-- doxytag: member="Sgv::ClassEditorWindow::setPreviewNodePosition" ref="bc79f229afacb30070f651965fa0895d" args="(Vector3 pos)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::ClassEditorWindow::setPreviewNodePosition           </td>
+          <td>(</td>
+          <td class="paramtype">Vector3&nbsp;</td>
+          <td class="paramname"> <em>pos</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+プレビュー形状ノードの位置を設定する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>pos</em>&nbsp;</td><td>[i] 位置 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_class_editor_window_8cpp_source.html">SgvClassEditorWindow.cpp</a> の <a class="el" href="_sgv_class_editor_window_8cpp_source.html#l00334">334</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b49ae5d0a200b5680a2b9bc37dcaf87c"></a><!-- doxytag: member="Sgv::ClassEditorWindow::setX3DFileList" ref="b49ae5d0a200b5680a2b9bc37dcaf87c" args="(MainWindow *win)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::ClassEditorWindow::setX3DFileList           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *&nbsp;</td>
+          <td class="paramname"> <em>win</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+プレビュー用のX3Dファイル名リストボックスを設定する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>win</em>&nbsp;</td><td>[i] メインウィンドウ </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_class_editor_window_8cpp_source.html">SgvClassEditorWindow.cpp</a> の <a class="el" href="_sgv_class_editor_window_8cpp_source.html#l00303">303</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f100f2485900eafa8fd2a416309c0fc0"></a><!-- doxytag: member="Sgv::ClassEditorWindow::show" ref="f100f2485900eafa8fd2a416309c0fc0" args="(bool bShow)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::ClassEditorWindow::show           </td>
+          <td>(</td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bShow</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ウィンドウの表示・非表示の設定 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>bShow</em>&nbsp;</td><td>[i] true(=表示), false(=非表示)</td></tr>
+  </table>
+</dl>
+（注）表示状態を変えるだけ（非表示でもウィンドウの破棄はしない） 
+<p> <a class="el" href="_sgv_class_editor_window_8cpp_source.html">SgvClassEditorWindow.cpp</a> の <a class="el" href="_sgv_class_editor_window_8cpp_source.html#l00150">150</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="771e2ff014a0a3207285c1cc5ffa902a"></a><!-- doxytag: member="Sgv::ClassEditorWindow::showEntityClassAttributeDetail" ref="771e2ff014a0a3207285c1cc5ffa902a" args="(MainWindow *win, XMLEntityClass *pc, const char *attrName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::ClassEditorWindow::showEntityClassAttributeDetail           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *&nbsp;</td>
+          <td class="paramname"> <em>win</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_x_m_l_entity_class.html">XMLEntityClass</a> *&nbsp;</td>
+          <td class="paramname"> <em>pc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>attrName</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+クラスの属性の値を表示する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>win</em>&nbsp;</td><td>[i] メインウィンドウ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>pc</em>&nbsp;</td><td>[i] エンティティクラス </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>attrName</em>&nbsp;</td><td>[i] 属性名 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_class_editor_window_8cpp_source.html">SgvClassEditorWindow.cpp</a> の <a class="el" href="_sgv_class_editor_window_8cpp_source.html#l00266">266</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="8defbe8e3171ad8a72ac7b3f6d00d7b9"></a><!-- doxytag: member="Sgv::ClassEditorWindow::showEntityClassAttributes" ref="8defbe8e3171ad8a72ac7b3f6d00d7b9" args="(MainWindow *win, XMLEntityClass *pc)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::ClassEditorWindow::showEntityClassAttributes           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *&nbsp;</td>
+          <td class="paramname"> <em>win</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_x_m_l_entity_class.html">XMLEntityClass</a> *&nbsp;</td>
+          <td class="paramname"> <em>pc</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+クラスの属性名を表示する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>win</em>&nbsp;</td><td>[i] メインウィンドウ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>pc</em>&nbsp;</td><td>[i] エンティティクラス </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_class_editor_window_8cpp_source.html">SgvClassEditorWindow.cpp</a> の <a class="el" href="_sgv_class_editor_window_8cpp_source.html#l00251">251</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="fd6c1c7957f6c3a41ed12c86ffe30ee2"></a><!-- doxytag: member="Sgv::ClassEditorWindow::showEntityClassName" ref="fd6c1c7957f6c3a41ed12c86ffe30ee2" args="(MainWindow *win, XMLEntityClass *pc)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::ClassEditorWindow::showEntityClassName           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *&nbsp;</td>
+          <td class="paramname"> <em>win</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_x_m_l_entity_class.html">XMLEntityClass</a> *&nbsp;</td>
+          <td class="paramname"> <em>pc</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+クラス名とスーパークラス名を表示する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>win</em>&nbsp;</td><td>[i] メインウィンドウ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>pc</em>&nbsp;</td><td>[i] エンティティクラス </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_class_editor_window_8cpp_source.html">SgvClassEditorWindow.cpp</a> の <a class="el" href="_sgv_class_editor_window_8cpp_source.html#l00228">228</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="ee85cebfa509c2245cd0d632ac6dbe78"></a><!-- doxytag: member="Sgv::ClassEditorWindow::showEntityX3DFiles" ref="ee85cebfa509c2245cd0d632ac6dbe78" args="(MainWindow *win, XMLEntityClass *pc)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::ClassEditorWindow::showEntityX3DFiles           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *&nbsp;</td>
+          <td class="paramname"> <em>win</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_x_m_l_entity_class.html">XMLEntityClass</a> *&nbsp;</td>
+          <td class="paramname"> <em>pc</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+クラスのX3Dファイル情報を表示する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>win</em>&nbsp;</td><td>[i] メインウィンドウ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>pc</em>&nbsp;</td><td>[i] エンティティクラス </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_class_editor_window_8cpp_source.html">SgvClassEditorWindow.cpp</a> の <a class="el" href="_sgv_class_editor_window_8cpp_source.html#l00288">288</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="dae6460ae0c032858825bc25a6efa8de"></a><!-- doxytag: member="Sgv::ClassEditorWindow::‾ClassEditorWindow" ref="dae6460ae0c032858825bc25a6efa8de" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::ClassEditorWindow::‾ClassEditorWindow           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+デストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_class_editor_window_8cpp_source.html">SgvClassEditorWindow.cpp</a> の <a class="el" href="_sgv_class_editor_window_8cpp_source.html#l00031">31</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_sgv_class_editor_window_8h_source.html">SgvClassEditorWindow.h</a><li><a class="el" href="_sgv_class_editor_window_8cpp_source.html">SgvClassEditorWindow.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGWorldEditorに対してThu Jun 9 10:53:00 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

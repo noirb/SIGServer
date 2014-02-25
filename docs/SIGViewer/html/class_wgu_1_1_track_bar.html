@@ -1,0 +1,438 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGViewer: クラス Wgu::TrackBar</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_wgu.html">Wgu</a>::<a class="el" href="class_wgu_1_1_track_bar.html">TrackBar</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Wgu::TrackBar</h1><!-- doxytag: class="Wgu::TrackBar" -->Win32 APIの簡易ラッパークラス（トラックバーコントロール）.  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_wgu_track_bar_8h_source.html">WguTrackBar.h</a>&gt;</code>
+<p>
+
+<p>
+<a href="class_wgu_1_1_track_bar-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Static Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_track_bar.html#d384068c650091e84519db25aefb4580">getPos</a> (HWND hwndTrack)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">トラックバーのつまみの位置を得る  <a href="#d384068c650091e84519db25aefb4580"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_track_bar.html#a5fb6781bbaa1fee5a214881bf7752a5">getRange</a> (HWND hwndTrack, int &amp;minValue, int &amp;maxValue)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_track_bar.html#d277efeb77dca41d0c46dacca27b9a7a">getRangeMax</a> (HWND hwndTrack)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">レンジの最大値を得る  <a href="#d277efeb77dca41d0c46dacca27b9a7a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_track_bar.html#c577ec849a17f372f746238ca7fad708">getRangeMin</a> (HWND hwndTrack)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">レンジの最小値を得る  <a href="#c577ec849a17f372f746238ca7fad708"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_track_bar.html#2243162fa01e2b688e5297de75d4bd14">setPos</a> (HWND hwndTrack, int value, bool bRedraw)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">トラックバーのつまみの位置をセットする  <a href="#2243162fa01e2b688e5297de75d4bd14"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_track_bar.html#59206e28fe9b51153a8054a630bf6687">setRange</a> (HWND hwndTrack, int minValue, int maxValue, bool bRedraw)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">レンジの幅をセットする  <a href="#59206e28fe9b51153a8054a630bf6687"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_track_bar.html#7d604f3273da9e792a267b977ff1fc02">setRangeMax</a> (HWND hwndTrack, int maxValue, bool bRedraw)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">レンジの最大値をセットする  <a href="#7d604f3273da9e792a267b977ff1fc02"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_track_bar.html#76df1a0567ff39b74916e45e63bec35f">setRangeMin</a> (HWND hwndTrack, int minValue, bool bRedraw)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">レンジの最小値をセットする  <a href="#76df1a0567ff39b74916e45e63bec35f"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+Win32 APIの簡易ラッパークラス（トラックバーコントロール）. 
+<p> <a class="el" href="_wgu_track_bar_8h_source.html">WguTrackBar.h</a> の <a class="el" href="_wgu_track_bar_8h_source.html#l00012">12</a> 行で定義されています。</p>
+<hr><h2>関数</h2>
+<a class="anchor" name="d384068c650091e84519db25aefb4580"></a><!-- doxytag: member="Wgu::TrackBar::getPos" ref="d384068c650091e84519db25aefb4580" args="(HWND hwndTrack)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Wgu::TrackBar::getPos           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hwndTrack</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+トラックバーのつまみの位置を得る 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hwndTrack</em>&nbsp;</td><td>[i] トラックバーウィンドウ </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_wgu_track_bar_8cpp_source.html">WguTrackBar.cpp</a> の <a class="el" href="_wgu_track_bar_8cpp_source.html#l00042">42</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="a5fb6781bbaa1fee5a214881bf7752a5"></a><!-- doxytag: member="Wgu::TrackBar::getRange" ref="a5fb6781bbaa1fee5a214881bf7752a5" args="(HWND hwndTrack, int &amp;minValue, int &amp;maxValue)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::TrackBar::getRange           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hwndTrack</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&nbsp;</td>
+          <td class="paramname"> <em>minValue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&nbsp;</td>
+          <td class="paramname"> <em>maxValue</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hwndTrack</em>&nbsp;</td><td>[i] トラックバーウィンドウ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>minValue</em>&nbsp;</td><td>[o] 最小値 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>maxValue</em>&nbsp;</td><td>[o] 最大値 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_wgu_track_bar_8cpp_source.html">WguTrackBar.cpp</a> の <a class="el" href="_wgu_track_bar_8cpp_source.html#l00021">21</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="d277efeb77dca41d0c46dacca27b9a7a"></a><!-- doxytag: member="Wgu::TrackBar::getRangeMax" ref="d277efeb77dca41d0c46dacca27b9a7a" args="(HWND hwndTrack)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Wgu::TrackBar::getRangeMax           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hwndTrack</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+レンジの最大値を得る 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hwndTrack</em>&nbsp;</td><td>[i] トラックバーウィンドウ</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>トラックバーレンジの最大値 </dd></dl>
+
+<p> <a class="el" href="_wgu_track_bar_8cpp_source.html">WguTrackBar.cpp</a> の <a class="el" href="_wgu_track_bar_8cpp_source.html#l00032">32</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="c577ec849a17f372f746238ca7fad708"></a><!-- doxytag: member="Wgu::TrackBar::getRangeMin" ref="c577ec849a17f372f746238ca7fad708" args="(HWND hwndTrack)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Wgu::TrackBar::getRangeMin           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hwndTrack</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+レンジの最小値を得る 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hwndTrack</em>&nbsp;</td><td>[i] トラックバーウィンドウ</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>トラックバーレンジの最小値 </dd></dl>
+
+<p> <a class="el" href="_wgu_track_bar_8cpp_source.html">WguTrackBar.cpp</a> の <a class="el" href="_wgu_track_bar_8cpp_source.html#l00027">27</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="2243162fa01e2b688e5297de75d4bd14"></a><!-- doxytag: member="Wgu::TrackBar::setPos" ref="2243162fa01e2b688e5297de75d4bd14" args="(HWND hwndTrack, int value, bool bRedraw)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::TrackBar::setPos           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hwndTrack</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bRedraw</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+トラックバーのつまみの位置をセットする 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hwndTrack</em>&nbsp;</td><td>[i] トラックバーウィンドウ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>value</em>&nbsp;</td><td>[i] つまみの位置 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bRedraw</em>&nbsp;</td><td>[i] 再描画フラグ </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_wgu_track_bar_8cpp_source.html">WguTrackBar.cpp</a> の <a class="el" href="_wgu_track_bar_8cpp_source.html#l00037">37</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="59206e28fe9b51153a8054a630bf6687"></a><!-- doxytag: member="Wgu::TrackBar::setRange" ref="59206e28fe9b51153a8054a630bf6687" args="(HWND hwndTrack, int minValue, int maxValue, bool bRedraw)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::TrackBar::setRange           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hwndTrack</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>minValue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>maxValue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bRedraw</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+レンジの幅をセットする 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hwndTrack</em>&nbsp;</td><td>[i] トラックバーウィンドウ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>minValue</em>&nbsp;</td><td>[i] 最小値 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>maxValue</em>&nbsp;</td><td>[i] 最大値 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bRedraw</em>&nbsp;</td><td>[i] 再描画フラグ </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_wgu_track_bar_8cpp_source.html">WguTrackBar.cpp</a> の <a class="el" href="_wgu_track_bar_8cpp_source.html#l00006">6</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="7d604f3273da9e792a267b977ff1fc02"></a><!-- doxytag: member="Wgu::TrackBar::setRangeMax" ref="7d604f3273da9e792a267b977ff1fc02" args="(HWND hwndTrack, int maxValue, bool bRedraw)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::TrackBar::setRangeMax           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hwndTrack</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>maxValue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bRedraw</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+レンジの最大値をセットする 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hwndTrack</em>&nbsp;</td><td>[i] トラックバーウィンドウ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>maxValue</em>&nbsp;</td><td>[i] 最大値 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bRedraw</em>&nbsp;</td><td>[i] 再描画フラグ </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_wgu_track_bar_8cpp_source.html">WguTrackBar.cpp</a> の <a class="el" href="_wgu_track_bar_8cpp_source.html#l00016">16</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="76df1a0567ff39b74916e45e63bec35f"></a><!-- doxytag: member="Wgu::TrackBar::setRangeMin" ref="76df1a0567ff39b74916e45e63bec35f" args="(HWND hwndTrack, int minValue, bool bRedraw)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::TrackBar::setRangeMin           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hwndTrack</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>minValue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bRedraw</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+レンジの最小値をセットする 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hwndTrack</em>&nbsp;</td><td>[i] トラックバーウィンドウ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>minValue</em>&nbsp;</td><td>[i] 最小値 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bRedraw</em>&nbsp;</td><td>[i] 再描画フラグ </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_wgu_track_bar_8cpp_source.html">WguTrackBar.cpp</a> の <a class="el" href="_wgu_track_bar_8cpp_source.html#l00011">11</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_wgu_track_bar_8h_source.html">WguTrackBar.h</a><li><a class="el" href="_wgu_track_bar_8cpp_source.html">WguTrackBar.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGViewerに対してThu Jun 9 10:52:16 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

@@ -1,0 +1,986 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: クラス Joint</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Joint</h1><!-- doxytag: class="Joint" -->
+<p>部品同士を繋ぐ関節クラス  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_joint_8h_source.html">Joint.h</a>&gt;</code></p>
+<div class="dynheader">
+Jointに対する継承グラフ</div>
+<div class="dynsection">
+<div class="center"><img src="class_joint__inherit__graph.png" border="0" usemap="#_joint_inherit__map" alt="Inheritance graph"/></div>
+<map name="_joint_inherit__map" id="_joint_inherit__map">
+<area shape="rect" href="class_ball_joint.html" title="ボール関節(BALL)クラス" alt="" coords="5,83,77,112"/><area shape="rect" href="class_fixed_joint.html" title="固定関節(FIXED)クラス" alt="" coords="101,83,181,112"/><area shape="rect" href="class_hinge_joint.html" title="ヒンジ関節(HING)" alt="" coords="205,83,288,112"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+<div class="dynheader">
+Jointのコラボレーション図</div>
+<div class="dynsection">
+<div class="center"><img src="class_joint__coll__graph.png" border="0" usemap="#_joint_coll__map" alt="Collaboration graph"/></div>
+<map name="_joint_coll__map" id="_joint_coll__map">
+<area shape="rect" href="class_vector3d.html" title="3次元ベクトルクラス" alt="" coords="5,5,77,35"/><area shape="rect" href="class_rotation.html" title="回転行列クラス" alt="" coords="101,5,171,35"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+
+<p><a href="class_joint-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Public 型</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_joint.html#a9e345f7fcae0b081e9fe1b05ef1bfcc7">Type</a> { <a class="el" href="class_joint.html#a9e345f7fcae0b081e9fe1b05ef1bfcc7a158cf3d4356ee7b976f452f85b114aec">TYPE_NOT_SET</a> =  -1, 
+<a class="el" href="class_joint.html#a9e345f7fcae0b081e9fe1b05ef1bfcc7ac3254d8fefed13416fb188bbb0f8feee">TYPE_FIXED</a>, 
+<a class="el" href="class_joint.html#a9e345f7fcae0b081e9fe1b05ef1bfcc7a9b1104d2a8909de54cbd125a0956ca17">TYPE_BALL</a>, 
+<a class="el" href="class_joint.html#a9e345f7fcae0b081e9fe1b05ef1bfcc7a421400008d9585a5d0190f807c8d203e">TYPE_HINGE</a>
+ }</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><p>部品タイプ </p>
+ <a href="class_joint.html#a9e345f7fcae0b081e9fe1b05ef1bfcc7">[詳細]</a><br/></td></tr>
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_joint.html#a24bda4ec0582e8fdcf3ee0f65a0ced07">addTorque</a> (double t)=0</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ジョイントにトルクを加える  <a href="#a24bda4ec0582e8fdcf3ee0f65a0ced07"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_joint.html#aab2bc04e6a8f30a33192ffb36aa34800">build</a> (const <a class="el" href="class_vector3d.html">Vector3d</a> &amp;v, const <a class="el" href="class_rotation.html">Rotation</a> &amp;r, bool dynamics)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">設定に応じてジョイントを作成する  <a href="#aab2bc04e6a8f30a33192ffb36aa34800"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_joint.html#afbbfd5a4ec1535b7ceda0d942ac2a1a7">dump</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_vector3d.html">Vector3d</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_joint.html#a815b32faa7061515d5b03abd4f5cd7fa">getAnchor</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">アンカー位置を取得する  <a href="#a815b32faa7061515d5b03abd4f5cd7fa"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_joint.html#a514e33e19baf927f4272b3a1cab0c72c">getJointForces</a> (<a class="el" href="class_joint_force.html">JointForce</a> *jfs)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">関節にかかる力を取得する  <a href="#a514e33e19baf927f4272b3a1cab0c72c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_s_parts.html">SParts</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_joint.html#a111b952fa9a5603125a3d28207fc9b4a">getParts</a> (int idx)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">指定インデックスのパーツを得る  <a href="#a111b952fa9a5603125a3d28207fc9b4a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_rotation.html">Rotation</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_joint.html#a7a013fb7a18a82ad355f71bd4fe2e0fd">getRotation</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">回転角度を取得する  <a href="#a7a013fb7a18a82ad355f71bd4fe2e0fd"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_joint.html#addebe2d2a1d979387b2c2223cfc65c01">Joint</a> (<a class="el" href="class_joint.html#a9e345f7fcae0b081e9fe1b05ef1bfcc7">Type</a> t, const char *name)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#addebe2d2a1d979387b2c2223cfc65c01"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_joint.html#af275a2307f140d613435f54bc8bc3fbe">name</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">関節名を得る  <a href="#af275a2307f140d613435f54bc8bc3fbe"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_joint.html#af80c65460b193e387c06027de8cd4cc6">pushBody</a> (dBodyID body)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ジョイントで結合するBodyオブジェクトを設定する  <a href="#af80c65460b193e387c06027de8cd4cc6"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_joint.html#aa76db2b0fb7668ea7db129768b9c04f2">setAnchor</a> (dReal x, dReal y, dReal z)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">関節アンカー位置を設定する  <a href="#aa76db2b0fb7668ea7db129768b9c04f2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_joint.html#adde693bde4aba5aa4864f26ae978a334">setAngle</a> (double d)=0</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">回転角度を設定する  <a href="#adde693bde4aba5aa4864f26ae978a334"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_joint.html#a9124a56ba33000bd65a15408b3648617">setOffsetQuaternion</a> (double qw, double qx, double qy, double qz, <a class="el" href="class_vector3d.html">Vector3d</a> iniAnchor, int cnt=0)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">OffsetQuaternionを設定する.回転後の関節が初期角度となる.  <a href="#a9124a56ba33000bd65a15408b3648617"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_joint.html#a9d56b114232e983cc77842f5ba5169b4">setQuaternion</a> (double qw, double qx, double qy, double qz)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Quaternionを設定する.  <a href="#a9d56b114232e983cc77842f5ba5169b4"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_joint.html#a01791a5748fe02caa7dd11a6da7537f2">setWorld</a> (dWorldID w)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ODE のWorldオブジェクトを設定する.  <a href="#a01791a5748fe02caa7dd11a6da7537f2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_joint.html#a9e345f7fcae0b081e9fe1b05ef1bfcc7">Type</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_joint.html#a33fc853cf9a2ff90563a307e2b6654ac">type</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">関節タイプを得る  <a href="#a33fc853cf9a2ff90563a307e2b6654ac"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_joint.html#a82276a110f9d4878d7ca22e17d34e7aa">‾Joint</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#a82276a110f9d4878d7ca22e17d34e7aa"></a><br/></td></tr>
+<tr><td colspan="2"><h2>Protected 型</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="class_joint.html#acabc1e6d88ab64031fd3e505a8c2e290afe8265f5e0f7ee327565bb24ecda64bd">BODY_NUM</a> =  2
+ }</td></tr>
+<tr><td colspan="2"><h2>Protected メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_joint.html#a2b8eda558eab9268b7ecbad7b38d5c8e">applyAnchor</a> (dReal x, dReal y, dReal z)=0</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">アンカー位置を設定する  <a href="#a2b8eda558eab9268b7ecbad7b38d5c8e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual dJointID&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_joint.html#ac73033653bcafa5400eb46e369742f13">createJoint</a> (dBodyID b1, dBodyID b2)=0</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ODEのジョイントオブジェクトを作成する.  <a href="#ac73033653bcafa5400eb46e369742f13"></a><br/></td></tr>
+<tr><td colspan="2"><h2>Protected 変数</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_vector3d.html">Vector3d</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_joint.html#adf0f867a34a8e164a58219cf70ecf797">m_anchor</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_joint.html#aa66bd8ebdacef491181f4ccc8fa4781d">m_attach</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">dBodyID&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_joint.html#a3e2478b40c8ac9738e31d2f536e7eb31">m_bodies</a> [BODY_NUM]</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_joint.html#a53d25f33feb0daea3915ee676191a972">m_bodyNum</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_joint.html#a4ed392250f90c989158f8518dd7c9a38">m_fixed</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">dJointFeedback *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_joint.html#aebcd128d848ba03006d9b0f03cdc92a4">m_jfb</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">dJointID&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_joint.html#a7ef2548fd888dbcd3add06029ff49e0f">m_joint</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_joint.html#a8e18a6ff656bcf26a85311ab5f57162a">m_name</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_rotation.html">Rotation</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_joint.html#a7d80a4d05297073c483aa379cd200d2d">m_rot</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_vector3d.html">Vector3d</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_joint.html#ae260cb0d8de0c7f187716440df22cf7b">m_rotv</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_joint.html#a9e345f7fcae0b081e9fe1b05ef1bfcc7">Type</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_joint.html#a339a6fd3e29fa885de22b807be1201a0">m_type</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">dWorldID&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_joint.html#ac7fc1f86e22cffa203ed414ef26b0f74">m_world</a></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>部品同士を繋ぐ関節クラス </p>
+
+<p> <a class="el" href="_joint_8h_source.html">Joint.h</a> の <a class="el" href="_joint_8h_source.html#l00020">20</a> 行で定義されています。</p>
+<hr/><h2>列挙型</h2>
+<a class="anchor" id="acabc1e6d88ab64031fd3e505a8c2e290"></a><!-- doxytag: member="Joint::@0" ref="acabc1e6d88ab64031fd3e505a8c2e290" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum<code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>列挙型の値: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="acabc1e6d88ab64031fd3e505a8c2e290afe8265f5e0f7ee327565bb24ecda64bd"></a><!-- doxytag: member="BODY_NUM" ref="acabc1e6d88ab64031fd3e505a8c2e290afe8265f5e0f7ee327565bb24ecda64bd" args="" -->BODY_NUM</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p> <a class="el" href="_joint_8h_source.html">Joint.h</a> の <a class="el" href="_joint_8h_source.html#l00029">29</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a9e345f7fcae0b081e9fe1b05ef1bfcc7"></a><!-- doxytag: member="Joint::Type" ref="a9e345f7fcae0b081e9fe1b05ef1bfcc7" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_joint.html#a9e345f7fcae0b081e9fe1b05ef1bfcc7">Joint::Type</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>部品タイプ </p>
+<dl><dt><b>列挙型の値: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="a9e345f7fcae0b081e9fe1b05ef1bfcc7a158cf3d4356ee7b976f452f85b114aec"></a><!-- doxytag: member="TYPE_NOT_SET" ref="a9e345f7fcae0b081e9fe1b05ef1bfcc7a158cf3d4356ee7b976f452f85b114aec" args="" -->TYPE_NOT_SET</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a9e345f7fcae0b081e9fe1b05ef1bfcc7ac3254d8fefed13416fb188bbb0f8feee"></a><!-- doxytag: member="TYPE_FIXED" ref="a9e345f7fcae0b081e9fe1b05ef1bfcc7ac3254d8fefed13416fb188bbb0f8feee" args="" -->TYPE_FIXED</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a9e345f7fcae0b081e9fe1b05ef1bfcc7a9b1104d2a8909de54cbd125a0956ca17"></a><!-- doxytag: member="TYPE_BALL" ref="a9e345f7fcae0b081e9fe1b05ef1bfcc7a9b1104d2a8909de54cbd125a0956ca17" args="" -->TYPE_BALL</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a9e345f7fcae0b081e9fe1b05ef1bfcc7a421400008d9585a5d0190f807c8d203e"></a><!-- doxytag: member="TYPE_HINGE" ref="a9e345f7fcae0b081e9fe1b05ef1bfcc7a421400008d9585a5d0190f807c8d203e" args="" -->TYPE_HINGE</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p> <a class="el" href="_joint_8h_source.html">Joint.h</a> の <a class="el" href="_joint_8h_source.html#l00024">24</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" id="addebe2d2a1d979387b2c2223cfc65c01"></a><!-- doxytag: member="Joint::Joint" ref="addebe2d2a1d979387b2c2223cfc65c01" args="(Type t, const char *name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Joint::Joint </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_joint.html#a9e345f7fcae0b081e9fe1b05ef1bfcc7">Type</a>&nbsp;</td>
+          <td class="paramname"> <em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>name</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コンストラクタ </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>t</em>&nbsp;</td><td>関節タイプ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>関節名 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_joint_8h_source.html">Joint.h</a> の <a class="el" href="_joint_8h_source.html#l00051">51</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>関数</h2>
+<a class="anchor" id="a24bda4ec0582e8fdcf3ee0f65a0ced07"></a><!-- doxytag: member="Joint::addTorque" ref="a24bda4ec0582e8fdcf3ee0f65a0ced07" args="(double t)=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Joint::addTorque </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>t</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ジョイントにトルクを加える </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>t</em>&nbsp;</td><td>トルク[Nm] </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><a class="el" href="class_hinge_joint.html#aacb900ce40cce89ee4537a7910ae3371">HingeJoint</a>で実装されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a2b8eda558eab9268b7ecbad7b38d5c8e"></a><!-- doxytag: member="Joint::applyAnchor" ref="a2b8eda558eab9268b7ecbad7b38d5c8e" args="(dReal x, dReal y, dReal z)=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Joint::applyAnchor </td>
+          <td>(</td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>z</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [protected, pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>アンカー位置を設定する </p>
+
+</div>
+</div>
+<a class="anchor" id="aab2bc04e6a8f30a33192ffb36aa34800"></a><!-- doxytag: member="Joint::build" ref="aab2bc04e6a8f30a33192ffb36aa34800" args="(const Vector3d &amp;v, const Rotation &amp;r, bool dynamics)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Joint::build </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_vector3d.html">Vector3d</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_rotation.html">Rotation</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>r</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>dynamics</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>設定に応じてジョイントを作成する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>v</em>&nbsp;</td><td>手前のパーツの位置 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>r</em>&nbsp;</td><td>手前のパーツの回転行列 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>dynamics</em>&nbsp;</td><td>物理計算を有効にするか？ </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ac73033653bcafa5400eb46e369742f13"></a><!-- doxytag: member="Joint::createJoint" ref="ac73033653bcafa5400eb46e369742f13" args="(dBodyID b1, dBodyID b2)=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual dJointID Joint::createJoint </td>
+          <td>(</td>
+          <td class="paramtype">dBodyID&nbsp;</td>
+          <td class="paramname"> <em>b1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">dBodyID&nbsp;</td>
+          <td class="paramname"> <em>b2</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [protected, pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ODEのジョイントオブジェクトを作成する. </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>b1</em>&nbsp;</td><td>結合するパーツ1 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>b2</em>&nbsp;</td><td>結合するパーツ2 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="afbbfd5a4ec1535b7ceda0d942ac2a1a7"></a><!-- doxytag: member="Joint::dump" ref="afbbfd5a4ec1535b7ceda0d942ac2a1a7" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Joint::dump </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_joint_8h_source.html">Joint.h</a> の <a class="el" href="_joint_8h_source.html#l00140">140</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a815b32faa7061515d5b03abd4f5cd7fa"></a><!-- doxytag: member="Joint::getAnchor" ref="a815b32faa7061515d5b03abd4f5cd7fa" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_vector3d.html">Vector3d</a>&amp; Joint::getAnchor </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>アンカー位置を取得する </p>
+
+<p> <a class="el" href="_joint_8h_source.html">Joint.h</a> の <a class="el" href="_joint_8h_source.html#l00089">89</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a514e33e19baf927f4272b3a1cab0c72c"></a><!-- doxytag: member="Joint::getJointForces" ref="a514e33e19baf927f4272b3a1cab0c72c" args="(JointForce *jfs)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Joint::getJointForces </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_joint_force.html">JointForce</a> *&nbsp;</td>
+          <td class="paramname"> <em>jfs</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>関節にかかる力を取得する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>jfs</em>&nbsp;</td><td>関節にかかる力 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>戻り値:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>true</em>&nbsp;</td><td>成功 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>false</em>&nbsp;</td><td>失敗 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a111b952fa9a5603125a3d28207fc9b4a"></a><!-- doxytag: member="Joint::getParts" ref="a111b952fa9a5603125a3d28207fc9b4a" args="(int idx)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_s_parts.html">SParts</a>* Joint::getParts </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>idx</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>指定インデックスのパーツを得る </p>
+
+</div>
+</div>
+<a class="anchor" id="a7a013fb7a18a82ad355f71bd4fe2e0fd"></a><!-- doxytag: member="Joint::getRotation" ref="a7a013fb7a18a82ad355f71bd4fe2e0fd" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_rotation.html">Rotation</a>&amp; Joint::getRotation </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>回転角度を取得する </p>
+
+<p> <a class="el" href="_joint_8h_source.html">Joint.h</a> の <a class="el" href="_joint_8h_source.html#l00091">91</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="af275a2307f140d613435f54bc8bc3fbe"></a><!-- doxytag: member="Joint::name" ref="af275a2307f140d613435f54bc8bc3fbe" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* Joint::name </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>関節名を得る </p>
+
+<p> <a class="el" href="_joint_8h_source.html">Joint.h</a> の <a class="el" href="_joint_8h_source.html#l00061">61</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="af80c65460b193e387c06027de8cd4cc6"></a><!-- doxytag: member="Joint::pushBody" ref="af80c65460b193e387c06027de8cd4cc6" args="(dBodyID body)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Joint::pushBody </td>
+          <td>(</td>
+          <td class="paramtype">dBodyID&nbsp;</td>
+          <td class="paramname"> <em>body</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ジョイントで結合するBodyオブジェクトを設定する </p>
+<p>追加できるBodyオブジェクトは2つまで </p>
+
+</div>
+</div>
+<a class="anchor" id="aa76db2b0fb7668ea7db129768b9c04f2"></a><!-- doxytag: member="Joint::setAnchor" ref="aa76db2b0fb7668ea7db129768b9c04f2" args="(dReal x, dReal y, dReal z)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Joint::setAnchor </td>
+          <td>(</td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>z</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>関節アンカー位置を設定する </p>
+
+<p> <a class="el" href="_joint_8h_source.html">Joint.h</a> の <a class="el" href="_joint_8h_source.html#l00080">80</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_joint_aa76db2b0fb7668ea7db129768b9c04f2_cgraph.png" border="0" usemap="#class_joint_aa76db2b0fb7668ea7db129768b9c04f2_cgraph_map" alt=""></div>
+<map name="class_joint_aa76db2b0fb7668ea7db129768b9c04f2_cgraph_map" id="class_joint_aa76db2b0fb7668ea7db129768b9c04f2_cgraph">
+<area shape="rect" href="class_vector3d.html#a48b289797e79e11e7dac828f1900321a" title="各要素を設定する" alt="" coords="171,5,269,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="adde693bde4aba5aa4864f26ae978a334"></a><!-- doxytag: member="Joint::setAngle" ref="adde693bde4aba5aa4864f26ae978a334" args="(double d)=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Joint::setAngle </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>d</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>回転角度を設定する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>d</em>&nbsp;</td><td>角度(ラジアン) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><a class="el" href="class_hinge_joint.html#a1788c39d0c71e3b6686f1c0cba87a997">HingeJoint</a>で実装されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a9124a56ba33000bd65a15408b3648617"></a><!-- doxytag: member="Joint::setOffsetQuaternion" ref="a9124a56ba33000bd65a15408b3648617" args="(double qw, double qx, double qy, double qz, Vector3d iniAnchor, int cnt=0)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Joint::setOffsetQuaternion </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>qw</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>qx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>qy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>qz</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_vector3d.html">Vector3d</a>&nbsp;</td>
+          <td class="paramname"> <em>iniAnchor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>cnt</em> = <code>0</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>OffsetQuaternionを設定する.回転後の関節が初期角度となる. </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>qw</em>&nbsp;</td><td>クオータニオンqw成分 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>qx</em>&nbsp;</td><td>クオータニオンqx成分 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>qy</em>&nbsp;</td><td>クオータニオンqy成分 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>qz</em>&nbsp;</td><td>クオータニオンqz成分 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>iniAnchor</em>&nbsp;</td><td>回転する関節のアンカー位置 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>cnt</em>&nbsp;</td><td>子関節カウント </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a9d56b114232e983cc77842f5ba5169b4"></a><!-- doxytag: member="Joint::setQuaternion" ref="a9d56b114232e983cc77842f5ba5169b4" args="(double qw, double qx, double qy, double qz)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Joint::setQuaternion </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>qw</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>qx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>qy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>qz</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Quaternionを設定する. </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>qw</em>&nbsp;</td><td>qw クオータニオンqw成分 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>qx</em>&nbsp;</td><td>qx クオータニオンqx成分 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>qy</em>&nbsp;</td><td>qy クオータニオンqy成分 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>qz</em>&nbsp;</td><td>qz クオータニオンqz成分 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a01791a5748fe02caa7dd11a6da7537f2"></a><!-- doxytag: member="Joint::setWorld" ref="a01791a5748fe02caa7dd11a6da7537f2" args="(dWorldID w)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Joint::setWorld </td>
+          <td>(</td>
+          <td class="paramtype">dWorldID&nbsp;</td>
+          <td class="paramname"> <em>w</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ODE のWorldオブジェクトを設定する. </p>
+
+</div>
+</div>
+<a class="anchor" id="a33fc853cf9a2ff90563a307e2b6654ac"></a><!-- doxytag: member="Joint::type" ref="a33fc853cf9a2ff90563a307e2b6654ac" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_joint.html#a9e345f7fcae0b081e9fe1b05ef1bfcc7">Type</a> Joint::type </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>関節タイプを得る </p>
+
+<p> <a class="el" href="_joint_8h_source.html">Joint.h</a> の <a class="el" href="_joint_8h_source.html#l00058">58</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a82276a110f9d4878d7ca22e17d34e7aa"></a><!-- doxytag: member="Joint::‾Joint" ref="a82276a110f9d4878d7ca22e17d34e7aa" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual Joint::‾Joint </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>デストラクタ </p>
+
+</div>
+</div>
+<hr/><h2>変数</h2>
+<a class="anchor" id="adf0f867a34a8e164a58219cf70ecf797"></a><!-- doxytag: member="Joint::m_anchor" ref="adf0f867a34a8e164a58219cf70ecf797" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_vector3d.html">Vector3d</a> <a class="el" href="class_joint.html#adf0f867a34a8e164a58219cf70ecf797">Joint::m_anchor</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_joint_8h_source.html">Joint.h</a> の <a class="el" href="_joint_8h_source.html#l00039">39</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="aa66bd8ebdacef491181f4ccc8fa4781d"></a><!-- doxytag: member="Joint::m_attach" ref="aa66bd8ebdacef491181f4ccc8fa4781d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_joint.html#aa66bd8ebdacef491181f4ccc8fa4781d">Joint::m_attach</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_joint_8h_source.html">Joint.h</a> の <a class="el" href="_joint_8h_source.html#l00036">36</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a3e2478b40c8ac9738e31d2f536e7eb31"></a><!-- doxytag: member="Joint::m_bodies" ref="a3e2478b40c8ac9738e31d2f536e7eb31" args="[BODY_NUM]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dBodyID <a class="el" href="class_joint.html#a3e2478b40c8ac9738e31d2f536e7eb31">Joint::m_bodies</a>[BODY_NUM]<code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_joint_8h_source.html">Joint.h</a> の <a class="el" href="_joint_8h_source.html#l00038">38</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a53d25f33feb0daea3915ee676191a972"></a><!-- doxytag: member="Joint::m_bodyNum" ref="a53d25f33feb0daea3915ee676191a972" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="class_joint.html#a53d25f33feb0daea3915ee676191a972">Joint::m_bodyNum</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_joint_8h_source.html">Joint.h</a> の <a class="el" href="_joint_8h_source.html#l00037">37</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a4ed392250f90c989158f8518dd7c9a38"></a><!-- doxytag: member="Joint::m_fixed" ref="a4ed392250f90c989158f8518dd7c9a38" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_joint.html#a4ed392250f90c989158f8518dd7c9a38">Joint::m_fixed</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_joint_8h_source.html">Joint.h</a> の <a class="el" href="_joint_8h_source.html#l00041">41</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="aebcd128d848ba03006d9b0f03cdc92a4"></a><!-- doxytag: member="Joint::m_jfb" ref="aebcd128d848ba03006d9b0f03cdc92a4" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dJointFeedback* <a class="el" href="class_joint.html#aebcd128d848ba03006d9b0f03cdc92a4">Joint::m_jfb</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_joint_8h_source.html">Joint.h</a> の <a class="el" href="_joint_8h_source.html#l00035">35</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a7ef2548fd888dbcd3add06029ff49e0f"></a><!-- doxytag: member="Joint::m_joint" ref="a7ef2548fd888dbcd3add06029ff49e0f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dJointID <a class="el" href="class_joint.html#a7ef2548fd888dbcd3add06029ff49e0f">Joint::m_joint</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_joint_8h_source.html">Joint.h</a> の <a class="el" href="_joint_8h_source.html#l00034">34</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a8e18a6ff656bcf26a85311ab5f57162a"></a><!-- doxytag: member="Joint::m_name" ref="a8e18a6ff656bcf26a85311ab5f57162a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string <a class="el" href="class_joint.html#a8e18a6ff656bcf26a85311ab5f57162a">Joint::m_name</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_joint_8h_source.html">Joint.h</a> の <a class="el" href="_joint_8h_source.html#l00032">32</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a7d80a4d05297073c483aa379cd200d2d"></a><!-- doxytag: member="Joint::m_rot" ref="a7d80a4d05297073c483aa379cd200d2d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_rotation.html">Rotation</a> <a class="el" href="class_joint.html#a7d80a4d05297073c483aa379cd200d2d">Joint::m_rot</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_joint_8h_source.html">Joint.h</a> の <a class="el" href="_joint_8h_source.html#l00044">44</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ae260cb0d8de0c7f187716440df22cf7b"></a><!-- doxytag: member="Joint::m_rotv" ref="ae260cb0d8de0c7f187716440df22cf7b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_vector3d.html">Vector3d</a> <a class="el" href="class_joint.html#ae260cb0d8de0c7f187716440df22cf7b">Joint::m_rotv</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_joint_8h_source.html">Joint.h</a> の <a class="el" href="_joint_8h_source.html#l00040">40</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a339a6fd3e29fa885de22b807be1201a0"></a><!-- doxytag: member="Joint::m_type" ref="a339a6fd3e29fa885de22b807be1201a0" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_joint.html#a9e345f7fcae0b081e9fe1b05ef1bfcc7">Type</a> <a class="el" href="class_joint.html#a339a6fd3e29fa885de22b807be1201a0">Joint::m_type</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_joint_8h_source.html">Joint.h</a> の <a class="el" href="_joint_8h_source.html#l00031">31</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ac7fc1f86e22cffa203ed414ef26b0f74"></a><!-- doxytag: member="Joint::m_world" ref="ac7fc1f86e22cffa203ed414ef26b0f74" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dWorldID <a class="el" href="class_joint.html#ac7fc1f86e22cffa203ed414ef26b0f74">Joint::m_world</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_joint_8h_source.html">Joint.h</a> の <a class="el" href="_joint_8h_source.html#l00033">33</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_joint_8h_source.html">Joint.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:19 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

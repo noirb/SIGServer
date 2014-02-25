@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: CommDataListener.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>CommDataListener.h</h1><code>#include &quot;<a class="el" href="_recv_event_8h_source.html">RecvEvent.h</a>&quot;</code><br/>
+<div class="dynheader">
+CommDataListener.hのインクルード依存関係図</div>
+<div class="dynsection">
+<div class="center"><img src="_comm_data_listener_8h__incl.png" border="0" usemap="#_comm_data_listener_8h_map" alt=""/></div>
+<map name="_comm_data_listener_8h_map" id="_comm_data_listener_8h">
+<area shape="rect" href="_recv_event_8h.html" title="RecvEvent.h" alt="" coords="2020,83,2116,112"/><area shape="rect" href="event_2_log_msg_8h.html" title="comm/event/LogMsg.h" alt="" coords="240,315,395,344"/><area shape="rect" href="_recv_entities_8h.html" title="comm/event/RecvEntities.h" alt="" coords="1415,237,1596,267"/><area shape="rect" href="_request_attach_8h.html" title="comm/event/RequestAttach.h" alt="" coords="419,315,613,344"/><area shape="rect" href="_request_get_entity_8h.html" title="comm/event/RequestGetEntity.h" alt="" coords="5,315,216,344"/><area shape="rect" href="_request_sim_ctrl_8h.html" title="comm/event/RequestSimCtrl.h" alt="" coords="2360,315,2560,344"/><area shape="rect" href="_result_get_entity_8h.html" title="comm/event/ResultGetEntity.h" alt="" coords="2332,160,2532,189"/><area shape="rect" href="event_2_result_8h.html" title="comm/event/Result.h" alt="" coords="2141,315,2285,344"/><area shape="rect" href="_request_capture_view_image_8h.html" title="comm/event/RequestCaptureViewImage.h" alt="" coords="787,315,1051,344"/><area shape="rect" href="_result_capture_view_image_8h.html" title="comm/event/ResultCaptureViewImage.h" alt="" coords="2556,160,2809,189"/><area shape="rect" href="event_2_detect_entities_8h.html" title="comm/event/DetectEntities.h" alt="" coords="1620,237,1809,267"/><area shape="rect" href="_request_distance_sensor_8h.html" title="comm/event/RequestDistanceSensor.h" alt="" coords="1075,315,1323,344"/><area shape="rect" href="_result_distance_sensor_8h.html" title="comm/event/ResultDistanceSensor.h" alt="" coords="2833,160,3071,189"/><area shape="rect" href="event_2_controller_command_8h.html" title="comm/event/ControllerCommand.h" alt="" coords="3095,160,3316,189"/><area shape="rect" href="event_2_name_service_8h.html" title="comm/event/NameService.h" alt="" coords="1103,237,1289,267"/><area shape="rect" href="event_2_attrs_8h.html" title="comm/event/Attrs.h" alt="" coords="943,237,1079,267"/><area shape="rect" href="event_2_joint_angle_8h.html" title="comm/event/JointAngle.h" alt="" coords="3340,160,3508,189"/><area shape="rect" href="event_2_joint_quaternion_8h.html" title="comm/event/JointQuaternion.h" alt="" coords="3532,160,3732,189"/><area shape="rect" href="event_2_joint_torque_8h.html" title="comm/event/JointTorque.h" alt="" coords="3756,160,3932,189"/><area shape="rect" href="event_2_sound_recog_8h.html" title="comm/event/SoundRecog.h" alt="" coords="636,160,817,189"/><area shape="rect" href="event_2_get_joint_force_8h.html" title="comm/event/GetJointForce.h" alt="" coords="3976,160,4165,189"/><area shape="rect" href="_result_attach_8h.html" title="comm/event/ResultAttach.h" alt="" coords="2231,237,2415,267"/><area shape="rect" href="event_2_connect_joint_8h.html" title="comm/event/ConnectJoint.h" alt="" coords="4240,160,4424,189"/><area shape="rect" href="event_2_release_joint_8h.html" title="comm/event/ReleaseJoint.h" alt="" coords="1728,315,1912,344"/><area shape="rect" href="event_2_get_object_names_8h.html" title="comm/event/GetObjectNames.h" alt="" coords="1313,160,1521,189"/><area shape="rect" href="event_2_display_text_8h.html" title="comm/event/DisplayText.h" alt="" coords="1980,160,2156,189"/><area shape="rect" href="_comm_data_type_8h.html" title="CommDataType.h" alt="" coords="2249,392,2375,421"/><area shape="rect" href="_service_8h.html" title="Service.h" alt="" coords="1397,315,1472,344"/><area shape="rect" href="_text_8h.html" title="Text.h" alt="" coords="651,237,707,267"/><area shape="rect" href="_encode_8h.html" title="Encode.h" alt="" coords="688,315,763,344"/><area shape="rect" href="encoder_2_get_object_names_8h.html" title="comm/encoder/GetObjectNames.h" alt="" coords="1833,237,2055,267"/><area shape="rect" href="_encoder_8h.html" title="Encoder.h" alt="" coords="2037,315,2117,344"/><area shape="rect" href="systemdef_8h.html" title="systemdef.h" alt="" coords="1796,392,1889,421"/><area shape="rect" href="_comm_data_def_8h.html" title="CommDataDef.h" alt="" coords="1913,392,2031,421"/></map>
+</div>
+
+<p><a href="_comm_data_listener_8h_source.html">ソースコードを見る。</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>構成</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_listener.html">CommDataListener</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><a class="el" href="class_comm_data_decoder.html" title="サーバ-クライアント通信データデコードクラス">CommDataDecoder</a> によるデータ復元結果取得リスナーインターフェース.  <a href="class_comm_data_listener.html#_details">[詳細]</a><br/></td></tr>
+</table>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:18 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

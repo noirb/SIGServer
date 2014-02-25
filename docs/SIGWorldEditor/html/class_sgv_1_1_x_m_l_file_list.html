@@ -1,0 +1,261 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGWorldEditor: クラス Sgv::XMLFileList</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_sgv.html">Sgv</a>::<a class="el" href="class_sgv_1_1_x_m_l_file_list.html">XMLFileList</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Sgv::XMLFileList</h1><!-- doxytag: class="Sgv::XMLFileList" -->世界ファイル、エンティティクラス定義ファイルのリスト  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_sgv_x_m_l_file_list_8h_source.html">SgvXMLFileList.h</a>&gt;</code>
+<p>
+
+<p>
+<a href="class_sgv_1_1_x_m_l_file_list-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_file_list.html#456c5bdc0c274439325bdbd3bf6ce1d2">dump</a> (FILE *fp)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デバッグ用  <a href="#456c5bdc0c274439325bdbd3bf6ce1d2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::vector&lt; std::string &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_file_list.html#72808f26f3a8df0e5fc40dff1392e541">getEntityClassFileNames</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">列挙されたエンティティクラスファイル名のリストを返す  <a href="#72808f26f3a8df0e5fc40dff1392e541"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::vector&lt; std::string &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_file_list.html#84c10bb0a810ccd9071763c6271b1944">getWorldFileNames</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">列挙された世界ファイル名のリストを返す  <a href="#84c10bb0a810ccd9071763c6271b1944"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_file_list.html#fc69d27a3aaaeb3cf349f0b9d1669452">searchXMLFiles</a> (const char *dir)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">指定ディレクトリにあるXMLファイルをサーチし、  <a href="#fc69d27a3aaaeb3cf349f0b9d1669452"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_file_list.html#37c0163000f4c379c1654932f9f6883e">XMLFileList</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#37c0163000f4c379c1654932f9f6883e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_file_list.html#e5f75300a3aeef395c97022166dd3fd5">‾XMLFileList</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#e5f75300a3aeef395c97022166dd3fd5"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+世界ファイル、エンティティクラス定義ファイルのリスト 
+<p> <a class="el" href="_sgv_x_m_l_file_list_8h_source.html">SgvXMLFileList.h</a> の <a class="el" href="_sgv_x_m_l_file_list_8h_source.html#l00016">16</a> 行で定義されています。</p>
+<hr><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" name="37c0163000f4c379c1654932f9f6883e"></a><!-- doxytag: member="Sgv::XMLFileList::XMLFileList" ref="37c0163000f4c379c1654932f9f6883e" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::XMLFileList::XMLFileList           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_x_m_l_file_list_8cpp_source.html">SgvXMLFileList.cpp</a> の <a class="el" href="_sgv_x_m_l_file_list_8cpp_source.html#l00022">22</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>関数</h2>
+<a class="anchor" name="456c5bdc0c274439325bdbd3bf6ce1d2"></a><!-- doxytag: member="Sgv::XMLFileList::dump" ref="456c5bdc0c274439325bdbd3bf6ce1d2" args="(FILE *fp)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::XMLFileList::dump           </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&nbsp;</td>
+          <td class="paramname"> <em>fp</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+デバッグ用 
+<p>
+
+<p> <a class="el" href="_sgv_x_m_l_file_list_8cpp_source.html">SgvXMLFileList.cpp</a> の <a class="el" href="_sgv_x_m_l_file_list_8cpp_source.html#l00095">95</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="72808f26f3a8df0e5fc40dff1392e541"></a><!-- doxytag: member="Sgv::XMLFileList::getEntityClassFileNames" ref="72808f26f3a8df0e5fc40dff1392e541" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::string &gt; Sgv::XMLFileList::getEntityClassFileNames           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+列挙されたエンティティクラスファイル名のリストを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>エンティティクラスファイル名のリスト </dd></dl>
+
+<p> <a class="el" href="_sgv_x_m_l_file_list_8cpp_source.html">SgvXMLFileList.cpp</a> の <a class="el" href="_sgv_x_m_l_file_list_8cpp_source.html#l00090">90</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="84c10bb0a810ccd9071763c6271b1944"></a><!-- doxytag: member="Sgv::XMLFileList::getWorldFileNames" ref="84c10bb0a810ccd9071763c6271b1944" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::string &gt; Sgv::XMLFileList::getWorldFileNames           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+列挙された世界ファイル名のリストを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>世界ファイル名のリスト </dd></dl>
+
+<p> <a class="el" href="_sgv_x_m_l_file_list_8cpp_source.html">SgvXMLFileList.cpp</a> の <a class="el" href="_sgv_x_m_l_file_list_8cpp_source.html#l00085">85</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="fc69d27a3aaaeb3cf349f0b9d1669452"></a><!-- doxytag: member="Sgv::XMLFileList::searchXMLFiles" ref="fc69d27a3aaaeb3cf349f0b9d1669452" args="(const char *dir)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::XMLFileList::searchXMLFiles           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>dir</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+指定ディレクトリにあるXMLファイルをサーチし、 
+<p>
+(1) エンティティクラスファイル (2) 世界ファイル<p>
+のリストを作る<p>
+以前に検索した内容は破棄される<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>dir</em>&nbsp;</td><td>[i] 検索対象ディレクトリ</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_x_m_l_file_list_8cpp_source.html">SgvXMLFileList.cpp</a> の <a class="el" href="_sgv_x_m_l_file_list_8cpp_source.html#l00032">32</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="e5f75300a3aeef395c97022166dd3fd5"></a><!-- doxytag: member="Sgv::XMLFileList::‾XMLFileList" ref="e5f75300a3aeef395c97022166dd3fd5" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::XMLFileList::‾XMLFileList           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+デストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_x_m_l_file_list_8cpp_source.html">SgvXMLFileList.cpp</a> の <a class="el" href="_sgv_x_m_l_file_list_8cpp_source.html#l00026">26</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_sgv_x_m_l_file_list_8h_source.html">SgvXMLFileList.h</a><li><a class="el" href="_sgv_x_m_l_file_list_8cpp_source.html">SgvXMLFileList.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGWorldEditorに対してThu Jun 9 10:53:01 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

@@ -1,0 +1,23 @@
+######################################################################
+
+  How-To-Release Memo
+                                       2009/12/03
+                                  yoshi@msi.co.jp
+
+######################################################################
+
+                                
+
+# Execute before package release or development
+
+$ make -f Makefile.dev release
+$ make -f Makefile.dev autoconf
+
+
+# cmm example
+# necessary : --with-jvm 
+# optional  : --with-julius(which also needs --with-dictkit)
+
+$  ./configure --prefix=/usr/local --with-jvm=/usr/java/jdk1.6.0_07/jre/lib/amd64/server --with-julius=/usr/local/bin/julius --with-dictkit=<somewhere>/dictation-kit-v3.2
+$ make 
+$ make install

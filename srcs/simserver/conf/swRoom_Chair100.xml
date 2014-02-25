@@ -1,0 +1,957 @@
+<?xml version="1.0" encoding="utf8"?>
+<world name="Chair100">
+
+  <gravity x="0.0" y="-9.8" z="0.0"/>
+
+  <instanciate class="Man-nii.xml">
+	<set-attr-value name="name" value="man_0"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="-70.0"/>
+	<set-attr-value name="y" value="60.0"/>
+	<set-attr-value name="z" value="50.0"/>
+
+	<set-attr-value name="vpx" value="0.0"/>
+	<set-attr-value name="vpy" value="10.0"/>
+	<set-attr-value name="vpz" value="0.0"/>
+
+	<set-attr-value name="vvx" value="0.0"/>
+	<set-attr-value name="vvy" value="0.0"/>
+	<set-attr-value name="vvz" value="1.0"/>
+  </instanciate>
+
+  <instanciate class="Man-nii.xml">
+	<set-attr-value name="name" value="man_1"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="-70.0"/>
+	<set-attr-value name="y" value="60.0"/>
+	<set-attr-value name="z" value="80.0"/>
+
+	<set-attr-value name="vpx" value="0.0"/>
+	<set-attr-value name="vpy" value="10.0"/>
+	<set-attr-value name="vpz" value="0.0"/>
+
+	<set-attr-value name="vvx" value="0.0"/>
+	<set-attr-value name="vvy" value="0.0"/>
+	<set-attr-value name="vvz" value="1.0"/>
+  </instanciate>
+
+  <instanciate class="Man-nii.xml">
+	<set-attr-value name="name" value="man_2"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="-70.0"/>
+	<set-attr-value name="y" value="60.0"/>
+	<set-attr-value name="z" value="120.0"/>
+
+	<set-attr-value name="vpx" value="0.0"/>
+	<set-attr-value name="vpy" value="10.0"/>
+	<set-attr-value name="vpz" value="0.0"/>
+
+	<set-attr-value name="vvx" value="0.0"/>
+	<set-attr-value name="vvy" value="0.0"/>
+	<set-attr-value name="vvz" value="1.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_00"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="100.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="-70.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_01"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="150.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="-70.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_02"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="200.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="-70.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_03"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="250.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="-70.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_04"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="300.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="-70.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_05"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="350.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="-70.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_06"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="400.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="-70.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_07"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="450.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="-70.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_08"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="500.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="-70.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_09"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="550.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="-70.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_10"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="100.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="-20.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_11"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="150.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="-20.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_12"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="200.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="-20.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_13"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="250.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="-20.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_14"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="300.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="-20.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_15"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="350.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="-20.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_16"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="400.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="-20.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_17"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="450.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="-20.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_18"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="500.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="-20.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_19"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="550.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="-20.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_20"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="100.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="30.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_21"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="150.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="30.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_22"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="200.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="30.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_23"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="250.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="30.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_24"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="300.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="30.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_25"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="350.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="30.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_26"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="400.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="30.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_27"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="450.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="30.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_28"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="500.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="30.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_29"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="550.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="30.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_30"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="100.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="80.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_31"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="150.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="80.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_32"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="200.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="80.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_33"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="250.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="80.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_34"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="300.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="80.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_35"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="350.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="80.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_36"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="400.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="80.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_37"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="450.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="80.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_38"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="500.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="80.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_39"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="550.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="80.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_40"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="100.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="130.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_41"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="150.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="130.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_42"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="200.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="130.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_43"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="250.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="130.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_44"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="300.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="130.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_45"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="350.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="130.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_46"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="400.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="130.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_47"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="450.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="130.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_48"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="500.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="130.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_49"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="550.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="130.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_50"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="100.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="180.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_51"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="150.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="180.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_52"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="200.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="180.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_53"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="250.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="180.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_54"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="300.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="180.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_55"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="350.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="180.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_56"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="400.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="180.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_57"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="450.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="180.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_58"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="500.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="180.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_59"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="550.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="180.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_60"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="100.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="230.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_61"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="150.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="230.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_62"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="200.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="230.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_63"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="250.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="230.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_64"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="300.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="230.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_65"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="350.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="230.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_66"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="400.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="230.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_67"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="450.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="230.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_68"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="500.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="230.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_69"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="550.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="230.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_70"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="100.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="280.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_71"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="150.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="280.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_72"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="200.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="280.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_73"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="250.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="280.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_74"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="300.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="280.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_75"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="350.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="280.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_76"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="400.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="280.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_77"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="450.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="280.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_78"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="500.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="280.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_79"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="550.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="280.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_80"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="100.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="330.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_81"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="150.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="330.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_82"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="200.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="330.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_83"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="250.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="330.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_84"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="300.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="330.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_85"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="350.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="330.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_86"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="400.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="330.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_87"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="450.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="330.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_88"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="500.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="330.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_89"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="550.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="330.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_90"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="100.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="380.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_91"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="150.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="380.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_92"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="200.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="380.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_93"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="250.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="380.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_94"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="300.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="380.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_95"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="350.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="380.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_96"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="400.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="380.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_97"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="450.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="380.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_98"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="500.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="380.0"/>
+  </instanciate>
+
+  <instanciate class="seChair_A_c01.xml">
+	<set-attr-value name="name" value="chair_99"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="550.0"/>
+	<set-attr-value name="y" value="44.0"/>
+	<set-attr-value name="z" value="380.0"/>
+  </instanciate>
+
+</world>

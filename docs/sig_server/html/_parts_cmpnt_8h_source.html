@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: PartsCmpnt.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>PartsCmpnt.h</h1><a href="_parts_cmpnt_8h.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/* $Id: _parts_cmpnt_8h_source.html,v 1.2 2011-12-14 07:55:37 okamoto Exp $ */</span>
+<a name="l00002"></a>00002 <span class="preprocessor">#ifndef PartsCmpnt_h</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span><span class="preprocessor">#define PartsCmpnt_h</span>
+<a name="l00004"></a>00004 <span class="preprocessor"></span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include &quot;<a class="code" href="_parts_8h.html">Parts.h</a>&quot;</span>
+<a name="l00006"></a>00006 <span class="comment"></span>
+<a name="l00007"></a>00007 <span class="comment">/**</span>
+<a name="l00008"></a>00008 <span class="comment"> * @brief 箱形状パーツデータクラス</span>
+<a name="l00009"></a>00009 <span class="comment"> */</span>
+<a name="l00010"></a><a class="code" href="class_box_parts_cmpnt.html">00010</a> <span class="keyword">class </span><a class="code" href="class_box_parts_cmpnt.html" title="箱形状パーツデータクラス">BoxPartsCmpnt</a> : <span class="keyword">public</span> <a class="code" href="class_parts_cmpnt.html" title="パーツを構成する要素インターフェース">PartsCmpnt</a>
+<a name="l00011"></a>00011 {
+<a name="l00012"></a>00012 <span class="keyword">public</span>:
+<a name="l00013"></a><a class="code" href="class_box_parts_cmpnt.html#a99fd37d899ea8e1d4e0aa3574625d349a7fb8a96892f5e915718d0682f67b0891">00013</a>     <span class="keyword">enum</span> { <a class="code" href="class_box_parts_cmpnt.html#a99fd37d899ea8e1d4e0aa3574625d349a7fb8a96892f5e915718d0682f67b0891">DATA_LEN</a> = <span class="keyword">sizeof</span>(double)*3, };
+<a name="l00014"></a>00014 <span class="keyword">private</span>:
+<a name="l00015"></a>00015     <a class="code" href="class_size.html" title="シミュレーション世界内における3次元直方体の大きさを表すクラス...">Size</a> m_sz;
+<a name="l00016"></a>00016     <span class="keywordtype">char</span> m_buf[<a class="code" href="class_box_parts_cmpnt.html#a99fd37d899ea8e1d4e0aa3574625d349a7fb8a96892f5e915718d0682f67b0891">DATA_LEN</a>];
+<a name="l00017"></a>00017 <span class="keyword">public</span>:<span class="comment"></span>
+<a name="l00018"></a>00018 <span class="comment">    /**</span>
+<a name="l00019"></a>00019 <span class="comment">     * @brief コンストラクタ</span>
+<a name="l00020"></a>00020 <span class="comment">     *</span>
+<a name="l00021"></a>00021 <span class="comment">     * @param sz 箱のサイズ(縦×横×高さ)</span>
+<a name="l00022"></a>00022 <span class="comment">     */</span>
+<a name="l00023"></a><a class="code" href="class_box_parts_cmpnt.html#a26598cbccb66fcaf5dff7e4519983695">00023</a>     <a class="code" href="class_box_parts_cmpnt.html#a26598cbccb66fcaf5dff7e4519983695" title="コンストラクタ">BoxPartsCmpnt</a>(<span class="keyword">const</span> <a class="code" href="class_size.html" title="シミュレーション世界内における3次元直方体の大きさを表すクラス...">Size</a> &amp;sz) : <a class="code" href="class_parts_cmpnt.html" title="パーツを構成する要素インターフェース">PartsCmpnt</a>(), m_sz(sz) {}<span class="comment"></span>
+<a name="l00024"></a>00024 <span class="comment">    /**</span>
+<a name="l00025"></a>00025 <span class="comment">     * @brief コピーコンストラクタ</span>
+<a name="l00026"></a>00026 <span class="comment">     */</span>
+<a name="l00027"></a><a class="code" href="class_box_parts_cmpnt.html#ac9129072f22589d94c9f68ec861b454a">00027</a>     <a class="code" href="class_box_parts_cmpnt.html#ac9129072f22589d94c9f68ec861b454a" title="コピーコンストラクタ">BoxPartsCmpnt</a>(<span class="keyword">const</span> <a class="code" href="class_box_parts_cmpnt.html" title="箱形状パーツデータクラス">BoxPartsCmpnt</a> &amp;o) : <a class="code" href="class_parts_cmpnt.html" title="パーツを構成する要素インターフェース">PartsCmpnt</a>(), m_sz(o.m_sz) {}
+<a name="l00028"></a>00028 <span class="keyword">public</span>:<span class="comment"></span>
+<a name="l00029"></a>00029 <span class="comment">    //! 箱のサイズを得る</span>
+<a name="l00030"></a><a class="code" href="class_box_parts_cmpnt.html#a776c09c7d38f7469abe926e49b244586">00030</a> <span class="comment"></span>    <a class="code" href="class_size.html" title="シミュレーション世界内における3次元直方体の大きさを表すクラス...">Size</a> &amp; <a class="code" href="class_box_parts_cmpnt.html#a776c09c7d38f7469abe926e49b244586" title="箱のサイズを得る">size</a>() { <span class="keywordflow">return</span> m_sz; }
+<a name="l00031"></a>00031 
+<a name="l00032"></a>00032 <span class="preprocessor">#if 1</span>
+<a name="l00033"></a>00033 <span class="preprocessor"></span><span class="comment">// FIX20110421(ExpSS)</span><span class="comment"></span>
+<a name="l00034"></a>00034 <span class="comment">    //! 箱のサイズをセットする</span>
+<a name="l00035"></a><a class="code" href="class_box_parts_cmpnt.html#a0b782ff275d305fef28629af87c3f282">00035</a> <span class="comment"></span>    <span class="keywordtype">void</span> <a class="code" href="class_box_parts_cmpnt.html#a776c09c7d38f7469abe926e49b244586" title="箱のサイズを得る">size</a>(dReal sx, dReal sy, dReal sz)
+<a name="l00036"></a>00036     {
+<a name="l00037"></a>00037         m_sz.<a class="code" href="class_position.html#a6bf294381a4d9805a1cea299ec2ffc86" title="各座標値を設定する">set</a>(sx, sy, sz);
+<a name="l00038"></a>00038     }
+<a name="l00039"></a>00039 
+<a name="l00040"></a>00040     <span class="comment">// !箱のサイズを表示</span>
+<a name="l00041"></a><a class="code" href="class_box_parts_cmpnt.html#af8b0553b70d229d0d8252c04e71fb4b0">00041</a>     <span class="keywordtype">void</span> <a class="code" href="class_box_parts_cmpnt.html#af8b0553b70d229d0d8252c04e71fb4b0" title="保持している情報（サイズ）の表示">dump</a>()
+<a name="l00042"></a>00042     {
+<a name="l00043"></a>00043         printf(<span class="stringliteral">&quot;¥t¥tsize(%f, %f, %f)¥n&quot;</span>, m_sz.<a class="code" href="class_position.html#aa97410c769815bc60c9412f387b555d1" title="X座標値を取得する.">x</a>(), m_sz.<a class="code" href="class_position.html#a5f7b9c53b81affdcf502f5059a6dc50a" title="Y座標値を取得する.">y</a>(), m_sz.<a class="code" href="class_position.html#a63f0cb5a9c08ef8af982cc18aa161395" title="Z座標値を取得する.">z</a>());
+<a name="l00044"></a>00044     }
+<a name="l00045"></a>00045 <span class="preprocessor">#endif</span>
+<a name="l00046"></a>00046 <span class="preprocessor"></span>
+<a name="l00047"></a>00047 <span class="keyword">private</span>:
+<a name="l00048"></a>00048     <span class="keywordtype">int</span>     datalen() { <span class="keywordflow">return</span> <a class="code" href="class_box_parts_cmpnt.html#a99fd37d899ea8e1d4e0aa3574625d349a7fb8a96892f5e915718d0682f67b0891">DATA_LEN</a>; }
+<a name="l00049"></a>00049     <span class="keywordtype">char</span> *  dataBinary();
+<a name="l00050"></a>00050 };
+<a name="l00051"></a>00051 <span class="comment"></span>
+<a name="l00052"></a>00052 <span class="comment">/**</span>
+<a name="l00053"></a>00053 <span class="comment"> * @brief シリンダー形状パーツデータクラス</span>
+<a name="l00054"></a>00054 <span class="comment"> */</span>
+<a name="l00055"></a><a class="code" href="class_cylinder_parts_cmpnt.html">00055</a> <span class="keyword">class </span><a class="code" href="class_cylinder_parts_cmpnt.html" title="シリンダー形状パーツデータクラス">CylinderPartsCmpnt</a> : <span class="keyword">public</span> <a class="code" href="class_parts_cmpnt.html" title="パーツを構成する要素インターフェース">PartsCmpnt</a>
+<a name="l00056"></a>00056 {
+<a name="l00057"></a>00057 <span class="keyword">public</span>:
+<a name="l00058"></a><a class="code" href="class_cylinder_parts_cmpnt.html#ae03baca179a06bfe0cd244986065a1f4afc70e2d1e8b8b82a87bd9fabe474e585">00058</a>     <span class="keyword">enum</span> { <a class="code" href="class_box_parts_cmpnt.html#a99fd37d899ea8e1d4e0aa3574625d349a7fb8a96892f5e915718d0682f67b0891">DATA_LEN</a> = <span class="keyword">sizeof</span>(double)*2, };
+<a name="l00059"></a>00059 <span class="keyword">private</span>:
+<a name="l00060"></a>00060     dReal m_rad;
+<a name="l00061"></a>00061     dReal m_len;
+<a name="l00062"></a>00062     <span class="keywordtype">char</span> m_buf[<a class="code" href="class_box_parts_cmpnt.html#a99fd37d899ea8e1d4e0aa3574625d349a7fb8a96892f5e915718d0682f67b0891">DATA_LEN</a>];
+<a name="l00063"></a>00063 <span class="keyword">public</span>:<span class="comment"></span>
+<a name="l00064"></a>00064 <span class="comment">    /**</span>
+<a name="l00065"></a>00065 <span class="comment">     * @brief コンストラクタ</span>
+<a name="l00066"></a>00066 <span class="comment">     *</span>
+<a name="l00067"></a>00067 <span class="comment">     * @param r シリンダーの円の半径</span>
+<a name="l00068"></a>00068 <span class="comment">     * @param l シリンダーの長さ</span>
+<a name="l00069"></a>00069 <span class="comment">     */</span>
+<a name="l00070"></a><a class="code" href="class_cylinder_parts_cmpnt.html#aa39486f98318910cd0a39926671fb8b7">00070</a>     <a class="code" href="class_cylinder_parts_cmpnt.html#aa39486f98318910cd0a39926671fb8b7" title="コンストラクタ">CylinderPartsCmpnt</a>(dReal r, dReal l) : <a class="code" href="class_parts_cmpnt.html" title="パーツを構成する要素インターフェース">PartsCmpnt</a>(), m_rad(r), m_len(l) {}<span class="comment"></span>
+<a name="l00071"></a>00071 <span class="comment">    /**</span>
+<a name="l00072"></a>00072 <span class="comment">     * @brief コピーコンストラクタ</span>
+<a name="l00073"></a>00073 <span class="comment">     */</span>
+<a name="l00074"></a><a class="code" href="class_cylinder_parts_cmpnt.html#a04c76c617e4421dc0b1df6da38d8ddb9">00074</a>     <a class="code" href="class_cylinder_parts_cmpnt.html" title="シリンダー形状パーツデータクラス">CylinderPartsCmpnt</a>(<span class="keyword">const</span> <a class="code" href="class_cylinder_parts_cmpnt.html" title="シリンダー形状パーツデータクラス">CylinderPartsCmpnt</a> &amp;o)
+<a name="l00075"></a>00075         : <a class="code" href="class_parts_cmpnt.html" title="パーツを構成する要素インターフェース">PartsCmpnt</a>(), m_rad(o.m_rad), m_len(o.m_len) {}
+<a name="l00076"></a>00076 <span class="comment"></span>
+<a name="l00077"></a>00077 <span class="comment">    //! シリンダーの円の半径を取得する</span>
+<a name="l00078"></a><a class="code" href="class_cylinder_parts_cmpnt.html#a81d1a5665475b82e80dde077debbfbb5">00078</a> <span class="comment"></span>    dReal <a class="code" href="class_cylinder_parts_cmpnt.html#a81d1a5665475b82e80dde077debbfbb5" title="シリンダーの円の半径を取得する">radius</a>() { <span class="keywordflow">return</span> m_rad; }
+<a name="l00079"></a>00079 <span class="comment"></span>
+<a name="l00080"></a>00080 <span class="comment">    //! シリンダーの長さを取得する</span>
+<a name="l00081"></a><a class="code" href="class_cylinder_parts_cmpnt.html#ae7e74a3bba3156787dd270306ee8e63a">00081</a> <span class="comment"></span>    dReal <a class="code" href="class_cylinder_parts_cmpnt.html#ae7e74a3bba3156787dd270306ee8e63a" title="シリンダーの長さを取得する">length</a>() { <span class="keywordflow">return</span> m_len; }
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083 <span class="preprocessor">#if 1</span>
+<a name="l00084"></a>00084 <span class="preprocessor"></span><span class="comment">// FIX20110421(ExpSS)</span><span class="comment"></span>
+<a name="l00085"></a>00085 <span class="comment">    //! シリンダーの円の半径を設定する</span>
+<a name="l00086"></a><a class="code" href="class_cylinder_parts_cmpnt.html#a796b620a979d9f2f2653afa1169dcd48">00086</a> <span class="comment"></span>    <span class="keywordtype">void</span> <a class="code" href="class_cylinder_parts_cmpnt.html#a796b620a979d9f2f2653afa1169dcd48" title="シリンダーの円の半径を設定する">radius</a>(dReal r) { m_rad = r; }
+<a name="l00087"></a>00087 <span class="comment"></span>
+<a name="l00088"></a>00088 <span class="comment">    //! シリンダーの長さを設定する</span>
+<a name="l00089"></a><a class="code" href="class_cylinder_parts_cmpnt.html#a532b35141af73ea1ebddc38bc28a4168">00089</a> <span class="comment"></span>    <span class="keywordtype">void</span> <a class="code" href="class_cylinder_parts_cmpnt.html#a532b35141af73ea1ebddc38bc28a4168" title="シリンダーの長さを設定する">length</a>(dReal l) { m_len = l; }
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091     <span class="comment">// !シリンダーのサイズを表示</span>
+<a name="l00092"></a><a class="code" href="class_cylinder_parts_cmpnt.html#a3c93cae6161af0a9655a256a0cc03554">00092</a>     <span class="keywordtype">void</span> <a class="code" href="class_box_parts_cmpnt.html#af8b0553b70d229d0d8252c04e71fb4b0" title="保持している情報（サイズ）の表示">dump</a>()
+<a name="l00093"></a>00093     {
+<a name="l00094"></a>00094         printf(<span class="stringliteral">&quot;¥t¥tr(%f) l(%f)¥n&quot;</span>, m_rad, m_len);
+<a name="l00095"></a>00095     }
+<a name="l00096"></a>00096 <span class="preprocessor">#endif</span>
+<a name="l00097"></a>00097 <span class="preprocessor"></span>
+<a name="l00098"></a>00098 <span class="keyword">private</span>:
+<a name="l00099"></a>00099     <span class="keywordtype">int</span>     datalen() { <span class="keywordflow">return</span> <a class="code" href="class_box_parts_cmpnt.html#a99fd37d899ea8e1d4e0aa3574625d349a7fb8a96892f5e915718d0682f67b0891">DATA_LEN</a>; }
+<a name="l00100"></a>00100     <span class="keywordtype">char</span> *  dataBinary();
+<a name="l00101"></a>00101 };
+<a name="l00102"></a>00102 <span class="comment"></span>
+<a name="l00103"></a>00103 <span class="comment">/**</span>
+<a name="l00104"></a>00104 <span class="comment"> * @brief 球形状パーツデータクラス</span>
+<a name="l00105"></a>00105 <span class="comment"> */</span>
+<a name="l00106"></a><a class="code" href="class_sphere_parts_cmpnt.html">00106</a> <span class="keyword">class </span><a class="code" href="class_sphere_parts_cmpnt.html" title="球形状パーツデータクラス">SpherePartsCmpnt</a> : <span class="keyword">public</span> <a class="code" href="class_parts_cmpnt.html" title="パーツを構成する要素インターフェース">PartsCmpnt</a>
+<a name="l00107"></a>00107 {
+<a name="l00108"></a>00108 <span class="keyword">public</span>:
+<a name="l00109"></a><a class="code" href="class_sphere_parts_cmpnt.html#a7e3a43a755c1431a466a154608d1a562afb1f3b6851ccd19c80dce3c6ce641ad3">00109</a>     <span class="keyword">enum</span> { <a class="code" href="class_box_parts_cmpnt.html#a99fd37d899ea8e1d4e0aa3574625d349a7fb8a96892f5e915718d0682f67b0891">DATA_LEN</a> = <span class="keyword">sizeof</span>(double), };
+<a name="l00110"></a>00110 <span class="keyword">private</span>:
+<a name="l00111"></a>00111     <span class="keywordtype">double</span>  m_radius;
+<a name="l00112"></a>00112 <span class="keyword">public</span>:<span class="comment"></span>
+<a name="l00113"></a>00113 <span class="comment">    /**</span>
+<a name="l00114"></a>00114 <span class="comment">     * @brief コンストラクタ</span>
+<a name="l00115"></a>00115 <span class="comment">     *</span>
+<a name="l00116"></a>00116 <span class="comment">     * @param rad 球の半径</span>
+<a name="l00117"></a>00117 <span class="comment">     */</span>
+<a name="l00118"></a><a class="code" href="class_sphere_parts_cmpnt.html#ae5dbbe6fb64718ad3e426e28205a62e4">00118</a>     <a class="code" href="class_sphere_parts_cmpnt.html#ae5dbbe6fb64718ad3e426e28205a62e4" title="コンストラクタ">SpherePartsCmpnt</a>(<span class="keywordtype">double</span> rad) : <a class="code" href="class_parts_cmpnt.html" title="パーツを構成する要素インターフェース">PartsCmpnt</a>(),  m_radius(rad) {}<span class="comment"></span>
+<a name="l00119"></a>00119 <span class="comment">    /**</span>
+<a name="l00120"></a>00120 <span class="comment">     * @brief コピーコンストラクタ</span>
+<a name="l00121"></a>00121 <span class="comment">     */</span>
+<a name="l00122"></a><a class="code" href="class_sphere_parts_cmpnt.html#a036d657688f0ff04827d9bbaff10cf98">00122</a>     <a class="code" href="class_sphere_parts_cmpnt.html" title="球形状パーツデータクラス">SpherePartsCmpnt</a>(<span class="keyword">const</span> <a class="code" href="class_sphere_parts_cmpnt.html" title="球形状パーツデータクラス">SpherePartsCmpnt</a> &amp;o)
+<a name="l00123"></a>00123         : <a class="code" href="class_parts_cmpnt.html" title="パーツを構成する要素インターフェース">PartsCmpnt</a>(), m_radius(o.m_radius) {}
+<a name="l00124"></a>00124 <span class="comment"></span>
+<a name="l00125"></a>00125 <span class="comment">    //! 球の半径を取得する</span>
+<a name="l00126"></a><a class="code" href="class_sphere_parts_cmpnt.html#a486dc373d6c3326abcc3b63da2b4d1b6">00126</a> <span class="comment"></span>    <span class="keywordtype">double</span> <a class="code" href="class_sphere_parts_cmpnt.html#a486dc373d6c3326abcc3b63da2b4d1b6" title="球の半径を取得する">radius</a>() { <span class="keywordflow">return</span> m_radius; }
+<a name="l00127"></a>00127 
+<a name="l00128"></a>00128 <span class="preprocessor">#if 1</span>
+<a name="l00129"></a>00129 <span class="preprocessor"></span><span class="comment">// FIX20110421(ExpSS)</span><span class="comment"></span>
+<a name="l00130"></a>00130 <span class="comment">    //! 球の半径を設定する</span>
+<a name="l00131"></a><a class="code" href="class_sphere_parts_cmpnt.html#a8051eee7f47fa165616f33195cae67ee">00131</a> <span class="comment"></span>    <span class="keywordtype">void</span> <a class="code" href="class_sphere_parts_cmpnt.html#a8051eee7f47fa165616f33195cae67ee" title="球の半径を設定する">radius</a>(<span class="keywordtype">double</span> r) { m_radius = r; }
+<a name="l00132"></a>00132 
+<a name="l00133"></a>00133     <span class="comment">// !球のサイズを表示</span>
+<a name="l00134"></a><a class="code" href="class_sphere_parts_cmpnt.html#a022d6c68861b84fbb74cb919c98b6859">00134</a>     <span class="keywordtype">void</span> <a class="code" href="class_box_parts_cmpnt.html#af8b0553b70d229d0d8252c04e71fb4b0" title="保持している情報（サイズ）の表示">dump</a>()
+<a name="l00135"></a>00135     {
+<a name="l00136"></a>00136         printf(<span class="stringliteral">&quot;¥t¥tr(%f)¥n&quot;</span>, m_radius);
+<a name="l00137"></a>00137     }
+<a name="l00138"></a>00138 <span class="preprocessor">#endif</span>
+<a name="l00139"></a>00139 <span class="preprocessor"></span>
+<a name="l00140"></a>00140 <span class="keyword">private</span>:
+<a name="l00141"></a>00141     <span class="keywordtype">int</span>     datalen() { <span class="keywordflow">return</span> <a class="code" href="class_box_parts_cmpnt.html#a99fd37d899ea8e1d4e0aa3574625d349a7fb8a96892f5e915718d0682f67b0891">DATA_LEN</a>; }
+<a name="l00142"></a>00142     <span class="keywordtype">char</span> *  dataBinary();
+<a name="l00143"></a>00143 };
+<a name="l00144"></a>00144 
+<a name="l00145"></a>00145 <span class="preprocessor">#endif // PartsCmpnt_h</span>
+<a name="l00146"></a>00146 <span class="preprocessor"></span>
+</pre></div></div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:18 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

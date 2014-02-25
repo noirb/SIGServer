@@ -1,0 +1,262 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: クラス EntityXMLReader</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス EntityXMLReader</h1><!-- doxytag: class="EntityXMLReader" -->
+<p>エンティティ定義ファイルロードクラス  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_entity_x_m_l_reader_8h_source.html">EntityXMLReader.h</a>&gt;</code></p>
+<div class="dynheader">
+EntityXMLReaderのコラボレーション図</div>
+<div class="dynsection">
+<div class="center"><img src="class_entity_x_m_l_reader__coll__graph.png" border="0" usemap="#_entity_x_m_l_reader_coll__map" alt="Collaboration graph"/></div>
+<map name="_entity_x_m_l_reader_coll__map" id="_entity_x_m_l_reader_coll__map">
+<area shape="rect" href="class_filename_d_b.html" title="ファイル名データベースクラス" alt="" coords="21,5,112,35"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+
+<p><a href="class_entity_x_m_l_reader-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity_x_m_l_reader.html#aaa041ce370a713c1ac954388f0c7f006">EntityXMLReader</a> (<a class="el" href="class_filename_d_b.html">FilenameDB</a> &amp;fdb, <a class="el" href="class_s_sim_obj.html">SSimObj</a> &amp;obj, <a class="el" href="class_o_d_e_world.html">ODEWorld</a> &amp;w, <a class="el" href="class_x3_d_d_b.html">X3DDB</a> &amp;db, <a class="el" href="class_simple_shape_d_b.html">SimpleShapeDB</a> &amp;ssdb)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#aaa041ce370a713c1ac954388f0c7f006"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity_x_m_l_reader.html#ab6a35cc8ab916035c4f7ea6aa69f3008">operator()</a> (const char *fname)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity_x_m_l_reader.html#aa97d10965d2bff9859bb95925ddb9a3c">read</a> (const char *fname)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">指定のエンティティ定義ファイルを読み込む  <a href="#aa97d10965d2bff9859bb95925ddb9a3c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity_x_m_l_reader.html#a9ef93daf119a1ccaf249c28337388a34">setReadTaskContainer</a> (<a class="el" href="class_read_task_container.html">ReadTaskContainer</a> *tc)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ファイルの読み込み後処理を行なうタスクのコンテナを設定する  <a href="#a9ef93daf119a1ccaf249c28337388a34"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity_x_m_l_reader.html#a316f2b97021d6e0f91f235e32fe439db">‾EntityXMLReader</a> ()</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>エンティティ定義ファイルロードクラス </p>
+<p>エンティティの属性、形状をXML形式で定義したエンティティ定 義ファイルをロードする </p>
+
+<p> <a class="el" href="_entity_x_m_l_reader_8h_source.html">EntityXMLReader.h</a> の <a class="el" href="_entity_x_m_l_reader_8h_source.html#l00030">30</a> 行で定義されています。</p>
+<hr/><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" id="aaa041ce370a713c1ac954388f0c7f006"></a><!-- doxytag: member="EntityXMLReader::EntityXMLReader" ref="aaa041ce370a713c1ac954388f0c7f006" args="(FilenameDB &amp;fdb, SSimObj &amp;obj, ODEWorld &amp;w, X3DDB &amp;db, SimpleShapeDB &amp;ssdb)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">EntityXMLReader::EntityXMLReader </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_filename_d_b.html">FilenameDB</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>fdb</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_s_sim_obj.html">SSimObj</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>obj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_o_d_e_world.html">ODEWorld</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_x3_d_d_b.html">X3DDB</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>db</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_simple_shape_d_b.html">SimpleShapeDB</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>ssdb</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コンストラクタ </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>fdb</em>&nbsp;</td><td><a class="el" href="class_filename_d_b.html" title="ファイル名データベースクラス">FilenameDB</a> </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>エンティティ定義内容を適用させるエンティティ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>w</em>&nbsp;</td><td>シミュレーション世界オブジェクト </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>db</em>&nbsp;</td><td><a class="el" href="class_x3_d_d_b.html" title="X3Dファイルデータベースクラス.">X3DDB</a> </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>ssdb</em>&nbsp;</td><td><a class="el" href="class_simple_shape_d_b.html" title="全ての単純形状の情報">SimpleShapeDB</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/><h2>関数</h2>
+<a class="anchor" id="ab6a35cc8ab916035c4f7ea6aa69f3008"></a><!-- doxytag: member="EntityXMLReader::operator()" ref="ab6a35cc8ab916035c4f7ea6aa69f3008" args="(const char *fname)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EntityXMLReader::operator() </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>fname</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_entity_x_m_l_reader_8h_source.html">EntityXMLReader.h</a> の <a class="el" href="_entity_x_m_l_reader_8h_source.html#l00062">62</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_entity_x_m_l_reader_ab6a35cc8ab916035c4f7ea6aa69f3008_cgraph.png" border="0" usemap="#class_entity_x_m_l_reader_ab6a35cc8ab916035c4f7ea6aa69f3008_cgraph_map" alt=""></div>
+<map name="class_entity_x_m_l_reader_ab6a35cc8ab916035c4f7ea6aa69f3008_cgraph_map" id="class_entity_x_m_l_reader_ab6a35cc8ab916035c4f7ea6aa69f3008_cgraph">
+<area shape="rect" href="class_entity_x_m_l_reader.html#aa97d10965d2bff9859bb95925ddb9a3c" title="指定のエンティティ定義ファイルを読み込む" alt="" coords="241,5,396,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aa97d10965d2bff9859bb95925ddb9a3c"></a><!-- doxytag: member="EntityXMLReader::read" ref="aa97d10965d2bff9859bb95925ddb9a3c" args="(const char *fname)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EntityXMLReader::read </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>fname</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>指定のエンティティ定義ファイルを読み込む </p>
+
+<p><div class="dynheader">
+呼出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_entity_x_m_l_reader_aa97d10965d2bff9859bb95925ddb9a3c_icgraph.png" border="0" usemap="#class_entity_x_m_l_reader_aa97d10965d2bff9859bb95925ddb9a3c_icgraph_map" alt=""></div>
+<map name="class_entity_x_m_l_reader_aa97d10965d2bff9859bb95925ddb9a3c_icgraph_map" id="class_entity_x_m_l_reader_aa97d10965d2bff9859bb95925ddb9a3c_icgraph">
+<area shape="rect" href="class_entity_x_m_l_reader.html#ab6a35cc8ab916035c4f7ea6aa69f3008" title="EntityXMLReader::operator()" alt="" coords="212,5,396,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a9ef93daf119a1ccaf249c28337388a34"></a><!-- doxytag: member="EntityXMLReader::setReadTaskContainer" ref="a9ef93daf119a1ccaf249c28337388a34" args="(ReadTaskContainer *tc)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EntityXMLReader::setReadTaskContainer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_read_task_container.html">ReadTaskContainer</a> *&nbsp;</td>
+          <td class="paramname"> <em>tc</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ファイルの読み込み後処理を行なうタスクのコンテナを設定する </p>
+
+</div>
+</div>
+<a class="anchor" id="a316f2b97021d6e0f91f235e32fe439db"></a><!-- doxytag: member="EntityXMLReader::‾EntityXMLReader" ref="a316f2b97021d6e0f91f235e32fe439db" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">EntityXMLReader::‾EntityXMLReader </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_entity_x_m_l_reader_8h_source.html">EntityXMLReader.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:18 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

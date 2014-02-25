@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGViewer: クラス Sgv::ServiceClerkThread</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_sgv.html">Sgv</a>::<a class="el" href="class_sgv_1_1_service_clerk_thread.html">ServiceClerkThread</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Sgv::ServiceClerkThread</h1><!-- doxytag: class="Sgv::ServiceClerkThread" --><!-- doxytag: inherits="Thread&lt; ServiceClerk * &gt;" -->サービスクラークスレッド  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_sgv_service_clerk_8h_source.html">SgvServiceClerk.h</a>&gt;</code>
+<p>
+<div class="dynheader">
+Sgv::ServiceClerkThreadに対する継承グラフ</div>
+<div class="dynsection">
+
+<p><center><img src="class_sgv_1_1_service_clerk_thread.png" usemap="#Sgv::ServiceClerkThread_map" border="0" alt=""></center>
+<map name="Sgv::ServiceClerkThread_map">
+<area href="class_sgv_1_1_thread.html" alt="Sgv::Thread< ServiceClerk * >" shape="rect" coords="0,0,190,24">
+</map>
+</div>
+
+<p>
+<a href="class_sgv_1_1_service_clerk_thread-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_service_clerk_thread.html#c55f540894adb59cbe35a44ae95f7839">run</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">サービスクラークスレッドを開始する  <a href="#c55f540894adb59cbe35a44ae95f7839"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_service_clerk_thread.html#f8a09c2a481e1e5560bfafd890091dcc">ServiceClerkThread</a> (<a class="el" href="class_sgv_1_1_service_clerk.html">ServiceClerk</a> *p)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#f8a09c2a481e1e5560bfafd890091dcc"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+サービスクラークスレッド 
+<p>
+サービスクラークをスレッドで実行する．<p>
+メインプログラムはこのスレッドを起動し、外部からのサービス要求を監視する． 
+<p> <a class="el" href="_sgv_service_clerk_8h_source.html">SgvServiceClerk.h</a> の <a class="el" href="_sgv_service_clerk_8h_source.html#l00149">149</a> 行で定義されています。</p>
+<hr><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" name="f8a09c2a481e1e5560bfafd890091dcc"></a><!-- doxytag: member="Sgv::ServiceClerkThread::ServiceClerkThread" ref="f8a09c2a481e1e5560bfafd890091dcc" args="(ServiceClerk *p)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::ServiceClerkThread::ServiceClerkThread           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_service_clerk.html">ServiceClerk</a> *&nbsp;</td>
+          <td class="paramname"> <em>p</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>p</em>&nbsp;</td><td>[i] サービスクラーク</td></tr>
+  </table>
+</dl>
+スレッドで回すサービスクラークを与える．<p>
+<a class="el" href="class_sgv_1_1_service_clerk_thread.html#c55f540894adb59cbe35a44ae95f7839" title="サービスクラークスレッドを開始する">run()</a>によりスレッドが開始されると、 スレッドループは、与えられたサービスクラークのloopingProc()を呼び出し続ける．<p>
+サービスクラークのloopingProc()がfalseを返すとスレッドループは終了する． 
+<p> <a class="el" href="_sgv_service_clerk_8cpp_source.html">SgvServiceClerk.cpp</a> の <a class="el" href="_sgv_service_clerk_8cpp_source.html#l00314">314</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>関数</h2>
+<a class="anchor" name="c55f540894adb59cbe35a44ae95f7839"></a><!-- doxytag: member="Sgv::ServiceClerkThread::run" ref="c55f540894adb59cbe35a44ae95f7839" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::ServiceClerkThread::run           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+サービスクラークスレッドを開始する 
+<p>
+
+<p><a class="el" href="class_sgv_1_1_thread.html#d737812f0f48a60216a0f50eb2c82db0">Sgv::Thread&lt; ServiceClerk * &gt;</a>を再定義しています。</p>
+
+<p> <a class="el" href="_sgv_service_clerk_8cpp_source.html">SgvServiceClerk.cpp</a> の <a class="el" href="_sgv_service_clerk_8cpp_source.html#l00322">322</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_sgv_service_clerk_8h_source.html">SgvServiceClerk.h</a><li><a class="el" href="_sgv_service_clerk_8cpp_source.html">SgvServiceClerk.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGViewerに対してThu Jun 9 10:52:15 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

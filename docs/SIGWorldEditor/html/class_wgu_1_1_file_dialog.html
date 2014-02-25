@@ -1,0 +1,755 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGWorldEditor: クラス Wgu::FileDialog</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_wgu.html">Wgu</a>::<a class="el" href="class_wgu_1_1_file_dialog.html">FileDialog</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Wgu::FileDialog</h1><!-- doxytag: class="Wgu::FileDialog" -->ファイルオープン・セーブダイアログのベースクラス  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_wgu_file_dialog_8h_source.html">WguFileDialog.h</a>&gt;</code>
+<p>
+<div class="dynheader">
+Wgu::FileDialogに対する継承グラフ</div>
+<div class="dynsection">
+
+<p><center><img src="class_wgu_1_1_file_dialog.png" usemap="#Wgu::FileDialog_map" border="0" alt=""></center>
+<map name="Wgu::FileDialog_map">
+<area href="class_wgu_1_1_file_open_dialog.html" alt="Wgu::FileOpenDialog" shape="rect" coords="0,56,131,80">
+<area href="class_wgu_1_1_file_save_dialog.html" alt="Wgu::FileSaveDialog" shape="rect" coords="141,56,272,80">
+</map>
+</div>
+
+<p>
+<a href="class_wgu_1_1_file_dialog-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_file_dialog.html#d1f1536e0c6003c3b5080e5e5f802ad6">addFilter</a> (char *str, char *ext)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ファイル選択フィルタにエントリを追加する  <a href="#d1f1536e0c6003c3b5080e5e5f802ad6"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_file_dialog.html#90933d5751e7f410280799bbc31a7c6f">clearFilter</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ファイル選択フィルタをクリアする  <a href="#90933d5751e7f410280799bbc31a7c6f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_file_dialog.html#199b9e86129803196cc9fa762002c7c1">countFiles</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">選択されたファイルの個数を得る  <a href="#199b9e86129803196cc9fa762002c7c1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_file_dialog.html#e48870366f57a797589135ff602c15d0">FileDialog</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_file_dialog.html#bbd4ae71fcce6a55fb8c3f6c5799fcfb">getDirectory</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">選択されたファイルのあるディレクトリ名を得る  <a href="#bbd4ae71fcce6a55fb8c3f6c5799fcfb"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_file_dialog.html#a8eb651c73a4a080b01d31445005fcf0">getFile</a> (int i)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ファイル名の取得  <a href="#a8eb651c73a4a080b01d31445005fcf0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_file_dialog.html#fb7687a631d4a7cb290765d3d810f566">getPath</a> (int i)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パス名の取得  <a href="#fb7687a631d4a7cb290765d3d810f566"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_file_dialog.html#886efb045bd7d47d76d786d9ab5d7da6">setAllowMultiSelect</a> (bool b)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ファイルの複数選択フラグのセット  <a href="#886efb045bd7d47d76d786d9ab5d7da6"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_file_dialog.html#ca432060b9e279455056ba6a6fe06be8">setDefaultExtension</a> (char *defExt)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">拡張子を省略した際に付加するデフォルトの拡張子を設定する  <a href="#ca432060b9e279455056ba6a6fe06be8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_file_dialog.html#849502e2c1c0a37bd2ff0c2bb1e69c04">setFile</a> (char *file)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">選択ファイル名のセット  <a href="#849502e2c1c0a37bd2ff0c2bb1e69c04"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_file_dialog.html#e53bd9d0e1f9e5bedd896056f1deb9c4">setFileMustExist</a> (bool b)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">存在しないファイルも選択可能にするか  <a href="#e53bd9d0e1f9e5bedd896056f1deb9c4"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_file_dialog.html#8c0d176971a9e0588861ed91483e3ebb">setInitialDirectory</a> (char *initialDir)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">初期表示ディレクトリの設定  <a href="#8c0d176971a9e0588861ed91483e3ebb"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Protected メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_file_dialog.html#2b5286d16142801f7f5664ae0e88b73d">allocFilterString</a> (int nbyte)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_file_dialog.html#3338a491d0b11d8a0676f1528899c305">freeFilterString</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_file_dialog.html#c6ae336177c638a617a33092ced5ef68">makeFilterString</a> ()</td></tr>
+
+<tr><td colspan="2"><br><h2>Protected 変数</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_file_dialog.html#a2110b8d0ec6f943ed2a71601d6768e0">m_bAllowMultiSelect</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_file_dialog.html#1ea6fd42b657dea44f37c3a93c5c0860">m_bFileMustExist</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_file_dialog.html#53dfb21aa98a0fe7af8df3158b723e1a">m_defExt</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_file_dialog.html#dfab0db715de77454b1ee1745a8f0d43">m_file</a> [4096]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_file_dialog.html#2addcfe0515b73e4366690421e7501ad">m_fileTitle</a> [1024]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::vector&lt; std::string &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_file_dialog.html#1d9f28f794c929c19a9e7085242d3100">m_filterExts</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::vector&lt; std::string &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_file_dialog.html#6fed3b5e6653b2bbf336f25efeda2b99">m_filterStrs</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_file_dialog.html#d789692fd306a997a8ab78df8def1dd4">m_initialDir</a> [_MAX_PATH]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_file_dialog.html#054d1266d38040d62004c15136e40700">m_pFilterString</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_file_dialog.html#1ca57908552bd018ab84888c20c9cd41">m_selectedDir</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::vector&lt; std::string &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_file_dialog.html#ee54b2e9a58dda1797e033e1bbfccbfa">m_selectedFiles</a></td></tr>
+
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+ファイルオープン・セーブダイアログのベースクラス 
+<p> <a class="el" href="_wgu_file_dialog_8h_source.html">WguFileDialog.h</a> の <a class="el" href="_wgu_file_dialog_8h_source.html#l00014">14</a> 行で定義されています。</p>
+<hr><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" name="e48870366f57a797589135ff602c15d0"></a><!-- doxytag: member="Wgu::FileDialog::FileDialog" ref="e48870366f57a797589135ff602c15d0" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Wgu::FileDialog::FileDialog           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_wgu_file_dialog_8cpp_source.html">WguFileDialog.cpp</a> の <a class="el" href="_wgu_file_dialog_8cpp_source.html#l00012">12</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>関数</h2>
+<a class="anchor" name="d1f1536e0c6003c3b5080e5e5f802ad6"></a><!-- doxytag: member="Wgu::FileDialog::addFilter" ref="d1f1536e0c6003c3b5080e5e5f802ad6" args="(char *str, char *ext)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::FileDialog::addFilter           </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>ext</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ファイル選択フィルタにエントリを追加する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>str</em>&nbsp;</td><td>[i] フィルタ文字列("C++ Source(*.cpp)"など) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>ext</em>&nbsp;</td><td>[i] 拡張子("*.cpp"など) </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_wgu_file_dialog_8cpp_source.html">WguFileDialog.cpp</a> の <a class="el" href="_wgu_file_dialog_8cpp_source.html#l00027">27</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="2b5286d16142801f7f5664ae0e88b73d"></a><!-- doxytag: member="Wgu::FileDialog::allocFilterString" ref="2b5286d16142801f7f5664ae0e88b73d" args="(int nbyte)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::FileDialog::allocFilterString           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>nbyte</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_wgu_file_dialog_8cpp_source.html">WguFileDialog.cpp</a> の <a class="el" href="_wgu_file_dialog_8cpp_source.html#l00062">62</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="90933d5751e7f410280799bbc31a7c6f"></a><!-- doxytag: member="Wgu::FileDialog::clearFilter" ref="90933d5751e7f410280799bbc31a7c6f" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::FileDialog::clearFilter           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ファイル選択フィルタをクリアする 
+<p>
+
+<p> <a class="el" href="_wgu_file_dialog_8cpp_source.html">WguFileDialog.cpp</a> の <a class="el" href="_wgu_file_dialog_8cpp_source.html#l00021">21</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="199b9e86129803196cc9fa762002c7c1"></a><!-- doxytag: member="Wgu::FileDialog::countFiles" ref="199b9e86129803196cc9fa762002c7c1" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Wgu::FileDialog::countFiles           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+選択されたファイルの個数を得る 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>選択されたファイルの個数 </dd></dl>
+
+<p> <a class="el" href="_wgu_file_dialog_8cpp_source.html">WguFileDialog.cpp</a> の <a class="el" href="_wgu_file_dialog_8cpp_source.html#l00103">103</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="3338a491d0b11d8a0676f1528899c305"></a><!-- doxytag: member="Wgu::FileDialog::freeFilterString" ref="3338a491d0b11d8a0676f1528899c305" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::FileDialog::freeFilterString           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_wgu_file_dialog_8cpp_source.html">WguFileDialog.cpp</a> の <a class="el" href="_wgu_file_dialog_8cpp_source.html#l00069">69</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="bbd4ae71fcce6a55fb8c3f6c5799fcfb"></a><!-- doxytag: member="Wgu::FileDialog::getDirectory" ref="bbd4ae71fcce6a55fb8c3f6c5799fcfb" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * Wgu::FileDialog::getDirectory           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+選択されたファイルのあるディレクトリ名を得る 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>ディレクトリ名 </dd></dl>
+
+<p> <a class="el" href="_wgu_file_dialog_8cpp_source.html">WguFileDialog.cpp</a> の <a class="el" href="_wgu_file_dialog_8cpp_source.html#l00098">98</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="a8eb651c73a4a080b01d31445005fcf0"></a><!-- doxytag: member="Wgu::FileDialog::getFile" ref="a8eb651c73a4a080b01d31445005fcf0" args="(int i)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * Wgu::FileDialog::getFile           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>i</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ファイル名の取得 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>i</em>&nbsp;</td><td>[i] インデックス(0以上、countFiles()未満)</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>ファイル名（ファイル名のみ．ディレクトリ名は含まない） </dd></dl>
+
+<p> <a class="el" href="_wgu_file_dialog_8cpp_source.html">WguFileDialog.cpp</a> の <a class="el" href="_wgu_file_dialog_8cpp_source.html#l00108">108</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="fb7687a631d4a7cb290765d3d810f566"></a><!-- doxytag: member="Wgu::FileDialog::getPath" ref="fb7687a631d4a7cb290765d3d810f566" args="(int i)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * Wgu::FileDialog::getPath           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>i</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+パス名の取得 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>i</em>&nbsp;</td><td>[i] インデックス(0以上、countFiles()未満)</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>パス名（ディレクトリ＋ファイル） </dd></dl>
+
+<p> <a class="el" href="_wgu_file_dialog_8cpp_source.html">WguFileDialog.cpp</a> の <a class="el" href="_wgu_file_dialog_8cpp_source.html#l00113">113</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="c6ae336177c638a617a33092ced5ef68"></a><!-- doxytag: member="Wgu::FileDialog::makeFilterString" ref="c6ae336177c638a617a33092ced5ef68" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::FileDialog::makeFilterString           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_wgu_file_dialog_8cpp_source.html">WguFileDialog.cpp</a> の <a class="el" href="_wgu_file_dialog_8cpp_source.html#l00038">38</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="886efb045bd7d47d76d786d9ab5d7da6"></a><!-- doxytag: member="Wgu::FileDialog::setAllowMultiSelect" ref="886efb045bd7d47d76d786d9ab5d7da6" args="(bool b)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::FileDialog::setAllowMultiSelect           </td>
+          <td>(</td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>b</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ファイルの複数選択フラグのセット 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>b</em>&nbsp;</td><td>[i] true(=複数選択可), false(=一つのファイルのみ選択可） </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_wgu_file_dialog_8cpp_source.html">WguFileDialog.cpp</a> の <a class="el" href="_wgu_file_dialog_8cpp_source.html#l00088">88</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="ca432060b9e279455056ba6a6fe06be8"></a><!-- doxytag: member="Wgu::FileDialog::setDefaultExtension" ref="ca432060b9e279455056ba6a6fe06be8" args="(char *defExt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::FileDialog::setDefaultExtension           </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>defExt</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+拡張子を省略した際に付加するデフォルトの拡張子を設定する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>defExt</em>&nbsp;</td><td>[i] デフォルトの拡張子("cpp"など)</td></tr>
+  </table>
+</dl>
+（注）defExtにピリオドを含めてはいけない 
+<p> <a class="el" href="_wgu_file_dialog_8cpp_source.html">WguFileDialog.cpp</a> の <a class="el" href="_wgu_file_dialog_8cpp_source.html#l00033">33</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="849502e2c1c0a37bd2ff0c2bb1e69c04"></a><!-- doxytag: member="Wgu::FileDialog::setFile" ref="849502e2c1c0a37bd2ff0c2bb1e69c04" args="(char *file)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::FileDialog::setFile           </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>file</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+選択ファイル名のセット 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>file</em>&nbsp;</td><td>[i] ファイル名 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_wgu_file_dialog_8cpp_source.html">WguFileDialog.cpp</a> の <a class="el" href="_wgu_file_dialog_8cpp_source.html#l00078">78</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="e53bd9d0e1f9e5bedd896056f1deb9c4"></a><!-- doxytag: member="Wgu::FileDialog::setFileMustExist" ref="e53bd9d0e1f9e5bedd896056f1deb9c4" args="(bool b)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::FileDialog::setFileMustExist           </td>
+          <td>(</td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>b</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+存在しないファイルも選択可能にするか 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>b</em>&nbsp;</td><td>[i] true(=存在しないファイルは選択できない), false(=ファイルは存在しなくても良い) </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_wgu_file_dialog_8cpp_source.html">WguFileDialog.cpp</a> の <a class="el" href="_wgu_file_dialog_8cpp_source.html#l00093">93</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="8c0d176971a9e0588861ed91483e3ebb"></a><!-- doxytag: member="Wgu::FileDialog::setInitialDirectory" ref="8c0d176971a9e0588861ed91483e3ebb" args="(char *initialDir)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::FileDialog::setInitialDirectory           </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>initialDir</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+初期表示ディレクトリの設定 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>initialDir</em>&nbsp;</td><td>[i] 最初にダイアログを開いたときに表示するディレクトリパス </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_wgu_file_dialog_8cpp_source.html">WguFileDialog.cpp</a> の <a class="el" href="_wgu_file_dialog_8cpp_source.html#l00083">83</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>変数</h2>
+<a class="anchor" name="a2110b8d0ec6f943ed2a71601d6768e0"></a><!-- doxytag: member="Wgu::FileDialog::m_bAllowMultiSelect" ref="a2110b8d0ec6f943ed2a71601d6768e0" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_wgu_1_1_file_dialog.html#a2110b8d0ec6f943ed2a71601d6768e0">Wgu::FileDialog::m_bAllowMultiSelect</a><code> [protected]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_wgu_file_dialog_8h_source.html">WguFileDialog.h</a> の <a class="el" href="_wgu_file_dialog_8h_source.html#l00109">109</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="1ea6fd42b657dea44f37c3a93c5c0860"></a><!-- doxytag: member="Wgu::FileDialog::m_bFileMustExist" ref="1ea6fd42b657dea44f37c3a93c5c0860" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_wgu_1_1_file_dialog.html#1ea6fd42b657dea44f37c3a93c5c0860">Wgu::FileDialog::m_bFileMustExist</a><code> [protected]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_wgu_file_dialog_8h_source.html">WguFileDialog.h</a> の <a class="el" href="_wgu_file_dialog_8h_source.html#l00110">110</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="53dfb21aa98a0fe7af8df3158b723e1a"></a><!-- doxytag: member="Wgu::FileDialog::m_defExt" ref="53dfb21aa98a0fe7af8df3158b723e1a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string <a class="el" href="class_wgu_1_1_file_dialog.html#53dfb21aa98a0fe7af8df3158b723e1a">Wgu::FileDialog::m_defExt</a><code> [protected]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_wgu_file_dialog_8h_source.html">WguFileDialog.h</a> の <a class="el" href="_wgu_file_dialog_8h_source.html#l00105">105</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="dfab0db715de77454b1ee1745a8f0d43"></a><!-- doxytag: member="Wgu::FileDialog::m_file" ref="dfab0db715de77454b1ee1745a8f0d43" args="[4096]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char <a class="el" href="class_wgu_1_1_file_dialog.html#dfab0db715de77454b1ee1745a8f0d43">Wgu::FileDialog::m_file</a>[4096]<code> [protected]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_wgu_file_dialog_8h_source.html">WguFileDialog.h</a> の <a class="el" href="_wgu_file_dialog_8h_source.html#l00106">106</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="2addcfe0515b73e4366690421e7501ad"></a><!-- doxytag: member="Wgu::FileDialog::m_fileTitle" ref="2addcfe0515b73e4366690421e7501ad" args="[1024]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char <a class="el" href="class_wgu_1_1_file_dialog.html#2addcfe0515b73e4366690421e7501ad">Wgu::FileDialog::m_fileTitle</a>[1024]<code> [protected]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_wgu_file_dialog_8h_source.html">WguFileDialog.h</a> の <a class="el" href="_wgu_file_dialog_8h_source.html#l00107">107</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="1d9f28f794c929c19a9e7085242d3100"></a><!-- doxytag: member="Wgu::FileDialog::m_filterExts" ref="1d9f28f794c929c19a9e7085242d3100" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::string&gt; <a class="el" href="class_wgu_1_1_file_dialog.html#1d9f28f794c929c19a9e7085242d3100">Wgu::FileDialog::m_filterExts</a><code> [protected]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_wgu_file_dialog_8h_source.html">WguFileDialog.h</a> の <a class="el" href="_wgu_file_dialog_8h_source.html#l00103">103</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="6fed3b5e6653b2bbf336f25efeda2b99"></a><!-- doxytag: member="Wgu::FileDialog::m_filterStrs" ref="6fed3b5e6653b2bbf336f25efeda2b99" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::string&gt; <a class="el" href="class_wgu_1_1_file_dialog.html#6fed3b5e6653b2bbf336f25efeda2b99">Wgu::FileDialog::m_filterStrs</a><code> [protected]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_wgu_file_dialog_8h_source.html">WguFileDialog.h</a> の <a class="el" href="_wgu_file_dialog_8h_source.html#l00102">102</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="d789692fd306a997a8ab78df8def1dd4"></a><!-- doxytag: member="Wgu::FileDialog::m_initialDir" ref="d789692fd306a997a8ab78df8def1dd4" args="[_MAX_PATH]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char <a class="el" href="class_wgu_1_1_file_dialog.html#d789692fd306a997a8ab78df8def1dd4">Wgu::FileDialog::m_initialDir</a>[_MAX_PATH]<code> [protected]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_wgu_file_dialog_8h_source.html">WguFileDialog.h</a> の <a class="el" href="_wgu_file_dialog_8h_source.html#l00108">108</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="054d1266d38040d62004c15136e40700"></a><!-- doxytag: member="Wgu::FileDialog::m_pFilterString" ref="054d1266d38040d62004c15136e40700" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* <a class="el" href="class_wgu_1_1_file_dialog.html#054d1266d38040d62004c15136e40700">Wgu::FileDialog::m_pFilterString</a><code> [protected]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_wgu_file_dialog_8h_source.html">WguFileDialog.h</a> の <a class="el" href="_wgu_file_dialog_8h_source.html#l00104">104</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="1ca57908552bd018ab84888c20c9cd41"></a><!-- doxytag: member="Wgu::FileDialog::m_selectedDir" ref="1ca57908552bd018ab84888c20c9cd41" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string <a class="el" href="class_wgu_1_1_file_dialog.html#1ca57908552bd018ab84888c20c9cd41">Wgu::FileDialog::m_selectedDir</a><code> [protected]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_wgu_file_dialog_8h_source.html">WguFileDialog.h</a> の <a class="el" href="_wgu_file_dialog_8h_source.html#l00111">111</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="ee54b2e9a58dda1797e033e1bbfccbfa"></a><!-- doxytag: member="Wgu::FileDialog::m_selectedFiles" ref="ee54b2e9a58dda1797e033e1bbfccbfa" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::string&gt; <a class="el" href="class_wgu_1_1_file_dialog.html#ee54b2e9a58dda1797e033e1bbfccbfa">Wgu::FileDialog::m_selectedFiles</a><code> [protected]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_wgu_file_dialog_8h_source.html">WguFileDialog.h</a> の <a class="el" href="_wgu_file_dialog_8h_source.html#l00112">112</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_wgu_file_dialog_8h_source.html">WguFileDialog.h</a><li><a class="el" href="_wgu_file_dialog_8cpp_source.html">WguFileDialog.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGWorldEditorに対してThu Jun 9 10:53:01 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

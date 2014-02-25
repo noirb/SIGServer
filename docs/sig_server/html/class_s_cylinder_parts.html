@@ -1,0 +1,335 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: クラス SCylinderParts</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス SCylinderParts</h1><!-- doxytag: class="SCylinderParts" --><!-- doxytag: inherits="SParts" -->
+<p>シリンダ形状の部品クラス(サーバサイドで使用)  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_s_parts_8h_source.html">SParts.h</a>&gt;</code></p>
+<div class="dynheader">
+SCylinderPartsに対する継承グラフ</div>
+<div class="dynsection">
+<div class="center"><img src="class_s_cylinder_parts__inherit__graph.png" border="0" usemap="#_s_cylinder_parts_inherit__map" alt="Inheritance graph"/></div>
+<map name="_s_cylinder_parts_inherit__map" id="_s_cylinder_parts_inherit__map">
+<area shape="rect" href="class_s_parts.html" title="エンティティの部品クラス(サーバサイドで使用)" alt="" coords="29,83,88,112"/><area shape="rect" href="class_parts.html" title="エンティティを構成する部品クラス" alt="" coords="33,5,84,35"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+<div class="dynheader">
+SCylinderPartsのコラボレーション図</div>
+<div class="dynsection">
+<div class="center"><img src="class_s_cylinder_parts__coll__graph.png" border="0" usemap="#_s_cylinder_parts_coll__map" alt="Collaboration graph"/></div>
+<map name="_s_cylinder_parts_coll__map" id="_s_cylinder_parts_coll__map">
+<area shape="rect" href="class_s_parts.html" title="エンティティの部品クラス(サーバサイドで使用)" alt="" coords="196,216,255,245"/><area shape="rect" href="class_parts.html" title="エンティティを構成する部品クラス" alt="" coords="13,120,64,149"/><area shape="rect" href="class_rotation.html" title="回転行列クラス" alt="" coords="147,5,216,35"/><area shape="rect" href="class_joint.html" title="部品同士を繋ぐ関節クラス" alt="" coords="296,120,344,149"/><area shape="rect" href="class_position.html" title="3次元位置クラス" alt="" coords="5,5,72,35"/><area shape="rect" href="class_vector3d.html" title="3次元ベクトルクラス" alt="" coords="284,5,356,35"/><area shape="rect" href="class_o_d_e_obj.html" title="ODEにおけるシミュレーションオブジェクトラッパークラス." alt="" coords="88,120,155,149"/><area shape="rect" href="class_sim_obj_base.html" title="シミュレーションエンティティ基本クラス" alt="" coords="179,120,272,149"/><area shape="rect" href="class_cylinder_parts_cmpnt.html" title="シリンダー形状パーツデータクラス" alt="" coords="312,216,448,245"/><area shape="rect" href="class_parts_cmpnt.html" title="パーツを構成する要素インターフェース" alt="" coords="369,120,457,149"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+
+<p><a href="class_s_cylinder_parts-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">dReal&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_cylinder_parts.html#abda864da66bb74b93c7d773bd574d83f">getLength</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">シリンダの長さを取得する  <a href="#abda864da66bb74b93c7d773bd574d83f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">dReal&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_cylinder_parts.html#aaa9cdaf50419b7562a85911756b35982">getRadius</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">シリンダの円の半径を取得する  <a href="#aaa9cdaf50419b7562a85911756b35982"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_cylinder_parts.html#acd3b158d416630746e49ef1d43a30525">initializeAngle</a> (double x, double y, double z)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_cylinder_parts.html#aee21b7563bd2fcb6994beb697aa29dcb">SCylinderParts</a> (const char *name, const <a class="el" href="class_position.html">Position</a> &amp;pos, dReal rad, dReal len)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#aee21b7563bd2fcb6994beb697aa29dcb"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_cylinder_parts.html#aae10980851bfbb8c481200292c4e00d9">setLength</a> (dReal l)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">シリンダの長さを設定する  <a href="#aae10980851bfbb8c481200292c4e00d9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_cylinder_parts.html#ad7a3d242d849aa8954a6ef89ea0531b4">setRadius</a> (dReal r)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">シリンダの円の半径を設定する  <a href="#ad7a3d242d849aa8954a6ef89ea0531b4"></a><br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>シリンダ形状の部品クラス(サーバサイドで使用) </p>
+
+<p> <a class="el" href="_s_parts_8h_source.html">SParts.h</a> の <a class="el" href="_s_parts_8h_source.html#l00300">300</a> 行で定義されています。</p>
+<hr/><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" id="aee21b7563bd2fcb6994beb697aa29dcb"></a><!-- doxytag: member="SCylinderParts::SCylinderParts" ref="aee21b7563bd2fcb6994beb697aa29dcb" args="(const char *name, const Position &amp;pos, dReal rad, dReal len)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SCylinderParts::SCylinderParts </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_position.html">Position</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>rad</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>len</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コンストラクタ </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>部品名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>pos</em>&nbsp;</td><td>部品の中心位置 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rad</em>&nbsp;</td><td>シリンダの円の半径 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>len</em>&nbsp;</td><td>シリンダの長さ </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_s_parts_8h_source.html">SParts.h</a> の <a class="el" href="_s_parts_8h_source.html#l00313">313</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>関数</h2>
+<a class="anchor" id="abda864da66bb74b93c7d773bd574d83f"></a><!-- doxytag: member="SCylinderParts::getLength" ref="abda864da66bb74b93c7d773bd574d83f" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dReal SCylinderParts::getLength </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>シリンダの長さを取得する </p>
+
+<p> <a class="el" href="_s_parts_8h_source.html">SParts.h</a> の <a class="el" href="_s_parts_8h_source.html#l00330">330</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_s_cylinder_parts_abda864da66bb74b93c7d773bd574d83f_cgraph.png" border="0" usemap="#class_s_cylinder_parts_abda864da66bb74b93c7d773bd574d83f_cgraph_map" alt=""></div>
+<map name="class_s_cylinder_parts_abda864da66bb74b93c7d773bd574d83f_cgraph_map" id="class_s_cylinder_parts_abda864da66bb74b93c7d773bd574d83f_cgraph">
+<area shape="rect" href="class_cylinder_parts_cmpnt.html#ae7e74a3bba3156787dd270306ee8e63a" title="シリンダーの長さを取得する" alt="" coords="228,5,407,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aaa9cdaf50419b7562a85911756b35982"></a><!-- doxytag: member="SCylinderParts::getRadius" ref="aaa9cdaf50419b7562a85911756b35982" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dReal SCylinderParts::getRadius </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>シリンダの円の半径を取得する </p>
+
+<p> <a class="el" href="_s_parts_8h_source.html">SParts.h</a> の <a class="el" href="_s_parts_8h_source.html#l00327">327</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_s_cylinder_parts_aaa9cdaf50419b7562a85911756b35982_cgraph.png" border="0" usemap="#class_s_cylinder_parts_aaa9cdaf50419b7562a85911756b35982_cgraph_map" alt=""></div>
+<map name="class_s_cylinder_parts_aaa9cdaf50419b7562a85911756b35982_cgraph_map" id="class_s_cylinder_parts_aaa9cdaf50419b7562a85911756b35982_cgraph">
+<area shape="rect" href="class_cylinder_parts_cmpnt.html#a81d1a5665475b82e80dde077debbfbb5" title="シリンダーの円の半径を取得する" alt="" coords="228,5,407,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="acd3b158d416630746e49ef1d43a30525"></a><!-- doxytag: member="SCylinderParts::initializeAngle" ref="acd3b158d416630746e49ef1d43a30525" args="(double x, double y, double z)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SCylinderParts::initializeAngle </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>z</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>角度の初期化 </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>軸のX軸方向 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>軸のY軸方向 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>z</em>&nbsp;</td><td>軸のZ軸方向 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aae10980851bfbb8c481200292c4e00d9"></a><!-- doxytag: member="SCylinderParts::setLength" ref="aae10980851bfbb8c481200292c4e00d9" args="(dReal l)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SCylinderParts::setLength </td>
+          <td>(</td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>l</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>シリンダの長さを設定する </p>
+
+<p> <a class="el" href="_s_parts_8h_source.html">SParts.h</a> の <a class="el" href="_s_parts_8h_source.html#l00338">338</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_s_cylinder_parts_aae10980851bfbb8c481200292c4e00d9_cgraph.png" border="0" usemap="#class_s_cylinder_parts_aae10980851bfbb8c481200292c4e00d9_cgraph_map" alt=""></div>
+<map name="class_s_cylinder_parts_aae10980851bfbb8c481200292c4e00d9_cgraph_map" id="class_s_cylinder_parts_aae10980851bfbb8c481200292c4e00d9_cgraph">
+<area shape="rect" href="class_cylinder_parts_cmpnt.html#ae7e74a3bba3156787dd270306ee8e63a" title="シリンダーの長さを取得する" alt="" coords="228,5,407,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ad7a3d242d849aa8954a6ef89ea0531b4"></a><!-- doxytag: member="SCylinderParts::setRadius" ref="ad7a3d242d849aa8954a6ef89ea0531b4" args="(dReal r)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SCylinderParts::setRadius </td>
+          <td>(</td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>r</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>シリンダの円の半径を設定する </p>
+
+<p> <a class="el" href="_s_parts_8h_source.html">SParts.h</a> の <a class="el" href="_s_parts_8h_source.html#l00335">335</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_s_cylinder_parts_ad7a3d242d849aa8954a6ef89ea0531b4_cgraph.png" border="0" usemap="#class_s_cylinder_parts_ad7a3d242d849aa8954a6ef89ea0531b4_cgraph_map" alt=""></div>
+<map name="class_s_cylinder_parts_ad7a3d242d849aa8954a6ef89ea0531b4_cgraph_map" id="class_s_cylinder_parts_ad7a3d242d849aa8954a6ef89ea0531b4_cgraph">
+<area shape="rect" href="class_cylinder_parts_cmpnt.html#a81d1a5665475b82e80dde077debbfbb5" title="シリンダーの円の半径を取得する" alt="" coords="228,5,407,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_s_parts_8h_source.html">SParts.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:20 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

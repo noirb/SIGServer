@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>sigjsp: 構成</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li class="current"><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>構成</h1>クラス、構造体、共用体、インタフェースの説明です。<table>
+  <tr><td class="indexkey"><a class="el" href="class_jsp_1_1_config_file.html">Jsp::ConfigFile</a></td><td class="indexvalue">設定ファイルクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_jsp_1_1_julius_service_provider.html">Jsp::JuliusServiceProvider</a></td><td class="indexvalue">音声認識サービスプロバイダ本体 </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_jsp_1_1_memory_text.html">Jsp::MemoryText</a></td><td class="indexvalue">メモリ上のテキストファイル </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_jsp_1_1_packet.html">Jsp::Packet</a></td><td class="indexvalue">SIGVerseの通信パケットを表すクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_jsp_1_1_recog.html">Jsp::Recog</a></td><td class="indexvalue">音声認識クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_jsp_1_1_socket.html">Jsp::Socket</a></td><td class="indexvalue">ソケットクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_jsp_1_1_string_array.html">Jsp::StringArray</a></td><td class="indexvalue">文字列の配列クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_jsp_1_1_test_client.html">Jsp::TestClient</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_jsp_1_1_wave.html">Jsp::Wave</a></td><td class="indexvalue">音声データ(waveファイル)クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_jsp_1_1_x_m_l_parse_handler.html">Jsp::XMLParseHandler</a></td><td class="indexvalue">XMLパースハンドラ </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_jsp_1_1_x_m_l_parser.html">Jsp::XMLParser</a></td><td class="indexvalue">XMLパーサークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_x_str.html">XStr</a></td><td class="indexvalue">XML標準文字列(Unicode)からASCII文字列を取り出すためのクラス </td></tr>
+</table>
+</div>
+<hr size="1"><address style="text-align: right;"><small>sigjspに対してWed Dec 2 15:46:02 2009に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

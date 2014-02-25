@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: クラス PacketForward</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス PacketForward</h1><!-- doxytag: class="PacketForward" --><!-- doxytag: inherits="CommDataDecoder::PacketSender" -->
+<p>パケット転送クラス  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_packet_forward_8h_source.html">PacketForward.h</a>&gt;</code></p>
+<div class="dynheader">
+PacketForwardに対する継承グラフ</div>
+<div class="dynsection">
+<div class="center"><img src="class_packet_forward__inherit__graph.png" border="0" usemap="#_packet_forward_inherit__map" alt="Inheritance graph"/></div>
+<map name="_packet_forward_inherit__map" id="_packet_forward_inherit__map">
+<area shape="rect" href="class_comm_data_decoder_1_1_packet_sender.html" title="データ送信インターフェース" alt="" coords="5,5,229,35"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+<div class="dynheader">
+PacketForwardのコラボレーション図</div>
+<div class="dynsection">
+<div class="center"><img src="class_packet_forward__coll__graph.png" border="0" usemap="#_packet_forward_coll__map" alt="Collaboration graph"/></div>
+<map name="_packet_forward_coll__map" id="_packet_forward_coll__map">
+<area shape="rect" href="class_comm_data_decoder_1_1_packet_sender.html" title="データ送信インターフェース" alt="" coords="5,101,229,131"/><area shape="rect" href="class_server_accept_proc.html" title="クライアントの接続要求に応じるクラス" alt="" coords="521,197,649,227"/><area shape="rect" href="class_comm_data_listener.html" title="CommDataDecoder によるデータ復元結果取得リスナーインターフェース..." alt="" coords="253,101,440,131"/><area shape="rect" href="class_comm_data_listener.html" title="CommDataDecoder によるデータ復元結果取得リスナーインターフェース..." alt="" coords="464,101,595,131"/><area shape="rect" href="class_locker.html" title="pthread ミューテックスによる排他制御用ロッカークラス" alt="" coords="660,5,719,35"/><area shape="rect" href="class_service_name_server.html" title="サービスプロバイダネームサーバクラス" alt="" coords="720,101,856,131"/><area shape="rect" href="class_sim_world_provider.html" title="シミュレーション世界インスタンスへのアクセサインターフェース..." alt="" coords="880,101,1003,131"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+
+<p><a href="class_packet_forward-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_packet_forward.html#a17d356bcdb1a326cbedac2aa90b070b7">PacketForward</a> (<a class="el" href="class_server_accept_proc.html">ServerAcceptProc</a> &amp;a, <a class="el" href="class_sim_world_provider.html">SimWorldProvider</a> &amp;w)</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>パケット転送クラス </p>
+<p>クライアントから送られてきたパケットをそのまま他のクライ アントに転送する。CommDataDecoderPacketSenderインターフェースの実装。 </p>
+
+<p> <a class="el" href="_packet_forward_8h_source.html">PacketForward.h</a> の <a class="el" href="_packet_forward_8h_source.html#l00018">18</a> 行で定義されています。</p>
+<hr/><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" id="a17d356bcdb1a326cbedac2aa90b070b7"></a><!-- doxytag: member="PacketForward::PacketForward" ref="a17d356bcdb1a326cbedac2aa90b070b7" args="(ServerAcceptProc &amp;a, SimWorldProvider &amp;w)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PacketForward::PacketForward </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_server_accept_proc.html">ServerAcceptProc</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_sim_world_provider.html">SimWorldProvider</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>w</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_packet_forward_8h_source.html">PacketForward.h</a> の <a class="el" href="_packet_forward_8h_source.html#l00026">26</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_packet_forward_8h_source.html">PacketForward.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:19 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

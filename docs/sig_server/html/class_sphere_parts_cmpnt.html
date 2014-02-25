@@ -1,0 +1,268 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: クラス SpherePartsCmpnt</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス SpherePartsCmpnt</h1><!-- doxytag: class="SpherePartsCmpnt" --><!-- doxytag: inherits="PartsCmpnt" -->
+<p>球形状パーツデータクラス  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_parts_cmpnt_8h_source.html">PartsCmpnt.h</a>&gt;</code></p>
+<div class="dynheader">
+SpherePartsCmpntに対する継承グラフ</div>
+<div class="dynsection">
+<div class="center"><img src="class_sphere_parts_cmpnt__inherit__graph.png" border="0" usemap="#_sphere_parts_cmpnt_inherit__map" alt="Inheritance graph"/></div>
+<map name="_sphere_parts_cmpnt_inherit__map" id="_sphere_parts_cmpnt_inherit__map">
+<area shape="rect" href="class_parts_cmpnt.html" title="パーツを構成する要素インターフェース" alt="" coords="27,5,115,35"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+<div class="dynheader">
+SpherePartsCmpntのコラボレーション図</div>
+<div class="dynsection">
+<div class="center"><img src="class_sphere_parts_cmpnt__coll__graph.png" border="0" usemap="#_sphere_parts_cmpnt_coll__map" alt="Collaboration graph"/></div>
+<map name="_sphere_parts_cmpnt_coll__map" id="_sphere_parts_cmpnt_coll__map">
+<area shape="rect" href="class_parts_cmpnt.html" title="パーツを構成する要素インターフェース" alt="" coords="27,5,115,35"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+
+<p><a href="class_sphere_parts_cmpnt-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Public 型</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="class_sphere_parts_cmpnt.html#a7e3a43a755c1431a466a154608d1a562afb1f3b6851ccd19c80dce3c6ce641ad3">DATA_LEN</a> =  sizeof(double)
+ }</td></tr>
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sphere_parts_cmpnt.html#a022d6c68861b84fbb74cb919c98b6859">dump</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">保持している情報（サイズ）の表示  <a href="#a022d6c68861b84fbb74cb919c98b6859"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sphere_parts_cmpnt.html#a8051eee7f47fa165616f33195cae67ee">radius</a> (double r)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">球の半径を設定する  <a href="#a8051eee7f47fa165616f33195cae67ee"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sphere_parts_cmpnt.html#a486dc373d6c3326abcc3b63da2b4d1b6">radius</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">球の半径を取得する  <a href="#a486dc373d6c3326abcc3b63da2b4d1b6"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sphere_parts_cmpnt.html#a036d657688f0ff04827d9bbaff10cf98">SpherePartsCmpnt</a> (const <a class="el" href="class_sphere_parts_cmpnt.html">SpherePartsCmpnt</a> &amp;o)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コピーコンストラクタ  <a href="#a036d657688f0ff04827d9bbaff10cf98"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sphere_parts_cmpnt.html#ae5dbbe6fb64718ad3e426e28205a62e4">SpherePartsCmpnt</a> (double rad)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#ae5dbbe6fb64718ad3e426e28205a62e4"></a><br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>球形状パーツデータクラス </p>
+
+<p> <a class="el" href="_parts_cmpnt_8h_source.html">PartsCmpnt.h</a> の <a class="el" href="_parts_cmpnt_8h_source.html#l00106">106</a> 行で定義されています。</p>
+<hr/><h2>列挙型</h2>
+<a class="anchor" id="a7e3a43a755c1431a466a154608d1a562"></a><!-- doxytag: member="SpherePartsCmpnt::@12" ref="a7e3a43a755c1431a466a154608d1a562" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>列挙型の値: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="a7e3a43a755c1431a466a154608d1a562afb1f3b6851ccd19c80dce3c6ce641ad3"></a><!-- doxytag: member="DATA_LEN" ref="a7e3a43a755c1431a466a154608d1a562afb1f3b6851ccd19c80dce3c6ce641ad3" args="" -->DATA_LEN</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p> <a class="el" href="_parts_cmpnt_8h_source.html">PartsCmpnt.h</a> の <a class="el" href="_parts_cmpnt_8h_source.html#l00109">109</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" id="ae5dbbe6fb64718ad3e426e28205a62e4"></a><!-- doxytag: member="SpherePartsCmpnt::SpherePartsCmpnt" ref="ae5dbbe6fb64718ad3e426e28205a62e4" args="(double rad)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SpherePartsCmpnt::SpherePartsCmpnt </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>rad</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コンストラクタ </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>rad</em>&nbsp;</td><td>球の半径 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_parts_cmpnt_8h_source.html">PartsCmpnt.h</a> の <a class="el" href="_parts_cmpnt_8h_source.html#l00118">118</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a036d657688f0ff04827d9bbaff10cf98"></a><!-- doxytag: member="SpherePartsCmpnt::SpherePartsCmpnt" ref="a036d657688f0ff04827d9bbaff10cf98" args="(const SpherePartsCmpnt &amp;o)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SpherePartsCmpnt::SpherePartsCmpnt </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_sphere_parts_cmpnt.html">SpherePartsCmpnt</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>o</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コピーコンストラクタ </p>
+
+<p> <a class="el" href="_parts_cmpnt_8h_source.html">PartsCmpnt.h</a> の <a class="el" href="_parts_cmpnt_8h_source.html#l00122">122</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>関数</h2>
+<a class="anchor" id="a022d6c68861b84fbb74cb919c98b6859"></a><!-- doxytag: member="SpherePartsCmpnt::dump" ref="a022d6c68861b84fbb74cb919c98b6859" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SpherePartsCmpnt::dump </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>保持している情報（サイズ）の表示 </p>
+
+<p><a class="el" href="class_parts_cmpnt.html#aa1d255671e65dc37d0fac90172eb0ec5">PartsCmpnt</a>を実装しています。</p>
+
+<p> <a class="el" href="_parts_cmpnt_8h_source.html">PartsCmpnt.h</a> の <a class="el" href="_parts_cmpnt_8h_source.html#l00134">134</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a8051eee7f47fa165616f33195cae67ee"></a><!-- doxytag: member="SpherePartsCmpnt::radius" ref="a8051eee7f47fa165616f33195cae67ee" args="(double r)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SpherePartsCmpnt::radius </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>r</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>球の半径を設定する </p>
+
+<p> <a class="el" href="_parts_cmpnt_8h_source.html">PartsCmpnt.h</a> の <a class="el" href="_parts_cmpnt_8h_source.html#l00131">131</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a486dc373d6c3326abcc3b63da2b4d1b6"></a><!-- doxytag: member="SpherePartsCmpnt::radius" ref="a486dc373d6c3326abcc3b63da2b4d1b6" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double SpherePartsCmpnt::radius </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>球の半径を取得する </p>
+
+<p> <a class="el" href="_parts_cmpnt_8h_source.html">PartsCmpnt.h</a> の <a class="el" href="_parts_cmpnt_8h_source.html#l00126">126</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+呼出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_sphere_parts_cmpnt_a486dc373d6c3326abcc3b63da2b4d1b6_icgraph.png" border="0" usemap="#class_sphere_parts_cmpnt_a486dc373d6c3326abcc3b63da2b4d1b6_icgraph_map" alt=""></div>
+<map name="class_sphere_parts_cmpnt_a486dc373d6c3326abcc3b63da2b4d1b6_icgraph_map" id="class_sphere_parts_cmpnt_a486dc373d6c3326abcc3b63da2b4d1b6_icgraph">
+<area shape="rect" href="class_s_sphere_parts.html#a191249364c1d788a664ca53f768b8feb" title="球の半径を取得する" alt="" coords="227,5,395,35"/><area shape="rect" href="class_s_sphere_parts.html#ac6c8b24b667ae14d024f338a653236e2" title="球の半径を設定する" alt="" coords="227,59,395,88"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_parts_cmpnt_8h_source.html">PartsCmpnt.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:21 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

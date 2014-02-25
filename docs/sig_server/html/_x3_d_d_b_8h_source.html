@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: X3DDB.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>X3DDB.h</h1><a href="_x3_d_d_b_8h.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/* $Id: _x3_d_d_b_8h_source.html,v 1.2 2011-12-14 07:55:40 okamoto Exp $ */</span> 
+<a name="l00002"></a>00002 <span class="preprocessor">#ifndef X3DDB_h</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span><span class="preprocessor">#define X3DDB_h</span>
+<a name="l00004"></a>00004 <span class="preprocessor"></span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include &lt;string&gt;</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include &lt;map&gt;</span>
+<a name="l00007"></a>00007 <span class="comment"></span>
+<a name="l00008"></a>00008 <span class="comment">/**</span>
+<a name="l00009"></a>00009 <span class="comment"> * @brief X3Dファイルデータベースクラス</span>
+<a name="l00010"></a>00010 <span class="comment"> *</span>
+<a name="l00011"></a>00011 <span class="comment"> * エージェントのパーツ、状態に応じたX3Dファイルを管理する。</span>
+<a name="l00012"></a>00012 <span class="comment"> * キー文字列は</span>
+<a name="l00013"></a>00013 <span class="comment"> * &lt;pre&gt;&lt;i&gt;</span>
+<a name="l00014"></a>00014 <span class="comment"> *    &lt;エージェント名&gt;:&lt;パーツ名&gt;:&lt;状態名&gt;:&lt;状態値&gt;</span>
+<a name="l00015"></a>00015 <span class="comment"> * &lt;/i&gt;&lt;/pre&gt;</span>
+<a name="l00016"></a>00016 <span class="comment"> * パーツ名、状態名、状態値はなくてもキーとして使用できる。</span>
+<a name="l00017"></a>00017 <span class="comment"> */</span>
+<a name="l00018"></a>00018 
+<a name="l00019"></a><a class="code" href="class_x3_d_d_b.html">00019</a> <span class="keyword">class </span><a class="code" href="class_x3_d_d_b.html" title="X3Dファイルデータベースクラス.">X3DDB</a>
+<a name="l00020"></a>00020 {
+<a name="l00021"></a>00021 <span class="keyword">private</span>:
+<a name="l00022"></a>00022     <span class="keyword">typedef</span> std::string S;
+<a name="l00023"></a>00023     <span class="keyword">typedef</span> std::map&lt;S, S&gt; M;
+<a name="l00024"></a>00024 <span class="keyword">public</span>:<span class="comment"></span>
+<a name="l00025"></a>00025 <span class="comment">    //! X3DDBエントリイテレータクラス</span>
+<a name="l00026"></a><a class="code" href="class_x3_d_d_b_1_1_iterator.html">00026</a> <span class="comment"></span>    <span class="keyword">class </span><a class="code" href="class_x3_d_d_b_1_1_iterator.html" title="X3DDBエントリイテレータクラス.">Iterator</a> {
+<a name="l00027"></a>00027     <span class="keyword">private</span>:
+<a name="l00028"></a>00028         M &amp; m_m;
+<a name="l00029"></a>00029         M::iterator m_itr;
+<a name="l00030"></a>00030     <span class="keyword">public</span>:
+<a name="l00031"></a><a class="code" href="class_x3_d_d_b_1_1_iterator.html#a987fd147f0d444a43b9242b1e2707473">00031</a>         <a class="code" href="class_x3_d_d_b_1_1_iterator.html#a987fd147f0d444a43b9242b1e2707473">Iterator</a>(M &amp;m) : m_m(m)
+<a name="l00032"></a>00032         {
+<a name="l00033"></a>00033             m_itr = m_m.end();
+<a name="l00034"></a>00034         }<span class="comment"></span>
+<a name="l00035"></a>00035 <span class="comment">        //! 次のキー文字列を取得する</span>
+<a name="l00036"></a><a class="code" href="class_x3_d_d_b_1_1_iterator.html#a327fa19c67b07b257935f4d6dea02918">00036</a> <span class="comment"></span>        <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="class_x3_d_d_b_1_1_iterator.html#a327fa19c67b07b257935f4d6dea02918" title="次のキー文字列を取得する">nextKey</a>() {
+<a name="l00037"></a>00037             <span class="keywordflow">if</span> (m_itr == m_m.end()) {
+<a name="l00038"></a>00038                 m_itr = m_m.begin();
+<a name="l00039"></a>00039             } <span class="keywordflow">else</span> {
+<a name="l00040"></a>00040                 m_itr++;
+<a name="l00041"></a>00041             }
+<a name="l00042"></a>00042             <span class="keywordflow">return</span> m_itr != m_m.end()? m_itr-&gt;first.c_str(): NULL;
+<a name="l00043"></a>00043         }
+<a name="l00044"></a>00044     };
+<a name="l00045"></a>00045 <span class="keyword">private</span>:
+<a name="l00046"></a>00046     M m_m;
+<a name="l00047"></a>00047 <span class="keyword">public</span>:<span class="comment"></span>
+<a name="l00048"></a>00048 <span class="comment">    //! エントリの数を得る</span>
+<a name="l00049"></a><a class="code" href="class_x3_d_d_b.html#af5b8892739893cd2feff78800677dd1d">00049</a> <span class="comment"></span>    <span class="keywordtype">int</span> <a class="code" href="class_x3_d_d_b.html#af5b8892739893cd2feff78800677dd1d" title="エントリの数を得る">size</a>() { <span class="keywordflow">return</span> m_m.size(); }<span class="comment"></span>
+<a name="l00050"></a>00050 <span class="comment">    //! 格納している情報をクリアする</span>
+<a name="l00051"></a><a class="code" href="class_x3_d_d_b.html#ad6889d994762f948aa1f11539462ee89">00051</a> <span class="comment"></span>    <span class="keywordtype">void</span>    <a class="code" href="class_x3_d_d_b.html#ad6889d994762f948aa1f11539462ee89" title="格納している情報をクリアする">clear</a>() { m_m.clear(); }
+<a name="l00052"></a>00052 <span class="comment"></span>
+<a name="l00053"></a>00053 <span class="comment">    //! エントリのイテレータを得る</span>
+<a name="l00054"></a><a class="code" href="class_x3_d_d_b.html#ab78c12d4b8631a813f05eef77fcb5085">00054</a> <span class="comment"></span>    <a class="code" href="class_x3_d_d_b_1_1_iterator.html" title="X3DDBエントリイテレータクラス.">Iterator</a> *<a class="code" href="class_x3_d_d_b.html#ab78c12d4b8631a813f05eef77fcb5085" title="エントリのイテレータを得る">getIterator</a>() { <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_x3_d_d_b_1_1_iterator.html" title="X3DDBエントリイテレータクラス.">Iterator</a>(m_m); }
+<a name="l00055"></a>00055 <span class="comment"></span>
+<a name="l00056"></a>00056 <span class="comment">    //! キーと値を設定する</span>
+<a name="l00057"></a><a class="code" href="class_x3_d_d_b.html#afc4731e1b4624f591db52ac7c168e17d">00057</a> <span class="comment"></span>    <span class="keywordtype">void</span>    <span class="keyword">set</span>(<span class="keyword">const</span> <span class="keywordtype">char</span> *key, <span class="keyword">const</span> <span class="keywordtype">char</span> *value)
+<a name="l00058"></a>00058     {
+<a name="l00059"></a>00059         m_m[S(key)] = S(value);
+<a name="l00060"></a>00060     }
+<a name="l00061"></a>00061 <span class="comment"></span>
+<a name="l00062"></a>00062 <span class="comment">    //! 指定したキーの値を設定する</span>
+<a name="l00063"></a><a class="code" href="class_x3_d_d_b.html#a371afa1f4e9c1e44a478738366703236">00063</a> <span class="comment"></span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">get</span>(<span class="keyword">const</span> <span class="keywordtype">char</span> *key)
+<a name="l00064"></a>00064     {
+<a name="l00065"></a>00065         M::iterator i = m_m.find(S(key));
+<a name="l00066"></a>00066         <span class="keywordflow">return</span> i != m_m.end()? i-&gt;second.c_str(): NULL;
+<a name="l00067"></a>00067     }
+<a name="l00068"></a>00068 };
+<a name="l00069"></a>00069     
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072 <span class="preprocessor">#endif // X3DDB_h</span>
+<a name="l00073"></a>00073 <span class="preprocessor"></span> 
+</pre></div></div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:18 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

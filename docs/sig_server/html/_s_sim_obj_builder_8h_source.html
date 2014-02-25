@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: SSimObjBuilder.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>SSimObjBuilder.h</h1><a href="_s_sim_obj_builder_8h.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/* $Id: _s_sim_obj_builder_8h_source.html,v 1.2 2011-12-14 07:55:39 okamoto Exp $ */</span>
+<a name="l00002"></a>00002 <span class="preprocessor">#ifndef SSimObjBuilder_h</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span><span class="preprocessor">#define SSimObjBuilder_h</span>
+<a name="l00004"></a>00004 <span class="preprocessor"></span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include &quot;<a class="code" href="_body_factory_8h.html">BodyFactory.h</a>&quot;</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include &quot;<a class="code" href="_vector3d_8h.html">Vector3d.h</a>&quot;</span>
+<a name="l00007"></a>00007 
+<a name="l00008"></a>00008 <span class="keyword">class </span><a class="code" href="class_s_sim_obj.html" title="エンティティに対応するクラス(サーバサイドで使用)">SSimObj</a>;
+<a name="l00009"></a>00009 <span class="keyword">class </span><a class="code" href="class_o_d_e_world.html" title="ODE 世界オブジェクトのラッパークラス.">ODEWorld</a>;
+<a name="l00010"></a>00010 <span class="keyword">class </span><a class="code" href="class_joint.html" title="部品同士を繋ぐ関節クラス">Joint</a>;
+<a name="l00011"></a>00011 <span class="keyword">class </span><a class="code" href="class_s_parts.html" title="エンティティの部品クラス(サーバサイドで使用)">SParts</a>;
+<a name="l00012"></a>00012 <span class="comment"></span>
+<a name="l00013"></a>00013 <span class="comment">/**</span>
+<a name="l00014"></a>00014 <span class="comment"> * @brief エンティティオブジェクトに必要な要素を設定するクラス</span>
+<a name="l00015"></a>00015 <span class="comment"> *</span>
+<a name="l00016"></a>00016 <span class="comment"> * エンティティにシミュレーションに必要な形状や属性等を設定する。</span>
+<a name="l00017"></a>00017 <span class="comment"> *</span>
+<a name="l00018"></a>00018 <span class="comment"> * コンストラクタで設定対象となるSSimObjを与えておく．</span>
+<a name="l00019"></a>00019 <span class="comment"> * addJoint(), addParts()等のメソッドは、コンストラクタでセットされたSSimObjに</span>
+<a name="l00020"></a>00020 <span class="comment"> * 大してジョイントを追加したり、パーツを追加したりする．</span>
+<a name="l00021"></a>00021 <span class="comment"> */</span>
+<a name="l00022"></a><a class="code" href="class_s_sim_obj_builder.html">00022</a> <span class="keyword">class </span><a class="code" href="class_s_sim_obj_builder.html" title="エンティティオブジェクトに必要な要素を設定するクラス">SSimObjBuilder</a> : <span class="keyword">public</span> <a class="code" href="class_body_factory.html" title="エンティティの形状・構成を通知するインターフェース">BodyFactory</a>
+<a name="l00023"></a>00023 {
+<a name="l00024"></a>00024 <span class="keyword">private</span>:
+<a name="l00025"></a>00025     <a class="code" href="class_s_sim_obj.html" title="エンティティに対応するクラス(サーバサイドで使用)">SSimObj</a> &amp;m_obj;
+<a name="l00026"></a>00026     <a class="code" href="class_o_d_e_world.html" title="ODE 世界オブジェクトのラッパークラス.">ODEWorld</a> &amp;m_world;
+<a name="l00027"></a>00027     <a class="code" href="class_vector3d.html" title="3次元ベクトルクラス">Vector3d</a> m_scale;
+<a name="l00028"></a>00028 <span class="keyword">public</span>:
+<a name="l00029"></a>00029     <a class="code" href="class_s_sim_obj_builder.html#a6f77837e11fb5c5f48d2248b735a5be5">SSimObjBuilder</a>(<a class="code" href="class_s_sim_obj.html" title="エンティティに対応するクラス(サーバサイドで使用)">SSimObj</a> &amp;o, <a class="code" href="class_o_d_e_world.html" title="ODE 世界オブジェクトのラッパークラス.">ODEWorld</a> &amp;w);
+<a name="l00030"></a>00030 
+<a name="l00031"></a>00031 <span class="keyword">private</span>:
+<a name="l00032"></a>00032     <span class="comment">/*</span>
+<a name="l00033"></a>00033 <span class="comment">     * @brief JointをSSimObjに追加する</span>
+<a name="l00034"></a>00034 <span class="comment">     *</span>
+<a name="l00035"></a>00035 <span class="comment">     * @param j [i] Joint</span>
+<a name="l00036"></a>00036 <span class="comment">     *</span>
+<a name="l00037"></a>00037 <span class="comment">     * @return true(=成功), false(=失敗)</span>
+<a name="l00038"></a>00038 <span class="comment">     *</span>
+<a name="l00039"></a>00039 <span class="comment">     * @remark Jointに（コンストラクタで指定された）ODE worldのセットも行う</span>
+<a name="l00040"></a>00040 <span class="comment">     */</span>
+<a name="l00041"></a>00041     <span class="keywordtype">bool</span> addJoint(<a class="code" href="class_joint.html" title="部品同士を繋ぐ関節クラス">Joint</a> *j);
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043     <span class="comment">/*</span>
+<a name="l00044"></a>00044 <span class="comment">     * @brief SPartsをSSimObjに追加する</span>
+<a name="l00045"></a>00045 <span class="comment">     *</span>
+<a name="l00046"></a>00046 <span class="comment">     * @param parts [i] SParts</span>
+<a name="l00047"></a>00047 <span class="comment">     *</span>
+<a name="l00048"></a>00048 <span class="comment">     * @return true(=成功), false(=失敗)</span>
+<a name="l00049"></a>00049 <span class="comment">     *</span>
+<a name="l00050"></a>00050 <span class="comment">     * @remark SPartsへのODE objのセット、およびパーツの持つODE objへの位置設定も行われる．</span>
+<a name="l00051"></a>00051 <span class="comment">     */</span>
+<a name="l00052"></a>00052     <span class="keywordtype">bool</span> addParts(<a class="code" href="class_s_parts.html" title="エンティティの部品クラス(サーバサイドで使用)">SParts</a> *parts);
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054     <span class="comment">/*</span>
+<a name="l00055"></a>00055 <span class="comment">     * @brief 2つのSPartsをJointでつなぐ</span>
+<a name="l00056"></a>00056 <span class="comment">     *</span>
+<a name="l00057"></a>00057 <span class="comment">     * @param joint [i] Joint</span>
+<a name="l00058"></a>00058 <span class="comment">     * @param p1 [i] SParts1</span>
+<a name="l00059"></a>00059 <span class="comment">     * @param p2 [i] SParts2</span>
+<a name="l00060"></a>00060 <span class="comment">     *</span>
+<a name="l00061"></a>00061 <span class="comment">     * +----+----+</span>
+<a name="l00062"></a>00062 <span class="comment">     * | p1 * p2 |    *=joint</span>
+<a name="l00063"></a>00063 <span class="comment">     * +----+----+</span>
+<a name="l00064"></a>00064 <span class="comment">     *</span>
+<a name="l00065"></a>00065 <span class="comment">     * [このメソッドの働き]</span>
+<a name="l00066"></a>00066 <span class="comment">     * (1) jointからp1, p2へのリンクを張る(pushBody)</span>
+<a name="l00067"></a>00067 <span class="comment">     * (2) p2からjointへのリンクを張る(setParentJoint)</span>
+<a name="l00068"></a>00068 <span class="comment">     */</span>
+<a name="l00069"></a>00069     <span class="keywordtype">void</span> connect(<a class="code" href="class_joint.html" title="部品同士を繋ぐ関節クラス">Joint</a> *joint, <a class="code" href="class_s_parts.html" title="エンティティの部品クラス(サーバサイドで使用)">SParts</a> *p1, <a class="code" href="class_s_parts.html" title="エンティティの部品クラス(サーバサイドで使用)">SParts</a> *p2);
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071     <span class="comment">/*</span>
+<a name="l00072"></a>00072 <span class="comment">     * @brief SPartsからその子SParts、Jointを辿るためのリンクを張る</span>
+<a name="l00073"></a>00073 <span class="comment">     *</span>
+<a name="l00074"></a>00074 <span class="comment">     * @param sibJ [i] Joint1</span>
+<a name="l00075"></a>00075 <span class="comment">     * @param childJ [i] Joint2</span>
+<a name="l00076"></a>00076 <span class="comment">     * @param sibP [i] SParts1</span>
+<a name="l00077"></a>00077 <span class="comment">     * @param childP [i] SParts2</span>
+<a name="l00078"></a>00078 <span class="comment">     *</span>
+<a name="l00079"></a>00079 <span class="comment">     * [このメソッドの働き]</span>
+<a name="l00080"></a>00080 <span class="comment">     * (1) sibPにChild構造体を追加する．</span>
+<a name="l00081"></a>00081 <span class="comment">     * (2) child構造体はsibJ, childJ, childPへのリンクを持っている．</span>
+<a name="l00082"></a>00082 <span class="comment">     * 簡易構成図は下の通り</span>
+<a name="l00083"></a>00083 <span class="comment">     *</span>
+<a name="l00084"></a>00084 <span class="comment">     * +--------+--------+</span>
+<a name="l00085"></a>00085 <span class="comment">     * |  sibP  * childP #  *=sibJ, #=childJ</span>
+<a name="l00086"></a>00086 <span class="comment">     * +--------+--------+</span>
+<a name="l00087"></a>00087 <span class="comment">     * ちなみにchildJ, childPはNULLになりうる．（＝後ろに繋がるパーツ・ジョイントがない場合）</span>
+<a name="l00088"></a>00088 <span class="comment">     */</span>
+<a name="l00089"></a>00089     <span class="keywordtype">void</span> connect2(<a class="code" href="class_joint.html" title="部品同士を繋ぐ関節クラス">Joint</a> *sibJ, <a class="code" href="class_joint.html" title="部品同士を繋ぐ関節クラス">Joint</a> *childJ, <a class="code" href="class_s_parts.html" title="エンティティの部品クラス(サーバサイドで使用)">SParts</a> *sibP, <a class="code" href="class_s_parts.html" title="エンティティの部品クラス(サーバサイドで使用)">SParts</a> *childP);
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091     <span class="comment">/*</span>
+<a name="l00092"></a>00092 <span class="comment">     * @brief 操作対象のSSimObjへのアクセス関数</span>
+<a name="l00093"></a>00093 <span class="comment">     */</span>
+<a name="l00094"></a>00094     <a class="code" href="class_s_sim_obj.html" title="エンティティに対応するクラス(サーバサイドで使用)">SSimObj</a> &amp; getSObj() { <span class="keywordflow">return</span> m_obj; }
+<a name="l00095"></a>00095 
+<a name="l00096"></a>00096     <a class="code" href="class_vector3d.html" title="3次元ベクトルクラス">Vector3d</a> &amp; applyScaleV(<a class="code" href="class_vector3d.html" title="3次元ベクトルクラス">Vector3d</a> &amp;);
+<a name="l00097"></a>00097     <a class="code" href="class_position.html" title="3次元位置クラス">Position</a> &amp; applyScaleP(<a class="code" href="class_position.html" title="3次元位置クラス">Position</a> &amp;);
+<a name="l00098"></a>00098     <a class="code" href="class_size.html" title="シミュレーション世界内における3次元直方体の大きさを表すクラス...">Size</a> &amp; applyScaleS(<a class="code" href="class_size.html" title="シミュレーション世界内における3次元直方体の大きさを表すクラス...">Size</a> &amp;);
+<a name="l00099"></a>00099 };
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101 <span class="preprocessor">#endif // SSimObjBuilder_h</span>
+<a name="l00102"></a>00102 <span class="preprocessor"></span>
+</pre></div></div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:18 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

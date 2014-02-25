@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf8"?>
+<world name="myworld">
+
+  <gravity x="0.0" y="-9.8" z="0.0"/> 
+  
+  <instanciate class="Robot-nii.xml">
+
+        <set-attr-value name="name" value="Robot-nii"/>
+        
+	<!--
+        <set-attr-value name="implementation"
+			value="./NewWorld/SendController.so"/>
+	<set-attr-value name="language" value="c++"/>	
+	-->
+	
+        <set-attr-value name="dynamics" value="false"/>
+       
+        <set-attr-value name="x" value="0.0"/>
+        <set-attr-value name="y" value="65.0"/>
+        <set-attr-value name="z" value="0.0"/>
+
+
+  </instanciate>
+</world>
+

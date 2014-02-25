@@ -1,0 +1,418 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGViewer: クラス テンプレート Sgv::Thread&lt; ParamType &gt;</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_sgv.html">Sgv</a>::<a class="el" href="class_sgv_1_1_thread.html">Thread</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス テンプレート Sgv::Thread&lt; ParamType &gt;</h1><!-- doxytag: class="Sgv::Thread" --><code>#include &lt;<a class="el" href="_sgv_thread_8h_source.html">SgvThread.h</a>&gt;</code>
+<p>
+
+<p>
+<a href="class_sgv_1_1_thread-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public 型</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef UINT&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_thread.html#42f614d5befcd1da7cfe7ff542ad00f8">RetType</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef <a class="el" href="class_sgv_1_1_thread.html#42f614d5befcd1da7cfe7ff542ad00f8">RetType</a>(*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_thread.html#7d475bf3a65607adc4778a28725b3345">ThreadFuncType</a> )(LPVOID)</td></tr>
+
+<tr><td colspan="2"><br><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_thread.html#99f7e9ee672d323cd0e623e4379f23a0">getThreadId</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_thread.html#0177e3e6f575e2a94056031457ab969b">pause</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_thread.html#d737812f0f48a60216a0f50eb2c82db0">run</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_thread.html#e64690da3654ffe67c3ae7c2855e4839">running</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_thread.html#12abd82416910e1142602db13864f0be">terminate</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_thread.html#f746d5abde29c6d5f8b059d31ef76099">Thread</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_thread.html#fa51a2f1684a742da0b620001af6517a">wait</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_thread.html#d96592c7c5be4f6866559e10c5e7feb4">‾Thread</a> ()</td></tr>
+
+<tr><td colspan="2"><br><h2>Protected メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_thread.html#79a603207b08dd65b857cfdada430945">create</a> (<a class="el" href="class_sgv_1_1_thread.html#7d475bf3a65607adc4778a28725b3345">ThreadFuncType</a> proc, ParamType param)</td></tr>
+
+<tr><td colspan="2"><br><h2>Protected 変数</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">HANDLE&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_thread.html#314ca01bfbdf625e7bf23d745cc69bd3">m_thread</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_thread.html#7c46196a36b34653b1008a816e32d972">m_threadId</a></td></tr>
+
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+<h3>template&lt;class ParamType&gt;<br>
+ class Sgv::Thread&lt; ParamType &gt;</h3>
+
+
+<p> <a class="el" href="_sgv_thread_8h_source.html">SgvThread.h</a> の <a class="el" href="_sgv_thread_8h_source.html#l00012">12</a> 行で定義されています。</p>
+<hr><h2>型定義</h2>
+<a class="anchor" name="42f614d5befcd1da7cfe7ff542ad00f8"></a><!-- doxytag: member="Sgv::Thread::RetType" ref="42f614d5befcd1da7cfe7ff542ad00f8" args="" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class ParamType&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef UINT <a class="el" href="class_sgv_1_1_thread.html">Sgv::Thread</a>&lt; ParamType &gt;::<a class="el" href="class_sgv_1_1_thread.html#42f614d5befcd1da7cfe7ff542ad00f8">RetType</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_sgv_thread_8h_source.html">SgvThread.h</a> の <a class="el" href="_sgv_thread_8h_source.html#l00015">15</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="7d475bf3a65607adc4778a28725b3345"></a><!-- doxytag: member="Sgv::Thread::ThreadFuncType" ref="7d475bf3a65607adc4778a28725b3345" args=")(LPVOID)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class ParamType&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="class_sgv_1_1_thread.html#42f614d5befcd1da7cfe7ff542ad00f8">RetType</a>(* <a class="el" href="class_sgv_1_1_thread.html">Sgv::Thread</a>&lt; ParamType &gt;::<a class="el" href="class_sgv_1_1_thread.html#7d475bf3a65607adc4778a28725b3345">ThreadFuncType</a>)(LPVOID)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_sgv_thread_8h_source.html">SgvThread.h</a> の <a class="el" href="_sgv_thread_8h_source.html#l00016">16</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" name="f746d5abde29c6d5f8b059d31ef76099"></a><!-- doxytag: member="Sgv::Thread::Thread" ref="f746d5abde29c6d5f8b059d31ef76099" args="()" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class ParamType&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_sgv_1_1_thread.html">Sgv::Thread</a>&lt; ParamType &gt;::<a class="el" href="class_sgv_1_1_thread.html">Thread</a>           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_sgv_thread_8h_source.html">SgvThread.h</a> の <a class="el" href="_sgv_thread_8h_source.html#l00018">18</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>関数</h2>
+<a class="anchor" name="79a603207b08dd65b857cfdada430945"></a><!-- doxytag: member="Sgv::Thread::create" ref="79a603207b08dd65b857cfdada430945" args="(ThreadFuncType proc, ParamType param)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class ParamType&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_sgv_1_1_thread.html">Sgv::Thread</a>&lt; ParamType &gt;::create           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_thread.html#7d475bf3a65607adc4778a28725b3345">ThreadFuncType</a>&nbsp;</td>
+          <td class="paramname"> <em>proc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ParamType&nbsp;</td>
+          <td class="paramname"> <em>param</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_sgv_thread_8h_source.html">SgvThread.h</a> の <a class="el" href="_sgv_thread_8h_source.html#l00055">55</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="99f7e9ee672d323cd0e623e4379f23a0"></a><!-- doxytag: member="Sgv::Thread::getThreadId" ref="99f7e9ee672d323cd0e623e4379f23a0" args="()" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class ParamType&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int <a class="el" href="class_sgv_1_1_thread.html">Sgv::Thread</a>&lt; ParamType &gt;::getThreadId           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_sgv_thread_8h_source.html">SgvThread.h</a> の <a class="el" href="_sgv_thread_8h_source.html#l00031">31</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="0177e3e6f575e2a94056031457ab969b"></a><!-- doxytag: member="Sgv::Thread::pause" ref="0177e3e6f575e2a94056031457ab969b" args="()" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class ParamType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_sgv_1_1_thread.html">Sgv::Thread</a>&lt; ParamType &gt;::pause           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_sgv_thread_8h_source.html">SgvThread.h</a> の <a class="el" href="_sgv_thread_8h_source.html#l00077">77</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="d737812f0f48a60216a0f50eb2c82db0"></a><!-- doxytag: member="Sgv::Thread::run" ref="d737812f0f48a60216a0f50eb2c82db0" args="()" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class ParamType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_sgv_1_1_thread.html">Sgv::Thread</a>&lt; ParamType &gt;::run           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p><a class="el" href="class_sgv_1_1_service_clerk_thread.html#c55f540894adb59cbe35a44ae95f7839">Sgv::ServiceClerkThread</a>, と <a class="el" href="class_sgv_1_1_service_provider_thread.html#7c9b0e24b852f5f5a0378333ac4f728e">Sgv::ServiceProviderThread</a>で再定義されています。</p>
+
+<p> <a class="el" href="_sgv_thread_8h_source.html">SgvThread.h</a> の <a class="el" href="_sgv_thread_8h_source.html#l00067">67</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="e64690da3654ffe67c3ae7c2855e4839"></a><!-- doxytag: member="Sgv::Thread::running" ref="e64690da3654ffe67c3ae7c2855e4839" args="()" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class ParamType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_sgv_1_1_thread.html">Sgv::Thread</a>&lt; ParamType &gt;::running           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_sgv_thread_8h_source.html">SgvThread.h</a> の <a class="el" href="_sgv_thread_8h_source.html#l00095">95</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="12abd82416910e1142602db13864f0be"></a><!-- doxytag: member="Sgv::Thread::terminate" ref="12abd82416910e1142602db13864f0be" args="()" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class ParamType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_sgv_1_1_thread.html">Sgv::Thread</a>&lt; ParamType &gt;::terminate           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_sgv_thread_8h_source.html">SgvThread.h</a> の <a class="el" href="_sgv_thread_8h_source.html#l00113">113</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="fa51a2f1684a742da0b620001af6517a"></a><!-- doxytag: member="Sgv::Thread::wait" ref="fa51a2f1684a742da0b620001af6517a" args="()" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class ParamType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_sgv_1_1_thread.html">Sgv::Thread</a>&lt; ParamType &gt;::wait           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_sgv_thread_8h_source.html">SgvThread.h</a> の <a class="el" href="_sgv_thread_8h_source.html#l00085">85</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="d96592c7c5be4f6866559e10c5e7feb4"></a><!-- doxytag: member="Sgv::Thread::‾Thread" ref="d96592c7c5be4f6866559e10c5e7feb4" args="()" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class ParamType&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="class_sgv_1_1_thread.html">Sgv::Thread</a>&lt; ParamType &gt;::‾Thread           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_sgv_thread_8h_source.html">SgvThread.h</a> の <a class="el" href="_sgv_thread_8h_source.html#l00019">19</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>変数</h2>
+<a class="anchor" name="314ca01bfbdf625e7bf23d745cc69bd3"></a><!-- doxytag: member="Sgv::Thread::m_thread" ref="314ca01bfbdf625e7bf23d745cc69bd3" args="" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class ParamType&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">HANDLE <a class="el" href="class_sgv_1_1_thread.html">Sgv::Thread</a>&lt; ParamType &gt;::<a class="el" href="class_sgv_1_1_thread.html#314ca01bfbdf625e7bf23d745cc69bd3">m_thread</a><code> [protected]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_sgv_thread_8h_source.html">SgvThread.h</a> の <a class="el" href="_sgv_thread_8h_source.html#l00034">34</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="7c46196a36b34653b1008a816e32d972"></a><!-- doxytag: member="Sgv::Thread::m_threadId" ref="7c46196a36b34653b1008a816e32d972" args="" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class ParamType&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int <a class="el" href="class_sgv_1_1_thread.html">Sgv::Thread</a>&lt; ParamType &gt;::<a class="el" href="class_sgv_1_1_thread.html#7c46196a36b34653b1008a816e32d972">m_threadId</a><code> [protected]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_sgv_thread_8h_source.html">SgvThread.h</a> の <a class="el" href="_sgv_thread_8h_source.html#l00035">35</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_sgv_thread_8h_source.html">SgvThread.h</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGViewerに対してThu Jun 9 10:52:15 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

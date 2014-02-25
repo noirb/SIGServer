@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf8"?>
+<world name="HumanoidTest">
+
+  <gravity x="0.0" y="-9.8" z="0.0"/>
+
+  <instanciate class="Man-nii.xml">
+	<set-attr-value name="name" value="man_0"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="-70.0"/>
+	<set-attr-value name="y" value="60.0"/>
+	<set-attr-value name="z" value="-50.0"/>
+
+	<set-attr-value name="vpx" value="0.0"/>
+	<set-attr-value name="vpy" value="10.0"/>
+	<set-attr-value name="vpz" value="0.0"/>
+
+	<set-attr-value name="vvx" value="0.0"/>
+	<set-attr-value name="vvy" value="0.0"/>
+	<set-attr-value name="vvz" value="-1.0"/>
+
+	<set-attr-value name="language" value="c++"/>
+	<set-attr-value name="implementation" value="../model/samples/scSetAttr.so"/>
+  </instanciate>
+
+  <instanciate class="seTV.xml">
+	<set-attr-value name="name" value="TV_0"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="-20.0"/>
+	<set-attr-value name="y" value="82.0"/>
+	<set-attr-value name="z" value="-250.0"/>
+
+	<set-attr-value name="visStateAttrName" value="switch"/>
+	<set-attr-value name="switch" value="on"/>
+  </instanciate>
+
+  <instanciate class="seTVbass_B.xml">
+	<set-attr-value name="name" value="TVdai_0"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="-20.0"/>
+	<set-attr-value name="y" value="13.0"/>
+	<set-attr-value name="z" value="-250.0"/>
+  </instanciate>
+
+  <instanciate class="sePlant_B.xml">
+	<set-attr-value name="name" value="ki_0"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="100.0"/>
+	<set-attr-value name="y" value="35.0"/>
+	<set-attr-value name="z" value="-250.0"/>
+  </instanciate>
+
+  <instanciate class="seBear.xml">
+	<set-attr-value name="name" value="kuma_0"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="0.0"/>
+	<set-attr-value name="y" value="5.0"/>
+	<set-attr-value name="z" value="0.0"/>
+
+	<set-attr-value name="vpx" value="0.0"/>
+	<set-attr-value name="vpy" value="10.0"/>
+	<set-attr-value name="vpz" value="0.0"/>
+
+	<set-attr-value name="vvx" value="0.0"/>
+	<set-attr-value name="vvy" value="0.0"/>
+	<set-attr-value name="vvz" value="1.0"/>
+  </instanciate>
+
+  <instanciate class="sePenguin.xml">
+	<set-attr-value name="name" value="penguin_0"/>
+	<set-attr-value name="dynamics" value="false"/>
+
+	<set-attr-value name="x" value="50.0"/>
+	<set-attr-value name="y" value="10.0"/>
+	<set-attr-value name="z" value="-40.0"/>
+
+	<set-attr-value name="vpx" value="0.0"/>
+	<set-attr-value name="vpy" value="10.0"/>
+	<set-attr-value name="vpz" value="0.0"/>
+
+	<set-attr-value name="vvx" value="0.0"/>
+	<set-attr-value name="vvy" value="0.0"/>
+	<set-attr-value name="vvz" value="1.0"/>
+  </instanciate>
+</world>

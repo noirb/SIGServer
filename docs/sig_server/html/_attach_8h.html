@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: Attach.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Attach.h</h1><code>#include &quot;<a class="el" href="_attach_8h_source.html">Encoder.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="systemdef_8h_source.html">systemdef.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="_comm_data_type_8h_source.html">CommDataType.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="_comm_data_def_8h_source.html">CommDataDef.h</a>&quot;</code><br/>
+<code>#include &lt;string&gt;</code><br/>
+<code>#include &lt;string.h&gt;</code><br/>
+<code>#include &lt;stdlib.h&gt;</code><br/>
+<code>#include &quot;<a class="el" href="event_2_result_8h_source.html">Result.h</a>&quot;</code><br/>
+<div class="dynheader">
+Attach.hのインクルード依存関係図</div>
+<div class="dynsection">
+<div class="center"><img src="_attach_8h__incl.png" border="0" usemap="#_attach_8h_map" alt=""/></div>
+<map name="_attach_8h_map" id="_attach_8h">
+<area shape="rect" href="systemdef_8h.html" title="systemdef.h" alt="" coords="5,83,99,112"/><area shape="rect" href="_comm_data_type_8h.html" title="CommDataType.h" alt="" coords="144,160,269,189"/><area shape="rect" href="_comm_data_def_8h.html" title="CommDataDef.h" alt="" coords="173,83,291,112"/><area shape="rect" href="event_2_result_8h.html" title="Result.h" alt="" coords="315,83,384,112"/></map>
+</div>
+<div class="dynheader">
+このグラフは、どのファイルから直接、間接的にインクルードされているかを示しています。</div>
+<div class="dynsection">
+<div class="center"><img src="_attach_8h__dep__incl.png" border="0" usemap="#_attach_8hdep_map" alt=""/></div>
+</div>
+
+<p><a href="_attach_8h_source.html">ソースコードを見る。</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>構成</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_1_1_attach_controller_request.html">CommData::AttachControllerRequest</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コントローラ割り当てリクエストエンコーダークラス  <a href="class_comm_data_1_1_attach_controller_request.html#_details">[詳細]</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_1_1_attach_controller_result.html">CommData::AttachControllerResult</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コントローラ割り当て結果エンコーダークラス  <a href="class_comm_data_1_1_attach_controller_result.html#_details">[詳細]</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_1_1_attach_request.html">CommData::AttachRequest</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クライアント割り当てリクエストエンコーダー基本クラス  <a href="class_comm_data_1_1_attach_request.html#_details">[詳細]</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_1_1_attach_view_request.html">CommData::AttachViewRequest</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ビュー割り当てリクエストエンコーダークラス  <a href="class_comm_data_1_1_attach_view_request.html#_details">[詳細]</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_1_1_attach_view_result.html">CommData::AttachViewResult</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ビュー割り当て結果エンコーダークラス  <a href="class_comm_data_1_1_attach_view_result.html#_details">[詳細]</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_1_1_connect_data_port_request.html">CommData::ConnectDataPortRequest</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">データポート接続リクエストエンコーダークラス  <a href="class_comm_data_1_1_connect_data_port_request.html#_details">[詳細]</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_comm_data_1_1_provide_service_request.html">CommData::ProvideServiceRequest</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">サービスプロバイダ登録リクエストエンコーダークラス  <a href="class_comm_data_1_1_provide_service_request.html#_details">[詳細]</a><br/></td></tr>
+<tr><td colspan="2"><h2>ネームスペース</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">namespace &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_comm_data.html">CommData</a></td></tr>
+<tr><td colspan="2"><h2>型定義</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
+<a class="el" href="class_comm_data_1_1_attach_controller_request.html">CommRequestAttachModelEncoder</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_attach_8h.html#a9362694b14e35b696a1757c81bea4439">CommRequestAttachControllerEncoder</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
+<a class="el" href="class_comm_data_1_1_attach_controller_request.html">CommData::AttachControllerRequest</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_attach_8h.html#a7b115e63da0302d15f5c10185d9700d8">CommRequestAttachModelEncoder</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_comm_data_1_1_attach_view_request.html">CommData::AttachViewRequest</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_attach_8h.html#a8eb2aea741dbe35b02a5224dbe05f990">CommRequestAttachViewEncoder</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
+<a class="el" href="class_comm_data_1_1_connect_data_port_request.html">CommData::ConnectDataPortRequest</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_attach_8h.html#a650dd610ed6304dbf830f7d48a3d1876">CommRequestConnectDataPortEncoder</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
+<a class="el" href="class_comm_data_1_1_provide_service_request.html">CommData::ProvideServiceRequest</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_attach_8h.html#ad031fb23bcc9be58040df974a722eb40">CommRequestProvideServiceEncoder</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
+<a class="el" href="class_comm_data_1_1_attach_controller_result.html">CommData::AttachControllerResult</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_attach_8h.html#a9df98c4535a77b6db13d1904e3dd60b9">CommResultAttachControllerEncoder</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_comm_data_1_1_attach_view_result.html">CommData::AttachViewResult</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_attach_8h.html#aa82e405403f45b1a8462a50d0619dfa0">CommResultAttachViewEncoder</a></td></tr>
+</table>
+<hr/><h2>型定義</h2>
+<a class="anchor" id="a9362694b14e35b696a1757c81bea4439"></a><!-- doxytag: member="Attach.h::CommRequestAttachControllerEncoder" ref="a9362694b14e35b696a1757c81bea4439" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="class_comm_data_1_1_attach_controller_request.html">CommRequestAttachModelEncoder</a> <a class="el" href="class_comm_data_1_1_attach_controller_request.html">CommRequestAttachControllerEncoder</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_attach_8h_source.html">Attach.h</a> の <a class="el" href="_attach_8h_source.html#l00139">139</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a7b115e63da0302d15f5c10185d9700d8"></a><!-- doxytag: member="Attach.h::CommRequestAttachModelEncoder" ref="a7b115e63da0302d15f5c10185d9700d8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="class_comm_data_1_1_attach_controller_request.html">CommData::AttachControllerRequest</a> <a class="el" href="class_comm_data_1_1_attach_controller_request.html">CommRequestAttachModelEncoder</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_attach_8h_source.html">Attach.h</a> の <a class="el" href="_attach_8h_source.html#l00138">138</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a8eb2aea741dbe35b02a5224dbe05f990"></a><!-- doxytag: member="Attach.h::CommRequestAttachViewEncoder" ref="a8eb2aea741dbe35b02a5224dbe05f990" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="class_comm_data_1_1_attach_view_request.html">CommData::AttachViewRequest</a> <a class="el" href="class_comm_data_1_1_attach_view_request.html">CommRequestAttachViewEncoder</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_attach_8h_source.html">Attach.h</a> の <a class="el" href="_attach_8h_source.html#l00142">142</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a650dd610ed6304dbf830f7d48a3d1876"></a><!-- doxytag: member="Attach.h::CommRequestConnectDataPortEncoder" ref="a650dd610ed6304dbf830f7d48a3d1876" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="class_comm_data_1_1_connect_data_port_request.html">CommData::ConnectDataPortRequest</a> <a class="el" href="class_comm_data_1_1_connect_data_port_request.html">CommRequestConnectDataPortEncoder</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_attach_8h_source.html">Attach.h</a> の <a class="el" href="_attach_8h_source.html#l00145">145</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ad031fb23bcc9be58040df974a722eb40"></a><!-- doxytag: member="Attach.h::CommRequestProvideServiceEncoder" ref="ad031fb23bcc9be58040df974a722eb40" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="class_comm_data_1_1_provide_service_request.html">CommData::ProvideServiceRequest</a> <a class="el" href="class_comm_data_1_1_provide_service_request.html">CommRequestProvideServiceEncoder</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_attach_8h_source.html">Attach.h</a> の <a class="el" href="_attach_8h_source.html#l00146">146</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a9df98c4535a77b6db13d1904e3dd60b9"></a><!-- doxytag: member="Attach.h::CommResultAttachControllerEncoder" ref="a9df98c4535a77b6db13d1904e3dd60b9" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="class_comm_data_1_1_attach_controller_result.html">CommData::AttachControllerResult</a> <a class="el" href="class_comm_data_1_1_attach_controller_result.html">CommResultAttachControllerEncoder</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_attach_8h_source.html">Attach.h</a> の <a class="el" href="_attach_8h_source.html#l00140">140</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="aa82e405403f45b1a8462a50d0619dfa0"></a><!-- doxytag: member="Attach.h::CommResultAttachViewEncoder" ref="aa82e405403f45b1a8462a50d0619dfa0" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="class_comm_data_1_1_attach_view_result.html">CommData::AttachViewResult</a> <a class="el" href="class_comm_data_1_1_attach_view_result.html">CommResultAttachViewEncoder</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_attach_8h_source.html">Attach.h</a> の <a class="el" href="_attach_8h_source.html#l00143">143</a> 行で定義されています。</p>
+
+</div>
+</div>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:18 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

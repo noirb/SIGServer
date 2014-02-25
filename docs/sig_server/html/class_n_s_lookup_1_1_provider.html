@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: クラス NSLookup::Provider</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="class_n_s_lookup.html">NSLookup</a>::<a class="el" href="class_n_s_lookup_1_1_provider.html">Provider</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス NSLookup::Provider</h1><!-- doxytag: class="NSLookup::Provider" -->
+<p>サービスプロバイダクラス  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_n_s_lookup_8h_source.html">NSLookup.h</a>&gt;</code></p>
+<div class="dynheader">
+NSLookup::Providerのコラボレーション図</div>
+<div class="dynsection">
+<div class="center"><img src="class_n_s_lookup_1_1_provider__coll__graph.png" border="0" usemap="#_n_s_lookup_1_1_provider_coll__map" alt="Collaboration graph"/></div>
+<map name="_n_s_lookup_1_1_provider_coll__map" id="_n_s_lookup_1_1_provider_coll__map">
+<area shape="rect" href="class_service.html" title="サービスプロバイダの提供するサービスクラス" alt="" coords="41,5,105,35"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+
+<p><a href="class_n_s_lookup_1_1_provider-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_s_lookup_1_1_provider.html#a2cf802387c57277b50560048f673095d">active</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">プロバイダが利用可能であるか？  <a href="#a2cf802387c57277b50560048f673095d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_s_lookup_1_1_provider.html#a6848a98833d2aa54bd03a23226f58fe6">close</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">プロバイダとの接続を閉じる  <a href="#a6848a98833d2aa54bd03a23226f58fe6"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_s_lookup_1_1_provider.html#a17a6ad42b67e9afce8f024c8db91b3b3">Provider</a> (<a class="el" href="class_service.html">Service</a> *service)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#a17a6ad42b67e9afce8f024c8db91b3b3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_service.html">Service</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_s_lookup_1_1_provider.html#ae090a83445350e2c381fd19f8ade6aeb">service</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">プロバイダの提供するサービスを取得する  <a href="#ae090a83445350e2c381fd19f8ade6aeb"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="systemdef_8h.html#a8dc8083897335125630f1af5dafd5831">SOCKET</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_s_lookup_1_1_provider.html#a33dadf7a4b05bfe8e3be08c18a08b36d">sock</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">プロバイダとのソケット記述子を取得する  <a href="#a33dadf7a4b05bfe8e3be08c18a08b36d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_s_lookup_1_1_provider.html#a30583dbec39826ebaa7a8cff4acd6215">‾Provider</a> ()</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>サービスプロバイダクラス </p>
+
+<p> <a class="el" href="_n_s_lookup_8h_source.html">NSLookup.h</a> の <a class="el" href="_n_s_lookup_8h_source.html#l00017">17</a> 行で定義されています。</p>
+<hr/><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" id="a17a6ad42b67e9afce8f024c8db91b3b3"></a><!-- doxytag: member="NSLookup::Provider::Provider" ref="a17a6ad42b67e9afce8f024c8db91b3b3" args="(Service *service)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">NSLookup::Provider::Provider </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_service.html">Service</a> *&nbsp;</td>
+          <td class="paramname"> <em>service</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コンストラクタ </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>service</em>&nbsp;</td><td>プロバイダの提供するサービス </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_n_s_lookup_8h_source.html">NSLookup.h</a> の <a class="el" href="_n_s_lookup_8h_source.html#l00026">26</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>関数</h2>
+<a class="anchor" id="a2cf802387c57277b50560048f673095d"></a><!-- doxytag: member="NSLookup::Provider::active" ref="a2cf802387c57277b50560048f673095d" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool NSLookup::Provider::active </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>プロバイダが利用可能であるか？ </p>
+
+<p> <a class="el" href="_n_s_lookup_8h_source.html">NSLookup.h</a> の <a class="el" href="_n_s_lookup_8h_source.html#l00034">34</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_n_s_lookup_1_1_provider_a2cf802387c57277b50560048f673095d_cgraph.png" border="0" usemap="#class_n_s_lookup_1_1_provider_a2cf802387c57277b50560048f673095d_cgraph_map" alt=""></div>
+<map name="class_n_s_lookup_1_1_provider_a2cf802387c57277b50560048f673095d_cgraph_map" id="class_n_s_lookup_1_1_provider_a2cf802387c57277b50560048f673095d_cgraph">
+<area shape="rect" href="class_n_s_lookup_1_1_provider.html#a33dadf7a4b05bfe8e3be08c18a08b36d" title="プロバイダとのソケット記述子を取得する" alt="" coords="235,5,408,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a6848a98833d2aa54bd03a23226f58fe6"></a><!-- doxytag: member="NSLookup::Provider::close" ref="a6848a98833d2aa54bd03a23226f58fe6" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NSLookup::Provider::close </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>プロバイダとの接続を閉じる </p>
+
+</div>
+</div>
+<a class="anchor" id="ae090a83445350e2c381fd19f8ade6aeb"></a><!-- doxytag: member="NSLookup::Provider::service" ref="ae090a83445350e2c381fd19f8ade6aeb" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_service.html">Service</a>&amp; NSLookup::Provider::service </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>プロバイダの提供するサービスを取得する </p>
+
+</div>
+</div>
+<a class="anchor" id="a33dadf7a4b05bfe8e3be08c18a08b36d"></a><!-- doxytag: member="NSLookup::Provider::sock" ref="a33dadf7a4b05bfe8e3be08c18a08b36d" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="systemdef_8h.html#a8dc8083897335125630f1af5dafd5831">SOCKET</a> NSLookup::Provider::sock </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>プロバイダとのソケット記述子を取得する </p>
+
+<p><div class="dynheader">
+呼出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_n_s_lookup_1_1_provider_a33dadf7a4b05bfe8e3be08c18a08b36d_icgraph.png" border="0" usemap="#class_n_s_lookup_1_1_provider_a33dadf7a4b05bfe8e3be08c18a08b36d_icgraph_map" alt=""></div>
+<map name="class_n_s_lookup_1_1_provider_a33dadf7a4b05bfe8e3be08c18a08b36d_icgraph_map" id="class_n_s_lookup_1_1_provider_a33dadf7a4b05bfe8e3be08c18a08b36d_icgraph">
+<area shape="rect" href="class_n_s_lookup_1_1_provider.html#a2cf802387c57277b50560048f673095d" title="プロバイダが利用可能であるか？" alt="" coords="228,5,407,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a30583dbec39826ebaa7a8cff4acd6215"></a><!-- doxytag: member="NSLookup::Provider::‾Provider" ref="a30583dbec39826ebaa7a8cff4acd6215" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">NSLookup::Provider::‾Provider </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_n_s_lookup_8h_source.html">NSLookup.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:19 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

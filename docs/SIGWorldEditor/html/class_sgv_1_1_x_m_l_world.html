@@ -1,0 +1,780 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGWorldEditor: クラス Sgv::XMLWorld</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_sgv.html">Sgv</a>::<a class="el" href="class_sgv_1_1_x_m_l_world.html">XMLWorld</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Sgv::XMLWorld</h1><!-- doxytag: class="Sgv::XMLWorld" -->XML世界ファイル.  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_sgv_x_m_l_world_8h_source.html">SgvXMLWorld.h</a>&gt;</code>
+<p>
+
+<p>
+<a href="class_sgv_1_1_x_m_l_world-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_world.html#9f6ae1b72db24ec2616bcc5c52ec203a">clear</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">すべてクリアする  <a href="#9f6ae1b72db24ec2616bcc5c52ec203a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_world.html#b17a7fa8858528a0c0b30a10ab112a2d">clearAllModifiedFlag</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">世界内の全エンティティの変更フラグをクリアする  <a href="#b17a7fa8858528a0c0b30a10ab112a2d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_world.html#1cf9e66e298f198a08b3cd4fc9fff47c">composeEntName</a> (const char *className, int entNo)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クラス名、エンティティ番号から、エンティティ名を作る  <a href="#1cf9e66e298f198a08b3cd4fc9fff47c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_sgv_1_1_x_m_l_entity.html">XMLEntity</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_world.html#e4653c6bc959e6ef58e573c660267e6a">createEntity</a> (const char *className)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">新しいXMLEntityを作成して、世界に追加する  <a href="#e4653c6bc959e6ef58e573c660267e6a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_world.html#4f0106a6c47be015a92597794d35c6c9">decomposeEntName</a> (const char *entName, std::string &amp;className, int &amp;entNo)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティ名を分解してクラス名、エンティティ番号を取り出す．  <a href="#4f0106a6c47be015a92597794d35c6c9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_world.html#2245358f7cf4c9e23c7417bdbb429384">deleteEntity</a> (const char *name)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">XMLEntityを削除する.  <a href="#2245358f7cf4c9e23c7417bdbb429384"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_world.html#10d16b4ada8202160f993bc459e84bf6">dump</a> (FILE *fp)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_sgv_1_1_x_m_l_entity.html">XMLEntity</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_world.html#562a9f9eb5683ef823c7a5a9031b856c">getEntity</a> (const char *name)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティ名からXMLEntityを引く  <a href="#562a9f9eb5683ef823c7a5a9031b856c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::vector&lt; std::string &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_world.html#281cf75a5d953d8f6f41cf94f6ef6366">getEntityNames</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">世界内に存在するエンティティ名のリストを返す  <a href="#281cf75a5d953d8f6f41cf94f6ef6366"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_world.html#9dcd8850068d9dc0089a2044166856d7">getNewEntityName</a> (const char *className)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クラス名から新しいエンティティ名を生成する  <a href="#9dcd8850068d9dc0089a2044166856d7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_world.html#71319626da0ba6e3cdc137c438e0cff6">getWorldFileName</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">現在編集中の世界のXMLファイル名を返す 最後にロードまたはセーブしたファイル名となる．  <a href="#71319626da0ba6e3cdc137c438e0cff6"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_world.html#00225b921c4421883527beef89f6f020">getWorldName</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">世界名を返す  <a href="#00225b921c4421883527beef89f6f020"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_world.html#f7c5ae40d2508858364f31dda9938471">isModified</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">世界内に変更されたエンティティがあるかを調べる  <a href="#f7c5ae40d2508858364f31dda9938471"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_world.html#f53f2007d0a49adfafcd69eadcc5ae87">loadFromXML</a> (const char *xmlWorldFileName, std::vector&lt; std::string &gt; &amp;missingClassFiles)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">世界XMLファイルを読み込む  <a href="#f53f2007d0a49adfafcd69eadcc5ae87"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_world.html#5e619944c7b430f620e839b8fd5ac71f">saveToXML</a> (const char *xmlWorldFileName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">世界XMLファイルを書き出す  <a href="#5e619944c7b430f620e839b8fd5ac71f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_world.html#79efc792e448daba3e42b2da656fdc81">setWorldName</a> (const char *worldName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">世界名をセットする  <a href="#79efc792e448daba3e42b2da656fdc81"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_world.html#989446cc5498eb5f4a936f3fafd3bdd2">setXMLEntityClassManager</a> (<a class="el" href="class_sgv_1_1_x_m_l_entity_class_manager.html">XMLEntityClassManager</a> *pEntClassMgr)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティクラスマネージャをセットする  <a href="#989446cc5498eb5f4a936f3fafd3bdd2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_world.html#5c5e307883b8845f1db9e6242807d0a7">updateEntNoMapEntry</a> (const char *entName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティ名を分解してエンティティ番号を取り出し、 クラス名に対応する最大エンティティ番号のマップを更新する．  <a href="#5c5e307883b8845f1db9e6242807d0a7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::vector&lt; std::string &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_world.html#83fd52b70014c685d854628ccf01fa27">updateWithClassDefinition</a> (<a class="el" href="class_sgv_1_1_x_m_l_entity_class_manager.html">XMLEntityClassManager</a> *ecm)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クラス定義を参照して 世界内のすべてのエンティティの内容を更新する  <a href="#83fd52b70014c685d854628ccf01fa27"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_world.html#ebc83675b31ef582bf28df3befb03e25">XMLWorld</a> (const char *worldName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#ebc83675b31ef582bf28df3befb03e25"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x_m_l_world.html#e1abc4b1c3ffd5925529268a54168fa4">XMLWorld</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#e1abc4b1c3ffd5925529268a54168fa4"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+XML世界ファイル. 
+<p> <a class="el" href="_sgv_x_m_l_world_8h_source.html">SgvXMLWorld.h</a> の <a class="el" href="_sgv_x_m_l_world_8h_source.html#l00023">23</a> 行で定義されています。</p>
+<hr><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" name="e1abc4b1c3ffd5925529268a54168fa4"></a><!-- doxytag: member="Sgv::XMLWorld::XMLWorld" ref="e1abc4b1c3ffd5925529268a54168fa4" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::XMLWorld::XMLWorld           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_x_m_l_world_8cpp_source.html">SgvXMLWorld.cpp</a> の <a class="el" href="_sgv_x_m_l_world_8cpp_source.html#l00015">15</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="ebc83675b31ef582bf28df3befb03e25"></a><!-- doxytag: member="Sgv::XMLWorld::XMLWorld" ref="ebc83675b31ef582bf28df3befb03e25" args="(const char *worldName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::XMLWorld::XMLWorld           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>worldName</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>worldName</em>&nbsp;</td><td>[i] 世界名 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_x_m_l_world_8cpp_source.html">SgvXMLWorld.cpp</a> の <a class="el" href="_sgv_x_m_l_world_8cpp_source.html#l00026">26</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>関数</h2>
+<a class="anchor" name="9f6ae1b72db24ec2616bcc5c52ec203a"></a><!-- doxytag: member="Sgv::XMLWorld::clear" ref="9f6ae1b72db24ec2616bcc5c52ec203a" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::XMLWorld::clear           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+すべてクリアする 
+<p>
+
+<p> <a class="el" href="_sgv_x_m_l_world_8cpp_source.html">SgvXMLWorld.cpp</a> の <a class="el" href="_sgv_x_m_l_world_8cpp_source.html#l00052">52</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b17a7fa8858528a0c0b30a10ab112a2d"></a><!-- doxytag: member="Sgv::XMLWorld::clearAllModifiedFlag" ref="b17a7fa8858528a0c0b30a10ab112a2d" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::XMLWorld::clearAllModifiedFlag           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+世界内の全エンティティの変更フラグをクリアする 
+<p>
+
+<p> <a class="el" href="_sgv_x_m_l_world_8cpp_source.html">SgvXMLWorld.cpp</a> の <a class="el" href="_sgv_x_m_l_world_8cpp_source.html#l00232">232</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="1cf9e66e298f198a08b3cd4fc9fff47c"></a><!-- doxytag: member="Sgv::XMLWorld::composeEntName" ref="1cf9e66e298f198a08b3cd4fc9fff47c" args="(const char *className, int entNo)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * Sgv::XMLWorld::composeEntName           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>className</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>entNo</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+クラス名、エンティティ番号から、エンティティ名を作る 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>className</em>&nbsp;</td><td>[i] クラス名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>entNo</em>&nbsp;</td><td>[i] エンティティ番号</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>エンティティ名 </dd></dl>
+
+<p> <a class="el" href="_sgv_x_m_l_world_8cpp_source.html">SgvXMLWorld.cpp</a> の <a class="el" href="_sgv_x_m_l_world_8cpp_source.html#l00469">469</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="e4653c6bc959e6ef58e573c660267e6a"></a><!-- doxytag: member="Sgv::XMLWorld::createEntity" ref="e4653c6bc959e6ef58e573c660267e6a" args="(const char *className)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_sgv_1_1_x_m_l_entity.html">XMLEntity</a> * Sgv::XMLWorld::createEntity           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>className</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+新しいXMLEntityを作成して、世界に追加する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>className</em>&nbsp;</td><td>[i] 生成するクラス名</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>生成されたXMLEntityへのポインタ</dd></dl>
+新しいエンティティの名前はクラス名から自動的に生成され、 XMLEntityのname属性に設定される．<p>
+指定したクラスがXMLEntityClassManagerに存在しない場合はNULLが返る． 
+<p> <a class="el" href="_sgv_x_m_l_world_8cpp_source.html">SgvXMLWorld.cpp</a> の <a class="el" href="_sgv_x_m_l_world_8cpp_source.html#l00276">276</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="4f0106a6c47be015a92597794d35c6c9"></a><!-- doxytag: member="Sgv::XMLWorld::decomposeEntName" ref="4f0106a6c47be015a92597794d35c6c9" args="(const char *entName, std::string &amp;className, int &amp;entNo)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::XMLWorld::decomposeEntName           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>entName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>className</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&nbsp;</td>
+          <td class="paramname"> <em>entNo</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+エンティティ名を分解してクラス名、エンティティ番号を取り出す． 
+<p>
+エンティティ名は「クラス名.エンティティ番号」のフォーマットになっている．<p>
+<div class="fragment"><pre class="fragment"> (ex)
+ <span class="stringliteral">"Kuma.0"</span>   # クラス名<span class="stringliteral">"Kuma"</span>, エンティティ番号=0
+ <span class="stringliteral">"Apple.12"</span> # クラス名<span class="stringliteral">"Apple"</span>, エンティティ番号=12
+</pre></div><p>
+このフォーマットに合わない名前は無効である．<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>entName</em>&nbsp;</td><td>[i] エンティティ名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>className</em>&nbsp;</td><td>[o] クラス名 （エラーのとき""） </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>entNo</em>&nbsp;</td><td>[o] エンティティ番号 (エラーのとき-1）</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗(エンティティ名が無効)) </dd></dl>
+
+<p> <a class="el" href="_sgv_x_m_l_world_8cpp_source.html">SgvXMLWorld.cpp</a> の <a class="el" href="_sgv_x_m_l_world_8cpp_source.html#l00442">442</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="2245358f7cf4c9e23c7417bdbb429384"></a><!-- doxytag: member="Sgv::XMLWorld::deleteEntity" ref="2245358f7cf4c9e23c7417bdbb429384" args="(const char *name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::XMLWorld::deleteEntity           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>name</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+XMLEntityを削除する. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>[i] 削除するエンティティ名 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_x_m_l_world_8cpp_source.html">SgvXMLWorld.cpp</a> の <a class="el" href="_sgv_x_m_l_world_8cpp_source.html#l00297">297</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="10d16b4ada8202160f993bc459e84bf6"></a><!-- doxytag: member="Sgv::XMLWorld::dump" ref="10d16b4ada8202160f993bc459e84bf6" args="(FILE *fp)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::XMLWorld::dump           </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&nbsp;</td>
+          <td class="paramname"> <em>fp</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_sgv_x_m_l_world_8cpp_source.html">SgvXMLWorld.cpp</a> の <a class="el" href="_sgv_x_m_l_world_8cpp_source.html#l00478">478</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="562a9f9eb5683ef823c7a5a9031b856c"></a><!-- doxytag: member="Sgv::XMLWorld::getEntity" ref="562a9f9eb5683ef823c7a5a9031b856c" args="(const char *name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_sgv_1_1_x_m_l_entity.html">XMLEntity</a> * Sgv::XMLWorld::getEntity           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>name</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+エンティティ名からXMLEntityを引く 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>[i] エンティティ名</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>XMLEntityへのポインタ．存在しない場合はNULLが返る</dd></dl>
+（注）返り値のXMLEntityへの所有権はこのオブジェクトが持っている． 呼び出し側は返り値をdeleteしてはいけない． 
+<p> <a class="el" href="_sgv_x_m_l_world_8cpp_source.html">SgvXMLWorld.cpp</a> の <a class="el" href="_sgv_x_m_l_world_8cpp_source.html#l00261">261</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="281cf75a5d953d8f6f41cf94f6ef6366"></a><!-- doxytag: member="Sgv::XMLWorld::getEntityNames" ref="281cf75a5d953d8f6f41cf94f6ef6366" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::string &gt; Sgv::XMLWorld::getEntityNames           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+世界内に存在するエンティティ名のリストを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>エンティティ名のリスト </dd></dl>
+
+<p> <a class="el" href="_sgv_x_m_l_world_8cpp_source.html">SgvXMLWorld.cpp</a> の <a class="el" href="_sgv_x_m_l_world_8cpp_source.html#l00248">248</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="9dcd8850068d9dc0089a2044166856d7"></a><!-- doxytag: member="Sgv::XMLWorld::getNewEntityName" ref="9dcd8850068d9dc0089a2044166856d7" args="(const char *className)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * Sgv::XMLWorld::getNewEntityName           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>className</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+クラス名から新しいエンティティ名を生成する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>className</em>&nbsp;</td><td>[i] クラス名</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>新しいエンティティ名</dd></dl>
+エンティティ名は、クラス名とエンティティ番号から構成される．<p>
+このメソッドで生成された名前をupdateEntNoMapEntry()で登録すると 登録されている最大エンティティ番号が更新され、 次にこのメソッドをコールしたときに生成されるエンティティ名が変わる． （逆にいえば、updateEntNoMapEntry()で最大エンティティ番号を更新しない限り、 このメソッドは何度呼ばれても同じ名前を生成する）<p>
+（例） <div class="fragment"><pre class="fragment"> <span class="keyword">const</span> <span class="keywordtype">char</span> *newName;
+ newName = <a class="code" href="class_sgv_1_1_x_m_l_world.html#9dcd8850068d9dc0089a2044166856d7" title="クラス名から新しいエンティティ名を生成する">getNewEntityName</a>(<span class="stringliteral">"kuma"</span>);    <span class="comment">// newName="kuma.1"</span>
+ <a class="code" href="class_sgv_1_1_x_m_l_world.html#5c5e307883b8845f1db9e6242807d0a7" title="エンティティ名を分解してエンティティ番号を取り出し、 クラス名に対応...">updateEntNoMapEntry</a>(newName);      <span class="comment">// 最大エンティティ番号更新</span>
+ newName = <a class="code" href="class_sgv_1_1_x_m_l_world.html#9dcd8850068d9dc0089a2044166856d7" title="クラス名から新しいエンティティ名を生成する">getNewEntityName</a>(<span class="stringliteral">"kuma"</span>);    <span class="comment">// newName="kuma.2"になる</span>
+</pre></div><p>
+ここで、updateEntNoMapEntry()を呼ばないと const char *newName; newName = getNewEntityName("kuma"); // newName="kuma.1" newName = getNewEntityName("kuma"); // newName="kuma.1"のまま のようになる．<p>
+（注）クラス名がマップに登録されていない場合でも新しい名前を生成する 
+<p> <a class="el" href="_sgv_x_m_l_world_8cpp_source.html">SgvXMLWorld.cpp</a> の <a class="el" href="_sgv_x_m_l_world_8cpp_source.html#l00429">429</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="71319626da0ba6e3cdc137c438e0cff6"></a><!-- doxytag: member="Sgv::XMLWorld::getWorldFileName" ref="71319626da0ba6e3cdc137c438e0cff6" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * Sgv::XMLWorld::getWorldFileName           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+現在編集中の世界のXMLファイル名を返す 最後にロードまたはセーブしたファイル名となる． 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>世界XMLファイル名 </dd></dl>
+
+<p> <a class="el" href="_sgv_x_m_l_world_8cpp_source.html">SgvXMLWorld.cpp</a> の <a class="el" href="_sgv_x_m_l_world_8cpp_source.html#l00212">212</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="00225b921c4421883527beef89f6f020"></a><!-- doxytag: member="Sgv::XMLWorld::getWorldName" ref="00225b921c4421883527beef89f6f020" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * Sgv::XMLWorld::getWorldName           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+世界名を返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>世界名</dd></dl>
+（注）getWorldFileName()とは異なるので注意． <a class="el" href="class_sgv_1_1_x_m_l_world.html#00225b921c4421883527beef89f6f020" title="世界名を返す">getWorldName()</a> .......「世界」に付けられた名前（世界ファイル名とは無関係） <a class="el" href="class_sgv_1_1_x_m_l_world.html#71319626da0ba6e3cdc137c438e0cff6" title="現在編集中の世界のXMLファイル名を返す 最後にロードまたはセーブしたフ...">getWorldFileName()</a> ... 世界ファイルの名前(XMLファイル名) 
+<p> <a class="el" href="_sgv_x_m_l_world_8cpp_source.html">SgvXMLWorld.cpp</a> の <a class="el" href="_sgv_x_m_l_world_8cpp_source.html#l00042">42</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f7c5ae40d2508858364f31dda9938471"></a><!-- doxytag: member="Sgv::XMLWorld::isModified" ref="f7c5ae40d2508858364f31dda9938471" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::XMLWorld::isModified           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+世界内に変更されたエンティティがあるかを調べる 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=変更されたエンティティが少なくとも1つある), false(=変更されたエンティティは1つもない) </dd></dl>
+
+<p> <a class="el" href="_sgv_x_m_l_world_8cpp_source.html">SgvXMLWorld.cpp</a> の <a class="el" href="_sgv_x_m_l_world_8cpp_source.html#l00217">217</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f53f2007d0a49adfafcd69eadcc5ae87"></a><!-- doxytag: member="Sgv::XMLWorld::loadFromXML" ref="f53f2007d0a49adfafcd69eadcc5ae87" args="(const char *xmlWorldFileName, std::vector&lt; std::string &gt; &amp;missingClassFiles)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Sgv::XMLWorld::loadFromXML           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>xmlWorldFileName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::string &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>missingClassFiles</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+世界XMLファイルを読み込む 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>xmlWorldFileName</em>&nbsp;</td><td>[i] 世界XMLファイル名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>missingClassFiles</em>&nbsp;</td><td>[o] 見つからなかったクラスファイル名のリスト</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>0(=成功), -1(=失敗. ファイルの読み込みができなかった) -2(=失敗．世界XMLファイルでない) -3(=失敗．その他のエラー） -4(=警告. クラスファイルが見つからないものがあった）</dd></dl>
+ロードに成功した場合、ファイル名が記録される． （getWorldFileName()で得ることができる）<p>
+返り値が-4の場合、見つからなかったクラスファイル名がmissingClassFilesに返される．<p>
+（注）エンティティクラスマネージャがsetXMLEntityClassManager()により 設定されていないとこのメソッドは失敗する． 
+<p> <a class="el" href="_sgv_x_m_l_world_8cpp_source.html">SgvXMLWorld.cpp</a> の <a class="el" href="_sgv_x_m_l_world_8cpp_source.html#l00070">70</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="5e619944c7b430f620e839b8fd5ac71f"></a><!-- doxytag: member="Sgv::XMLWorld::saveToXML" ref="5e619944c7b430f620e839b8fd5ac71f" args="(const char *xmlWorldFileName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::XMLWorld::saveToXML           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>xmlWorldFileName</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+世界XMLファイルを書き出す 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>xmlWorldFileName</em>&nbsp;</td><td>[i] XMLファイル名</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗)</dd></dl>
+セーブに成功した場合、ファイル名が記録される． 
+<p> <a class="el" href="_sgv_x_m_l_world_8cpp_source.html">SgvXMLWorld.cpp</a> の <a class="el" href="_sgv_x_m_l_world_8cpp_source.html#l00164">164</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="79efc792e448daba3e42b2da656fdc81"></a><!-- doxytag: member="Sgv::XMLWorld::setWorldName" ref="79efc792e448daba3e42b2da656fdc81" args="(const char *worldName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::XMLWorld::setWorldName           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>worldName</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+世界名をセットする 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>worldName</em>&nbsp;</td><td>[i] 世界名 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_x_m_l_world_8cpp_source.html">SgvXMLWorld.cpp</a> の <a class="el" href="_sgv_x_m_l_world_8cpp_source.html#l00037">37</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="989446cc5498eb5f4a936f3fafd3bdd2"></a><!-- doxytag: member="Sgv::XMLWorld::setXMLEntityClassManager" ref="989446cc5498eb5f4a936f3fafd3bdd2" args="(XMLEntityClassManager *pEntClassMgr)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::XMLWorld::setXMLEntityClassManager           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_x_m_l_entity_class_manager.html">XMLEntityClassManager</a> *&nbsp;</td>
+          <td class="paramname"> <em>pEntClassMgr</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+エンティティクラスマネージャをセットする 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>pEntClassMgr</em>&nbsp;</td><td>[i] エンティティクラスマネージャ</td></tr>
+  </table>
+</dl>
+設定されたエンティティクラスマネージャの所有権は このオブジェクトには移らない．（単にポインタを格納するだけ） よって、このオブジェクトを破棄したり、clear()を呼んでも、 エンティティクラスマネージャを保持するポインタをdeleteしたりはしない． 
+<p> <a class="el" href="_sgv_x_m_l_world_8cpp_source.html">SgvXMLWorld.cpp</a> の <a class="el" href="_sgv_x_m_l_world_8cpp_source.html#l00047">47</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="5c5e307883b8845f1db9e6242807d0a7"></a><!-- doxytag: member="Sgv::XMLWorld::updateEntNoMapEntry" ref="5c5e307883b8845f1db9e6242807d0a7" args="(const char *entName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::XMLWorld::updateEntNoMapEntry           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>entName</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+エンティティ名を分解してエンティティ番号を取り出し、 クラス名に対応する最大エンティティ番号のマップを更新する． 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>entName</em>&nbsp;</td><td>[i] エンティティ名 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_x_m_l_world_8cpp_source.html">SgvXMLWorld.cpp</a> の <a class="el" href="_sgv_x_m_l_world_8cpp_source.html#l00410">410</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="83fd52b70014c685d854628ccf01fa27"></a><!-- doxytag: member="Sgv::XMLWorld::updateWithClassDefinition" ref="83fd52b70014c685d854628ccf01fa27" args="(XMLEntityClassManager *ecm)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::string &gt; Sgv::XMLWorld::updateWithClassDefinition           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_x_m_l_entity_class_manager.html">XMLEntityClassManager</a> *&nbsp;</td>
+          <td class="paramname"> <em>ecm</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+クラス定義を参照して 世界内のすべてのエンティティの内容を更新する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>ecm</em>&nbsp;</td><td>[i] エンティティクラスマネージャ</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>クラス定義の修正により、世界から削除されたエンティティ名 </dd></dl>
+
+<p> <a class="el" href="_sgv_x_m_l_world_8cpp_source.html">SgvXMLWorld.cpp</a> の <a class="el" href="_sgv_x_m_l_world_8cpp_source.html#l00316">316</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_sgv_x_m_l_world_8h_source.html">SgvXMLWorld.h</a><li><a class="el" href="_sgv_x_m_l_world_8cpp_source.html">SgvXMLWorld.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGWorldEditorに対してThu Jun 9 10:53:01 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

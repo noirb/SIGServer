@@ -1,0 +1,866 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGViewer: クラス Sgv::VisObjBase</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_sgv.html">Sgv</a>::<a class="el" href="class_sgv_1_1_vis_obj_base.html">VisObjBase</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Sgv::VisObjBase</h1><!-- doxytag: class="Sgv::VisObjBase" -->ビジュアルオブジェクト基本クラス  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_sgv_vis_obj_8h_source.html">SgvVisObj.h</a>&gt;</code>
+<p>
+<div class="dynheader">
+Sgv::VisObjBaseに対する継承グラフ</div>
+<div class="dynsection">
+
+<p><center><img src="class_sgv_1_1_vis_obj_base.png" usemap="#Sgv::VisObjBase_map" border="0" alt=""></center>
+<map name="Sgv::VisObjBase_map">
+<area href="class_sgv_1_1_vis_obj_humanoid.html" alt="Sgv::VisObjHumanoid" shape="rect" coords="0,56,134,80">
+<area href="class_sgv_1_1_vis_obj_static.html" alt="Sgv::VisObjStatic" shape="rect" coords="144,56,278,80">
+</map>
+</div>
+
+<p>
+<a href="class_sgv_1_1_vis_obj_base-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public 型</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_obj_base.html#30e229c8e0f412e6e52002716ee1f31f">VIS_OBJ_TYPE</a> { <a class="el" href="class_sgv_1_1_vis_obj_base.html#30e229c8e0f412e6e52002716ee1f31f595bbc02b2e9cdeb2399a2ad1e0bd5e5">VOT_STATIC</a>, 
+<a class="el" href="class_sgv_1_1_vis_obj_base.html#30e229c8e0f412e6e52002716ee1f31f01142a3dd88abb8c44c4f99366dfd25d">VOT_HUMANOID</a>
+ }</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ビジュアルオブジェクトタイプ識別子  <a href="class_sgv_1_1_vis_obj_base.html#30e229c8e0f412e6e52002716ee1f31f">[詳細]</a><br></td></tr>
+<tr><td colspan="2"><br><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_obj_base.html#098128039dbb22a6578749900d05ec0e">getName</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">名前を得る  <a href="#098128039dbb22a6578749900d05ec0e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual Ogre::Quaternion&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_obj_base.html#bbd113a18be6cfb1bc9c90e8689b1102">getOrientation</a> ()=0</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">向きを得る  <a href="#bbd113a18be6cfb1bc9c90e8689b1102"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual Vector3&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_obj_base.html#94df6b4e935a3415e02f50e367c5ad99">getPosition</a> ()=0</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">位置を得る  <a href="#94df6b4e935a3415e02f50e367c5ad99"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">SimObj *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_obj_base.html#477943a19c8f6ce40915a78ba7d3b275">getSimObj</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">SimObjへのアクセスメソッド.  <a href="#477943a19c8f6ce40915a78ba7d3b275"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual <a class="el" href="class_sgv_1_1_vis_obj_base.html#30e229c8e0f412e6e52002716ee1f31f">VIS_OBJ_TYPE</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_obj_base.html#5ac0609a5b13aa93cf27c2312053a52d">getType</a> ()=0</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">このオブジェクトのタイプを返す  <a href="#5ac0609a5b13aa93cf27c2312053a52d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_obj_base.html#7e67ef70db370036026af7d777f2d636">hasState</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">状態を持つならtrueを返す  <a href="#7e67ef70db370036026af7d777f2d636"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_obj_base.html#eb0ff0592d449206726124c191c4765d">isHumanoid</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">このオブジェクトはヒューマノイドか？  <a href="#eb0ff0592d449206726124c191c4765d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_obj_base.html#95efc1abf0314b0128d8c7bdc447bb67">isShapeVisible</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">通常形状の表示状態を返す  <a href="#95efc1abf0314b0128d8c7bdc447bb67"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_obj_base.html#7cd98c1baa629853d94e77aeea6f59dc">isSimplifiedShapeVisible</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">単純形状の表示状態を返す  <a href="#7cd98c1baa629853d94e77aeea6f59dc"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_obj_base.html#e1a13688c1b2ed06d44e0950eca01d1b">setName</a> (const char *name)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">名前をセットする  <a href="#e1a13688c1b2ed06d44e0950eca01d1b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_obj_base.html#dd8dea012ccf0d107c996787099aca3c">setName</a> (const std::string &amp;name)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">名前をセットする  <a href="#dd8dea012ccf0d107c996787099aca3c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_obj_base.html#3e3f080cff05e12e1359f9c88fb638df">setOrientation</a> (Ogre::Quaternion q)=0</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">向きをセットする  <a href="#3e3f080cff05e12e1359f9c88fb638df"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_obj_base.html#801b832c85fc44dc94cec18f9b10369f">setPosition</a> (Vector3 pos)=0</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">位置をセットする  <a href="#801b832c85fc44dc94cec18f9b10369f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_obj_base.html#89ca9772ecf3d4db7c7ec450639b1b20">setPosition</a> (double x, double y, double z)=0</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">位置をセットする  <a href="#89ca9772ecf3d4db7c7ec450639b1b20"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_obj_base.html#92eb1bfe1d3c2149f2aef5fd4c74d1ce">showShape</a> (bool bShow)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">通常形状の表示状態を切替える  <a href="#92eb1bfe1d3c2149f2aef5fd4c74d1ce"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_obj_base.html#9636f845dc4732dc53cb13892a6a19c1">showSimplifiedShape</a> (bool bShow)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">単純形状の表示状態を切替える  <a href="#9636f845dc4732dc53cb13892a6a19c1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_obj_base.html#c6be4b8875dd9f61ca07cc853eb63be3">updateWithSimObj</a> (SimObj *o)=0</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">このオブジェクトの位置、方向等を引数のSimObjで更新  <a href="#c6be4b8875dd9f61ca07cc853eb63be3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_obj_base.html#50de6518b2e4fd253ff05494ef2eb03a">VisObjBase</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#50de6518b2e4fd253ff05494ef2eb03a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_obj_base.html#43f91494d469c636d9c46831b49f24dc">‾VisObjBase</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#43f91494d469c636d9c46831b49f24dc"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Static Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static CSimplifiedShape *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_obj_base.html#3b6d5301b9cb5b40cc22ac967f4715e2">createSimplifiedShapeFromCParts</a> (CParts *parts)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">CPartsからSimplifiedShapeを作るヘルパーメソッド.  <a href="#3b6d5301b9cb5b40cc22ac967f4715e2"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Protected 変数</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_obj_base.html#b072f5420fadd3fd81ad7d6bbddc5fce">m_bShowShape</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">形状の表示フラグ  <a href="#b072f5420fadd3fd81ad7d6bbddc5fce"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_obj_base.html#6e853168112e4a24d90489ad3b310d4b">m_bShowSimplifiedShape</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">単純形状の表示フラグ  <a href="#6e853168112e4a24d90489ad3b310d4b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_obj_base.html#75302c70fadb6c2210ad09a9339f5d3b">m_hasState</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">状態を持つならtrue  <a href="#75302c70fadb6c2210ad09a9339f5d3b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_obj_base.html#04854bc80fb8150c43e2e2ff255a98fa">m_name</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">名前  <a href="#04854bc80fb8150c43e2e2ff255a98fa"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">SimObj *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_obj_base.html#092102db470a43dc4191a874de73c5a7">m_pSimObj</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">SimObj．所有権はこのオブジェクトが持つ.  <a href="#092102db470a43dc4191a874de73c5a7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_sgv_1_1_vis_obj_base.html#30e229c8e0f412e6e52002716ee1f31f">VIS_OBJ_TYPE</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_vis_obj_base.html#215fcf7262af307162d13ce7b4a07bb9">m_visObjType</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ビジュアルオブジェクトタイプ．  <a href="#215fcf7262af307162d13ce7b4a07bb9"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+ビジュアルオブジェクト基本クラス 
+<p> <a class="el" href="_sgv_vis_obj_8h_source.html">SgvVisObj.h</a> の <a class="el" href="_sgv_vis_obj_8h_source.html#l00023">23</a> 行で定義されています。</p>
+<hr><h2>列挙型</h2>
+<a class="anchor" name="30e229c8e0f412e6e52002716ee1f31f"></a><!-- doxytag: member="Sgv::VisObjBase::VIS_OBJ_TYPE" ref="30e229c8e0f412e6e52002716ee1f31f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_sgv_1_1_vis_obj_base.html#30e229c8e0f412e6e52002716ee1f31f">Sgv::VisObjBase::VIS_OBJ_TYPE</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ビジュアルオブジェクトタイプ識別子 
+<p>
+<dl compact><dt><b>列挙型の値: </b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" name="30e229c8e0f412e6e52002716ee1f31f595bbc02b2e9cdeb2399a2ad1e0bd5e5"></a><!-- doxytag: member="VOT_STATIC" ref="30e229c8e0f412e6e52002716ee1f31f595bbc02b2e9cdeb2399a2ad1e0bd5e5" args="" -->VOT_STATIC</em>&nbsp;</td><td>
+静止物 </td></tr>
+<tr><td valign="top"><em><a class="anchor" name="30e229c8e0f412e6e52002716ee1f31f01142a3dd88abb8c44c4f99366dfd25d"></a><!-- doxytag: member="VOT_HUMANOID" ref="30e229c8e0f412e6e52002716ee1f31f01142a3dd88abb8c44c4f99366dfd25d" args="" -->VOT_HUMANOID</em>&nbsp;</td><td>
+ヒューマノイド </td></tr>
+</table>
+</dl>
+
+<p> <a class="el" href="_sgv_vis_obj_8h_source.html">SgvVisObj.h</a> の <a class="el" href="_sgv_vis_obj_8h_source.html#l00039">39</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" name="50de6518b2e4fd253ff05494ef2eb03a"></a><!-- doxytag: member="Sgv::VisObjBase::VisObjBase" ref="50de6518b2e4fd253ff05494ef2eb03a" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::VisObjBase::VisObjBase           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_vis_obj_8cpp_source.html">SgvVisObj.cpp</a> の <a class="el" href="_sgv_vis_obj_8cpp_source.html#l00032">32</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>関数</h2>
+<a class="anchor" name="3b6d5301b9cb5b40cc22ac967f4715e2"></a><!-- doxytag: member="Sgv::VisObjBase::createSimplifiedShapeFromCParts" ref="3b6d5301b9cb5b40cc22ac967f4715e2" args="(CParts *parts)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CSimplifiedShape * Sgv::VisObjBase::createSimplifiedShapeFromCParts           </td>
+          <td>(</td>
+          <td class="paramtype">CParts *&nbsp;</td>
+          <td class="paramname"> <em>parts</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+CPartsからSimplifiedShapeを作るヘルパーメソッド. 
+<p>
+
+<p> <a class="el" href="_sgv_vis_obj_8cpp_source.html">SgvVisObj.cpp</a> の <a class="el" href="_sgv_vis_obj_8cpp_source.html#l00108">108</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="098128039dbb22a6578749900d05ec0e"></a><!-- doxytag: member="Sgv::VisObjBase::getName" ref="098128039dbb22a6578749900d05ec0e" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * Sgv::VisObjBase::getName           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+名前を得る 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>名前 </dd></dl>
+
+<p> <a class="el" href="_sgv_vis_obj_8cpp_source.html">SgvVisObj.cpp</a> の <a class="el" href="_sgv_vis_obj_8cpp_source.html#l00064">64</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="bbd113a18be6cfb1bc9c90e8689b1102"></a><!-- doxytag: member="Sgv::VisObjBase::getOrientation" ref="bbd113a18be6cfb1bc9c90e8689b1102" args="()=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual Ogre::Quaternion Sgv::VisObjBase::getOrientation           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+向きを得る 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>向きを表すクォータニオン </dd></dl>
+
+<p><a class="el" href="class_sgv_1_1_vis_obj_static.html#6d89a374f32d4a4c6d14f43d6caeab53">Sgv::VisObjStatic</a>, と <a class="el" href="class_sgv_1_1_vis_obj_humanoid.html#8b3f65c5473d2d7a4d6aa1911550bfe1">Sgv::VisObjHumanoid</a>で実装されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="94df6b4e935a3415e02f50e367c5ad99"></a><!-- doxytag: member="Sgv::VisObjBase::getPosition" ref="94df6b4e935a3415e02f50e367c5ad99" args="()=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual Vector3 Sgv::VisObjBase::getPosition           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+位置を得る 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>オブジェクトの位置 </dd></dl>
+
+<p><a class="el" href="class_sgv_1_1_vis_obj_static.html#9c81c171cca9723fcba295a002e89884">Sgv::VisObjStatic</a>, と <a class="el" href="class_sgv_1_1_vis_obj_humanoid.html#657c2c47c3b74093dd45280860a9436e">Sgv::VisObjHumanoid</a>で実装されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="477943a19c8f6ce40915a78ba7d3b275"></a><!-- doxytag: member="Sgv::VisObjBase::getSimObj" ref="477943a19c8f6ce40915a78ba7d3b275" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SimObj* Sgv::VisObjBase::getSimObj           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+SimObjへのアクセスメソッド. 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>シミュレーションオブジェクト</dd></dl>
+返り値の所有権はこのオブジェクトが保持している． 呼び出し側は返り値をdeleteしてはいけない 
+<p> <a class="el" href="_sgv_vis_obj_8h_source.html">SgvVisObj.h</a> の <a class="el" href="_sgv_vis_obj_8h_source.html#l00178">178</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="5ac0609a5b13aa93cf27c2312053a52d"></a><!-- doxytag: member="Sgv::VisObjBase::getType" ref="5ac0609a5b13aa93cf27c2312053a52d" args="()=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="class_sgv_1_1_vis_obj_base.html#30e229c8e0f412e6e52002716ee1f31f">VIS_OBJ_TYPE</a> Sgv::VisObjBase::getType           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+このオブジェクトのタイプを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>VOT_STATIC(=静止物), VOT_HUMANOID(=ヒューマノイド) </dd></dl>
+
+<p><a class="el" href="class_sgv_1_1_vis_obj_static.html#9175f03f7445d73c46f916856d397704">Sgv::VisObjStatic</a>, と <a class="el" href="class_sgv_1_1_vis_obj_humanoid.html#a1052717d5bb27eca392dc9a64468009">Sgv::VisObjHumanoid</a>で実装されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="7e67ef70db370036026af7d777f2d636"></a><!-- doxytag: member="Sgv::VisObjBase::hasState" ref="7e67ef70db370036026af7d777f2d636" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::VisObjBase::hasState           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+状態を持つならtrueを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=状態を持つ), false(=状態を持たない) </dd></dl>
+
+<p> <a class="el" href="_sgv_vis_obj_8h_source.html">SgvVisObj.h</a> の <a class="el" href="_sgv_vis_obj_8h_source.html#l00168">168</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="eb0ff0592d449206726124c191c4765d"></a><!-- doxytag: member="Sgv::VisObjBase::isHumanoid" ref="eb0ff0592d449206726124c191c4765d" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::VisObjBase::isHumanoid           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+このオブジェクトはヒューマノイドか？ 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=ヒューマノイド), false(=静止物) </dd></dl>
+
+<p> <a class="el" href="_sgv_vis_obj_8cpp_source.html">SgvVisObj.cpp</a> の <a class="el" href="_sgv_vis_obj_8cpp_source.html#l00069">69</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="95efc1abf0314b0128d8c7bdc447bb67"></a><!-- doxytag: member="Sgv::VisObjBase::isShapeVisible" ref="95efc1abf0314b0128d8c7bdc447bb67" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::VisObjBase::isShapeVisible           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+通常形状の表示状態を返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=表示されている), false(=表示されていない) </dd></dl>
+
+<p> <a class="el" href="_sgv_vis_obj_8cpp_source.html">SgvVisObj.cpp</a> の <a class="el" href="_sgv_vis_obj_8cpp_source.html#l00096">96</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="7cd98c1baa629853d94e77aeea6f59dc"></a><!-- doxytag: member="Sgv::VisObjBase::isSimplifiedShapeVisible" ref="7cd98c1baa629853d94e77aeea6f59dc" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::VisObjBase::isSimplifiedShapeVisible           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+単純形状の表示状態を返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=表示されている), false(=表示されていない) </dd></dl>
+
+<p> <a class="el" href="_sgv_vis_obj_8cpp_source.html">SgvVisObj.cpp</a> の <a class="el" href="_sgv_vis_obj_8cpp_source.html#l00101">101</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="e1a13688c1b2ed06d44e0950eca01d1b"></a><!-- doxytag: member="Sgv::VisObjBase::setName" ref="e1a13688c1b2ed06d44e0950eca01d1b" args="(const char *name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::VisObjBase::setName           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>name</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+名前をセットする 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>[i] 名前 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_vis_obj_8cpp_source.html">SgvVisObj.cpp</a> の <a class="el" href="_sgv_vis_obj_8cpp_source.html#l00052">52</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="dd8dea012ccf0d107c996787099aca3c"></a><!-- doxytag: member="Sgv::VisObjBase::setName" ref="dd8dea012ccf0d107c996787099aca3c" args="(const std::string &amp;name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::VisObjBase::setName           </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>name</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+名前をセットする 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>[i] 名前 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_vis_obj_8cpp_source.html">SgvVisObj.cpp</a> の <a class="el" href="_sgv_vis_obj_8cpp_source.html#l00047">47</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="3e3f080cff05e12e1359f9c88fb638df"></a><!-- doxytag: member="Sgv::VisObjBase::setOrientation" ref="3e3f080cff05e12e1359f9c88fb638df" args="(Ogre::Quaternion q)=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Sgv::VisObjBase::setOrientation           </td>
+          <td>(</td>
+          <td class="paramtype">Ogre::Quaternion&nbsp;</td>
+          <td class="paramname"> <em>q</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+向きをセットする 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>q</em>&nbsp;</td><td>[i] 回転値（クォータニオン）</td></tr>
+  </table>
+</dl>
+このオブジェクトの向きを指定する 
+<p><a class="el" href="class_sgv_1_1_vis_obj_static.html#faf83020631bf39f8c2d85b42178430f">Sgv::VisObjStatic</a>, と <a class="el" href="class_sgv_1_1_vis_obj_humanoid.html#83ae2e5a7295a1ccbb8ab2472e360fe1">Sgv::VisObjHumanoid</a>で実装されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="801b832c85fc44dc94cec18f9b10369f"></a><!-- doxytag: member="Sgv::VisObjBase::setPosition" ref="801b832c85fc44dc94cec18f9b10369f" args="(Vector3 pos)=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Sgv::VisObjBase::setPosition           </td>
+          <td>(</td>
+          <td class="paramtype">Vector3&nbsp;</td>
+          <td class="paramname"> <em>pos</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+位置をセットする 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>pos</em>&nbsp;</td><td>[i] 位置</td></tr>
+  </table>
+</dl>
+このオブジェクトの位置を指定する 
+<p><a class="el" href="class_sgv_1_1_vis_obj_static.html#999a528356fdaff7ffdbdf808da3f167">Sgv::VisObjStatic</a>, と <a class="el" href="class_sgv_1_1_vis_obj_humanoid.html#2f9f1459458c29ba9705147d5745e0cb">Sgv::VisObjHumanoid</a>で実装されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="89ca9772ecf3d4db7c7ec450639b1b20"></a><!-- doxytag: member="Sgv::VisObjBase::setPosition" ref="89ca9772ecf3d4db7c7ec450639b1b20" args="(double x, double y, double z)=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Sgv::VisObjBase::setPosition           </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>z</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+位置をセットする 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>[i] 位置(x座標値) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>[i] 位置(y座標値) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>z</em>&nbsp;</td><td>[i] 位置(z座標値)</td></tr>
+  </table>
+</dl>
+このオブジェクトの位置を指定する 
+<p><a class="el" href="class_sgv_1_1_vis_obj_static.html#6ed6be102928fa834baf3b46e164ca82">Sgv::VisObjStatic</a>, と <a class="el" href="class_sgv_1_1_vis_obj_humanoid.html#ff4b5a8b09dfc3b6a1ba4a11c27a885f">Sgv::VisObjHumanoid</a>で実装されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="92eb1bfe1d3c2149f2aef5fd4c74d1ce"></a><!-- doxytag: member="Sgv::VisObjBase::showShape" ref="92eb1bfe1d3c2149f2aef5fd4c74d1ce" args="(bool bShow)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::VisObjBase::showShape           </td>
+          <td>(</td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bShow</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+通常形状の表示状態を切替える 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>bShow</em>&nbsp;</td><td>[i] true(=表示する), false(=表示しない) </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_vis_obj_8cpp_source.html">SgvVisObj.cpp</a> の <a class="el" href="_sgv_vis_obj_8cpp_source.html#l00074">74</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="9636f845dc4732dc53cb13892a6a19c1"></a><!-- doxytag: member="Sgv::VisObjBase::showSimplifiedShape" ref="9636f845dc4732dc53cb13892a6a19c1" args="(bool bShow)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::VisObjBase::showSimplifiedShape           </td>
+          <td>(</td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bShow</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+単純形状の表示状態を切替える 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>bShow</em>&nbsp;</td><td>[i] true(=表示する), false(=表示しない) </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_vis_obj_8cpp_source.html">SgvVisObj.cpp</a> の <a class="el" href="_sgv_vis_obj_8cpp_source.html#l00085">85</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="c6be4b8875dd9f61ca07cc853eb63be3"></a><!-- doxytag: member="Sgv::VisObjBase::updateWithSimObj" ref="c6be4b8875dd9f61ca07cc853eb63be3" args="(SimObj *o)=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Sgv::VisObjBase::updateWithSimObj           </td>
+          <td>(</td>
+          <td class="paramtype">SimObj *&nbsp;</td>
+          <td class="paramname"> <em>o</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+このオブジェクトの位置、方向等を引数のSimObjで更新 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>o</em>&nbsp;</td><td>[i] シミュレーションオブジェクト</td></tr>
+  </table>
+</dl>
+oの持つ値はこのオブジェクトにコピーされる （oの所有権は呼び出し側のまま） 
+<p><a class="el" href="class_sgv_1_1_vis_obj_static.html#84e2fae8a08fa623bfdfd9ddce143f32">Sgv::VisObjStatic</a>, と <a class="el" href="class_sgv_1_1_vis_obj_humanoid.html#01c430a672160c312fb06dc225355fc4">Sgv::VisObjHumanoid</a>で実装されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="43f91494d469c636d9c46831b49f24dc"></a><!-- doxytag: member="Sgv::VisObjBase::‾VisObjBase" ref="43f91494d469c636d9c46831b49f24dc" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::VisObjBase::‾VisObjBase           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+デストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_vis_obj_8cpp_source.html">SgvVisObj.cpp</a> の <a class="el" href="_sgv_vis_obj_8cpp_source.html#l00043">43</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>変数</h2>
+<a class="anchor" name="b072f5420fadd3fd81ad7d6bbddc5fce"></a><!-- doxytag: member="Sgv::VisObjBase::m_bShowShape" ref="b072f5420fadd3fd81ad7d6bbddc5fce" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_sgv_1_1_vis_obj_base.html#b072f5420fadd3fd81ad7d6bbddc5fce">Sgv::VisObjBase::m_bShowShape</a><code> [protected]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+形状の表示フラグ 
+<p>
+
+<p> <a class="el" href="_sgv_vis_obj_8h_source.html">SgvVisObj.h</a> の <a class="el" href="_sgv_vis_obj_8h_source.html#l00214">214</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="6e853168112e4a24d90489ad3b310d4b"></a><!-- doxytag: member="Sgv::VisObjBase::m_bShowSimplifiedShape" ref="6e853168112e4a24d90489ad3b310d4b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_sgv_1_1_vis_obj_base.html#6e853168112e4a24d90489ad3b310d4b">Sgv::VisObjBase::m_bShowSimplifiedShape</a><code> [protected]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+単純形状の表示フラグ 
+<p>
+
+<p> <a class="el" href="_sgv_vis_obj_8h_source.html">SgvVisObj.h</a> の <a class="el" href="_sgv_vis_obj_8h_source.html#l00219">219</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="75302c70fadb6c2210ad09a9339f5d3b"></a><!-- doxytag: member="Sgv::VisObjBase::m_hasState" ref="75302c70fadb6c2210ad09a9339f5d3b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_sgv_1_1_vis_obj_base.html#75302c70fadb6c2210ad09a9339f5d3b">Sgv::VisObjBase::m_hasState</a><code> [protected]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+状態を持つならtrue 
+<p>
+
+<p> <a class="el" href="_sgv_vis_obj_8h_source.html">SgvVisObj.h</a> の <a class="el" href="_sgv_vis_obj_8h_source.html#l00202">202</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="04854bc80fb8150c43e2e2ff255a98fa"></a><!-- doxytag: member="Sgv::VisObjBase::m_name" ref="04854bc80fb8150c43e2e2ff255a98fa" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string <a class="el" href="class_sgv_1_1_vis_obj_base.html#04854bc80fb8150c43e2e2ff255a98fa">Sgv::VisObjBase::m_name</a><code> [protected]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+名前 
+<p>
+
+<p> <a class="el" href="_sgv_vis_obj_8h_source.html">SgvVisObj.h</a> の <a class="el" href="_sgv_vis_obj_8h_source.html#l00192">192</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="092102db470a43dc4191a874de73c5a7"></a><!-- doxytag: member="Sgv::VisObjBase::m_pSimObj" ref="092102db470a43dc4191a874de73c5a7" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SimObj* <a class="el" href="class_sgv_1_1_vis_obj_base.html#092102db470a43dc4191a874de73c5a7">Sgv::VisObjBase::m_pSimObj</a><code> [protected]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+SimObj．所有権はこのオブジェクトが持つ. 
+<p>
+
+<p> <a class="el" href="_sgv_vis_obj_8h_source.html">SgvVisObj.h</a> の <a class="el" href="_sgv_vis_obj_8h_source.html#l00197">197</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="215fcf7262af307162d13ce7b4a07bb9"></a><!-- doxytag: member="Sgv::VisObjBase::m_visObjType" ref="215fcf7262af307162d13ce7b4a07bb9" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_sgv_1_1_vis_obj_base.html#30e229c8e0f412e6e52002716ee1f31f">VIS_OBJ_TYPE</a> <a class="el" href="class_sgv_1_1_vis_obj_base.html#215fcf7262af307162d13ce7b4a07bb9">Sgv::VisObjBase::m_visObjType</a><code> [protected]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ビジュアルオブジェクトタイプ． 
+<p>
+静止物(=VOT_STATIC)またはヒューマノイド(=VOT_HUMANOID) 
+<p> <a class="el" href="_sgv_vis_obj_8h_source.html">SgvVisObj.h</a> の <a class="el" href="_sgv_vis_obj_8h_source.html#l00209">209</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_sgv_vis_obj_8h_source.html">SgvVisObj.h</a><li><a class="el" href="_sgv_vis_obj_8cpp_source.html">SgvVisObj.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGViewerに対してThu Jun 9 10:52:15 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

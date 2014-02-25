@@ -1,0 +1,813 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: クラス Vector3d</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Vector3d</h1><!-- doxytag: class="Vector3d" -->
+<p>3次元ベクトルクラス  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_vector3d_8h_source.html">Vector3d.h</a>&gt;</code></p>
+
+<p><a href="class_vector3d-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vector3d.html#ad9bdbe6cad60e1b1ca34cca8e7613abc">angle</a> (const <a class="el" href="class_vector3d.html">Vector3d</a> &amp;axis)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vector3d.html#a82081940072a072160ae905751d444e3">length</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ベクトルの長さ取得する  <a href="#a82081940072a072160ae905751d444e3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vector3d.html#a3b031247cf3fba0d1370359702e97bd8">normalize</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ベクトルを規格化する(長さを1にする)  <a href="#a3b031247cf3fba0d1370359702e97bd8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_vector3d.html">Vector3d</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vector3d.html#aec414bd9779530b1a65270350aafb40d">operator*=</a> (double v)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">*=演算子(各要素に指定の値を掛ける)  <a href="#aec414bd9779530b1a65270350aafb40d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_vector3d.html">Vector3d</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vector3d.html#aa881a3038cacd1ba5321eb45a45c8c80">operator+=</a> (const <a class="el" href="class_position.html">Position</a> &amp;o)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">+=演算子(shiftと等価)  <a href="#aa881a3038cacd1ba5321eb45a45c8c80"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_vector3d.html">Vector3d</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vector3d.html#ae265cb9e90f0ddc3474bbffff895b8c2">operator+=</a> (const <a class="el" href="class_vector3d.html">Vector3d</a> &amp;o)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">+=演算子(shiftと等価)  <a href="#ae265cb9e90f0ddc3474bbffff895b8c2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_vector3d.html">Vector3d</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vector3d.html#a3ee73e796d85fed0a9d5d5063ba5566c">operator-=</a> (const <a class="el" href="class_position.html">Position</a> &amp;o)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">-=演算子(shiftと等価)  <a href="#a3ee73e796d85fed0a9d5d5063ba5566c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_vector3d.html">Vector3d</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vector3d.html#aac3487719c258a9dc82c63c54582e009">operator-=</a> (const <a class="el" href="class_vector3d.html">Vector3d</a> &amp;o)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">-=演算子(shiftと等価)  <a href="#aac3487719c258a9dc82c63c54582e009"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_vector3d.html">Vector3d</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vector3d.html#ace78202b846fac81c6a496b8faeb905b">operator/=</a> (double v)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">/=演算子(各要素を指定の値で割る)  <a href="#ace78202b846fac81c6a496b8faeb905b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_vector3d.html">Vector3d</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vector3d.html#acf4caff93dbc854e34063ba5a239bed0">rotate</a> (const <a class="el" href="class_rotation.html">Rotation</a> &amp;r)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ベクトルを回転する  <a href="#acf4caff93dbc854e34063ba5a239bed0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vector3d.html#a48b289797e79e11e7dac828f1900321a">set</a> (double x_, double y_, double z_)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">各要素を設定する  <a href="#a48b289797e79e11e7dac828f1900321a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vector3d.html#aff387e8541983c00e48fd49a15e6aaec">shift</a> (double x_, double y_, double z_)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ベクトルを平行移動させる  <a href="#aff387e8541983c00e48fd49a15e6aaec"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vector3d.html#a3a8fc529dcae7c73e3e10df694bd390e">shift</a> (const <a class="el" href="class_vector3d.html">Vector3d</a> &amp;v)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ベクトルを平行移動させる  <a href="#a3a8fc529dcae7c73e3e10df694bd390e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vector3d.html#ab682fcf60b709d723f50598162a5e245">Vector3d</a> (const <a class="el" href="class_vector3d.html">Vector3d</a> &amp;o)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コピーコンストラクタ  <a href="#ab682fcf60b709d723f50598162a5e245"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vector3d.html#ac22cd82cd075d2b855048e0ad58a4256">Vector3d</a> (double x_, double y_, double z_)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コピーコンストラクタ  <a href="#ac22cd82cd075d2b855048e0ad58a4256"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vector3d.html#aac098d8695c4288e4844835e62945244">Vector3d</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#aac098d8695c4288e4844835e62945244"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vector3d.html#ab6586c96111982d02c099e9f3ad43192">x</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">X軸要素を取得する.  <a href="#ab6586c96111982d02c099e9f3ad43192"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vector3d.html#a4e77e669055f31f2b244b1ee37ffa36f">x</a> (double v)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">X軸要素を設定する.  <a href="#a4e77e669055f31f2b244b1ee37ffa36f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vector3d.html#ac8eb4baf468d77d74f500e6ef03ce35f">y</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Y軸要素を取得する.  <a href="#ac8eb4baf468d77d74f500e6ef03ce35f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vector3d.html#aa543c5f9ab89744357a80dd1ab6031cb">y</a> (double v)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Y軸要素を設定する.  <a href="#aa543c5f9ab89744357a80dd1ab6031cb"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vector3d.html#ac18348d2f3b81c974e9762cbc72aca2d">z</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Z軸要素を取得する.  <a href="#ac18348d2f3b81c974e9762cbc72aca2d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vector3d.html#ac95aee85033af052d24e15975faeea7d">z</a> (double v)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Z軸要素を設定する.  <a href="#ac95aee85033af052d24e15975faeea7d"></a><br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>3次元ベクトルクラス </p>
+
+<p> <a class="el" href="_vector3d_8h_source.html">Vector3d.h</a> の <a class="el" href="_vector3d_8h_source.html#l00013">13</a> 行で定義されています。</p>
+<hr/><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" id="aac098d8695c4288e4844835e62945244"></a><!-- doxytag: member="Vector3d::Vector3d" ref="aac098d8695c4288e4844835e62945244" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector3d::Vector3d </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コンストラクタ </p>
+
+<p> <a class="el" href="_vector3d_8h_source.html">Vector3d.h</a> の <a class="el" href="_vector3d_8h_source.html#l00019">19</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ac22cd82cd075d2b855048e0ad58a4256"></a><!-- doxytag: member="Vector3d::Vector3d" ref="ac22cd82cd075d2b855048e0ad58a4256" args="(double x_, double y_, double z_)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector3d::Vector3d </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>x_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>y_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>z_</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コピーコンストラクタ </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>x_</em>&nbsp;</td><td>X軸要素 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y_</em>&nbsp;</td><td>Y軸要素 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>z_</em>&nbsp;</td><td>Z軸要素 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_vector3d_8h_source.html">Vector3d.h</a> の <a class="el" href="_vector3d_8h_source.html#l00026">26</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ab682fcf60b709d723f50598162a5e245"></a><!-- doxytag: member="Vector3d::Vector3d" ref="ab682fcf60b709d723f50598162a5e245" args="(const Vector3d &amp;o)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector3d::Vector3d </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_vector3d.html">Vector3d</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>o</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コピーコンストラクタ </p>
+
+<p> <a class="el" href="_vector3d_8h_source.html">Vector3d.h</a> の <a class="el" href="_vector3d_8h_source.html#l00028">28</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>関数</h2>
+<a class="anchor" id="ad9bdbe6cad60e1b1ca34cca8e7613abc"></a><!-- doxytag: member="Vector3d::angle" ref="ad9bdbe6cad60e1b1ca34cca8e7613abc" args="(const Vector3d &amp;axis)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Vector3d::angle </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_vector3d.html">Vector3d</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>axis</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>与えられたベクトルと成す角を得る </p>
+<dl class="return"><dt><b>戻り値:</b></dt><dd>cosθ(-1〜1の範囲) </dd></dl>
+
+<p> <a class="el" href="_vector3d_8h_source.html">Vector3d.h</a> の <a class="el" href="_vector3d_8h_source.html#l00126">126</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_vector3d_ad9bdbe6cad60e1b1ca34cca8e7613abc_cgraph.png" border="0" usemap="#class_vector3d_ad9bdbe6cad60e1b1ca34cca8e7613abc_cgraph_map" alt=""></div>
+<map name="class_vector3d_ad9bdbe6cad60e1b1ca34cca8e7613abc_cgraph_map" id="class_vector3d_ad9bdbe6cad60e1b1ca34cca8e7613abc_cgraph">
+<area shape="rect" href="class_vector3d.html#a82081940072a072160ae905751d444e3" title="ベクトルの長さ取得する" alt="" coords="167,5,281,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a82081940072a072160ae905751d444e3"></a><!-- doxytag: member="Vector3d::length" ref="a82081940072a072160ae905751d444e3" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Vector3d::length </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ベクトルの長さ取得する </p>
+
+<p> <a class="el" href="_vector3d_8h_source.html">Vector3d.h</a> の <a class="el" href="_vector3d_8h_source.html#l00120">120</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+呼出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_vector3d_a82081940072a072160ae905751d444e3_icgraph.png" border="0" usemap="#class_vector3d_a82081940072a072160ae905751d444e3_icgraph_map" alt=""></div>
+<map name="class_vector3d_a82081940072a072160ae905751d444e3_icgraph_map" id="class_vector3d_a82081940072a072160ae905751d444e3_icgraph">
+<area shape="rect" href="class_vector3d.html#ad9bdbe6cad60e1b1ca34cca8e7613abc" title="Vector3d::angle" alt="" coords="183,5,295,35"/><area shape="rect" href="class_vector3d.html#a3b031247cf3fba0d1370359702e97bd8" title="ベクトルを規格化する(長さを1にする)" alt="" coords="171,59,307,88"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a3b031247cf3fba0d1370359702e97bd8"></a><!-- doxytag: member="Vector3d::normalize" ref="a3b031247cf3fba0d1370359702e97bd8" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Vector3d::normalize </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ベクトルを規格化する(長さを1にする) </p>
+
+<p> <a class="el" href="_vector3d_8h_source.html">Vector3d.h</a> の <a class="el" href="_vector3d_8h_source.html#l00135">135</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_vector3d_a3b031247cf3fba0d1370359702e97bd8_cgraph.png" border="0" usemap="#class_vector3d_a3b031247cf3fba0d1370359702e97bd8_cgraph_map" alt=""></div>
+<map name="class_vector3d_a3b031247cf3fba0d1370359702e97bd8_cgraph_map" id="class_vector3d_a3b031247cf3fba0d1370359702e97bd8_cgraph">
+<area shape="rect" href="class_vector3d.html#a82081940072a072160ae905751d444e3" title="ベクトルの長さ取得する" alt="" coords="191,5,305,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aec414bd9779530b1a65270350aafb40d"></a><!-- doxytag: member="Vector3d::operator*=" ref="aec414bd9779530b1a65270350aafb40d" args="(double v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_vector3d.html">Vector3d</a>&amp; Vector3d::operator*= </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>v</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>*=演算子(各要素に指定の値を掛ける) </p>
+
+<p> <a class="el" href="_vector3d_8h_source.html">Vector3d.h</a> の <a class="el" href="_vector3d_8h_source.html#l00102">102</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="aa881a3038cacd1ba5321eb45a45c8c80"></a><!-- doxytag: member="Vector3d::operator+=" ref="aa881a3038cacd1ba5321eb45a45c8c80" args="(const Position &amp;o)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_vector3d.html">Vector3d</a>&amp; Vector3d::operator+= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_position.html">Position</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>o</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>+=演算子(shiftと等価) </p>
+
+<p> <a class="el" href="_vector3d_8h_source.html">Vector3d.h</a> の <a class="el" href="_vector3d_8h_source.html#l00084">84</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_vector3d_aa881a3038cacd1ba5321eb45a45c8c80_cgraph.png" border="0" usemap="#class_vector3d_aa881a3038cacd1ba5321eb45a45c8c80_cgraph_map" alt=""></div>
+<map name="class_vector3d_aa881a3038cacd1ba5321eb45a45c8c80_cgraph_map" id="class_vector3d_aa881a3038cacd1ba5321eb45a45c8c80_cgraph">
+<area shape="rect" href="class_position.html#aa97410c769815bc60c9412f387b555d1" title="X座標値を取得する." alt="" coords="197,5,280,35"/><area shape="rect" href="class_position.html#a5f7b9c53b81affdcf502f5059a6dc50a" title="Y座標値を取得する." alt="" coords="197,59,280,88"/><area shape="rect" href="class_position.html#a63f0cb5a9c08ef8af982cc18aa161395" title="Z座標値を取得する." alt="" coords="197,112,280,141"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ae265cb9e90f0ddc3474bbffff895b8c2"></a><!-- doxytag: member="Vector3d::operator+=" ref="ae265cb9e90f0ddc3474bbffff895b8c2" args="(const Vector3d &amp;o)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_vector3d.html">Vector3d</a>&amp; Vector3d::operator+= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_vector3d.html">Vector3d</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>o</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>+=演算子(shiftと等価) </p>
+
+<p> <a class="el" href="_vector3d_8h_source.html">Vector3d.h</a> の <a class="el" href="_vector3d_8h_source.html#l00067">67</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_vector3d_ae265cb9e90f0ddc3474bbffff895b8c2_cgraph.png" border="0" usemap="#class_vector3d_ae265cb9e90f0ddc3474bbffff895b8c2_cgraph_map" alt=""></div>
+<map name="class_vector3d_ae265cb9e90f0ddc3474bbffff895b8c2_cgraph_map" id="class_vector3d_ae265cb9e90f0ddc3474bbffff895b8c2_cgraph">
+<area shape="rect" href="class_vector3d.html#a4e77e669055f31f2b244b1ee37ffa36f" title="X軸要素を設定する." alt="" coords="197,5,285,35"/><area shape="rect" href="class_vector3d.html#aa543c5f9ab89744357a80dd1ab6031cb" title="Y軸要素を設定する." alt="" coords="197,59,285,88"/><area shape="rect" href="class_vector3d.html#ac95aee85033af052d24e15975faeea7d" title="Z軸要素を設定する." alt="" coords="197,112,285,141"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a3ee73e796d85fed0a9d5d5063ba5566c"></a><!-- doxytag: member="Vector3d::operator&#45;=" ref="a3ee73e796d85fed0a9d5d5063ba5566c" args="(const Position &amp;o)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_vector3d.html">Vector3d</a>&amp; Vector3d::operator-= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_position.html">Position</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>o</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>-=演算子(shiftと等価) </p>
+
+<p> <a class="el" href="_vector3d_8h_source.html">Vector3d.h</a> の <a class="el" href="_vector3d_8h_source.html#l00093">93</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_vector3d_a3ee73e796d85fed0a9d5d5063ba5566c_cgraph.png" border="0" usemap="#class_vector3d_a3ee73e796d85fed0a9d5d5063ba5566c_cgraph_map" alt=""></div>
+<map name="class_vector3d_a3ee73e796d85fed0a9d5d5063ba5566c_cgraph_map" id="class_vector3d_a3ee73e796d85fed0a9d5d5063ba5566c_cgraph">
+<area shape="rect" href="class_position.html#aa97410c769815bc60c9412f387b555d1" title="X座標値を取得する." alt="" coords="195,5,277,35"/><area shape="rect" href="class_position.html#a5f7b9c53b81affdcf502f5059a6dc50a" title="Y座標値を取得する." alt="" coords="195,59,277,88"/><area shape="rect" href="class_position.html#a63f0cb5a9c08ef8af982cc18aa161395" title="Z座標値を取得する." alt="" coords="195,112,277,141"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aac3487719c258a9dc82c63c54582e009"></a><!-- doxytag: member="Vector3d::operator&#45;=" ref="aac3487719c258a9dc82c63c54582e009" args="(const Vector3d &amp;o)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_vector3d.html">Vector3d</a>&amp; Vector3d::operator-= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_vector3d.html">Vector3d</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>o</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>-=演算子(shiftと等価) </p>
+
+<p> <a class="el" href="_vector3d_8h_source.html">Vector3d.h</a> の <a class="el" href="_vector3d_8h_source.html#l00076">76</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_vector3d_aac3487719c258a9dc82c63c54582e009_cgraph.png" border="0" usemap="#class_vector3d_aac3487719c258a9dc82c63c54582e009_cgraph_map" alt=""></div>
+<map name="class_vector3d_aac3487719c258a9dc82c63c54582e009_cgraph_map" id="class_vector3d_aac3487719c258a9dc82c63c54582e009_cgraph">
+<area shape="rect" href="class_vector3d.html#a4e77e669055f31f2b244b1ee37ffa36f" title="X軸要素を設定する." alt="" coords="195,5,283,35"/><area shape="rect" href="class_vector3d.html#aa543c5f9ab89744357a80dd1ab6031cb" title="Y軸要素を設定する." alt="" coords="195,59,283,88"/><area shape="rect" href="class_vector3d.html#ac95aee85033af052d24e15975faeea7d" title="Z軸要素を設定する." alt="" coords="195,112,283,141"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ace78202b846fac81c6a496b8faeb905b"></a><!-- doxytag: member="Vector3d::operator/=" ref="ace78202b846fac81c6a496b8faeb905b" args="(double v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_vector3d.html">Vector3d</a>&amp; Vector3d::operator/= </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>v</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>/=演算子(各要素を指定の値で割る) </p>
+
+<p> <a class="el" href="_vector3d_8h_source.html">Vector3d.h</a> の <a class="el" href="_vector3d_8h_source.html#l00111">111</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="acf4caff93dbc854e34063ba5a239bed0"></a><!-- doxytag: member="Vector3d::rotate" ref="acf4caff93dbc854e34063ba5a239bed0" args="(const Rotation &amp;r)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_vector3d.html">Vector3d</a>&amp; Vector3d::rotate </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_rotation.html">Rotation</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>r</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ベクトルを回転する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>r</em>&nbsp;</td><td>回転行列 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>戻り値:</b></dt><dd>回転後のベクトル </dd></dl>
+
+<p><div class="dynheader">
+呼出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_vector3d_acf4caff93dbc854e34063ba5a239bed0_icgraph.png" border="0" usemap="#class_vector3d_acf4caff93dbc854e34063ba5a239bed0_icgraph_map" alt=""></div>
+<map name="class_vector3d_acf4caff93dbc854e34063ba5a239bed0_icgraph_map" id="class_vector3d_acf4caff93dbc854e34063ba5a239bed0_icgraph">
+<area shape="rect" href="class_transform.html#ad3b9b6ec80308373f03998d255be7131" title="ベクトルに対して、遷移・回転を作用させる" alt="" coords="169,5,287,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a48b289797e79e11e7dac828f1900321a"></a><!-- doxytag: member="Vector3d::set" ref="a48b289797e79e11e7dac828f1900321a" args="(double x_, double y_, double z_)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Vector3d::set </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>x_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>y_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>z_</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>各要素を設定する </p>
+
+<p> <a class="el" href="_vector3d_8h_source.html">Vector3d.h</a> の <a class="el" href="_vector3d_8h_source.html#l00031">31</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+呼出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_vector3d_a48b289797e79e11e7dac828f1900321a_icgraph.png" border="0" usemap="#class_vector3d_a48b289797e79e11e7dac828f1900321a_icgraph_map" alt=""></div>
+<map name="class_vector3d_a48b289797e79e11e7dac828f1900321a_icgraph_map" id="class_vector3d_a48b289797e79e11e7dac828f1900321a_icgraph">
+<area shape="rect" href="class_sim_obj_base.html#a91b5054d5d1dfef47a2e08e2b44508f0" title="エンティティの位置を取得する" alt="" coords="153,5,319,35"/><area shape="rect" href="class_joint.html#aa76db2b0fb7668ea7db129768b9c04f2" title="関節アンカー位置を設定する" alt="" coords="179,59,293,88"/><area shape="rect" href="class_hinge_joint.html#ad1a22dbdbd7d0b2ea6accacc6710c66b" title="回転軸の設定" alt="" coords="169,112,303,141"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aff387e8541983c00e48fd49a15e6aaec"></a><!-- doxytag: member="Vector3d::shift" ref="aff387e8541983c00e48fd49a15e6aaec" args="(double x_, double y_, double z_)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Vector3d::shift </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>x_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>y_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>z_</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ベクトルを平行移動させる </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>x_</em>&nbsp;</td><td>並進ベクトルX軸要素 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y_</em>&nbsp;</td><td>並進ベクトルY軸要素 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>z_</em>&nbsp;</td><td>並進ベクトルZ軸要素 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_vector3d_8h_source.html">Vector3d.h</a> の <a class="el" href="_vector3d_8h_source.html#l00051">51</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a3a8fc529dcae7c73e3e10df694bd390e"></a><!-- doxytag: member="Vector3d::shift" ref="a3a8fc529dcae7c73e3e10df694bd390e" args="(const Vector3d &amp;v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Vector3d::shift </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_vector3d.html">Vector3d</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>v</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ベクトルを平行移動させる </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>v</em>&nbsp;</td><td>並進ベクトル </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_vector3d_8h_source.html">Vector3d.h</a> の <a class="el" href="_vector3d_8h_source.html#l00040">40</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_vector3d_a3a8fc529dcae7c73e3e10df694bd390e_cgraph.png" border="0" usemap="#class_vector3d_a3a8fc529dcae7c73e3e10df694bd390e_cgraph_map" alt=""></div>
+<map name="class_vector3d_a3a8fc529dcae7c73e3e10df694bd390e_cgraph_map" id="class_vector3d_a3a8fc529dcae7c73e3e10df694bd390e_cgraph">
+<area shape="rect" href="class_vector3d.html#a4e77e669055f31f2b244b1ee37ffa36f" title="X軸要素を設定する." alt="" coords="160,5,248,35"/><area shape="rect" href="class_vector3d.html#aa543c5f9ab89744357a80dd1ab6031cb" title="Y軸要素を設定する." alt="" coords="160,59,248,88"/><area shape="rect" href="class_vector3d.html#ac95aee85033af052d24e15975faeea7d" title="Z軸要素を設定する." alt="" coords="160,112,248,141"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+呼出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_vector3d_a3a8fc529dcae7c73e3e10df694bd390e_icgraph.png" border="0" usemap="#class_vector3d_a3a8fc529dcae7c73e3e10df694bd390e_icgraph_map" alt=""></div>
+<map name="class_vector3d_a3a8fc529dcae7c73e3e10df694bd390e_icgraph_map" id="class_vector3d_a3a8fc529dcae7c73e3e10df694bd390e_icgraph">
+<area shape="rect" href="class_transform.html#af10b0309e66b995b3d6a9d1f2d484df4" title="指定したベクトル分だけシフトする" alt="" coords="161,5,276,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ab6586c96111982d02c099e9f3ad43192"></a><!-- doxytag: member="Vector3d::x" ref="ab6586c96111982d02c099e9f3ad43192" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Vector3d::x </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>X軸要素を取得する. </p>
+
+<p> <a class="el" href="_vector3d_8h_source.html">Vector3d.h</a> の <a class="el" href="_vector3d_8h_source.html#l00062">62</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a4e77e669055f31f2b244b1ee37ffa36f"></a><!-- doxytag: member="Vector3d::x" ref="a4e77e669055f31f2b244b1ee37ffa36f" args="(double v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Vector3d::x </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>v</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>X軸要素を設定する. </p>
+
+<p> <a class="el" href="_vector3d_8h_source.html">Vector3d.h</a> の <a class="el" href="_vector3d_8h_source.html#l00057">57</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+呼出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_vector3d_a4e77e669055f31f2b244b1ee37ffa36f_icgraph.png" border="0" usemap="#class_vector3d_a4e77e669055f31f2b244b1ee37ffa36f_icgraph_map" alt=""></div>
+<map name="class_vector3d_a4e77e669055f31f2b244b1ee37ffa36f_icgraph_map" id="class_vector3d_a4e77e669055f31f2b244b1ee37ffa36f_icgraph">
+<area shape="rect" href="class_rotation.html#a6b4b464b6508ceb5cb5598c1ea7715d5" title="指定の行に右からベクトルを掛けたときの値を算出する" alt="" coords="171,5,277,35"/><area shape="rect" href="class_hinge_joint.html#a58b2830d5876b349ee1e1e8bddfc469c" title="回転軸を取得します" alt="" coords="152,59,296,88"/><area shape="rect" href="class_vector3d.html#ae265cb9e90f0ddc3474bbffff895b8c2" title="+=演算子(shiftと等価)" alt="" coords="152,112,296,141"/><area shape="rect" href="class_vector3d.html#aac3487719c258a9dc82c63c54582e009" title="&#45;=演算子(shiftと等価)" alt="" coords="155,165,293,195"/><area shape="rect" href="class_s_parts.html#ac7528e3323fa0903b06ac0cef1ca845f" title="パーツの位置(エージェント座標系)を設定する" alt="" coords="143,219,305,248"/><area shape="rect" href="class_vector3d.html#a3a8fc529dcae7c73e3e10df694bd390e" title="ベクトルを平行移動させる" alt="" coords="172,272,276,301"/><area shape="rect" href="class_rotation.html#a75025c2e0456531e30e8fc736f44165b" title="右からベクトルを掛けたときのベクトルを算出する" alt="" coords="360,5,467,35"/><area shape="rect" href="class_transform.html#af10b0309e66b995b3d6a9d1f2d484df4" title="指定したベクトル分だけシフトする" alt="" coords="356,272,471,301"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ac8eb4baf468d77d74f500e6ef03ce35f"></a><!-- doxytag: member="Vector3d::y" ref="ac8eb4baf468d77d74f500e6ef03ce35f" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Vector3d::y </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Y軸要素を取得する. </p>
+
+<p> <a class="el" href="_vector3d_8h_source.html">Vector3d.h</a> の <a class="el" href="_vector3d_8h_source.html#l00063">63</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="aa543c5f9ab89744357a80dd1ab6031cb"></a><!-- doxytag: member="Vector3d::y" ref="aa543c5f9ab89744357a80dd1ab6031cb" args="(double v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Vector3d::y </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>v</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Y軸要素を設定する. </p>
+
+<p> <a class="el" href="_vector3d_8h_source.html">Vector3d.h</a> の <a class="el" href="_vector3d_8h_source.html#l00058">58</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+呼出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_vector3d_aa543c5f9ab89744357a80dd1ab6031cb_icgraph.png" border="0" usemap="#class_vector3d_aa543c5f9ab89744357a80dd1ab6031cb_icgraph_map" alt=""></div>
+<map name="class_vector3d_aa543c5f9ab89744357a80dd1ab6031cb_icgraph_map" id="class_vector3d_aa543c5f9ab89744357a80dd1ab6031cb_icgraph">
+<area shape="rect" href="class_rotation.html#a6b4b464b6508ceb5cb5598c1ea7715d5" title="指定の行に右からベクトルを掛けたときの値を算出する" alt="" coords="171,5,277,35"/><area shape="rect" href="class_hinge_joint.html#ab4d30b367b9c21ccf5c2f44733801d7e" title="HingeJoint::getAxisY" alt="" coords="152,59,296,88"/><area shape="rect" href="class_vector3d.html#ae265cb9e90f0ddc3474bbffff895b8c2" title="+=演算子(shiftと等価)" alt="" coords="152,112,296,141"/><area shape="rect" href="class_vector3d.html#aac3487719c258a9dc82c63c54582e009" title="&#45;=演算子(shiftと等価)" alt="" coords="155,165,293,195"/><area shape="rect" href="class_s_parts.html#ac7528e3323fa0903b06ac0cef1ca845f" title="パーツの位置(エージェント座標系)を設定する" alt="" coords="143,219,305,248"/><area shape="rect" href="class_vector3d.html#a3a8fc529dcae7c73e3e10df694bd390e" title="ベクトルを平行移動させる" alt="" coords="172,272,276,301"/><area shape="rect" href="class_rotation.html#a75025c2e0456531e30e8fc736f44165b" title="右からベクトルを掛けたときのベクトルを算出する" alt="" coords="360,5,467,35"/><area shape="rect" href="class_transform.html#af10b0309e66b995b3d6a9d1f2d484df4" title="指定したベクトル分だけシフトする" alt="" coords="356,272,471,301"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ac18348d2f3b81c974e9762cbc72aca2d"></a><!-- doxytag: member="Vector3d::z" ref="ac18348d2f3b81c974e9762cbc72aca2d" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Vector3d::z </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Z軸要素を取得する. </p>
+
+<p> <a class="el" href="_vector3d_8h_source.html">Vector3d.h</a> の <a class="el" href="_vector3d_8h_source.html#l00064">64</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ac95aee85033af052d24e15975faeea7d"></a><!-- doxytag: member="Vector3d::z" ref="ac95aee85033af052d24e15975faeea7d" args="(double v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Vector3d::z </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>v</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Z軸要素を設定する. </p>
+
+<p> <a class="el" href="_vector3d_8h_source.html">Vector3d.h</a> の <a class="el" href="_vector3d_8h_source.html#l00059">59</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+呼出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_vector3d_ac95aee85033af052d24e15975faeea7d_icgraph.png" border="0" usemap="#class_vector3d_ac95aee85033af052d24e15975faeea7d_icgraph_map" alt=""></div>
+<map name="class_vector3d_ac95aee85033af052d24e15975faeea7d_icgraph_map" id="class_vector3d_ac95aee85033af052d24e15975faeea7d_icgraph">
+<area shape="rect" href="class_rotation.html#a6b4b464b6508ceb5cb5598c1ea7715d5" title="指定の行に右からベクトルを掛けたときの値を算出する" alt="" coords="171,5,277,35"/><area shape="rect" href="class_hinge_joint.html#a57ff59e9cda1a280463add59401c6cad" title="HingeJoint::getAxisZ" alt="" coords="153,59,295,88"/><area shape="rect" href="class_vector3d.html#ae265cb9e90f0ddc3474bbffff895b8c2" title="+=演算子(shiftと等価)" alt="" coords="152,112,296,141"/><area shape="rect" href="class_vector3d.html#aac3487719c258a9dc82c63c54582e009" title="&#45;=演算子(shiftと等価)" alt="" coords="155,165,293,195"/><area shape="rect" href="class_s_parts.html#ac7528e3323fa0903b06ac0cef1ca845f" title="パーツの位置(エージェント座標系)を設定する" alt="" coords="143,219,305,248"/><area shape="rect" href="class_vector3d.html#a3a8fc529dcae7c73e3e10df694bd390e" title="ベクトルを平行移動させる" alt="" coords="172,272,276,301"/><area shape="rect" href="class_rotation.html#a75025c2e0456531e30e8fc736f44165b" title="右からベクトルを掛けたときのベクトルを算出する" alt="" coords="360,5,467,35"/><area shape="rect" href="class_transform.html#af10b0309e66b995b3d6a9d1f2d484df4" title="指定したベクトル分だけシフトする" alt="" coords="356,272,471,301"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_vector3d_8h_source.html">Vector3d.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:22 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

@@ -1,0 +1,376 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGWorldEditor: クラス Wgu::EditBox</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_wgu.html">Wgu</a>::<a class="el" href="class_wgu_1_1_edit_box.html">EditBox</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Wgu::EditBox</h1><!-- doxytag: class="Wgu::EditBox" -->Win32 APIの簡易ラッパークラス（エディットコントロール）.  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_wgu_edit_box_8h_source.html">WguEditBox.h</a>&gt;</code>
+<p>
+
+<p>
+<a href="class_wgu_1_1_edit_box-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Static Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_edit_box.html#d46e4ecac38af344ea7caa55f4877272">addText</a> (HWND hwnd, const char *format,...)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エディットコントロールの末尾に文字列を追加する  <a href="#d46e4ecac38af344ea7caa55f4877272"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_edit_box.html#14880b0ebab09d1c2fd1284a821b830e">clear</a> (HWND hwnd)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エディットコントロールをクリアする  <a href="#14880b0ebab09d1c2fd1284a821b830e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_edit_box.html#ebda8073849d4a7db9386076a3621a4e">countLine</a> (HWND hwnd)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エディットコントロールに入力された文字列の行数を数える  <a href="#ebda8073849d4a7db9386076a3621a4e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static HWND&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_edit_box.html#82014d95e631da98860809c34dbc41c0">create</a> (HWND hwndParent, int contId, int x, int y, int w, int h, bool bMultiLine=false, bool bShowVertScrollBar=false)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エディットコントロールを作る  <a href="#82014d95e631da98860809c34dbc41c0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_edit_box.html#89f5ab952e864bbeb0556387832a5786">getLine</a> (HWND hwnd, int iLine)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">指定行の文字列を返す  <a href="#89f5ab952e864bbeb0556387832a5786"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_edit_box.html#1ee22433af8b2ef9569db9b948fbb11b">setText</a> (HWND hwnd, const char *format,...)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エディットコントロールに文字列をセットする  <a href="#1ee22433af8b2ef9569db9b948fbb11b"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+Win32 APIの簡易ラッパークラス（エディットコントロール）. 
+<p> <a class="el" href="_wgu_edit_box_8h_source.html">WguEditBox.h</a> の <a class="el" href="_wgu_edit_box_8h_source.html#l00012">12</a> 行で定義されています。</p>
+<hr><h2>関数</h2>
+<a class="anchor" name="d46e4ecac38af344ea7caa55f4877272"></a><!-- doxytag: member="Wgu::EditBox::addText" ref="d46e4ecac38af344ea7caa55f4877272" args="(HWND hwnd, const char *format,...)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::EditBox::addText           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hwnd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>...</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+エディットコントロールの末尾に文字列を追加する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hwnd</em>&nbsp;</td><td>[i] エディットコントロールのウィンドウハンドル </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>format</em>&nbsp;</td><td>[i] 文字列（printf風フォーマットが使える）</td></tr>
+  </table>
+</dl>
+<a class="el" href="class_wgu_1_1_edit_box.html#1ee22433af8b2ef9569db9b948fbb11b" title="エディットコントロールに文字列をセットする">setText()</a>と異なり、既存の文字列の後に、文字列を付け加える． 主に複数行エディットコントロールの場合に使う． 
+<p> <a class="el" href="_wgu_edit_box_8cpp_source.html">WguEditBox.cpp</a> の <a class="el" href="_wgu_edit_box_8cpp_source.html#l00072">72</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="14880b0ebab09d1c2fd1284a821b830e"></a><!-- doxytag: member="Wgu::EditBox::clear" ref="14880b0ebab09d1c2fd1284a821b830e" args="(HWND hwnd)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::EditBox::clear           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hwnd</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+エディットコントロールをクリアする 
+<p>
+
+<p> <a class="el" href="_wgu_edit_box_8cpp_source.html">WguEditBox.cpp</a> の <a class="el" href="_wgu_edit_box_8cpp_source.html#l00054">54</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="ebda8073849d4a7db9386076a3621a4e"></a><!-- doxytag: member="Wgu::EditBox::countLine" ref="ebda8073849d4a7db9386076a3621a4e" args="(HWND hwnd)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Wgu::EditBox::countLine           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hwnd</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+エディットコントロールに入力された文字列の行数を数える 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hwnd</em>&nbsp;</td><td>[i] エディットコントロールのウィンドウハンドル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>文字列の行数(0以上) </dd></dl>
+
+<p> <a class="el" href="_wgu_edit_box_8cpp_source.html">WguEditBox.cpp</a> の <a class="el" href="_wgu_edit_box_8cpp_source.html#l00086">86</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="82014d95e631da98860809c34dbc41c0"></a><!-- doxytag: member="Wgu::EditBox::create" ref="82014d95e631da98860809c34dbc41c0" args="(HWND hwndParent, int contId, int x, int y, int w, int h, bool bMultiLine=false, bool bShowVertScrollBar=false)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HWND Wgu::EditBox::create           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hwndParent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>contId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>h</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bMultiLine</em> = <code>false</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bShowVertScrollBar</em> = <code>false</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+エディットコントロールを作る 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hwndParent</em>&nbsp;</td><td>[i] 親ウィンドウ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>contId</em>&nbsp;</td><td>[i] コントロールId </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>[i] 横(x方向)位置 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>[i] 縦(y方向)位置 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>w</em>&nbsp;</td><td>[i] 幅 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>h</em>&nbsp;</td><td>[i] 高さ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bMultiLine</em>&nbsp;</td><td>[i] 複数行のエディットボックスにする場合はtrue </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bShowVertScrollBar</em>&nbsp;</td><td>[i] 縦スクロールバーを表示する場合はtrue</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>生成されたエディットコントロールのウィンドウハンドル </dd></dl>
+
+<p> <a class="el" href="_wgu_edit_box_8cpp_source.html">WguEditBox.cpp</a> の <a class="el" href="_wgu_edit_box_8cpp_source.html#l00013">13</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="89f5ab952e864bbeb0556387832a5786"></a><!-- doxytag: member="Wgu::EditBox::getLine" ref="89f5ab952e864bbeb0556387832a5786" args="(HWND hwnd, int iLine)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * Wgu::EditBox::getLine           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hwnd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iLine</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+指定行の文字列を返す 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hwnd</em>&nbsp;</td><td>[i] エディットコントロールのウィンドウハンドル </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>iLine</em>&nbsp;</td><td>[i] 行位置(0以上、countLine()未満)</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>指定行の文字列． iLineが範囲外の場合は空文字列("")へのポインタが返る </dd></dl>
+
+<p> <a class="el" href="_wgu_edit_box_8cpp_source.html">WguEditBox.cpp</a> の <a class="el" href="_wgu_edit_box_8cpp_source.html#l00091">91</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="1ee22433af8b2ef9569db9b948fbb11b"></a><!-- doxytag: member="Wgu::EditBox::setText" ref="1ee22433af8b2ef9569db9b948fbb11b" args="(HWND hwnd, const char *format,...)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::EditBox::setText           </td>
+          <td>(</td>
+          <td class="paramtype">HWND&nbsp;</td>
+          <td class="paramname"> <em>hwnd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>...</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+エディットコントロールに文字列をセットする 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hwnd</em>&nbsp;</td><td>[i] エディットコントロールのウィンドウハンドル </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>format</em>&nbsp;</td><td>[i] 文字列（printf風フォーマットが使える）</td></tr>
+  </table>
+</dl>
+エディットコントロールの表示内容は、与えた文字列に 置き換えられる．以前表示されていた文字列は消える．<p>
+エディットコントロール全体の文字列を一度で変えるときに使う （単一行エディットコントロールの場合など） 
+<p> <a class="el" href="_wgu_edit_box_8cpp_source.html">WguEditBox.cpp</a> の <a class="el" href="_wgu_edit_box_8cpp_source.html#l00059">59</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_wgu_edit_box_8h_source.html">WguEditBox.h</a><li><a class="el" href="_wgu_edit_box_8cpp_source.html">WguEditBox.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGWorldEditorに対してThu Jun 9 10:53:01 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

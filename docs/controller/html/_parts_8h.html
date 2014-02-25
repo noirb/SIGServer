@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>SIGVerse_Controller: Parts.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Parts.h</h1><code>#include &quot;<a class="el" href="systemdef_8h_source.html">systemdef.h</a>&quot;</code><br/>
+<code>#include &lt;ode/ode.h&gt;</code><br/>
+<code>#include &lt;string&gt;</code><br/>
+<code>#include &lt;stdio.h&gt;</code><br/>
+<code>#include &quot;<a class="el" href="_position_8h_source.html">Position.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="_size_8h_source.html">Size.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="_rotation_8h_source.html">Rotation.h</a>&quot;</code><br/>
+
+<p><a href="_parts_8h_source.html">ソースコードを見る。</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>構成</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parts.html">Parts</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティを構成する部品クラス  <a href="class_parts.html#_details">[詳細]</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parts_cmpnt.html">PartsCmpnt</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パーツを構成する要素インターフェース  <a href="class_parts_cmpnt.html#_details">[詳細]</a><br/></td></tr>
+<tr><td colspan="2"><h2>型定義</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef short&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_parts_8h.html#a7c3aeaeaa817e70d68d9459826f84f1e">PartsType</a></td></tr>
+<tr><td colspan="2"><h2>列挙型</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom">{ <br/>
+&nbsp;&nbsp;<a class="el" href="_parts_8h.html#adc29c2ff13d900c2f185ee95427fb06cac415f5f18b4863aa6355905041bf1f02">PARTS_TYPE_NOT_SET</a> =  -1, 
+<a class="el" href="_parts_8h.html#adc29c2ff13d900c2f185ee95427fb06ca7ff0ca60270734cf52e02cc35bb99e03">PARTS_TYPE_BOX</a>, 
+<a class="el" href="_parts_8h.html#adc29c2ff13d900c2f185ee95427fb06ca61ca09abddf9cdae9a6972c81b9c0daa">PARTS_TYPE_CYLINDER</a>, 
+<a class="el" href="_parts_8h.html#adc29c2ff13d900c2f185ee95427fb06caaa632ca0e9baef38b6f427e01b583572">PARTS_TYPE_SPHERE</a>, 
+<br/>
+&nbsp;&nbsp;<a class="el" href="_parts_8h.html#adc29c2ff13d900c2f185ee95427fb06ca2258cf83404773554640137a922c67d1">PARTS_TYPE_NUM</a>
+<br/>
+ }</td></tr>
+</table>
+<hr/><h2>型定義</h2>
+<a class="anchor" id="a7c3aeaeaa817e70d68d9459826f84f1e"></a><!-- doxytag: member="Parts.h::PartsType" ref="a7c3aeaeaa817e70d68d9459826f84f1e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef short <a class="el" href="_parts_8h.html#a7c3aeaeaa817e70d68d9459826f84f1e">PartsType</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_parts_8h_source.html">Parts.h</a> の <a class="el" href="_parts_8h_source.html#l00030">30</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>列挙型</h2>
+<a class="anchor" id="adc29c2ff13d900c2f185ee95427fb06c"></a><!-- doxytag: member="Parts.h::@4" ref="adc29c2ff13d900c2f185ee95427fb06c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>列挙型の値: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="adc29c2ff13d900c2f185ee95427fb06cac415f5f18b4863aa6355905041bf1f02"></a><!-- doxytag: member="PARTS_TYPE_NOT_SET" ref="adc29c2ff13d900c2f185ee95427fb06cac415f5f18b4863aa6355905041bf1f02" args="" -->PARTS_TYPE_NOT_SET</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adc29c2ff13d900c2f185ee95427fb06ca7ff0ca60270734cf52e02cc35bb99e03"></a><!-- doxytag: member="PARTS_TYPE_BOX" ref="adc29c2ff13d900c2f185ee95427fb06ca7ff0ca60270734cf52e02cc35bb99e03" args="" -->PARTS_TYPE_BOX</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adc29c2ff13d900c2f185ee95427fb06ca61ca09abddf9cdae9a6972c81b9c0daa"></a><!-- doxytag: member="PARTS_TYPE_CYLINDER" ref="adc29c2ff13d900c2f185ee95427fb06ca61ca09abddf9cdae9a6972c81b9c0daa" args="" -->PARTS_TYPE_CYLINDER</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adc29c2ff13d900c2f185ee95427fb06caaa632ca0e9baef38b6f427e01b583572"></a><!-- doxytag: member="PARTS_TYPE_SPHERE" ref="adc29c2ff13d900c2f185ee95427fb06caaa632ca0e9baef38b6f427e01b583572" args="" -->PARTS_TYPE_SPHERE</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="adc29c2ff13d900c2f185ee95427fb06ca2258cf83404773554640137a922c67d1"></a><!-- doxytag: member="PARTS_TYPE_NUM" ref="adc29c2ff13d900c2f185ee95427fb06ca2258cf83404773554640137a922c67d1" args="" -->PARTS_TYPE_NUM</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p> <a class="el" href="_parts_8h_source.html">Parts.h</a> の <a class="el" href="_parts_8h_source.html#l00022">22</a> 行で定義されています。</p>
+
+</div>
+</div>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>SIGVerse_Controllerに対してTue Dec 13 19:10:58 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

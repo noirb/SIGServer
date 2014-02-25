@@ -1,0 +1,272 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGWorldEditor: クラス DOMTreeErrorReporter</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス DOMTreeErrorReporter</h1><!-- doxytag: class="DOMTreeErrorReporter" --><code>#include &lt;<a class="el" href="_d_o_m_tree_error_reporter_8hpp_source.html">DOMTreeErrorReporter.hpp</a>&gt;</code>
+<p>
+
+<p>
+<a href="class_d_o_m_tree_error_reporter-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_o_m_tree_error_reporter.html#1b0d32b9de7d5fafa99786bc8fd839f0">DOMTreeErrorReporter</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_o_m_tree_error_reporter.html#b13167b532a70180e9d55c2750dd3091">error</a> (const SAXParseException &amp;toCatch)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_o_m_tree_error_reporter.html#a4d9466ce5517dfdc8911fd6f816e979">fatalError</a> (const SAXParseException &amp;toCatch)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_o_m_tree_error_reporter.html#434a42c8129c6e31ca4dfb796b86d416">getSawErrors</a> () const </td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_o_m_tree_error_reporter.html#6d39a70bb8fef23a52ea034041d9d720">resetErrors</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_o_m_tree_error_reporter.html#c0c1f9b60c823a7f1651e7271b600d97">warning</a> (const SAXParseException &amp;toCatch)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_o_m_tree_error_reporter.html#3dc7b68ef43dc9422fdea558a54a85c8">‾DOMTreeErrorReporter</a> ()</td></tr>
+
+<tr><td colspan="2"><br><h2>Public 変数</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_o_m_tree_error_reporter.html#d2d8476de195df44cd76a2ff643bf8e9">fSawErrors</a></td></tr>
+
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+
+<p> <a class="el" href="_d_o_m_tree_error_reporter_8hpp_source.html">DOMTreeErrorReporter.hpp</a> の <a class="el" href="_d_o_m_tree_error_reporter_8hpp_source.html#l00034">34</a> 行で定義されています。</p>
+<hr><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" name="1b0d32b9de7d5fafa99786bc8fd839f0"></a><!-- doxytag: member="DOMTreeErrorReporter::DOMTreeErrorReporter" ref="1b0d32b9de7d5fafa99786bc8fd839f0" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DOMTreeErrorReporter::DOMTreeErrorReporter           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_d_o_m_tree_error_reporter_8hpp_source.html">DOMTreeErrorReporter.hpp</a> の <a class="el" href="_d_o_m_tree_error_reporter_8hpp_source.html#l00040">40</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>関数</h2>
+<a class="anchor" name="b13167b532a70180e9d55c2750dd3091"></a><!-- doxytag: member="DOMTreeErrorReporter::error" ref="b13167b532a70180e9d55c2750dd3091" args="(const SAXParseException &amp;toCatch)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DOMTreeErrorReporter::error           </td>
+          <td>(</td>
+          <td class="paramtype">const SAXParseException &amp;&nbsp;</td>
+          <td class="paramname"> <em>toCatch</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_d_o_m_tree_error_reporter_8cpp_source.html">DOMTreeErrorReporter.cpp</a> の <a class="el" href="_d_o_m_tree_error_reporter_8cpp_source.html#l00043">43</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="a4d9466ce5517dfdc8911fd6f816e979"></a><!-- doxytag: member="DOMTreeErrorReporter::fatalError" ref="a4d9466ce5517dfdc8911fd6f816e979" args="(const SAXParseException &amp;toCatch)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DOMTreeErrorReporter::fatalError           </td>
+          <td>(</td>
+          <td class="paramtype">const SAXParseException &amp;&nbsp;</td>
+          <td class="paramname"> <em>toCatch</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_d_o_m_tree_error_reporter_8cpp_source.html">DOMTreeErrorReporter.cpp</a> の <a class="el" href="_d_o_m_tree_error_reporter_8cpp_source.html#l00052">52</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="434a42c8129c6e31ca4dfb796b86d416"></a><!-- doxytag: member="DOMTreeErrorReporter::getSawErrors" ref="434a42c8129c6e31ca4dfb796b86d416" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool DOMTreeErrorReporter::getSawErrors           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_d_o_m_tree_error_reporter_8hpp_source.html">DOMTreeErrorReporter.hpp</a> の <a class="el" href="_d_o_m_tree_error_reporter_8hpp_source.html#l00074">74</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="6d39a70bb8fef23a52ea034041d9d720"></a><!-- doxytag: member="DOMTreeErrorReporter::resetErrors" ref="6d39a70bb8fef23a52ea034041d9d720" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DOMTreeErrorReporter::resetErrors           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_d_o_m_tree_error_reporter_8cpp_source.html">DOMTreeErrorReporter.cpp</a> の <a class="el" href="_d_o_m_tree_error_reporter_8cpp_source.html#l00061">61</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="c0c1f9b60c823a7f1651e7271b600d97"></a><!-- doxytag: member="DOMTreeErrorReporter::warning" ref="c0c1f9b60c823a7f1651e7271b600d97" args="(const SAXParseException &amp;toCatch)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DOMTreeErrorReporter::warning           </td>
+          <td>(</td>
+          <td class="paramtype">const SAXParseException &amp;&nbsp;</td>
+          <td class="paramname"> <em>toCatch</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_d_o_m_tree_error_reporter_8cpp_source.html">DOMTreeErrorReporter.cpp</a> の <a class="el" href="_d_o_m_tree_error_reporter_8cpp_source.html#l00036">36</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="3dc7b68ef43dc9422fdea558a54a85c8"></a><!-- doxytag: member="DOMTreeErrorReporter::‾DOMTreeErrorReporter" ref="3dc7b68ef43dc9422fdea558a54a85c8" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DOMTreeErrorReporter::‾DOMTreeErrorReporter           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_d_o_m_tree_error_reporter_8hpp_source.html">DOMTreeErrorReporter.hpp</a> の <a class="el" href="_d_o_m_tree_error_reporter_8hpp_source.html#l00045">45</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>変数</h2>
+<a class="anchor" name="d2d8476de195df44cd76a2ff643bf8e9"></a><!-- doxytag: member="DOMTreeErrorReporter::fSawErrors" ref="d2d8476de195df44cd76a2ff643bf8e9" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_d_o_m_tree_error_reporter.html#d2d8476de195df44cd76a2ff643bf8e9">DOMTreeErrorReporter::fSawErrors</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p> <a class="el" href="_d_o_m_tree_error_reporter_8hpp_source.html">DOMTreeErrorReporter.hpp</a> の <a class="el" href="_d_o_m_tree_error_reporter_8hpp_source.html#l00071">71</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_d_o_m_tree_error_reporter_8hpp_source.html">DOMTreeErrorReporter.hpp</a><li><a class="el" href="_d_o_m_tree_error_reporter_8cpp_source.html">DOMTreeErrorReporter.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGWorldEditorに対してMon Feb 22 16:14:35 2010に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

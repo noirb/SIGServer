@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGViewer: SgvStartupFile.cpp ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>SgvStartupFile.cpp</h1><a href="_sgv_startup_file_8cpp.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include "<a class="code" href="_sgv_startup_file_8h.html">SgvStartupFile.h</a>"</span>
+<a name="l00002"></a>00002 <span class="preprocessor">#include &lt;string&gt;</span>
+<a name="l00003"></a>00003 <span class="preprocessor">#include &lt;vector&gt;</span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include &lt;map&gt;</span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include &lt;iostream&gt;</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include &lt;fstream&gt;</span>
+<a name="l00007"></a>00007 
+<a name="l00008"></a>00008 <span class="keyword">namespace </span>Sgv
+<a name="l00009"></a>00009 {
+<a name="l00010"></a><a class="code" href="class_sgv_1_1_startup_file.html#8749b2938620ed5b326ec84ceb1e24a7">00010</a>     <a class="code" href="class_sgv_1_1_startup_file.html#8749b2938620ed5b326ec84ceb1e24a7" title="コンストラクタ">StartupFile::StartupFile</a>()
+<a name="l00011"></a>00011     {
+<a name="l00012"></a>00012         m_values.clear();
+<a name="l00013"></a>00013     }
+<a name="l00014"></a>00014 
+<a name="l00015"></a><a class="code" href="class_sgv_1_1_startup_file.html#db4bfb874c9836bba5a2301d17907a9f">00015</a>     <a class="code" href="class_sgv_1_1_startup_file.html#db4bfb874c9836bba5a2301d17907a9f" title="デストラクタ">StartupFile::‾StartupFile</a>()
+<a name="l00016"></a>00016     {
+<a name="l00017"></a>00017     }
+<a name="l00018"></a>00018 
+<a name="l00019"></a><a class="code" href="class_sgv_1_1_startup_file.html#53a160058edbf766959e199136634a48">00019</a>     <span class="keywordtype">bool</span> <a class="code" href="class_sgv_1_1_startup_file.html#53a160058edbf766959e199136634a48" title="設定ファイルを読み込む">StartupFile::load</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *configFile)
+<a name="l00020"></a>00020     {
+<a name="l00021"></a>00021         <span class="keywordflow">if</span> (!configFile) <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00022"></a>00022 
+<a name="l00023"></a>00023         m_values.clear();
+<a name="l00024"></a>00024 
+<a name="l00025"></a>00025         std::ifstream ifs(configFile);
+<a name="l00026"></a>00026         <span class="keywordflow">if</span> (ifs.fail())
+<a name="l00027"></a>00027         {
+<a name="l00028"></a>00028             fprintf(stderr, <span class="stringliteral">"file not found : (%s)¥n"</span>, configFile);
+<a name="l00029"></a>00029             <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00030"></a>00030         }
+<a name="l00031"></a>00031 
+<a name="l00032"></a>00032         std::string line;
+<a name="l00033"></a>00033 
+<a name="l00034"></a>00034         getline(ifs, line);
+<a name="l00035"></a>00035         <span class="keywordflow">while</span> (<span class="keyword">true</span>)
+<a name="l00036"></a>00036         {
+<a name="l00037"></a>00037             <span class="keywordflow">if</span> (line.size() &gt; 0)
+<a name="l00038"></a>00038             {
+<a name="l00039"></a>00039                 <span class="comment">// lineに処理するべき文字列が入っているので処理を行う</span>
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041                 std::string s = line.substr(0, 1);
+<a name="l00042"></a>00042                 <span class="keywordflow">if</span> (strcmp(s.c_str(), <span class="stringliteral">"#"</span>) != 0)    <span class="comment">// skip comment</span>
+<a name="l00043"></a>00043                 {
+<a name="l00044"></a>00044                     <span class="keywordtype">int</span> i = line.find(<span class="stringliteral">"="</span>);
+<a name="l00045"></a>00045                     <span class="keywordflow">if</span> (i&gt;=0)
+<a name="l00046"></a>00046                     {
+<a name="l00047"></a>00047                         std::string key = StartupFile::trim(line.substr(0, i));
+<a name="l00048"></a>00048                         std::string value = StartupFile::trim(line.substr(i+1));
+<a name="l00049"></a>00049                         <span class="keywordflow">if</span> (key.length() &gt; 0)
+<a name="l00050"></a>00050                         {
+<a name="l00051"></a>00051         <span class="comment">//                  printf("key=(%s), value=(%s)¥n", key.c_str(), value.c_str());</span>
+<a name="l00052"></a>00052                             m_values[key].push_back(value);
+<a name="l00053"></a>00053                         }
+<a name="l00054"></a>00054                     }
+<a name="l00055"></a>00055                 }
+<a name="l00056"></a>00056             }
+<a name="l00057"></a>00057 
+<a name="l00058"></a>00058             <span class="comment">// ファイルの終わりに到達している．ループから抜ける</span>
+<a name="l00059"></a>00059             <span class="keywordflow">if</span> (ifs.eof()) <span class="keywordflow">break</span>;
+<a name="l00060"></a>00060 
+<a name="l00061"></a>00061             <span class="comment">// 次の行を読む</span>
+<a name="l00062"></a>00062             getline(ifs, line);
+<a name="l00063"></a>00063         }
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065         ifs.close();
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067         <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00068"></a>00068     }
+<a name="l00069"></a>00069 
+<a name="l00070"></a>00070     std::string StartupFile::trim(std::string str)
+<a name="l00071"></a>00071     {
+<a name="l00072"></a>00072         <span class="keywordtype">int</span> i, j;
+<a name="l00073"></a>00073         
+<a name="l00074"></a>00074         i = str.find_first_not_of(<span class="stringliteral">" "</span>);
+<a name="l00075"></a>00075         <span class="keywordflow">if</span> (i==-1) <span class="keywordflow">return</span> <span class="stringliteral">""</span>;   <span class="comment">// all chars are space</span>
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077         <span class="keywordflow">if</span> (i&gt;0) str = str.substr(i);   <span class="comment">// cut top spaces</span>
+<a name="l00078"></a>00078         
+<a name="l00079"></a>00079         j = str.find_last_not_of(<span class="stringliteral">" "</span>);
+<a name="l00080"></a>00080         <span class="keywordflow">if</span> (j&gt;0) str = str.substr(0, j+1);  <span class="comment">// cut bottom spaces</span>
+<a name="l00081"></a>00081 
+<a name="l00082"></a>00082         <span class="keywordflow">return</span> str;
+<a name="l00083"></a>00083     }
+<a name="l00084"></a>00084 
+<a name="l00085"></a><a class="code" href="class_sgv_1_1_startup_file.html#5ee0e9c1f58ee735e44d815ee466fd76">00085</a>     <span class="keywordtype">int</span> <a class="code" href="class_sgv_1_1_startup_file.html#5ee0e9c1f58ee735e44d815ee466fd76" title="キーに対する値がいくつあるかを返す">StartupFile::countValues</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *key)
+<a name="l00086"></a>00086     {
+<a name="l00087"></a>00087         <span class="keywordflow">if</span> (!key) <span class="keywordflow">return</span> 0;
+<a name="l00088"></a>00088 
+<a name="l00089"></a>00089         <span class="keywordflow">return</span> m_values[key].size();
+<a name="l00090"></a>00090     }
+<a name="l00091"></a>00091 
+<a name="l00092"></a><a class="code" href="class_sgv_1_1_startup_file.html#f86dde5e78477c88dbda6b32f9018d9e">00092</a>     <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="class_sgv_1_1_startup_file.html#f86dde5e78477c88dbda6b32f9018d9e" title="キーに対応する値を返す．">StartupFile::getStringValue</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *key, <span class="keywordtype">int</span> i)
+<a name="l00093"></a>00093     {
+<a name="l00094"></a>00094         <span class="keywordflow">if</span> (!key) <span class="keywordflow">return</span> NULL;
+<a name="l00095"></a>00095 
+<a name="l00096"></a>00096         std::vector&lt;std::string&gt; &amp;values = m_values[key];
+<a name="l00097"></a>00097         <span class="keywordflow">if</span> ((i&lt;0) || (i&gt;=values.size())) <span class="keywordflow">return</span> NULL;
+<a name="l00098"></a>00098 
+<a name="l00099"></a>00099         <span class="keyword">const</span> <span class="keywordtype">char</span> *value = values[i].c_str();
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101         <span class="keywordflow">return</span> (value &amp;&amp; *value) ? value : NULL;
+<a name="l00102"></a>00102     }
+<a name="l00103"></a>00103 };
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>SIGViewerに対してThu Jun 9 10:52:11 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

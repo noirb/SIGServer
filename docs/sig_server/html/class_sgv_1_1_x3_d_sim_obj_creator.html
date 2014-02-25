@@ -1,0 +1,352 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: クラス Sgv::X3DSimObjCreator</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_sgv.html">Sgv</a>::<a class="el" href="class_sgv_1_1_x3_d_sim_obj_creator.html">X3DSimObjCreator</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Sgv::X3DSimObjCreator</h1><!-- doxytag: class="Sgv::X3DSimObjCreator" -->
+<p>X3D形状からSSimObj（特にSParts）を生成するためのクラス.  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html">SgvX3DSimObjCreator.h</a>&gt;</code></p>
+<div class="dynheader">
+Sgv::X3DSimObjCreatorのコラボレーション図</div>
+<div class="dynsection">
+<div class="center"><img src="class_sgv_1_1_x3_d_sim_obj_creator__coll__graph.png" border="0" usemap="#_sgv_1_1_x3_d_sim_obj_creator_coll__map" alt="Collaboration graph"/></div>
+<map name="_sgv_1_1_x3_d_sim_obj_creator_coll__map" id="_sgv_1_1_x3_d_sim_obj_creator_coll__map">
+<area shape="rect" href="class_simple_shape_d_b.html" title="全ての単純形状の情報" alt="" coords="5,5,120,35"/><area shape="rect" href="class_body_factory.html" title="エンティティの形状・構成を通知するインターフェース" alt="" coords="144,5,240,35"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+
+<p><a href="class_sgv_1_1_x3_d_sim_obj_creator-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d_sim_obj_creator.html#a698d6e13a85ed9fe7519968b80f485de">createSSimObjFromWrl</a> (const std::string &amp;objName, std::vector&lt; std::string &gt; &amp;jointNames, std::vector&lt; std::string &gt; &amp;partsNames, <a class="el" href="class_s_sim_obj.html">SSimObj</a> *pObj, <a class="el" href="class_sgv_1_1_test_node.html">TestNode</a> **ppNode)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d_sim_obj_creator.html#a7a2e8f5bd7d8789718496fd14aad03ce">createSSimObjFromX3D</a> (const char *x3dFileName, const char *entClassName, bool bGenSimpleShapeFromX3D)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">X3Dファイルをロードして SSimObjオブジェクトと単純形状データベースを生成する.  <a href="#a7a2e8f5bd7d8789718496fd14aad03ce"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_body_factory.html">BodyFactory</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d_sim_obj_creator.html#ac9b9987a01ba9ab86d011cd5df111ad8">getBodyFactory</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">使用しているBodyFactory インスタンスを取得する  <a href="#ac9b9987a01ba9ab86d011cd5df111ad8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d_sim_obj_creator.html#afc625a349c3b1b7027d949298945474b">loadX3DFromFile</a> (const char *x3dFileName)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">X3Dファイルをロードする.  <a href="#afc625a349c3b1b7027d949298945474b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d_sim_obj_creator.html#a1fa6f25b57b5960d321094b585b54e92">X3DSimObjCreator</a> (<a class="el" href="class_body_factory.html">BodyFactory</a> &amp;f, <a class="el" href="class_simple_shape_d_b.html">SimpleShapeDB</a> &amp;ssdb)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d_sim_obj_creator.html#a8c1979da553adbdfc48530d549b730ce">‾X3DSimObjCreator</a> ()</td></tr>
+<tr><td colspan="2"><h2>Static Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d_sim_obj_creator.html#ab4769a00bebbb24b70922200efca4ea6">test1</a> (<a class="el" href="class_sgv_1_1_x3_d_sim_obj_creator.html">X3DSimObjCreator</a> &amp;, const char *x3dOpenHRPFileName)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d_sim_obj_creator.html#a0c1f86619a2c7406dbb2578170f77925">test1</a> (<a class="el" href="class_s_sim_obj.html">SSimObj</a> *obj, const char *x3dOpenHRPFileName)</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>X3D形状からSSimObj（特にSParts）を生成するためのクラス. </p>
+
+<p> <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html">SgvX3DSimObjCreator.h</a> の <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html#l00027">27</a> 行で定義されています。</p>
+<hr/><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" id="a1fa6f25b57b5960d321094b585b54e92"></a><!-- doxytag: member="Sgv::X3DSimObjCreator::X3DSimObjCreator" ref="a1fa6f25b57b5960d321094b585b54e92" args="(BodyFactory &amp;f, SimpleShapeDB &amp;ssdb)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::X3DSimObjCreator::X3DSimObjCreator </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_body_factory.html">BodyFactory</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_simple_shape_d_b.html">SimpleShapeDB</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>ssdb</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<hr/><h2>関数</h2>
+<a class="anchor" id="a698d6e13a85ed9fe7519968b80f485de"></a><!-- doxytag: member="Sgv::X3DSimObjCreator::createSSimObjFromWrl" ref="a698d6e13a85ed9fe7519968b80f485de" args="(const std::string &amp;objName, std::vector&lt; std::string &gt; &amp;jointNames, std::vector&lt; std::string &gt; &amp;partsNames, SSimObj *pObj, TestNode **ppNode)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::X3DSimObjCreator::createSSimObjFromWrl </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>objName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::string &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>jointNames</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::string &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>partsNames</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_s_sim_obj.html">SSimObj</a> *&nbsp;</td>
+          <td class="paramname"> <em>pObj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_test_node.html">TestNode</a> **&nbsp;</td>
+          <td class="paramname"> <em>ppNode</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a7a2e8f5bd7d8789718496fd14aad03ce"></a><!-- doxytag: member="Sgv::X3DSimObjCreator::createSSimObjFromX3D" ref="a7a2e8f5bd7d8789718496fd14aad03ce" args="(const char *x3dFileName, const char *entClassName, bool bGenSimpleShapeFromX3D)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::X3DSimObjCreator::createSSimObjFromX3D </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>x3dFileName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>entClassName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bGenSimpleShapeFromX3D</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>X3Dファイルをロードして SSimObjオブジェクトと単純形状データベースを生成する. </p>
+<p>SSimObjとSimpleShapeDBはコンストラクタで設定しておく</p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>x3dFileName</em>&nbsp;</td><td>[i] X3Dファイル名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>entClassName</em>&nbsp;</td><td>[i] エンティティクラス名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bGenSimpleShapeFromX3D</em>&nbsp;</td><td>[i] true(=単純形状を自動生成), false(=単純形状生成にはDBの内容を使う)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>戻り値:</b></dt><dd>true(=ロード成功), false(=ロード失敗) </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ac9b9987a01ba9ab86d011cd5df111ad8"></a><!-- doxytag: member="Sgv::X3DSimObjCreator::getBodyFactory" ref="ac9b9987a01ba9ab86d011cd5df111ad8" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_body_factory.html">BodyFactory</a>&amp; Sgv::X3DSimObjCreator::getBodyFactory </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>使用しているBodyFactory インスタンスを取得する </p>
+
+<p> <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html">SgvX3DSimObjCreator.h</a> の <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html#l00152">152</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="afc625a349c3b1b7027d949298945474b"></a><!-- doxytag: member="Sgv::X3DSimObjCreator::loadX3DFromFile" ref="afc625a349c3b1b7027d949298945474b" args="(const char *x3dFileName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::X3DSimObjCreator::loadX3DFromFile </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>x3dFileName</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>X3Dファイルをロードする. </p>
+<p>ロードしたX3Dファイルが (1) 静止物ならm_pStaticNodesに (2) OpenHRP形式(ヒューマノイド)ならばm_pHumanoidNodesに 形状のデータがセットされる．</p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>x3dFileName</em>&nbsp;</td><td>[i] X3Dファイル名</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>戻り値:</b></dt><dd>true(=ロード成功), false(=ロード失敗) </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ab4769a00bebbb24b70922200efca4ea6"></a><!-- doxytag: member="Sgv::X3DSimObjCreator::test1" ref="ab4769a00bebbb24b70922200efca4ea6" args="(X3DSimObjCreator &amp;, const char *x3dOpenHRPFileName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool Sgv::X3DSimObjCreator::test1 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_x3_d_sim_obj_creator.html">X3DSimObjCreator</a> &amp;&nbsp;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>x3dOpenHRPFileName</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a0c1f86619a2c7406dbb2578170f77925"></a><!-- doxytag: member="Sgv::X3DSimObjCreator::test1" ref="a0c1f86619a2c7406dbb2578170f77925" args="(SSimObj *obj, const char *x3dOpenHRPFileName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void Sgv::X3DSimObjCreator::test1 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_s_sim_obj.html">SSimObj</a> *&nbsp;</td>
+          <td class="paramname"> <em>obj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>x3dOpenHRPFileName</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a8c1979da553adbdfc48530d549b730ce"></a><!-- doxytag: member="Sgv::X3DSimObjCreator::‾X3DSimObjCreator" ref="a8c1979da553adbdfc48530d549b730ce" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual Sgv::X3DSimObjCreator::‾X3DSimObjCreator </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html">SgvX3DSimObjCreator.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:22 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

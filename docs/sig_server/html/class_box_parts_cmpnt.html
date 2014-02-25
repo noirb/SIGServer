@@ -1,0 +1,301 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: クラス BoxPartsCmpnt</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス BoxPartsCmpnt</h1><!-- doxytag: class="BoxPartsCmpnt" --><!-- doxytag: inherits="PartsCmpnt" -->
+<p>箱形状パーツデータクラス  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_parts_cmpnt_8h_source.html">PartsCmpnt.h</a>&gt;</code></p>
+<div class="dynheader">
+BoxPartsCmpntに対する継承グラフ</div>
+<div class="dynsection">
+<div class="center"><img src="class_box_parts_cmpnt__inherit__graph.png" border="0" usemap="#_box_parts_cmpnt_inherit__map" alt="Inheritance graph"/></div>
+<map name="_box_parts_cmpnt_inherit__map" id="_box_parts_cmpnt_inherit__map">
+<area shape="rect" href="class_parts_cmpnt.html" title="パーツを構成する要素インターフェース" alt="" coords="17,5,105,35"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+<div class="dynheader">
+BoxPartsCmpntのコラボレーション図</div>
+<div class="dynsection">
+<div class="center"><img src="class_box_parts_cmpnt__coll__graph.png" border="0" usemap="#_box_parts_cmpnt_coll__map" alt="Collaboration graph"/></div>
+<map name="_box_parts_cmpnt_coll__map" id="_box_parts_cmpnt_coll__map">
+<area shape="rect" href="class_parts_cmpnt.html" title="パーツを構成する要素インターフェース" alt="" coords="5,85,93,115"/><area shape="rect" href="class_size.html" title="シミュレーション世界内における3次元直方体の大きさを表すクラス..." alt="" coords="117,85,165,115"/><area shape="rect" href="class_position.html" title="3次元位置クラス" alt="" coords="108,5,175,35"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+
+<p><a href="class_box_parts_cmpnt-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Public 型</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="class_box_parts_cmpnt.html#a99fd37d899ea8e1d4e0aa3574625d349a7fb8a96892f5e915718d0682f67b0891">DATA_LEN</a> =  sizeof(double)*3
+ }</td></tr>
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_box_parts_cmpnt.html#ac9129072f22589d94c9f68ec861b454a">BoxPartsCmpnt</a> (const <a class="el" href="class_box_parts_cmpnt.html">BoxPartsCmpnt</a> &amp;o)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コピーコンストラクタ  <a href="#ac9129072f22589d94c9f68ec861b454a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_box_parts_cmpnt.html#a26598cbccb66fcaf5dff7e4519983695">BoxPartsCmpnt</a> (const <a class="el" href="class_size.html">Size</a> &amp;sz)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#a26598cbccb66fcaf5dff7e4519983695"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_box_parts_cmpnt.html#af8b0553b70d229d0d8252c04e71fb4b0">dump</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">保持している情報（サイズ）の表示  <a href="#af8b0553b70d229d0d8252c04e71fb4b0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_box_parts_cmpnt.html#a0b782ff275d305fef28629af87c3f282">size</a> (dReal sx, dReal sy, dReal sz)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">箱のサイズをセットする  <a href="#a0b782ff275d305fef28629af87c3f282"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_size.html">Size</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_box_parts_cmpnt.html#a776c09c7d38f7469abe926e49b244586">size</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">箱のサイズを得る  <a href="#a776c09c7d38f7469abe926e49b244586"></a><br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>箱形状パーツデータクラス </p>
+
+<p> <a class="el" href="_parts_cmpnt_8h_source.html">PartsCmpnt.h</a> の <a class="el" href="_parts_cmpnt_8h_source.html#l00010">10</a> 行で定義されています。</p>
+<hr/><h2>列挙型</h2>
+<a class="anchor" id="a99fd37d899ea8e1d4e0aa3574625d349"></a><!-- doxytag: member="BoxPartsCmpnt::@10" ref="a99fd37d899ea8e1d4e0aa3574625d349" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>列挙型の値: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="a99fd37d899ea8e1d4e0aa3574625d349a7fb8a96892f5e915718d0682f67b0891"></a><!-- doxytag: member="DATA_LEN" ref="a99fd37d899ea8e1d4e0aa3574625d349a7fb8a96892f5e915718d0682f67b0891" args="" -->DATA_LEN</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p> <a class="el" href="_parts_cmpnt_8h_source.html">PartsCmpnt.h</a> の <a class="el" href="_parts_cmpnt_8h_source.html#l00013">13</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" id="a26598cbccb66fcaf5dff7e4519983695"></a><!-- doxytag: member="BoxPartsCmpnt::BoxPartsCmpnt" ref="a26598cbccb66fcaf5dff7e4519983695" args="(const Size &amp;sz)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">BoxPartsCmpnt::BoxPartsCmpnt </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_size.html">Size</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>sz</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コンストラクタ </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>sz</em>&nbsp;</td><td>箱のサイズ(縦×横×高さ) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_parts_cmpnt_8h_source.html">PartsCmpnt.h</a> の <a class="el" href="_parts_cmpnt_8h_source.html#l00023">23</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ac9129072f22589d94c9f68ec861b454a"></a><!-- doxytag: member="BoxPartsCmpnt::BoxPartsCmpnt" ref="ac9129072f22589d94c9f68ec861b454a" args="(const BoxPartsCmpnt &amp;o)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">BoxPartsCmpnt::BoxPartsCmpnt </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_box_parts_cmpnt.html">BoxPartsCmpnt</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>o</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コピーコンストラクタ </p>
+
+<p> <a class="el" href="_parts_cmpnt_8h_source.html">PartsCmpnt.h</a> の <a class="el" href="_parts_cmpnt_8h_source.html#l00027">27</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>関数</h2>
+<a class="anchor" id="af8b0553b70d229d0d8252c04e71fb4b0"></a><!-- doxytag: member="BoxPartsCmpnt::dump" ref="af8b0553b70d229d0d8252c04e71fb4b0" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BoxPartsCmpnt::dump </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>保持している情報（サイズ）の表示 </p>
+
+<p><a class="el" href="class_parts_cmpnt.html#aa1d255671e65dc37d0fac90172eb0ec5">PartsCmpnt</a>を実装しています。</p>
+
+<p> <a class="el" href="_parts_cmpnt_8h_source.html">PartsCmpnt.h</a> の <a class="el" href="_parts_cmpnt_8h_source.html#l00041">41</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_box_parts_cmpnt_af8b0553b70d229d0d8252c04e71fb4b0_cgraph.png" border="0" usemap="#class_box_parts_cmpnt_af8b0553b70d229d0d8252c04e71fb4b0_cgraph_map" alt=""></div>
+<map name="class_box_parts_cmpnt_af8b0553b70d229d0d8252c04e71fb4b0_cgraph_map" id="class_box_parts_cmpnt_af8b0553b70d229d0d8252c04e71fb4b0_cgraph">
+<area shape="rect" href="class_position.html#aa97410c769815bc60c9412f387b555d1" title="X座標値を取得する." alt="" coords="205,5,288,35"/><area shape="rect" href="class_position.html#a5f7b9c53b81affdcf502f5059a6dc50a" title="Y座標値を取得する." alt="" coords="205,59,288,88"/><area shape="rect" href="class_position.html#a63f0cb5a9c08ef8af982cc18aa161395" title="Z座標値を取得する." alt="" coords="205,112,288,141"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a0b782ff275d305fef28629af87c3f282"></a><!-- doxytag: member="BoxPartsCmpnt::size" ref="a0b782ff275d305fef28629af87c3f282" args="(dReal sx, dReal sy, dReal sz)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BoxPartsCmpnt::size </td>
+          <td>(</td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>sx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>sy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>sz</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>箱のサイズをセットする </p>
+
+<p> <a class="el" href="_parts_cmpnt_8h_source.html">PartsCmpnt.h</a> の <a class="el" href="_parts_cmpnt_8h_source.html#l00035">35</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_box_parts_cmpnt_a0b782ff275d305fef28629af87c3f282_cgraph.png" border="0" usemap="#class_box_parts_cmpnt_a0b782ff275d305fef28629af87c3f282_cgraph_map" alt=""></div>
+<map name="class_box_parts_cmpnt_a0b782ff275d305fef28629af87c3f282_cgraph_map" id="class_box_parts_cmpnt_a0b782ff275d305fef28629af87c3f282_cgraph">
+<area shape="rect" href="class_position.html#a6bf294381a4d9805a1cea299ec2ffc86" title="各座標値を設定する" alt="" coords="197,5,291,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a776c09c7d38f7469abe926e49b244586"></a><!-- doxytag: member="BoxPartsCmpnt::size" ref="a776c09c7d38f7469abe926e49b244586" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_size.html">Size</a>&amp; BoxPartsCmpnt::size </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>箱のサイズを得る </p>
+
+<p> <a class="el" href="_parts_cmpnt_8h_source.html">PartsCmpnt.h</a> の <a class="el" href="_parts_cmpnt_8h_source.html#l00030">30</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+呼出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_box_parts_cmpnt_a776c09c7d38f7469abe926e49b244586_icgraph.png" border="0" usemap="#class_box_parts_cmpnt_a776c09c7d38f7469abe926e49b244586_icgraph_map" alt=""></div>
+<map name="class_box_parts_cmpnt_a776c09c7d38f7469abe926e49b244586_icgraph_map" id="class_box_parts_cmpnt_a776c09c7d38f7469abe926e49b244586_icgraph">
+<area shape="rect" href="class_s_box_parts.html#a110a8ad441bfabf091ac24be7d382bbb" title="サイズを得る" alt="" coords="197,5,333,35"/><area shape="rect" href="class_s_box_parts.html#a419f5086cba69c496280d225175f1ac9" title="サイズを設定する" alt="" coords="197,59,333,88"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_parts_cmpnt_8h_source.html">PartsCmpnt.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:18 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

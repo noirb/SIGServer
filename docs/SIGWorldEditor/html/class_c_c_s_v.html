@@ -1,0 +1,811 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGWorldEditor: クラス CCSV</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス CCSV</h1><!-- doxytag: class="CCSV" -->CSVファイル操作クラス.  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_c_s_v_8h_source.html">CSV.h</a>&gt;</code>
+<p>
+
+<p>
+<a href="class_c_c_s_v-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_c_s_v.html#b27a442ca26c4d7a9b9e362f2b086b51">CCSV</a> (string strCSVPath)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#b27a442ca26c4d7a9b9e362f2b086b51"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_c_s_v.html#f643bffe19b07da7ecad5c4a6cfd82c0">CCSV</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#f643bffe19b07da7ecad5c4a6cfd82c0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_c_s_v.html#d7c4642f4ff3a3463092d841e9f60064">CountCols</a> (int irow)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">irow行目の列数を返す  <a href="#d7c4642f4ff3a3463092d841e9f60064"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_c_s_v.html#8a92cd15171c498d0325b70b6ec66019">CountRows</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">行数を返す  <a href="#8a92cd15171c498d0325b70b6ec66019"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_c_s_v.html#43b547e997afa6910e6ccbf0542e1aa0">CountSeqCells</a> (int irow, int icol, int drow, int dcol)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">(irow, icol)から(drow, dcol)ステップで移動して、 値のあるセルの個数を数える  <a href="#43b547e997afa6910e6ccbf0542e1aa0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_c_s_v.html#a8fbe5c9c1790d7ff3d5257fcbcb6a53">Get</a> (int irow, int icol, string &amp;word)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">(irow, icol)の内容を返す  <a href="#a8fbe5c9c1790d7ff3d5257fcbcb6a53"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_c_s_v.html#13bafeacddaa4ac002373b265e434e8b">GetDouble</a> (int irow, int icol, double &amp;value)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">(irow, icol)の内容を実数に変換して取得  <a href="#13bafeacddaa4ac002373b265e434e8b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_c_s_v.html#dbbaf491a0ad0c6670b79dc75c726d4d">GetInt</a> (int irow, int icol, int &amp;value)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エラー=NULLが返る  <a href="#dbbaf491a0ad0c6670b79dc75c726d4d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_c_s_v.html#796cfaff513e8394471ecd97c724bf21">GetLine</a> (int irow,::<a class="el" href="_c_s_v_8h.html#b299f9dc236c92da18f20b0edbbb4e96">StringList</a> &amp;line)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">irow行目の内容を文字列リストで返す  <a href="#796cfaff513e8394471ecd97c724bf21"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_c_s_v.html#a1174b4b8b6b343b9fefabb82d102ad9">GetStr</a> (int irow, int icol)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">(irow, icol)の内容を返す  <a href="#a1174b4b8b6b343b9fefabb82d102ad9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_c_s_v.html#44bf302fb8c3ff25ce5581deca80dbb9">LoadFromFile</a> (string strCSVPath, bool bTrim=true)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">CSVファイルを読み込む.  <a href="#44bf302fb8c3ff25ce5581deca80dbb9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_c_s_v.html#130385466215446871ad86081f658aa9">Print</a> (FILE *fp=stdout)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">このオブジェクトの内容をファイルに書き出す（デバッグ用）  <a href="#130385466215446871ad86081f658aa9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_c_s_v.html#6e07afdd559bc302062b65647b7d542d">SaveToFile</a> (string strCSVPath)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">CSVファイルに書き出す.  <a href="#6e07afdd559bc302062b65647b7d542d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_c_s_v.html#4ae7c671c83afe6bad14bd7bfd0341a0">SetDouble</a> (int irow, int icol, double value)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">(irow, icol)に実数をセット  <a href="#4ae7c671c83afe6bad14bd7bfd0341a0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_c_s_v.html#bf1b0747c0037c267c5ab4f453e81200">SetInt</a> (int irow, int icol, int value)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">(irow, icol)に整数をセット  <a href="#bf1b0747c0037c267c5ab4f453e81200"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_c_s_v.html#ea11eb2baa9778e586a576529562be3a">SetStr</a> (int irow, int icol, char *str)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">(irow, icol)に文字列をセット  <a href="#ea11eb2baa9778e586a576529562be3a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_c_s_v.html#bcb5d7c6aea36f141e2946b68c3f29d7">‾CCSV</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#bcb5d7c6aea36f141e2946b68c3f29d7"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+CSVファイル操作クラス. 
+<p> <a class="el" href="_c_s_v_8h_source.html">CSV.h</a> の <a class="el" href="_c_s_v_8h_source.html#l00022">22</a> 行で定義されています。</p>
+<hr><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" name="f643bffe19b07da7ecad5c4a6cfd82c0"></a><!-- doxytag: member="CCSV::CCSV" ref="f643bffe19b07da7ecad5c4a6cfd82c0" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CCSV::CCSV           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+
+<p> <a class="el" href="_c_s_v_8cpp_source.html">CSV.cpp</a> の <a class="el" href="_c_s_v_8cpp_source.html#l00015">15</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b27a442ca26c4d7a9b9e362f2b086b51"></a><!-- doxytag: member="CCSV::CCSV" ref="b27a442ca26c4d7a9b9e362f2b086b51" args="(string strCSVPath)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CCSV::CCSV           </td>
+          <td>(</td>
+          <td class="paramtype">string&nbsp;</td>
+          <td class="paramname"> <em>strCSVPath</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>strCSVPath</em>&nbsp;</td><td>[i] csvファイルのパス </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_c_s_v_8cpp_source.html">CSV.cpp</a> の <a class="el" href="_c_s_v_8cpp_source.html#l00020">20</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>関数</h2>
+<a class="anchor" name="d7c4642f4ff3a3463092d841e9f60064"></a><!-- doxytag: member="CCSV::CountCols" ref="d7c4642f4ff3a3463092d841e9f60064" args="(int irow)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CCSV::CountCols           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>irow</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+irow行目の列数を返す 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>irow</em>&nbsp;</td><td>[i] 行番号 (0&lt;=irow&lt;<a class="el" href="class_c_c_s_v.html#8a92cd15171c498d0325b70b6ec66019" title="行数を返す">CountRows()</a>)</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>列数（範囲指定エラーの場合は-1） </dd></dl>
+
+<p> <a class="el" href="_c_s_v_8cpp_source.html">CSV.cpp</a> の <a class="el" href="_c_s_v_8cpp_source.html#l00215">215</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="8a92cd15171c498d0325b70b6ec66019"></a><!-- doxytag: member="CCSV::CountRows" ref="8a92cd15171c498d0325b70b6ec66019" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CCSV::CountRows           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+行数を返す 
+<p>
+
+<p> <a class="el" href="_c_s_v_8cpp_source.html">CSV.cpp</a> の <a class="el" href="_c_s_v_8cpp_source.html#l00210">210</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="43b547e997afa6910e6ccbf0542e1aa0"></a><!-- doxytag: member="CCSV::CountSeqCells" ref="43b547e997afa6910e6ccbf0542e1aa0" args="(int irow, int icol, int drow, int dcol)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CCSV::CountSeqCells           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>irow</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>icol</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>drow</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>dcol</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+(irow, icol)から(drow, dcol)ステップで移動して、 値のあるセルの個数を数える 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>irow</em>&nbsp;</td><td>[i] サーチ開始行 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>icol</em>&nbsp;</td><td>[i] サーチ開始列 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>drow</em>&nbsp;</td><td>[i] 行方向ステップ値 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>dcol</em>&nbsp;</td><td>[i] 列方向ステップ値</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>連続セルの個数</dd></dl>
+<div class="fragment"><pre class="fragment">      A, B, C
+      1, 2
+      3,  , 4
+
+    というcsvファイルがあったとすると、
+
+      <a class="code" href="class_c_c_s_v.html#43b547e997afa6910e6ccbf0542e1aa0" title="(irow, icol)から(drow, dcol)ステップで移動して、 値のあるセルの個数を数える...">CountSeqCells</a>(0, 0, 0, 1) --&gt; 3   <span class="comment">/// Aから右へサーチ</span>
+<span class="comment"></span>      <a class="code" href="class_c_c_s_v.html#43b547e997afa6910e6ccbf0542e1aa0" title="(irow, icol)から(drow, dcol)ステップで移動して、 値のあるセルの個数を数える...">CountSeqCells</a>(0, 1, 1, 0) --&gt; 2   <span class="comment">/// Bから下へサーチ</span>
+<span class="comment"></span>      <a class="code" href="class_c_c_s_v.html#43b547e997afa6910e6ccbf0542e1aa0" title="(irow, icol)から(drow, dcol)ステップで移動して、 値のあるセルの個数を数える...">CountSeqCells</a>(2, 0, 0, 1) --&gt; 1   <span class="comment">/// 3から右へサーチ</span>
+<span class="comment"></span>      <a class="code" href="class_c_c_s_v.html#43b547e997afa6910e6ccbf0542e1aa0" title="(irow, icol)から(drow, dcol)ステップで移動して、 値のあるセルの個数を数える...">CountSeqCells</a>(2, 1, 0, 1) --&gt; 0   <span class="comment">/// 空白からサーチ</span>
+<span class="comment"></span>      <a class="code" href="class_c_c_s_v.html#43b547e997afa6910e6ccbf0542e1aa0" title="(irow, icol)から(drow, dcol)ステップで移動して、 値のあるセルの個数を数える...">CountSeqCells</a>(10, 10, 0, 1) --&gt; 0 <span class="comment">/// 領域外からのサーチ</span>
+<span class="comment"></span>
+    ＃ちなみにLoadFromFile()でbTrim=trueなら空白の連続は
+    すべて飛ばされるので、カンマの間にいくつスペースを入れてもそのセルには
+    何も入っていないとみなされる
+
+    (ex)
+     A,B,,C
+     と書いても
+     A,B,        ,C
+     と書いても
+     <a class="code" href="class_c_c_s_v.html#43b547e997afa6910e6ccbf0542e1aa0" title="(irow, icol)から(drow, dcol)ステップで移動して、 値のあるセルの個数を数える...">CountSeqCells</a>(0, 0, 0, 1) --&gt; 2
+</pre></div> 
+<p> <a class="el" href="_c_s_v_8cpp_source.html">CSV.cpp</a> の <a class="el" href="_c_s_v_8cpp_source.html#l00329">329</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="a8fbe5c9c1790d7ff3d5257fcbcb6a53"></a><!-- doxytag: member="CCSV::Get" ref="a8fbe5c9c1790d7ff3d5257fcbcb6a53" args="(int irow, int icol, string &amp;word)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CCSV::Get           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>irow</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>icol</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string &amp;&nbsp;</td>
+          <td class="paramname"> <em>word</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+(irow, icol)の内容を返す 
+<p>
+irow, icol共に0ベースのインデックスで指定<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>irow</em>&nbsp;</td><td>[i] 行番号 (0&lt;=irow&lt;<a class="el" href="class_c_c_s_v.html#8a92cd15171c498d0325b70b6ec66019" title="行数を返す">CountRows()</a>) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>icol</em>&nbsp;</td><td>[i] 列番号 (0&lt;=icol&lt;CountCols(irow)) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>word</em>&nbsp;</td><td>[o] (irow, icol)セルの内容</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_c_s_v_8cpp_source.html">CSV.cpp</a> の <a class="el" href="_c_s_v_8cpp_source.html#l00235">235</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="13bafeacddaa4ac002373b265e434e8b"></a><!-- doxytag: member="CCSV::GetDouble" ref="13bafeacddaa4ac002373b265e434e8b" args="(int irow, int icol, double &amp;value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CCSV::GetDouble           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>irow</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>icol</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double &amp;&nbsp;</td>
+          <td class="paramname"> <em>value</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+(irow, icol)の内容を実数に変換して取得 
+<p>
+irow, icol共に0ベースのインデックスで指定<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>irow</em>&nbsp;</td><td>[i] 行番号 (0&lt;=irow&lt;<a class="el" href="class_c_c_s_v.html#8a92cd15171c498d0325b70b6ec66019" title="行数を返す">CountRows()</a>) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>icol</em>&nbsp;</td><td>[i] 列番号 (0&lt;=icol&lt;CountCols(irow)) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>value</em>&nbsp;</td><td>[o] (irow, icol)セルの内容</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_c_s_v_8cpp_source.html">CSV.cpp</a> の <a class="el" href="_c_s_v_8cpp_source.html#l00275">275</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="dbbaf491a0ad0c6670b79dc75c726d4d"></a><!-- doxytag: member="CCSV::GetInt" ref="dbbaf491a0ad0c6670b79dc75c726d4d" args="(int irow, int icol, int &amp;value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CCSV::GetInt           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>irow</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>icol</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&nbsp;</td>
+          <td class="paramname"> <em>value</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+エラー=NULLが返る 
+<p>
+(irow, icol)の内容を整数に変換して取得 irow, icol共に0ベースのインデックスで指定<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>irow</em>&nbsp;</td><td>[i] 行番号 (0&lt;=irow&lt;<a class="el" href="class_c_c_s_v.html#8a92cd15171c498d0325b70b6ec66019" title="行数を返す">CountRows()</a>) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>icol</em>&nbsp;</td><td>[i] 列番号 (0&lt;=icol&lt;CountCols(irow)) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>value</em>&nbsp;</td><td>[o] (irow, icol)セルの内容</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_c_s_v_8cpp_source.html">CSV.cpp</a> の <a class="el" href="_c_s_v_8cpp_source.html#l00265">265</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="796cfaff513e8394471ecd97c724bf21"></a><!-- doxytag: member="CCSV::GetLine" ref="796cfaff513e8394471ecd97c724bf21" args="(int irow,::StringList &amp;line)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CCSV::GetLine           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>irow</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">::<a class="el" href="_c_s_v_8h.html#b299f9dc236c92da18f20b0edbbb4e96">StringList</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>line</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+irow行目の内容を文字列リストで返す 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>irow</em>&nbsp;</td><td>[i] 行番号 (0&lt;=irow&lt;<a class="el" href="class_c_c_s_v.html#8a92cd15171c498d0325b70b6ec66019" title="行数を返す">CountRows()</a>) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>line</em>&nbsp;</td><td>[o] irow行目の内容</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="a1174b4b8b6b343b9fefabb82d102ad9"></a><!-- doxytag: member="CCSV::GetStr" ref="a1174b4b8b6b343b9fefabb82d102ad9" args="(int irow, int icol)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * CCSV::GetStr           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>irow</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>icol</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+(irow, icol)の内容を返す 
+<p>
+irow, icol共に0ベースのインデックスで指定<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>irow</em>&nbsp;</td><td>[i] 行番号 (0&lt;=irow&lt;<a class="el" href="class_c_c_s_v.html#8a92cd15171c498d0325b70b6ec66019" title="行数を返す">CountRows()</a>) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>icol</em>&nbsp;</td><td>[i] 列番号 (0&lt;=icol&lt;CountCols(irow))</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>(irow, icol)セルの内容． エラーの場合はNULL </dd></dl>
+
+<p> <a class="el" href="_c_s_v_8cpp_source.html">CSV.cpp</a> の <a class="el" href="_c_s_v_8cpp_source.html#l00253">253</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="44bf302fb8c3ff25ce5581deca80dbb9"></a><!-- doxytag: member="CCSV::LoadFromFile" ref="44bf302fb8c3ff25ce5581deca80dbb9" args="(string strCSVPath, bool bTrim=true)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CCSV::LoadFromFile           </td>
+          <td>(</td>
+          <td class="paramtype">string&nbsp;</td>
+          <td class="paramname"> <em>strCSVPath</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bTrim</em> = <code>true</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+CSVファイルを読み込む. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>strCSVPath</em>&nbsp;</td><td>[i] csvファイルのパス </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bTrim</em>&nbsp;</td><td>[i] 読み込みの際に各要素の前後のスペースをカットする</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_c_s_v_8cpp_source.html">CSV.cpp</a> の <a class="el" href="_c_s_v_8cpp_source.html#l00035">35</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="130385466215446871ad86081f658aa9"></a><!-- doxytag: member="CCSV::Print" ref="130385466215446871ad86081f658aa9" args="(FILE *fp=stdout)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CCSV::Print           </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&nbsp;</td>
+          <td class="paramname"> <em>fp</em> = <code>stdout</code>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+このオブジェクトの内容をファイルに書き出す（デバッグ用） 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>fp</em>&nbsp;</td><td>[i] 出力先 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_c_s_v_8cpp_source.html">CSV.cpp</a> の <a class="el" href="_c_s_v_8cpp_source.html#l00348">348</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="6e07afdd559bc302062b65647b7d542d"></a><!-- doxytag: member="CCSV::SaveToFile" ref="6e07afdd559bc302062b65647b7d542d" args="(string strCSVPath)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CCSV::SaveToFile           </td>
+          <td>(</td>
+          <td class="paramtype">string&nbsp;</td>
+          <td class="paramname"> <em>strCSVPath</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+CSVファイルに書き出す. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>strCSVPath</em>&nbsp;</td><td>[i] csvファイルのパス</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_c_s_v_8cpp_source.html">CSV.cpp</a> の <a class="el" href="_c_s_v_8cpp_source.html#l00182">182</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="4ae7c671c83afe6bad14bd7bfd0341a0"></a><!-- doxytag: member="CCSV::SetDouble" ref="4ae7c671c83afe6bad14bd7bfd0341a0" args="(int irow, int icol, double value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CCSV::SetDouble           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>irow</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>icol</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>value</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+(irow, icol)に実数をセット 
+<p>
+irow, icol共に0ベースのインデックスで指定．<p>
+irow, icolには任意の値を指定できる． （領域拡張は自動的に行われる）<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>irow</em>&nbsp;</td><td>[i] 行番号 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>icol</em>&nbsp;</td><td>[i] 列番号 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>value</em>&nbsp;</td><td>[i] セルにセットする実数 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_c_s_v_8cpp_source.html">CSV.cpp</a> の <a class="el" href="_c_s_v_8cpp_source.html#l00320">320</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="bf1b0747c0037c267c5ab4f453e81200"></a><!-- doxytag: member="CCSV::SetInt" ref="bf1b0747c0037c267c5ab4f453e81200" args="(int irow, int icol, int value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CCSV::SetInt           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>irow</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>icol</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>value</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+(irow, icol)に整数をセット 
+<p>
+irow, icol共に0ベースのインデックスで指定．<p>
+irow, icolには任意の値を指定できる． （領域拡張は自動的に行われる）<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>irow</em>&nbsp;</td><td>[i] 行番号 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>icol</em>&nbsp;</td><td>[i] 列番号 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>value</em>&nbsp;</td><td>[i] セルにセットする整数 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_c_s_v_8cpp_source.html">CSV.cpp</a> の <a class="el" href="_c_s_v_8cpp_source.html#l00311">311</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="ea11eb2baa9778e586a576529562be3a"></a><!-- doxytag: member="CCSV::SetStr" ref="ea11eb2baa9778e586a576529562be3a" args="(int irow, int icol, char *str)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CCSV::SetStr           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>irow</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>icol</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>str</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+(irow, icol)に文字列をセット 
+<p>
+irow, icol共に0ベースのインデックスで指定．<p>
+irow, icolには任意の値を指定できる． （領域拡張は自動的に行われる）<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>irow</em>&nbsp;</td><td>[i] 行番号 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>icol</em>&nbsp;</td><td>[i] 列番号 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>str</em>&nbsp;</td><td>[i] セルにセットする文字列 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_c_s_v_8cpp_source.html">CSV.cpp</a> の <a class="el" href="_c_s_v_8cpp_source.html#l00285">285</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="bcb5d7c6aea36f141e2946b68c3f29d7"></a><!-- doxytag: member="CCSV::‾CCSV" ref="bcb5d7c6aea36f141e2946b68c3f29d7" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CCSV::‾CCSV           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+デストラクタ 
+<p>
+
+<p> <a class="el" href="_c_s_v_8cpp_source.html">CSV.cpp</a> の <a class="el" href="_c_s_v_8cpp_source.html#l00031">31</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_c_s_v_8h_source.html">CSV.h</a><li><a class="el" href="_c_s_v_8cpp_source.html">CSV.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGWorldEditorに対してThu Jun 9 10:53:00 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: ODEWorld.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>ODEWorld.h</h1><a href="_o_d_e_world_8h.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/* $Id: _o_d_e_world_8h_source.html,v 1.2 2011-12-14 07:55:37 okamoto Exp $ */</span> 
+<a name="l00002"></a>00002 <span class="preprocessor">#ifndef ODEWorld_h</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span><span class="preprocessor">#define ODEWorld_h</span>
+<a name="l00004"></a>00004 <span class="preprocessor"></span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include &quot;<a class="code" href="systemdef_8h.html">systemdef.h</a>&quot;</span>
+<a name="l00006"></a>00006 
+<a name="l00007"></a>00007 <span class="preprocessor">#include &lt;string&gt;</span>
+<a name="l00008"></a>00008 <span class="preprocessor">#include &lt;vector&gt;</span>
+<a name="l00009"></a>00009 
+<a name="l00010"></a>00010 <span class="preprocessor">#ifdef USE_ODE</span>
+<a name="l00011"></a>00011 <span class="preprocessor"></span>
+<a name="l00012"></a>00012 <span class="preprocessor">#include &lt;ode/ode.h&gt;</span>
+<a name="l00013"></a>00013 <span class="preprocessor">#include &quot;<a class="code" href="_o_d_e_obj_8h.html">ODEObj.h</a>&quot;</span>
+<a name="l00014"></a>00014 <span class="preprocessor">#include &quot;<a class="code" href="_sim_ground_8h.html">SimGround.h</a>&quot;</span>
+<a name="l00015"></a>00015 
+<a name="l00016"></a><a class="code" href="struct_o_d_e_world_1_1_gravity.html#aa2b9d0856c016630105c1f52771f3529">00016</a> <span class="comment">//static dGeomID _ground;</span>
+<a name="l00017"></a><a class="code" href="struct_o_d_e_world_1_1_gravity.html#aa54b2d830df9f008e651fadb17878d8d">00017</a> <span class="comment"></span>
+<a name="l00018"></a>00018 <span class="comment">/**</span>
+<a name="l00019"></a>00019 <span class="comment"> * @brief ODE 世界オブジェクトのラッパークラス</span>
+<a name="l00020"></a><a class="code" href="struct_o_d_e_world_1_1_gravity.html">00020</a> <span class="comment"> *</span>
+<a name="l00021"></a>00021 <span class="comment"> * シングルトンとして使用する</span>
+<a name="l00022"></a>00022 <span class="comment"> */</span>
+<a name="l00023"></a><a class="code" href="class_o_d_e_world.html">00023</a> <span class="keyword">class </span><a class="code" href="class_o_d_e_world.html" title="ODE 世界オブジェクトのラッパークラス.">ODEWorld</a>
+<a name="l00024"></a>00024 {
+<a name="l00025"></a>00025 <span class="keyword">public</span>:<span class="comment"></span>
+<a name="l00026"></a>00026 <span class="comment">    /**</span>
+<a name="l00027"></a><a class="code" href="class_o_d_e_world.html#ae711327419106848ea3809ea29c702a4">00027</a> <span class="comment">     * @brief 重力加速度構造体</span>
+<a name="l00028"></a><a class="code" href="struct_o_d_e_world_1_1_collision.html">00028</a> <span class="comment">     */</span>
+<a name="l00029"></a><a class="code" href="struct_o_d_e_world_1_1_collision.html#a04bfa5a854ead8f6e40fca73af27718b">00029</a>     <span class="keyword">struct </span><a class="code" href="struct_o_d_e_world_1_1_gravity.html" title="重力加速度構造体">Gravity</a>
+<a name="l00030"></a><a class="code" href="struct_o_d_e_world_1_1_collision.html#a46d11819b3dcb54f7a5717de927dd77a">00030</a>     {
+<a name="l00031"></a><a class="code" href="struct_o_d_e_world_1_1_collision.html#a4c895e61be3272f033a762b87469d87f">00031</a>         dReal <a class="code" href="struct_o_d_e_world_1_1_gravity.html#aad37b67c96f8bc521b61b26afd5a8bc8">x</a>, <a class="code" href="struct_o_d_e_world_1_1_gravity.html#a10715c8a51d4405bea311bcdead5e0b4">y</a>, <a class="code" href="struct_o_d_e_world_1_1_gravity.html#aa2b9d0856c016630105c1f52771f3529">z</a>;
+<a name="l00032"></a>00032         <a class="code" href="struct_o_d_e_world_1_1_gravity.html#aa54b2d830df9f008e651fadb17878d8d">Gravity</a>(dReal x_, dReal y_, dReal z_) :
+<a name="l00033"></a><a class="code" href="class_o_d_e_world.html#a0c6cfddff88c36956a4a1622f44d1447">00033</a>             <a class="code" href="struct_o_d_e_world_1_1_gravity.html#aad37b67c96f8bc521b61b26afd5a8bc8">x</a>(x_), <a class="code" href="struct_o_d_e_world_1_1_gravity.html#a10715c8a51d4405bea311bcdead5e0b4">y</a>(y_), <a class="code" href="struct_o_d_e_world_1_1_gravity.html#aa2b9d0856c016630105c1f52771f3529">z</a>(z_) {;}
+<a name="l00034"></a>00034     };
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036     <span class="keyword">typedef</span> std::string <a class="code" href="class_o_d_e_world.html#ae711327419106848ea3809ea29c702a4">S</a>;
+<a name="l00037"></a>00037     <span class="keyword">struct </span>Collision {
+<a name="l00038"></a>00038         <a class="code" href="class_o_d_e_world.html#ae711327419106848ea3809ea29c702a4">S</a> <a class="code" href="struct_o_d_e_world_1_1_collision.html#a04bfa5a854ead8f6e40fca73af27718b">body1</a>;
+<a name="l00039"></a>00039         <a class="code" href="class_o_d_e_world.html#ae711327419106848ea3809ea29c702a4">S</a> <a class="code" href="struct_o_d_e_world_1_1_collision.html#a46d11819b3dcb54f7a5717de927dd77a">body2</a>;
+<a name="l00040"></a>00040         <a class="code" href="struct_o_d_e_world_1_1_collision.html#a4c895e61be3272f033a762b87469d87f">Collision</a>(<a class="code" href="class_o_d_e_world.html#ae711327419106848ea3809ea29c702a4">S</a> b1, <a class="code" href="class_o_d_e_world.html#ae711327419106848ea3809ea29c702a4">S</a> b2) : <a class="code" href="struct_o_d_e_world_1_1_collision.html#a04bfa5a854ead8f6e40fca73af27718b">body1</a>(b1), <a class="code" href="struct_o_d_e_world_1_1_collision.html#a46d11819b3dcb54f7a5717de927dd77a">body2</a>(b2) {}
+<a name="l00041"></a>00041     };
+<a name="l00042"></a>00042     <span class="keyword">typedef</span> std::vector&lt;Collision&gt; <a class="code" href="class_o_d_e_world.html#a0c6cfddff88c36956a4a1622f44d1447">CollisionC</a>;
+<a name="l00043"></a>00043 <span class="keyword">private</span>:
+<a name="l00044"></a>00044     dWorldID    m_world;
+<a name="l00045"></a>00045     dSpaceID    m_space;
+<a name="l00046"></a><a class="code" href="class_o_d_e_world.html#adda618bf4676630e684f3a86ad39fa13">00046</a>     dJointGroupID   m_jgroup;
+<a name="l00047"></a>00047     <span class="keywordtype">double</span>      m_timeStep;
+<a name="l00048"></a><a class="code" href="class_o_d_e_world.html#af60ae743bb9752ff8b4021c941b781d1">00048</a>     <span class="keywordtype">unsigned</span>    m_itrCnt;
+<a name="l00049"></a>00049     dGeomID         m_ground;
+<a name="l00050"></a><a class="code" href="class_o_d_e_world.html#a4e103458b5352d2dab587231079e09f8">00050</a> <span class="keyword">private</span>:
+<a name="l00051"></a>00051     <a class="code" href="class_o_d_e_world.html" title="ODE 世界オブジェクトのラッパークラス.">ODEWorld</a>(<span class="keyword">const</span> <a class="code" href="struct_o_d_e_world_1_1_gravity.html" title="重力加速度構造体">Gravity</a> &amp;g, dReal erp);
+<a name="l00052"></a><a class="code" href="class_o_d_e_world.html#aea3843ac6a44f4851d4b6b9ec1f8be42">00052</a>     <span class="keywordtype">void</span> free_();
+<a name="l00053"></a>00053 <span class="keyword">public</span>:<span class="comment"></span>
+<a name="l00054"></a>00054 <span class="comment">    //! デストラクタ</span>
+<a name="l00055"></a>00055 <span class="comment"></span>    <a class="code" href="class_o_d_e_world.html#adda618bf4676630e684f3a86ad39fa13" title="デストラクタ">‾ODEWorld</a>() { free_(); }<span class="comment"></span>
+<a name="l00056"></a><a class="code" href="class_o_d_e_world.html#aabc88684511ce8cedc83d08e12d48c0d">00056</a> <span class="comment">    //! ODE world ハンドラを取得する</span>
+<a name="l00057"></a>00057 <span class="comment"></span>    dWorldID <a class="code" href="class_o_d_e_world.html#af60ae743bb9752ff8b4021c941b781d1" title="ODE world ハンドラを取得する.">world</a>() { <span class="keywordflow">return</span> m_world; }<span class="comment"></span>
+<a name="l00058"></a><a class="code" href="class_o_d_e_world.html#a319d50e6f07c2e0bc523d81a219a4308">00058</a> <span class="comment">    //! ODE space ハンドラを取得する</span>
+<a name="l00059"></a>00059 <span class="comment"></span>    dSpaceID <a class="code" href="class_o_d_e_world.html#a4e103458b5352d2dab587231079e09f8" title="ODE space ハンドラを取得する.">space</a>() { <span class="keywordflow">return</span> m_space; }<span class="comment"></span>
+<a name="l00060"></a><a class="code" href="class_o_d_e_world.html#a82f035ea6fc376effe4140fabfe2086d">00060</a> <span class="comment">    //! ODE joint group ハンドラを取得する</span>
+<a name="l00061"></a>00061 <span class="comment"></span>    dJointGroupID <a class="code" href="class_o_d_e_world.html#aea3843ac6a44f4851d4b6b9ec1f8be42" title="ODE joint group ハンドラを取得する.">jointGroup</a>() { <span class="keywordflow">return</span> m_jgroup; }<span class="comment"></span>
+<a name="l00062"></a><a class="code" href="class_o_d_e_world.html#a54c4093714f9b0c30dcd7252dc8706fc">00062</a> <span class="comment">    //! シミュレーション時間を進める</span>
+<a name="l00063"></a>00063 <span class="comment"></span>    <span class="keywordtype">void</span>    <a class="code" href="class_o_d_e_world.html#a5a00c7ee3fcf994bbddbce545f32c198" title="シミュレーション時間を進める">nextStep</a>();<span class="comment"></span>
+<a name="l00064"></a><a class="code" href="class_o_d_e_world.html#add5c5a547d96c831c89d76cf1178aaa1">00064</a> <span class="comment">    //! シミュレーション時間を0に戻す</span>
+<a name="l00065"></a>00065 <span class="comment"></span>    <span class="keywordtype">void</span>    <a class="code" href="class_o_d_e_world.html#aabc88684511ce8cedc83d08e12d48c0d" title="シミュレーション時間を0に戻す">resetTime</a>() { m_itrCnt = 0; }<span class="comment"></span>
+<a name="l00066"></a><a class="code" href="class_o_d_e_world.html#a799904a3b048add8816be18774264a03">00066</a> <span class="comment">    //! シミュレーション時間を取得する</span>
+<a name="l00067"></a>00067 <span class="comment"></span>    <span class="keywordtype">double</span>  <a class="code" href="class_o_d_e_world.html#a319d50e6f07c2e0bc523d81a219a4308" title="シミュレーション時間を取得する">time</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_timeStep*m_itrCnt; }<span class="comment"></span>
+<a name="l00068"></a><a class="code" href="class_o_d_e_world.html#ad0d2dfa63aba83e71ee2584e679390d3">00068</a> <span class="comment">    //! 1ステップの時間幅を取得する</span>
+<a name="l00069"></a>00069 <span class="comment"></span>    <span class="keywordtype">double</span>  <a class="code" href="class_o_d_e_world.html#a82f035ea6fc376effe4140fabfe2086d" title="1ステップの時間幅を取得する">step</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_timeStep; }<span class="comment"></span>
+<a name="l00070"></a>00070 <span class="comment">    //! シミュレーションステップ回数を取得する</span>
+<a name="l00071"></a>00071 <span class="comment"></span>    <span class="keywordtype">unsigned</span> <a class="code" href="class_o_d_e_world.html#a54c4093714f9b0c30dcd7252dc8706fc" title="シミュレーションステップ回数を取得する">stepCount</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_itrCnt; }<span class="comment"></span>
+<a name="l00072"></a>00072 <span class="comment">    //! </span>
+<a name="l00073"></a>00073 <span class="comment"></span>    <span class="keywordtype">void</span> <a class="code" href="class_o_d_e_world.html#add5c5a547d96c831c89d76cf1178aaa1">setGround</a>(<a class="code" href="class_sim_ground.html" title="シミュレーション地面クラス">SimGround</a> *ground) {m_ground = ground-&gt;<a class="code" href="class_sim_ground.html#a8715c3553105397fb9dd55b6adcbfe86">getGeom</a>();}<span class="comment"></span>
+<a name="l00074"></a>00074 <span class="comment">    //! </span>
+<a name="l00075"></a>00075 <span class="comment"></span>    dGeomID <a class="code" href="class_o_d_e_world.html#a799904a3b048add8816be18774264a03">getGround</a>() {<span class="keywordflow">return</span> m_ground;}
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077     <span class="keyword">typedef</span> std::vector&lt;std::string&gt; <a class="code" href="class_o_d_e_world.html#ad0d2dfa63aba83e71ee2584e679390d3">WithC</a>;
+<a name="l00078"></a>00078         <span class="keywordtype">int</span> <a class="code" href="class_o_d_e_world.html#a45f88104f06750156647da95a1618beb">collideWith</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *, <a class="code" href="class_o_d_e_world.html#ad0d2dfa63aba83e71ee2584e679390d3">WithC</a> &amp;);
+<a name="l00079"></a>00079 <span class="keyword">private</span>:
+<a name="l00080"></a>00080     <span class="keyword">static</span> <a class="code" href="class_o_d_e_world.html" title="ODE 世界オブジェクトのラッパークラス.">ODEWorld</a> *s_inst;
+<a name="l00081"></a>00081 <span class="keyword">public</span>:<span class="comment"></span>
+<a name="l00082"></a>00082 <span class="comment">    //! インスタンスを生成する</span>
+<a name="l00083"></a>00083 <span class="comment"></span>    <span class="keyword">static</span> <a class="code" href="class_o_d_e_world.html" title="ODE 世界オブジェクトのラッパークラス.">ODEWorld</a> *<a class="code" href="class_o_d_e_world.html#aa41affb41b0533c07068d34ef56049ce" title="インスタンスを生成する">create</a>(<span class="keyword">const</span> Gravity &amp;g, dReal erp);<span class="comment"></span>
+<a name="l00084"></a>00084 <span class="comment">    //! 生成済みのインスタンスを取得する</span>
+<a name="l00085"></a>00085 <span class="comment"></span>    <span class="keyword">static</span> <a class="code" href="class_o_d_e_world.html" title="ODE 世界オブジェクトのラッパークラス.">ODEWorld</a> *<span class="keyword">get</span>();
+<a name="l00086"></a>00086 };
+<a name="l00087"></a>00087 
+<a name="l00088"></a>00088 
+<a name="l00089"></a>00089 
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091 
+<a name="l00092"></a><a class="code" href="class_o_d_e_object_container.html">00092</a> <span class="keyword">class </span><a class="code" href="class_o_d_e_object_container.html">ODEObjectContainer</a> {
+<a name="l00093"></a>00093 <span class="keyword">public</span>:<span class="comment"></span>
+<a name="l00094"></a>00094 <span class="comment">    /**</span>
+<a name="l00095"></a>00095 <span class="comment">     * dGeomIDをキー値としたODEObjのテーブル</span>
+<a name="l00096"></a>00096 <span class="comment">     */</span>
+<a name="l00097"></a><a class="code" href="class_o_d_e_object_container.html#a04ae64f83f5b49eb88b76cbf28c26b11">00097</a>     std::map&lt;dGeomID,ODEObj*&gt; <a class="code" href="class_o_d_e_object_container.html#a04ae64f83f5b49eb88b76cbf28c26b11">odeObjTable</a>;
+<a name="l00098"></a>00098 <span class="comment"></span>
+<a name="l00099"></a>00099 <span class="comment">    /**</span>
+<a name="l00100"></a>00100 <span class="comment">     * Generate ODEObj instance</span>
+<a name="l00101"></a>00101 <span class="comment">     */</span>
+<a name="l00102"></a>00102     <a class="code" href="class_o_d_e_obj.html" title="ODEにおけるシミュレーションオブジェクトラッパークラス.">ODEObj</a> *<a class="code" href="class_o_d_e_object_container.html#a4171bb7c29fd53204b8cd145b73462e0">createODEObj</a>(
+<a name="l00103"></a>00103         dWorldID world,
+<a name="l00104"></a>00104         dGeomID geom_,
+<a name="l00105"></a>00105         <span class="keywordtype">double</span> surfaceMu1,
+<a name="l00106"></a>00106         <span class="keywordtype">double</span> surfaceMu2,
+<a name="l00107"></a>00107         <span class="keywordtype">double</span> surfaceSlip1,
+<a name="l00108"></a>00108         <span class="keywordtype">double</span> surfaceSlip2,
+<a name="l00109"></a>00109         <span class="keywordtype">double</span> surfaceSoftErp,
+<a name="l00110"></a>00110         <span class="keywordtype">double</span> surfaceSoftCfm,
+<a name="l00111"></a>00111         <span class="keywordtype">double</span> surceBounce
+<a name="l00112"></a>00112     );
+<a name="l00113"></a>00113 
+<a name="l00114"></a>00114     <span class="keyword">static</span> <a class="code" href="class_o_d_e_object_container.html">ODEObjectContainer</a> *<a class="code" href="class_o_d_e_object_container.html#a414d05a663d64882ff6393f17c462310">getInstance</a>();
+<a name="l00115"></a>00115 
+<a name="l00116"></a>00116     <a class="code" href="class_o_d_e_obj.html" title="ODEにおけるシミュレーションオブジェクトラッパークラス.">ODEObj</a> *<a class="code" href="class_o_d_e_object_container.html#a1afd2f1f2f607d5e3c3464bb61b764cf">getODEObjFromGeomID</a>(dGeomID geom_);
+<a name="l00117"></a>00117 
+<a name="l00118"></a>00118 <span class="keyword">private</span>:
+<a name="l00119"></a>00119     <span class="keyword">static</span> <a class="code" href="class_o_d_e_object_container.html">ODEObjectContainer</a> *instance;
+<a name="l00120"></a>00120 };
+<a name="l00121"></a>00121 
+<a name="l00122"></a>00122 
+<a name="l00123"></a>00123 
+<a name="l00124"></a>00124 
+<a name="l00125"></a>00125 
+<a name="l00126"></a>00126 <span class="preprocessor">#endif</span>
+<a name="l00127"></a>00127 <span class="preprocessor"></span>
+<a name="l00128"></a>00128 <span class="preprocessor">#endif // ODEWorld_h</span>
+<a name="l00129"></a>00129 <span class="preprocessor"></span> 
+</pre></div></div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:18 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

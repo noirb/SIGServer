@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGViewer: メンバ一覧</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Sgv::DetectEntitiesServiceResult メンバ一覧</h1>これは全メンバの一覧です。<a class="el" href="class_sgv_1_1_detect_entities_service_result.html">Sgv::DetectEntitiesServiceResult</a>継承メンバも含んでいます。<p><table>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_detect_entities_service_result.html#744fbe7802ffe6b0ec8c98f476c24060">addName</a>(const char *entityName)</td><td><a class="el" href="class_sgv_1_1_detect_entities_service_result.html">Sgv::DetectEntitiesServiceResult</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_detect_entities_service_result.html#adb7acb91531e7a7fe4ec3a306d38583">addName</a>(std::string entityName)</td><td><a class="el" href="class_sgv_1_1_detect_entities_service_result.html">Sgv::DetectEntitiesServiceResult</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_detect_entities_service_result.html#ddaacd8e34df7ffca40f00083bb872e6">clear</a>()</td><td><a class="el" href="class_sgv_1_1_detect_entities_service_result.html">Sgv::DetectEntitiesServiceResult</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_detect_entities_service_result.html#267a38b92693f7cd15b118e6ebdf3088">count</a>()</td><td><a class="el" href="class_sgv_1_1_detect_entities_service_result.html">Sgv::DetectEntitiesServiceResult</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_detect_entities_service_result.html#c0172a6ddb57b78a6da8a12165dee2d0">DetectEntitiesServiceResult</a>(THREAD_ID tid)</td><td><a class="el" href="class_sgv_1_1_detect_entities_service_result.html">Sgv::DetectEntitiesServiceResult</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_detect_entities_service_result.html#df48782d0b4b2929bf61a4f2b267c841">getName</a>(int i)</td><td><a class="el" href="class_sgv_1_1_detect_entities_service_result.html">Sgv::DetectEntitiesServiceResult</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_service.html#99118ce5bf9dc21ff26efc91da5ff1c8">getTid</a>()</td><td><a class="el" href="class_sgv_1_1_service.html">Sgv::Service</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_detect_entities_service.html#d71e26c48bb0268b5b4a601bcf9f9c06">getType</a>()</td><td><a class="el" href="class_sgv_1_1_detect_entities_service.html">Sgv::DetectEntitiesService</a></td><td><code> [virtual]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_service.html#db426ebb173031684447cffe874cc077">getTypeString</a>(SERVICE_TYPE ty)</td><td><a class="el" href="class_sgv_1_1_service.html">Sgv::Service</a></td><td><code> [static]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_service.html#dd7464b594416e8949f5a712c11a0f7b">m_tid</a></td><td><a class="el" href="class_sgv_1_1_service.html">Sgv::Service</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_service.html#f6123de25ba9405cfd2627641b202eca">Service</a>()</td><td><a class="el" href="class_sgv_1_1_service.html">Sgv::Service</a></td><td></td></tr>
+</table></div>
+<hr size="1"><address style="text-align: right;"><small>SIGViewerに対してThu Jun 9 10:52:15 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

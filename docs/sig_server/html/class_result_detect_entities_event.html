@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: クラス ResultDetectEntitiesEvent</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス ResultDetectEntitiesEvent</h1><!-- doxytag: class="ResultDetectEntitiesEvent" -->
+<p>視野内のエンティティ検出結果エンコーダークラス  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="event_2_detect_entities_8h_source.html">DetectEntities.h</a>&gt;</code></p>
+
+<p><a href="class_result_detect_entities_event-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_result_detect_entities_event.html#ab3acddd5314ec35bc8180494cfc9527b">copy</a> (C &amp;o)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">検出したエンティティ名をすべて取得する  <a href="#ab3acddd5314ec35bc8180494cfc9527b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_result_detect_entities_event.html#ac49edb947678263c877abb33d4b99863">getDetected</a> (int i)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">指定したインデックスのエンティティ名を取得する  <a href="#ac49edb947678263c877abb33d4b99863"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_result_detect_entities_event.html#aaadd0ba760a812de9e9a1d3d5dcd6c1e">getDetectedCount</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">検出したエンティティ数を得る  <a href="#aaadd0ba760a812de9e9a1d3d5dcd6c1e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_result_detect_entities_event.html#af80b9957e85eacf9681dec9333ed251d">set</a> (int packetNum, int seq, char *data, int n)</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>視野内のエンティティ検出結果エンコーダークラス </p>
+<dl class="see"><dt><b>参照:</b></dt><dd><a class="el" href="class_comm_data_1_1_detect_entities_result.html" title="視野内のエンティティ検出結果エンコーダークラス">CommData::DetectEntitiesResult</a> </dd></dl>
+
+<p> <a class="el" href="event_2_detect_entities_8h_source.html">event/DetectEntities.h</a> の <a class="el" href="event_2_detect_entities_8h_source.html#l00033">33</a> 行で定義されています。</p>
+<hr/><h2>関数</h2>
+<a class="anchor" id="ab3acddd5314ec35bc8180494cfc9527b"></a><!-- doxytag: member="ResultDetectEntitiesEvent::copy" ref="ab3acddd5314ec35bc8180494cfc9527b" args="(C &amp;o)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ResultDetectEntitiesEvent::copy </td>
+          <td>(</td>
+          <td class="paramtype">C &amp;&nbsp;</td>
+          <td class="paramname"> <em>o</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>検出したエンティティ名をすべて取得する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>o</em>&nbsp;</td><td>エンティティ名を格納するコンテナ </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="event_2_detect_entities_8h_source.html">event/DetectEntities.h</a> の <a class="el" href="event_2_detect_entities_8h_source.html#l00055">55</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ac49edb947678263c877abb33d4b99863"></a><!-- doxytag: member="ResultDetectEntitiesEvent::getDetected" ref="ac49edb947678263c877abb33d4b99863" args="(int i)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* ResultDetectEntitiesEvent::getDetected </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>i</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>指定したインデックスのエンティティ名を取得する </p>
+
+<p> <a class="el" href="event_2_detect_entities_8h_source.html">event/DetectEntities.h</a> の <a class="el" href="event_2_detect_entities_8h_source.html#l00046">46</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_result_detect_entities_event_ac49edb947678263c877abb33d4b99863_cgraph.png" border="0" usemap="#class_result_detect_entities_event_ac49edb947678263c877abb33d4b99863_cgraph_map" alt=""></div>
+<map name="class_result_detect_entities_event_ac49edb947678263c877abb33d4b99863_cgraph_map" id="class_result_detect_entities_event_ac49edb947678263c877abb33d4b99863_cgraph">
+<area shape="rect" href="class_result_detect_entities_event.html#aaadd0ba760a812de9e9a1d3d5dcd6c1e" title="検出したエンティティ数を得る" alt="" coords="305,5,588,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aaadd0ba760a812de9e9a1d3d5dcd6c1e"></a><!-- doxytag: member="ResultDetectEntitiesEvent::getDetectedCount" ref="aaadd0ba760a812de9e9a1d3d5dcd6c1e" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ResultDetectEntitiesEvent::getDetectedCount </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>検出したエンティティ数を得る </p>
+
+<p> <a class="el" href="event_2_detect_entities_8h_source.html">event/DetectEntities.h</a> の <a class="el" href="event_2_detect_entities_8h_source.html#l00044">44</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+呼出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_result_detect_entities_event_aaadd0ba760a812de9e9a1d3d5dcd6c1e_icgraph.png" border="0" usemap="#class_result_detect_entities_event_aaadd0ba760a812de9e9a1d3d5dcd6c1e_icgraph_map" alt=""></div>
+<map name="class_result_detect_entities_event_aaadd0ba760a812de9e9a1d3d5dcd6c1e_icgraph_map" id="class_result_detect_entities_event_aaadd0ba760a812de9e9a1d3d5dcd6c1e_icgraph">
+<area shape="rect" href="class_result_detect_entities_event.html#ac49edb947678263c877abb33d4b99863" title="指定したインデックスのエンティティ名を取得する" alt="" coords="339,5,589,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="af80b9957e85eacf9681dec9333ed251d"></a><!-- doxytag: member="ResultDetectEntitiesEvent::set" ref="af80b9957e85eacf9681dec9333ed251d" args="(int packetNum, int seq, char *data, int n)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ResultDetectEntitiesEvent::set </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>packetNum</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>n</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="event_2_detect_entities_8h_source.html">event/DetectEntities.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:19 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGWorldEditor: メンバ一覧</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Sgv::XMLWorld メンバ一覧</h1>これは全メンバの一覧です。<a class="el" href="class_sgv_1_1_x_m_l_world.html">Sgv::XMLWorld</a>継承メンバも含んでいます。<p><table>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_x_m_l_world.html#9f6ae1b72db24ec2616bcc5c52ec203a">clear</a>()</td><td><a class="el" href="class_sgv_1_1_x_m_l_world.html">Sgv::XMLWorld</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_x_m_l_world.html#b17a7fa8858528a0c0b30a10ab112a2d">clearAllModifiedFlag</a>()</td><td><a class="el" href="class_sgv_1_1_x_m_l_world.html">Sgv::XMLWorld</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_x_m_l_world.html#1cf9e66e298f198a08b3cd4fc9fff47c">composeEntName</a>(const char *className, int entNo)</td><td><a class="el" href="class_sgv_1_1_x_m_l_world.html">Sgv::XMLWorld</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_x_m_l_world.html#e4653c6bc959e6ef58e573c660267e6a">createEntity</a>(const char *className)</td><td><a class="el" href="class_sgv_1_1_x_m_l_world.html">Sgv::XMLWorld</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_x_m_l_world.html#4f0106a6c47be015a92597794d35c6c9">decomposeEntName</a>(const char *entName, std::string &amp;className, int &amp;entNo)</td><td><a class="el" href="class_sgv_1_1_x_m_l_world.html">Sgv::XMLWorld</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_x_m_l_world.html#2245358f7cf4c9e23c7417bdbb429384">deleteEntity</a>(const char *name)</td><td><a class="el" href="class_sgv_1_1_x_m_l_world.html">Sgv::XMLWorld</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_x_m_l_world.html#10d16b4ada8202160f993bc459e84bf6">dump</a>(FILE *fp)</td><td><a class="el" href="class_sgv_1_1_x_m_l_world.html">Sgv::XMLWorld</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_x_m_l_world.html#562a9f9eb5683ef823c7a5a9031b856c">getEntity</a>(const char *name)</td><td><a class="el" href="class_sgv_1_1_x_m_l_world.html">Sgv::XMLWorld</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_x_m_l_world.html#281cf75a5d953d8f6f41cf94f6ef6366">getEntityNames</a>()</td><td><a class="el" href="class_sgv_1_1_x_m_l_world.html">Sgv::XMLWorld</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_x_m_l_world.html#9dcd8850068d9dc0089a2044166856d7">getNewEntityName</a>(const char *className)</td><td><a class="el" href="class_sgv_1_1_x_m_l_world.html">Sgv::XMLWorld</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_x_m_l_world.html#71319626da0ba6e3cdc137c438e0cff6">getWorldFileName</a>()</td><td><a class="el" href="class_sgv_1_1_x_m_l_world.html">Sgv::XMLWorld</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_x_m_l_world.html#00225b921c4421883527beef89f6f020">getWorldName</a>()</td><td><a class="el" href="class_sgv_1_1_x_m_l_world.html">Sgv::XMLWorld</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_x_m_l_world.html#f7c5ae40d2508858364f31dda9938471">isModified</a>()</td><td><a class="el" href="class_sgv_1_1_x_m_l_world.html">Sgv::XMLWorld</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_x_m_l_world.html#f53f2007d0a49adfafcd69eadcc5ae87">loadFromXML</a>(const char *xmlWorldFileName, std::vector&lt; std::string &gt; &amp;missingClassFiles)</td><td><a class="el" href="class_sgv_1_1_x_m_l_world.html">Sgv::XMLWorld</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_x_m_l_world.html#5e619944c7b430f620e839b8fd5ac71f">saveToXML</a>(const char *xmlWorldFileName)</td><td><a class="el" href="class_sgv_1_1_x_m_l_world.html">Sgv::XMLWorld</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_x_m_l_world.html#79efc792e448daba3e42b2da656fdc81">setWorldName</a>(const char *worldName)</td><td><a class="el" href="class_sgv_1_1_x_m_l_world.html">Sgv::XMLWorld</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_x_m_l_world.html#989446cc5498eb5f4a936f3fafd3bdd2">setXMLEntityClassManager</a>(XMLEntityClassManager *pEntClassMgr)</td><td><a class="el" href="class_sgv_1_1_x_m_l_world.html">Sgv::XMLWorld</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_x_m_l_world.html#5c5e307883b8845f1db9e6242807d0a7">updateEntNoMapEntry</a>(const char *entName)</td><td><a class="el" href="class_sgv_1_1_x_m_l_world.html">Sgv::XMLWorld</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_x_m_l_world.html#83fd52b70014c685d854628ccf01fa27">updateWithClassDefinition</a>(XMLEntityClassManager *ecm)</td><td><a class="el" href="class_sgv_1_1_x_m_l_world.html">Sgv::XMLWorld</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_x_m_l_world.html#e1abc4b1c3ffd5925529268a54168fa4">XMLWorld</a>()</td><td><a class="el" href="class_sgv_1_1_x_m_l_world.html">Sgv::XMLWorld</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_sgv_1_1_x_m_l_world.html#ebc83675b31ef582bf28df3befb03e25">XMLWorld</a>(const char *worldName)</td><td><a class="el" href="class_sgv_1_1_x_m_l_world.html">Sgv::XMLWorld</a></td><td></td></tr>
+</table></div>
+<hr size="1"><address style="text-align: right;"><small>SIGWorldEditorに対してThu Jun 9 10:53:01 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

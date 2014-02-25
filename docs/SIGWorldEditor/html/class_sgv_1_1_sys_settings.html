@@ -1,0 +1,436 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGWorldEditor: クラス Sgv::SysSettings</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_sgv.html">Sgv</a>::<a class="el" href="class_sgv_1_1_sys_settings.html">SysSettings</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Sgv::SysSettings</h1><!-- doxytag: class="Sgv::SysSettings" -->設定情報の保存用クラス  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_sgv_sys_settings_8h_source.html">SgvSysSettings.h</a>&gt;</code>
+<p>
+
+<p>
+<a href="class_sgv_1_1_sys_settings-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_sys_settings.html#2c3759ef9ac019a51a9967b53edf000b">addValue</a> (const char *key, const char *value, bool bAddIfNotExists)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">キーに対する値を追加する  <a href="#2c3759ef9ac019a51a9967b53edf000b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_sys_settings.html#e69114b47a08b6ec9c8515b302708913">countValues</a> (const char *key)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">キーに対する値の個数を返す  <a href="#e69114b47a08b6ec9c8515b302708913"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_sys_settings.html#cf61e523415407128e288edabf80b99b">getSettingFileName</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">現在の設定ファイル名を得る  <a href="#cf61e523415407128e288edabf80b99b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_sys_settings.html#1effee610b90981bbed3dba38f99a756">getValue</a> (const char *key, int i=0)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">キーに対応する値を返す  <a href="#1effee610b90981bbed3dba38f99a756"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_sys_settings.html#f399575931012ace5cf6ba2cecbd2c79">load</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">設定ファイルをロードする．  <a href="#f399575931012ace5cf6ba2cecbd2c79"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_sys_settings.html#97fb5e80e76295412f733854800d084f">loaded</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">設定ファイルのロードが成功したか？を返す  <a href="#97fb5e80e76295412f733854800d084f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_sys_settings.html#0c7ed0a148e062ef8c1095f89b39bd38">save</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">現在の保持内容を設定ファイルにセーブする  <a href="#0c7ed0a148e062ef8c1095f89b39bd38"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_sys_settings.html#48fdc0b3edefb8864f7e75d76c4e56ba">setSettingFileName</a> (const char *settingsFile)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">設定ファイル名をセットする  <a href="#48fdc0b3edefb8864f7e75d76c4e56ba"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_sys_settings.html#f9be3a5e1263a4a61e60c8eaa843f8ad">setValue</a> (const char *key, const char *value, int i=0)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">キーに対する値を設定する  <a href="#f9be3a5e1263a4a61e60c8eaa843f8ad"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_sys_settings.html#46ba1c2b78504680235bde3280e59eaf">SysSettings</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#46ba1c2b78504680235bde3280e59eaf"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+設定情報の保存用クラス 
+<p>
+SIGWorldEditor終了時に、サーバー名、ポート番号等の現在の設定を保存するために使われる．<p>
+<a class="el" href="class_sgv_1_1_startup_file.html" title="設定ファイルクラス．SIGWorldEditorの起動時に読み込まれる．">Sgv::StartupFile</a>と似ている．異なるのは以下の点．<p>
+<a class="el" href="class_sgv_1_1_startup_file.html" title="設定ファイルクラス．SIGWorldEditorの起動時に読み込まれる．">Sgv::StartupFile</a>は読み込み専用．設定の保存はできない． <a class="el" href="class_sgv_1_1_sys_settings.html" title="設定情報の保存用クラス">Sgv::SysSettings</a>は読み書き両方ができる． 
+<p> <a class="el" href="_sgv_sys_settings_8h_source.html">SgvSysSettings.h</a> の <a class="el" href="_sgv_sys_settings_8h_source.html#l00021">21</a> 行で定義されています。</p>
+<hr><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" name="46ba1c2b78504680235bde3280e59eaf"></a><!-- doxytag: member="Sgv::SysSettings::SysSettings" ref="46ba1c2b78504680235bde3280e59eaf" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::SysSettings::SysSettings           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_sys_settings_8cpp_source.html">SgvSysSettings.cpp</a> の <a class="el" href="_sgv_sys_settings_8cpp_source.html#l00010">10</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>関数</h2>
+<a class="anchor" name="2c3759ef9ac019a51a9967b53edf000b"></a><!-- doxytag: member="Sgv::SysSettings::addValue" ref="2c3759ef9ac019a51a9967b53edf000b" args="(const char *key, const char *value, bool bAddIfNotExists)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::SysSettings::addValue           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bAddIfNotExists</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+キーに対する値を追加する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>key</em>&nbsp;</td><td>[i] キー </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>value</em>&nbsp;</td><td>[i] 値 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bAddIfNotExists</em>&nbsp;</td><td>[i] true(=キーに対する値が存在しないときだけ追加する) </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_sys_settings_8cpp_source.html">SgvSysSettings.cpp</a> の <a class="el" href="_sgv_sys_settings_8cpp_source.html#l00152">152</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="e69114b47a08b6ec9c8515b302708913"></a><!-- doxytag: member="Sgv::SysSettings::countValues" ref="e69114b47a08b6ec9c8515b302708913" args="(const char *key)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Sgv::SysSettings::countValues           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>key</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+キーに対する値の個数を返す 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>key</em>&nbsp;</td><td>[i] キー</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>値の個数 </dd></dl>
+
+<p> <a class="el" href="_sgv_sys_settings_8cpp_source.html">SgvSysSettings.cpp</a> の <a class="el" href="_sgv_sys_settings_8cpp_source.html#l00122">122</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="cf61e523415407128e288edabf80b99b"></a><!-- doxytag: member="Sgv::SysSettings::getSettingFileName" ref="cf61e523415407128e288edabf80b99b" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * Sgv::SysSettings::getSettingFileName           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+現在の設定ファイル名を得る 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>設定ファイル名 </dd></dl>
+
+<p> <a class="el" href="_sgv_sys_settings_8cpp_source.html">SgvSysSettings.cpp</a> の <a class="el" href="_sgv_sys_settings_8cpp_source.html#l00021">21</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="1effee610b90981bbed3dba38f99a756"></a><!-- doxytag: member="Sgv::SysSettings::getValue" ref="1effee610b90981bbed3dba38f99a756" args="(const char *key, int i=0)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * Sgv::SysSettings::getValue           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>i</em> = <code>0</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+キーに対応する値を返す 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>key</em>&nbsp;</td><td>[i] キー </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>i</em>&nbsp;</td><td>[i] インデックス値 (0&lt;=i&lt;countValues(key))</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>キーのi番目の値 </dd></dl>
+
+<p> <a class="el" href="_sgv_sys_settings_8cpp_source.html">SgvSysSettings.cpp</a> の <a class="el" href="_sgv_sys_settings_8cpp_source.html#l00129">129</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f399575931012ace5cf6ba2cecbd2c79"></a><!-- doxytag: member="Sgv::SysSettings::load" ref="f399575931012ace5cf6ba2cecbd2c79" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::SysSettings::load           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+設定ファイルをロードする． 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_sys_settings_8cpp_source.html">SgvSysSettings.cpp</a> の <a class="el" href="_sgv_sys_settings_8cpp_source.html#l00026">26</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="97fb5e80e76295412f733854800d084f"></a><!-- doxytag: member="Sgv::SysSettings::loaded" ref="97fb5e80e76295412f733854800d084f" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::SysSettings::loaded           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+設定ファイルのロードが成功したか？を返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=ファイルはロードされている), false(=ファイルはロードされていない) </dd></dl>
+
+<p> <a class="el" href="_sgv_sys_settings_8cpp_source.html">SgvSysSettings.cpp</a> の <a class="el" href="_sgv_sys_settings_8cpp_source.html#l00085">85</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="0c7ed0a148e062ef8c1095f89b39bd38"></a><!-- doxytag: member="Sgv::SysSettings::save" ref="0c7ed0a148e062ef8c1095f89b39bd38" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::SysSettings::save           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+現在の保持内容を設定ファイルにセーブする 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_sys_settings_8cpp_source.html">SgvSysSettings.cpp</a> の <a class="el" href="_sgv_sys_settings_8cpp_source.html#l00090">90</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="48fdc0b3edefb8864f7e75d76c4e56ba"></a><!-- doxytag: member="Sgv::SysSettings::setSettingFileName" ref="48fdc0b3edefb8864f7e75d76c4e56ba" args="(const char *settingsFile)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::SysSettings::setSettingFileName           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>settingsFile</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+設定ファイル名をセットする 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>settingsFile</em>&nbsp;</td><td>[i] 設定ファイル名 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_sys_settings_8cpp_source.html">SgvSysSettings.cpp</a> の <a class="el" href="_sgv_sys_settings_8cpp_source.html#l00016">16</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f9be3a5e1263a4a61e60c8eaa843f8ad"></a><!-- doxytag: member="Sgv::SysSettings::setValue" ref="f9be3a5e1263a4a61e60c8eaa843f8ad" args="(const char *key, const char *value, int i=0)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::SysSettings::setValue           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>i</em> = <code>0</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+キーに対する値を設定する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>key</em>&nbsp;</td><td>[i] キー </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>value</em>&nbsp;</td><td>[i] 値 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>i</em>&nbsp;</td><td>[i] インデックス値 (i&gt;=0)</td></tr>
+  </table>
+</dl>
+インデックス値に対応する値が存在しない場合は、自動的に作られる 
+<p> <a class="el" href="_sgv_sys_settings_8cpp_source.html">SgvSysSettings.cpp</a> の <a class="el" href="_sgv_sys_settings_8cpp_source.html#l00138">138</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_sgv_sys_settings_8h_source.html">SgvSysSettings.h</a><li><a class="el" href="_sgv_sys_settings_8cpp_source.html">SgvSysSettings.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGWorldEditorに対してThu Jun 9 10:53:00 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

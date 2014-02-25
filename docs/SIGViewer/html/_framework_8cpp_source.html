@@ -1,0 +1,411 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGViewer: Framework.cpp ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>Framework.cpp</h1><a href="_framework_8cpp.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/*</span>
+<a name="l00002"></a>00002 <span class="comment"> * Copyright (c) 2006, Creative Labs Inc.</span>
+<a name="l00003"></a>00003 <span class="comment"> * All rights reserved.</span>
+<a name="l00004"></a>00004 <span class="comment"> * </span>
+<a name="l00005"></a>00005 <span class="comment"> * Redistribution and use in source and binary forms, with or without modification, are permitted provided</span>
+<a name="l00006"></a>00006 <span class="comment"> * that the following conditions are met:</span>
+<a name="l00007"></a>00007 <span class="comment"> * </span>
+<a name="l00008"></a>00008 <span class="comment"> *     * Redistributions of source code must retain the above copyright notice, this list of conditions and</span>
+<a name="l00009"></a>00009 <span class="comment"> *       the following disclaimer.</span>
+<a name="l00010"></a>00010 <span class="comment"> *     * Redistributions in binary form must reproduce the above copyright notice, this list of conditions</span>
+<a name="l00011"></a>00011 <span class="comment"> *       and the following disclaimer in the documentation and/or other materials provided with the distribution.</span>
+<a name="l00012"></a>00012 <span class="comment"> *     * Neither the name of Creative Labs Inc. nor the names of its contributors may be used to endorse or</span>
+<a name="l00013"></a>00013 <span class="comment"> *       promote products derived from this software without specific prior written permission.</span>
+<a name="l00014"></a>00014 <span class="comment"> * </span>
+<a name="l00015"></a>00015 <span class="comment"> * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED</span>
+<a name="l00016"></a>00016 <span class="comment"> * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A</span>
+<a name="l00017"></a>00017 <span class="comment"> * PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR</span>
+<a name="l00018"></a>00018 <span class="comment"> * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED</span>
+<a name="l00019"></a>00019 <span class="comment"> * TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)</span>
+<a name="l00020"></a>00020 <span class="comment"> * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING</span>
+<a name="l00021"></a>00021 <span class="comment"> * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<a name="l00022"></a>00022 <span class="comment"> * POSSIBILITY OF SUCH DAMAGE.</span>
+<a name="l00023"></a>00023 <span class="comment"> */</span>
+<a name="l00024"></a>00024 
+<a name="l00025"></a>00025 <span class="comment">// Win32 version of the Creative Labs OpenAL 1.1 Framework for samples</span>
+<a name="l00026"></a>00026 <span class="preprocessor">#include &lt;windows.h&gt;</span>
+<a name="l00027"></a>00027 <span class="preprocessor">#include &lt;stdio.h&gt;</span>
+<a name="l00028"></a>00028 
+<a name="l00029"></a>00029 <span class="preprocessor">#include "Framework.h"</span>
+<a name="l00030"></a>00030 <span class="preprocessor">#include "CWaves.h"</span>
+<a name="l00031"></a>00031 <span class="preprocessor">#include "aldlist.h"</span>
+<a name="l00032"></a>00032 <span class="preprocessor">#include "<a class="code" href="_sgv_log_8h.html">SgvLog.h</a>"</span>
+<a name="l00033"></a>00033 
+<a name="l00034"></a><a class="code" href="_framework_8cpp.html#5079beb7149f6634bbb5c352a55ead4c">00034</a> <span class="keyword">static</span> CWaves *<a class="code" href="_framework_8cpp.html#5079beb7149f6634bbb5c352a55ead4c">g_pWaveLoader</a> = NULL;
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036 <span class="comment">// Imported EFX functions</span>
+<a name="l00037"></a>00037 
+<a name="l00038"></a>00038 <span class="comment">// Effect objects</span>
+<a name="l00039"></a><a class="code" href="_framework_8cpp.html#b7edd6d140e09db58a5d2e47bf02c34e">00039</a> LPALGENEFFECTS <a class="code" href="_framework_8cpp.html#b7edd6d140e09db58a5d2e47bf02c34e">alGenEffects</a> = NULL;
+<a name="l00040"></a><a class="code" href="_framework_8cpp.html#6cd7e54ec85fb063583d341148e70930">00040</a> LPALDELETEEFFECTS <a class="code" href="_framework_8cpp.html#6cd7e54ec85fb063583d341148e70930">alDeleteEffects</a> = NULL;
+<a name="l00041"></a><a class="code" href="_framework_8cpp.html#993918aaa52ec63b40fd45985523fb6f">00041</a> LPALISEFFECT <a class="code" href="_framework_8cpp.html#993918aaa52ec63b40fd45985523fb6f">alIsEffect</a> = NULL;
+<a name="l00042"></a><a class="code" href="_framework_8cpp.html#a63cb5f3de911e2bb1de4be5754720d0">00042</a> LPALEFFECTI <a class="code" href="_framework_8cpp.html#a63cb5f3de911e2bb1de4be5754720d0">alEffecti</a> = NULL;
+<a name="l00043"></a><a class="code" href="_framework_8cpp.html#9d711e1ad2fc5c58bc71c4da11e7e38b">00043</a> LPALEFFECTIV <a class="code" href="_framework_8cpp.html#9d711e1ad2fc5c58bc71c4da11e7e38b">alEffectiv</a> = NULL;
+<a name="l00044"></a><a class="code" href="_framework_8cpp.html#27196fb3d8d52870b98176820637ec5b">00044</a> LPALEFFECTF <a class="code" href="_framework_8cpp.html#27196fb3d8d52870b98176820637ec5b">alEffectf</a> = NULL;
+<a name="l00045"></a><a class="code" href="_framework_8cpp.html#a95aa7aafa55005938f731f2605e4842">00045</a> LPALEFFECTFV <a class="code" href="_framework_8cpp.html#a95aa7aafa55005938f731f2605e4842">alEffectfv</a> = NULL;
+<a name="l00046"></a><a class="code" href="_framework_8cpp.html#10ea12361eca51800c7af6b2cf79c879">00046</a> LPALGETEFFECTI <a class="code" href="_framework_8cpp.html#10ea12361eca51800c7af6b2cf79c879">alGetEffecti</a> = NULL;
+<a name="l00047"></a><a class="code" href="_framework_8cpp.html#722e425285a88e6e0864912628d401cf">00047</a> LPALGETEFFECTIV <a class="code" href="_framework_8cpp.html#722e425285a88e6e0864912628d401cf">alGetEffectiv</a> = NULL;
+<a name="l00048"></a><a class="code" href="_framework_8cpp.html#aaab8c82398a606308c27fa3e8533736">00048</a> LPALGETEFFECTF <a class="code" href="_framework_8cpp.html#aaab8c82398a606308c27fa3e8533736">alGetEffectf</a> = NULL;
+<a name="l00049"></a><a class="code" href="_framework_8cpp.html#10236b0690092f721b156e00bbe8c2f4">00049</a> LPALGETEFFECTFV <a class="code" href="_framework_8cpp.html#10236b0690092f721b156e00bbe8c2f4">alGetEffectfv</a> = NULL;
+<a name="l00050"></a>00050 
+<a name="l00051"></a>00051 <span class="comment">//Filter objects</span>
+<a name="l00052"></a><a class="code" href="_framework_8cpp.html#0b010f0fc1b623d8b0a668e2ee45164f">00052</a> LPALGENFILTERS <a class="code" href="_framework_8cpp.html#0b010f0fc1b623d8b0a668e2ee45164f">alGenFilters</a> = NULL;
+<a name="l00053"></a><a class="code" href="_framework_8cpp.html#e1d7a1cc93f400e44def529ad10b3b42">00053</a> LPALDELETEFILTERS <a class="code" href="_framework_8cpp.html#e1d7a1cc93f400e44def529ad10b3b42">alDeleteFilters</a> = NULL;
+<a name="l00054"></a><a class="code" href="_framework_8cpp.html#e0628fe0c05426cf12e6a630636b0344">00054</a> LPALISFILTER <a class="code" href="_framework_8cpp.html#e0628fe0c05426cf12e6a630636b0344">alIsFilter</a> = NULL;
+<a name="l00055"></a><a class="code" href="_framework_8cpp.html#b3b156266dc1b387a4b23a5789ede96a">00055</a> LPALFILTERI <a class="code" href="_framework_8cpp.html#b3b156266dc1b387a4b23a5789ede96a">alFilteri</a> = NULL;
+<a name="l00056"></a><a class="code" href="_framework_8cpp.html#4e2417c334f35c0797efbf63dd8bdbba">00056</a> LPALFILTERIV <a class="code" href="_framework_8cpp.html#4e2417c334f35c0797efbf63dd8bdbba">alFilteriv</a> = NULL;
+<a name="l00057"></a><a class="code" href="_framework_8cpp.html#8fda6c57d3930fcf3840184999697306">00057</a> LPALFILTERF <a class="code" href="_framework_8cpp.html#8fda6c57d3930fcf3840184999697306">alFilterf</a> = NULL;
+<a name="l00058"></a><a class="code" href="_framework_8cpp.html#fb6aaf80507f78df16e4c5a23809de69">00058</a> LPALFILTERFV <a class="code" href="_framework_8cpp.html#fb6aaf80507f78df16e4c5a23809de69">alFilterfv</a> = NULL;
+<a name="l00059"></a><a class="code" href="_framework_8cpp.html#25cf332ab7d47d77d5dd6405570d1b49">00059</a> LPALGETFILTERI <a class="code" href="_framework_8cpp.html#25cf332ab7d47d77d5dd6405570d1b49">alGetFilteri</a> = NULL;
+<a name="l00060"></a><a class="code" href="_framework_8cpp.html#ca999ecb61390813f2ec03db102b3148">00060</a> LPALGETFILTERIV <a class="code" href="_framework_8cpp.html#ca999ecb61390813f2ec03db102b3148">alGetFilteriv</a> = NULL;
+<a name="l00061"></a><a class="code" href="_framework_8cpp.html#1ec87c55092464ab5528291a512cac84">00061</a> LPALGETFILTERF <a class="code" href="_framework_8cpp.html#1ec87c55092464ab5528291a512cac84">alGetFilterf</a> = NULL;
+<a name="l00062"></a><a class="code" href="_framework_8cpp.html#72ccea0c8f33a8cd372a50b1e3bb767c">00062</a> LPALGETFILTERFV <a class="code" href="_framework_8cpp.html#72ccea0c8f33a8cd372a50b1e3bb767c">alGetFilterfv</a> = NULL;
+<a name="l00063"></a>00063 
+<a name="l00064"></a>00064 <span class="comment">// Auxiliary slot object</span>
+<a name="l00065"></a><a class="code" href="_framework_8cpp.html#f6a8396e3cd781966c2ca98b95ff192a">00065</a> LPALGENAUXILIARYEFFECTSLOTS <a class="code" href="_framework_8cpp.html#f6a8396e3cd781966c2ca98b95ff192a">alGenAuxiliaryEffectSlots</a> = NULL;
+<a name="l00066"></a><a class="code" href="_framework_8cpp.html#31c997c1737ba79b656e4f25d7a05071">00066</a> LPALDELETEAUXILIARYEFFECTSLOTS <a class="code" href="_framework_8cpp.html#31c997c1737ba79b656e4f25d7a05071">alDeleteAuxiliaryEffectSlots</a> = NULL;
+<a name="l00067"></a><a class="code" href="_framework_8cpp.html#a70b0fca9f0a620ab27d621ad3258432">00067</a> LPALISAUXILIARYEFFECTSLOT <a class="code" href="_framework_8cpp.html#a70b0fca9f0a620ab27d621ad3258432">alIsAuxiliaryEffectSlot</a> = NULL;
+<a name="l00068"></a><a class="code" href="_framework_8cpp.html#3396bfd3efa1b25efa7dd3f557f9b5dd">00068</a> LPALAUXILIARYEFFECTSLOTI <a class="code" href="_framework_8cpp.html#3396bfd3efa1b25efa7dd3f557f9b5dd">alAuxiliaryEffectSloti</a> = NULL;
+<a name="l00069"></a><a class="code" href="_framework_8cpp.html#bc5253997e7663106e584b5a020bd46a">00069</a> LPALAUXILIARYEFFECTSLOTIV <a class="code" href="_framework_8cpp.html#bc5253997e7663106e584b5a020bd46a">alAuxiliaryEffectSlotiv</a> = NULL;
+<a name="l00070"></a><a class="code" href="_framework_8cpp.html#38f9784bb53b63a424413f2a1d857b91">00070</a> LPALAUXILIARYEFFECTSLOTF <a class="code" href="_framework_8cpp.html#38f9784bb53b63a424413f2a1d857b91">alAuxiliaryEffectSlotf</a> = NULL;
+<a name="l00071"></a><a class="code" href="_framework_8cpp.html#fc8c3c9f686d536b043098b461232eb3">00071</a> LPALAUXILIARYEFFECTSLOTFV <a class="code" href="_framework_8cpp.html#fc8c3c9f686d536b043098b461232eb3">alAuxiliaryEffectSlotfv</a> = NULL;
+<a name="l00072"></a><a class="code" href="_framework_8cpp.html#a094303796c46d69b30faa0466d075c3">00072</a> LPALGETAUXILIARYEFFECTSLOTI <a class="code" href="_framework_8cpp.html#a094303796c46d69b30faa0466d075c3">alGetAuxiliaryEffectSloti</a> = NULL;
+<a name="l00073"></a><a class="code" href="_framework_8cpp.html#199ed242ebdec3c3232503309cdbf9dc">00073</a> LPALGETAUXILIARYEFFECTSLOTIV <a class="code" href="_framework_8cpp.html#199ed242ebdec3c3232503309cdbf9dc">alGetAuxiliaryEffectSlotiv</a> = NULL;
+<a name="l00074"></a><a class="code" href="_framework_8cpp.html#cd09a47010a7a43f94c0e5992d8a4d8b">00074</a> LPALGETAUXILIARYEFFECTSLOTF <a class="code" href="_framework_8cpp.html#cd09a47010a7a43f94c0e5992d8a4d8b">alGetAuxiliaryEffectSlotf</a> = NULL;
+<a name="l00075"></a><a class="code" href="_framework_8cpp.html#c09ff39ae505dde700d06068c52f87c7">00075</a> LPALGETAUXILIARYEFFECTSLOTFV <a class="code" href="_framework_8cpp.html#c09ff39ae505dde700d06068c52f87c7">alGetAuxiliaryEffectSlotfv</a> = NULL;
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077 <span class="comment">// XRAM functions and enum values</span>
+<a name="l00078"></a>00078 
+<a name="l00079"></a><a class="code" href="_framework_8cpp.html#f44236f23eb717ae056ed95ef18b6d48">00079</a> LPEAXSETBUFFERMODE <a class="code" href="_framework_8cpp.html#f44236f23eb717ae056ed95ef18b6d48">eaxSetBufferMode</a> = NULL;
+<a name="l00080"></a><a class="code" href="_framework_8cpp.html#399cd6d3341a8679a9e4e0feb1fbba21">00080</a> LPEAXGETBUFFERMODE <a class="code" href="_framework_8cpp.html#399cd6d3341a8679a9e4e0feb1fbba21">eaxGetBufferMode</a> = NULL;
+<a name="l00081"></a>00081 
+<a name="l00082"></a><a class="code" href="_framework_8cpp.html#59bc809094c7af08ba08f8c69ab32e37">00082</a> ALenum <a class="code" href="_framework_8cpp.html#59bc809094c7af08ba08f8c69ab32e37">eXRAMSize</a> = 0;
+<a name="l00083"></a><a class="code" href="_framework_8cpp.html#d3c8a4c9e0975c72f0a0f61df94786ed">00083</a> ALenum <a class="code" href="_framework_8cpp.html#d3c8a4c9e0975c72f0a0f61df94786ed">eXRAMFree</a> = 0;
+<a name="l00084"></a><a class="code" href="_framework_8cpp.html#1b0509366c2b0683ce7cf4a177094ad0">00084</a> ALenum <a class="code" href="_framework_8cpp.html#1b0509366c2b0683ce7cf4a177094ad0">eXRAMAuto</a> = 0;
+<a name="l00085"></a><a class="code" href="_framework_8cpp.html#d23afde5c70e49331f2638a34356daa2">00085</a> ALenum <a class="code" href="_framework_8cpp.html#d23afde5c70e49331f2638a34356daa2">eXRAMHardware</a> = 0;
+<a name="l00086"></a><a class="code" href="_framework_8cpp.html#642b56fa3668e15a075d66bcdbe21753">00086</a> ALenum <a class="code" href="_framework_8cpp.html#642b56fa3668e15a075d66bcdbe21753">eXRAMAccessible</a> = 0;
+<a name="l00087"></a>00087 
+<a name="l00088"></a>00088 
+<a name="l00089"></a>00089 <span class="comment">// Initialization and enumeration</span>
+<a name="l00090"></a><a class="code" href="_framework_8cpp.html#97a0c6c50fa54c80fec914c8b6fb3780">00090</a> <span class="keywordtype">void</span> <a class="code" href="_framework_8cpp.html#97a0c6c50fa54c80fec914c8b6fb3780">ALFWInit</a>()
+<a name="l00091"></a>00091 {
+<a name="l00092"></a>00092     <a class="code" href="_framework_8cpp.html#5079beb7149f6634bbb5c352a55ead4c">g_pWaveLoader</a> = <span class="keyword">new</span> CWaves();
+<a name="l00093"></a>00093 }
+<a name="l00094"></a>00094 
+<a name="l00095"></a><a class="code" href="_framework_8cpp.html#5e1a3065a01296326b7fb06bad2fce4b">00095</a> <span class="keywordtype">void</span> <a class="code" href="_framework_8cpp.html#5e1a3065a01296326b7fb06bad2fce4b">ALFWShutdown</a>()
+<a name="l00096"></a>00096 {
+<a name="l00097"></a>00097     <span class="keywordflow">if</span> (<a class="code" href="_framework_8cpp.html#5079beb7149f6634bbb5c352a55ead4c">g_pWaveLoader</a>)
+<a name="l00098"></a>00098     {
+<a name="l00099"></a>00099         <span class="keyword">delete</span> <a class="code" href="_framework_8cpp.html#5079beb7149f6634bbb5c352a55ead4c">g_pWaveLoader</a>;
+<a name="l00100"></a>00100         <a class="code" href="_framework_8cpp.html#5079beb7149f6634bbb5c352a55ead4c">g_pWaveLoader</a> = NULL;
+<a name="l00101"></a>00101     }
+<a name="l00102"></a>00102 
+<a name="l00103"></a>00103     <a class="code" href="_framework_8cpp.html#39372bd27d8ddaf6bc7d956338faf4ab">ALFWprintf</a>(<span class="stringliteral">"¥nPress a key to quit¥n"</span>);
+<a name="l00104"></a>00104     <a class="code" href="_load_o_a_l_8h.html#c9e1e421be6be16969382d355cea321a">ALchar</a> ch = _getch();
+<a name="l00105"></a>00105 }
+<a name="l00106"></a>00106 
+<a name="l00107"></a><a class="code" href="_framework_8cpp.html#a1c82f4442b1802a9441f37f152fe247">00107</a> ALboolean <a class="code" href="_framework_8cpp.html#a1c82f4442b1802a9441f37f152fe247">ALFWInitOpenAL</a>()
+<a name="l00108"></a>00108 {
+<a name="l00109"></a>00109     ALDeviceList *pDeviceList = NULL;
+<a name="l00110"></a>00110     ALCcontext *pContext = NULL;
+<a name="l00111"></a>00111     ALCdevice *pDevice = NULL;
+<a name="l00112"></a>00112 
+<a name="l00113"></a>00113     <span class="comment">// FIX-2010-01-19(no longer used)</span>
+<a name="l00114"></a>00114     <span class="comment">// ALint i;</span>
+<a name="l00115"></a>00115 
+<a name="l00116"></a>00116     ALboolean bReturn = AL_FALSE;
+<a name="l00117"></a>00117 
+<a name="l00118"></a>00118     pDeviceList = <span class="keyword">new</span> ALDeviceList();
+<a name="l00119"></a>00119     <span class="keywordflow">if</span> ((pDeviceList) &amp;&amp; (pDeviceList-&gt;GetNumDevices()))
+<a name="l00120"></a>00120     {
+<a name="l00121"></a>00121 <span class="preprocessor">#if 0</span>
+<a name="l00122"></a>00122 <span class="preprocessor"></span>        <a class="code" href="_framework_8cpp.html#39372bd27d8ddaf6bc7d956338faf4ab">ALFWprintf</a>(<span class="stringliteral">"¥nSelect OpenAL Device:¥n"</span>);
+<a name="l00123"></a>00123         <span class="keywordflow">for</span> (i = 0; i &lt; pDeviceList-&gt;GetNumDevices(); i++) 
+<a name="l00124"></a>00124             <a class="code" href="_framework_8cpp.html#39372bd27d8ddaf6bc7d956338faf4ab">ALFWprintf</a>(<span class="stringliteral">"%d. %s%s¥n"</span>, i + 1, pDeviceList-&gt;GetDeviceName(i), i == pDeviceList-&gt;GetDefaultDevice() ? <span class="stringliteral">"(DEFAULT)"</span> : <span class="stringliteral">""</span>);
+<a name="l00125"></a>00125     
+<a name="l00126"></a>00126         <span class="keywordflow">do</span> {
+<a name="l00127"></a>00127             <a class="code" href="_load_o_a_l_8h.html#c9e1e421be6be16969382d355cea321a">ALchar</a> ch = _getch();
+<a name="l00128"></a>00128             i = atoi(&amp;ch);
+<a name="l00129"></a>00129         } <span class="keywordflow">while</span> ((i &lt; 1) || (i &gt; pDeviceList-&gt;GetNumDevices()));
+<a name="l00130"></a>00130 <span class="preprocessor">#endif</span>
+<a name="l00131"></a>00131 <span class="preprocessor"></span>
+<a name="l00132"></a>00132 <span class="preprocessor">#if 1</span>
+<a name="l00133"></a>00133 <span class="preprocessor"></span><span class="comment">// FIX-2010-01-19</span>
+<a name="l00134"></a>00134 <span class="comment">// この修正は厳密にはバグフィックスではない．</span>
+<a name="l00135"></a>00135 <span class="comment">// 修正前でも動作するが、より安全なコードに変更しただけ．</span>
+<a name="l00136"></a>00136         ALint iDefaultDevice = pDeviceList-&gt;GetDefaultDevice();
+<a name="l00137"></a>00137         <span class="keywordtype">char</span> *pDefaultDeviceName = pDeviceList-&gt;GetDeviceName(iDefaultDevice);
+<a name="l00138"></a>00138 
+<a name="l00139"></a>00139         <a class="code" href="class_sgv_1_1_log.html#8134cbda3265eacd0bbbd9dc1a261359" title="ログへ文字列を出力（書式指定可能．改行なし）">Sgv::Log::print</a>(<span class="stringliteral">"iDefaultDevice=(%d)¥n"</span>, iDefaultDevice);
+<a name="l00140"></a>00140         <a class="code" href="class_sgv_1_1_log.html#8134cbda3265eacd0bbbd9dc1a261359" title="ログへ文字列を出力（書式指定可能．改行なし）">Sgv::Log::print</a>(<span class="stringliteral">"pDefaultDeviceName=(%s)¥n"</span>, pDefaultDeviceName);
+<a name="l00141"></a>00141 
+<a name="l00142"></a>00142         pDevice = alcOpenDevice(pDefaultDeviceName);
+<a name="l00143"></a>00143 <span class="preprocessor">#else</span>
+<a name="l00144"></a>00144 <span class="preprocessor"></span>        <span class="comment">// taku</span>
+<a name="l00145"></a>00145         i = 1;
+<a name="l00146"></a>00146 
+<a name="l00147"></a>00147         pDevice = alcOpenDevice(pDeviceList-&gt;GetDeviceName(i - 1));
+<a name="l00148"></a>00148 <span class="preprocessor">#endif</span>
+<a name="l00149"></a>00149 <span class="preprocessor"></span>
+<a name="l00150"></a>00150         <span class="keywordflow">if</span> (pDevice)
+<a name="l00151"></a>00151         {
+<a name="l00152"></a>00152             <a class="code" href="class_sgv_1_1_log.html#8134cbda3265eacd0bbbd9dc1a261359" title="ログへ文字列を出力（書式指定可能．改行なし）">Sgv::Log::print</a>(<span class="stringliteral">"alcOpenDevice(%s) ... ok¥n"</span>, pDefaultDeviceName);
+<a name="l00153"></a>00153 
+<a name="l00154"></a>00154             pContext = alcCreateContext(pDevice, NULL);
+<a name="l00155"></a>00155             <span class="keywordflow">if</span> (pContext)
+<a name="l00156"></a>00156             {
+<a name="l00157"></a>00157                 <a class="code" href="class_sgv_1_1_log.html#8134cbda3265eacd0bbbd9dc1a261359" title="ログへ文字列を出力（書式指定可能．改行なし）">Sgv::Log::print</a>(<span class="stringliteral">"alcCreateContext() ... ok¥n"</span>);
+<a name="l00158"></a>00158 
+<a name="l00159"></a>00159                 <span class="comment">// FIX-2010-01-19</span>
+<a name="l00160"></a>00160                 <span class="comment">//ALFWprintf("%s Device is selected. ¥n", alcGetString(pDevice, ALC_DEVICE_SPECIFIER));</span>
+<a name="l00161"></a>00161                 <a class="code" href="_framework_8cpp.html#39372bd27d8ddaf6bc7d956338faf4ab">ALFWprintf</a>(<span class="stringliteral">"%s Device is selected. (actualDeviceName=(%s))¥n"</span>,
+<a name="l00162"></a>00162                     pDefaultDeviceName,
+<a name="l00163"></a>00163                     pDeviceList-&gt;GetActualDeviceName(iDefaultDevice));
+<a name="l00164"></a>00164 
+<a name="l00165"></a>00165                 alcMakeContextCurrent(pContext);
+<a name="l00166"></a>00166                 bReturn = AL_TRUE;
+<a name="l00167"></a>00167             }
+<a name="l00168"></a>00168             <span class="keywordflow">else</span>
+<a name="l00169"></a>00169             {
+<a name="l00170"></a>00170                 <a class="code" href="class_sgv_1_1_log.html#93dcad7dd4a6aa975f0430ed44851f59" title="ログへエラーメッセージを出力（書式指定可能．改行なし）...">Sgv::Log::error</a>(<span class="stringliteral">"alcCreateContext() ... failed.¥n"</span>);
+<a name="l00171"></a>00171 
+<a name="l00172"></a>00172                 alcCloseDevice(pDevice);
+<a name="l00173"></a>00173             }
+<a name="l00174"></a>00174         }
+<a name="l00175"></a>00175         <span class="keywordflow">else</span>
+<a name="l00176"></a>00176         {
+<a name="l00177"></a>00177             <a class="code" href="class_sgv_1_1_log.html#93dcad7dd4a6aa975f0430ed44851f59" title="ログへエラーメッセージを出力（書式指定可能．改行なし）...">Sgv::Log::error</a>(<span class="stringliteral">"alcOpenDevice() ... failed.¥n"</span>);
+<a name="l00178"></a>00178         }
+<a name="l00179"></a>00179 
+<a name="l00180"></a>00180         <span class="keyword">delete</span> pDeviceList;
+<a name="l00181"></a>00181     }
+<a name="l00182"></a>00182 
+<a name="l00183"></a>00183     <span class="keywordflow">return</span> bReturn;
+<a name="l00184"></a>00184 }
+<a name="l00185"></a>00185 
+<a name="l00186"></a><a class="code" href="_framework_8cpp.html#a29db42bbc63a70a1b4db478c8f39400">00186</a> ALboolean <a class="code" href="_framework_8cpp.html#a29db42bbc63a70a1b4db478c8f39400">ALFWShutdownOpenAL</a>()
+<a name="l00187"></a>00187 {
+<a name="l00188"></a>00188     ALCcontext *pContext;
+<a name="l00189"></a>00189     ALCdevice *pDevice;
+<a name="l00190"></a>00190 
+<a name="l00191"></a>00191     pContext = alcGetCurrentContext();
+<a name="l00192"></a>00192     pDevice = alcGetContextsDevice(pContext);
+<a name="l00193"></a>00193     
+<a name="l00194"></a>00194     alcMakeContextCurrent(NULL);
+<a name="l00195"></a>00195     alcDestroyContext(pContext);
+<a name="l00196"></a>00196     alcCloseDevice(pDevice);
+<a name="l00197"></a>00197 
+<a name="l00198"></a>00198     <span class="keywordflow">return</span> AL_TRUE;
+<a name="l00199"></a>00199 }
+<a name="l00200"></a>00200 
+<a name="l00201"></a><a class="code" href="_framework_8cpp.html#06225f979caf89b9af66b848264a1028">00201</a> ALboolean <a class="code" href="_framework_8cpp.html#06225f979caf89b9af66b848264a1028">ALFWLoadWaveToBuffer</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *szWaveFile, ALuint uiBufferID, ALenum eXRAMBufferMode)
+<a name="l00202"></a>00202 {
+<a name="l00203"></a>00203     WAVEID          WaveID;
+<a name="l00204"></a>00204     ALint           iDataSize, iFrequency;
+<a name="l00205"></a>00205     ALenum          eBufferFormat;
+<a name="l00206"></a>00206     <a class="code" href="_load_o_a_l_8h.html#c9e1e421be6be16969382d355cea321a">ALchar</a>          *pData;
+<a name="l00207"></a>00207     ALboolean       bReturn;
+<a name="l00208"></a>00208 
+<a name="l00209"></a>00209     bReturn = AL_FALSE;
+<a name="l00210"></a>00210     <span class="keywordflow">if</span> (<a class="code" href="_framework_8cpp.html#5079beb7149f6634bbb5c352a55ead4c">g_pWaveLoader</a>)
+<a name="l00211"></a>00211     {
+<a name="l00212"></a>00212         <span class="keywordflow">if</span> (SUCCEEDED(<a class="code" href="_framework_8cpp.html#5079beb7149f6634bbb5c352a55ead4c">g_pWaveLoader</a>-&gt;LoadWaveFile(szWaveFile, &amp;WaveID)))
+<a name="l00213"></a>00213         {
+<a name="l00214"></a>00214             <span class="keywordflow">if</span> ((SUCCEEDED(<a class="code" href="_framework_8cpp.html#5079beb7149f6634bbb5c352a55ead4c">g_pWaveLoader</a>-&gt;GetWaveSize(WaveID, (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span>*)&amp;iDataSize))) &amp;&amp;
+<a name="l00215"></a>00215                 (SUCCEEDED(<a class="code" href="_framework_8cpp.html#5079beb7149f6634bbb5c352a55ead4c">g_pWaveLoader</a>-&gt;GetWaveData(WaveID, (<span class="keywordtype">void</span>**)&amp;pData))) &amp;&amp;
+<a name="l00216"></a>00216                 (SUCCEEDED(<a class="code" href="_framework_8cpp.html#5079beb7149f6634bbb5c352a55ead4c">g_pWaveLoader</a>-&gt;GetWaveFrequency(WaveID, (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span>*)&amp;iFrequency))) &amp;&amp;
+<a name="l00217"></a>00217                 (SUCCEEDED(<a class="code" href="_framework_8cpp.html#5079beb7149f6634bbb5c352a55ead4c">g_pWaveLoader</a>-&gt;GetWaveALBufferFormat(WaveID, &amp;alGetEnumValue, (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span>*)&amp;eBufferFormat))))
+<a name="l00218"></a>00218             {
+<a name="l00219"></a>00219                 <span class="comment">// Set XRAM Mode (if application)</span>
+<a name="l00220"></a>00220                 <span class="keywordflow">if</span> (<a class="code" href="_framework_8cpp.html#f44236f23eb717ae056ed95ef18b6d48">eaxSetBufferMode</a> &amp;&amp; eXRAMBufferMode)
+<a name="l00221"></a>00221                     <a class="code" href="_framework_8cpp.html#f44236f23eb717ae056ed95ef18b6d48">eaxSetBufferMode</a>(1, &amp;uiBufferID, eXRAMBufferMode);
+<a name="l00222"></a>00222 
+<a name="l00223"></a>00223                 alGetError();
+<a name="l00224"></a>00224                 alBufferData(uiBufferID, eBufferFormat, pData, iDataSize, iFrequency);
+<a name="l00225"></a>00225                 <span class="keywordflow">if</span> (alGetError() == AL_NO_ERROR)
+<a name="l00226"></a>00226                     bReturn = AL_TRUE;
+<a name="l00227"></a>00227 
+<a name="l00228"></a>00228                 <a class="code" href="_framework_8cpp.html#5079beb7149f6634bbb5c352a55ead4c">g_pWaveLoader</a>-&gt;DeleteWaveFile(WaveID);
+<a name="l00229"></a>00229             }
+<a name="l00230"></a>00230         }
+<a name="l00231"></a>00231     }
+<a name="l00232"></a>00232 
+<a name="l00233"></a>00233     <span class="keywordflow">return</span> bReturn;
+<a name="l00234"></a>00234 }
+<a name="l00235"></a>00235 
+<a name="l00236"></a><a class="code" href="_framework_8cpp.html#39372bd27d8ddaf6bc7d956338faf4ab">00236</a> <span class="keywordtype">void</span> <a class="code" href="_framework_8cpp.html#39372bd27d8ddaf6bc7d956338faf4ab">ALFWprintf</a>( <span class="keyword">const</span> <span class="keywordtype">char</span>* x, ... )
+<a name="l00237"></a>00237 {
+<a name="l00238"></a>00238     va_list args;
+<a name="l00239"></a>00239     va_start( args, x );
+<a name="l00240"></a>00240     vprintf( x, args ); 
+<a name="l00241"></a>00241     va_end( args );
+<a name="l00242"></a>00242 }
+<a name="l00243"></a>00243 
+<a name="l00244"></a><a class="code" href="_framework_8cpp.html#abcaa048c8afe0459fed6718afe7c3be">00244</a> <a class="code" href="_load_o_a_l_8h.html#c9e1e421be6be16969382d355cea321a">ALchar</a> <a class="code" href="_framework_8cpp.html#abcaa048c8afe0459fed6718afe7c3be">fullPath</a>[_MAX_PATH];
+<a name="l00245"></a><a class="code" href="_framework_8cpp.html#0119fa3223b9aa3b7d589810b9d73e39">00245</a> <a class="code" href="_load_o_a_l_8h.html#c9e1e421be6be16969382d355cea321a">ALchar</a> *<a class="code" href="_framework_8cpp.html#0119fa3223b9aa3b7d589810b9d73e39">ALFWaddMediaPath</a>(<span class="keyword">const</span> <a class="code" href="_load_o_a_l_8h.html#c9e1e421be6be16969382d355cea321a">ALchar</a> *filename)
+<a name="l00246"></a>00246 {
+<a name="l00247"></a>00247     sprintf(<a class="code" href="_framework_8cpp.html#abcaa048c8afe0459fed6718afe7c3be">fullPath</a>, <span class="stringliteral">"%s%s"</span>, <span class="stringliteral">"..¥¥..¥¥Media¥¥"</span>, filename);
+<a name="l00248"></a>00248     <span class="keywordflow">return</span> <a class="code" href="_framework_8cpp.html#abcaa048c8afe0459fed6718afe7c3be">fullPath</a>;
+<a name="l00249"></a>00249 }
+<a name="l00250"></a>00250 
+<a name="l00251"></a><a class="code" href="_framework_8cpp.html#e2314a2295ca98e4a57c587d8a3ca971">00251</a> ALint <a class="code" href="_framework_8cpp.html#e2314a2295ca98e4a57c587d8a3ca971">ALFWKeyPress</a>(<span class="keywordtype">void</span>)
+<a name="l00252"></a>00252 {
+<a name="l00253"></a>00253     <span class="keywordflow">return</span> _kbhit();
+<a name="l00254"></a>00254 }
+<a name="l00255"></a>00255 
+<a name="l00256"></a>00256 <span class="comment">// Extension Queries</span>
+<a name="l00257"></a>00257 
+<a name="l00258"></a><a class="code" href="_framework_8cpp.html#79e0b4ec99276fa9f5ff9ad6f8cde378">00258</a> ALboolean <a class="code" href="_framework_8cpp.html#79e0b4ec99276fa9f5ff9ad6f8cde378">ALFWIsXRAMSupported</a>()
+<a name="l00259"></a>00259 {
+<a name="l00260"></a>00260     ALboolean bXRAM = AL_FALSE;
+<a name="l00261"></a>00261     
+<a name="l00262"></a>00262     <span class="keywordflow">if</span> (alIsExtensionPresent(<span class="stringliteral">"EAX-RAM"</span>) == AL_TRUE)
+<a name="l00263"></a>00263     {
+<a name="l00264"></a>00264         <span class="comment">// Get X-RAM Function pointers</span>
+<a name="l00265"></a>00265         <a class="code" href="_framework_8cpp.html#f44236f23eb717ae056ed95ef18b6d48">eaxSetBufferMode</a> = (EAXSetBufferMode)alGetProcAddress(<span class="stringliteral">"EAXSetBufferMode"</span>);
+<a name="l00266"></a>00266         <a class="code" href="_framework_8cpp.html#399cd6d3341a8679a9e4e0feb1fbba21">eaxGetBufferMode</a> = (EAXGetBufferMode)alGetProcAddress(<span class="stringliteral">"EAXGetBufferMode"</span>);
+<a name="l00267"></a>00267 
+<a name="l00268"></a>00268         <span class="keywordflow">if</span> (<a class="code" href="_framework_8cpp.html#f44236f23eb717ae056ed95ef18b6d48">eaxSetBufferMode</a> &amp;&amp; <a class="code" href="_framework_8cpp.html#399cd6d3341a8679a9e4e0feb1fbba21">eaxGetBufferMode</a>)
+<a name="l00269"></a>00269         {
+<a name="l00270"></a>00270             <a class="code" href="_framework_8cpp.html#59bc809094c7af08ba08f8c69ab32e37">eXRAMSize</a> = alGetEnumValue(<span class="stringliteral">"AL_EAX_RAM_SIZE"</span>);
+<a name="l00271"></a>00271             <a class="code" href="_framework_8cpp.html#d3c8a4c9e0975c72f0a0f61df94786ed">eXRAMFree</a> = alGetEnumValue(<span class="stringliteral">"AL_EAX_RAM_FREE"</span>);
+<a name="l00272"></a>00272             <a class="code" href="_framework_8cpp.html#1b0509366c2b0683ce7cf4a177094ad0">eXRAMAuto</a> = alGetEnumValue(<span class="stringliteral">"AL_STORAGE_AUTOMATIC"</span>);
+<a name="l00273"></a>00273             <a class="code" href="_framework_8cpp.html#d23afde5c70e49331f2638a34356daa2">eXRAMHardware</a> = alGetEnumValue(<span class="stringliteral">"AL_STORAGE_HARDWARE"</span>);
+<a name="l00274"></a>00274             <a class="code" href="_framework_8cpp.html#642b56fa3668e15a075d66bcdbe21753">eXRAMAccessible</a> = alGetEnumValue(<span class="stringliteral">"AL_STORAGE_ACCESSIBLE"</span>);
+<a name="l00275"></a>00275 
+<a name="l00276"></a>00276             <span class="keywordflow">if</span> (<a class="code" href="_framework_8cpp.html#59bc809094c7af08ba08f8c69ab32e37">eXRAMSize</a> &amp;&amp; <a class="code" href="_framework_8cpp.html#d3c8a4c9e0975c72f0a0f61df94786ed">eXRAMFree</a> &amp;&amp; <a class="code" href="_framework_8cpp.html#1b0509366c2b0683ce7cf4a177094ad0">eXRAMAuto</a> &amp;&amp; <a class="code" href="_framework_8cpp.html#d23afde5c70e49331f2638a34356daa2">eXRAMHardware</a> &amp;&amp; <a class="code" href="_framework_8cpp.html#642b56fa3668e15a075d66bcdbe21753">eXRAMAccessible</a>)
+<a name="l00277"></a>00277                 bXRAM = AL_TRUE;
+<a name="l00278"></a>00278         }
+<a name="l00279"></a>00279     }
+<a name="l00280"></a>00280 
+<a name="l00281"></a>00281     <span class="keywordflow">return</span> bXRAM;
+<a name="l00282"></a>00282 }
+<a name="l00283"></a>00283 
+<a name="l00284"></a><a class="code" href="_framework_8cpp.html#88ffc4c431bb2b753f68b561ad44a4cb">00284</a> ALboolean <a class="code" href="_framework_8cpp.html#88ffc4c431bb2b753f68b561ad44a4cb">ALFWIsEFXSupported</a>()
+<a name="l00285"></a>00285 {
+<a name="l00286"></a>00286     ALCdevice *pDevice = NULL;
+<a name="l00287"></a>00287     ALCcontext *pContext = NULL;
+<a name="l00288"></a>00288     ALboolean bEFXSupport = AL_FALSE;
+<a name="l00289"></a>00289 
+<a name="l00290"></a>00290     pContext = alcGetCurrentContext();
+<a name="l00291"></a>00291     pDevice = alcGetContextsDevice(pContext);
+<a name="l00292"></a>00292 
+<a name="l00293"></a>00293     <span class="keywordflow">if</span> (alcIsExtensionPresent(pDevice, (<a class="code" href="_load_o_a_l_8h.html#3f7866ede8616bc3d0d6202f9b0cb514">ALCchar</a>*)ALC_EXT_EFX_NAME))
+<a name="l00294"></a>00294     {
+<a name="l00295"></a>00295         <span class="comment">// Get function pointers</span>
+<a name="l00296"></a>00296         <a class="code" href="_framework_8cpp.html#b7edd6d140e09db58a5d2e47bf02c34e">alGenEffects</a> = (LPALGENEFFECTS)alGetProcAddress(<span class="stringliteral">"alGenEffects"</span>);
+<a name="l00297"></a>00297         <a class="code" href="_framework_8cpp.html#6cd7e54ec85fb063583d341148e70930">alDeleteEffects</a> = (LPALDELETEEFFECTS )alGetProcAddress(<span class="stringliteral">"alDeleteEffects"</span>);
+<a name="l00298"></a>00298         <a class="code" href="_framework_8cpp.html#993918aaa52ec63b40fd45985523fb6f">alIsEffect</a> = (LPALISEFFECT )alGetProcAddress(<span class="stringliteral">"alIsEffect"</span>);
+<a name="l00299"></a>00299         <a class="code" href="_framework_8cpp.html#a63cb5f3de911e2bb1de4be5754720d0">alEffecti</a> = (LPALEFFECTI)alGetProcAddress(<span class="stringliteral">"alEffecti"</span>);
+<a name="l00300"></a>00300         <a class="code" href="_framework_8cpp.html#9d711e1ad2fc5c58bc71c4da11e7e38b">alEffectiv</a> = (LPALEFFECTIV)alGetProcAddress(<span class="stringliteral">"alEffectiv"</span>);
+<a name="l00301"></a>00301         <a class="code" href="_framework_8cpp.html#27196fb3d8d52870b98176820637ec5b">alEffectf</a> = (LPALEFFECTF)alGetProcAddress(<span class="stringliteral">"alEffectf"</span>);
+<a name="l00302"></a>00302         <a class="code" href="_framework_8cpp.html#a95aa7aafa55005938f731f2605e4842">alEffectfv</a> = (LPALEFFECTFV)alGetProcAddress(<span class="stringliteral">"alEffectfv"</span>);
+<a name="l00303"></a>00303         <a class="code" href="_framework_8cpp.html#10ea12361eca51800c7af6b2cf79c879">alGetEffecti</a> = (LPALGETEFFECTI)alGetProcAddress(<span class="stringliteral">"alGetEffecti"</span>);
+<a name="l00304"></a>00304         <a class="code" href="_framework_8cpp.html#722e425285a88e6e0864912628d401cf">alGetEffectiv</a> = (LPALGETEFFECTIV)alGetProcAddress(<span class="stringliteral">"alGetEffectiv"</span>);
+<a name="l00305"></a>00305         <a class="code" href="_framework_8cpp.html#aaab8c82398a606308c27fa3e8533736">alGetEffectf</a> = (LPALGETEFFECTF)alGetProcAddress(<span class="stringliteral">"alGetEffectf"</span>);
+<a name="l00306"></a>00306         <a class="code" href="_framework_8cpp.html#10236b0690092f721b156e00bbe8c2f4">alGetEffectfv</a> = (LPALGETEFFECTFV)alGetProcAddress(<span class="stringliteral">"alGetEffectfv"</span>);
+<a name="l00307"></a>00307         <a class="code" href="_framework_8cpp.html#0b010f0fc1b623d8b0a668e2ee45164f">alGenFilters</a> = (LPALGENFILTERS)alGetProcAddress(<span class="stringliteral">"alGenFilters"</span>);
+<a name="l00308"></a>00308         <a class="code" href="_framework_8cpp.html#e1d7a1cc93f400e44def529ad10b3b42">alDeleteFilters</a> = (LPALDELETEFILTERS)alGetProcAddress(<span class="stringliteral">"alDeleteFilters"</span>);
+<a name="l00309"></a>00309         <a class="code" href="_framework_8cpp.html#e0628fe0c05426cf12e6a630636b0344">alIsFilter</a> = (LPALISFILTER)alGetProcAddress(<span class="stringliteral">"alIsFilter"</span>);
+<a name="l00310"></a>00310         <a class="code" href="_framework_8cpp.html#b3b156266dc1b387a4b23a5789ede96a">alFilteri</a> = (LPALFILTERI)alGetProcAddress(<span class="stringliteral">"alFilteri"</span>);
+<a name="l00311"></a>00311         <a class="code" href="_framework_8cpp.html#4e2417c334f35c0797efbf63dd8bdbba">alFilteriv</a> = (LPALFILTERIV)alGetProcAddress(<span class="stringliteral">"alFilteriv"</span>);
+<a name="l00312"></a>00312         <a class="code" href="_framework_8cpp.html#8fda6c57d3930fcf3840184999697306">alFilterf</a> = (LPALFILTERF)alGetProcAddress(<span class="stringliteral">"alFilterf"</span>);
+<a name="l00313"></a>00313         <a class="code" href="_framework_8cpp.html#fb6aaf80507f78df16e4c5a23809de69">alFilterfv</a> = (LPALFILTERFV)alGetProcAddress(<span class="stringliteral">"alFilterfv"</span>);
+<a name="l00314"></a>00314         <a class="code" href="_framework_8cpp.html#25cf332ab7d47d77d5dd6405570d1b49">alGetFilteri</a> = (LPALGETFILTERI )alGetProcAddress(<span class="stringliteral">"alGetFilteri"</span>);
+<a name="l00315"></a>00315         <a class="code" href="_framework_8cpp.html#ca999ecb61390813f2ec03db102b3148">alGetFilteriv</a>= (LPALGETFILTERIV )alGetProcAddress(<span class="stringliteral">"alGetFilteriv"</span>);
+<a name="l00316"></a>00316         <a class="code" href="_framework_8cpp.html#1ec87c55092464ab5528291a512cac84">alGetFilterf</a> = (LPALGETFILTERF )alGetProcAddress(<span class="stringliteral">"alGetFilterf"</span>);
+<a name="l00317"></a>00317         <a class="code" href="_framework_8cpp.html#72ccea0c8f33a8cd372a50b1e3bb767c">alGetFilterfv</a>= (LPALGETFILTERFV )alGetProcAddress(<span class="stringliteral">"alGetFilterfv"</span>);
+<a name="l00318"></a>00318         <a class="code" href="_framework_8cpp.html#f6a8396e3cd781966c2ca98b95ff192a">alGenAuxiliaryEffectSlots</a> = (LPALGENAUXILIARYEFFECTSLOTS)alGetProcAddress(<span class="stringliteral">"alGenAuxiliaryEffectSlots"</span>);
+<a name="l00319"></a>00319         <a class="code" href="_framework_8cpp.html#31c997c1737ba79b656e4f25d7a05071">alDeleteAuxiliaryEffectSlots</a> = (LPALDELETEAUXILIARYEFFECTSLOTS)alGetProcAddress(<span class="stringliteral">"alDeleteAuxiliaryEffectSlots"</span>);
+<a name="l00320"></a>00320         <a class="code" href="_framework_8cpp.html#a70b0fca9f0a620ab27d621ad3258432">alIsAuxiliaryEffectSlot</a> = (LPALISAUXILIARYEFFECTSLOT)alGetProcAddress(<span class="stringliteral">"alIsAuxiliaryEffectSlot"</span>);
+<a name="l00321"></a>00321         <a class="code" href="_framework_8cpp.html#3396bfd3efa1b25efa7dd3f557f9b5dd">alAuxiliaryEffectSloti</a> = (LPALAUXILIARYEFFECTSLOTI)alGetProcAddress(<span class="stringliteral">"alAuxiliaryEffectSloti"</span>);
+<a name="l00322"></a>00322         <a class="code" href="_framework_8cpp.html#bc5253997e7663106e584b5a020bd46a">alAuxiliaryEffectSlotiv</a> = (LPALAUXILIARYEFFECTSLOTIV)alGetProcAddress(<span class="stringliteral">"alAuxiliaryEffectSlotiv"</span>);
+<a name="l00323"></a>00323         <a class="code" href="_framework_8cpp.html#38f9784bb53b63a424413f2a1d857b91">alAuxiliaryEffectSlotf</a> = (LPALAUXILIARYEFFECTSLOTF)alGetProcAddress(<span class="stringliteral">"alAuxiliaryEffectSlotf"</span>);
+<a name="l00324"></a>00324         <a class="code" href="_framework_8cpp.html#fc8c3c9f686d536b043098b461232eb3">alAuxiliaryEffectSlotfv</a> = (LPALAUXILIARYEFFECTSLOTFV)alGetProcAddress(<span class="stringliteral">"alAuxiliaryEffectSlotfv"</span>);
+<a name="l00325"></a>00325         <a class="code" href="_framework_8cpp.html#a094303796c46d69b30faa0466d075c3">alGetAuxiliaryEffectSloti</a> = (LPALGETAUXILIARYEFFECTSLOTI)alGetProcAddress(<span class="stringliteral">"alGetAuxiliaryEffectSloti"</span>);
+<a name="l00326"></a>00326         <a class="code" href="_framework_8cpp.html#199ed242ebdec3c3232503309cdbf9dc">alGetAuxiliaryEffectSlotiv</a> = (LPALGETAUXILIARYEFFECTSLOTIV)alGetProcAddress(<span class="stringliteral">"alGetAuxiliaryEffectSlotiv"</span>);
+<a name="l00327"></a>00327         <a class="code" href="_framework_8cpp.html#cd09a47010a7a43f94c0e5992d8a4d8b">alGetAuxiliaryEffectSlotf</a> = (LPALGETAUXILIARYEFFECTSLOTF)alGetProcAddress(<span class="stringliteral">"alGetAuxiliaryEffectSlotf"</span>);
+<a name="l00328"></a>00328         <a class="code" href="_framework_8cpp.html#c09ff39ae505dde700d06068c52f87c7">alGetAuxiliaryEffectSlotfv</a> = (LPALGETAUXILIARYEFFECTSLOTFV)alGetProcAddress(<span class="stringliteral">"alGetAuxiliaryEffectSlotfv"</span>);
+<a name="l00329"></a>00329 
+<a name="l00330"></a>00330         <span class="keywordflow">if</span> (<a class="code" href="_framework_8cpp.html#b7edd6d140e09db58a5d2e47bf02c34e">alGenEffects</a> &amp;&amp; <a class="code" href="_framework_8cpp.html#6cd7e54ec85fb063583d341148e70930">alDeleteEffects</a> &amp;&amp; <a class="code" href="_framework_8cpp.html#993918aaa52ec63b40fd45985523fb6f">alIsEffect</a> &amp;&amp; <a class="code" href="_framework_8cpp.html#a63cb5f3de911e2bb1de4be5754720d0">alEffecti</a> &amp;&amp; <a class="code" href="_framework_8cpp.html#9d711e1ad2fc5c58bc71c4da11e7e38b">alEffectiv</a> &amp;&amp; <a class="code" href="_framework_8cpp.html#27196fb3d8d52870b98176820637ec5b">alEffectf</a> &amp;&amp;
+<a name="l00331"></a>00331             <a class="code" href="_framework_8cpp.html#a95aa7aafa55005938f731f2605e4842">alEffectfv</a> &amp;&amp; <a class="code" href="_framework_8cpp.html#10ea12361eca51800c7af6b2cf79c879">alGetEffecti</a> &amp;&amp; <a class="code" href="_framework_8cpp.html#722e425285a88e6e0864912628d401cf">alGetEffectiv</a> &amp;&amp; <a class="code" href="_framework_8cpp.html#aaab8c82398a606308c27fa3e8533736">alGetEffectf</a> &amp;&amp; <a class="code" href="_framework_8cpp.html#10236b0690092f721b156e00bbe8c2f4">alGetEffectfv</a> &amp;&amp; <a class="code" href="_framework_8cpp.html#0b010f0fc1b623d8b0a668e2ee45164f">alGenFilters</a> &amp;&amp;
+<a name="l00332"></a>00332             <a class="code" href="_framework_8cpp.html#e1d7a1cc93f400e44def529ad10b3b42">alDeleteFilters</a> &amp;&amp; <a class="code" href="_framework_8cpp.html#e0628fe0c05426cf12e6a630636b0344">alIsFilter</a> &amp;&amp; <a class="code" href="_framework_8cpp.html#b3b156266dc1b387a4b23a5789ede96a">alFilteri</a> &amp;&amp; <a class="code" href="_framework_8cpp.html#4e2417c334f35c0797efbf63dd8bdbba">alFilteriv</a> &amp;&amp; <a class="code" href="_framework_8cpp.html#8fda6c57d3930fcf3840184999697306">alFilterf</a> &amp;&amp; <a class="code" href="_framework_8cpp.html#fb6aaf80507f78df16e4c5a23809de69">alFilterfv</a> &amp;&amp;
+<a name="l00333"></a>00333             <a class="code" href="_framework_8cpp.html#25cf332ab7d47d77d5dd6405570d1b49">alGetFilteri</a> &amp;&amp; <a class="code" href="_framework_8cpp.html#ca999ecb61390813f2ec03db102b3148">alGetFilteriv</a> &amp;&amp; <a class="code" href="_framework_8cpp.html#1ec87c55092464ab5528291a512cac84">alGetFilterf</a> &amp;&amp; <a class="code" href="_framework_8cpp.html#72ccea0c8f33a8cd372a50b1e3bb767c">alGetFilterfv</a> &amp;&amp; <a class="code" href="_framework_8cpp.html#f6a8396e3cd781966c2ca98b95ff192a">alGenAuxiliaryEffectSlots</a> &amp;&amp;
+<a name="l00334"></a>00334             <a class="code" href="_framework_8cpp.html#31c997c1737ba79b656e4f25d7a05071">alDeleteAuxiliaryEffectSlots</a> &amp;&amp; <a class="code" href="_framework_8cpp.html#a70b0fca9f0a620ab27d621ad3258432">alIsAuxiliaryEffectSlot</a> &amp;&amp; <a class="code" href="_framework_8cpp.html#3396bfd3efa1b25efa7dd3f557f9b5dd">alAuxiliaryEffectSloti</a> &amp;&amp;
+<a name="l00335"></a>00335             <a class="code" href="_framework_8cpp.html#bc5253997e7663106e584b5a020bd46a">alAuxiliaryEffectSlotiv</a> &amp;&amp; <a class="code" href="_framework_8cpp.html#38f9784bb53b63a424413f2a1d857b91">alAuxiliaryEffectSlotf</a> &amp;&amp; <a class="code" href="_framework_8cpp.html#fc8c3c9f686d536b043098b461232eb3">alAuxiliaryEffectSlotfv</a> &amp;&amp;
+<a name="l00336"></a>00336             <a class="code" href="_framework_8cpp.html#a094303796c46d69b30faa0466d075c3">alGetAuxiliaryEffectSloti</a> &amp;&amp; <a class="code" href="_framework_8cpp.html#199ed242ebdec3c3232503309cdbf9dc">alGetAuxiliaryEffectSlotiv</a> &amp;&amp; <a class="code" href="_framework_8cpp.html#cd09a47010a7a43f94c0e5992d8a4d8b">alGetAuxiliaryEffectSlotf</a> &amp;&amp;
+<a name="l00337"></a>00337             <a class="code" href="_framework_8cpp.html#c09ff39ae505dde700d06068c52f87c7">alGetAuxiliaryEffectSlotfv</a>)
+<a name="l00338"></a>00338             bEFXSupport = AL_TRUE;
+<a name="l00339"></a>00339     }
+<a name="l00340"></a>00340 
+<a name="l00341"></a>00341     <span class="keywordflow">return</span> bEFXSupport;
+<a name="l00342"></a>00342 }
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>SIGViewerに対してThu Jun 9 10:52:11 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGViewer: SgvPacket.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>SgvPacket.h</h1><a href="_sgv_packet_8h.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef _SGV_PACKET_H_</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define _SGV_PACKET_H_</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include "CommDataType.h"</span>
+<a name="l00005"></a>00005 
+<a name="l00006"></a>00006 <span class="keyword">namespace </span>Sgv
+<a name="l00007"></a>00007 {<span class="comment"></span>
+<a name="l00008"></a>00008 <span class="comment">    //////////////////////////////////////////////////////////////</span>
+<a name="l00009"></a>00009 <span class="comment">    ///</span>
+<a name="l00010"></a>00010 <span class="comment">    ///  @brief パケット（ネットワーク通信の単位となるブロックデータ）</span>
+<a name="l00011"></a>00011 <span class="comment">    ///</span>
+<a name="l00012"></a>00012 <span class="comment">    ///  ネットワークを流れるSIGVerseのデータはすべて、</span>
+<a name="l00013"></a>00013 <span class="comment">    ///  開始マーク(=0xABCD)で始まり、</span>
+<a name="l00014"></a>00014 <span class="comment">    ///  終了マーク(=0xDCBA)で終わるデータブロックで構成されている．</span>
+<a name="l00015"></a>00015 <span class="comment">    ///  このデータブロックをパケットと呼ぶ．</span>
+<a name="l00016"></a>00016 <span class="comment">    ///</span>
+<a name="l00017"></a><a class="code" href="class_sgv_1_1_packet.html">00017</a> <span class="comment"></span>    <span class="keyword">class </span><a class="code" href="class_sgv_1_1_packet.html" title="パケット（ネットワーク通信の単位となるブロックデータ）...">Packet</a>
+<a name="l00018"></a>00018     {
+<a name="l00019"></a>00019     <span class="keyword">public</span>:
+<a name="l00020"></a>00020         <span class="comment">// -------------------------------------------------</span><span class="comment"></span>
+<a name="l00021"></a>00021 <span class="comment">        ///  @brief コンストラクタ</span>
+<a name="l00022"></a>00022 <span class="comment">        ///</span>
+<a name="l00023"></a>00023 <span class="comment">        ///  @param initBufLen [i] パケットの初期サイズ</span>
+<a name="l00024"></a>00024 <span class="comment"></span>        <span class="comment">// -------------------------------------------------</span>
+<a name="l00025"></a>00025         <a class="code" href="class_sgv_1_1_packet.html#fe7fec80430a787600f7b2911d9ca621" title="コンストラクタ">Packet</a>(<span class="keywordtype">int</span> initBufLen);
+<a name="l00026"></a>00026 
+<a name="l00027"></a>00027         <span class="comment">// -------------------------------------------------</span><span class="comment"></span>
+<a name="l00028"></a>00028 <span class="comment">        ///  @brief パケットデータを保持するバッファを延長する．</span>
+<a name="l00029"></a>00029 <span class="comment">        ///</span>
+<a name="l00030"></a>00030 <span class="comment">        ///  @param newBufLen [i] 新しいバッファの長さ</span>
+<a name="l00031"></a>00031 <span class="comment">        ///</span>
+<a name="l00032"></a>00032 <span class="comment">        ///  @return true(=成功), false(=失敗)</span>
+<a name="l00033"></a>00033 <span class="comment"></span>        <span class="comment">// -------------------------------------------------</span>
+<a name="l00034"></a>00034         <span class="keywordtype">bool</span> <a class="code" href="class_sgv_1_1_packet.html#9ea551f040109020bb9af786fab73d69" title="パケットデータを保持するバッファを延長する．">resize</a>(<span class="keywordtype">int</span> newBufLen);
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036         <span class="comment">// -------------------------------------------------</span><span class="comment"></span>
+<a name="l00037"></a>00037 <span class="comment">        ///  @brief デストラクタ</span>
+<a name="l00038"></a>00038 <span class="comment"></span>        <span class="comment">// -------------------------------------------------</span>
+<a name="l00039"></a>00039         <a class="code" href="class_sgv_1_1_packet.html#36c831531ebe3e1d0b50e35fb0c4735d" title="デストラクタ">‾Packet</a>();
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041         <span class="comment">// -------------------------------------------------</span><span class="comment"></span>
+<a name="l00042"></a>00042 <span class="comment">        ///  @brief パケットにデータを追加（コピー）する．</span>
+<a name="l00043"></a>00043 <span class="comment">        ///</span>
+<a name="l00044"></a>00044 <span class="comment">        ///  @param p [i] データの先頭ポインタ</span>
+<a name="l00045"></a>00045 <span class="comment">        ///  @param len [i] パケットに追加するデータ長</span>
+<a name="l00046"></a>00046 <span class="comment">        ///</span>
+<a name="l00047"></a>00047 <span class="comment">        ///  p[0]からp[len-1]までのメモリの内容を</span>
+<a name="l00048"></a>00048 <span class="comment">        ///  内部バッファにコピーする．</span>
+<a name="l00049"></a>00049 <span class="comment"></span>        <span class="comment">// -------------------------------------------------</span>
+<a name="l00050"></a>00050         <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_packet.html#c75bf08e24115e36bfc1ef47e372fee4" title="パケットにデータを追加（コピー）する．">push</a>(<span class="keywordtype">char</span> *p, <span class="keywordtype">int</span> len);
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052         <span class="comment">// -------------------------------------------------</span><span class="comment"></span>
+<a name="l00053"></a>00053 <span class="comment">        ///  @brief パケットのデータタイプを返す</span>
+<a name="l00054"></a>00054 <span class="comment">        ///</span>
+<a name="l00055"></a>00055 <span class="comment">        ///  @return パケットのデータタイプ</span>
+<a name="l00056"></a>00056 <span class="comment">        ///</span>
+<a name="l00057"></a>00057 <span class="comment">        ///  @sa CommDataType.h</span>
+<a name="l00058"></a>00058 <span class="comment"></span>        <span class="comment">// -------------------------------------------------</span>
+<a name="l00059"></a>00059         CommDataType <a class="code" href="class_sgv_1_1_packet.html#5d48ed9600d97aa0ea53f51ea4cd500e" title="パケットのデータタイプを返す">getType</a>();
+<a name="l00060"></a>00060 
+<a name="l00061"></a>00061         <span class="comment">// -------------------------------------------------</span><span class="comment"></span>
+<a name="l00062"></a>00062 <span class="comment">        ///  @brief パケットの先頭ポインタを返す</span>
+<a name="l00063"></a>00063 <span class="comment">        ///</span>
+<a name="l00064"></a>00064 <span class="comment">        ///  @return パケットデータの先頭</span>
+<a name="l00065"></a>00065 <span class="comment"></span>        <span class="comment">// -------------------------------------------------</span>
+<a name="l00066"></a><a class="code" href="class_sgv_1_1_packet.html#cc046f1d80c9066f20a65d7a2d70ca92">00066</a>         <span class="keywordtype">char</span> *<a class="code" href="class_sgv_1_1_packet.html#cc046f1d80c9066f20a65d7a2d70ca92" title="パケットの先頭ポインタを返す">getData</a>() { <span class="keywordflow">return</span> <a class="code" href="class_sgv_1_1_packet.html#7a6da8429197c4d6b9886c8dff27fc3f" title="バッファへのポインタ">m_pData</a>; }
+<a name="l00067"></a>00067 
+<a name="l00068"></a>00068         <span class="comment">// -------------------------------------------------</span><span class="comment"></span>
+<a name="l00069"></a>00069 <span class="comment">        ///  @brief パケットの長さを返す</span>
+<a name="l00070"></a>00070 <span class="comment">        ///</span>
+<a name="l00071"></a>00071 <span class="comment">        ///  @return パケットの長さ</span>
+<a name="l00072"></a>00072 <span class="comment"></span>        <span class="comment">// -------------------------------------------------</span>
+<a name="l00073"></a><a class="code" href="class_sgv_1_1_packet.html#79edb7d2be26b1db010cdaa5e59eef84">00073</a>         <span class="keywordtype">int</span> <a class="code" href="class_sgv_1_1_packet.html#79edb7d2be26b1db010cdaa5e59eef84" title="パケットの長さを返す">getLength</a>() { <span class="keywordflow">return</span> <a class="code" href="class_sgv_1_1_packet.html#3daba0778be96075b1a438f17cca5711" title="バッファの長さ">m_capacity</a>; }
+<a name="l00074"></a>00074 
+<a name="l00075"></a>00075         <span class="comment">// -------------------------------------------------</span><span class="comment"></span>
+<a name="l00076"></a>00076 <span class="comment">        ///  @brief パケット開始マーク</span>
+<a name="l00077"></a>00077 <span class="comment"></span>        <span class="comment">// -------------------------------------------------</span>
+<a name="l00078"></a><a class="code" href="class_sgv_1_1_packet.html#afc3756b7ba718b3b93675a86b39f404">00078</a>         <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <a class="code" href="class_sgv_1_1_packet.html#afc3756b7ba718b3b93675a86b39f404" title="パケット開始マーク">HEAD_MARK</a>;
+<a name="l00079"></a>00079 
+<a name="l00080"></a>00080         <span class="comment">// -------------------------------------------------</span><span class="comment"></span>
+<a name="l00081"></a>00081 <span class="comment">        ///  @brief パケットサイズ</span>
+<a name="l00082"></a>00082 <span class="comment"></span>        <span class="comment">// -------------------------------------------------</span>
+<a name="l00083"></a><a class="code" href="class_sgv_1_1_packet.html#28ce76ddcc9055b9d4231bddbe9af2b8">00083</a>         <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <a class="code" href="class_sgv_1_1_packet.html#28ce76ddcc9055b9d4231bddbe9af2b8" title="パケットサイズ">PACKET_SIZE</a>;
+<a name="l00084"></a>00084 
+<a name="l00085"></a>00085         <span class="comment">// -------------------------------------------------</span><span class="comment"></span>
+<a name="l00086"></a>00086 <span class="comment">        ///  @brief データタイプ</span>
+<a name="l00087"></a>00087 <span class="comment"></span>        <span class="comment">// -------------------------------------------------</span>
+<a name="l00088"></a><a class="code" href="class_sgv_1_1_packet.html#b2b591c1d89a0cae49fa405305eb7da3">00088</a>         <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <a class="code" href="class_sgv_1_1_packet.html#b2b591c1d89a0cae49fa405305eb7da3" title="データタイプ">DATA_TYPE</a>;
+<a name="l00089"></a>00089 
+<a name="l00090"></a>00090         <span class="comment">// -------------------------------------------------</span><span class="comment"></span>
+<a name="l00091"></a>00091 <span class="comment">        ///  @brief パケット終了マーク</span>
+<a name="l00092"></a>00092 <span class="comment"></span>        <span class="comment">// -------------------------------------------------</span>
+<a name="l00093"></a><a class="code" href="class_sgv_1_1_packet.html#1049eeb3303fc0a8018b0bb071bc5eec">00093</a>         <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <a class="code" href="class_sgv_1_1_packet.html#1049eeb3303fc0a8018b0bb071bc5eec" title="パケット終了マーク">TAIL_MARK</a>;
+<a name="l00094"></a>00094 
+<a name="l00095"></a>00095         <span class="comment">// -------------------------------------------------</span><span class="comment"></span>
+<a name="l00096"></a>00096 <span class="comment">        ///  @brief パケット開始マークの長さ</span>
+<a name="l00097"></a>00097 <span class="comment"></span>        <span class="comment">// -------------------------------------------------</span>
+<a name="l00098"></a><a class="code" href="class_sgv_1_1_packet.html#303f19b3b97781d1af962fd36f9fcc8c">00098</a>         <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="class_sgv_1_1_packet.html#303f19b3b97781d1af962fd36f9fcc8c" title="パケット開始マークの長さ">HEAD_SIZE_LEN</a>;
+<a name="l00099"></a>00099 
+<a name="l00100"></a>00100         <span class="comment">// -------------------------------------------------</span><span class="comment"></span>
+<a name="l00101"></a>00101 <span class="comment">        ///  @brief パケットサイズとタイプの合計の長さ</span>
+<a name="l00102"></a>00102 <span class="comment"></span>        <span class="comment">// -------------------------------------------------</span>
+<a name="l00103"></a><a class="code" href="class_sgv_1_1_packet.html#164d2010fc48aee1d283446e25f1bf05">00103</a>         <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="class_sgv_1_1_packet.html#164d2010fc48aee1d283446e25f1bf05" title="パケットサイズとタイプの合計の長さ">HEAD_SIZE_TYPE_LEN</a>;
+<a name="l00104"></a>00104 
+<a name="l00105"></a>00105         <span class="comment">// -------------------------------------------------</span><span class="comment"></span>
+<a name="l00106"></a>00106 <span class="comment">        ///  @brief パケット終了マークの長さ</span>
+<a name="l00107"></a>00107 <span class="comment"></span>        <span class="comment">// -------------------------------------------------</span>
+<a name="l00108"></a><a class="code" href="class_sgv_1_1_packet.html#49f5ef5e1cc1d9327bbad996e412625d">00108</a>         <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="class_sgv_1_1_packet.html#49f5ef5e1cc1d9327bbad996e412625d" title="パケット終了マークの長さ">TAIL_LEN</a>;
+<a name="l00109"></a>00109 
+<a name="l00110"></a>00110     <span class="keyword">protected</span>:
+<a name="l00111"></a>00111         <span class="comment">// -------------------------------------------------</span><span class="comment"></span>
+<a name="l00112"></a>00112 <span class="comment">        /// @brief バッファへのポインタ</span>
+<a name="l00113"></a>00113 <span class="comment"></span>        <span class="comment">// -------------------------------------------------</span>
+<a name="l00114"></a><a class="code" href="class_sgv_1_1_packet.html#7a6da8429197c4d6b9886c8dff27fc3f">00114</a>         <span class="keywordtype">char</span> *<a class="code" href="class_sgv_1_1_packet.html#7a6da8429197c4d6b9886c8dff27fc3f" title="バッファへのポインタ">m_pData</a>;
+<a name="l00115"></a>00115 
+<a name="l00116"></a>00116         <span class="comment">// -------------------------------------------------</span><span class="comment"></span>
+<a name="l00117"></a>00117 <span class="comment">        /// @brief バッファの長さ</span>
+<a name="l00118"></a>00118 <span class="comment"></span>        <span class="comment">// -------------------------------------------------</span>
+<a name="l00119"></a><a class="code" href="class_sgv_1_1_packet.html#3daba0778be96075b1a438f17cca5711">00119</a>         <span class="keywordtype">int</span> <a class="code" href="class_sgv_1_1_packet.html#3daba0778be96075b1a438f17cca5711" title="バッファの長さ">m_capacity</a>;
+<a name="l00120"></a>00120 
+<a name="l00121"></a>00121         <span class="comment">// -------------------------------------------------</span><span class="comment"></span>
+<a name="l00122"></a>00122 <span class="comment">        /// @brief 内部バッファを確保する</span>
+<a name="l00123"></a>00123 <span class="comment">        ///</span>
+<a name="l00124"></a>00124 <span class="comment">        /// @param len [i] バッファの長さ</span>
+<a name="l00125"></a>00125 <span class="comment">        ///</span>
+<a name="l00126"></a>00126 <span class="comment">        /// @return true(=成功), false(=失敗)</span>
+<a name="l00127"></a>00127 <span class="comment"></span>        <span class="comment">// -------------------------------------------------</span>
+<a name="l00128"></a>00128         <span class="keywordtype">bool</span> <a class="code" href="class_sgv_1_1_packet.html#032ee6ad97e758ddaef997af476445bb" title="内部バッファを確保する">allocMemory</a>(<span class="keywordtype">int</span> len);
+<a name="l00129"></a>00129 
+<a name="l00130"></a>00130         <span class="comment">// -------------------------------------------------</span><span class="comment"></span>
+<a name="l00131"></a>00131 <span class="comment">        /// @brief 内部バッファの長さを変更する</span>
+<a name="l00132"></a>00132 <span class="comment">        ///</span>
+<a name="l00133"></a>00133 <span class="comment">        /// @param newLen [i] 新しいバッファの長さ</span>
+<a name="l00134"></a>00134 <span class="comment">        ///</span>
+<a name="l00135"></a>00135 <span class="comment">        /// @return true(=成功), false(=失敗)</span>
+<a name="l00136"></a>00136 <span class="comment"></span>        <span class="comment">// -------------------------------------------------</span>
+<a name="l00137"></a>00137         <span class="keywordtype">bool</span> <a class="code" href="class_sgv_1_1_packet.html#9df60e50c3ace12bdbbfd89305dcc637" title="内部バッファの長さを変更する">reallocMemory</a>(<span class="keywordtype">int</span> newLen);
+<a name="l00138"></a>00138 
+<a name="l00139"></a>00139         <span class="comment">// -------------------------------------------------</span><span class="comment"></span>
+<a name="l00140"></a>00140 <span class="comment">        /// @brief 内部バッファを開放する</span>
+<a name="l00141"></a>00141 <span class="comment"></span>        <span class="comment">// -------------------------------------------------</span>
+<a name="l00142"></a>00142         <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_packet.html#69a8afff7f26a6d8eb1e617a1f087858" title="内部バッファを開放する">freeMemory</a>();
+<a name="l00143"></a>00143     };
+<a name="l00144"></a>00144 };
+<a name="l00145"></a>00145 
+<a name="l00146"></a>00146 <span class="preprocessor">#endif</span>
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>SIGViewerに対してThu Jun 9 10:52:11 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

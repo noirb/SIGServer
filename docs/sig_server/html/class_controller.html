@@ -1,0 +1,1266 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: クラス Controller</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Controller</h1><!-- doxytag: class="Controller" --><!-- doxytag: inherits="ControllerImpl,SimObj::RequestSender" -->
+<p>ユーザ定義コントローラ基本クラス  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_controller_8h_source.html">Controller.h</a>&gt;</code></p>
+<div class="dynheader">
+Controllerに対する継承グラフ</div>
+<div class="dynsection">
+<div class="center"><img src="class_controller__inherit__graph.png" border="0" usemap="#_controller_inherit__map" alt="Inheritance graph"/></div>
+<map name="_controller_inherit__map" id="_controller_inherit__map">
+<area shape="rect" href="class_controller_impl.html" title="ネットワーク通信コントローラクラス" alt="" coords="5,83,107,112"/><area shape="rect" href="class_controller_inf.html" title="コントローラインターフェース" alt="" coords="11,5,101,35"/><area shape="rect" href="class_sim_obj_1_1_request_sender.html" title="パケット送受信インターフェース" alt="" coords="131,83,291,112"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+<div class="dynheader">
+Controllerのコラボレーション図</div>
+<div class="dynsection">
+<div class="center"><img src="class_controller__coll__graph.png" border="0" usemap="#_controller_coll__map" alt="Collaboration graph"/></div>
+<map name="_controller_coll__map" id="_controller_coll__map">
+<area shape="rect" href="class_controller_impl.html" title="ネットワーク通信コントローラクラス" alt="" coords="21,197,123,227"/><area shape="rect" href="class_controller_inf.html" title="コントローラインターフェース" alt="" coords="5,101,96,131"/><area shape="rect" href="class_c_t_sim_obj.html" title="シミュレーションサーバ上のエージェントを操作するクラス..." alt="" coords="120,101,200,131"/><area shape="rect" href="class_n_s_lookup.html" title="シミュレーションサーバのサービスプロバイダネームサービスを使用する�..." alt="" coords="120,5,200,35"/><area shape="rect" href="class_sim_obj_1_1_request_sender.html" title="パケット送受信インターフェース" alt="" coords="147,197,307,227"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+
+<p><a href="class_controller-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller.html#a8337a6d2fcce84371498ea735d733595">attach</a> (const char *server, int port, const char *myname)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エージェントにコントローラを割り当てる  <a href="#a8337a6d2fcce84371498ea735d733595"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller.html#affb696850a07009d3f460622f8bddfc1">loopMain</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コントローラループ関数  <a href="#affb696850a07009d3f460622f8bddfc1"></a><br/></td></tr>
+<tr><td colspan="2"><h2>Static Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller.html#a457bce90003968aa32a60d550a374de5">init</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">! コントローラ初期化関数  <a href="#a457bce90003968aa32a60d550a374de5"></a><br/></td></tr>
+<tr><td colspan="2"><h2>Protected メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_view_image.html">ViewImage</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller.html#a91dd7e5a8bec569c2eff4621cd55d281">captureView</a> (<a class="el" href="_view_image_info_8h.html#a9af7c151827aefd5a6197ea77dd7244e">ColorBitType</a> cbtype, <a class="el" href="_view_image_info_8h.html#acfd49da85d15732194ec51155a2c9ecf">ImageDataSize</a> size, int id)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エージェント視点画像を取得する(サービスプロバイダ機能使用)  <a href="#a91dd7e5a8bec569c2eff4621cd55d281"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_view_image.html">ViewImage</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller.html#a5c35f7f490513b2cd55e50d5a6bd794b">captureView</a> (<a class="el" href="_view_image_info_8h.html#a9af7c151827aefd5a6197ea77dd7244e">ColorBitType</a> cbtype, <a class="el" href="_view_image_info_8h.html#acfd49da85d15732194ec51155a2c9ecf">ImageDataSize</a> size)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エージェント視点画像を取得する(サービスプロバイダ機能使用)  <a href="#a5c35f7f490513b2cd55e50d5a6bd794b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller.html#a95c56822d667e94b031451729ce069a9">Controller</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#a95c56822d667e94b031451729ce069a9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller.html#a70167104b6929a0d70743fff94c7ac55">detectEntities</a> (std::vector&lt; std::string &gt; &amp;v, int id)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">視野内に存在するエンティティの検出(サービスプロバイダ機能使用)  <a href="#a70167104b6929a0d70743fff94c7ac55"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller.html#a23962ac15188b5079d3c404aac87d07c">detectEntities</a> (std::vector&lt; std::string &gt; &amp;v)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">視野内に存在するエンティティの検出(サービスプロバイダ機能使用)  <a href="#a23962ac15188b5079d3c404aac87d07c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller.html#ac953e7de9083a06b082b82bb55a269ab">differentialWheelsSetSpeed</a> (const char *simObjName, double left, double right)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller.html#a80d79cecbece270dafbc1b36fba0953f">differentialWheelsSetSpeed</a> (double left, double right)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller.html#a5869f28ff6f8d75111a6be4b565deeb3">distanceSensor</a> (double start=0.0, double end=255.0, int id=1)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">カメラ視線にあるオブジェクトまでの距離を得る  <a href="#a5869f28ff6f8d75111a6be4b565deeb3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_depth_image.html">DepthImage</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller.html#a17f0ac1abe7acf655323e4c5b4979cf9">distanceSensor1D</a> (double start=0.0, double end=255.0, int id=1, <a class="el" href="_view_image_info_8h.html#acfd49da85d15732194ec51155a2c9ecf">ImageDataSize</a> size=IMAGE_320X1)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">カメラ視野内にあるオブジェクトまでの水平面距離データを得る  <a href="#a17f0ac1abe7acf655323e4c5b4979cf9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_depth_image.html">DepthImage</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller.html#a28224f4d47cfb49ce1d05ecc4b9d0dd3">distanceSensor2D</a> (double start=0.0, double end=255.0, int id=1, <a class="el" href="_view_image_info_8h.html#acfd49da85d15732194ec51155a2c9ecf">ImageDataSize</a> size=IMAGE_320X240)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">カメラ視野内にあるオブジェクトまでの2次元距離データを得る  <a href="#a28224f4d47cfb49ce1d05ecc4b9d0dd3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller.html#ad404285a4313fb62775358cb97b7f2e2">getAllEntities</a> (std::vector&lt; std::string &gt; &amp;v)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">シミュレーション世界内に存在するすべてのエンティティの名前を取得する  <a href="#ad404285a4313fb62775358cb97b7f2e2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller.html#aef6ce0bc77a3df38053d104ab162c711">getAxleLength</a> (const char *simObjName)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller.html#a743afff941265e2eaa49c32631d4cbfc">getAxleLength</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller.html#abf3a1a17bd0a0bf9a90ac8de56a20309">getLeftEncoderNoise</a> (const char *simObjName)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller.html#a809452363bc8fce9b7fa43a7cfae783f">getLeftEncoderNoise</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller.html#a9b1bdf6844692cbff520008e3b0c0362">getLeftWheelRadius</a> (const char *simObjName)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller.html#a321dd0083cfb1ffb4dfd59e53485cf9f">getLeftWheelRadius</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_sim_obj.html">SimObj</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller.html#adc50f0b13ae6175fe2e689314b97726d">getObj</a> (const char *name)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">指定のエンティティを取得する  <a href="#adc50f0b13ae6175fe2e689314b97726d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller.html#ac6b1a9ac2618e01f303330ba5fcb5d05">getRand</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller.html#abd6a06b539806af63168109b20a5bc32">getRightEncoderNoise</a> (const char *simObjName)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller.html#ac43ac6bae3ff7dfb3357ea1309126b47">getRightEncoderNoise</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller.html#a55c375e61f1e1aac81acacad6ab70db1">getRightWheelRadius</a> (const char *simObjName)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller.html#ac16206d99667e36a00a4e3f7350b1589">getRightWheelRadius</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_text.html">Text</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller.html#a2c5841cdea28180c020275319dc40ed0">getText</a> (<a class="el" href="class_raw_sound.html">RawSound</a> &amp;sound)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">音声データを音声認識処理に掛ける  <a href="#a2c5841cdea28180c020275319dc40ed0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller.html#a179a4bc8df8e277597d98ade0eff3ecf">isProcessing</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コントローラが処理中であるか？  <a href="#a179a4bc8df8e277597d98ade0eff3ecf"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller.html#aa74fe000a8fc2d2f0f969e378c8be1ea">onPostEvent</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コールバック関数を呼び出した後の処理を実装する  <a href="#aa74fe000a8fc2d2f0f969e378c8be1ea"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller.html#a513ccb6ce4ae984bacea4afee9c1af30">onPreEvent</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コールバック関数を呼び出す前の処理を実装する  <a href="#a513ccb6ce4ae984bacea4afee9c1af30"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller.html#ac82e3d6bc7c033d09cda9a634d19a303">setWheelProperty</a> (const char *objectName, char *leftWheelName, double leftMotorConsumption, double leftWheelMaxSpeed, double leftWheelSpeedUnit, double leftSlipNoise, double leftEncoderResolution, double leftMaxForce, char *rightWheelName, double rightMotorConsumption, double rightWheelMaxSpeed, double rightWheelSpeedUnit, double rightSlipNoise, double rightEncoderResolution, double rightMaxForce)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Webots互換のパラメータを設定します。変数の先頭にleftがつくものは左側車輪の設定、rightのつくものは右側車輪の設定.  <a href="#ac82e3d6bc7c033d09cda9a634d19a303"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller.html#a1eca10016c761429d6d86bf07644221b">setWheelProperty</a> (char *leftWheelName, double leftMotorConsumption, double leftWheelMaxSpeed, double leftWheelSpeedUnit, double leftSlipNoise, double leftEncoderResolution, double leftMaxForce, char *rightWheelName, double rightMotorConsumption, double rightWheelMaxSpeed, double rightWheelSpeedUnit, double rightSlipNoise, double rightEncoderResolution, double rightMaxForce)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Webots互換のパラメータを設定します。変数の先頭にleftがつくものは左側車輪の設定、rightのつくものは右側車輪の設定.  <a href="#a1eca10016c761429d6d86bf07644221b"></a><br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>ユーザ定義コントローラ基本クラス </p>
+<p>エージェントコントローラはこのクラスを継承したクラスを作 成し、そこにエージェントの振舞いを記述する。 </p>
+
+<p> <a class="el" href="_controller_8h_source.html">Controller.h</a> の <a class="el" href="_controller_8h_source.html#l00179">179</a> 行で定義されています。</p>
+<hr/><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" id="a95c56822d667e94b031451729ce069a9"></a><!-- doxytag: member="Controller::Controller" ref="a95c56822d667e94b031451729ce069a9" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Controller::Controller </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コンストラクタ </p>
+
+</div>
+</div>
+<hr/><h2>関数</h2>
+<a class="anchor" id="a8337a6d2fcce84371498ea735d733595"></a><!-- doxytag: member="Controller::attach" ref="a8337a6d2fcce84371498ea735d733595" args="(const char *server, int port, const char *myname)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Controller::attach </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>server</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>myname</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>エージェントにコントローラを割り当てる </p>
+<p>シミュレーションサーバに接続し、指定したエージェントに当コントローラを割り当てる</p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>server</em>&nbsp;</td><td>シミュレーションサーバ(IPアドレスまたはホスト名) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>port</em>&nbsp;</td><td>シミュレーションサーバポート番号 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>myname</em>&nbsp;</td><td>エージェント名 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><a class="el" href="class_controller_impl.html#a5bfeff0be324e58e1129bd2c40f2c6cd">ControllerImpl</a>を再定義しています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a91dd7e5a8bec569c2eff4621cd55d281"></a><!-- doxytag: member="Controller::captureView" ref="a91dd7e5a8bec569c2eff4621cd55d281" args="(ColorBitType cbtype, ImageDataSize size, int id)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_view_image.html">ViewImage</a>* Controller::captureView </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_view_image_info_8h.html#a9af7c151827aefd5a6197ea77dd7244e">ColorBitType</a>&nbsp;</td>
+          <td class="paramname"> <em>cbtype</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_view_image_info_8h.html#acfd49da85d15732194ec51155a2c9ecf">ImageDataSize</a>&nbsp;</td>
+          <td class="paramname"> <em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>id</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>エージェント視点画像を取得する(サービスプロバイダ機能使用) </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>cbtype</em>&nbsp;</td><td>画像タイプ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>size</em>&nbsp;</td><td>画像サイズ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>id</em>&nbsp;</td><td>カメラID</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>戻り値:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>!=</em>&nbsp;</td><td>NULL 画像データ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>NULL</em>&nbsp;</td><td>失敗 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a5c35f7f490513b2cd55e50d5a6bd794b"></a><!-- doxytag: member="Controller::captureView" ref="a5c35f7f490513b2cd55e50d5a6bd794b" args="(ColorBitType cbtype, ImageDataSize size)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_view_image.html">ViewImage</a>* Controller::captureView </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_view_image_info_8h.html#a9af7c151827aefd5a6197ea77dd7244e">ColorBitType</a>&nbsp;</td>
+          <td class="paramname"> <em>cbtype</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_view_image_info_8h.html#acfd49da85d15732194ec51155a2c9ecf">ImageDataSize</a>&nbsp;</td>
+          <td class="paramname"> <em>size</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>エージェント視点画像を取得する(サービスプロバイダ機能使用) </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>cbtype</em>&nbsp;</td><td>画像タイプ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>size</em>&nbsp;</td><td>画像サイズ</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>戻り値:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>!=</em>&nbsp;</td><td>NULL 画像データ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>NULL</em>&nbsp;</td><td>失敗 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a70167104b6929a0d70743fff94c7ac55"></a><!-- doxytag: member="Controller::detectEntities" ref="a70167104b6929a0d70743fff94c7ac55" args="(std::vector&lt; std::string &gt; &amp;v, int id)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Controller::detectEntities </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; std::string &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>id</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>視野内に存在するエンティティの検出(サービスプロバイダ機能使用) </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>v</em>&nbsp;</td><td>エンティティ名を格納するコンテナ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>id</em>&nbsp;</td><td>カメラID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>戻り値:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>true</em>&nbsp;</td><td>成功 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>false</em>&nbsp;</td><td>失敗 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a23962ac15188b5079d3c404aac87d07c"></a><!-- doxytag: member="Controller::detectEntities" ref="a23962ac15188b5079d3c404aac87d07c" args="(std::vector&lt; std::string &gt; &amp;v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Controller::detectEntities </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; std::string &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>v</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>視野内に存在するエンティティの検出(サービスプロバイダ機能使用) </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>v</em>&nbsp;</td><td>エンティティ名を格納するコンテナ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>戻り値:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>true</em>&nbsp;</td><td>成功 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>false</em>&nbsp;</td><td>失敗 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ac953e7de9083a06b082b82bb55a269ab"></a><!-- doxytag: member="Controller::differentialWheelsSetSpeed" ref="ac953e7de9083a06b082b82bb55a269ab" args="(const char *simObjName, double left, double right)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Controller::differentialWheelsSetSpeed </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>simObjName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>left</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>right</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>左右の車輪にそれぞれことなるスピードを与える </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>simObjName</em>&nbsp;</td><td>SimObjの名前 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>left</em>&nbsp;</td><td>左車輪の角速度 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>right</em>&nbsp;</td><td>右車輪の角速度 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a80d79cecbece270dafbc1b36fba0953f"></a><!-- doxytag: member="Controller::differentialWheelsSetSpeed" ref="a80d79cecbece270dafbc1b36fba0953f" args="(double left, double right)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Controller::differentialWheelsSetSpeed </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>left</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>right</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>自分自身の左右の車輪にそれぞれことなるスピードを与える </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>left</em>&nbsp;</td><td>左車輪の角速度 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>right</em>&nbsp;</td><td>右車輪の角速度 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a5869f28ff6f8d75111a6be4b565deeb3"></a><!-- doxytag: member="Controller::distanceSensor" ref="a5869f28ff6f8d75111a6be4b565deeb3" args="(double start=0.0, double end=255.0, int id=1)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char Controller::distanceSensor </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>start</em> = <code>0.0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>end</em> = <code>255.0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>id</em> = <code>1</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>カメラ視線にあるオブジェクトまでの距離を得る </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>id</em>&nbsp;</td><td>カメラID </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a17f0ac1abe7acf655323e4c5b4979cf9"></a><!-- doxytag: member="Controller::distanceSensor1D" ref="a17f0ac1abe7acf655323e4c5b4979cf9" args="(double start=0.0, double end=255.0, int id=1, ImageDataSize size=IMAGE_320X1)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_depth_image.html">DepthImage</a>* Controller::distanceSensor1D </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>start</em> = <code>0.0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>end</em> = <code>255.0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>id</em> = <code>1</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_view_image_info_8h.html#acfd49da85d15732194ec51155a2c9ecf">ImageDataSize</a>&nbsp;</td>
+          <td class="paramname"> <em>size</em> = <code>IMAGE_320X1</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>カメラ視野内にあるオブジェクトまでの水平面距離データを得る </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>id</em>&nbsp;</td><td>カメラID </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a28224f4d47cfb49ce1d05ecc4b9d0dd3"></a><!-- doxytag: member="Controller::distanceSensor2D" ref="a28224f4d47cfb49ce1d05ecc4b9d0dd3" args="(double start=0.0, double end=255.0, int id=1, ImageDataSize size=IMAGE_320X240)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_depth_image.html">DepthImage</a>* Controller::distanceSensor2D </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>start</em> = <code>0.0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>end</em> = <code>255.0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>id</em> = <code>1</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_view_image_info_8h.html#acfd49da85d15732194ec51155a2c9ecf">ImageDataSize</a>&nbsp;</td>
+          <td class="paramname"> <em>size</em> = <code>IMAGE_320X240</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>カメラ視野内にあるオブジェクトまでの2次元距離データを得る </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>id</em>&nbsp;</td><td>カメラID </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ad404285a4313fb62775358cb97b7f2e2"></a><!-- doxytag: member="Controller::getAllEntities" ref="ad404285a4313fb62775358cb97b7f2e2" args="(std::vector&lt; std::string &gt; &amp;v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Controller::getAllEntities </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; std::string &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>v</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>シミュレーション世界内に存在するすべてのエンティティの名前を取得する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>v</em>&nbsp;</td><td>エンティティ名を格納するコンテナ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>戻り値:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>true</em>&nbsp;</td><td>成功 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>false</em>&nbsp;</td><td>失敗 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aef6ce0bc77a3df38053d104ab162c711"></a><!-- doxytag: member="Controller::getAxleLength" ref="aef6ce0bc77a3df38053d104ab162c711" args="(const char *simObjName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Controller::getAxleLength </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>simObjName</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>車軸の長さを取得します </p>
+
+</div>
+</div>
+<a class="anchor" id="a743afff941265e2eaa49c32631d4cbfc"></a><!-- doxytag: member="Controller::getAxleLength" ref="a743afff941265e2eaa49c32631d4cbfc" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Controller::getAxleLength </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>自分自身の車軸の長さを取得します </p>
+
+</div>
+</div>
+<a class="anchor" id="abf3a1a17bd0a0bf9a90ac8de56a20309"></a><!-- doxytag: member="Controller::getLeftEncoderNoise" ref="abf3a1a17bd0a0bf9a90ac8de56a20309" args="(const char *simObjName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Controller::getLeftEncoderNoise </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>simObjName</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>左車輪のエンコーダのノイズ蓄積量を取得します </p>
+
+</div>
+</div>
+<a class="anchor" id="a809452363bc8fce9b7fa43a7cfae783f"></a><!-- doxytag: member="Controller::getLeftEncoderNoise" ref="a809452363bc8fce9b7fa43a7cfae783f" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Controller::getLeftEncoderNoise </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>自分自身の左車輪のエンコーダのノイズ蓄積量を取得します </p>
+
+</div>
+</div>
+<a class="anchor" id="a9b1bdf6844692cbff520008e3b0c0362"></a><!-- doxytag: member="Controller::getLeftWheelRadius" ref="a9b1bdf6844692cbff520008e3b0c0362" args="(const char *simObjName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Controller::getLeftWheelRadius </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>simObjName</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>左車輪の半径を取得します </p>
+
+</div>
+</div>
+<a class="anchor" id="a321dd0083cfb1ffb4dfd59e53485cf9f"></a><!-- doxytag: member="Controller::getLeftWheelRadius" ref="a321dd0083cfb1ffb4dfd59e53485cf9f" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Controller::getLeftWheelRadius </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>自分自身の左車輪の半径を取得します </p>
+
+</div>
+</div>
+<a class="anchor" id="adc50f0b13ae6175fe2e689314b97726d"></a><!-- doxytag: member="Controller::getObj" ref="adc50f0b13ae6175fe2e689314b97726d" args="(const char *name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_sim_obj.html">SimObj</a>* Controller::getObj </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>name</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>指定のエンティティを取得する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>エンティティ名 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ac6b1a9ac2618e01f303330ba5fcb5d05"></a><!-- doxytag: member="Controller::getRand" ref="ac6b1a9ac2618e01f303330ba5fcb5d05" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Controller::getRand </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>0 - 1までの一様分布の乱数を生成します </p>
+
+</div>
+</div>
+<a class="anchor" id="abd6a06b539806af63168109b20a5bc32"></a><!-- doxytag: member="Controller::getRightEncoderNoise" ref="abd6a06b539806af63168109b20a5bc32" args="(const char *simObjName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Controller::getRightEncoderNoise </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>simObjName</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>右車輪のエンコーダのノイズ蓄積量を取得します </p>
+
+</div>
+</div>
+<a class="anchor" id="ac43ac6bae3ff7dfb3357ea1309126b47"></a><!-- doxytag: member="Controller::getRightEncoderNoise" ref="ac43ac6bae3ff7dfb3357ea1309126b47" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Controller::getRightEncoderNoise </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>自分自身の右車輪のエンコーダのノイズ蓄積量を取得します </p>
+
+</div>
+</div>
+<a class="anchor" id="a55c375e61f1e1aac81acacad6ab70db1"></a><!-- doxytag: member="Controller::getRightWheelRadius" ref="a55c375e61f1e1aac81acacad6ab70db1" args="(const char *simObjName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Controller::getRightWheelRadius </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>simObjName</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>右車輪の半径を取得します </p>
+
+</div>
+</div>
+<a class="anchor" id="ac16206d99667e36a00a4e3f7350b1589"></a><!-- doxytag: member="Controller::getRightWheelRadius" ref="ac16206d99667e36a00a4e3f7350b1589" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Controller::getRightWheelRadius </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>自分自身の右車輪の半径を取得します </p>
+
+</div>
+</div>
+<a class="anchor" id="a2c5841cdea28180c020275319dc40ed0"></a><!-- doxytag: member="Controller::getText" ref="a2c5841cdea28180c020275319dc40ed0" args="(RawSound &amp;sound)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_text.html">Text</a>* Controller::getText </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_raw_sound.html">RawSound</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>sound</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>音声データを音声認識処理に掛ける </p>
+<p>音声認識サービスプロバイダに音声データを転送し、音声認識結果(テキスト)を得る。</p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>sound</em>&nbsp;</td><td>recvSoundメソッドにより取得した音声データ</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>戻り値:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>!=NULL</em>&nbsp;</td><td>成功 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>NULL</em>&nbsp;</td><td>失敗 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a457bce90003968aa32a60d550a374de5"></a><!-- doxytag: member="Controller::init" ref="a457bce90003968aa32a60d550a374de5" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void Controller::init </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>! コントローラ初期化関数 </p>
+
+</div>
+</div>
+<a class="anchor" id="a179a4bc8df8e277597d98ade0eff3ecf"></a><!-- doxytag: member="Controller::isProcessing" ref="a179a4bc8df8e277597d98ade0eff3ecf" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Controller::isProcessing </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected, virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コントローラが処理中であるか？ </p>
+
+<p><a class="el" href="class_controller_inf.html#a3dde92b8047dcdfef8a3a7e15e262028">ControllerInf</a>を実装しています。</p>
+
+<p> <a class="el" href="_controller_8h_source.html">Controller.h</a> の <a class="el" href="_controller_8h_source.html#l00445">445</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="affb696850a07009d3f460622f8bddfc1"></a><!-- doxytag: member="Controller::loopMain" ref="affb696850a07009d3f460622f8bddfc1" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Controller::loopMain </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コントローラループ関数 </p>
+
+</div>
+</div>
+<a class="anchor" id="aa74fe000a8fc2d2f0f969e378c8be1ea"></a><!-- doxytag: member="Controller::onPostEvent" ref="aa74fe000a8fc2d2f0f969e378c8be1ea" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Controller::onPostEvent </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected, virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コールバック関数を呼び出した後の処理を実装する </p>
+
+<p><a class="el" href="class_controller_inf.html#a9fec4b3faaa648a8891d91c669385ba9">ControllerInf</a>を実装しています。</p>
+
+<p> <a class="el" href="_controller_8h_source.html">Controller.h</a> の <a class="el" href="_controller_8h_source.html#l00453">453</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a513ccb6ce4ae984bacea4afee9c1af30"></a><!-- doxytag: member="Controller::onPreEvent" ref="a513ccb6ce4ae984bacea4afee9c1af30" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Controller::onPreEvent </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected, virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コールバック関数を呼び出す前の処理を実装する </p>
+
+<p><a class="el" href="class_controller_inf.html#a2d91569dbc9dcf053935fbb214c0ce9c">ControllerInf</a>を実装しています。</p>
+
+<p> <a class="el" href="_controller_8h_source.html">Controller.h</a> の <a class="el" href="_controller_8h_source.html#l00449">449</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ac82e3d6bc7c033d09cda9a634d19a303"></a><!-- doxytag: member="Controller::setWheelProperty" ref="ac82e3d6bc7c033d09cda9a634d19a303" args="(const char *objectName, char *leftWheelName, double leftMotorConsumption, double leftWheelMaxSpeed, double leftWheelSpeedUnit, double leftSlipNoise, double leftEncoderResolution, double leftMaxForce, char *rightWheelName, double rightMotorConsumption, double rightWheelMaxSpeed, double rightWheelSpeedUnit, double rightSlipNoise, double rightEncoderResolution, double rightMaxForce)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Controller::setWheelProperty </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>objectName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>leftWheelName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>leftMotorConsumption</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>leftWheelMaxSpeed</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>leftWheelSpeedUnit</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>leftSlipNoise</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>leftEncoderResolution</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>leftMaxForce</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>rightWheelName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>rightMotorConsumption</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>rightWheelMaxSpeed</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>rightWheelSpeedUnit</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>rightSlipNoise</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>rightEncoderResolution</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>rightMaxForce</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Webots互換のパラメータを設定します。変数の先頭にleftがつくものは左側車輪の設定、rightのつくものは右側車輪の設定. </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>objectName</em>&nbsp;</td><td>エージェントの名前 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>leftWheelName</em>&nbsp;</td><td>車輪のジョイント名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>leftMotorConsumption</em>&nbsp;</td><td>車輪の消費電力(W) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>leftWheelRadius</em>&nbsp;</td><td>車輪の半径(m) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>leftWheelMaxSpeed</em>&nbsp;</td><td>車輪の最大角速度(rad/s) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>leftWheelSpeedUnit</em>&nbsp;</td><td>wb_differential_wheels_set_speed で設定される速度の単位をセット(rad/s) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>leftSlipNoise</em>&nbsp;</td><td>一様分布にしたがう車輪のスリップ(0.0 - 1.0) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>leftEncoderNoise</em>&nbsp;</td><td>スリップノイズの蓄積 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>leftEncoderResolution</em>&nbsp;</td><td>1[rad]あたりどの程度のスリップが生じるか </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>leftMaxForce</em>&nbsp;</td><td>最大トルク </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rightWheelName</em>&nbsp;</td><td>車輪のジョイント名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rightMotorConsumption</em>&nbsp;</td><td>車輪の消費電力(W) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rightWheelRadius</em>&nbsp;</td><td>車輪の半径(m) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rightWheelMaxSpeed</em>&nbsp;</td><td>車輪の最大角速度(rad/s) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rightWheelSpeedUnit</em>&nbsp;</td><td>wb_differential_wheels_set_speed で設定される速度の単位をセット(rad/s) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rightSlipNoise</em>&nbsp;</td><td>一様分布にしたがう車輪のスリップ(0.0 - 1.0) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rightEncoderNoise</em>&nbsp;</td><td>スリップノイズの蓄積 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rightEncoderResolution</em>&nbsp;</td><td>1[rad]あたりどの程度のスリップが生じるか </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rightMaxForce</em>&nbsp;</td><td>最大トルク </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a1eca10016c761429d6d86bf07644221b"></a><!-- doxytag: member="Controller::setWheelProperty" ref="a1eca10016c761429d6d86bf07644221b" args="(char *leftWheelName, double leftMotorConsumption, double leftWheelMaxSpeed, double leftWheelSpeedUnit, double leftSlipNoise, double leftEncoderResolution, double leftMaxForce, char *rightWheelName, double rightMotorConsumption, double rightWheelMaxSpeed, double rightWheelSpeedUnit, double rightSlipNoise, double rightEncoderResolution, double rightMaxForce)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Controller::setWheelProperty </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>leftWheelName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>leftMotorConsumption</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>leftWheelMaxSpeed</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>leftWheelSpeedUnit</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>leftSlipNoise</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>leftEncoderResolution</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>leftMaxForce</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>rightWheelName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>rightMotorConsumption</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>rightWheelMaxSpeed</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>rightWheelSpeedUnit</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>rightSlipNoise</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>rightEncoderResolution</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>rightMaxForce</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Webots互換のパラメータを設定します。変数の先頭にleftがつくものは左側車輪の設定、rightのつくものは右側車輪の設定. </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>leftWheelName</em>&nbsp;</td><td>車輪のジョイント名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>leftMotorConsumption</em>&nbsp;</td><td>車輪の消費電力(W) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>leftWheelRadius</em>&nbsp;</td><td>車輪の半径(m) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>leftWheelMaxSpeed</em>&nbsp;</td><td>車輪の最大角速度(rad/s) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>leftWheelSpeedUnit</em>&nbsp;</td><td>wb_differential_wheels_set_speed で設定される速度の単位をセット(rad/s) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>leftSlipNoise</em>&nbsp;</td><td>一様分布にしたがう車輪のスリップ(0.0 - 1.0) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>leftEncoderNoise</em>&nbsp;</td><td>スリップノイズの蓄積 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>leftEncoderResolution</em>&nbsp;</td><td>1[rad]あたりどの程度のスリップが生じるか </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>leftMaxForce</em>&nbsp;</td><td>最大トルク </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rightWheelName</em>&nbsp;</td><td>車輪のジョイント名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rightMotorConsumption</em>&nbsp;</td><td>車輪の消費電力(W) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rightWheelRadius</em>&nbsp;</td><td>車輪の半径(m) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rightWheelMaxSpeed</em>&nbsp;</td><td>車輪の最大角速度(rad/s) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rightWheelSpeedUnit</em>&nbsp;</td><td>wb_differential_wheels_set_speed で設定される速度の単位をセット(rad/s) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rightSlipNoise</em>&nbsp;</td><td>一様分布にしたがう車輪のスリップ(0.0 - 1.0) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rightEncoderNoise</em>&nbsp;</td><td>スリップノイズの蓄積 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rightEncoderResolution</em>&nbsp;</td><td>1[rad]あたりどの程度のスリップが生じるか </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rightMaxForce</em>&nbsp;</td><td>最大トルク </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_controller_8h_source.html">Controller.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:18 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

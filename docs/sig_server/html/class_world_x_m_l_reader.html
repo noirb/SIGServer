@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: クラス WorldXMLReader</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス WorldXMLReader</h1><!-- doxytag: class="WorldXMLReader" --><!-- doxytag: inherits="ReadTaskContainer" -->
+<p>世界ファイルを読み込むクラス  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_world_x_m_l_reader_8h_source.html">WorldXMLReader.h</a>&gt;</code></p>
+<div class="dynheader">
+WorldXMLReaderに対する継承グラフ</div>
+<div class="dynsection">
+<div class="center"><img src="class_world_x_m_l_reader__inherit__graph.png" border="0" usemap="#_world_x_m_l_reader_inherit__map" alt="Inheritance graph"/></div>
+<map name="_world_x_m_l_reader_inherit__map" id="_world_x_m_l_reader_inherit__map">
+<area shape="rect" href="class_read_task_container.html" title="設定ファイル読み込みタスクコンテナインターフェース" alt="" coords="5,5,139,35"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+<div class="dynheader">
+WorldXMLReaderのコラボレーション図</div>
+<div class="dynsection">
+<div class="center"><img src="class_world_x_m_l_reader__coll__graph.png" border="0" usemap="#_world_x_m_l_reader_coll__map" alt="Collaboration graph"/></div>
+<map name="_world_x_m_l_reader_coll__map" id="_world_x_m_l_reader_coll__map">
+<area shape="rect" href="class_read_task_container.html" title="設定ファイル読み込みタスクコンテナインターフェース" alt="" coords="5,197,139,227"/><area shape="rect" href="class_x3_d_d_b.html" title="X3Dファイルデータベースクラス." alt="" coords="163,197,227,227"/><area shape="rect" href="class_s_sim_world.html" title="シミュレーション世界クラス(サーバサイドで使用)" alt="" coords="251,197,336,227"/><area shape="rect" href="class_sim_world.html" title="シミュレーション世界クラス(サーバサイドで使用)" alt="" coords="199,101,273,131"/><area shape="rect" href="class_sim_ground.html" title="シミュレーション地面クラス" alt="" coords="193,5,279,35"/><area shape="rect" href="class_o_d_e_world.html" title="ODE 世界オブジェクトのラッパークラス." alt="" coords="297,101,377,131"/><area shape="rect" href="class_simple_shape_d_b.html" title="全ての単純形状の情報" alt="" coords="360,197,475,227"/><area shape="rect" href="class_s_sim_obj.html" title="エンティティに対応するクラス(サーバサイドで使用)" alt="" coords="499,197,571,227"/><area shape="rect" href="class_sim_obj_base.html" title="シミュレーションエンティティ基本クラス" alt="" coords="488,101,581,131"/><area shape="rect" href="class_filename_d_b.html" title="ファイル名データベースクラス" alt="" coords="595,197,685,227"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+
+<p><a href="class_world_x_m_l_reader-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_world_x_m_l_reader.html#a80bdd38ced6bd92e96849d8c2292c69e">operator()</a> (const char *fname)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_world_x_m_l_reader.html#a40ff2aadd4ccc8ea1b87f6bdd75d1ba9">read</a> (const char *fname)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">世界ファイルを読み込む  <a href="#a40ff2aadd4ccc8ea1b87f6bdd75d1ba9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_s_sim_world.html">SSimWorld</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_world_x_m_l_reader.html#a4da6a9738c9dcd841a170efb49e13048">release</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">作成されたシミュレーション世界インスタンスを取得し、破棄責任を放棄させる  <a href="#a4da6a9738c9dcd841a170efb49e13048"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_world_x_m_l_reader.html#a8245ddfb32f202f1e8ca2d22e850acbf">WorldXMLReader</a> (<a class="el" href="class_filename_d_b.html">FilenameDB</a> &amp;fdb, <a class="el" href="class_x3_d_d_b.html">X3DDB</a> &amp;x3ddb, <a class="el" href="class_simple_shape_d_b.html">SimpleShapeDB</a> &amp;ssdb)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_world_x_m_l_reader.html#aa1260c00c5651e190efc30a202b7957a">‾WorldXMLReader</a> ()</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>世界ファイルを読み込むクラス </p>
+
+<p> <a class="el" href="_world_x_m_l_reader_8h_source.html">WorldXMLReader.h</a> の <a class="el" href="_world_x_m_l_reader_8h_source.html#l00027">27</a> 行で定義されています。</p>
+<hr/><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" id="a8245ddfb32f202f1e8ca2d22e850acbf"></a><!-- doxytag: member="WorldXMLReader::WorldXMLReader" ref="a8245ddfb32f202f1e8ca2d22e850acbf" args="(FilenameDB &amp;fdb, X3DDB &amp;x3ddb, SimpleShapeDB &amp;ssdb)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">WorldXMLReader::WorldXMLReader </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_filename_d_b.html">FilenameDB</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>fdb</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_x3_d_d_b.html">X3DDB</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>x3ddb</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_simple_shape_d_b.html">SimpleShapeDB</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>ssdb</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<hr/><h2>関数</h2>
+<a class="anchor" id="a80bdd38ced6bd92e96849d8c2292c69e"></a><!-- doxytag: member="WorldXMLReader::operator()" ref="a80bdd38ced6bd92e96849d8c2292c69e" args="(const char *fname)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool WorldXMLReader::operator() </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>fname</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_world_x_m_l_reader_8h_source.html">WorldXMLReader.h</a> の <a class="el" href="_world_x_m_l_reader_8h_source.html#l00109">109</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_world_x_m_l_reader_a80bdd38ced6bd92e96849d8c2292c69e_cgraph.png" border="0" usemap="#class_world_x_m_l_reader_a80bdd38ced6bd92e96849d8c2292c69e_cgraph_map" alt=""></div>
+<map name="class_world_x_m_l_reader_a80bdd38ced6bd92e96849d8c2292c69e_cgraph_map" id="class_world_x_m_l_reader_a80bdd38ced6bd92e96849d8c2292c69e_cgraph">
+<area shape="rect" href="class_world_x_m_l_reader.html#a40ff2aadd4ccc8ea1b87f6bdd75d1ba9" title="世界ファイルを読み込む" alt="" coords="237,5,392,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a40ff2aadd4ccc8ea1b87f6bdd75d1ba9"></a><!-- doxytag: member="WorldXMLReader::read" ref="a40ff2aadd4ccc8ea1b87f6bdd75d1ba9" args="(const char *fname)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool WorldXMLReader::read </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>fname</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>世界ファイルを読み込む </p>
+
+<p><div class="dynheader">
+呼出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_world_x_m_l_reader_a40ff2aadd4ccc8ea1b87f6bdd75d1ba9_icgraph.png" border="0" usemap="#class_world_x_m_l_reader_a40ff2aadd4ccc8ea1b87f6bdd75d1ba9_icgraph_map" alt=""></div>
+<map name="class_world_x_m_l_reader_a40ff2aadd4ccc8ea1b87f6bdd75d1ba9_icgraph_map" id="class_world_x_m_l_reader_a40ff2aadd4ccc8ea1b87f6bdd75d1ba9_icgraph">
+<area shape="rect" href="class_world_x_m_l_reader.html#a80bdd38ced6bd92e96849d8c2292c69e" title="WorldXMLReader::operator()" alt="" coords="208,5,392,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a4da6a9738c9dcd841a170efb49e13048"></a><!-- doxytag: member="WorldXMLReader::release" ref="a4da6a9738c9dcd841a170efb49e13048" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_s_sim_world.html">SSimWorld</a>* WorldXMLReader::release </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>作成されたシミュレーション世界インスタンスを取得し、破棄責任を放棄させる </p>
+
+<p> <a class="el" href="_world_x_m_l_reader_8h_source.html">WorldXMLReader.h</a> の <a class="el" href="_world_x_m_l_reader_8h_source.html#l00114">114</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="aa1260c00c5651e190efc30a202b7957a"></a><!-- doxytag: member="WorldXMLReader::‾WorldXMLReader" ref="aa1260c00c5651e190efc30a202b7957a" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">WorldXMLReader::‾WorldXMLReader </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_world_x_m_l_reader_8h_source.html">WorldXMLReader.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:22 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

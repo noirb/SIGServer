@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: SgvX3DSimObjCreator.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>SgvX3DSimObjCreator.h</h1><code>#include &quot;CX3DParser.h&quot;</code><br/>
+<code>#include &quot;CX3DShapeNode.h&quot;</code><br/>
+<code>#include &quot;CX3DTransformNode.h&quot;</code><br/>
+<code>#include &quot;CX3DIndexedFaceSetNode.h&quot;</code><br/>
+<code>#include &quot;CSimplifiedShape.h&quot;</code><br/>
+<code>#include &quot;<a class="el" href="_s_sim_obj_8h_source.html">SSimObj.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="_s_parts_8h_source.html">SParts.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html">BodyFactory.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="_simple_shape_d_b_8h_source.html">SimpleShapeDB.h</a>&quot;</code><br/>
+<div class="dynheader">
+SgvX3DSimObjCreator.hのインクルード依存関係図</div>
+<div class="dynsection">
+<div class="center"><img src="_sgv_x3_d_sim_obj_creator_8h__incl.png" border="0" usemap="#_sgv_x3_d_sim_obj_creator_8h_map" alt=""/></div>
+<map name="_sgv_x3_d_sim_obj_creator_8h_map" id="_sgv_x3_d_sim_obj_creator_8h">
+<area shape="rect" href="_s_sim_obj_8h.html" title="SSimObj.h" alt="" coords="931,83,1013,112"/><area shape="rect" href="_s_parts_8h.html" title="SParts.h" alt="" coords="835,83,907,112"/><area shape="rect" href="_simple_shape_d_b_8h.html" title="SimpleShapeDB.h" alt="" coords="1083,160,1211,189"/><area shape="rect" href="systemdef_8h.html" title="systemdef.h" alt="" coords="709,547,803,576"/><area shape="rect" href="_sim_obj_base_8h.html" title="SimObjBase.h" alt="" coords="733,160,837,189"/><area shape="rect" href="_logger_8h.html" title="Logger.h" alt="" coords="936,160,1008,189"/><area shape="rect" href="_parts_8h.html" title="Parts.h" alt="" coords="424,237,485,267"/><area shape="rect" href="_parts_cmpnt_8h.html" title="PartsCmpnt.h" alt="" coords="560,160,659,189"/><area shape="rect" href="_attribute_8h.html" title="Attribute.h" alt="" coords="741,237,821,267"/><area shape="rect" href="_vector3d_8h.html" title="Vector3d.h" alt="" coords="535,392,617,421"/><area shape="rect" href="_position_8h.html" title="Position.h" alt="" coords="399,469,476,499"/><area shape="rect" href="_size_8h.html" title="Size.h" alt="" coords="349,392,408,421"/><area shape="rect" href="_rotation_8h.html" title="Rotation.h" alt="" coords="405,315,485,344"/></map>
+</div>
+<div class="dynheader">
+このグラフは、どのファイルから直接、間接的にインクルードされているかを示しています。</div>
+<div class="dynsection">
+<div class="center"><img src="_sgv_x3_d_sim_obj_creator_8h__dep__incl.png" border="0" usemap="#_sgv_x3_d_sim_obj_creator_8hdep_map" alt=""/></div>
+</div>
+
+<p><a href="_sgv_x3_d_sim_obj_creator_8h_source.html">ソースコードを見る。</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>構成</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_log.html">Sgv::Log</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ログ出力クラス  <a href="class_sgv_1_1_log.html#_details">[詳細]</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_test_node.html">Sgv::TestNode</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">OpenHRPの階層構造を保持するためのノード.  <a href="class_sgv_1_1_test_node.html#_details">[詳細]</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_x3_d_sim_obj_creator.html">Sgv::X3DSimObjCreator</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">X3D形状からSSimObj（特にSParts）を生成するためのクラス.  <a href="class_sgv_1_1_x3_d_sim_obj_creator.html#_details">[詳細]</a><br/></td></tr>
+<tr><td colspan="2"><h2>ネームスペース</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">namespace &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_sgv.html">Sgv</a></td></tr>
+<tr><td colspan="2"><h2>列挙型</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_sgv.html#ad97aadbd176f6cf564e2c011a22bfcee">Sgv::NodeType</a> { <br/>
+&nbsp;&nbsp;<a class="el" href="namespace_sgv.html#ad97aadbd176f6cf564e2c011a22bfceea238b59aa0481a463b3b384159c97dfca">Sgv::NODE_TYPE_NOT_SET</a> =  -1, 
+<a class="el" href="namespace_sgv.html#ad97aadbd176f6cf564e2c011a22bfceeaf88604c3f474a8b9f3e6e2fd656f0657">Sgv::NODE_TYPE_JOINT</a>, 
+<a class="el" href="namespace_sgv.html#ad97aadbd176f6cf564e2c011a22bfceea545f5aa6655a904510149a790e74844d">Sgv::NODE_TYPE_SEGMENT</a>, 
+<a class="el" href="namespace_sgv.html#ad97aadbd176f6cf564e2c011a22bfceea22bf3fa521bd09e46922ee186e284e87">Sgv::NODE_TYPE_TRANSFORM</a>, 
+<br/>
+&nbsp;&nbsp;<a class="el" href="namespace_sgv.html#ad97aadbd176f6cf564e2c011a22bfceea04de7c73d6851d9af0fa8e79081f3561">Sgv::NODE_TYPE_SHAPE</a>, 
+<a class="el" href="namespace_sgv.html#ad97aadbd176f6cf564e2c011a22bfceea4df4cefffc9919e47cf768610fe9a8e5">Sgv::NODE_TYPE_DUMMY_SEGMENT</a>
+<br/>
+ }</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><p>OpenHRP ノードタイプ. </p>
+ <a href="namespace_sgv.html#ad97aadbd176f6cf564e2c011a22bfcee">[詳細]</a><br/></td></tr>
+<tr><td colspan="2"><h2>関数</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_sgv.html#aa40d5db3d0bd4bf3946f46a50b3f1f11">Sgv::printIndentSpace</a> (int indent)</td></tr>
+</table>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:18 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

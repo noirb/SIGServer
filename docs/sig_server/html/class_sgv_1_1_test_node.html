@@ -1,0 +1,797 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: クラス Sgv::TestNode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_sgv.html">Sgv</a>::<a class="el" href="class_sgv_1_1_test_node.html">TestNode</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Sgv::TestNode</h1><!-- doxytag: class="Sgv::TestNode" -->
+<p>OpenHRPの階層構造を保持するためのノード.  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html">SgvX3DSimObjCreator.h</a>&gt;</code></p>
+<div class="dynheader">
+Sgv::TestNodeのコラボレーション図</div>
+<div class="dynsection">
+<div class="center"><img src="class_sgv_1_1_test_node__coll__graph.png" border="0" usemap="#_sgv_1_1_test_node_coll__map" alt="Collaboration graph"/></div>
+<map name="_sgv_1_1_test_node_coll__map" id="_sgv_1_1_test_node_coll__map">
+<area shape="rect" href="class_vector3d.html" title="3次元ベクトルクラス" alt="" coords="5,5,77,35"/><area shape="rect" href="class_joint.html" title="部品同士を繋ぐ関節クラス" alt="" coords="177,120,225,149"/><area shape="rect" href="class_s_parts.html" title="エンティティの部品クラス(サーバサイドで使用)" alt="" coords="319,253,377,283"/><area shape="rect" href="class_rotation.html" title="回転行列クラス" alt="" coords="159,5,228,35"/><area shape="rect" href="class_parts.html" title="エンティティを構成する部品クラス" alt="" coords="284,120,335,149"/><area shape="rect" href="class_position.html" title="3次元位置クラス" alt="" coords="288,5,355,35"/><area shape="rect" href="class_o_d_e_obj.html" title="ODEにおけるシミュレーションオブジェクトラッパークラス." alt="" coords="359,120,425,149"/><area shape="rect" href="class_sim_obj_base.html" title="シミュレーションエンティティ基本クラス" alt="" coords="449,120,543,149"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+
+<p><a href="class_sgv_1_1_test_node-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_test_node.html#aabd91fbc84ae8e44da7d8ea1ae3c2679">addChild</a> (<a class="el" href="class_sgv_1_1_test_node.html">TestNode</a> *child)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">子ノードを追加する  <a href="#aabd91fbc84ae8e44da7d8ea1ae3c2679"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_test_node.html#a66ccabdb1c78b5bfcb6ba0dbe4015918">calcPartsAbsPos</a> (<a class="el" href="class_s_sim_obj.html">SSimObj</a> *o, <a class="el" href="class_body_factory.html">BodyFactory</a> &amp;f, const <a class="el" href="class_vector3d.html">Vector3d</a> &amp;basePos, const <a class="el" href="class_rotation.html">Rotation</a> &amp;r, int level)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><a class="el" href="class_sgv_1_1_test_node.html#a25a0d4f294ddb86f6577ca194303ead9" title="各ノードの持つ位置、方向情報から パーツの絶対位置、方向を計算して...">calcPartsAbsPos()</a>の補助メソッド  <a href="#a66ccabdb1c78b5bfcb6ba0dbe4015918"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_test_node.html#a25a0d4f294ddb86f6577ca194303ead9">calcPartsAbsPos</a> (<a class="el" href="class_s_sim_obj.html">SSimObj</a> *o, <a class="el" href="class_body_factory.html">BodyFactory</a> &amp;f)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">各ノードの持つ位置、方向情報から パーツの絶対位置、方向を計算して SSimObj（のパーツ）に設定する  <a href="#a25a0d4f294ddb86f6577ca194303ead9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_test_node.html#a49f0e5dde7a5d008deaae79975937e77">count</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">子ノードの数を取得する  <a href="#a49f0e5dde7a5d008deaae79975937e77"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_s_parts.html">SParts</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_test_node.html#ad4f7d54f17073b24e08f5387819c787b">createDummyParts</a> (<a class="el" href="class_body_factory.html">BodyFactory</a> &amp;f, const <a class="el" href="class_position.html">Position</a> &amp;pos)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ダミーパーツを作成する  <a href="#ad4f7d54f17073b24e08f5387819c787b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_test_node.html#aa5f5c6eb3d401432a132ab5c4cd90188">dump</a> (int level=0)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ツリー構造をダンプ表示  <a href="#aa5f5c6eb3d401432a132ab5c4cd90188"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_sgv_1_1_test_node.html">TestNode</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_test_node.html#a514f3840efecb05409f270cd2559eb21">getChild</a> (int i)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">子ノードを取得する  <a href="#a514f3840efecb05409f270cd2559eb21"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_joint.html">Joint</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_test_node.html#aa92093a9cc8df83e94c9a6a7a65c517c">getJoint</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_test_node.html#ae650abe7c46748fa4b7270422b91fa7c">getJointType</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ジョイントタイプを設定する  <a href="#ae650abe7c46748fa4b7270422b91fa7c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_test_node.html#a2d346cbe1ac5eda5a9317c0050995712">getName</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ノード名を取得する  <a href="#a2d346cbe1ac5eda5a9317c0050995712"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_rotation.html">Rotation</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_test_node.html#abd30db711bbae9c7697e213751cc411c">getOrientation</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ノードの表す回転座標を取得する  <a href="#abd30db711bbae9c7697e213751cc411c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_sgv_1_1_test_node.html">TestNode</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_test_node.html#a1b9b9037f66d44828d7d35ef83fda5d0">getParent</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">親ノードを取得する  <a href="#a1b9b9037f66d44828d7d35ef83fda5d0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_vector3d.html">Vector3d</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_test_node.html#a4ef1148da09b30a2a2c381a31688c68e">getPosition</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ノードの表す位置座標を取得する  <a href="#a4ef1148da09b30a2a2c381a31688c68e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_s_parts.html">SParts</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_test_node.html#ad30bd5926534d0c5df880dfa57425226">getSParts</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_sgv.html#ad97aadbd176f6cf564e2c011a22bfcee">NodeType</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_test_node.html#a31095922c36d1bfbc7403bcbfb95aac4">getType</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ノードタイプを取得する  <a href="#a31095922c36d1bfbc7403bcbfb95aac4"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_test_node.html#ac3b8263737ff52314e93f172e13afd4e">isRoot</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ルートノードであるか？  <a href="#ac3b8263737ff52314e93f172e13afd4e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_test_node.html#a70ac73c2c0011b0c648392bf1cf8b6e7">setCenterOfMass</a> (SFVec3f *v)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">重心位置を設定する  <a href="#a70ac73c2c0011b0c648392bf1cf8b6e7"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_test_node.html#a056ea2621d539a79d1e2800a9fd39c27">setJointAxis</a> (SFVec3f *v)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ジョイントの軸を設定する  <a href="#a056ea2621d539a79d1e2800a9fd39c27"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_test_node.html#aad2d33fc39d89e070cd27c387420f7d0">setJointType</a> (SFString *type)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ジョイントタイプを設定する  <a href="#aad2d33fc39d89e070cd27c387420f7d0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_test_node.html#a96fd864f9da96bb228d1f896a667da0b">setName</a> (const std::string &amp;name)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">名前を設定する  <a href="#a96fd864f9da96bb228d1f896a667da0b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_test_node.html#a3d5f7adef47353b6115acf0cf735bd9a">setOrientation</a> (SFRotation *rot)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">方向を設定する  <a href="#a3d5f7adef47353b6115acf0cf735bd9a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_test_node.html#a729a82d3a48147da90700fd514570af5">setOrientation</a> (double deg, double ax, double ay, double az)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">方向を設定する  <a href="#a729a82d3a48147da90700fd514570af5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_test_node.html#a59aa92eb566bb4cfe3608c11d7fc1bcc">setPosition</a> (SFVec3f *pos)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">位置を設定する  <a href="#a59aa92eb566bb4cfe3608c11d7fc1bcc"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_test_node.html#aef262dc8abc57a15c20f54bdc508fdb5">setPosition</a> (double x, double y, double z)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">位置を設定する  <a href="#aef262dc8abc57a15c20f54bdc508fdb5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_test_node.html#a0409dc0dea06a7da8320c2f30ca41a89">setType</a> (<a class="el" href="namespace_sgv.html#ad97aadbd176f6cf564e2c011a22bfcee">NodeType</a> type)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ノードタイプを設定する  <a href="#a0409dc0dea06a7da8320c2f30ca41a89"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_test_node.html#a7b948d1004839b23b467e3765cbed109">TestNode</a> (<a class="el" href="class_sgv_1_1_test_node.html">TestNode</a> *parent)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_test_node.html#af7cdcb08bf417876528f4ae9955a0b6d">‾TestNode</a> ()</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>OpenHRPの階層構造を保持するためのノード. </p>
+<p>各ノードの持つ位置(pos),方向(q)から パーツの絶対座標を計算するために使う </p>
+
+<p> <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html">SgvX3DSimObjCreator.h</a> の <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html#l00186">186</a> 行で定義されています。</p>
+<hr/><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" id="a7b948d1004839b23b467e3765cbed109"></a><!-- doxytag: member="Sgv::TestNode::TestNode" ref="a7b948d1004839b23b467e3765cbed109" args="(TestNode *parent)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::TestNode::TestNode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_test_node.html">TestNode</a> *&nbsp;</td>
+          <td class="paramname"> <em>parent</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<hr/><h2>関数</h2>
+<a class="anchor" id="aabd91fbc84ae8e44da7d8ea1ae3c2679"></a><!-- doxytag: member="Sgv::TestNode::addChild" ref="aabd91fbc84ae8e44da7d8ea1ae3c2679" args="(TestNode *child)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::TestNode::addChild </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_test_node.html">TestNode</a> *&nbsp;</td>
+          <td class="paramname"> <em>child</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>子ノードを追加する </p>
+
+<p> <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html">SgvX3DSimObjCreator.h</a> の <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html#l00248">248</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a66ccabdb1c78b5bfcb6ba0dbe4015918"></a><!-- doxytag: member="Sgv::TestNode::calcPartsAbsPos" ref="a66ccabdb1c78b5bfcb6ba0dbe4015918" args="(SSimObj *o, BodyFactory &amp;f, const Vector3d &amp;basePos, const Rotation &amp;r, int level)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::TestNode::calcPartsAbsPos </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_s_sim_obj.html">SSimObj</a> *&nbsp;</td>
+          <td class="paramname"> <em>o</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_body_factory.html">BodyFactory</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_vector3d.html">Vector3d</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>basePos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_rotation.html">Rotation</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>r</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>level</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p><a class="el" href="class_sgv_1_1_test_node.html#a25a0d4f294ddb86f6577ca194303ead9" title="各ノードの持つ位置、方向情報から パーツの絶対位置、方向を計算して...">calcPartsAbsPos()</a>の補助メソッド </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>basePos</em>&nbsp;</td><td>[i] 親ノードの位置 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>r</em>&nbsp;</td><td>[i]　親ノードの回転 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a25a0d4f294ddb86f6577ca194303ead9"></a><!-- doxytag: member="Sgv::TestNode::calcPartsAbsPos" ref="a25a0d4f294ddb86f6577ca194303ead9" args="(SSimObj *o, BodyFactory &amp;f)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::TestNode::calcPartsAbsPos </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_s_sim_obj.html">SSimObj</a> *&nbsp;</td>
+          <td class="paramname"> <em>o</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_body_factory.html">BodyFactory</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>f</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>各ノードの持つ位置、方向情報から パーツの絶対位置、方向を計算して SSimObj（のパーツ）に設定する </p>
+
+</div>
+</div>
+<a class="anchor" id="a49f0e5dde7a5d008deaae79975937e77"></a><!-- doxytag: member="Sgv::TestNode::count" ref="a49f0e5dde7a5d008deaae79975937e77" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Sgv::TestNode::count </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>子ノードの数を取得する </p>
+
+<p> <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html">SgvX3DSimObjCreator.h</a> の <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html#l00260">260</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ad4f7d54f17073b24e08f5387819c787b"></a><!-- doxytag: member="Sgv::TestNode::createDummyParts" ref="ad4f7d54f17073b24e08f5387819c787b" args="(BodyFactory &amp;f, const Position &amp;pos)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_s_parts.html">SParts</a>* Sgv::TestNode::createDummyParts </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_body_factory.html">BodyFactory</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_position.html">Position</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>pos</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ダミーパーツを作成する </p>
+
+</div>
+</div>
+<a class="anchor" id="aa5f5c6eb3d401432a132ab5c4cd90188"></a><!-- doxytag: member="Sgv::TestNode::dump" ref="aa5f5c6eb3d401432a132ab5c4cd90188" args="(int level=0)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::TestNode::dump </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>level</em> = <code>0</code></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ツリー構造をダンプ表示 </p>
+
+</div>
+</div>
+<a class="anchor" id="a514f3840efecb05409f270cd2559eb21"></a><!-- doxytag: member="Sgv::TestNode::getChild" ref="a514f3840efecb05409f270cd2559eb21" args="(int i)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_sgv_1_1_test_node.html">TestNode</a>* Sgv::TestNode::getChild </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>i</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>子ノードを取得する </p>
+
+<p> <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html">SgvX3DSimObjCreator.h</a> の <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html#l00263">263</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="aa92093a9cc8df83e94c9a6a7a65c517c"></a><!-- doxytag: member="Sgv::TestNode::getJoint" ref="aa92093a9cc8df83e94c9a6a7a65c517c" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_joint.html">Joint</a>* Sgv::TestNode::getJoint </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html">SgvX3DSimObjCreator.h</a> の <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html#l00318">318</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ae650abe7c46748fa4b7270422b91fa7c"></a><!-- doxytag: member="Sgv::TestNode::getJointType" ref="ae650abe7c46748fa4b7270422b91fa7c" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* Sgv::TestNode::getJointType </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ジョイントタイプを設定する </p>
+
+<p> <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html">SgvX3DSimObjCreator.h</a> の <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html#l00272">272</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a2d346cbe1ac5eda5a9317c0050995712"></a><!-- doxytag: member="Sgv::TestNode::getName" ref="a2d346cbe1ac5eda5a9317c0050995712" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Sgv::TestNode::getName </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ノード名を取得する </p>
+
+<p> <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html">SgvX3DSimObjCreator.h</a> の <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html#l00254">254</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="abd30db711bbae9c7697e213751cc411c"></a><!-- doxytag: member="Sgv::TestNode::getOrientation" ref="abd30db711bbae9c7697e213751cc411c" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_rotation.html">Rotation</a>&amp; Sgv::TestNode::getOrientation </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ノードの表す回転座標を取得する </p>
+
+<p> <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html">SgvX3DSimObjCreator.h</a> の <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html#l00269">269</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a1b9b9037f66d44828d7d35ef83fda5d0"></a><!-- doxytag: member="Sgv::TestNode::getParent" ref="a1b9b9037f66d44828d7d35ef83fda5d0" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_sgv_1_1_test_node.html">TestNode</a>* Sgv::TestNode::getParent </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>親ノードを取得する </p>
+
+<p> <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html">SgvX3DSimObjCreator.h</a> の <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html#l00257">257</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a4ef1148da09b30a2a2c381a31688c68e"></a><!-- doxytag: member="Sgv::TestNode::getPosition" ref="a4ef1148da09b30a2a2c381a31688c68e" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_vector3d.html">Vector3d</a>&amp; Sgv::TestNode::getPosition </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ノードの表す位置座標を取得する </p>
+
+<p> <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html">SgvX3DSimObjCreator.h</a> の <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html#l00266">266</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ad30bd5926534d0c5df880dfa57425226"></a><!-- doxytag: member="Sgv::TestNode::getSParts" ref="ad30bd5926534d0c5df880dfa57425226" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_s_parts.html">SParts</a>* Sgv::TestNode::getSParts </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html">SgvX3DSimObjCreator.h</a> の <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html#l00319">319</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a31095922c36d1bfbc7403bcbfb95aac4"></a><!-- doxytag: member="Sgv::TestNode::getType" ref="a31095922c36d1bfbc7403bcbfb95aac4" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_sgv.html#ad97aadbd176f6cf564e2c011a22bfcee">NodeType</a> Sgv::TestNode::getType </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ノードタイプを取得する </p>
+
+<p> <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html">SgvX3DSimObjCreator.h</a> の <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html#l00196">196</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ac3b8263737ff52314e93f172e13afd4e"></a><!-- doxytag: member="Sgv::TestNode::isRoot" ref="ac3b8263737ff52314e93f172e13afd4e" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::TestNode::isRoot </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ルートノードであるか？ </p>
+
+<p> <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html">SgvX3DSimObjCreator.h</a> の <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html#l00295">295</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a70ac73c2c0011b0c648392bf1cf8b6e7"></a><!-- doxytag: member="Sgv::TestNode::setCenterOfMass" ref="a70ac73c2c0011b0c648392bf1cf8b6e7" args="(SFVec3f *v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::TestNode::setCenterOfMass </td>
+          <td>(</td>
+          <td class="paramtype">SFVec3f *&nbsp;</td>
+          <td class="paramname"> <em>v</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>重心位置を設定する </p>
+
+<p> <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html">SgvX3DSimObjCreator.h</a> の <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html#l00223">223</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a056ea2621d539a79d1e2800a9fd39c27"></a><!-- doxytag: member="Sgv::TestNode::setJointAxis" ref="a056ea2621d539a79d1e2800a9fd39c27" args="(SFVec3f *v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::TestNode::setJointAxis </td>
+          <td>(</td>
+          <td class="paramtype">SFVec3f *&nbsp;</td>
+          <td class="paramname"> <em>v</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ジョイントの軸を設定する </p>
+
+<p> <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html">SgvX3DSimObjCreator.h</a> の <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html#l00241">241</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="aad2d33fc39d89e070cd27c387420f7d0"></a><!-- doxytag: member="Sgv::TestNode::setJointType" ref="aad2d33fc39d89e070cd27c387420f7d0" args="(SFString *type)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::TestNode::setJointType </td>
+          <td>(</td>
+          <td class="paramtype">SFString *&nbsp;</td>
+          <td class="paramname"> <em>type</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ジョイントタイプを設定する </p>
+
+<p> <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html">SgvX3DSimObjCreator.h</a> の <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html#l00231">231</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a96fd864f9da96bb228d1f896a667da0b"></a><!-- doxytag: member="Sgv::TestNode::setName" ref="a96fd864f9da96bb228d1f896a667da0b" args="(const std::string &amp;name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::TestNode::setName </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>name</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>名前を設定する </p>
+
+<p> <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html">SgvX3DSimObjCreator.h</a> の <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html#l00202">202</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a3d5f7adef47353b6115acf0cf735bd9a"></a><!-- doxytag: member="Sgv::TestNode::setOrientation" ref="a3d5f7adef47353b6115acf0cf735bd9a" args="(SFRotation *rot)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::TestNode::setOrientation </td>
+          <td>(</td>
+          <td class="paramtype">SFRotation *&nbsp;</td>
+          <td class="paramname"> <em>rot</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>方向を設定する </p>
+
+</div>
+</div>
+<a class="anchor" id="a729a82d3a48147da90700fd514570af5"></a><!-- doxytag: member="Sgv::TestNode::setOrientation" ref="a729a82d3a48147da90700fd514570af5" args="(double deg, double ax, double ay, double az)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::TestNode::setOrientation </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>deg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>ax</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>ay</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>az</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>方向を設定する </p>
+
+</div>
+</div>
+<a class="anchor" id="a59aa92eb566bb4cfe3608c11d7fc1bcc"></a><!-- doxytag: member="Sgv::TestNode::setPosition" ref="a59aa92eb566bb4cfe3608c11d7fc1bcc" args="(SFVec3f *pos)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::TestNode::setPosition </td>
+          <td>(</td>
+          <td class="paramtype">SFVec3f *&nbsp;</td>
+          <td class="paramname"> <em>pos</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>位置を設定する </p>
+
+</div>
+</div>
+<a class="anchor" id="aef262dc8abc57a15c20f54bdc508fdb5"></a><!-- doxytag: member="Sgv::TestNode::setPosition" ref="aef262dc8abc57a15c20f54bdc508fdb5" args="(double x, double y, double z)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::TestNode::setPosition </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>z</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>位置を設定する </p>
+
+</div>
+</div>
+<a class="anchor" id="a0409dc0dea06a7da8320c2f30ca41a89"></a><!-- doxytag: member="Sgv::TestNode::setType" ref="a0409dc0dea06a7da8320c2f30ca41a89" args="(NodeType type)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::TestNode::setType </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_sgv.html#ad97aadbd176f6cf564e2c011a22bfcee">NodeType</a>&nbsp;</td>
+          <td class="paramname"> <em>type</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ノードタイプを設定する </p>
+
+<p> <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html">SgvX3DSimObjCreator.h</a> の <a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html#l00193">193</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="af7cdcb08bf417876528f4ae9955a0b6d"></a><!-- doxytag: member="Sgv::TestNode::‾TestNode" ref="af7cdcb08bf417876528f4ae9955a0b6d" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::TestNode::‾TestNode </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_sgv_x3_d_sim_obj_creator_8h_source.html">SgvX3DSimObjCreator.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:22 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

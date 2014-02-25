@@ -1,0 +1,342 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>SIGVerse_Controller: クラス ControllerInf</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス ControllerInf</h1><!-- doxytag: class="ControllerInf" -->
+<p>コントローラインターフェース  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_controller_inf_8h_source.html">ControllerInf.h</a>&gt;</code></p>
+<div class="dynheader">
+ControllerInfに対する継承グラフ</div>
+<div class="dynsection">
+ <div class="center">
+  <img src="class_controller_inf.png" usemap="#ControllerInf_map" alt=""/>
+  <map id="ControllerInf_map" name="ControllerInf_map">
+<area href="class_controller_impl.html" alt="ControllerImpl" shape="rect" coords="0,56,90,80"/>
+<area href="class_controller.html" alt="Controller" shape="rect" coords="0,112,90,136"/>
+</map>
+ </div>
+</div>
+
+<p><a href="class_controller_inf-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller_inf.html#a3dde92b8047dcdfef8a3a7e15e262028">isProcessing</a> ()=0</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コントローラが処理中であるか？  <a href="#a3dde92b8047dcdfef8a3a7e15e262028"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller_inf.html#a4a6c43dd62eaa0eafec547860565caf4">onAction</a> (ActionEvent &amp;evt)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">行動コールバック関数  <a href="#a4a6c43dd62eaa0eafec547860565caf4"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller_inf.html#a819a73b6b2b0ce0d528f7e8eac58ea5c">onCollision</a> (CollisionEvent &amp;evt)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">衝突検出コールバック関数  <a href="#a819a73b6b2b0ce0d528f7e8eac58ea5c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller_inf.html#a188672cd8963ab59c6c029ecca79bee6">onInit</a> (InitEvent &amp;evt)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コントローラの初期化コールバック関数  <a href="#a188672cd8963ab59c6c029ecca79bee6"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller_inf.html#a9fec4b3faaa648a8891d91c669385ba9">onPostEvent</a> ()=0</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コールバック関数を呼び出した後の処理を実装する  <a href="#a9fec4b3faaa648a8891d91c669385ba9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller_inf.html#a2d91569dbc9dcf053935fbb214c0ce9c">onPreEvent</a> ()=0</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コールバック関数を呼び出す前の処理を実装する  <a href="#a2d91569dbc9dcf053935fbb214c0ce9c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller_inf.html#a610890e1463b6643edf0e1fd8ed40396">onRecvMessage</a> (RecvMessageEvent &amp;evt)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">メッセージ受信コールバック関数  <a href="#a610890e1463b6643edf0e1fd8ed40396"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller_inf.html#a3263bd2eed95e0465cd42b8881e86222">onRecvSound</a> (RecvSoundEvent &amp;evt)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">音声受信コールバック関数  <a href="#a3263bd2eed95e0465cd42b8881e86222"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller_inf.html#a996f2bf9a8b5a6d201f25aa7905ebd64">onRecvText</a> (RecvTextEvent &amp;evt)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">テキスト受信コールバック関数  <a href="#a996f2bf9a8b5a6d201f25aa7905ebd64"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller_inf.html#ae093e3c682507a336c04b1e1cf4518c3">‾ControllerInf</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#ae093e3c682507a336c04b1e1cf4518c3"></a><br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>コントローラインターフェース </p>
+
+<p> <a class="el" href="_controller_inf_8h_source.html">ControllerInf.h</a> の <a class="el" href="_controller_inf_8h_source.html#l00015">15</a> 行で定義されています。</p>
+<hr/><h2>関数</h2>
+<a class="anchor" id="a3dde92b8047dcdfef8a3a7e15e262028"></a><!-- doxytag: member="ControllerInf::isProcessing" ref="a3dde92b8047dcdfef8a3a7e15e262028" args="()=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool ControllerInf::isProcessing </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コントローラが処理中であるか？ </p>
+
+<p><a class="el" href="class_controller.html#a179a4bc8df8e277597d98ade0eff3ecf">Controller</a>で実装されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a4a6c43dd62eaa0eafec547860565caf4"></a><!-- doxytag: member="ControllerInf::onAction" ref="a4a6c43dd62eaa0eafec547860565caf4" args="(ActionEvent &amp;evt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual double ControllerInf::onAction </td>
+          <td>(</td>
+          <td class="paramtype">ActionEvent &amp;&nbsp;</td>
+          <td class="paramname"> <em>evt</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>行動コールバック関数 </p>
+<p>エージェントの主な動きを実装する。通常、シミュレーション時間が進む毎に呼び出される。</p>
+<dl class="return"><dt><b>戻り値:</b></dt><dd>次に呼び出されるまでの時間。 </dd></dl>
+
+<p> <a class="el" href="_controller_inf_8h_source.html">ControllerInf.h</a> の <a class="el" href="_controller_inf_8h_source.html#l00035">35</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a819a73b6b2b0ce0d528f7e8eac58ea5c"></a><!-- doxytag: member="ControllerInf::onCollision" ref="a819a73b6b2b0ce0d528f7e8eac58ea5c" args="(CollisionEvent &amp;evt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void ControllerInf::onCollision </td>
+          <td>(</td>
+          <td class="paramtype">CollisionEvent &amp;&nbsp;</td>
+          <td class="paramname"> <em>evt</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>衝突検出コールバック関数 </p>
+
+<p> <a class="el" href="_controller_inf_8h_source.html">ControllerInf.h</a> の <a class="el" href="_controller_inf_8h_source.html#l00044">44</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a188672cd8963ab59c6c029ecca79bee6"></a><!-- doxytag: member="ControllerInf::onInit" ref="a188672cd8963ab59c6c029ecca79bee6" args="(InitEvent &amp;evt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void ControllerInf::onInit </td>
+          <td>(</td>
+          <td class="paramtype">InitEvent &amp;&nbsp;</td>
+          <td class="paramname"> <em>evt</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コントローラの初期化コールバック関数 </p>
+<p>シミュレーション開始時に呼び出される </p>
+
+<p> <a class="el" href="_controller_inf_8h_source.html">ControllerInf.h</a> の <a class="el" href="_controller_inf_8h_source.html#l00026">26</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a9fec4b3faaa648a8891d91c669385ba9"></a><!-- doxytag: member="ControllerInf::onPostEvent" ref="a9fec4b3faaa648a8891d91c669385ba9" args="()=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void ControllerInf::onPostEvent </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コールバック関数を呼び出した後の処理を実装する </p>
+
+<p><a class="el" href="class_controller.html#aa74fe000a8fc2d2f0f969e378c8be1ea">Controller</a>で実装されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a2d91569dbc9dcf053935fbb214c0ce9c"></a><!-- doxytag: member="ControllerInf::onPreEvent" ref="a2d91569dbc9dcf053935fbb214c0ce9c" args="()=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void ControllerInf::onPreEvent </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コールバック関数を呼び出す前の処理を実装する </p>
+
+<p><a class="el" href="class_controller.html#a513ccb6ce4ae984bacea4afee9c1af30">Controller</a>で実装されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a610890e1463b6643edf0e1fd8ed40396"></a><!-- doxytag: member="ControllerInf::onRecvMessage" ref="a610890e1463b6643edf0e1fd8ed40396" args="(RecvMessageEvent &amp;evt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void ControllerInf::onRecvMessage </td>
+          <td>(</td>
+          <td class="paramtype">RecvMessageEvent &amp;&nbsp;</td>
+          <td class="paramname"> <em>evt</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>メッセージ受信コールバック関数 </p>
+
+<p> <a class="el" href="_controller_inf_8h_source.html">ControllerInf.h</a> の <a class="el" href="_controller_inf_8h_source.html#l00042">42</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a3263bd2eed95e0465cd42b8881e86222"></a><!-- doxytag: member="ControllerInf::onRecvSound" ref="a3263bd2eed95e0465cd42b8881e86222" args="(RecvSoundEvent &amp;evt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void ControllerInf::onRecvSound </td>
+          <td>(</td>
+          <td class="paramtype">RecvSoundEvent &amp;&nbsp;</td>
+          <td class="paramname"> <em>evt</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>音声受信コールバック関数 </p>
+
+<p> <a class="el" href="_controller_inf_8h_source.html">ControllerInf.h</a> の <a class="el" href="_controller_inf_8h_source.html#l00040">40</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a996f2bf9a8b5a6d201f25aa7905ebd64"></a><!-- doxytag: member="ControllerInf::onRecvText" ref="a996f2bf9a8b5a6d201f25aa7905ebd64" args="(RecvTextEvent &amp;evt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void ControllerInf::onRecvText </td>
+          <td>(</td>
+          <td class="paramtype">RecvTextEvent &amp;&nbsp;</td>
+          <td class="paramname"> <em>evt</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>テキスト受信コールバック関数 </p>
+
+<p> <a class="el" href="_controller_inf_8h_source.html">ControllerInf.h</a> の <a class="el" href="_controller_inf_8h_source.html#l00038">38</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ae093e3c682507a336c04b1e1cf4518c3"></a><!-- doxytag: member="ControllerInf::‾ControllerInf" ref="ae093e3c682507a336c04b1e1cf4518c3" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual ControllerInf::‾ControllerInf </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>デストラクタ </p>
+
+<p> <a class="el" href="_controller_inf_8h_source.html">ControllerInf.h</a> の <a class="el" href="_controller_inf_8h_source.html#l00019">19</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_controller_inf_8h_source.html">ControllerInf.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>SIGVerse_Controllerに対してTue Dec 13 19:10:58 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

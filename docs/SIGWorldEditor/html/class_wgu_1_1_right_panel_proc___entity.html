@@ -1,0 +1,685 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGWorldEditor: クラス Wgu::RightPanelProc_Entity</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_wgu.html">Wgu</a>::<a class="el" href="class_wgu_1_1_right_panel_proc___entity.html">RightPanelProc_Entity</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Wgu::RightPanelProc_Entity</h1><!-- doxytag: class="Wgu::RightPanelProc_Entity" --><!-- doxytag: inherits="Wgu::BasePanelProc" -->パネルプロシージャクラス（右パネル：エンティティ）  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_wgu_panel_8h_source.html">WguPanel.h</a>&gt;</code>
+<p>
+<div class="dynheader">
+Wgu::RightPanelProc_Entityに対する継承グラフ</div>
+<div class="dynsection">
+
+<p><center><img src="class_wgu_1_1_right_panel_proc___entity.png" usemap="#Wgu::RightPanelProc_Entity_map" border="0" alt=""></center>
+<map name="Wgu::RightPanelProc_Entity_map">
+<area href="class_wgu_1_1_base_panel_proc.html" alt="Wgu::BasePanelProc" shape="rect" coords="0,0,168,24">
+</map>
+</div>
+
+<p>
+<a href="class_wgu_1_1_right_panel_proc___entity-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_right_panel_proc___entity.html#a5326532c49357b993214f6ba5697692">addNewEntityNameToEntityNameSelector</a> (const char *entName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティ名選択コンボボックスに新しいエンティティ名を追加する さらに追加したエンティティ名を選択状態にする  <a href="#a5326532c49357b993214f6ba5697692"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_right_panel_proc___entity.html#b6432c547320b84e16d18205cc9de319">clearEntityNameSelector</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティ名選択コンボボックスをクリアする  <a href="#b6432c547320b84e16d18205cc9de319"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_right_panel_proc___entity.html#53af5e75dbff6731205b5b32e3ea128e">deleteEntityNameFromEntityNameSelector</a> (const char *entName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティ名選択コンボボックスからエンティティ名を削除する  <a href="#53af5e75dbff6731205b5b32e3ea128e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_right_panel_proc___entity.html#75ef283768fa985774db8857d983fa80">getAttrValue</a> (<a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *win)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エディットボックスからエンティティの属性値を得る  <a href="#75ef283768fa985774db8857d983fa80"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_right_panel_proc___entity.html#7f2707a1576e579e6d9c0c0c94bbd2dd">getSelectedAttrName</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">現在選択中の属性名を得る  <a href="#7f2707a1576e579e6d9c0c0c94bbd2dd"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_right_panel_proc___entity.html#a79ad51d6c90150d392f52db3777b516">getSelectedEntityClassName</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">現在選択中のクラス名を得る  <a href="#a79ad51d6c90150d392f52db3777b516"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_right_panel_proc___entity.html#6994423bef14f81b293c28bdc5c28c64">getSelectedEntityName</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">現在選択中のエンティティ名を得る  <a href="#6994423bef14f81b293c28bdc5c28c64"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_right_panel_proc___entity.html#b163167e92f42187a22f95e2e9bc9dda">onButtonPress_SetOrientation</a> (<a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *win)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">方向設定ボタンが押された  <a href="#b163167e92f42187a22f95e2e9bc9dda"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_right_panel_proc___entity.html#f480fdb53d1294ddc2d442b117e67249">onButtonPress_SetPosition</a> (<a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *win)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">位置設定ボタンが押された  <a href="#f480fdb53d1294ddc2d442b117e67249"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_right_panel_proc___entity.html#09b66e194ba4acdf3417f5ff5b1c1c0b">onButtonPress_SetValue</a> (<a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *win)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">属性値設定ボタンが押された  <a href="#09b66e194ba4acdf3417f5ff5b1c1c0b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_right_panel_proc___entity.html#6750a3f45480b29785fac4d8fdace466">onSelChange_Attrs</a> (<a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *win)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">属性選択リストボックスが選択された  <a href="#6750a3f45480b29785fac4d8fdace466"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_right_panel_proc___entity.html#5de7229c1df89377c7bc243d870e6a27">onSelChange_EntityName</a> (<a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *win)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティ名選択コンボボックスが変わった  <a href="#5de7229c1df89377c7bc243d870e6a27"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_right_panel_proc___entity.html#8c7376b431208f66afb7f1fc9b2eb21d">selectEntityNameOnEntityNameSelector</a> (const char *entName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティ名選択コンボボックスで 指定エンティティ名を選択状態にする  <a href="#8c7376b431208f66afb7f1fc9b2eb21d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_right_panel_proc___entity.html#4aa3519118eb969a55b9387219c35788">setClassList</a> (<a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *win)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">クラス名一覧リストボックスの内容をセットする （EntityとAgentクラスは除く）  <a href="#4aa3519118eb969a55b9387219c35788"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_right_panel_proc___entity.html#5ffdf1a1ab7fbdc49978279efa0930ff">showEntityAttributes</a> (<a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *win, <a class="el" href="class_sgv_1_1_x_m_l_entity.html">XMLEntity</a> *ent)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティの持つ属性を表示する  <a href="#5ffdf1a1ab7fbdc49978279efa0930ff"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_right_panel_proc___entity.html#8adcf03bb2bd7c93fd8c43681a0d151d">showEntityAttributeValue</a> (<a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *win, <a class="el" href="class_sgv_1_1_x_m_l_entity.html">XMLEntity</a> *ent, const char *attrName)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティの属性値を表示する  <a href="#8adcf03bb2bd7c93fd8c43681a0d151d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_right_panel_proc___entity.html#225f61f512bfc190373222b69f0d93a4">showEntityPosAndOrientation</a> (Vector3 pos, Quaternion q)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティの位置、方向を専用のエディットボックスに表示する  <a href="#225f61f512bfc190373222b69f0d93a4"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_wgu_1_1_right_panel_proc___entity.html#d851338f7746593ee99e13739a793f0d">showEntityPosAndOrientation</a> (<a class="el" href="class_sgv_1_1_x_m_l_entity.html">XMLEntity</a> *ent)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティの位置、方向を専用のエディットボックスに表示する  <a href="#d851338f7746593ee99e13739a793f0d"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+パネルプロシージャクラス（右パネル：エンティティ） 
+<p> <a class="el" href="_wgu_panel_8h_source.html">WguPanel.h</a> の <a class="el" href="_wgu_panel_8h_source.html#l00083">83</a> 行で定義されています。</p>
+<hr><h2>関数</h2>
+<a class="anchor" name="a5326532c49357b993214f6ba5697692"></a><!-- doxytag: member="Wgu::RightPanelProc_Entity::addNewEntityNameToEntityNameSelector" ref="a5326532c49357b993214f6ba5697692" args="(const char *entName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::RightPanelProc_Entity::addNewEntityNameToEntityNameSelector           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>entName</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+エンティティ名選択コンボボックスに新しいエンティティ名を追加する さらに追加したエンティティ名を選択状態にする 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>entName</em>&nbsp;</td><td>[i] エンティティ名 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_wgu_panel_8cpp_source.html">WguPanel.cpp</a> の <a class="el" href="_wgu_panel_8cpp_source.html#l00092">92</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b6432c547320b84e16d18205cc9de319"></a><!-- doxytag: member="Wgu::RightPanelProc_Entity::clearEntityNameSelector" ref="b6432c547320b84e16d18205cc9de319" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::RightPanelProc_Entity::clearEntityNameSelector           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+エンティティ名選択コンボボックスをクリアする 
+<p>
+
+<p> <a class="el" href="_wgu_panel_8cpp_source.html">WguPanel.cpp</a> の <a class="el" href="_wgu_panel_8cpp_source.html#l00086">86</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="53af5e75dbff6731205b5b32e3ea128e"></a><!-- doxytag: member="Wgu::RightPanelProc_Entity::deleteEntityNameFromEntityNameSelector" ref="53af5e75dbff6731205b5b32e3ea128e" args="(const char *entName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::RightPanelProc_Entity::deleteEntityNameFromEntityNameSelector           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>entName</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+エンティティ名選択コンボボックスからエンティティ名を削除する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>entName</em>&nbsp;</td><td>[i] エンティティ名 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_wgu_panel_8cpp_source.html">WguPanel.cpp</a> の <a class="el" href="_wgu_panel_8cpp_source.html#l00100">100</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="75ef283768fa985774db8857d983fa80"></a><!-- doxytag: member="Wgu::RightPanelProc_Entity::getAttrValue" ref="75ef283768fa985774db8857d983fa80" args="(MainWindow *win)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Wgu::RightPanelProc_Entity::getAttrValue           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *&nbsp;</td>
+          <td class="paramname"> <em>win</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+エディットボックスからエンティティの属性値を得る 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>属性値 </dd></dl>
+
+<p> <a class="el" href="_wgu_panel_8cpp_source.html">WguPanel.cpp</a> の <a class="el" href="_wgu_panel_8cpp_source.html#l00164">164</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="7f2707a1576e579e6d9c0c0c94bbd2dd"></a><!-- doxytag: member="Wgu::RightPanelProc_Entity::getSelectedAttrName" ref="7f2707a1576e579e6d9c0c0c94bbd2dd" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Wgu::RightPanelProc_Entity::getSelectedAttrName           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+現在選択中の属性名を得る 
+<p>
+
+<p> <a class="el" href="_wgu_panel_8cpp_source.html">WguPanel.cpp</a> の <a class="el" href="_wgu_panel_8cpp_source.html#l00070">70</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="a79ad51d6c90150d392f52db3777b516"></a><!-- doxytag: member="Wgu::RightPanelProc_Entity::getSelectedEntityClassName" ref="a79ad51d6c90150d392f52db3777b516" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Wgu::RightPanelProc_Entity::getSelectedEntityClassName           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+現在選択中のクラス名を得る 
+<p>
+
+<p> <a class="el" href="_wgu_panel_8cpp_source.html">WguPanel.cpp</a> の <a class="el" href="_wgu_panel_8cpp_source.html#l00043">43</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="6994423bef14f81b293c28bdc5c28c64"></a><!-- doxytag: member="Wgu::RightPanelProc_Entity::getSelectedEntityName" ref="6994423bef14f81b293c28bdc5c28c64" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Wgu::RightPanelProc_Entity::getSelectedEntityName           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+現在選択中のエンティティ名を得る 
+<p>
+
+<p> <a class="el" href="_wgu_panel_8cpp_source.html">WguPanel.cpp</a> の <a class="el" href="_wgu_panel_8cpp_source.html#l00061">61</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b163167e92f42187a22f95e2e9bc9dda"></a><!-- doxytag: member="Wgu::RightPanelProc_Entity::onButtonPress_SetOrientation" ref="b163167e92f42187a22f95e2e9bc9dda" args="(MainWindow *win)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::RightPanelProc_Entity::onButtonPress_SetOrientation           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *&nbsp;</td>
+          <td class="paramname"> <em>win</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+方向設定ボタンが押された 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>win</em>&nbsp;</td><td>[i] メインウィンドウ </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_wgu_panel_8cpp_source.html">WguPanel.cpp</a> の <a class="el" href="_wgu_panel_8cpp_source.html#l00320">320</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f480fdb53d1294ddc2d442b117e67249"></a><!-- doxytag: member="Wgu::RightPanelProc_Entity::onButtonPress_SetPosition" ref="f480fdb53d1294ddc2d442b117e67249" args="(MainWindow *win)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::RightPanelProc_Entity::onButtonPress_SetPosition           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *&nbsp;</td>
+          <td class="paramname"> <em>win</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+位置設定ボタンが押された 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>win</em>&nbsp;</td><td>[i] メインウィンドウ </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_wgu_panel_8cpp_source.html">WguPanel.cpp</a> の <a class="el" href="_wgu_panel_8cpp_source.html#l00286">286</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="09b66e194ba4acdf3417f5ff5b1c1c0b"></a><!-- doxytag: member="Wgu::RightPanelProc_Entity::onButtonPress_SetValue" ref="09b66e194ba4acdf3417f5ff5b1c1c0b" args="(MainWindow *win)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::RightPanelProc_Entity::onButtonPress_SetValue           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *&nbsp;</td>
+          <td class="paramname"> <em>win</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+属性値設定ボタンが押された 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>win</em>&nbsp;</td><td>[i] メインウィンドウ </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_wgu_panel_8cpp_source.html">WguPanel.cpp</a> の <a class="el" href="_wgu_panel_8cpp_source.html#l00249">249</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="6750a3f45480b29785fac4d8fdace466"></a><!-- doxytag: member="Wgu::RightPanelProc_Entity::onSelChange_Attrs" ref="6750a3f45480b29785fac4d8fdace466" args="(MainWindow *win)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::RightPanelProc_Entity::onSelChange_Attrs           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *&nbsp;</td>
+          <td class="paramname"> <em>win</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+属性選択リストボックスが選択された 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>win</em>&nbsp;</td><td>[i] メインウィンドウ </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_wgu_panel_8cpp_source.html">WguPanel.cpp</a> の <a class="el" href="_wgu_panel_8cpp_source.html#l00229">229</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="5de7229c1df89377c7bc243d870e6a27"></a><!-- doxytag: member="Wgu::RightPanelProc_Entity::onSelChange_EntityName" ref="5de7229c1df89377c7bc243d870e6a27" args="(MainWindow *win)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::RightPanelProc_Entity::onSelChange_EntityName           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *&nbsp;</td>
+          <td class="paramname"> <em>win</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+エンティティ名選択コンボボックスが変わった 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>win</em>&nbsp;</td><td>[i] メインウィンドウ </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_wgu_panel_8cpp_source.html">WguPanel.cpp</a> の <a class="el" href="_wgu_panel_8cpp_source.html#l00207">207</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="8c7376b431208f66afb7f1fc9b2eb21d"></a><!-- doxytag: member="Wgu::RightPanelProc_Entity::selectEntityNameOnEntityNameSelector" ref="8c7376b431208f66afb7f1fc9b2eb21d" args="(const char *entName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::RightPanelProc_Entity::selectEntityNameOnEntityNameSelector           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>entName</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+エンティティ名選択コンボボックスで 指定エンティティ名を選択状態にする 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>entName</em>&nbsp;</td><td>[i] エンティティ名 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_wgu_panel_8cpp_source.html">WguPanel.cpp</a> の <a class="el" href="_wgu_panel_8cpp_source.html#l00107">107</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="4aa3519118eb969a55b9387219c35788"></a><!-- doxytag: member="Wgu::RightPanelProc_Entity::setClassList" ref="4aa3519118eb969a55b9387219c35788" args="(MainWindow *win)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::RightPanelProc_Entity::setClassList           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *&nbsp;</td>
+          <td class="paramname"> <em>win</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+クラス名一覧リストボックスの内容をセットする （EntityとAgentクラスは除く） 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>win</em>&nbsp;</td><td>[i] メインウィンドウ </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_wgu_panel_8cpp_source.html">WguPanel.cpp</a> の <a class="el" href="_wgu_panel_8cpp_source.html#l00024">24</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="5ffdf1a1ab7fbdc49978279efa0930ff"></a><!-- doxytag: member="Wgu::RightPanelProc_Entity::showEntityAttributes" ref="5ffdf1a1ab7fbdc49978279efa0930ff" args="(MainWindow *win, XMLEntity *ent)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::RightPanelProc_Entity::showEntityAttributes           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *&nbsp;</td>
+          <td class="paramname"> <em>win</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_x_m_l_entity.html">XMLEntity</a> *&nbsp;</td>
+          <td class="paramname"> <em>ent</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+エンティティの持つ属性を表示する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>win</em>&nbsp;</td><td>[i] メインウィンドウ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>ent</em>&nbsp;</td><td>[i] エンティティ </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_wgu_panel_8cpp_source.html">WguPanel.cpp</a> の <a class="el" href="_wgu_panel_8cpp_source.html#l00114">114</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="8adcf03bb2bd7c93fd8c43681a0d151d"></a><!-- doxytag: member="Wgu::RightPanelProc_Entity::showEntityAttributeValue" ref="8adcf03bb2bd7c93fd8c43681a0d151d" args="(MainWindow *win, XMLEntity *ent, const char *attrName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::RightPanelProc_Entity::showEntityAttributeValue           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_main_window.html">MainWindow</a> *&nbsp;</td>
+          <td class="paramname"> <em>win</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_x_m_l_entity.html">XMLEntity</a> *&nbsp;</td>
+          <td class="paramname"> <em>ent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>attrName</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+エンティティの属性値を表示する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>win</em>&nbsp;</td><td>[i] メインウィンドウ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>ent</em>&nbsp;</td><td>[i] エンティティ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>attrName</em>&nbsp;</td><td>[i] 表示する属性名 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_wgu_panel_8cpp_source.html">WguPanel.cpp</a> の <a class="el" href="_wgu_panel_8cpp_source.html#l00156">156</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="225f61f512bfc190373222b69f0d93a4"></a><!-- doxytag: member="Wgu::RightPanelProc_Entity::showEntityPosAndOrientation" ref="225f61f512bfc190373222b69f0d93a4" args="(Vector3 pos, Quaternion q)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::RightPanelProc_Entity::showEntityPosAndOrientation           </td>
+          <td>(</td>
+          <td class="paramtype">Vector3&nbsp;</td>
+          <td class="paramname"> <em>pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Quaternion&nbsp;</td>
+          <td class="paramname"> <em>q</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+エンティティの位置、方向を専用のエディットボックスに表示する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>pos</em>&nbsp;</td><td>[i] エンティティの位置 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>q</em>&nbsp;</td><td>[i] エンティティの方向 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_wgu_panel_8cpp_source.html">WguPanel.cpp</a> の <a class="el" href="_wgu_panel_8cpp_source.html#l00191">191</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="d851338f7746593ee99e13739a793f0d"></a><!-- doxytag: member="Wgu::RightPanelProc_Entity::showEntityPosAndOrientation" ref="d851338f7746593ee99e13739a793f0d" args="(XMLEntity *ent)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Wgu::RightPanelProc_Entity::showEntityPosAndOrientation           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_x_m_l_entity.html">XMLEntity</a> *&nbsp;</td>
+          <td class="paramname"> <em>ent</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+エンティティの位置、方向を専用のエディットボックスに表示する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>ent</em>&nbsp;</td><td>[i] エンティティ </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_wgu_panel_8cpp_source.html">WguPanel.cpp</a> の <a class="el" href="_wgu_panel_8cpp_source.html#l00172">172</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_wgu_panel_8h_source.html">WguPanel.h</a><li><a class="el" href="_wgu_panel_8cpp_source.html">WguPanel.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGWorldEditorに対してThu Jun 9 10:53:01 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

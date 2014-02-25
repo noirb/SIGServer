@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: RequestAttach.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>RequestAttach.h</h1><a href="_request_attach_8h.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/* $Id: _request_attach_8h_source.html,v 1.2 2011-12-14 07:55:38 okamoto Exp $ */</span> 
+<a name="l00002"></a>00002 <span class="preprocessor">#ifndef CommEvent_RequestAttach_h</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span><span class="preprocessor">#define CommEvent_RequestAttach_h</span>
+<a name="l00004"></a>00004 <span class="preprocessor"></span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include &lt;string&gt;</span>
+<a name="l00006"></a>00006 <span class="comment"></span>
+<a name="l00007"></a>00007 <span class="comment">/**</span>
+<a name="l00008"></a>00008 <span class="comment"> * @brief 割り当て基本クラス</span>
+<a name="l00009"></a>00009 <span class="comment"> */</span>
+<a name="l00010"></a><a class="code" href="class_request_attach_event.html">00010</a> <span class="keyword">class </span><a class="code" href="class_request_attach_event.html" title="割り当て基本クラス">RequestAttachEvent</a>
+<a name="l00011"></a>00011 {
+<a name="l00012"></a>00012     <span class="keyword">typedef</span> std::string S;
+<a name="l00013"></a>00013 <span class="keyword">private</span>:
+<a name="l00014"></a>00014     S   m_name;
+<a name="l00015"></a>00015 <span class="keyword">public</span>:
+<a name="l00016"></a>00016     <span class="keywordtype">bool</span>    <span class="keyword">set</span>(<span class="keywordtype">int</span> packetNum, <span class="keywordtype">int</span> seq, <span class="keywordtype">char</span> *data, <span class="keywordtype">int</span> n);
+<a name="l00017"></a>00017 
+<a name="l00018"></a>00018 <span class="keyword">public</span>:<span class="comment"></span>
+<a name="l00019"></a>00019 <span class="comment">    //! 接続元名を取得する</span>
+<a name="l00020"></a><a class="code" href="class_request_attach_event.html#ad2814887b04e883243877a6b6a58c559">00020</a> <span class="comment"></span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="class_request_attach_event.html#ad2814887b04e883243877a6b6a58c559" title="接続元名を取得する">getName</a>()
+<a name="l00021"></a>00021     {
+<a name="l00022"></a>00022         <span class="keywordflow">return</span> m_name.length() &gt; 0? m_name.c_str(): NULL;
+<a name="l00023"></a>00023     }
+<a name="l00024"></a>00024 };
+<a name="l00025"></a>00025 <span class="comment"></span>
+<a name="l00026"></a>00026 <span class="comment">/**</span>
+<a name="l00027"></a>00027 <span class="comment"> * @brief コントローラ割り当てリクエストイベントクラス</span>
+<a name="l00028"></a>00028 <span class="comment"> *</span>
+<a name="l00029"></a>00029 <span class="comment"> * @see CommData::AttachControllerRequest</span>
+<a name="l00030"></a>00030 <span class="comment"> *</span>
+<a name="l00031"></a>00031 <span class="comment"> */</span>
+<a name="l00032"></a><a class="code" href="class_request_attach_controller_event.html">00032</a> <span class="keyword">class </span><a class="code" href="class_request_attach_controller_event.html" title="コントローラ割り当てリクエストイベントクラス">RequestAttachControllerEvent</a> : <span class="keyword">public</span> <a class="code" href="class_request_attach_event.html" title="割り当て基本クラス">RequestAttachEvent</a>
+<a name="l00033"></a>00033 {
+<a name="l00034"></a>00034 <span class="keyword">public</span>:<span class="comment"></span>
+<a name="l00035"></a>00035 <span class="comment">    //! エージェント名を取得する</span>
+<a name="l00036"></a><a class="code" href="class_request_attach_controller_event.html#ac1f50120891eba8ebeb8fba4fea7b79c">00036</a> <span class="comment"></span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="class_request_attach_controller_event.html#ac1f50120891eba8ebeb8fba4fea7b79c" title="エージェント名を取得する">getAgentName</a>() { <span class="keywordflow">return</span> <a class="code" href="class_request_attach_event.html#ad2814887b04e883243877a6b6a58c559" title="接続元名を取得する">getName</a>(); }
+<a name="l00037"></a>00037 };
+<a name="l00038"></a>00038 <span class="comment"></span>
+<a name="l00039"></a>00039 <span class="comment">/**</span>
+<a name="l00040"></a>00040 <span class="comment"> * @brief ビュー割り当てリクエストイベントクラス</span>
+<a name="l00041"></a>00041 <span class="comment"> *</span>
+<a name="l00042"></a>00042 <span class="comment"> * @see CommData::AttachViewRequest</span>
+<a name="l00043"></a>00043 <span class="comment"> *</span>
+<a name="l00044"></a>00044 <span class="comment"> */</span>
+<a name="l00045"></a><a class="code" href="class_request_attach_view_event.html">00045</a> <span class="keyword">class </span><a class="code" href="class_request_attach_view_event.html" title="ビュー割り当てリクエストイベントクラス">RequestAttachViewEvent</a>
+<a name="l00046"></a>00046 {
+<a name="l00047"></a>00047     <span class="keywordtype">bool</span>        m_polling;
+<a name="l00048"></a>00048     std::string     m_name;
+<a name="l00049"></a>00049 <span class="keyword">public</span>:
+<a name="l00050"></a>00050     <span class="keywordtype">bool</span>    <span class="keyword">set</span>(<span class="keywordtype">int</span> packetNum, <span class="keywordtype">int</span> seq, <span class="keywordtype">char</span> *data, <span class="keywordtype">int</span> n);
+<a name="l00051"></a>00051 <span class="keyword">public</span>:<span class="comment"></span>
+<a name="l00052"></a>00052 <span class="comment">    /**</span>
+<a name="l00053"></a>00053 <span class="comment">     * @brief データをポーリングするか？</span>
+<a name="l00054"></a>00054 <span class="comment">     */</span>
+<a name="l00055"></a><a class="code" href="class_request_attach_view_event.html#a7d30f45cb058a872d90928d532cdbef3">00055</a>     <span class="keywordtype">bool</span>  <a class="code" href="class_request_attach_view_event.html#a7d30f45cb058a872d90928d532cdbef3" title="データをポーリングするか？">isPolling</a>() { <span class="keywordflow">return</span> m_polling; }<span class="comment"></span>
+<a name="l00056"></a>00056 <span class="comment">    //! 接続元のビューの名前を取得する</span>
+<a name="l00057"></a><a class="code" href="class_request_attach_view_event.html#a9735fc038076e0a78f9081aecd2dc189">00057</a> <span class="comment"></span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="class_request_attach_view_event.html#a9735fc038076e0a78f9081aecd2dc189" title="接続元のビューの名前を取得する">getViewName</a>() {
+<a name="l00058"></a>00058         <span class="keywordflow">return</span> m_name.length() &gt; 0? m_name.c_str(): NULL;
+<a name="l00059"></a>00059     }
+<a name="l00060"></a>00060 };
+<a name="l00061"></a>00061 <span class="comment"></span>
+<a name="l00062"></a>00062 <span class="comment">/**</span>
+<a name="l00063"></a>00063 <span class="comment"> * @brief データコネクションポート接続イベント</span>
+<a name="l00064"></a>00064 <span class="comment"> *</span>
+<a name="l00065"></a>00065 <span class="comment"> * @see CommData::ConnectionDataPortRequest</span>
+<a name="l00066"></a>00066 <span class="comment"> *</span>
+<a name="l00067"></a>00067 <span class="comment"> */</span>
+<a name="l00068"></a><a class="code" href="class_request_connect_data_port_event.html">00068</a> <span class="keyword">class </span><a class="code" href="class_request_connect_data_port_event.html" title="データコネクションポート接続イベント">RequestConnectDataPortEvent</a> : <span class="keyword">public</span> <a class="code" href="class_request_attach_event.html" title="割り当て基本クラス">RequestAttachEvent</a> {};
+<a name="l00069"></a>00069 
+<a name="l00070"></a>00070 <span class="keyword">class </span><a class="code" href="class_service.html" title="サービスプロバイダの提供するサービスクラス">Service</a>;
+<a name="l00071"></a>00071 <span class="comment"></span>
+<a name="l00072"></a>00072 <span class="comment">/**</span>
+<a name="l00073"></a>00073 <span class="comment"> * @brief サービスプロバイダ登録イベント</span>
+<a name="l00074"></a>00074 <span class="comment"> *</span>
+<a name="l00075"></a>00075 <span class="comment"> * @see CommData::ProvideServiceRequest</span>
+<a name="l00076"></a>00076 <span class="comment"> *</span>
+<a name="l00077"></a>00077 <span class="comment"> */</span>
+<a name="l00078"></a><a class="code" href="class_request_provide_service_event.html">00078</a> <span class="keyword">class </span><a class="code" href="class_request_provide_service_event.html" title="サービスプロバイダ登録イベント">RequestProvideServiceEvent</a> 
+<a name="l00079"></a>00079 {
+<a name="l00080"></a>00080 <span class="keyword">private</span>:
+<a name="l00081"></a>00081     <span class="keyword">typedef</span> std::string S;
+<a name="l00082"></a>00082     S       m_name;
+<a name="l00083"></a>00083     <a class="code" href="class_service.html" title="サービスプロバイダの提供するサービスクラス">Service</a> *   m_service;
+<a name="l00084"></a>00084 <span class="keyword">public</span>:
+<a name="l00085"></a><a class="code" href="class_request_provide_service_event.html#aedb604812aab552aa70a9bc878d425b7">00085</a>     <a class="code" href="class_request_provide_service_event.html#aedb604812aab552aa70a9bc878d425b7">RequestProvideServiceEvent</a>() : m_service(NULL) {}
+<a name="l00086"></a>00086     <a class="code" href="class_request_provide_service_event.html#acd7c610ca23eab416c62dc28e141cd95">‾RequestProvideServiceEvent</a>();
+<a name="l00087"></a>00087 <span class="comment"></span>
+<a name="l00088"></a>00088 <span class="comment">    //! プロバイダ名を取得する</span>
+<a name="l00089"></a><a class="code" href="class_request_provide_service_event.html#a9a61bc19914f7689703a3b57bcada9d2">00089</a> <span class="comment"></span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="class_request_provide_service_event.html#a9a61bc19914f7689703a3b57bcada9d2" title="プロバイダ名を取得する">getProviderName</a>() { <span class="keywordflow">return</span> m_name.c_str(); }<span class="comment"></span>
+<a name="l00090"></a>00090 <span class="comment">    //! プロバイダ名が提供するサービスの詳細を取得する</span>
+<a name="l00091"></a><a class="code" href="class_request_provide_service_event.html#adac6e3dccfe882816b054fbbe99f98b8">00091</a> <span class="comment"></span>    <a class="code" href="class_service.html" title="サービスプロバイダの提供するサービスクラス">Service</a> &amp; <a class="code" href="class_request_provide_service_event.html#adac6e3dccfe882816b054fbbe99f98b8" title="プロバイダ名が提供するサービスの詳細を取得する">getService</a>() { <span class="keywordflow">return</span> *m_service; }<span class="comment"></span>
+<a name="l00092"></a>00092 <span class="comment">    //! プロバイダ名が提供するサービスの詳細を取得し、破棄責任を放棄させる</span>
+<a name="l00093"></a><a class="code" href="class_request_provide_service_event.html#a4fd31fb32b05844b958209fd74e3cca3">00093</a> <span class="comment"></span>    <a class="code" href="class_service.html" title="サービスプロバイダの提供するサービスクラス">Service</a> * <a class="code" href="class_request_provide_service_event.html#a4fd31fb32b05844b958209fd74e3cca3" title="プロバイダ名が提供するサービスの詳細を取得し、破棄責任を放棄させる...">releaseService</a>() {
+<a name="l00094"></a>00094         <a class="code" href="class_service.html" title="サービスプロバイダの提供するサービスクラス">Service</a> *tmp = m_service;
+<a name="l00095"></a>00095         m_service = NULL;
+<a name="l00096"></a>00096         <span class="keywordflow">return</span> tmp;
+<a name="l00097"></a>00097     }
+<a name="l00098"></a>00098 <span class="keyword">public</span>:
+<a name="l00099"></a>00099     <span class="keywordtype">bool</span>    <span class="keyword">set</span>(<span class="keywordtype">int</span> packetNum, <span class="keywordtype">int</span> seq, <span class="keywordtype">char</span> *data, <span class="keywordtype">int</span> n);
+<a name="l00100"></a>00100 };
+<a name="l00101"></a>00101 
+<a name="l00102"></a>00102 <span class="preprocessor">#endif // CommEvent_RequestAttach_h</span>
+<a name="l00103"></a>00103 <span class="preprocessor"></span> 
+</pre></div></div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:18 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

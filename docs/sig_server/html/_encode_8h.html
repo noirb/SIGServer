@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: Encode.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Encode.h</h1><div class="dynheader">
+このグラフは、どのファイルから直接、間接的にインクルードされているかを示しています。</div>
+<div class="dynsection">
+<div class="center"><img src="_encode_8h__dep__incl.png" border="0" usemap="#_encode_8hdep_map" alt=""/></div>
+<map name="_encode_8hdep_map" id="_encode_8hdep">
+<area shape="rect" href="_comm_data_encoder_8h.html" title="CommDataEncoder.h" alt="" coords="5,160,149,189"/><area shape="rect" href="_text_8h.html" title="Text.h" alt="" coords="195,83,251,112"/><area shape="rect" href="_invoke_method_8h.html" title="InvokeMethod.h" alt="" coords="275,83,389,112"/><area shape="rect" href="encoder_2_sound_recog_8h.html" title="SoundRecog.h" alt="" coords="197,160,304,189"/><area shape="rect" href="event_2_sound_recog_8h.html" title="SoundRecog.h" alt="" coords="328,160,435,189"/><area shape="rect" href="_recv_event_8h.html" title="RecvEvent.h" alt="" coords="333,237,429,267"/><area shape="rect" href="_comm_data_listener_8h.html" title="CommDataListener.h" alt="" coords="309,315,453,344"/></map>
+</div>
+
+<p><a href="_encode_8h_source.html">ソースコードを見る。</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>型定義</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef short&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_encode_8h.html#adc8cc3a00ce12e3e25bd96bd674caa76">Encode</a></td></tr>
+<tr><td colspan="2"><h2>列挙型</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom">{ <br/>
+&nbsp;&nbsp;<a class="el" href="_encode_8h.html#a726ca809ffd3d67ab4b8476646f26635a792885778d4b2e825248c551d793ad0a">ENCODE_NOT_SET</a> =  -1, 
+<a class="el" href="_encode_8h.html#a726ca809ffd3d67ab4b8476646f26635ad5ac09572f8498366dc7a79f81ddaff9">ENCODE_ASCII</a>, 
+<a class="el" href="_encode_8h.html#a726ca809ffd3d67ab4b8476646f26635acd012a09869899ed5cfa607830915888">ENCODE_EUCJP</a>, 
+<a class="el" href="_encode_8h.html#a726ca809ffd3d67ab4b8476646f26635acf4da0ca6eb2c0b8a97e9c4f35cbb983">ENCODE_JIS</a>, 
+<br/>
+&nbsp;&nbsp;<a class="el" href="_encode_8h.html#a726ca809ffd3d67ab4b8476646f26635a5e3241a8a6aa68e0d72a332c737a93e8">ENCODE_SHIFT_JIS</a>, 
+<a class="el" href="_encode_8h.html#a726ca809ffd3d67ab4b8476646f26635a745088756fe867cf9ebeb84e12e609b5">ENCODE_UTF8</a>, 
+<a class="el" href="_encode_8h.html#a726ca809ffd3d67ab4b8476646f26635a9e7a29f51cead83705290513e3dad4b0">ENCODE_NUM</a>
+<br/>
+ }</td></tr>
+</table>
+<hr/><h2>型定義</h2>
+<a class="anchor" id="adc8cc3a00ce12e3e25bd96bd674caa76"></a><!-- doxytag: member="Encode.h::Encode" ref="adc8cc3a00ce12e3e25bd96bd674caa76" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef short <a class="el" href="_encode_8h.html#adc8cc3a00ce12e3e25bd96bd674caa76">Encode</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_encode_8h_source.html">Encode.h</a> の <a class="el" href="_encode_8h_source.html#l00015">15</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>列挙型</h2>
+<a class="anchor" id="a726ca809ffd3d67ab4b8476646f26635"></a><!-- doxytag: member="Encode.h::@6" ref="a726ca809ffd3d67ab4b8476646f26635" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>列挙型の値: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="a726ca809ffd3d67ab4b8476646f26635a792885778d4b2e825248c551d793ad0a"></a><!-- doxytag: member="ENCODE_NOT_SET" ref="a726ca809ffd3d67ab4b8476646f26635a792885778d4b2e825248c551d793ad0a" args="" -->ENCODE_NOT_SET</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a726ca809ffd3d67ab4b8476646f26635ad5ac09572f8498366dc7a79f81ddaff9"></a><!-- doxytag: member="ENCODE_ASCII" ref="a726ca809ffd3d67ab4b8476646f26635ad5ac09572f8498366dc7a79f81ddaff9" args="" -->ENCODE_ASCII</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a726ca809ffd3d67ab4b8476646f26635acd012a09869899ed5cfa607830915888"></a><!-- doxytag: member="ENCODE_EUCJP" ref="a726ca809ffd3d67ab4b8476646f26635acd012a09869899ed5cfa607830915888" args="" -->ENCODE_EUCJP</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a726ca809ffd3d67ab4b8476646f26635acf4da0ca6eb2c0b8a97e9c4f35cbb983"></a><!-- doxytag: member="ENCODE_JIS" ref="a726ca809ffd3d67ab4b8476646f26635acf4da0ca6eb2c0b8a97e9c4f35cbb983" args="" -->ENCODE_JIS</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a726ca809ffd3d67ab4b8476646f26635a5e3241a8a6aa68e0d72a332c737a93e8"></a><!-- doxytag: member="ENCODE_SHIFT_JIS" ref="a726ca809ffd3d67ab4b8476646f26635a5e3241a8a6aa68e0d72a332c737a93e8" args="" -->ENCODE_SHIFT_JIS</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a726ca809ffd3d67ab4b8476646f26635a745088756fe867cf9ebeb84e12e609b5"></a><!-- doxytag: member="ENCODE_UTF8" ref="a726ca809ffd3d67ab4b8476646f26635a745088756fe867cf9ebeb84e12e609b5" args="" -->ENCODE_UTF8</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a726ca809ffd3d67ab4b8476646f26635a9e7a29f51cead83705290513e3dad4b0"></a><!-- doxytag: member="ENCODE_NUM" ref="a726ca809ffd3d67ab4b8476646f26635a9e7a29f51cead83705290513e3dad4b0" args="" -->ENCODE_NUM</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p> <a class="el" href="_encode_8h_source.html">Encode.h</a> の <a class="el" href="_encode_8h_source.html#l00005">5</a> 行で定義されています。</p>
+
+</div>
+</div>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:18 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

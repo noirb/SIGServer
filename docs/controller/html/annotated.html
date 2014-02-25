@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>SIGVerse_Controller: 構成</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li class="current"><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>構成</h1>クラス、構造体、共用体、インタフェースの説明です。<table>
+  <tr><td class="indexkey"><a class="el" href="class_attribute.html">Attribute</a></td><td class="indexvalue">属性クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_bool_value.html">BoolValue</a></td><td class="indexvalue">Bool型属性値クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_box_parts.html">BoxParts</a></td><td class="indexvalue">箱形状の部品クラス(クライアントサイドで使用) </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_controller.html">Controller</a></td><td class="indexvalue">ユーザ定義コントローラ基本クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_controller_impl.html">ControllerImpl</a></td><td class="indexvalue">ネットワーク通信コントローラクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_controller_inf.html">ControllerInf</a></td><td class="indexvalue">コントローラインターフェース </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_c_parts.html">CParts</a></td><td class="indexvalue">エンティティの部品クラス(クライアントサイドで使用) </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_cylinder_parts.html">CylinderParts</a></td><td class="indexvalue">シリンダ形状の部品クラス(クライアントサイドで使用) </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_depth_image.html">DepthImage</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_double_value.html">DoubleValue</a></td><td class="indexvalue">Double型属性値クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_dynamics_controller.html">DynamicsController</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_joint_force.html">JointForce</a></td><td class="indexvalue">パーツにかかる力を表すクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_logger.html">Logger</a></td><td class="indexvalue">ログクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_logger_1_1_listener.html">Logger::Listener</a></td><td class="indexvalue">ログリスナークラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_logger_1_1_out_stream.html">Logger::OutStream</a></td><td class="indexvalue">出力先抽象クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_parts.html">Parts</a></td><td class="indexvalue">エンティティを構成する部品クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_parts_cmpnt.html">PartsCmpnt</a></td><td class="indexvalue">パーツを構成する要素インターフェース </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_position.html">Position</a></td><td class="indexvalue">3次元位置クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_raw_sound.html">RawSound</a></td><td class="indexvalue">音声データクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_raw_sound_header.html">RawSoundHeader</a></td><td class="indexvalue">音声データヘッダクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_rotation.html">Rotation</a></td><td class="indexvalue">回転行列クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_sim_obj.html">SimObj</a></td><td class="indexvalue">エンティティに対応するクラス(クライアントサイドで使用) </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_sim_obj_1_1_request_sender.html">SimObj::RequestSender</a></td><td class="indexvalue">パケット送受信インターフェース </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_sim_obj_base.html">SimObjBase</a></td><td class="indexvalue">シミュレーションエンティティ基本クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_sim_obj_base_1_1_attribute_read_only_exception.html">SimObjBase::AttributeReadOnlyException</a></td><td class="indexvalue">読み込み専用属性の値を設定したときに発生する例外 </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_sim_obj_base_1_1_exception.html">SimObjBase::Exception</a></td><td class="indexvalue">例外基本クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_sim_obj_base_1_1_no_attribute_exception.html">SimObjBase::NoAttributeException</a></td><td class="indexvalue">必要な属性を保持していないときに発生する例外 </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_sim_obj_base_1_1_parts_iterator.html">SimObjBase::PartsIterator</a></td><td class="indexvalue">部品オブジェクトイテレータ </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_size.html">Size</a></td><td class="indexvalue">シミュレーション世界内における3次元直方体の大きさを表すクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_sphere_parts.html">SphereParts</a></td><td class="indexvalue">球形状の部品クラス(クライアントサイドで使用) </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_string_value.html">StringValue</a></td><td class="indexvalue">文字列型属性値クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_text.html">Text</a></td><td class="indexvalue">テキストデータクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_value.html">Value</a></td><td class="indexvalue">属性値クラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_vector3d.html">Vector3d</a></td><td class="indexvalue">3次元ベクトルクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_view_image.html">ViewImage</a></td><td class="indexvalue">視覚データクラス </td></tr>
+  <tr><td class="indexkey"><a class="el" href="class_view_image_info.html">ViewImageInfo</a></td><td class="indexvalue">画像データ情報クラス </td></tr>
+</table>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>SIGVerse_Controllerに対してTue Dec 13 19:10:58 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

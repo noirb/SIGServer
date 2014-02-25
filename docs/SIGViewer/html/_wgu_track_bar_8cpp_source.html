@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGViewer: WguTrackBar.cpp ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>WguTrackBar.cpp</h1><a href="_wgu_track_bar_8cpp.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include "<a class="code" href="_wgu_track_bar_8h.html">WguTrackBar.h</a>"</span>
+<a name="l00002"></a>00002 <span class="preprocessor">#include &lt;commctrl.h&gt;</span>
+<a name="l00003"></a>00003 
+<a name="l00004"></a>00004 <span class="keyword">namespace </span>Wgu
+<a name="l00005"></a>00005 {
+<a name="l00006"></a><a class="code" href="class_wgu_1_1_track_bar.html#59206e28fe9b51153a8054a630bf6687">00006</a>     <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_track_bar.html#59206e28fe9b51153a8054a630bf6687" title="レンジの幅をセットする">TrackBar::setRange</a>(HWND hwndTrack, <span class="keywordtype">int</span> minValue, <span class="keywordtype">int</span> maxValue, <span class="keywordtype">bool</span> bRedraw)
+<a name="l00007"></a>00007     {
+<a name="l00008"></a>00008         SendMessage(hwndTrack, TBM_SETRANGE, (WPARAM)bRedraw, MAKELONG(minValue, maxValue));
+<a name="l00009"></a>00009     }
+<a name="l00010"></a>00010 
+<a name="l00011"></a><a class="code" href="class_wgu_1_1_track_bar.html#76df1a0567ff39b74916e45e63bec35f">00011</a>     <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_track_bar.html#76df1a0567ff39b74916e45e63bec35f" title="レンジの最小値をセットする">TrackBar::setRangeMin</a>(HWND hwndTrack, <span class="keywordtype">int</span> minValue, <span class="keywordtype">bool</span> bRedraw)
+<a name="l00012"></a>00012     {
+<a name="l00013"></a>00013         SendMessage(hwndTrack, TBM_SETRANGEMIN, (WPARAM)bRedraw, (LPARAM)minValue);
+<a name="l00014"></a>00014     }
+<a name="l00015"></a>00015 
+<a name="l00016"></a><a class="code" href="class_wgu_1_1_track_bar.html#7d604f3273da9e792a267b977ff1fc02">00016</a>     <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_track_bar.html#7d604f3273da9e792a267b977ff1fc02" title="レンジの最大値をセットする">TrackBar::setRangeMax</a>(HWND hwndTrack, <span class="keywordtype">int</span> maxValue, <span class="keywordtype">bool</span> bRedraw)
+<a name="l00017"></a>00017     {
+<a name="l00018"></a>00018         SendMessage(hwndTrack, TBM_SETRANGEMAX, (WPARAM)bRedraw, (LPARAM)maxValue);
+<a name="l00019"></a>00019     }
+<a name="l00020"></a>00020 
+<a name="l00021"></a><a class="code" href="class_wgu_1_1_track_bar.html#a5fb6781bbaa1fee5a214881bf7752a5">00021</a>     <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_track_bar.html#a5fb6781bbaa1fee5a214881bf7752a5">TrackBar::getRange</a>(HWND hwndTrack, <span class="keywordtype">int</span>&amp; minValue, <span class="keywordtype">int</span>&amp; maxValue)
+<a name="l00022"></a>00022     {
+<a name="l00023"></a>00023         minValue = <a class="code" href="class_wgu_1_1_track_bar.html#c577ec849a17f372f746238ca7fad708" title="レンジの最小値を得る">getRangeMin</a>(hwndTrack);
+<a name="l00024"></a>00024         maxValue = <a class="code" href="class_wgu_1_1_track_bar.html#d277efeb77dca41d0c46dacca27b9a7a" title="レンジの最大値を得る">getRangeMax</a>(hwndTrack);
+<a name="l00025"></a>00025     }
+<a name="l00026"></a>00026 
+<a name="l00027"></a><a class="code" href="class_wgu_1_1_track_bar.html#c577ec849a17f372f746238ca7fad708">00027</a>     <span class="keywordtype">int</span> <a class="code" href="class_wgu_1_1_track_bar.html#c577ec849a17f372f746238ca7fad708" title="レンジの最小値を得る">TrackBar::getRangeMin</a>(HWND hwndTrack)
+<a name="l00028"></a>00028     {
+<a name="l00029"></a>00029         <span class="keywordflow">return</span> (<span class="keywordtype">int</span>)SendMessage(hwndTrack, TBM_GETRANGEMIN, (WPARAM)0, (LPARAM)0);
+<a name="l00030"></a>00030     }
+<a name="l00031"></a>00031 
+<a name="l00032"></a><a class="code" href="class_wgu_1_1_track_bar.html#d277efeb77dca41d0c46dacca27b9a7a">00032</a>     <span class="keywordtype">int</span> <a class="code" href="class_wgu_1_1_track_bar.html#d277efeb77dca41d0c46dacca27b9a7a" title="レンジの最大値を得る">TrackBar::getRangeMax</a>(HWND hwndTrack)
+<a name="l00033"></a>00033     {
+<a name="l00034"></a>00034         <span class="keywordflow">return</span> (<span class="keywordtype">int</span>)SendMessage(hwndTrack, TBM_GETRANGEMAX, (WPARAM)0, (LPARAM)0);
+<a name="l00035"></a>00035     }
+<a name="l00036"></a>00036 
+<a name="l00037"></a><a class="code" href="class_wgu_1_1_track_bar.html#2243162fa01e2b688e5297de75d4bd14">00037</a>     <span class="keywordtype">void</span> <a class="code" href="class_wgu_1_1_track_bar.html#2243162fa01e2b688e5297de75d4bd14" title="トラックバーのつまみの位置をセットする">TrackBar::setPos</a>(HWND hwndTrack, <span class="keywordtype">int</span> value, <span class="keywordtype">bool</span> bRedraw)
+<a name="l00038"></a>00038     {
+<a name="l00039"></a>00039         SendMessage(hwndTrack, TBM_SETPOS, (WPARAM)bRedraw, (LPARAM)value);
+<a name="l00040"></a>00040     }
+<a name="l00041"></a>00041 
+<a name="l00042"></a><a class="code" href="class_wgu_1_1_track_bar.html#d384068c650091e84519db25aefb4580">00042</a>     <span class="keywordtype">int</span> <a class="code" href="class_wgu_1_1_track_bar.html#d384068c650091e84519db25aefb4580" title="トラックバーのつまみの位置を得る">TrackBar::getPos</a>(HWND hwndTrack)
+<a name="l00043"></a>00043     {
+<a name="l00044"></a>00044         <span class="keywordflow">return</span> (<span class="keywordtype">int</span>)SendMessage(hwndTrack, TBM_GETPOS, (WPARAM)0, (LPARAM)0);
+<a name="l00045"></a>00045     }
+<a name="l00046"></a>00046 }
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>SIGViewerに対してThu Jun 9 10:52:13 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

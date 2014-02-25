@@ -1,0 +1,601 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGViewer: クラス Sgv::Packet</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_sgv.html">Sgv</a>::<a class="el" href="class_sgv_1_1_packet.html">Packet</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Sgv::Packet</h1><!-- doxytag: class="Sgv::Packet" -->パケット（ネットワーク通信の単位となるブロックデータ）  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_sgv_packet_8h_source.html">SgvPacket.h</a>&gt;</code>
+<p>
+
+<p>
+<a href="class_sgv_1_1_packet-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet.html#cc046f1d80c9066f20a65d7a2d70ca92">getData</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パケットの先頭ポインタを返す  <a href="#cc046f1d80c9066f20a65d7a2d70ca92"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet.html#79edb7d2be26b1db010cdaa5e59eef84">getLength</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パケットの長さを返す  <a href="#79edb7d2be26b1db010cdaa5e59eef84"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">CommDataType&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet.html#5d48ed9600d97aa0ea53f51ea4cd500e">getType</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パケットのデータタイプを返す  <a href="#5d48ed9600d97aa0ea53f51ea4cd500e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet.html#fe7fec80430a787600f7b2911d9ca621">Packet</a> (int initBufLen)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#fe7fec80430a787600f7b2911d9ca621"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet.html#c75bf08e24115e36bfc1ef47e372fee4">push</a> (char *p, int len)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パケットにデータを追加（コピー）する．  <a href="#c75bf08e24115e36bfc1ef47e372fee4"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet.html#9ea551f040109020bb9af786fab73d69">resize</a> (int newBufLen)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パケットデータを保持するバッファを延長する．  <a href="#9ea551f040109020bb9af786fab73d69"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet.html#36c831531ebe3e1d0b50e35fb0c4735d">‾Packet</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#36c831531ebe3e1d0b50e35fb0c4735d"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Static Public 変数</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static const unsigned short&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet.html#b2b591c1d89a0cae49fa405305eb7da3">DATA_TYPE</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">データタイプ  <a href="#b2b591c1d89a0cae49fa405305eb7da3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static const unsigned short&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet.html#afc3756b7ba718b3b93675a86b39f404">HEAD_MARK</a> = 0xABCD</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パケット開始マーク  <a href="#afc3756b7ba718b3b93675a86b39f404"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static const int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet.html#303f19b3b97781d1af962fd36f9fcc8c">HEAD_SIZE_LEN</a> = sizeof(<a class="el" href="class_sgv_1_1_packet.html#afc3756b7ba718b3b93675a86b39f404">Packet::HEAD_MARK</a>) + sizeof(<a class="el" href="class_sgv_1_1_packet.html#28ce76ddcc9055b9d4231bddbe9af2b8">Packet::PACKET_SIZE</a>)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パケット開始マークの長さ  <a href="#303f19b3b97781d1af962fd36f9fcc8c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static const int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet.html#164d2010fc48aee1d283446e25f1bf05">HEAD_SIZE_TYPE_LEN</a> = sizeof(<a class="el" href="class_sgv_1_1_packet.html#afc3756b7ba718b3b93675a86b39f404">Packet::HEAD_MARK</a>) + sizeof(<a class="el" href="class_sgv_1_1_packet.html#28ce76ddcc9055b9d4231bddbe9af2b8">Packet::PACKET_SIZE</a>) + sizeof(<a class="el" href="class_sgv_1_1_packet.html#b2b591c1d89a0cae49fa405305eb7da3">Packet::DATA_TYPE</a>)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パケットサイズとタイプの合計の長さ  <a href="#164d2010fc48aee1d283446e25f1bf05"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static const unsigned short&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet.html#28ce76ddcc9055b9d4231bddbe9af2b8">PACKET_SIZE</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パケットサイズ  <a href="#28ce76ddcc9055b9d4231bddbe9af2b8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static const int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet.html#49f5ef5e1cc1d9327bbad996e412625d">TAIL_LEN</a> = sizeof(<a class="el" href="class_sgv_1_1_packet.html#1049eeb3303fc0a8018b0bb071bc5eec">Packet::TAIL_MARK</a>)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パケット終了マークの長さ  <a href="#49f5ef5e1cc1d9327bbad996e412625d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static const unsigned short&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet.html#1049eeb3303fc0a8018b0bb071bc5eec">TAIL_MARK</a> = 0xDCBA</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パケット終了マーク  <a href="#1049eeb3303fc0a8018b0bb071bc5eec"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Protected メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet.html#032ee6ad97e758ddaef997af476445bb">allocMemory</a> (int len)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">内部バッファを確保する  <a href="#032ee6ad97e758ddaef997af476445bb"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet.html#69a8afff7f26a6d8eb1e617a1f087858">freeMemory</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">内部バッファを開放する  <a href="#69a8afff7f26a6d8eb1e617a1f087858"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet.html#9df60e50c3ace12bdbbfd89305dcc637">reallocMemory</a> (int newLen)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">内部バッファの長さを変更する  <a href="#9df60e50c3ace12bdbbfd89305dcc637"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Protected 変数</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet.html#3daba0778be96075b1a438f17cca5711">m_capacity</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">バッファの長さ  <a href="#3daba0778be96075b1a438f17cca5711"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet.html#7a6da8429197c4d6b9886c8dff27fc3f">m_pData</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">バッファへのポインタ  <a href="#7a6da8429197c4d6b9886c8dff27fc3f"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+パケット（ネットワーク通信の単位となるブロックデータ） 
+<p>
+ネットワークを流れるSIGVerseのデータはすべて、 開始マーク(=0xABCD)で始まり、 終了マーク(=0xDCBA)で終わるデータブロックで構成されている． このデータブロックをパケットと呼ぶ． 
+<p> <a class="el" href="_sgv_packet_8h_source.html">SgvPacket.h</a> の <a class="el" href="_sgv_packet_8h_source.html#l00017">17</a> 行で定義されています。</p>
+<hr><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" name="fe7fec80430a787600f7b2911d9ca621"></a><!-- doxytag: member="Sgv::Packet::Packet" ref="fe7fec80430a787600f7b2911d9ca621" args="(int initBufLen)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::Packet::Packet           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>initBufLen</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>initBufLen</em>&nbsp;</td><td>[i] パケットの初期サイズ </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_packet_8cpp_source.html">SgvPacket.cpp</a> の <a class="el" href="_sgv_packet_8cpp_source.html#l00024">24</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>関数</h2>
+<a class="anchor" name="032ee6ad97e758ddaef997af476445bb"></a><!-- doxytag: member="Sgv::Packet::allocMemory" ref="032ee6ad97e758ddaef997af476445bb" args="(int len)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::Packet::allocMemory           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>len</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+内部バッファを確保する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>len</em>&nbsp;</td><td>[i] バッファの長さ</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_8cpp_source.html">SgvPacket.cpp</a> の <a class="el" href="_sgv_packet_8cpp_source.html#l00051">51</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="69a8afff7f26a6d8eb1e617a1f087858"></a><!-- doxytag: member="Sgv::Packet::freeMemory" ref="69a8afff7f26a6d8eb1e617a1f087858" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::Packet::freeMemory           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+内部バッファを開放する 
+<p>
+
+<p> <a class="el" href="_sgv_packet_8cpp_source.html">SgvPacket.cpp</a> の <a class="el" href="_sgv_packet_8cpp_source.html#l00085">85</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="cc046f1d80c9066f20a65d7a2d70ca92"></a><!-- doxytag: member="Sgv::Packet::getData" ref="cc046f1d80c9066f20a65d7a2d70ca92" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* Sgv::Packet::getData           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+パケットの先頭ポインタを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>パケットデータの先頭 </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_8h_source.html">SgvPacket.h</a> の <a class="el" href="_sgv_packet_8h_source.html#l00066">66</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="79edb7d2be26b1db010cdaa5e59eef84"></a><!-- doxytag: member="Sgv::Packet::getLength" ref="79edb7d2be26b1db010cdaa5e59eef84" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Sgv::Packet::getLength           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+パケットの長さを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>パケットの長さ </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_8h_source.html">SgvPacket.h</a> の <a class="el" href="_sgv_packet_8h_source.html#l00073">73</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="5d48ed9600d97aa0ea53f51ea4cd500e"></a><!-- doxytag: member="Sgv::Packet::getType" ref="5d48ed9600d97aa0ea53f51ea4cd500e" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CommDataType Sgv::Packet::getType           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+パケットのデータタイプを返す 
+<p>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>パケットのデータタイプ</dd></dl>
+<dl class="see" compact><dt><b>参照:</b></dt><dd>CommDataType.h </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_8cpp_source.html">SgvPacket.cpp</a> の <a class="el" href="_sgv_packet_8cpp_source.html#l00039">39</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="c75bf08e24115e36bfc1ef47e372fee4"></a><!-- doxytag: member="Sgv::Packet::push" ref="c75bf08e24115e36bfc1ef47e372fee4" args="(char *p, int len)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::Packet::push           </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>len</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+パケットにデータを追加（コピー）する． 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>p</em>&nbsp;</td><td>[i] データの先頭ポインタ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>len</em>&nbsp;</td><td>[i] パケットに追加するデータ長</td></tr>
+  </table>
+</dl>
+p[0]からp[len-1]までのメモリの内容を 内部バッファにコピーする． 
+</div>
+</div><p>
+<a class="anchor" name="9df60e50c3ace12bdbbfd89305dcc637"></a><!-- doxytag: member="Sgv::Packet::reallocMemory" ref="9df60e50c3ace12bdbbfd89305dcc637" args="(int newLen)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::Packet::reallocMemory           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>newLen</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+内部バッファの長さを変更する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>newLen</em>&nbsp;</td><td>[i] 新しいバッファの長さ</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_8cpp_source.html">SgvPacket.cpp</a> の <a class="el" href="_sgv_packet_8cpp_source.html#l00071">71</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="9ea551f040109020bb9af786fab73d69"></a><!-- doxytag: member="Sgv::Packet::resize" ref="9ea551f040109020bb9af786fab73d69" args="(int newBufLen)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::Packet::resize           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>newBufLen</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+パケットデータを保持するバッファを延長する． 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>newBufLen</em>&nbsp;</td><td>[i] 新しいバッファの長さ</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_8cpp_source.html">SgvPacket.cpp</a> の <a class="el" href="_sgv_packet_8cpp_source.html#l00029">29</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="36c831531ebe3e1d0b50e35fb0c4735d"></a><!-- doxytag: member="Sgv::Packet::‾Packet" ref="36c831531ebe3e1d0b50e35fb0c4735d" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::Packet::‾Packet           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+デストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_packet_8cpp_source.html">SgvPacket.cpp</a> の <a class="el" href="_sgv_packet_8cpp_source.html#l00034">34</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>変数</h2>
+<a class="anchor" name="b2b591c1d89a0cae49fa405305eb7da3"></a><!-- doxytag: member="Sgv::Packet::DATA_TYPE" ref="b2b591c1d89a0cae49fa405305eb7da3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned short <a class="el" href="class_sgv_1_1_packet.html#b2b591c1d89a0cae49fa405305eb7da3">Sgv::Packet::DATA_TYPE</a><code> [static]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+データタイプ 
+<p>
+
+<p> <a class="el" href="_sgv_packet_8h_source.html">SgvPacket.h</a> の <a class="el" href="_sgv_packet_8h_source.html#l00088">88</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="afc3756b7ba718b3b93675a86b39f404"></a><!-- doxytag: member="Sgv::Packet::HEAD_MARK" ref="afc3756b7ba718b3b93675a86b39f404" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned short <a class="el" href="class_sgv_1_1_packet.html#afc3756b7ba718b3b93675a86b39f404">Sgv::Packet::HEAD_MARK</a> = 0xABCD<code> [static]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+パケット開始マーク 
+<p>
+
+<p> <a class="el" href="_sgv_packet_8h_source.html">SgvPacket.h</a> の <a class="el" href="_sgv_packet_8h_source.html#l00078">78</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="303f19b3b97781d1af962fd36f9fcc8c"></a><!-- doxytag: member="Sgv::Packet::HEAD_SIZE_LEN" ref="303f19b3b97781d1af962fd36f9fcc8c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int <a class="el" href="class_sgv_1_1_packet.html#303f19b3b97781d1af962fd36f9fcc8c">Sgv::Packet::HEAD_SIZE_LEN</a> = sizeof(<a class="el" href="class_sgv_1_1_packet.html#afc3756b7ba718b3b93675a86b39f404">Packet::HEAD_MARK</a>) + sizeof(<a class="el" href="class_sgv_1_1_packet.html#28ce76ddcc9055b9d4231bddbe9af2b8">Packet::PACKET_SIZE</a>)<code> [static]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+パケット開始マークの長さ 
+<p>
+
+<p> <a class="el" href="_sgv_packet_8h_source.html">SgvPacket.h</a> の <a class="el" href="_sgv_packet_8h_source.html#l00098">98</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="164d2010fc48aee1d283446e25f1bf05"></a><!-- doxytag: member="Sgv::Packet::HEAD_SIZE_TYPE_LEN" ref="164d2010fc48aee1d283446e25f1bf05" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int <a class="el" href="class_sgv_1_1_packet.html#164d2010fc48aee1d283446e25f1bf05">Sgv::Packet::HEAD_SIZE_TYPE_LEN</a> = sizeof(<a class="el" href="class_sgv_1_1_packet.html#afc3756b7ba718b3b93675a86b39f404">Packet::HEAD_MARK</a>) + sizeof(<a class="el" href="class_sgv_1_1_packet.html#28ce76ddcc9055b9d4231bddbe9af2b8">Packet::PACKET_SIZE</a>) + sizeof(<a class="el" href="class_sgv_1_1_packet.html#b2b591c1d89a0cae49fa405305eb7da3">Packet::DATA_TYPE</a>)<code> [static]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+パケットサイズとタイプの合計の長さ 
+<p>
+
+<p> <a class="el" href="_sgv_packet_8h_source.html">SgvPacket.h</a> の <a class="el" href="_sgv_packet_8h_source.html#l00103">103</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="3daba0778be96075b1a438f17cca5711"></a><!-- doxytag: member="Sgv::Packet::m_capacity" ref="3daba0778be96075b1a438f17cca5711" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="class_sgv_1_1_packet.html#3daba0778be96075b1a438f17cca5711">Sgv::Packet::m_capacity</a><code> [protected]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+バッファの長さ 
+<p>
+
+<p> <a class="el" href="_sgv_packet_8h_source.html">SgvPacket.h</a> の <a class="el" href="_sgv_packet_8h_source.html#l00119">119</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="7a6da8429197c4d6b9886c8dff27fc3f"></a><!-- doxytag: member="Sgv::Packet::m_pData" ref="7a6da8429197c4d6b9886c8dff27fc3f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* <a class="el" href="class_sgv_1_1_packet.html#7a6da8429197c4d6b9886c8dff27fc3f">Sgv::Packet::m_pData</a><code> [protected]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+バッファへのポインタ 
+<p>
+
+<p> <a class="el" href="_sgv_packet_8h_source.html">SgvPacket.h</a> の <a class="el" href="_sgv_packet_8h_source.html#l00114">114</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="28ce76ddcc9055b9d4231bddbe9af2b8"></a><!-- doxytag: member="Sgv::Packet::PACKET_SIZE" ref="28ce76ddcc9055b9d4231bddbe9af2b8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned short <a class="el" href="class_sgv_1_1_packet.html#28ce76ddcc9055b9d4231bddbe9af2b8">Sgv::Packet::PACKET_SIZE</a><code> [static]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+パケットサイズ 
+<p>
+
+<p> <a class="el" href="_sgv_packet_8h_source.html">SgvPacket.h</a> の <a class="el" href="_sgv_packet_8h_source.html#l00083">83</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="49f5ef5e1cc1d9327bbad996e412625d"></a><!-- doxytag: member="Sgv::Packet::TAIL_LEN" ref="49f5ef5e1cc1d9327bbad996e412625d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int <a class="el" href="class_sgv_1_1_packet.html#49f5ef5e1cc1d9327bbad996e412625d">Sgv::Packet::TAIL_LEN</a> = sizeof(<a class="el" href="class_sgv_1_1_packet.html#1049eeb3303fc0a8018b0bb071bc5eec">Packet::TAIL_MARK</a>)<code> [static]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+パケット終了マークの長さ 
+<p>
+
+<p> <a class="el" href="_sgv_packet_8h_source.html">SgvPacket.h</a> の <a class="el" href="_sgv_packet_8h_source.html#l00108">108</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="1049eeb3303fc0a8018b0bb071bc5eec"></a><!-- doxytag: member="Sgv::Packet::TAIL_MARK" ref="1049eeb3303fc0a8018b0bb071bc5eec" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned short <a class="el" href="class_sgv_1_1_packet.html#1049eeb3303fc0a8018b0bb071bc5eec">Sgv::Packet::TAIL_MARK</a> = 0xDCBA<code> [static]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+パケット終了マーク 
+<p>
+
+<p> <a class="el" href="_sgv_packet_8h_source.html">SgvPacket.h</a> の <a class="el" href="_sgv_packet_8h_source.html#l00093">93</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_sgv_packet_8h_source.html">SgvPacket.h</a><li><a class="el" href="_sgv_packet_8cpp_source.html">SgvPacket.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGViewerに対してThu Jun 9 10:52:15 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

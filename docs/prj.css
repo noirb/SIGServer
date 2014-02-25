@@ -1,0 +1,71 @@
+<!--
+body {BACKGROUND-COLOR:white}
+h1 {border-bottom:3px inset}
+h2 {border:blue 3px ridge}
+h3 {border:orange 1px ridge}
+h4 {text-decoration:underline}
+dt {text-decoration:underline}
+
+div.sourcecomment {
+   color: red;
+}
+
+font.sourcecomment {
+   color: red;
+}
+
+font.attrname {
+   color: blue;
+   font-style: italic;
+}
+
+.attrvalue {
+   color: grey;
+   font-weight: bold;
+   font-style: italic;
+}
+
+font.example1 {
+   font-weight: bold;
+   font-family: "Courier New";
+   font-size: 14pt;
+}
+
+font.example2 {
+   font-weight: bold;
+   font-family: "Courier New";
+   font-size: 12pt;
+}
+
+pre.xmlsample {
+   color: blue;
+}
+
+pre.cmdsample {
+   font-style: italic;
+}
+
+pre.codesample {
+   border:black 1px ridge
+}
+
+iframe.source {
+   width: 100%;
+   height: 450;
+}
+
+.keyword {
+   font-weight: bold;
+   color: red;
+}
+
+font.defword {
+   font-weight: bold;
+}
+
+font.warning {
+   color: red;
+   font-style: italic;
+
+}
+-->

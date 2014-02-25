@@ -1,0 +1,2660 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGViewer: クラス Sgv::PacketAnalyzer</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_sgv.html">Sgv</a>::<a class="el" href="class_sgv_1_1_packet_analyzer.html">PacketAnalyzer</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Sgv::PacketAnalyzer</h1><!-- doxytag: class="Sgv::PacketAnalyzer" -->パケット解析用クラス  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_sgv_packet_analyzer_8h_source.html">SgvPacketAnalyzer.h</a>&gt;</code>
+<p>
+
+<p>
+<a href="class_sgv_1_1_packet_analyzer-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#e59d9c8d27be6e28a5fb1ccf1ed71435">analyze</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パケットデータを解析する  <a href="#e59d9c8d27be6e28a5fb1ccf1ed71435"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#dfa2863b7de0f14606c42e531ea77b7f">check_COMM_CONTROLLER_COMMAND</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_CONTROLLER_COMMANDパケットの内容表示.  <a href="#dfa2863b7de0f14606c42e531ea77b7f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#bbd4a31578aa4180f9de66ac4a3d546d">check_COMM_INVOKE_CONTROLLER_ON_ACTION</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_INVOKE_CONTROLLER_ON_ACTIONパケットの内容表示.  <a href="#bbd4a31578aa4180f9de66ac4a3d546d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#a01bae5f034b39b889a430cbf405501d">check_COMM_INVOKE_CONTROLLER_ON_INIT</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_INVOKE_CONTROLLER_ON_INITパケットの内容表示.  <a href="#a01bae5f034b39b889a430cbf405501d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#7b3f42bbb1246a94c52575e66aea0bd3">check_COMM_INVOKE_CONTROLLER_ON_RECV_MESSAGE</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_INVOKE_CONTROLLER_ON_RECV_MESSAGEパケットの内容表示.  <a href="#7b3f42bbb1246a94c52575e66aea0bd3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#3e642556add227b834407110379929b8">check_COMM_INVOKE_CONTROLLER_ON_RECV_SOUND</a> (int detailLevel, int packetSize, int headerSize, int numPackets, int iPacket)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_INVOKE_CONTROLLER_ON_RECV_SOUNDパケットの内容表示.  <a href="#3e642556add227b834407110379929b8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#abe0098a742de755ff59d4534f933eb0">check_COMM_INVOKE_CONTROLLER_ON_RECV_TEXT</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_INVOKE_CONTROLLER_ON_RECV_TEXTパケットの内容表示.  <a href="#abe0098a742de755ff59d4534f933eb0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#3951d3ae14672edcbccecfbb85f4cfdd">check_COMM_LOG_MSG</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_LOG_MSGパケットの内容表示.  <a href="#3951d3ae14672edcbccecfbb85f4cfdd"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#f57084f15a5fbb7fec3ac6fe63fa79cb">check_COMM_NS_PINGER_REQUEST</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_NS_PINGER_REQUESTパケットの内容表示.  <a href="#f57084f15a5fbb7fec3ac6fe63fa79cb"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#d0cb6b9d2beb9c8c15e64b6dad69470b">check_COMM_NS_PINGER_RESULT</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_NS_PINGER_RESULTパケットの内容表示.  <a href="#d0cb6b9d2beb9c8c15e64b6dad69470b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#624cd37772f689bb67526fa4aa4ca5cd">check_COMM_NS_QUERY_REQUEST</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_NS_QUERY_REQUESTパケットの内容表示.  <a href="#624cd37772f689bb67526fa4aa4ca5cd"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#614182b72bbdb6c7c873262980aa1acd">check_COMM_NS_QUERY_RESULT</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_NS_QUERY_RESULTパケットの内容表示.  <a href="#614182b72bbdb6c7c873262980aa1acd"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#59e13b230af1c205966f516109887aa1">check_COMM_REQUEST_ATTACH_CONTROLLER</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_ATTACH_CONTROLLERパケットの内容表示.  <a href="#59e13b230af1c205966f516109887aa1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#30a6780f76fe4bd6baeb55a4b4c3dceb">check_COMM_REQUEST_ATTACH_VIEW</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_ATTACH_VIEWパケットの内容表示.  <a href="#30a6780f76fe4bd6baeb55a4b4c3dceb"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#0d45f21789f087cbf66b04f05341b564">check_COMM_REQUEST_CAPTURE_VIEW_IMAGE</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_CAPTURE_VIEW_IMAGEパケットの内容表示.  <a href="#0d45f21789f087cbf66b04f05341b564"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#22464cebc775e9d88307cc9863318b1e">check_COMM_REQUEST_CONNECT_DATA_PORT</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_CONNECT_DATA_PORTパケットの内容表示.  <a href="#22464cebc775e9d88307cc9863318b1e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#f9a24cb033d6cde482f5fe984cf27e23">check_COMM_REQUEST_CONNECT_JOINT</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_CONNECT_JOINTパケットの内容表示.  <a href="#f9a24cb033d6cde482f5fe984cf27e23"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#8b92dc553d581d1a06ca3f80385a3d84">check_COMM_REQUEST_DETECT_ENTITIES</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_DETECT_ENTITIESパケットの内容表示.  <a href="#8b92dc553d581d1a06ca3f80385a3d84"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#bfacb8dc14b01d1c8b8f7bb3e8f1fbd4">check_COMM_REQUEST_GET_ALL_ENTITIES</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_GET_ALL_ENTITIESパケットの内容表示.  <a href="#bfacb8dc14b01d1c8b8f7bb3e8f1fbd4"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#317eaa13b1c6b06a3e664e0eb2924f44">check_COMM_REQUEST_GET_ATTRIBUTES</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_GET_ATTRIBUTESパケットの内容表示.  <a href="#317eaa13b1c6b06a3e664e0eb2924f44"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#814220f9660a3fb9f36c2b28fe155e43">check_COMM_REQUEST_GET_ENTITY</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_GET_ENTITYパケットの内容表示.  <a href="#814220f9660a3fb9f36c2b28fe155e43"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#49299675dcfafc26287e3cc352e78784">check_COMM_REQUEST_GET_JOINT_FORCE</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_GET_JOINT_FORCEパケットの内容表示.  <a href="#49299675dcfafc26287e3cc352e78784"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#34cb171a2a3c2c11e016e7dc71b32659">check_COMM_REQUEST_PROVIDE_SERVICE</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_PROVIDE_SERVICEパケットの内容表示.  <a href="#34cb171a2a3c2c11e016e7dc71b32659"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#87256614f7471599fddbfb93ea53a904">check_COMM_REQUEST_RELEASE_JOINT</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_RELEASE_JOINTパケットの内容表示.  <a href="#87256614f7471599fddbfb93ea53a904"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#35e2fabc343d5a74b80c00193217b4af">check_COMM_REQUEST_SET_ATTRIBUTES</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_SET_ATTRIBUTESパケットの内容表示.  <a href="#35e2fabc343d5a74b80c00193217b4af"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#c5901f70814622a5930264e23592e2fa">check_COMM_REQUEST_SET_JOINT_ANGLE</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_SET_JOINT_ANGLEパケットの内容表示.  <a href="#c5901f70814622a5930264e23592e2fa"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#0462e7b1d0555923ec7955e8a9c612af">check_COMM_REQUEST_SIM_CTRL</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_SIM_CTRLパケットの内容表示.  <a href="#0462e7b1d0555923ec7955e8a9c612af"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#f73e281baa023b5557b016cd5cca2f1d">check_COMM_REQUEST_SOUND_RECOG</a> (int detailLevel, int packetSize, int headerSize, int numPackets, int iPacket)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_SOUND_RECOGパケットの内容表示.  <a href="#f73e281baa023b5557b016cd5cca2f1d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#2e5e775eb2028b7c009531803c3d799c">check_COMM_REQUEST_UPDATE_ENTITIES</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_UPDATE_ENTITIESパケットの内容表示.  <a href="#2e5e775eb2028b7c009531803c3d799c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#9ba8b4fc2499c43e10efb71f54ead66f">check_COMM_REQUEST_X3DDB</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_REQUEST_X3DDBパケットの内容表示.  <a href="#9ba8b4fc2499c43e10efb71f54ead66f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#e6ac2c920aed43fcedd72474a5ce4526">check_COMM_RESULT_ATTACH_CONTROLLER</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_RESULT_ATTACH_CONTROLLERパケットの内容表示.  <a href="#e6ac2c920aed43fcedd72474a5ce4526"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#cff409aceadb2985ff20f8a0240faf9c">check_COMM_RESULT_ATTACH_VIEW</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_RESULT_ATTACH_VIEWパケットの内容表示.  <a href="#cff409aceadb2985ff20f8a0240faf9c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#b227eb05bcd145bdc4db90e2763c0ea0">check_COMM_RESULT_CAPTURE_VIEW_IMAGE</a> (int detailLevel, int packetSize, int headerSize, int numPackets, int iPacket)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_RESULT_CAPTURE_VIEW_IMAGEパケットの内容表示.  <a href="#b227eb05bcd145bdc4db90e2763c0ea0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#54648c6431dec4889155b0df116f1080">check_COMM_RESULT_CONNECT_DATA_PORT</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_RESULT_CONNECT_DATA_PORTパケットの内容表示.  <a href="#54648c6431dec4889155b0df116f1080"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#4577d2f365f770e13715d09f920845d7">check_COMM_RESULT_DETECT_ENTITIES</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_RESULT_DETECT_ENTITIESパケットの内容表示.  <a href="#4577d2f365f770e13715d09f920845d7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#a9f6f1a4557a3dbbc26f750a053321e1">check_COMM_RESULT_GET_ALL_ENTITIES</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_RESULT_GET_ALL_ENTITIESパケットの内容表示.  <a href="#a9f6f1a4557a3dbbc26f750a053321e1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#4610084f7c8523410e3459d293bde027">check_COMM_RESULT_GET_ATTRIBUTES</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_RESULT_GET_ATTRIBUTESパケットの内容表示.  <a href="#4610084f7c8523410e3459d293bde027"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#2ffa3f265fc8dff8c804e063586f88f0">check_COMM_RESULT_GET_ENTITY</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_RESULT_GET_ENTITYパケットの内容表示.  <a href="#2ffa3f265fc8dff8c804e063586f88f0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#b912e333e1f05519a26a9ea99ff739fd">check_COMM_RESULT_GET_JOINT_FORCE</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_RESULT_GET_JOINT_FORCEパケットの内容表示.  <a href="#b912e333e1f05519a26a9ea99ff739fd"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#5f49251b9bd9b5e334aa230cf22eb366">check_COMM_RESULT_PROVIDE_SERVICE</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_RESULT_PROVIDE_SERVICEパケットの内容表示.  <a href="#5f49251b9bd9b5e334aa230cf22eb366"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#13684f4c58894fd8d861eb52bf59f16e">check_COMM_RESULT_SOUND_RECOG</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_RESULT_SOUND_RECOGパケットの内容表示.  <a href="#13684f4c58894fd8d861eb52bf59f16e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#8017f3897e33875d5ae00421e825c09f">check_COMM_RESULT_X3DDB</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">COMM_RESULT_X3DDBパケットの内容表示.  <a href="#8017f3897e33875d5ae00421e825c09f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#90d05024fb756812877425b47dc5281f">checkAttrs</a> (int detailLevel, int &amp;sizeOfAttr)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">シミュレーションオブジェクトの持つ属性部分を解析する  <a href="#90d05024fb756812877425b47dc5281f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#8e886a7a6cd7ac06fd349251257874d7">checkHeader</a> (int detailLevel, short &amp;commDataType, int &amp;packetSize, int &amp;headerSize, int &amp;numPackets, int &amp;iPacket)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パケットのヘッダを解析する  <a href="#8e886a7a6cd7ac06fd349251257874d7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#96caf2430ede744ea27aa460808f7a08">checkParts</a> (int detailLevel, int &amp;sizeOfParts)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">シミュレーションオブジェクトの持つパーツ部分を解析する  <a href="#96caf2430ede744ea27aa460808f7a08"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#403bc12e375a2ab5d3ff802e58a7aefc">checkSimObj</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パケットのシミュレーションオブジェクト部分を解析する  <a href="#403bc12e375a2ab5d3ff802e58a7aefc"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#265474e9b45b096346122b0d933d286c">checkTrailer</a> (int detailLevel)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">パケットの終了マークを解析する  <a href="#265474e9b45b096346122b0d933d286c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#a6572bbfbc3d29abec908ff4450f3d83">clear</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">解析対象パケットデータをクリアする  <a href="#a6572bbfbc3d29abec908ff4450f3d83"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#4d0f948cd9cab0086bde60d7a508484d">getDouble</a> (int &amp;size)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">現在の注目位置(m_curr)から8バイトを読んでdoubleとして返す  <a href="#4d0f948cd9cab0086bde60d7a508484d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">long&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#84f4f6aecb454a36c94c76e3892d42ae">getLong</a> (int &amp;size)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">現在の注目位置(m_curr)から4バイトを読んでlongとして返す  <a href="#84f4f6aecb454a36c94c76e3892d42ae"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">short&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#a8cb624a0afd18c5c5cb79248b80dfe9">getShort</a> (int &amp;size)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">現在の注目位置(m_curr)から2バイトを読んでshortとして返す  <a href="#a8cb624a0afd18c5c5cb79248b80dfe9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#02a256b20e510ca96eb092e07cd02712">getString</a> (int &amp;size)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">現在の注目位置(m_curr)から文字列を読んで返す．  <a href="#02a256b20e510ca96eb092e07cd02712"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#248755c4024cce96b4b306d3c0737f1d">incr</a> (int size)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">現在の注目位置をsizeバイト進める  <a href="#248755c4024cce96b4b306d3c0737f1d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#8b4570618d230f85218fe12f0fadc29f">loadPacketData</a> (const char *dumpFile)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">解析対象パケットデータをファイルから読みこむ  <a href="#8b4570618d230f85218fe12f0fadc29f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#529d2ceafcdb55584ba08cb7a27a706d">PacketAnalyzer</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#529d2ceafcdb55584ba08cb7a27a706d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#8afdd77bf40bdc13fe72dbec5a0dbf8f">printBinary</a> (int len, char *msg)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">現在の注目位置(m_curr)からlenバイトを表示  <a href="#8afdd77bf40bdc13fe72dbec5a0dbf8f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#bcd999e69db88be62eb525912ce9b726">printBinary</a> (int addr, unsigned char *data, int len, char *msg)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">dataからlenバイトのバイナリデータを表示  <a href="#bcd999e69db88be62eb525912ce9b726"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#139921c08eb66c66aed141f958e680f4">printDouble</a> (char *format,...)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">現在の注目位置(m_curr)から8バイトを表示  <a href="#139921c08eb66c66aed141f958e680f4"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#4ed9d8fa91e16e6c5cdcefa9e78a46c6">printLong</a> (char *format,...)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">現在の注目位置(m_curr)から4バイトを表示  <a href="#4ed9d8fa91e16e6c5cdcefa9e78a46c6"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#699d234abc56578e96dc6de3c0b32aa3">printShort</a> (char *format,...)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">現在の注目位置(m_curr)から2バイトを表示  <a href="#699d234abc56578e96dc6de3c0b32aa3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#d903d892df6d49704f5832683a9b1633">printString</a> (int size, char *format,...)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">現在の注目位置(m_curr)からsizeバイトを表示  <a href="#d903d892df6d49704f5832683a9b1633"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#eafea2ba7ddc7527799c41ff3e139f79">savePacketData</a> (const char *dumpFile, bool bAppend)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">現在保持している解析対象パケットデータをファイルに書き出す  <a href="#eafea2ba7ddc7527799c41ff3e139f79"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#be0d7df17a53da42ce835055696a63a3">setPacketData</a> (CommDataEncoder *enc)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">解析対象パケットデータをエンコーダから得る  <a href="#be0d7df17a53da42ce835055696a63a3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#98e269cecbd7ffc905b649f0ed141783">setPacketData</a> (char *p, int size)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">解析対象パケットデータをセットする  <a href="#98e269cecbd7ffc905b649f0ed141783"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#1fe1d471ec426788a0c27aac3f0ffa56">setPacketData</a> (<a class="el" href="class_sgv_1_1_packet.html">Sgv::Packet</a> *packet)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">解析対象パケットデータをセットする  <a href="#1fe1d471ec426788a0c27aac3f0ffa56"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#280fc8f5dea2645085a27e9691d902e8">‾PacketAnalyzer</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#280fc8f5dea2645085a27e9691d902e8"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Static Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#614c91b820b96d7f3f02aa9ab90d3048">getColorBitTypeString</a> (short colorBitType)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">カラービットタイプの文字列表現を得る  <a href="#614c91b820b96d7f3f02aa9ab90d3048"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#6d497622b2724a44d7aa39f041b71cba">getCommDataTypeString</a> (short commDataType)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">各種識別子の文字列表現を得る  <a href="#6d497622b2724a44d7aa39f041b71cba"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#1f275e1fde999b1effc4fb47d6257387">getEncodingTypeString</a> (short encType)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンコーディングタイプの文字列表現を得る  <a href="#1f275e1fde999b1effc4fb47d6257387"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#1a76054b34d5dc9c4d538c05f213d939">getEndianTypeString</a> (short endianType)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンディアンタイプの文字列表現を得る  <a href="#1a76054b34d5dc9c4d538c05f213d939"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_packet_analyzer.html#8464576da80f41f9cd54fe12561ad93f">getImageDataTypeString</a> (short imgDataType)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">イメージデータタイプの文字列表現を得る  <a href="#8464576da80f41f9cd54fe12561ad93f"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+パケット解析用クラス 
+<p>
+シミュレーションサーバーやコントローラ等との 通信に使われるパケット（メモリブロック）を解析し、 パケットの内容を表示する．<p>
+主にデバッグ＆テストのために使う 
+<p> <a class="el" href="_sgv_packet_analyzer_8h_source.html">SgvPacketAnalyzer.h</a> の <a class="el" href="_sgv_packet_analyzer_8h_source.html#l00018">18</a> 行で定義されています。</p>
+<hr><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" name="529d2ceafcdb55584ba08cb7a27a706d"></a><!-- doxytag: member="Sgv::PacketAnalyzer::PacketAnalyzer" ref="529d2ceafcdb55584ba08cb7a27a706d" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::PacketAnalyzer::PacketAnalyzer           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l00022">22</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>関数</h2>
+<a class="anchor" name="e59d9c8d27be6e28a5fb1ccf1ed71435"></a><!-- doxytag: member="Sgv::PacketAnalyzer::analyze" ref="e59d9c8d27be6e28a5fb1ccf1ed71435" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::PacketAnalyzer::analyze           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+パケットデータを解析する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 表示の詳細レベル（現在は使われていない） </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l00214">214</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="dfa2863b7de0f14606c42e531ea77b7f"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_CONTROLLER_COMMAND" ref="dfa2863b7de0f14606c42e531ea77b7f" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_CONTROLLER_COMMAND           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_CONTROLLER_COMMANDパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l01249">1249</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="bbd4a31578aa4180f9de66ac4a3d546d"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_INVOKE_CONTROLLER_ON_ACTION" ref="bbd4a31578aa4180f9de66ac4a3d546d" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_INVOKE_CONTROLLER_ON_ACTION           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_INVOKE_CONTROLLER_ON_ACTIONパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l01027">1027</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="a01bae5f034b39b889a430cbf405501d"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_INVOKE_CONTROLLER_ON_INIT" ref="a01bae5f034b39b889a430cbf405501d" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_INVOKE_CONTROLLER_ON_INIT           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_INVOKE_CONTROLLER_ON_INITパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l01020">1020</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="7b3f42bbb1246a94c52575e66aea0bd3"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_INVOKE_CONTROLLER_ON_RECV_MESSAGE" ref="7b3f42bbb1246a94c52575e66aea0bd3" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_INVOKE_CONTROLLER_ON_RECV_MESSAGE           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_INVOKE_CONTROLLER_ON_RECV_MESSAGEパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l01122">1122</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="3e642556add227b834407110379929b8"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_INVOKE_CONTROLLER_ON_RECV_SOUND" ref="3e642556add227b834407110379929b8" args="(int detailLevel, int packetSize, int headerSize, int numPackets, int iPacket)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_INVOKE_CONTROLLER_ON_RECV_SOUND           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>packetSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>headerSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>numPackets</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iPacket</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_INVOKE_CONTROLLER_ON_RECV_SOUNDパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>packetSize</em>&nbsp;</td><td>[i] パケットサイズ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>headerSize</em>&nbsp;</td><td>[i] ヘッダサイズ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>numPackets</em>&nbsp;</td><td>[i] パケットの総数 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>iPacket</em>&nbsp;</td><td>[i] このパケットの番号</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l01072">1072</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="abe0098a742de755ff59d4534f933eb0"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_INVOKE_CONTROLLER_ON_RECV_TEXT" ref="abe0098a742de755ff59d4534f933eb0" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_INVOKE_CONTROLLER_ON_RECV_TEXT           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_INVOKE_CONTROLLER_ON_RECV_TEXTパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l01039">1039</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="3951d3ae14672edcbccecfbb85f4cfdd"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_LOG_MSG" ref="3951d3ae14672edcbccecfbb85f4cfdd" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_LOG_MSG           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_LOG_MSGパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l01232">1232</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f57084f15a5fbb7fec3ac6fe63fa79cb"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_NS_PINGER_REQUEST" ref="f57084f15a5fbb7fec3ac6fe63fa79cb" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_NS_PINGER_REQUEST           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_NS_PINGER_REQUESTパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l01194">1194</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="d0cb6b9d2beb9c8c15e64b6dad69470b"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_NS_PINGER_RESULT" ref="d0cb6b9d2beb9c8c15e64b6dad69470b" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_NS_PINGER_RESULT           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_NS_PINGER_RESULTパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l01206">1206</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="624cd37772f689bb67526fa4aa4ca5cd"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_NS_QUERY_REQUEST" ref="624cd37772f689bb67526fa4aa4ca5cd" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_NS_QUERY_REQUEST           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_NS_QUERY_REQUESTパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l01147">1147</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="614182b72bbdb6c7c873262980aa1acd"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_NS_QUERY_RESULT" ref="614182b72bbdb6c7c873262980aa1acd" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_NS_QUERY_RESULT           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_NS_QUERY_RESULTパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l01159">1159</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="59e13b230af1c205966f516109887aa1"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_REQUEST_ATTACH_CONTROLLER" ref="59e13b230af1c205966f516109887aa1" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_REQUEST_ATTACH_CONTROLLER           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_REQUEST_ATTACH_CONTROLLERパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l00615">615</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="30a6780f76fe4bd6baeb55a4b4c3dceb"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_REQUEST_ATTACH_VIEW" ref="30a6780f76fe4bd6baeb55a4b4c3dceb" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_REQUEST_ATTACH_VIEW           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_REQUEST_ATTACH_VIEWパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l00659">659</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="0d45f21789f087cbf66b04f05341b564"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_REQUEST_CAPTURE_VIEW_IMAGE" ref="0d45f21789f087cbf66b04f05341b564" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_REQUEST_CAPTURE_VIEW_IMAGE           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_REQUEST_CAPTURE_VIEW_IMAGEパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l00486">486</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="22464cebc775e9d88307cc9863318b1e"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_REQUEST_CONNECT_DATA_PORT" ref="22464cebc775e9d88307cc9863318b1e" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_REQUEST_CONNECT_DATA_PORT           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_REQUEST_CONNECT_DATA_PORTパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l00703">703</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f9a24cb033d6cde482f5fe984cf27e23"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_REQUEST_CONNECT_JOINT" ref="f9a24cb033d6cde482f5fe984cf27e23" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_REQUEST_CONNECT_JOINT           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_REQUEST_CONNECT_JOINTパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l00905">905</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="8b92dc553d581d1a06ca3f80385a3d84"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_REQUEST_DETECT_ENTITIES" ref="8b92dc553d581d1a06ca3f80385a3d84" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_REQUEST_DETECT_ENTITIES           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_REQUEST_DETECT_ENTITIESパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l00583">583</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="bfacb8dc14b01d1c8b8f7bb3e8f1fbd4"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_REQUEST_GET_ALL_ENTITIES" ref="bfacb8dc14b01d1c8b8f7bb3e8f1fbd4" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_REQUEST_GET_ALL_ENTITIES           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_REQUEST_GET_ALL_ENTITIESパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l00423">423</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="317eaa13b1c6b06a3e664e0eb2924f44"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_REQUEST_GET_ATTRIBUTES" ref="317eaa13b1c6b06a3e664e0eb2924f44" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_REQUEST_GET_ATTRIBUTES           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_REQUEST_GET_ATTRIBUTESパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l00791">791</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="814220f9660a3fb9f36c2b28fe155e43"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_REQUEST_GET_ENTITY" ref="814220f9660a3fb9f36c2b28fe155e43" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_REQUEST_GET_ENTITY           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_REQUEST_GET_ENTITYパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l00443">443</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="49299675dcfafc26287e3cc352e78784"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_REQUEST_GET_JOINT_FORCE" ref="49299675dcfafc26287e3cc352e78784" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_REQUEST_GET_JOINT_FORCE           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_REQUEST_GET_JOINT_FORCEパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l00954">954</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="34cb171a2a3c2c11e016e7dc71b32659"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_REQUEST_PROVIDE_SERVICE" ref="34cb171a2a3c2c11e016e7dc71b32659" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_REQUEST_PROVIDE_SERVICE           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_REQUEST_PROVIDE_SERVICEパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l00747">747</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="87256614f7471599fddbfb93ea53a904"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_REQUEST_RELEASE_JOINT" ref="87256614f7471599fddbfb93ea53a904" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_REQUEST_RELEASE_JOINT           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_REQUEST_RELEASE_JOINTパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l00937">937</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="35e2fabc343d5a74b80c00193217b4af"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_REQUEST_SET_ATTRIBUTES" ref="35e2fabc343d5a74b80c00193217b4af" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_REQUEST_SET_ATTRIBUTES           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_REQUEST_SET_ATTRIBUTESパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l00818">818</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="c5901f70814622a5930264e23592e2fa"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_REQUEST_SET_JOINT_ANGLE" ref="c5901f70814622a5930264e23592e2fa" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_REQUEST_SET_JOINT_ANGLE           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_REQUEST_SET_JOINT_ANGLEパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l00825">825</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="0462e7b1d0555923ec7955e8a9c612af"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_REQUEST_SIM_CTRL" ref="0462e7b1d0555923ec7955e8a9c612af" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_REQUEST_SIM_CTRL           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_REQUEST_SIM_CTRLパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l00411">411</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f73e281baa023b5557b016cd5cca2f1d"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_REQUEST_SOUND_RECOG" ref="f73e281baa023b5557b016cd5cca2f1d" args="(int detailLevel, int packetSize, int headerSize, int numPackets, int iPacket)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_REQUEST_SOUND_RECOG           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>packetSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>headerSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>numPackets</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iPacket</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_REQUEST_SOUND_RECOGパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>packetSize</em>&nbsp;</td><td>[i] パケットサイズ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>headerSize</em>&nbsp;</td><td>[i] ヘッダサイズ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>numPackets</em>&nbsp;</td><td>[i] パケットの総数 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>iPacket</em>&nbsp;</td><td>[i] このパケットの番号</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l00847">847</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="2e5e775eb2028b7c009531803c3d799c"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_REQUEST_UPDATE_ENTITIES" ref="2e5e775eb2028b7c009531803c3d799c" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_REQUEST_UPDATE_ENTITIES           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_REQUEST_UPDATE_ENTITIESパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l00473">473</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="9ba8b4fc2499c43e10efb71f54ead66f"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_REQUEST_X3DDB" ref="9ba8b4fc2499c43e10efb71f54ead66f" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_REQUEST_X3DDB           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_REQUEST_X3DDBパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l01218">1218</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="e6ac2c920aed43fcedd72474a5ce4526"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_RESULT_ATTACH_CONTROLLER" ref="e6ac2c920aed43fcedd72474a5ce4526" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_RESULT_ATTACH_CONTROLLER           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_RESULT_ATTACH_CONTROLLERパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l00627">627</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="cff409aceadb2985ff20f8a0240faf9c"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_RESULT_ATTACH_VIEW" ref="cff409aceadb2985ff20f8a0240faf9c" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_RESULT_ATTACH_VIEW           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_RESULT_ATTACH_VIEWパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l00671">671</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b227eb05bcd145bdc4db90e2763c0ea0"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_RESULT_CAPTURE_VIEW_IMAGE" ref="b227eb05bcd145bdc4db90e2763c0ea0" args="(int detailLevel, int packetSize, int headerSize, int numPackets, int iPacket)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_RESULT_CAPTURE_VIEW_IMAGE           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>packetSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>headerSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>numPackets</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iPacket</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_RESULT_CAPTURE_VIEW_IMAGEパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>packetSize</em>&nbsp;</td><td>[i] パケットサイズ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>headerSize</em>&nbsp;</td><td>[i] ヘッダサイズ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>numPackets</em>&nbsp;</td><td>[i] パケットの総数 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>iPacket</em>&nbsp;</td><td>[i] このパケットの番号</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l00542">542</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="54648c6431dec4889155b0df116f1080"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_RESULT_CONNECT_DATA_PORT" ref="54648c6431dec4889155b0df116f1080" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_RESULT_CONNECT_DATA_PORT           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_RESULT_CONNECT_DATA_PORTパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l00715">715</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="4577d2f365f770e13715d09f920845d7"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_RESULT_DETECT_ENTITIES" ref="4577d2f365f770e13715d09f920845d7" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_RESULT_DETECT_ENTITIES           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_RESULT_DETECT_ENTITIESパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l00595">595</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="a9f6f1a4557a3dbbc26f750a053321e1"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_RESULT_GET_ALL_ENTITIES" ref="a9f6f1a4557a3dbbc26f750a053321e1" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_RESULT_GET_ALL_ENTITIES           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_RESULT_GET_ALL_ENTITIESパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l00430">430</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="4610084f7c8523410e3459d293bde027"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_RESULT_GET_ATTRIBUTES" ref="4610084f7c8523410e3459d293bde027" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_RESULT_GET_ATTRIBUTES           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_RESULT_GET_ATTRIBUTESパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l00811">811</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="2ffa3f265fc8dff8c804e063586f88f0"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_RESULT_GET_ENTITY" ref="2ffa3f265fc8dff8c804e063586f88f0" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_RESULT_GET_ENTITY           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_RESULT_GET_ENTITYパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l00455">455</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b912e333e1f05519a26a9ea99ff739fd"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_RESULT_GET_JOINT_FORCE" ref="b912e333e1f05519a26a9ea99ff739fd" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_RESULT_GET_JOINT_FORCE           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_RESULT_GET_JOINT_FORCEパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l00971">971</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="5f49251b9bd9b5e334aa230cf22eb366"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_RESULT_PROVIDE_SERVICE" ref="5f49251b9bd9b5e334aa230cf22eb366" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_RESULT_PROVIDE_SERVICE           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_RESULT_PROVIDE_SERVICEパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l00759">759</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="13684f4c58894fd8d861eb52bf59f16e"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_RESULT_SOUND_RECOG" ref="13684f4c58894fd8d861eb52bf59f16e" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_RESULT_SOUND_RECOG           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_RESULT_SOUND_RECOGパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l00887">887</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="8017f3897e33875d5ae00421e825c09f"></a><!-- doxytag: member="Sgv::PacketAnalyzer::check_COMM_RESULT_X3DDB" ref="8017f3897e33875d5ae00421e825c09f" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::check_COMM_RESULT_X3DDB           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+COMM_RESULT_X3DDBパケットの内容表示. 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 詳細表示レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l01225">1225</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="90d05024fb756812877425b47dc5281f"></a><!-- doxytag: member="Sgv::PacketAnalyzer::checkAttrs" ref="90d05024fb756812877425b47dc5281f" args="(int detailLevel, int &amp;sizeOfAttr)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::checkAttrs           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&nbsp;</td>
+          <td class="paramname"> <em>sizeOfAttr</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+シミュレーションオブジェクトの持つ属性部分を解析する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 表示の詳細レベル </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>sizeOfAttr</em>&nbsp;</td><td>[o] 属性のサイズ</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l01414">1414</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="8e886a7a6cd7ac06fd349251257874d7"></a><!-- doxytag: member="Sgv::PacketAnalyzer::checkHeader" ref="8e886a7a6cd7ac06fd349251257874d7" args="(int detailLevel, short &amp;commDataType, int &amp;packetSize, int &amp;headerSize, int &amp;numPackets, int &amp;iPacket)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::checkHeader           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short &amp;&nbsp;</td>
+          <td class="paramname"> <em>commDataType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&nbsp;</td>
+          <td class="paramname"> <em>packetSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&nbsp;</td>
+          <td class="paramname"> <em>headerSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&nbsp;</td>
+          <td class="paramname"> <em>numPackets</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&nbsp;</td>
+          <td class="paramname"> <em>iPacket</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+パケットのヘッダを解析する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 表示の詳細レベル </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>commDataType</em>&nbsp;</td><td>[o] パケットのタイプ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>packetSize</em>&nbsp;</td><td>[o] パケットサイズ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>headerSize</em>&nbsp;</td><td>[o] ヘッダサイズ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>numPackets</em>&nbsp;</td><td>[o] パケットの総数 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>iPacket</em>&nbsp;</td><td>[o] このパケットの番号</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l01254">1254</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="96caf2430ede744ea27aa460808f7a08"></a><!-- doxytag: member="Sgv::PacketAnalyzer::checkParts" ref="96caf2430ede744ea27aa460808f7a08" args="(int detailLevel, int &amp;sizeOfParts)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::checkParts           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&nbsp;</td>
+          <td class="paramname"> <em>sizeOfParts</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+シミュレーションオブジェクトの持つパーツ部分を解析する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 表示の詳細レベル </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>sizeOfParts</em>&nbsp;</td><td>[o] パーツのサイズ</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l01489">1489</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="403bc12e375a2ab5d3ff802e58a7aefc"></a><!-- doxytag: member="Sgv::PacketAnalyzer::checkSimObj" ref="403bc12e375a2ab5d3ff802e58a7aefc" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::checkSimObj           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+パケットのシミュレーションオブジェクト部分を解析する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 表示の詳細レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l01338">1338</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="265474e9b45b096346122b0d933d286c"></a><!-- doxytag: member="Sgv::PacketAnalyzer::checkTrailer" ref="265474e9b45b096346122b0d933d286c" args="(int detailLevel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::checkTrailer           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>detailLevel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+パケットの終了マークを解析する 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>detailLevel</em>&nbsp;</td><td>[i] 表示の詳細レベル</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l01321">1321</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="a6572bbfbc3d29abec908ff4450f3d83"></a><!-- doxytag: member="Sgv::PacketAnalyzer::clear" ref="a6572bbfbc3d29abec908ff4450f3d83" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::PacketAnalyzer::clear           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+解析対象パケットデータをクリアする 
+<p>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l00064">64</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="614c91b820b96d7f3f02aa9ab90d3048"></a><!-- doxytag: member="Sgv::PacketAnalyzer::getColorBitTypeString" ref="614c91b820b96d7f3f02aa9ab90d3048" args="(short colorBitType)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * Sgv::PacketAnalyzer::getColorBitTypeString           </td>
+          <td>(</td>
+          <td class="paramtype">short&nbsp;</td>
+          <td class="paramname"> <em>colorBitType</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+カラービットタイプの文字列表現を得る 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>colorBitType</em>&nbsp;</td><td>[i] カラービットタイプ</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>カラービットタイプの文字列表現 </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l02036">2036</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="6d497622b2724a44d7aa39f041b71cba"></a><!-- doxytag: member="Sgv::PacketAnalyzer::getCommDataTypeString" ref="6d497622b2724a44d7aa39f041b71cba" args="(short commDataType)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * Sgv::PacketAnalyzer::getCommDataTypeString           </td>
+          <td>(</td>
+          <td class="paramtype">short&nbsp;</td>
+          <td class="paramname"> <em>commDataType</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+各種識別子の文字列表現を得る 
+<p>
+commDataTypeの文字列表現を得る <dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>commDataType</em>&nbsp;</td><td>[i] 通信データタイプ</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>commDataTypeの文字列表現 </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l01776">1776</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="4d0f948cd9cab0086bde60d7a508484d"></a><!-- doxytag: member="Sgv::PacketAnalyzer::getDouble" ref="4d0f948cd9cab0086bde60d7a508484d" args="(int &amp;size)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Sgv::PacketAnalyzer::getDouble           </td>
+          <td>(</td>
+          <td class="paramtype">int &amp;&nbsp;</td>
+          <td class="paramname"> <em>size</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+現在の注目位置(m_curr)から8バイトを読んでdoubleとして返す 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>size</em>&nbsp;</td><td>[o] 読み進んだバイト数(=8)</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>読み込んだdouble実数 </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l01640">1640</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="1f275e1fde999b1effc4fb47d6257387"></a><!-- doxytag: member="Sgv::PacketAnalyzer::getEncodingTypeString" ref="1f275e1fde999b1effc4fb47d6257387" args="(short encType)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * Sgv::PacketAnalyzer::getEncodingTypeString           </td>
+          <td>(</td>
+          <td class="paramtype">short&nbsp;</td>
+          <td class="paramname"> <em>encType</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+エンコーディングタイプの文字列表現を得る 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>encType</em>&nbsp;</td><td>[i] エンコーディングタイプ</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>エンコーディングタイプの文字列表現 </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l01952">1952</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="1a76054b34d5dc9c4d538c05f213d939"></a><!-- doxytag: member="Sgv::PacketAnalyzer::getEndianTypeString" ref="1a76054b34d5dc9c4d538c05f213d939" args="(short endianType)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * Sgv::PacketAnalyzer::getEndianTypeString           </td>
+          <td>(</td>
+          <td class="paramtype">short&nbsp;</td>
+          <td class="paramname"> <em>endianType</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+エンディアンタイプの文字列表現を得る 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>endianType</em>&nbsp;</td><td>[i] エンディアンタイプ</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>エンディアンタイプの文字列表現 </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l01989">1989</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="8464576da80f41f9cd54fe12561ad93f"></a><!-- doxytag: member="Sgv::PacketAnalyzer::getImageDataTypeString" ref="8464576da80f41f9cd54fe12561ad93f" args="(short imgDataType)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * Sgv::PacketAnalyzer::getImageDataTypeString           </td>
+          <td>(</td>
+          <td class="paramtype">short&nbsp;</td>
+          <td class="paramname"> <em>imgDataType</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+イメージデータタイプの文字列表現を得る 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>imgDataType</em>&nbsp;</td><td>[i] イメージデータタイプ</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>イメージデータタイプの文字列表現 </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l02012">2012</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="84f4f6aecb454a36c94c76e3892d42ae"></a><!-- doxytag: member="Sgv::PacketAnalyzer::getLong" ref="84f4f6aecb454a36c94c76e3892d42ae" args="(int &amp;size)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long Sgv::PacketAnalyzer::getLong           </td>
+          <td>(</td>
+          <td class="paramtype">int &amp;&nbsp;</td>
+          <td class="paramname"> <em>size</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+現在の注目位置(m_curr)から4バイトを読んでlongとして返す 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>size</em>&nbsp;</td><td>[o] 読み進んだバイト数(=4)</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>読み込んだlong整数 </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l01631">1631</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="a8cb624a0afd18c5c5cb79248b80dfe9"></a><!-- doxytag: member="Sgv::PacketAnalyzer::getShort" ref="a8cb624a0afd18c5c5cb79248b80dfe9" args="(int &amp;size)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">short Sgv::PacketAnalyzer::getShort           </td>
+          <td>(</td>
+          <td class="paramtype">int &amp;&nbsp;</td>
+          <td class="paramname"> <em>size</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+現在の注目位置(m_curr)から2バイトを読んでshortとして返す 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>size</em>&nbsp;</td><td>[o] 読み進んだバイト数(=2)</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>読み込んだshort整数 </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l01622">1622</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="02a256b20e510ca96eb092e07cd02712"></a><!-- doxytag: member="Sgv::PacketAnalyzer::getString" ref="02a256b20e510ca96eb092e07cd02712" args="(int &amp;size)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Sgv::PacketAnalyzer::getString           </td>
+          <td>(</td>
+          <td class="paramtype">int &amp;&nbsp;</td>
+          <td class="paramname"> <em>size</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+現在の注目位置(m_curr)から文字列を読んで返す． 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>size</em>&nbsp;</td><td>[o] 読み進んだバイト数 (=文字列の長さを4バイトアライメントで区切ったバイト数)</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>読み込んだ文字列 </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l01649">1649</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="248755c4024cce96b4b306d3c0737f1d"></a><!-- doxytag: member="Sgv::PacketAnalyzer::incr" ref="248755c4024cce96b4b306d3c0737f1d" args="(int size)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::PacketAnalyzer::incr           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>size</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+現在の注目位置をsizeバイト進める 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>size</em>&nbsp;</td><td>[i] インクリメントするバイト数 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l01685">1685</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="8b4570618d230f85218fe12f0fadc29f"></a><!-- doxytag: member="Sgv::PacketAnalyzer::loadPacketData" ref="8b4570618d230f85218fe12f0fadc29f" args="(const char *dumpFile)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::loadPacketData           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>dumpFile</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+解析対象パケットデータをファイルから読みこむ 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>dumpFile</em>&nbsp;</td><td>[i] ダンプファイル名</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l00069">69</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="8afdd77bf40bdc13fe72dbec5a0dbf8f"></a><!-- doxytag: member="Sgv::PacketAnalyzer::printBinary" ref="8afdd77bf40bdc13fe72dbec5a0dbf8f" args="(int len, char *msg)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::PacketAnalyzer::printBinary           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>len</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>msg</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+現在の注目位置(m_curr)からlenバイトを表示 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>len</em>&nbsp;</td><td>[i] ダンプデータを表示するバイト数 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>msg</em>&nbsp;</td><td>[i] メッセージ </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l01719">1719</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="bcd999e69db88be62eb525912ce9b726"></a><!-- doxytag: member="Sgv::PacketAnalyzer::printBinary" ref="bcd999e69db88be62eb525912ce9b726" args="(int addr, unsigned char *data, int len, char *msg)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::PacketAnalyzer::printBinary           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char *&nbsp;</td>
+          <td class="paramname"> <em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>len</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>msg</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+dataからlenバイトのバイナリデータを表示 
+<p>
+addrはアドレス表示用<p>
+msgはダンプデータの横に表示されるメッセージ (バイナリデータの意味などを表示するため)<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>addr</em>&nbsp;</td><td>[i] 表示する先頭へのインデックス </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>data</em>&nbsp;</td><td>[i] メモリブロックへのポインタ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>len</em>&nbsp;</td><td>[i] 表示するバイト数 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>msg</em>&nbsp;</td><td>[i] メッセージ </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l01690">1690</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="139921c08eb66c66aed141f958e680f4"></a><!-- doxytag: member="Sgv::PacketAnalyzer::printDouble" ref="139921c08eb66c66aed141f958e680f4" args="(char *format,...)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::PacketAnalyzer::printDouble           </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>...</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+現在の注目位置(m_curr)から8バイトを表示 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>format</em>&nbsp;</td><td>[i] printf風フォーマット文字列 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l01750">1750</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="4ed9d8fa91e16e6c5cdcefa9e78a46c6"></a><!-- doxytag: member="Sgv::PacketAnalyzer::printLong" ref="4ed9d8fa91e16e6c5cdcefa9e78a46c6" args="(char *format,...)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::PacketAnalyzer::printLong           </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>...</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+現在の注目位置(m_curr)から4バイトを表示 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>format</em>&nbsp;</td><td>[i] printf風フォーマット文字列 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l01737">1737</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="699d234abc56578e96dc6de3c0b32aa3"></a><!-- doxytag: member="Sgv::PacketAnalyzer::printShort" ref="699d234abc56578e96dc6de3c0b32aa3" args="(char *format,...)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::PacketAnalyzer::printShort           </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>...</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+現在の注目位置(m_curr)から2バイトを表示 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>format</em>&nbsp;</td><td>[i] printf風フォーマット文字列 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l01724">1724</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="d903d892df6d49704f5832683a9b1633"></a><!-- doxytag: member="Sgv::PacketAnalyzer::printString" ref="d903d892df6d49704f5832683a9b1633" args="(int size, char *format,...)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::PacketAnalyzer::printString           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>...</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+現在の注目位置(m_curr)からsizeバイトを表示 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>size</em>&nbsp;</td><td>[i] ダンプデータを表示するバイト数 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>format</em>&nbsp;</td><td>[i] printf風フォーマット文字列 </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l01763">1763</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="eafea2ba7ddc7527799c41ff3e139f79"></a><!-- doxytag: member="Sgv::PacketAnalyzer::savePacketData" ref="eafea2ba7ddc7527799c41ff3e139f79" args="(const char *dumpFile, bool bAppend)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::savePacketData           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>dumpFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bAppend</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+現在保持している解析対象パケットデータをファイルに書き出す 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>dumpFile</em>&nbsp;</td><td>[i] ダンプデータを書き出すファイル名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bAppend</em>&nbsp;</td><td>[i] true(=すでに存在するファイルがあればそれに追加する), false(=新しくファイルを上書きする)</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l00176">176</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="be0d7df17a53da42ce835055696a63a3"></a><!-- doxytag: member="Sgv::PacketAnalyzer::setPacketData" ref="be0d7df17a53da42ce835055696a63a3" args="(CommDataEncoder *enc)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::setPacketData           </td>
+          <td>(</td>
+          <td class="paramtype">CommDataEncoder *&nbsp;</td>
+          <td class="paramname"> <em>enc</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+解析対象パケットデータをエンコーダから得る 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>enc</em>&nbsp;</td><td>[i] 解析対象パケットを得るエンコーダ</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l00127">127</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="98e269cecbd7ffc905b649f0ed141783"></a><!-- doxytag: member="Sgv::PacketAnalyzer::setPacketData" ref="98e269cecbd7ffc905b649f0ed141783" args="(char *p, int size)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::setPacketData           </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>size</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+解析対象パケットデータをセットする 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>p</em>&nbsp;</td><td>[i] 解析対象パケットの先頭ポインタ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>size</em>&nbsp;</td><td>[i] 解析対象パケットのサイズ</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l00113">113</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="1fe1d471ec426788a0c27aac3f0ffa56"></a><!-- doxytag: member="Sgv::PacketAnalyzer::setPacketData" ref="1fe1d471ec426788a0c27aac3f0ffa56" args="(Sgv::Packet *packet)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::PacketAnalyzer::setPacketData           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sgv_1_1_packet.html">Sgv::Packet</a> *&nbsp;</td>
+          <td class="paramname"> <em>packet</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+解析対象パケットデータをセットする 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>packet</em>&nbsp;</td><td>[i] 解析対象パケット</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l00160">160</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="280fc8f5dea2645085a27e9691d902e8"></a><!-- doxytag: member="Sgv::PacketAnalyzer::‾PacketAnalyzer" ref="280fc8f5dea2645085a27e9691d902e8" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::PacketAnalyzer::‾PacketAnalyzer           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+デストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a> の <a class="el" href="_sgv_packet_analyzer_8cpp_source.html#l00028">28</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_sgv_packet_analyzer_8h_source.html">SgvPacketAnalyzer.h</a><li><a class="el" href="_sgv_packet_analyzer_8cpp_source.html">SgvPacketAnalyzer.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGViewerに対してThu Jun 9 10:52:15 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

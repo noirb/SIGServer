@@ -1,0 +1,430 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: クラス HingeJoint</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス HingeJoint</h1><!-- doxytag: class="HingeJoint" --><!-- doxytag: inherits="Joint" -->
+<p>ヒンジ関節(HING)  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_joint_8h_source.html">Joint.h</a>&gt;</code></p>
+<div class="dynheader">
+HingeJointに対する継承グラフ</div>
+<div class="dynsection">
+<div class="center"><img src="class_hinge_joint__inherit__graph.png" border="0" usemap="#_hinge_joint_inherit__map" alt="Inheritance graph"/></div>
+<map name="_hinge_joint_inherit__map" id="_hinge_joint_inherit__map">
+<area shape="rect" href="class_joint.html" title="部品同士を繋ぐ関節クラス" alt="" coords="23,5,71,35"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+<div class="dynheader">
+HingeJointのコラボレーション図</div>
+<div class="dynsection">
+<div class="center"><img src="class_hinge_joint__coll__graph.png" border="0" usemap="#_hinge_joint_coll__map" alt="Collaboration graph"/></div>
+<map name="_hinge_joint_coll__map" id="_hinge_joint_coll__map">
+<area shape="rect" href="class_joint.html" title="部品同士を繋ぐ関節クラス" alt="" coords="89,120,137,149"/><area shape="rect" href="class_vector3d.html" title="3次元ベクトルクラス" alt="" coords="5,5,77,35"/><area shape="rect" href="class_rotation.html" title="回転行列クラス" alt="" coords="120,5,189,35"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+
+<p><a href="class_hinge_joint-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hinge_joint.html#aacb900ce40cce89ee4537a7910ae3371">addTorque</a> (double t)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ジョイントにトルクを加える  <a href="#aacb900ce40cce89ee4537a7910ae3371"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hinge_joint.html#a84c88d16922a6583e0b21be1ee4fc289">getAngle</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">回転角度を得る  <a href="#a84c88d16922a6583e0b21be1ee4fc289"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hinge_joint.html#a58b2830d5876b349ee1e1e8bddfc469c">getAxisX</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">回転軸を取得します  <a href="#a58b2830d5876b349ee1e1e8bddfc469c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hinge_joint.html#ab4d30b367b9c21ccf5c2f44733801d7e">getAxisY</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hinge_joint.html#a57ff59e9cda1a280463add59401c6cad">getAxisZ</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hinge_joint.html#a3246c20b11b637a06712b69c9eb6a255">HingeJoint</a> (const char *name, const <a class="el" href="class_vector3d.html">Vector3d</a> &amp;axis)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#a3246c20b11b637a06712b69c9eb6a255"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hinge_joint.html#a1788c39d0c71e3b6686f1c0cba87a997">setAngle</a> (double angle)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">回転角度を設定する  <a href="#a1788c39d0c71e3b6686f1c0cba87a997"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hinge_joint.html#ad1a22dbdbd7d0b2ea6accacc6710c66b">setAxis</a> (double ax, double ay, double az)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">回転軸の設定  <a href="#ad1a22dbdbd7d0b2ea6accacc6710c66b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hinge_joint.html#a4bb536ffd6694875c3b7ab4b9b2ecc66">setVelocity</a> (dReal v, dReal max)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">回転速度を設定する  <a href="#a4bb536ffd6694875c3b7ab4b9b2ecc66"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hinge_joint.html#a83704bcf14093800e45a0debf085acf0">‾HingeJoint</a> ()</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>ヒンジ関節(HING) </p>
+
+<p> <a class="el" href="_joint_8h_source.html">Joint.h</a> の <a class="el" href="_joint_8h_source.html#l00217">217</a> 行で定義されています。</p>
+<hr/><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" id="a3246c20b11b637a06712b69c9eb6a255"></a><!-- doxytag: member="HingeJoint::HingeJoint" ref="a3246c20b11b637a06712b69c9eb6a255" args="(const char *name, const Vector3d &amp;axis)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HingeJoint::HingeJoint </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_vector3d.html">Vector3d</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>axis</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コンストラクタ </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>関節名 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>axis</em>&nbsp;</td><td>回転軸 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_joint_8h_source.html">Joint.h</a> の <a class="el" href="_joint_8h_source.html#l00228">228</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>関数</h2>
+<a class="anchor" id="aacb900ce40cce89ee4537a7910ae3371"></a><!-- doxytag: member="HingeJoint::addTorque" ref="aacb900ce40cce89ee4537a7910ae3371" args="(double t)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HingeJoint::addTorque </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>t</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ジョイントにトルクを加える </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>t</em>&nbsp;</td><td>トルク[Nm] </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><a class="el" href="class_joint.html#a24bda4ec0582e8fdcf3ee0f65a0ced07">Joint</a>を実装しています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a84c88d16922a6583e0b21be1ee4fc289"></a><!-- doxytag: member="HingeJoint::getAngle" ref="a84c88d16922a6583e0b21be1ee4fc289" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double HingeJoint::getAngle </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>回転角度を得る </p>
+<dl class="return"><dt><b>戻り値:</b></dt><dd>角度(ラジアン) </dd></dl>
+
+<p> <a class="el" href="_joint_8h_source.html">Joint.h</a> の <a class="el" href="_joint_8h_source.html#l00254">254</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a58b2830d5876b349ee1e1e8bddfc469c"></a><!-- doxytag: member="HingeJoint::getAxisX" ref="a58b2830d5876b349ee1e1e8bddfc469c" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double HingeJoint::getAxisX </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>回転軸を取得します </p>
+
+<p> <a class="el" href="_joint_8h_source.html">Joint.h</a> の <a class="el" href="_joint_8h_source.html#l00239">239</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_hinge_joint_a58b2830d5876b349ee1e1e8bddfc469c_cgraph.png" border="0" usemap="#class_hinge_joint_a58b2830d5876b349ee1e1e8bddfc469c_cgraph_map" alt=""></div>
+<map name="class_hinge_joint_a58b2830d5876b349ee1e1e8bddfc469c_cgraph_map" id="class_hinge_joint_a58b2830d5876b349ee1e1e8bddfc469c_cgraph">
+<area shape="rect" href="class_vector3d.html#a4e77e669055f31f2b244b1ee37ffa36f" title="X軸要素を設定する." alt="" coords="197,5,285,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ab4d30b367b9c21ccf5c2f44733801d7e"></a><!-- doxytag: member="HingeJoint::getAxisY" ref="ab4d30b367b9c21ccf5c2f44733801d7e" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double HingeJoint::getAxisY </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_joint_8h_source.html">Joint.h</a> の <a class="el" href="_joint_8h_source.html#l00242">242</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_hinge_joint_ab4d30b367b9c21ccf5c2f44733801d7e_cgraph.png" border="0" usemap="#class_hinge_joint_ab4d30b367b9c21ccf5c2f44733801d7e_cgraph_map" alt=""></div>
+<map name="class_hinge_joint_ab4d30b367b9c21ccf5c2f44733801d7e_cgraph_map" id="class_hinge_joint_ab4d30b367b9c21ccf5c2f44733801d7e_cgraph">
+<area shape="rect" href="class_vector3d.html#aa543c5f9ab89744357a80dd1ab6031cb" title="Y軸要素を設定する." alt="" coords="197,5,285,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a57ff59e9cda1a280463add59401c6cad"></a><!-- doxytag: member="HingeJoint::getAxisZ" ref="a57ff59e9cda1a280463add59401c6cad" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double HingeJoint::getAxisZ </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_joint_8h_source.html">Joint.h</a> の <a class="el" href="_joint_8h_source.html#l00245">245</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_hinge_joint_a57ff59e9cda1a280463add59401c6cad_cgraph.png" border="0" usemap="#class_hinge_joint_a57ff59e9cda1a280463add59401c6cad_cgraph_map" alt=""></div>
+<map name="class_hinge_joint_a57ff59e9cda1a280463add59401c6cad_cgraph_map" id="class_hinge_joint_a57ff59e9cda1a280463add59401c6cad_cgraph">
+<area shape="rect" href="class_vector3d.html#ac95aee85033af052d24e15975faeea7d" title="Z軸要素を設定する." alt="" coords="197,5,285,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a1788c39d0c71e3b6686f1c0cba87a997"></a><!-- doxytag: member="HingeJoint::setAngle" ref="a1788c39d0c71e3b6686f1c0cba87a997" args="(double angle)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HingeJoint::setAngle </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>d</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>回転角度を設定する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>d</em>&nbsp;</td><td>角度(ラジアン) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><a class="el" href="class_joint.html#adde693bde4aba5aa4864f26ae978a334">Joint</a>を実装しています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ad1a22dbdbd7d0b2ea6accacc6710c66b"></a><!-- doxytag: member="HingeJoint::setAxis" ref="ad1a22dbdbd7d0b2ea6accacc6710c66b" args="(double ax, double ay, double az)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HingeJoint::setAxis </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>ax</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>ay</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>az</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>回転軸の設定 </p>
+
+<p> <a class="el" href="_joint_8h_source.html">Joint.h</a> の <a class="el" href="_joint_8h_source.html#l00234">234</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_hinge_joint_ad1a22dbdbd7d0b2ea6accacc6710c66b_cgraph.png" border="0" usemap="#class_hinge_joint_ad1a22dbdbd7d0b2ea6accacc6710c66b_cgraph_map" alt=""></div>
+<map name="class_hinge_joint_ad1a22dbdbd7d0b2ea6accacc6710c66b_cgraph_map" id="class_hinge_joint_ad1a22dbdbd7d0b2ea6accacc6710c66b_cgraph">
+<area shape="rect" href="class_vector3d.html#a48b289797e79e11e7dac828f1900321a" title="各要素を設定する" alt="" coords="189,5,288,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a4bb536ffd6694875c3b7ab4b9b2ecc66"></a><!-- doxytag: member="HingeJoint::setVelocity" ref="a4bb536ffd6694875c3b7ab4b9b2ecc66" args="(dReal v, dReal max)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HingeJoint::setVelocity </td>
+          <td>(</td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">dReal&nbsp;</td>
+          <td class="paramname"> <em>max</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>回転速度を設定する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>v</em>&nbsp;</td><td>角速度[rad] </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>max</em>&nbsp;</td><td>最大トルク[Nm] </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_joint_8h_source.html">Joint.h</a> の <a class="el" href="_joint_8h_source.html#l00269">269</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a83704bcf14093800e45a0debf085acf0"></a><!-- doxytag: member="HingeJoint::‾HingeJoint" ref="a83704bcf14093800e45a0debf085acf0" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HingeJoint::‾HingeJoint </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p> <a class="el" href="_joint_8h_source.html">Joint.h</a> の <a class="el" href="_joint_8h_source.html#l00229">229</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_joint_8h_source.html">Joint.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:19 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

@@ -1,0 +1,432 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
+<link rel="stylesheet" type="text/css" href="../../prj.css"/>
+<title>SIGWorldEditorの設計に関する追加説明</title>
+</head>
+
+<body>
+<h1>主要クラスの概要</h1>
+
+<p>
+ここではSIGWorldEditorを構成する主なクラスの概要を説明する．
+</p>
+
+<p>
+大きく分けて
+<ol>
+<li>世界、エンティティ関連クラス</li>
+<li>GUI関連クラス</li>
+</ol>
+の2つに分けられる
+</p>
+
+<h2>1. 世界、エンティティ関連クラス</h2>
+
+<p>
+世界、エンティティを扱うのは次の5つのクラスである．また、これらの関連図を示す．
+</p>
+
+<ul>
+<li>XMLWorld</li>
+<li>XMLEntity</li>
+<li>XMLEntityClass</li>
+<li>XMLEntityClassManager</li>
+<li>XMLFileList</li>
+</ul>
+
+<p align="center">
+<img border="0" src="ClassRelation1.jpg">
+</p>
+
+<br><h3>XMLWorld</h3>
+
+<p>
+XMLWorldは世界XMLファイルに対応するクラスである．
+</p>
+
+<p>
+XMLWorldは世界内に存在するエンティティを保持する．
+新しいエンティティの生成や、既存エンティティの削除、世界ファイルのロード(loadFromXML())、世界ファイルへのセーブ(saveToXML())が行える．
+</p>
+
+<p>●主なメソッドの働き</p>
+
+<dl>
+<dt>
+<font size="4">loadFromXML</font>
+<dd>世界XMLファイルをロードする．<br><br>
+
+<dt>
+<font size="4">saveToXML</font>
+<dd>世界XMLファイルへセーブする．<br><br>
+
+<dt>
+<font size="4">getEntityNames</font>
+<dd>世界内に存在する全エンティティの名前を返す<br><br>
+
+<dt>
+<font size="4">getEntity</font>
+<dd>エンティティ名からXMLEntityオブジェクトを引く<br><br>
+
+<dt>
+<font size="4">createEntity</font>
+<dd>世界内に新しいエンティティを生成する<br><br>
+
+<dt>
+<font size="4">deleteEntity</font>
+<dd>エンティティを世界から削除する<br><br>
+</dl>
+
+<br><h3>XMLEntity</h3>
+
+<p>
+XMLWorld内に存在するエンティティの実体である．XMLEntityClassから生成されるインスタンスと言うこともできる．
+</p>
+
+<p>●主なメソッドの働き</p>
+
+<dl>
+<dt>
+<font size="4">getName</font>
+<dd>エンティティ名を得る<br><br>
+
+<dt>
+<font size="4">getAttrName</font>
+<dd>属性の名前を得る<br><br>
+
+<dt>
+<font size="4">getAttrValue</font>
+<dd>属性値を得る<br><br>
+
+<dt>
+<font size="4">setAttrValue</font>
+<dd>属性値を設定する<br><br>
+</dl>
+
+<br><h3>XMLEntityClass</h3>
+
+<p>
+XMLEntityClassは1つのエンティティ定義XMLファイルに相当するクラスである．
+</p>
+
+<p>
+エンティティ定義の持つ複数個の属性定義を含む．属性定義を追加・削除・変更するためのメソッドも備える．
+</p>
+
+<p>●主なメソッドの働き</p>
+
+<dl>
+<dt>
+<font size="4">loadFromXML</font>
+<dd>エンティティ定義XMLファイルをロードする<br><br>
+
+<dt>
+<font size="4">saveToXML</font>
+<dd>エンティティ定義をXMLファイルにセーブする<br><br>
+
+<dt>
+<font size="4">countAttrs</font>
+<dd>属性の個数を得る<br><br>
+
+<dt>
+<font size="4">getAttr</font>
+<dd>属性を得る<br><br>
+
+<dt>
+<font size="4">addAttr</font>
+<dd>属性を追加する<br><br>
+
+<dt>
+<font size="4">deleteAttr</font>
+<dd>属性を削除する<br><br>
+
+<dt>
+<font size="4">setAttrValue</font>
+<dd>属性値を設定する<br><br>
+</dl>
+
+<br><h3>XMLEntityClassManager</h3>
+
+<p>
+XMLEntityClassManagerは複数のXMLEntityClassを保持するコンテナ的クラスである．
+</p>
+
+<p>
+新しいXMLEntityClassの作成、削除等はこのクラスが行う．XMLEntityClassからXMLEntityの生成（クラスからインスタンスの生成）も行う．また、エンティティ定義ファイル名とエンティティクラス名の対応もこのクラスが保持する
+</p>
+
+
+<p>●主なメソッドの働き</p>
+
+<dl>
+<dt>
+<font size="4">loadXMLEntityFiles</font>
+<dd>複数のエンティティクラス定義XMLファイルを一度に読み込む<br><br>
+
+<dt>
+<font size="4">saveUpdatedEntityClasses</font>
+<dd>定義に変更のあったエンティティクラスをファイルにセーブする<br><br>
+
+<dt>
+<font size="4">createInstance</font>
+<dd>エンティティクラスからXMLEntityインスタンスを生成する．<br><br>
+
+<dt>
+<font size="4">getEntityClass</font>
+<dd>指定のエンティティクラスを返す<br><br>
+
+<dt>
+<font size="4">getEntityClassNames</font>
+<dd>すべてのエンティティクラスの名前を返す<br><br>
+
+<dt>
+<font size="4">addNewEntityClass</font>
+<dd>新しいエンティティクラスを追加する<br><br>
+
+<dt>
+<font size="4">deleteEntityClass</font>
+<dd>エンティティクラスを削除する<br><br>
+</dl>
+
+<br><h3>XMLFileList</h3>
+
+<p>
+ワーキングディレクトリ内に存在する世界XMLファイル、エンティティ定義XMLファイルのリストを保持する．
+</p>
+
+<p>●主なメソッドの働き</p>
+
+<dl>
+<dt>
+<font size="4">searchXMLFiles</font>
+<dd>カレントディレクトリにある世界XMLファイル、エンティティ定義XMLファイルを検索する<br><br>
+
+<dt>
+<font size="4">getWorldFileNames</font>
+<dd>世界XMLファイル名のリストを返す<br><br>
+
+<dt>
+<font size="4">getEntityClassFileNames</font>
+<dd>エンティティ定義XMLファイルのリストを返す<br><br>
+</dl>
+
+<br>
+<br>
+<h2>2. GUI関連クラス</h2>
+
+<p>
+GUI関連クラスには以下のものがある．
+</p>
+
+<ul>
+<li>MainWindow</li>
+<li>OgreClientWindow</li>
+<li>ClassEditorWindow</li>
+<li>RightPanelProc_Entity</li>
+<li>RightPanelProc_Humanoid</li>
+<li>BottomPanelProc_Msg</li>
+<li>BasePanelProc</li>
+</ul>
+
+<p align="center">
+<img border="0" src="ClassRelation2.jpg">
+</p>
+
+<br><h3>MainWindow</h3>
+
+<p>
+MainWindowはSIGWorldEditorのメインウィンドウクラスである．
+</p>
+
+<p>
+SIGWorldEditorの初期化から、メインループ、形状作成、その他主要な処理を行う、システムの中核となすクラスである．
+</p>
+
+<p>
+また、他のすべてのウィンドウの親ウィンドウでもある．
+</p>
+
+<p>●主なメソッドの働き</p>
+
+<dl>
+<dt>
+<font size="4">init</font>
+<dd>SIGWorldEditorの初期化処理を行う<br><br>
+
+<dt>
+<font size="4">loadWorldXMLFile</font>
+<dd>世界XMLファイルを読み込み、世界の状況を画面上に復元する<br><br>
+
+<dt>
+<font size="4">saveWorldXMLFile</font>
+<dd>現在編集中の世界を世界XMLファイルにセーブする<br><br>
+
+<dt>
+<font size="4">getEntity</font>
+<dd>指定のエンティティを得る<br><br>
+
+<dt>
+<font size="4">createEntityNode</font>
+<dd>新しいエンティティを生成し、画面に表示する<br><br>
+
+<dt>
+<font size="4">deleteEntity</font>
+<dd>エンティティを削除し、画面上から消す<br><br>
+
+<dt>
+<font size="4">clearWorld</font>
+<dd>世界をクリアし、すべての表示形状も消す<br><br>
+</dl>
+
+<br><h3>OgreClientWindow</h3>
+
+<p>
+メインウィンドウ上の、3次元世界表示部分のウィンドウである．</p>
+
+<p>
+メインウィンドウの子ウィンドウとして作成される．Ogreライブラリはこのウィンドウ上に3次元物体を表示する．
+</p>
+
+<p>
+3次元表示画面上でのマウスクリック、マウス移動などのイベントが発生した際の処理（イベントハンドラ）を持つ．
+</p>
+
+<p>●主なメソッドの働き</p>
+
+<dl>
+<dt>
+<font size="4">onLButtonDown</font>
+<dd>マウスの左ボタンが押された際に呼ばれる<br><br>
+
+<dt>
+<font size="4">onLButtonUp</font>
+<dd>マウスの左ボタンが放された際に呼ばれる<br><br>
+
+<dt>
+<font size="4">onRButtonDown</font>
+<dd>マウスの右ボタンが押された際に呼ばれる<br><br>
+
+<dt>
+<font size="4">onRButtonUp</font>
+<dd>マウスの右ボタンが放された際に呼ばれる<br><br>
+
+<dt>
+<font size="4">onMouseMove</font>
+<dd>3次元表示画面上でマウスが移動した際に呼ばれる<br><br>
+</dl>
+
+<br><h3>ClassEditorWindow</h3>
+
+<p>
+クラスエディタウィンドウである．クラス定義の編集に関するメソッドを多数持つ．
+</p>
+
+<p>●主なメソッドの働き</p>
+
+<dl>
+<dt>
+<font size="4">onButtonPress_CreateClass</font>
+<dd>新規エンティティクラスの作成ボタンが押されると呼ばれる<br><br>
+
+<dt>
+<font size="4">onButtonPress_DeleteClass</font>
+<dd>エンティティクラスの削除ボタンが押されると呼ばれる<br><br>
+
+<dt>
+<font size="4">onButtonPress_SetAttr</font>
+<dd>エンティティクラスの属性値設定ボタンが押されると呼ばれる<br><br>
+
+<dt>
+<font size="4">onButtonPress_Save</font>
+<dd>エンティティクラス定義のセーブボタンが押されると呼ばれる<br><br>
+</dl>
+
+<br><h3>BasePanelProc</h3>
+
+<p>
+メインウィンドウ上のパネル（下、右）のベースクラスである．
+</p>
+
+<p>●主なメソッドの働き</p>
+
+<dl>
+<dt>
+<font size="4">getPanelHWND</font>
+<dd>パネルのウィンドウハンドルを返す．これはパネル上に存在するGUI部品の親ウィンドウである．<br><br>
+</dl>
+
+<br><h3>RightPanelProc_Entity</h3>
+
+<p>
+画面右パネルの「Entity」タブ上のGUI部品に関するクラスである．
+</p>
+
+<p>●主なメソッドの働き</p>
+
+<dl>
+<dt>
+<font size="4">onSelChange_Attrs</font>
+<dd>属性名選択リストボックスがクリックされると呼ばれる<br><br>
+
+<dt>
+<font size="4">onSelChange_EntityName</font>
+<dd>エンティティ名選択リストが変更されると呼ばれる<br><br>
+
+<dt>
+<font size="4">onButtonPress_SetValue</font>
+<dd>属性値設定ボタンが押されると呼ばれる<br><br>
+</dl>
+
+<br><h3>RightPanelProc_Humanoid</h3>
+
+<p>
+画面右パネルの「Humanoid」タブ上のGUI部品に関するクラスである．
+</p>
+
+<p>●主なメソッドの働き</p>
+
+<dl>
+<dt>
+<font size="4">onSelChange_JointList</font>
+<dd>ヒューマノイドのジョイント名リストがクリックされると呼ばれる<br><br>
+
+<dt>
+<font size="4">onButtonPress_SetJointParam</font>
+<dd>ジョイントパラメータ（位置、方向）の設定ボタンが押されると呼ばれる<br><br>
+
+<dt>
+<font size="4">onButtonPress_WriteJointInfo</font>
+<dd>ジョイントパラメータをファイルに書き出すボタンが押されると呼ばれる<br><br>
+</dl>
+
+<br><h3>BottomPanelProc_Msg</h3>
+
+<p>
+画面下パネルの「Message」タブ上のGUI部品に関するクラスである．
+</p>
+
+<p>●主なメソッドの働き</p>
+
+<dl>
+<dt>
+<font size="4">onCreateNewWorld</font>
+<dd>「Create New World」ボタンを押した際に呼ばれる<br><br>
+
+<dt>
+<font size="4">onLoadWorldXML</font>
+<dd>「Load World XML」ボタンを押した際に呼ばれる<br><br>
+
+<dt>
+<font size="4">onSaveWorldXML</font>
+<dd>「Save World XML」ボタンを押した際に呼ばれる<br><br>
+</dl>
+
+
+<hr><address style="align: right;"><a href="http://www.msi.co.jp"><img src="msilogo.gif" align="middle" border=0
+
+width=139 height=53>（株）数理システム</a>
+</body>
+
+</html>

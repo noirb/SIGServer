@@ -1,0 +1,386 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGViewer: クラス Sgv::TimeLog</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_sgv.html">Sgv</a>::<a class="el" href="class_sgv_1_1_time_log.html">TimeLog</a>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス Sgv::TimeLog</h1><!-- doxytag: class="Sgv::TimeLog" -->時間測定用ログ  
+<a href="#_details">[詳細]</a>
+<p>
+<code>#include &lt;<a class="el" href="_sgv_time_log_8h_source.html">SgvTimeLog.h</a>&gt;</code>
+<p>
+
+<p>
+<a href="class_sgv_1_1_time_log-members.html">すべてのメンバ一覧</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_time_log.html#b84d364247795ee6f97f3a331167cb48">close</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ログファイルを閉じる  <a href="#b84d364247795ee6f97f3a331167cb48"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_time_log.html#047c79b5d2c857ba4ef01f6e834cc742">end</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">測定ポイントが終了したら呼ぶ  <a href="#047c79b5d2c857ba4ef01f6e834cc742"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_time_log.html#d2ac1e244dbe912eb2f9e4fbf218311a">flush</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ログファイルをフラッシュする  <a href="#d2ac1e244dbe912eb2f9e4fbf218311a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_time_log.html#1379e88320e9a11dce63d11ad858ae7f">getLogFileName</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ログファイル名を得る  <a href="#1379e88320e9a11dce63d11ad858ae7f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_time_log.html#5622d76c48770cbf12ffd262b4fdca59">open</a> (const char *logFileName=NULL)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ログファイルを開く  <a href="#5622d76c48770cbf12ffd262b4fdca59"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_time_log.html#821305b04105d3a561f79253d1fd07a4">print</a> (const char *format,...)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">測定ポイントが終了したら呼ぶ  <a href="#821305b04105d3a561f79253d1fd07a4"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_time_log.html#f0767cfc25e9606fb936dc9c28b726e5">setTitle</a> (const char *title)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">タイトルの設定  <a href="#f0767cfc25e9606fb936dc9c28b726e5"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_time_log.html#297eea84aa9f21916ef82e22d254e9a8">start</a> (const char *format,...)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">測定ポイントに入る前に呼ぶ  <a href="#297eea84aa9f21916ef82e22d254e9a8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_time_log.html#c49d1f706998ca05c422b12d5a10c195">TimeLog</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#c49d1f706998ca05c422b12d5a10c195"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sgv_1_1_time_log.html#65036a669b11ef265fe489dc229ff76f">‾TimeLog</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#65036a669b11ef265fe489dc229ff76f"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>説明</h2>
+時間測定用ログ 
+<p> <a class="el" href="_sgv_time_log_8h_source.html">SgvTimeLog.h</a> の <a class="el" href="_sgv_time_log_8h_source.html#l00015">15</a> 行で定義されています。</p>
+<hr><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" name="c49d1f706998ca05c422b12d5a10c195"></a><!-- doxytag: member="Sgv::TimeLog::TimeLog" ref="c49d1f706998ca05c422b12d5a10c195" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::TimeLog::TimeLog           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+コンストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_time_log_8cpp_source.html">SgvTimeLog.cpp</a> の <a class="el" href="_sgv_time_log_8cpp_source.html#l00006">6</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr><h2>関数</h2>
+<a class="anchor" name="b84d364247795ee6f97f3a331167cb48"></a><!-- doxytag: member="Sgv::TimeLog::close" ref="b84d364247795ee6f97f3a331167cb48" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::TimeLog::close           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ログファイルを閉じる 
+<p>
+
+<p> <a class="el" href="_sgv_time_log_8cpp_source.html">SgvTimeLog.cpp</a> の <a class="el" href="_sgv_time_log_8cpp_source.html#l00047">47</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="047c79b5d2c857ba4ef01f6e834cc742"></a><!-- doxytag: member="Sgv::TimeLog::end" ref="047c79b5d2c857ba4ef01f6e834cc742" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::TimeLog::end           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+測定ポイントが終了したら呼ぶ 
+<p>
+
+<p> <a class="el" href="_sgv_time_log_8cpp_source.html">SgvTimeLog.cpp</a> の <a class="el" href="_sgv_time_log_8cpp_source.html#l00085">85</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="d2ac1e244dbe912eb2f9e4fbf218311a"></a><!-- doxytag: member="Sgv::TimeLog::flush" ref="d2ac1e244dbe912eb2f9e4fbf218311a" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::TimeLog::flush           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ログファイルをフラッシュする 
+<p>
+
+<p> <a class="el" href="_sgv_time_log_8cpp_source.html">SgvTimeLog.cpp</a> の <a class="el" href="_sgv_time_log_8cpp_source.html#l00135">135</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="1379e88320e9a11dce63d11ad858ae7f"></a><!-- doxytag: member="Sgv::TimeLog::getLogFileName" ref="1379e88320e9a11dce63d11ad858ae7f" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * Sgv::TimeLog::getLogFileName           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ログファイル名を得る 
+<p>
+
+<p> <a class="el" href="_sgv_time_log_8cpp_source.html">SgvTimeLog.cpp</a> の <a class="el" href="_sgv_time_log_8cpp_source.html#l00142">142</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="5622d76c48770cbf12ffd262b4fdca59"></a><!-- doxytag: member="Sgv::TimeLog::open" ref="5622d76c48770cbf12ffd262b4fdca59" args="(const char *logFileName=NULL)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sgv::TimeLog::open           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>logFileName</em> = <code>NULL</code>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ログファイルを開く 
+<p>
+すでにログファイルが開いている場合には何もしないで成功する<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>logFileName</em>&nbsp;</td><td>[i] ログファイル名. NULLを与えた場合は、自動的にファイル名を生成する．</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>戻り値:</b></dt><dd>true(=成功), false(=失敗) </dd></dl>
+
+<p> <a class="el" href="_sgv_time_log_8cpp_source.html">SgvTimeLog.cpp</a> の <a class="el" href="_sgv_time_log_8cpp_source.html#l00018">18</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="821305b04105d3a561f79253d1fd07a4"></a><!-- doxytag: member="Sgv::TimeLog::print" ref="821305b04105d3a561f79253d1fd07a4" args="(const char *format,...)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::TimeLog::print           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>...</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+測定ポイントが終了したら呼ぶ 
+<p>
+
+<p> <a class="el" href="_sgv_time_log_8cpp_source.html">SgvTimeLog.cpp</a> の <a class="el" href="_sgv_time_log_8cpp_source.html#l00107">107</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f0767cfc25e9606fb936dc9c28b726e5"></a><!-- doxytag: member="Sgv::TimeLog::setTitle" ref="f0767cfc25e9606fb936dc9c28b726e5" args="(const char *title)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::TimeLog::setTitle           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>title</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+タイトルの設定 
+<p>
+<dl compact><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>title</em>&nbsp;</td><td>[i] タイトル．出力されるcsvファイルの先頭行に置かれる </td></tr>
+  </table>
+</dl>
+
+<p> <a class="el" href="_sgv_time_log_8cpp_source.html">SgvTimeLog.cpp</a> の <a class="el" href="_sgv_time_log_8cpp_source.html#l00060">60</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="297eea84aa9f21916ef82e22d254e9a8"></a><!-- doxytag: member="Sgv::TimeLog::start" ref="297eea84aa9f21916ef82e22d254e9a8" args="(const char *format,...)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sgv::TimeLog::start           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>...</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+測定ポイントに入る前に呼ぶ 
+<p>
+
+<p> <a class="el" href="_sgv_time_log_8cpp_source.html">SgvTimeLog.cpp</a> の <a class="el" href="_sgv_time_log_8cpp_source.html#l00065">65</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<a class="anchor" name="65036a669b11ef265fe489dc229ff76f"></a><!-- doxytag: member="Sgv::TimeLog::‾TimeLog" ref="65036a669b11ef265fe489dc229ff76f" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sgv::TimeLog::‾TimeLog           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+デストラクタ 
+<p>
+
+<p> <a class="el" href="_sgv_time_log_8cpp_source.html">SgvTimeLog.cpp</a> の <a class="el" href="_sgv_time_log_8cpp_source.html#l00013">13</a> 行で定義されています。</p>
+
+</div>
+</div><p>
+<hr>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_sgv_time_log_8h_source.html">SgvTimeLog.h</a><li><a class="el" href="_sgv_time_log_8cpp_source.html">SgvTimeLog.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>SIGViewerに対してThu Jun 9 10:52:15 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

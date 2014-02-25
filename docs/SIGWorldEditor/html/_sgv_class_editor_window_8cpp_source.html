@@ -1,0 +1,1111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGWorldEditor: SgvClassEditorWindow.cpp ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>SgvClassEditorWindow.cpp</h1><a href="_sgv_class_editor_window_8cpp.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include "<a class="code" href="_win_main_8h.html">WinMain.h</a>"</span>
+<a name="l00002"></a>00002 <span class="preprocessor">#include "<a class="code" href="_sgv_class_editor_window_8h.html">SgvClassEditorWindow.h</a>"</span>
+<a name="l00003"></a>00003 <span class="preprocessor">#include "<a class="code" href="_wgu_8h.html">Wgu.h</a>"</span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include "<a class="code" href="_sgv_x_m_l_entity_8h.html">SgvXMLEntity.h</a>"</span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include "<a class="code" href="_sgv_x_m_l_entity_class_8h.html">SgvXMLEntityClass.h</a>"</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include "<a class="code" href="_sgv_x_m_l_world_8h.html">SgvXMLWorld.h</a>"</span>
+<a name="l00007"></a>00007 <span class="preprocessor">#include "<a class="code" href="_sgv_x_m_l_file_list_8h.html">SgvXMLFileList.h</a>"</span>
+<a name="l00008"></a>00008 <span class="preprocessor">#include "<a class="code" href="_sgv_file_util_8h.html">SgvFileUtil.h</a>"</span>
+<a name="l00009"></a>00009 <span class="preprocessor">#include &lt;windows.h&gt;</span>
+<a name="l00010"></a>00010 <span class="preprocessor">#include &lt;vector&gt;</span>
+<a name="l00011"></a>00011 <span class="preprocessor">#include "<a class="code" href="resource_8h.html">resource.h</a>"</span>
+<a name="l00012"></a>00012 
+<a name="l00013"></a><a class="code" href="namespace_sgv.html">00013</a> <span class="keyword">namespace </span>Sgv
+<a name="l00014"></a>00014 {<span class="comment"></span>
+<a name="l00015"></a>00015 <span class="comment">    /////////////////////////////////////////////////////////////</span>
+<a name="l00016"></a>00016 <span class="comment"></span>    <span class="comment">//</span>
+<a name="l00017"></a>00017     <span class="comment">//  クラスエディタウィンドウ</span>
+<a name="l00018"></a>00018     <span class="comment">//</span>
+<a name="l00019"></a><a class="code" href="class_sgv_1_1_class_editor_window.html#9cca8b257142059af150d75bd3b61132">00019</a>     <a class="code" href="class_sgv_1_1_class_editor_window.html#9cca8b257142059af150d75bd3b61132" title="コンストラクタ">ClassEditorWindow::ClassEditorWindow</a>()
+<a name="l00020"></a>00020     {
+<a name="l00021"></a>00021         m_pOgreX3DPreviewWindow = NULL;
+<a name="l00022"></a>00022         m_pSceneMgr = NULL;
+<a name="l00023"></a>00023         m_pRenderWindow = NULL;
+<a name="l00024"></a>00024         m_pCamera = NULL;
+<a name="l00025"></a>00025         m_pRootNode = NULL;
+<a name="l00026"></a>00026         m_pX3DPreviewNode = NULL;
+<a name="l00027"></a>00027         m_pos = Vector3(0, 0, 0);
+<a name="l00028"></a>00028         m_q = Quaternion(Radian(0), Vector3(0, 1, 0));
+<a name="l00029"></a>00029     }
+<a name="l00030"></a>00030 
+<a name="l00031"></a><a class="code" href="class_sgv_1_1_class_editor_window.html#dae6460ae0c032858825bc25a6efa8de">00031</a>     <a class="code" href="class_sgv_1_1_class_editor_window.html#dae6460ae0c032858825bc25a6efa8de" title="デストラクタ">ClassEditorWindow::‾ClassEditorWindow</a>()
+<a name="l00032"></a>00032     {
+<a name="l00033"></a>00033         freeX3DPreviewNode();
+<a name="l00034"></a>00034     }
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036     <span class="keywordtype">void</span> ClassEditorWindow::freeX3DPreviewNode()
+<a name="l00037"></a>00037     {
+<a name="l00038"></a>00038         <span class="keywordflow">if</span> (m_pX3DPreviewNode)
+<a name="l00039"></a>00039         {
+<a name="l00040"></a>00040             <a class="code" href="class_sgv_1_1_x3_d.html#2a1fe1bf0d32f860625989d30bb56ff0" title="シーンノードが持っているExtEntityInfoを開放する">X3D::deleteAllExtEntityInfo</a>(m_pX3DPreviewNode);
+<a name="l00041"></a>00041             <a class="code" href="class_sgv_1_1_x3_d.html#d28b8350c8800befef0a92dfff0d3bf1" title="シーンノードが持っている全てのManualObjectをシーンマネージャから消す...">X3D::destroyAllManualObjects</a>(m_pSceneMgr, m_pX3DPreviewNode);
+<a name="l00042"></a>00042             m_pX3DPreviewNode-&gt;removeAndDestroyAllChildren();
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044             m_pX3DPreviewNode = NULL;
+<a name="l00045"></a>00045         }
+<a name="l00046"></a>00046     }
+<a name="l00047"></a>00047 
+<a name="l00048"></a><a class="code" href="class_sgv_1_1_class_editor_window.html#6e027670f4f3ec9b73d94f05c7cc3bab">00048</a>     <span class="keywordtype">bool</span> <a class="code" href="class_sgv_1_1_class_editor_window.html#6e027670f4f3ec9b73d94f05c7cc3bab" title="クラスエディタウィンドウを作成する">ClassEditorWindow::create</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win, <span class="keywordtype">int</span> dialogResourceId, <span class="keywordtype">char</span> *dialogClassName)
+<a name="l00049"></a>00049     {
+<a name="l00050"></a>00050         <span class="keywordflow">if</span> (!win) <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052         <span class="comment">// ウィンドウクラス登録</span>
+<a name="l00053"></a>00053         WNDCLASS wc;
+<a name="l00054"></a>00054         HINSTANCE hInst = win-&gt;<a class="code" href="class_sgv_1_1_main_window.html#3fad5e4b6b1299ff792bb12651f1dfde" title="アプリケーションのインスタンスハンドルを返す">getAppInstance</a>();
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056         wc.style = 0;
+<a name="l00057"></a>00057         wc.lpfnWndProc = <a class="code" href="namespace_sgv.html#7c355a3c3e39ebca6ad900b7fc65c34d">fClassEditorWndProc</a>;
+<a name="l00058"></a>00058         wc.cbClsExtra = 0;
+<a name="l00059"></a>00059         wc.cbWndExtra = DLGWINDOWEXTRA;
+<a name="l00060"></a>00060         wc.hInstance = hInst;
+<a name="l00061"></a>00061         wc.hIcon = LoadIcon(0, IDI_APPLICATION);
+<a name="l00062"></a>00062         wc.hCursor = LoadCursor(NULL, IDC_ARROW);
+<a name="l00063"></a>00063         wc.hbrBackground = (HBRUSH)GetStockObject(LTGRAY_BRUSH);
+<a name="l00064"></a>00064         wc.lpszMenuName = NULL;
+<a name="l00065"></a>00065         wc.lpszClassName = dialogClassName;
+<a name="l00066"></a>00066             <span class="comment">// ********** 重要！重要！重要！ *************</span>
+<a name="l00067"></a>00067             <span class="comment">// wc.lpszClassNameと同じ名前を、.rcファイルの</span>
+<a name="l00068"></a>00068             <span class="comment">// ダイアログテンプレートのところに</span>
+<a name="l00069"></a>00069             <span class="comment">// CLASS "MainDlg"</span>
+<a name="l00070"></a>00070             <span class="comment">// のように書いておかなければならない！！！</span>
+<a name="l00071"></a>00071             <span class="comment">// （さもないと、下のCreateDialog()で失敗する）</span>
+<a name="l00072"></a>00072             <span class="comment">// *******************************************</span>
+<a name="l00073"></a>00073         RegisterClass(&amp;wc);
+<a name="l00074"></a>00074 
+<a name="l00075"></a>00075         <span class="comment">// ウィンドウ（＝ダイアログ）作成</span>
+<a name="l00076"></a>00076         m_hwndClassEditor = CreateDialog(
+<a name="l00077"></a>00077             hInst,
+<a name="l00078"></a>00078             MAKEINTRESOURCE(dialogResourceId),
+<a name="l00079"></a>00079             0,
+<a name="l00080"></a>00080             NULL);
+<a name="l00081"></a>00081 
+<a name="l00082"></a>00082         <span class="keywordflow">if</span> (!m_hwndClassEditor)
+<a name="l00083"></a>00083         {
+<a name="l00084"></a>00084             DWORD err = GetLastError();
+<a name="l00085"></a>00085             <span class="keywordtype">char</span> buf[256];
+<a name="l00086"></a>00086 
+<a name="l00087"></a>00087             sprintf(buf, <span class="stringliteral">"CreateDialog failed. err=(0x0%x)"</span>, err);
+<a name="l00088"></a>00088             MessageBox(NULL, buf, <span class="stringliteral">"error"</span>, MB_OK);
+<a name="l00089"></a>00089 
+<a name="l00090"></a>00090             <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00091"></a>00091         }
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093         <span class="comment">// ----------------------------------------------</span>
+<a name="l00094"></a>00094         <span class="comment">//  X3Dプレビューウィンドウ作成</span>
+<a name="l00095"></a>00095         <span class="comment">// ----------------------------------------------</span>
+<a name="l00096"></a>00096         <span class="comment">// プレビューウィンドウの親ウィンドウとなるピクチャーコントロールのサイズを取得</span>
+<a name="l00097"></a>00097         HWND hwndX3DPreview = GetDlgItem(m_hwndClassEditor, <a class="code" href="resource_8h.html#c7e01f70312c2daad0925bd109971928">IDC_ENTCLS_X3D_PREVIEW_AREA</a>);
+<a name="l00098"></a>00098         RECT r;
+<a name="l00099"></a>00099         GetClientRect(hwndX3DPreview, &amp;r);
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101         <span class="comment">// プレビューウィンドウを作成</span>
+<a name="l00102"></a>00102         m_pOgreX3DPreviewWindow = <span class="keyword">new</span> <a class="code" href="class_sgv_1_1_ogre_x3_d_preview_window.html" title="クラスエディタウィンドウ内にある X3D形状プレビュー用ウィンドウ...">OgreX3DPreviewWindow</a>();
+<a name="l00103"></a>00103         m_pOgreX3DPreviewWindow-&gt;<a class="code" href="class_sgv_1_1_ogre_x3_d_preview_window.html#47bc163d710c2306541747f5e7e0ec5b" title="X3D形状プレビュー用ウィンドウを作成する.">create</a>(
+<a name="l00104"></a>00104             hInst,
+<a name="l00105"></a>00105             hwndX3DPreview,
+<a name="l00106"></a>00106             0, 0,
+<a name="l00107"></a>00107             r.right, r.bottom);
+<a name="l00108"></a>00108 
+<a name="l00109"></a>00109         <span class="comment">// --------------------------------------------------</span>
+<a name="l00110"></a>00110         <span class="comment">//  X3Dプレビューウィンドウ用のOgreオブジェクト作成</span>
+<a name="l00111"></a>00111         <span class="comment">// --------------------------------------------------</span>
+<a name="l00112"></a>00112 
+<a name="l00113"></a>00113         <span class="comment">// レンダーウィンドウ作成</span>
+<a name="l00114"></a>00114         NameValuePairList options;
+<a name="l00115"></a>00115         options[<span class="stringliteral">"externalWindowHandle"</span>] = StringConverter::toString((<span class="keywordtype">size_t</span>)hwndX3DPreview);
+<a name="l00116"></a>00116         Root *root = win-&gt;<a class="code" href="class_sgv_1_1_main_window.html#df000f46ec7eab11879c800cfcaef3c8" title="Ogreルートオブジェクトを返す.">getOgreRootObject</a>();
+<a name="l00117"></a>00117         m_pRenderWindow = root-&gt;createRenderWindow(
+<a name="l00118"></a>00118             <span class="stringliteral">"ClassEditor"</span>,
+<a name="l00119"></a>00119             800,    <span class="comment">// dummy</span>
+<a name="l00120"></a>00120             600,    <span class="comment">// dummy</span>
+<a name="l00121"></a>00121             <span class="keyword">false</span>,
+<a name="l00122"></a>00122             &amp;options);
+<a name="l00123"></a>00123         m_pRenderWindow-&gt;windowMovedOrResized();
+<a name="l00124"></a>00124 
+<a name="l00125"></a>00125         <span class="comment">// シーンマネージャ</span>
+<a name="l00126"></a>00126         m_pSceneMgr = root-&gt;createSceneManager(Ogre::ST_GENERIC, <span class="stringliteral">"X3DPreview"</span>);
+<a name="l00127"></a>00127 
+<a name="l00128"></a>00128         <span class="comment">// カメラ</span>
+<a name="l00129"></a>00129         m_pCamera = m_pSceneMgr-&gt;createCamera(<span class="stringliteral">"cam"</span>);
+<a name="l00130"></a>00130         m_pCamera-&gt;setAutoAspectRatio(<span class="keyword">true</span>);
+<a name="l00131"></a>00131         m_pCamera-&gt;setPosition(0, 0, 100);
+<a name="l00132"></a>00132         m_pCamera-&gt;setDirection(0, 0, -1);
+<a name="l00133"></a>00133         m_pCamera-&gt;setNearClipDistance(10);
+<a name="l00134"></a>00134         m_pCamera-&gt;setFarClipDistance(5000);
+<a name="l00135"></a>00135 
+<a name="l00136"></a>00136         <span class="comment">// ビューポート</span>
+<a name="l00137"></a>00137         Viewport* vp2 = m_pRenderWindow-&gt;addViewport(m_pCamera);
+<a name="l00138"></a>00138         vp2-&gt;setBackgroundColour(Ogre::ColourValue(0.2, 0.2, 0.5));
+<a name="l00139"></a>00139 
+<a name="l00140"></a>00140         <span class="comment">// ライト</span>
+<a name="l00141"></a>00141         Light* l2 = m_pSceneMgr-&gt;createLight(<span class="stringliteral">"l"</span>);
+<a name="l00142"></a>00142         l2-&gt;setPosition(300, 100, -100);
+<a name="l00143"></a>00143 
+<a name="l00144"></a>00144         <span class="comment">// ルートノード</span>
+<a name="l00145"></a>00145         m_pRootNode = m_pSceneMgr-&gt;getRootSceneNode()-&gt;createChildSceneNode();
+<a name="l00146"></a>00146 
+<a name="l00147"></a>00147         <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00148"></a>00148     }
+<a name="l00149"></a>00149 
+<a name="l00150"></a><a class="code" href="class_sgv_1_1_class_editor_window.html#f100f2485900eafa8fd2a416309c0fc0">00150</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_class_editor_window.html#f100f2485900eafa8fd2a416309c0fc0" title="ウィンドウの表示・非表示の設定">ClassEditorWindow::show</a>(<span class="keywordtype">bool</span> bShow)
+<a name="l00151"></a>00151     {
+<a name="l00152"></a>00152         ShowWindow(m_hwndClassEditor, bShow ? SW_SHOW : SW_HIDE);
+<a name="l00153"></a>00153         UpdateWindow(m_hwndClassEditor);
+<a name="l00154"></a>00154     }
+<a name="l00155"></a>00155 
+<a name="l00156"></a><a class="code" href="class_sgv_1_1_class_editor_window.html#4250aea6af2e77b1490d34c91118c3c0">00156</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_class_editor_window.html#4250aea6af2e77b1490d34c91118c3c0" title="このウィンドウ上のGUIコントロールを初期化する">ClassEditorWindow::init</a>()
+<a name="l00157"></a>00157     {
+<a name="l00158"></a>00158         <span class="comment">// クラス名作成時のスーパークラス指定コンボボックスの初期設定</span>
+<a name="l00159"></a>00159         HWND hwndSuperClass = GetDlgItem(m_hwndClassEditor, <a class="code" href="resource_8h.html#30643a445068c364ca6352ca95de21b4">IDC_ENTCLS_SUPER_CLASS</a>);
+<a name="l00160"></a>00160 
+<a name="l00161"></a>00161         <a class="code" href="class_wgu_1_1_combo_box.html#2daff1d3ecf67f51283ddc36a88f00ed" title="コンボボックスをクリアする">Wgu::ComboBox::clear</a>(hwndSuperClass);
+<a name="l00162"></a>00162         <a class="code" href="class_wgu_1_1_combo_box.html#ee45c734132a3dba4ac2b4999e2104ab" title="コンボボックスに文字列を追加する">Wgu::ComboBox::addString</a>(hwndSuperClass, <span class="stringliteral">""</span>);
+<a name="l00163"></a>00163         <a class="code" href="class_wgu_1_1_combo_box.html#ee45c734132a3dba4ac2b4999e2104ab" title="コンボボックスに文字列を追加する">Wgu::ComboBox::addString</a>(hwndSuperClass, <span class="stringliteral">"Entity"</span>);
+<a name="l00164"></a>00164         <a class="code" href="class_wgu_1_1_combo_box.html#ee45c734132a3dba4ac2b4999e2104ab" title="コンボボックスに文字列を追加する">Wgu::ComboBox::addString</a>(hwndSuperClass, <span class="stringliteral">"Agent"</span>);
+<a name="l00165"></a>00165 
+<a name="l00166"></a>00166         <span class="comment">// エンティティの型指定コンボボックスの初期設定</span>
+<a name="l00167"></a>00167         HWND hwndAttrType = GetDlgItem(m_hwndClassEditor, <a class="code" href="resource_8h.html#c3e622e25c156931d31bbe331c21aae2">IDC_ENTCLS_NEWTYPE</a>);
+<a name="l00168"></a>00168 
+<a name="l00169"></a>00169         <a class="code" href="class_wgu_1_1_combo_box.html#2daff1d3ecf67f51283ddc36a88f00ed" title="コンボボックスをクリアする">Wgu::ComboBox::clear</a>(hwndAttrType);
+<a name="l00170"></a>00170         <a class="code" href="class_wgu_1_1_combo_box.html#ee45c734132a3dba4ac2b4999e2104ab" title="コンボボックスに文字列を追加する">Wgu::ComboBox::addString</a>(hwndAttrType, <span class="stringliteral">"string"</span>);
+<a name="l00171"></a>00171         <a class="code" href="class_wgu_1_1_combo_box.html#ee45c734132a3dba4ac2b4999e2104ab" title="コンボボックスに文字列を追加する">Wgu::ComboBox::addString</a>(hwndAttrType, <span class="stringliteral">"int"</span>);
+<a name="l00172"></a>00172         <a class="code" href="class_wgu_1_1_combo_box.html#ee45c734132a3dba4ac2b4999e2104ab" title="コンボボックスに文字列を追加する">Wgu::ComboBox::addString</a>(hwndAttrType, <span class="stringliteral">"double"</span>);
+<a name="l00173"></a>00173         <a class="code" href="class_wgu_1_1_combo_box.html#ee45c734132a3dba4ac2b4999e2104ab" title="コンボボックスに文字列を追加する">Wgu::ComboBox::addString</a>(hwndAttrType, <span class="stringliteral">"bool"</span>);
+<a name="l00174"></a>00174     }
+<a name="l00175"></a>00175 
+<a name="l00176"></a><a class="code" href="class_sgv_1_1_class_editor_window.html#163b9fae3c0366f6ca4fc208a10447a0">00176</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_class_editor_window.html#163b9fae3c0366f6ca4fc208a10447a0" title="クラス名一覧をリストボックスに設定する">ClassEditorWindow::setClassList</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win)
+<a name="l00177"></a>00177     {
+<a name="l00178"></a>00178         HWND hwndCls = GetDlgItem(m_hwndClassEditor, <a class="code" href="resource_8h.html#717a6f3f6b3ab096c3e83cb18d315755">IDC_ENTCLS_CLASSES</a>);
+<a name="l00179"></a>00179         <a class="code" href="class_wgu_1_1_list_box.html#c71ece7f82e1c2525c8e1dc029e22c4f" title="リストボックスをクリアする">Wgu::ListBox::clear</a>(hwndCls);
+<a name="l00180"></a>00180 
+<a name="l00181"></a>00181         <a class="code" href="class_sgv_1_1_x_m_l_entity_class_manager.html" title="XMLエンティティクラスマネージャ.">XMLEntityClassManager</a> *ecm = win-&gt;<a class="code" href="class_sgv_1_1_main_window.html#198a0e7e17ce0100915a6fb4077dfc13" title="XMLエンティティクラスマネージャを返す.">getEntityClassManager</a>();
+<a name="l00182"></a>00182         std::vector&lt;std::string&gt; entClassNames = ecm-&gt;<a class="code" href="class_sgv_1_1_x_m_l_entity_class_manager.html#af35c7afab767c4f65cc51ccd25974b3" title="クラス名のリストを返す">getEntityClassNames</a>();
+<a name="l00183"></a>00183         <span class="keywordtype">int</span> n = entClassNames.size();
+<a name="l00184"></a>00184         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;n; i++)
+<a name="l00185"></a>00185         {
+<a name="l00186"></a>00186             <span class="keyword">const</span> <span class="keywordtype">char</span> *entClassName = entClassNames[i].c_str();
+<a name="l00187"></a>00187 
+<a name="l00188"></a>00188             <a class="code" href="class_wgu_1_1_list_box.html#1b97b130dcce2433daa3740b5a1b9ee1" title="リストボックスの末尾に文字列を追加する">Wgu::ListBox::addString</a>(hwndCls, entClassName);
+<a name="l00189"></a>00189         }
+<a name="l00190"></a>00190     }
+<a name="l00191"></a>00191 
+<a name="l00192"></a><a class="code" href="class_sgv_1_1_class_editor_window.html#cd09af48f26c4c38db2d3e20be79b16f">00192</a>     <a class="code" href="class_sgv_1_1_x_m_l_entity_class.html" title="XMLエンティティクラス（エンティティの定義）.">XMLEntityClass</a> *<a class="code" href="class_sgv_1_1_class_editor_window.html#cd09af48f26c4c38db2d3e20be79b16f" title="現在クラス名一覧リストボックスで選択されている エンティティクラスの...">ClassEditorWindow::getSelectedEntityClass</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win)
+<a name="l00193"></a>00193     {
+<a name="l00194"></a>00194         <a class="code" href="class_sgv_1_1_x_m_l_entity_class.html" title="XMLエンティティクラス（エンティティの定義）.">XMLEntityClass</a> *pc = NULL;
+<a name="l00195"></a>00195 
+<a name="l00196"></a>00196         HWND hwndList = GetDlgItem(m_hwndClassEditor, <a class="code" href="resource_8h.html#717a6f3f6b3ab096c3e83cb18d315755">IDC_ENTCLS_CLASSES</a>);
+<a name="l00197"></a>00197         <span class="keywordtype">int</span> index = <a class="code" href="class_wgu_1_1_list_box.html#62a61b4aaf62d00ae7f5213ca7462eee" title="現在選択されている項目のインデックス値を返す">Wgu::ListBox::getCurSel</a>(hwndList);
+<a name="l00198"></a>00198 
+<a name="l00199"></a>00199         <span class="keywordflow">if</span> (index &gt;= 0)
+<a name="l00200"></a>00200         {
+<a name="l00201"></a>00201             <span class="comment">// クラス名を得る</span>
+<a name="l00202"></a>00202             std::string className = <a class="code" href="class_wgu_1_1_list_box.html#e271146f5cc08ec23ccbfbde4ced083f" title="指定項目の文字列を返す">Wgu::ListBox::getText</a>(hwndList, index);
+<a name="l00203"></a>00203 
+<a name="l00204"></a>00204             <span class="comment">// エンティティクラスを得る</span>
+<a name="l00205"></a>00205             <a class="code" href="class_sgv_1_1_x_m_l_entity_class_manager.html" title="XMLエンティティクラスマネージャ.">XMLEntityClassManager</a> *ecm = win-&gt;<a class="code" href="class_sgv_1_1_main_window.html#198a0e7e17ce0100915a6fb4077dfc13" title="XMLエンティティクラスマネージャを返す.">getEntityClassManager</a>();
+<a name="l00206"></a>00206             pc = ecm-&gt;<a class="code" href="class_sgv_1_1_x_m_l_entity_class_manager.html#0e39a9e56a1eac6fae3573eff19fd758" title="クラス名からXMLEntityClassを引く">getEntityClass</a>(className.c_str());
+<a name="l00207"></a>00207         }
+<a name="l00208"></a>00208 
+<a name="l00209"></a>00209         <span class="keywordflow">return</span> pc;
+<a name="l00210"></a>00210     }
+<a name="l00211"></a>00211 
+<a name="l00212"></a><a class="code" href="class_sgv_1_1_class_editor_window.html#95e86fcf767de4c7d0839fe79fcc9838">00212</a>     std::string <a class="code" href="class_sgv_1_1_class_editor_window.html#95e86fcf767de4c7d0839fe79fcc9838" title="現在選択されている属性名を得る">ClassEditorWindow::getSelectedAttrName</a>()
+<a name="l00213"></a>00213     {
+<a name="l00214"></a>00214         std::string attrName;
+<a name="l00215"></a>00215 
+<a name="l00216"></a>00216         HWND hwndList = GetDlgItem(m_hwndClassEditor, <a class="code" href="resource_8h.html#e859b31a9c06b8db279ba4cd6fc31acc">IDC_ENTCLS_ATTRS</a>);
+<a name="l00217"></a>00217         <span class="keywordtype">int</span> index = <a class="code" href="class_wgu_1_1_list_box.html#62a61b4aaf62d00ae7f5213ca7462eee" title="現在選択されている項目のインデックス値を返す">Wgu::ListBox::getCurSel</a>(hwndList);
+<a name="l00218"></a>00218 
+<a name="l00219"></a>00219         <span class="keywordflow">if</span> (index &gt;= 0)
+<a name="l00220"></a>00220         {
+<a name="l00221"></a>00221             <span class="comment">// 属性名を得る</span>
+<a name="l00222"></a>00222             attrName = <a class="code" href="class_wgu_1_1_list_box.html#e271146f5cc08ec23ccbfbde4ced083f" title="指定項目の文字列を返す">Wgu::ListBox::getText</a>(hwndList, index);
+<a name="l00223"></a>00223         }
+<a name="l00224"></a>00224 
+<a name="l00225"></a>00225         <span class="keywordflow">return</span> attrName;
+<a name="l00226"></a>00226     }
+<a name="l00227"></a>00227 
+<a name="l00228"></a><a class="code" href="class_sgv_1_1_class_editor_window.html#fd6c1c7957f6c3a41ed12c86ffe30ee2">00228</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_class_editor_window.html#fd6c1c7957f6c3a41ed12c86ffe30ee2" title="クラス名とスーパークラス名を表示する">ClassEditorWindow::showEntityClassName</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win, <a class="code" href="class_sgv_1_1_x_m_l_entity_class.html" title="XMLエンティティクラス（エンティティの定義）.">XMLEntityClass</a> *pc)
+<a name="l00229"></a>00229     {
+<a name="l00230"></a>00230         <span class="keywordflow">if</span> (!win || !pc) <span class="keywordflow">return</span>;
+<a name="l00231"></a>00231 
+<a name="l00232"></a>00232         <a class="code" href="class_sgv_1_1_x_m_l_entity_class_manager.html" title="XMLエンティティクラスマネージャ.">XMLEntityClassManager</a> *ecm = win-&gt;<a class="code" href="class_sgv_1_1_main_window.html#198a0e7e17ce0100915a6fb4077dfc13" title="XMLエンティティクラスマネージャを返す.">getEntityClassManager</a>();
+<a name="l00233"></a>00233         <span class="keywordflow">if</span> (!ecm) <span class="keywordflow">return</span>;
+<a name="l00234"></a>00234 
+<a name="l00235"></a>00235         <span class="comment">// クラス名を得る</span>
+<a name="l00236"></a>00236         <span class="keyword">const</span> <span class="keywordtype">char</span> *className = pc-&gt;<a class="code" href="class_sgv_1_1_x_m_l_entity_class.html#473d1cf0d501c1f8f6c8896249e6012c" title="クラス名を得る">getClassName</a>();
+<a name="l00237"></a>00237 
+<a name="l00238"></a>00238         <span class="comment">// スーパークラス名を得る</span>
+<a name="l00239"></a>00239         <span class="keyword">const</span> <span class="keywordtype">char</span> *superClassFileName = pc-&gt;<a class="code" href="class_sgv_1_1_x_m_l_entity_class.html#fa8943353ddda47186c107e5c03eb83e" title="スーパークラスのXMLファイル名を得る">getSuperClassFileName</a>();
+<a name="l00240"></a>00240         <span class="keyword">const</span> <span class="keywordtype">char</span> *superClassName = ecm-&gt;<a class="code" href="class_sgv_1_1_x_m_l_entity_class_manager.html#0e10dc13b5dfe91bb7ea3ba9817693fe" title="クラスファイル名からクラス名への変換">fileNameToClassName</a>(superClassFileName);
+<a name="l00241"></a>00241 
+<a name="l00242"></a>00242         <span class="comment">// クラス名をセット</span>
+<a name="l00243"></a>00243         HWND hwndCls = GetDlgItem(m_hwndClassEditor, <a class="code" href="resource_8h.html#e7dd17cabe44f30a3a7c6cd54202112c">IDC_ENTCLS_NEW_CLASS_NAME</a>);
+<a name="l00244"></a>00244         <a class="code" href="class_wgu_1_1_edit_box.html#1ee22433af8b2ef9569db9b948fbb11b" title="エディットコントロールに文字列をセットする">Wgu::EditBox::setText</a>(hwndCls, className);
+<a name="l00245"></a>00245 
+<a name="l00246"></a>00246         <span class="comment">// スーパークラス名をセット</span>
+<a name="l00247"></a>00247         HWND hwndSuperCls = GetDlgItem(m_hwndClassEditor, <a class="code" href="resource_8h.html#30643a445068c364ca6352ca95de21b4">IDC_ENTCLS_SUPER_CLASS</a>);
+<a name="l00248"></a>00248         <a class="code" href="class_wgu_1_1_combo_box.html#5e725f56d096691e4340771579b0816f" title="コンボボックス上の、指定文字列を選択する">Wgu::ComboBox::selectString</a>(hwndSuperCls, superClassName);
+<a name="l00249"></a>00249     }
+<a name="l00250"></a>00250 
+<a name="l00251"></a><a class="code" href="class_sgv_1_1_class_editor_window.html#8defbe8e3171ad8a72ac7b3f6d00d7b9">00251</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_class_editor_window.html#8defbe8e3171ad8a72ac7b3f6d00d7b9" title="クラスの属性名を表示する">ClassEditorWindow::showEntityClassAttributes</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win, <a class="code" href="class_sgv_1_1_x_m_l_entity_class.html" title="XMLエンティティクラス（エンティティの定義）.">XMLEntityClass</a> *pc)
+<a name="l00252"></a>00252     {
+<a name="l00253"></a>00253         <span class="comment">// リストボックスをクリア</span>
+<a name="l00254"></a>00254         HWND hwndList = GetDlgItem(m_hwndClassEditor, <a class="code" href="resource_8h.html#e859b31a9c06b8db279ba4cd6fc31acc">IDC_ENTCLS_ATTRS</a>);
+<a name="l00255"></a>00255 
+<a name="l00256"></a>00256         <a class="code" href="class_wgu_1_1_list_box.html#c71ece7f82e1c2525c8e1dc029e22c4f" title="リストボックスをクリアする">Wgu::ListBox::clear</a>(hwndList);
+<a name="l00257"></a>00257 
+<a name="l00258"></a>00258         <span class="comment">// 属性名を列挙し表示</span>
+<a name="l00259"></a>00259         <span class="keywordtype">int</span> n = pc-&gt;<a class="code" href="class_sgv_1_1_x_m_l_entity_class.html#3a5b67e066f229e63f7f1a7bc03d94e4" title="この属性定義(attrタグ)の個数を返す">countAttrs</a>();
+<a name="l00260"></a>00260         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;n; i++)
+<a name="l00261"></a>00261         {
+<a name="l00262"></a>00262             <a class="code" href="class_wgu_1_1_list_box.html#1b97b130dcce2433daa3740b5a1b9ee1" title="リストボックスの末尾に文字列を追加する">Wgu::ListBox::addString</a>(hwndList, <span class="stringliteral">"%s"</span>, pc-&gt;<a class="code" href="class_sgv_1_1_x_m_l_entity_class.html#61f3539d023ea6eec333e60a32fb8932" title="i番目の属性名(attrタグ)を返す">getAttrName</a>(i));
+<a name="l00263"></a>00263         }
+<a name="l00264"></a>00264     }
+<a name="l00265"></a>00265 
+<a name="l00266"></a><a class="code" href="class_sgv_1_1_class_editor_window.html#771e2ff014a0a3207285c1cc5ffa902a">00266</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_class_editor_window.html#771e2ff014a0a3207285c1cc5ffa902a" title="クラスの属性の値を表示する">ClassEditorWindow::showEntityClassAttributeDetail</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win, <a class="code" href="class_sgv_1_1_x_m_l_entity_class.html" title="XMLエンティティクラス（エンティティの定義）.">XMLEntityClass</a> *pc, <span class="keyword">const</span> <span class="keywordtype">char</span> *attrName)
+<a name="l00267"></a>00267     {
+<a name="l00268"></a>00268         <span class="comment">// 属性名を表示</span>
+<a name="l00269"></a>00269         HWND hwndAttrName = GetDlgItem(m_hwndClassEditor, <a class="code" href="resource_8h.html#f2763ee3ec85af978a740e07fc337d96">IDC_ENTCLS_NEWNAME</a>);
+<a name="l00270"></a>00270         <a class="code" href="class_wgu_1_1_edit_box.html#1ee22433af8b2ef9569db9b948fbb11b" title="エディットコントロールに文字列をセットする">Wgu::EditBox::setText</a>(hwndAttrName, attrName);
+<a name="l00271"></a>00271 
+<a name="l00272"></a>00272         <span class="comment">// 型を表示</span>
+<a name="l00273"></a>00273         HWND hwndAttrType = GetDlgItem(m_hwndClassEditor, <a class="code" href="resource_8h.html#c3e622e25c156931d31bbe331c21aae2">IDC_ENTCLS_NEWTYPE</a>);
+<a name="l00274"></a>00274         <span class="keyword">const</span> <span class="keywordtype">char</span> *attrType = pc-&gt;<a class="code" href="class_sgv_1_1_x_m_l_entity_class.html#71516ea2f5fe3d0e90b58f6192caa2d9" title="i番目の属性の型名(attrタグのtype属性)を返す">getAttrType</a>(attrName);
+<a name="l00275"></a>00275         <a class="code" href="class_wgu_1_1_combo_box.html#5e725f56d096691e4340771579b0816f" title="コンボボックス上の、指定文字列を選択する">Wgu::ComboBox::selectString</a>(hwndAttrType, attrType);
+<a name="l00276"></a>00276 
+<a name="l00277"></a>00277         <span class="comment">// グループ名を表示</span>
+<a name="l00278"></a>00278         HWND hwndAttrGroup = GetDlgItem(m_hwndClassEditor, <a class="code" href="resource_8h.html#90427e8d505a71b38dfd05a7a5a0f8c5">IDC_ENTCLS_NEWGROUP</a>);
+<a name="l00279"></a>00279         <span class="keyword">const</span> <span class="keywordtype">char</span> *attrGroup = pc-&gt;<a class="code" href="class_sgv_1_1_x_m_l_entity_class.html#5c699daf24a0b818809f067d54879db5" title="i番目のグループ名(attrタグのgroup属性)を返す">getAttrGroup</a>(attrName);
+<a name="l00280"></a>00280         <a class="code" href="class_wgu_1_1_edit_box.html#1ee22433af8b2ef9569db9b948fbb11b" title="エディットコントロールに文字列をセットする">Wgu::EditBox::setText</a>(hwndAttrGroup, attrGroup);
+<a name="l00281"></a>00281 
+<a name="l00282"></a>00282         <span class="comment">// 値を表示</span>
+<a name="l00283"></a>00283         HWND hwndAttrValue = GetDlgItem(m_hwndClassEditor, <a class="code" href="resource_8h.html#08794b8357111ff8b4d0bd445158aa85">IDC_ENTCLS_NEWVALUE</a>);
+<a name="l00284"></a>00284         <span class="keyword">const</span> <span class="keywordtype">char</span> *attrValue = pc-&gt;<a class="code" href="class_sgv_1_1_x_m_l_entity_class.html#1d1bb66b5d3b80fc4be007f05da3c9fb" title="i番目の属性値(attrタグのvalue属性)を返す">getAttrValue</a>(attrName);
+<a name="l00285"></a>00285         <a class="code" href="class_wgu_1_1_edit_box.html#1ee22433af8b2ef9569db9b948fbb11b" title="エディットコントロールに文字列をセットする">Wgu::EditBox::setText</a>(hwndAttrValue, attrValue);
+<a name="l00286"></a>00286     }
+<a name="l00287"></a>00287 
+<a name="l00288"></a><a class="code" href="class_sgv_1_1_class_editor_window.html#ee85cebfa509c2245cd0d632ac6dbe78">00288</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_class_editor_window.html#ee85cebfa509c2245cd0d632ac6dbe78" title="クラスのX3Dファイル情報を表示する">ClassEditorWindow::showEntityX3DFiles</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win, <a class="code" href="class_sgv_1_1_x_m_l_entity_class.html" title="XMLエンティティクラス（エンティティの定義）.">XMLEntityClass</a> *pc)
+<a name="l00289"></a>00289     {
+<a name="l00290"></a>00290         <span class="comment">// リストボックスをクリア</span>
+<a name="l00291"></a>00291         HWND hwndList = GetDlgItem(m_hwndClassEditor, <a class="code" href="resource_8h.html#cc151d2896fd575b5295819ee97e1f47">IDC_ENTCLS_X3DFILES</a>);
+<a name="l00292"></a>00292 
+<a name="l00293"></a>00293         <a class="code" href="class_wgu_1_1_list_box.html#c71ece7f82e1c2525c8e1dc029e22c4f" title="リストボックスをクリアする">Wgu::ListBox::clear</a>(hwndList);
+<a name="l00294"></a>00294 
+<a name="l00295"></a>00295         <span class="comment">// 属性名を列挙し表示</span>
+<a name="l00296"></a>00296         <span class="keywordtype">int</span> n = pc-&gt;<a class="code" href="class_sgv_1_1_x_m_l_entity_class.html#e80e924076b332e649add8f8346c7d54" title="このエンティティに対応する形状ファイル名 (X3Dファイル名）の個数を返�...">countX3DFileNames</a>();
+<a name="l00297"></a>00297         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;n; i++)
+<a name="l00298"></a>00298         {
+<a name="l00299"></a>00299             <a class="code" href="class_wgu_1_1_list_box.html#1b97b130dcce2433daa3740b5a1b9ee1" title="リストボックスの末尾に文字列を追加する">Wgu::ListBox::addString</a>(hwndList, <span class="stringliteral">"%s"</span>, pc-&gt;<a class="code" href="class_sgv_1_1_x_m_l_entity_class.html#d5a50e073968522f19f7eba629ba2370" title="i番目の形状ファイル名(X3Dファイル名）を返す">getX3DFileName</a>(i));
+<a name="l00300"></a>00300         }
+<a name="l00301"></a>00301     }
+<a name="l00302"></a>00302 
+<a name="l00303"></a><a class="code" href="class_sgv_1_1_class_editor_window.html#b49ae5d0a200b5680a2b9bc37dcaf87c">00303</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_class_editor_window.html#b49ae5d0a200b5680a2b9bc37dcaf87c" title="プレビュー用のX3Dファイル名リストボックスを設定する">ClassEditorWindow::setX3DFileList</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win)
+<a name="l00304"></a>00304     {
+<a name="l00305"></a>00305         HWND hwndList = GetDlgItem(m_hwndClassEditor, <a class="code" href="resource_8h.html#34e22bac54209646a989e82157418ca3">IDC_ENTCLS_X3D_PREVIEW_FILES</a>);
+<a name="l00306"></a>00306         <a class="code" href="class_wgu_1_1_list_box.html#c71ece7f82e1c2525c8e1dc029e22c4f" title="リストボックスをクリアする">Wgu::ListBox::clear</a>(hwndList);
+<a name="l00307"></a>00307 
+<a name="l00308"></a>00308         <a class="code" href="class_sgv_1_1_glob.html" title="ファイル名検索用クラス">Glob</a> g;
+<a name="l00309"></a>00309 
+<a name="l00310"></a>00310         g.<a class="code" href="class_sgv_1_1_glob.html#f1b3d76a2a1e7060644ddcf87e072f46" title="ファイルを探してストックに追加する（ワイルドカード使用可）...">search</a>(<span class="stringliteral">"*.x3d"</span>);
+<a name="l00311"></a>00311         g.<a class="code" href="class_sgv_1_1_glob.html#f1b3d76a2a1e7060644ddcf87e072f46" title="ファイルを探してストックに追加する（ワイルドカード使用可）...">search</a>(<span class="stringliteral">"*.wrl"</span>);
+<a name="l00312"></a>00312 
+<a name="l00313"></a>00313         <span class="keywordtype">int</span> n = g.<a class="code" href="class_sgv_1_1_glob.html#c9743355fda244f587fde75c5999bd45" title="ストックされているファイル名の数を返す">count</a>();
+<a name="l00314"></a>00314         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;n; i++)
+<a name="l00315"></a>00315         {
+<a name="l00316"></a>00316             <span class="keyword">const</span> <span class="keywordtype">char</span> *x3dFileName = (<span class="keyword">const</span> <span class="keywordtype">char</span> *)(g.<a class="code" href="class_sgv_1_1_glob.html#42bc1bffcbae0a8e36acf95661145c39" title="i番目のファイル名を返す">get</a>(i));
+<a name="l00317"></a>00317             <span class="keywordflow">if</span> (x3dFileName)
+<a name="l00318"></a>00318             {
+<a name="l00319"></a>00319                 <a class="code" href="class_wgu_1_1_list_box.html#1b97b130dcce2433daa3740b5a1b9ee1" title="リストボックスの末尾に文字列を追加する">Wgu::ListBox::addString</a>(hwndList, x3dFileName);
+<a name="l00320"></a>00320             }
+<a name="l00321"></a>00321         }
+<a name="l00322"></a>00322     }
+<a name="l00323"></a>00323 
+<a name="l00324"></a><a class="code" href="class_sgv_1_1_class_editor_window.html#c7d9ded1c2904ee0a62e2c59049ff45a">00324</a>     SceneNode *<a class="code" href="class_sgv_1_1_class_editor_window.html#c7d9ded1c2904ee0a62e2c59049ff45a" title="プレビュー形状ノードを得る">ClassEditorWindow::getX3DPreviewNode</a>()
+<a name="l00325"></a>00325     {
+<a name="l00326"></a>00326         <span class="keywordflow">return</span> m_pX3DPreviewNode;
+<a name="l00327"></a>00327     }
+<a name="l00328"></a>00328     
+<a name="l00329"></a><a class="code" href="class_sgv_1_1_class_editor_window.html#548a04013e9fb52e1b135a900842cfbe">00329</a>     Vector3 <a class="code" href="class_sgv_1_1_class_editor_window.html#548a04013e9fb52e1b135a900842cfbe" title="プレビュー形状ノードの位置を得る">ClassEditorWindow::getPreviewNodePosition</a>()
+<a name="l00330"></a>00330     {
+<a name="l00331"></a>00331         <span class="keywordflow">return</span> m_pos;
+<a name="l00332"></a>00332     }
+<a name="l00333"></a>00333 
+<a name="l00334"></a><a class="code" href="class_sgv_1_1_class_editor_window.html#bc79f229afacb30070f651965fa0895d">00334</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_class_editor_window.html#bc79f229afacb30070f651965fa0895d" title="プレビュー形状ノードの位置を設定する">ClassEditorWindow::setPreviewNodePosition</a>(Vector3 pos)
+<a name="l00335"></a>00335     {
+<a name="l00336"></a>00336         m_pos = pos;
+<a name="l00337"></a>00337 
+<a name="l00338"></a>00338         <span class="keywordflow">if</span> (m_pX3DPreviewNode)
+<a name="l00339"></a>00339         {
+<a name="l00340"></a>00340             m_pX3DPreviewNode-&gt;setPosition(pos);
+<a name="l00341"></a>00341         }
+<a name="l00342"></a>00342     }
+<a name="l00343"></a>00343 
+<a name="l00344"></a><a class="code" href="class_sgv_1_1_class_editor_window.html#02ea9e0478ccd490de46435e85d17230">00344</a>     Quaternion <a class="code" href="class_sgv_1_1_class_editor_window.html#02ea9e0478ccd490de46435e85d17230" title="プレビュー形状ノードの方向を得る">ClassEditorWindow::getPreviewNodeOrientation</a>()
+<a name="l00345"></a>00345     {
+<a name="l00346"></a>00346         <span class="keywordflow">return</span> m_q;
+<a name="l00347"></a>00347     }
+<a name="l00348"></a>00348 
+<a name="l00349"></a><a class="code" href="class_sgv_1_1_class_editor_window.html#062f4620a3948ac0456588688d9f2e42">00349</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_class_editor_window.html#062f4620a3948ac0456588688d9f2e42" title="プレビュー形状ノードの方向を設定する">ClassEditorWindow::setPreviewNodeOrientation</a>(Quaternion q)
+<a name="l00350"></a>00350     {
+<a name="l00351"></a>00351         m_q = q;
+<a name="l00352"></a>00352 
+<a name="l00353"></a>00353         <span class="keywordflow">if</span> (m_pX3DPreviewNode)
+<a name="l00354"></a>00354         {
+<a name="l00355"></a>00355             m_pX3DPreviewNode-&gt;setOrientation(q);
+<a name="l00356"></a>00356         }
+<a name="l00357"></a>00357     }
+<a name="l00358"></a>00358 
+<a name="l00359"></a><a class="code" href="class_sgv_1_1_class_editor_window.html#228b2d27915d311a825ff1b77a86dd34">00359</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_class_editor_window.html#228b2d27915d311a825ff1b77a86dd34" title="クラス選択リストボックスを押した">ClassEditorWindow::onSelChange_Classes</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win)
+<a name="l00360"></a>00360     {
+<a name="l00361"></a>00361         <span class="comment">// ----------------------------------------------------</span>
+<a name="l00362"></a>00362         <span class="comment">//  クラス名リストボックスで選んだクラスの属性名を</span>
+<a name="l00363"></a>00363         <span class="comment">//  属性名リストボックスに表示する</span>
+<a name="l00364"></a>00364         <span class="comment">// ----------------------------------------------------</span>
+<a name="l00365"></a>00365         <span class="comment">// 選択中のエンティティクラスを得る</span>
+<a name="l00366"></a>00366         <a class="code" href="class_sgv_1_1_x_m_l_entity_class.html" title="XMLエンティティクラス（エンティティの定義）.">XMLEntityClass</a> *pc = <a class="code" href="class_sgv_1_1_class_editor_window.html#cd09af48f26c4c38db2d3e20be79b16f" title="現在クラス名一覧リストボックスで選択されている エンティティクラスの...">getSelectedEntityClass</a>(win);
+<a name="l00367"></a>00367         <span class="keywordflow">if</span> (!pc) <span class="keywordflow">return</span>;
+<a name="l00368"></a>00368 
+<a name="l00369"></a>00369         <span class="comment">// クラス名とスーパークラス名を表示</span>
+<a name="l00370"></a>00370         <a class="code" href="class_sgv_1_1_class_editor_window.html#fd6c1c7957f6c3a41ed12c86ffe30ee2" title="クラス名とスーパークラス名を表示する">showEntityClassName</a>(win, pc);
+<a name="l00371"></a>00371 
+<a name="l00372"></a>00372         <span class="comment">// 属性名を列挙し表示</span>
+<a name="l00373"></a>00373         <a class="code" href="class_sgv_1_1_class_editor_window.html#8defbe8e3171ad8a72ac7b3f6d00d7b9" title="クラスの属性名を表示する">showEntityClassAttributes</a>(win, pc);
+<a name="l00374"></a>00374 
+<a name="l00375"></a>00375         <span class="comment">// X3Dファイル名を列挙し表示</span>
+<a name="l00376"></a>00376         <a class="code" href="class_sgv_1_1_class_editor_window.html#ee85cebfa509c2245cd0d632ac6dbe78" title="クラスのX3Dファイル情報を表示する">showEntityX3DFiles</a>(win, pc);
+<a name="l00377"></a>00377     }
+<a name="l00378"></a>00378 
+<a name="l00379"></a><a class="code" href="class_sgv_1_1_class_editor_window.html#1c7665984b4637c040727de457479372">00379</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_class_editor_window.html#1c7665984b4637c040727de457479372" title="クラス作成ボタンを押した">ClassEditorWindow::onButtonPress_CreateClass</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win)
+<a name="l00380"></a>00380     {
+<a name="l00381"></a>00381         <span class="comment">// ----------------------------------------------------</span>
+<a name="l00382"></a>00382         <span class="comment">//  新しいクラスを作成</span>
+<a name="l00383"></a>00383         <span class="comment">// ----------------------------------------------------</span>
+<a name="l00384"></a>00384         <span class="comment">// クラス名を得る</span>
+<a name="l00385"></a>00385         HWND hwndCls = GetDlgItem(m_hwndClassEditor, <a class="code" href="resource_8h.html#e7dd17cabe44f30a3a7c6cd54202112c">IDC_ENTCLS_NEW_CLASS_NAME</a>);
+<a name="l00386"></a>00386         std::string newClassName = <a class="code" href="class_wgu_1_1_edit_box.html#89f5ab952e864bbeb0556387832a5786" title="指定行の文字列を返す">Wgu::EditBox::getLine</a>(hwndCls, 0);
+<a name="l00387"></a>00387         <span class="keywordflow">if</span> (newClassName.size() == 0)
+<a name="l00388"></a>00388         {
+<a name="l00389"></a>00389             MessageBox(NULL, <span class="stringliteral">"新しいクラス名が指定されていません"</span>, <span class="stringliteral">"error"</span>, MB_OK | MB_ICONEXCLAMATION);
+<a name="l00390"></a>00390             <span class="keywordflow">return</span>;
+<a name="l00391"></a>00391         }
+<a name="l00392"></a>00392 
+<a name="l00393"></a>00393         <span class="comment">// スーパークラス名を得る</span>
+<a name="l00394"></a>00394         HWND hwndSuperCls = GetDlgItem(m_hwndClassEditor, <a class="code" href="resource_8h.html#30643a445068c364ca6352ca95de21b4">IDC_ENTCLS_SUPER_CLASS</a>);
+<a name="l00395"></a>00395         std::string superClassName = <a class="code" href="class_wgu_1_1_combo_box.html#b25c7506fe5fe023daadaafb178afaec" title="現在選択されている項目の文字列を返す">Wgu::ComboBox::getText</a>(hwndSuperCls);
+<a name="l00396"></a>00396 
+<a name="l00397"></a>00397         <a class="code" href="class_sgv_1_1_x_m_l_entity_class_manager.html" title="XMLエンティティクラスマネージャ.">XMLEntityClassManager</a> *ecm = win-&gt;<a class="code" href="class_sgv_1_1_main_window.html#198a0e7e17ce0100915a6fb4077dfc13" title="XMLエンティティクラスマネージャを返す.">getEntityClassManager</a>();
+<a name="l00398"></a>00398         <a class="code" href="class_sgv_1_1_x_m_l_entity_class.html" title="XMLエンティティクラス（エンティティの定義）.">XMLEntityClass</a> *pc = ecm-&gt;<a class="code" href="class_sgv_1_1_x_m_l_entity_class_manager.html#ef18723cc6016a89c61b0323d13ad70d" title="新しい（空の）クラスを作成し、このオブジェクトに追加．...">addNewEntityClass</a>(newClassName.c_str(), superClassName.c_str());
+<a name="l00399"></a>00399         <span class="keywordflow">if</span> (!pc)
+<a name="l00400"></a>00400         {
+<a name="l00401"></a>00401             <span class="keywordtype">char</span> buf[1024];
+<a name="l00402"></a>00402 
+<a name="l00403"></a>00403             sprintf(
+<a name="l00404"></a>00404                 buf, 
+<a name="l00405"></a>00405                 <span class="stringliteral">"%s を作成できませんでした. ¥r¥n指定のクラス名がすでに存在するか、スーパークラス名が無効です"</span>, 
+<a name="l00406"></a>00406                 newClassName.c_str());
+<a name="l00407"></a>00407             MessageBox(NULL, buf, <span class="stringliteral">"error"</span>, MB_OK | MB_ICONEXCLAMATION);
+<a name="l00408"></a>00408 
+<a name="l00409"></a>00409             <span class="keywordflow">return</span>;
+<a name="l00410"></a>00410         }
+<a name="l00411"></a>00411 
+<a name="l00412"></a>00412         win-&gt;<a class="code" href="class_sgv_1_1_main_window.html#1c1fa10588fad4a949874d38a27a66ce" title="メッセージ表示領域にメッセージを追加する．">printMsg</a>(<span class="stringliteral">"%s class created.¥n"</span>, newClassName.c_str());
+<a name="l00413"></a>00413 
+<a name="l00414"></a>00414         <span class="comment">// クラス表示を更新</span>
+<a name="l00415"></a>00415         <a class="code" href="class_sgv_1_1_class_editor_window.html#163b9fae3c0366f6ca4fc208a10447a0" title="クラス名一覧をリストボックスに設定する">setClassList</a>(win);
+<a name="l00416"></a>00416 
+<a name="l00417"></a>00417         <span class="comment">// 新しく作成したクラスを選択</span>
+<a name="l00418"></a>00418         HWND hwndClsList = GetDlgItem(m_hwndClassEditor, <a class="code" href="resource_8h.html#717a6f3f6b3ab096c3e83cb18d315755">IDC_ENTCLS_CLASSES</a>);
+<a name="l00419"></a>00419         <a class="code" href="class_wgu_1_1_list_box.html#b0a3204168e828f7bcbef10f9c94034d" title="リストボックス上の、指定文字列を選択する">Wgu::ListBox::selectString</a>(hwndClsList, newClassName.c_str());
+<a name="l00420"></a>00420         <a class="code" href="class_sgv_1_1_class_editor_window.html#228b2d27915d311a825ff1b77a86dd34" title="クラス選択リストボックスを押した">onSelChange_Classes</a>(win);
+<a name="l00421"></a>00421     }
+<a name="l00422"></a>00422 
+<a name="l00423"></a><a class="code" href="class_sgv_1_1_class_editor_window.html#a4ddcdb2ed43302e43ed3d02e0e2cd29">00423</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_class_editor_window.html#a4ddcdb2ed43302e43ed3d02e0e2cd29" title="クラス削除ボタンを押した">ClassEditorWindow::onButtonPress_DeleteClass</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win)
+<a name="l00424"></a>00424     {
+<a name="l00425"></a>00425         <span class="comment">// ----------------------------------------------------</span>
+<a name="l00426"></a>00426         <span class="comment">//  既存のクラスを削除</span>
+<a name="l00427"></a>00427         <span class="comment">// ----------------------------------------------------</span>
+<a name="l00428"></a>00428         <span class="comment">// 選択中のエンティティクラス名を得る</span>
+<a name="l00429"></a>00429         HWND hwndCls = GetDlgItem(m_hwndClassEditor, <a class="code" href="resource_8h.html#717a6f3f6b3ab096c3e83cb18d315755">IDC_ENTCLS_CLASSES</a>);
+<a name="l00430"></a>00430         <span class="keywordtype">int</span> index = <a class="code" href="class_wgu_1_1_list_box.html#62a61b4aaf62d00ae7f5213ca7462eee" title="現在選択されている項目のインデックス値を返す">Wgu::ListBox::getCurSel</a>(hwndCls);
+<a name="l00431"></a>00431 
+<a name="l00432"></a>00432         <span class="keywordflow">if</span> (index &gt;= 0)
+<a name="l00433"></a>00433         {
+<a name="l00434"></a>00434             <span class="comment">// クラス名を得る</span>
+<a name="l00435"></a>00435             std::string className = <a class="code" href="class_wgu_1_1_list_box.html#e271146f5cc08ec23ccbfbde4ced083f" title="指定項目の文字列を返す">Wgu::ListBox::getText</a>(hwndCls, index);
+<a name="l00436"></a>00436 
+<a name="l00437"></a>00437             <span class="comment">// クラスファイル名を得る</span>
+<a name="l00438"></a>00438             <a class="code" href="class_sgv_1_1_x_m_l_entity_class_manager.html" title="XMLエンティティクラスマネージャ.">XMLEntityClassManager</a> *ecm = win-&gt;<a class="code" href="class_sgv_1_1_main_window.html#198a0e7e17ce0100915a6fb4077dfc13" title="XMLエンティティクラスマネージャを返す.">getEntityClassManager</a>();
+<a name="l00439"></a>00439             std::string xmlFileName = ecm-&gt;<a class="code" href="class_sgv_1_1_x_m_l_entity_class_manager.html#2296e13a9b1c4f49728cb8d51005e6b3" title="クラス名からクラスファイル名への変換">classNameToFileName</a>(className.c_str());
+<a name="l00440"></a>00440 
+<a name="l00441"></a>00441             <span class="comment">// 本当に消していいか？の確認</span>
+<a name="l00442"></a>00442             <span class="keywordtype">char</span> buf[1024];
+<a name="l00443"></a>00443             sprintf(buf, <span class="stringliteral">"クラス %s (ファイル名：%s）を消去します．よろしいですか？"</span>,
+<a name="l00444"></a>00444                 className.c_str(), xmlFileName.c_str());
+<a name="l00445"></a>00445             <span class="keywordtype">int</span> ret = MessageBox(NULL, buf, <span class="stringliteral">"delete confirm"</span>, MB_YESNO);
+<a name="l00446"></a>00446             <span class="keywordflow">if</span> (ret == IDYES)
+<a name="l00447"></a>00447             {
+<a name="l00448"></a>00448                 <span class="comment">// エンティティを消去</span>
+<a name="l00449"></a>00449                 ecm-&gt;<a class="code" href="class_sgv_1_1_x_m_l_entity_class_manager.html#81968d4cfabb644d7486ce9abb295faf" title="クラスを削除">deleteEntityClass</a>(className.c_str());
+<a name="l00450"></a>00450 
+<a name="l00451"></a>00451                 <span class="comment">// エンティティXMLファイルを消去</span>
+<a name="l00452"></a>00452                 DeleteFile(xmlFileName.c_str());
+<a name="l00453"></a>00453 
+<a name="l00454"></a>00454                 <span class="comment">// クラス一覧更新前に、未セーブクラスをセーブ</span>
+<a name="l00455"></a>00455                 <a class="code" href="class_sgv_1_1_class_editor_window.html#b669cdbe17b11419f9e5fb6ff9f06357" title="クラス情報セーブボタンを押した">onButtonPress_Save</a>(win);
+<a name="l00456"></a>00456 
+<a name="l00457"></a>00457                 <span class="comment">// クラス一覧を更新</span>
+<a name="l00458"></a>00458                 <a class="code" href="class_sgv_1_1_class_editor_window.html#163b9fae3c0366f6ca4fc208a10447a0" title="クラス名一覧をリストボックスに設定する">setClassList</a>(win);
+<a name="l00459"></a>00459 
+<a name="l00460"></a>00460                 <span class="comment">// 選択状態更新</span>
+<a name="l00461"></a>00461                 <a class="code" href="class_wgu_1_1_list_box.html#06ac409728a162c5f412072b8034cd24" title="指定項目を選択状態にする">Wgu::ListBox::setCurSel</a>(hwndCls, index);
+<a name="l00462"></a>00462 
+<a name="l00463"></a>00463                 <span class="comment">// 世界内のエンティティを新しいクラス定義で更新する</span>
+<a name="l00464"></a>00464                 win-&gt;<a class="code" href="class_sgv_1_1_main_window.html#50ada0e01a384a938a52b2b701a36793" title="クラス定義の変更を世界に反映させる">updateWorldWithClassDefinition</a>();
+<a name="l00465"></a>00465 
+<a name="l00466"></a>00466                 <span class="comment">// クラス名リストを再表示する</span>
+<a name="l00467"></a>00467                 win-&gt;<a class="code" href="class_sgv_1_1_main_window.html#fd7d10da91726217361b4d0df02e9a31" title="カレントディレクトリにあるXMLファイルを検索し、 世界XMLファイル名、エ...">searchXMLFileList</a>();
+<a name="l00468"></a>00468 
+<a name="l00469"></a>00469                 <span class="comment">// メッセージ</span>
+<a name="l00470"></a>00470                 win-&gt;<a class="code" href="class_sgv_1_1_main_window.html#1c1fa10588fad4a949874d38a27a66ce" title="メッセージ表示領域にメッセージを追加する．">printMsg</a>(<span class="stringliteral">"%s was deleted.¥n"</span>, xmlFileName.c_str());
+<a name="l00471"></a>00471             }
+<a name="l00472"></a>00472         }
+<a name="l00473"></a>00473         <span class="keywordflow">else</span>
+<a name="l00474"></a>00474         {
+<a name="l00475"></a>00475             MessageBox(NULL, <span class="stringliteral">"削除するクラス名を指定してください"</span>, <span class="stringliteral">"info"</span>, MB_OK);
+<a name="l00476"></a>00476         }
+<a name="l00477"></a>00477     }
+<a name="l00478"></a>00478 
+<a name="l00479"></a><a class="code" href="class_sgv_1_1_class_editor_window.html#93e12077c54513b8f18bb98567827107">00479</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_class_editor_window.html#93e12077c54513b8f18bb98567827107" title="属性選択リストボックスを押した">ClassEditorWindow::onSelChange_Attrs</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win)
+<a name="l00480"></a>00480     {
+<a name="l00481"></a>00481         <span class="comment">// ----------------------------------------------------</span>
+<a name="l00482"></a>00482         <span class="comment">//  属性リストボックスで選んだ属性の内容を表示する</span>
+<a name="l00483"></a>00483         <span class="comment">//  （名前、型、グループ、値）</span>
+<a name="l00484"></a>00484         <span class="comment">// ----------------------------------------------------</span>
+<a name="l00485"></a>00485         <span class="comment">// 選択中のエンティティクラスを得る</span>
+<a name="l00486"></a>00486         <a class="code" href="class_sgv_1_1_x_m_l_entity_class.html" title="XMLエンティティクラス（エンティティの定義）.">XMLEntityClass</a> *pc = <a class="code" href="class_sgv_1_1_class_editor_window.html#cd09af48f26c4c38db2d3e20be79b16f" title="現在クラス名一覧リストボックスで選択されている エンティティクラスの...">getSelectedEntityClass</a>(win);
+<a name="l00487"></a>00487         <span class="keywordflow">if</span> (!pc)
+<a name="l00488"></a>00488         {
+<a name="l00489"></a>00489             MessageBox(NULL, <span class="stringliteral">"クラスが選択されていません"</span>, <span class="stringliteral">"info"</span>, MB_OK);
+<a name="l00490"></a>00490             <span class="keywordflow">return</span>;
+<a name="l00491"></a>00491         }
+<a name="l00492"></a>00492 
+<a name="l00493"></a>00493         <span class="comment">// 選択中の属性名を得る</span>
+<a name="l00494"></a>00494         std::string attrName = <a class="code" href="class_sgv_1_1_class_editor_window.html#95e86fcf767de4c7d0839fe79fcc9838" title="現在選択されている属性名を得る">getSelectedAttrName</a>();
+<a name="l00495"></a>00495 
+<a name="l00496"></a>00496         <span class="comment">// 属性の詳細を表示する</span>
+<a name="l00497"></a>00497         <a class="code" href="class_sgv_1_1_class_editor_window.html#771e2ff014a0a3207285c1cc5ffa902a" title="クラスの属性の値を表示する">showEntityClassAttributeDetail</a>(win, pc, attrName.c_str());
+<a name="l00498"></a>00498     }
+<a name="l00499"></a>00499 
+<a name="l00500"></a><a class="code" href="class_sgv_1_1_class_editor_window.html#ffe9b98ecccc9db1a591c40f7aace928">00500</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_class_editor_window.html#ffe9b98ecccc9db1a591c40f7aace928" title="属性値セットボタンを押した">ClassEditorWindow::onButtonPress_SetAttr</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win)
+<a name="l00501"></a>00501     {
+<a name="l00502"></a>00502         <span class="comment">// ----------------------------------------------------</span>
+<a name="l00503"></a>00503         <span class="comment">//  属性値を追加/変更</span>
+<a name="l00504"></a>00504         <span class="comment">// ----------------------------------------------------</span>
+<a name="l00505"></a>00505         <span class="comment">// 選択中のエンティティクラスを得る</span>
+<a name="l00506"></a>00506         <a class="code" href="class_sgv_1_1_x_m_l_entity_class.html" title="XMLエンティティクラス（エンティティの定義）.">XMLEntityClass</a> *pc = <a class="code" href="class_sgv_1_1_class_editor_window.html#cd09af48f26c4c38db2d3e20be79b16f" title="現在クラス名一覧リストボックスで選択されている エンティティクラスの...">getSelectedEntityClass</a>(win);
+<a name="l00507"></a>00507         <span class="keywordflow">if</span> (!pc)
+<a name="l00508"></a>00508         {
+<a name="l00509"></a>00509             MessageBox(NULL, <span class="stringliteral">"クラスが選択されていません"</span>, <span class="stringliteral">"info"</span>, MB_OK);
+<a name="l00510"></a>00510             <span class="keywordflow">return</span>;
+<a name="l00511"></a>00511         }
+<a name="l00512"></a>00512 
+<a name="l00513"></a>00513         <span class="comment">// 属性名を得る</span>
+<a name="l00514"></a>00514         HWND hwndAttrName = GetDlgItem(m_hwndClassEditor, <a class="code" href="resource_8h.html#f2763ee3ec85af978a740e07fc337d96">IDC_ENTCLS_NEWNAME</a>);
+<a name="l00515"></a>00515         std::string attrName = <a class="code" href="class_wgu_1_1_edit_box.html#89f5ab952e864bbeb0556387832a5786" title="指定行の文字列を返す">Wgu::EditBox::getLine</a>(hwndAttrName, 0);
+<a name="l00516"></a>00516 
+<a name="l00517"></a>00517         <span class="comment">// 型を得る</span>
+<a name="l00518"></a>00518         HWND hwndAttrType = GetDlgItem(m_hwndClassEditor, <a class="code" href="resource_8h.html#c3e622e25c156931d31bbe331c21aae2">IDC_ENTCLS_NEWTYPE</a>);
+<a name="l00519"></a>00519         std::string attrType = <a class="code" href="class_wgu_1_1_combo_box.html#b25c7506fe5fe023daadaafb178afaec" title="現在選択されている項目の文字列を返す">Wgu::ComboBox::getText</a>(hwndAttrType);
+<a name="l00520"></a>00520 
+<a name="l00521"></a>00521         <span class="comment">// グループ名を得る</span>
+<a name="l00522"></a>00522         HWND hwndAttrGroup = GetDlgItem(m_hwndClassEditor, <a class="code" href="resource_8h.html#90427e8d505a71b38dfd05a7a5a0f8c5">IDC_ENTCLS_NEWGROUP</a>);
+<a name="l00523"></a>00523         std::string attrGroup = <a class="code" href="class_wgu_1_1_edit_box.html#89f5ab952e864bbeb0556387832a5786" title="指定行の文字列を返す">Wgu::EditBox::getLine</a>(hwndAttrGroup, 0);
+<a name="l00524"></a>00524 
+<a name="l00525"></a>00525         <span class="comment">// 値を得る</span>
+<a name="l00526"></a>00526         HWND hwndAttrValue = GetDlgItem(m_hwndClassEditor, <a class="code" href="resource_8h.html#08794b8357111ff8b4d0bd445158aa85">IDC_ENTCLS_NEWVALUE</a>);
+<a name="l00527"></a>00527         std::string attrValue = <a class="code" href="class_wgu_1_1_edit_box.html#89f5ab952e864bbeb0556387832a5786" title="指定行の文字列を返す">Wgu::EditBox::getLine</a>(hwndAttrValue, 0);
+<a name="l00528"></a>00528 
+<a name="l00529"></a>00529         <span class="comment">// 属性の追加</span>
+<a name="l00530"></a>00530         pc-&gt;<a class="code" href="class_sgv_1_1_x_m_l_entity_class.html#04cf2541ac8b61e97b985de43df3b197" title="属性定義をセットする．">setAttr</a>(attrName.c_str(), attrType.c_str(), attrGroup.c_str(), attrValue.c_str());
+<a name="l00531"></a>00531 
+<a name="l00532"></a>00532         <span class="comment">// 属性の再表示</span>
+<a name="l00533"></a>00533         <a class="code" href="class_sgv_1_1_class_editor_window.html#8defbe8e3171ad8a72ac7b3f6d00d7b9" title="クラスの属性名を表示する">showEntityClassAttributes</a>(win, pc);
+<a name="l00534"></a>00534 
+<a name="l00535"></a>00535         <span class="comment">// 選択状態更新</span>
+<a name="l00536"></a>00536         HWND hwndList = GetDlgItem(m_hwndClassEditor, <a class="code" href="resource_8h.html#e859b31a9c06b8db279ba4cd6fc31acc">IDC_ENTCLS_ATTRS</a>);
+<a name="l00537"></a>00537         <a class="code" href="class_wgu_1_1_list_box.html#b0a3204168e828f7bcbef10f9c94034d" title="リストボックス上の、指定文字列を選択する">Wgu::ListBox::selectString</a>(hwndList, attrName.c_str());
+<a name="l00538"></a>00538 
+<a name="l00539"></a>00539         <span class="comment">// メッセージ表示</span>
+<a name="l00540"></a>00540         win-&gt;<a class="code" href="class_sgv_1_1_main_window.html#1c1fa10588fad4a949874d38a27a66ce" title="メッセージ表示領域にメッセージを追加する．">printMsg</a>(<span class="stringliteral">"attribute modified. (class=%s, attrName=%s, type=%s, group=%s, value=%s)¥n"</span>,
+<a name="l00541"></a>00541             pc-&gt;<a class="code" href="class_sgv_1_1_x_m_l_entity_class.html#473d1cf0d501c1f8f6c8896249e6012c" title="クラス名を得る">getClassName</a>(),
+<a name="l00542"></a>00542             attrName.c_str(),
+<a name="l00543"></a>00543             attrType.c_str(),
+<a name="l00544"></a>00544             attrGroup.c_str(),
+<a name="l00545"></a>00545             attrValue.c_str());
+<a name="l00546"></a>00546     }
+<a name="l00547"></a>00547 
+<a name="l00548"></a><a class="code" href="class_sgv_1_1_class_editor_window.html#29ab159519068a3cf2bb5e65992450f8">00548</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_class_editor_window.html#29ab159519068a3cf2bb5e65992450f8" title="属性削除ボタンを押した">ClassEditorWindow::onButtonPress_DelAttr</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win)
+<a name="l00549"></a>00549     {
+<a name="l00550"></a>00550         <span class="comment">// ----------------------------------------------------</span>
+<a name="l00551"></a>00551         <span class="comment">//  既存の属性を削除</span>
+<a name="l00552"></a>00552         <span class="comment">// ----------------------------------------------------</span>
+<a name="l00553"></a>00553         <span class="comment">// 選択中のエンティティクラスを得る</span>
+<a name="l00554"></a>00554         <a class="code" href="class_sgv_1_1_x_m_l_entity_class.html" title="XMLエンティティクラス（エンティティの定義）.">XMLEntityClass</a> *pc = <a class="code" href="class_sgv_1_1_class_editor_window.html#cd09af48f26c4c38db2d3e20be79b16f" title="現在クラス名一覧リストボックスで選択されている エンティティクラスの...">getSelectedEntityClass</a>(win);
+<a name="l00555"></a>00555         <span class="keywordflow">if</span> (!pc)
+<a name="l00556"></a>00556         {
+<a name="l00557"></a>00557             MessageBox(NULL, <span class="stringliteral">"クラスが選択されていません"</span>, <span class="stringliteral">"info"</span>, MB_OK);
+<a name="l00558"></a>00558             <span class="keywordflow">return</span>;
+<a name="l00559"></a>00559         }
+<a name="l00560"></a>00560 
+<a name="l00561"></a>00561         <span class="comment">// 選択されている（＝削除対象の）属性のインデックスを得る</span>
+<a name="l00562"></a>00562         HWND hwndList = GetDlgItem(m_hwndClassEditor, <a class="code" href="resource_8h.html#e859b31a9c06b8db279ba4cd6fc31acc">IDC_ENTCLS_ATTRS</a>);
+<a name="l00563"></a>00563         <span class="keywordtype">int</span> index = <a class="code" href="class_wgu_1_1_list_box.html#62a61b4aaf62d00ae7f5213ca7462eee" title="現在選択されている項目のインデックス値を返す">Wgu::ListBox::getCurSel</a>(hwndList);
+<a name="l00564"></a>00564 
+<a name="l00565"></a>00565         <span class="keywordflow">if</span> (index &gt;= 0)
+<a name="l00566"></a>00566         {
+<a name="l00567"></a>00567             <span class="comment">// 削除する属性名を得る</span>
+<a name="l00568"></a>00568             std::string attrName = <a class="code" href="class_wgu_1_1_list_box.html#e271146f5cc08ec23ccbfbde4ced083f" title="指定項目の文字列を返す">Wgu::ListBox::getText</a>(hwndList, index);
+<a name="l00569"></a>00569 
+<a name="l00570"></a>00570             <span class="comment">// 属性を削除</span>
+<a name="l00571"></a>00571             pc-&gt;<a class="code" href="class_sgv_1_1_x_m_l_entity_class.html#bd9ca1fef97076d88c53e2c54d9c8856" title="属性定義を削除する">deleteAttr</a>(attrName.c_str());
+<a name="l00572"></a>00572 
+<a name="l00573"></a>00573             <span class="comment">// 属性の再表示</span>
+<a name="l00574"></a>00574             <a class="code" href="class_sgv_1_1_class_editor_window.html#8defbe8e3171ad8a72ac7b3f6d00d7b9" title="クラスの属性名を表示する">showEntityClassAttributes</a>(win, pc);
+<a name="l00575"></a>00575 
+<a name="l00576"></a>00576             <span class="comment">// 選択状態更新</span>
+<a name="l00577"></a>00577             <a class="code" href="class_wgu_1_1_list_box.html#06ac409728a162c5f412072b8034cd24" title="指定項目を選択状態にする">Wgu::ListBox::setCurSel</a>(hwndList, index);
+<a name="l00578"></a>00578 
+<a name="l00579"></a>00579             <span class="comment">// メッセージ表示</span>
+<a name="l00580"></a>00580             win-&gt;<a class="code" href="class_sgv_1_1_main_window.html#1c1fa10588fad4a949874d38a27a66ce" title="メッセージ表示領域にメッセージを追加する．">printMsg</a>(<span class="stringliteral">"%s was deleted.¥n"</span>, attrName.c_str());
+<a name="l00581"></a>00581         }
+<a name="l00582"></a>00582         <span class="keywordflow">else</span>
+<a name="l00583"></a>00583         {
+<a name="l00584"></a>00584             MessageBox(NULL, <span class="stringliteral">"削除する属性名を指定してください"</span>, <span class="stringliteral">"info"</span>, MB_OK);
+<a name="l00585"></a>00585         }
+<a name="l00586"></a>00586     }
+<a name="l00587"></a>00587 
+<a name="l00588"></a><a class="code" href="class_sgv_1_1_class_editor_window.html#1d1afcc9664dd76667a00ec3279c23a5">00588</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_class_editor_window.html#1d1afcc9664dd76667a00ec3279c23a5" title="X3Dファイル名リストボックスを押した.">ClassEditorWindow::onSelChange_X3DFiles</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win)
+<a name="l00589"></a>00589     {
+<a name="l00590"></a>00590         <span class="comment">// ----------------------------------------------------</span>
+<a name="l00591"></a>00591         <span class="comment">//  X3Dファイル名のリストを選択した</span>
+<a name="l00592"></a>00592         <span class="comment">// ----------------------------------------------------</span>
+<a name="l00593"></a>00593         <span class="comment">// 選択中のエンティティクラスを得る</span>
+<a name="l00594"></a>00594         <a class="code" href="class_sgv_1_1_x_m_l_entity_class.html" title="XMLエンティティクラス（エンティティの定義）.">XMLEntityClass</a> *pc = <a class="code" href="class_sgv_1_1_class_editor_window.html#cd09af48f26c4c38db2d3e20be79b16f" title="現在クラス名一覧リストボックスで選択されている エンティティクラスの...">getSelectedEntityClass</a>(win);
+<a name="l00595"></a>00595         <span class="keywordflow">if</span> (!pc)
+<a name="l00596"></a>00596         {
+<a name="l00597"></a>00597             MessageBox(NULL, <span class="stringliteral">"クラスが選択されていません"</span>, <span class="stringliteral">"info"</span>, MB_OK);
+<a name="l00598"></a>00598             <span class="keywordflow">return</span>;
+<a name="l00599"></a>00599         }
+<a name="l00600"></a>00600 
+<a name="l00601"></a>00601         <span class="comment">// 選択中のX3Dファイル名を得る</span>
+<a name="l00602"></a>00602         HWND hwndX3DFiles = GetDlgItem(m_hwndClassEditor, <a class="code" href="resource_8h.html#cc151d2896fd575b5295819ee97e1f47">IDC_ENTCLS_X3DFILES</a>);
+<a name="l00603"></a>00603         <span class="keywordtype">int</span> index = <a class="code" href="class_wgu_1_1_list_box.html#62a61b4aaf62d00ae7f5213ca7462eee" title="現在選択されている項目のインデックス値を返す">Wgu::ListBox::getCurSel</a>(hwndX3DFiles);
+<a name="l00604"></a>00604 
+<a name="l00605"></a>00605         <span class="keywordflow">if</span> (index &gt;= 0)
+<a name="l00606"></a>00606         {
+<a name="l00607"></a>00607             <span class="comment">// X3Dファイル名を得る</span>
+<a name="l00608"></a>00608             std::string x3dFileName = <a class="code" href="class_wgu_1_1_list_box.html#e271146f5cc08ec23ccbfbde4ced083f" title="指定項目の文字列を返す">Wgu::ListBox::getText</a>(hwndX3DFiles, index);
+<a name="l00609"></a>00609 
+<a name="l00610"></a>00610             <span class="comment">// 状態名を表示</span>
+<a name="l00611"></a>00611             HWND hwndStateName = GetDlgItem(m_hwndClassEditor, <a class="code" href="resource_8h.html#7a0f2679fda20ac99f89b3dea8bfeaac">IDC_ENTCLS_X3DSTATENAME</a>);
+<a name="l00612"></a>00612             <a class="code" href="class_wgu_1_1_edit_box.html#1ee22433af8b2ef9569db9b948fbb11b" title="エディットコントロールに文字列をセットする">Wgu::EditBox::setText</a>(hwndStateName, pc-&gt;<a class="code" href="class_sgv_1_1_x_m_l_entity_class.html#de119a0b59fcd9c4348c93031d883e11" title="i番目の形状ファイル名(X3Dファイル名）の状態名を返す">getX3DFileStateName</a>(x3dFileName.c_str()));
+<a name="l00613"></a>00613 
+<a name="l00614"></a>00614             <span class="comment">// 状態値を表示</span>
+<a name="l00615"></a>00615             HWND hwndStateValue = GetDlgItem(m_hwndClassEditor, <a class="code" href="resource_8h.html#a71ecbbfad17c2949951103d6f11d176">IDC_ENTCLS_X3DSTATEVALUE</a>);
+<a name="l00616"></a>00616             <a class="code" href="class_wgu_1_1_edit_box.html#1ee22433af8b2ef9569db9b948fbb11b" title="エディットコントロールに文字列をセットする">Wgu::EditBox::setText</a>(hwndStateValue, pc-&gt;<a class="code" href="class_sgv_1_1_x_m_l_entity_class.html#0cbfac0003bb2d5bbde40fe2136a9d1d" title="i番目の形状ファイル名(X3Dファイル名）の状態値を返す">getX3DFileStateValue</a>(x3dFileName.c_str()));
+<a name="l00617"></a>00617         }
+<a name="l00618"></a>00618     }
+<a name="l00619"></a>00619 
+<a name="l00620"></a><a class="code" href="class_sgv_1_1_class_editor_window.html#b55896306af2a08874c8a58396925639">00620</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_class_editor_window.html#b55896306af2a08874c8a58396925639" title="X3Dファイル名の上移動ボタンを押した.">ClassEditorWindow::onButtonPress_X3DFileUp</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win)
+<a name="l00621"></a>00621     {
+<a name="l00622"></a>00622         <span class="comment">// ----------------------------------------------------</span>
+<a name="l00623"></a>00623         <span class="comment">//  X3Dファイル名の上移動ボタンを押した</span>
+<a name="l00624"></a>00624         <span class="comment">// ----------------------------------------------------</span>
+<a name="l00625"></a>00625         <span class="comment">// 選択中のエンティティクラスを得る</span>
+<a name="l00626"></a>00626         <a class="code" href="class_sgv_1_1_x_m_l_entity_class.html" title="XMLエンティティクラス（エンティティの定義）.">XMLEntityClass</a> *pc = <a class="code" href="class_sgv_1_1_class_editor_window.html#cd09af48f26c4c38db2d3e20be79b16f" title="現在クラス名一覧リストボックスで選択されている エンティティクラスの...">getSelectedEntityClass</a>(win);
+<a name="l00627"></a>00627         <span class="keywordflow">if</span> (!pc)
+<a name="l00628"></a>00628         {
+<a name="l00629"></a>00629             MessageBox(NULL, <span class="stringliteral">"クラスが選択されていません"</span>, <span class="stringliteral">"info"</span>, MB_OK);
+<a name="l00630"></a>00630             <span class="keywordflow">return</span>;
+<a name="l00631"></a>00631         }
+<a name="l00632"></a>00632 
+<a name="l00633"></a>00633         <span class="comment">// 選択中のX3Dファイル名を得る</span>
+<a name="l00634"></a>00634         HWND hwndX3DFiles = GetDlgItem(m_hwndClassEditor, <a class="code" href="resource_8h.html#cc151d2896fd575b5295819ee97e1f47">IDC_ENTCLS_X3DFILES</a>);
+<a name="l00635"></a>00635         <span class="keywordtype">int</span> i = <a class="code" href="class_wgu_1_1_list_box.html#62a61b4aaf62d00ae7f5213ca7462eee" title="現在選択されている項目のインデックス値を返す">Wgu::ListBox::getCurSel</a>(hwndX3DFiles);
+<a name="l00636"></a>00636 
+<a name="l00637"></a>00637         <span class="keywordflow">if</span> (i &gt;= 0)
+<a name="l00638"></a>00638         {
+<a name="l00639"></a>00639             <span class="keywordtype">int</span> j = pc-&gt;<a class="code" href="class_sgv_1_1_x_m_l_entity_class.html#ea38f14219248b076212c0f3f1ec7762" title="X3Dファイル名エントリを上（インデックスの小さい方向）に移動させる...">moveEntryUp</a>(i);
+<a name="l00640"></a>00640             <span class="keywordflow">if</span> (j == i-1)
+<a name="l00641"></a>00641             {
+<a name="l00642"></a>00642                 <span class="comment">// エントリ移動完了</span>
+<a name="l00643"></a>00643                 <span class="comment">// リストボックスの表示を書き換える</span>
+<a name="l00644"></a>00644 
+<a name="l00645"></a>00645                 <span class="comment">// i番目とi-1番目の文字列を得る</span>
+<a name="l00646"></a>00646                 std::string up = <a class="code" href="class_wgu_1_1_list_box.html#e271146f5cc08ec23ccbfbde4ced083f" title="指定項目の文字列を返す">Wgu::ListBox::getText</a>(hwndX3DFiles, i-1);
+<a name="l00647"></a>00647                 std::string down = <a class="code" href="class_wgu_1_1_list_box.html#e271146f5cc08ec23ccbfbde4ced083f" title="指定項目の文字列を返す">Wgu::ListBox::getText</a>(hwndX3DFiles, i);
+<a name="l00648"></a>00648                 
+<a name="l00649"></a>00649                 <span class="comment">// i番目を消し、次にi-1番目を消す</span>
+<a name="l00650"></a>00650                 <a class="code" href="class_wgu_1_1_list_box.html#ba5d5e4cb9594ff3df746a0f3ac6a292" title="リストボックスの指定位置の文字列を削除する">Wgu::ListBox::deleteString</a>(hwndX3DFiles, i);
+<a name="l00651"></a>00651                 <a class="code" href="class_wgu_1_1_list_box.html#ba5d5e4cb9594ff3df746a0f3ac6a292" title="リストボックスの指定位置の文字列を削除する">Wgu::ListBox::deleteString</a>(hwndX3DFiles, i-1);
+<a name="l00652"></a>00652 
+<a name="l00653"></a>00653                 <span class="comment">// i-1番目に挿入し、次にi番目に挿入する</span>
+<a name="l00654"></a>00654                 <a class="code" href="class_wgu_1_1_list_box.html#ef04d3185a293c3240e61eca511da446" title="リストボックスの指定位置に文字列を追加する">Wgu::ListBox::insertString</a>(hwndX3DFiles, i-1, down.c_str());
+<a name="l00655"></a>00655                 <a class="code" href="class_wgu_1_1_list_box.html#ef04d3185a293c3240e61eca511da446" title="リストボックスの指定位置に文字列を追加する">Wgu::ListBox::insertString</a>(hwndX3DFiles, i, up.c_str());
+<a name="l00656"></a>00656 
+<a name="l00657"></a>00657                 <span class="comment">// 選択状態更新</span>
+<a name="l00658"></a>00658                 <a class="code" href="class_wgu_1_1_list_box.html#b0a3204168e828f7bcbef10f9c94034d" title="リストボックス上の、指定文字列を選択する">Wgu::ListBox::selectString</a>(hwndX3DFiles, down.c_str());
+<a name="l00659"></a>00659             }
+<a name="l00660"></a>00660         }
+<a name="l00661"></a>00661     }
+<a name="l00662"></a>00662 
+<a name="l00663"></a><a class="code" href="class_sgv_1_1_class_editor_window.html#1565ceac33700ab7d786c0a29e10e563">00663</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_class_editor_window.html#1565ceac33700ab7d786c0a29e10e563" title="X3Dファイル名の下移動ボタンを押した.">ClassEditorWindow::onButtonPress_X3DFileDown</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win)
+<a name="l00664"></a>00664     {
+<a name="l00665"></a>00665         <span class="comment">// ----------------------------------------------------</span>
+<a name="l00666"></a>00666         <span class="comment">//  X3Dファイル名の下移動ボタンを押した</span>
+<a name="l00667"></a>00667         <span class="comment">// ----------------------------------------------------</span>
+<a name="l00668"></a>00668         <span class="comment">// 選択中のエンティティクラスを得る</span>
+<a name="l00669"></a>00669         <a class="code" href="class_sgv_1_1_x_m_l_entity_class.html" title="XMLエンティティクラス（エンティティの定義）.">XMLEntityClass</a> *pc = <a class="code" href="class_sgv_1_1_class_editor_window.html#cd09af48f26c4c38db2d3e20be79b16f" title="現在クラス名一覧リストボックスで選択されている エンティティクラスの...">getSelectedEntityClass</a>(win);
+<a name="l00670"></a>00670         <span class="keywordflow">if</span> (!pc)
+<a name="l00671"></a>00671         {
+<a name="l00672"></a>00672             MessageBox(NULL, <span class="stringliteral">"クラスが選択されていません"</span>, <span class="stringliteral">"info"</span>, MB_OK);
+<a name="l00673"></a>00673             <span class="keywordflow">return</span>;
+<a name="l00674"></a>00674         }
+<a name="l00675"></a>00675 
+<a name="l00676"></a>00676         <span class="comment">// 選択中のX3Dファイル名を得る</span>
+<a name="l00677"></a>00677         HWND hwndX3DFiles = GetDlgItem(m_hwndClassEditor, <a class="code" href="resource_8h.html#cc151d2896fd575b5295819ee97e1f47">IDC_ENTCLS_X3DFILES</a>);
+<a name="l00678"></a>00678         <span class="keywordtype">int</span> i = <a class="code" href="class_wgu_1_1_list_box.html#62a61b4aaf62d00ae7f5213ca7462eee" title="現在選択されている項目のインデックス値を返す">Wgu::ListBox::getCurSel</a>(hwndX3DFiles);
+<a name="l00679"></a>00679 
+<a name="l00680"></a>00680         <span class="keywordflow">if</span> (i &gt;= 0)
+<a name="l00681"></a>00681         {
+<a name="l00682"></a>00682             <span class="keywordtype">int</span> j = pc-&gt;<a class="code" href="class_sgv_1_1_x_m_l_entity_class.html#77c6927ae0c500535559b5fcb5bb8ee7" title="X3Dファイル名エントリを下（インデックスの大きい方向）に移動させる...">moveEntryDown</a>(i);
+<a name="l00683"></a>00683             <span class="keywordflow">if</span> (j == i+1)
+<a name="l00684"></a>00684             {
+<a name="l00685"></a>00685                 <span class="comment">// エントリ移動完了</span>
+<a name="l00686"></a>00686                 <span class="comment">// リストボックスの表示を書き換える</span>
+<a name="l00687"></a>00687 
+<a name="l00688"></a>00688                 <span class="comment">// i番目とi+1番目の文字列を得る</span>
+<a name="l00689"></a>00689                 std::string up = <a class="code" href="class_wgu_1_1_list_box.html#e271146f5cc08ec23ccbfbde4ced083f" title="指定項目の文字列を返す">Wgu::ListBox::getText</a>(hwndX3DFiles, i);
+<a name="l00690"></a>00690                 std::string down = <a class="code" href="class_wgu_1_1_list_box.html#e271146f5cc08ec23ccbfbde4ced083f" title="指定項目の文字列を返す">Wgu::ListBox::getText</a>(hwndX3DFiles, i+1);
+<a name="l00691"></a>00691                 
+<a name="l00692"></a>00692                 <span class="comment">// i+1番目を消し、次にi番目を消す</span>
+<a name="l00693"></a>00693                 <a class="code" href="class_wgu_1_1_list_box.html#ba5d5e4cb9594ff3df746a0f3ac6a292" title="リストボックスの指定位置の文字列を削除する">Wgu::ListBox::deleteString</a>(hwndX3DFiles, i+1);
+<a name="l00694"></a>00694                 <a class="code" href="class_wgu_1_1_list_box.html#ba5d5e4cb9594ff3df746a0f3ac6a292" title="リストボックスの指定位置の文字列を削除する">Wgu::ListBox::deleteString</a>(hwndX3DFiles, i);
+<a name="l00695"></a>00695 
+<a name="l00696"></a>00696                 <span class="comment">// i番目に挿入し、次にi+1番目に挿入する</span>
+<a name="l00697"></a>00697                 <a class="code" href="class_wgu_1_1_list_box.html#ef04d3185a293c3240e61eca511da446" title="リストボックスの指定位置に文字列を追加する">Wgu::ListBox::insertString</a>(hwndX3DFiles, i, down.c_str());
+<a name="l00698"></a>00698                 <a class="code" href="class_wgu_1_1_list_box.html#ef04d3185a293c3240e61eca511da446" title="リストボックスの指定位置に文字列を追加する">Wgu::ListBox::insertString</a>(hwndX3DFiles, i+1, up.c_str());
+<a name="l00699"></a>00699 
+<a name="l00700"></a>00700                 <span class="comment">// 選択状態更新</span>
+<a name="l00701"></a>00701                 <a class="code" href="class_wgu_1_1_list_box.html#b0a3204168e828f7bcbef10f9c94034d" title="リストボックス上の、指定文字列を選択する">Wgu::ListBox::selectString</a>(hwndX3DFiles, up.c_str());
+<a name="l00702"></a>00702             }
+<a name="l00703"></a>00703         }
+<a name="l00704"></a>00704     }
+<a name="l00705"></a>00705 
+<a name="l00706"></a><a class="code" href="class_sgv_1_1_class_editor_window.html#f5fb01e12cb972160ee66bf965fae13f">00706</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_class_editor_window.html#f5fb01e12cb972160ee66bf965fae13f" title="X3D状態名変更ボタンを押した.">ClassEditorWindow::onButtonPress_SetX3DFileState</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win)
+<a name="l00707"></a>00707     {
+<a name="l00708"></a>00708         <span class="comment">// 選択中のエンティティクラスを得る</span>
+<a name="l00709"></a>00709         <a class="code" href="class_sgv_1_1_x_m_l_entity_class.html" title="XMLエンティティクラス（エンティティの定義）.">XMLEntityClass</a> *pc = <a class="code" href="class_sgv_1_1_class_editor_window.html#cd09af48f26c4c38db2d3e20be79b16f" title="現在クラス名一覧リストボックスで選択されている エンティティクラスの...">getSelectedEntityClass</a>(win);
+<a name="l00710"></a>00710         <span class="keywordflow">if</span> (!pc)
+<a name="l00711"></a>00711         {
+<a name="l00712"></a>00712             MessageBox(NULL, <span class="stringliteral">"クラスが選択されていません"</span>, <span class="stringliteral">"info"</span>, MB_OK);
+<a name="l00713"></a>00713             <span class="keywordflow">return</span>;
+<a name="l00714"></a>00714         }
+<a name="l00715"></a>00715 
+<a name="l00716"></a>00716         <span class="comment">// 選択中のX3Dファイル名を得る</span>
+<a name="l00717"></a>00717         HWND hwndX3DFiles = GetDlgItem(m_hwndClassEditor, <a class="code" href="resource_8h.html#cc151d2896fd575b5295819ee97e1f47">IDC_ENTCLS_X3DFILES</a>);
+<a name="l00718"></a>00718         <span class="keywordtype">int</span> index = <a class="code" href="class_wgu_1_1_list_box.html#62a61b4aaf62d00ae7f5213ca7462eee" title="現在選択されている項目のインデックス値を返す">Wgu::ListBox::getCurSel</a>(hwndX3DFiles);
+<a name="l00719"></a>00719 
+<a name="l00720"></a>00720         <span class="keywordflow">if</span> (index &gt;= 0)
+<a name="l00721"></a>00721         {
+<a name="l00722"></a>00722             <span class="comment">// X3Dファイルを得る</span>
+<a name="l00723"></a>00723             std::string x3dFileName = <a class="code" href="class_wgu_1_1_list_box.html#e271146f5cc08ec23ccbfbde4ced083f" title="指定項目の文字列を返す">Wgu::ListBox::getText</a>(hwndX3DFiles, index);
+<a name="l00724"></a>00724 
+<a name="l00725"></a>00725             <span class="comment">// 状態名をエディットコントロールから得る</span>
+<a name="l00726"></a>00726             HWND hwndStateName = GetDlgItem(m_hwndClassEditor, <a class="code" href="resource_8h.html#7a0f2679fda20ac99f89b3dea8bfeaac">IDC_ENTCLS_X3DSTATENAME</a>);
+<a name="l00727"></a>00727             std::string stateName = <a class="code" href="class_wgu_1_1_edit_box.html#89f5ab952e864bbeb0556387832a5786" title="指定行の文字列を返す">Wgu::EditBox::getLine</a>(hwndStateName, 0);
+<a name="l00728"></a>00728 
+<a name="l00729"></a>00729             <span class="comment">// 状態値をエディットコントロールから得る</span>
+<a name="l00730"></a>00730             HWND hwndStateValue = GetDlgItem(m_hwndClassEditor, <a class="code" href="resource_8h.html#a71ecbbfad17c2949951103d6f11d176">IDC_ENTCLS_X3DSTATEVALUE</a>);
+<a name="l00731"></a>00731             std::string stateValue = <a class="code" href="class_wgu_1_1_edit_box.html#89f5ab952e864bbeb0556387832a5786" title="指定行の文字列を返す">Wgu::EditBox::getLine</a>(hwndStateValue, 0);
+<a name="l00732"></a>00732 
+<a name="l00733"></a>00733             <span class="comment">// 状態名、状態値をセットする</span>
+<a name="l00734"></a>00734             pc-&gt;<a class="code" href="class_sgv_1_1_x_m_l_entity_class.html#f8d770b6e2e073dee848fa1705b34152" title="X3Dファイル名に対する状態名、状態値をセットする.">setX3DFileName</a>(x3dFileName.c_str(), stateName.c_str(), stateValue.c_str());
+<a name="l00735"></a>00735         }
+<a name="l00736"></a>00736         <span class="keywordflow">else</span>
+<a name="l00737"></a>00737         {
+<a name="l00738"></a>00738             MessageBox(NULL, <span class="stringliteral">"X3Dファイル名を指定してください"</span>, <span class="stringliteral">"info"</span>, MB_OK);
+<a name="l00739"></a>00739         }
+<a name="l00740"></a>00740     }
+<a name="l00741"></a>00741 
+<a name="l00742"></a><a class="code" href="class_sgv_1_1_class_editor_window.html#27d914dc6f411e077fb93ef2581017f7">00742</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_class_editor_window.html#27d914dc6f411e077fb93ef2581017f7" title="X3Dファイル追加ボタンを押した.">ClassEditorWindow::onButtonPress_AddX3DFile</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win)
+<a name="l00743"></a>00743     {
+<a name="l00744"></a>00744         <span class="comment">// 選択中のエンティティクラスを得る</span>
+<a name="l00745"></a>00745         <a class="code" href="class_sgv_1_1_x_m_l_entity_class.html" title="XMLエンティティクラス（エンティティの定義）.">XMLEntityClass</a> *pc = <a class="code" href="class_sgv_1_1_class_editor_window.html#cd09af48f26c4c38db2d3e20be79b16f" title="現在クラス名一覧リストボックスで選択されている エンティティクラスの...">getSelectedEntityClass</a>(win);
+<a name="l00746"></a>00746         <span class="keywordflow">if</span> (!pc)
+<a name="l00747"></a>00747         {
+<a name="l00748"></a>00748             MessageBox(NULL, <span class="stringliteral">"クラスが選択されていません"</span>, <span class="stringliteral">"info"</span>, MB_OK);
+<a name="l00749"></a>00749             <span class="keywordflow">return</span>;
+<a name="l00750"></a>00750         }
+<a name="l00751"></a>00751 
+<a name="l00752"></a>00752         HWND hwndList = GetDlgItem(m_hwndClassEditor, <a class="code" href="resource_8h.html#34e22bac54209646a989e82157418ca3">IDC_ENTCLS_X3D_PREVIEW_FILES</a>);
+<a name="l00753"></a>00753 
+<a name="l00754"></a>00754         <span class="comment">// 選択したX3Dファイル名を得る</span>
+<a name="l00755"></a>00755         <span class="keywordtype">int</span> index = <a class="code" href="class_wgu_1_1_list_box.html#62a61b4aaf62d00ae7f5213ca7462eee" title="現在選択されている項目のインデックス値を返す">Wgu::ListBox::getCurSel</a>(hwndList);
+<a name="l00756"></a>00756         <span class="keywordflow">if</span> (index &lt; 0) <span class="keywordflow">return</span>;
+<a name="l00757"></a>00757 
+<a name="l00758"></a>00758         std::string x3dFileName = <a class="code" href="class_wgu_1_1_list_box.html#e271146f5cc08ec23ccbfbde4ced083f" title="指定項目の文字列を返す">Wgu::ListBox::getText</a>(hwndList, index);
+<a name="l00759"></a>00759 
+<a name="l00760"></a>00760         <span class="comment">// X3Dファイル名を追加</span>
+<a name="l00761"></a>00761         <span class="keywordflow">if</span> (!pc-&gt;<a class="code" href="class_sgv_1_1_x_m_l_entity_class.html#cfb96152a2573ab461964c22f6aa1bab" title="X3Dファイル名を追加する.">addX3DFileName</a>(x3dFileName.c_str()))
+<a name="l00762"></a>00762         {
+<a name="l00763"></a>00763             <span class="comment">// 追加失敗．すでに指定したX3Dファイルはエントリにある</span>
+<a name="l00764"></a>00764             <span class="keywordtype">char</span> buf[1024];
+<a name="l00765"></a>00765 
+<a name="l00766"></a>00766             sprintf(buf, <span class="stringliteral">"%sはすでに登録されています"</span>, x3dFileName.c_str());
+<a name="l00767"></a>00767             MessageBox(NULL, buf, <span class="stringliteral">"error"</span>, MB_OK | MB_ICONEXCLAMATION);
+<a name="l00768"></a>00768             <span class="keywordflow">return</span>;
+<a name="l00769"></a>00769         }
+<a name="l00770"></a>00770 
+<a name="l00771"></a>00771         <span class="comment">// 再表示</span>
+<a name="l00772"></a>00772         <a class="code" href="class_sgv_1_1_class_editor_window.html#ee85cebfa509c2245cd0d632ac6dbe78" title="クラスのX3Dファイル情報を表示する">showEntityX3DFiles</a>(win, pc);
+<a name="l00773"></a>00773     }
+<a name="l00774"></a>00774 
+<a name="l00775"></a><a class="code" href="class_sgv_1_1_class_editor_window.html#9300eb067b0f782bcf67dc9f70efd6de">00775</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_class_editor_window.html#9300eb067b0f782bcf67dc9f70efd6de" title="X3Dファイル削除ボタンを押した.">ClassEditorWindow::onButtonPress_DeleteX3DFile</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win)
+<a name="l00776"></a>00776     {
+<a name="l00777"></a>00777         <span class="comment">// 選択中のエンティティクラスを得る</span>
+<a name="l00778"></a>00778         <a class="code" href="class_sgv_1_1_x_m_l_entity_class.html" title="XMLエンティティクラス（エンティティの定義）.">XMLEntityClass</a> *pc = <a class="code" href="class_sgv_1_1_class_editor_window.html#cd09af48f26c4c38db2d3e20be79b16f" title="現在クラス名一覧リストボックスで選択されている エンティティクラスの...">getSelectedEntityClass</a>(win);
+<a name="l00779"></a>00779         <span class="keywordflow">if</span> (!pc)
+<a name="l00780"></a>00780         {
+<a name="l00781"></a>00781             MessageBox(NULL, <span class="stringliteral">"クラスが選択されていません"</span>, <span class="stringliteral">"info"</span>, MB_OK);
+<a name="l00782"></a>00782             <span class="keywordflow">return</span>;
+<a name="l00783"></a>00783         }
+<a name="l00784"></a>00784 
+<a name="l00785"></a>00785         <span class="comment">// 選択中のX3Dファイル名を得る</span>
+<a name="l00786"></a>00786         HWND hwndX3DFiles = GetDlgItem(m_hwndClassEditor, <a class="code" href="resource_8h.html#cc151d2896fd575b5295819ee97e1f47">IDC_ENTCLS_X3DFILES</a>);
+<a name="l00787"></a>00787         <span class="keywordtype">int</span> index = <a class="code" href="class_wgu_1_1_list_box.html#62a61b4aaf62d00ae7f5213ca7462eee" title="現在選択されている項目のインデックス値を返す">Wgu::ListBox::getCurSel</a>(hwndX3DFiles);
+<a name="l00788"></a>00788 
+<a name="l00789"></a>00789         <span class="keywordflow">if</span> (index &gt;= 0)
+<a name="l00790"></a>00790         {
+<a name="l00791"></a>00791             <span class="comment">// X3Dファイルを得る</span>
+<a name="l00792"></a>00792             std::string x3dFileName = <a class="code" href="class_wgu_1_1_list_box.html#e271146f5cc08ec23ccbfbde4ced083f" title="指定項目の文字列を返す">Wgu::ListBox::getText</a>(hwndX3DFiles, index);
+<a name="l00793"></a>00793 
+<a name="l00794"></a>00794             <span class="comment">// X3Dファイルエントリを消す（.x3dファイルそのものを消すわけではない）</span>
+<a name="l00795"></a>00795             pc-&gt;<a class="code" href="class_sgv_1_1_x_m_l_entity_class.html#d91e0fcc55a11ffd4178d48fd857221c" title="X3Dファイル名を削除する.">deleteX3DFileName</a>(x3dFileName.c_str());
+<a name="l00796"></a>00796 
+<a name="l00797"></a>00797             <span class="comment">// 再表示</span>
+<a name="l00798"></a>00798             <a class="code" href="class_sgv_1_1_class_editor_window.html#ee85cebfa509c2245cd0d632ac6dbe78" title="クラスのX3Dファイル情報を表示する">showEntityX3DFiles</a>(win, pc);
+<a name="l00799"></a>00799 
+<a name="l00800"></a>00800             <span class="comment">// index番目を選択状態にする</span>
+<a name="l00801"></a>00801             <a class="code" href="class_wgu_1_1_list_box.html#06ac409728a162c5f412072b8034cd24" title="指定項目を選択状態にする">Wgu::ListBox::setCurSel</a>(hwndX3DFiles, index);
+<a name="l00802"></a>00802         }
+<a name="l00803"></a>00803         <span class="keywordflow">else</span>
+<a name="l00804"></a>00804         {
+<a name="l00805"></a>00805             MessageBox(NULL, <span class="stringliteral">"関連付けから削除するX3Dファイル名を指定してください"</span>, <span class="stringliteral">"info"</span>, MB_OK);
+<a name="l00806"></a>00806         }
+<a name="l00807"></a>00807     }
+<a name="l00808"></a>00808 
+<a name="l00809"></a><a class="code" href="class_sgv_1_1_class_editor_window.html#86ea5f56f5c3606ab0baa36aac288e87">00809</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_class_editor_window.html#86ea5f56f5c3606ab0baa36aac288e87" title="プレビュー用X3Dファイル名リストを選んだ">ClassEditorWindow::onSelChange_X3DPreviewFileSelected</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win)
+<a name="l00810"></a>00810     {
+<a name="l00811"></a>00811         <span class="comment">// 「プレビューなし」チェックボックスがonなら何もしないで帰る</span>
+<a name="l00812"></a>00812         HWND hwndCheck = GetDlgItem(m_hwndClassEditor, <a class="code" href="resource_8h.html#17d0db234371b10c1e009691418d4ed1">IDC_ENTCLS_X3D_NO_PREVIEW</a>);
+<a name="l00813"></a>00813         <span class="keywordtype">bool</span> bNoPreview = <a class="code" href="class_wgu_1_1_check_box.html#f145036fa0f5f2420730676b6742957c" title="チェック状態を調べる">Wgu::CheckBox::getCheck</a>(hwndCheck);
+<a name="l00814"></a>00814         <span class="keywordflow">if</span> (bNoPreview) <span class="keywordflow">return</span>;
+<a name="l00815"></a>00815 
+<a name="l00816"></a>00816         HWND hwndList = GetDlgItem(m_hwndClassEditor, <a class="code" href="resource_8h.html#34e22bac54209646a989e82157418ca3">IDC_ENTCLS_X3D_PREVIEW_FILES</a>);
+<a name="l00817"></a>00817 
+<a name="l00818"></a>00818         <span class="comment">// 選択したX3Dファイル名を得る</span>
+<a name="l00819"></a>00819         <span class="keywordtype">int</span> index = <a class="code" href="class_wgu_1_1_list_box.html#62a61b4aaf62d00ae7f5213ca7462eee" title="現在選択されている項目のインデックス値を返す">Wgu::ListBox::getCurSel</a>(hwndList);
+<a name="l00820"></a>00820         <span class="keywordflow">if</span> (index &lt; 0) <span class="keywordflow">return</span>;
+<a name="l00821"></a>00821 
+<a name="l00822"></a>00822         std::string x3dFileName = <a class="code" href="class_wgu_1_1_list_box.html#e271146f5cc08ec23ccbfbde4ced083f" title="指定項目の文字列を返す">Wgu::ListBox::getText</a>(hwndList, index);
+<a name="l00823"></a>00823 
+<a name="l00824"></a>00824         <span class="comment">// プレビュー形状ノードが空でなければ開放する</span>
+<a name="l00825"></a>00825         freeX3DPreviewNode();
+<a name="l00826"></a>00826 
+<a name="l00827"></a>00827         <span class="comment">// -----------------------------------------</span>
+<a name="l00828"></a>00828         <span class="comment">//  選択した形状のOgreノードを作る</span>
+<a name="l00829"></a>00829         <span class="comment">// -----------------------------------------</span>
+<a name="l00830"></a>00830         <a class="code" href="class_sgv_1_1_x3_d.html" title="X3Dクラス.">X3D</a> *px3d = win-&gt;<a class="code" href="class_sgv_1_1_main_window.html#ee441ed66e10fa0d6e43e6dedf10fc87" title="X3Dオブジェクトへのポインタを得る.">getX3D</a>();
+<a name="l00831"></a>00831         <span class="keywordflow">if</span> (!px3d) <span class="keywordflow">return</span>;
+<a name="l00832"></a>00832 
+<a name="l00833"></a>00833         <span class="comment">// X3Dファイルロード</span>
+<a name="l00834"></a>00834         <span class="keywordflow">if</span> (!px3d-&gt;<a class="code" href="class_sgv_1_1_x3_d.html#a9a25241c484f6f67876b956d96330e3" title="X3D/VRMLファイルをロードする.">loadX3DFromFile</a>(x3dFileName.c_str()))
+<a name="l00835"></a>00835         {
+<a name="l00836"></a>00836 <span class="comment">//          Log::error("failed to load (%s)¥n", x3dFileName);</span>
+<a name="l00837"></a>00837             <span class="keywordflow">return</span>;
+<a name="l00838"></a>00838         }
+<a name="l00839"></a>00839 
+<a name="l00840"></a>00840         <span class="comment">// Ogreシーンノード作成</span>
+<a name="l00841"></a>00841         <span class="comment">//const char *entName = "**PreviewShape**";</span>
+<a name="l00842"></a>00842         <span class="keyword">const</span> <span class="keywordtype">char</span> *entName = <span class="stringliteral">""</span>;
+<a name="l00843"></a>00843         <span class="keywordflow">if</span> (!px3d-&gt;<a class="code" href="class_sgv_1_1_x3_d.html#b27c50c5daaf61853b961569df8ff359" title="カレントX3DファイルはOpenHRPヒューマノイドか？">isOpenHRPHumanoidShape</a>())
+<a name="l00844"></a>00844         {
+<a name="l00845"></a>00845             <span class="comment">// 静止物</span>
+<a name="l00846"></a>00846 <span class="preprocessor">#if 1</span>
+<a name="l00847"></a>00847 <span class="preprocessor"></span><span class="comment">// FIX20110421(ExpSS)</span>
+<a name="l00848"></a>00848             m_pX3DPreviewNode = px3d-&gt;<a class="code" href="class_sgv_1_1_x3_d.html#ed0de2d25da401a21d7a065e2ef68630" title="カレントX3Dファイルに対するOgreノードを作る">createStaticNode</a>(m_pSceneMgr, m_pRootNode, entName);
+<a name="l00849"></a>00849 <span class="preprocessor">#else</span>
+<a name="l00850"></a>00850 <span class="preprocessor"></span><span class="comment">//          m_pX3DPreviewNode = px3d-&gt;createShapeNode(m_pSceneMgr, m_pRootNode, entName);</span>
+<a name="l00851"></a>00851 <span class="preprocessor">#endif</span>
+<a name="l00852"></a>00852 <span class="preprocessor"></span>        }
+<a name="l00853"></a>00853         <span class="keywordflow">else</span>
+<a name="l00854"></a>00854         {
+<a name="l00855"></a>00855             <span class="comment">// ヒューマノイド</span>
+<a name="l00856"></a>00856             std::map&lt;std::string, SceneNode *&gt; dummyMap1, dummyMap2;
+<a name="l00857"></a>00857             m_pX3DPreviewNode = px3d-&gt;<a class="code" href="class_sgv_1_1_x3_d.html#a07d507a6bc1db789d02ff4593cf3e40" title="OpenHRPノードを作る.">createOpenHRPNodes</a>(
+<a name="l00858"></a>00858                 m_pSceneMgr,
+<a name="l00859"></a>00859                 m_pRootNode,
+<a name="l00860"></a>00860                 entName,
+<a name="l00861"></a>00861                 dummyMap1,
+<a name="l00862"></a>00862                 dummyMap2,
+<a name="l00863"></a>00863                 <span class="keyword">true</span>,
+<a name="l00864"></a>00864                 <span class="keyword">true</span>);
+<a name="l00865"></a>00865         }
+<a name="l00866"></a>00866 
+<a name="l00867"></a>00867         m_pX3DPreviewNode-&gt;setPosition(m_pos);
+<a name="l00868"></a>00868         m_pX3DPreviewNode-&gt;setOrientation(m_q);
+<a name="l00869"></a>00869     }
+<a name="l00870"></a>00870 
+<a name="l00871"></a><a class="code" href="class_sgv_1_1_class_editor_window.html#b669cdbe17b11419f9e5fb6ff9f06357">00871</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_class_editor_window.html#b669cdbe17b11419f9e5fb6ff9f06357" title="クラス情報セーブボタンを押した">ClassEditorWindow::onButtonPress_Save</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win)
+<a name="l00872"></a>00872     {
+<a name="l00873"></a>00873         <span class="comment">// ----------------------------------------------------</span>
+<a name="l00874"></a>00874         <span class="comment">//  変更のあったクラスをXMLにセーブ</span>
+<a name="l00875"></a>00875         <span class="comment">// ----------------------------------------------------</span>
+<a name="l00876"></a>00876         <a class="code" href="class_sgv_1_1_x_m_l_entity_class_manager.html" title="XMLエンティティクラスマネージャ.">XMLEntityClassManager</a> *ecm = win-&gt;<a class="code" href="class_sgv_1_1_main_window.html#198a0e7e17ce0100915a6fb4077dfc13" title="XMLエンティティクラスマネージャを返す.">getEntityClassManager</a>();
+<a name="l00877"></a>00877 
+<a name="l00878"></a>00878         std::vector&lt;std::string&gt; savedXMLFiles = ecm-&gt;<a class="code" href="class_sgv_1_1_x_m_l_entity_class_manager.html#3e31b78ba761ca2eb5f2120fa25146c6" title="更新されたクラスをXMLファイルにセーブする">saveUpdatedEntityClasses</a>();
+<a name="l00879"></a>00879 
+<a name="l00880"></a>00880         <span class="keywordtype">int</span> n = savedXMLFiles.size();
+<a name="l00881"></a>00881         <span class="keywordflow">if</span> (n&gt;0)
+<a name="l00882"></a>00882         {
+<a name="l00883"></a>00883             <span class="comment">// 世界内のエンティティを新しいクラス定義で更新する</span>
+<a name="l00884"></a>00884             win-&gt;<a class="code" href="class_sgv_1_1_main_window.html#50ada0e01a384a938a52b2b701a36793" title="クラス定義の変更を世界に反映させる">updateWorldWithClassDefinition</a>();
+<a name="l00885"></a>00885 
+<a name="l00886"></a>00886             <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;n; i++)
+<a name="l00887"></a>00887             {
+<a name="l00888"></a>00888                 win-&gt;<a class="code" href="class_sgv_1_1_main_window.html#1c1fa10588fad4a949874d38a27a66ce" title="メッセージ表示領域にメッセージを追加する．">printMsg</a>(<span class="stringliteral">"%s saved.¥n"</span>, savedXMLFiles[i].c_str());
+<a name="l00889"></a>00889             }
+<a name="l00890"></a>00890         }
+<a name="l00891"></a>00891     }
+<a name="l00892"></a>00892 
+<a name="l00893"></a><a class="code" href="class_sgv_1_1_class_editor_window.html#6569b1f9fd717173c555741e46799894">00893</a>     <span class="keywordtype">bool</span> <a class="code" href="class_sgv_1_1_class_editor_window.html#6569b1f9fd717173c555741e46799894" title="クラスダイアログ終了ボタンを押した">ClassEditorWindow::onButtonPress_QuitDialog</a>(<a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win)
+<a name="l00894"></a>00894     {
+<a name="l00895"></a>00895         <span class="comment">// ----------------------------------------------------</span>
+<a name="l00896"></a>00896         <span class="comment">//  変更のあったクラスがあるかチェック</span>
+<a name="l00897"></a>00897         <span class="comment">//  あればセーブを促す</span>
+<a name="l00898"></a>00898         <span class="comment">// ----------------------------------------------------</span>
+<a name="l00899"></a>00899         <a class="code" href="class_sgv_1_1_x_m_l_entity_class_manager.html" title="XMLエンティティクラスマネージャ.">XMLEntityClassManager</a> *ecm = win-&gt;<a class="code" href="class_sgv_1_1_main_window.html#198a0e7e17ce0100915a6fb4077dfc13" title="XMLエンティティクラスマネージャを返す.">getEntityClassManager</a>();
+<a name="l00900"></a>00900 
+<a name="l00901"></a>00901         <span class="keywordflow">if</span> (ecm-&gt;<a class="code" href="class_sgv_1_1_x_m_l_entity_class_manager.html#d996223f185028c71ae19559d3c315f4" title="変更されたクラスがあるか？">isModified</a>())
+<a name="l00902"></a>00902         {
+<a name="l00903"></a>00903             <span class="keywordtype">int</span> ret = MessageBox(NULL, <span class="stringliteral">"修正されたクラス定義があります．セーブしますか？"</span>, <span class="stringliteral">"confirm"</span>, MB_YESNOCANCEL);
+<a name="l00904"></a>00904 
+<a name="l00905"></a>00905             <span class="keywordflow">if</span> (ret == IDCANCEL)
+<a name="l00906"></a>00906             {
+<a name="l00907"></a>00907                 <span class="comment">// ダイアログ終了をキャンセル</span>
+<a name="l00908"></a>00908                 <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00909"></a>00909             }
+<a name="l00910"></a>00910             <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ret == IDYES)
+<a name="l00911"></a>00911             {
+<a name="l00912"></a>00912                 <a class="code" href="class_sgv_1_1_class_editor_window.html#b669cdbe17b11419f9e5fb6ff9f06357" title="クラス情報セーブボタンを押した">onButtonPress_Save</a>(win);
+<a name="l00913"></a>00913             }
+<a name="l00914"></a>00914         }
+<a name="l00915"></a>00915 
+<a name="l00916"></a>00916         <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00917"></a>00917     }
+<a name="l00918"></a>00918 
+<a name="l00919"></a><a class="code" href="namespace_sgv.html#7c355a3c3e39ebca6ad900b7fc65c34d">00919</a>     LRESULT CALLBACK <a class="code" href="namespace_sgv.html#7c355a3c3e39ebca6ad900b7fc65c34d">fClassEditorWndProc</a>(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+<a name="l00920"></a>00920     {
+<a name="l00921"></a>00921         <a class="code" href="class_sgv_1_1_class_editor_window.html" title="クラスエディタウィンドウ">ClassEditorWindow</a> *p = <a class="code" href="_wgu_8cpp.html#e7d48c44eebfc4bc4aaf480c2ccb69b3">GetMainWindow</a>()-&gt;getClassEditorWindow();
+<a name="l00922"></a>00922         <span class="keywordflow">return</span> p-&gt;<a class="code" href="class_sgv_1_1_class_editor_window.html#cb2c18cf8bf3839c0877570f7da720ae" title="ウィンドウプロシージャ">classEditorWndProc</a>(hwnd, uMsg, wParam, lParam);
+<a name="l00923"></a>00923     }
+<a name="l00924"></a>00924 
+<a name="l00925"></a><a class="code" href="class_sgv_1_1_class_editor_window.html#cb2c18cf8bf3839c0877570f7da720ae">00925</a>     LRESULT CALLBACK <a class="code" href="class_sgv_1_1_class_editor_window.html#cb2c18cf8bf3839c0877570f7da720ae" title="ウィンドウプロシージャ">ClassEditorWindow::classEditorWndProc</a>(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+<a name="l00926"></a>00926     {
+<a name="l00927"></a>00927         <a class="code" href="class_sgv_1_1_main_window.html" title="SIGWorldEditorメインウィンドウ.">MainWindow</a> *win = <a class="code" href="_wgu_8cpp.html#e7d48c44eebfc4bc4aaf480c2ccb69b3">GetMainWindow</a>();
+<a name="l00928"></a>00928         <span class="keywordflow">if</span> (!win) <span class="keywordflow">return</span> 0;
+<a name="l00929"></a>00929 
+<a name="l00930"></a>00930         <span class="keywordflow">switch</span> (uMsg)
+<a name="l00931"></a>00931         {
+<a name="l00932"></a>00932         <span class="keywordflow">case</span> WM_CREATE:
+<a name="l00933"></a>00933             {
+<a name="l00934"></a>00934             }
+<a name="l00935"></a>00935             <span class="keywordflow">break</span>;
+<a name="l00936"></a>00936 
+<a name="l00937"></a>00937         <span class="keywordflow">case</span> WM_COMMAND:
+<a name="l00938"></a>00938             {
+<a name="l00939"></a>00939                 <span class="keywordflow">switch</span> (LOWORD(wParam))
+<a name="l00940"></a>00940                 {
+<a name="l00941"></a>00941                 <span class="keywordflow">case</span> <a class="code" href="resource_8h.html#717a6f3f6b3ab096c3e83cb18d315755">IDC_ENTCLS_CLASSES</a>:
+<a name="l00942"></a>00942                     {
+<a name="l00943"></a>00943                         <span class="keywordflow">switch</span> (HIWORD(wParam))
+<a name="l00944"></a>00944                         {
+<a name="l00945"></a>00945                         <span class="keywordflow">case</span> LBN_SELCHANGE:
+<a name="l00946"></a>00946                             <a class="code" href="class_sgv_1_1_class_editor_window.html#228b2d27915d311a825ff1b77a86dd34" title="クラス選択リストボックスを押した">onSelChange_Classes</a>(win);
+<a name="l00947"></a>00947                             <span class="keywordflow">break</span>;
+<a name="l00948"></a>00948                         }
+<a name="l00949"></a>00949                     }
+<a name="l00950"></a>00950                     <span class="keywordflow">break</span>;
+<a name="l00951"></a>00951 
+<a name="l00952"></a>00952                 <span class="keywordflow">case</span> <a class="code" href="resource_8h.html#c836faa1d2f0f099a75995c9a0b0ef0d">IDC_ENTCLS_CREATE_CLASS</a>:
+<a name="l00953"></a>00953                     <a class="code" href="class_sgv_1_1_class_editor_window.html#1c7665984b4637c040727de457479372" title="クラス作成ボタンを押した">onButtonPress_CreateClass</a>(win);
+<a name="l00954"></a>00954                     <span class="keywordflow">break</span>;
+<a name="l00955"></a>00955 
+<a name="l00956"></a>00956                 <span class="keywordflow">case</span> <a class="code" href="resource_8h.html#b75f8373a4ca5f843a581a5bb7d24f6f">IDC_ENTCLS_DELETE_CLASS</a>:
+<a name="l00957"></a>00957                     <a class="code" href="class_sgv_1_1_class_editor_window.html#a4ddcdb2ed43302e43ed3d02e0e2cd29" title="クラス削除ボタンを押した">onButtonPress_DeleteClass</a>(win);
+<a name="l00958"></a>00958                     <span class="keywordflow">break</span>;
+<a name="l00959"></a>00959 
+<a name="l00960"></a>00960                 <span class="keywordflow">case</span> <a class="code" href="resource_8h.html#e859b31a9c06b8db279ba4cd6fc31acc">IDC_ENTCLS_ATTRS</a>:
+<a name="l00961"></a>00961                     {
+<a name="l00962"></a>00962                         <span class="keywordflow">switch</span> (HIWORD(wParam))
+<a name="l00963"></a>00963                         {
+<a name="l00964"></a>00964                         <span class="keywordflow">case</span> LBN_SELCHANGE:
+<a name="l00965"></a>00965                             <a class="code" href="class_sgv_1_1_class_editor_window.html#93e12077c54513b8f18bb98567827107" title="属性選択リストボックスを押した">onSelChange_Attrs</a>(win);
+<a name="l00966"></a>00966                             <span class="keywordflow">break</span>;
+<a name="l00967"></a>00967                         }
+<a name="l00968"></a>00968                     }
+<a name="l00969"></a>00969                     <span class="keywordflow">break</span>;
+<a name="l00970"></a>00970 
+<a name="l00971"></a>00971                 <span class="keywordflow">case</span> <a class="code" href="resource_8h.html#bcdfaa23fe8def74ecfd2d842cb56f66">IDC_ENTCLS_SET_ATTR</a>:
+<a name="l00972"></a>00972                     <a class="code" href="class_sgv_1_1_class_editor_window.html#ffe9b98ecccc9db1a591c40f7aace928" title="属性値セットボタンを押した">onButtonPress_SetAttr</a>(win);
+<a name="l00973"></a>00973                     <span class="keywordflow">break</span>;
+<a name="l00974"></a>00974 
+<a name="l00975"></a>00975                 <span class="keywordflow">case</span> <a class="code" href="resource_8h.html#23939080e04f90243fe996c26225e018">IDC_ENTCLS_DELETE_ATTR</a>:
+<a name="l00976"></a>00976                     <a class="code" href="class_sgv_1_1_class_editor_window.html#29ab159519068a3cf2bb5e65992450f8" title="属性削除ボタンを押した">onButtonPress_DelAttr</a>(win);
+<a name="l00977"></a>00977                     <span class="keywordflow">break</span>;
+<a name="l00978"></a>00978 
+<a name="l00979"></a>00979                 <span class="keywordflow">case</span> <a class="code" href="resource_8h.html#cc151d2896fd575b5295819ee97e1f47">IDC_ENTCLS_X3DFILES</a>:
+<a name="l00980"></a>00980                     {
+<a name="l00981"></a>00981                         <span class="keywordflow">switch</span> (HIWORD(wParam))
+<a name="l00982"></a>00982                         {
+<a name="l00983"></a>00983                         <span class="keywordflow">case</span> LBN_SELCHANGE:
+<a name="l00984"></a>00984                             <a class="code" href="class_sgv_1_1_class_editor_window.html#1d1afcc9664dd76667a00ec3279c23a5" title="X3Dファイル名リストボックスを押した.">onSelChange_X3DFiles</a>(win);
+<a name="l00985"></a>00985                             <span class="keywordflow">break</span>;
+<a name="l00986"></a>00986                         }
+<a name="l00987"></a>00987                     }
+<a name="l00988"></a>00988                     <span class="keywordflow">break</span>;
+<a name="l00989"></a>00989 
+<a name="l00990"></a>00990                 <span class="keywordflow">case</span> <a class="code" href="resource_8h.html#20f28248842c9abb5e6016d78b975cd6">IDC_ENTCLS_X3DFILES_UP</a>:
+<a name="l00991"></a>00991                     <a class="code" href="class_sgv_1_1_class_editor_window.html#b55896306af2a08874c8a58396925639" title="X3Dファイル名の上移動ボタンを押した.">onButtonPress_X3DFileUp</a>(win);
+<a name="l00992"></a>00992                     <span class="keywordflow">break</span>;
+<a name="l00993"></a>00993 
+<a name="l00994"></a>00994                 <span class="keywordflow">case</span> <a class="code" href="resource_8h.html#6c25055d6fc97625fd2ca53b6f3a2480">IDC_ENTCLS_X3DFILES_DOWN</a>:
+<a name="l00995"></a>00995                     <a class="code" href="class_sgv_1_1_class_editor_window.html#1565ceac33700ab7d786c0a29e10e563" title="X3Dファイル名の下移動ボタンを押した.">onButtonPress_X3DFileDown</a>(win);
+<a name="l00996"></a>00996                     <span class="keywordflow">break</span>;
+<a name="l00997"></a>00997 
+<a name="l00998"></a>00998                 <span class="keywordflow">case</span> <a class="code" href="resource_8h.html#358080fbfcf5e1407cd4ec53e7cf959c">IDC_ENTCLS_SET_X3DSTATE</a>:
+<a name="l00999"></a>00999                     <a class="code" href="class_sgv_1_1_class_editor_window.html#f5fb01e12cb972160ee66bf965fae13f" title="X3D状態名変更ボタンを押した.">onButtonPress_SetX3DFileState</a>(win);
+<a name="l01000"></a>01000                     <span class="keywordflow">break</span>;
+<a name="l01001"></a>01001 
+<a name="l01002"></a>01002                 <span class="keywordflow">case</span> <a class="code" href="resource_8h.html#a093b2d3de30e3c79073a051af912c8a">IDC_ENTCLS_ADD_X3D_FILE</a>:
+<a name="l01003"></a>01003                     <a class="code" href="class_sgv_1_1_class_editor_window.html#27d914dc6f411e077fb93ef2581017f7" title="X3Dファイル追加ボタンを押した.">onButtonPress_AddX3DFile</a>(win);
+<a name="l01004"></a>01004                     <span class="keywordflow">break</span>;
+<a name="l01005"></a>01005 
+<a name="l01006"></a>01006                 <span class="keywordflow">case</span> <a class="code" href="resource_8h.html#8dc8946b02a2bba10a75d86eb2ddc20a">IDC_ENTCLS_DELETE_X3DFILE</a>:
+<a name="l01007"></a>01007                     <a class="code" href="class_sgv_1_1_class_editor_window.html#9300eb067b0f782bcf67dc9f70efd6de" title="X3Dファイル削除ボタンを押した.">onButtonPress_DeleteX3DFile</a>(win);
+<a name="l01008"></a>01008                     <span class="keywordflow">break</span>;
+<a name="l01009"></a>01009 
+<a name="l01010"></a>01010                 <span class="keywordflow">case</span> <a class="code" href="resource_8h.html#34e22bac54209646a989e82157418ca3">IDC_ENTCLS_X3D_PREVIEW_FILES</a>:
+<a name="l01011"></a>01011                     {
+<a name="l01012"></a>01012                         <span class="keywordflow">switch</span> (HIWORD(wParam))
+<a name="l01013"></a>01013                         {
+<a name="l01014"></a>01014                         <span class="keywordflow">case</span> LBN_SELCHANGE:
+<a name="l01015"></a>01015                             <a class="code" href="class_sgv_1_1_class_editor_window.html#86ea5f56f5c3606ab0baa36aac288e87" title="プレビュー用X3Dファイル名リストを選んだ">onSelChange_X3DPreviewFileSelected</a>(win);
+<a name="l01016"></a>01016                             <span class="keywordflow">break</span>;
+<a name="l01017"></a>01017                         }
+<a name="l01018"></a>01018                     }
+<a name="l01019"></a>01019                     <span class="keywordflow">break</span>;
+<a name="l01020"></a>01020 
+<a name="l01021"></a>01021                 <span class="keywordflow">case</span> <a class="code" href="resource_8h.html#dd8736fe6039c1a0231add4b25ad565b">IDC_ENTCLS_SAVE</a>:
+<a name="l01022"></a>01022                     <a class="code" href="class_sgv_1_1_class_editor_window.html#b669cdbe17b11419f9e5fb6ff9f06357" title="クラス情報セーブボタンを押した">onButtonPress_Save</a>(win);
+<a name="l01023"></a>01023                     <span class="keywordflow">break</span>;
+<a name="l01024"></a>01024 
+<a name="l01025"></a>01025                 <span class="keywordflow">case</span> <a class="code" href="resource_8h.html#295c977a188c9eecc3656d4b0c483812">IDC_ENTCLS_CLOSE</a>:
+<a name="l01026"></a>01026                     <span class="keywordflow">if</span> (<a class="code" href="class_sgv_1_1_class_editor_window.html#6569b1f9fd717173c555741e46799894" title="クラスダイアログ終了ボタンを押した">onButtonPress_QuitDialog</a>(win))
+<a name="l01027"></a>01027                     {
+<a name="l01028"></a>01028                         <span class="comment">//  XMLファイルリストを再検索＆クラスリスト再描画</span>
+<a name="l01029"></a>01029                         win-&gt;<a class="code" href="class_sgv_1_1_main_window.html#fd7d10da91726217361b4d0df02e9a31" title="カレントディレクトリにあるXMLファイルを検索し、 世界XMLファイル名、エ...">searchXMLFileList</a>();
+<a name="l01030"></a>01030 
+<a name="l01031"></a>01031                         <span class="comment">// クラスエディタウィンドウを非表示にする</span>
+<a name="l01032"></a>01032                         win-&gt;<a class="code" href="class_sgv_1_1_main_window.html#f0500d4c818e563d2108ce34cf28b3ca" title="クラスエディタウィンドウの表示状態を変更する">showClassEditorWindow</a>(<span class="keyword">false</span>);
+<a name="l01033"></a>01033                     }
+<a name="l01034"></a>01034                     <span class="keywordflow">break</span>;
+<a name="l01035"></a>01035                 }
+<a name="l01036"></a>01036             }
+<a name="l01037"></a>01037         }
+<a name="l01038"></a>01038 
+<a name="l01039"></a>01039 <span class="comment">//      return DefWindowProc(hWnd, uMsg, wParam, lParam);</span>
+<a name="l01040"></a>01040         <span class="keywordflow">return</span> DefDlgProc(hWnd, uMsg, wParam, lParam);
+<a name="l01041"></a>01041     }
+<a name="l01042"></a>01042 }
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>SIGWorldEditorに対してThu Jun 9 10:52:58 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

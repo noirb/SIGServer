@@ -1,0 +1,583 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>sigserver: クラス SSimObj</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス SSimObj</h1><!-- doxytag: class="SSimObj" --><!-- doxytag: inherits="SimObjBase" -->
+<p>エンティティに対応するクラス(サーバサイドで使用)  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_s_sim_obj_8h_source.html">SSimObj.h</a>&gt;</code></p>
+<div class="dynheader">
+SSimObjに対する継承グラフ</div>
+<div class="dynsection">
+<div class="center"><img src="class_s_sim_obj__inherit__graph.png" border="0" usemap="#_s_sim_obj_inherit__map" alt="Inheritance graph"/></div>
+<map name="_s_sim_obj_inherit__map" id="_s_sim_obj_inherit__map">
+<area shape="rect" href="class_sim_obj_base.html" title="シミュレーションエンティティ基本クラス" alt="" coords="5,5,99,35"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+<div class="dynheader">
+SSimObjのコラボレーション図</div>
+<div class="dynsection">
+<div class="center"><img src="class_s_sim_obj__coll__graph.png" border="0" usemap="#_s_sim_obj_coll__map" alt="Collaboration graph"/></div>
+<map name="_s_sim_obj_coll__map" id="_s_sim_obj_coll__map">
+<area shape="rect" href="class_sim_obj_base.html" title="シミュレーションエンティティ基本クラス" alt="" coords="5,5,99,35"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">凡例</a>]</span></center></div>
+
+<p><a href="class_s_sim_obj-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>構成</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><b>Iterator</b></td></tr>
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_sim_obj.html#ac0a04974a42065cbdf70da231c14412e">addId</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティ一意のIDを付与する  <a href="#ac0a04974a42065cbdf70da231c14412e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_sim_obj.html#ac306aa723ad8d0e0b008ca3ecf328055">applyParams</a> (bool init)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティの内部状態をODEに反映させる  <a href="#ac306aa723ad8d0e0b008ca3ecf328055"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_sim_obj.html#a5bf071bd74f9cfa886d82b779fc79478">dump</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_parts.html">Parts</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_sim_obj.html#a0e52df058799009cfbdee5a197d1fd99">getBody</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティの中心となる部品を取得する  <a href="#a0e52df058799009cfbdee5a197d1fd99"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_joint.html">Joint</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_sim_obj.html#a9e6683463be42105a54b04a5deadad58">getJoint</a> (const char *s)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">指定の関節を取得する  <a href="#a9e6683463be42105a54b04a5deadad58"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_sim_obj.html#abcb523edba0824915d4d5eb9eaa994f5">getJointSize</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">関節の総数を取得する  <a href="#abcb523edba0824915d4d5eb9eaa994f5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_s_parts.html">SParts</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_sim_obj.html#a84d9ced91ad4c02a91c41701780eb42a">getSBody</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティの中心となる部品を取得する  <a href="#a84d9ced91ad4c02a91c41701780eb42a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_s_parts.html">SParts</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_sim_obj.html#a418bbbe693c62c864e1ede5addbd1c93">getSParts</a> (const char *name)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">部品を取得する  <a href="#a418bbbe693c62c864e1ede5addbd1c93"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_sim_obj.html#aaf41413ec97968ef1a8c4f7b373e026e">loadParams</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ODEの計算結果をエンティティにロードする.  <a href="#aaf41413ec97968ef1a8c4f7b373e026e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_sim_obj.html#aebf3a0b7ec02e92a462ac7acf0277c34">push</a> (<a class="el" href="class_attribute.html">Attribute</a> *attr)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">属性を追加する  <a href="#aebf3a0b7ec02e92a462ac7acf0277c34"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_sim_obj.html#a026485ef973043e72e00775192db2580">push</a> (<a class="el" href="class_s_parts.html">SParts</a> *p)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティを構成する部品を追加する  <a href="#a026485ef973043e72e00775192db2580"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_sim_obj.html#ac5db72481d7778c094affb89adb37867">push</a> (<a class="el" href="class_joint.html">Joint</a> *p)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティを構成する関節を追加する  <a href="#ac5db72481d7778c094affb89adb37867"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_sim_obj.html#a49eea95f1ad270b86b277d4e44f3419e">removeJoint</a> (<a class="el" href="class_joint.html">Joint</a> *j)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">関節を削除する  <a href="#a49eea95f1ad270b86b277d4e44f3419e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_sim_obj.html#aaeb498fcf12b4c8359fc9fe9b43b61f1">setAttached</a> (bool b)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コントローラが割り当てられているかを設定する  <a href="#aaeb498fcf12b4c8359fc9fe9b43b61f1"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">dSpaceID&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_sim_obj.html#a81a49609456778ddf6a8a7eb9dff956c">space</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ODE space オブジェクトを取得する.  <a href="#a81a49609456778ddf6a8a7eb9dff956c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_sim_obj.html#a1a6fe2ffbc4d03a72b293cde2e81dc78">SSimObj</a> (dSpaceID parent)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#a1a6fe2ffbc4d03a72b293cde2e81dc78"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_sim_obj.html#a39165e169ffbfd55d5dcd215ba8ef34b">‾SSimObj</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">デストラクタ  <a href="#a39165e169ffbfd55d5dcd215ba8ef34b"></a><br/></td></tr>
+<tr><td colspan="2"><h2>Static Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_sim_obj.html#a092a8ad84d02e92b6c05916fe86b7476">initCounter</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">エンティティカウンタを初期化する  <a href="#a092a8ad84d02e92b6c05916fe86b7476"></a><br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>エンティティに対応するクラス(サーバサイドで使用) </p>
+<p>各エンティティの属性・状態を保持する。 </p>
+
+<p> <a class="el" href="_s_sim_obj_8h_source.html">SSimObj.h</a> の <a class="el" href="_s_sim_obj_8h_source.html#l00017">17</a> 行で定義されています。</p>
+<hr/><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" id="a1a6fe2ffbc4d03a72b293cde2e81dc78"></a><!-- doxytag: member="SSimObj::SSimObj" ref="a1a6fe2ffbc4d03a72b293cde2e81dc78" args="(dSpaceID parent)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SSimObj::SSimObj </td>
+          <td>(</td>
+          <td class="paramtype">dSpaceID&nbsp;</td>
+          <td class="paramname"> <em>parent</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コンストラクタ </p>
+
+</div>
+</div>
+<hr/><h2>関数</h2>
+<a class="anchor" id="ac0a04974a42065cbdf70da231c14412e"></a><!-- doxytag: member="SSimObj::addId" ref="ac0a04974a42065cbdf70da231c14412e" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SSimObj::addId </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>エンティティ一意のIDを付与する </p>
+
+</div>
+</div>
+<a class="anchor" id="ac306aa723ad8d0e0b008ca3ecf328055"></a><!-- doxytag: member="SSimObj::applyParams" ref="ac306aa723ad8d0e0b008ca3ecf328055" args="(bool init)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SSimObj::applyParams </td>
+          <td>(</td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>init</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>エンティティの内部状態をODEに反映させる </p>
+<p>Get <a class="el" href="class_s_parts.html" title="エンティティの部品クラス(サーバサイドで使用)">SParts</a> data from dGeomID </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>init</em>&nbsp;</td><td>1回目の呼び出しであるか？ </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a5bf071bd74f9cfa886d82b779fc79478"></a><!-- doxytag: member="SSimObj::dump" ref="a5bf071bd74f9cfa886d82b779fc79478" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SSimObj::dump </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p><a class="el" href="class_sim_obj_base.html#ac0b90e27775c1ac71b3474407da09ed8">SimObjBase</a>を再定義しています。</p>
+
+<p> <a class="el" href="_s_sim_obj_8h_source.html">SSimObj.h</a> の <a class="el" href="_s_sim_obj_8h_source.html#l00113">113</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a0e52df058799009cfbdee5a197d1fd99"></a><!-- doxytag: member="SSimObj::getBody" ref="a0e52df058799009cfbdee5a197d1fd99" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_parts.html">Parts</a>* SSimObj::getBody </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>エンティティの中心となる部品を取得する </p>
+
+<p> <a class="el" href="_s_sim_obj_8h_source.html">SSimObj.h</a> の <a class="el" href="_s_sim_obj_8h_source.html#l00066">66</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_s_sim_obj_a0e52df058799009cfbdee5a197d1fd99_cgraph.png" border="0" usemap="#class_s_sim_obj_a0e52df058799009cfbdee5a197d1fd99_cgraph_map" alt=""></div>
+<map name="class_s_sim_obj_a0e52df058799009cfbdee5a197d1fd99_cgraph_map" id="class_s_sim_obj_a0e52df058799009cfbdee5a197d1fd99_cgraph">
+<area shape="rect" href="class_s_sim_obj.html#a418bbbe693c62c864e1ede5addbd1c93" title="部品を取得する" alt="" coords="184,5,323,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a9e6683463be42105a54b04a5deadad58"></a><!-- doxytag: member="SSimObj::getJoint" ref="a9e6683463be42105a54b04a5deadad58" args="(const char *s)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_joint.html">Joint</a>* SSimObj::getJoint </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>s</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>指定の関節を取得する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>s</em>&nbsp;</td><td>関節名 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="abcb523edba0824915d4d5eb9eaa994f5"></a><!-- doxytag: member="SSimObj::getJointSize" ref="abcb523edba0824915d4d5eb9eaa994f5" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int SSimObj::getJointSize </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>関節の総数を取得する </p>
+<dl class="return"><dt><b>戻り値:</b></dt><dd>関節数 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a84d9ced91ad4c02a91c41701780eb42a"></a><!-- doxytag: member="SSimObj::getSBody" ref="a84d9ced91ad4c02a91c41701780eb42a" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_s_parts.html">SParts</a>* SSimObj::getSBody </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>エンティティの中心となる部品を取得する </p>
+
+<p> <a class="el" href="_s_sim_obj_8h_source.html">SSimObj.h</a> の <a class="el" href="_s_sim_obj_8h_source.html#l00064">64</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_s_sim_obj_a84d9ced91ad4c02a91c41701780eb42a_cgraph.png" border="0" usemap="#class_s_sim_obj_a84d9ced91ad4c02a91c41701780eb42a_cgraph_map" alt=""></div>
+<map name="class_s_sim_obj_a84d9ced91ad4c02a91c41701780eb42a_cgraph_map" id="class_s_sim_obj_a84d9ced91ad4c02a91c41701780eb42a_cgraph">
+<area shape="rect" href="class_s_sim_obj.html#a418bbbe693c62c864e1ede5addbd1c93" title="部品を取得する" alt="" coords="192,5,331,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a418bbbe693c62c864e1ede5addbd1c93"></a><!-- doxytag: member="SSimObj::getSParts" ref="a418bbbe693c62c864e1ede5addbd1c93" args="(const char *name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_s_parts.html">SParts</a>* SSimObj::getSParts </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>name</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>部品を取得する </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>部品名 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_s_sim_obj_8h_source.html">SSimObj.h</a> の <a class="el" href="_s_sim_obj_8h_source.html#l00072">72</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+呼出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_s_sim_obj_a418bbbe693c62c864e1ede5addbd1c93_icgraph.png" border="0" usemap="#class_s_sim_obj_a418bbbe693c62c864e1ede5addbd1c93_icgraph_map" alt=""></div>
+<map name="class_s_sim_obj_a418bbbe693c62c864e1ede5addbd1c93_icgraph_map" id="class_s_sim_obj_a418bbbe693c62c864e1ede5addbd1c93_icgraph">
+<area shape="rect" href="class_s_sim_obj.html#a0e52df058799009cfbdee5a197d1fd99" title="エンティティの中心となる部品を取得する" alt="" coords="197,5,325,35"/><area shape="rect" href="class_s_sim_obj.html#a84d9ced91ad4c02a91c41701780eb42a" title="エンティティの中心となる部品を取得する" alt="" coords="192,59,331,88"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a092a8ad84d02e92b6c05916fe86b7476"></a><!-- doxytag: member="SSimObj::initCounter" ref="a092a8ad84d02e92b6c05916fe86b7476" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void SSimObj::initCounter </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>エンティティカウンタを初期化する </p>
+
+<p> <a class="el" href="_s_sim_obj_8h_source.html">SSimObj.h</a> の <a class="el" href="_s_sim_obj_8h_source.html#l00142">142</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="aaf41413ec97968ef1a8c4f7b373e026e"></a><!-- doxytag: member="SSimObj::loadParams" ref="aaf41413ec97968ef1a8c4f7b373e026e" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SSimObj::loadParams </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ODEの計算結果をエンティティにロードする. </p>
+
+</div>
+</div>
+<a class="anchor" id="aebf3a0b7ec02e92a462ac7acf0277c34"></a><!-- doxytag: member="SSimObj::push" ref="aebf3a0b7ec02e92a462ac7acf0277c34" args="(Attribute *attr)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SSimObj::push </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_attribute.html">Attribute</a> *&nbsp;</td>
+          <td class="paramname"> <em>attr</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>属性を追加する </p>
+
+<p><a class="el" href="class_sim_obj_base.html#a2218f37993d19f078a727cfaa65d9faa">SimObjBase</a>を再定義しています。</p>
+
+<p> <a class="el" href="_s_sim_obj_8h_source.html">SSimObj.h</a> の <a class="el" href="_s_sim_obj_8h_source.html#l00059">59</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_s_sim_obj_aebf3a0b7ec02e92a462ac7acf0277c34_cgraph.png" border="0" usemap="#class_s_sim_obj_aebf3a0b7ec02e92a462ac7acf0277c34_cgraph_map" alt=""></div>
+<map name="class_s_sim_obj_aebf3a0b7ec02e92a462ac7acf0277c34_cgraph_map" id="class_s_sim_obj_aebf3a0b7ec02e92a462ac7acf0277c34_cgraph">
+<area shape="rect" href="class_sim_obj_base.html#a2218f37993d19f078a727cfaa65d9faa" title="属性を追加する" alt="" coords="163,5,293,35"/><area shape="rect" href="class_attribute.html#ab403ef359092b0a44903bbd6f6609d70" title="属性名を得る" alt="" coords="343,5,452,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a026485ef973043e72e00775192db2580"></a><!-- doxytag: member="SSimObj::push" ref="a026485ef973043e72e00775192db2580" args="(SParts *p)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SSimObj::push </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_s_parts.html">SParts</a> *&nbsp;</td>
+          <td class="paramname"> <em>p</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>エンティティを構成する部品を追加する </p>
+
+<p> <a class="el" href="_s_sim_obj_8h_source.html">SSimObj.h</a> の <a class="el" href="_s_sim_obj_8h_source.html#l00053">53</a> 行で定義されています。</p>
+
+<p><div class="dynheader">
+関数の呼び出しグラフ:</div>
+<div class="dynsection">
+<div class="center"><img src="class_s_sim_obj_a026485ef973043e72e00775192db2580_cgraph.png" border="0" usemap="#class_s_sim_obj_a026485ef973043e72e00775192db2580_cgraph_map" alt=""></div>
+<map name="class_s_sim_obj_a026485ef973043e72e00775192db2580_cgraph_map" id="class_s_sim_obj_a026485ef973043e72e00775192db2580_cgraph">
+<area shape="rect" href="class_parts.html#af245eb5dd2bfcf0783634ec495bb4fa5" title="パーツ名の取得" alt="" coords="180,5,271,35"/><area shape="rect" href="class_s_parts.html#afad329031bc5608a6f6d62c95bc7056c" title="このパーツが構成するエンティティを設定する" alt="" coords="164,59,287,88"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ac5db72481d7778c094affb89adb37867"></a><!-- doxytag: member="SSimObj::push" ref="ac5db72481d7778c094affb89adb37867" args="(Joint *p)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SSimObj::push </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_joint.html">Joint</a> *&nbsp;</td>
+          <td class="paramname"> <em>p</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>エンティティを構成する関節を追加する </p>
+
+</div>
+</div>
+<a class="anchor" id="a49eea95f1ad270b86b277d4e44f3419e"></a><!-- doxytag: member="SSimObj::removeJoint" ref="a49eea95f1ad270b86b277d4e44f3419e" args="(Joint *j)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SSimObj::removeJoint </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_joint.html">Joint</a> *&nbsp;</td>
+          <td class="paramname"> <em>j</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>関節を削除する </p>
+
+</div>
+</div>
+<a class="anchor" id="aaeb498fcf12b4c8359fc9fe9b43b61f1"></a><!-- doxytag: member="SSimObj::setAttached" ref="aaeb498fcf12b4c8359fc9fe9b43b61f1" args="(bool b)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SSimObj::setAttached </td>
+          <td>(</td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>b</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コントローラが割り当てられているかを設定する </p>
+
+<p> <a class="el" href="_s_sim_obj_8h_source.html">SSimObj.h</a> の <a class="el" href="_s_sim_obj_8h_source.html#l00042">42</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a81a49609456778ddf6a8a7eb9dff956c"></a><!-- doxytag: member="SSimObj::space" ref="a81a49609456778ddf6a8a7eb9dff956c" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dSpaceID SSimObj::space </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ODE space オブジェクトを取得する. </p>
+
+<p> <a class="el" href="_s_sim_obj_8h_source.html">SSimObj.h</a> の <a class="el" href="_s_sim_obj_8h_source.html#l00035">35</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a39165e169ffbfd55d5dcd215ba8ef34b"></a><!-- doxytag: member="SSimObj::‾SSimObj" ref="a39165e169ffbfd55d5dcd215ba8ef34b" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual SSimObj::‾SSimObj </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>デストラクタ </p>
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_s_sim_obj_8h_source.html">SSimObj.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>sigserverに対してWed Dec 14 14:29:21 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

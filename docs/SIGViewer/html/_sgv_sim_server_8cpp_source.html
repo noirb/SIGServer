@@ -1,0 +1,516 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>SIGViewer: SgvSimServer.cpp ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>SgvSimServer.cpp</h1><a href="_sgv_sim_server_8cpp.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include "<a class="code" href="_win_main_8h.html">WinMain.h</a>"</span>
+<a name="l00002"></a>00002 <span class="preprocessor">#include "<a class="code" href="_sgv_main_window_8h.html">SgvMainWindow.h</a>"</span>
+<a name="l00003"></a>00003 <span class="preprocessor">#include "<a class="code" href="_sgv_sim_server_8h.html">SgvSimServer.h</a>"</span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include "<a class="code" href="_sgv_socket_8h.html">SgvSocket.h</a>"</span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include "<a class="code" href="_sgv_log_8h.html">SgvLog.h</a>"</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include "<a class="code" href="_sgv_packet_analyzer_8h.html">SgvPacketAnalyzer.h</a>"</span>
+<a name="l00007"></a>00007 <span class="preprocessor">#include "<a class="code" href="_sgv_u_t_f8_str_8h.html">SgvUTF8Str.h</a>"</span>
+<a name="l00008"></a>00008 <span class="preprocessor">#include "CommDataType.h"</span>
+<a name="l00009"></a>00009 <span class="preprocessor">#include "CommDataDecoder.h"</span>
+<a name="l00010"></a>00010 <span class="preprocessor">#include "CommUtil.h"</span>
+<a name="l00011"></a>00011 <span class="preprocessor">#include "Service.h"</span>
+<a name="l00012"></a>00012 <span class="preprocessor">#include "comm/encoder/Attach.h"</span>
+<a name="l00013"></a>00013 <span class="preprocessor">#include "comm/encoder/SimCtrl.h"</span>
+<a name="l00014"></a>00014 <span class="preprocessor">#include "comm/encoder/Entities.h"</span>
+<a name="l00015"></a>00015 <span class="preprocessor">#include "comm/encoder/Entity.h"</span>
+<a name="l00016"></a>00016 <span class="preprocessor">#include "comm/encoder/invokeOnRecvSound.h"</span>
+<a name="l00017"></a>00017 <span class="preprocessor">#include "X3DDB.h"</span>
+<a name="l00018"></a>00018 <span class="preprocessor">#include "Logger.h"</span>
+<a name="l00019"></a>00019 <span class="preprocessor">#include &lt;windows.h&gt;</span>
+<a name="l00020"></a>00020 <span class="preprocessor">#include &lt;string&gt;</span>
+<a name="l00021"></a>00021 
+<a name="l00022"></a><a class="code" href="_sgv_sim_server_8cpp.html#955028c828d769c27adffeecbcc5cded">00022</a> <span class="preprocessor">#define DECODER_ON_HEEP</span>
+<a name="l00023"></a>00023 <span class="preprocessor"></span>
+<a name="l00024"></a>00024 <span class="keyword">namespace </span>Sgv
+<a name="l00025"></a>00025 {<span class="comment"></span>
+<a name="l00026"></a>00026 <span class="comment">    ///////////////////////////////////////////////////////////////</span>
+<a name="l00027"></a>00027 <span class="comment"></span>    <span class="comment">//</span>
+<a name="l00028"></a><a class="code" href="class_sgv_1_1_sim_server.html#f3fd992e8452fc4b29bf75626b8aa731">00028</a>     <a class="code" href="class_sgv_1_1_sim_server.html#f3fd992e8452fc4b29bf75626b8aa731" title="コンストラクタ">SimServer::SimServer</a>()
+<a name="l00029"></a>00029     {
+<a name="l00030"></a>00030         m_pSock = <span class="keyword">new</span> <a class="code" href="class_sgv_1_1_client_socket.html" title="クライアントソケット">ClientSocket</a>(<span class="keyword">false</span>);
+<a name="l00031"></a>00031         m_pSource = NULL;
+<a name="l00032"></a>00032 
+<a name="l00033"></a>00033         <span class="comment">// *** これ忘れやすい！注意！！！ ***</span>
+<a name="l00034"></a>00034         CommDataEncoder::setSendProc(CommUtil::sendData);
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036         m_pEventListener = <span class="keyword">new</span> <a class="code" href="class_sgv_1_1_sim_server_event_listener.html" title="シミュレーションサーバからのイベントのハンドラクラス">SimServerEventListener</a>(<span class="keyword">this</span>);
+<a name="l00037"></a>00037         m_decoder.setListener(m_pEventListener);
+<a name="l00038"></a>00038 
+<a name="l00039"></a>00039         m_bViewAttached = <span class="keyword">false</span>;
+<a name="l00040"></a>00040         m_pWorld = NULL;
+<a name="l00041"></a>00041         m_bNewWorldArrived = <span class="keyword">false</span>;
+<a name="l00042"></a>00042     }
+<a name="l00043"></a>00043 
+<a name="l00044"></a><a class="code" href="class_sgv_1_1_sim_server.html#d1c8ee4efa03fed978aa25c54cd83839">00044</a>     <a class="code" href="class_sgv_1_1_sim_server.html#d1c8ee4efa03fed978aa25c54cd83839" title="デストラクタ">SimServer::‾SimServer</a>()
+<a name="l00045"></a>00045     {
+<a name="l00046"></a>00046         <span class="keywordflow">if</span> (m_pSock)
+<a name="l00047"></a>00047         {
+<a name="l00048"></a>00048             <span class="keyword">delete</span> m_pSock;
+<a name="l00049"></a>00049             m_pSock = NULL;
+<a name="l00050"></a>00050         }
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052         <span class="keywordflow">if</span> (m_pSource)
+<a name="l00053"></a>00053         {
+<a name="l00054"></a>00054             <span class="keyword">delete</span> m_pSource;
+<a name="l00055"></a>00055             m_pSource = NULL;
+<a name="l00056"></a>00056         }
+<a name="l00057"></a>00057 
+<a name="l00058"></a>00058         <span class="keywordflow">if</span> (m_pEventListener)
+<a name="l00059"></a>00059         {
+<a name="l00060"></a>00060             <span class="keyword">delete</span> m_pEventListener;
+<a name="l00061"></a>00061             m_pEventListener = NULL;
+<a name="l00062"></a>00062         }
+<a name="l00063"></a>00063 
+<a name="l00064"></a>00064         <span class="keywordflow">if</span> (m_pWorld)
+<a name="l00065"></a>00065         {
+<a name="l00066"></a>00066             <span class="keyword">delete</span> m_pWorld;
+<a name="l00067"></a>00067             m_pWorld = NULL;
+<a name="l00068"></a>00068         }
+<a name="l00069"></a>00069     }
+<a name="l00070"></a>00070 
+<a name="l00071"></a><a class="code" href="class_sgv_1_1_sim_server.html#bbfab7e09ad25ce8dabd781a4420d921">00071</a>     <span class="keywordtype">bool</span> <a class="code" href="class_sgv_1_1_sim_server.html#bbfab7e09ad25ce8dabd781a4420d921" title="シミュレーションサーバに接続する">SimServer::connect</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *simServerName, <span class="keywordtype">int</span> port)
+<a name="l00072"></a>00072     {
+<a name="l00073"></a>00073         <span class="keywordflow">if</span> (!m_pSock) <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00074"></a>00074 
+<a name="l00075"></a>00075         <span class="keywordflow">if</span> (m_pSock-&gt;<a class="code" href="class_sgv_1_1_socket.html#6cef8d7157cd0ee8a3af6396a2a5d79d" title="接続中ならtrueを返す">connected</a>()) <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077         <span class="keywordflow">if</span> (m_pSock-&gt;<a class="code" href="class_sgv_1_1_client_socket.html#c3c3dd4319317fb72fb3883f184f39b5" title="サーバーソケットに接続する">connect</a>(simServerName, port) &gt; 0)
+<a name="l00078"></a>00078         {
+<a name="l00079"></a>00079             <span class="comment">// 接続成功</span>
+<a name="l00080"></a>00080             <span class="comment">// 成功してからNon-Blockingモードにする</span>
+<a name="l00081"></a>00081             <span class="comment">// （最初からNon-Blockingにしておくと、connectもタイムアウトしてしまうため）</span>
+<a name="l00082"></a>00082             m_pSock-&gt;<a class="code" href="class_sgv_1_1_socket.html#b07c0ab3a464cc92f025e6cd86a5a976" title="ソケットのモードを変更する．">setNonBlockMode</a>(<span class="keyword">true</span>);
+<a name="l00083"></a>00083 
+<a name="l00084"></a>00084             <span class="comment">// Sourceの設定</span>
+<a name="l00085"></a>00085             <span class="keywordflow">if</span> (m_pSource) <span class="keyword">delete</span> m_pSource;
+<a name="l00086"></a>00086             m_pSource = <span class="keyword">new</span> Source(m_pSock-&gt;<a class="code" href="class_sgv_1_1_socket.html#ccfbb8ea689629d15a03908b1b4a35c9" title="ソケット記述子を返す">sock</a>(), m_pSock-&gt;<a class="code" href="class_sgv_1_1_socket.html#842c94d2517ba9c33f60522299cf71d2" title="接続相手のホスト名を返す">hostName</a>());
+<a name="l00087"></a>00087             m_pSource-&gt;set(SOURCE_TYPE_SIMSERVER, <span class="stringliteral">"simserver"</span>);
+<a name="l00088"></a>00088                 <span class="comment">// このタイプと名前にはどんな意味があるのかイマイチよくわからない</span>
+<a name="l00089"></a>00089 
+<a name="l00090"></a>00090             <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00091"></a>00091         }
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093         <span class="comment">// 接続失敗</span>
+<a name="l00094"></a>00094         <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00095"></a>00095     }
+<a name="l00096"></a>00096 
+<a name="l00097"></a><a class="code" href="class_sgv_1_1_sim_server.html#c4f7a3c88dfe904bd44c39de1ffb6d90">00097</a>     <span class="keywordtype">bool</span> <a class="code" href="class_sgv_1_1_sim_server.html#bbfab7e09ad25ce8dabd781a4420d921" title="シミュレーションサーバに接続する">SimServer::connect</a>(std::string simServerName, <span class="keywordtype">int</span> port)
+<a name="l00098"></a>00098     {
+<a name="l00099"></a>00099         <span class="keywordflow">return</span> <a class="code" href="class_sgv_1_1_sim_server.html#bbfab7e09ad25ce8dabd781a4420d921" title="シミュレーションサーバに接続する">connect</a>(simServerName.c_str(), port);
+<a name="l00100"></a>00100     }
+<a name="l00101"></a>00101 
+<a name="l00102"></a><a class="code" href="class_sgv_1_1_sim_server.html#02e5d905967ed6e3dff2179f223db663">00102</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_sim_server.html#02e5d905967ed6e3dff2179f223db663" title="シミュレーションサーバとの接続を切る">SimServer::close</a>()
+<a name="l00103"></a>00103     {
+<a name="l00104"></a>00104         <span class="keywordflow">if</span> (m_pSock)
+<a name="l00105"></a>00105         {
+<a name="l00106"></a>00106             <span class="comment">// ソケットを閉じる</span>
+<a name="l00107"></a>00107             m_pSock-&gt;<a class="code" href="class_sgv_1_1_socket.html#d9d80e3cc77fa0e2f05795f0af800d50" title="ソケットを閉じる">close</a>();
+<a name="l00108"></a>00108 
+<a name="l00109"></a>00109             <span class="comment">// 一旦破棄</span>
+<a name="l00110"></a>00110             <span class="keyword">delete</span> m_pSock;
+<a name="l00111"></a>00111 
+<a name="l00112"></a>00112             <span class="comment">// 再接続に備えて再度生成</span>
+<a name="l00113"></a>00113             m_pSock = <span class="keyword">new</span> <a class="code" href="class_sgv_1_1_client_socket.html" title="クライアントソケット">ClientSocket</a>(<span class="keyword">false</span>);
+<a name="l00114"></a>00114         }
+<a name="l00115"></a>00115     }
+<a name="l00116"></a>00116 
+<a name="l00117"></a><a class="code" href="class_sgv_1_1_sim_server.html#018c4a7024b4594e46bc1f9914d22354">00117</a>     <span class="keywordtype">bool</span> <a class="code" href="class_sgv_1_1_sim_server.html#018c4a7024b4594e46bc1f9914d22354" title="シミュレーションサーバとの接続中ならtrueを返す">SimServer::connected</a>()
+<a name="l00118"></a>00118     {
+<a name="l00119"></a>00119         <span class="keywordflow">if</span> (!m_pSock) <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00120"></a>00120 
+<a name="l00121"></a>00121         <span class="keywordflow">return</span> m_pSock-&gt;<a class="code" href="class_sgv_1_1_socket.html#6cef8d7157cd0ee8a3af6396a2a5d79d" title="接続中ならtrueを返す">connected</a>();
+<a name="l00122"></a>00122     }
+<a name="l00123"></a>00123 
+<a name="l00124"></a><a class="code" href="class_sgv_1_1_sim_server.html#70962b341f2311c088be3c4f372fcbf2">00124</a>     <span class="keywordtype">int</span> <a class="code" href="class_sgv_1_1_sim_server.html#70962b341f2311c088be3c4f372fcbf2" title="ソケットからのパケットを処理する">SimServer::processOnePacket</a>(CommDataType &amp;dataType, <span class="keywordtype">bool</span> bDumpPacket)
+<a name="l00125"></a>00125     {
+<a name="l00126"></a>00126         <span class="keywordflow">if</span> (!m_pSock || !m_pSock-&gt;<a class="code" href="class_sgv_1_1_socket.html#6cef8d7157cd0ee8a3af6396a2a5d79d" title="接続中ならtrueを返す">connected</a>()) <span class="keywordflow">return</span> -1;
+<a name="l00127"></a>00127 
+<a name="l00128"></a>00128         <a class="code" href="class_sgv_1_1_time_log.html" title="時間測定用ログ">TimeLog</a> *ptl = <a class="code" href="_win_main_8cpp.html#a1f71e109d72283d62f1c97bc2e722d0">GetMainWindow</a>()-&gt;<a class="code" href="class_sgv_1_1_main_window.html#405fb1edf4508aa767cf7dc9f3b4537c" title="TimeLogオブジェクトを返す.">getTimeLog</a>();
+<a name="l00129"></a>00129 
+<a name="l00130"></a>00130         <a class="code" href="class_sgv_1_1_packet.html" title="パケット（ネットワーク通信の単位となるブロックデータ）...">Sgv::Packet</a> *packet = NULL;
+<a name="l00131"></a>00131 
+<a name="l00132"></a>00132         <span class="comment">// パケット受信にかかった時間を測定</span>
+<a name="l00133"></a>00133         ptl-&gt;<a class="code" href="class_sgv_1_1_time_log.html#297eea84aa9f21916ef82e22d254e9a8" title="測定ポイントに入る前に呼ぶ">start</a>(<span class="stringliteral">"SimServer::processOnePacket -- recvPacket()"</span>);
+<a name="l00134"></a>00134 
+<a name="l00135"></a>00135         <span class="keywordtype">int</span> status = m_pSock-&gt;<a class="code" href="class_sgv_1_1_socket.html#1cd8d81ea4405a3ff88d7555e8012dee" title="ソケットからデータを読み出し、パケットとして返す">recvPacket</a>(&amp;packet);
+<a name="l00136"></a>00136 
+<a name="l00137"></a>00137         ptl-&gt;<a class="code" href="class_sgv_1_1_time_log.html#047c79b5d2c857ba4ef01f6e834cc742" title="測定ポイントが終了したら呼ぶ">end</a>();
+<a name="l00138"></a>00138 
+<a name="l00139"></a>00139         <span class="keywordflow">if</span> (status &lt; 0)
+<a name="l00140"></a>00140         {
+<a name="l00141"></a>00141             <a class="code" href="class_sgv_1_1_log.html#5e05b61c611e6611bdb22726f826d209" title="ログへ文字列を出力（書式指定可能．改行付き）">Sgv::Log::println</a>(<span class="stringliteral">"*** socket error ***"</span>);
+<a name="l00142"></a>00142             <span class="keywordflow">return</span> -1;
+<a name="l00143"></a>00143         }
+<a name="l00144"></a>00144         <span class="keywordflow">else</span> <span class="keywordflow">if</span> (status &gt; 0)
+<a name="l00145"></a>00145         {
+<a name="l00146"></a>00146             dataType = packet-&gt;<a class="code" href="class_sgv_1_1_packet.html#5d48ed9600d97aa0ea53f51ea4cd500e" title="パケットのデータタイプを返す">getType</a>();
+<a name="l00147"></a>00147 
+<a name="l00148"></a>00148             <span class="comment">// for debug</span>
+<a name="l00149"></a>00149             <span class="keywordflow">if</span> (bDumpPacket)
+<a name="l00150"></a>00150             {
+<a name="l00151"></a>00151                 <a class="code" href="class_sgv_1_1_packet_analyzer.html" title="パケット解析用クラス">Sgv::PacketAnalyzer</a> pa;
+<a name="l00152"></a>00152                 pa.<a class="code" href="class_sgv_1_1_packet_analyzer.html#1fe1d471ec426788a0c27aac3f0ffa56" title="解析対象パケットデータをセットする">setPacketData</a>(packet);
+<a name="l00153"></a>00153                 pa.<a class="code" href="class_sgv_1_1_packet_analyzer.html#eafea2ba7ddc7527799c41ff3e139f79" title="現在保持している解析対象パケットデータをファイルに書き出す...">savePacketData</a>(<span class="stringliteral">"packet.dat"</span>, <span class="keyword">true</span>);
+<a name="l00154"></a>00154             }
+<a name="l00155"></a>00155 
+<a name="l00156"></a>00156             <span class="comment">// パケットのデコードにかかった時間を測定</span>
+<a name="l00157"></a>00157             ptl-&gt;<a class="code" href="class_sgv_1_1_time_log.html#297eea84aa9f21916ef82e22d254e9a8" title="測定ポイントに入る前に呼ぶ">start</a>(<span class="stringliteral">"SimServer::processOnePacket -- decoder.push()"</span>);
+<a name="l00158"></a>00158 
+<a name="l00159"></a>00159             <span class="comment">// デコーダへpush()してイベントハンドラを起動する</span>
+<a name="l00160"></a>00160             m_decoder.push(*m_pSource, packet-&gt;<a class="code" href="class_sgv_1_1_packet.html#cc046f1d80c9066f20a65d7a2d70ca92" title="パケットの先頭ポインタを返す">getData</a>(), packet-&gt;<a class="code" href="class_sgv_1_1_packet.html#79edb7d2be26b1db010cdaa5e59eef84" title="パケットの長さを返す">getLength</a>());
+<a name="l00161"></a>00161 
+<a name="l00162"></a>00162             ptl-&gt;<a class="code" href="class_sgv_1_1_time_log.html#047c79b5d2c857ba4ef01f6e834cc742" title="測定ポイントが終了したら呼ぶ">end</a>();
+<a name="l00163"></a>00163 
+<a name="l00164"></a>00164             <span class="comment">// パケットを破棄</span>
+<a name="l00165"></a>00165             <span class="keywordflow">if</span> (packet) <span class="keyword">delete</span> packet;
+<a name="l00166"></a>00166 
+<a name="l00167"></a>00167             <span class="keywordflow">return</span> 1;
+<a name="l00168"></a>00168         }
+<a name="l00169"></a>00169 
+<a name="l00170"></a>00170         <span class="keywordflow">return</span> 0;
+<a name="l00171"></a>00171     }
+<a name="l00172"></a>00172 
+<a name="l00173"></a><a class="code" href="class_sgv_1_1_sim_server.html#3c1a8d959d56bbcaf1e4b869dba107de">00173</a>     <span class="keywordtype">bool</span> <a class="code" href="class_sgv_1_1_sim_server.html#3c1a8d959d56bbcaf1e4b869dba107de" title="シミュレーションサーバにビューアアタッチ要求を送信する...">SimServer::attachView</a>()
+<a name="l00174"></a>00174     {
+<a name="l00175"></a>00175         <span class="keywordflow">if</span> (!m_pSock || !m_pSock-&gt;<a class="code" href="class_sgv_1_1_socket.html#6cef8d7157cd0ee8a3af6396a2a5d79d" title="接続中ならtrueを返す">connected</a>()) <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00176"></a>00176 
+<a name="l00177"></a>00177         <span class="comment">// COMM_REQUEST_ATTACH_VIEWを送る</span>
+<a name="l00178"></a>00178         CommData::AttachViewRequest enc(<span class="stringliteral">"SIGViewer"</span>, <span class="keyword">true</span>);
+<a name="l00179"></a>00179         <span class="keywordflow">if</span> (enc.send(m_pSock-&gt;<a class="code" href="class_sgv_1_1_socket.html#ccfbb8ea689629d15a03908b1b4a35c9" title="ソケット記述子を返す">sock</a>()) &lt; 0)
+<a name="l00180"></a>00180         {
+<a name="l00181"></a>00181             <a class="code" href="class_sgv_1_1_log.html#5e05b61c611e6611bdb22726f826d209" title="ログへ文字列を出力（書式指定可能．改行付き）">Sgv::Log::println</a>(<span class="stringliteral">"packet send error [%s:%d]"</span>, __FILE__, __LINE__);
+<a name="l00182"></a>00182             <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00183"></a>00183         }
+<a name="l00184"></a>00184 
+<a name="l00185"></a>00185         <span class="comment">// 返答が来るまで待つ</span>
+<a name="l00186"></a>00186         CommDataType dataType;
+<a name="l00187"></a>00187         <span class="keywordtype">int</span> state = <a class="code" href="class_sgv_1_1_sim_server.html#70962b341f2311c088be3c4f372fcbf2" title="ソケットからのパケットを処理する">processOnePacket</a>(dataType);
+<a name="l00188"></a>00188         <span class="keywordflow">if</span> (state &lt; 0) <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00189"></a>00189         <span class="keywordflow">while</span> (state == 0 || dataType != COMM_RESULT_ATTACH_VIEW)
+<a name="l00190"></a>00190         {
+<a name="l00191"></a>00191             Sleep(10);  <span class="comment">// wait for a while</span>
+<a name="l00192"></a>00192 
+<a name="l00193"></a>00193             state = <a class="code" href="class_sgv_1_1_sim_server.html#70962b341f2311c088be3c4f372fcbf2" title="ソケットからのパケットを処理する">processOnePacket</a>(dataType);
+<a name="l00194"></a>00194             <span class="keywordflow">if</span> (state &lt; 0) <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00195"></a>00195         }
+<a name="l00196"></a>00196 
+<a name="l00197"></a>00197         <span class="comment">// 答えが返ってきた．</span>
+<a name="l00198"></a>00198         <span class="comment">// メンバ変数に答えが入っているのでそれを返す</span>
+<a name="l00199"></a>00199         <span class="keywordflow">return</span> m_bViewAttached;
+<a name="l00200"></a>00200     }
+<a name="l00201"></a>00201 
+<a name="l00202"></a><a class="code" href="class_sgv_1_1_sim_server.html#ef55af7255038e1a15073ac44dc958d9">00202</a>     <span class="keywordtype">bool</span> <a class="code" href="class_sgv_1_1_sim_server.html#ef55af7255038e1a15073ac44dc958d9" title="コントロールコマンドをシミュレーションサーバに送る">SimServer::sendSimCtrlCommand</a>(SimCtrlCmdType cmd)
+<a name="l00203"></a>00203     {
+<a name="l00204"></a>00204         <span class="keywordflow">if</span> (!m_pSock || !m_pSock-&gt;<a class="code" href="class_sgv_1_1_socket.html#6cef8d7157cd0ee8a3af6396a2a5d79d" title="接続中ならtrueを返す">connected</a>())
+<a name="l00205"></a>00205         {
+<a name="l00206"></a>00206             <a class="code" href="class_sgv_1_1_log.html#5e05b61c611e6611bdb22726f826d209" title="ログへ文字列を出力（書式指定可能．改行付き）">Sgv::Log::println</a>(<span class="stringliteral">"not connected to SimServer"</span>);
+<a name="l00207"></a>00207             <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00208"></a>00208         }
+<a name="l00209"></a>00209 
+<a name="l00210"></a>00210         <span class="comment">// send COMM_REQUEST_SIM_CTRL</span>
+<a name="l00211"></a>00211         CommData::SimCtrlRequest enc(cmd);
+<a name="l00212"></a>00212         <span class="keywordflow">if</span> (enc.send(m_pSock-&gt;<a class="code" href="class_sgv_1_1_socket.html#ccfbb8ea689629d15a03908b1b4a35c9" title="ソケット記述子を返す">sock</a>()) &lt; 0)
+<a name="l00213"></a>00213         {
+<a name="l00214"></a>00214             <a class="code" href="class_sgv_1_1_log.html#5e05b61c611e6611bdb22726f826d209" title="ログへ文字列を出力（書式指定可能．改行付き）">Sgv::Log::println</a>(<span class="stringliteral">"packet send error [%s:%d]"</span>, __FILE__, __LINE__);
+<a name="l00215"></a>00215             <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00216"></a>00216         }
+<a name="l00217"></a>00217 
+<a name="l00218"></a>00218         <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00219"></a>00219     }
+<a name="l00220"></a>00220 
+<a name="l00221"></a><a class="code" href="class_sgv_1_1_sim_server.html#0c40ee895881d5951df3512fed05d252">00221</a>     <span class="keywordtype">bool</span> <a class="code" href="class_sgv_1_1_sim_server.html#0c40ee895881d5951df3512fed05d252" title="COMM_REQUEST_GET_ALL_ENTITIESをシミュレーションサーバに送る.">SimServer::sendGetAllEntitiesRequest</a>()
+<a name="l00222"></a>00222     {
+<a name="l00223"></a>00223         <span class="keywordflow">if</span> (!m_pSock || !m_pSock-&gt;<a class="code" href="class_sgv_1_1_socket.html#6cef8d7157cd0ee8a3af6396a2a5d79d" title="接続中ならtrueを返す">connected</a>()) <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00224"></a>00224 
+<a name="l00225"></a>00225         <span class="comment">// COMM_REQUEST_GET_ALL_ENTITIESを送る</span>
+<a name="l00226"></a>00226         CommData::GetAllEnitiesRequest enc;
+<a name="l00227"></a>00227         <span class="keywordflow">if</span> (enc.send(m_pSock-&gt;<a class="code" href="class_sgv_1_1_socket.html#ccfbb8ea689629d15a03908b1b4a35c9" title="ソケット記述子を返す">sock</a>()) &lt; 0)
+<a name="l00228"></a>00228         {
+<a name="l00229"></a>00229             <a class="code" href="class_sgv_1_1_log.html#5e05b61c611e6611bdb22726f826d209" title="ログへ文字列を出力（書式指定可能．改行付き）">Sgv::Log::println</a>(<span class="stringliteral">"packet send error [%s:%d]"</span>, __FILE__, __LINE__);
+<a name="l00230"></a>00230             <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00231"></a>00231         }
+<a name="l00232"></a>00232 
+<a name="l00233"></a>00233         <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00234"></a>00234     }
+<a name="l00235"></a>00235 
+<a name="l00236"></a><a class="code" href="class_sgv_1_1_sim_server.html#f0fb93a5be7475075c3f133aae7f79a1">00236</a>     <span class="keywordtype">bool</span> <a class="code" href="class_sgv_1_1_sim_server.html#f0fb93a5be7475075c3f133aae7f79a1" title="COMM_REQUEST_CONNECT_DATA_PORTをシミュレーションサーバに送る.">SimServer::sendConnectDataPortRequest</a>()
+<a name="l00237"></a>00237     {
+<a name="l00238"></a>00238         <span class="comment">// COMM_REQUEST_CONNECT_DATA_PORTを送る</span>
+<a name="l00239"></a>00239         CommData::ConnectDataPortRequest enc(<span class="stringliteral">"SIGViewerDataPort"</span>);
+<a name="l00240"></a>00240         <span class="keywordflow">if</span> (enc.send(m_pSock-&gt;<a class="code" href="class_sgv_1_1_socket.html#ccfbb8ea689629d15a03908b1b4a35c9" title="ソケット記述子を返す">sock</a>()) &lt; 0)
+<a name="l00241"></a>00241         {
+<a name="l00242"></a>00242             <a class="code" href="class_sgv_1_1_log.html#5e05b61c611e6611bdb22726f826d209" title="ログへ文字列を出力（書式指定可能．改行付き）">Sgv::Log::println</a>(<span class="stringliteral">"packet send error [%s:%d]"</span>, __FILE__, __LINE__);
+<a name="l00243"></a>00243             <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00244"></a>00244         }
+<a name="l00245"></a>00245 
+<a name="l00246"></a>00246         <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00247"></a>00247     }
+<a name="l00248"></a>00248 
+<a name="l00249"></a><a class="code" href="class_sgv_1_1_sim_server.html#6fa76319c506d3116162a3b00d9c6992">00249</a>     <span class="keywordtype">bool</span> <a class="code" href="class_sgv_1_1_sim_server.html#6fa76319c506d3116162a3b00d9c6992" title="COMM_REQUEST_PROVIDE_SERVICEをシミュレーションサーバに送る.">SimServer::sendProvideServiceRequest</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *clerkName, <span class="keywordtype">int</span> clerkPort)
+<a name="l00250"></a>00250     {
+<a name="l00251"></a>00251         <span class="keywordflow">if</span> (!m_pSock || !m_pSock-&gt;<a class="code" href="class_sgv_1_1_socket.html#6cef8d7157cd0ee8a3af6396a2a5d79d" title="接続中ならtrueを返す">connected</a>()) <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00252"></a>00252 
+<a name="l00253"></a>00253         ::Service::Kind kind = ::Service::CAPTURE_VIEW | ::Service::DETECT_ENTITIES;
+<a name="l00254"></a>00254 
+<a name="l00255"></a>00255         <span class="comment">// ************************************************************</span>
+<a name="l00256"></a>00256         <span class="comment">//  第1引数に与える名前がどちらが正しいのかよくわからないので</span>
+<a name="l00257"></a>00257         <span class="comment">//  今まで動いていたほう(SIGViewer)を残しておく (2009/3/24)</span>
+<a name="l00258"></a>00258         <span class="comment">//</span>
+<a name="l00259"></a>00259         <span class="comment">//  ---&gt;SIGViewerServiceProviderにしてみた. (2009/4/9)</span>
+<a name="l00260"></a>00260         <span class="comment">//</span>
+<a name="l00261"></a>00261         <span class="comment">//  ホスト名（第3引数）と、ServiceClerk::open()に与えるホスト名は</span>
+<a name="l00262"></a>00262         <span class="comment">//  必ず同じ名前でなければならない！！！</span>
+<a name="l00263"></a>00263         <span class="comment">//  今の実装では，MainWindow::m_serviceClerkNameが与えられる</span>
+<a name="l00264"></a>00264         <span class="comment">//  ようになっている．</span>
+<a name="l00265"></a>00265         <span class="comment">//  MainWindow::m_serviceClerkNameはビューア起動時に、</span>
+<a name="l00266"></a>00266         <span class="comment">//  ビューアのIPAddrにセットされるので，必ず同じものとなる．</span>
+<a name="l00267"></a>00267         <span class="comment">// ************************************************************</span>
+<a name="l00268"></a>00268 <span class="comment">//      ::Service service("SIGViewer", kind, clerkName, clerkPort);</span><a class="code" href="class_sgv_1_1_service.html" title="サービス要求・結果のベースクラス"></a>
+<a name="l00269"></a>00269 <a class="code" href="class_sgv_1_1_service.html" title="サービス要求・結果のベースクラス">		::Service</a> service(<span class="stringliteral">"SIGViewerServiceProvider"</span>, kind, clerkName, clerkPort);
+<a name="l00270"></a>00270 
+<a name="l00271"></a>00271         <span class="comment">// COMM_REQUEST_PROVIDE_SERVICEを送る</span>
+<a name="l00272"></a>00272         CommData::ProvideServiceRequest enc(service);
+<a name="l00273"></a>00273         <span class="keywordflow">if</span> (enc.send(m_pSock-&gt;<a class="code" href="class_sgv_1_1_socket.html#ccfbb8ea689629d15a03908b1b4a35c9" title="ソケット記述子を返す">sock</a>()) &lt; 0)
+<a name="l00274"></a>00274         {
+<a name="l00275"></a>00275             <a class="code" href="class_sgv_1_1_log.html#5e05b61c611e6611bdb22726f826d209" title="ログへ文字列を出力（書式指定可能．改行付き）">Sgv::Log::println</a>(<span class="stringliteral">"packet send error [%s:%d]"</span>, __FILE__, __LINE__);
+<a name="l00276"></a>00276             <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00277"></a>00277         }
+<a name="l00278"></a>00278 
+<a name="l00279"></a>00279         <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00280"></a>00280     }
+<a name="l00281"></a>00281 
+<a name="l00282"></a><a class="code" href="class_sgv_1_1_sim_server.html#23234c4dadf9e298bfc9f0e701849e77">00282</a>     <span class="keywordtype">bool</span> <a class="code" href="class_sgv_1_1_sim_server.html#23234c4dadf9e298bfc9f0e701849e77" title="音声データを送信する">SimServer::sendRawSound</a>(RawSound *sound, <span class="keyword">const</span> <span class="keywordtype">char</span> *sendTo)
+<a name="l00283"></a>00283     {
+<a name="l00284"></a>00284         <span class="keywordflow">if</span> (!m_pSock || !m_pSock-&gt;<a class="code" href="class_sgv_1_1_socket.html#6cef8d7157cd0ee8a3af6396a2a5d79d" title="接続中ならtrueを返す">connected</a>()) <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00285"></a>00285 
+<a name="l00286"></a>00286         <span class="comment">// send it to agent</span>
+<a name="l00287"></a>00287         CommInvokeMethodOnRecvSoundEncoder enc(1.0, <span class="stringliteral">"SIGViewer"</span>, sendTo, *sound);
+<a name="l00288"></a>00288         <span class="keywordflow">if</span> (enc.send(m_pSock-&gt;<a class="code" href="class_sgv_1_1_socket.html#ccfbb8ea689629d15a03908b1b4a35c9" title="ソケット記述子を返す">sock</a>()) &lt; 0)
+<a name="l00289"></a>00289         {
+<a name="l00290"></a>00290             <a class="code" href="class_sgv_1_1_log.html#5e05b61c611e6611bdb22726f826d209" title="ログへ文字列を出力（書式指定可能．改行付き）">Sgv::Log::println</a>(<span class="stringliteral">"packet send error [%s:%d]"</span>, __FILE__, __LINE__);
+<a name="l00291"></a>00291             <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00292"></a>00292         }
+<a name="l00293"></a>00293 
+<a name="l00294"></a>00294         <a class="code" href="class_sgv_1_1_packet_analyzer.html" title="パケット解析用クラス">Sgv::PacketAnalyzer</a> pa;
+<a name="l00295"></a>00295         pa.<a class="code" href="class_sgv_1_1_packet_analyzer.html#1fe1d471ec426788a0c27aac3f0ffa56" title="解析対象パケットデータをセットする">setPacketData</a>(&amp;enc);
+<a name="l00296"></a>00296         pa.<a class="code" href="class_sgv_1_1_packet_analyzer.html#e59d9c8d27be6e28a5fb1ccf1ed71435" title="パケットデータを解析する">analyze</a>(2);
+<a name="l00297"></a>00297         pa.<a class="code" href="class_sgv_1_1_packet_analyzer.html#eafea2ba7ddc7527799c41ff3e139f79" title="現在保持している解析対象パケットデータをファイルに書き出す...">savePacketData</a>(<span class="stringliteral">"packet.dat"</span>, <span class="keyword">false</span>);
+<a name="l00298"></a>00298 
+<a name="l00299"></a>00299         <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00300"></a>00300     }
+<a name="l00301"></a>00301 
+<a name="l00302"></a><a class="code" href="class_sgv_1_1_sim_server.html#de9b656524328b71ab36edce665326ce">00302</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_sim_server.html#de9b656524328b71ab36edce665326ce" title="最新のSimWorldをこのオブジェクトにセットする">SimServer::setLatestWorld</a>(SimWorld *w)
+<a name="l00303"></a>00303     {
+<a name="l00304"></a>00304         <span class="keywordflow">if</span> (m_pWorld)
+<a name="l00305"></a>00305         {
+<a name="l00306"></a>00306             <span class="keyword">delete</span> m_pWorld;
+<a name="l00307"></a>00307             m_pWorld = NULL;
+<a name="l00308"></a>00308         }
+<a name="l00309"></a>00309 
+<a name="l00310"></a>00310         m_pWorld = w;
+<a name="l00311"></a>00311     }
+<a name="l00312"></a>00312 
+<a name="l00313"></a><a class="code" href="class_sgv_1_1_sim_server.html#5e92de4f26aa5739c77ef6a24c529797">00313</a>     SimWorld *<a class="code" href="class_sgv_1_1_sim_server.html#5e92de4f26aa5739c77ef6a24c529797" title="シミュレーションサーバから届いた最新のSimWorldを返す">SimServer::getLatestWorld</a>()
+<a name="l00314"></a>00314     {
+<a name="l00315"></a>00315         <span class="keywordflow">return</span> m_pWorld;
+<a name="l00316"></a>00316     }
+<a name="l00317"></a>00317 
+<a name="l00318"></a><a class="code" href="class_sgv_1_1_sim_server.html#ffef7983742c9948f215c3190e5c9802">00318</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_sim_server.html#ffef7983742c9948f215c3190e5c9802" title="新しいSimWorldがシミュレーションサーバから届くまで待つ">SimServer::waitUntilNewWorldArrived</a>()
+<a name="l00319"></a>00319     {
+<a name="l00320"></a>00320         <span class="keywordflow">if</span> (m_pWorld)
+<a name="l00321"></a>00321         {
+<a name="l00322"></a>00322             <span class="keyword">delete</span> m_pWorld;
+<a name="l00323"></a>00323             m_pWorld = NULL;
+<a name="l00324"></a>00324         }
+<a name="l00325"></a>00325 
+<a name="l00326"></a>00326         CommDataType dataType;
+<a name="l00327"></a>00327         <span class="keywordtype">int</span> status = <a class="code" href="class_sgv_1_1_sim_server.html#70962b341f2311c088be3c4f372fcbf2" title="ソケットからのパケットを処理する">processOnePacket</a>(dataType);
+<a name="l00328"></a>00328         <span class="keywordflow">if</span> (status &lt; 0) <span class="keywordflow">return</span>; <span class="comment">// error occcurred</span>
+<a name="l00329"></a>00329 
+<a name="l00330"></a>00330         <span class="comment">// 新しいSimWolrdが到着するまでパケット処理を続ける</span>
+<a name="l00331"></a>00331         <span class="keywordflow">while</span> (!m_pWorld)
+<a name="l00332"></a>00332         {
+<a name="l00333"></a>00333             status = <a class="code" href="class_sgv_1_1_sim_server.html#70962b341f2311c088be3c4f372fcbf2" title="ソケットからのパケットを処理する">processOnePacket</a>(dataType);
+<a name="l00334"></a>00334             <span class="keywordflow">if</span> (status &lt; 0) <span class="keywordflow">return</span>; <span class="comment">// error occcurred</span>
+<a name="l00335"></a>00335         }
+<a name="l00336"></a>00336     }
+<a name="l00337"></a>00337 
+<a name="l00338"></a><a class="code" href="class_sgv_1_1_sim_server.html#cece3132c476a8e495b15318e92b4e91">00338</a>     <span class="keywordtype">void</span> <a class="code" href="class_sgv_1_1_sim_server.html#cece3132c476a8e495b15318e92b4e91" title="最新のSimWorldが届いたことを示すフラグをセットする．">SimServer::setNewWorldArrivedFlag</a>(<span class="keywordtype">bool</span> b)
+<a name="l00339"></a>00339     {
+<a name="l00340"></a>00340         m_bNewWorldArrived = b;
+<a name="l00341"></a>00341     }
+<a name="l00342"></a>00342 
+<a name="l00343"></a><a class="code" href="class_sgv_1_1_sim_server.html#029795ea91dbed25392498f248bbce25">00343</a>     <span class="keywordtype">bool</span> <a class="code" href="class_sgv_1_1_sim_server.html#029795ea91dbed25392498f248bbce25" title="最新のSimWorldがシミュレーションサーバから届いているならtrueを返す...">SimServer::isNewWorldArrived</a>()
+<a name="l00344"></a>00344     {
+<a name="l00345"></a>00345         <span class="keywordflow">return</span> m_bNewWorldArrived;
+<a name="l00346"></a>00346     }
+<a name="l00347"></a>00347 <span class="comment"></span>
+<a name="l00348"></a>00348 <span class="comment">    ///////////////////////////////////////////////////////////////</span>
+<a name="l00349"></a>00349 <span class="comment"></span>    <span class="comment">//</span>
+<a name="l00350"></a><a class="code" href="class_sgv_1_1_sim_server_event_listener.html#fe9d6d99a07a6800d67e4078104f63a3">00350</a>     <a class="code" href="class_sgv_1_1_sim_server_event_listener.html#fe9d6d99a07a6800d67e4078104f63a3" title="コンストラクタ">SimServerEventListener::SimServerEventListener</a>(<a class="code" href="class_sgv_1_1_sim_server.html" title="シミュレーションサーバとの通信">SimServer</a> *pSimServer) : m_pSimServer(pSimServer)
+<a name="l00351"></a>00351     {
+<a name="l00352"></a>00352     }
+<a name="l00353"></a>00353 
+<a name="l00354"></a><a class="code" href="class_sgv_1_1_sim_server_event_listener.html#15c03e57eed33ded0c9a88e4a416629f">00354</a>     <a class="code" href="class_sgv_1_1_sim_server_event_listener.html#15c03e57eed33ded0c9a88e4a416629f" title="デストラクタ">SimServerEventListener::‾SimServerEventListener</a>()
+<a name="l00355"></a>00355     {
+<a name="l00356"></a>00356         <span class="comment">// m_pSimServerは参照を保持するためだけのものなので</span>
+<a name="l00357"></a>00357         <span class="comment">// deleteしてはいけない</span>
+<a name="l00358"></a>00358         m_pSimServer = NULL;
+<a name="l00359"></a>00359     }
+<a name="l00360"></a>00360 
+<a name="l00361"></a>00361     <span class="keywordtype">void</span> SimServerEventListener::recvResultAttachView(Source &amp;from, ResultAttachViewEvent &amp;evt)
+<a name="l00362"></a>00362     {
+<a name="l00363"></a>00363         <span class="keywordtype">bool</span> bViewAttached = (evt.result() == COMM_RESULT_OK) ? <span class="keyword">true</span> : <span class="keyword">false</span>;
+<a name="l00364"></a>00364 
+<a name="l00365"></a>00365         <span class="keywordflow">if</span> (m_pSimServer)
+<a name="l00366"></a>00366         {
+<a name="l00367"></a>00367             m_pSimServer-&gt;<a class="code" href="class_sgv_1_1_sim_server.html#c8307bf9fdb64d7094c3b8c06882d2d0" title="ビューアのアタッチ状況をセットする">setViewAttachedFlag</a>(bViewAttached);
+<a name="l00368"></a>00368         }
+<a name="l00369"></a>00369 
+<a name="l00370"></a>00370         <span class="comment">// ----------------------------------------------</span>
+<a name="l00371"></a>00371         <span class="comment">//  X3Dファイル ネームリゾルバ初期化</span>
+<a name="l00372"></a>00372         <span class="comment">// ----------------------------------------------</span>
+<a name="l00373"></a>00373         <a class="code" href="class_sgv_1_1_main_window.html" title="メインウィンドウ">Sgv::MainWindow</a> *win = <a class="code" href="_win_main_8cpp.html#a1f71e109d72283d62f1c97bc2e722d0">GetMainWindow</a>();
+<a name="l00374"></a>00374         <span class="keywordflow">if</span> (!win) <span class="keywordflow">return</span>;
+<a name="l00375"></a>00375 
+<a name="l00376"></a>00376         <a class="code" href="class_sgv_1_1_x3_d_name_resolver.html" title="(SimObjのクラス名，状態値)と，(X3Dファイル名)の対応マップ">Sgv::X3DNameResolver</a> *nr = win-&gt;<a class="code" href="class_sgv_1_1_main_window.html#49912e90726bd4fae3b2e81c3c7a67fd" title="X3Dファイルネームリゾルバへのポインタを得る.">getX3DNameResolver</a>();
+<a name="l00377"></a>00377         <span class="keywordflow">if</span> (!nr) <span class="keywordflow">return</span>;
+<a name="l00378"></a>00378 
+<a name="l00379"></a>00379         X3DDB *x3ddb = evt.releaseX3DDb();
+<a name="l00380"></a>00380         <span class="keywordflow">if</span> (x3ddb)
+<a name="l00381"></a>00381         {
+<a name="l00382"></a>00382             X3DDB::Iterator *itr = x3ddb-&gt;getIterator();
+<a name="l00383"></a>00383             <span class="keywordflow">if</span> (itr)
+<a name="l00384"></a>00384             {
+<a name="l00385"></a>00385                 <span class="keyword">const</span> <span class="keywordtype">char</span> *pKey = itr-&gt;nextKey();
+<a name="l00386"></a>00386                 <span class="keywordflow">while</span> (pKey)
+<a name="l00387"></a>00387                 {
+<a name="l00388"></a>00388                     <span class="keyword">const</span> <span class="keywordtype">char</span> *pValue = x3ddb-&gt;get(pKey);
+<a name="l00389"></a>00389 
+<a name="l00390"></a>00390                     <span class="keywordflow">if</span> (pValue)
+<a name="l00391"></a>00391                     {
+<a name="l00392"></a>00392                         nr-&gt;<a class="code" href="class_sgv_1_1_x3_d_name_resolver.html#8f59798e47d0b0f63d44f78bd36cc787" title="マップ情報を追加">add</a>(pKey, pValue);
+<a name="l00393"></a>00393 
+<a name="l00394"></a>00394                         <a class="code" href="class_sgv_1_1_log.html#5e05b61c611e6611bdb22726f826d209" title="ログへ文字列を出力（書式指定可能．改行付き）">Sgv::Log::println</a>(<span class="stringliteral">"X3DDB&gt;&gt; (%s) --&gt; (%s)"</span>, pKey, pValue);
+<a name="l00395"></a>00395                     }
+<a name="l00396"></a>00396 
+<a name="l00397"></a>00397                     pKey = itr-&gt;nextKey();
+<a name="l00398"></a>00398                 }
+<a name="l00399"></a>00399             }
+<a name="l00400"></a>00400 
+<a name="l00401"></a>00401             <span class="keyword">delete</span> x3ddb;
+<a name="l00402"></a>00402             x3ddb = NULL;
+<a name="l00403"></a>00403         }
+<a name="l00404"></a>00404     }
+<a name="l00405"></a>00405 
+<a name="l00406"></a>00406     <span class="keywordtype">void</span> SimServerEventListener::recvResultGetAllEntities(Source &amp;from, ResultGetAllEntitiesEvent &amp;evt)
+<a name="l00407"></a>00407     {
+<a name="l00408"></a>00408         SimWorld *pWorld = evt.releaseWorld();
+<a name="l00409"></a>00409 
+<a name="l00410"></a>00410         <span class="keywordflow">if</span> (pWorld)
+<a name="l00411"></a>00411         {
+<a name="l00412"></a>00412             <span class="keywordflow">if</span> (m_pSimServer)
+<a name="l00413"></a>00413             {
+<a name="l00414"></a>00414                 m_pSimServer-&gt;setLatestWorld(pWorld);
+<a name="l00415"></a>00415                 m_pSimServer-&gt;setNewWorldArrivedFlag(<span class="keyword">true</span>);
+<a name="l00416"></a>00416             }
+<a name="l00417"></a>00417             <span class="keywordflow">else</span>
+<a name="l00418"></a>00418             {
+<a name="l00419"></a>00419                 <span class="keyword">delete</span> pWorld;  <span class="comment">// 所有権を渡すところがない．破棄する．</span>
+<a name="l00420"></a>00420             }
+<a name="l00421"></a>00421         }
+<a name="l00422"></a>00422     }
+<a name="l00423"></a>00423 
+<a name="l00424"></a>00424     <span class="keywordtype">void</span> SimServerEventListener::recvLogMsg(Source &amp;from, LogMsgEvent &amp;evt)
+<a name="l00425"></a>00425     {
+<a name="l00426"></a>00426         <span class="keywordtype">int</span> level = evt.level();
+<a name="l00427"></a>00427 
+<a name="l00428"></a>00428         <span class="keywordflow">if</span> (level == LOG_MSG)
+<a name="l00429"></a>00429         {
+<a name="l00430"></a>00430             <span class="comment">// begin(FIX20110208) UTF8対応</span>
+<a name="l00431"></a>00431             <span class="keywordtype">char</span> *sjisMsg = <a class="code" href="namespace_sgv.html#1b504e9c280b13f25870bbe072c14385" title="UTF-8からShift-JISへの変換.">utf8_to_sjis</a>((<span class="keywordtype">char</span> *)evt.msg());
+<a name="l00432"></a>00432 
+<a name="l00433"></a>00433             <span class="keywordflow">if</span> (sjisMsg)
+<a name="l00434"></a>00434             {
+<a name="l00435"></a>00435                 <span class="comment">// メッセージウィンドウに出力</span>
+<a name="l00436"></a>00436                 <a class="code" href="class_sgv_1_1_main_window.html" title="メインウィンドウ">Sgv::MainWindow</a> *win = <a class="code" href="_win_main_8cpp.html#a1f71e109d72283d62f1c97bc2e722d0">GetMainWindow</a>();
+<a name="l00437"></a>00437                 <span class="keywordflow">if</span> (win)
+<a name="l00438"></a>00438                 {
+<a name="l00439"></a>00439                     win-&gt;<a class="code" href="class_sgv_1_1_main_window.html#f8b567590097dfa45683794f0f7ca322" title="メッセージ表示領域にメッセージを追加し、改行する．">printlnMsg</a>(sjisMsg);
+<a name="l00440"></a>00440                 }
+<a name="l00441"></a>00441 
+<a name="l00442"></a>00442                 free(sjisMsg);
+<a name="l00443"></a>00443             }
+<a name="l00444"></a>00444             <span class="comment">// end(FIX20110208)</span>
+<a name="l00445"></a>00445         }
+<a name="l00446"></a>00446     }
+<a name="l00447"></a>00447 };
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>SIGViewerに対してThu Jun 9 10:52:11 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

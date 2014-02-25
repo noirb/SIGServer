@@ -1,0 +1,333 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>SIGVerse_Controller: クラス ViewImageInfo</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- 作成： Doxygen 1.6.3 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li class="current"><a href="annotated.html"><span>クラス</span></a></li>
+      <li><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>構成</span></a></li>
+      <li><a href="hierarchy.html"><span>クラス階層</span></a></li>
+      <li><a href="functions.html"><span>構成メンバ</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>クラス ViewImageInfo</h1><!-- doxytag: class="ViewImageInfo" -->
+<p>画像データ情報クラス  
+<a href="#_details">[詳細]</a></p>
+
+<p><code>#include &lt;<a class="el" href="_view_image_info_8h_source.html">ViewImageInfo.h</a>&gt;</code></p>
+
+<p><a href="class_view_image_info-members.html">すべてのメンバ一覧</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Public メソッド</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_image_info.html#ac7cab539e4cbc37d5cfdf43e74d8bc7d">getBytesPerOnePixel</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">1ピクセルあたりのデータサイズを得る  <a href="#ac7cab539e4cbc37d5cfdf43e74d8bc7d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_view_image_info_8h.html#a9af7c151827aefd5a6197ea77dd7244e">ColorBitType</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_image_info.html#a4c8d2e04ea7e854fac951d68ce4c4932">getColorBitType</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">カラータイプを得る  <a href="#a4c8d2e04ea7e854fac951d68ce4c4932"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_view_image_info_8h.html#a681fa4eef74cf2facfa0892aaa5574b1">ImageDataType</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_image_info.html#ab0b513a28c924fd70ec7544fbcbb0d10">getDataType</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">画像データ形式(BMP etc...)を得る  <a href="#ab0b513a28c924fd70ec7544fbcbb0d10"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_image_info.html#ad81986b39d8615880267010b15dbe50e">getHeight</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">画像の高さ(pixel)を得る  <a href="#ad81986b39d8615880267010b15dbe50e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_image_info.html#a42ebd21fc95068aa262b206be3daf374">getWidth</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">画像の幅(pixel)を得る  <a href="#a42ebd21fc95068aa262b206be3daf374"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_image_info.html#aa633f8700027a541604041bc6e61ff53">ViewImageInfo</a> (const <a class="el" href="class_view_image_info.html">ViewImageInfo</a> &amp;o)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コピーコンストラクタ  <a href="#aa633f8700027a541604041bc6e61ff53"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_image_info.html#a057236476738262e71bb2303930beb7e">ViewImageInfo</a> (<a class="el" href="_view_image_info_8h.html#a681fa4eef74cf2facfa0892aaa5574b1">ImageDataType</a> dataType, <a class="el" href="_view_image_info_8h.html#a9af7c151827aefd5a6197ea77dd7244e">ColorBitType</a> cbType, int w, int h)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#a057236476738262e71bb2303930beb7e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_image_info.html#ae34a5c254e05f886b4e104387738e4bd">ViewImageInfo</a> (<a class="el" href="_view_image_info_8h.html#a681fa4eef74cf2facfa0892aaa5574b1">ImageDataType</a> dataType, <a class="el" href="_view_image_info_8h.html#a9af7c151827aefd5a6197ea77dd7244e">ColorBitType</a> cbType, <a class="el" href="_view_image_info_8h.html#acfd49da85d15732194ec51155a2c9ecf">ImageDataSize</a> sz)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">コンストラクタ  <a href="#ae34a5c254e05f886b4e104387738e4bd"></a><br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>説明</h2>
+<p>画像データ情報クラス </p>
+
+<p> <a class="el" href="_view_image_info_8h_source.html">ViewImageInfo.h</a> の <a class="el" href="_view_image_info_8h_source.html#l00031">31</a> 行で定義されています。</p>
+<hr/><h2>コンストラクタとデストラクタ</h2>
+<a class="anchor" id="ae34a5c254e05f886b4e104387738e4bd"></a><!-- doxytag: member="ViewImageInfo::ViewImageInfo" ref="ae34a5c254e05f886b4e104387738e4bd" args="(ImageDataType dataType, ColorBitType cbType, ImageDataSize sz)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ViewImageInfo::ViewImageInfo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_view_image_info_8h.html#a681fa4eef74cf2facfa0892aaa5574b1">ImageDataType</a>&nbsp;</td>
+          <td class="paramname"> <em>dataType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_view_image_info_8h.html#a9af7c151827aefd5a6197ea77dd7244e">ColorBitType</a>&nbsp;</td>
+          <td class="paramname"> <em>cbType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_view_image_info_8h.html#acfd49da85d15732194ec51155a2c9ecf">ImageDataSize</a>&nbsp;</td>
+          <td class="paramname"> <em>sz</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コンストラクタ </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>dataType</em>&nbsp;</td><td>画像データタイプ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>cbType</em>&nbsp;</td><td>カラービットタイプ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>sz</em>&nbsp;</td><td>画像サイズ </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_view_image_info_8h_source.html">ViewImageInfo.h</a> の <a class="el" href="_view_image_info_8h_source.html#l00047">47</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a057236476738262e71bb2303930beb7e"></a><!-- doxytag: member="ViewImageInfo::ViewImageInfo" ref="a057236476738262e71bb2303930beb7e" args="(ImageDataType dataType, ColorBitType cbType, int w, int h)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ViewImageInfo::ViewImageInfo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_view_image_info_8h.html#a681fa4eef74cf2facfa0892aaa5574b1">ImageDataType</a>&nbsp;</td>
+          <td class="paramname"> <em>dataType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_view_image_info_8h.html#a9af7c151827aefd5a6197ea77dd7244e">ColorBitType</a>&nbsp;</td>
+          <td class="paramname"> <em>cbType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>h</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コンストラクタ </p>
+<dl><dt><b>引数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>dataType</em>&nbsp;</td><td>画像データタイプ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>cbType</em>&nbsp;</td><td>カラービットタイプ </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>w</em>&nbsp;</td><td>幅(pixel) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>h</em>&nbsp;</td><td>高さ(pixel) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p> <a class="el" href="_view_image_info_8h_source.html">ViewImageInfo.h</a> の <a class="el" href="_view_image_info_8h_source.html#l00070">70</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="aa633f8700027a541604041bc6e61ff53"></a><!-- doxytag: member="ViewImageInfo::ViewImageInfo" ref="aa633f8700027a541604041bc6e61ff53" args="(const ViewImageInfo &amp;o)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ViewImageInfo::ViewImageInfo </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_view_image_info.html">ViewImageInfo</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>o</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>コピーコンストラクタ </p>
+
+<p> <a class="el" href="_view_image_info_8h_source.html">ViewImageInfo.h</a> の <a class="el" href="_view_image_info_8h_source.html#l00075">75</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/><h2>関数</h2>
+<a class="anchor" id="ac7cab539e4cbc37d5cfdf43e74d8bc7d"></a><!-- doxytag: member="ViewImageInfo::getBytesPerOnePixel" ref="ac7cab539e4cbc37d5cfdf43e74d8bc7d" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ViewImageInfo::getBytesPerOnePixel </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>1ピクセルあたりのデータサイズを得る </p>
+
+<p> <a class="el" href="_view_image_info_8h_source.html">ViewImageInfo.h</a> の <a class="el" href="_view_image_info_8h_source.html#l00091">91</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a4c8d2e04ea7e854fac951d68ce4c4932"></a><!-- doxytag: member="ViewImageInfo::getColorBitType" ref="a4c8d2e04ea7e854fac951d68ce4c4932" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_view_image_info_8h.html#a9af7c151827aefd5a6197ea77dd7244e">ColorBitType</a> ViewImageInfo::getColorBitType </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>カラータイプを得る </p>
+
+<p> <a class="el" href="_view_image_info_8h_source.html">ViewImageInfo.h</a> の <a class="el" href="_view_image_info_8h_source.html#l00084">84</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ab0b513a28c924fd70ec7544fbcbb0d10"></a><!-- doxytag: member="ViewImageInfo::getDataType" ref="ab0b513a28c924fd70ec7544fbcbb0d10" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_view_image_info_8h.html#a681fa4eef74cf2facfa0892aaa5574b1">ImageDataType</a> ViewImageInfo::getDataType </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>画像データ形式(BMP etc...)を得る </p>
+
+<p> <a class="el" href="_view_image_info_8h_source.html">ViewImageInfo.h</a> の <a class="el" href="_view_image_info_8h_source.html#l00082">82</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="ad81986b39d8615880267010b15dbe50e"></a><!-- doxytag: member="ViewImageInfo::getHeight" ref="ad81986b39d8615880267010b15dbe50e" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ViewImageInfo::getHeight </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>画像の高さ(pixel)を得る </p>
+
+<p> <a class="el" href="_view_image_info_8h_source.html">ViewImageInfo.h</a> の <a class="el" href="_view_image_info_8h_source.html#l00088">88</a> 行で定義されています。</p>
+
+</div>
+</div>
+<a class="anchor" id="a42ebd21fc95068aa262b206be3daf374"></a><!-- doxytag: member="ViewImageInfo::getWidth" ref="a42ebd21fc95068aa262b206be3daf374" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ViewImageInfo::getWidth </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>画像の幅(pixel)を得る </p>
+
+<p> <a class="el" href="_view_image_info_8h_source.html">ViewImageInfo.h</a> の <a class="el" href="_view_image_info_8h_source.html#l00086">86</a> 行で定義されています。</p>
+
+</div>
+</div>
+<hr/>このクラスの説明は次のファイルから生成されました:<ul>
+<li><a class="el" href="_view_image_info_8h_source.html">ViewImageInfo.h</a></li>
+</ul>
+</div>
+<hr class="footer"/><address style="text-align: right;"><small>SIGVerse_Controllerに対してTue Dec 13 19:10:59 2011に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

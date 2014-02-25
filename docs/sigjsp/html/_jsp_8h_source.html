@@ -1,0 +1,258 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>sigjsp: Jsp.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 作成： Doxygen 1.5.9 -->
+<script type="text/javascript">
+<!--
+function changeDisplayState (e){
+  var num=this.id.replace(/[^[0-9]/g,'');
+  var button=this.firstChild;
+  var sectionDiv=document.getElementById('dynsection'+num);
+  if (sectionDiv.style.display=='none'||sectionDiv.style.display==''){
+    sectionDiv.style.display='block';
+    button.src='open.gif';
+  }else{
+    sectionDiv.style.display='none';
+    button.src='closed.gif';
+  }
+}
+function initDynSections(){
+  var divs=document.getElementsByTagName('div');
+  var sectionCounter=1;
+  for(var i=0;i<divs.length-1;i++){
+    if(divs[i].className=='dynheader'&&divs[i+1].className=='dynsection'){
+      var header=divs[i];
+      var section=divs[i+1];
+      var button=header.firstChild;
+      if (button!='IMG'){
+        divs[i].insertBefore(document.createTextNode(' '),divs[i].firstChild);
+        button=document.createElement('img');
+        divs[i].insertBefore(button,divs[i].firstChild);
+      }
+      header.style.cursor='pointer';
+      header.onclick=changeDisplayState;
+      header.id='dynheader'+sectionCounter;
+      button.src='closed.gif';
+      section.id='dynsection'+sectionCounter;
+      section.style.display='none';
+      section.style.marginLeft='14px';
+      sectionCounter++;
+    }
+  }
+}
+window.onload = initDynSections;
+-->
+</script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>メインページ</span></a></li>
+      <li><a href="namespaces.html"><span>ネームスペース</span></a></li>
+      <li><a href="annotated.html"><span>クラス</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>ファイルメンバ</span></a></li>
+    </ul>
+  </div>
+<h1>Jsp.h</h1><a href="_jsp_8h.html">説明を見る。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef _JSP_H_</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define _JSP_H_</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include "<a class="code" href="_jsp_socket_8h.html">JspSocket.h</a>"</span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include "CommDataDecoder.h"</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include "CommDataListener.h"</span>
+<a name="l00007"></a>00007 <span class="preprocessor">#include &lt;string&gt;</span>
+<a name="l00008"></a>00008 
+<a name="l00009"></a>00009 <span class="keyword">namespace </span>Jsp
+<a name="l00010"></a>00010 {
+<a name="l00011"></a>00011     <span class="comment">// ----------------------------------------------------</span><span class="comment"></span>
+<a name="l00012"></a>00012 <span class="comment">    /// @brief 音声認識サービスプロバイダ本体</span>
+<a name="l00013"></a>00013 <span class="comment"></span>    <span class="comment">// ----------------------------------------------------</span>
+<a name="l00014"></a><a class="code" href="class_jsp_1_1_julius_service_provider.html">00014</a>     <span class="keyword">class </span><a class="code" href="class_jsp_1_1_julius_service_provider.html" title="音声認識サービスプロバイダ本体">JuliusServiceProvider</a> : <span class="keyword">public</span> CommDataDecoder::Listener
+<a name="l00015"></a>00015     {
+<a name="l00016"></a>00016     <span class="keyword">public</span>:
+<a name="l00017"></a>00017         <span class="comment">// ----------------------------------------------------</span><span class="comment"></span>
+<a name="l00018"></a>00018 <span class="comment">        /// @brief コンストラクタ</span>
+<a name="l00019"></a>00019 <span class="comment"></span>        <span class="comment">// ----------------------------------------------------</span>
+<a name="l00020"></a>00020         <a class="code" href="class_jsp_1_1_julius_service_provider.html#7c9e0b5cc844dd2b68a84753a7e00edf" title="コンストラクタ">JuliusServiceProvider</a>();
+<a name="l00021"></a>00021 
+<a name="l00022"></a>00022         <span class="comment">// ----------------------------------------------------</span><span class="comment"></span>
+<a name="l00023"></a>00023 <span class="comment">        /// @brief ロードしたsigjspの設定ファイルのパスをセットする</span>
+<a name="l00024"></a>00024 <span class="comment">        ///</span>
+<a name="l00025"></a>00025 <span class="comment">        /// 設定ファイルが見つからなかった（ロードに失敗した）場合は</span>
+<a name="l00026"></a>00026 <span class="comment">        /// NULLを与えること</span>
+<a name="l00027"></a>00027 <span class="comment">        ///</span>
+<a name="l00028"></a>00028 <span class="comment">        /// @param pLoadedSigJspConfFile [i] 設定ファイル名</span>
+<a name="l00029"></a>00029 <span class="comment"></span>        <span class="comment">// ----------------------------------------------------</span>
+<a name="l00030"></a>00030         <span class="keywordtype">void</span> <a class="code" href="class_jsp_1_1_julius_service_provider.html#8baee81e7fe286d5771968d84c0f4e68" title="ロードしたsigjspの設定ファイルのパスをセットする">setLoadedSigJspConfFile</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *pLoadedSigJspConfFile);
+<a name="l00031"></a>00031 
+<a name="l00032"></a>00032         <span class="comment">// ----------------------------------------------------</span><span class="comment"></span>
+<a name="l00033"></a>00033 <span class="comment">        /// @brief シミュレーションサーバーのホスト名をセットする</span>
+<a name="l00034"></a>00034 <span class="comment">        ///</span>
+<a name="l00035"></a>00035 <span class="comment">        /// @param serverName [i] サーバー名</span>
+<a name="l00036"></a>00036 <span class="comment"></span>        <span class="comment">// ----------------------------------------------------</span>
+<a name="l00037"></a>00037         <span class="keywordtype">void</span> <a class="code" href="class_jsp_1_1_julius_service_provider.html#48d3efb5891491723ba4d1c8f4152675" title="シミュレーションサーバーのホスト名をセットする">setSimServerHostName</a>(<span class="keyword">const</span> std::string &amp;serverName);
+<a name="l00038"></a>00038 
+<a name="l00039"></a>00039         <span class="comment">// ----------------------------------------------------</span><span class="comment"></span>
+<a name="l00040"></a>00040 <span class="comment">        /// @brief シミュレーションサーバーのポート番号をセットする</span>
+<a name="l00041"></a>00041 <span class="comment">        ///</span>
+<a name="l00042"></a>00042 <span class="comment">        /// @param port [i] ポート番号</span>
+<a name="l00043"></a>00043 <span class="comment"></span>        <span class="comment">// ----------------------------------------------------</span>
+<a name="l00044"></a>00044         <span class="keywordtype">void</span> <a class="code" href="class_jsp_1_1_julius_service_provider.html#30ebd5e5af4e035ec8b9af75b247b9c4" title="シミュレーションサーバーのポート番号をセットする">setSimServerPort</a>(<span class="keywordtype">int</span> port);
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046         <span class="comment">// ----------------------------------------------------</span><span class="comment"></span>
+<a name="l00047"></a>00047 <span class="comment">        /// @brief 音声認識サービスを受け付けるポート番号を設定する</span>
+<a name="l00048"></a>00048 <span class="comment">        ///</span>
+<a name="l00049"></a>00049 <span class="comment">        /// @param port [i] ポート番号</span>
+<a name="l00050"></a>00050 <span class="comment"></span>        <span class="comment">// ----------------------------------------------------</span>
+<a name="l00051"></a>00051         <span class="keywordtype">void</span> <a class="code" href="class_jsp_1_1_julius_service_provider.html#427a3a494939cca5bfaea8a1d4b5a974" title="音声認識サービスを受け付けるポート番号を設定する">setJspServiceAcceptPort</a>(<span class="keywordtype">int</span> port);
+<a name="l00052"></a>00052 
+<a name="l00053"></a>00053         <span class="comment">// ----------------------------------------------------</span><span class="comment"></span>
+<a name="l00054"></a>00054 <span class="comment">        /// @brief juliusのモジュールポート番号を設定する</span>
+<a name="l00055"></a>00055 <span class="comment">        ///</span>
+<a name="l00056"></a>00056 <span class="comment">        /// @param port [i] ポート番号</span>
+<a name="l00057"></a>00057 <span class="comment"></span>        <span class="comment">// ----------------------------------------------------</span>
+<a name="l00058"></a>00058         <span class="keywordtype">void</span> <a class="code" href="class_jsp_1_1_julius_service_provider.html#0849af2c33427edfd18f0f8543da1616" title="juliusのモジュールポート番号を設定する">setJuliusModulePort</a>(<span class="keywordtype">int</span> port);
+<a name="l00059"></a>00059 
+<a name="l00060"></a>00060         <span class="comment">// ----------------------------------------------------</span><span class="comment"></span>
+<a name="l00061"></a>00061 <span class="comment">        /// @brief juliusのAdinnetポート番号を設定する</span>
+<a name="l00062"></a>00062 <span class="comment">        ///</span>
+<a name="l00063"></a>00063 <span class="comment">        /// @param port [i] ポート番号</span>
+<a name="l00064"></a>00064 <span class="comment"></span>        <span class="comment">// ----------------------------------------------------</span>
+<a name="l00065"></a>00065         <span class="keywordtype">void</span> <a class="code" href="class_jsp_1_1_julius_service_provider.html#61fa2214fd30f1a7f1c9211f708528c7" title="juliusのAdinnetポート番号を設定する">setJuliusAdinnetPort</a>(<span class="keywordtype">int</span> port);
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067         <span class="comment">// ----------------------------------------------------</span><span class="comment"></span>
+<a name="l00068"></a>00068 <span class="comment">        /// @brief julius実行形式へのパスを設定する</span>
+<a name="l00069"></a>00069 <span class="comment">        ///</span>
+<a name="l00070"></a>00070 <span class="comment">        /// @param juliusPath [i] juliusのパス</span>
+<a name="l00071"></a>00071 <span class="comment"></span>        <span class="comment">// ----------------------------------------------------</span>
+<a name="l00072"></a>00072         <span class="keywordtype">void</span> <a class="code" href="class_jsp_1_1_julius_service_provider.html#279a22f6de624add6250cd360253079d" title="julius実行形式へのパスを設定する">setJuliusPath</a>(<span class="keyword">const</span> std::string &amp;juliusPath);
+<a name="l00073"></a>00073 
+<a name="l00074"></a>00074         <span class="comment">// ----------------------------------------------------</span><span class="comment"></span>
+<a name="l00075"></a>00075 <span class="comment">        /// @brief julius設定ファイルのパスを設定する</span>
+<a name="l00076"></a>00076 <span class="comment">        ///</span>
+<a name="l00077"></a>00077 <span class="comment">        /// @param juliusConfFile [i] 設定ファイルのパス</span>
+<a name="l00078"></a>00078 <span class="comment"></span>        <span class="comment">// ----------------------------------------------------</span>
+<a name="l00079"></a>00079         <span class="keywordtype">void</span> <a class="code" href="class_jsp_1_1_julius_service_provider.html#7434f76291b97f4e6822334539e7cd96" title="julius設定ファイルのパスを設定する">setJuliusConfFile</a>(<span class="keyword">const</span> std::string &amp;juliusConfFile);
+<a name="l00080"></a>00080 
+<a name="l00081"></a>00081         <span class="comment">// ----------------------------------------------------</span><span class="comment"></span>
+<a name="l00082"></a>00082 <span class="comment">        /// @brief juliusの起動までのウェイト時間</span>
+<a name="l00083"></a>00083 <span class="comment">        ///</span>
+<a name="l00084"></a>00084 <span class="comment">        /// @param msec [i] juliusが起動するまで待つ時間</span>
+<a name="l00085"></a>00085 <span class="comment"></span>        <span class="comment">// ----------------------------------------------------</span>
+<a name="l00086"></a>00086         <span class="keywordtype">void</span> <a class="code" href="class_jsp_1_1_julius_service_provider.html#6c21fc0060248efb4c9822617edbfd8a" title="juliusの起動までのウェイト時間">setDelayTimeForStartJulius</a>(<span class="keywordtype">int</span> msec);
+<a name="l00087"></a>00087 
+<a name="l00088"></a>00088         <span class="comment">// ----------------------------------------------------</span><span class="comment"></span>
+<a name="l00089"></a>00089 <span class="comment">        /// @brief 現在の設定を出力する</span>
+<a name="l00090"></a>00090 <span class="comment"></span>        <span class="comment">// ----------------------------------------------------</span>
+<a name="l00091"></a>00091         <span class="keywordtype">void</span> <a class="code" href="class_jsp_1_1_julius_service_provider.html#02d9927d71de90298911bd5dc21e7ec1" title="現在の設定を出力する">printSettings</a>();
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093         <span class="comment">// ----------------------------------------------------</span><span class="comment"></span>
+<a name="l00094"></a>00094 <span class="comment">        /// @brief juliusを起動する</span>
+<a name="l00095"></a>00095 <span class="comment"></span>        <span class="comment">// ----------------------------------------------------</span>
+<a name="l00096"></a>00096         <span class="keywordtype">void</span> <a class="code" href="class_jsp_1_1_julius_service_provider.html#6099e34d10ef5137738509bd1ed37154" title="juliusを起動する">invokeJulius</a>();
+<a name="l00097"></a>00097 
+<a name="l00098"></a>00098         <span class="comment">// ----------------------------------------------------</span><span class="comment"></span>
+<a name="l00099"></a>00099 <span class="comment">        /// @brief juliusを終了させる</span>
+<a name="l00100"></a>00100 <span class="comment"></span>        <span class="comment">// ----------------------------------------------------</span>
+<a name="l00101"></a>00101         <span class="keywordtype">void</span> <a class="code" href="class_jsp_1_1_julius_service_provider.html#55f051eced9924f50b8f87b5a4abd6ba" title="juliusを終了させる">killJulius</a>();
+<a name="l00102"></a>00102 
+<a name="l00103"></a>00103         <span class="comment">// ----------------------------------------------------</span><span class="comment"></span>
+<a name="l00104"></a>00104 <span class="comment">        /// @brief juliusが有効か否かを調べる</span>
+<a name="l00105"></a>00105 <span class="comment">        ///</span>
+<a name="l00106"></a>00106 <span class="comment">        /// @return true(=julius起動中), false(=juliusは起動していない)</span>
+<a name="l00107"></a>00107 <span class="comment"></span>        <span class="comment">// ----------------------------------------------------</span>
+<a name="l00108"></a><a class="code" href="class_jsp_1_1_julius_service_provider.html#1b0bce11c1797c844048bc16f59dad7e">00108</a>         <span class="keywordtype">bool</span> <a class="code" href="class_jsp_1_1_julius_service_provider.html#1b0bce11c1797c844048bc16f59dad7e" title="juliusが有効か否かを調べる">isJuliusAvairable</a>() { <span class="keywordflow">return</span> m_startJuliusOk; }
+<a name="l00109"></a>00109 
+<a name="l00110"></a>00110         <span class="comment">// ----------------------------------------------------</span><span class="comment"></span>
+<a name="l00111"></a>00111 <span class="comment">        /// @brief ホスト名を返す</span>
+<a name="l00112"></a>00112 <span class="comment">        ///</span>
+<a name="l00113"></a>00113 <span class="comment">        /// @return ホスト名</span>
+<a name="l00114"></a>00114 <span class="comment"></span>        <span class="comment">// ----------------------------------------------------</span>
+<a name="l00115"></a>00115         std::string <a class="code" href="class_jsp_1_1_julius_service_provider.html#fe6d0a493dd34b06b1be2642906d2fbc" title="ホスト名を返す">getHostName</a>();
+<a name="l00116"></a>00116 
+<a name="l00117"></a>00117         <span class="comment">// ----------------------------------------------------</span><span class="comment"></span>
+<a name="l00118"></a>00118 <span class="comment">        /// @brief ホストIPアドレスを返す</span>
+<a name="l00119"></a>00119 <span class="comment">        ///</span>
+<a name="l00120"></a>00120 <span class="comment">        /// @return ホストIPアドレス</span>
+<a name="l00121"></a>00121 <span class="comment"></span>        <span class="comment">// ----------------------------------------------------</span>
+<a name="l00122"></a>00122         std::string <a class="code" href="class_jsp_1_1_julius_service_provider.html#8c71de4452076f1c7c2b1647a48fb912" title="ホストIPアドレスを返す">getHostIPAddr</a>();
+<a name="l00123"></a>00123 
+<a name="l00124"></a>00124         <span class="comment">// ----------------------------------------------------</span><span class="comment"></span>
+<a name="l00125"></a>00125 <span class="comment">        /// @brief シミュレーションサーバーに接続する</span>
+<a name="l00126"></a>00126 <span class="comment">        ///</span>
+<a name="l00127"></a>00127 <span class="comment">        /// @return true(=成功), false(=失敗)</span>
+<a name="l00128"></a>00128 <span class="comment"></span>        <span class="comment">// ----------------------------------------------------</span>
+<a name="l00129"></a>00129         <span class="keywordtype">bool</span> <a class="code" href="class_jsp_1_1_julius_service_provider.html#443803df2fcd6faf2793f109be54d546" title="シミュレーションサーバーに接続する">connectToSimServer</a>();
+<a name="l00130"></a>00130 
+<a name="l00131"></a>00131         <span class="comment">// ----------------------------------------------------</span><span class="comment"></span>
+<a name="l00132"></a>00132 <span class="comment">        /// @brief シミュレーションサーバーにサービスリクエストを送信する</span>
+<a name="l00133"></a>00133 <span class="comment">        ///</span>
+<a name="l00134"></a>00134 <span class="comment">        /// @return true(=成功), false(=失敗)</span>
+<a name="l00135"></a>00135 <span class="comment"></span>        <span class="comment">// ----------------------------------------------------</span>
+<a name="l00136"></a>00136         <span class="keywordtype">bool</span> <a class="code" href="class_jsp_1_1_julius_service_provider.html#7c5ea00ea6efdb446ca35ea3f9c11f88" title="シミュレーションサーバーにサービスリクエストを送信する...">sendProvideServiceRequest</a>();
+<a name="l00137"></a>00137 
+<a name="l00138"></a>00138         <span class="comment">// ----------------------------------------------------</span><span class="comment"></span>
+<a name="l00139"></a>00139 <span class="comment">        /// @brief サービス受付ソケットを準備する</span>
+<a name="l00140"></a>00140 <span class="comment">        ///</span>
+<a name="l00141"></a>00141 <span class="comment">        /// @return true(=成功), false(=失敗)</span>
+<a name="l00142"></a>00142 <span class="comment"></span>        <span class="comment">// ----------------------------------------------------</span>
+<a name="l00143"></a>00143         <span class="keywordtype">bool</span> <a class="code" href="class_jsp_1_1_julius_service_provider.html#04c41a62c9359a1376702489a66a680e" title="サービス受付ソケットを準備する">setupServiceAcceptSocket</a>();
+<a name="l00144"></a>00144 
+<a name="l00145"></a>00145         <span class="comment">// ----------------------------------------------------</span><span class="comment"></span>
+<a name="l00146"></a>00146 <span class="comment">        /// @brief 認識ループに入る</span>
+<a name="l00147"></a>00147 <span class="comment"></span>        <span class="comment">// ----------------------------------------------------</span>
+<a name="l00148"></a>00148         <span class="keywordtype">void</span> <a class="code" href="class_jsp_1_1_julius_service_provider.html#7ef2bbb9bfc38bb453fb4362ad841a78" title="認識ループに入る">recognizeLoop</a>();
+<a name="l00149"></a>00149 
+<a name="l00150"></a>00150     <span class="keyword">private</span>:
+<a name="l00151"></a>00151         std::string m_LoadedSigJspConfFile;
+<a name="l00152"></a>00152         std::string m_simServerHostName;
+<a name="l00153"></a>00153         <span class="keywordtype">int</span> m_simServerPort;
+<a name="l00154"></a>00154         <span class="keywordtype">int</span> m_jspServiceAcceptPort;
+<a name="l00155"></a>00155         <span class="keywordtype">int</span> m_juliusModulePort;
+<a name="l00156"></a>00156         <span class="keywordtype">int</span> m_juliusAdinnetPort;
+<a name="l00157"></a>00157         std::string m_juliusPath;
+<a name="l00158"></a>00158         std::string m_juliusConfFile;
+<a name="l00159"></a>00159         <span class="keywordtype">int</span> m_delayTimeForStartJulius;
+<a name="l00160"></a>00160 
+<a name="l00161"></a>00161         <span class="keywordtype">int</span> m_childPid;
+<a name="l00162"></a>00162         <a class="code" href="class_jsp_1_1_socket.html" title="ソケットクラス">Jsp::Socket</a> m_sockModule;
+<a name="l00163"></a>00163         <a class="code" href="class_jsp_1_1_socket.html" title="ソケットクラス">Jsp::Socket</a> m_sockAdinnet;
+<a name="l00164"></a>00164 
+<a name="l00165"></a>00165         <a class="code" href="class_jsp_1_1_socket.html" title="ソケットクラス">Jsp::Socket</a> m_sockSimServer;
+<a name="l00166"></a>00166         <a class="code" href="class_jsp_1_1_socket.html" title="ソケットクラス">Jsp::Socket</a> m_sockServiceAccept;
+<a name="l00167"></a>00167 
+<a name="l00168"></a>00168         <span class="keywordtype">bool</span> m_startJuliusOk;
+<a name="l00169"></a>00169 
+<a name="l00170"></a>00170         <span class="comment">// ----------------------------------------------------</span><span class="comment"></span>
+<a name="l00171"></a>00171 <span class="comment">        /// @brief COMM_NS_PINGER_REQUEST要求が到着すると呼び出される</span>
+<a name="l00172"></a>00172 <span class="comment">        ///</span>
+<a name="l00173"></a>00173 <span class="comment">        /// @param from [i] 送信元情報</span>
+<a name="l00174"></a>00174 <span class="comment">        /// @param evt [i] イベントオブジェクト</span>
+<a name="l00175"></a>00175 <span class="comment"></span>        <span class="comment">// ----------------------------------------------------</span>
+<a name="l00176"></a>00176         <span class="keywordtype">void</span> recvRequestNSPinger(Source &amp;from, RequestNSPingerEvent &amp;evt);
+<a name="l00177"></a>00177 
+<a name="l00178"></a>00178         <span class="comment">// ----------------------------------------------------</span><span class="comment"></span>
+<a name="l00179"></a>00179 <span class="comment">        /// @brief 音声認識サービス(COMM_REQUEST_SOUND_RECOG)要求が</span>
+<a name="l00180"></a>00180 <span class="comment">        /// 到着すると呼び出される</span>
+<a name="l00181"></a>00181 <span class="comment">        ///</span>
+<a name="l00182"></a>00182 <span class="comment">        /// @param from [i] 送信元情報</span>
+<a name="l00183"></a>00183 <span class="comment">        /// @param evt [i] イベントオブジェクト</span>
+<a name="l00184"></a>00184 <span class="comment"></span>        <span class="comment">// ----------------------------------------------------</span>
+<a name="l00185"></a>00185         <span class="keywordtype">void</span> recvRequestSoundRecog(Source &amp;from, RequestSoundRecogEvent &amp;evt);
+<a name="l00186"></a>00186     };
+<a name="l00187"></a>00187 };
+<a name="l00188"></a>00188 
+<a name="l00189"></a>00189 <span class="preprocessor">#endif</span>
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>sigjspに対してWed Dec 2 15:46:02 2009に生成されました。&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>
