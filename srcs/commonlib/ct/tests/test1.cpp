@@ -1,4 +1,7 @@
-// $Id: test1.cpp,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $
+/*
+ * Modified by Okamoto on 2011-03-25
+ */
+
 #include "ct/CTSimObj.h"
 #include "CommDataEncoder.h"
 #include "CommUtil.h"
@@ -9,10 +12,8 @@
 
 int main()
 {
-
 	LOG_STDOUT();
 	LOG_OUTPUT_LEVEL(LOG_ALL);
-
 	
 	CommDataEncoder::setSendProc(CommUtil::sendData);
 

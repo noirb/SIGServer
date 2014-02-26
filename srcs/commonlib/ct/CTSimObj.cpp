@@ -1,4 +1,7 @@
-/* $Id: CTSimObj.cpp,v 1.19 2011-11-18 06:26:30 okamoto Exp $ */
+/*
+ * Modified by Okamoto on 2011-11-18
+ */
+
 #include "CTSimObj.h"
 #include "CommDataEncoder.h"
 #include "CommDataDecoder.h"
@@ -17,11 +20,11 @@ CTSimObj::~CTSimObj()
 	FREE(m_ns);
 
 	if (m_close && m_sock >= 0) {
-	  // fix(sekikawa)(2009/3/3)
+		// fix(sekikawa)(2009/3/3)
 #ifdef WIN32
-	  closesocket(m_sock);
+		closesocket(m_sock);
 #else
-	  close(m_sock);
+		close(m_sock);
 #endif
 		m_sock = -1;
 	}
@@ -35,7 +38,7 @@ bool CTSimObj::connect(const char *server, int port, const char *agentName)
 	if (s < 0) {
 		// add(sekikawa)(FIX20100826)
 		LOG_ERR(("connectServer() failed. (hostname=%s, port=%d) [%s:%d]",
-			server, port, __FILE__, __LINE__));
+				 server, port, __FILE__, __LINE__));
 
 		return false;
 	}
@@ -61,10 +64,10 @@ NSLookup::Provider * CTSimObj::lookupProvider(Service::Kind kind)
 }
 
 /*
-Attribute * CTSimObj::getAttr(const char *name)
-{
-	return NULL;
-}
+  Attribute * CTSimObj::getAttr(const char *name)
+  {
+  return NULL;
+  }
 */
 
 bool CTSimObj::detectEntities(EntityNameC &v, int id)
@@ -84,10 +87,16 @@ bool CTSimObj::detectEntities(EntityNameC &v, int id)
 	CommRequestDetectEntitiesEncoder enc(myname(), id);
 
 #if 1
-	// fix(sekikawa)(FIX20100826)
+	// modified by sekikawa on 2010-08-26 for confirmation
+	// 
+	// Call prov->close() when a socket error arises between service provider
+	// to set socket ID held by prov should be -1.
 	//
+	// If the prov->close() is not called before the exit of this method,
+	// lookupProvider() might return a socket ID which is unvalid.
 	//
-	//
+	// In the last of this method, prov->close() will be called before the modification;
+	// however, the error treatment is added for confirmation.
 	if (enc.send(sock) < 0) {
 		prov->close();
 		return false;
@@ -112,39 +121,39 @@ bool CTSimObj::detectEntities(EntityNameC &v, int id)
 	while (retry > 0) {
 
 #if 1
-// sekikawa(FIX20100906)
+		// sekikawa(FIX20100906)
 		Result *result = NULL;
 		try
-		{
-	  		result = r.readSync();
-		}
+			{
+				result = r.readSync();
+			}
 		catch(CTReader::ConnectionClosedException &e)
-		{
-			break;
-		}
+			{
+				break;
+			}
 #else
-// orig
-	  Result *result = r.readSync();
+		// orig
+		Result *result = r.readSync();
 #endif
 
-	  if (result) {
-		if (result->type() == COMM_RESULT_DETECT_ENTITIES) {
-		  ResultDetectEntitiesEvent *evt = (ResultDetectEntitiesEvent*) result->data();
-		  evt->copy(v);
-		  ret = true;
-		}
-		delete result;
-		break;
-	  } else {
-		retry--;
+		if (result) {
+			if (result->type() == COMM_RESULT_DETECT_ENTITIES) {
+				ResultDetectEntitiesEvent *evt = (ResultDetectEntitiesEvent*) result->data();
+				evt->copy(v);
+				ret = true;
+			}
+			delete result;
+			break;
+		} else {
+			retry--;
 
 #ifdef WIN32
-		Sleep(timeout);
+			Sleep(timeout);
 #else
-		usleep(timeout);
+			usleep(timeout);
 #endif
-		timeout *= 2;
-	  }
+			timeout *= 2;
+		}
 	}
 #else
 	// original version
@@ -183,14 +192,16 @@ Text * CTSimObj::getText(RawSound &rawSound)
 	{
 		CommRequestSoundRecogEncoder *enc = new CommRequestSoundRecogEncoder(rawSound);
 #if 1
-		// fix(sekikawa)(FIX20100826)
+		// modified by sekikawa on 2010-08-26
+		// added error treatment in send()
+		// note a comment of detectEntities() in this file
 		int status = enc->send(sock);
 		delete enc;
 		if (status < 0)
-		{
-			prov->close();
-			return false;
-		}
+			{
+				prov->close();
+				return false;
+			}
 #else
 		// orig
 		enc->send(sock);
@@ -206,19 +217,19 @@ Text * CTSimObj::getText(RawSound &rawSound)
 	while  (true) {
 
 #if 1
-// sekikawa(FIX20100906)
+		// sekikawa(FIX20100906)
 		Result *result = NULL;
 		try
-		{
-	  		result = r->readSync();
-		}
+			{
+				result = r->readSync();
+			}
 		catch(CTReader::ConnectionClosedException &e)
-		{
-			break;
-		}
+			{
+				break;
+			}
 #else
-// orig
-	  Result *result = r->readSync();
+		// orig
+		Result *result = r->readSync();
 #endif
 
 		if (!result) {
@@ -250,6 +261,7 @@ Text * CTSimObj::getText(RawSound &rawSound)
 	return text;
 }
 
+
 //add id argument by okamoto@tome(2011/8/26)
 ViewImage * CTSimObj::captureView(ColorBitType cbtype, ImageDataSize size, int id)
 {
@@ -267,16 +279,19 @@ ViewImage * CTSimObj::captureView(ColorBitType cbtype, ImageDataSize size, int i
 
 	ViewImageInfo info(IMAGE_DATA_TYPE_ANY, cbtype, size);
 	{
-	  CommRequestCaptureViewImageEncoder *enc = new CommRequestCaptureViewImageEncoder(myname(), info, id);
+		// Added id as an argument
+		CommRequestCaptureViewImageEncoder *enc = new CommRequestCaptureViewImageEncoder(myname(), info, id);
 #if 1
-		// fix(sekikawa)(FIX20100826)
+		// modified by sekikawa on 2010-08-26
+		// added error treatment in send()
+		// note a comment of detectEntities() in this file
 		int status = enc->send(sock);
 		delete enc;
 		if (status < 0)
-		{
-			prov->close();
-			return false;
-		}
+			{
+				prov->close();
+				return false;
+			}
 #else
 		// orig
 		enc->send(sock);
@@ -289,28 +304,27 @@ ViewImage * CTSimObj::captureView(ColorBitType cbtype, ImageDataSize size, int i
 
 	typedef CTReader Reader;
 
-// modify(sekikawa)(2010/08/10)
-//	int retry = 10;
+	// modify(sekikawa)(2010/08/10)
+	//	int retry = 10;
 	int retry = 500;
 
 	Reader *r = new Reader(sock, d, 100000);
 
-	while  (true) {
-
+	while (true) {
 #if 1
-// sekikawa(FIX20100906)
+		// sekikawa(FIX20100906)
 		Result *result = NULL;
 		try
-		{
-	  		result = r->readSync();
-		}
+			{
+				result = r->readSync();
+			}
 		catch(CTReader::ConnectionClosedException &e)
-		{
-			break;
-		}
+			{
+				break;
+			}
 #else
-// orig
-	  Result *result = r->readSync();
+		// orig
+		Result *result = r->readSync();
 #endif
 
 		if (!result) {
@@ -347,173 +361,170 @@ ViewImage * CTSimObj::captureView(ColorBitType cbtype, ImageDataSize size, int i
 	return img;
 }
 
+
 //added by okamoto@tome(2011/9/8)
 unsigned char CTSimObj::distanceSensor(double start, double end, int id)
 {
-  NSLookup::Provider *prov = lookupProvider(Service::DISTANCE_SENSOR);
+	NSLookup::Provider *prov = lookupProvider(Service::DISTANCE_SENSOR);
   
-  if (!prov) {
-    LOG_ERR(("distanceSensor : cannot get service provider info [%s:%d]", __FILE__, __LINE__));
-    return false;
-  }
+	if (!prov) {
+		LOG_ERR(("distanceSensor : cannot get service provider info [%s:%d]", __FILE__, __LINE__));
+		return false;
+	}
   
-  SOCKET sock = prov->sock();
-  if (sock < 0) {
-    LOG_ERR(("distanceSensor : cannot connect to service provider [%s:%d]", __FILE__, __LINE__));
-    return false;
-  }
+	SOCKET sock = prov->sock();
+	if (sock < 0) {
+		LOG_ERR(("distanceSensor : cannot connect to service provider [%s:%d]", __FILE__, __LINE__));
+		return false;
+	}
   
-  CommRequestDistanceSensorEncoder *enc = new CommRequestDistanceSensorEncoder(myname(), start, end, id);
+	CommRequestDistanceSensorEncoder *enc = new CommRequestDistanceSensorEncoder(myname(), start, end, id);
 
-  int status = enc->send(sock);
-  delete enc;
+	int status = enc->send(sock);
+	delete enc;
 
-  unsigned char distance;
-  CommDataDecoder d;
-  typedef CTReader Reader;
-  int retry = 15;
-  Reader *r = new Reader(sock, d, 1024);
+	unsigned char distance;
+	CommDataDecoder d;
+	typedef CTReader Reader;
+	int retry = 15;
+	Reader *r = new Reader(sock, d, 1024);
 
-  while  (true) {
-    Result *result = NULL;
-    try
-      {
-	result = r->readSync();
-      }
-    catch(CTReader::ConnectionClosedException &e)
-      {
-	break;
-      }
+	while  (true) {
+		Result *result = NULL;
+		try
+			{
+				result = r->readSync();
+			}
+		catch(CTReader::ConnectionClosedException &e)
+			{
+				break;
+			}
     
-    if (!result) {
-      if (retry <= 0) {
-	// add(sekikawa)(2010/08/10)
-	LOG_ERR(("readSync() failed. max retry count exceeded. [%s:%d]", __FILE__, __LINE__));
+		if (!result) {
+			if (retry <= 0) {
+				// add(sekikawa)(2010/08/10)
+				LOG_ERR(("readSync() failed. max retry count exceeded. [%s:%d]", __FILE__, __LINE__));
 	
-	break;
-      } else {
-	LOG_DEBUG1(("retrying readSync() ... [retry=%d]", retry));
-	retry--;
+				break;
+			} else {
+				LOG_DEBUG1(("retrying readSync() ... [retry=%d]", retry));
+				retry--;
 #ifdef WIN32
-	Sleep(100000);
+				Sleep(100000);
 #else
-	usleep(100000);
+				usleep(100000);
 #endif
-	continue;
-      }
-    }
-    if (result->type() == COMM_RESULT_DISTANCE_SENSOR) {
+				continue;
+			}
+		}
+		if (result->type() == COMM_RESULT_DISTANCE_SENSOR) {
       
-      ResultDistanceSensorEvent *evt = (ResultDistanceSensorEvent*)result->data();
-      distance = evt->getDistance();
-    }
-    delete result;
-    break;
-  }
+			ResultDistanceSensorEvent *evt = (ResultDistanceSensorEvent*)result->data();
+			distance = evt->getDistance();
+		}
+		delete result;
+		break;
+	}
 
-  prov->close();
-  return distance;
+	prov->close();
+	return distance;
   
 }
 
+
+// Distance sensor more than 1D
 ViewImage *CTSimObj::distanceSensorD(double start, double end, int id, bool map)
 {
-
-  NSLookup::Provider *prov = lookupProvider(Service::DISTANCE_SENSOR);
+	NSLookup::Provider *prov = lookupProvider(Service::DISTANCE_SENSOR);
   
-  if (!prov) {
-    LOG_ERR(("distanceSensor1D : cannot get service provider info [%s:%d]", __FILE__, __LINE__));
-    return false;
-  }
+	if (!prov) {
+		LOG_ERR(("distanceSensor1D : cannot get service provider info [%s:%d]", __FILE__, __LINE__));
+		return false;
+	}
   
-  SOCKET sock = prov->sock();
-  if (sock < 0) {
-    LOG_ERR(("distanceSensor1D : cannot connect to service provider [%s:%d]", __FILE__, __LINE__));
-    return false;
-  }
-  CommRequestDistanceSensorEncoder *enc; 
+	SOCKET sock = prov->sock();
+	if (sock < 0) {
+		LOG_ERR(("distanceSensor1D : cannot connect to service provider [%s:%d]", __FILE__, __LINE__));
+		return false;
+	}
+	CommRequestDistanceSensorEncoder *enc; 
 
-  if(map == false)
-    {
-      enc = new CommRequestDistanceSensorEncoder(myname(), start, end, id, 1);
-    }
-  else
-    {
-      enc = new CommRequestDistanceSensorEncoder(myname(), start, end, id, 2);
-    }
-  //	CommRequestDistanceSensorEncoder enc(myname(), id);
-  int status = enc->send(sock);
+	if(map == false)
+		{
+			enc = new CommRequestDistanceSensorEncoder(myname(), start, end, id, 1);
+		}
+	else
+		{
+			// Encoder for 2D distance sensor
+			enc = new CommRequestDistanceSensorEncoder(myname(), start, end, id, 2);
+		}
+	//	CommRequestDistanceSensorEncoder enc(myname(), id);
+	int status = enc->send(sock);
 
-  delete enc;
+	delete enc;
 
-  ViewImageInfo info(IMAGE_DATA_TYPE_ANY, DEPTHBIT_8, IMAGE_320X1);
-  ViewImage *img;
-  CommDataDecoder d;
-  typedef CTReader Reader;
-  int retry;
-  if(map == true)
-    {
-      retry = 25;
-    }
-  else
-    {
-      retry = 20;
-    }
-  Reader *r = new Reader(sock, d, 100000);
+	ViewImageInfo info(IMAGE_DATA_TYPE_ANY, DEPTHBIT_8, IMAGE_320X1);
+	ViewImage *img;
+	CommDataDecoder d;
+	typedef CTReader Reader;
+	int retry;
+	if(map == true)
+		retry = 25;
+	else
+		retry = 20;
+	Reader *r = new Reader(sock, d, 100000);
 
-  while  (true) {
-    Result *result = NULL;
-    try
-      {
-	result = r->readSync();
-      }
-    catch(CTReader::ConnectionClosedException &e)
-      {
-	break;
-      }
+	while  (true) {
+		Result *result = NULL;
+		try
+			{
+				result = r->readSync();
+			}
+		catch(CTReader::ConnectionClosedException &e)
+			{
+				break;
+			}
     
-    if (!result) {
-      if (retry <= 0) {
-	// add(sekikawa)(2010/08/10)
-	LOG_ERR(("readSync() failed. max retry count exceeded. [%s:%d]", __FILE__, __LINE__));
+		if (!result) {
+			if (retry <= 0) {
+				// add(sekikawa)(2010/08/10)
+				LOG_ERR(("readSync() failed. max retry count exceeded. [%s:%d]", __FILE__, __LINE__));
 	
-	break;
-      } else {
-	LOG_DEBUG1(("retrying readSync() ... [retry=%d]", retry));
-	retry--;
+				break;
+			} else {
+				LOG_DEBUG1(("retrying readSync() ... [retry=%d]", retry));
+				retry--;
 #ifdef WIN32
-	Sleep(100000);
+				Sleep(100000);
 #else
-	usleep(100000);
+				usleep(100000);
 #endif
-	continue;
-      }
-    }
-
-    if (result->type() == COMM_RESULT_CAPTURE_VIEW_IMAGE) {
+				continue;
+			}
+		}
+		if (result->type() == COMM_RESULT_CAPTURE_VIEW_IMAGE) {
       
-      ResultCaptureViewImageEvent *evt = (ResultCaptureViewImageEvent*)result->data();
-      img = evt->release();
-    }
-    /*
-    if (result->type() == COMM_RESULT_DISTANCE_SENSOR1D) {
+			ResultCaptureViewImageEvent *evt = (ResultCaptureViewImageEvent*)result->data();
+			img = evt->release();
+		}
+		/*
+		  if (result->type() == COMM_RESULT_DISTANCE_SENSOR1D) {
       
-      ResultDistanceSensor1DEvent *evt = (ResultDistanceSensor1DEvent*)result->data();
-      distance = evt->getDistance();
-    }
-    */
-    delete result;
-    break;
-  }
-
-  prov->close();
-  return img;
+		  ResultDistanceSensor1DEvent *evt = (ResultDistanceSensor1DEvent*)result->data();
+		  distance = evt->getDistance();
+		  }
+		*/
+		delete result;
+		break;
+	}
+	prov->close();
+	return img;
 }
 
 
 void CTSimObj::sendText(double t, const char *to, const char *text)
 {
-        sendText(t, to, text, -1);
+	sendText(t, to, text, -1);
 }
 
 void CTSimObj::sendText(double t, const char *to, const char *text, double reachRadius) {
@@ -528,18 +539,19 @@ void CTSimObj::sendMessage(const char *to, int argc, char**argv)
 	s.sendto(to, argc, argv);
 }
 
+
 void CTSimObj::broadcastMessage(int argc, char**argv)
 {
 	sendMessage(NULL, argc, argv);
 }
 
-// begin(FIX20110401)
+
 void CTSimObj::sendSound(double t, const char *to, RawSound &sound)
 {
 	SoundSender s(myname(), m_sock);
 	s.sendto(to, sound);
 }
-// end(FIX20110401)
+
 
 static Result *getResult(SOCKET sock, int bufsize, int retry)
 {
@@ -568,6 +580,7 @@ static Result *getResult(SOCKET sock, int bufsize, int retry)
 
 }
 
+
 bool CTSimObj::getAllObjectNames(EntityNameC &v)
 {
 	Result *result = getResult(m_sock, 8192, 10);
@@ -578,6 +591,7 @@ bool CTSimObj::getAllObjectNames(EntityNameC &v)
 	return true;
 }
 
+
 bool CTSimObj::getAllEntities(EntityNameC &v)
 {
 	CommRequestGetEntityNamesEncoder enc;
@@ -585,4 +599,3 @@ bool CTSimObj::getAllEntities(EntityNameC &v)
 
 	return getAllObjectNames(v);
 }
-
