@@ -1,4 +1,7 @@
-/* $Id: JointControl.h,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */ 
+/*
+ * Created by Okamoto on 2011-03-25
+ */
+
 #ifdef DEPRECATED
 #ifndef Command_JointControl_h
 #define Command_JointControl_h
