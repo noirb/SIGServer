@@ -7,6 +7,7 @@
  *    Change COMM_REQUEST_SET_OBJECT_VELOCITY to COMM_REQUEST_SET_ANGULAR_VELOCITY_PARTS
  * Modified by Tetsunari Inamura on 2014-01-06
  *    enum for new communication protocal was moved from WorldSimulator.h
+ * Added addTorque by Tetsunari Inamura on 2014-02-26
  */
 
 #ifndef CommDataType_h
@@ -130,9 +131,8 @@ enum {
 	COMM_REQUEST_GET_POINTED_OBJECT,
 	COMM_RESULT_GET_POINTED_OBJECT,
 
-	//added by inamura on 2014-01-06
-	COMM_REQUEST_SET_LINEAR_VELOCITY,
-
+	COMM_REQUEST_SET_LINEAR_VELOCITY, // Added by inamura on 2014-01-06
+	COMM_REQUEST_ADD_TORQUE,          // Added by inamura on 2014-02-26
 	COMM_DATA_TYPE_NUM,
 };
 

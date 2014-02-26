@@ -184,6 +184,8 @@ public:
 
 	void addForceToParts(const char* parts, double fx, double fy, double fz);
 
+	void addTorque(double fx, double fy, double fz);
+
 	void setGravityMode(bool gravity);
 
 	int getGravityMode();

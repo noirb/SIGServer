@@ -11,6 +11,8 @@
  * Modified by Tetsunari Inamura on 2014-01-08
  *    Using new enum for new communication protocal
  *    Fixed time over flow problem
+ * Modified by Tetsunari Inamura on 2014-02-26
+ *    Added addTorque
  */
    
 #ifdef IRWAS_SIMSERVER
@@ -175,7 +177,7 @@ private:
 			LOG_MSG(("addForce : no agent \"%s\"", agentName));
 			return;
 		}
-		// Add torque is not permitted in dynamic off mode
+		// Add force is not permitted in dynamic off mode
 		if (!obj->dynamics()) {
 			LOG_MSG(("cannot add force. Dynamics is OFF")) ;
 			return;
@@ -237,6 +239,36 @@ private:
 			else
 				mainParts->addForceAtPos(evt.x(), evt.y(), evt.z(), evt.px(), evt.py(), evt.pz());
 		}
+	}
+
+
+	void recvRequestAddTorque (Source &from, RequestAddTorqueEvent &evt) 
+	{
+		SSimWorld *w = m_provider.get();
+		const char *agentName = evt.getAgentName();
+		SSimObj *obj = w->getSObj(agentName);
+		if (!obj) {
+			LOG_MSG(("addTorque : no agent \"%s\"", agentName));
+			return;
+		}
+		// Add torque is not permitted in dynamic off mode
+		if (!obj->dynamics()) {
+			LOG_MSG(("cannot add torque. Dynamics is OFF")) ;
+			return;
+		}
+		SParts *mainParts = obj->getSBody();
+		if (!mainParts) {
+			LOG_MSG(("addTorque : cannot get main body"));
+			return;
+		}
+		// Set torque vector in the Entity coordinate
+		if (evt.rel()) {
+			//mainParts->addRelTorque(evt.x(), evt.y(), evt.z());  //No addRelTorque yet
+			LOG_MSG(("addRelTorque is not implemented yet"));
+		}
+		// Set torque vector in the global coordinate
+		else
+			mainParts->addTorque(evt.x(), evt.y(), evt.z());
 	}
 
 
@@ -325,7 +357,6 @@ private:
 
 		mainParts->setLinearVelocity(evt.x(), evt.y(), evt.z());
 	}
-
 
 
 	void recvRequestAddForceToParts(Source &from, RequestAddForceToPartsEvent &evt) 

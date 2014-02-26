@@ -3,7 +3,8 @@
  * Modified by Tetsunari Inamura on 2013-12-30
  *    change GetVelocity to GetLinearVelocity
  *    no need to translate comments
- * Add SetLinearVelocity by Tetsunari Inamura on 2014-01-06
+ * Added SetLinearVelocity by Tetsunari Inamura on 2014-01-06
+ * Added addTorque by Tetsunari Inamura on 2014-02-26
  */
 
 #include "MoveControl.h"
@@ -46,6 +47,7 @@ bool RequestAddForceAtPosEvent::set(int packetNum, int seq, char *data, int n)
 
 	return true;
 }
+
 
 bool RequestSetMassEvent::set(int packetNum, int seq, char *data, int n)
 {
@@ -120,8 +122,6 @@ bool RequestSetLinearVelocityEvent::set(int packetNum, int seq, char *data, int 
 }
 
 
-
-
 bool RequestAddForceToPartsEvent::set(int packetNum, int seq, char *data, int n)
 {
 	char *p = data;
@@ -135,6 +135,23 @@ bool RequestAddForceToPartsEvent::set(int packetNum, int seq, char *data, int n)
 
 	return true;
 }
+
+
+bool RequestAddTorqueEvent::set(int packetNum, int seq, char *data, int n)
+{
+	char *p = data;
+	{
+		char *name = BINARY_GET_STRING_INCR(p);
+		m_name = name;
+	}
+	m_x    = BINARY_GET_DOUBLE_INCR(p);
+	m_y    = BINARY_GET_DOUBLE_INCR(p);
+	m_z    = BINARY_GET_DOUBLE_INCR(p);
+	m_relf = BINARY_GET_BOOL_INCR(p);
+
+	return true;
+}
+
 
 bool RequestSetGravityModeEvent::set(int packetNum, int seq, char *data, int n)
 {

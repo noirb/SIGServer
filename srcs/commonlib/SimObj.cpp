@@ -1131,6 +1131,13 @@ void SimObj::addForceToParts(const char* parts, double fx, double fy, double fz)
 	m_sender->send(enc);
 }
 
+void SimObj::addTorque(double fx, double fy, double fz)
+{
+	assert(m_sender);
+	CommRequestAddTorqueEncoder enc(name(), fx, fy, fz, false);
+	m_sender->send(enc);
+}
+
 void SimObj::setGravityMode(bool gravity)
 {
 	assert(m_sender);

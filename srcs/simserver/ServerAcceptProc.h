@@ -6,7 +6,8 @@
  * Modified by Tetsunari Inamura on 2013-12-30
  *    Change ObjectVelocity to AngularVelocityToParts
  *    Change JointVelocity  to AngularVelocityToJoint
- * Add SetLinearVelocity by Tetsunari Inamura on 2014-01-06
+ * Added SetLinearVelocity by Tetsunari Inamura on 2014-01-06
+ * Added addTorque by Tetsunari Inamura on 2014-02-26
  */
 
 #ifndef ServerAcceptProc_h
@@ -164,11 +165,8 @@ private:
 	void recvRequestDetectEntities           (Source &from, RequestDetectEntitiesEvent &evt) {};
 	void recvResultDetectEntities            (Source &from, ResultDetectEntitiesEvent &eve) {};
 
-	//added by okamoto@tome(2011/9/9)
-	void recvRequestDistanceSensor           (Source &from, RequestDistanceSensorEvent &evt) {};
-
-	//added by okamoto@tome(2011/9/12)
-	void recvResultDistanceSensor            (Source &from, ResultDistanceSensorEvent &evt) {};
+	void recvRequestDistanceSensor           (Source &from, RequestDistanceSensorEvent &evt) {}; //added by okamoto on 2011-09-09
+	void recvResultDistanceSensor            (Source &from, ResultDistanceSensorEvent &evt) {};	 //added by okamoto on 2011-09-12
 
 	void recvLogMsg                          (Source &from, LogMsgEvent &evt) {};
 
@@ -184,25 +182,21 @@ private:
 
 	void recvRequestSetJointAngle            (Source &from, RequestSetJointAngleEvent &) {};
 	
-	//added by okamoto@tome (2011/2/18)
-	void recvRequestSetJointQuaternion       (Source &from, RequestSetJointQuaternionEvent &) {};
+	void recvRequestSetJointQuaternion       (Source &from, RequestSetJointQuaternionEvent &) {};   //added by Okamoto on 2011-02-18
+	void recvRequestAddJointTorque           (Source &from, RequestAddJointTorqueEvent &) {};   	//added by Okamoto on 2011-03-03
 
-	//added by okamoto@tome (2011/3/3)
-	void recvRequestAddJointTorque           (Source &from, RequestAddJointTorqueEvent &) {};
-
-	//added by okamoto@tome (2011/3/9)
+	//added by Okamoto (2011/3/9)
 	//modified by inamura on 2013-12-30
 	void recvRequestSetAngularVelocityToJoint(Source &from, RequestSetAngularVelocityToJointEvent &) {};
 	void recvRequestSetAngularVelocityToParts(Source &from, RequestSetAngularVelocityToPartsEvent &) {};
 
-	//added by okamoto@tome (2011/3/9)
+	//added by Okamoto (2011/3/9)
 	void recvRequestGetJointAngle            (Source &from, RequestGetJointAngleEvent &) {};
 	void recvResultGetJointAngle             (Source &from, ResultGetJointAngleEvent &) {};
 
-	//adde by okamoto@tome (2011/8/2)
-	void recvDisplayText                     (Source &from, DisplayTextEvent &evt) {};
+	void recvDisplayText                     (Source &from, DisplayTextEvent &evt) {};	          // added by Okamoto on 2011-08-02
 
-	//added by okamoto@tome (2011/12/19)
+	//added by Okamoto (2011/12/19)
 	void recvRequestAddForce                 (Source &from, RequestAddForceEvent &) {};
 	void recvRequestAddForceAtPos            (Source &from, RequestAddForceAtPosEvent &) {};
 	void recvRequestSetMass                  (Source &from, RequestSetMassEvent &) {};
@@ -212,6 +206,7 @@ private:
 	void recvResultGetLinearVelocity         (Source &from, ResultGetLinearVelocityEvent &) {};
 	void recvRequestSetLinearVelocity        (Source &from, RequestSetLinearVelocityEvent &) {}; // added by inamura on 2014-01-06
 	void recvRequestAddForceToParts          (Source &from, RequestAddForceToPartsEvent &) {};
+	void recvRequestAddTorque                (Source &from, RequestAddTorqueEvent &) {};         // added by inamura on 2014-02-26
 	void recvRequestSetGravityMode           (Source &from, RequestSetGravityModeEvent &) {};
 	void recvRequestGetGravityMode           (Source &from, RequestGetGravityModeEvent &) {};
 	void recvResultGetGravityMode            (Source &from, ResultGetGravityModeEvent &) {};
