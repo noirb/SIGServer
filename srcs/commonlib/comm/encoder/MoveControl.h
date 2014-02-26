@@ -5,6 +5,7 @@
  * Added SetLinearVelocity by Tetsunari Inamura on 2014-01-06
  * Modified by Tetsunari Inamura on 2014-01-13
  *    Bug fixed on GetAngularVelocityRequest
+ * Added addTorque by Tetsunari Inamura on 2014-02-26
  */
 
 #ifndef Comm_Data_MoveControl_h
@@ -56,6 +57,25 @@ public:
 	int packetNum() { return 1; }
 	char *encode(int seq, int &);
 };
+
+
+class AddTorqueRequest : public Encoder
+{
+private:
+	enum { BUFSIZE = 128, };  //TODO: magic number
+private:
+	const char *m_name;
+	double m_x;
+	double m_y;
+	double m_z;
+	bool m_relf;
+public:
+ AddTorqueRequest(const char *name, double x, double y, double z, bool relf) : Encoder(COMM_REQUEST_ADD_TORQUE, BUFSIZE),m_name(name), m_x(x), m_y(y), m_z(z), m_relf(relf) {}
+
+	int packetNum() { return 1; }
+	char *encode(int seq, int &);
+};
+
 
 class SetMassRequest : public Encoder
 {
@@ -243,6 +263,7 @@ typedef CommData::GetLinearVelocityRequest  CommRequestGetLinearVelocityEncoder;
 typedef CommData::GetLinearVelocityResult   CommResultGetLinearVelocityEncoder;
 typedef CommData::SetLinearVelocityRequest  CommRequestSetLinearVelocityEncoder;
 typedef CommData::AddForceToPartsRequest    CommRequestAddForceToPartsEncoder;
+typedef CommData::AddTorqueRequest          CommRequestAddTorqueEncoder;
 typedef CommData::SetGravityModeRequest     CommRequestSetGravityModeEncoder;
 typedef CommData::GetGravityModeRequest     CommRequestGetGravityModeEncoder;
 typedef CommData::GetGravityModeResult      CommResultGetGravityModeEncoder;

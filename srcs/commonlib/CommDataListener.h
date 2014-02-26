@@ -93,6 +93,8 @@ public:
 	virtual void recvResultGetLinearVelocity   (Source &from, ResultGetLinearVelocityEvent &) = 0;
 	virtual void recvRequestSetLinearVelocity  (Source &from, RequestSetLinearVelocityEvent &) = 0; // added by inamura on 2014-01-06
 	virtual void recvRequestAddForceToParts    (Source &from, RequestAddForceToPartsEvent &) = 0;
+	virtual void recvRequestAddTorque          (Source &from, RequestAddTorqueEvent &) = 0;         // added by inamura on 2014-02-26
+
 	virtual void recvRequestSetGravityMode     (Source &from, RequestSetGravityModeEvent &) = 0;
 	virtual void recvRequestGetGravityMode     (Source &from, RequestGetGravityModeEvent &) = 0;
 	virtual void recvResultGetGravityMode      (Source &from, ResultGetGravityModeEvent &) = 0;
@@ -230,12 +232,13 @@ public:
 	virtual void recvRequestGetLinearVelocity  (Source &from, RequestGetLinearVelocityEvent &) {};
 	//! COMM_RESULT_GET_LINEAR_VELOCITY
 	virtual void recvResultGetLinearVelocity   (Source &from, ResultGetLinearVelocityEvent &) {};
-
 	//! COMM_RESULT_SET_LINEAR_VELOCITY
 	virtual void recvRequestSetLinearVelocity  (Source &from, RequestSetLinearVelocityEvent &) {}; // added by inamura on 2014-01-06
-
 	//! COMM_REQUEST_ADD_FORCE_TOPARTS
 	virtual void recvRequestAddForceToParts    (Source &from, RequestAddForceToPartsEvent &) {};
+	//! COMM_REQUEST_ADD_TORQUE
+	virtual void recvRequestAddTorque          (Source &from, RequestAddTorqueEvent &) {};         // added by inamura on 2014-02-26
+
 	//! COMM_REQUEST_SET_GRAVITY_MODE
 	virtual void recvRequestSetGravityMode     (Source &from, RequestSetGravityModeEvent &) {};
 	//! COMM_REQUEST_GET_GRAVITY_MODE

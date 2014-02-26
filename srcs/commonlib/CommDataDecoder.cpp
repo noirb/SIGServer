@@ -6,7 +6,8 @@
  * Modified by Tetsunari Inamura on 2013-12-30
  *    Change ObjectVelocityData to AngularVelocityToPartsData
  *    Change JointVelocityData  to AngularVelocityToJointData
- * Add SetLinearVelocity by Tetsunari Inamura on 2014-01-06
+ * Added SetLinearVelocity by Tetsunari Inamura on 2014-01-06
+ * Added addTorque by Tetsunari Inamura on 2014-02-26
  */
 
 #include "CommDataDecoder.h"
@@ -289,9 +290,10 @@ typedef ListenerInvokeDecoder<COMM_REQUEST_ADD_FORCE,            RequestAddForce
 typedef ListenerInvokeDecoder<COMM_REQUEST_ADD_FORCE_ATPOS,      RequestAddForceAtPosEvent>      ReqAddForceAtPosD;
 typedef ListenerInvokeDecoder<COMM_REQUEST_SET_MASS,             RequestSetMassEvent>            ReqSetMassD;
 typedef ListenerInvokeDecoder<COMM_REQUEST_GET_ANGULAR_VELOCITY, RequestGetAngularVelocityEvent> ReqGetAngularVelocityD;
-typedef ListenerInvokeDecoder<COMM_REQUEST_ADD_FORCE,            RequestAddForceEvent>           ReqAddForceD;
 typedef ListenerInvokeDecoder<COMM_RESULT_GET_ANGULAR_VELOCITY,  ResultGetAngularVelocityEvent>  ResGetAngularVelocityD;
 typedef ListenerInvokeDecoder<COMM_REQUEST_ADD_FORCE_TOPARTS,    RequestAddForceToPartsEvent>    ReqAddForceToPartsD;
+
+typedef ListenerInvokeDecoder<COMM_REQUEST_ADD_TORQUE,           RequestAddTorqueEvent>          ReqAddTorqueD;         // added by inamura on 2014-02-26
 
 typedef ListenerInvokeDecoder<COMM_REQUEST_GET_LINEAR_VELOCITY,  RequestGetLinearVelocityEvent>  ReqGetLinearVelocityD;
 typedef ListenerInvokeDecoder<COMM_RESULT_GET_LINEAR_VELOCITY,   ResultGetLinearVelocityEvent>   ResGetLinearVelocityD;
@@ -498,6 +500,8 @@ CommDataDecoder::DecoderBase *CommDataDecoder::createDecoder(CommDataType type)
 	CREATE_L_DECODER(ResGetLinearVelocityD,  &L::recvResultGetLinearVelocity);
 	CREATE_L_DECODER(ReqSetLinearVelocityD,  &L::recvRequestSetLinearVelocity); // added by inamura on 2014-01-06
 	CREATE_L_DECODER(ReqAddForceToPartsD,    &L::recvRequestAddForceToParts);
+	CREATE_L_DECODER(ReqAddTorqueD,          &L::recvRequestAddTorque);         // added by inamura on 2014-02-26
+
 	CREATE_L_DECODER(ReqSetGravityModeD,     &L::recvRequestSetGravityMode);
 	CREATE_L_DECODER(ReqGetGravityModeD,     &L::recvRequestGetGravityMode);
 	CREATE_L_DECODER(ResGetGravityModeD,     &L::recvResultGetGravityMode);

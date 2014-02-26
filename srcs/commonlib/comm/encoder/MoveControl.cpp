@@ -4,6 +4,7 @@
  *    Change GetVelocity to GetLinearVelocity
  * Modified by Tetsunari Inamura on 2014-01-06
  *    Bug fixed on 
+ * Added addTorque by Tetsunari Inamura on 2014-02-26
  */
 
 #include "MoveControl.h"
@@ -49,6 +50,26 @@ char *AddForceAtPosRequest::encode(int seq, int &sz)
 	BINARY_SET_BOOL_INCR(p, m_rel);
 	BINARY_SET_BOOL_INCR(p, m_relf);
 
+	p = setFooter(p);
+  
+	sz = p - m_buf;
+	setPacketSize(m_buf, sz);
+	return m_buf;
+}
+
+char *AddTorqueRequest::encode(int seq, int &sz)
+{
+	char *p = m_buf;
+  
+	p = setHeader(p, seq);
+	{
+		BINARY_SET_STRING_INCR(p, m_name);
+	}
+	BINARY_SET_DOUBLE_INCR(p, m_x);
+	BINARY_SET_DOUBLE_INCR(p, m_y);
+	BINARY_SET_DOUBLE_INCR(p, m_z);
+	BINARY_SET_BOOL_INCR(p, m_relf);
+  
 	p = setFooter(p);
   
 	sz = p - m_buf;

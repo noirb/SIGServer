@@ -356,6 +356,11 @@ void SParts::getLinearVelocity(Vector3d &v)
 	v.z(avel[2]);
 }
 
+void SParts::addTorque(dReal fx, dReal fy, dReal fz)
+{
+	dBodyAddTorque(m_odeobj->body(), fx, fy, fz);
+}
+
 void SParts::setGravityMode(bool gravity)
 {
 	dBodySetGravityMode(m_odeobj->body(), gravity);

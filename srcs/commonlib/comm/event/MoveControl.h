@@ -3,7 +3,8 @@
  * Modified by Tetsunari Inamura on 2013-12-30
  *    change GetVelocity to GetLinearVelocity
  *    no need to translate comments
- * Add SetLinearVelocity by Tetsunari Inamura on 2014-01-06
+ * Added SetLinearVelocity by Tetsunari Inamura on 2014-01-06
+ * Added addTorque         by Tetsunari Inamura on 2014-02-26
  */
 
 #ifndef MoveControl_h
@@ -69,6 +70,33 @@ class RequestAddForceAtPosEvent
 	bool rel()  { return m_rel; }
 	bool relf() { return m_relf; }
 };
+
+
+// Added by Tetsunari Inamura on 2014-02-26
+class RequestAddTorqueEvent 
+{
+ private:
+	const char* m_name;
+	double      m_x;
+	double      m_y;
+	double      m_z;
+	double      m_relf;
+ public:
+	bool	set(int packetNum, int seq, char *data, int n);
+ public:
+	~RequestAddTorqueEvent() {
+		delete m_name;
+    }
+	
+	const char * getAgentName() { 
+		return m_name;
+	}
+	double x() { return m_x; }
+	double y() { return m_y; }
+	double z() { return m_z; }
+	bool rel() { return m_relf;}
+};
+
 
 class RequestSetMassEvent 
 {

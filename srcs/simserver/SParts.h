@@ -260,6 +260,8 @@ public:
 	void	getAngularVelocity(Vector3d &v);
 	//! Get velocity of the parts // Changed from getVelocity: by inamura on 2013-12-30
 	void	getLinearVelocity(Vector3d &v);
+	//! Set Torque added to the parts (global coordinate)
+	void	addTorque(dReal fx, dReal fy, dReal fz);
 	//! Set flag whether gravity is given to the parts
 	void	setGravityMode(bool gravity);
 
