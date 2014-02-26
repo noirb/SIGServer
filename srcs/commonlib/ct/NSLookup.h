@@ -1,4 +1,7 @@
-/* $Id: NSLookup.h,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */ 
+/*
+ * Modified by Okamoto on 2011-03-25
+ */
+
 #ifndef NSLookup_h
 #define NSLookup_h
 

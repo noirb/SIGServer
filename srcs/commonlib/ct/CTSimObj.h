@@ -1,4 +1,7 @@
-/* $Id: CTSimObj.h,v 1.13 2011-09-22 06:39:25 okamoto Exp $ */
+/*
+ * Modified by Okamoto on 2011-09-22
+ */
+
 #ifndef CTSimObj_h
 #define CTSimObj_h
 

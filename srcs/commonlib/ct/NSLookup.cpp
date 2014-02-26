@@ -1,4 +1,8 @@
-/* $Id: NSLookup.cpp,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */
+/*
+ * Modified by sekikawa on 2010-08-26
+ * Modified by Okamoto on 2011-03-25
+ */
+
 #include "NSLookup.h"
 #include "CommUtil.h"
 #include "CommDataEncoder.h"
@@ -36,6 +40,7 @@ Service &NSLookup::Provider::service()
 	return *m_service;
 }
 
+
 SOCKET NSLookup::Provider::sock()
 {
 	if (m_sock < 0) {
@@ -44,17 +49,17 @@ SOCKET NSLookup::Provider::sock()
 		m_sock = CommUtil::connectServer(m_service->hostname(), m_service->port(), 10);
 
 		// add(sekikawa)(FIX20100826)
-		if (m_sock < 0)
-		{
+		if (m_sock < 0) {
 			LOG_ERR(("failed to connect to service provider. (hostname=%s, port=%d) [%s:%d]",
-				m_service->hostname(),
-				m_service->port(),
-				__FILE__, __LINE__));
+			         m_service->hostname(),
+			         m_service->port(),
+			         __FILE__, __LINE__));
 		}
 	}
 
 	return m_sock;
 }
+
 
 NSLookup::~NSLookup()
 {
@@ -64,6 +69,7 @@ NSLookup::~NSLookup()
 	}
 	m_providers.clear();
 }
+
 
 NSLookup::Provider *NSLookup::find(Service::Kind kind)
 {
@@ -80,6 +86,7 @@ NSLookup::Provider *NSLookup::find(Service::Kind kind)
 	}
 	return NULL;
 }
+
 
 NSLookup::Provider* NSLookup::lookup(Service::Kind kind)
 {
