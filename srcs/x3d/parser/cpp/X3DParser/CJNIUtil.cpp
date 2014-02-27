@@ -1,3 +1,8 @@
+/*
+ * Modified by sekikawa on 2009-11-30
+ * Added comments by Tetsunari Inamura on 2014-02-27
+ */
+
 #include "CJNIUtil.h"
 #include "SgvConfigFile.h"
 #include "CX3DParser.h"
@@ -11,41 +16,39 @@ CJNIUtil *g_jniUtil = NULL;
 // -------------------------------------------
 bool CJNIUtil::init(char *confFile)
 {
-	if (!g_jniUtil)
-	{
+	if (!g_jniUtil) {
 		g_jniUtil = new CJNIUtil();
-		if (g_jniUtil)
-		{
-			if (g_jniUtil->createJavaVM(confFile))
-			{
+		if (g_jniUtil) {
+			if (g_jniUtil->createJavaVM(confFile)) {
 				return true;
 			}
-			else
-			{
+			else {
 				delete g_jniUtil;
 				g_jniUtil = NULL;
 				return false;
 			}
 		}
 	}
-
+	// It's already initialized
 	return true;
 }
 
+
 void CJNIUtil::destroy()
 {
-	if (g_jniUtil)
-	{
+	if (g_jniUtil) {
 		g_jniUtil->destroyJavaVM();
 		delete g_jniUtil;
 		g_jniUtil = NULL;
 	}
 }
 
+
 CJNIUtil *CJNIUtil::getUtil()
 {
 	return g_jniUtil;
 }
+
 
 JNIEnv *CJNIUtil::getEnv()
 {
@@ -65,151 +68,142 @@ CJNIUtil::CJNIUtil()
 	m_class_VRMLNode = NULL;
 }
 
+
 CJNIUtil::~CJNIUtil()
 {
-	if (m_jvm)
-	{
+	if (m_jvm) {
 		m_jvm->DestroyJavaVM();
 		m_jvm = NULL;
 	}
 }
 
-// begin(fix)(2009/11/30)
+
+// begin(fix)(
 // modified by sekikawa
+// If [Other] exists in X3DParser.cfg, the following descriptions should be given as JVM option
 bool CJNIUtil::createJavaVM(char *confFile)
 {
 	if (m_jvm) { return true; }
 
-	JavaVMOption *options = NULL;
+	JavaVMOption   *options = NULL;
 	JavaVMInitArgs vm_args;
-	const char *pJavaClassPath = NULL;
-	const char *pJavaLibraryPath = NULL;
-	char javaClassPath[1024];
-	char javaLibraryPath[1024];
-	int iOption, nOptions;
-	int nOtherOptions;
+	const char     *pJavaClassPath   = NULL;
+	const char     *pJavaLibraryPath = NULL;
+	char           javaClassPath[1024];   // TODO: Magic number
+	char           javaLibraryPath[1024]; // TODO: Magic number
+	int  iOption, nOptions;
+	int  nOtherOptions;
 	jint ret;
 
-	memset(javaClassPath, 0, sizeof(javaClassPath));
+	// Clear the string area
+	memset(javaClassPath,   0, sizeof(javaClassPath));
 	memset(javaLibraryPath, 0, sizeof(javaLibraryPath));
 
+	// Read optional configuration file such as class path
 	Sgv::ConfigFile conf;
 
-	if (!conf.load(confFile))
-	{
+	if (!conf.load(confFile)) {
 		CX3DParser::printLog("Failed to load config file (%s)\n", confFile);
 		return false;
 	}
-
+	// Total number of options
 	nOptions = 0;
 
+	// Specification of java.class.path
 	pJavaClassPath = conf.getStringValue("java.class.path");
-	if (pJavaClassPath)
-	{
+	if (pJavaClassPath)	{
 		sprintf(javaClassPath, "-Djava.class.path=%s", pJavaClassPath);
 		nOptions++;
 	}
-
+	// Specification of java.library.path
 	pJavaLibraryPath = conf.getStringValue("java.library.path");
-	if (pJavaLibraryPath)
-	{
+	if (pJavaLibraryPath) {
 		sprintf(javaLibraryPath, "-Djava.library.path=%s", pJavaLibraryPath);
 		nOptions++;
 	}
-
+	// The number of other options
 	nOtherOptions = conf.countOtherOptions();
 
+	// The total number of options
 	nOptions += nOtherOptions;
 
+	// Keep memory for options
 	options = (JavaVMOption *)malloc(sizeof(JavaVMOption) * nOptions);
-	if (!options)
-	{
+	if (!options) {
 		CX3DParser::printLog("Failed to alloc memory for setting JavaVM Options.\n");
 		return false;
 	}
 
+	// Setting of options
 	iOption = 0;
 
 	if (strlen(javaClassPath) > 0)
-	{
 		options[iOption++].optionString = javaClassPath;
-	}
 
 	if (strlen(javaLibraryPath) > 0)
-	{
 		options[iOption++].optionString = javaLibraryPath;
-	}
 
-	for (int iOtherOption=0; iOtherOption<nOtherOptions; iOtherOption++)
-	{
+	for (int iOtherOption=0; iOtherOption<nOtherOptions; iOtherOption++) {
 		options[iOption].optionString = (char *)conf.getOtherOption(iOtherOption);
-
 		iOption++;
 	}
 
+	// Recording the option in log
 	CX3DParser::printLog("*** JavaVMOption ***\n");
-	for (int i=0; i<nOptions; i++)
-	{
+	for (int i=0; i<nOptions; i++) {
 		CX3DParser::printLog("options[%d].optionString = (%s)\n", i, options[i].optionString);
 	}
 
-	// -----------------------------------------------
 	//	fill in startup structure
-	// -----------------------------------------------
 	vm_args.version = JNI_VERSION_1_2;
 	JNI_GetDefaultJavaVMInitArgs(&vm_args);
 	vm_args.options = options;
 	vm_args.nOptions = nOptions;
 
-	// -----------------------------------------------
-	// -----------------------------------------------
+	// Starting Java VM
 	ret = JNI_CreateJavaVM(&m_jvm, (void **)&m_env, &vm_args);
-	if (ret < 0)
-	{
+	if (ret < 0) {
 		CX3DParser::printLog("Failed to create Java VM\n");
 		return false;
 	}
-
 	CX3DParser::printLog("Java VM start ok\n");
 
-	// -----------------------------------------------
-	// -----------------------------------------------
+	// Release the memory
 	free(options);
 	options = NULL;
 
 	return true;
 }
-// end(fix)(2009/11/30)
+
 
 void CJNIUtil::destroyJavaVM()
 {
 	// -----------------------------------------------
 	//	destroy Java VM
 	// -----------------------------------------------
-	if (m_jvm)
-	{
+	if (m_jvm) {
 		m_jvm->DestroyJavaVM();
 		m_jvm = NULL;
 	}
 }
 
+
 jclass CJNIUtil::getClass(char *className)
 {
-	if (!m_env)
-	{
+	if (!m_env)	{
 		CX3DParser::printLog("java vm haven't started\n");
 		return NULL;
 	}
 
 	jclass c = m_env->FindClass(className);
-	if (!c)
-	{
+	if (!c)	{
 		CX3DParser::printLog("cannot find %s.class\n", className);
 		return NULL;
 	}
 
 	return c;
 }
+
 
 jobject CJNIUtil::newInstance(char *className)
 {
@@ -219,10 +213,10 @@ jobject CJNIUtil::newInstance(char *className)
 	return newInstance(c);
 }
 
+
 jobject CJNIUtil::newInstance(jclass c)
 {
-	if (!m_env)
-	{
+	if (!m_env)	{
 		CX3DParser::printLog("java vm haven't started\n");
 		return NULL;
 	}
@@ -232,14 +226,13 @@ jobject CJNIUtil::newInstance(jclass c)
 
 	// call constructor to create new instance
 	jobject obj = m_env->NewObject(c, midConstructor);
-	if (!obj)
-	{
+	if (!obj) {
 		CX3DParser::printLog("cannot create object\n");
 		return NULL;
 	}
-
 	return obj;
 }
+
 
 jmethodID CJNIUtil::getMethodID(char *className, char *methodName, char *methodSig)
 {
@@ -249,23 +242,23 @@ jmethodID CJNIUtil::getMethodID(char *className, char *methodName, char *methodS
 	return getMethodID(c, methodName, methodSig);
 }
 
+
 jmethodID CJNIUtil::getMethodID(jclass c, char *methodName, char *methodSig)
 {
-	if (!m_env)
-	{
+	if (!m_env)	{
 		CX3DParser::printLog("java vm haven't started\n");
 		return NULL;
 	}
 
 	jmethodID mid = m_env->GetMethodID(c, methodName, methodSig);
-	if (!mid)
-	{
+	if (!mid) {
 		CX3DParser::printLog("cannot get methodID of %s\n", methodName);
 		return NULL;
 	}
 
 	return mid;
 }
+
 
 jclass CJNIUtil::getClassOfVRMLNode()
 {
@@ -276,6 +269,7 @@ jclass CJNIUtil::getClassOfVRMLNode()
 	return m_class_VRMLNode;
 }
 
+
 bool CJNIUtil::isInstanceOfVRMLNode(jobject obj)
 {
 	jclass vrmlNodeClass = getClassOfVRMLNode();
@@ -283,152 +277,130 @@ bool CJNIUtil::isInstanceOfVRMLNode(jobject obj)
 	return (m_env->IsInstanceOf(obj, vrmlNodeClass)) ? true : false;
 }
 
+
 // -----------------------------------------------
+// Wrapper for methods in X3DParser class
 // -----------------------------------------------
 bool CJNIUtil::X3DParser_parse(jobject x3dParser, char *fname)
 {
-	if (!m_env)
-	{
+	if (!m_env)	{
 		CX3DParser::printLog("java vm haven't started\n");
 		return false;
 	}
 
 	if (!x3dParser) return false;
 
-	// -----------------------------------------------
-	//	get method id of X3DParse.parse()
-	// -----------------------------------------------
+	// get method id of X3DParse.parse()
 	char *className = "X3DParser";
 	char *methodName = "parse";
 	char *methodSig = "(Ljava/lang/String;)Z";
 
 	jmethodID mid = getMethodID(className, methodName, methodSig);
-	if (!mid)
-	{
+	if (!mid) {
 		CX3DParser::printLog("cannot get methodID of %s", methodName);
 		return false;
 	}
 
-	// -----------------------------------------------
-	//	make argument
-	// -----------------------------------------------
+	// Make argument
 	jstring utf8_fname = m_env->NewStringUTF(fname);
 
-	// -----------------------------------------------
-	//	call java's parser
-	// -----------------------------------------------
+	// Call java's parser
 	return (m_env->CallBooleanMethod(x3dParser, mid, utf8_fname) == JNI_TRUE) ? true : false;
 }
 
+
 jobjectArray CJNIUtil::X3DParser_getChildrenOfRootNode(jobject x3dParser)
 {
-	if (!m_env)
-	{
+	if (!m_env)	{
 		CX3DParser::printLog("java vm haven't started\n");
 		return NULL;
 	}
 
 	if (!x3dParser) return NULL;
 
-	// -----------------------------------------------
-	//	get method id
-	// -----------------------------------------------
+	// Get method id
 	char *className = "X3DParser";
 	char *methodName = "getChildrenOfRootNode";
 	char *methodSig = "()[Lorg/web3d/vrml/lang/VRMLNode;";
 
 	jmethodID mid = getMethodID(className, methodName, methodSig);
-	if (!mid)
-	{
+	if (!mid) {
 		CX3DParser::printLog("cannot get methodID of %s", methodName);
 		return NULL;
 	}
 
-	// -----------------------------------------------
-	//	call java's method
-	// -----------------------------------------------
+	// Call java's method
 	jobjectArray vrmlNodeArray = (jobjectArray)(m_env->CallObjectMethod(x3dParser, mid));
 
 	return vrmlNodeArray;
 }
 
+
 jobjectArray CJNIUtil::X3DParser_getDefNames(jobject x3dParser)
 {
-	if (!m_env)
-	{
+	if (!m_env)	{
 		CX3DParser::printLog("java vm haven't started\n");
 		return NULL;
 	}
 
 	if (!x3dParser) return NULL;
 
-	// -----------------------------------------------
-	//	get method id
-	// -----------------------------------------------
-	char *className = "X3DParser";
+	// Get method id
+	char *className  = "X3DParser";
 	char *methodName = "getDefNames";
-	char *methodSig = "()[Ljava/lang/String;";
+	char *methodSig  = "()[Ljava/lang/String;";
 
 	jmethodID mid = getMethodID(className, methodName, methodSig);
-	if (!mid)
-	{
+	if (!mid) {
 		CX3DParser::printLog("cannot get methodID of %s", methodName);
 		return NULL;
 	}
 
-	// -----------------------------------------------
-	//	call java's method
-	// -----------------------------------------------
+	// Call java's method
 	jobjectArray defNames = (jobjectArray)(m_env->CallObjectMethod(x3dParser, mid));
 
 	return defNames;
 }
 
+
 jobject CJNIUtil::X3DParser_getDefNode(jobject x3dParser, char *defName)
 {
-	if (!m_env)
-	{
+	if (!m_env)	{
 		CX3DParser::printLog("java vm haven't started\n");
 		return NULL;
 	}
 
 	if (!x3dParser) return NULL;
 
-	// -----------------------------------------------
-	//	get method id
-	// -----------------------------------------------
-	char *className = "X3DParser";
+	// Get method id
+	char *className  = "X3DParser";
 	char *methodName = "getDefNode";
-	char *methodSig = "(Ljava/lang/String;)Lorg/web3d/vrml/lang/VRMLNode;";
+	char *methodSig  = "(Ljava/lang/String;)Lorg/web3d/vrml/lang/VRMLNode;";
 
 	jmethodID mid = getMethodID(className, methodName, methodSig);
-	if (!mid)
-	{
+	if (!mid) {
 		CX3DParser::printLog("cannot get methodID of %s", methodName);
 		return NULL;
 	}
 
-	// -----------------------------------------------
-	//	make java's String from C/C++ char*
-	// -----------------------------------------------
+	// Make java's String from C/C++ char*
 	jstring utf8_defName = m_env->NewStringUTF(defName);
 
-	// -----------------------------------------------
-	//	call java's method
-	// -----------------------------------------------
+	// Call java's method
 	jobject defNode = m_env->CallObjectMethod(x3dParser, mid, utf8_defName);
 
 	return defNode;
 }
 
+
 // -----------------------------------------------
+// Wrapper of methods in VRMLNode class
 // -----------------------------------------------
 char *CJNIUtil::VRMLNode_getNodeName(jobject vrmlNode)
 {
 	static char buf[256];
 
-	if (!m_env)
-	{
+	if (!m_env)	{
 		CX3DParser::printLog("java vm haven't started\n");
 		return NULL;
 	}
@@ -440,8 +412,7 @@ char *CJNIUtil::VRMLNode_getNodeName(jobject vrmlNode)
 		"getVRMLNodeName",
 		"()Ljava/lang/String;");
 
-	if (!mid)
-	{
+	if (!mid) {
 		CX3DParser::printLog("method id not found [%s:%d]\n", __FILE__, __LINE__);
 		return NULL;
 	}
@@ -452,31 +423,28 @@ char *CJNIUtil::VRMLNode_getNodeName(jobject vrmlNode)
 
 	jboolean isCopy;
 	const char *pNodeName = m_env->GetStringUTFChars(jNodeName, &isCopy);
-	if (pNodeName)
-	{
+	if (pNodeName) {
 #ifdef WIN32
 		strcpy_s(buf, pNodeName);
 #else
 		strcpy(buf, pNodeName);
 #endif
 	}
-	else
-	{
+	else {
 		memset(buf, 0, sizeof(buf));
 	}
 
-	if (isCopy == JNI_TRUE)
-	{
+	if (isCopy == JNI_TRUE) {
 		m_env->ReleaseStringUTFChars(jNodeName, pNodeName);
 	}
 
 	return buf;
 }
 
+
 int CJNIUtil::VRMLNode_getNumFields(jobject vrmlNode)
 {
-	if (!m_env)
-	{
+	if (!m_env)	{
 		CX3DParser::printLog("java vm haven't started\n");
 		return -1;
 	}
@@ -513,10 +481,10 @@ jobject CJNIUtil::VRMLNode_getFieldDeclaration(jobject vrmlNode, int i)
 	return decl;
 }
 
+
 int CJNIUtil::VRMLNode_getFieldIndex(jobject vrmlNode, char *fieldName)
 {
-	if (!m_env)
-	{
+	if (!m_env)	{
 		CX3DParser::printLog("java vm haven't started\n");
 		return -1;
 	}
@@ -532,16 +500,18 @@ int CJNIUtil::VRMLNode_getFieldIndex(jobject vrmlNode, char *fieldName)
 
 	jint index = m_env->CallIntMethod(vrmlNode, mid, jFieldName);
 
-
+	// TODO to confirm: CAUTION:
+	// Is release of jFieldName requred?
 	return index;
 }
 
+
 // -----------------------------------------------
+// Wrapper of methods in VRMLNodeType class
 // -----------------------------------------------
 jobject CJNIUtil::VRMLNodeType_getFieldValue(jobject vrmlNode, int i)
 {
-	if (!m_env)
-	{
+	if (!m_env)	{
 		CX3DParser::printLog("java vm haven't started\n");
 		return NULL;
 	}
@@ -558,14 +528,15 @@ jobject CJNIUtil::VRMLNodeType_getFieldValue(jobject vrmlNode, int i)
 	return vrmlFieldData;
 }
 
+
 // -----------------------------------------------
+// Wrapper of methods in VRMLFieldDeclaration class
 // -----------------------------------------------
 char *CJNIUtil::VRMLFieldDeclaration_getName(jobject vrmlDecl)
 {
 	static char buf[256];
 
-	if (!m_env)
-	{
+	if (!m_env)	{
 		CX3DParser::printLog("java vm haven't started\n");
 		return NULL;
 	}
@@ -583,31 +554,28 @@ char *CJNIUtil::VRMLFieldDeclaration_getName(jobject vrmlDecl)
 
 	jboolean isCopy;
 	const char *pFieldName = m_env->GetStringUTFChars(jFieldName, &isCopy);
-	if (pFieldName)
-	{
+	if (pFieldName)	{
 #ifdef WIN32
 		strcpy_s(buf, pFieldName);
 #else
 		strcpy(buf, pFieldName);
 #endif
 	}
-	else
-	{
+	else {
 		memset(buf, 0, sizeof(buf));
 	}
 
-	if (isCopy == JNI_TRUE)
-	{
+	if (isCopy == JNI_TRUE)	{
 		m_env->ReleaseStringUTFChars(jFieldName, pFieldName);
 	}
 
 	return buf;
 }
 
+
 int CJNIUtil::VRMLFieldDeclaration_getFieldType(jobject vrmlDecl)
 {
-	if (!m_env)
-	{
+	if (!m_env)	{
 		CX3DParser::printLog("java vm haven't started\n");
 		return -1;
 	}
@@ -624,12 +592,12 @@ int CJNIUtil::VRMLFieldDeclaration_getFieldType(jobject vrmlDecl)
 	return ftype;
 }
 
+
 char *CJNIUtil::VRMLFieldDeclaration_getFieldTypeString(jobject vrmlDecl)
 {
 	static char buf[256];
 
-	if (!m_env)
-	{
+	if (!m_env)	{
 		CX3DParser::printLog("java vm haven't started\n");
 		return NULL;
 	}
@@ -647,21 +615,18 @@ char *CJNIUtil::VRMLFieldDeclaration_getFieldTypeString(jobject vrmlDecl)
 
 	jboolean isCopy;
 	const char *pTypeName = m_env->GetStringUTFChars(jTypeName, &isCopy);
-	if (pTypeName)
-	{
+	if (pTypeName) {
 #ifdef WIN32
 		strcpy_s(buf, pTypeName);
 #else
 		strcpy(buf, pTypeName);
 #endif
 	}
-	else
-	{
+	else {
 		memset(buf, 0, sizeof(buf));
 	}
 
-	if (isCopy == JNI_TRUE)
-	{
+	if (isCopy == JNI_TRUE) {
 		m_env->ReleaseStringUTFChars(jTypeName, pTypeName);
 	}
 
