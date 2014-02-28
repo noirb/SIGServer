@@ -8,7 +8,7 @@ class CX3DParserUtil
 {
 public:
 	// -------------------------------------------------------
-	//
+	// Extrace filename with removing suffix from the pathName
 	// (ex)
 	// ""
 	// ---> ""

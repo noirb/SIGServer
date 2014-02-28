@@ -62,8 +62,7 @@ void CX3DParser::printIndent(int indent)
 #ifndef X3DPARSER_DISABLE_DEBUG_LOG
 	FILE *fp = CX3DParser::getDebugLogFp();
 	
-	if (fp)
-	{
+	if (fp)	{
 		for (int i=0; i<indent; i++)
 		{
 			fprintf(fp, INDENT_LEVEL_STRING);
@@ -77,9 +76,8 @@ void CX3DParser::printLog(char *format, ...)
 #ifndef X3DPARSER_DISABLE_DEBUG_LOG
 	FILE *fp = CX3DParser::getDebugLogFp();
 	
-	if (fp)
-	{
-		char msg[1024];
+	if (fp)	{
+		char msg[1024];  //TODO: Magic number
 		va_list arg;
 
 		va_start(arg, format);
@@ -97,9 +95,8 @@ void CX3DParser::printIndentLog(int indentLevel, char *format, ...)
 #ifndef X3DPARSER_DISABLE_DEBUG_LOG
 	FILE *fp = CX3DParser::getDebugLogFp();
 	
-	if (fp)
-	{
-		char msg[1024];
+	if (fp)	{
+		char msg[1024];  //TODO: Magic number
 		va_list arg;
 
 		va_start(arg, format);
@@ -118,8 +115,7 @@ void CX3DParser::flushLog()
 #ifndef X3DPARSER_DISABLE_DEBUG_LOG
 	FILE *fp = getDebugLogFp();
 
-	if (fp)
-	{
+	if (fp)	{
 		fflush(fp);
 	}
 #endif
@@ -142,6 +138,9 @@ int CX3DParser::getMaxPrintElemsForMFField()
 
 CX3DParser::CX3DParser()
 {
+	// If an instance of this class is created just after delete of another instance of the same class, error arises
+	// CJNIUtil::init should be called from outside when you want to use X3D library
+	// CJNIUtil::destroy is also called from outside
 
 	CVRMLFieldDataFactory::init();
 
@@ -153,8 +152,7 @@ CX3DParser::CX3DParser()
 	char *className = "X3DParser";
 
 	m_X3DParser = ju->newInstance(className);
-	if (!m_X3DParser)
-	{
+	if (!m_X3DParser) {
 		CX3DParser::printLog("cannot create object of %s.class\n", className);
 		exit(1);
 	}
@@ -164,8 +162,7 @@ CX3DParser::CX3DParser()
 
 CX3DParser::~CX3DParser()
 {
-	if (m_X3DParser)
-	{
+	if (m_X3DParser) {
 		CJNIUtil *ju = CJNIUtil::getUtil();
 
 		ju->env()->DeleteGlobalRef(m_X3DParser);
@@ -173,57 +170,58 @@ CX3DParser::~CX3DParser()
 	}
 
 	CVRMLFieldDataFactory::destroy();
+
+	// This destroy method should not be called here: by msi on 2009-03-11
 	//CJNIUtil::destroy();
 }
 
+
 // -----------------------------------------------------
+// Parse VRML file
 // -----------------------------------------------------
 bool CX3DParser::parse(char *fname)
 {
 	CJNIUtil *ju = CJNIUtil::getUtil();
 
-	if (ju->X3DParser_parse(m_X3DParser, fname))
-	{
+	if (ju->X3DParser_parse(m_X3DParser, fname)) {
 		m_fname = fname;
 		return true;
 	}
-	else
-	{
+	else {
 		m_fname = "";
 		return false;
 	}
 }
 
 // -----------------------------------------------------
+// Print the contents of VRML file
 // -----------------------------------------------------
 void CX3DParser::print()
 {
 	CX3DParser::printLog("*****  content of %s  *****\n", m_fname.c_str());
 
 	MFNode *nodes = getChildrenOfRootNode();
-	if (nodes)
-	{
-		for (int i=0; i<nodes->count(); i++)
-		{
+	if (nodes) {
+		for (int i=0; i<nodes->count(); i++) {
 			CX3DNode *node = nodes->getNode(i);
 
-			if (node) node->print();
+			if (node) 
+				node->print();
 		}
-
 		delete nodes;
 	}
 }
 
 
-void CX3DParser::printNodeTypeList(){
+// Check node type
+void CX3DParser::printNodeTypeList()
+{
 	printf("\t\t\t///CX3DParser#printNodeTypeList()///\n");
 	CX3DParser::printLog("\t\t\t*****  content of %s  *****\n", m_fname.c_str());
 
 	MFNode *nodes = getChildrenOfRootNode();
-	if (nodes)
-	{
-		for (int i=0; i < nodes->count(); i++)
-		{
+	if (nodes) {
+		for (int i=0; i < nodes->count(); i++) {
 			CX3DNode *node = nodes->getNode(i);
 
 			if (node) {
@@ -231,6 +229,7 @@ void CX3DParser::printNodeTypeList(){
 				printf("\t\t\t\t\t[NodeType %d] = %d\n",i,nodetype);
 				printf("\t\t\t\t\t\tL[Name] = %s\n",node->getNodeName());
 
+				// Child nodes should be investigated
 				MFNode *children = node->searchNodesFromAllChildren(node->getNodeName());
 				if (children) {
 					int m = children->count();
@@ -247,13 +246,13 @@ void CX3DParser::printNodeTypeList(){
 
 			}
 		}
-
 		delete nodes;
 	}
 }
 
 
 // -----------------------------------------------------
+// Refer multiple nodes just under the root node
 // -----------------------------------------------------
 MFNode *CX3DParser::getChildrenOfRootNode()
 {
@@ -263,19 +262,16 @@ MFNode *CX3DParser::getChildrenOfRootNode()
 	jint len = ju->env()->GetArrayLength(vrmlNodeArray);
 
 	MFNode *nodes = new MFNode();
-	if (!nodes)
-	{
+	if (!nodes)	{
 		CX3DParser::printLog("out of memory [%s:%d]\n", __FILE__, __LINE__);
 		return NULL;
 	}
 
-	for (int i=0; i<len; i++)
-	{
+	for (int i=0; i<len; i++) {
 		jobject vrmlNode = ju->env()->GetObjectArrayElement(vrmlNodeArray, i);
 
 		CX3DNode *node = CX3DNodeFactory::createNode(vrmlNode);
-		if (node)
-		{
+		if (node) {
 			nodes->addValue(node);
 		}
 	}
@@ -283,13 +279,14 @@ MFNode *CX3DParser::getChildrenOfRootNode()
 	return nodes;
 }
 
+
 // -----------------------------------------------------
+// Find node by node name (1)
 // -----------------------------------------------------
 MFNode *CX3DParser::searchNodesFromDirectChildrenOfRoot(char *nodeName)
 {
 	MFNode *ret = new MFNode();
-	if (!ret)
-	{
+	if (!ret) {
 		CX3DParser::printLog("out of memory [%s:%d]\n", __FILE__, __LINE__);
 		return NULL;
 	}
@@ -298,18 +295,15 @@ MFNode *CX3DParser::searchNodesFromDirectChildrenOfRoot(char *nodeName)
 	if (!nodes) return NULL;
 
 	int n = nodes->count();
-	for (int i=0; i<n; i++)
-	{
-		CX3DNode *node = nodes->releaseNode(i);
 
-		if (node)
-		{
-			if (strcmp(node->getNodeName(), nodeName) == 0)
-			{
+	for (int i=0; i<n; i++) {
+		CX3DNode *node = nodes->releaseNode(i);
+		// After the releaseNode(), the responsibility to delete of the node (owner of node) will be moved to API caller
+		if (node) {
+			if (strcmp(node->getNodeName(), nodeName) == 0)	{
 				ret->addValue(node);
 			}
-			else
-			{
+			else {
 				delete node;
 				node = NULL;
 			}
@@ -323,12 +317,12 @@ MFNode *CX3DParser::searchNodesFromDirectChildrenOfRoot(char *nodeName)
 }
 
 // -----------------------------------------------------
+// Find node by node name (2)
 // -----------------------------------------------------
 MFNode *CX3DParser::searchNodesFromAllChildrenOfRoot(char *nodeName)
 {
 	MFNode *ret = new MFNode();
-	if (!ret)
-	{
+	if (!ret) {
 		CX3DParser::printLog("out of memory [%s:%d]\n", __FILE__, __LINE__);
 		return NULL;
 	}
@@ -337,34 +331,28 @@ MFNode *CX3DParser::searchNodesFromAllChildrenOfRoot(char *nodeName)
 	if (!nodes) return NULL;
 
 	int n = nodes->count();
-	for (int i=0; i<n; i++)
-	{
+	for (int i=0; i<n; i++)	{
 		CX3DNode *node = nodes->releaseNode(i);
-
-		if (node)
-		{
+		// After the releaseNode(), the responsibility to delete of the node (owner of node) will be moved to API caller
+		if (node) {
 			bool bDeleteNode;
 
-			if (strcmp(node->getNodeName(), nodeName) == 0)
-			{
+			if (strcmp(node->getNodeName(), nodeName) == 0)	{
 				ret->addValue(node);
 				bDeleteNode = false;
+				// This node should not be deleted because this is added as return value
 			}
-			else
-			{
+			else {
 				bDeleteNode = true;
 			}
-
+			// Child node also should be searched
 			MFNode *children = node->searchNodesFromAllChildren(nodeName);
-			if (children)
-			{
+			if (children) {
 				int m = children->count();
-				for (int j=0; j<m; j++)
-				{
+				for (int j=0; j<m; j++)	{
 					CX3DNode *child = children->releaseNode(j);
 
-					if (child)
-					{
+					if (child) {
 						ret->addValue(child);
 					}
 				}
@@ -373,8 +361,7 @@ MFNode *CX3DParser::searchNodesFromAllChildrenOfRoot(char *nodeName)
 				children = NULL;
 			}
 
-			if (bDeleteNode)
-			{
+			if (bDeleteNode) {
 				delete node;
 				node = NULL;
 			}
@@ -388,6 +375,7 @@ MFNode *CX3DParser::searchNodesFromAllChildrenOfRoot(char *nodeName)
 }
 
 // -----------------------------------------------------
+// Refer all of the def name
 // -----------------------------------------------------
 std::vector<std::string> CX3DParser::getDefNames()
 {
@@ -398,19 +386,16 @@ std::vector<std::string> CX3DParser::getDefNames()
 	jobjectArray defNameArray = ju->X3DParser_getDefNames(m_X3DParser);
 	jint len = ju->env()->GetArrayLength(defNameArray);
 
-	for (int i=0; i<len; i++)
-	{
+	for (int i=0; i<len; i++) {
 		jstring str = (jstring)(ju->env()->GetObjectArrayElement(defNameArray, i));
 
-		if (str)
-		{
+		if (str) {
 			jboolean isCopy;
 			const char *pstr = ju->env()->GetStringUTFChars(str, &isCopy);
 
 			defNames.push_back(pstr);
 
-			if (isCopy == JNI_TRUE)
-			{
+			if (isCopy == JNI_TRUE)	{
 				ju->env()->ReleaseStringUTFChars(str, pstr);
 			}
 		}
@@ -420,6 +405,7 @@ std::vector<std::string> CX3DParser::getDefNames()
 }
 
 // -----------------------------------------------------
+// subtract def node from def name
 // -----------------------------------------------------
 CX3DNode *CX3DParser::getDefNode(char *defName)
 {

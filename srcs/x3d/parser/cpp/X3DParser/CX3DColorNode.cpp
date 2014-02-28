@@ -8,6 +8,7 @@
 //
 //  CX3DColorNode
 
+// Create Color object from vrmlNode
 CX3DColorNode::CX3DColorNode(jobject vrmlNode)
 {
 	if (!vrmlNode)
@@ -25,7 +26,8 @@ CX3DColorNode::CX3DColorNode(jobject vrmlNode)
 	}
 
 	m_vrmlNode = ju->env()->NewGlobalRef(vrmlNode);
-	
+
+	// Temporary node (for field investigation)
 	CX3DNode *tmpNode = new CX3DNode(vrmlNode);
 	if (tmpNode)
 	{

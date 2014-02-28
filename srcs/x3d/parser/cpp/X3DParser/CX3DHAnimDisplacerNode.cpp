@@ -66,6 +66,7 @@ CX3DHAnimDisplacerNode::CX3DHAnimDisplacerNode(jobject vrmlNode)
 	}
 }
 
+
 void CX3DHAnimDisplacerNode::print(int indent)
 {
 	FILE *fp = CX3DParser::getDebugLogFp();
@@ -73,8 +74,7 @@ void CX3DHAnimDisplacerNode::print(int indent)
 	bool bPartialPrint = false;
 
 	char *nodeName = getNodeName();
-	if (nodeName)
-	{
+	if (nodeName) {
 		int i, n;
 
 		CX3DParser::printIndent(indent);
@@ -83,26 +83,31 @@ void CX3DHAnimDisplacerNode::print(int indent)
 		CX3DParser::printIndent(indent+1);
 		n = m_coordIndex.count();
 		fprintf(fp, "coordIndex [%d]\n", n);
-		if ((nMax > 0) && (n > nMax)) { n = nMax; bPartialPrint = true; }
-		else { bPartialPrint = false; }
+		if ((nMax > 0) && (n > nMax))
+			{ n = nMax; bPartialPrint = true; }
+		else
+			{ bPartialPrint = false; }
+
 		CX3DParser::printIndent(indent+2);
 		fprintf(fp, "(");
-		for (i=0; i<n; i++)
-		{
+		for (i=0; i<n; i++)	{
 			fprintf(fp, "%d ", m_coordIndex.getValue(i));
 		}
-		if (bPartialPrint) fprintf(fp, "...");
+		if (bPartialPrint)
+			fprintf(fp, "...");
 		fprintf(fp, ")\n");
 
 		CX3DParser::printIndent(indent+1);
 		n = m_displacements.count();
 		fprintf(fp, "displacements [%d]\n", n);
-		if ((nMax > 0) && (n > nMax)) { n = nMax; bPartialPrint = true; }
-		else { bPartialPrint = false; }
+		if ((nMax > 0) && (n > nMax))
+			{ n = nMax; bPartialPrint = true; }
+		else
+			{ bPartialPrint = false; }
+
 		CX3DParser::printIndent(indent+2);
 		fprintf(fp, "(");
-		for (i=0; i<n; i++)
-		{
+		for (i=0; i<n; i++)	{
 			fprintf(fp, "%f ", m_displacements.getValue(i));
 		}
 		if (bPartialPrint) fprintf(fp, "...");
@@ -112,4 +117,3 @@ void CX3DHAnimDisplacerNode::print(int indent)
 		fprintf(fp, "name (%s)\n", m_name.getValue());
 	}
 }
-

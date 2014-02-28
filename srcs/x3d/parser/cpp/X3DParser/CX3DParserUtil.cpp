@@ -20,6 +20,7 @@ std::string CX3DParserUtil::extractFileBaseName(const char *pathName)
 		if ((iPeriod == len) && (c == '.')) iPeriod = i;
 	}
 
+	// Extraction target is from pathName[iLastSlash+1] to pathName[iPeriod-1]
 	int nCopy = iPeriod - iLastSlash - 1;
 	strncpy(buf, pathName+iLastSlash+1, nCopy);
 	buf[nCopy] = '\0';

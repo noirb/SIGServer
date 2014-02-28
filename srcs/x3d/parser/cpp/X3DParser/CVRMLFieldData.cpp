@@ -1,3 +1,8 @@
+/*
+ * Modified by msi on 2009-02-23
+ * Added comments by Tetsunari Inamura on 2014-02-28
+ */
+
 #include "CX3DParser.h"
 #include "CVRMLFieldData.h"
 #include "CJNIUtil.h"
@@ -335,9 +340,12 @@ CVRMLFieldDataFactory::CVRMLFieldDataFactory()
 	JNIEnv *env = ju->env();
 
 	// ************************************************************
+	//   CAUTION: argument of FindClass() should be paid attention
 	// ************************************************************
-	//jclass c = env->FindClass("org.web3d.vrml.nodes.VRMLFieldData");
+	// Error
+	// jclass c = env->FindClass("org.web3d.vrml.nodes.VRMLFieldData");
 
+	// The following line is OK
 	jclass c = env->FindClass("org/web3d/vrml/nodes/VRMLFieldData");
 	if (!c)
 	{
@@ -345,23 +353,21 @@ CVRMLFieldDataFactory::CVRMLFieldDataFactory()
 		exit(1);
 	}
 
-	m_fid_dataType = env->GetFieldID(c, "dataType", "S");
-
-	m_fid_booleanValue = env->GetFieldID(c, "booleanValue", "Z");	// "Z" = boolean
-	m_fid_intValue = env->GetFieldID(c, "intValue", "I");
-	m_fid_longValue = env->GetFieldID(c, "longValue", "J");	// "J" = long
-	m_fid_floatValue = env->GetFieldID(c, "floatValue", "F");
-	m_fid_doubleValue = env->GetFieldID(c, "doubleValue", "D");
-	m_fid_stringValue = env->GetFieldID(c, "stringValue", "Ljava/lang/String;");
-	m_fid_nodeValue = env->GetFieldID(c, "nodeValue", "Lorg/web3d/vrml/lang/VRMLNode;");
-
+	m_fid_dataType          = env->GetFieldID(c, "dataType",          "S");
+	m_fid_booleanValue      = env->GetFieldID(c, "booleanValue",      "Z");	// "Z" = boolean
+	m_fid_intValue          = env->GetFieldID(c, "intValue",          "I");
+	m_fid_longValue         = env->GetFieldID(c, "longValue",         "J");	// "J" = long
+	m_fid_floatValue        = env->GetFieldID(c, "floatValue",        "F");
+	m_fid_doubleValue       = env->GetFieldID(c, "doubleValue",       "D");
+	m_fid_stringValue       = env->GetFieldID(c, "stringValue",       "Ljava/lang/String;");
+	m_fid_nodeValue         = env->GetFieldID(c, "nodeValue",         "Lorg/web3d/vrml/lang/VRMLNode;");
 	m_fid_booleanArrayValue = env->GetFieldID(c, "booleanArrayValue", "[Z");
-	m_fid_intArrayValue = env->GetFieldID(c, "intArrayValue", "[I");
-	m_fid_longArrayValue = env->GetFieldID(c, "longArrayValue", "[J");
-	m_fid_floatArrayValue = env->GetFieldID(c, "floatArrayValue", "[F");
-	m_fid_doubleArrayValue = env->GetFieldID(c, "doubleArrayValue", "[D");
-	m_fid_stringArrayValue = env->GetFieldID(c, "stringArrayValue", "[Ljava/lang/String;");
-	m_fid_nodeArrayValue = env->GetFieldID(c, "nodeArrayValue", "[Lorg/web3d/vrml/lang/VRMLNode;");
+	m_fid_intArrayValue     = env->GetFieldID(c, "intArrayValue",     "[I");
+	m_fid_longArrayValue    = env->GetFieldID(c, "longArrayValue",    "[J");
+	m_fid_floatArrayValue   = env->GetFieldID(c, "floatArrayValue",   "[F");
+	m_fid_doubleArrayValue  = env->GetFieldID(c, "doubleArrayValue",  "[D");
+	m_fid_stringArrayValue  = env->GetFieldID(c, "stringArrayValue",  "[Ljava/lang/String;");
+	m_fid_nodeArrayValue    = env->GetFieldID(c, "nodeArrayValue",    "[Lorg/web3d/vrml/lang/VRMLNode;");
 }
 
 CVRMLFieldData *CVRMLFieldDataFactory::createField(jobject vrmlFieldData)
@@ -415,18 +421,13 @@ CVRMLFieldData *CVRMLFieldDataFactory::createField(jobject vrmlFieldData)
 			jobject value = env->GetObjectField(vrmlFieldData, m_fid_stringValue);
 
 			jclass stringClass = env->FindClass("java/lang/String");
-			if (!stringClass)
-			{
+			if (!stringClass) {
 				fprintf(stderr, "cannot find String Class\n");
 				exit(1);
 			}
 
-#if 1
-			// fix(2009/2/23)
-			if (value)
-			{
-				if (env->IsInstanceOf(value, stringClass))
-				{
+			if (value) {
+				if (env->IsInstanceOf(value, stringClass)) {
 					jstring str = (jstring)value;
 
 					jboolean isCopy;
@@ -434,32 +435,16 @@ CVRMLFieldData *CVRMLFieldDataFactory::createField(jobject vrmlFieldData)
 
 					data = new CVRMLStringData(utf8Chars);
 
-					if (isCopy == JNI_TRUE)
-					{
+					if (isCopy == JNI_TRUE) {
 						env->ReleaseStringUTFChars(str, utf8Chars);
 					}
 				}
 			}
-			else
-			{
+			else {
+				// Added on 2009-02-23 by msi
+				// Let the name empty if the pointer is NULL
 				data = new CVRMLStringData("");
 			}
-#else
-			if (env->IsInstanceOf(value, stringClass))
-			{
-				jstring str = (jstring)value;
-
-				jboolean isCopy;
-				const char *utf8Chars = env->GetStringUTFChars(str, &isCopy);
-
-				data = new CVRMLStringData(utf8Chars);
-
-				if (isCopy == JNI_TRUE)
-				{
-					env->ReleaseStringUTFChars(str, utf8Chars);
-				}
-			}
-#endif
 		}
 		break;
 
@@ -474,25 +459,21 @@ CVRMLFieldData *CVRMLFieldDataFactory::createField(jobject vrmlFieldData)
 	case BOOLEAN_ARRAY_DATA:
 		{
 			jbooleanArray values = (jbooleanArray)(env->GetObjectField(vrmlFieldData, m_fid_booleanArrayValue));
-			if (values)
-			{
+			if (values)	{
 				jint len = env->GetArrayLength(values);
 				jboolean isCopy;
 				jboolean *pValues = env->GetBooleanArrayElements(values, &isCopy);
 
-				if (pValues)
-				{
+				if (pValues) {
 					CVRMLBooleanArrayData *tmpData = new CVRMLBooleanArrayData();
 
-					for (int i=0; i<len; i++)
-					{
+					for (int i=0; i<len; i++) {
 						tmpData->addValue((pValues[i] == JNI_TRUE) ? true : false);
 					}
 
 					data = (CVRMLFieldData *)tmpData;
 
-					if (isCopy == JNI_TRUE)
-					{
+					if (isCopy == JNI_TRUE)	{
 						env->ReleaseBooleanArrayElements(values, pValues, 0);
 					}
 				}
@@ -509,19 +490,15 @@ CVRMLFieldData *CVRMLFieldDataFactory::createField(jobject vrmlFieldData)
 				jboolean isCopy;
 				jint *pValues = env->GetIntArrayElements(values, &isCopy);
 
-				if (pValues)
-				{
+				if (pValues) {
 					CVRMLIntArrayData *tmpData = new CVRMLIntArrayData();
 
-					for (int i=0; i<len; i++)
-					{
+					for (int i=0; i<len; i++) {
 						tmpData->addValue(pValues[i]);
 					}
-
 					data = (CVRMLFieldData *)tmpData;
 
-					if (isCopy == JNI_TRUE)
-					{
+					if (isCopy == JNI_TRUE)	{
 						env->ReleaseIntArrayElements(values, pValues, 0);
 					}
 				}
@@ -532,25 +509,21 @@ CVRMLFieldData *CVRMLFieldDataFactory::createField(jobject vrmlFieldData)
 	case LONG_ARRAY_DATA:
 		{
 			jlongArray values = (jlongArray)(env->GetObjectField(vrmlFieldData, m_fid_longArrayValue));
-			if (values)
-			{
+			if (values)	{
 				jint len = env->GetArrayLength(values);
 				jboolean isCopy;
 				jlong *pValues = env->GetLongArrayElements(values, &isCopy);
 
-				if (pValues)
-				{
+				if (pValues) {
 					CVRMLLongArrayData *tmpData = new CVRMLLongArrayData();
 
-					for (int i=0; i<len; i++)
-					{
+					for (int i=0; i<len; i++) {
 						tmpData->addValue(pValues[i]);
 					}
 
 					data = (CVRMLFieldData *)tmpData;
 
-					if (isCopy == JNI_TRUE)
-					{
+					if (isCopy == JNI_TRUE) {
 						env->ReleaseLongArrayElements(values, pValues, 0);
 					}
 				}
@@ -561,25 +534,21 @@ CVRMLFieldData *CVRMLFieldDataFactory::createField(jobject vrmlFieldData)
 	case FLOAT_ARRAY_DATA:
 		{
 			jfloatArray values = (jfloatArray)(env->GetObjectField(vrmlFieldData, m_fid_floatArrayValue));
-			if (values)
-			{
+			if (values) {
 				jint len = env->GetArrayLength(values);
 				jboolean isCopy;
 				jfloat *pValues = env->GetFloatArrayElements(values, &isCopy);
 
-				if (pValues)
-				{
+				if (pValues) {
 					CVRMLFloatArrayData *tmpData = new CVRMLFloatArrayData();
 
-					for (int i=0; i<len; i++)
-					{
+					for (int i=0; i<len; i++) {
 						tmpData->addValue(pValues[i]);
 					}
 
 					data = (CVRMLFieldData *)tmpData;
 
-					if (isCopy == JNI_TRUE)
-					{
+					if (isCopy == JNI_TRUE) {
 						env->ReleaseFloatArrayElements(values, pValues, 0);
 					}
 				}
@@ -590,25 +559,21 @@ CVRMLFieldData *CVRMLFieldDataFactory::createField(jobject vrmlFieldData)
 	case DOUBLE_ARRAY_DATA:
 		{
 			jdoubleArray values = (jdoubleArray)(env->GetObjectField(vrmlFieldData, m_fid_doubleArrayValue));
-			if (values)
-			{
+			if (values) {
 				jint len = env->GetArrayLength(values);
 				jboolean isCopy;
 				jdouble *pValues = env->GetDoubleArrayElements(values, &isCopy);
 
-				if (pValues)
-				{
+				if (pValues) {
 					CVRMLDoubleArrayData *tmpData = new CVRMLDoubleArrayData();
 
-					for (int i=0; i<len; i++)
-					{
+					for (int i=0; i<len; i++) {
 						tmpData->addValue(pValues[i]);
 					}
 
 					data = (CVRMLFieldData *)tmpData;
 
-					if (isCopy == JNI_TRUE)
-					{
+					if (isCopy == JNI_TRUE)	{
 						env->ReleaseDoubleArrayElements(values, pValues, 0);
 					}
 				}
@@ -619,20 +584,17 @@ CVRMLFieldData *CVRMLFieldDataFactory::createField(jobject vrmlFieldData)
 	case STRING_ARRAY_DATA:
 		{
 			jobjectArray values = (jobjectArray)(env->GetObjectField(vrmlFieldData, m_fid_stringArrayValue));
-			if (values)
-			{
+			if (values)	{
 				CVRMLStringArrayData *tmpData = new CVRMLStringArrayData();
 
 				jint len = env->GetArrayLength(values);
-				for (int i=0; i<len; i++)
-				{
+				for (int i=0; i<len; i++) {
 					jstring jstr = (jstring)(env->GetObjectArrayElement(values, i));
 					jboolean isCopy;
 					const char *utf8Chars = env->GetStringUTFChars(jstr, &isCopy);
 					tmpData->addValue(utf8Chars);
 
-					if (isCopy == JNI_TRUE)
-					{
+					if (isCopy == JNI_TRUE)	{
 						env->ReleaseStringUTFChars(jstr, utf8Chars);
 					}
 					env->DeleteLocalRef(jstr);
@@ -646,16 +608,13 @@ CVRMLFieldData *CVRMLFieldDataFactory::createField(jobject vrmlFieldData)
 	case NODE_ARRAY_DATA:
 		{
 			jobjectArray values = (jobjectArray)(env->GetObjectField(vrmlFieldData, m_fid_nodeArrayValue));
-			if (values)
-			{
+			if (values)	{
 				CVRMLNodeArrayData *tmpData = new CVRMLNodeArrayData();
 
 				jint len = env->GetArrayLength(values);
-				for (int i=0; i<len; i++)
-				{
+				for (int i=0; i<len; i++) {
 					jobject vrmlNode = env->GetObjectArrayElement(values, i);
-					if (vrmlNode)
-					{
+					if (vrmlNode) {
 						tmpData->addValue(vrmlNode);
 					}
 					env->DeleteLocalRef(vrmlNode);

@@ -15,8 +15,7 @@ int main(int argc, char *argv[])
 	int iRestArgsTop = 0;
 	int nRestArgs = 0;
 
-	if (argc < 3)
-	{
+	if (argc < 3) {
 #ifdef WIN32
 #include "MainHelp_win.cpp"
 #else
@@ -24,29 +23,24 @@ int main(int argc, char *argv[])
 #endif
 		return 1;
 	}
-	else
-	{
+	else {
 		testNo = atoi(argv[1]);
 		vrmlFile = argv[2];	
 
 		iRestArgsTop = 3;
 		nRestArgs = 0;
 
-		for (int i=3; i<argc; i++)
-		{
-			if ((strcmp(argv[i], "-MFMax") == 0) && ((i+1) < argc))
-			{
+		for (int i=3; i<argc; i++) {
+			if ((strcmp(argv[i], "-MFMax") == 0) && ((i+1) < argc))	{
 				nMFMax = atoi(argv[i+1]);
 				i++;
 			}
-			else if ((strcmp(argv[i], "-log") == 0) && ((i+1) < argc))
-			{
+			else if ((strcmp(argv[i], "-log") == 0) && ((i+1) < argc)) {
 				logfile = argv[i+1];
 				CX3DParser::openDebugLog(logfile);
 				i++;
 			}
-			else
-			{
+			else {
 				nRestArgs++;
 			}
 		}
@@ -56,13 +50,10 @@ int main(int argc, char *argv[])
 	fprintf(stderr, "nMFMax : %d\n", nMFMax);
 	fprintf(stderr, "logfile : %s\n", logfile ? logfile : "stderr");
 
-	// begin(add)(2009/3/27)
-	if (!CJNIUtil::init("X3DParser.cfg"))
-	{
+	if (!CJNIUtil::init("X3DParser.cfg")) {
 		CX3DParser::printLog("*** Failed to initialize Java VM ***");
 		exit(1);
 	}
-	// end(add)
 
 	CX3DParser parser;
 
