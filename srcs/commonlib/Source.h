@@ -1,4 +1,8 @@
-/* $Id: Source.h,v 1.2 2011-03-31 08:15:57 okamoto Exp $ */ 
+/*
+ * Modified by okamoto on 2011-03-31
+ * Added comments by Tetsunari Inamura on 2014-02-28
+ */
+
 #ifndef Source_h
 #define Source_h
 
@@ -28,10 +32,13 @@ enum {
 	SOURCE_TYPE_SERVICE_PROVIDER,
 	SOURCE_TYPE_NUN,
 	SOURCE_TYPE_NEW_VIEW, // new version
-	SOURCE_TYPE_MESSAGE   
+	SOURCE_TYPE_MESSAGE   // new version for Service Provider
 };
 typedef signed SourceType;
 
+/**
+ * @brief Class for source of data transfer connection
+ */
 class Source
 {
 private:
@@ -62,19 +69,34 @@ private:
 #endif
 	
 public:
+	/**
+	 * @brief Constructor
+	 *
+	 * @param sock Socket of connection source
+	 */
 	Source(SOCKET sock)
 		: m_type(SOURCE_TYPE_NOT_SET), m_sock(sock), m_ignore(false) {;}
-	
+
+	/**
+	 * @brief Constructor
+	 *
+	 * @param sock     Socket of connection source
+	 * @param hostname Hostname of connection source
+	 */	
 	Source(SOCKET sock, const char *hostname) 
 		: m_type(SOURCE_TYPE_NOT_SET), m_sock(sock), m_hostname(hostname), m_ignore(false) {;}
 
-	void	set(SourceType type, const char *name) {
+	/**
+	 * @brief Set type of connection source and connection name
+	 */
+	void set(SourceType type, const char *name) {
 		m_type = type;
 		if (name) {
 			m_name = name;
 		}
 	}
 
+	//! Return socket descripter
 	SOCKET	socket() { return m_sock; }
 #ifdef EXEC_SIMULATION
 	int	send(CommDataEncoder &);
@@ -84,40 +106,62 @@ public:
 	}
 #endif
 
+	//! Refer connection name
 	const char *name() const { return m_name.length() > 0? m_name.c_str(): ""; }
+	//! Refer hostname of connection source
 	const char *hostname() const { return m_hostname.c_str(); }
 
+	//! Whether ignore the connection or not
 	bool	ignore() { return m_ignore; }
+	//! Switch the ignore flag
 	void	ignore(bool b) { m_ignore = b; }
-
+	//! Refer connection type
 	SourceType type() { return m_type; }
+	//! Whether the connection type is set or not
 	bool	noType() { return m_type == SOURCE_TYPE_NOT_SET? true: false; }
+	//! Is the connection type 'View'?
 	bool	isView() { return m_type == SOURCE_TYPE_VIEW? true: false; }
+	//! Is the connection type 'Controller Command'?
 	bool	isControllerCmd() { return m_type == SOURCE_TYPE_CONTROLLER_CMD? true: false; }
+	//! Is the connection type 'Controller Data'?
 	bool	isControllerData() { return m_type == SOURCE_TYPE_CONTROLLER_DATA? true: false; }
+	//! Is the connection type 'Service Provider'?
 	bool	isServiceProvider() { return m_type == SOURCE_TYPE_SERVICE_PROVIDER? true: false; }
 
-
-	void	setProperty(const char *key, const char *val)
+	/**
+	 * @brief Set connection property
+	 * @param key   name of property
+	 * @param value value of property
+	 */
+	void setProperty(const char *key, const char *val)
 	{
 		m_properties[S(key)] = S(val);
 	}
 
-	bool	propertyEquals(const char *key,  const char *val)
+	/**
+	 * @brief Is connection property equal?
+	 * @param key   name of property
+	 * @param value value of property
+	 */
+	bool propertyEquals(const char *key,  const char *val)
 	{
 		M::iterator i = m_properties.find(S(key));
 		if (i == m_properties.end()) { return false; }
 		return strcmp(i->second.c_str(), val) == 0? true: false;
 	}
-	void	close() {
+
+	//! Close the connection
+	void close() {
 #ifdef WIN32
 		closesocket(m_sock);
 		m_sock = SOCKET_ERROR;
 #else
+		// Use shutdown instead of close for socket for writing
 		shutdown(m_sock, 1);
 		m_sock = -1; 
 #endif
 	}
+	//! Is the same connection source?
 	bool 	equals(const Source &o)
 	{
 		return strcmp(o.name(), name()) == 0? true: false;

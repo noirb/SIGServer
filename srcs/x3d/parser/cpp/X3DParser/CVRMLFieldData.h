@@ -1,3 +1,7 @@
+/*
+ * Added comment by Tetsunari Inamura on 2014-02-28
+ */
+
 #ifndef _CVRMLFIELDDATA_H_
 #define _CVRMLFIELDDATA_H_
 
@@ -17,24 +21,29 @@ typedef long long	_CVRML_LONG_;
 enum CVRMLFieldDataType
 {
 	UNKNOWN,
-	BOOLEAN_DATA = 1,
-	INT_DATA = 2,
-	LONG_DATA = 3,
-	FLOAT_DATA = 4,
-	DOUBLE_DATA = 5,
+	BOOLEAN_DATA       = 1,
+	INT_DATA           = 2,
+	LONG_DATA          = 3,
+	FLOAT_DATA         = 4,
+	DOUBLE_DATA        = 5,
 
-	STRING_DATA = 6,	
-	NODE_DATA = 7,	
+	STRING_DATA        = 6,	// *
+	NODE_DATA          = 7,	// *
 
 	BOOLEAN_ARRAY_DATA = 8,
-	INT_ARRAY_DATA = 9,
-	LONG_ARRAY_DATA = 10,
-	FLOAT_ARRAY_DATA = 11,
-	DOUBLE_ARRAY_DATA = 12,
+	INT_ARRAY_DATA     = 9,
+	LONG_ARRAY_DATA    = 10,
+	FLOAT_ARRAY_DATA   = 11,
+	DOUBLE_ARRAY_DATA  = 12,
 
-	NODE_ARRAY_DATA = 13,
-	STRING_ARRAY_DATA = 14
+	// The order of following two lines are opposite to the above * (6 and 7); however, it is correct
+	NODE_ARRAY_DATA    = 13,
+	STRING_ARRAY_DATA  = 14
+	// CAUTION:
+	// This aims to follow the same description in org/web3d/vrml/nodes/VRMLFieldData.java
+	// If the above values are different from VRMLFieldData.java, it might not work well.
 };
+
 
 ///////////////////////////////////////////////////////////
 //
@@ -149,19 +158,15 @@ public:
 		CJNIUtil *ju = CJNIUtil::getUtil();
 		JNIEnv *env = ju->env();
 
-		if (vrmlNode)
-		{
-			if (!ju->isInstanceOfVRMLNode(vrmlNode))
-			{
+		if (vrmlNode) {
+			if (!ju->isInstanceOfVRMLNode(vrmlNode)) {
 				fprintf(stderr, "vrmlNode is not instance of VRMLNode [%s:%d]\n", __FILE__, __LINE__);
 				exit(1);
 			}
-			
 			m_vrmlNode = env->NewGlobalRef(vrmlNode);
 		}
-		else
-		{
-	//		fprintf(stderr, "vrmlNode is NULL [%s:%d]\n", __FILE__, __LINE__);
+		else {
+			//fprintf(stderr, "vrmlNode is NULL [%s:%d]\n", __FILE__, __LINE__);
 			m_vrmlNode = NULL;
 		}
 	}
@@ -169,8 +174,7 @@ public:
 	virtual ~CVRMLNodeData() {
 		JNIEnv *env = CJNIUtil::getEnv();
 
-		if (m_vrmlNode)
-		{
+		if (m_vrmlNode)	{
 			env->DeleteGlobalRef(m_vrmlNode);
 			m_vrmlNode = NULL;
 		}
@@ -275,11 +279,9 @@ public:
 		JNIEnv *env = CJNIUtil::getEnv();
 
 		std::vector<jobject>::iterator i;
-		for (i=m_values.begin(); i!=m_values.end(); i++)
-		{
+		for (i=m_values.begin(); i!=m_values.end(); i++) {
 			jobject vrmlNode = *i;
-			if (vrmlNode)
-			{
+			if (vrmlNode) {
 				env->DeleteGlobalRef(vrmlNode);
 			}
 		}
@@ -292,19 +294,15 @@ public:
 		CJNIUtil *ju = CJNIUtil::getUtil();
 		JNIEnv *env = ju->env();
 
-		if (vrmlNode)
-		{
-			if (!ju->isInstanceOfVRMLNode(vrmlNode))
-			{
+		if (vrmlNode) {
+			if (!ju->isInstanceOfVRMLNode(vrmlNode)) {
 				fprintf(stderr, "vrmlNode is not instance of VRMLNode [%s:%d]\n", __FILE__, __LINE__);
 				exit(1);
 			}
-			
 			m_values.push_back(env->NewGlobalRef(vrmlNode));
 		}
-		else
-		{
-	//		fprintf(stderr, "vrmlNode is NULL [%s:%d]\n", __FILE__, __LINE__);
+		else {
+			//fprintf(stderr, "vrmlNode is NULL [%s:%d]\n", __FILE__, __LINE__);
 			m_values.push_back(NULL);
 		}
 	}

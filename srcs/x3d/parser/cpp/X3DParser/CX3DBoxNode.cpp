@@ -8,24 +8,24 @@
 //
 //  CX3DBoxNode
 
+// Create Box object from vrmlNode
 CX3DBoxNode::CX3DBoxNode(jobject vrmlNode)
 {
-	if (!vrmlNode)
-	{
+	if (!vrmlNode) {
 		m_vrmlNode = NULL;
 		return;
 	}
 
 	CJNIUtil *ju = CJNIUtil::getUtil();
 
-	if (!ju->isInstanceOfVRMLNode(vrmlNode))
-	{
+	if (!ju->isInstanceOfVRMLNode(vrmlNode)) {
 		fprintf(stderr, "vrmlNode is not instance of VRMLNode [%s:%d]\n", __FILE__, __LINE__);
 		exit(1);
 	}
 
 	m_vrmlNode = ju->env()->NewGlobalRef(vrmlNode);
-	
+
+	// Temporary node (for field investigation)
 	CX3DNode *tmpNode = new CX3DNode(vrmlNode);
 	if (tmpNode)
 	{

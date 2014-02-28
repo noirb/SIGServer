@@ -1,4 +1,7 @@
-/* $Id: binary.h,v 1.4 2011-09-13 06:57:22 okamoto Exp $ */ 
+/*
+ * Modified by okamoto on 2011-09-13
+ */
+
 #ifndef binary_h
 #define binary_h
 
