@@ -2,10 +2,11 @@
  * Written by noma on 2012-03-27
  * Modified by Tetsunari Inamura on 2014-01-08
  *    Delete major magic numbers by enum for new communication protocal
- *    English comments (translation is not finished yet)
  *    Delete memory leak bugs
  * Modified by Yoshiaki Mizuchi on 2014-01-17
  *    Add English comment, modify indent
+ *
+ * TODO: Too many magic numbers are still remained
  */
 
 #include "ControllerImpl.h"
@@ -67,57 +68,56 @@ bool SocketUtil::sendData(SOCKET sock, const char* msg, int size)
 {
 	int sended = 0;
 
-	// For when cannot send all data at once 
-	while(1) {
-
+	// Deal with a case when all the data cannot be sent at once
+	while (1) {
 		// Send
 		int r = send(sock, msg + sended, size - sended, 0);
 
-		if (r < 0) 
-			{
-				if ( errno == EAGAIN ||
-					errno == EWOULDBLOCK ) {
-					usleep(100);
-					continue;
-				}
-				LOG_ERR(("Failed to send data. erro[%d] [%s:%d]", r,  __FILE__, __LINE__ ));
-				return false;
+		if (r < 0) {
+		// Fail to send
+			if ( errno == EAGAIN ||
+				 errno == EWOULDBLOCK ) {
+				usleep(100);
+				continue;
 			}
-
+			LOG_ERR(("Failed to send data. erro[%d] [%s:%d]", r,  __FILE__, __LINE__ ));
+			return false;
+		}
 		// Number of sent bytes
 		sended += r;
 
-		// Check all data was sent
+		// Check whether all of the data is sent or not
 		if (size == sended) break;
 	}
 	return true;
 }
 
+
 bool SocketUtil::recvData(SOCKET sock, char* msg, int size)
 {
 	int recieved = 0;
 
-	// For when cannot send all data at once 
-	while(1) {
+	// Deal with a case when all the data cannot be sent at once
+	while (1) {
 
 		// Receive
 		int r = recv(sock, msg + recieved, size - recieved, 0);
 
-		// Receiving failed
-		if (r < 0) 
-			{
-				//LOG_SYS(("stop recieve data from Service. erro[%d]",r));
-				return false;
-			}
+		// Failed to Receive
+		if (r < 0) {
+			//LOG_SYS(("stop recieve data from Service. erro[%d]",r));
+			return false;
+		}
 
 		// Number of received bytes
 		recieved += r;
 
-		// Check all data was received
+		// Check whether all of the data is received or not
 		if (size == recieved) break;
 	}
 	return true;
 }
+
 
 std::string DoubleToString(double x)
 {
@@ -161,13 +161,12 @@ void ControllerImpl::close_()
 //! Start the loop of a service provider
 bool BaseService::startServiceLoop(ControllerImpl *con)
 {
-
 }
 
 //! End the loop of a service provider
 void BaseService::endServiceLoop()
 {
-	// Send sessage with an entity name
+	// Send message with an entity name
 	std::string msg_tmp = m_entname + ",";
 	int sendSize = msg_tmp.size() + sizeof(unsigned short) * 2;
 
@@ -265,7 +264,7 @@ ViewImage* ViewService::captureView(int camID, ColorBitType ctype, ImageDataSize
 	switch(ssize) {
 	case 1: 
 		{
-			ssize = 230400; // 320*240*3
+			ssize = 230400; // 320*240*3; TODO: Magic number
 			break;
 		}
 	}
@@ -281,7 +280,7 @@ ViewImage* ViewService::captureView(int camID, ColorBitType ctype, ImageDataSize
 	ColorBitType cb;
 	ImageDataSize ims;
 	// Get image information from the size
-	if (ssize == 230400) {
+	if (ssize == 230400) { //TODO: Magic number
 		cb  = COLORBIT_24;
 		ims = IMAGE_320X240; 
 	}
@@ -294,6 +293,7 @@ ViewImage* ViewService::captureView(int camID, ColorBitType ctype, ImageDataSize
 
 	tmp_img->setBuffer(recvBuff); //TODO: Danger: buffer created in this function is given to others
 	return tmp_img;
+	// CAUTION: Delete of the object should be done by users
 }
 
 
@@ -336,8 +336,8 @@ bool  ViewService::detectEntities(std::vector<std::string> &v, int camID)
 	unsigned short ssize = BINARY_GET_DATA_S_INCR(p, unsigned short);      
 	ssize -= 4;
 
-	// Header would be 8
-	if (head != 8) {
+	// Header should be 8
+	if (head != 8) { //TODO: Magic number
 		LOG_ERR(("detectEntities: cannot get entity data [%s, %d].", __FILE__, __LINE__));
 		return false;
 	}
@@ -361,24 +361,27 @@ bool  ViewService::detectEntities(std::vector<std::string> &v, int camID)
 }
 
 
+// TODO: return value of this API is strange, should be changed
+// TODO: sensor value should be returned by variable, not as return value
 unsigned char ViewService::distanceSensor(double start, double end, int camID, ColorBitType ctype) 
 {
 	// Send request to the viewer
-	if (!sendDSRequest(0, start, end, camID, ctype)) return NULL;
+	if (!sendDSRequest(0, start, end, camID, ctype))
+		return 0;
 
 	char tmp[4];
 	char *p = tmp;
 
 	if (!recvData(m_clientSock, tmp, 4)) {
 		LOG_ERR(("distanceSensor: cannot get distance data [%s, %d].", __FILE__, __LINE__));
-		return false;
+		return 0;
 	}
 
 	// Header infomation
 	unsigned short head  = BINARY_GET_DATA_S_INCR(p, unsigned short); 
-	int ssize = BINARY_GET_DATA_S_INCR(p, unsigned short);      
+	int ssize            = BINARY_GET_DATA_S_INCR(p, unsigned short);      
 
-	if (head != 3)
+	if (head != 3) //TODO: Magic number
 		LOG_ERR(("distanceSensor: cannot get distance data [%s, %d].", __FILE__, __LINE__));
 
 	// Receive image data
@@ -390,14 +393,12 @@ unsigned char ViewService::distanceSensor(double start, double end, int camID, C
 			break;
 		}
 	}
-
 	// Receive data
 	char *recvBuff = new char[ssize];
 	if (!recvData(m_clientSock, recvBuff, ssize)) {
 		delete [] recvBuff;
 		return 0;
 	} 
-
 	// Receive distance data
 	unsigned char distance = recvBuff[0];
 	delete [] recvBuff;
@@ -415,7 +416,7 @@ ViewImage* ViewService::distanceSensor1D(double start, double end, int camID, Co
 	char tmp[4];
 	char *p = tmp;
 
-	if (!recvData(m_clientSock, tmp, 4)) {
+	if (!recvData(m_clientSock, tmp, 4)) { //TODO: Magic number
 		LOG_ERR(("distanceSensor1D: cannot get distance data [%s, %d].", __FILE__, __LINE__));
 		return false;
 	}
@@ -466,7 +467,8 @@ ViewImage* ViewService::distanceSensor1D(double start, double end, int camID, Co
 ViewImage* ViewService::distanceSensor2D(double start, double end, int camID, ColorBitType ctype, ImageDataSize size) 
 {
 	// Send request to the viewer
-	if (!sendDSRequest(2, start, end, camID, ctype, size)) return NULL;
+	if (!sendDSRequest(2, start, end, camID, ctype, size)) //TODO: Magic number
+		return NULL;
 
 	char tmp[4];
 	char *p = tmp;
@@ -488,7 +490,7 @@ ViewImage* ViewService::distanceSensor2D(double start, double end, int camID, Co
 	switch(ssize) {
 	case 4: 
 		{
-			ssize = 76800; // 320*240
+			ssize = 76800; // 320*240; TODO: Magic number
 			break;
 		}
 	}
@@ -517,6 +519,7 @@ ViewImage* ViewService::distanceSensor2D(double start, double end, int camID, Co
 
 	tmp_img->setBuffer(recvBuff); //TODO: Danger: buffer created in this function is given to others
 	return tmp_img;
+	// Delete of the object should be done by users
 }
 
 
@@ -561,21 +564,12 @@ void* ControllerImpl::serviceThread(void *pParam)
 	struct sockaddr_in client;
 	socklen_t len;
 
-	// File descriptor
-	fd_set fds, readfds;
-
-	// Setting of waiting time in "select"
-	struct timeval tv;
-
-	// Maximum value of the file descriptor
-	int maxfd;
-
 	// Client socket
 	SOCKET s;
 
 	listen(sock, 5);
 	len = sizeof(client);
-	while(1) {
+	while (1) {
 		// Wait connection from the service
 		s = accept(sock, (struct sockaddr *)&client, &len);
 
@@ -595,7 +589,7 @@ void* ControllerImpl::serviceThread(void *pParam)
 		int size = BINARY_GET_DATA_S_INCR(p, unsigned short);
 
 		//////////////Data containing only header//////////////
-		switch(n) {
+		switch (n) {
 			// Success in connection
 		case 1:
 			{
@@ -619,9 +613,9 @@ void* ControllerImpl::serviceThread(void *pParam)
 // Close socket
 error:
 	// Server socket
-	if (sock != NULL) {
+	if (sock != -1) { //Changed from NULL to -1 by inamura on 2014-02-28
 		close(sock);    
-		sock = NULL;
+		sock = -1;  //Changed from NULL to -1 by inamura on 2014-02-28
 	}
 	/*
 	// Client socket
@@ -664,7 +658,7 @@ BaseService* ControllerImpl::connectToService(std::string name)
 
 		int count = 0;
 		// Repeat until free port is found
-		while(bind(sock0, (struct sockaddr *)&addr, sizeof(addr)) != 0) {
+		while (bind(sock0, (struct sockaddr *)&addr, sizeof(addr)) != 0) {
 			// Break when free port could not be found 10 times
 			if (count == 10) {
 				LOG_ERR(("Controller could not get port for service [%s, %s].", __FILE__, __LINE__));
@@ -717,7 +711,7 @@ BaseService* ControllerImpl::connectToService(std::string name)
 	///Create a new thread for receiving data before sending request
 	//////////////////////////////////////////////
 	if (!first) {
-		pthread_t tid1, tid2;
+		pthread_t tid1;
 		pthread_mutex_t mutex;
 
 		pthread_mutex_init(&mutex, NULL);
@@ -740,7 +734,7 @@ BaseService* ControllerImpl::connectToService(std::string name)
 		usleep(1000); //TODO: Magic number
 		count++;
 		// Time out when the socket is closed or the count is over 1.5 sec.
-		if (count > 2000 || service->getSocket() == NULL) {
+		if (count > 2000 || service->getSocket() < 0) {
 			goto error;
 		}
 	}
@@ -757,7 +751,7 @@ BaseService* ControllerImpl::connectToService(std::string name)
 
  error:
 	close(sock0);
-	sock0 = NULL;
+	sock0 = -1;    // Changed from NULL to -1 by inamura
 	first = false;
 	LOG_ERR(("failed to connect \"%s\"",name.c_str()));
 	deleteLastService();
@@ -767,7 +761,6 @@ BaseService* ControllerImpl::connectToService(std::string name)
 //!Port number is set by a user
 BaseService* ControllerImpl::connectToService(std::string name, unsigned short port)
 {
-
 	static bool first = false;
 	SOCKET sock0;
 	if (!first) {
@@ -831,7 +824,7 @@ BaseService* ControllerImpl::connectToService(std::string name, unsigned short p
 	///Create a new thread for receiving data before sending request
 	//////////////////////////////////////////////
 	if (!first) {
-		pthread_t tid1, tid2;
+		pthread_t tid1;
 		pthread_mutex_t mutex;
 
 		pthread_mutex_init(&mutex, NULL);
@@ -850,11 +843,11 @@ BaseService* ControllerImpl::connectToService(std::string name, unsigned short p
 
 	int count = 0;
 	// Wait until connection completion
-	while(!m_connected) {
+	while (!m_connected) {
 		usleep(1000);
 		count++;
 		// Time out when the socket is closed or the count is over 1 sec.
-		if (count > 1000 || service->getSocket() == NULL) {
+		if (count > 1000 || service->getSocket() == -1) { //Changed from NULL to -1 by inamura
 			goto error;
 		}
 	}
@@ -869,7 +862,7 @@ BaseService* ControllerImpl::connectToService(std::string name, unsigned short p
 
  error:
 	close(sock0);
-	sock0 = NULL;
+	sock0 = -1;  // Changed from NULL to -1 by inamura
 	LOG_ERR(("failed to connect \"%s\"",name.c_str()));
 	deleteLastService();
 	return NULL;
@@ -910,17 +903,12 @@ bool ControllerImpl::checkService(std::string name)
 
 	delete [] sendBuff;
 
-
 	char recvBuff[4];
   
-	int r = recv(m_dataSock, recvBuff, 4, 0);
-  
-	/*
-	  if (!recvData(m_dataSock, recvBuff, 4)) {
-	  LOG_ERR(("checkService: failed to recieve result",  __FILE__, __LINE__ ));
-	  return NULL;
-	  }
-	*/
+	if (recv(m_dataSock, recvBuff, 4, 0) != 4) {
+		LOG_ERR(("checkService: failed to recieve result",  __FILE__, __LINE__ ));
+		return false;
+	}
 	p = recvBuff;
 	unsigned short result  = BINARY_GET_DATA_S_INCR(p, unsigned short); 
 
@@ -1016,11 +1004,13 @@ void ControllerImpl::sendText(double t, const char *to, const char *text, double
 void ControllerImpl::sendDisplayText(double t, const char *to, const char *text, int fs, const char *color, double reachRadius)
 {
 	CTSimObj &obj = getCTSimObj();
-	if (reachRadius == -1.0)	obj.sendText(t, to, text);
-	else  obj.sendText(t, to, text, reachRadius);
+	if (reachRadius == -1.0)  // TODO: this description is danger
+		obj.sendText(t, to, text);
+	else
+		obj.sendText(t, to, text, reachRadius);
 
 	// Send whole data to the server
-	if (fs == NULL || fs <= 0) fs = 64;
+	if (fs <= 0) fs = 64;
 	//	if (color == NULL || color <= 0 ) color = 1;
 	int col;
 	if      (strcmp(color,"red"   )==0) col = 1;
@@ -1031,7 +1021,7 @@ void ControllerImpl::sendDisplayText(double t, const char *to, const char *text,
 	else if (strcmp(color,"brown" )==0) col = 6;
 	else if (strcmp(color,"gray"  )==0) col = 7;
 	else                                col = 0;
-	CommDisplayTextEncoder enc( fs, col, text);
+	CommDisplayTextEncoder enc(fs, col, text);
 	enc.send(m_cmdSock);
 
 }
@@ -1046,7 +1036,7 @@ void ControllerImpl::displayText(const char *text, int fs, const char *color, do
 	//	else  obj.sendText(t, to, text, reachRadius);
 
 	// Send data to the server once
-	if (fs == NULL || fs <= 0) fs = 64;
+	if (fs <= 0) fs = 64;
 	//	if (color == NULL || color <= 0 ) color = 1;
 	int col;
 	if      (strcmp(color,"red"   )==0) col = 1;
@@ -1170,21 +1160,21 @@ void ControllerImpl::sendDisplayMessage(const char *to, int argc, char **argv, i
 	obj.sendMessage(to, argc, argv);
 
 	// Send data to the server once
-	if (fs == NULL || fs <= 0) fs = 64;
+	if (fs <= 0) fs = 64;
 	//	if (color == NULL || color <= 0 ) color = 1;
 	int col;
-	if      (strcmp(color,"red")==0)    col = 1;
-	else if (strcmp(color,"green")==0)  col = 2;
-	else if (strcmp(color,"blue")==0)   col = 3;
+	if      (strcmp(color,"red")   ==0) col = 1;
+	else if (strcmp(color,"green") ==0) col = 2;
+	else if (strcmp(color,"blue")  ==0) col = 3;
 	else if (strcmp(color,"purple")==0) col = 4;
 	else if (strcmp(color,"yellow")==0) col = 5;
-	else if (strcmp(color,"brown")==0)  col = 6;
-	else if (strcmp(color,"gray")==0)   col = 7;
+	else if (strcmp(color,"brown") ==0) col = 6;
+	else if (strcmp(color,"gray")  ==0) col = 7;
 	else                                col = 0;
 
 	// Show the first string
 	const char *text = argv[0];
-	CommDisplayTextEncoder enc( fs, col, text);
+	CommDisplayTextEncoder enc(fs, col, text);
 	enc.send(m_cmdSock);
 
 }
@@ -1226,16 +1216,16 @@ void ControllerImpl::broadcastDisplayMessage(int argc, char **argv, int fs, cons
 	obj.broadcastMessage(argc, argv);
 
 	// Send data to the server once
-	if (fs == NULL || fs <= 0) fs = 64;
+	if (fs <= 0) fs = 64;
 	//	if (color == NULL || color <= 0 ) color = 1;
 	int col;
-	if (strcmp(color,"red")==0)         col = 1;
-	else if (strcmp(color,"green")==0)  col = 2;
-	else if (strcmp(color,"blue")==0)   col = 3;
+	if      (strcmp(color,"red")   ==0) col = 1;
+	else if (strcmp(color,"green") ==0) col = 2;
+	else if (strcmp(color,"blue")  ==0) col = 3;
 	else if (strcmp(color,"purple")==0) col = 4;
 	else if (strcmp(color,"yellow")==0) col = 5;
-	else if (strcmp(color,"brown")==0)  col = 6;
-	else if (strcmp(color,"gray")==0)   col = 7;
+	else if (strcmp(color,"brown") ==0) col = 6;
+	else if (strcmp(color,"gray")  ==0) col = 7;
 	else                                col = 0;
 	const char *text = argv[0];
 	CommDisplayTextEncoder enc(fs, col, text);
@@ -1246,25 +1236,22 @@ void ControllerImpl::broadcastDisplayMessage(int argc, char **argv, int fs, cons
 bool ControllerImpl::sendData(SOCKET sock, const char* msg, int size)
 {
 	int sended = 0;
-
 	// For when cannot send all data at once
-	while(1) {
+	while (1) {
 
 		// Sending
 		int r = send(sock, msg + sended, size - sended, 0);
 
 		// Sending failed
-		if (r < 0) 
-			{
-				if ( errno == EAGAIN ||
-					errno == EWOULDBLOCK ) {
-					sleep(0.01);
-					continue;
-				}
-				LOG_ERR(("Failed to send data. erro[%d]",errno));
-				return false;
+		if (r < 0) {
+			if ( errno == EAGAIN ||
+				 errno == EWOULDBLOCK ) {
+				sleep(0.01);
+				continue;
 			}
-
+			LOG_ERR(("Failed to send data. erro[%d]",errno));
+			return false;
+		}
 		// Number of already sent bytes
 		sended += r;
 
@@ -1275,16 +1262,16 @@ bool ControllerImpl::sendData(SOCKET sock, const char* msg, int size)
 }
 
 
-// begin(FIX20110401)
 void ControllerImpl::sendSound(double t, const char *to, RawSound &sound)
 {
 	CTSimObj &obj = getCTSimObj();
 	obj.sendSound(t, to, sound);
 }
-// end(FIX20110401)
+
 
 bool ControllerImpl::broadcast(std::string msg, double distance, int to)
 {
+	// Refer the length of message data
 	char bsize[5];
 	int msgSize = (int)msg.size();
 	sprintf(bsize, "%.5d", msgSize);
@@ -1296,7 +1283,6 @@ bool ControllerImpl::broadcast(std::string msg, double distance, int to)
 	else
 		dist = "-1.0,";
 
-	// 
 	int size = to;
 	char tmp[5];
 	sprintf(tmp, "%d", size);
