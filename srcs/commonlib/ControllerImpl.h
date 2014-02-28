@@ -1,6 +1,5 @@
 /*
  * Written by noma on 2012-03-27
- *
  * Modified by Yoshiaki Mizuchi on 2014-01-16
  *    Modify indent
  * Modified by Yoshiaki Mizuchi on 2014-01-21
@@ -404,7 +403,6 @@ public:
 	// old
 	void broadcastDisplayMessage(int argc, char **argv, int fs, const char *color);
 
-	// begin(FIX20110401)
 	/**
 	 * @brief Sends voice data to other agent
 	 *
@@ -413,7 +411,6 @@ public:
 	 * @param text   Voice data
 	 */
 	void sendSound(double t, const char *to, RawSound &sound);
-	// end(FIX20110401)
 
 	//! Send data
 	bool sendData(SOCKET sock, const char *msg, int size);
@@ -422,7 +419,6 @@ public:
 	void send(Command &cmd);
 	void moveTo(double x, double z, double velocity);
 #endif
-
 
 	/**
 	 * @brief Boadcasts a message
@@ -490,8 +486,6 @@ public:
 
 
 };
-
-
 
 #endif // ControllerImpl_h
 
