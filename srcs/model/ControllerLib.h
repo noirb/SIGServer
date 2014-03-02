@@ -1,4 +1,7 @@
-/* $Id: ControllerLib.h,v 1.1.1.1 2011-03-25 02:18:46 okamoto Exp $ */ 
+/*
+ * Created by okamoto on 2011-03-25
+ */
+
 #ifndef ControllerLib_h
 #define ControllerLib_h
 
@@ -9,8 +12,8 @@ class ControllerLib
 private:
 	typedef Controller *CreateFunc();	
 private:
-	void	*m_lib;
-	Controller	*m_model;
+	void       *m_lib;
+	Controller *m_model;
 	CreateFunc *m_create;
 public:
 	
