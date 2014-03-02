@@ -1,4 +1,7 @@
-/* $Id: runmain.cpp,v 1.1.1.1 2011-03-25 02:18:46 okamoto Exp $ */
+/*
+ * Modified by okamoto on 2011-03-25
+ */
+
 #include <getopt.h>
 
 #include "Controller.h"
@@ -8,7 +11,7 @@
 
 static void printUsage(const char *prog)
 {
-	printf("Usage : %s\n", prog);
+	fprintf(stderr, "Usage : %s\n", prog);
 }
 
 int main(int argc, char **argv)

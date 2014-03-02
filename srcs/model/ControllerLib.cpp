@@ -1,4 +1,7 @@
-/* $Id: ControllerLib.cpp,v 1.1.1.1 2011-03-25 02:18:46 okamoto Exp $ */
+/*
+ * Created by okamoto on 2011-03-25
+ */
+
 #include "ControllerLib.h"
 #include "Controller.h"
 #include "modelerr.h"
@@ -23,10 +26,9 @@ ControllerLib::~ControllerLib()
 
 bool ControllerLib::load(const char *libname)
 {
-        void *lib = dlopen(libname, RTLD_LAZY);
+	void *lib = dlopen(libname, RTLD_LAZY);
 	if (!lib) {
 		err(("Loading shared library : %s\n", dlerror()));
-
 		return false;
 	}
 

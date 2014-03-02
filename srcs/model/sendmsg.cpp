@@ -1,4 +1,7 @@
-/* $Id: sendmsg.cpp,v 1.1.1.1 2011-03-25 02:18:46 okamoto Exp $ */
+/*
+ * Modified by okamoto on 2011-03-25
+ */
+
 #include "MessageSender.h"
 
 #ifdef WIN32
@@ -8,9 +11,9 @@
 // ./sendmsg -h <server> -p <port> -n <agent> msg1 msg2 msg3 ...
 static void printUsage(char *progname)
 {
-	printf("Usage :\n");
-	printf("\t%s -s <server> -p <port> -n <agent> msg1 msg2 msg3 ...\n", progname);
-	printf("\t%s -h\n", progname);
+	fprintf(stderr, "Usage :\n");
+	fprintf(stderr, "\t%s -s <server> -p <port> -n <agent> msg1 msg2 msg3 ...\n", progname);
+	fprintf(stderr, "\t%s -h\n", progname);
 }
 
 int main(int argc, char **argv)
@@ -18,7 +21,7 @@ int main(int argc, char **argv)
 	char *server = "localhost";
 	bool bcast = false;
 	char *target = NULL;
-	int  port = 5678;
+	int  port = 5678;  //TODO: Magic number
 
 #ifdef WIN32
 	// initialize WinSock
