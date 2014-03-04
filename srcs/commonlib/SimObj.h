@@ -353,8 +353,15 @@ public:
 	////// added by okamoto@tome(2012/11/14)
 	bool getPointingVector(Vector3d &vec, int lrFlag = 0);
 
+	// Renamed from sendEntityQuaternion by Tetsunari Inamura on 2014-03-04
+	/**
+	 * Set Quaternion of entity
+	 * @param qua array of real with 4 elements to represent quaternion
+	 * @param abs true: Absolute quaternion,  false: Relative rotation by quaternion
+	 */
+	bool setEntityQuaternion(dReal *rot, bool abs);
+
  private:
-	bool sendEntityQuaternion(const dReal *rot, bool abs);
 
 	bool sendRequest(std::string name, int requestNum);
 

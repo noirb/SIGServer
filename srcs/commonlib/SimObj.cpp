@@ -734,7 +734,7 @@ Rotation & SimObj::getRotation(Rotation &r)
 	char *sendBuff = new char[sendSize];
 	char *p = sendBuff;
   
-	BINARY_SET_DATA_S_INCR(p, unsigned short, 19); 
+	BINARY_SET_DATA_S_INCR(p, unsigned short, 19); //TODO: Magic number
 	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);  
 
 	memcpy(p, msg.c_str(), msg.size());  
@@ -1007,9 +1007,9 @@ void SimObj::setAxisAndAngle(double ax, double ay, double az, double angle)
 
 	Rotation r;
 	r.setAxisAndAngle(ax, ay, az, angle);
-	const dReal *q = r.q();  
+	dReal *q = (dReal *)r.q();
 
-	sendEntityQuaternion(q, true);
+	setEntityQuaternion(q, true);
 }
 
 void SimObj::setAxisAndAngle(double ax, double ay, double az, double angle, double direct)
@@ -1019,9 +1019,9 @@ void SimObj::setAxisAndAngle(double ax, double ay, double az, double angle, doub
     
 	Rotation r;
 	r.setAxisAndAngle(ax, ay, az, angle);
-	const dReal *q = r.q();  
+	dReal *q = (dReal *)r.q();
   
-	sendEntityQuaternion(q, false);
+	setEntityQuaternion(q, false);
 }
 
 void SimObj::setRotation(const Rotation &r)
@@ -1029,15 +1029,19 @@ void SimObj::setRotation(const Rotation &r)
 	Super::setRotation(r);
 	m_ops |= OP_SET_ROTATION;
   
-	const dReal *q = r.q();
-	sendEntityQuaternion(q, true);
+	dReal *q = (dReal *)r.q();
+	setEntityQuaternion(q, true);
 }
 
 
-//TODO: function name is strange, not send but set
-bool SimObj::sendEntityQuaternion(const dReal *qua, bool abs)
+// Renamed from sendEntityQuaternion by Tetsunari Inamura on 2014-03-04
+/**
+ * Set Quaternion of entity
+ * @param qua array of real with 4 elements to represent quaternion
+ * @param abs true: Absolute quaternion,  false: Relative rotation by quaternion
+ */
+bool SimObj::setEntityQuaternion(dReal *qua, bool abs)
 {
-
 	Controller *con = (Controller*)m_sender;
 	ControllerImpl *conim = (ControllerImpl*)con;
   
@@ -1056,7 +1060,6 @@ bool SimObj::sendEntityQuaternion(const dReal *qua, bool abs)
 	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
 
 	BINARY_SET_DATA_S_INCR(p, unsigned short, abs);
-
 	BINARY_SET_DOUBLE_INCR(p, qua[0]);
 	BINARY_SET_DOUBLE_INCR(p, qua[1]);
 	BINARY_SET_DOUBLE_INCR(p, qua[2]);
