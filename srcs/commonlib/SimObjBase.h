@@ -123,42 +123,42 @@ public:
 	const AttrM &attrs() const { return m_attrs; }
 
 	//! add file name of shape of entity
-	void addFile(const char* name){ m_files.push_back(name);}
+	void addFile(const char* name) { m_files.push_back(name);}
 
 	//! refer the # of shape files
-	int getFileNum(){ return m_files.size();}
+	int getFileNum() { return m_files.size();}
 
 	//! Refer camera ID which this entity has
-	int getCameraNum(){return m_ids.size();}
+	int getCameraNum() {return m_ids.size();}
 
 	//! Add camera ID for the entity
 	void addCameraID(int id)
 	{
-	  int size = m_ids.size();
-	  for(int i = 0; i < size; i++){
-	    if(id == m_ids[i]) {
-	      LOG_ERR(("Camera ID %d is already exist.",id));
-	      return;	      
-	    }
-	  }
-	  m_ids.push_back(id);
+		int size = m_ids.size();
+		for (int i = 0; i < size; i++) {
+			if (id == m_ids[i]) {
+				LOG_ERR(("Camera ID %d is already exist.",id));
+				return;	      
+			}
+		}
+		m_ids.push_back(id);
 	}
 	//! Refer camera ID (vector) of the entity
-	std::vector<int> getCameraIDs(){return m_ids;}
+	std::vector<int> getCameraIDs() {return m_ids;}
 
 	//! Refer shape file
 	std::string getFile(int num)
-	{
-	  if(num > m_files.size()){
-	    return NULL;
-	  }
-	  else{
-	    return m_files[num];
-	  }
-	}
+		{
+			if (num > (int)(m_files.size())) {
+				return NULL;
+			}
+			else{
+				return m_files[num];
+			}
+		}
 	
 	//! add attribution
-	void	push(Attribute *attr)
+	void push(Attribute *attr)
 	{
 		m_attrs[attr->name()] = attr;
 	}
@@ -170,7 +170,7 @@ public:
 	 * @param name name of attribution
 	 * @param v    value of attribution by string
 	 */	
-	void	setAttrValue(const char *name, const char *v)
+	void setAttrValue(const char *name, const char *v)
 	{
 		getAttr(name).value().setString(v);
 	}
@@ -181,7 +181,7 @@ public:
 	 * @param name name of attribution
 	 * @param v    value of attribution
 	 */
-	void	setAttrValue(const char *name, const Value &v)
+	void setAttrValue(const char *name, const Value &v)
 	{
 		getAttr(name).value().copy(v);
 	}
@@ -192,11 +192,11 @@ public:
 	 * @retval true  attribution is existed
 	 * @retval false attribution is not existed
 	 */
-	bool	checkAttrs();
+	bool checkAttrs();
 
-private:
+ private:
 	Attribute* hasAttr(const char *name) const;
-public:
+ public:
 	//! Refer the target attribution
 	Attribute & getAttr(const char *name) const;
 
@@ -222,21 +222,21 @@ public:
 	}
 
 	// added by yahara@tome (2011/02/23)
-#define DEFINE_ATTR_STRING(NAME, TOKEN)					\
-		const char *NAME() const { return getAttr(TOKEN).value().getString(); } \
-	void  NAME(const char *v) {						\
-	  getAttr(TOKEN).value().setString(v);				\
+#define DEFINE_ATTR_STRING(NAME, TOKEN)									\
+	const char *NAME() const { return getAttr(TOKEN).value().getString(); } \
+	void  NAME(const char *v) {											\
+		getAttr(TOKEN).value().setString(v);							\
 	}
 	//okamoto (2010/12/7)
-#define DEFINE_ATTR_DOUBLE(NAME, TOKEN)					\
-        double NAME() const { return getAttr(TOKEN).value().getDouble(); } \
-	void  NAME(double v) {						\
-	  getAttr(TOKEN).value().setDouble(v);				\
+#define DEFINE_ATTR_DOUBLE(NAME, TOKEN)									\
+	double NAME() const { return getAttr(TOKEN).value().getDouble(); }	\
+	void  NAME(double v) {												\
+		getAttr(TOKEN).value().setDouble(v);							\
 	}
 	
-#define DEFINE_ATTR_BOOL(NAME, TOKEN)				       \
-        bool NAME() const { return getAttr(TOKEN).value().getBool(); } \
-        void NAME(bool b) { getAttr(TOKEN).value().setBool(b); }
+#define DEFINE_ATTR_BOOL(NAME, TOKEN)								\
+	bool NAME() const { return getAttr(TOKEN).value().getBool(); }	\
+	void NAME(bool b) { getAttr(TOKEN).value().setBool(b); }
 
 #include "SimObjBaseAttrs.h"
 
@@ -296,10 +296,10 @@ public:
 	 * @brief Refer position of the entity
 	 */
 	Vector3d &  getPosition(Vector3d &v)
-	{
-		v.set(x(), y(), z());
-		return v;
-	}
+		{
+			v.set(x(), y(), z());
+			return v;
+		}
 
 	/**
 	 * @brief Set orientation of the entity
@@ -327,9 +327,9 @@ public:
 	 */
 	virtual void setRotation(const Rotation &r);
 
-private:
+ private:
 	void 	setQ(const dReal *q);
-public:
+ public:
 
 	/**
 	 * @brief Binalize of the entity
@@ -338,13 +338,13 @@ public:
 	 */
 	char *toBinary(int &n);
 
-protected:
+ protected:
 	//! Refer parts iterator
 	virtual PartsIterator * getPartsIterator() = 0;
-private:
+ private:
 	void	free_();
 
-public:
+ public:
 	void dump();
 #ifdef UNIT_TEST
 	Operation ops() { return m_ops; }
@@ -355,5 +355,3 @@ public:
 };
 
 #endif // SimObjBase_h
- 
-
