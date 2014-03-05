@@ -1,4 +1,7 @@
-/* $Id: Size.h,v 1.2 2011-03-31 08:15:57 okamoto Exp $ */ 
+/*
+ * Modified by okamoto on 2011-03-31
+ */
+
 #ifndef Size_h
 #define Size_h
 

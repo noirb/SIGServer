@@ -1,4 +1,6 @@
-/* $Id: CaptureViewImage.h,v 1.2 2011-08-26 05:24:08 okamoto Exp $ */ 
+/*
+ * Modified by okamoto on 2011-08-26
+ */
 
 #ifndef CaptureViewImage_h
 #define CaptureViewImage_h
@@ -18,7 +20,7 @@ namespace CommData {
 class CaptureViewImageRequest : public Encoder
 {
 	enum {
-		THIS_DATASIZE = sizeof(unsigned short)*4 + 128,
+		THIS_DATASIZE = sizeof(unsigned short)*4 + 128,  //TODO: Magic number
 	};
 	enum { BUFSIZE  =
 	       COMM_DATA_HEADER_MAX_SIZE + COMM_DATA_FOOTER_SIZE + THIS_DATASIZE, };
@@ -39,7 +41,7 @@ public:
 
 class CaptureViewImageResult : public RawDataEncoder
 {
-	enum { DATA_HEADER_SIZE = 12, };
+	enum { DATA_HEADER_SIZE = 12, }; //TODO: Magic number
 private:
 	ViewImage	&m_img;
 	int		m_packetNum;

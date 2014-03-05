@@ -1,4 +1,7 @@
-/* $Id: SSimWorld.h,v 1.2 2011-04-05 09:05:32 kawamoto Exp $ */ 
+/*
+ * Modified by kawamoto on 2011-04-05
+ */
+
 #ifndef SSimWorld_h
 #define SSimWorld_h
 

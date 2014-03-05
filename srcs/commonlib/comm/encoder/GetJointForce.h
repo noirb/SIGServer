@@ -1,4 +1,7 @@
-/* $Id: GetJointForce.h,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */ 
+/*
+ * Created by okamoto on 2011-03-25
+ */
+
 #ifndef Comm_Encode_GetJointForce_h
 #define Comm_Encode_GetJointForce_h
 
@@ -10,7 +13,7 @@ namespace CommData {
 class RequestGetJointForce : public Encoder
 {
 private:
-	enum { BUFSIZE = 256, };
+	enum { BUFSIZE = 256, }; //TODO: Magic number
 private:
 	std::string m_agentName;
 	std::string m_jointName;

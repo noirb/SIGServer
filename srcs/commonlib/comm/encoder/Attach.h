@@ -1,4 +1,7 @@
-/* $Id: Attach.h,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */ 
+/*
+ * Created by okamoto on 2011-03-25
+ */
+
 #ifndef Attach_h
 #define Attach_h
 
@@ -13,7 +16,7 @@ namespace CommData {
 class AttachRequest : public Encoder
 {
 private:
-	enum { BUFSIZE = 128, };
+	enum { BUFSIZE = 128, }; //TODO: Magic number
 private:
 	std::string m_name;
 public:
@@ -99,7 +102,7 @@ private:
 
 class ProvideServiceRequest : public Encoder
 {
-	enum { BUFSIZE = 512, };
+	enum { BUFSIZE = 512, }; //TODO: Magic number
 private:
 	Service	&m_service;
 public:

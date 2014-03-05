@@ -1,4 +1,7 @@
-/* $Id: SoundRecog.h,v 1.2 2011-03-31 08:16:28 okamoto Exp $ */ 
+/*
+ * Created by okamoto on 2011-03-25
+ */
+
 #ifndef Comm_Encoder_SoundRecog_h
 #define Comm_Encoder_SoundRecog_h
 
@@ -13,7 +16,7 @@ namespace CommData {
 class RequestSoundRecog : public RawDataEncoder
 {
 private:
-	enum { DATA_HEADER_BUFSIZE = 256, };
+	enum { DATA_HEADER_BUFSIZE = 256, }; //TODO: Magic number
 private:
 	RawSound &m_sound;
 	char	m_dataHeaderBuf[DATA_HEADER_BUFSIZE];
@@ -29,7 +32,7 @@ private:
 class ResultSoundRecog : public Encoder
 {
 private:
-	enum { BUFSIZE = 1024, };
+	enum { BUFSIZE = 1024, }; //TODO: Magic number
 private:
 	Text m_data;
 public:

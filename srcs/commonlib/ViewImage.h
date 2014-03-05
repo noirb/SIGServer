@@ -1,4 +1,8 @@
-/* $Id: ViewImage.h,v 1.5 2012-02-07 05:41:34 yahara Exp $ */ 
+/*
+ * Modified by sekikawa on 2007-10-12
+ * Modified by yahara   on 2012-02-27
+ */
+
 #ifndef ViewImage_h
 #define ViewImage_h
 
@@ -9,12 +13,11 @@
 class ViewImage
 {
  private:
-        ViewImageInfo	m_info;
-	char *		m_buf;
-	int		m_buflen;
-	
-	double m_fov;
-	double m_ar;   //aspect ratio
+	ViewImageInfo  m_info;
+	char          *m_buf;
+	int            m_buflen;
+	double         m_fov;
+	double         m_ar;   //aspect ratio
 public:
 	ViewImage(const ViewImageInfo &info)
 		: m_info(info), m_buf(0), m_buflen(0)
@@ -30,21 +33,19 @@ public:
 	}
 
 private:
-	// sekikawa(2007/10/12)
 	int getWidthBytes(int width, int bytesPerOnePixel);
-
 	int	calcBufferSize(const ViewImageInfo &info);
 
 public:
 	const ViewImageInfo & getInfo() { return m_info; }
 
-	int  getWidth() const { return m_info.getWidth(); }
-	int  getHeight() const { return m_info.getHeight(); }
-	char * getBuffer() const { return m_buf; }
-	void setBuffer(char *buf) { m_buf = buf; }
-	int   getBufferLength() const { return m_buflen; }
-	void setFOVy(double fov){ m_fov = fov;} 
-	void setAspectRatio(double ar){ m_ar = ar;}
+	int    getWidth() const { return m_info.getWidth(); }
+	int    getHeight() const { return m_info.getHeight(); }
+	char  *getBuffer() const { return m_buf; }
+	void   setBuffer(char *buf) { m_buf = buf; }
+	int    getBufferLength() const { return m_buflen; }
+	void   setFOVy(double fov){ m_fov = fov;} 
+	void   setAspectRatio(double ar){ m_ar = ar;}
 	double getFOVy(){ return m_fov;} 
 	double getAspectRatio(){ return m_ar;}
 

@@ -1,4 +1,7 @@
-/* $Id: SimGround.h,v 1.2 2011-10-18 03:09:38 okamoto Exp $ */ 
+/*
+ * Modified by okamoto on 2011-10-18
+ */
+
 #ifndef SimGround_h
 #define SimGround_h
 
@@ -13,9 +16,9 @@ class SimGround
 {
 #ifdef EXEC_SIMULATION
 private:
-        dGeomID	 m_geom;
-public:
+	dGeomID	 m_geom;
 
+public:
 	SimGround(dSpaceID s)
 	{
 		m_geom = dCreatePlane(s, 0.0, 1.0, 0.0, 0.0);
@@ -25,7 +28,7 @@ public:
 #endif
 public:
 #ifdef IMPLEMENT_DRAWER
-	void	draw(DrawContext &c);
+	void draw(DrawContext &c);
 #endif
 };
 

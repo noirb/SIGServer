@@ -1,4 +1,7 @@
-/* $Id: GetObjectNames.cpp,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */ 
+/*
+ * Created by okamoto on 2011-03-25
+ */
+
 #include "GetObjectNames.h"
 #include "binary.h"
 
@@ -30,7 +33,7 @@ char *	GetObjectNamesRequest::encode(int seq, int &sz)
 
 int 	GetObjectNamesResult::packetNum()
 {
-	return m_names.size()/50+1;
+	return m_names.size()/50+1; //TODO: Magic number
 }
 
 inline int MIN(int v1, int v2)
@@ -74,4 +77,3 @@ char *	GetObjectNamesResult::encode(int seq, int &sz)
 }
 
 END_NS_COMMDATA();
-

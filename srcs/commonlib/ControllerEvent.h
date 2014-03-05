@@ -1,4 +1,7 @@
-/* $Id: ControllerEvent.h,v 1.2 2011-03-31 08:15:56 okamoto Exp $ */ 
+/*
+ * Modified by okamoto on 2011-03-31
+ */
+
 #ifndef ControllerEvent_h
 #define ControllerEvent_h
 

@@ -1,4 +1,7 @@
-/* $Id: Value.h,v 1.3 2012-06-11 05:59:25 okamoto Exp $ */ 
+/*
+ * Modified by okamoto on 2012-06-11
+ */
+
 #ifndef Value_h
 #define Value_h
 

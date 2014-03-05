@@ -1,4 +1,7 @@
-/* $Id: NameService.h,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */ 
+/*
+ * Created by okamoto on 2011-03-25
+ */
+
 #ifndef NameService_h
 #define NameService_h
 
@@ -10,7 +13,7 @@ namespace CommData {
 
 class NSQueryRequest : public Encoder
 {
-	enum { BUFSIZE = 128, };
+	enum { BUFSIZE = 128, }; //TODO: Magic number
 private:
 	Service::Kind m_kind;
 public:
@@ -23,7 +26,7 @@ public:
 
 class NSQueryResult : public Encoder
 {
-	enum { BUFSIZE = 128, };
+	enum { BUFSIZE = 128, }; //TODO: Magic number
 private:
 	Service  * m_service;
 public:
@@ -37,7 +40,7 @@ public:
 class NSPingerRequest : public Encoder
 {
 private:
-	enum { BUFSIZE = 128, };
+	enum { BUFSIZE = 128, }; //TODO: Magic number
 private:
 	Service::Kind	m_kind;
 public:
@@ -52,7 +55,7 @@ public:
 
 class NSPingerResult : public Encoder
 {
-	enum { BUFSIZE = 128, };
+	enum { BUFSIZE = 128, }; //TODO: Magic number
 private:
 	bool	m_active;
 public:

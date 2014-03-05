@@ -1,4 +1,7 @@
-/* $Id: Attrs.h,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */ 
+/*
+ * Created by okamoto on 2011-03-25
+ */
+
 #ifndef Comm_Event_Attrs_h
 #define Comm_Event_Attrs_h
 

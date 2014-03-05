@@ -1,4 +1,7 @@
-/* $Id: Encoder.h,v 1.2 2011-03-31 08:16:28 okamoto Exp $ */ 
+/*
+ * Created by okamoto on 2011-03-25
+ */
+
 #ifndef Encoder_h
 #define Encoder_h
 

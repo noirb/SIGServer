@@ -1,8 +1,9 @@
 /*
+ * Modified by okamoto          on 2011-03-31
  * Modified by Yoshiaki Mizuchi on 2014-01-09
- *    Add english comment, modify indent 
+ *    Add English comment, modify indent 
  */
-/* $Id: Attribute.h,v 1.2 2011-03-31 08:15:56 okamoto Exp $ */ 
+
 #ifndef Attribute_h
 #define Attribute_h
 

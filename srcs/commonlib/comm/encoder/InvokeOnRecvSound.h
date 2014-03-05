@@ -1,4 +1,7 @@
-/* $Id: InvokeOnRecvSound.h,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */ 
+/*
+ * Created by okamoto on 2011-03-25
+ */
+
 #ifndef InvokeOnRecvSound_h
 #define InvokeOnRecvSound_h
 
@@ -12,7 +15,7 @@ namespace CommData {
 
 class InvokeOnRecvSound : public RawDataEncoder
 {
-	enum { DATA_HEADER_BUFSIZE = 256, };
+	enum { DATA_HEADER_BUFSIZE = 256, }; //TODO: Magic number
 private:
 	typedef std::string S;
 private:

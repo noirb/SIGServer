@@ -1,4 +1,7 @@
-/* $Id: SimWorld.h,v 1.2 2011-03-31 08:15:57 okamoto Exp $ */ 
+/*
+ * Modified by okamoto on 2011-03-31
+ */
+
 #ifndef SimWorld_h
 #define SimWorld_h
 
@@ -52,15 +55,15 @@ public:
 	virtual double	time() const { return m_time; }
 
 #ifndef EXEC_SIMULATION
-	void	time(double t) { m_time = t; }
+	void time(double t) { m_time = t; }
 #endif
 
-	void	push(SimObjBase *obj);
+	void push(SimObjBase *obj);
 #ifdef IMPLEMENT_DRAWER 
-	void	draw(DrawContext &c);
+	void draw(DrawContext &c);
 #endif
 
-	void	dump();
+	void dump();
 };
 
 #endif // SimWorld_h

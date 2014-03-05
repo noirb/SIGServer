@@ -1,4 +1,7 @@
-/* $Id: ReleaseJoint.h,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */ 
+/*
+ * Created by okamoto on 2011-03-25
+ */
+
 #ifndef Comm_Encoder_ReleaseJoint_h
 #define Comm_Encoder_ReleaseJoint_h
 
@@ -10,7 +13,7 @@ namespace CommData {
 
 class RequestReleaseJoint : public Encoder
 {
-	enum { BUFSIZE = 256, };
+	enum { BUFSIZE = 256, }; //TODO: Magic number
 private:
 	typedef std::string S;
 private:

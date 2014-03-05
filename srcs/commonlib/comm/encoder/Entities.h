@@ -1,4 +1,7 @@
-/* $Id: Entities.h,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */ 
+/*
+ * Created by okamoto on 2011-03-25
+ */
+
 #ifndef Entities_h
 #define Entities_h
 
@@ -20,7 +23,7 @@ public:
 class SendEndities : public Encoder
 {
 private:
-	enum { BUFSIZE = 1024, RESIZE = BUFSIZE, };
+	enum { BUFSIZE = 1024, RESIZE = BUFSIZE, }; //TODO: Magic number
 private:
 	typedef std::vector<SimObjBase *> C;
 private:
