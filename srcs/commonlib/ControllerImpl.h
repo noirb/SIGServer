@@ -223,7 +223,7 @@ protected:
 	bool m_connected;
 
 	// Whether connection to service provider is successed
-	bool           m_connectService;
+	bool m_connectService;
 
 	// Socket for service provider
 	std::vector<BaseService*> m_services;
@@ -268,27 +268,25 @@ protected:
 private:
 	// bool recvData(SOCKET sock, char *msg, int size);
 
-
 public:
 	static void *serviceThread(void *pParam);
-
 
 protected:
 	void	close_();
 
 protected:
 	//! Constructor
-	ControllerImpl()
-	    : Super(),
-	      m_port(-1), 
-	      m_isAttached(false), 
-	      m_cmdSock(-1), 
-	      m_dataSock(-1),
-	      m_srvSock(-1), 
-	      m_tmpSock(-1), 
-	      m_ctSimObj(NULL), 
-	      m_connectService(false),
-	      m_connected(false){;}
+	ControllerImpl() : Super(),
+		m_port(-1),
+		m_isAttached(false),
+		m_ctSimObj(NULL),
+		m_cmdSock(-1),
+		m_dataSock(-1),
+		m_srvSock(-1),
+		m_tmpSock(-1),
+		m_connected(false),
+		m_connectService(false)
+			{;}
 
 	//! Destructor
 	~ControllerImpl() {

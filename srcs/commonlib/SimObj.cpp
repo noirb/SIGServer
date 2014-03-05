@@ -265,14 +265,14 @@ bool SimObj::getCamPos(Vector3d &pos, int camID, bool requestToServer)
 	char *sendBuff = new char[sendSize];
 	char *p = sendBuff;
   
-	BINARY_SET_DATA_S_INCR(p, unsigned short, 22); 
-	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);  
-	BINARY_SET_DATA_S_INCR(p, unsigned short, camID);  
+	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_GET_CAMERA_POSITION);
+	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
+	BINARY_SET_DATA_S_INCR(p, unsigned short, camID);
 
 	memcpy(p, msg.c_str(), msg.size());  
 
 	if (!SocketUtil::sendData(sock, sendBuff, sendSize)) {
-		LOG_ERR(("getCamPos: cannot send request."));    
+		LOG_ERR(("getCamPos: cannot send request."));
 		delete [] sendBuff;
 		return false;
 	}
@@ -282,7 +282,7 @@ bool SimObj::getCamPos(Vector3d &pos, int camID, bool requestToServer)
 	char *recvBuff = new char[recvSize];
 
 	if (!SocketUtil::recvData(sock, recvBuff, recvSize)) {
-		LOG_ERR(("getCamPos: failed to recieve position data"));    
+		LOG_ERR(("getCamPos: failed to recieve position data"));
 		delete [] recvBuff;
 		return false;
 	}
@@ -335,9 +335,9 @@ bool SimObj::setCamPos(Vector3d pos, int camID)
 	char *sendBuff = new char[sendSize];
 	char *p = sendBuff;
   
-	BINARY_SET_DATA_S_INCR(p, unsigned short, 21); 
-	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);      
-	BINARY_SET_DATA_S_INCR(p, unsigned short, camID);      
+	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_SET_CAMERA_POSITION);
+	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
+	BINARY_SET_DATA_S_INCR(p, unsigned short, camID);
 
 	BINARY_SET_DOUBLE_INCR(p, pos.x());
 	BINARY_SET_DOUBLE_INCR(p, pos.y());
@@ -346,7 +346,7 @@ bool SimObj::setCamPos(Vector3d pos, int camID)
 	memcpy(p, msg.c_str(), msg.size());  
 
 	if (!SocketUtil::sendData(sock, sendBuff, sendSize)) {
-		LOG_ERR(("setCamPos: cannot send position data."));    
+		LOG_ERR(("setCamPos: cannot send position data."));
 		delete [] sendBuff;
 		return false;
 	}
@@ -395,14 +395,14 @@ bool SimObj::getCamDir(Vector3d &vec,int camID, bool requestToServer)
 	char *sendBuff = new char[sendSize];
 	char *p = sendBuff;
   
-	BINARY_SET_DATA_S_INCR(p, unsigned short, 24); 
-	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);  
-	BINARY_SET_DATA_S_INCR(p, unsigned short, camID);  
+	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_GET_CAMERA_DIRECTION);
+	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
+	BINARY_SET_DATA_S_INCR(p, unsigned short, camID);
 
 	memcpy(p, msg.c_str(), msg.size());  
 
 	if (!SocketUtil::sendData(sock, sendBuff, sendSize)) {
-		LOG_ERR(("getCamDir: cannot send request."));    
+		LOG_ERR(("getCamDir: cannot send request."));
 		delete [] sendBuff;
 		return false;
 	}
@@ -412,7 +412,7 @@ bool SimObj::getCamDir(Vector3d &vec,int camID, bool requestToServer)
 	char *recvBuff = new char[recvSize];
 
 	if (!SocketUtil::recvData(sock, recvBuff, recvSize)) {
-		LOG_ERR(("getCamDir: failed to recieve position data"));    
+		LOG_ERR(("getCamDir: failed to recieve position data"));
 		delete [] recvBuff;
 		return false;
 	}
@@ -490,9 +490,9 @@ bool SimObj::setCamDir(Vector3d vec,int camID)
 	char *sendBuff = new char[sendSize];
 	char *p = sendBuff;
   
-	BINARY_SET_DATA_S_INCR(p, unsigned short, 23); 
-	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);      
-	BINARY_SET_DATA_S_INCR(p, unsigned short, camID);      
+	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_SET_CAMERA_DIRECTION);
+	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
+	BINARY_SET_DATA_S_INCR(p, unsigned short, camID);
 
 	BINARY_SET_DOUBLE_INCR(p, vec.x());
 	BINARY_SET_DOUBLE_INCR(p, vec.y());
@@ -501,7 +501,7 @@ bool SimObj::setCamDir(Vector3d vec,int camID)
 	memcpy(p, msg.c_str(), msg.size());  
 
 	if (!SocketUtil::sendData(sock, sendBuff, sendSize)) {
-		LOG_ERR(("setCamDir: cannot send direction data."));    
+		LOG_ERR(("setCamDir: cannot send direction data."));
 		delete [] sendBuff;
 		return false;
 	}
@@ -548,20 +548,20 @@ bool SimObj::setCamFOV(double fov, int camID)
 	const char *myName = name();
 	msg += std::string(myName) + ",";
 
-	int sendSize = msg.size() + sizeof(unsigned short) * 3 + sizeof(double) ;
+	int sendSize = msg.size() + sizeof(unsigned short) * 3 + sizeof(double);
 
 	char *sendBuff = new char[sendSize];
 	char *p = sendBuff;
   
-	BINARY_SET_DATA_S_INCR(p, unsigned short, 25); 
-	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);      
-	BINARY_SET_DATA_S_INCR(p, unsigned short, camID);      
+	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_SET_CAMERA_FOV);
+	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
+	BINARY_SET_DATA_S_INCR(p, unsigned short, camID);
 
 	BINARY_SET_DOUBLE_INCR(p, fov);
 	memcpy(p, msg.c_str(), msg.size());  
 
 	if (!SocketUtil::sendData(sock, sendBuff, sendSize)) {
-		LOG_ERR(("setCamFOV: cannot send fov data."));    
+		LOG_ERR(("setCamFOV: cannot send fov data."));
 		delete [] sendBuff;
 		return false;
 	}
@@ -609,20 +609,20 @@ bool SimObj::setCamAS(double as, int camID)
 	const char *myName = name();
 	msg += std::string(myName) + ",";
 
-	int sendSize = msg.size() + sizeof(unsigned short) * 3 + sizeof(double) ;
+	int sendSize = msg.size() + sizeof(unsigned short) * 3 + sizeof(double);
 
 	char *sendBuff = new char[sendSize];
 	char *p = sendBuff;
   
-	BINARY_SET_DATA_S_INCR(p, unsigned short, 26); 
-	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);      
-	BINARY_SET_DATA_S_INCR(p, unsigned short, camID);      
+	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_SET_CAMERA_ASPECTRATIO);
+	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
+	BINARY_SET_DATA_S_INCR(p, unsigned short, camID);
 
 	BINARY_SET_DOUBLE_INCR(p, as);
-	memcpy(p, msg.c_str(), msg.size());  
+	memcpy(p, msg.c_str(), msg.size());
 
 	if (!SocketUtil::sendData(sock, sendBuff, sendSize)) {
-		LOG_ERR(("setCamAS: cannot send fov data."));    
+		LOG_ERR(("setCamAS: cannot send fov data."));
 		delete [] sendBuff;
 		return false;
 	}
@@ -682,13 +682,13 @@ Vector3d & SimObj::getPosition(Vector3d &v)
 	char *sendBuff = new char[sendSize];
 	char *p = sendBuff;
   
-	BINARY_SET_DATA_S_INCR(p, unsigned short, 17); 
-	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);  
+	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_GET_ENTITY_POSITION);
+	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
 
-	memcpy(p, msg.c_str(), msg.size());  
+	memcpy(p, msg.c_str(), msg.size());
 
 	if (!SocketUtil::sendData(sock, sendBuff, sendSize)) {
-		LOG_ERR(("getPosition: cannot send request."));    
+		LOG_ERR(("getPosition: cannot send request."));
 		delete [] sendBuff;
 		return v;
 	}
@@ -698,7 +698,7 @@ Vector3d & SimObj::getPosition(Vector3d &v)
 	char *recvBuff = new char[recvSize];
 
 	if (!SocketUtil::recvData(sock, recvBuff, recvSize)) {
-		LOG_ERR(("getPosition: failed to recieve position data"));    
+		LOG_ERR(("getPosition: failed to recieve position data"));
 		delete [] recvBuff;
 		return v;
 	}
@@ -734,13 +734,13 @@ Rotation & SimObj::getRotation(Rotation &r)
 	char *sendBuff = new char[sendSize];
 	char *p = sendBuff;
   
-	BINARY_SET_DATA_S_INCR(p, unsigned short, 19); //TODO: Magic number
-	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);  
+	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_GET_ENTITY_ROTATION);
+	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
 
 	memcpy(p, msg.c_str(), msg.size());  
 
 	if (!SocketUtil::sendData(sock, sendBuff, sendSize)) {
-		LOG_ERR(("getRotation: cannot send request."));    
+		LOG_ERR(("getRotation: cannot send request."));
 		delete [] sendBuff;
 		return r;
 	}
@@ -750,7 +750,7 @@ Rotation & SimObj::getRotation(Rotation &r)
 	char *recvBuff = new char[recvSize];
 
 	if (!SocketUtil::recvData(sock, recvBuff, recvSize)) {
-		LOG_ERR(("getRotation: failed to recieve position data"));    
+		LOG_ERR(("getRotation: failed to recieve position data"));
 		delete [] recvBuff;
 		return r;
 	}
@@ -795,10 +795,10 @@ void SimObj::setCameraViewPoint(Vector3d v,int camID)
 {
 	if (m_parts.size() == 1)
 		{
-			if (camID == 1) 
+			if (camID == 1)
 				{
-					vpx(v.x()); 
-					vpy(v.y()); 
+					vpx(v.x());
+					vpy(v.y());
 					vpz(v.z());
 				}
 			else
@@ -831,7 +831,7 @@ Vector3d & SimObj::getCameraViewPoint(Vector3d &v,int camID)
 {
 	if (m_parts.size() == 1)
 		{
-			if (camID == 1) 
+			if (camID == 1)
 				v.set(vpx(), vpy(), vpz());
 			else
 				{
@@ -924,17 +924,17 @@ void SimObj::setPosition(double x, double y, double z)
 	char *sendBuff = new char[sendSize];
 	char *p = sendBuff;
   
-	BINARY_SET_DATA_S_INCR(p, unsigned short, 15); 
-	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);      
+	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_SET_ENTITY_POSITION);
+	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
 
 	BINARY_SET_DOUBLE_INCR(p, x);
 	BINARY_SET_DOUBLE_INCR(p, y);
 	BINARY_SET_DOUBLE_INCR(p, z);
 
-	memcpy(p, msg.c_str(), msg.size());  
+	memcpy(p, msg.c_str(), msg.size());
 
 	if (!SocketUtil::sendData(sock, sendBuff, sendSize)) {
-		LOG_ERR(("setPosition: cannot send position data."));    
+		LOG_ERR(("setPosition: cannot send position data."));
 		delete [] sendBuff;
 		return;
 	}
@@ -964,12 +964,12 @@ bool SimObj::getIsGrasped()
 
 	// Prepare header
 	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_GET_ISGRASPED);
-	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);      
+	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
   
-	memcpy(p, msg.c_str(), msg.size());  
+	memcpy(p, msg.c_str(), msg.size());
 
 	if (!SocketUtil::sendData(sock, sendBuff, sendSize)) {
-		LOG_ERR(("getIsGrasped: cannot send position data."));    
+		LOG_ERR(("getIsGrasped: cannot send position data."));
 		delete [] sendBuff;
 		return false;
 	}
@@ -1056,7 +1056,7 @@ bool SimObj::setEntityQuaternion(dReal *qua, bool abs)
 	char *sendBuff = new char[sendSize];
 	char *p = sendBuff;
   
-	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_SET_ENTITY_ROTATION); 
+	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_SET_ENTITY_ROTATION);
 	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
 
 	BINARY_SET_DATA_S_INCR(p, unsigned short, abs);
@@ -1065,10 +1065,10 @@ bool SimObj::setEntityQuaternion(dReal *qua, bool abs)
 	BINARY_SET_DOUBLE_INCR(p, qua[2]);
 	BINARY_SET_DOUBLE_INCR(p, qua[3]);
 
-	memcpy(p, msg.c_str(), msg.size());  
+	memcpy(p, msg.c_str(), msg.size());
 
 	if (!SocketUtil::sendData(sock, sendBuff, sendSize)) {
-		//LOG_ERR(("setRotation: cannot send position data."));    
+		//LOG_ERR(("setRotation: cannot send position data."));
 		delete [] sendBuff;
 		return false;
 	}
@@ -1155,9 +1155,13 @@ int SimObj::getGravityMode()
 	m_sender->send(enc);
 	const int BUFSIZE = 128;
 	CommDataResult *r = m_sender->recv(BUFSIZE);
-	if (r == NULL || r->type() != COMM_RESULT_GET_GRAVITY_MODE) { return -1; }
+	if (r == NULL || r->type() != COMM_RESULT_GET_GRAVITY_MODE) {
+		return -1;
+	}
 	ResultGetGravityModeEvent *evt = (ResultGetGravityModeEvent *)r->data();
-	if (strcmp(evt->getAgentName(),name()) != 0) {return -1;}
+	if (strcmp(evt->getAgentName(),name()) != 0) {
+		return -1;
+	}
 	int gravity = evt->grav();
 	return gravity;
 }
@@ -1190,7 +1194,8 @@ double SimObj::getMass()
 	return  mass;
 }
 
-void SimObj::setAccel(double ax, double ay, double az) {
+void SimObj::setAccel(double ax, double ay, double az)
+{
 	double m = mass();
 	setForce(m*ax, m*ay, m*az);
 }
@@ -1233,9 +1238,13 @@ void SimObj::getLinearVelocity(Vector3d &vec)
 	m_sender->send(enc);
 	const int BUFSIZE = 128; // TODO: Magic number should be removed
 	CommDataResult *r = m_sender->recv(BUFSIZE);
-	if (r == NULL || r->type() != COMM_RESULT_GET_LINEAR_VELOCITY) { return; }
+	if (r == NULL || r->type() != COMM_RESULT_GET_LINEAR_VELOCITY) {
+		return;
+	}
 	ResultGetLinearVelocityEvent *evt = (ResultGetLinearVelocityEvent *)r->data();
-	if (strcmp(evt->getAgentName(),name()) != 0) {return;}
+	if (strcmp(evt->getAgentName(),name()) != 0) {
+		return;
+	}
 	vec.x(evt->x());
 	vec.y(evt->y());
 	vec.z(evt->z());
@@ -1254,11 +1263,15 @@ void SimObj::getAngularVelocity(Vector3d &v)
 	assert(m_sender);
 	CommRequestGetAngularVelocityEncoder enc(name());
 	m_sender->send(enc);
-	const int BUFSIZE = 128;
+	const int BUFSIZE = 128; //TODO: Magic number
 	CommDataResult *r = m_sender->recv(BUFSIZE);
-	if (r == NULL || r->type() != COMM_RESULT_GET_ANGULAR_VELOCITY) { return; }
+	if (r == NULL || r->type() != COMM_RESULT_GET_ANGULAR_VELOCITY) {
+		return;
+	}
 	ResultGetAngularVelocityEvent *evt = (ResultGetAngularVelocityEvent *)r->data();
-	if (strcmp(evt->getAgentName(),name()) != 0) {return;}
+	if (strcmp(evt->getAgentName(),name()) != 0) {
+		return;
+	}
 	v.x(evt->x());
 	v.y(evt->y());
 	v.z(evt->z());
@@ -1294,18 +1307,18 @@ void SimObj::setJointQuaternion(const char *jointName, double qw, double qx, dou
 	char *sendBuff = new char[sendSize];
 	char *p = sendBuff;
 
-	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_SET_JOINT_QUATERNION); 
+	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_SET_JOINT_QUATERNION);
 	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
 
-	BINARY_SET_DOUBLE_INCR(p, qw); 
+	BINARY_SET_DOUBLE_INCR(p, qw);
 	BINARY_SET_DOUBLE_INCR(p, qx);
 	BINARY_SET_DOUBLE_INCR(p, qy);
 	BINARY_SET_DOUBLE_INCR(p, qz);
 
-	memcpy(p, msg.c_str(), msg.size());  
+	memcpy(p, msg.c_str(), msg.size());
 
 	if (!SocketUtil::sendData(sock, sendBuff, sendSize)) {
-		LOG_ERR(("setJointQuaternion: cannot get joint position"));    
+		LOG_ERR(("setJointQuaternion: cannot get joint position"));
 		delete [] sendBuff;
 		return;
 	}
@@ -1360,16 +1373,16 @@ void SimObj::setAngularVelocityToJoint(const char *jointName, double v, double m
 	char *sendBuff = new char[sendSize];
 	char *p = sendBuff;
 
-	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_SET_JOINT_VELOCITY); 
-	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);      
+	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_SET_JOINT_VELOCITY);
+	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
 
-	BINARY_SET_DOUBLE_INCR(p, v); 
+	BINARY_SET_DOUBLE_INCR(p, v);
 	BINARY_SET_DOUBLE_INCR(p, max);
 
 	memcpy(p, msg.c_str(), msg.size());  
 
 	if (!SocketUtil::sendData(sock, sendBuff, sendSize)) {
-		LOG_ERR(("setAngularVelocityToJoint: cannot send data"));    
+		LOG_ERR(("setAngularVelocityToJoint: cannot send data"));
 		delete [] sendBuff;
 		return;
 	}
@@ -1423,7 +1436,7 @@ double SimObj::getJointAngle(const char *jointName)
 
 	// Receiving the result
 	if (!SocketUtil::recvData(sock, recvBuff, recvSize)) {
-		LOG_ERR(("getJointAngle: cannot get joint position"));    
+		LOG_ERR(("getJointAngle: cannot get joint position"));
 		delete [] recvBuff;
 		return false;
 	}
@@ -1458,7 +1471,7 @@ std::map<std::string, double> SimObj::getAllJointAngles()
 
 	char tmp[8];
 	if (!SocketUtil::recvData(sock, tmp, 4)) { //TODO: magic number
-		LOG_ERR(("getJointAngle: cannot get joint position"));    
+		LOG_ERR(("getJointAngle: cannot get joint position"));
 		return alljoints;
 	}
 	char *p = tmp;
@@ -1469,7 +1482,7 @@ std::map<std::string, double> SimObj::getAllJointAngles()
 	char *recvBuff = new char[recvSize];
 
 	if (!SocketUtil::recvData(sock, recvBuff, recvSize)) {
-		LOG_ERR(("getJointAngle: cannot get joint position"));    
+		LOG_ERR(("getJointAngle: cannot get joint position"));
 		delete [] recvBuff;
 		return alljoints;
 	}
@@ -1491,7 +1504,7 @@ std::map<std::string, double> SimObj::getAllJointAngles()
 		//LOG_MSG(("ch(%s, %f)", name.c_str(), angle));
 	}
 
-	delete [] recvBuff;  
+	delete [] recvBuff;
 	return alljoints;
 }
 
@@ -1516,11 +1529,11 @@ bool SimObj::getJointPosition( Vector3d &pos, const char *jointName)
 	char *p = sendBuff;
 
 	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_GET_JOINT_POSITION);
-	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);      
-	memcpy(p, msg.c_str(), msg.size());  
+	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
+	memcpy(p, msg.c_str(), msg.size());
 
 	if (!SocketUtil::sendData(sock, sendBuff, sendSize)) {
-		LOG_ERR(("getJointPosition: cannot get joint position"));    
+		LOG_ERR(("getJointPosition: cannot get joint position"));
 		delete [] sendBuff;
 		return false;
 	}
@@ -1530,7 +1543,7 @@ bool SimObj::getJointPosition( Vector3d &pos, const char *jointName)
 	char *recvBuff = new char[recvSize];
 
 	if (!SocketUtil::recvData(sock, recvBuff, recvSize)) {
-		LOG_ERR(("getJointPosition: cannot get joint position"));    
+		LOG_ERR(("getJointPosition: cannot get joint position"));
 		delete [] recvBuff;
 		return false;
 	}
@@ -1569,11 +1582,11 @@ bool SimObj::getPartsPosition(Vector3d &pos, const char *partsName)
 	char *p = sendBuff;
 
 	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_GET_PARTS_POSITION);
-	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);      
-	memcpy(p, msg.c_str(), msg.size());  
+	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
+	memcpy(p, msg.c_str(), msg.size());
 
 	if (!SocketUtil::sendData(sock, sendBuff, sendSize)) {
-		LOG_ERR(("getPartsPosition: cannot get joint position"));    
+		LOG_ERR(("getPartsPosition: cannot get joint position"));
 		delete [] sendBuff;
 		return false;
 	}
@@ -1583,7 +1596,7 @@ bool SimObj::getPartsPosition(Vector3d &pos, const char *partsName)
 	char *recvBuff = new char[recvSize];
 
 	if (!SocketUtil::recvData(sock, recvBuff, recvSize)) {
-		LOG_ERR(("getPartsPosition: cannot get joint position"));    
+		LOG_ERR(("getPartsPosition: cannot get joint position"));
 		delete [] recvBuff;
 		return false;
 	}
@@ -1605,7 +1618,7 @@ bool SimObj::getPartsPosition(Vector3d &pos, const char *partsName)
 
 bool SimObj::getJointForce(const char *jointName, JointForce &jf1, JointForce &jf2)
 {
-	if (!dynamics()) { 
+	if (!dynamics()) {
 		LOG_ERR(("getJointForce : dynamics is off"));
 		return false;
 	}
@@ -1617,11 +1630,15 @@ bool SimObj::getJointForce(const char *jointName, JointForce &jf1, JointForce &j
 	CommRequestGetJointForceEncoder enc(name(), jointName);
 	m_sender->send(enc);
 
-	const int BUFSIZE = 1024;
+	const int BUFSIZE = 1024; //TODO: Magic number
 	CommDataResult *r = m_sender->recv(BUFSIZE);
-	if (r == NULL || r->type() != COMM_RESULT_GET_JOINT_FORCE) { return false; }
+	if (r == NULL || r->type() != COMM_RESULT_GET_JOINT_FORCE) {
+		return false;
+	}
 	ResultGetJointForceEvent *evt = (ResultGetJointForceEvent *)r->data();
-	if (!evt->success()) { return false; }
+	if (!evt->success()) {
+		return false;
+	}
 	JointForce *jf = evt->getJointForce(0);
 	jf1 = *jf;
 	jf = evt->getJointForce(1);
@@ -1647,11 +1664,11 @@ void SimObj::setCollisionEnable(bool flag)
 	char *p = sendBuff;
 
 	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_SET_COLLISIONABLE);
-	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize); 
+	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
 	BINARY_SET_BOOL_INCR(p, flag );
 	memcpy(p, msg.c_str(), msg.size());
 	if (!SocketUtil::sendData(sock, sendBuff, sendSize)) {
-		LOG_ERR(("setCollisionable: cannot send request to server."));   
+		LOG_ERR(("setCollisionable: cannot send request to server."));
 	}
 	delete [] sendBuff;
 }
@@ -1739,12 +1756,12 @@ bool SimObj::getPointingVector(Vector3d &vec, const char *joint1, const char *jo
 	char *sendBuff = new char[sendSize];
 	char *p = sendBuff;
 
-	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_GET_POINTING_VECTOR); 
+	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_GET_POINTING_VECTOR);
 	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);      
 	memcpy(p, msg.c_str(), msg.size());  
 
 	if (!SocketUtil::sendData(sock, sendBuff, sendSize)) {
-		LOG_ERR(("getPointingVector: cannot send request to server."));   
+		LOG_ERR(("getPointingVector: cannot send request to server."));
 		delete [] sendBuff;
 		return false;
 	}
@@ -1754,7 +1771,7 @@ bool SimObj::getPointingVector(Vector3d &vec, const char *joint1, const char *jo
 	char *recvBuff = new char[recvSize];
 
 	if (!SocketUtil::recvData(sock, recvBuff, recvSize)) {
-		LOG_ERR(("getJointPosition: cannot get joint position"));    
+		LOG_ERR(("getJointPosition: cannot get joint position"));
 		delete [] recvBuff;
 		return false;
 	}
@@ -1827,8 +1844,8 @@ bool SimObj::sendRequest(std::string msg, int type)
 	char *sendBuff = new char[sendSize];
 	char *p = sendBuff;
 
-	BINARY_SET_DATA_S_INCR(p, unsigned short, type); 
-	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);      
+	BINARY_SET_DATA_S_INCR(p, unsigned short, type);
+	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
 	memcpy(p, msg.c_str(), msg.size());  
 
 	if (!SocketUtil::sendData(sock, sendBuff, sendSize)) {
@@ -1879,16 +1896,16 @@ bool RobotObj::setWheel(double wheelRadius, double wheelDistance)
 	char *sendBuff = new char[sendSize];
 	char *p = sendBuff;
   
-	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_SET_WHEEL); 
-	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);      
+	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_SET_WHEEL);
+	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
 
 	BINARY_SET_DOUBLE_INCR(p, wheelRadius);
 	BINARY_SET_DOUBLE_INCR(p, wheelDistance);
 
-	memcpy(p, msg.c_str(), msg.size());  
+	memcpy(p, msg.c_str(), msg.size());
 
 	if (!SocketUtil::sendData(sock, sendBuff, sendSize)) {
-		LOG_ERR(("setWheel: cannot send position data."));    
+		LOG_ERR(("setWheel: cannot send position data."));
 		delete [] sendBuff;
 		return false;
 	}
@@ -1915,8 +1932,8 @@ bool RobotObj::setWheelVelocity(double left, double right)
 	char *sendBuff = new char[sendSize];
 	char *p = sendBuff;
   
-	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_SET_WHEEL_VELOCITY); 
-	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);      
+	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_SET_WHEEL_VELOCITY);
+	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
 
 	BINARY_SET_DOUBLE_INCR(p, left);
 	BINARY_SET_DOUBLE_INCR(p, right);
@@ -1924,7 +1941,7 @@ bool RobotObj::setWheelVelocity(double left, double right)
 	memcpy(p, msg.c_str(), msg.size());  
 
 	if (!SocketUtil::sendData(sock, sendBuff, sendSize)) {
-		LOG_ERR(("setWheelVelocity: cannot send position data."));    
+		LOG_ERR(("setWheelVelocity: cannot send position data."));
 		delete [] sendBuff;
 		return false;
 	}
