@@ -1,4 +1,7 @@
-/* $Id: Rotation.h,v 1.3 2011-07-27 07:12:28 okamoto Exp $ */ 
+/*
+ * Modified by okamoto on 2011-07-27
+ */
+
 #ifndef Rotation_h
 #define Rotation_h
 
@@ -37,14 +40,17 @@ public:
 	Rotation();
 	Rotation(const Rotation &o);
 
-	Rotation(double w, double x, double y, double z){
+	Rotation(double w, double x, double y, double z)
+	{
 	  setQuaternion(w, x, y, z);
 	}
-	void	setQuaternion(const dReal *q)
+
+	void setQuaternion(const dReal *q)
 	{
 	  setQuaternion(q[0], q[1], q[2], q[3]);
 	}
-	void	setQuaternion(dReal w, dReal x, dReal y, dReal z)
+
+	void setQuaternion(dReal w, dReal x, dReal y, dReal z)
 	{
 		int i=0; 
 		m_q[i] = w; i++;
@@ -55,46 +61,46 @@ public:
 		makeMatrix();
 	}
 
-	dReal	qw(){return m_q[0];}
-	dReal	qx(){return m_q[1];}
-	dReal	qy(){return m_q[2];}
-	dReal	qz(){return m_q[3];}
+	dReal qw(){return m_q[0];}
+	dReal qx(){return m_q[1];}
+	dReal qy(){return m_q[2];}
+	dReal qz(){return m_q[3];}
 
-
-	const 	dReal * q() const { return m_q; }
+	const dReal * q() const { return m_q; }
 
 #ifdef USE_ODE
-	void	setAxisAndAngle(double ax, double ay, double az, double angle)
+	void setAxisAndAngle(double ax, double ay, double az, double angle)
 	{
 		dQFromAxisAndAngle(m_q, ax, ay, az, angle);
 		makeMatrix();
 	}
 
-        void    setAxisAndAngle(double ax, double ay, double az, double angle, double direct)
-        {
-	  if (direct == 1.0) {
-	    // It rotates absolutely for the specification of the angle.
-	    dQFromAxisAndAngle(m_q, ax, ay, az, angle);
-	    makeMatrix();
-	  } else {
-	    // It rotates for the specification of the relative angle.
-	    dQuaternion qt1, qt2;
-	    dQFromAxisAndAngle(qt1, ax, ay, az, angle);
-	    dQMultiply0(qt2, q(), qt1); 
-	    setQuaternion(qt2[0], qt2[1], qt2[2], qt2[3]);
-	  }
-        }
+	void setAxisAndAngle(double ax, double ay, double az, double angle, double direct)
+	{
+		if (direct == 1.0) {
+			// It rotates absolutely for the specification of the angle.
+			dQFromAxisAndAngle(m_q, ax, ay, az, angle);
+			makeMatrix();
+		} else {
+			// It rotates for the specification of the relative angle.
+			dQuaternion qt1, qt2;
+			dQFromAxisAndAngle(qt1, ax, ay, az, angle);
+			dQMultiply0(qt2, q(), qt1); 
+			setQuaternion(qt2[0], qt2[1], qt2[2], qt2[3]);
+		}
+	}
 
 	const dReal * matrix() const
 	{
 		return m_m;
 	}
 
-	dReal operator()(int r, int c)  const {
+	dReal operator()(int r, int c)  const
+	{
 		return m_m[r*4 + c];
 	}
 
-	dReal	apply(int row, const Vector3d &v) const
+	dReal apply(int row, const Vector3d &v) const
 	{
 		const Rotation &r = *this;
 		return r(row, 0)*v.x()  + r(row, 1)*v.y() + r(row, 2)*v.z();
@@ -123,17 +129,18 @@ public:
 
 	bool operator!=(Rotation &o)
 	{
-	  if(this->m_q[0] != o.qw() ||
-	     this->m_q[1] != o.qx() ||
-	     this->m_q[2] != o.qy() || 
-	     this->m_q[3] != o.qz())
-	    {
-	      return true;
+		if(this->m_q[0] != o.qw() ||
+		   this->m_q[1] != o.qx() ||
+		   this->m_q[2] != o.qy() || 
+		   this->m_q[3] != o.qz())
+		{
+			return true;
 	    }
-	  else{ return false; }
+		else
+		{
+			return false;
+		}
 	}
-
-
 #endif
 };
 

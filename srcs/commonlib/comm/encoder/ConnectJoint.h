@@ -1,4 +1,7 @@
-/* $Id: ConnectJoint.h,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */ 
+/*
+ * Created by okamoto on 2011-03-25
+ */
+
 #ifndef Comm_Encoder_ConnectJoint_h
 #define Comm_Encoder_ConnectJoint_h
 
@@ -9,7 +12,7 @@ namespace CommData {
 
 class RequestConnectJoint : public Encoder
 {
-	enum { BUFSIZE = 512, };
+	enum { BUFSIZE = 512, }; //TODO: Magic number
 private:
 	RequestConnectJointData m_data;
 public:

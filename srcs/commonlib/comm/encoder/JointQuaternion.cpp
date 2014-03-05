@@ -1,4 +1,7 @@
-/* $Id: JointQuaternion.cpp,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */
+/*
+ * Created by okamoto on 2011-03-25
+ */
+
 #include "JointQuaternion.h"
 #include "binary.h"
 
@@ -7,19 +10,15 @@ BEGIN_NS_COMMDATA();
 char *SetJointQuaternionRequest::encode(int seq, int &sz)
 {
 	char *p = m_buf;
-
 	p = setHeader(p, seq);
-
 	{
 		const char *name = m_data.agentName();
 		BINARY_SET_STRING_INCR(p, name);
 	}
-
 	{
 		const char *name = m_data.jointName();
 		BINARY_SET_STRING_INCR(p, name);
 	}
-
 	double qw = m_data.qw();
 	BINARY_SET_DOUBLE_INCR(p, qw);
 
@@ -32,8 +31,8 @@ char *SetJointQuaternionRequest::encode(int seq, int &sz)
 	double qz = m_data.qz();
 	BINARY_SET_DOUBLE_INCR(p, qz);
 
-        bool offset = m_data.offset();
-        BINARY_SET_BOOL_INCR(p, offset);
+	bool offset = m_data.offset();
+	BINARY_SET_BOOL_INCR(p, offset);
 
 	p = setFooter(p);
 

@@ -1,4 +1,7 @@
-/* $Id: ControllerCommand.h,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */ 
+/*
+ * Created by okamoto on 2011-03-25
+ */
+
 #ifdef DEPRECATED
 
 #ifndef ControllerCommand_h
@@ -13,7 +16,7 @@ BEGIN_NS_COMMDATA();
 class ControllerCommand : public Encoder
 {
 private:
-	enum { BUFSIZE = 1024, };
+	enum { BUFSIZE = 1024, }; //TODO: Magic number
 private:
 	Command & m_cmd;
 public:

@@ -1,4 +1,8 @@
-/* $Id: DetectEntities.h,v 1.2 2011-08-15 05:34:46 okamoto Exp $ */ 
+/*
+ * Created  by okamoto on 2011-03-25
+ * Modified by okamoto on 2011-08-15
+ */
+
 #ifndef Comm_Encoder_DetectEntities_h
 #define Comm_Encoder_DetectEntities_h
 
@@ -12,7 +16,7 @@ namespace CommData {
 class DetectEntitiesRequest : public Encoder
 {
 private:
-	enum { BUFSIZE = 256, };
+	enum { BUFSIZE = 256, }; //TODO: Magic number
 private:
 	std::string	m_name;
 	int               m_id;
@@ -30,7 +34,7 @@ public:
 class DetectEntitiesResult : public Encoder
 {
 private:
-	enum { BUFSIZE = 1024, };
+	enum { BUFSIZE = 1024, }; //TODO: Magic number
 private:
 	typedef std::string S;
 	typedef std::vector<S> C;

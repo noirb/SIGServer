@@ -1,4 +1,7 @@
-/* $Id: ServiceNameServer.h,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */ 
+/*
+ * Created by okamoto on 2011-03-25
+ */
+
 #ifndef ServiceNameServer_h
 #define ServiceNameServer_h
 

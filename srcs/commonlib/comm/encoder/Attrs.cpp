@@ -1,4 +1,7 @@
-/* $Id: Attrs.cpp,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */ 
+/*
+ * Created by okamoto on 2011-03-25
+ */
+
 #include "Attrs.h"
 #include "binary.h"
 
@@ -13,15 +16,13 @@ char *GetAttributesRequest::encode(int seq, int &sz)
 		memcpy(p, h, n);
 		p += n;
 	}
-
 	unsigned short attrNum = m_attrNames.size();
 	BINARY_SET_DATA_S_INCR(p, unsigned short, attrNum);
 	
-	for(C::iterator i=m_attrNames.begin(); i!=m_attrNames.end(); i++) {
+	for (C::iterator i=m_attrNames.begin(); i!=m_attrNames.end(); i++) {
 		const char *str = i->c_str();
 		BINARY_SET_STRING_INCR(p, str);
 	}
-
 	{
 		char *f = getFooter(n);
 		memcpy(p, f, n);

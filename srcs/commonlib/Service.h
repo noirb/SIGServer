@@ -1,4 +1,7 @@
-/* $Id: Service.h,v 1.3 2011-09-09 07:37:20 okamoto Exp $ */ 
+/*
+ * Modified by okamoto on 2011-09-09
+ */
+
 #ifndef Service_h
 #define Service_h
 

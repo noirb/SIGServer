@@ -1,4 +1,7 @@
-/* $Id: Attrs.h,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */
+/*
+ * Created by okamoto on 2011-03-25
+ */
+
 #ifndef Attrs_h
 #define Attrs_h
 
@@ -12,7 +15,7 @@ namespace CommData {
 class GetAttributesRequest : public Encoder
 {
 public:
-	enum { BUFSIZE = 2048, };
+	enum { BUFSIZE = 2048, }; //TODO: Magic number
 private:
 	typedef std::string S;
 	typedef std::vector<S> C;

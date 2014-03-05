@@ -1,4 +1,7 @@
-/* $Id: InvokeMethod.h,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */ 
+/*
+ * Created by okamoto on 2011-03-25
+ */
+
 #ifndef InvokeMethod_h
 #define InvokeMethod_h
 
@@ -19,7 +22,7 @@ public:
 class InvokeOnAction : public Encoder
 {
 private:
-	enum { BUFSIZE = 256, };
+	enum { BUFSIZE = 256, }; //TODO: Magic number
 private:
 	double	m_time;
 public:
@@ -35,7 +38,7 @@ public:
 class InvokeOnRecvText : public Encoder
 {
 private:
-	enum { BUFSIZE = 1024, };
+	enum { BUFSIZE = 1024, }; //TODO: Magic number
 private:
 	typedef std::string S;
 private:
@@ -59,7 +62,7 @@ public:
 
 class InvokeOnRecvMessage : public Encoder
 {
-	enum { BUFSIZE = 2048, };
+	enum { BUFSIZE = 2048, }; //TODO: Magic number
 	typedef std::string S;
 	typedef std::vector<S> C;
 private:
@@ -83,7 +86,7 @@ public:
 class InvokeOnCollision : public Encoder
 {
 	typedef std::vector<std::string> C;
-	enum { BUFSIZE = 4096, };
+	enum { BUFSIZE = 4096, }; //TODO: Magic number
 private:
 	double	m_time;
 	const C &m_with;

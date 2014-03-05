@@ -1,4 +1,7 @@
-/* $Id: DisplayText.h,v 1.2 2011-08-10 02:52:11 okamoto Exp $ */ 
+/*
+ * Modified by okamoto on 2011-08-10
+ */
+
 #ifndef DisplayText_h
 #define DisplayText_h
 
@@ -8,7 +11,7 @@ namespace CommData {
 
 class DisplayText : public Encoder
 {
-	enum { BUFSIZE = 1024, };
+	enum { BUFSIZE = 1024, }; //TODO: Magic number
 private:
 	short m_fs;
 	short m_color;

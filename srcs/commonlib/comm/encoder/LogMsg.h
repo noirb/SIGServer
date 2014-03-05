@@ -1,4 +1,7 @@
-/* $Id: LogMsg.h,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */ 
+/*
+ * Created by okamoto on 2011-03-25
+ */
+
 #ifndef LogMsg_h
 #define LogMsg_h
 
@@ -8,7 +11,7 @@ namespace CommData {
 
 class LogMsg : public Encoder
 {
-	enum { BUFSIZE = 1024, };
+	enum { BUFSIZE = 1024, }; //TODO: Magic number
 private:
 	short	m_level;
 	std::string m_msg;

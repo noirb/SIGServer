@@ -1,4 +1,7 @@
-/* $Id: DetectEntities.cpp,v 1.3 2012-03-27 04:13:51 noma Exp $ */
+/*
+ * Modified by okamoto on 2012-03-27
+ */
+
 #include "DetectEntities.h"
 #include "Header.h"
 #include "binary.h"

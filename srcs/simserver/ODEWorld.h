@@ -1,4 +1,7 @@
-/* $Id: ODEWorld.h,v 1.4 2012-03-19 06:31:57 okamoto Exp $ */ 
+/*
+ * Modified by okamoto on 2012-03-19
+ */
+
 #ifndef ODEWorld_h
 #define ODEWorld_h
 

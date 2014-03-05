@@ -1,4 +1,7 @@
-/* $Id: ConnectJoint.cpp,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */ 
+/*
+ * Created by okamoto on 2011-03-25
+ */
+
 #include "comm/encoder/ConnectJoint.h"
 #include "binary.h"
 
@@ -21,7 +24,6 @@ char *	RequestConnectJoint::encode(int seq, int &sz)
 	sz = p - m_buf;
 	setPacketSize(m_buf, sz);
 	return m_buf;
-
 }
 
 END_NS_COMMDATA();

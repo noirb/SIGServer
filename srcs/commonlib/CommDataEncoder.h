@@ -1,4 +1,8 @@
-/* $Id: CommDataEncoder.h,v 1.7 2012-03-27 04:10:40 noma Exp $ */ 
+/*
+ * Modified by noma on 2012-03-27
+ * TODO: comparison of header order between RecvEvent.h
+ */
+
 #ifndef CommDataEncoder_h
 #define CommDataEncoder_h
 

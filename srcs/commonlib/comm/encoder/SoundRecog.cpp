@@ -1,4 +1,7 @@
-/* $Id: SoundRecog.cpp,v 1.2 2011-03-31 08:16:28 okamoto Exp $ */
+/*
+ * Created by okamoto on 2011-03-25
+ */
+
 #include "SoundRecog.h"
 #include "RawSound.h"
 #include "binary.h"

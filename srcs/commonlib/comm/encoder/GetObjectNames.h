@@ -1,4 +1,7 @@
-/* $Id: GetObjectNames.h,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */ 
+/*
+ * Created by okamoto on 2011-03-25
+ */
+
 #ifndef Comm_Encoder_GetObjectNames_h
 #define Comm_Encoder_GetObjectNames_h
 
@@ -12,7 +15,7 @@ namespace CommData {
 class GetObjectNamesRequest : public Encoder
 {
 private:
-	enum { BUFSIZE = 128, };
+	enum { BUFSIZE = 128, }; //TODO: Magic number
 public:
 	enum {
 		ALL = 3,    
@@ -41,7 +44,7 @@ private:
 	typedef std::string S;
 	typedef std::vector<S> C;
 private:
-	enum { BUFSIZE = 4096, UNIT=50};
+	enum { BUFSIZE = 4096, UNIT=50}; //TODO: Magic number
 private:
 	C	m_names;
 public:

@@ -1,4 +1,7 @@
-/* $Id: InvokeOnRecvSound.cpp,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */
+/*
+ * Created by okamoto on 2011-03-25
+ */
+
 #include "InvokeOnRecvSound.h"
 #include "RawSound.h"
 #include "binary.h"
@@ -48,8 +51,8 @@ int main()
 	typedef EncoderTest<Enc, Evt> Test;
 
 
-	RawSoundHeader h(2, 16000, 16, RAW_SOUND_LITTLE_ENDIAN);
-	RawSound sound(h, 50000);
+	RawSoundHeader h(2, 16000, 16, RAW_SOUND_LITTLE_ENDIAN); //TODO: Magic number
+	RawSound sound(h, 50000); //TODO: Magic number
 	Enc enc(1.000, "me", "you", sound);
 	Evt evt;
 	Test test;

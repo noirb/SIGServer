@@ -4396,7 +4396,8 @@ bool WorldSimulator::runStep()
 
 			} // if (0 < n && n < REQUEST_SIZE) {
 			// if the 2bytes data is 0xabcd (request from SIGViewer)
-			else if (n == COMM_DATA_PACKET_START_TOKEN) {
+			else if (n == COMM_DATA_PACKET_START_TOKEN)
+			{
 				packetSize = BINARY_GET_DATA_S_INCR(p, unsigned short);
 				if (packetSize > firstRead) {
 					r = recv(s,

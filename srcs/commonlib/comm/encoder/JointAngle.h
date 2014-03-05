@@ -1,4 +1,7 @@
-/* $Id: JointAngle.h,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */ 
+/*
+ * Created by okamoto on 2011-03-25
+ */
+
 #ifndef Comm_Data_JointAgnle_h
 #define Comm_Data_JointAgnle_h
 
@@ -11,7 +14,7 @@ namespace CommData {
 class SetJointAngleRequest : public Encoder
 {
 private:
-	enum { BUFSIZE = 128, };
+	enum { BUFSIZE = 128, }; //TODO: Magic number
 private:
 	JointAngleData m_data;
 public:

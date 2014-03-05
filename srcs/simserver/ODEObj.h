@@ -1,4 +1,7 @@
-/* $Id: ODEObj.h,v 1.3 2011-04-18 01:33:26 kawamoto Exp $ */ 
+/*
+ * Modified by kawamoto on 2011-04-18
+ */
+
 #ifndef ODEObj_h
 #define ODEObj_h
 
