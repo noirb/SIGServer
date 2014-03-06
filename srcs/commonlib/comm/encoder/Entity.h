@@ -1,4 +1,7 @@
-/* $Id: Entity.h,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */ 
+/*
+ * Created by okamoto on 2011-03-25
+ */
+
 #ifndef Entity_h
 #define Entity_h
 
@@ -11,7 +14,7 @@ namespace CommData {
 class GetEntityRequest : public Encoder
 {
 private:
-	enum { BUFSIZE = 128, };
+	enum { BUFSIZE = 128, }; //TODO: Magic number
 private:
 	std::string m_name;
 public:
@@ -25,7 +28,7 @@ public:
 class GetEntityResult : public Encoder
 {
 private:
-	enum { BUFSIZE = 1024, RESIZE = BUFSIZE, };
+	enum { BUFSIZE = 1024, RESIZE = BUFSIZE, }; //TODO: Magic number
 private:
 	double	m_time;
 	SimObjBase * m_obj;

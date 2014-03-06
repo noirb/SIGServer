@@ -1,4 +1,7 @@
-/* $Id: ThreadPthread.h,v 1.2 2011-03-31 08:15:57 okamoto Exp $ */ 
+/*
+ * Modified by okamoto on 2011-03-31
+ */
+
 #ifndef ThreadPthread_h 
 #define ThreadPthread_h
 
@@ -47,7 +50,6 @@ public:
 		pthread_join(*m_thread, 0);
 	}
 };
- 
 
 #endif // ThreadPthread_h
 

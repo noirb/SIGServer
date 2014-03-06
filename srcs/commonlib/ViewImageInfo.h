@@ -1,4 +1,7 @@
-/* $Id: ViewImageInfo.h,v 1.3 2011-09-16 03:54:26 okamoto Exp $ */ 
+/*
+ * Modified by okamoto on 2011-09-16
+ */
+
 #ifndef ViewImageInfo_h
 #define ViewImageInfo_h
 
