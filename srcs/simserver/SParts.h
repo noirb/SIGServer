@@ -2,8 +2,6 @@
  * Written by noma on 2012-03-27
  * Modified by Tetsunari Inamura on 2013-12-29
  *    Add English comments (Translation from v2.2.0 is finished)
- * Modified by Tetsunari Inamura on 2014-01-29
- *    Delete Magic numbers
  */
 
 #ifndef Parts_Server_h
@@ -16,16 +14,6 @@
 
 #include "Parts.h"
 #include "PartsCmpnt.h"
-
-#define SPARTS_MU1     dInfinity
-#define SPARTS_MU2     dInfinity
-#define SPARTS_SLIP1   0.01
-#define SPARTS_SLIP2   0.01
-#define SPARTS_ERP     0.2
-#define SPARTS_CFM     0.0001
-#define SPARTS_BOUNCE  0.1
-#define SPARTS_DAMPING 0.8
-
 
 class Joint;
 
@@ -572,5 +560,3 @@ private:
 #endif
 
 #endif // Parts_Server_h
-
-

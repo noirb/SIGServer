@@ -3,9 +3,7 @@
  * Modified by Tetsunari Inamura on 2013-12-29
  *    Add English comments (Translation from v2.2.0 is finished)
  * Modified by Tetsunari Inamura on 2013-12-30
- *    Change setVelocity to setLinearVelocity
- * Modified by Tetsunari Inamura on 2014-01-29
- *    Delete Magic numbers
+ *   Change setVelocity to setLinearVelocity
  */
 
 #include "systemdef.h"
@@ -19,7 +17,6 @@
 #include "SSimObj.h"
 
 #include <assert.h>
-
 
 /**
  * @brief Constructor
@@ -43,7 +40,7 @@ SParts::SParts(PartsType t, const char *name, const Position &pos) : Parts(t, na
 
 SParts::~SParts()
 {
-	for (ChildC::iterator i=m_children.begin(); i!=m_children.end(); i++) {
+	for(ChildC::iterator i=m_children.begin(); i!=m_children.end(); i++) {
 		Child *child = *i;
 		delete child;
 	}
@@ -76,8 +73,8 @@ bool SParts::removeChild(Joint *nextj)
 
 const dReal * SParts::getPosition()
 {
-	const dReal *pos = dBodyGetPosition(m_odeobj->body());
-	return pos;
+  const dReal *pos = dBodyGetPosition(m_odeobj->body());
+  return pos;
 }
 
 const dReal * SParts::getRotation()
@@ -102,7 +99,7 @@ const dReal * SParts::getTorque()
 
 void SParts::setPosition(const Vector3d &v)
 {
-	dBodySetPosition(m_odeobj->body(), v.x(), v.y(), v.z());
+  dBodySetPosition(m_odeobj->body(), v.x(), v.y(), v.z());
 }
 
 
@@ -210,7 +207,7 @@ void SParts::calcPosition(Joint *currj, Joint *nextj, const Vector3d &anchorv, c
 		//DUMP(("v4 = (%f, %f, %f)\n", v.x(), v.y(), v.z()));
 		setPosition(v);
 
-		if (m_onGrasp) {
+		if(m_onGrasp) {
 
 			dBodyID body = odeobj().body();
 			//int num = dBodyGetNumJoints(body);
@@ -226,7 +223,7 @@ void SParts::calcPosition(Joint *currj, Joint *nextj, const Vector3d &anchorv, c
 			const dReal *tpos = dBodyGetPosition(targetBody);
 
 			// Set if it is moved
-			if (pos[0] != tpos[0] || pos[1] != tpos[1] || pos[2] != tpos[2]) {
+			if(pos[0] != tpos[0] || pos[1] != tpos[1] || pos[2] != tpos[2]) {
 				dBodySetPosition(targetBody, pos[0], pos[1], pos[2]);
 			}
 
@@ -239,7 +236,7 @@ void SParts::calcPosition(Joint *currj, Joint *nextj, const Vector3d &anchorv, c
 			dQMultiply2(rot, qua, m_gini);
 
 			// Set if it is rotated
-			if (rot[0] != tqua[0] || rot[1] != tqua[1] || rot[2] != tqua[2] || rot[3] != tqua[3]) {
+			if(rot[0] != tqua[0] || rot[1] != tqua[1] || rot[2] != tqua[2] || rot[3] != tqua[3]) {
 				dBodySetQuaternion(targetBody, rot);
 			}
 			//LOG_MSG(("target2 %d", targetBody));
@@ -275,7 +272,7 @@ void SParts::calcPosition(Joint *currj, Joint *nextj, const Vector3d &anchorv, c
 
 		DUMP(("nextv1 : (%f, %f, %f)\n", nextv.x(), nextv.y(), nextv.z()));
 		// act in a case that multiple JOINTs are connected to one link
-		if (strcmp(nextj->name(),child->currj->name()) == 0) {
+		if(strcmp(nextj->name(),child->currj->name()) == 0) {
 			child->nextp->calcPosition(child->currj, child->nextj, nextv, R_);
 		}
 	}
@@ -356,11 +353,6 @@ void SParts::getLinearVelocity(Vector3d &v)
 	v.z(avel[2]);
 }
 
-void SParts::addTorque(dReal fx, dReal fy, dReal fz)
-{
-	dBodyAddTorque(m_odeobj->body(), fx, fy, fz);
-}
-
 void SParts::setGravityMode(bool gravity)
 {
 	dBodySetGravityMode(m_odeobj->body(), gravity);
@@ -368,7 +360,7 @@ void SParts::setGravityMode(bool gravity)
 
 void SParts::setCollisionEnable(bool gravity)
 {
-	if (gravity) 
+	if(gravity) 
 		dGeomEnable(m_odeobj->geom());
 	else
 		dGeomDisable(m_odeobj->geom());
@@ -394,6 +386,12 @@ void SParts::setLinearVelocity(dReal vx,dReal vy,dReal vz)
 	dBodySetLinearVel(m_odeobj->body(),vx,vy,vz);
 }
 
+void SParts::addTorque(dReal fx, dReal fy, dReal fz)
+{
+	dBodyAddTorque(m_odeobj->body(), fx, fy, fz);
+}
+
+
 /**
  * Set maximum angular velocity
  */
@@ -415,7 +413,8 @@ void SParts::setAngularVelocity(dReal x,dReal y,dReal z)
 	//TODO: using maxAngularVel
 	// call API of the ODE
 	dBodySetAngularVel(m_odeobj->body(),x,y,z);
-	//const dReal *dat = dBodyGetAngularVel(m_odeobj->body());
+	const dReal *dat = dBodyGetAngularVel(m_odeobj->body());
+	//TODO: this function does not set the value: by inamura on 2013-12-29
 }
 
 
@@ -429,14 +428,12 @@ double SParts::getMass()
 void SParts::setMass(double mass)
 {
 	m_mass = mass;
-	if (m_odeobj != NULL) {
+	if(m_odeobj != NULL) {
 		dMass m;
 		dBodyGetMass(m_odeobj->body(), &m);
 		dMassAdjust(&m, m_mass);
 		dBodyID body = m_odeobj->body();
 		dBodySetMass(body, &m);
-
-		dBodySetDamping (body, SPARTS_DAMPING, SPARTS_DAMPING); // added by inamura on 2014-01-29 for test
 	}
 }
 
@@ -562,25 +559,33 @@ void SParts::printIndent(int level)
 void SBoxParts::set(dWorldID w, dSpaceID space)
 {
 	Size &sz = m_cmpnt.size();
+	/*
+	const dReal hx = sz.x();
+	const dReal hy = sz.y();
+	const dReal hz = sz.z();
+	*/
 	dReal hx = sz.x();
 	dReal hy = sz.y();
 	dReal hz = sz.z();
 
-	if (hz == 0) hz = 0.001;
-	if (hy == 0) hy = 0.001;
-	if (hx == 0) hx = 0.001;
+// konao
+DUMP(("[SBoxParts::set] ODE geom created (hx, hy, hz)=(%f, %f, %f) [%s:%d]\n", hx, hy, hz, __FILE__, __LINE__));
+
+	if(hz == 0) hz = 0.001;
+	if(hy == 0) hy = 0.001;
+	if(hx == 0) hx = 0.001;
 
 	dGeomID geom = dCreateBox(0, hx, hy, hz);
 	m_odeobj = ODEObjectContainer::getInstance()->createODEObj(
                                                                w,
                                                                geom,
-                                                               SPARTS_MU1,
-                                                               SPARTS_MU2,
-                                                               SPARTS_SLIP1,
-                                                               SPARTS_SLIP2,
-                                                               SPARTS_ERP,
-                                                               SPARTS_CFM,
-                                                               SPARTS_BOUNCE
+                                                               0.9,
+                                                               0.01,
+                                                               0.5,
+                                                               0.5,
+                                                               0.8,
+                                                               0.001,
+                                                               0.0
                                                                );
 
 	dBodyID body = m_odeobj->body();
@@ -650,21 +655,21 @@ void SCylinderParts::initializeAngle(double x,double y,double z)
 	double angle = M_PI / 2.0 - phi;
 
 	// Rotate -90[deg] around y axis if the (x,y,z) is on x axis
-	if (fabs(y) < 0.01 && fabs(z) < 0.01)
+	if(fabs(y) < 0.01 && fabs(z) < 0.01)
 		{
 			lx = 0.0;
 			ly = -1.0;
 			lz = 0.0;
 		}
 	// Rotate -90[deg] around x axis if the (x,y,z) is on y axis
-	if (fabs(x) < 0.01 && fabs(z) < 0.01)
+	if(fabs(x) < 0.01 && fabs(z) < 0.01)
 		{
 			lx = 1.0;
 			ly = 0.0;
 			lz = 0.0;
 		}
 	// Do not rotate if the (x,y,z) is on z axis
-	else if (fabs(x) < 0.01 && fabs(y) < 0.01)
+	else if(fabs(x) < 0.01 && fabs(y) < 0.01)
 		{
 			lx = 0.0;
 			ly = 0.0;
@@ -685,6 +690,8 @@ void SCylinderParts::set(dWorldID w, dSpaceID space)
 	double radius = m_cmpnt.radius();
 	double length = m_cmpnt.length();
 
+
+// konao
 	//LOG_MSG(("[SCylinderParts::set] ODE geom created (r, l)=(%f, %f) [%s:%d]\n", radius, length, __FILE__, __LINE__))
 	// TODO: Ideally, cylinder should be constructed here. However, collision detection
 	// between two cylinders could not be realized. So, Capsule is required
@@ -696,19 +703,20 @@ void SCylinderParts::set(dWorldID w, dSpaceID space)
 	m_odeobj = ODEObjectContainer::getInstance()->createODEObj(
 	                                                           w,
 	                                                           geom,
-                                                               SPARTS_MU1,
-                                                               SPARTS_MU2,
-                                                               SPARTS_SLIP1,
-                                                               SPARTS_SLIP2,
-                                                               SPARTS_ERP,
-                                                               SPARTS_CFM,
-                                                               SPARTS_BOUNCE
+	                                                           0.9,
+	                                                           0.01,
+	                                                           0.5,
+	                                                           0.5,
+	                                                           0.8,
+	                                                           0.001,
+	                                                           0.0
 	                                                           );
 
 
 	dBodyID body = m_odeobj->body();
 	dMass m;
 	dMassSetZero(&m);
+	//dMassSetCapsule(&m, DENSITY, 1, radius, length);
 	dMassSetCylinder(&m, DENSITY, 1, radius, length); //TODO: mass of the cylinder should be configurable
 
 	dMassAdjust(&m, m_mass);
@@ -761,6 +769,7 @@ double SCylinderParts::getCircumRadius(void)
 //added by noma@tome 20120223
 double SCylinderParts::getCubicRootOfVolume(void)
 {
+	//const double pi = 3.14159265358979323846; //TODO: why M_PI is not used?
 	double volume = M_PI * m_cmpnt.radius()*m_cmpnt.radius() * m_cmpnt.length();
 	return pow(volume, 1/3.0);
 }
@@ -774,18 +783,21 @@ void SSphereParts::set(dWorldID w, dSpaceID space)
 {
 	double rad = m_cmpnt.radius();
 
+// konao
+DUMP(("[SSphereParts::set] ODE geom created (r=%f) [%s:%d]\n", rad, __FILE__, __LINE__));
+
 	dGeomID geom = dCreateSphere(0, rad);
 
 	m_odeobj = ODEObjectContainer::getInstance()->createODEObj(
 	                                                           w,
 	                                                           geom,
-                                                               SPARTS_MU1,
-                                                               SPARTS_MU2,
-                                                               SPARTS_SLIP1,
-                                                               SPARTS_SLIP2,
-                                                               SPARTS_ERP,
-                                                               SPARTS_CFM,
-                                                               SPARTS_BOUNCE
+	                                                           0.9,
+	                                                           0.01,
+	                                                           0.5,
+	                                                           0.5,
+	                                                           0.8,
+	                                                           0.001,
+	                                                           0.0
 	                                                           );
 
 	dBodyID body = m_odeobj->body();
@@ -804,16 +816,17 @@ void SSphereParts::set(dWorldID w, dSpaceID space)
 	dBodySetData(body, this);
 }
 
-//added by noma@tome 2012-02-23
+//added by noma@tome 20120223
 double SSphereParts::getCircumRadius(void)
 {
 	return m_cmpnt.radius();
 }
 
 
-//added by noma@tome 2012-02-23
+//added by noma@tome 20120223
 double SSphereParts::getCubicRootOfVolume(void)
 {
+	//const double pi = 3.14159265358979323846; //TODO: why M_PI is not used?
 	double tmpFactor = 4 * M_PI/3.0;
 	return pow(tmpFactor, 1/3.0) * m_cmpnt.radius();
 }
@@ -840,13 +853,13 @@ void SBlindParts::set(dWorldID w, dSpaceID space)
 	m_odeobj = ODEObjectContainer::getInstance()->createODEObj(
 	                                                           w,
 	                                                           geom,
-                                                               SPARTS_MU1,
-                                                               SPARTS_MU2,
-                                                               SPARTS_SLIP1,
-                                                               SPARTS_SLIP2,
-                                                               SPARTS_ERP,
-                                                               SPARTS_CFM,
-                                                               SPARTS_BOUNCE
+	                                                           0.9,
+	                                                           0.01,
+	                                                           0.5,
+	                                                           0.5,
+	                                                           0.8,
+	                                                           0.001,
+	                                                           0.0
 	                                                           );
 
 	dBodyID body = m_odeobj->body();

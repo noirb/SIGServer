@@ -2,8 +2,6 @@
  * Written by okamoto on 2012-03-19
  * Modified by Tetsunari Inamura on 2013-12-29
  *    Add English comments (Translation from v2.2.0 is finished)
- * Modified by Tetsunari Inamura on 2014-02-25
- *    Remove magic numbers for ODE collision
  */
 
 #include "ODEWorld.h"
@@ -12,7 +10,13 @@
 #include <assert.h>
 #include "SParts.h"
 #include "SimObjBase.h"
-#include "Logger.h"
+
+#if 1
+#define DUMP(MSG)
+#else
+#define DUMP(MSG) printf MSG;
+#endif
+
 
 
 ODEWorld *ODEWorld::s_inst = 0;
@@ -28,22 +32,22 @@ ODEWorld::ODEWorld(const Gravity &g, double erp)
 	  m_itrCnt(0),
 	  m_nowtime(0.0),
 	  m_quickStep(false),
-	  m_mu      (SPARTS_MU1),
-	  m_mu2     (SPARTS_MU2),
-	  m_slip1   (SPARTS_SLIP1),
-	  m_slip2   (SPARTS_SLIP2),
-	  m_soft_erp(SPARTS_ERP),
-	  m_soft_cfm(SPARTS_CFM),
-	  m_bounce  (SPARTS_BOUNCE),
-	  m_bounce_vel(0.0)
+	  m_mu(0.9),
+	  m_mu2(0.02),
+	  m_slip1(0.01),
+	  m_slip2(0.01),
+	  m_soft_erp(0.8),
+	  m_soft_cfm(0.0001),
+	  m_bounce(0.3),
+	  m_bounce_vel(5.0)
 {
 	m_world = dWorldCreate();
 	dWorldSetGravity(m_world, g.x, g.y, g.z);
 	// default
-	dWorldSetERP(m_world, SPARTS_ERP);
-	dWorldSetCFM(m_world, SPARTS_CFM);
-	m_space  = dHashSpaceCreate(0);
-	m_jgroup = dJointGroupCreate(0); // modified by inamura
+	dWorldSetERP(m_world, 0.5);
+	dWorldSetCFM(m_world, 1e-8);
+	m_space = dHashSpaceCreate(0);
+	m_jgroup = dJointGroupCreate(1000000);
 }
 
 void ODEWorld::free_()
@@ -108,7 +112,11 @@ void ODEWorld::nextStep()
 	dWorldID w = world();
 	dSpaceID s = space();
 
+	// konao
+	DUMP(("** 1 ** [%s:%d]\n", __FILE__, __LINE__));
+
 	dSpaceCollide(s, 0, &nearCB);
+	DUMP(("** 2 ** [%s:%d]\n", __FILE__, __LINE__));
 
 	// DO NOT use dWorldQuickStep, which causes some problems. 080113
 	if(m_quickStep){
@@ -118,13 +126,19 @@ void ODEWorld::nextStep()
 		dWorldStep(w, m_timeStep);
 	}
 
-	//dJointGroupID jgroup = jointGroup(); //deleted by inamura
-	dJointGroupEmpty(m_jgroup);
+	DUMP(("** 3 ** [%s:%d]\n", __FILE__, __LINE__));
+
+	dJointGroupID jgroup = jointGroup();
+
+	DUMP(("** 4 ** [%s:%d]\n", __FILE__, __LINE__));
+
+	dJointGroupEmpty(jgroup);
+
+	DUMP(("** 5 ** [%s:%d]\n", __FILE__, __LINE__));
  
 	m_itrCnt++;
 	m_nowtime += m_timeStep;
 }
-
 
 void ODEWorld::nextStep(double stepsize, bool quick)
 {
@@ -144,8 +158,9 @@ void ODEWorld::nextStep(double stepsize, bool quick)
 		dWorldStep(w, stepsize);
 	}
 
-	//dJointGroupID jgroup = jointGroup(); //deleted by inamura 
-	dJointGroupEmpty(m_jgroup);
+	dJointGroupID jgroup = jointGroup();
+
+	dJointGroupEmpty(jgroup);
 	m_itrCnt++;
 	m_nowtime += stepsize;
 }
@@ -163,19 +178,19 @@ void ODEWorld::setCFM(double value)
 void ODEWorld::setCollisionParam(std::string name, double value)
 {
 	//LOG_MSG(("%s = %f", name.c_str(), value));
-	if (name == "mu")              m_mu         = value;
-	else if (name == "mu2")        m_mu2        = value;
-	else if (name == "slip1")      m_slip1      = value;
-	else if (name == "slip2")      m_slip2      = value;
-	else if (name == "soft_erp")   m_soft_erp   = value;
-	else if (name == "soft_cfm")   m_soft_cfm   = value;
-	else if (name == "bounce")     m_bounce     = value;
+	if(name == "mu")               m_mu = value;
+	else if (name == "mu2")        m_mu2 = value;
+	else if (name == "slip1")      m_slip1 = value;
+	else if (name == "slip2")      m_slip2 = value;
+	else if (name == "soft_erp")   m_soft_erp = value;
+	else if (name == "soft_cfm")   m_soft_cfm = value;
+	else if (name == "bounce")     m_bounce = value;
 	else if (name == "bounce_vel") m_bounce_vel = value;
 }
 
 double ODEWorld::getCollisionParam(std::string name)
 {
-	if (name == "mu")              return m_mu;
+	if(name == "mu")               return m_mu;
 	else if (name == "mu2")        return m_mu2; 
 	else if (name == "slip1")      return m_slip1;
 	else if (name == "slip2")      return m_slip2;
@@ -186,7 +201,7 @@ double ODEWorld::getCollisionParam(std::string name)
 }
 
 
-
+// TODO: when is this function called?
 static void collideCB(void *data, dGeomID o1, dGeomID o2)
 {
 
@@ -222,14 +237,16 @@ static void collideCB(void *data, dGeomID o1, dGeomID o2)
 				c->surface.bounce   = ( odeobj1->getBounce()  + odeobj2->getBounce() )  / 2.0;
 			}
 			else {
-				c->surface.mu       = SPARTS_MU1;
-				c->surface.mu2      = SPARTS_MU2;
-				c->surface.slip1    = SPARTS_SLIP1;
-				c->surface.slip2    = SPARTS_SLIP2;
-				c->surface.soft_erp = SPARTS_ERP;
-				c->surface.soft_cfm = SPARTS_CFM;
-				c->surface.bounce   = SPARTS_BOUNCE;
+				c->surface.mu       = 0.9;
+				c->surface.mu2      = 0.02;
+				c->surface.slip1    = 0.0;
+				c->surface.slip2    = 0.0;
+				c->surface.soft_erp = 0.8;
+				c->surface.soft_cfm = 0.01;
+				c->surface.bounce   = 0.0;
 			}
+
+
 			dJointID cj = dJointCreateContact(world->world(), world->jointGroup(), c);
 			dJointAttach(cj, dGeomGetBody(o1), dGeomGetBody(o2));
 		}
@@ -240,6 +257,11 @@ static void collideCB(void *data, dGeomID o1, dGeomID o2)
 
 static void nearCB(void *data, dGeomID o1, dGeomID o2)
 {
+#if 0
+	static int cnt = 0;
+	cnt++;
+#endif
+
 	ODEObj *odeobj1 = ODEObjectContainer::getInstance()->getODEObjFromGeomID(o1);
 	ODEObj *odeobj2 = ODEObjectContainer::getInstance()->getODEObjFromGeomID(o2);
 
@@ -289,7 +311,6 @@ static void nearCB(void *data, dGeomID o1, dGeomID o2)
 	if (p1 && p2 && p1->sameParent(*p2)) { return; }
 
 	if (dGeomIsSpace(o1) && dGeomIsSpace(o2)) {
-		//LOG_SYS(("Using dSpaceCollision2 %d <-> %d", (int)o1, (int)o2));
 		dSpaceCollide2(o1, o2, data, &collideCB);
 		return;
 	}
@@ -311,13 +332,12 @@ static void nearCB(void *data, dGeomID o1, dGeomID o2)
 
 			if (p1 && p2) {
 #if 0
-				LOG_SYS(("Collision #%d/%d %s(geomID=%d) <-> %s(geomID=%d)", i, n,
-						 p1->getParent()->name(), o1,
-						 p2->getParent()->name(), o2));
-				LOG_SYS(("\tpos = (%f, %f, %f)", g.pos[0], g.pos[1], g.pos[2]));
-				LOG_SYS(("\tnormal = (%f, %f, %f)", g.normal[0], g.normal[1], g.normal[2]));
-				LOG_SYS(("\tfdir = (%f, %f, %f)", c->fdir1[0], c->fdir1[1], c->fdir1[2]));
-				LOG_SYS(("\tdepth = %f", g.depth));
+				printf("Collision #%d %s(%s) - %s(%s) \n", cnt,
+					   p1->getParent()->name(), p1->name(),
+					   p2->getParent()->name(), p2->name());
+				printf("\tpos = (%f, %f, %f)\n", g.pos[0], g.pos[1], g.pos[2]);
+				printf("\tnormal = (%f, %f, %f)\n", g.normal[0], g.normal[1], g.normal[2]);
+				printf("\tfdir = (%f, %f, %f)\n", c->fdir1[0], c->fdir1[1], c->fdir1[2]);
 #endif
 				const char *name1 = p1->getParent()->name();
 				const char *name2 = p2->getParent()->name();
@@ -330,25 +350,16 @@ static void nearCB(void *data, dGeomID o1, dGeomID o2)
 				p1->setOnCollision(true);
 				p2->setOnCollision(true);
 			}
-#if 0
-			else {
-				LOG_SYS(("Collision #%d/%d  geomID(%d) <-> geomID(%d)", i, n, o1, o2));
-				LOG_SYS(("\tpos = (%f, %f, %f)", g.pos[0], g.pos[1], g.pos[2]));
-				LOG_SYS(("\tnormal = (%f, %f, %f)", g.normal[0], g.normal[1], g.normal[2]));
-				LOG_SYS(("\tfdir = (%f, %f, %f)", c->fdir1[0], c->fdir1[1], c->fdir1[2]));
-				LOG_SYS(("\tdepth = %f", g.depth));
-			}
-#endif
+			
 			//c->surface.mode = dContactBounce;
-			//c->surface.mode = dContactSlip1 | dContactSlip2 | dContactSoftERP | dContactSoftCFM | dContactApprox1 | dContactBounce;
-			c->surface.mode = dContactSlip1 | dContactSlip2 | dContactSoftERP | dContactSoftCFM | dContactBounce;
+			c->surface.mode = dContactSlip1 | dContactSlip2 | dContactSoftERP | dContactSoftCFM | dContactApprox1 | dContactBounce;
 			//c->surface.mode = dContactSlip1 | dContactSoftERP | dContactSoftCFM | dContactApprox1 | dContactBounce;
 			//
 			// Reflection of material parameters of the collided object
 			// Fliction force should be regarded as average of contiguous material (???)
 			// TODO: Calclation of fliction force sould be considered
 			//
-#if 0			
+			
 			if(odeobj1 && odeobj2) {
 				c->surface.mu       = ( odeobj1->getMu1()     + odeobj2->getMu1() )     / 2.0;
 				c->surface.mu2      = ( odeobj1->getMu2()     + odeobj2->getMu2() )     / 2.0;
@@ -357,7 +368,6 @@ static void nearCB(void *data, dGeomID o1, dGeomID o2)
 				c->surface.soft_erp = ( odeobj1->getSoftErp() + odeobj2->getSoftErp() ) / 2.0;
 				c->surface.soft_cfm = ( odeobj1->getSoftCfm() + odeobj2->getSoftCfm() ) / 2.0;
 				c->surface.bounce   = ( odeobj1->getBounce()  + odeobj2->getBounce() )  / 2.0;
-				LOG_SYS (("slip1 of obj1 = %f, slip1 of obj2 = %f", odeobj1->getSlip1(), odeobj2->getSlip1()));
 			}
 			else {
 				c->surface.bounce_vel = world->getCollisionParam("bounce_vel");
@@ -368,34 +378,31 @@ static void nearCB(void *data, dGeomID o1, dGeomID o2)
 				c->surface.slip2      = world->getCollisionParam("slip2");
 				c->surface.soft_erp   = world->getCollisionParam("soft_erp");
 				c->surface.soft_cfm   = world->getCollisionParam("soft_cfm");
+				/*
+				  c->surface.mu	 = 0.5;       // for fliction coefficient between stone and cray
+				  c->surface.mu2 = 0.02;
+				  c->surface.soft_erp = 0.8;  // parameter for modify the error of Joint position (0..1); if it is 1, modification will be perfect
+				  c->surface.soft_cfm = 0.01; // If this value=0, joint velocity is strange
+				  c->surface.bounce = 0.3;    // is a little smaller than ball
+				*/
 			}
-#else
-			c->surface.mu	    = SPARTS_MU1;
-			c->surface.mu2      = SPARTS_MU2;
-			c->surface.slip1    = SPARTS_SLIP1;
-			c->surface.slip2    = SPARTS_SLIP2;
-			c->surface.soft_erp = SPARTS_ERP;     // parameter for modify the error of Joint position (0..1); if it is 1, modification will be perfect
-			c->surface.soft_cfm = SPARTS_CFM;     // If this value=0, joint velocity is strange
-			c->surface.bounce   = SPARTS_BOUNCE; // is a little smaller than ball
-			c->surface.bounce_vel = 0.0;
-#endif
-			if (1) { //if (g.depth>0.01)
-				dJointID cj = dJointCreateContact(world->world(), world->jointGroup(), c);
-				//dJointAttach(cj, dGeomGetBody(o1), dGeomGetBody(o2));  //by MSI
-				dJointAttach(cj, dGeomGetBody(c->geom.g1), dGeomGetBody(c->geom.g2)); // by Demura.net
+			//c->surface.bounce = 0.0;
+			//c->surface.bounce_vel = 0.0;
 
-				//if (p1 && p2) {
-				dJointSetFeedback(cj, &fb);
+			dJointID cj = dJointCreateContact(world->world(),
+							  world->jointGroup(), c);
+			dJointAttach(cj, dGeomGetBody(o1), dGeomGetBody(o2));
+
 #if 0
+			if (p1 && p2) {
+				dJointSetFeedback(cj, &fb);
 				dJointFeedback *pfb = dJointGetFeedback(cj);
-				//if (F_SCHOLAR(pfb->f1) > 1.0) {
-				// Print feedback force at the collision joint
-				LOG_SYS(("\tF1 = (%f, %f, %f)",   pfb->f1[0], pfb->f1[1], pfb->f1[2]));
-				LOG_SYS(("\tF2 = (%f, %f, %f)\n", pfb->f2[0], pfb->f2[1], pfb->f2[2]));
-				//}
-				//}
-#endif
+				if (F_SCHOLAR(pfb->f1) > 1.0) {
+					printf("\tF1 = (%f, %f, %f)\n", pfb->f1[0], pfb->f1[1], pfb->f1[2]);
+					printf("\tF2 = (%f, %f, %f)\n", pfb->f2[0], pfb->f2[1], pfb->f2[2]);
+				}
 			}
+#endif
 		}
 	}
 }
