@@ -15,6 +15,15 @@
 #include "Parts.h"
 #include "PartsCmpnt.h"
 
+#define SPARTS_MU1     dInfinity
+#define SPARTS_MU2     dInfinity
+#define SPARTS_SLIP1   0.01
+#define SPARTS_SLIP2   0.01
+#define SPARTS_ERP     0.2
+#define SPARTS_CFM     0.0001
+#define SPARTS_BOUNCE  0.1
+#define SPARTS_DAMPING 0.8
+
 class Joint;
 
 /**
@@ -344,7 +353,7 @@ public:
 	 * @param sz   size of box (depth x width x height)
 	 */
 	SBoxParts(const char *name, const Position &pos, const Size &sz)
-	  : SParts(PARTS_TYPE_BOX, name, pos), m_cmpnt(sz) {}
+		: SParts(PARTS_TYPE_BOX, name, pos), m_cmpnt(sz) {}
 	/**
 	 * @brief Constructor
 	 *
@@ -353,8 +362,8 @@ public:
 	 * @param sz   size of box (depth x width x height)
 	 * @param rot  rotation
 	 */
- SBoxParts(const char *name, const Position &pos, const Size &sz, Rotation rot)
-           : m_inirot(rot), SParts(PARTS_TYPE_BOX, name, pos), m_cmpnt(sz) {}
+	SBoxParts(const char *name, const Position &pos, const Size &sz, Rotation rot)
+		: SParts(PARTS_TYPE_BOX, name, pos), m_cmpnt(sz), m_inirot(rot) {}
 
 public:
 	//! Get the size
@@ -407,7 +416,7 @@ public:
 	 * @param len  length of the cylinder
 	 */
 	SCylinderParts(const char *name, const Position &pos, dReal rad, dReal len)
-                   : SParts(PARTS_TYPE_CYLINDER, name, pos), m_cmpnt(rad, len) {}
+		: SParts(PARTS_TYPE_CYLINDER, name, pos), m_cmpnt(rad, len) {}
 
 	/**
 	 * @brief Constructor
@@ -419,7 +428,7 @@ public:
 	 * @param rot  initial orientation
 	 */
 	SCylinderParts(const char *name, const Position &pos, dReal rad, dReal len, Rotation rot)
-                   :m_inirot(rot), SParts(PARTS_TYPE_CYLINDER, name, pos), m_cmpnt(rad, len) {}
+		: SParts(PARTS_TYPE_CYLINDER, name, pos), m_cmpnt(rad, len), m_inirot(rot) {}
 
 	//	added by kawamoto@tome (2011/04/04)
 	/**

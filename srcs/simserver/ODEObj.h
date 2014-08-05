@@ -1,5 +1,6 @@
 /*
- * Modified by kawamoto on 2011-04-18
+ * Modified by kawamoto                on 2011-04-18
+ * Added comments by Tetsunari Inamura on 2014-03-09
  */
 
 #ifndef ODEObj_h
@@ -14,29 +15,32 @@
 #include <map>
 
 
-//class ODEObj;
-
+/**
+ * @brief Wrapper class for ODE simulation object
+ *
+ * Each object manges instance of dBodyID and dGeomID for ODE
+ */
 class ODEObj
 {
 private:
 	dBodyID  m_body;
 	dGeomID  m_geom;
 
+	// Joint which is connected to this object
 	dJointID m_joint;
 	dWorldID m_world;
 
-	double surfaceMu1;		
-	double surfaceMu2;		
-	double surfaceSlip1;		//	
+	// Collision parameters of ODE
+	double surfaceMu1;
+	double surfaceMu2;
+	double surfaceSlip1;
 	double surfaceSlip2;
 	double surfaceSoftErp;
 	double surfaceSoftCfm;
 	double surfaceBounce;
 
-
 public:
-
-	ODEObj(
+ ODEObj(
 		dWorldID world,
 		dGeomID geom_,
 		double surfaceMu1,
@@ -60,27 +64,24 @@ public:
 		m_world = world;
 	}
 
-        ODEObj(dWorldID world, dGeomID geom_)
-	  : m_geom(geom_)
+ ODEObj(dWorldID world, dGeomID geom_) : m_geom(geom_)
 	{
-	  m_body = dBodyCreate(world);
-	  dGeomSetBody(geom_, m_body);
-	  m_world = world;
-	}
-        ODEObj(dGeomID geom, dBodyID body, dJointID joint)
-	  : m_geom(geom), m_body(body), m_joint(joint)
-	{
-
+		m_body = dBodyCreate(world);
+		dGeomSetBody(geom_, m_body);
+		m_world = world;
 	}
 
+ ODEObj(dGeomID geom, dBodyID body, dJointID joint) : m_body(body), m_geom(geom), m_joint(joint)
+	{
+	}
 
-	ODEObj(dWorldID world)
-		: m_geom(0)
+ ODEObj(dWorldID world) : m_geom(0)
 	{
 		m_body = dBodyCreate(world);
 		m_world = world;
 	}
-	~ODEObj()
+
+ ~ODEObj()
 	{
 		// 070821 yoshi@msi cause segmentation fault
 		/*
@@ -107,11 +108,13 @@ public:
 		return m_geom;
 	}
 
+	dWorldID world() {
+		return m_world;
+	}
+
 	double getMu1() {
 		return surfaceMu1;
 	}
-
-	dWorldID world(){ return m_world;}
 
 	double getMu2() {
 		return surfaceMu2;
@@ -143,4 +146,3 @@ public:
 
 #endif // ODEObj_h
  
-
