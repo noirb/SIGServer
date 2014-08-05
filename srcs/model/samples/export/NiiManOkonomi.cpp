@@ -1,4 +1,7 @@
-/* $Id: NiiManOkonomi.cpp,v 1.1.1.1 2011-03-25 02:18:46 okamoto Exp $ */
+/*
+ * Modified by okamoto on 2011-03-25
+ */
+
 #include <sigverse/Controller.h>
 #include <sigverse/ControllerEvent.h>
 #include <sigverse/SimObj.h>
@@ -28,16 +31,14 @@ enum {
 	JOINT_NUM,
 };
 
-#define NO_USE NULL
-
 static char *jointNames[] = {
 	"WAIST_JOINT0", "WAIST_JOINT1", "HEAD_JOINT0",
 
 	"LARM_JOINT2", "LARM_JOINT1", "LARM_JOINT4", "LARM_JOINT5", NULL, NULL,
 	"RARM_JOINT2", "RARM_JOINT1", "RARM_JOINT4", "RARM_JOINT5", NULL, NULL,
 
-	"LLEG_JOINT2", "LLEG_JOINT4", "LLEG_JOINT6", NO_USE, 
-	"RLEG_JOINT2", "RLEG_JOINT4", "RLEG_JOINT6", NO_USE, 
+	"LLEG_JOINT2", "LLEG_JOINT4", "LLEG_JOINT6", NULL,
+	"RLEG_JOINT2", "RLEG_JOINT4", "RLEG_JOINT6", NULL,
 };
 
 static double step01[] = {
