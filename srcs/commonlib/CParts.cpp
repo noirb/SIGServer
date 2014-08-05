@@ -10,7 +10,7 @@
 
 const dReal *CParts::getPosition()
 {
-  
+
 	return m_pos.values();
 }
 
@@ -56,7 +56,7 @@ bool CParts::getPosition(Vector3d &v)
 	memcpy(p, msg.c_str(), msg.size());
 
 	if(!SocketUtil::sendData(m_sock, sendBuff, sendSize)) {
-		LOG_ERR(("getPartsPosition: cannot get joint position"));
+		LOG_ERR(("getPartsPosition: cannot get joint position SENDDATA"));
 		delete [] sendBuff;
 		return false;
 	}
@@ -68,7 +68,7 @@ bool CParts::getPosition(Vector3d &v)
 
 	// Receive the result
 	if(!SocketUtil::recvData(m_sock, recvBuff, recvSize)) {
-		LOG_ERR(("getPartsPosition: cannot get joint position"));
+		LOG_ERR(("getPartsPosition: cannot get joint position RECVDATA"));
 		delete [] recvBuff;
 		return false;
 	}
@@ -117,7 +117,7 @@ bool CParts::graspObj(std::string objName)
 	}
 	delete [] sendBuff;
 
-	// Buffer for Receiving 
+	// Buffer for Receiving
 	int recvSize = sizeof(unsigned short);
 	char *recvBuff = new char[recvSize];
 
@@ -127,7 +127,7 @@ bool CParts::graspObj(std::string objName)
 		delete [] recvBuff;
 		return false;
 	}
-  
+
 	p = recvBuff;
 	unsigned short result = BINARY_GET_DATA_S_INCR(p,unsigned short);
 
@@ -201,7 +201,7 @@ bool CParts::getCollisionState()
 	BINARY_SET_DATA_S_INCR(p, unsigned short, 39);
 	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
 	memcpy(p, msg.c_str(), msg.size());
-	
+
 	if(!SocketUtil::sendData(m_sock, sendBuff, sendSize)) {
 		LOG_ERR(("getCollisionState: faild to send request."));
 	}
@@ -215,7 +215,7 @@ bool CParts::getCollisionState()
 		LOG_ERR(("getCollisionState: cannot get joint position"));
 		return false;
 	}
-  
+
 	p = recvBuff;
 	bool result = BINARY_GET_BOOL_INCR(p);
 
@@ -265,11 +265,17 @@ PartsCmpnt * BoxParts::extdata()
 	return m_cmpnt;
 }
 
-void BoxParts::dump() {
+void BoxParts::dump()
+{
 #ifdef _DEBUG
 	Size &sz = m_cmpnt->size();
 	printf("\tparts(%d): %s(%s) pos(%f, %f, %f) size(%f, %f, %f)\n", id(), name(), "box",  m_pos.x(), m_pos.y(), m_pos.z(), sz.x(), sz.y(), sz.z());
 #endif
+}
+
+Size BoxParts::getSize()
+{
+	return m_cmpnt->size();
 }
 
 CylinderParts::CylinderParts(const char *name,
@@ -309,6 +315,14 @@ void CylinderParts::dump()
 #endif
 }
 
+double CylinderParts::getLength(){
+	return m_cmpnt->length();
+}
+
+double CylinderParts::getRad(){
+	return m_cmpnt->radius();
+}
+
 SphereParts::SphereParts(const char *name, const Position &pos, double radius)
 	: CParts(PARTS_TYPE_SPHERE, name, pos), m_cmpnt(NULL)
 {
@@ -343,6 +357,10 @@ void SphereParts::dump()
 #ifdef _DEBUG
 	printf("\tparts(%d): %s(%s) pos(%f, %f, %f) radius(%f)\n", id(), name(), "sphere",  m_pos.x(), m_pos.y(), m_pos.z(), m_cmpnt->radius());
 #endif
+}
+
+double SphereParts::getRad(){
+	return m_cmpnt->radius();
 }
 
 

@@ -75,7 +75,7 @@ public:
 
 	//! Get a flag whether collision is happened to other objects
 	bool getCollisionState();
-	
+
 
 public:
 #ifdef SIGVERSE_OGRE_CLIENT
@@ -115,7 +115,10 @@ public:
 	// added by sekikawa(2007/11/30)
 	void giveSize(double &x, double &y, double &z);
 	void dump();
-	
+
+	//added by Thomas(2014/06/17)
+	Size getSize();
+
 private:
 	BoxParts(const BoxParts &o);
 
@@ -125,7 +128,7 @@ private:
 
 #ifdef IMPLEMENT_DRAWER
 	void draw(DrawContext &c);
-#endif	
+#endif
 };
 
 class CylinderPartsCmpnt;
@@ -152,8 +155,11 @@ public:
 
 	// added by sekikawa(2007/11/30)
 	void giveSize(double &radius, double &length);
-
 	void dump();
+
+	//added by Thomas(2014/06/17)
+	double getRad();
+	double getLength();
 
 private:
 	CylinderParts(const CylinderParts &o);
@@ -186,7 +192,7 @@ public:
 	 * @param radius  radius of the sphere
 	 */
 	SphereParts(const char *name, const Position &pos, double radius);
-	
+
 	//! Destructor
 	~SphereParts();
 
@@ -199,15 +205,18 @@ public:
 	void giveRadius(double &radius);
 	void dump();
 
+	//added by Thomas(2014/06/17)
+	double getRad();
+
 private:
 	CParts * clone() { return new SphereParts(*this); }
 	PartsCmpnt * extdata();
-	
+
 #ifdef IMPLEMENT_DRAWER
 	void draw(DrawContext &c);
 #endif
 };
 
 #endif // CParts_h
- 
+
 
