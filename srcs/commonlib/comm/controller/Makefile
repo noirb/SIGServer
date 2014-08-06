@@ -23,7 +23,7 @@ clean:
 	$(RM) *.o *~ core
 
 depend:
-	gcc -MM $(INCLUDE_LOCAL) $(INCLUDE) $(DEFINE) $(SRCS) > $(DEPFILE)
+	gcc -Wall -MM $(INCLUDE_LOCAL) $(INCLUDE) $(DEFINE) $(SRCS) > $(DEPFILE)
 
 include $(DEPFILE)
 

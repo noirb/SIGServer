@@ -42,7 +42,7 @@ OBJS = $(SRCS:.cpp=.o)
 all: $(OBJS)
 
 depend:
-	gcc -MM $(DEFINE) $(INCLUDE_LOCAL) $(INCLUDE) $(SRCS) > $(DEPFILE)
+	gcc -Wall -MM $(DEFINE) $(INCLUDE_LOCAL) $(INCLUDE) $(SRCS) > $(DEPFILE)
 
 clean:
 	$(RM) *.o *~ core
