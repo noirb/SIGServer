@@ -1,4 +1,6 @@
-/* $Id: decoder_tools.cpp,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */
+/*
+ * Written by okamoto on 2011-03-25
+ */
 
 CommDataDecoder::Result * decoderTest1(CommDataEncoder &enc, CommDataType type)
 {

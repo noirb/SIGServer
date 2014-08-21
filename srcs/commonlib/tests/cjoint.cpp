@@ -1,4 +1,7 @@
-/* $Id: cjoint.cpp,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */
+/*
+ * Written by okamoto on 2011-03-25
+ */
+
 #include <cppunit/TestFixture.h>
 #include <cppunit/TestSuite.h>
 #include <cppunit/extensions/HelperMacros.h>
@@ -40,12 +43,12 @@ void ConnectJointTest::test1()
 	CommDataResult *r = decoderTest1(enc, COMM_REQUEST_CONNECT_JOINT);
 	ASSERT(r != NULL);
 	RequestConnectJointEvent *evt = (RequestConnectJointEvent *)r->data();
-	ASSERT(strcmp(evt->getJointName(), jointName) == 0);
+	ASSERT(strcmp(evt->getJointName(),       jointName)   == 0);
 
-	ASSERT(strcmp(evt->getAgentName(), agentName) == 0);
-	ASSERT(strcmp(evt->getAgentPartsName(), agentParts) == 0);
+	ASSERT(strcmp(evt->getAgentName(),       agentName)   == 0);
+	ASSERT(strcmp(evt->getAgentPartsName(),  agentParts)  == 0);
 
-	ASSERT(strcmp(evt->getTargetName(), targetName) == 0);
+	ASSERT(strcmp(evt->getTargetName(),      targetName)  == 0);
 	ASSERT(strcmp(evt->getTargetPartsName(), targetParts) == 0);
 }
 
@@ -56,9 +59,7 @@ void ConnectJointTest::test2()
 	const char *agentParts = NULL;
 	const char *targetName = "Target";
 	const char *targetParts= NULL;
-	CommRequestConnectJointEncoder enc(jointName,
-					   agentName, agentParts,
-					   targetName, targetParts);
+	CommRequestConnectJointEncoder enc(jointName, agentName, agentParts, targetName, targetParts);
 	
 	CommDataResult *r = decoderTest1(enc, COMM_REQUEST_CONNECT_JOINT);
 	ASSERT(r != NULL);
@@ -73,4 +74,3 @@ void ConnectJointTest::test2()
 }
 
 #include "runner.cpp"
-

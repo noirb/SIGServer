@@ -1,3 +1,7 @@
+/*
+ * Written by okamoto on 2011-03-25
+ */
+
 #include <getopt.h>
 
 #include "CommUtil.h"
