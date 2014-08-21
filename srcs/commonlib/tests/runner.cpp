@@ -1,4 +1,7 @@
-/* $Id: runner.cpp,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */
+/*
+ * Written by okamoto on 2011-03-25
+ */
+
 #include <dlfcn.h>
 #include <cppunit/TestRunner.h>
 #include <cppunit/TestResult.h>

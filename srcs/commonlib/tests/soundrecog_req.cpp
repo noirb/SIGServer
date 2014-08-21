@@ -1,4 +1,7 @@
-/* $Id: soundrecog_req.cpp,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */
+/*
+ * Written by okamoto on 2011-03-25
+ */
+
 #include <cppunit/TestFixture.h>
 #include <cppunit/TestSuite.h>
 #include <cppunit/extensions/HelperMacros.h>
@@ -46,11 +49,11 @@ void SoundRecogReqTest::testReq1()
 	RawSound *sound_ = evt->getRawSound();
 	ASSERT(sound_ != NULL);
 	RawSoundHeader &h_ = sound_->getHeader();
-	ASSERT_EQUAL(ch, h_.getChannelNum());
-	ASSERT_EQUAL(samplingRate, h_.getSamplingRate());
+	ASSERT_EQUAL(ch,            h_.getChannelNum());
+	ASSERT_EQUAL(samplingRate,  h_.getSamplingRate());
 	ASSERT_EQUAL(bitsPerSample, h_.getBitPerSample());
 	ASSERT(h_.getEndian() == endian);
-	ASSERT_EQUAL(datalen, sound_->getDataLen());
+	ASSERT_EQUAL(datalen,       sound_->getDataLen());
 
 	char *data = sound_->getData();
 	ASSERT_EQUAL((char)0xfe, *(data + datalen/2));
