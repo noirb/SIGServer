@@ -1,4 +1,5 @@
-/* Written by okamoto on 2011-03-31
+/*
+ * Written by okamoto on 2011-03-31
  * Modified by Tetsunari Inamura on 2013-12-29
  *   Add English comments (Translation from v2.2.0 is finished)
  */

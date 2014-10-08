@@ -1,4 +1,7 @@
-/* $Id: Vector3d.cpp,v 1.2 2011-03-31 08:15:57 okamoto Exp $ */
+/*
+ * Written by okamoto on 2011-03-31
+ */
+
 #include "Vector3d.h"
 #include "Rotation.h"
 #include "Logger.h"

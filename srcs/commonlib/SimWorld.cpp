@@ -1,4 +1,7 @@
-/* $Id: SimWorld.cpp,v 1.2 2011-03-31 08:15:57 okamoto Exp $ */ 
+/*
+ * Written by okamoto on 2011-03-31
+ */
+
 #include "SimWorld.h"
 #include "X3DDB.h"
 #include "Logger.h"
@@ -53,18 +56,16 @@ void SimWorld::dump()
 
 int SimWorld::getAllEntitiesDataSize()
 {
-  int size = 0;
+	int size = 0;
 
-  M::iterator i;
-  for (i=m_objs.begin(); i!=m_objs.end(); i++) {
-
-    // name
-    size += i->first.size();
-    
-    //position
-    size += sizeof(double) * 3;
-  }
-  return size;
+	M::iterator i;
+	for (i=m_objs.begin(); i!=m_objs.end(); i++) {
+		// name
+		size += i->first.size();
+		//position
+		size += sizeof(double) * 3;
+	}
+	return size;
 }
 
 #ifdef IMPLEMENT_DRAWER

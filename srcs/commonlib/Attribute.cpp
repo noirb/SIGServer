@@ -1,4 +1,7 @@
-/* $Id: Attribute.cpp,v 1.2 2011-03-31 08:15:56 okamoto Exp $ */
+/*
+ * written by okamoto on 2011-03-31
+ */
+
 #include "Attribute.h"
 #include "Value.h"
 #include "binary.h"
