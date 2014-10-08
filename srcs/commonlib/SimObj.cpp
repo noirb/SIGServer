@@ -80,14 +80,14 @@ CParts *SimObj::getParts(const char *pname)
 	}
 	else
 	{
-	  Controller *con = (Controller*)m_sender;
-	  ControllerImpl *conim = (ControllerImpl*)con;
-	  
-	  SOCKET sock = conim->getDataSock();
-	  m_parts[pname]->setSocket(sock);
-	  //const char *owner = name();
-	  m_parts[pname]->setOwner(name());
-	  return m_parts[pname];
+		Controller *con = (Controller*)m_sender;
+		ControllerImpl *conim = (ControllerImpl*)con;
+
+		SOCKET sock = conim->getDataSock();
+		m_parts[pname]->setSocket(sock);
+		//const char *owner = name();
+		m_parts[pname]->setOwner(name());
+		return m_parts[pname];
 	}
 }
 
@@ -96,8 +96,7 @@ void SimObj::copy(const SimObj &o)
 {
 	SimObjBase::copy(o);
 	
-	for (PartsM::const_iterator i=o.m_parts.begin();
-	     i!=o.m_parts.end(); i++) {
+	for (PartsM::const_iterator i=o.m_parts.begin(); i!=o.m_parts.end(); i++) {
 		CParts *p = i->second;
 		CParts *newp = p->clone();
 
@@ -192,36 +191,32 @@ int SimObj::setBinary(char *data, int size)
 
 std::string SimObj::getCameraLinkName(int camID)
 {
-  if (m_parts.size() == 1)
-    {
-      if (camID == 1) 
-	{
-	  return "body";
+	if (m_parts.size() == 1) {
+		if (camID == 1) {
+			return "body";
+		}
+		else {
+			LOG_ERR(("getCameraLinkName : cannot get Camera ID %d",camID));
+			return NULL;
+		}
 	}
-      else
-	{
-	  LOG_ERR(("getCameraLinkName : cannot get Camera ID %d",camID));
-	  return NULL;
+	else {
+		if      (camID == 1) {return elnk1();}
+		else if (camID == 2) {return elnk2();}
+		/*
+		else if (camID == 3) {return elnk3();}
+		else if (camID == 4) {return elnk4();}
+		else if (camID == 5) {return elnk5();}
+		else if (camID == 6) {return elnk6();}
+		else if (camID == 7) {return elnk7();}
+		else if (camID == 8) {return elnk8();}
+		else if (camID == 9) {return elnk9();}
+		*/
+		else {
+			LOG_ERR(("getCameraLinkName : cannot get Camera ID %d",camID));
+			return NULL;
+		}
 	}
-    }
-  else
-    {
-      if (camID == 1) {return elnk1();}
-      else if (camID == 2) {return elnk2();}
-      /*
-      else if (camID == 3) {return elnk3();}
-      else if (camID == 4) {return elnk4();}
-      else if (camID == 5) {return elnk5();}
-      else if (camID == 6) {return elnk6();}
-      else if (camID == 7) {return elnk7();}
-      else if (camID == 8) {return elnk8();}
-      else if (camID == 9) {return elnk9();}
-      */
-      else{
-	  LOG_ERR(("getCameraLinkName : cannot get Camera ID %d",camID));
-	  return NULL;
-	}
-    }
 }
 
 
@@ -750,7 +745,7 @@ Rotation & SimObj::getRotation(Rotation &r)
 	char *recvBuff = new char[recvSize];
 
 	if (!SocketUtil::recvData(sock, recvBuff, recvSize)) {
-		LOG_ERR(("getRotation: failed to recieve position data"));
+		LOG_ERR(("getRotation: failed to recieve rotation data"));
 		delete [] recvBuff;
 		return r;
 	}
@@ -808,16 +803,16 @@ void SimObj::setCameraViewPoint(Vector3d v,int camID)
 		}
 	else
 		{
-			if (camID == 1) {epx1(v.x()); epy1(v.y()); epz1(v.z());}
+			if      (camID == 1) {epx1(v.x()); epy1(v.y()); epz1(v.z());}
 			else if (camID == 2) {epx2(v.x()); epy2(v.y()); epz2(v.z());}
 			/*
-			  else if (camID == 3) {epx3(v.x()); epy3(v.y()); epz3(v.z());}
-			  else if (camID == 4) {epx4(v.x()); epy4(v.y()); epz4(v.z());}
-			  else if (camID == 5) {epx5(v.x()); epy5(v.y()); epz5(v.z());}
-			  else if (camID == 6) {epx6(v.x()); epy6(v.y()); epz6(v.z());}
-			  else if (camID == 7) {epx7(v.x()); epy7(v.y()); epz7(v.z());}
-			  else if (camID == 8) {epx8(v.x()); epy8(v.y()); epz8(v.z());}
-			  else if (camID == 9) {epx9(v.x()); epy9(v.y()); epz9(v.z());}
+			else if (camID == 3) {epx3(v.x()); epy3(v.y()); epz3(v.z());}
+			else if (camID == 4) {epx4(v.x()); epy4(v.y()); epz4(v.z());}
+			else if (camID == 5) {epx5(v.x()); epy5(v.y()); epz5(v.z());}
+			else if (camID == 6) {epx6(v.x()); epy6(v.y()); epz6(v.z());}
+			else if (camID == 7) {epx7(v.x()); epy7(v.y()); epz7(v.z());}
+			else if (camID == 8) {epx8(v.x()); epy8(v.y()); epz8(v.z());}
+			else if (camID == 9) {epx9(v.x()); epy9(v.y()); epz9(v.z());}
 			*/
 			else
 				{
@@ -840,16 +835,16 @@ Vector3d & SimObj::getCameraViewPoint(Vector3d &v,int camID)
 		}
 	else
 		{
-			if (camID == 1)      getCamera1ViewPoint(v);
+			if      (camID == 1) getCamera1ViewPoint(v);
 			else if (camID == 2) getCamera2ViewPoint(v);
 			/*
-			  else if (camID == 3)   getCamera3ViewPoint(v);
-			  else if (camID == 4)   getCamera4ViewPoint(v);
-			  else if (camID == 5)   getCamera5ViewPoint(v);
-			  else if (camID == 6)   getCamera6ViewPoint(v);
-			  else if (camID == 7)   getCamera7ViewPoint(v);
-			  else if (camID == 8)   getCamera8ViewPoint(v);
-			  else if (camID == 9)   getCamera9ViewPoint(v);
+			else if (camID == 3)   getCamera3ViewPoint(v);
+			else if (camID == 4)   getCamera4ViewPoint(v);
+			else if (camID == 5)   getCamera5ViewPoint(v);
+			else if (camID == 6)   getCamera6ViewPoint(v);
+			else if (camID == 7)   getCamera7ViewPoint(v);
+			else if (camID == 8)   getCamera8ViewPoint(v);
+			else if (camID == 9)   getCamera9ViewPoint(v);
 			*/
 			else
 				LOG_ERR(("getCameraViewPoint : cannot get Camera ID %d",camID));
@@ -860,23 +855,23 @@ Vector3d & SimObj::getCameraViewPoint(Vector3d &v,int camID)
 
 void SimObj::setCameraViewVector(Vector3d v,int camID)
 {
-  if (m_parts.size() == 1) {
-      if (camID == 1) {
-		  vvx(v.x()); 
-		  vvy(v.y()); 
-		  vvz(v.z());
-	  }
-      else {
-		  LOG_ERR(("setCameraViewVector : cannot get Camera ID %d",camID));
-	  }
-  }
-  else {
-      if (camID == 1) {evx1(v.x()); evy1(v.y()); evz1(v.z());}
-      else if (camID == 2) {evx2(v.x()); evy2(v.y()); evz2(v.z());}
-      else {
-		  LOG_ERR(("setCameraViewVector : cannot get Camera ID %d",camID));
-	  }
-  }
+	if (m_parts.size() == 1) {
+		if (camID == 1) {
+			vvx(v.x()); 
+			vvy(v.y()); 
+			vvz(v.z());
+		}
+		else {
+			LOG_ERR(("setCameraViewVector : cannot get Camera ID %d",camID));
+		}
+	}
+	else {
+		if      (camID == 1) {evx1(v.x()); evy1(v.y()); evz1(v.z());}
+		else if (camID == 2) {evx2(v.x()); evy2(v.y()); evz2(v.z());}
+		else {
+			LOG_ERR(("setCameraViewVector : cannot get Camera ID %d",camID));
+		}
+	}
 }
 
 
