@@ -174,7 +174,7 @@ void BaseService::endServiceLoop()
 	char *p = sendBuff;
 
 	BINARY_SET_DATA_S_INCR(p, unsigned short, 0x0004); //TODO: Magic number
-	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);      
+	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
 	memcpy(p, msg_tmp.c_str(), msg_tmp.size());
 
 	// Request to finish the service

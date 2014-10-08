@@ -1,4 +1,7 @@
-/* $Id: Logger.cpp,v 1.3 2011-08-10 02:52:03 okamoto Exp $ */ 
+/*
+ * Written by okamoto on 2011-08-10
+ */
+
 #include "Logger.h"
 #include "CommDataEncoder.h"
 #include "CommUtil.h"

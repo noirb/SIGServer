@@ -1,4 +1,7 @@
-/* $Id: Rotation.cpp,v 1.2 2011-03-31 08:15:57 okamoto Exp $ */
+/*
+ * Written by okamoto on 2011-03-31
+ */
+
 #include "Rotation.h"
 #include <math.h>
 
@@ -6,7 +9,7 @@ Rotation::Rotation()
 {
 #ifdef USE_ODE
 	dQSetIdentity(m_q);
-#endif	
+#endif
 	makeMatrix();
 }
 
@@ -25,7 +28,7 @@ Rotation::Rotation(const Rotation &o)
 #define Y 2
 #define Z 3
 
-#ifdef USE_ODE	// taku
+#ifdef USE_ODE
 Rotation & Rotation::operator*=(const Rotation &o)
 {
 #if 1

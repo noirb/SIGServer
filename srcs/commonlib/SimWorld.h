@@ -24,10 +24,10 @@ public:
 
 	typedef std::map<std::string, Vector3d> m_posMap;
 private:
-	S	m_name;    
+	S	m_name;
 protected:
-	M 	m_objs;         
-	SimGround *m_ground; 	
+	M 	m_objs;
+	SimGround *m_ground;
 private:
 	double	m_time;
 
@@ -67,5 +67,5 @@ public:
 };
 
 #endif // SimWorld_h
- 
+
 
