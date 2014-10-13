@@ -37,8 +37,9 @@ CTReader::~CTReader()
 	delete m_buf;
 }
 
-#ifndef WIN32
+#ifndef WIN32_OLD
 
+void gettimeofday(struct timeval *tv, struct timezone *tz);
 
 bool CTReader::read()
 {
@@ -532,7 +533,11 @@ bool CTReader::recvData(SOCKET sock, char* msg, int size) {
 			{
 				if (errno == EAGAIN ||
 					errno == EWOULDBLOCK) {
+#ifndef WIN32
 					sleep(0.1);
+#else
+					Sleep(100);
+#endif
 					continue;
 				}
 				LOG_ERR(("Controller: Failed to recieve data. erro[%d]",r));

@@ -9,10 +9,12 @@
 #include "Logger.h"
 
 #include <sys/types.h>
+#ifndef WIN32
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <unistd.h>
 #include <netdb.h>
+#endif
 #include <stdio.h>
 #include <string.h>
 #include <errno.h>
@@ -45,8 +47,11 @@ SOCKET CommUtil::connectServer(const char *hostname, int port, int retry)
 	// memcpy(dest, src, nbytes)
 	// bcopy(src, dest, nbytes)
 	// *********************************************************
-
+#ifndef WIN32
 	bcopy((char *)hp->h_addr, (char*)&addr.sin_addr, hp->h_length);
+#else
+	memcpy((char*)&addr.sin_addr, (char *)hp->h_addr,  hp->h_length);
+#endif
 	addr.sin_port = htons(port);
 
 	// begin(sekikawa)(FIX20100826)
@@ -59,8 +64,11 @@ SOCKET CommUtil::connectServer(const char *hostname, int port, int retry)
 			if (retry >= 0)
 			{
 				fprintf(stderr, "connect failed. retrying .. (%d) [%s:%d]\n", retry, __FILE__, __LINE__);
-
+#ifndef WIN32
 				usleep(1000000);	// microsec
+#else
+				Sleep(1000);
+#endif
 				continue;
 			}
 			else
@@ -85,7 +93,11 @@ SOCKET CommUtil::connectServer(const char *hostname, int port, int retry)
 
 void CommUtil::disconnectServer(SOCKET sock)
 {
+#ifndef WIN32
 		close(sock);
+#else
+		closesocket(sock);
+#endif
 }
 
 int CommUtil::sendData(SOCKET sock, const char *data, int bytes)
@@ -94,7 +106,11 @@ int CommUtil::sendData(SOCKET sock, const char *data, int bytes)
 	while (sent < bytes) {
 		const char *h = data + sent;
 		// linux socket has easy non-blocking mode flag (MSG_DONTWAIT)
+#ifndef WIN32
 		int r = send(sock, h, bytes - sent, MSG_DONTWAIT);
+#else
+		int r = send(sock, h, bytes - sent, 0);
+#endif
 		if (r < 0) {
 			if (errno == EINTR ||
 				errno == EAGAIN ||

@@ -18,7 +18,7 @@
 #endif
 
 #ifdef EXEC_SIMULATION
-#include <pthread.h>
+#include <pthread_dep.h>
 
 class CommDataEncoder;
 #endif

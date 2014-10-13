@@ -269,7 +269,11 @@ private:
 	// bool recvData(SOCKET sock, char *msg, int size);
 
 public:
+#ifndef WIN32
 	static void *serviceThread(void *pParam);
+#else
+	static void serviceThread(void *pParam);
+#endif
 
 protected:
 	void	close_();
@@ -324,7 +328,7 @@ public:
 	 * @param port   Port number of the simulation server
 	 * @param myname Agent name
 	 */
-	bool attach(const char *server, int port, const char *myname);
+	bool attach(char const *server, int port, char const *myname);
 
 	/**
 	 * @brief Detachs controller from an agent

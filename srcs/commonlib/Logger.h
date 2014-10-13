@@ -41,7 +41,7 @@ public:
 		OutStream() : m_release(true) {;}
 		OutStream(bool release) : m_release(release) {;}
 	public:
-		virtual ~OutStream() {;}
+		 ~OutStream() {;}
 
 		virtual bool noHeader() = 0;
 		virtual void print(int level, const char *msg) = 0;

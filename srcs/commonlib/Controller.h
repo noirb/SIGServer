@@ -208,7 +208,8 @@ private:
 	CommDataResult *	recv(int bufsize);
 	SOCKET getControllerSocket() { SOCKET sock; return sock; }
 
-protected:
+//protected:
+public:
 	//! Constructor
 	Controller();
 
