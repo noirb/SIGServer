@@ -11,7 +11,9 @@
 #include "MessageSender.h"
 #include "NSLookup.h"
 #include "Text.h"
+#ifndef WIN32
 #include <unistd.h>
+#endif
 
 #define FREE(P) if (P) { delete P; P = 0; }
 
@@ -116,8 +118,11 @@ bool CTSimObj::detectEntities(EntityNameC &v, int id)
 	bool ret = false;
 
 	int retry = 5;
+#ifndef WIN32
 	int timeout = 10000;
-
+#else
+	int timeout = 10;
+#endif
 	while (retry > 0) {
 
 #if 1
@@ -239,7 +244,7 @@ Text * CTSimObj::getText(RawSound &rawSound)
 				LOG_DEBUG1(("retry"));
 				retry--;
 #ifdef WIN32
-				Sleep(100000);
+				Sleep(100);
 #else
 				usleep(100000);
 #endif
@@ -337,7 +342,7 @@ ViewImage * CTSimObj::captureView(ColorBitType cbtype, ImageDataSize size, int i
 				LOG_DEBUG1(("retrying readSync() ... [retry=%d]", retry));
 				retry--;
 #ifdef WIN32
-				Sleep(100000);
+				Sleep(100);
 #else
 				usleep(100000);
 #endif
@@ -410,7 +415,7 @@ unsigned char CTSimObj::distanceSensor(double start, double end, int id)
 				LOG_DEBUG1(("retrying readSync() ... [retry=%d]", retry));
 				retry--;
 #ifdef WIN32
-				Sleep(100000);
+				Sleep(100);
 #else
 				usleep(100000);
 #endif
@@ -495,7 +500,7 @@ ViewImage *CTSimObj::distanceSensorD(double start, double end, int id, bool map)
 				LOG_DEBUG1(("retrying readSync() ... [retry=%d]", retry));
 				retry--;
 #ifdef WIN32
-				Sleep(100000);
+				Sleep(100);
 #else
 				usleep(100000);
 #endif
@@ -567,7 +572,7 @@ static Result *getResult(SOCKET sock, int bufsize, int retry)
 				LOG_DEBUG1(("retry"));
 				retry--;
 #ifdef WIN32
-				Sleep(100000);
+				Sleep(100);
 #else
 				usleep(100000);
 #endif

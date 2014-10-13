@@ -897,7 +897,11 @@ double CSimplifiedShapeFactory::calcHizumiWithCylinder(float r, float cx, float 
 		// the distortion value gained difference between the volume of an ideal cylinder and an inscribed cube
 		double hizumi = hizumiSum/n;
 		if(n <= 30)
+#ifndef WIN32
 			hizumi += r*r*r*(1/sqrt(2)*M_PI - 8/3/sqrt(3));
+#else
+			hizumi += r*r*r*(1/sqrtf(2)*M_PI - 8/3/sqrtf(3));
+#endif
 		return hizumi;
 	}
 	else

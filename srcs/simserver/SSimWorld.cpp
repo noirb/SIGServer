@@ -98,6 +98,7 @@ SSimWorld::NameC & SSimWorld::copyNames(bool needEntities, NameC &v)
 
     }
   }
+  return (SSimWorld::NameC )NULL;
 }
 
 

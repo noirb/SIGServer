@@ -1,9 +1,11 @@
 #ifndef _CX3DNODE_H_
 #define _CX3DNODE_H_
 
-#include "CX3DField.h"
+//#include "CX3DField.h"
 #include "CVRMLFieldData.h"
 #include <jni.h>
+
+class MFNode;
 
 //#include "CX3DField.h"
 class CVRMLFieldData;
@@ -128,6 +130,9 @@ class CX3DNodeFactory
 public:
 	static CX3DNode *createNode(jobject vrmlNode);
 };
+
+
+#include "CX3DField.h"
 
 #endif
 

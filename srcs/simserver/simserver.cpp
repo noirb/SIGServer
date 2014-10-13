@@ -8,8 +8,12 @@
 // TODO: IRWAS related macro should be replaced: by inamura
 #ifdef IRWAS_SIMSERVER
 
+#ifndef WIN32
 #include <getopt.h>
 #include <arpa/inet.h>
+#else
+#include "wingetopt.h"
+#endif
 #include <sys/types.h>
 #include <signal.h>
 
@@ -50,7 +54,9 @@ static void quit(int )
 	typedef PidC T;
 	for (T::iterator i=s_childpids.begin(); i!=s_childpids.end(); i++) {
 		int pid = *i;
+#ifndef WIN32
 		kill(pid, SIGINT);
+#endif
 	}
 	s_childpids.clear();
 	if (s_sim != NULL) {
@@ -97,7 +103,7 @@ static bool runControllers(SSimWorld &w, int port)
 		}
 
 		if (values[0] == "c++") {
-
+#ifndef WIN32
 			int pid = fork();
 			if (pid < 0) {
 				LOG_ERR(("Cannot create process"));
@@ -124,6 +130,7 @@ static bool runControllers(SSimWorld &w, int port)
 				LOG_ERR(("Failed to create controller process"));
 				exit(1);
 			}
+#endif
 		}
 	}
 
@@ -317,13 +324,29 @@ int main(int argc, char **argv)
 		s_fdb.pushDirectory(d.c_str());
 	}
 
+#ifndef WIN32
 	// Creation of socket
 	int sock = socket(AF_INET, SOCK_STREAM, 0);
 	if (sock < 0) {
 		perror("cannot open socket");
 		return 1;
 	}
+#else
+		
+	WSADATA data;
+	int result = WSAStartup(MAKEWORD(2, 0), &data);
 
+	if (result < 0){
+		fprintf(stderr, "%d\n", GetLastError());
+	}
+
+	SOCKET sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+
+	if (sock < 0){
+		fprintf(stderr, "%d\n", GetLastError());
+		fprintf(stderr, "cannot open socket\n");
+	}
+#endif
 	struct sockaddr_in addr;
 
 	// Configuration of socket

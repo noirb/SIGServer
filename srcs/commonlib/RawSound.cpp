@@ -8,6 +8,8 @@
 #include <mmsystem.h>
 #include <stdio.h>
 
+#pragma comment(lib,"winmm.lib")
+
 #ifdef SIGVERSE_OGRE_CLIENT
 #include "SgvLog.h"
 #endif  // SIGVERSE_OGRE_CLIENT

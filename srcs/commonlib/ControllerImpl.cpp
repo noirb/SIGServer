@@ -16,15 +16,17 @@
 #include "Logger.h"
 #include "ct/CTSimObj.h"
 #include "binary.h"
-#include "ThreadPthread.h"
+#include "Thread.h"
 #include "comm/controller/RecvMessage.h"
 
 #include <sys/types.h>
 #include <errno.h>
+#ifndef WIN32
 #include <sys/time.h>
 #include <sys/socket.h>
+#endif
 #include <time.h>
-#include <pthread.h>
+//#include <pthread.h>
 #include <stdio.h>
 
 #include "CommandImpl.h"
@@ -77,7 +79,11 @@ bool SocketUtil::sendData(SOCKET sock, const char* msg, int size)
 		// Fail to send
 			if ( errno == EAGAIN ||
 				 errno == EWOULDBLOCK ) {
+#ifndef WIN32
 				usleep(100);
+#else
+				Sleep(1);
+#endif
 				continue;
 			}
 			LOG_ERR(("Failed to send data. erro[%d] [%s:%d]", r,  __FILE__, __LINE__ ));
@@ -156,11 +162,12 @@ void ControllerImpl::close_()
 		}
 }
 
-#ifndef WIN32	// just for debug (substitute attach() and sendText() is at IrcViewController)
+#ifndef WIN32_ORG	// just for debug (substitute attach() and sendText() is at IrcViewController)
 
 //! Start the loop of a service provider
 bool BaseService::startServiceLoop(ControllerImpl *con)
 {
+	return false;
 }
 
 //! End the loop of a service provider
@@ -556,14 +563,20 @@ bool ViewService::sendDSRequest(int type, double start, double end, int camID, C
 	return true;
 }
 
-
+#ifndef WIN32
 void* ControllerImpl::serviceThread(void *pParam)
+#else
+void ControllerImpl::serviceThread(void *pParam)
+#endif
 {
 	ControllerImpl *con = (ControllerImpl*)pParam;
 	SOCKET sock = con->getSrvSock();
 	struct sockaddr_in client;
+#ifndef WIN32
 	socklen_t len;
-
+#else
+	int len;
+#endif
 	// Client socket
 	SOCKET s;
 
@@ -614,8 +627,13 @@ void* ControllerImpl::serviceThread(void *pParam)
 error:
 	// Server socket
 	if (sock != -1) { //Changed from NULL to -1 by inamura on 2014-02-28
-		close(sock);    
+#ifndef WIN32
+		close(sock);
 		sock = -1;  //Changed from NULL to -1 by inamura on 2014-02-28
+#else
+		closesocket(sock);
+		sock = -1;  //Changed from NULL to -1 by inamura on 2014-02-28
+#endif
 	}
 	/*
 	// Client socket
@@ -624,9 +642,26 @@ error:
 		m_clientSock = NULL;
 	}
 	*/
-	return NULL; 
+#ifndef WIN32
+	return NULL;
+#else
+	return;
+#endif
 }
 
+#ifdef WIN32
+int Pthread_Create(HANDLE *hT, void *attr, void (*func)(void *), void *arg)
+{
+  uintptr_t tp;
+  tp = _beginthread(func, NULL, arg);
+  if(tp == -1L){
+     *hT = (HANDLE)NULL;
+     return -1;
+  }
+  *hT = (HANDLE)tp;
+  return 0;
+}
+#endif
 
 BaseService* ControllerImpl::connectToService(std::string name)
 {
@@ -711,11 +746,20 @@ BaseService* ControllerImpl::connectToService(std::string name)
 	///Create a new thread for receiving data before sending request
 	//////////////////////////////////////////////
 	if (!first) {
+#ifndef WIN32
 		pthread_t tid1;
 		pthread_mutex_t mutex;
 
 		pthread_mutex_init(&mutex, NULL);
 		pthread_create(&tid1, NULL, ControllerImpl::serviceThread, reinterpret_cast<void*>(this));
+
+#else
+
+		HANDLE tid1;
+		HANDLE mutex = CreateMutex(NULL, FALSE, NULL);
+		Pthread_Create(&tid1, NULL, ControllerImpl::serviceThread, reinterpret_cast<void*>(this));
+
+#endif
 		first = true;
 	}
 
@@ -731,7 +775,11 @@ BaseService* ControllerImpl::connectToService(std::string name)
 	int count = 0;
 	// Wait until connection completion
 	while (!m_connected) {
+#ifndef WIN32
 		usleep(1000); //TODO: Magic number
+#else
+		Sleep(1);
+#endif
 		count++;
 		// Time out when the socket is closed or the count is over 1.5 sec.
 		if (count > 2000 || service->getSocket() < 0) {
@@ -824,11 +872,20 @@ BaseService* ControllerImpl::connectToService(std::string name, unsigned short p
 	///Create a new thread for receiving data before sending request
 	//////////////////////////////////////////////
 	if (!first) {
+#ifndef WIN32
 		pthread_t tid1;
 		pthread_mutex_t mutex;
 
 		pthread_mutex_init(&mutex, NULL);
 		pthread_create(&tid1, NULL, ControllerImpl::serviceThread, reinterpret_cast<void*>(this));
+#else
+
+		HANDLE tid1;
+		HANDLE mutex = CreateMutex(NULL, FALSE, NULL);
+		Pthread_Create(&tid1, NULL, ControllerImpl::serviceThread, reinterpret_cast<void*>(this));
+
+
+#endif
 		first = true;
 	}
 	//////////////////////////////////////////////
@@ -844,7 +901,11 @@ BaseService* ControllerImpl::connectToService(std::string name, unsigned short p
 	int count = 0;
 	// Wait until connection completion
 	while (!m_connected) {
+#ifndef WIN32
 		usleep(1000);
+#else
+		Sleep(1);
+#endif
 		count++;
 		// Time out when the socket is closed or the count is over 1 sec.
 		if (count > 1000 || service->getSocket() == -1) { //Changed from NULL to -1 by inamura
@@ -917,7 +978,7 @@ bool ControllerImpl::checkService(std::string name)
 }
 
 
-bool ControllerImpl::attach(const char *server, int port, const char *myname)
+bool ControllerImpl::attach(char const *server, int port, char const *myname)
 {
 	assert(m_port < 0);
 
@@ -1246,7 +1307,11 @@ bool ControllerImpl::sendData(SOCKET sock, const char* msg, int size)
 		if (r < 0) {
 			if ( errno == EAGAIN ||
 				 errno == EWOULDBLOCK ) {
+#ifndef WIN32
 				sleep(0.01);
+#else
+				Sleep(10);
+#endif
 				continue;
 			}
 			LOG_ERR(("Failed to send data. erro[%d]",errno));

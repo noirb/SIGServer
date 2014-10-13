@@ -20,8 +20,12 @@ template<class ParamType>
 class Thread
 {
 public:
+#ifdef USE_AFX_THREAD
 	typedef UINT RetType;
 	typedef RetType (*ThreadFuncType)(LPVOID);
+#else
+	typedef void *(ThreadFuncType)(void *);
+#endif
 
 protected:
 #ifdef USE_AFX_THREAD

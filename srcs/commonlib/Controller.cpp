@@ -26,12 +26,14 @@
 #include "binary.h"
 
 #include <stdio.h>
+#ifndef WIN32
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <unistd.h>
+#endif
 #include <errno.h>
 #include <sys/types.h>
 #include <signal.h>
-#include <unistd.h>
 #include <assert.h>
 
 #include <iostream>
@@ -723,7 +725,11 @@ SimObj *Controller::getObj(const char *name)
 			Result *result = r->readSync();
 			if (!result) {
 				retry++;
+#ifndef WIN32
 				usleep(wait);
+#else
+				Sleep(wait/1000);
+#endif
 				wait *= 2;
 				continue;
 			}
@@ -771,7 +777,11 @@ RobotObj *Controller::getRobotObj(const char *name)
 			Result *result = r->readSync();
 			if (!result) {
 				retry++;
+#ifndef WIN32
 				usleep(wait);
+#else
+				Sleep(wait/1000);
+#endif
 				wait *= 2;
 				continue;
 			}
@@ -796,12 +806,12 @@ RobotObj *Controller::getRobotObj(const char *name)
 
 }
 
-
 ViewImage * Controller::captureView(ColorBitType cbtype, ImageDataSize size)
 {
 	CTSimObj & obj = getCTSimObj();
 	return obj.captureView(cbtype, size);
 }
+
 //added by okamoto@tome(2011/8/26)
 ViewImage * Controller::captureView(ColorBitType cbtype, ImageDataSize size, int id)
 {

@@ -11,7 +11,10 @@
 #include "Service.h"
 #include "Logger.h"
 #include <assert.h>
+
+#ifndef WIN32
 #include <unistd.h>
+#endif
 
 #define FREE(P) if (P) { delete P; P = NULL; }
 

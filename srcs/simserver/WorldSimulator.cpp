@@ -41,7 +41,48 @@
 
 #include <sys/types.h>
 #include <errno.h>
+
+#ifndef WIN32
 #include <sys/time.h>
+#else
+#include <sys/timeb.h>
+
+void
+gettimeofday(struct timeval *tv, struct timezone *tz)
+{
+	_timeb tvb;
+    _ftime_s(&tvb);
+
+	tv->tv_sec = (long)tvb.time;
+	tv->tv_usec = tvb.millitm * 1000;
+	return;
+}
+
+
+int wait_socket_to_read(SOCKET sock, int msec)
+{
+	int nfds;
+	fd_set socks;
+	int stat;
+    struct timeval tv;
+
+	FD_ZERO(&socks);
+	FD_SET(sock, &socks);
+	nfds = sock+1;
+
+	tv.tv_sec = msec / 1000;
+	tv.tv_usec = (msec - tv.tv_sec * 1000) * 1000;
+
+	stat = select(nfds, &socks, 0, 0, &tv);
+
+	return stat;
+}
+
+#endif
+
+#ifndef MSG_DONTWAIT
+#define MSG_DONTWAIT	0
+#endif
 
 static bool s_restart = false;
 
@@ -1093,7 +1134,11 @@ bool WorldSimulator::sendData(SOCKET sock, const char* msg, int size)
 		// Sending failed
 		if (r < 0) {
 			if ( errno == EAGAIN || errno == EWOULDBLOCK ) {
+#ifndef WIN32
 				usleep(100);
+#else
+				Sleep(1);
+#endif
 				continue;
 			}
 			LOG_ERR(("Failed to send data. erro[%d] [%s:%d]", r,  __FILE__, __LINE__ ));
@@ -1108,6 +1153,25 @@ bool WorldSimulator::sendData(SOCKET sock, const char* msg, int size)
 	return true;
 }
 
+int recv_nonblock(SOCKET sock, char *msg, int size)
+{
+#ifndef WIN32
+	return recv(sock, msg, size, MSG_DONTWAIT);
+#else
+	int ret = wait_socket_to_read(sock, 1);
+
+	if(ret == 0){
+		return -1;
+	}else if (ret == SOCKET_ERROR){
+		return 0;
+	}else if (ret > 0){
+		return recv(sock, msg, size, 0);
+	}else{
+		fprintf(stderr, "== Unknown error ==\n");
+	}
+	return 0;
+#endif
+}
 
 bool WorldSimulator::recvData(SOCKET sock, char* msg, int size)
 {
@@ -1116,12 +1180,16 @@ bool WorldSimulator::recvData(SOCKET sock, char* msg, int size)
 	// Response to a case in which the data could not be sent once
 	while(1) {
 		// Sending
-		int r = recv(sock, msg + recieved, size - recieved, MSG_DONTWAIT);
+		int r = recv_nonblock(sock, msg + recieved, size - recieved);
 		// Sending failed
 		if (r < 0) {
 			// In case the socket is not available
 			if ( errno == EAGAIN || errno == EWOULDBLOCK ) {
+#ifndef WIN32
 				usleep(1000);
+#else
+				Sleep(1);
+#endif
 				continue;
 			}
 			LOG_ERR(("Failed to recieve data. erro[%d]",r));
@@ -2607,12 +2675,12 @@ bool WorldSimulator::runStep()
 		  continue; 
 		}
 
-		int s = message->socket();
+		SOCKET s = message->socket();
 		char *pbuf = s_buf;
 		int r;
 
 		// Skip the first five bytes in the begining of the received data, and read
-		r = recv(s, pbuf, 5, MSG_DONTWAIT);
+		r = recv_nonblock(s, pbuf, 5);
 
 		if (r == 5 || r == 0) {
 
@@ -2677,7 +2745,7 @@ bool WorldSimulator::runStep()
 			continue;
 		}
 		// Socket for the source
-		int s = client->socket();
+		SOCKET s = client->socket();
 
 		// try to read
 		int waitTime = 1000;
@@ -2689,7 +2757,7 @@ bool WorldSimulator::runStep()
 
 		// Skip the first four bytes in the begining of the received data, and read
 		int firstRead = COMM_DATA_PACKET_TOKEN_DATASIZE_BYTES;
-		r = recv(s, pbuf, firstRead, MSG_DONTWAIT);
+		r = recv_nonblock(s, pbuf, firstRead);
 
 		// If the four bytes existed
 		if (r == firstRead) {
@@ -2725,7 +2793,11 @@ bool WorldSimulator::runStep()
 						for (int i = 0; i < size; i++) {
 							// Buffer for the message sending
 							int dataSize = sizeof(unsigned short) * 2;
+#ifndef WIN32
 							char sendBuff[dataSize];
+#else
+							char sendBuff[4];
+#endif
 							char *p = sendBuff;
 		
 							// Notice the 'simulation stop' event to the target controller
@@ -2762,7 +2834,7 @@ bool WorldSimulator::runStep()
 
 					char name[128];  // TODO: Magic number
 					memset(name, '\0', sizeof(name));
-					if (!recv(s, name, size, MSG_DONTWAIT)) {
+					if (!recv_nonblock(s, name, size)) {
 						LOG_ERR(("Could not recieve shape file name."));
 						continue;
 					}
@@ -2791,7 +2863,11 @@ bool WorldSimulator::runStep()
 				{
 					w->stop();
 					LOG_SYS(("****Quit Simulation****"));
+#ifndef WIN32
 					close(s);
+#else
+					closesocket(s);
+#endif
 					//exit(1);
 					return false;
 				}
@@ -4389,7 +4465,7 @@ bool WorldSimulator::runStep()
 				{
 					// Irregular data (trash data?)
 					char tmp[256];  // TODO: magic number
-					recv(s, tmp, sizeof(tmp), MSG_DONTWAIT);
+					recv_nonblock(s, tmp, sizeof(tmp));
 				}
 	  
 				} // switch(n) {
@@ -4400,10 +4476,9 @@ bool WorldSimulator::runStep()
 			{
 				packetSize = BINARY_GET_DATA_S_INCR(p, unsigned short);
 				if (packetSize > firstRead) {
-					r = recv(s,
+					r = recv_nonblock(s,
 					         pbuf + firstRead,
-					         packetSize - firstRead,
-					         MSG_DONTWAIT);
+					         packetSize - firstRead);
 				}
 			}
 		}
@@ -4477,8 +4552,11 @@ bool WorldSimulator::runStep()
 			//}
 		}
 
-		if (r == -1 &&
-		    (!errno || errno == EAGAIN)) { // connection is alive
+		if (r == -1
+#ifndef WIN32
+			&&    (!errno || errno == EAGAIN)
+#endif
+			) { // connection is alive
 			for (EncC::iterator ei=encoders.begin(); ei!=encoders.end(); ei++) {
 				CommDataEncoder *target = *ei;
 				int r = client->send(*target);
@@ -4491,7 +4569,8 @@ bool WorldSimulator::runStep()
 				}
 			}
 		}
-#if 1
+
+#ifndef WIN32
 		// sekikawa(FIX20100826)
 		else if (r < 0) {
 			// detach client only when error occurred.
@@ -4504,7 +4583,9 @@ bool WorldSimulator::runStep()
 #else
     // orig
 		else {
-			m_accept.pushNoNeeded(client);
+			if (r == 0) {
+				m_accept.pushNoNeeded(client);
+			}
 		}
 #endif
 
