@@ -9,10 +9,8 @@
 
 #include "CommDataType.h"
 
-class CommDataHeader
+struct CommDataHeader
 {
-public:
-
 	unsigned short packetSize;
 	CommDataType type;
 	unsigned short packetNum;

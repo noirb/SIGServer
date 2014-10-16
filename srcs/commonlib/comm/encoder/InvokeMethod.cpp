@@ -73,7 +73,7 @@ char *InvokeOnRecvMessage::encode(int seq, int &sz)
 	const unsigned int n = m_msgs.size();
 	BINARY_SET_DATA_L_INCR(p, unsigned int, n);
 
-	for (unsigned int i=0; i<n; i++) {
+	for (int i=0; i<n; i++) {
 		const char *s = m_msgs[i].c_str();
 		BINARY_SET_STRING_INCR(p, s);
 	}

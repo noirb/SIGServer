@@ -22,11 +22,7 @@ std::string CX3DParserUtil::extractFileBaseName(const char *pathName)
 
 	// Extraction target is from pathName[iLastSlash+1] to pathName[iPeriod-1]
 	int nCopy = iPeriod - iLastSlash - 1;
-#ifdef WIN32
-	strncpy_s(buf, 1024, pathName+iLastSlash+1, nCopy);
-#else
 	strncpy(buf, pathName+iLastSlash+1, nCopy);
-#endif
 	buf[nCopy] = '\0';
 
 	return buf;

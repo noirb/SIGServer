@@ -201,7 +201,7 @@ void XMLUtils::Exception::set(const char *fmt, ...)
 }
 
 void XMLUtils::dumpAttributeList(const xercesc::AttributeList &attrs) {
-	for (unsigned int i=0; i<attrs.getLength(); i++) {
+	for (int i=0; i<attrs.getLength(); i++) {
 		char *text = XMLString::transcode(attrs.getName(i));
 		char *value = XMLString::transcode(attrs.getValue(i));
 		LOG_ERR(("\tname=\"%s\" value=\"%s\"", text? text:"", value? value:""));

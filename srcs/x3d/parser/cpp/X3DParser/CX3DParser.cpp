@@ -18,11 +18,8 @@ void CX3DParser::openDebugLog(char *fname, bool bAppend)
 {
 #ifndef X3DPARSER_DISABLE_DEBUG_LOG
 	CX3DParser::closeDebugLog();
-#if WIN32
-	fopen_s(&g_debugLogFp, fname, bAppend ? "a" : "w");
-#else
+
 	g_debugLogFp = fopen(fname, bAppend ? "a" : "w");
-#endif
 #endif
 }
 
@@ -104,7 +101,6 @@ void CX3DParser::printIndentLog(int indentLevel, char *format, ...)
 
 		va_start(arg, format);
 		vsprintf(msg, format, arg);
-
 
 		CX3DParser::printIndent(indentLevel);
 		fprintf(CX3DParser::getDebugLogFp(), msg);
