@@ -23,8 +23,13 @@ typedef unsigned short DataOffsetType;
 #define BINARY_SET_DATA_S_INCR(PTR, TYPE, V) BINARY_SET_DATA_S(PTR, TYPE, V); PTR += sizeof(TYPE);
 #define BINARY_SET_DATA_L_INCR(PTR, TYPE, V) BINARY_SET_DATA_L(PTR, TYPE, V); PTR += sizeof(TYPE);
 
+#ifndef WIN32
 #define BINARY_SET_STRING_INCR(PTR, STR) \
         { int SLEN = (STR != NULL)? strlen(STR): 0; BINARY_SET_DATA_L_INCR(PTR, unsigned int, SLEN); if (SLEN > 0) { strncpy(PTR, STR, SLEN); PTR += BINARY_STRING_EXT_LEN(SLEN); } }
+#else
+#define BINARY_SET_STRING_INCR(PTR, STR) \
+        { int SLEN = (STR != NULL)? strlen(STR): 0; BINARY_SET_DATA_L_INCR(PTR, unsigned int, SLEN); if (SLEN > 0) { memcpy(PTR, STR, SLEN); PTR += BINARY_STRING_EXT_LEN(SLEN); } }
+#endif
 
 #define BINARY_SET_FLOAT_INCR(PTR, V) { float v_ = V; memcpy(PTR, &v_, sizeof(V)); PTR += sizeof(V); }
 #define BINARY_SET_DOUBLE_INCR(PTR, V) { double v_ = V; memcpy(PTR, &v_, sizeof(V)); PTR += sizeof(V); }

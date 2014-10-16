@@ -18,6 +18,13 @@
 #include <map>
 #include <string>
 
+#ifndef WIN32
+#define PTHREAD_RET_VAL	 void *
+#define PTHREAD_RET_NULL NULL
+#else
+#define PTHREAD_RET_VAL void
+#define PTHREAD_RET_NULL
+#endif
 
 class Command;
 class CTSimObj;
@@ -118,10 +125,7 @@ protected:
 
 class ViewService : public BaseService
 {
-
-
 public:
-
 	ViewService(){;} 
 	
 	ViewService(std::string name, unsigned short port, SOCKET sock) 
@@ -180,7 +184,7 @@ public:
 private:
 	/**
 	 * @brief send distanceSensor request to service provider
-	 * @param type  Request type (Dimension of data to receive）
+	 * @param type  Request type (Dimension of data to receive)
 	 * @param start Minimum distance (returns as 0)
 	 * @param end   Maximum distance (returns as 255)
 	 * @param camID Camera ID
@@ -269,11 +273,8 @@ private:
 	// bool recvData(SOCKET sock, char *msg, int size);
 
 public:
-#ifndef WIN32
-	static void *serviceThread(void *pParam);
-#else
-	static void serviceThread(void *pParam);
-#endif
+	static PTHREAD_RET_VAL serviceThread(void *pParam);
+
 
 protected:
 	void	close_();
@@ -299,10 +300,10 @@ protected:
 
 public:
 	// Check whether controller is connected to service provider
-	bool connected() {return m_connected;}
+	bool connected() { return m_connected;}
 
 	// Set temporary socket
-	void setTmpSock(SOCKET sock) {m_tmpSock = sock;}
+	void setTmpSock(SOCKET sock) { m_tmpSock = sock; }
 
 	//! Get the map of connected service and its socket
 	std::map<std::string, SOCKET> getSrvSocks() { return m_srvSocks; }

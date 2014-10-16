@@ -9,9 +9,13 @@
 bool ResultDistanceSensorEvent::set(int packetNum, int seq, char *data, int n)
 {
 	char *p = data;
-
+#ifndef WIN32
 	unsigned char dis = BINARY_GET_DATA_S_INCR(p, short);
 	m_distance = dis;
+#else
+	unsigned short dis = BINARY_GET_DATA_S_INCR(p, unsigned short);
+	m_distance = (unsigned char)dis;
+#endif
 	return true;
 }
 

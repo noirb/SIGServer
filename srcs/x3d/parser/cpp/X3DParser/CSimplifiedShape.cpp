@@ -587,7 +587,7 @@ CSimplifiedSphere *CSimplifiedShapeFactory::calcSphere(std::vector<SFVec3f>& vec
 	// degree of distortion = sum of gap^2 between (distance between each point and CoM)=pr and r
 	// If all of the points are on the ideal sphere, the degree will be zero.
 	// If the shape of the points differs from ideal sphere, the degree will be increased.
-	float hizumi = CSimplifiedShapeFactory::calcHizumiWithSphere(ar, gx, gy, gz, vecPos);
+	float hizumi = (float) CSimplifiedShapeFactory::calcHizumiWithSphere(ar, gx, gy, gz, vecPos);
 
 	// Set the return value
 	retValue->x(gx);
@@ -713,7 +713,7 @@ CSimplifiedCylinder *CSimplifiedShapeFactory::calcCylinder(std::vector<SFVec3f>&
 	//gy = (maxy + miny)/2 ;
 	//gy = -100;
 	// Calculation of distortion value
-	float hizumi = calcHizumiWithCylinder(ar, gx, gz, vecPos);
+	float hizumi = (float)calcHizumiWithCylinder(ar, gx, gz, vecPos);
 
 	// Set in return value
 	retValue->x(gx);
@@ -729,7 +729,7 @@ CSimplifiedCylinder *CSimplifiedShapeFactory::calcCylinder(std::vector<SFVec3f>&
 
 CSimplifiedCylinder *CSimplifiedShapeFactory::calcCylinder(CX3DCylinderNode *pCylinderNode)
 {
-	int i;
+//	int i;
 	printf("\t\t[Start calcCylinder]\n");
 
 	if (!pCylinderNode) return NULL;
@@ -953,7 +953,7 @@ CSimplifiedBox *CSimplifiedShapeFactory::calcBox(std::vector<SFVec3f>& vecPos)
 		}
 	}
 
-	float hizumi = calcHizumiWithBox(x1, y1, z1, x2, y2, z2, vecPos);
+	float hizumi = (float)calcHizumiWithBox(x1, y1, z1, x2, y2, z2, vecPos);
 
 	// The following lines are remained to deal with old version
 	retValue->x1(x1);retValue->x2(x2);
@@ -1169,7 +1169,7 @@ CSimplifiedCylinder *CSimplifiedShapeFactory::calcCylinder2(std::vector<SFVec3f>
 	gz = (minz + maxz) / 2;
 
 	// The length of axis is difference between max and min
-	double length = maxy - miny;
+	float length = maxy - miny;
 
 	float mxz = 0.0;
   
@@ -1213,7 +1213,7 @@ CSimplifiedCylinder *CSimplifiedShapeFactory::calcCylinder2(std::vector<SFVec3f>
 	retValue->z(gz);
 	retValue->radius(radius);
 	retValue->height(length);
-	retValue->hizumi(hizumi);
+	retValue->hizumi((float)hizumi);
   
 	return retValue;
 }

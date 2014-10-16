@@ -169,8 +169,9 @@ private:
 
 #define NOFILE_ERR(FNAME) { this->failed++; LOG_ERR(("no such file : \"%s\"", FNAME)); }
 
-struct Handler : public xercesc::HandlerBase
+class Handler : public xercesc::HandlerBase
 {
+public:
 	typedef xercesc::HandlerBase Super;
 	typedef std::string S;
 

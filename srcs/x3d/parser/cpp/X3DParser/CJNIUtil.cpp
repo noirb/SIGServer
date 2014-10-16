@@ -89,16 +89,22 @@ bool CJNIUtil::createJavaVM(char *confFile)
 	JavaVMInitArgs vm_args;
 	const char     *pJavaClassPath   = NULL;
 	const char     *pJavaLibraryPath = NULL;
+#if 0
 	char           javaClassPath[1024];   // TODO: Magic number
 	char           javaLibraryPath[1024]; // TODO: Magic number
+#else
+	std::string javaClassPath;
+	std::string javaLibraryPath;
+#endif
 	int  iOption, nOptions;
 	int  nOtherOptions;
 	jint ret;
 
 	// Clear the string area
+#if 0
 	memset(javaClassPath,   0, sizeof(javaClassPath));
 	memset(javaLibraryPath, 0, sizeof(javaLibraryPath));
-
+#endif
 	// Read optional configuration file such as class path
 	Sgv::ConfigFile conf;
 
@@ -112,13 +118,21 @@ bool CJNIUtil::createJavaVM(char *confFile)
 	// Specification of java.class.path
 	pJavaClassPath = conf.getStringValue("java.class.path");
 	if (pJavaClassPath)	{
+#if 0
 		sprintf(javaClassPath, "-Djava.class.path=%s", pJavaClassPath);
+#else
+		javaClassPath =  "-Djava.class.path=" + std::string( pJavaClassPath);
+#endif
 		nOptions++;
 	}
 	// Specification of java.library.path
 	pJavaLibraryPath = conf.getStringValue("java.library.path");
 	if (pJavaLibraryPath) {
+#if 0
 		sprintf(javaLibraryPath, "-Djava.library.path=%s", pJavaLibraryPath);
+#else
+		javaLibraryPath =  "-Djava.library.path=" + std::string( pJavaLibraryPath);
+#endif
 		nOptions++;
 	}
 	// The number of other options
@@ -136,13 +150,19 @@ bool CJNIUtil::createJavaVM(char *confFile)
 
 	// Setting of options
 	iOption = 0;
-
+#if 0
 	if (strlen(javaClassPath) > 0)
 		options[iOption++].optionString = javaClassPath;
 
 	if (strlen(javaLibraryPath) > 0)
 		options[iOption++].optionString = javaLibraryPath;
-
+#else
+	if (javaClassPath.length() > 0)
+		options[iOption++].optionString = (char *)javaClassPath.c_str();
+	
+	if (javaLibraryPath.length() > 0)
+		options[iOption++].optionString = (char *)javaLibraryPath.c_str();
+#endif
 	for (int iOtherOption=0; iOtherOption<nOtherOptions; iOtherOption++) {
 		options[iOption].optionString = (char *)conf.getOtherOption(iOtherOption);
 		iOption++;
