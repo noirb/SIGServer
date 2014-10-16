@@ -552,16 +552,16 @@ bool ShapeFileReader::createShape(CX3DShapeNode *shape, int shapeNum, Vector3d t
 			CSimplifiedSphere *sphere = (CSimplifiedSphere *)sshape;
 	  
 			// Relative position from CoG
-			float cx = (sphere->x() - m_gx) * scale.x();
-			float cy = (sphere->y() - m_gy) * scale.y();
-			float cz = (sphere->z() - m_gz) * scale.z();
+			double cx = (sphere->x() - m_gx) * scale.x();
+			double cy = (sphere->y() - m_gy) * scale.y();
+			double cz = (sphere->z() - m_gz) * scale.z();
 			//pos.set(cx, cy, cz);
 
-			float r = sphere->radius();
+			//float r = sphere->radius();
 	  
 			// Calculate average of scale
 			double mean = (scale.x() + scale.y() + scale.z()) / 3.0;
-			r = r * mean;
+			double r = sphere->radius() * mean;
 	  
 			// LOG_SYS(("Creating ODE shape \"sphere\""));
 			// Creation of geometry
@@ -582,14 +582,14 @@ bool ShapeFileReader::createShape(CX3DShapeNode *shape, int shapeNum, Vector3d t
 	case CSimplifiedShape::CYLINDER:
 		{
 			CSimplifiedCylinder *cylinder = (CSimplifiedCylinder *)sshape;
-			float cx = (cylinder->x() - m_gx) * scale.x();
-			float cy = (cylinder->y() - m_gy) * scale.y();
-			float cz = (cylinder->z() - m_gz) * scale.z();
+			double cx = (cylinder->x() - m_gx) * scale.x();
+			double cy = (cylinder->y() - m_gy) * scale.y();
+			double cz = (cylinder->z() - m_gz) * scale.z();
 			// LOG_MSG(("cylinder->y = %f, m_gy = %f, cy = %f", cylinder->y(), m_gy, cy));
 			pos.set(cx, cy, cz);
 
-			float h = cylinder->height();
-			float r = cylinder->radius();
+			double h = cylinder->height();
+			double r = cylinder->radius();
 
 			// Scale for height
 			h = h * scale.y();
@@ -609,8 +609,8 @@ bool ShapeFileReader::createShape(CX3DShapeNode *shape, int shapeNum, Vector3d t
 			dReal offq[4] = {0.707, 0.707, 0.0, 0.0};
 
 			// B: Calculation of Quaternion from rotational axis and angle
-			float a = cos(rot[3]/2);
-			float b = sin(rot[3]/2);
+			dReal a = cos(rot[3]/2);
+			dReal b = sin(rot[3]/2);
 			dQuaternion qua = {-a, rot[0] * b, rot[1] * b, rot[2] * b};
 
 			double tx = trans.x();
@@ -633,15 +633,15 @@ bool ShapeFileReader::createShape(CX3DShapeNode *shape, int shapeNum, Vector3d t
 
 			CSimplifiedBox *bx = (CSimplifiedBox *)sshape;
 
-			float cx = (bx->x() - m_gx) * scale.x();
-			float cy = (bx->y() - m_gy) * scale.y();
-			float cz = (bx->z() - m_gz) * scale.z();
+			double cx = (bx->x() - m_gx) * scale.x();
+			double cy = (bx->y() - m_gy) * scale.y();
+			double cz = (bx->z() - m_gz) * scale.z();
 			//LOG_MSG(("bx->y() = %f, m_gy = %f", bx->y(), m_gy));
 			pos.set(cx, cy, cz);
 
-			float sx = bx->sx();
-			float sy = bx->sy();
-			float sz = bx->sz();
+			double sx = bx->sx();
+			double sy = bx->sy();
+			double sz = bx->sz();
 
 			// Avoid 0
 			if (sx == 0) sx = 0.001;
@@ -671,8 +671,8 @@ bool ShapeFileReader::createShape(CX3DShapeNode *shape, int shapeNum, Vector3d t
 
 			// Calculation of Quaternion from rotational axis and angle
 			LOG_MSG(("rot[3] = %f",rot[3]));
-			float a = cos(rot[3]/2);
-			float b = sin(rot[3]/2);
+			dReal a = cos(rot[3]/2);
+			dReal b = sin(rot[3]/2);
 			dQuaternion qua = {a, rot[0] * b, rot[1] * b, rot[2] * b};
 			LOG_MSG(("qua = (%f, %f, %f, %f)", qua[0], qua[1], qua[2], qua[3]));
 			dGeomSetQuaternion(g,qua);
@@ -689,7 +689,7 @@ bool ShapeFileReader::createShape(CX3DShapeNode *shape, int shapeNum, Vector3d t
 
 CSimplifiedShape *ShapeFileReader::createSimpleShape(int ntype, int *stype, CX3DNode *geo)
 {
-	CSimplifiedShape *shape;
+	CSimplifiedShape *shape=NULL;
 
 	//LOG_MSG(("test"));
 	//int type = geo->getNodeType();
@@ -967,4 +967,5 @@ bool ShapeFileReader::MinMaxFromMFNode(MFNode *node,
 				break;
 			}
 	}
+	return true;
 }

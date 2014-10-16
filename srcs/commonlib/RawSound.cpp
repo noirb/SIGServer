@@ -198,7 +198,7 @@ bool RawSound::play()
 	if (m_datalen == 0) return false;
 
 	// Win32 sound play API
-	return PlaySound(m_data, NULL, SND_MEMORY);
+	return ( PlaySound(m_data, NULL, SND_MEMORY) != FALSE) ;
 #else
 	fprintf(stderr, "*** sorry. not yet implemeted in Linux environment *** (%s:%d)\n", __FILE__, __LINE__);
 	return false;

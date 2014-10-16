@@ -1,7 +1,9 @@
 /* $Id: ViewImage.cpp,v 1.12 2011-10-25 07:39:58 okamoto Exp $ */
 #ifdef WIN32
 #include <windows.h>
+#ifndef _USE_MATH_DEFINES
 #define _USE_MATH_DEFINES
+#endif
 #endif
 
 #include <math.h>
@@ -145,7 +147,7 @@ void ViewImage::setBitImageAsWindowsBMP(unsigned char *bitImage)
   if (!bitImage) return;
   
   int width, height;
-  int widthByteSize, imageByteSize;
+  int widthByteSize; //, imageByteSize;
   int x, y;
   
   width = getWidth();

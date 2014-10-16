@@ -34,7 +34,7 @@ public:
 	 * Here, recieved data corresponds to the type of the second argument of a method in CommDataListener depending on the data type
 	 *
 	 * <pre>
-	 * (例)
+	 * (Example)
 	 *   CommDataDcoder d;
 	 *   CommDataResult *r = d.push(...);
 	 *   if (r->type() == COMM_REQUEST_ATTACH_CONTROLLER) {
