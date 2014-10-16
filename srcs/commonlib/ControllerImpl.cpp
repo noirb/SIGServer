@@ -974,7 +974,7 @@ bool ControllerImpl::checkService(std::string name)
 	unsigned short result  = BINARY_GET_DATA_S_INCR(p, unsigned short); 
 
 	// bool result = true;
-	return result;
+	return (result != FALSE);
 }
 
 

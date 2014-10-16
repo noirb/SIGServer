@@ -138,7 +138,7 @@ int SimObj::setBinary(char *data, int size)
 	BINARY_SKIP_STRING(p); // name
 	BINARY_SKIP_STRING(p); // class
 	short attached  = BINARY_GET_DATA_S_INCR(p, short);
-	m_attached = (bool)(attached);
+	m_attached = (bool)(attached != FALSE);
 	m_ops = BINARY_GET_DATA_L_INCR(p, Operation);
 
 	DataOffsetType offset;
@@ -501,6 +501,7 @@ bool SimObj::setCamDir(Vector3d vec,int camID)
 		return false;
 	}
 	delete [] sendBuff;
+	return true;
 }
 
 

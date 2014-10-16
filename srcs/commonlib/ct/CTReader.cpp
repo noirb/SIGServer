@@ -19,7 +19,9 @@
 #include <unistd.h>
 #endif
 
+#ifndef FD_SETSIZE
 #define FD_SETSIZE 32
+#endif
 
 class ControllerInf;
 class RecvMsgEvent;
@@ -49,7 +51,7 @@ bool CTReader::read()
 
 	static double timewidth = 0.0;
 
-	struct timeval start, eoa;
+	struct timeval start={0, 0}, eoa={0,0};
 	timeval now; 
 
 	static double server_startTime = 0.0;
