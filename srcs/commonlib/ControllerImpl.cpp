@@ -128,32 +128,20 @@ bool SocketUtil::recvData(SOCKET sock, char* msg, int size)
 std::string DoubleToString(double x)
 {
 	// Maximum data size is 32 bytes
-#ifndef WIN32
 	char tmp[32];
 	sprintf(tmp,"%.3f",x);
 	std::string str = std::string(tmp);
 	str += ",";
 	return str;
-#else
-	char tmp[33];
-	sprintf(tmp, "%.3f,",x);
-	return std::string(tmp);
-#endif
 }
 
 std::string IntToString(int x)
 {
-#ifndef WIN32
 	char tmp[32];
 	sprintf(tmp,"%d",x);
 	std::string str = std::string(tmp);
 	str += ",";
 	return str;
-#else
-	char tmp[33];
-	sprintf(tmp, "%d,",x);
-	return std::string(tmp);
-#endif
 }
 
 void ControllerImpl::close_()
@@ -173,6 +161,8 @@ void ControllerImpl::close_()
 			m_dataSock = -1;
 		}
 }
+
+#ifndef WIN32_ORG	// just for debug (substitute attach() and sendText() is at IrcViewController)
 
 //! Start the loop of a service provider
 bool BaseService::startServiceLoop(ControllerImpl *con)
@@ -573,8 +563,11 @@ bool ViewService::sendDSRequest(int type, double start, double end, int camID, C
 	return true;
 }
 
-
-PTHREAD_RET_VAL ControllerImpl::serviceThread(void *pParam)
+#ifndef WIN32
+void* ControllerImpl::serviceThread(void *pParam)
+#else
+void ControllerImpl::serviceThread(void *pParam)
+#endif
 {
 	ControllerImpl *con = (ControllerImpl*)pParam;
 	SOCKET sock = con->getSrvSock();
@@ -589,7 +582,6 @@ PTHREAD_RET_VAL ControllerImpl::serviceThread(void *pParam)
 
 	listen(sock, 5);
 	len = sizeof(client);
-
 	while (1) {
 		// Wait connection from the service
 		s = accept(sock, (struct sockaddr *)&client, &len);
@@ -634,18 +626,15 @@ PTHREAD_RET_VAL ControllerImpl::serviceThread(void *pParam)
 // Close socket
 error:
 	// Server socket
-#ifndef WIN32
 	if (sock != -1) { //Changed from NULL to -1 by inamura on 2014-02-28
-
+#ifndef WIN32
 		close(sock);
 		sock = -1;  //Changed from NULL to -1 by inamura on 2014-02-28
-	}
 #else
-	if (sock != NULL) { // Changed by I.Hara, for MSVC.
 		closesocket(sock);
-		sock = NULL; 
-	}
+		sock = -1;  //Changed from NULL to -1 by inamura on 2014-02-28
 #endif
+	}
 	/*
 	// Client socket
 	if(m_clientSock != NULL) {
@@ -653,7 +642,11 @@ error:
 		m_clientSock = NULL;
 	}
 	*/
-	return PTHREAD_RET_NULL;
+#ifndef WIN32
+	return NULL;
+#else
+	return;
+#endif
 }
 
 #ifdef WIN32
@@ -981,7 +974,7 @@ bool ControllerImpl::checkService(std::string name)
 	unsigned short result  = BINARY_GET_DATA_S_INCR(p, unsigned short); 
 
 	// bool result = true;
-	return (result != FALSE);
+	return result;
 }
 
 
@@ -1387,5 +1380,6 @@ bool ControllerImpl::broadcast(std::string msg, double distance, int to)
 	return true;
 }
 
+#endif	// WIN32
 
 

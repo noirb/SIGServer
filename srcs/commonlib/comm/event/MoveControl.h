@@ -19,7 +19,7 @@ class RequestAddForceEvent
 	double      m_x;
 	double      m_y;
 	double      m_z;
-	bool      m_relf;
+	double      m_relf;
  public:
 	bool	set(int packetNum, int seq, char *data, int n);
  public:
@@ -80,7 +80,7 @@ class RequestAddTorqueEvent
 	double      m_x;
 	double      m_y;
 	double      m_z;
-	bool      m_relf;
+	double      m_relf;
  public:
 	bool	set(int packetNum, int seq, char *data, int n);
  public:

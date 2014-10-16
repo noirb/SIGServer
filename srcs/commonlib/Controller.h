@@ -479,12 +479,12 @@ private:
 	// Calculates torque from angular verocity and power
 	// Equation is as follows
 	// 
-	// P = F * rw =  2 * M_PI * Tf
+	// P = F・rω = ーー ・ rω = 2πTf
 	// 
 	// P : Power consumption [W]
 	// F : Force acting on wheel[N]
 	// r : Radius of wheel[m]
-	// w : Angular frequency [rad/sec]
+	//ω : Angular frequency [rad/sec]
 	// T : Torque[N・m]
 	// f : Frequency(Number of rotation)[Hz]
 	//
