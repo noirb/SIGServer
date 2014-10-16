@@ -701,7 +701,7 @@ SimObj *Controller::getObj(const char *name)
 		LOG_MSG(("recv"));	  
 		p = recvBuff;
 		// Sets the size of header and data
-		unsigned short result = BINARY_GET_DATA_S_INCR(p, unsigned short); // connectServiceのデータタイプは9
+		unsigned short result = BINARY_GET_DATA_S_INCR(p, unsigned short); // the data type of 'connectService' is '9'
 
 		if(result) {
 			LOG_MSG(("get!"));
@@ -1017,7 +1017,11 @@ void Controller::loopMain()
 
 		try {
 			read.read();
+#ifndef WIN32
 		} catch(CTReader::ConnectionClosedException &e) {
+#else
+		} catch(...) {
+#endif
 			break;
 		} 
 		/*

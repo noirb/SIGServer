@@ -259,6 +259,7 @@ class SSimRobotEntity : public SSimEntity
       it++;
     }
     LOG_ERR(("cannot find joint %d",jname.c_str()));
+	return NULL;
   }
 
   //! 質量設定

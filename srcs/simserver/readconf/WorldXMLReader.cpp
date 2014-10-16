@@ -4,6 +4,9 @@
 
 #include "systemdef.h"
 
+#include <iostream>
+#include <sstream>
+
 #if (defined USE_XERCES && defined EXEC_SIMULATION)
 #include "WorldXMLReader.h"
 
@@ -296,6 +299,18 @@ void WorldXMLReader::startElement(const XMLCh * const tagName_,
 			char *scale = GET_VALUE(attrs, "scale");
 	    
 			Vector3d sc(1.0, 1.0, 1.0);
+#if WIN32
+			std::stringstream ss(scale);
+			ss.exceptions(std::ios::failbit);
+			try{
+				double x, y, z;
+				ss >> x >> y >> z;
+				sc.set(x, y, z);
+			}catch(std::ios::failure &e){
+				;
+			}
+
+#else
 			if (scale) {
 				char *scalex = strtok(scale, " ");
 				char *scaley = strtok(NULL, " ");
@@ -308,7 +323,7 @@ void WorldXMLReader::startElement(const XMLCh * const tagName_,
 					sc.set(atof(scalex), atof(scaley), atof(scalez));
 				}
 			}
-	    
+#endif   
 			m_current->setScale(sc);
 		}
 
@@ -424,7 +439,7 @@ void WorldXMLReader::startElement(const XMLCh * const tagName_,
 			int iid    = -1;
 
 			std::string id = cid;
-			double dfov, das;
+//			double dfov, das;
 			// Whether value is specified by users
 			bool isid   = false;
 			bool islink = false;

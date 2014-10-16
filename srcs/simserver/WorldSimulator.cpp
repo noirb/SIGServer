@@ -591,7 +591,7 @@ private:
 		}
 
 		//set OffsetQuaternion
-		bool offset = evt.getoffset();
+		bool offset = (evt.getoffset() != FALSE);
 		if (offset == true) {
 			Vector3d ini;
 			j->setOffsetQuaternion(evt.getqw(), evt.getqx(), evt.getqy(), evt.getqz(),ini);
@@ -2534,7 +2534,7 @@ bool WorldSimulator::sendMoveEntities(SOCKET sock, bool update)
 		}//     while(enit != enmap.end()) {
 
 		int nbyte = 0;
-		char bsize[6];
+//		char bsize[6];
 
 		msg = IntToString(entSize) + msg;
     
@@ -2587,7 +2587,8 @@ bool WorldSimulator::sendShapeFile(SOCKET sock, std::string name)
 	}
 
 	// end of file
-	char eof = htons(0x1a);
+	//char eof = htons(0x1a);
+	char eof = 0x1a;
 	msg += eof;
 
 	// Add data size on the header
@@ -3053,7 +3054,7 @@ bool WorldSimulator::runStep()
 
 					char *agentName = strtok(pp, ",");
 					char *jName     = strtok(NULL, ",");
-					bool offset     = atoi(strtok(NULL, ","));
+					bool offset     = (atoi(strtok(NULL, ",")) != FALSE);
 
 					SSimObj *obj = w->getSObj(agentName);
 					if (!obj) {

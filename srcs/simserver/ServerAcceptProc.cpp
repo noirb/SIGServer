@@ -125,13 +125,12 @@ void ServerAcceptProc::run()
 				}
 			}
 
-			char result[1];	
+			//char result[1];	
 			if (same_name) {
 				LOG_ERR(("Service name \"%s\" already exist.", sname.c_str()));
 				LOG_ERR(("Service: \"%s\" cannot connect", sname.c_str()));
 
-
-				BINARY_SET_DATA_S(result, unsigned char, 0); 
+				//BINARY_SET_DATA_S(result, unsigned char, 0); 
 				//BINARY_SET_DATA_S_INCR(p, unsigned short, 4); 	  
 				//sleep(1000);
 				send(s, "FAIL", 4, MSG_DONTWAIT);
@@ -141,7 +140,7 @@ void ServerAcceptProc::run()
 				m_messages.push_back(con);
 				if(sname != "SIGEND")
 					LOG_SYS(("Service: \"%s\" is available", sname.c_str()));
-				BINARY_SET_DATA_S(result, unsigned char, 1); 
+				//BINARY_SET_DATA_S(result, unsigned char, 1);
 				send(s, "SUCC", 4, MSG_DONTWAIT);
 			}
 		} 
