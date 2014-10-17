@@ -1,0 +1,49 @@
+#
+#
+#
+
+CC=cl.exe
+LINK=link.exe
+
+TARGET=sendmsg  ## Default 
+TARGET_OBJS=$(TARGET).obj wingetopt.obj
+
+##### for controler
+ODE_FLAGS= /D "USE_ODE"
+ODE_LIB= "ode.lib"
+#ODE_LIB_PATH= /LIBPATH:"Z:\Develop\ode-0.13\lib\vs2012\Release"
+ODE_LIB_PATH= /LIBPATH:"F:\Develop\ode-0.13\lib\vs2010\Release"
+ODE_INC_PATH= /I"F:\Develop\ode-0.13\include"
+TARGET_OBJS=$(TARGET_OBJS) ControllerLib.obj
+#else
+#ODE_FLAGS= 
+#ODE_LIB= 
+#ODE_LIB_PATH= 
+####
+
+
+CPPFLAGS= /GS /TP /analyze- /W3 /Zc:wchar_t  /Gm- /O2 /Ob2 /errorReport:prompt /WX- /Zc:forScope /GR /Gd /Oy- /MD /EHsc /nologo
+INC_DIRS= /I"." /I"..\commonlib" /I"..\commonlib\comm" $(ODE_INC_PATH)
+CPP_DEFS= /D "WIN32" /D "_WINDOWS" /D "NDEBUG" /D "_MBCS"  /D "dDOUBLE" /D "CONTROLLER"  $(ODE_FLAGS)
+
+
+CPPFLAGS=$(CPPFLAGS) $(INC_DIRS) $(CPP_DEFS)
+
+LINK_FLAGS= /MANIFEST:NO /NXCOMPAT /DYNAMICBASE  /MACHINE:X86 /SAFESEH /SUBSYSTEM:CONSOLE /ERRORREPORT:PROMPT /NOLOGO  /TLBID:1 
+LINK_FLAGS=$(LINK_FLAGS) /LTCG
+
+DEP_LIBS="kernel32.lib" "user32.lib" "gdi32.lib" "winspool.lib" "shell32.lib" "ole32.lib" "oleaut32.lib" "uuid.lib" "comdlg32.lib" "advapi32.lib" "Ws2_32.lib" "commonlib.lib" $(ODE_LIB)
+
+LIB_DIRS= /LIBPATH:"..\..\..\server\srcs\commonlib\Release" $(ODE_LIB_PATH)
+
+
+all: $(TARGET).exe
+
+.cpp.obj:
+	$(CC) /c $(CPPFLAGS) $*.cpp
+
+$(TARGET).exe: $(TARGET_OBJS)
+	$(LINK) -out:$(TARGET).exe $(LINK_FLAGS) $(TARGET_OBJS)  $(DEP_LIBS) $(LIB_DIRS)
+
+clean:
+	del $(TARGET).exe $(TARGET_OBJS)

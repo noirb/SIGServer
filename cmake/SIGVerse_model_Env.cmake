@@ -26,7 +26,7 @@ include("${CMAKE_SOURCE_DIR}/cmake/SIGVerse_find_libs.cmake")
 include_directories("${CMAKE_SOURCE_DIR}" "${ODE_ROOT_DIR}/include")
 
 if(WIN32)
-add_definitions(-DWIN32 -DUSE_ODE -DdDOUBLE -D CONTROLLER -D_DEBUG )
+add_definitions(-DWIN32 -DUSE_ODE -DdDOUBLE -D CONTROLLER -D_CRT_SECURE_NO_WARNINGS )
 else()
 add_definitions(-DIRWAS_SIMSERVER -DdDOUBLE -DSTRICT_INTERFACE)
 endif()

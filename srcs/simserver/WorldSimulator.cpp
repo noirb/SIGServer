@@ -45,19 +45,9 @@
 #ifndef WIN32
 #include <sys/time.h>
 #else
-#include <sys/timeb.h>
 
-void
-gettimeofday(struct timeval *tv, struct timezone *tz)
-{
-	_timeb tvb;
-    _ftime_s(&tvb);
 
-	tv->tv_sec = (long)tvb.time;
-	tv->tv_usec = tvb.millitm * 1000;
-	return;
-}
-
+void gettimeofday(struct timeval *tv, struct timezone *tz);
 
 int wait_socket_to_read(SOCKET sock, int msec)
 {

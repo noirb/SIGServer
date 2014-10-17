@@ -8,12 +8,17 @@
 #include "systemdef.h"
 #include "Source.h"
 #include "CommDataDecoder.h"
-
+#include <iostream>
 
 class CTReader
 {
 public:
-	class ConnectionClosedException {};
+	class ConnectionClosedException {
+	public:
+		void msg(){
+			std::cerr << "CTReader:: Connection closed exception" << std::endl;
+		}
+	};
 	enum ControllerDataType{
 	  SEND_MESSAGE = 0x0001,
 	  START_SIM    = 0x0002,

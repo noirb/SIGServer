@@ -17,6 +17,20 @@
 #include <sys/time.h>
 #include <errno.h>
 #include <unistd.h>
+
+#else
+#include <sys/timeb.h>
+
+void
+gettimeofday(struct timeval *tv, struct timezone *tz)
+{
+	_timeb tvb;
+    _ftime_s(&tvb);
+
+	tv->tv_sec = (long)tvb.time;
+	tv->tv_usec = tvb.millitm * 1000;
+	return;
+}
 #endif
 
 #ifndef FD_SETSIZE
@@ -39,22 +53,21 @@ CTReader::~CTReader()
 	delete m_buf;
 }
 
-#ifndef WIN32_OLD
 
-void gettimeofday(struct timeval *tv, struct timezone *tz);
+//void gettimeofday(struct timeval *tv, struct timezone *tz);
 
 bool CTReader::read()
 {
 	ControllerInf *con = m_decoder.getController();
 
-	static bool start_sim = false;
+	static bool start_sim;
 
-	static double timewidth = 0.0;
+	static double timewidth;
 
-	struct timeval start={0, 0}, eoa={0,0};
-	timeval now; 
+	static struct timeval start, eoa;
+	struct timeval now; 
 
-	static double server_startTime = 0.0;
+	static double server_startTime;
 
 	if (start_sim) {
 
@@ -62,6 +75,7 @@ bool CTReader::read()
 		gettimeofday(&now, NULL);
 
 		double tmp_time = (double)(now.tv_sec - eoa.tv_sec) + (double)(now.tv_usec - eoa.tv_usec) * 0.001 * 0.001;
+
 		if (tmp_time >= timewidth) {
 			ActionEvent aevt;
       
@@ -71,10 +85,10 @@ bool CTReader::read()
 			aevt.setTime(nowtime);
       
 			timewidth = con->onAction(aevt);
-      
+//      fprintf(stderr, "=%lf,  %lf == ", tmp_time, timewidth);
 			gettimeofday(&eoa, NULL);
 
-			Controller *conn = (Controller*)con;
+			//Controller *conn = (Controller*)con;
 			//conn->updateObjs();
 		}
 	}
@@ -82,7 +96,7 @@ bool CTReader::read()
 	SOCKET s = m_sock;
 
 	fd_set rfds;
-	struct timeval tv;
+	struct timeval tv = {0,1000};
 	FD_ZERO(&rfds);
 	FD_SET(s, &rfds);
 
@@ -90,24 +104,22 @@ bool CTReader::read()
 	std::map<std::string, SOCKET> ssocks = coni->getSrvSocks();
 	std::map<std::string, SOCKET>::iterator it = ssocks.begin();
 	while (it != ssocks.end()) {
-		FD_SET((*it).second, &rfds);
+		FD_SET((SOCKET)((*it).second), &rfds);
 		it++;
 	}
-	tv.tv_sec = 0;
+//	tv.tv_sec = 0;
 	//tv.tv_usec = 100000;
-	tv.tv_usec = 1000; 
+//	tv.tv_usec = 1000; 
   
 	int ret = select(FD_SETSIZE, &rfds, NULL, NULL, &tv);
 	if (ret == -1) {
 		perror("select");
 		return false;
-	}
-  
-	else if (ret == 0) {
-		return true;
-	}
 
-	else if (ret > 0) {
+	} else if (ret == 0) {
+
+		return true;
+	}	else if (ret > 0) {
 
 		if (FD_ISSET(s, &rfds)) {
 
@@ -463,13 +475,7 @@ CommDataDecoder::Result * CTReader::readSync()
 	}
 	return NULL;
 }
-#else
-CommDataDecoder::Result * CTReader::readSync()
-{
-	// not implemented yet
-	return NULL;
-}
-#endif
+
 
 CTReader::Buffer::Buffer(int size) : m_bufsize(size), m_readHead(NULL), m_curr(0) {
 	int i = 0;

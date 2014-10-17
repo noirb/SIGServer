@@ -5,11 +5,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
+#ifndef WIN32
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <netdb.h>
 #include <unistd.h>
+
+#define SOCKET int
+#endif
 #include "binary.h"
 
 int main(int argc, char **argv)
@@ -37,7 +41,7 @@ int main(int argc, char **argv)
 	}
 
 	struct sockaddr_in server;
-	int sock;
+	SOCKET sock;
 	int n;
 
 	sock = socket(AF_INET, SOCK_STREAM, 0);
@@ -67,8 +71,11 @@ int main(int argc, char **argv)
 
 	char sendBuf[4];
 	char *p = sendBuf;
-
+#ifndef WIN32
 	sleep(1);
+#else
+	Sleep(1000);
+#endif
 
 	//TODO: Magic numbers around the following lines should be removed
 	BINARY_SET_DATA_S_INCR(p, unsigned short, 2);

@@ -19,6 +19,15 @@
 #include <string>
 
 
+#ifndef WIN32
+#define THREAD_RET_VAL void *
+#define THREAD_RET_VAL_NULL	NULL
+#else
+#define THREAD_RET_VAL void 
+#define THREAD_RET_VAL_NULL
+#endif
+
+
 class Command;
 class CTSimObj;
 class ControllerImpl;
@@ -269,11 +278,8 @@ private:
 	// bool recvData(SOCKET sock, char *msg, int size);
 
 public:
-#ifndef WIN32
-	static void *serviceThread(void *pParam);
-#else
-	static void serviceThread(void *pParam);
-#endif
+
+	static THREAD_RET_VAL serviceThread(void *pParam);
 
 protected:
 	void	close_();

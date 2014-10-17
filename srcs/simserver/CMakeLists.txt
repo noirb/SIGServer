@@ -98,7 +98,9 @@ source_group("Header Files\\commonlib\\ct"  FILES ${commonlib_ct_headers})
 
 
 if(WIN32)
-  SET( CMAKE_EXE_LINKER_FLAGS  "/LTCG ${CMAKE_EXE_LINKER_FLAGS}" )
+#  SET( CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS}" )
+  SET( CMAKE_EXE_LINKER_FLAGS_RELEASE  "/LTCG ${CMAKE_EXE_LINKER_FLAGS}" )
+  SET( CMAKE_EXE_LINKER_FLAGS_DEBUG  "${CMAKE_EXE_LINKER_FLAGS}" )
   target_link_libraries(simserver Ws2_32 jvm libx3d)
   target_link_libraries(simserver debug oded  optimized ode)
   target_link_libraries(simserver debug xerces-c_3D  optimized xerces-c_3)

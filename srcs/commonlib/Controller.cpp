@@ -1014,20 +1014,25 @@ void Controller::loopMain()
 	signal(SIGINT, quit);
 
 	while (s_loop) {
-
+		//fprintf(stderr, ".");
 		try {
 			read.read();
 		} catch(CTReader::ConnectionClosedException &e) {
+			e.msg();
 			break;
 		} 
 		/*
 		 * Wait a fixed time to reduce the load of CPU
 		 */
+#ifndef WIN32_OLD
 		FD_ZERO(&rfds);
 		tv.tv_sec = 0;
 		//tv.tv_usec = 1000;
 		tv.tv_usec = 10;
 		select(0, &rfds, NULL, NULL, &tv);
+#else
+		Sleep(1);
+#endif
 	}
 	LOG_SYS(("disconnected"));
 	shutdown(m_cmdSock, 1);
