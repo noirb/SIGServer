@@ -13,6 +13,7 @@
 #include <arpa/inet.h>
 #else
 #include "wingetopt.h"
+#include <sstream>
 #endif
 #include <sys/types.h>
 #include <signal.h>
@@ -130,6 +131,41 @@ static bool runControllers(SSimWorld &w, int port)
 				LOG_ERR(("Failed to create controller process"));
 				exit(1);
 			}
+#else
+			fprintf(stderr, "Not implemented..., run controlller proc: \"%s\" -> %s\n", obj->name(), ctrl.c_str());
+			STARTUPINFO si;
+			PROCESS_INFORMATION pi;
+
+			ZeroMemory( &si, sizeof(si) );
+			si.cb = sizeof(si);
+			ZeroMemory( &pi, sizeof(pi) );
+
+			std::stringstream cmdline;
+			cmdline << runprog;
+			cmdline << " -h 127.0.0.1 -p " ;
+			cmdline << port ;
+			cmdline << " -n " ;
+			cmdline << obj->name();
+			cmdline << " -l " + ctrl ;
+			cmdline << " -s "  ;
+			fprintf(stderr, "Controller = %s\n", cmdline.str().c_str());
+
+			if( !CreateProcess( NULL,   // No module name (use command line)
+				(char *)cmdline.str().c_str(),        // Command line
+				NULL,           // Process handle not inheritable
+				NULL,           // Thread handle not inheritable
+				FALSE,          // Set handle inheritance to FALSE
+				0,              // No creation flags
+				NULL,           // Use parent's environment block
+				NULL,           // Use parent's starting directory 
+				&si,            // Pointer to STARTUPINFO structure
+				&pi )           // Pointer to PROCESS_INFORMATION structure
+			) 
+			{
+				fprintf(stderr,  "CreateProcess failed (%d).\n", GetLastError() );
+				return false;
+			}
+
 #endif
 		}
 	}

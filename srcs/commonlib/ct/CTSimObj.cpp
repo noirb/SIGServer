@@ -134,6 +134,7 @@ bool CTSimObj::detectEntities(EntityNameC &v, int id)
 			}
 		catch(CTReader::ConnectionClosedException &e)
 			{
+				e.msg();
 				break;
 			}
 #else
@@ -230,6 +231,7 @@ Text * CTSimObj::getText(RawSound &rawSound)
 			}
 		catch(CTReader::ConnectionClosedException &e)
 			{
+				e.msg();
 				break;
 			}
 #else
@@ -325,6 +327,7 @@ ViewImage * CTSimObj::captureView(ColorBitType cbtype, ImageDataSize size, int i
 			}
 		catch(CTReader::ConnectionClosedException &e)
 			{
+				e.msg();
 				break;
 			}
 #else
@@ -402,6 +405,7 @@ unsigned char CTSimObj::distanceSensor(double start, double end, int id)
 			}
 		catch(CTReader::ConnectionClosedException &e)
 			{
+				e.msg();
 				break;
 			}
     
@@ -487,6 +491,7 @@ ViewImage *CTSimObj::distanceSensorD(double start, double end, int id, bool map)
 			}
 		catch(CTReader::ConnectionClosedException &e)
 			{
+				e.msg();
 				break;
 			}
     

@@ -24,7 +24,11 @@ class DepthImage;
 class Text;
 class RawSound;
 
-
+#ifdef WIN32
+#define EXPORT_FUNC __declspec(dllexport)
+#else
+#define EXPORT_FUNC
+#endif
 
 
 

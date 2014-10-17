@@ -19,23 +19,37 @@
 #include <string.h>
 #include <errno.h>
 
+#ifndef WIN32
+#define INVALID_SOCKET	(-1)
+#endif
 
 // sekikawa(FIX20100826)
 //SOCKET CommUtil::connectServer(const char *hostname, int port)
 SOCKET CommUtil::connectServer(const char *hostname, int port, int retry)
 {
+#ifdef WIN32	
+	WSADATA data;
+	int result = WSAStartup(MAKEWORD(2, 0), &data);
 
+	if (result < 0){
+		fprintf(stderr, "%d\n", GetLastError());
+		return INVALID_SOCKET;
+	}
+
+#endif
 	SOCKET sock = socket(AF_INET, SOCK_STREAM, 0);
 
-	if (sock < 0) {
+	if (sock == INVALID_SOCKET) {
 		perror("cannot open socket");
-		return -1;
+
+		return INVALID_SOCKET ;
 	}
 
 	struct hostent *hp = gethostbyname(hostname);
-	if (!hp) {
+	if (hp == NULL) {
 		fprintf(stderr, "unknown host : %s\n", hostname);
-		return -1;
+
+		return INVALID_SOCKET;
 	}
 
 	struct sockaddr_in addr;

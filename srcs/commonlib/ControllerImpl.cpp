@@ -563,11 +563,8 @@ bool ViewService::sendDSRequest(int type, double start, double end, int camID, C
 	return true;
 }
 
-#ifndef WIN32
-void* ControllerImpl::serviceThread(void *pParam)
-#else
-void ControllerImpl::serviceThread(void *pParam)
-#endif
+
+THREAD_RET_VAL ControllerImpl::serviceThread(void *pParam)
 {
 	ControllerImpl *con = (ControllerImpl*)pParam;
 	SOCKET sock = con->getSrvSock();
@@ -626,15 +623,18 @@ void ControllerImpl::serviceThread(void *pParam)
 // Close socket
 error:
 	// Server socket
-	if (sock != -1) { //Changed from NULL to -1 by inamura on 2014-02-28
 #ifndef WIN32
+	if (sock != -1) { //Changed from NULL to -1 by inamura on 2014-02-28
+
 		close(sock);
 		sock = -1;  //Changed from NULL to -1 by inamura on 2014-02-28
-#else
-		closesocket(sock);
-		sock = -1;  //Changed from NULL to -1 by inamura on 2014-02-28
-#endif
 	}
+#else
+	if (sock != INVALID_SOCKET) { // Changed by I.Hara.
+		closesocket(sock);
+		sock = INVALID_SOCKET;
+	}
+#endif
 	/*
 	// Client socket
 	if(m_clientSock != NULL) {
@@ -642,11 +642,7 @@ error:
 		m_clientSock = NULL;
 	}
 	*/
-#ifndef WIN32
-	return NULL;
-#else
-	return;
-#endif
+	return THREAD_RET_VAL_NULL;
 }
 
 #ifdef WIN32
@@ -984,7 +980,7 @@ bool ControllerImpl::attach(char const *server, int port, char const *myname)
 
 	{
 		SOCKET s = CommUtil::connectServer(server, port);
-		if (s < 0) { return false; }
+		if (s < 0 || s == INVALID_SOCKET) { return false; }
 
 		CommData::AttachControllerRequest enc(myname);
 		enc.send(s);
@@ -996,7 +992,7 @@ bool ControllerImpl::attach(char const *server, int port, char const *myname)
 
 	{
 		SOCKET s = CommUtil::connectServer(server, port);
-		if (s < 0) {
+		if (s < 0 || s == INVALID_SOCKET) {
 			goto err;
 		}
 

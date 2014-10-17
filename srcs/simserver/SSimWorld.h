@@ -50,7 +50,7 @@ public:
 	}
 
 	typedef std::vector<std::string> NameC;
-	NameC &	copyNames(bool needEntities, NameC &c);
+	void	copyNames(bool needEntities, NameC &c);
 
 	double	time() const;
 	void	time(double t);

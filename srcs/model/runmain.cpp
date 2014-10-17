@@ -2,7 +2,11 @@
  * Modified by okamoto on 2011-03-25
  */
 
+#ifdef WIN32
+#include "wingetopt.h"
+#else
 #include <getopt.h>
+#endif
 
 #include "Controller.h"
 #include "ControllerLib.h"
@@ -65,10 +69,15 @@ int main(int argc, char **argv)
 
 	Controller::init();
 	Controller &c = lib->getController();
-	c.attach(server, port, name);
+	printf("ATTACH %s %d %s\n", server, port,name);
+	bool ret = c.attach(server, port, name);
+ 
+	if (ret){
+	  c.loopMain();
+        }else{
+	  printf("Fail to run ... \n");
 
-	c.loopMain();
-
+	}
 	delete lib;
 	return 0;
 }	

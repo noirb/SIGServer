@@ -1793,6 +1793,8 @@ bool SimObj::getPointingVector(Vector3d &vec, int lrFrag)
 		return getPointingVector(vec, "LARM_JOINT4", "LARM_JOINT7");
 	else if (lrFrag == 1)
 		return getPointingVector(vec, "RARM_JOINT4", "RARM_JOINT7");
+
+	return false;
 }
 
 
