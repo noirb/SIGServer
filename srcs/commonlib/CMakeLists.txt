@@ -62,7 +62,8 @@ include_directories("${PROJECT_SOURCE_DIR}" "${PROJECT_SOURCE_DIR}/comm")
 
 if(WIN32)
 SET( CMAKE_STATIC_LINKER_FLAGS  "${CMAKE_SHARED_LINKER_FLAGS}  /LTCG /NODEFAULTLIB:MSVCRT" )
-target_link_libraries(commonlib Ws2_32.lib ode.lib)
+target_link_libraries(commonlib Ws2_32)
+target_link_libraries(commonlib debug oded optimized ode)
 
 endif()
 

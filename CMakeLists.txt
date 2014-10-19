@@ -14,6 +14,7 @@ set(SIGV_FULL_VERSION ${SIGV_MAJOR_VERSION}.${SIGV_MINOR_VERSION}.${SIGV_PATCH_V
 add_subdirectory(srcs/commonlib)
 add_subdirectory(srcs/simserver)
 add_subdirectory(srcs/x3d)
+add_subdirectory(srcs/model)
 
 include("${PROJECT_SOURCE_DIR}/cmake/SIGVerse_Env.cmake")
 
