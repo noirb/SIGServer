@@ -42,7 +42,17 @@ int main(int argc, char **argv)
 
 	struct sockaddr_in server;
 	SOCKET sock;
-	int n;
+//	int n;
+	
+#ifdef WIN32
+	WSADATA data;
+	int result = WSAStartup(MAKEWORD(2, 0), &data);
+
+	if (result < 0){
+		fprintf(stderr, "%d\n", GetLastError());
+		exit(1);
+	}
+#endif
 
 	sock = socket(AF_INET, SOCK_STREAM, 0);
 
