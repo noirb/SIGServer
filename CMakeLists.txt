@@ -18,3 +18,6 @@ add_subdirectory(srcs/model)
 
 include("${PROJECT_SOURCE_DIR}/cmake/SIGVerse_Env.cmake")
 
+install(DIRECTORY jar DESTINATION share/sigverse
+   FILES_MATCHING PATTERN "*.jar"
+)

@@ -1,0 +1,17 @@
+
+set VC_VERSION=${VCVER_S}
+set ARCH = x86
+
+@if "%VC_VERSION%" == "VC10" (
+  call "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\vcvarsall.bat"
+)
+
+@if "%VC_VERSION%" == "VC11" (
+  call "C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\vcvarsall.bat"
+)
+
+@if "%VC_VERSION%" == "VC12" (
+  call "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat"
+)
+
+nmake.exe /F ${CMAKE_INSTALL_PREFIX}/share/sigverse/etc/mkdll.nmake TARGET=%1 %2

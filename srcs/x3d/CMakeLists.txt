@@ -29,5 +29,11 @@ target_link_libraries(libx3d Ws2_32.lib jvm.lib)
 
 endif()
 
-SET_TARGET_PROPERTIES(libx3d PROPERTIES LINKER_LANGUAGE CXX)
+configure_file(parser/cpp/X3DParser.cfg.in ${CMAKE_BINARY_DIR}/X3DParser.cfg)
 
+
+SET_TARGET_PROPERTIES(libx3d
+ PROPERTIES
+ LINKER_LANGUAGE CXX)
+
+install(FILES ${CMAKE_BINARY_DIR}/X3DParser.cfg DESTINATION share/sigverse/etc)
