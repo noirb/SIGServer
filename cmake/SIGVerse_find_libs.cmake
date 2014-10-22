@@ -68,4 +68,19 @@ find_path(JDK_ROOT_DIR bin/javac.exe
  "E:/*"
  )
 
-
+find_path(JRE_ROOT_DIR bin/client/jvm.dll
+ HINTS
+   "C:/Program Files (x86)/Java/*"
+   "C:/Program Files/Java/*"
+	 "/usr/local/*/*"
+	 "/usr/share/*/*"
+ "$ENV{HOME}/*"
+ "$ENV{HOME}/*/*"
+ "C:/*" 
+ "D:/*/*/*"
+ "D:/*/*"
+ "D:/*"
+ "E:/*/*/*"
+ "E:/*/*"
+ "E:/*"
+ )

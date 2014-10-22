@@ -56,10 +56,40 @@ if(WIN32)
   target_link_libraries(sendmsg commonlib)
   target_link_libraries(sigstart commonlib)
   target_link_libraries(sigend commonlib)
+
+  configure_file(${PROJECT_SOURCE_DIR}/sigmake.bat.in ${CMAKE_BINARY_DIR}/sigmake.bat)
+  configure_file(${PROJECT_SOURCE_DIR}/mkdll.nmake.in ${CMAKE_BINARY_DIR}/mkdll.nmake)
+  install(FILES ${CMAKE_BINARY_DIR}/sigmake.bat DESTINATION bin)
+  install(FILES ${CMAKE_BINARY_DIR}/mkdll.nmake DESTINATION share/sigverse/etc)
+
+
 endif()
 
 
-SET_TARGET_PROPERTIES(sigrun PROPERTIES LINKER_LANGUAGE CXX)
-SET_TARGET_PROPERTIES(sendmsg PROPERTIES LINKER_LANGUAGE CXX)
-SET_TARGET_PROPERTIES(sigstart PROPERTIES LINKER_LANGUAGE CXX)
-SET_TARGET_PROPERTIES(sigend PROPERTIES LINKER_LANGUAGE CXX)
+SET_TARGET_PROPERTIES(sigrun
+ PROPERTIES
+ RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+ LINKER_LANGUAGE CXX)
+SET_TARGET_PROPERTIES(sendmsg
+ PROPERTIES
+ RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+ LINKER_LANGUAGE CXX)
+SET_TARGET_PROPERTIES(sigstart
+ PROPERTIES
+ RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+ LINKER_LANGUAGE CXX)
+SET_TARGET_PROPERTIES(sigend
+ PROPERTIES
+ RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+ LINKER_LANGUAGE CXX)
+
+#
+#
+install(TARGETS sigrun sendmsg sigstart sigend
+  RUNTIME DESTINATION bin
+)
+
+#
+#
+file(GLOB sample_ctrl "${PROJECT_SOURCE_DIR}/samples/export/*.cpp")
+install(FILES ${sample_ctrl} DESTINATION share/sigverse/samples )

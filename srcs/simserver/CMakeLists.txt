@@ -51,9 +51,9 @@ include_directories(
 link_directories("${CMAKE_BINARY_DIR}/commonlib"
        "${ODE_ROOT_DIR}/lib/${VCVER}"
        "${XERCES_ROOT_DIR}/Build/Win32/${VCVER_S}"
-	"${XERCES_ROOT_DIR}/lib"
-      "${JDK_ROOT_DIR}/lib"
-      "${CMAKE_BINARY_DIR}/x3d"
+       "${XERCES_ROOT_DIR}/lib"
+       "${JDK_ROOT_DIR}/lib"
+       "${CMAKE_BINARY_DIR}/x3d"
 )
 
 
@@ -104,8 +104,36 @@ if(WIN32)
   target_link_libraries(simserver Ws2_32 jvm libx3d)
   target_link_libraries(simserver debug oded  optimized ode)
   target_link_libraries(simserver debug xerces-c_3D  optimized xerces-c_3)
+
+  configure_file(${PROJECT_SOURCE_DIR}/sigserver.bat.in ${CMAKE_BINARY_DIR}/sigserver.bat)
+ 
+  file(GLOB xerces_dll "${XERCES_ROOT_DIR}/Build/Win32/${VCVER_S}/*/xerces-c*.dll")
+  install(FILES ${xerces_dll} DESTINATION bin)
+
 endif()
 
 
-SET_TARGET_PROPERTIES(simserver PROPERTIES LINKER_LANGUAGE CXX)
+SET_TARGET_PROPERTIES(simserver
+ PROPERTIES
+ RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+ ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
+ LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
+ LINKER_LANGUAGE CXX)
 
+install(TARGETS simserver
+  RUNTIME DESTINATION bin
+)
+
+install(FILES ${CMAKE_BINARY_DIR}/sigserver.bat DESTINATION bin)
+
+
+
+
+file(GLOB data_xml "${PROJECT_SOURCE_DIR}/conf/*.xml")
+file(GLOB data_wrl "${PROJECT_SOURCE_DIR}/conf/*.wrl")
+file(GLOB data_x3d "${PROJECT_SOURCE_DIR}/conf/*.x3d")
+
+install(FILES ${data_xml} DESTINATION share/sigverse/data/xml
+)
+install(FILES ${data_wrl} ${data_x3d} DESTINATION share/sigverse/data/shape
+)

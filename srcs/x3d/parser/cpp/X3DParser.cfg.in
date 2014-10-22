@@ -1,0 +1,8 @@
+
+# $ java -Xbootclasspath/p:./bin -Djava.class.path=./X3DParser.jar:/home/yoshi/Xj3D/jars/xj3d-all.jar  X3DParserTest 0 ../../../../shapes/VRML/apple.wrl 
+
+#java.library.path=/Develop/SIGServer-2.2.2/jar
+java.library.path=${CMAKE_INSTALL_PREFIX}/share/sigverse/jar
+
+#java.class.path=.;/Develop/SIGServer-2.2.2/jar/xj3d-all.jar;/Develop/SIGServer-2.2.2/srcs/x3d/parser/java/X3DParser/bin
+java.class.path=.;${CMAKE_INSTALL_PREFIX}/share/sigverse/jar/xj3d-all.jar;${CMAKE_INSTALL_PREFIX}/share/sigverse/jar/X3DParser.jar

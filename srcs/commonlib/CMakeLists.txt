@@ -24,6 +24,9 @@ file(GLOB comm_encoder_headers  "comm/encoder/*.h")
 file(GLOB comm_event_headers  "comm/event/*.h")
 file(GLOB ct_headers "ct/*.h")
 
+
+
+
 ADD_LIBRARY(commonlib STATIC
  ${srcs}
  ${command_srcs}
@@ -67,5 +70,43 @@ target_link_libraries(commonlib debug oded optimized ode)
 
 endif()
 
-SET_TARGET_PROPERTIES(commonlib PROPERTIES LINKER_LANGUAGE CXX)
+SET_TARGET_PROPERTIES(commonlib
+  PROPERTIES
+  RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+  ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
+  LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
+  LINKER_LANGUAGE CXX)
 
+
+install(TARGETS commonlib 
+  ARCHIVE DESTINATION lib
+)
+install(FILES  ${headers}
+   DESTINATION include/sigverse
+)
+
+install(FILES ${comm_headers}
+   DESTINATION include/sigverse/comm
+)
+
+install(FILES  ${comm_controller_headers}
+   DESTINATION include/sigverse/comm/controller
+)
+install(FILES ${comm_encoder_headers}
+   DESTINATION include/sigverse/comm/encoder
+)
+install(FILES ${comm_event_headers}
+   DESTINATION include/sigverse/comm/event
+)
+
+#
+#  ODE
+#
+file(GLOB ode_headers "${ODE_ROOT_DIR}/include/ode/*.h")
+
+install(FILES ${ode_headers}
+   DESTINATION include/ode
+)
+install(FILES  "${ODE_ROOT_DIR}/lib/${VCVER}/Release/ode.lib"
+   DESTINATION lib
+)
