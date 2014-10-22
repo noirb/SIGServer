@@ -105,6 +105,8 @@ if(WIN32)
   target_link_libraries(simserver debug oded  optimized ode)
   target_link_libraries(simserver debug xerces-c_3D  optimized xerces-c_3)
 
+  file(TO_NATIVE_PATH ${CMAKE_INSTALL_PREFIX} CMAKE_INSTALL_PREFIX)
+  file(TO_NATIVE_PATH ${JRE_ROOT_DIR} JRE_ROOT_DIR)
   configure_file(${PROJECT_SOURCE_DIR}/sigserver.bat.in ${CMAKE_BINARY_DIR}/sigserver.bat)
  
   file(GLOB xerces_dll "${XERCES_ROOT_DIR}/Build/Win32/${VCVER_S}/*/xerces-c*.dll")

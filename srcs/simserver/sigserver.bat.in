@@ -7,4 +7,4 @@
 @set SIGVERSE_RUNAC=%SIGVERSE_ROOT%bin\sigrun.exe
 @set SIGVERSE_DATADIR=%SIGVERSE_ROOT%share\sigverse\data
 
-%~dp0simserver.exe %*
+%SIGVERSE_ROOT%bin\simserver.exe %*

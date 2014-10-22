@@ -1,0 +1,4 @@
+
+mkdir %1
+copy ${CMAKE_INSTALL_PREFIX}\bin\sigmake.bat %1
+copy ${CMAKE_INSTALL_PREFIX}\bin\sigserver.bat %1

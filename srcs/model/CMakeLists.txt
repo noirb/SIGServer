@@ -57,9 +57,13 @@ if(WIN32)
   target_link_libraries(sigstart commonlib)
   target_link_libraries(sigend commonlib)
 
+  file(TO_NATIVE_PATH ${CMAKE_INSTALL_PREFIX} CMAKE_INSTALL_PREFIX)
+
+message(${CMAKE_INSTALL_PREFIX})
   configure_file(${PROJECT_SOURCE_DIR}/sigmake.bat.in ${CMAKE_BINARY_DIR}/sigmake.bat)
   configure_file(${PROJECT_SOURCE_DIR}/mkdll.nmake.in ${CMAKE_BINARY_DIR}/mkdll.nmake)
-  install(FILES ${CMAKE_BINARY_DIR}/sigmake.bat DESTINATION bin)
+  configure_file(${PROJECT_SOURCE_DIR}/sigcreate.bat.in ${CMAKE_BINARY_DIR}/sigcreate.bat)
+  install(FILES ${CMAKE_BINARY_DIR}/sigmake.bat ${CMAKE_BINARY_DIR}/sigcreate.bat DESTINATION bin)
   install(FILES ${CMAKE_BINARY_DIR}/mkdll.nmake DESTINATION share/sigverse/etc)
 
 
