@@ -108,7 +108,8 @@ if(WIN32)
   configure_file(${PROJECT_SOURCE_DIR}/sigserver.bat.in ${CMAKE_BINARY_DIR}/sigserver.bat)
  
   file(GLOB xerces_dll "${XERCES_ROOT_DIR}/Build/Win32/${VCVER_S}/*/xerces-c*.dll")
-  install(FILES ${xerces_dll} DESTINATION bin)
+  file(GLOB xerces_dll2 "${XERCES_ROOT_DIR}/bin/xerces-c*.dll")
+  install(FILES ${xerces_dll} ${xerces_dll2} DESTINATION bin)
 
 endif()
 
