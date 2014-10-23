@@ -60,7 +60,6 @@ struct BITMAPINFOHEADER
 
 bool ViewImage::saveAsWindowsBMP(const char *fname)
 {
-#ifndef WIN32
 	assert(m_info.getDataType() == IMAGE_DATA_WINDOWS_BMP);
 	
 	FILE *fp = fopen(fname, "wb");
@@ -71,7 +70,8 @@ bool ViewImage::saveAsWindowsBMP(const char *fname)
 	
 	BITMAPINFOHEADER bi = {0};
 	
-	char tmp[m_buflen*3];
+	char *tmp = new char[m_buflen*3];
+
 	bi.biSize = sizeof(BITMAPINFOHEADER);
 	bi.biWidth = getWidth();
 	bi.biHeight = -getHeight();
@@ -137,7 +137,8 @@ bool ViewImage::saveAsWindowsBMP(const char *fname)
 	    fwrite(getBuffer(), size, 1, fp);
 	  }
 	fclose(fp);
-#endif
+	delete tmp;
+
 	return true;
 }
 
