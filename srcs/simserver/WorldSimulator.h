@@ -17,6 +17,8 @@
 //#include "DynamicsData.h"
 //#include "./comm/controller/NoData.h"
 
+#define SIGSERVER_DEFAULT_PORT_NUM  9000 // Default port num (first of all ports in the band)
+#define SIGSERVER_DEFAULT_PORT_BAND 5    // Number of ports used by sole SIGVerse world
 
 //#define CONTROLLER_LOCAL_TEST
 

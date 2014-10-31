@@ -92,7 +92,7 @@ static bool runControllers(SSimWorld &w, int port)
 		if (ctrl.length() <= 0) { continue; }
 
 		if (!fileExist(ctrl.c_str())) {
-			LOG_ERR(("%s : Controller file DOES NOT exit !!", ctrl.c_str()));
+			LOG_ERR(("%s : Controller file DOES NOT exist !!", ctrl.c_str()));
 			return false;
 		}
 
@@ -107,7 +107,7 @@ static bool runControllers(SSimWorld &w, int port)
 
 				LOG_DEBUG1(("run controller proc : \"%s\" -> %s\n", obj->name(), ctrl.c_str()));
 
-				char portbuf[128]; // TODO: Magic number should be removed, long file name is not available
+				char portbuf[128];
 				sprintf(portbuf, "%d", port);
 				char *argv[] = {runprog,
 				                (char *)"-h", "127.0.0.1",
@@ -235,7 +235,7 @@ private:
 
 int main(int argc, char **argv)
 {
-	int port = 9000;          // Default port number
+	int port = SIGSERVER_DEFAULT_PORT_NUM; // Default port number
 	int loglevel = LOG_MSG;   // Log level
 	double endT = -1;         // Time to terminate the simulation, -1 means the simulation never ends
 
@@ -339,14 +339,14 @@ int main(int argc, char **argv)
 		while(connect == false) {
 			if (bind(sock, (struct sockaddr*)&addr, sizeof(addr)) < 0) {
 				//perror("cannot bind socket");
-				port += 5; 
+				port += SIGSERVER_DEFAULT_PORT_BAND;
 				addr.sin_port = htons(port);
 				//return 1;
 			}
 			else  connect = true;
 		}
 		LOG_SYS(("///////////////////////////////////////////////////////////"));
-		LOG_SYS(("////////////// World number %d  (port %d) ///////////////", (port - 9000)/5, port, port+5));
+		LOG_SYS(("////////////// World number %d  (port %d) ///////////////", (port - SIGSERVER_DEFAULT_PORT_NUM)/SIGSERVER_DEFAULT_PORT_BAND, port));
 		LOG_SYS(("///////////////////////////////////////////////////////////"));
 	}
 	else {
