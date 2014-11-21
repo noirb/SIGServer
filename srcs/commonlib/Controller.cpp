@@ -740,6 +740,7 @@ SimObj *Controller::getObj(const char *name)
 				break;
 			}
 		}
+
 		if (obj) {
 			add(obj);
 		}
@@ -905,6 +906,7 @@ Text * Controller::getText(RawSound &sound)
 void Controller::add(SimObj *obj)
 {
 	LOG_DEBUG2(("SimObj %s added", obj->name()));
+
 	assert(obj);
 	SimObj::RequestSender *sender = this;
 	obj->setRequestSener(sender);
@@ -932,12 +934,13 @@ double Controller::getSimulationTime()
 	}
 	delete [] sendBuff;
 
-	char recvBuff[16]; //TODO: Magic number, danger
+	char recvBuff[8]; //TODO: Magic number, danger
+	memset(recvBuff, 0, 8);
 	int recvSize = sizeof(double);
 	if (!SocketUtil::recvData(m_cmdSock, recvBuff, recvSize)) {
 		LOG_ERR(("getSimulationTime: cannot get result from server"));
 		return 0.0;
-	}	  
+	}
 	p = recvBuff;
 	double time = BINARY_GET_DOUBLE_INCR(p); 
   
@@ -949,15 +952,17 @@ void Controller::updateObjs()
 {
 	// Slip of wheels
 	slipWheel();
+	int cnt = 0;
 
 	if (m_objs.size() > 0) {
 
 		double t = 0;
 		CommRequestUpdateEntitiesEncoder enc(t);
-		int cnt = 0;
+		//int cnt = 0;
 		for (M::iterator i=m_objs.begin(); i!=m_objs.end(); i++) {
 			SimObj *obj = i->second;
 			if (obj) {
+
 				enc.push(obj);
 				cnt++;
 			} else {
@@ -979,6 +984,8 @@ void Controller::updateObjs()
 #endif
 
 	}
+
+	return;
 }
 
 
@@ -1008,15 +1015,19 @@ void Controller::loopMain()
 
 	CTReader read(sock, d, 30000); // TODO: Magic number should be removed
 
+#ifndef WIN32
 	fd_set	rfds;
 	struct timeval tv;
+#endif
 	s_loop = true;
 	signal(SIGINT, quit);
 
 	while (s_loop) {
-		//fprintf(stderr, ".");
+
 		try {
-			read.read();
+			bool res;
+			res = read.read();
+			read.m_flag = res;
 		} catch(CTReader::ConnectionClosedException &e) {
 			e.msg();
 			break;
@@ -1024,7 +1035,7 @@ void Controller::loopMain()
 		/*
 		 * Wait a fixed time to reduce the load of CPU
 		 */
-#ifndef WIN32_OLD
+#ifndef WIN32
 		FD_ZERO(&rfds);
 		tv.tv_sec = 0;
 		//tv.tv_usec = 1000;

@@ -43,6 +43,7 @@
 
 #ifdef WIN32
 
+
 #define close closesocket
 
 #ifdef SIGVERSE_OGRE_CLIENT
@@ -74,21 +75,35 @@ bool SocketUtil::sendData(SOCKET sock, const char* msg, int size)
 	while (1) {
 		// Send
 		int r = send(sock, msg + sended, size - sended, 0);
-
+#ifndef WIN32
 		if (r < 0) {
 		// Fail to send
 			if ( errno == EAGAIN ||
 				 errno == EWOULDBLOCK ) {
-#ifndef WIN32
+
 				usleep(100);
-#else
-				Sleep(1);
-#endif
+
 				continue;
 			}
 			LOG_ERR(("Failed to send data. erro[%d] [%s:%d]", r,  __FILE__, __LINE__ ));
 			return false;
 		}
+#else
+		if (r == SOCKET_ERROR) {
+		// Fail to send
+			int err = WSAGetLastError();
+			if ( err == WSAEINTR ||
+				 err == WSAEINPROGRESS ||
+				 err == WSAEWOULDBLOCK ) {
+
+				Sleep(1);
+
+				continue;
+			}
+			LOG_ERR(("Failed to send data. erro[%d] [%s:%d]", r,  __FILE__, __LINE__ ));
+			return false;
+		}
+#endif
 		// Number of sent bytes
 		sended += r;
 
@@ -99,28 +114,51 @@ bool SocketUtil::sendData(SOCKET sock, const char* msg, int size)
 }
 
 
-bool SocketUtil::recvData(SOCKET sock, char* msg, int size)
+bool SocketUtil::recvData(SOCKET sock, char* msg, int ln)
 {
 	int recieved = 0;
+	int r;
 
 	// Deal with a case when all the data cannot be sent at once
 	while (1) {
 
-		// Receive
-		int r = recv(sock, msg + recieved, size - recieved, 0);
 
+#ifndef WIN32
+		// Receive
+		r = recv(sock, msg + recieved, ln - recieved, 0);
 		// Failed to Receive
 		if (r < 0) {
 			//LOG_SYS(("stop recieve data from Service. erro[%d]",r));
 			return false;
 		}
-
 		// Number of received bytes
 		recieved += r;
+#else
+		// Receive
+		r = recv(sock, msg + recieved, ln - recieved, 0);
+		if (r == SOCKET_ERROR) {
+			fprintf(stderr, "====== ERROR in SocketUtil::recvData ======\n");
+			int err = WSAGetLastError();
+			if ( err == WSAEINTR ||
+				 err == WSAEINPROGRESS ||
+				 err == WSAEWOULDBLOCK ) {
+				 Sleep(100);
+				 continue;
+			}
+			//LOG_SYS(("stop recieve data from Service. erro[%d]",r));
+			return false;
+		}
+
+		if (r > 0){
+			// Number of received bytes
+			recieved += r;
+		}
+#endif
 
 		// Check whether all of the data is received or not
-		if (size == recieved) break;
+		if (ln == recieved) break;
 	}
+	
 	return true;
 }
 
@@ -1297,22 +1335,40 @@ bool ControllerImpl::sendData(SOCKET sock, const char* msg, int size)
 	while (1) {
 
 		// Sending
+#ifndef WIN32
 		int r = send(sock, msg + sended, size - sended, 0);
 
 		// Sending failed
 		if (r < 0) {
 			if ( errno == EAGAIN ||
 				 errno == EWOULDBLOCK ) {
-#ifndef WIN32
+
 				sleep(0.01);
-#else
-				Sleep(10);
-#endif
+
 				continue;
 			}
 			LOG_ERR(("Failed to send data. erro[%d]",errno));
 			return false;
 		}
+
+#else
+		int r = send(sock, msg + sended, size - sended, 0);
+
+		// Sending failed
+		if (r == SOCKET_ERROR) {
+			int err = WSAGetLastError();
+			if ( err == WSAEINTR ||
+				 err == WSAEINPROGRESS ||
+				 err == WSAEWOULDBLOCK ) {
+
+				Sleep(1);
+
+				continue;
+			}
+			LOG_ERR(("Failed to send data. erro[%d]",errno));
+			return false;
+		}
+#endif
 		// Number of already sent bytes
 		sended += r;
 

@@ -19,11 +19,13 @@ public:
 			std::cerr << "CTReader:: Connection closed exception" << std::endl;
 		}
 	};
+
 	enum ControllerDataType{
 	  SEND_MESSAGE = 0x0001,
 	  START_SIM    = 0x0002,
 	  STOP_SIM     = 0x0003,
 	};
+
 private:
 	class Buffer
 	{
@@ -51,6 +53,17 @@ private:
 	CommDataDecoder &m_decoder;
 	Buffer *	m_buf;
 
+#if 1
+	///// Add by I.Hara
+	bool m_start_sim;
+	double m_timewidth;
+	struct timeval m_start, m_eoa;
+    double m_server_startTime;
+	double m_eoa_time;
+	bool m_start_onInit;
+	////////////////
+#endif
+
 public:
 	CTReader(SOCKET s, CommDataDecoder &d, int bufsize);
 	~CTReader();
@@ -60,6 +73,10 @@ public:
 	bool   recvData(SOCKET sock, char* msg, int size);
 
 	Result *	readSync();
+
+	void clearSockBuffer();
+	
+	bool m_flag;
 };
 
 #endif // CTReader_h
