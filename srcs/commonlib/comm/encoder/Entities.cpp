@@ -18,7 +18,6 @@ char *SendEndities::encode(int seq, int &sz)
 		memcpy(p, h, n);
 		p += n;
 	}
-
 	BINARY_SET_DOUBLE_INCR(p, m_time);
 
 #if 1

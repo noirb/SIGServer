@@ -29,7 +29,7 @@ SOCKET CommUtil::connectServer(const char *hostname, int port, int retry)
 {
 #ifdef WIN32	
 	WSADATA data;
-	int result = WSAStartup(MAKEWORD(2, 0), &data);
+	int result = WSAStartup(MAKEWORD(2, 2), &data);
 
 	if (result < 0){
 		fprintf(stderr, "%d\n", GetLastError());
@@ -111,6 +111,7 @@ void CommUtil::disconnectServer(SOCKET sock)
 		close(sock);
 #else
 		closesocket(sock);
+		//WSACleanup();
 #endif
 }
 
@@ -122,9 +123,7 @@ int CommUtil::sendData(SOCKET sock, const char *data, int bytes)
 		// linux socket has easy non-blocking mode flag (MSG_DONTWAIT)
 #ifndef WIN32
 		int r = send(sock, h, bytes - sent, MSG_DONTWAIT);
-#else
-		int r = send(sock, h, bytes - sent, 0);
-#endif
+
 		if (r < 0) {
 			if (errno == EINTR ||
 				errno == EAGAIN ||
@@ -136,7 +135,20 @@ int CommUtil::sendData(SOCKET sock, const char *data, int bytes)
 		if (r <= 0) {
 			return r;
 		}
+#else
+		int r = send(sock, h, bytes - sent, 0);
+		if (r < 0) {
+			if (errno == EINTR ||
+				errno == EAGAIN ||
+				errno == EWOULDBLOCK) {
+				continue;
+			}
+		}
 
+		if (r <= 0) {
+			return r;
+		}
+#endif
 		//IrcApp *app = getApp();
 		//if (app) app->printLog("%d bytes sent \n", r);
 

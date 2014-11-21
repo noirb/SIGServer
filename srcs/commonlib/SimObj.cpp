@@ -665,9 +665,9 @@ void SimObj::setCamLink(std::string link, int camID)
 Vector3d & SimObj::getPosition(Vector3d &v)
 {
 	Controller *con = (Controller*)m_sender;
-	ControllerImpl *conim = (ControllerImpl*)con;
+	//ControllerImpl *conim = (ControllerImpl*)con;
 
-	SOCKET sock = conim->getDataSock();
+	SOCKET sock = con->getDataSock();
 
 	std::string msg;
 	const char *myName = name();
@@ -682,7 +682,6 @@ Vector3d & SimObj::getPosition(Vector3d &v)
 	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
 
 	memcpy(p, msg.c_str(), msg.size());
-
 	if (!SocketUtil::sendData(sock, sendBuff, sendSize)) {
 		LOG_ERR(("getPosition: cannot send request."));
 		delete [] sendBuff;
@@ -698,7 +697,6 @@ Vector3d & SimObj::getPosition(Vector3d &v)
 		delete [] recvBuff;
 		return v;
 	}
-  
 	p = recvBuff;
 	bool success = BINARY_GET_BOOL_INCR(p);
 	if (success) {

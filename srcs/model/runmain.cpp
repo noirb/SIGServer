@@ -74,11 +74,12 @@ int main(int argc, char **argv)
  
 	if (ret){
 	  c.loopMain();
-        }else{
+    }else{
 	  printf("Fail to run ... \n");
 
 	}
 	delete lib;
+	WSACleanup();
 	return 0;
 }	
 

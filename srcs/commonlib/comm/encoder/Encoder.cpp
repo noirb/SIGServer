@@ -18,7 +18,6 @@ CommDataEncoder::SendProc * CommDataEncoder::s_sendProc = &CommUtil::sendData;
 int CommDataEncoder::send(SOCKET sock)
 {
 	assert(s_sendProc);
-
 	int sum = 0;
 	const int N = packetNum();
 	for (int i=0; i<N; i++) {

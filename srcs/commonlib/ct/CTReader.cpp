@@ -37,6 +37,10 @@ gettimeofday(struct timeval *tv, struct timezone *tz)
 #define FD_SETSIZE 32
 #endif
 
+#define SIGHEADER_LEN	4
+#define SIG_MSG_HEADER_LEN	4
+#define USE_SIMULATION_TIME	0
+
 class ControllerInf;
 class RecvMsgEvent;
 class InitEvent;
@@ -44,6 +48,16 @@ class ActionEvent;
 
 CTReader::CTReader(SOCKET s, CommDataDecoder &d, int bufsize)  : m_sock(s), m_source(s), m_decoder(d), m_buf(NULL)
 {
+#if 1
+	m_start_sim=false;
+	m_timewidth=1000;
+	m_start.tv_sec=m_start.tv_usec = 0;
+	m_eoa.tv_sec = m_eoa.tv_usec = 0;
+    m_server_startTime = 0;
+	m_eoa_time=0;
+	m_flag=true;
+	m_start_onInit=false;
+#endif
 	m_buf = new Buffer(bufsize);
 	m_source.set(SOURCE_TYPE_SIMSERVER, "simserver");
 }
@@ -53,52 +67,79 @@ CTReader::~CTReader()
 	delete m_buf;
 }
 
+void CTReader::clearSockBuffer()
+{
+	fd_set rfds;
+	struct timeval tv = {0,1};
+	int ret;
 
-//void gettimeofday(struct timeval *tv, struct timezone *tz);
+	while(1){
+		FD_ZERO(&rfds);
+		FD_SET(m_sock, &rfds);
+
+		ret = select(FD_SETSIZE, &rfds, NULL, NULL, &tv);
+		if(ret > 0){
+			char tmpbuf[1024];
+			recv(m_sock, tmpbuf, 1024, 0);
+		}else{
+			return;
+		}
+	}
+	return;
+}
 
 bool CTReader::read()
 {
-	ControllerInf *con = m_decoder.getController();
 
-	static bool start_sim;
+	Controller *con = (Controller *)m_decoder.getController();
+	struct timeval now;
 
-	static double timewidth;
+	if (m_start_sim && m_flag) {
 
-	static struct timeval start, eoa;
-	struct timeval now; 
-
-	static double server_startTime;
-
-	if (start_sim) {
+#if USE_SIMULATION_TIME
+		//// We should clear socket buffer before calling getSimulationTime().
+		clearSockBuffer();
+		double current_sim_time = con->getSimulationTime();
 
 		//now = clock();
+		if (current_sim_time > 1000000) { /// Something wrong might be occured..
+			fprintf(stderr, "ERROR in getSimulationTime(); %lf\n", current_sim_time);
+		}
+#endif
+
+
+#if USE_SIMULATION_TIME
+		double tmp_time = current_sim_time - m_eoa_time;
+#else
 		gettimeofday(&now, NULL);
+		double tmp_time = (double)(now.tv_sec - m_eoa.tv_sec) + (double)(now.tv_usec - m_eoa.tv_usec) * 0.000001;
+#endif
 
-		double tmp_time = (double)(now.tv_sec - eoa.tv_sec) + (double)(now.tv_usec - eoa.tv_usec) * 0.001 * 0.001;
-
-		if (tmp_time >= timewidth) {
+		if (tmp_time >= m_timewidth) {
 			ActionEvent aevt;
-      
-			double nowtime = (double)(now.tv_sec - start.tv_sec) + (double)(now.tv_usec - start.tv_usec) * 0.001 * 0.001;
-
-			nowtime += server_startTime;
+#if USE_SIMULATION_TIME
+			aevt.setTime(current_sim_time);
+#else
+			double nowtime = (double)(now.tv_sec - m_start.tv_sec) + (double)(now.tv_usec - m_start.tv_usec) * 0.000001 + m_server_startTime;
 			aevt.setTime(nowtime);
-      
-			timewidth = con->onAction(aevt);
-//      fprintf(stderr, "=%lf,  %lf == ", tmp_time, timewidth);
-			gettimeofday(&eoa, NULL);
+#endif
+			m_timewidth = con->onAction(aevt);
 
-			//Controller *conn = (Controller*)con;
-			//conn->updateObjs();
+#if USE_SIMULATION_TIME
+			m_eoa_time = current_sim_time;
+#else
+			gettimeofday(&m_eoa, NULL);
+#endif
 		}
 	}
 
+    //// check comming data from other modules
 	SOCKET s = m_sock;
 
 	fd_set rfds;
 	struct timeval tv = {0,1000};
 	FD_ZERO(&rfds);
-	FD_SET(s, &rfds);
+	FD_SET(m_sock, &rfds);
 
 	ControllerImpl* coni = (ControllerImpl*)con;
 	std::map<std::string, SOCKET> ssocks = coni->getSrvSocks();
@@ -107,125 +148,116 @@ bool CTReader::read()
 		FD_SET((SOCKET)((*it).second), &rfds);
 		it++;
 	}
-//	tv.tv_sec = 0;
-	//tv.tv_usec = 100000;
-//	tv.tv_usec = 1000; 
-  
 	int ret = select(FD_SETSIZE, &rfds, NULL, NULL, &tv);
-	if (ret == -1) {
+
+	/////////////////////
+
+	if (ret == -1) {        /// Error in select function.
 		perror("select");
 		return false;
 
-	} else if (ret == 0) {
-
+	} else if (ret == 0) {  ///  No data comming...
 		return true;
-	}	else if (ret > 0) {
 
+	}	else if (ret > 0) { /// arrive data from other modules.
+		//// First, process main data port connected with sigserver.
+		///
 		if (FD_ISSET(s, &rfds)) {
-
 			int rbytes;
+
 			if (m_buf->datasize() == 0) {
-				rbytes = m_buf->read(s, 4);
-#if 1
-				// sekikawa(FIX20100826)
-				if (rbytes < 0) {
+				rbytes = m_buf->read(s, SIGHEADER_LEN);
+
+				if (rbytes < 0) {  /// Error occored in reading socket.
+#ifndef WIN32
 					if (errno == ECONNRESET) {
 						LOG_SYS(("connection closed by service provider [%s:%d]", __FILE__, __LINE__));
 					} else {
 						LOG_SYS(("socket error (errno=%d) [%s:%d]", errno, __FILE__, __LINE__));
 					}
+#endif
 					throw ConnectionClosedException();
 				}
-#endif
 
-				if (rbytes > 0) {
+				if (rbytes == SIGHEADER_LEN) { ////  
 
 					char *data = m_buf->data();
 					char *p = data;
 					unsigned short token = BINARY_GET_DATA_S_INCR(p, unsigned short);
 
-					if (token == COMM_DATA_PACKET_START_TOKEN) {
+					if (token == COMM_DATA_PACKET_START_TOKEN) {  /// Accept COMM_DATA typed command packet, which start with '0xabcd'.
 						unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
-#if 1
+
 						// sekikawa(FIX20100826)
-						int rbytes2 = m_buf->read(s, size-4);
+						int rbytes2 = m_buf->read(s, size - SIGHEADER_LEN);  // read remains data
+
 						if (rbytes2 < 0) {
+#ifndef WIN32
 							if (errno == ECONNRESET) {
 								LOG_SYS(("connection closed by service provider [%s:%d]", __FILE__, __LINE__));
 							} else {
 								LOG_SYS(("socket error (errno=%d) [%s:%d]", errno, __FILE__, __LINE__));
 							}
-	    
+#endif    
 							throw ConnectionClosedException();
 						}
 						rbytes += rbytes2;
-						/*
-						  #else
-						  // orig
-						  rbytes += m_buf->read(s, size-4);
-						  }
-						*/
-#endif
+
 					}
-				
-					else if (token == START_SIM) {
+					else if (token == START_SIM) { /// Simulation of SigServer started.
 
-						if (!start_sim) {
+						if (!m_start_sim) {
+							m_start_sim = true;
 
-							start_sim = true;
-							static bool start_onInit = false;
-
-							char tmpBuff[sizeof(double) + 1];
+							char tmpBuff[sizeof(double)];
 							if (!recvData(s,  tmpBuff, sizeof(double))) {
 								LOG_ERR(("Controller: failed to get world current time"));
 							}
 
-							server_startTime = BINARY_GET_DOUBLE(tmpBuff);
-
-							gettimeofday(&start, NULL);
-	    
-							ControllerInf *con = m_decoder.getController();
-
+							m_server_startTime = BINARY_GET_DOUBLE(tmpBuff);
+#if !USE_SIMULATION_TIME
+							gettimeofday(&m_start, NULL);
+#endif
 							con->setSimState(true);
 	    
-							if (!start_onInit) {
+							if (!m_start_onInit) {
 								InitEvent evt;
 								con->onInit(evt);
-								start_onInit = true;
+								m_start_onInit = true;
 							}
-							Controller *conn = (Controller*)con;
-
+#if USE_SIMULATION_TIME
+							double nowtime = con->getSimulationTime();
+#else
 							gettimeofday(&now, NULL);
-
-							double nowtime = (double)(now.tv_sec - start.tv_sec) + (double)(now.tv_usec - start.tv_usec) * 0.001 * 0.001;
-							nowtime += server_startTime;
-
+							double nowtime = (double)(now.tv_sec - m_start.tv_sec) + (double)(now.tv_usec - m_start.tv_usec) * 0.000001;
+							nowtime += m_server_startTime;						
+#endif
 							ActionEvent aevt;
+
 							aevt.setTime(nowtime);
-							timewidth = con->onAction(aevt);
-							conn->updateObjs();
-
+							m_timewidth = con->onAction(aevt);
+							//con->updateObjs();
+							m_eoa_time = nowtime;
 							// eoa(end of onAction)
-							gettimeofday(&eoa, NULL);
-
-							m_buf->setDecodedByte(4);
+#if !USE_SIMULATION_TIME
+							gettimeofday(&m_eoa, NULL);
+#endif
+							m_buf->setDecodedByte(SIGHEADER_LEN);
+							return true;
 						}
 					}
 
-					else if (token == STOP_SIM) {
-						start_sim = false;
-
-						ControllerInf *con = m_decoder.getController();
+					else if (token == STOP_SIM) {   /// Stop simulation on the SIGServer.
+						m_start_sim = false;
 
 						con->setSimState(false);
-
-						m_buf->setDecodedByte(4);
+						m_buf->setDecodedByte(SIGHEADER_LEN);
+						return true;
 					}
 
-					else if (token == SEND_MESSAGE) {
-
+					else if (token == SEND_MESSAGE) {   /// Reccive message with the string based message commands from other agent.
 						unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
-						size -= 4;
+						size -= SIGHEADER_LEN;
 
 						char *tmpBuff = new char[size + 1];
 						memset(tmpBuff, 0, sizeof(tmpBuff));
@@ -235,48 +267,52 @@ bool CTReader::read()
 						}
 	  
 						tmpBuff[size] = '\0';
-	  
-						ControllerInf *con = m_decoder.getController();
 
 						RecvMsgEvent msg;
-
 						msg.setData(tmpBuff, size);
 	  
 						con->onRecvMsg(msg);
 
-						Controller *conn = (Controller*)con;
+						//Controller *conn = (Controller*)con;
 						//conn->updateObjs();
 
-						m_buf->setDecodedByte(4);
+						m_buf->setDecodedByte(SIGHEADER_LEN);
 	  
-						delete tmpBuff;
+						delete [] tmpBuff;
 						return true;
 					}
-					else {
-						LOG_ERR(("Could not find packet start token. [%d]", token));
+					else {   //// It might be error....
+						LOG_ERR(("Could not find packet start token. [%d], %d", token, rbytes));
 						return false;
 					}
+				}else{  ///  It seems an communication error....
+					if (rbytes == 0) {  throw ConnectionClosedException(); }
+
+					LOG_ERR(("Could not get enough header packet..... %d bytes read.",rbytes));
+					return false;
 				}
 			}
-			else {
+			else {   /// Remains data when the previous message recieved...
+
 				rbytes = m_buf->read(s);
-      
-#if 1
+   
 				// sekikawa(FIX20100826)
-				if (rbytes < 0) {
+				if (rbytes <= 0) {
+#ifndef WIN32
 					if (errno == ECONNRESET) {
 						LOG_SYS(("connection closed by service provider [%s:%d]", __FILE__, __LINE__));
 					} else {
 						LOG_SYS(("socket error (errno=%d) [%s:%d]", errno, __FILE__, __LINE__));
 					}
+#endif
 					throw ConnectionClosedException();
 				}
-#endif
 			}
 
+			///////// Create and execute decoder from recieved packet.
 			LOG_DEBUG1(("%d bytes read", rbytes));
-			if (m_buf->datasize() > 0) {
 
+			if (m_buf->datasize() > 0) {
 				char *data = m_buf->data();
 				int datasize = m_buf->datasize();
 				int r = m_decoder.push(m_source, data, datasize);
@@ -285,35 +321,23 @@ bool CTReader::read()
 					return true;
 				}
 			}
-#if 0
-			// sekikawa(FIX20100826)
-			else if (rbytes == 0) {
-				// rbytes=0 is not error.
-				// when connection is gracefully closed, rbytes becomes 0.
-				return false;
-			} else if (rbytes < 0) {
-				// socket error occurred
-				LOG_ERR(("socket error [%s:%d]", rbytes, __FILE__, __LINE__));
-				throw ConnectionClosedException();
-			}
-#else
-			// orig
-			else if (rbytes == 0) {
-				throw ConnectionClosedException();
-			}
-#endif
 
-		} //if (FD_ISSET(s, &rfds)) {
-		else{
+			ret--;
+		} //   end of the procedure from SIGServe:'m_sock'
+
+		/// Other messages from other services found.
+		if(ret > 0) 
+		{
 			std::map<std::string, SOCKET>::iterator it = ssocks.begin();
-			while (it != ssocks.end()) {
+			while (ret > 0 && it != ssocks.end()) {
 				SOCKET sock = (*it).second;  
-				std::string srv_name = (*it).first.c_str(); 
+				std::string srv_name = (*it).first.c_str();
+
 				if (FD_ISSET(sock, &rfds)) {
-					char tmp[4]; 
+					char tmp[SIG_MSG_HEADER_LEN]; 
 					char *p = tmp;
 	  
-					if (!recvData(sock, tmp, 4)) {
+					if (!recvData(sock, tmp, SIG_MSG_HEADER_LEN)) {
 						LOG_SYS(("disconnected from service [%s]", srv_name.c_str()));
 						coni->deleteService(srv_name);
 						it++;
@@ -321,21 +345,19 @@ bool CTReader::read()
 					} 
 
 					unsigned short n = BINARY_GET_DATA_S_INCR(p, unsigned short);
-	  
 					int size = BINARY_GET_DATA_S_INCR(p, unsigned short);
 
-					if (n == 4) {
+					if (n == SIGHEADER_LEN) {
 						LOG_SYS(("disconnected service \"%s\"", srv_name.c_str()));
 						coni->deleteService(srv_name);
-						//m_connected = false;
-						//goto error;
-					} // switch(n) {
+					} 
       
-					size -= 4;      
+					size -= SIG_MSG_HEADER_LEN;
 
-					if (size == 0) 
+					if (size == 0){   /// No command body found.
 						continue;
-	  
+					}
+
 					char *recvBuff = new char[size];
 					if (!recvData(sock, recvBuff, size)) {
 						coni->deleteService(srv_name);
@@ -343,27 +365,25 @@ bool CTReader::read()
 					}    
 
 					switch(n) {
-
-					case 2:
+					case 2:  //// Recieve message command from other serivice
 						{
 							if (con->getSimState()) {
 								RecvMsgEvent msg;
 								msg.setData(recvBuff, size);
-		
 								con->onRecvMsg(msg);
-		
-								Controller* cont = (Controller*)con;
-								//cont->updateObjs();
 							}
 							break;
 						} 
 					} // switch(n) {
+					ret--;
+
 				} //if (FD_ISSET(sock, &rfds)) {
 				it++;
+
 			}// while (it != ssocks.end()) {
-		} //else
+		} // if(ret > 0)
 	} // else if (ret > 0)
-	return false;
+	return true;
 }
 
 
@@ -392,11 +412,13 @@ CommDataDecoder::Result * CTReader::readSync()
 #if 1
 			// sekikawa(FIX20100826)
 			if (rbytes < 0) {
+#ifndef WIN32
 				if (errno == ECONNRESET) {
 					LOG_SYS(("connection closed by service provider [%s:%d]", __FILE__, __LINE__));
 				} else {
 					LOG_SYS(("socket error (errno=%d) [%s:%d]", errno, __FILE__, __LINE__));
 				}
+#endif
 				throw ConnectionClosedException();
 			}
 #endif
@@ -415,11 +437,13 @@ CommDataDecoder::Result * CTReader::readSync()
 				// sekikawa(FIX20100826)
 				int rbytes2 = m_buf->read(s, size-4);
 				if (rbytes2 < 0) {
+#ifndef WIN32
 					if (errno == ECONNRESET) {
 						LOG_SYS(("connection closed by service provider [%s:%d]", __FILE__, __LINE__));
 					} else {
 						LOG_SYS(("socket error (errno=%d) [%s:%d]", errno, __FILE__, __LINE__));
 					}
+#endif
 					throw ConnectionClosedException();
 				}
 				rbytes += rbytes2;
@@ -434,11 +458,13 @@ CommDataDecoder::Result * CTReader::readSync()
 #if 1
 			// sekikawa(FIX20100826)
 			if (rbytes < 0) {
+#ifndef WIN32
 				if (errno == ECONNRESET) {
 					LOG_SYS(("connection closed by service provider [%s:%d]", __FILE__, __LINE__));
 				} else {
 					LOG_SYS(("socket error (errno=%d) [%s:%d]", errno, __FILE__, __LINE__));
 				}
+#endif
 				throw ConnectionClosedException();
 			}
 #endif
@@ -477,6 +503,10 @@ CommDataDecoder::Result * CTReader::readSync()
 }
 
 
+/*
+ * CTReader::Buffer
+ *
+ */
 CTReader::Buffer::Buffer(int size) : m_bufsize(size), m_readHead(NULL), m_curr(0) {
 	int i = 0;
 	m_buf[i] = new char[size]; i++;
@@ -494,12 +524,24 @@ int CTReader::Buffer::read(SOCKET s)
 {
 	char *currbuf = m_buf[m_curr];
 	int n = m_bufsize - (m_readHead - currbuf);
+
 #ifdef WIN32
-	int rbytes = ::recv(s, m_readHead, n, 0);
+	int rbytes = recv(s, m_readHead, n, 0);
+	if (rbytes == SOCKET_ERROR){
+		int err = WSAGetLastError();
+		if ( err == WSAEINTR ||
+			 err == WSAEINPROGRESS ||
+			 err == WSAEWOULDBLOCK ) {
+				 return 0;
+		}
+		return -1;
+	}
+
 #else
 	int rbytes = ::read(s, m_readHead, n);
-#endif
 	if (rbytes <= 0) { return rbytes; }
+#endif
+
 	m_readHead += rbytes;
 	return rbytes;
 }
@@ -507,11 +549,21 @@ int CTReader::Buffer::read(SOCKET s)
 int CTReader::Buffer::read(SOCKET s, int bytes)
 {
 #ifdef WIN32
-	int rbytes = ::recv(s, m_readHead, bytes, 0);
+	int rbytes = recv(s, m_readHead, bytes, 0);
+	if (rbytes == SOCKET_ERROR){
+		int err = WSAGetLastError();
+		if ( err == WSAEINTR ||
+			 err == WSAEINPROGRESS ||
+			 err == WSAEWOULDBLOCK ) {
+				 return 0;
+		}
+		return -1;
+	}
 #else
 	int rbytes = ::read(s, m_readHead, bytes);
-#endif
 	if (rbytes <= 0) { return rbytes; }
+#endif
+
 	m_readHead += rbytes;
 	return rbytes;
 }
@@ -537,20 +589,32 @@ bool CTReader::recvData(SOCKET sock, char* msg, int size) {
 	while (1) {
 
 		int r = recv(sock, msg + recieved, size - recieved, 0);
+#ifndef WIN32
 		if (r < 0) 
 			{
 				if (errno == EAGAIN ||
 					errno == EWOULDBLOCK) {
-#ifndef WIN32
+
 					sleep(0.1);
-#else
-					Sleep(100);
-#endif
+
 					continue;
 				}
 				LOG_ERR(("Controller: Failed to recieve data. erro[%d]",r));
 				return false;
 			}
+#else
+		if (r == SOCKET_ERROR) {
+			int err = WSAGetLastError();
+			if ( err == WSAEINTR ||
+				 err == WSAEINPROGRESS ||
+				 err == WSAEWOULDBLOCK ) {
+				 Sleep(100);
+				 continue;
+			}
+			LOG_ERR(("Controller: Failed to recieve data. erro[%d]",r));
+			return false;
+		}
+#endif
 
 		recieved += r;
 
