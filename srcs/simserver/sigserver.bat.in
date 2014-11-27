@@ -1,5 +1,4 @@
-
-@set PATH=${JRE_ROOT_DIR}\bin\client;%PATH%
+@if NOT DEFINED SIGVERSE_ROOT @set PATH=${JRE_ROOT_DIR}\bin\client;%PATH%
 
 @set SIGVERSE_ROOT=${CMAKE_INSTALL_PREFIX}\
 
