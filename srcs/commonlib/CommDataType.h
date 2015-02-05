@@ -217,6 +217,7 @@ enum {
 	REQUEST_GET_SIMULATION_TIME    = 38, // Reference of time count in the simulation
 	REQUEST_GET_COLLISION_STATE    = 39, // Check whether the objects collide
 	REQUEST_SIZE                   = 40, // 
+	REQUEST_GET_PARTS_QUATERNION   = 10, // Request to get quaternion of parts 10 is used in order to avoid modification on SIGViewer  // added by Guezout (2015/1/28)
 };
 
 #endif /* CommDataType_h */

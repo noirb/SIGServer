@@ -29,6 +29,54 @@ const dReal * CParts::getQuaternion()
 	return m_rot.q();
 }
 
+  // added by Guezout (2015/1/28)
+bool CParts::getQuaternion(double &w,double &x,double &y,double &z)
+{
+	  /*
+	v.set(m_pos.x(), m_pos.y(), m_pos.z());
+	return v;
+  */
+
+	// Sending owner and parts name
+	std::string msg;
+	//const char *myName = name();
+	msg += std::string(m_owner) + ",";
+	msg += std::string(name()) + ",";
+	unsigned char sendSize = msg.size();
+	sendSize += sizeof(unsigned short) * 2;
+
+	// Preparation of buffer
+	char *sendBuff = new char[sendSize];
+	char *p = sendBuff;
+	BINARY_SET_DATA_S_INCR(p, unsigned short, 10); //TODO: Magic number should be removed, use REQUEST_GET_PARTS_QUATERNION
+	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
+	memcpy(p, msg.c_str(), msg.size());
+	if(!SocketUtil::sendData(m_sock, sendBuff, sendSize)) {
+		LOG_ERR(("getPartsPosition: cannot get joint quaternion"));
+		delete [] sendBuff;
+		return false;
+	}
+	delete [] sendBuff;
+	// Buffer for receive
+	int recvSize = sizeof(double) * 4 + sizeof(bool);
+	char *recvBuff = new char[recvSize];
+	// Receive the result
+	if(!SocketUtil::recvData(m_sock, recvBuff, recvSize)) {
+		LOG_ERR(("getPartsQuaternion: cannot get joint quaternion"));
+		delete [] recvBuff;
+		return false;
+	}
+	p = recvBuff;
+	 w = BINARY_GET_DOUBLE_INCR(p);
+	 x = BINARY_GET_DOUBLE_INCR(p);
+	 y = BINARY_GET_DOUBLE_INCR(p);
+	 z = BINARY_GET_DOUBLE_INCR(p);
+	bool success = BINARY_GET_BOOL_INCR(p);
+
+	if(!success) return false;
+	return true;
+}
+
 #ifdef CONTROLLER
 
 

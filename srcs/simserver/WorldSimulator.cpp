@@ -3153,6 +3153,65 @@ bool WorldSimulator::runStep()
 					goto again;
 				} // end of case REQUEST_GET_PARTS_POSITION:
 
+
+                case REQUEST_GET_PARTS_QUATERNION: //added by Guezout (2015/1/28)
+				{
+					if (!client->isControllerData()) {
+						break;
+					}
+					unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
+					size -= 4;
+
+					char *recvBuff = new char[size];
+					if (!recvData(s, recvBuff, size)) {
+						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
+						delete [] recvBuff;
+						goto again;
+					}
+
+					char *pp = recvBuff;
+					char *name = strtok(pp, ",");
+					char *pname = strtok(NULL, ",");
+
+					SSimObj *my = w->getSObj(name);
+					SParts *parts = my->getSParts(pname);
+
+					bool success = false;
+					if (parts == NULL) {
+						LOG_ERR(("getPartsQuaternion: cannot find joint [%s]", pname));
+					}
+					else success = true;
+
+					// Reference of the parts position
+					const dReal *qt;
+					if (success)
+						qt = parts->getQuaternion();
+	
+					// Creation of buffer
+					int sendSize = sizeof(double) * 4 + sizeof(bool);
+					char *sendBuff = new char[sendSize];
+					char *sp = sendBuff;
+
+					// Add position data to the buffer
+					BINARY_SET_DOUBLE_INCR(sp, qt[0]);
+					BINARY_SET_DOUBLE_INCR(sp, qt[1]);
+					BINARY_SET_DOUBLE_INCR(sp, qt[2]);
+                    BINARY_SET_DOUBLE_INCR(sp, qt[3]);
+
+					// Flag of the result
+					BINARY_SET_BOOL_INCR(sp, success);
+
+					// Sending the result to controller
+					if (!sendData(s, sendBuff, sendSize)) {
+						LOG_ERR(("Failed to send data [%s, %d]", __FILE__, __LINE__));
+					}
+
+					delete [] recvBuff;
+					delete [] sendBuff;
+					goto again;
+				} // end of case REQUEST_GET_PARTS_QUATERNION:
+
+
 				case REQUEST_SET_ENTITY_POSITION: 
 				{
 					// Check wheter the request is sent from controller

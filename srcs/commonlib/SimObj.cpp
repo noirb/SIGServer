@@ -219,6 +219,89 @@ std::string SimObj::getCameraLinkName(int camID)
 	}
 }
 
+//added by Guezout (2015/1/28)
+bool SimObj::getCameraGlobalQuaternion(double &w,double &x,double &y,double &z,int camID)
+{
+const char *partsName;
+if (m_parts.size() == 1)
+    {
+      if (camID == 1) 
+	{
+	  return false;
+	}
+      else
+	{
+	  LOG_ERR(("getCameraLinkName : cannot get Camera ID %d",camID));
+	  return false;
+	}
+    }
+  else
+    {
+      if (camID == 1) { partsName = elnk1();}
+      else if (camID == 2) {partsName = elnk2();}
+      /*
+      else if (camID == 3) {partsName = elnk3();}
+      else if (camID == 4) {partsName = elnk4();}
+      else if (camID == 5) {partsName = elnk5();}
+      else if (camID == 6) {partsName = elnk6();}
+      else if (camID == 7) {partsName = elnk7();}
+      else if (camID == 8) {partsName = elnk8();}
+      else if (camID == 9) {partsName = elnk9();}
+      */
+      else{
+	  LOG_ERR(("getCameraLinkName : cannot get Camera ID %d",camID));
+	  return false;
+	}
+    }
+
+ Controller *con = (Controller*)m_sender;
+	ControllerImpl *conim = (ControllerImpl*)con;
+
+	SOCKET sock = conim->getDataSock();
+
+	std::string msg;
+	const char *myName = name();
+	msg += std::string(myName) + ",";
+	msg += std::string(partsName) + ",";
+	unsigned char sendSize = msg.size();
+	sendSize += sizeof(unsigned short) * 2;
+
+	char *sendBuff = new char[sendSize];
+	char *p = sendBuff;
+
+	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_GET_PARTS_QUATERNION);
+	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);      
+	memcpy(p, msg.c_str(), msg.size());  
+
+	if (!SocketUtil::sendData(sock, sendBuff, sendSize)) {
+		LOG_ERR(("getPartsPosition: cannot get Link quaternion"));    
+		delete [] sendBuff;
+		return false;
+	}
+	delete [] sendBuff;
+
+	int recvSize = sizeof(double) * 4 + sizeof(bool);
+	char *recvBuff = new char[recvSize];
+
+	if (!SocketUtil::recvData(sock, recvBuff, recvSize)) {
+		LOG_ERR(("getPartsQuaternion: cannot get Link position"));    
+		delete [] recvBuff;
+		return false;
+	}
+  
+	p = recvBuff;
+	 w = BINARY_GET_DOUBLE_INCR(p);
+	 x = BINARY_GET_DOUBLE_INCR(p);
+	 y = BINARY_GET_DOUBLE_INCR(p);
+	 z = BINARY_GET_DOUBLE_INCR(p);
+	bool success = BINARY_GET_BOOL_INCR(p);
+
+	delete [] recvBuff; 
+
+	if (!success) return false;
+	return true; 
+
+}
 
 // fixed a memory leak bug by Tetsunari Inamura on 2014-01-03
 bool SimObj::getCamPos(Vector3d &pos, int camID, bool requestToServer)
@@ -1609,6 +1692,60 @@ bool SimObj::getPartsPosition(Vector3d &pos, const char *partsName)
 	return true;
 }
 
+
+
+
+//added by Guezout (2015/1/28)
+bool SimObj::getPartsQuaternion(double &w,double &x,double &y,double &z, const char *partsName)
+{
+	Controller *con = (Controller*)m_sender;
+	ControllerImpl *conim = (ControllerImpl*)con;
+
+	SOCKET sock = conim->getDataSock();
+
+	std::string msg;
+	const char *myName = name();
+	msg += std::string(myName) + ",";
+	msg += std::string(partsName) + ",";
+	unsigned char sendSize = msg.size();
+	sendSize += sizeof(unsigned short) * 2;
+
+	char *sendBuff = new char[sendSize];
+	char *p = sendBuff;
+
+	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_GET_PARTS_QUATERNION);
+	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);      
+	memcpy(p, msg.c_str(), msg.size());  
+
+	if (!SocketUtil::sendData(sock, sendBuff, sendSize)) {
+		LOG_ERR(("getPartsPosition: cannot get joint quaternion"));    
+		delete [] sendBuff;
+		return false;
+	}
+	delete [] sendBuff;
+
+	int recvSize = sizeof(double) * 4 + sizeof(bool);
+	char *recvBuff = new char[recvSize];
+
+	if (!SocketUtil::recvData(sock, recvBuff, recvSize)) {
+		LOG_ERR(("getPartsQuaternion: cannot get joint position"));    
+		delete [] recvBuff;
+		return false;
+	}
+  
+	p = recvBuff;
+	 w = BINARY_GET_DOUBLE_INCR(p);
+	 x = BINARY_GET_DOUBLE_INCR(p);
+	 y = BINARY_GET_DOUBLE_INCR(p);
+	 z = BINARY_GET_DOUBLE_INCR(p);
+	bool success = BINARY_GET_BOOL_INCR(p);
+
+	//pos.set(x, y, z);
+	delete [] recvBuff; // added by Tetsunari Inamura on 2014-01-03
+
+	if (!success) return false;
+	return true;
+}
 
 
 bool SimObj::getJointForce(const char *jointName, JointForce &jf1, JointForce &jf2)

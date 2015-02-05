@@ -134,6 +134,8 @@ public:
 
 	bool getCamQuaternion(double &qw,double &qx, double &qy, double &qz, int camID = 1);
 
+	bool getCameraGlobalQuaternion(double &w,double &x,double &y,double &z,int camID);     //added by Guezout (2015/1/28)
+
 	bool setCamDir(Vector3d v, int camID = 1);
 
 	double getCamFOV(int camID = 1);
@@ -235,6 +237,8 @@ public:
 	bool getJointForce(const char *jointName, JointForce &jf1, JointForce &jf2);
 
 	void setCollisionEnable(bool flag);
+
+    bool getPartsQuaternion(double &w,double &x,double &y,double &z, const char *partsName); //added by Guezout (2015/1/28)
 
 
 	void	connectJoint(const char *jointName, const char *targetName)

@@ -50,6 +50,10 @@ public:
 	bool getPosition(Vector3d &v);
 	Rotation & getRotation(Rotation &r);
 #endif
+
+	// added by Guezout (2015/1/28)
+	bool getQuaternion(double &w,double &x,double &y,double &z);
+	
 	//! Cloning the same parts
 	virtual CParts * clone() = 0;
 
