@@ -1,10 +1,10 @@
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 #
-# Modified by Tetsunari INamura on 2014-01-13
+# Modified by Tetsunari Inamura on 2015-04-23
 
 AC_PREREQ(2.59)
-AC_INIT(SIGVerse, 2014-01-13, BUG-REPORT-ADDRESS)
+AC_INIT(SIGVerse, 2015-04-23, BUG-REPORT-ADDRESS)
 AM_INIT_AUTOMAKE([foreign])
 AC_CONFIG_SRCDIR([srcs])
 AC_CONFIG_HEADER([config.h])
@@ -15,7 +15,7 @@ AC_PROG_CC
 #AC_PROG_LD
 AC_PROG_LN_S
 
-SIGVERSE_VERSION=2.2.2
+SIGVERSE_VERSION=2.3.0
 test "$prefix" = NONE && prefix=$HOME/sigverse-$SIGVERSE_VERSION
 bindir="$prefix/bin"
 includedir="$prefix/include"
