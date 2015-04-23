@@ -20,7 +20,7 @@
 #define PACKAGE_NAME "SIGVerse"
 
 /* Define to the full name and version of this package. */
-#define PACKAGE_STRING "SIGVerse 2009-12-25"
+#define PACKAGE_STRING "SIGVerse 2015-04-23"
 
 /* Define to the one symbol short name of this package. */
 #define PACKAGE_TARNAME "sigverse"
@@ -29,7 +29,7 @@
 #define PACKAGE_URL ""
 
 /* Define to the version of this package. */
-#define PACKAGE_VERSION "2009-12-25"
+#define PACKAGE_VERSION "2015-04-23"
 
 /* Version number of package */
-#define VERSION "2009-12-25"
+#define VERSION "2015-04-23"
