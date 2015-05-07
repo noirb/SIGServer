@@ -103,11 +103,11 @@ static bool runControllers(SSimWorld &w, int port)
 				LOG_ERR(("Cannot create process"));
 				exit(1);
 			} else if (pid == 0) { // child process
-				nice(10);
+				nice(0);
 
 				LOG_DEBUG1(("run controller proc : \"%s\" -> %s\n", obj->name(), ctrl.c_str()));
 
-				char portbuf[128];
+				char portbuf[128]; // TODO: Magic number
 				sprintf(portbuf, "%d", port);
 				char *argv[] = {runprog,
 				                (char *)"-h", "127.0.0.1",
