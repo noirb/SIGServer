@@ -18,7 +18,7 @@ public:
 private:
 	pthread_t *m_thread;
 private:
-	void	free_()
+	void free_()
 	{
 		if (m_thread) { delete m_thread; m_thread = 0 ; }
 	}
@@ -26,10 +26,11 @@ public:
 	Thread() : m_thread(0) {;}
 	virtual ~Thread() { terminate(); free_(); }
 
-	bool	run(ThreadFuncType proc, ParamType param)
+	bool run(ThreadFuncType proc, ParamType param)
 	{
 		assert(!m_thread);
 		m_thread = new pthread_t;
+
 		if (pthread_create(m_thread, 0, proc, param) != 0) {
 			free_();
 			return false;
@@ -38,13 +39,14 @@ public:
 		return true;
 	}
 
-	void	terminate()
+	void terminate()
 	{
 		if (!m_thread) { return; }
 		pthread_cancel(*m_thread);
 		free_();
 	}
-	void	wait()
+
+	void wait()
 	{
 		if (!m_thread) { return; }
 		pthread_join(*m_thread, 0);

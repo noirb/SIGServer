@@ -38,7 +38,7 @@ public:
 		virtual bool send(CommDataEncoder &) = 0;
 		virtual CommDataResult * recv(int bufsize) = 0;
 	};
-	typedef std::map<S, CParts*> PartsM;
+	typedef std::map<std::string, CParts*> PartsM;
 
 	SimObj();
 	virtual ~SimObj();
@@ -62,10 +62,11 @@ public:
 	// +++++++ this should be deleted later +++++++++
 #endif
 
-	CParts  *getParts(const char *name);
+	CParts *getParts(const char *name);
 
-	CParts  *getMainParts(){
-	  return getParts("body");
+	CParts *getMainParts()
+	{
+		return getParts("body");
 	}
 
 	// added by sekikaw(2007/11/30)
@@ -74,22 +75,20 @@ public:
 	void copy(const SimObj &o);
 
 protected:
-	void	free_();
+	void free_();
 	RequestSender * m_sender;
 
 private:
 	typedef SimObjBase Super;
-	PartsM	m_parts;
+	PartsM m_parts;
 
-  
-	class Iterator : public PartsIterator {
+	class Iterator : public PartsIterator
+	{
 	private:
-		typedef std::map<std::string, CParts*> M;
-	private:
-		M &m_map;
-		M::iterator m_i;
+		std::map<std::string, CParts*> &m_map;
+		std::map<std::string, CParts*>::iterator m_i;
 	public:
-		Iterator(M &m) : m_map(m) {
+		Iterator(std::map<std::string, CParts*> &m) : m_map(m) {
 			m_i = m_map.begin();
 		}
 	private:
@@ -108,18 +107,18 @@ public:
 		return new Iterator(m_parts);
 	}
 
-	void 	push(Attribute *attr)
+	void push(Attribute *attr)
 	{
 		Super::push(attr);
 	}
 
-	void	push(CParts *p);
+	void push(CParts *p);
 
 	int setBinary(char *data, int n);
 	
 	enum{
-		MODE_NOT_USE_WHEEL = 0,	
-		MODE_USE_WHEEL		
+		MODE_NOT_USE_WHEEL = 0,
+		MODE_USE_WHEEL
 	};
 	int dynamicsMode; //TODO: naming is bad. It should be changed to wheelMode
 
@@ -165,7 +164,7 @@ public:
 	void setAxisAndAngle(double ax, double ay, double az, double angle);
 
 	//for Okonomiyaki
-        void setAxisAndAngle(double ax, double ay, double az, double angle, double direct);
+	void setAxisAndAngle(double ax, double ay, double az, double angle, double direct);
 
 	
 	void setRotation(const Rotation &r);
@@ -238,17 +237,16 @@ public:
 
 	void setCollisionEnable(bool flag);
 
-    bool getPartsQuaternion(double &w,double &x,double &y,double &z, const char *partsName); //added by Guezout (2015/1/28)
+	bool getPartsQuaternion(double &w,double &x,double &y,double &z, const char *partsName); //added by Guezout (2015/1/28)
 
 
-	void	connectJoint(const char *jointName, const char *targetName)
+	void connectJoint(const char *jointName, const char *targetName)
 	{
 		connectJoint(jointName, NULL, targetName, NULL);
 	}
 
-	void	connectJoint(const char *jointName, const char *myParts,
-			     const char *targetName, const char *targetParts);
-	void	releaseJoint(const char *jointName);
+	void connectJoint(const char *jointName, const char *myParts, const char *targetName, const char *targetParts);
+	void releaseJoint(const char *jointName);
 
 	Vector3d & getPosition(Vector3d &v);
 
@@ -365,11 +363,11 @@ public:
 	 */
 	bool setEntityQuaternion(dReal *rot, bool abs);
 
- private:
+private:
 
 	bool sendRequest(std::string name, int requestNum);
 
- public:
+public:
 
 	
 #ifdef DEPRECATED
@@ -381,8 +379,8 @@ public:
 
 #ifdef DEPRECATED
 private:
-	typedef std::map<S, double> JointValueM;
-	JointValueM	m_jointValues;
+	typedef std::map<std::string, double> JointValueM;
+	JointValueM m_jointValues;
 #endif // DEPRECATED
 
 
@@ -392,27 +390,23 @@ private:
 
 class RobotObj : public SimObj
 {
- public:
+public:
 
- RobotObj() : 
-  SimObj(), 
-    m_wheelRadius(0.0),
-    m_wheelDistance(0.0)
-      {}
+	RobotObj() :
+		SimObj(),
+		m_wheelRadius(0.0),
+		m_wheelDistance(0.0)
+	{}
 
 
-  bool setWheel(double wheelRadius, double wheelDistance);
+	bool setWheel(double wheelRadius, double wheelDistance);
 
-  bool setWheelVelocity(double leftWheel, double rightWheel);
-  
-  
+	bool setWheelVelocity(double leftWheel, double rightWheel);
 
- private:
-
-  double m_wheelRadius;
-  double m_wheelDistance;
-  
+private:
+	double m_wheelRadius;
+	double m_wheelDistance;
 };
 #endif // SimObj_h
- 
+
 

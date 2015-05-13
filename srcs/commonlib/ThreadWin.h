@@ -25,20 +25,20 @@ public:
 
 protected:
 #ifdef USE_AFX_THREAD
-	CWinThread *	m_thread;
+	CWinThread * m_thread;
 #else
-	HANDLE	m_thread;
+	HANDLE m_thread;
 #endif // USE_AFX_THREAD
 
 #if 1
 	unsigned int m_threadId;
 #else
 	// added by sekikawa(2009/02/09)
-	DWORD	m_threadId;
+	DWORD m_threadId;
 #endif
 
 private:
-	void	freeThread()
+	void freeThread()
 	{
 #ifdef USE_AFX_THREAD
 		if (m_thread) { delete m_thread; m_thread = 0; }
@@ -46,22 +46,22 @@ private:
 		m_thread = 0;
 #endif // USE_AFX_THREAD
 	}
-	void	free_() { freeThread(); }
+	void free_() { freeThread(); }
 
 public:
 	Thread() : m_thread(0) {;}
 	virtual ~Thread() { terminate(); free_(); }
 
-	bool	run(ThreadFuncType proc, ParamType param);
-	void	wait();
-	bool	running();
-	void	terminate();
+	bool run(ThreadFuncType proc, ParamType param);
+	void wait();
+	bool running();
+	void terminate();
 
 #if 1
 	unsigned int getThreadId() { return m_threadId; }
 #else
 	// added by sekikawa(2009/02/09)
-	DWORD	getThreadId() { return m_threadId; }
+	DWORD getThreadId() { return m_threadId; }
 #endif
 };
 
@@ -69,11 +69,11 @@ public:
 
 #ifdef USE_AFX_THREAD
 template<class ParamType>
-bool	Thread<ParamType>::run(ThreadFuncType proc, ParamType param)
+bool Thread<ParamType>::run(ThreadFuncType proc, ParamType param)
 {
 	freeThread();
 	LPVOID lpParam = reinterpret_cast<LPVOID>(param);
-	//		m_thread = AfxBeginThread(proc, lpParam);
+	//  m_thread = AfxBeginThread(proc, lpParam);
 
 	m_thread = AfxBeginThread(proc, lpParam, 0, 0, CREATE_SUSPENDED, 0);
 	if (!m_thread) { return false; }
@@ -86,7 +86,7 @@ bool	Thread<ParamType>::run(ThreadFuncType proc, ParamType param)
 #else
 typedef unsigned int (_stdcall *BEGINTHREADEXPROC)(void *);
 template<class ParamType>
-bool	Thread<ParamType>::run(ThreadFuncType proc, ParamType param)
+bool Thread<ParamType>::run(ThreadFuncType proc, ParamType param)
 {
 	freeThread();
 	LPVOID lpParam = reinterpret_cast<LPVOID>(param);
@@ -111,7 +111,7 @@ bool	Thread<ParamType>::run(ThreadFuncType proc, ParamType param)
 #endif // USE_AFX_THREAD
 
 template<class ParamType>
-void	Thread<ParamType>::wait()
+void Thread<ParamType>::wait()
 {
 	if (!m_thread) { return; }
 #ifdef USE_AFX_THREAD

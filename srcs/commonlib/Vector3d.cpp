@@ -21,16 +21,15 @@ Vector3d & Vector3d::rotate(const Rotation &r)
 /*
 void Vector3d::rotateByQuaternion(double qw, double qx, double qy, double qz)
 {
-	  //LOG_MSG(("test1"));
-  Vector3d rv;
-	  LOG_MSG(("(%f, %f, %f, %f)", qw, qx, qy, qz));
+	//LOG_MSG(("test1"));
+Vector3d rv;
+	LOG_MSG(("(%f, %f, %f, %f)", qw, qx, qy, qz));
 
-	  Rotation r(qw, qx, qy, qz);
-	  //r.apply(*this, rv);
-	  //*this = rv;
-	  //r.apply(*this, rv);
-	  //*this = rv;
-
+	Rotation r(qw, qx, qy, qz);
+	//r.apply(*this, rv);
+	//*this = rv;
+	//r.apply(*this, rv);
+	//*this = rv;
 }
 
 */

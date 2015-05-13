@@ -18,41 +18,39 @@ class SimGround;
 
 class SimWorld
 {
-	typedef std::string S;
 public:
-	typedef std::map<S, SimObjBase*> M;
-
 	typedef std::map<std::string, Vector3d> m_posMap;
 private:
-	S	m_name;
+	std::string m_name;
 protected:
-	M 	m_objs;
+	std::map<std::string, SimObjBase*> m_objs;
 	SimGround *m_ground;
 private:
-	double	m_time;
+	double m_time;
 
 protected:
-	virtual void	free_();
+	virtual void free_();
 public:
 	SimWorld(const char *name_);
 public:
 	virtual ~SimWorld() { free_(); }
 	
-	const M & objs() const { return m_objs; }
+	const std::map<std::string, SimObjBase*> & objs() const { return m_objs; }
+
 	SimObjBase * getObj(const char *name)
 	{
-		M::iterator i = m_objs.find(name);
+		std::map<std::string, SimObjBase*>::iterator i = m_objs.find(name);
 		if (i == m_objs.end()) { return 0; }
 		return i->second;
 	}
 
-	void	setGround(SimGround *p) { m_ground = p; }
+	void setGround(SimGround *p) { m_ground = p; }
 	
 	SimObjBase * getObjById(SimObjBase::Id id);
 
 	int getAllEntitiesDataSize();
 
-	virtual double	time() const { return m_time; }
+	virtual double time() const { return m_time; }
 
 #ifndef EXEC_SIMULATION
 	void time(double t) { m_time = t; }

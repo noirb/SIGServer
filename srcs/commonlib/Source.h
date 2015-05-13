@@ -48,24 +48,23 @@ private:
 	private:
 		pthread_mutex_t m_mutex;
 	public:
-		Locker() { pthread_mutex_init(&m_mutex, 0); }
+		Locker()  { pthread_mutex_init(&m_mutex, 0); }
 		~Locker() { pthread_mutex_destroy(&m_mutex); }
-		void	lock() { pthread_mutex_lock(&m_mutex); }
-		void	unlock() { pthread_mutex_unlock(&m_mutex); }
-			
+
+		void lock()   { pthread_mutex_lock(&m_mutex); }
+		void unlock() { pthread_mutex_unlock(&m_mutex); }
 	};
 #endif
-	typedef std::string S;
-	typedef std::map<S, S> M;
 private:
-	SourceType 	m_type;
-	S		m_name;
-	SOCKET		m_sock;
-	S		m_hostname;
-	bool		m_ignore;
-	M		m_properties;
+	SourceType    m_type;
+	std::string   m_name;
+	SOCKET        m_sock;
+	std::string   m_hostname;
+	bool          m_ignore;
+	std::map<std::string, std::string> m_properties;
+
 #ifdef EXEC_SIMULATION
-	Locker		m_locker;
+	Locker        m_locker;
 #endif
 	
 public:
@@ -75,7 +74,8 @@ public:
 	 * @param sock Socket of connection source
 	 */
 	Source(SOCKET sock)
-		: m_type(SOURCE_TYPE_NOT_SET), m_sock(sock), m_ignore(false) {;}
+		: m_type(SOURCE_TYPE_NOT_SET), m_sock(sock), m_ignore(false)
+	{;}
 
 	/**
 	 * @brief Constructor
@@ -84,12 +84,14 @@ public:
 	 * @param hostname Hostname of connection source
 	 */	
 	Source(SOCKET sock, const char *hostname) 
-		: m_type(SOURCE_TYPE_NOT_SET), m_sock(sock), m_hostname(hostname), m_ignore(false) {;}
+		: m_type(SOURCE_TYPE_NOT_SET), m_sock(sock), m_hostname(hostname), m_ignore(false)
+	{;}
 
 	/**
 	 * @brief Set type of connection source and connection name
 	 */
-	void set(SourceType type, const char *name) {
+	void set(SourceType type, const char *name)
+	{
 		m_type = type;
 		if (name) {
 			m_name = name;
@@ -97,11 +99,14 @@ public:
 	}
 
 	//! Return socket descripter
-	SOCKET	socket() { return m_sock; }
+	SOCKET socket() { return m_sock; }
+
 #ifdef EXEC_SIMULATION
-	int	send(CommDataEncoder &);
-	int	send(char *, int);
-	bool  	equals(SOCKET sock) {
+	int send(CommDataEncoder &);
+	int send(char *, int);
+
+	bool equals(SOCKET sock)
+	{
 		return m_sock == sock? true: false;
 	}
 #endif
@@ -112,21 +117,21 @@ public:
 	const char *hostname() const { return m_hostname.c_str(); }
 
 	//! Whether ignore the connection or not
-	bool	ignore() { return m_ignore; }
+	bool ignore() { return m_ignore; }
 	//! Switch the ignore flag
-	void	ignore(bool b) { m_ignore = b; }
+	void ignore(bool b) { m_ignore = b; }
 	//! Refer connection type
 	SourceType type() { return m_type; }
 	//! Whether the connection type is set or not
-	bool	noType() { return m_type == SOURCE_TYPE_NOT_SET? true: false; }
+	bool noType() { return m_type == SOURCE_TYPE_NOT_SET? true: false; }
 	//! Is the connection type 'View'?
-	bool	isView() { return m_type == SOURCE_TYPE_VIEW? true: false; }
+	bool isView() { return m_type == SOURCE_TYPE_VIEW? true: false; }
 	//! Is the connection type 'Controller Command'?
-	bool	isControllerCmd() { return m_type == SOURCE_TYPE_CONTROLLER_CMD? true: false; }
+	bool isControllerCmd() { return m_type == SOURCE_TYPE_CONTROLLER_CMD? true: false; }
 	//! Is the connection type 'Controller Data'?
-	bool	isControllerData() { return m_type == SOURCE_TYPE_CONTROLLER_DATA? true: false; }
+	bool isControllerData() { return m_type == SOURCE_TYPE_CONTROLLER_DATA? true: false; }
 	//! Is the connection type 'Service Provider'?
-	bool	isServiceProvider() { return m_type == SOURCE_TYPE_SERVICE_PROVIDER? true: false; }
+	bool isServiceProvider() { return m_type == SOURCE_TYPE_SERVICE_PROVIDER? true: false; }
 
 	/**
 	 * @brief Set connection property
@@ -135,7 +140,7 @@ public:
 	 */
 	void setProperty(const char *key, const char *val)
 	{
-		m_properties[S(key)] = S(val);
+		m_properties[std::string(key)] = std::string(val);
 	}
 
 	/**
@@ -145,7 +150,7 @@ public:
 	 */
 	bool propertyEquals(const char *key,  const char *val)
 	{
-		M::iterator i = m_properties.find(S(key));
+		std::map<std::string, std::string>::iterator i = m_properties.find(std::string(key));
 		if (i == m_properties.end()) { return false; }
 		return strcmp(i->second.c_str(), val) == 0? true: false;
 	}
@@ -162,7 +167,7 @@ public:
 #endif
 	}
 	//! Is the same connection source?
-	bool 	equals(const Source &o)
+	bool equals(const Source &o)
 	{
 		return strcmp(o.name(), name()) == 0? true: false;
 	}

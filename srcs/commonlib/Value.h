@@ -5,6 +5,9 @@
 #ifndef Value_h
 #define Value_h
 
+#define MIN(A, B) ( (A) < (B)? (A): (B) )
+#define MAX(A, B) ( (A) > (B)? (A): (B) )
+
 #include <string>
 #include <stdio.h>
 #include <stdlib.h>
@@ -28,13 +31,13 @@ typedef short ValueType;
 class Value
 {
 private:
-	ValueType	m_type;
+	ValueType m_type;
 public:
 	Value(ValueType t) : m_type(t) {;}
 
-	ValueType	type() const { return m_type; }
-	virtual short	binaryLength() const = 0;
-	virtual char *  binary()  = 0;
+	ValueType      type() const { return m_type; }
+	virtual short  binaryLength() const = 0;
+	virtual char * binary()  = 0;
 
 	virtual ~Value() {}
 
@@ -69,7 +72,7 @@ private:
 private:
 	enum { DATASIZE = sizeof(ValueType) + sizeof(short), };
 private:
-	bool	m_value;
+	bool m_value;
 public:
 	BoolValue() : Value(VALUE_TYPE_BOOL) {;}
 #ifdef UNIT_TEST
@@ -96,11 +99,11 @@ private:
 	bool getBool() const { return m_value; }
 	void setBool(bool b) { m_value = b; }
 
-	short	binaryLength() const
+	short binaryLength() const
 	{
 		return DATASIZE;
 	}
-	char *  binary();
+	char * binary();
 
 	Value *clone();
 };
@@ -113,7 +116,7 @@ class DoubleValue : public Value
 		
 	typedef Value Super;
 private:
-	double	m_value;
+	double m_value;
 
 public:
 	DoubleValue() : Super(VALUE_TYPE_DOUBLE), m_value(0.0) {;}
@@ -128,16 +131,17 @@ private:
 	const char *getTypeString() const;
 
 	void setDouble(double v) { m_value = v; }
-	void setInt(int v) { m_value = (double)v; }
+	void setInt(int v)       { m_value = (double)v; }
 	void setString(const char *s);
 
 	bool getBool() const { return false; }
 	void setBool(bool b) { ; }
 
-	short	binaryLength() const {
+	short binaryLength() const
+	{
 		return DATASIZE;
 	}
-	char *  binary();
+	char * binary();
 	void copy(const Value &o);
 
 	Value *clone();
@@ -146,36 +150,39 @@ private:
 class StringValue : public Value
 {
 private:
-	std::string	m_str;
-	char	*m_buf;
-	int	m_bufsize;
+	std::string  m_str;
+	char        *m_buf;
+	int          m_bufsize;
 public:
 	StringValue() : Value(VALUE_TYPE_STRING), m_buf(0), m_bufsize(0) {;}
 	StringValue(const char *str) : Value(VALUE_TYPE_STRING), m_buf(0), m_bufsize(0)
 	{
 		setString(str);
 	}
-	~StringValue() {
+	~StringValue()
+	{
 		delete [] m_buf; m_buf = 0;
 	}
 
 private:
 	double getDouble() const { assert(0); return 0.0; }
-	int getInt() const { assert(0); return 0; }
+	int    getInt()    const { assert(0); return 0; }
 	const char *getString() const { return m_str.c_str(); }
-	const char *getTypeString() const {
+
+	const char *getTypeString() const
+	{
 		static const char *type = "string";
 		return type;
 	}
 
 	void setDouble(double v) { assert(0); }
-	void setInt(int v) { assert(0); }
+	void setInt   (int v   ) { assert(0); }
 	void setString(const char *str) { m_str = str; }
 
 	bool getBool() const  { return false;}
-	void setBool(bool b) {; }
+	void setBool(bool b) {;}
 
-	short	binaryLength() const;
+	short   binaryLength() const;
 	char *  binary();
 	void copy(const Value &o);
 

@@ -15,31 +15,31 @@ class Rotation;
 class Vector3d
 {
 private:
-	double	m_x, m_y, m_z;
+	double m_x, m_y, m_z;
 public:
 	Vector3d() : m_x(0.0), m_y(0.0), m_z(0.0) {;}
 	Vector3d(double x_, double y_, double z_) : m_x(x_), m_y(y_), m_z(z_) {;}
 	Vector3d(const Vector3d &o) : m_x(o.m_x), m_y(o.m_y), m_z(o.m_z) {;}
 
-	void	set(double x_, double y_, double z_)
+	void set(double x_, double y_, double z_)
 	{
 		m_x = x_; m_y = y_; m_z = z_;
 	}
 
-	void	shift(const Vector3d &v)
+	void shift(const Vector3d &v)
 	{
 		m_x += v.x(); m_y += v.y(); m_z += v.z();
 	}
 
-	void	shift(double x_, double y_, double z_)
+	void shift(double x_, double y_, double z_)
 	{
 		m_x += x_; m_y += y_; m_z += z_;
 	}
 
 	
-	void	x(double v) { m_x = v; } 
-	void	y(double v) { m_y = v; } 
-	void	z(double v) { m_z = v; } 
+	void x(double v) { m_x = v; }
+	void y(double v) { m_y = v; }
+	void z(double v) { m_z = v; }
 
 	
 	double x() const { return m_x; } 
@@ -95,13 +95,11 @@ public:
 
 	bool operator!=(const Vector3d &o)
 	{
-	  if(this->m_x != o.x() ||
-	     this->m_y != o.y() ||
-	     this->m_z != o.z())
-	    {
-	      return true;
-	    }
-	  else{ return false; }
+		if(this->m_x != o.x() || this->m_y != o.y() || this->m_z != o.z())
+		{
+			return true;
+		}
+		else{ return false; }
 	}
 
 	double length() const { return sqrt(m_x*m_x + m_y*m_y + m_z*m_z); }
@@ -111,10 +109,9 @@ public:
 		double prod = m_x*axis.m_x + m_y*axis.m_y + m_z*axis.m_z;
 		double v = length() * axis.length();
 		return prod/v;
-
 	}
 
-	void	normalize()
+	void normalize()
 	{
 		double l = length();
 		m_x /=l; m_y/=l; m_z/=l;

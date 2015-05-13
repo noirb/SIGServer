@@ -31,26 +31,26 @@ int ViewImage::calcBufferSize(const ViewImageInfo &info)
 
 struct BITMAPFILEHEADER
 {
-	unsigned short 	bfType;
-	unsigned 	bfSize;
-	unsigned short 	bfReserved1;
-	unsigned short 	bfReserved2;
-	unsigned 	bfOffBits;
+	unsigned short bfType;
+	unsigned       bfSize;
+	unsigned short bfReserved1;
+	unsigned short bfReserved2;
+	unsigned       bfOffBits;
 } __attribute__((packed));
 
 struct BITMAPINFOHEADER
 {
-	unsigned biSize;
-	int	biWidth;
-	int	biHeight;
-	unsigned short 	biPlanes;
+	unsigned       biSize;
+	int            biWidth;
+	int            biHeight;
+	unsigned short biPlanes;
 	unsigned short biBitCount;
-	unsigned biCompression;
-	unsigned biSizeImage;
-	int biXPixPerMeter;
-	int biYPixPerMeter;
-	unsigned biClrUsed;
-	unsigned biClrImportant;
+	unsigned       biCompression;
+	unsigned       biSizeImage;
+	int            biXPixPerMeter;
+	int            biYPixPerMeter;
+	unsigned       biClrUsed;
+	unsigned       biClrImportant;
 };
 
 #endif
@@ -74,48 +74,49 @@ bool ViewImage::saveAsWindowsBMP(const char *fname)
 	bi.biWidth = getWidth();
 	bi.biHeight = -getHeight();
 	bi.biPlanes = 1;
+
 	switch(m_info.getColorBitType()) {
-	case COLORBIT_24:
-	  {
-	    bi.biBitCount = 24; break;
-	  }
-	case DEPTHBIT_8:
-	  {
-	    bi.biBitCount = 24;
+		case COLORBIT_24:
+		{
+			bi.biBitCount = 24; break;
+		}
+		case DEPTHBIT_8:
+		{
+			bi.biBitCount = 24;
 
+			int height = getHeight();
+			int width = getWidth();
 
-	    int height = getHeight();
-	    int width = getWidth();
+			/*
+			  double fov = getFOVy();
+			  double fl = 120/tan(fov/2*M_PI/180);
+			*/
 
-	    /*
-	      double fov = getFOVy();
-	      double fl = 120/tan(fov/2*M_PI/180);
-	    */
+			for(int i = 0; i < height; i++){
+				for(int j = 0; j < width; j++){
 
-	    for(int i = 0; i < height; i++){
-	      for(int j = 0; j < width; j++){
-		int tmp_i = i*width+j;
-		    //int distance = (unsigned char)m_buf[i*width+j]/cos(theta);
-		char distance = m_buf[i*width+j];
+					int tmp_i = i*width+j;
+					//int distance = (unsigned char)m_buf[i*width+j]/cos(theta);
+					char distance = m_buf[i*width+j];
 		
-		tmp[tmp_i*3]   = distance;
-		tmp[tmp_i*3+1] = distance;
-		tmp[tmp_i*3+2] = distance;
-		//} 
-	      }
-	    }
-	    break;
-	  }
-	  //bi.biBitCount = 8; 
-	  //bi.biClrUsed = 0; break;
-	default:
-		assert(0);
+					tmp[tmp_i*3]   = distance;
+					tmp[tmp_i*3+1] = distance;
+					tmp[tmp_i*3+2] = distance;
+				}
+			}
+			break;
+		}
+		//bi.biBitCount = 8;
+		//bi.biClrUsed = 0; break;
+		default:
+			assert(0);
 	}
+	
 	int size = getBufferLength();
 
 	bi.biCompression = 0;
 	bi.biSizeImage = size;
-	
+
 	BITMAPFILEHEADER bf = {0};
 
 	bf.bfType = *(unsigned short*)"BM";
@@ -123,17 +124,18 @@ bool ViewImage::saveAsWindowsBMP(const char *fname)
 	bf.bfReserved2 = 0;
 	bf.bfOffBits = sizeof(BITMAPFILEHEADER) + sizeof(BITMAPINFOHEADER);
 	bf.bfSize = bf.bfOffBits + bi.biSizeImage;
-	
+
 	fwrite((char*)&bf, sizeof(bf), 1, fp);
 	fwrite((char*)&bi, sizeof(bi), 1, fp);
+
 	if(m_info.getColorBitType() == DEPTHBIT_8) 
-	  {
-	    fwrite(tmp, size*3, 1, fp);
-	  }
+	{
+		fwrite(tmp, size*3, 1, fp);
+	}
 	else
-	  {
-	    fwrite(getBuffer(), size, 1, fp);
-	  }
+	{
+		fwrite(getBuffer(), size, 1, fp);
+	}
 	fclose(fp);
 #endif
 	return true;
@@ -142,38 +144,38 @@ bool ViewImage::saveAsWindowsBMP(const char *fname)
 #ifdef WIN32
 void ViewImage::setBitImageAsWindowsBMP(unsigned char *bitImage)
 {
-  if (!bitImage) return;
-  
-  int width, height;
-  int widthByteSize, imageByteSize;
-  int x, y;
-  
-  width = getWidth();
-  height = getHeight();
+	if (!bitImage) return;
 
-  double fov = getFOVy();
-  double fl = (height/2)/tan(fov/2*M_PI/180);
+	int width, height;
+	int widthByteSize, imageByteSize;
+	int x, y;
 
-  // width must be aligned 32bit boundary
-  widthByteSize = getWidthBytes(width, m_info.getBytesPerOnePixel());
-  
-  // clear buffer
-  memset(m_buf, 0, m_buflen);
-  
-  int nbyte = m_info.getBytesPerOnePixel();
-  
-  // Note: be cautious to difference of y-axis order and pixel format.
-  // (src) RGBARGBARGBA....
-  // (dst) BGRBGRBGR....
-  for (y=0; y<height; y++) {
-    for (x=0; x<width; x++) {
-      unsigned char *pFrom = bitImage + ((height-(y+1))*width + x)*4;
-      for(int i = 0;i<nbyte;i++){
-	//modified by okamoto@tome (2011/9/16)
-	m_buf[y*widthByteSize + x*nbyte + nbyte-(i+1)] = pFrom[i];
-      }
-    }
-  }
+	width = getWidth();
+	height = getHeight();
+
+	double fov = getFOVy();
+	double fl = (height/2)/tan(fov/2*M_PI/180);
+
+	// width must be aligned 32bit boundary
+	widthByteSize = getWidthBytes(width, m_info.getBytesPerOnePixel());
+
+	// clear buffer
+	memset(m_buf, 0, m_buflen);
+
+	int nbyte = m_info.getBytesPerOnePixel();
+
+	// Note: be cautious to difference of y-axis order and pixel format.
+	// (src) RGBARGBARGBA....
+	// (dst) BGRBGRBGR....
+	for (y=0; y<height; y++) {
+		for (x=0; x<width; x++) {
+			unsigned char *pFrom = bitImage + ((height-(y+1))*width + x)*4;
+			for(int i = 0;i<nbyte;i++){
+				//modified by okamoto@tome (2011/9/16)
+				m_buf[y*widthByteSize + x*nbyte + nbyte-(i+1)] = pFrom[i];
+			}
+		}
+	}
 }
 
 
@@ -183,7 +185,7 @@ void ViewImage::setBitImageAsWindowsBMP(unsigned char *bitImage)
 #if (defined _DEBUG || defined UNIT_TEST || defined IRWAS_TEST_CLIENT)
 ViewImage *ViewImage::createSample()
 {
-        int w = 320;
+	int w = 320;
 	int h = 240;
 	ViewImageInfo info(IMAGE_DATA_WINDOWS_BMP, COLORBIT_24, w, h);
 	ViewImage *img = new ViewImage(info);
@@ -204,7 +206,6 @@ ViewImage *ViewImage::createSample()
 		}
 	}
 	return img;
-
 }
 
 

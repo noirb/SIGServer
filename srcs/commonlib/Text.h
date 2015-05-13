@@ -9,14 +9,15 @@
 
 #include <string>
 
-    
+
 class Text
 {
 private:
 	Encode m_encode;
 	std::string m_text;
 public:
-	Text(Encode enc, const char *text) : m_encode(enc){
+	Text(Encode enc, const char *text) : m_encode(enc)
+	{
 		if (text) {
 			m_text = text;
 		}

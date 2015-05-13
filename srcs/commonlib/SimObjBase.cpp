@@ -22,7 +22,6 @@
 SimObjBase::SimObjBase()
 	: m_attached(false), m_ops(OP_NOT_SET)
 {
-
 }
 
 
@@ -65,7 +64,7 @@ void SimObjBase::setForce(double fx_, double fy_, double fz_)
 void SimObjBase::setTorque(double x_, double y_, double z_)
 {
 	if (!dynamics()) { return; }
-					    
+
 	tqx(x_); tqy(y_); tqz(z_);
 }
 
@@ -138,18 +137,16 @@ void SimObjBase::setAxisAndAngle(double ax, double ay, double az, double angle)
  */
 void SimObjBase::setAxisAndAngle(double ax, double ay, double az, double angle, double direct)
 {
-  // The angle is used now at the relative angle specification.
-  if (dynamics()) { return; }
+	// The angle is used now at the relative angle specification.
+	if (dynamics()) { return; }
 
+	Rotation r;
+	if (direct != 1.0) r.setQuaternion(qw(), qx(), qy(), qz());
 
-  Rotation r;
-  if (direct != 1.0) r.setQuaternion(qw(), qx(), qy(), qz());
-
-  // alculate relational angle
-  r.setAxisAndAngle(ax, ay, az, angle, direct);
-  const dReal *q = r.q();
-  setQ(q);
-
+	// alculate relational angle
+	r.setAxisAndAngle(ax, ay, az, angle, direct);
+	const dReal *q = r.q();
+	setQ(q);
 }
 
 
@@ -205,6 +202,7 @@ void SimObjBase::copy(const SimObjBase &o)
 	const AttrM &attrs = o.attrs();
 
 	for (AttrM::const_iterator i=attrs.begin(); i!=attrs.end(); i++) {
+
 		Attribute *a = i->second;
 
 		Attribute *to = hasAttr(a->name());
@@ -253,7 +251,9 @@ char *SimObjBase::toBinary(int &n)
 		BINARY_SET_DATA_S_INCR(p, DataLengthType, 0); // skip attrs size
 
 		DataLengthType attrssize = sizeof(DataLengthType);
+
 		for (AttrM::iterator i=m_attrs.begin(); i!=m_attrs.end(); i++) {
+
 			int head = p - buf;
 			Attribute *attr = i->second;
 			int nn;
@@ -288,6 +288,7 @@ char *SimObjBase::toBinary(int &n)
 
 		PartsIterator *itr = getPartsIterator();
 		Parts *parts = NULL;
+
 		while (itr && (parts = itr->next()) != NULL) {
 
 			if (parts->isBlind()) { continue; }
@@ -356,12 +357,14 @@ bool SimObjBase::checkAttrs()
 		(char *)"name", (char *)"class",
 #include "SimObjBaseAttrs.h"
 	};
+
 	static char *namesForEntities[] = {
 		(char *)"name", (char *)"class",
 #define NO_AGENT_ATTRS
 #include "SimObjBaseAttrs.h"
 #undef NO_AGENT_ATTRS
 	};
+
 	char **names = isAgent()? namesForAgent: namesForEntities;
 	const char *myname = name();
 	bool b = true;

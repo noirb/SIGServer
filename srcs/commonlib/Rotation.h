@@ -25,12 +25,12 @@ typedef short RotationType;
 class Rotation
 {
 private:
-	dQuaternion	m_q;
+	dQuaternion m_q;
 #ifdef USE_ODE
-	dMatrix3	m_m;
+	dMatrix3    m_m;
 #endif
 private:
-	void	makeMatrix()
+	void makeMatrix()
 	{
 #ifdef USE_ODE
 		dQtoR(m_q, m_m);
@@ -42,12 +42,12 @@ public:
 
 	Rotation(double w, double x, double y, double z)
 	{
-	  setQuaternion(w, x, y, z);
+		setQuaternion(w, x, y, z);
 	}
 
 	void setQuaternion(const dReal *q)
 	{
-	  setQuaternion(q[0], q[1], q[2], q[3]);
+		setQuaternion(q[0], q[1], q[2], q[3]);
 	}
 
 	void setQuaternion(dReal w, dReal x, dReal y, dReal z)
@@ -135,7 +135,7 @@ public:
 		   this->m_q[3] != o.qz())
 		{
 			return true;
-	    }
+		}
 		else
 		{
 			return false;

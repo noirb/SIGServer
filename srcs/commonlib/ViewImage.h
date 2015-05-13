@@ -12,7 +12,7 @@
 
 class ViewImage
 {
- private:
+private:
 	ViewImageInfo  m_info;
 	char          *m_buf;
 	int            m_buflen;
@@ -34,12 +34,12 @@ public:
 
 private:
 	int getWidthBytes(int width, int bytesPerOnePixel);
-	int	calcBufferSize(const ViewImageInfo &info);
+	int calcBufferSize(const ViewImageInfo &info);
 
 public:
 	const ViewImageInfo & getInfo() { return m_info; }
 
-	int    getWidth() const { return m_info.getWidth(); }
+	int    getWidth()  const { return m_info.getWidth(); }
 	int    getHeight() const { return m_info.getHeight(); }
 	char  *getBuffer() const { return m_buf; }
 	void   setBuffer(char *buf) { m_buf = buf; }
@@ -52,7 +52,7 @@ public:
 	//virtual void setDimension(int n){} 
 
 	
-	bool	saveAsWindowsBMP(const char *fname);
+	bool saveAsWindowsBMP(const char *fname);
 
 #ifdef WIN32
 	// sekikawa(2007/10/12)

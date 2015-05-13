@@ -97,10 +97,8 @@ public:
 	//! ID type for entity
 	typedef unsigned Id;
 protected:
-	//! string type
-	typedef std::string S;
 	//! attribution map type
-	typedef std::map<S, Attribute*> AttrM;
+	typedef std::map<std::string, Attribute*> AttrM;
 protected:
 	bool                     m_attached; //!< flag whether controller is attached
 	int                      m_id;       //!< unique entity ID
@@ -138,7 +136,7 @@ public:
 		for (int i = 0; i < size; i++) {
 			if (id == m_ids[i]) {
 				LOG_ERR(("Camera ID %d is already exist.",id));
-				return;	      
+				return;
 			}
 		}
 		m_ids.push_back(id);
@@ -148,14 +146,14 @@ public:
 
 	//! Refer shape file
 	std::string getFile(int num)
-		{
-			if (num > (int)(m_files.size())) {
-				return NULL;
-			}
-			else{
-				return m_files[num];
-			}
+	{
+		if (num > (int)(m_files.size())) {
+			return NULL;
 		}
+		else{
+			return m_files[num];
+		}
+	}
 	
 	//! add attribution
 	void push(Attribute *attr)
@@ -194,9 +192,9 @@ public:
 	 */
 	bool checkAttrs();
 
- private:
+private:
 	Attribute* hasAttr(const char *name) const;
- public:
+public:
 	//! Refer the target attribution
 	Attribute & getAttr(const char *name) const;
 
@@ -204,10 +202,10 @@ public:
 	bool isAttr(const char *name);
 
 	//! Refer the entity ID
-	Id    	id() const { return m_id; }
+	Id id() const { return m_id; }
 
 	//! Whether controller is attached?
-	bool	isAttached() const { return m_attached; }
+	bool isAttached() const { return m_attached; }
 
 	//! Refer entity name
 	const char *name() const
@@ -222,20 +220,20 @@ public:
 	}
 
 	// added by yahara@tome (2011/02/23)
-#define DEFINE_ATTR_STRING(NAME, TOKEN)									\
+#define DEFINE_ATTR_STRING(NAME, TOKEN)                                     \
 	const char *NAME() const { return getAttr(TOKEN).value().getString(); } \
-	void  NAME(const char *v) {											\
-		getAttr(TOKEN).value().setString(v);							\
+	void  NAME(const char *v) {                                             \
+		getAttr(TOKEN).value().setString(v);                                \
 	}
 	//okamoto (2010/12/7)
-#define DEFINE_ATTR_DOUBLE(NAME, TOKEN)									\
-	double NAME() const { return getAttr(TOKEN).value().getDouble(); }	\
-	void  NAME(double v) {												\
-		getAttr(TOKEN).value().setDouble(v);							\
+#define DEFINE_ATTR_DOUBLE(NAME, TOKEN)                                 \
+	double NAME() const { return getAttr(TOKEN).value().getDouble(); }  \
+	void  NAME(double v) {                                              \
+		getAttr(TOKEN).value().setDouble(v);                            \
 	}
-	
-#define DEFINE_ATTR_BOOL(NAME, TOKEN)								\
-	bool NAME() const { return getAttr(TOKEN).value().getBool(); }	\
+
+#define DEFINE_ATTR_BOOL(NAME, TOKEN)                               \
+	bool NAME() const { return getAttr(TOKEN).value().getBool(); }  \
 	void NAME(bool b) { getAttr(TOKEN).value().setBool(b); }
 
 #include "SimObjBaseAttrs.h"
@@ -296,10 +294,10 @@ public:
 	 * @brief Refer position of the entity
 	 */
 	Vector3d &  getPosition(Vector3d &v)
-		{
-			v.set(x(), y(), z());
-			return v;
-		}
+	{
+		v.set(x(), y(), z());
+		return v;
+	}
 
 	/**
 	 * @brief Set orientation of the entity
@@ -327,10 +325,10 @@ public:
 	 */
 	virtual void setRotation(const Rotation &r);
 
- private:
-	void 	setQ(const dReal *q);
- public:
+private:
+	void setQ(const dReal *q);
 
+public:
 	/**
 	 * @brief Binalize of the entity
 	 * @param  Size of binalized data
@@ -338,17 +336,17 @@ public:
 	 */
 	char *toBinary(int &n);
 
- protected:
+protected:
 	//! Refer parts iterator
 	virtual PartsIterator * getPartsIterator() = 0;
- private:
-	void	free_();
+private:
+	void free_();
 
- public:
+public:
 	void dump();
 #ifdef UNIT_TEST
 	Operation ops() { return m_ops; }
-#endif	
+#endif
 #ifdef IMPLEMENT_DRAWER
 	void draw(DrawContext &c);
 #endif

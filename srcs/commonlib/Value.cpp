@@ -38,16 +38,17 @@ void BoolValue::setString(const char *str)
 #ifdef WIN32
 	if (strcmp(str, "0") == 0 || _stricmp(str, "false") == 0)
 #else
-		if (strcmp(str, "0") == 0 || strcasecmp(str, "false") == 0)
+	if (strcmp(str, "0") == 0 || strcasecmp(str, "false") == 0)
 #endif
-			{
-				m_value = false;
-			} else {
-				m_value = true;
-			}
+	{
+		m_value = false;
+	} else {
+		m_value = true;
+	}
 }
 
-Value *BoolValue::clone() {
+Value *BoolValue::clone()
+{
 	BoolValue *newv = new BoolValue();
 	newv->m_value = this->m_value;
 	return newv;
@@ -82,7 +83,8 @@ const char *DoubleValue::getTypeString() const
 	return str;
 }
 
-Value * DoubleValue::clone() {
+Value * DoubleValue::clone()
+{
 	DoubleValue *newv = new DoubleValue();
 	newv->m_value = this->m_value;
 	return newv;
@@ -96,6 +98,7 @@ char *  DoubleValue::binary()
 	memcpy(p, (char*)&m_value, sizeof(m_value));
 	return buf;
 }
+
 void DoubleValue::copy(const Value &o)
 {
 	this->m_value = o.getDouble();
@@ -108,13 +111,15 @@ void DoubleValue::copy(const Value &o)
 
 ********************************************/
 
-Value *StringValue::clone() {
+Value *StringValue::clone()
+{
 	return new StringValue(this->getString());
 }
 
 char * StringValue::binary()
 {
 	const int len = binaryLength();
+
 	if (!m_buf || len > m_bufsize) {
 		delete m_buf;
 		m_buf = new char[len];
@@ -136,33 +141,34 @@ void StringValue::copy(const Value &o)
 	m_str = o.getString();
 }
 
+
 /*******************************************
 
             decode
 
 ********************************************/
 
-
 Value *Value::decode(char *data)
 {
 	char *p = data;
 	ValueType type = BINARY_GET_DATA_S_INCR(p, ValueType);
 	Value *value = 0;
-	switch(type) {
-	case VALUE_TYPE_BOOL:
+
+	switch(type){
+		case VALUE_TYPE_BOOL:
 		{
 			value = new BoolValue();
 			short v = BINARY_GET_DATA_S_INCR(p, short);
 			value->setBool(v? true: false);
 			break;
 		}
-	case VALUE_TYPE_DOUBLE:
+		case VALUE_TYPE_DOUBLE:
 		{
 			value = new DoubleValue();
 			value->setDouble(BINARY_GET_DOUBLE(p));
 			break;
 		}
-	case VALUE_TYPE_STRING:
+		case VALUE_TYPE_STRING:
 		{
 			value = new StringValue();
 			char *v = BINARY_GET_STRING_INCR(p);
@@ -173,8 +179,8 @@ Value *Value::decode(char *data)
 			BINARY_FREE_STRING(v);
 			break;
 		}
-	default:
-		break;
+		default:
+			break;
 	}
 	//assert(value != 0);
 	return value;
@@ -186,10 +192,7 @@ namespace ValueNS {
 	class Tokenizer
 	{
 	private:
-		typedef std::string S;
-		typedef std::vector<S> C;
-	private:
-		C	m_strs;
+		std::vector<std::string> m_strs;
 	public:
 		int tokenize(const char *str)
 		{
@@ -204,17 +207,16 @@ namespace ValueNS {
 			}
 			return m_strs.size();
 		}
-		int operator()(const char *str)
-		{
-			return tokenize(str);
-		}
 
-#define MIN(A, B) ( (A) < (B)? (A): (B) )
-#define MAX(A, B) ( (A) > (B)? (A): (B) )
+//		int operator()(const char *str)
+//		{
+//			return tokenize(str);
+//		}
 
 		T value()
 		{
 			int n = m_strs.size();
+
 			if (n == 1) {
 				return (T)atof(m_strs[0].c_str());
 			} else if (n == 2) {
@@ -235,10 +237,10 @@ void DoubleValue::setString(const char *str)
 {
 	typedef ValueNS::Tokenizer<double> Tok;
 	
-	Tok tokenize;
-	int n = tokenize(str);
+	Tok tokenizer;
+	int n = tokenizer.tokenize(str);
 	if (n > 0) {
-		m_value = tokenize.value();
+		m_value = tokenizer.value();
 	}
 }
 

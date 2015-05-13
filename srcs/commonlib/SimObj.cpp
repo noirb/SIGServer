@@ -25,15 +25,15 @@
 
 #ifdef SIGVERSE_OGRE_CLIENT
 #include "PartsCmpnt.h"
-#endif	// SIGVERSE_OGRE_CLIENT
+#endif  // SIGVERSE_OGRE_CLIENT
 
 #ifdef IRWAS_OGRE_CLIENT
 #include "PartsImpl.h"
 #include "IrcApp.h"
 #include "IrcWorld.h"
-#endif	// IRWAS_OGRE_CLIENT
+#endif  // IRWAS_OGRE_CLIENT
 
-#endif	// WIN32
+#endif  // WIN32
 
 //DEBUG
 #include <iostream>
@@ -101,7 +101,6 @@ void SimObj::copy(const SimObj &o)
 		CParts *newp = p->clone();
 
 		this->push(newp);
-		
 	}
 }
 
@@ -165,6 +164,7 @@ int SimObj::setBinary(char *data, int size)
 
 	p = body_head;
 	DataLengthType bodylen = BINARY_GET_DATA_S_INCR(p, DataLengthType);
+
 	while (1) {
 		int left = bodylen - (p-body_head);
 		if (left <= 0) { break; }
@@ -222,39 +222,40 @@ std::string SimObj::getCameraLinkName(int camID)
 //added by Guezout (2015/1/28)
 bool SimObj::getCameraGlobalQuaternion(double &w,double &x,double &y,double &z,int camID)
 {
-const char *partsName;
-if (m_parts.size() == 1)
-    {
-      if (camID == 1) 
-	{
-	  return false;
-	}
-      else
-	{
-	  LOG_ERR(("getCameraLinkName : cannot get Camera ID %d",camID));
-	  return false;
-	}
-    }
-  else
-    {
-      if (camID == 1) { partsName = elnk1();}
-      else if (camID == 2) {partsName = elnk2();}
-      /*
-      else if (camID == 3) {partsName = elnk3();}
-      else if (camID == 4) {partsName = elnk4();}
-      else if (camID == 5) {partsName = elnk5();}
-      else if (camID == 6) {partsName = elnk6();}
-      else if (camID == 7) {partsName = elnk7();}
-      else if (camID == 8) {partsName = elnk8();}
-      else if (camID == 9) {partsName = elnk9();}
-      */
-      else{
-	  LOG_ERR(("getCameraLinkName : cannot get Camera ID %d",camID));
-	  return false;
-	}
-    }
+	const char *partsName;
 
- Controller *con = (Controller*)m_sender;
+	if (m_parts.size() == 1)
+	{
+		if (camID == 1)
+		{
+			return false;
+		}
+		else
+		{
+			LOG_ERR(("getCameraLinkName : cannot get Camera ID %d",camID));
+			return false;
+		}
+	}
+	else
+	{
+		if (camID == 1) { partsName = elnk1();}
+		else if (camID == 2) {partsName = elnk2();}
+		/*
+		else if (camID == 3) {partsName = elnk3();}
+		else if (camID == 4) {partsName = elnk4();}
+		else if (camID == 5) {partsName = elnk5();}
+		else if (camID == 6) {partsName = elnk6();}
+		else if (camID == 7) {partsName = elnk7();}
+		else if (camID == 8) {partsName = elnk8();}
+		else if (camID == 9) {partsName = elnk9();}
+		 */
+		else{
+			LOG_ERR(("getCameraLinkName : cannot get Camera ID %d",camID));
+			return false;
+		}
+	}
+
+	Controller *con = (Controller*)m_sender;
 	ControllerImpl *conim = (ControllerImpl*)con;
 
 	SOCKET sock = conim->getDataSock();
@@ -270,11 +271,11 @@ if (m_parts.size() == 1)
 	char *p = sendBuff;
 
 	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_GET_PARTS_QUATERNION);
-	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);      
-	memcpy(p, msg.c_str(), msg.size());  
+	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
+	memcpy(p, msg.c_str(), msg.size());
 
 	if (!SocketUtil::sendData(sock, sendBuff, sendSize)) {
-		LOG_ERR(("getPartsPosition: cannot get Link quaternion"));    
+		LOG_ERR(("getPartsPosition: cannot get Link quaternion"));
 		delete [] sendBuff;
 		return false;
 	}
@@ -284,38 +285,37 @@ if (m_parts.size() == 1)
 	char *recvBuff = new char[recvSize];
 
 	if (!SocketUtil::recvData(sock, recvBuff, recvSize)) {
-		LOG_ERR(("getPartsQuaternion: cannot get Link position"));    
+		LOG_ERR(("getPartsQuaternion: cannot get Link position"));
 		delete [] recvBuff;
 		return false;
 	}
-  
+
 	p = recvBuff;
-	 w = BINARY_GET_DOUBLE_INCR(p);
-	 x = BINARY_GET_DOUBLE_INCR(p);
-	 y = BINARY_GET_DOUBLE_INCR(p);
-	 z = BINARY_GET_DOUBLE_INCR(p);
+	w = BINARY_GET_DOUBLE_INCR(p);
+	x = BINARY_GET_DOUBLE_INCR(p);
+	y = BINARY_GET_DOUBLE_INCR(p);
+	z = BINARY_GET_DOUBLE_INCR(p);
 	bool success = BINARY_GET_BOOL_INCR(p);
 
 	delete [] recvBuff; 
 
 	if (!success) return false;
 	return true; 
-
 }
 
 // fixed a memory leak bug by Tetsunari Inamura on 2014-01-03
 bool SimObj::getCamPos(Vector3d &pos, int camID, bool requestToServer)
 {
 	if (!requestToServer) {
-    
+
 		char tmpx[6];
 		char tmpy[6];
 		char tmpz[6];
-    
+
 		sprintf(tmpx,"epx%d",camID);
 		sprintf(tmpy,"epy%d",camID);
 		sprintf(tmpz,"epz%d",camID);
-    
+
 		if (!isAttr(tmpx) || !isAttr(tmpy) || !isAttr(tmpz)) {
 			LOG_ERR(("getCamPos: Cannot find camera id [%d]", camID));
 			return false;
@@ -328,7 +328,7 @@ bool SimObj::getCamPos(Vector3d &pos, int camID, bool requestToServer)
 		}
 		return true;
 	}
-  
+
 	Controller *con = (Controller*)m_sender;
 	ControllerImpl *conim = (ControllerImpl*)con;
 
@@ -342,12 +342,12 @@ bool SimObj::getCamPos(Vector3d &pos, int camID, bool requestToServer)
 
 	char *sendBuff = new char[sendSize];
 	char *p = sendBuff;
-  
+
 	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_GET_CAMERA_POSITION);
 	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
 	BINARY_SET_DATA_S_INCR(p, unsigned short, camID);
 
-	memcpy(p, msg.c_str(), msg.size());  
+	memcpy(p, msg.c_str(), msg.size());
 
 	if (!SocketUtil::sendData(sock, sendBuff, sendSize)) {
 		LOG_ERR(("getCamPos: cannot send request"));
@@ -364,14 +364,14 @@ bool SimObj::getCamPos(Vector3d &pos, int camID, bool requestToServer)
 		delete [] recvBuff;
 		return false;
 	}
-  
+
 	p = recvBuff;
 	bool success = BINARY_GET_BOOL_INCR(p);
 	if (success) {
 		double x = BINARY_GET_DOUBLE_INCR(p);
 		double y = BINARY_GET_DOUBLE_INCR(p);
 		double z = BINARY_GET_DOUBLE_INCR(p);
-    
+
 		pos.set(x, y, z);
 	}
 	delete [] recvBuff; // added by Tetsunari Inamura on 2014-01-03
@@ -403,7 +403,7 @@ bool SimObj::setCamPos(Vector3d pos, int camID)
 	ControllerImpl *conim = (ControllerImpl*)con;
 
 	SOCKET sock = conim->getDataSock();
-  
+
 	std::string msg;
 	const char *myName = name();
 	msg += std::string(myName) + ",";
@@ -412,7 +412,7 @@ bool SimObj::setCamPos(Vector3d pos, int camID)
 
 	char *sendBuff = new char[sendSize];
 	char *p = sendBuff;
-  
+
 	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_SET_CAMERA_POSITION);
 	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
 	BINARY_SET_DATA_S_INCR(p, unsigned short, camID);
@@ -441,7 +441,7 @@ bool SimObj::getCamDir(Vector3d &vec,int camID, bool requestToServer)
 		char tmpx[6];
 		char tmpy[6];
 		char tmpz[6];
-    
+
 		sprintf(tmpx,"evx%d",camID);
 		sprintf(tmpy,"evy%d",camID);
 		sprintf(tmpz,"evz%d",camID);
@@ -472,7 +472,7 @@ bool SimObj::getCamDir(Vector3d &vec,int camID, bool requestToServer)
 
 	char *sendBuff = new char[sendSize];
 	char *p = sendBuff;
-  
+
 	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_GET_CAMERA_DIRECTION);
 	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
 	BINARY_SET_DATA_S_INCR(p, unsigned short, camID);
@@ -494,14 +494,14 @@ bool SimObj::getCamDir(Vector3d &vec,int camID, bool requestToServer)
 		delete [] recvBuff;
 		return false;
 	}
-  
+
 	p = recvBuff;
 	bool success = BINARY_GET_BOOL_INCR(p);
 	if (success) {
 		double x = BINARY_GET_DOUBLE_INCR(p);
 		double y = BINARY_GET_DOUBLE_INCR(p);
 		double z = BINARY_GET_DOUBLE_INCR(p);
-    
+
 		vec.set(x, y, z);
 	}
 	delete [] recvBuff; // added by Tetsunari Inamura on 2014-01-03
@@ -515,12 +515,12 @@ bool SimObj::getCamQuaternion(double &qw, double &qx, double &qy, double &qz, in
 	char tmpx[6];
 	char tmpy[6];
 	char tmpz[6];
-    
+
 	sprintf(tmpw,"quw%d",camID);
 	sprintf(tmpx,"qux%d",camID);
 	sprintf(tmpy,"quy%d",camID);
 	sprintf(tmpz,"quz%d",camID);
-    
+
 	if (!isAttr(tmpw) || !isAttr(tmpx) || !isAttr(tmpy) || !isAttr(tmpz)) {
 		LOG_ERR(("getCamQuaternion: Cannot find camera id [%d]", camID));
 		return false;
@@ -558,7 +558,7 @@ bool SimObj::setCamDir(Vector3d vec,int camID)
 	ControllerImpl *conim = (ControllerImpl*)con;
 
 	SOCKET sock = conim->getDataSock();
-  
+
 	std::string msg;
 	const char *myName = name();
 	msg += std::string(myName) + ",";
@@ -567,7 +567,7 @@ bool SimObj::setCamDir(Vector3d vec,int camID)
 
 	char *sendBuff = new char[sendSize];
 	char *p = sendBuff;
-  
+
 	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_SET_CAMERA_DIRECTION);
 	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
 	BINARY_SET_DATA_S_INCR(p, unsigned short, camID);
@@ -607,21 +607,21 @@ double SimObj::getCamFOV(int camID)
 bool SimObj::setCamFOV(double fov, int camID)
 {
 	char tmpx[6];
-  
+
 	sprintf(tmpx,"FOV%d",camID);
-  
+
 	if (!isAttr(tmpx)) {
 		LOG_ERR(("setCamFOV: Cannot find camera id [%d]", camID));
 		return false;
 	}
-  
+
 	getAttr(tmpx).value().setDouble(fov);
-  
+
 	Controller *con = (Controller*)m_sender;
 	ControllerImpl *conim = (ControllerImpl*)con;
 
 	SOCKET sock = conim->getDataSock();
-  
+
 	std::string msg;
 	const char *myName = name();
 	msg += std::string(myName) + ",";
@@ -630,13 +630,13 @@ bool SimObj::setCamFOV(double fov, int camID)
 
 	char *sendBuff = new char[sendSize];
 	char *p = sendBuff;
-  
+
 	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_SET_CAMERA_FOV);
 	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
 	BINARY_SET_DATA_S_INCR(p, unsigned short, camID);
 
 	BINARY_SET_DOUBLE_INCR(p, fov);
-	memcpy(p, msg.c_str(), msg.size());  
+	memcpy(p, msg.c_str(), msg.size());
 
 	if (!SocketUtil::sendData(sock, sendBuff, sendSize)) {
 		LOG_ERR(("setCamFOV: cannot send fov data"));
@@ -644,7 +644,7 @@ bool SimObj::setCamFOV(double fov, int camID)
 		return false;
 	}
 	delete [] sendBuff;
-  
+
 	return true;
 }
 
@@ -682,7 +682,7 @@ bool SimObj::setCamAS(double as, int camID)
 	ControllerImpl *conim = (ControllerImpl*)con;
 
 	SOCKET sock = conim->getDataSock();
-  
+
 	std::string msg;
 	const char *myName = name();
 	msg += std::string(myName) + ",";
@@ -691,7 +691,7 @@ bool SimObj::setCamAS(double as, int camID)
 
 	char *sendBuff = new char[sendSize];
 	char *p = sendBuff;
-  
+
 	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_SET_CAMERA_ASPECTRATIO);
 	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
 	BINARY_SET_DATA_S_INCR(p, unsigned short, camID);
@@ -705,7 +705,7 @@ bool SimObj::setCamAS(double as, int camID)
 		return false;
 	}
 	delete [] sendBuff;
-  
+
 	return true;  
 }
 
@@ -759,7 +759,7 @@ Vector3d & SimObj::getPosition(Vector3d &v)
 
 	char *sendBuff = new char[sendSize];
 	char *p = sendBuff;
-  
+
 	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_GET_ENTITY_POSITION);
 	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
 
@@ -780,14 +780,14 @@ Vector3d & SimObj::getPosition(Vector3d &v)
 		delete [] recvBuff;
 		return v;
 	}
-  
+
 	p = recvBuff;
 	bool success = BINARY_GET_BOOL_INCR(p);
 	if (success) {
 		double x = BINARY_GET_DOUBLE_INCR(p);
 		double y = BINARY_GET_DOUBLE_INCR(p);
 		double z = BINARY_GET_DOUBLE_INCR(p);
-    
+
 		v.set(x, y, z);
 	}
 	delete [] recvBuff; // added by Tetsunari Inamura on 2014-01-03
@@ -811,7 +811,7 @@ Rotation & SimObj::getRotation(Rotation &r)
 
 	char *sendBuff = new char[sendSize];
 	char *p = sendBuff;
-  
+
 	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_GET_ENTITY_ROTATION);
 	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
 
@@ -832,7 +832,7 @@ Rotation & SimObj::getRotation(Rotation &r)
 		delete [] recvBuff;
 		return r;
 	}
-  
+
 	p = recvBuff;
 	bool success = BINARY_GET_BOOL_INCR(p);
 	if (success) {
@@ -840,7 +840,7 @@ Rotation & SimObj::getRotation(Rotation &r)
 		double qx = BINARY_GET_DOUBLE_INCR(p);
 		double qy = BINARY_GET_DOUBLE_INCR(p);
 		double qz = BINARY_GET_DOUBLE_INCR(p);
-    
+
 		r.setQuaternion(qw, qx, qy, qz);
 	}
 	delete [] recvBuff; // added by Tetsunari Inamura on 2014-01-03
@@ -872,66 +872,66 @@ Vector3d & SimObj::getTorque(Vector3d &v)
 void SimObj::setCameraViewPoint(Vector3d v,int camID)
 {
 	if (m_parts.size() == 1)
+	{
+		if (camID == 1)
 		{
-			if (camID == 1)
-				{
-					vpx(v.x());
-					vpy(v.y());
-					vpz(v.z());
-				}
-			else
-				{
-					LOG_ERR(("setCameraViewPoint : cannot get Camera ID %d",camID));
-				}
+			vpx(v.x());
+			vpy(v.y());
+			vpz(v.z());
 		}
+		else
+		{
+			LOG_ERR(("setCameraViewPoint : cannot get Camera ID %d",camID));
+		}
+	}
 	else
+	{
+		if      (camID == 1) {epx1(v.x()); epy1(v.y()); epz1(v.z());}
+		else if (camID == 2) {epx2(v.x()); epy2(v.y()); epz2(v.z());}
+		/*
+		else if (camID == 3) {epx3(v.x()); epy3(v.y()); epz3(v.z());}
+		else if (camID == 4) {epx4(v.x()); epy4(v.y()); epz4(v.z());}
+		else if (camID == 5) {epx5(v.x()); epy5(v.y()); epz5(v.z());}
+		else if (camID == 6) {epx6(v.x()); epy6(v.y()); epz6(v.z());}
+		else if (camID == 7) {epx7(v.x()); epy7(v.y()); epz7(v.z());}
+		else if (camID == 8) {epx8(v.x()); epy8(v.y()); epz8(v.z());}
+		else if (camID == 9) {epx9(v.x()); epy9(v.y()); epz9(v.z());}
+		*/
+		else
 		{
-			if      (camID == 1) {epx1(v.x()); epy1(v.y()); epz1(v.z());}
-			else if (camID == 2) {epx2(v.x()); epy2(v.y()); epz2(v.z());}
-			/*
-			else if (camID == 3) {epx3(v.x()); epy3(v.y()); epz3(v.z());}
-			else if (camID == 4) {epx4(v.x()); epy4(v.y()); epz4(v.z());}
-			else if (camID == 5) {epx5(v.x()); epy5(v.y()); epz5(v.z());}
-			else if (camID == 6) {epx6(v.x()); epy6(v.y()); epz6(v.z());}
-			else if (camID == 7) {epx7(v.x()); epy7(v.y()); epz7(v.z());}
-			else if (camID == 8) {epx8(v.x()); epy8(v.y()); epz8(v.z());}
-			else if (camID == 9) {epx9(v.x()); epy9(v.y()); epz9(v.z());}
-			*/
-			else
-				{
-					LOG_ERR(("setCameraViewPoint : cannot get Camera ID %d",camID));
-				}
+			LOG_ERR(("setCameraViewPoint : cannot get Camera ID %d",camID));
 		}
+	}
 }
 
 
 Vector3d & SimObj::getCameraViewPoint(Vector3d &v,int camID)
 {
 	if (m_parts.size() == 1)
+	{
+		if (camID == 1)
+			v.set(vpx(), vpy(), vpz());
+		else
 		{
-			if (camID == 1)
-				v.set(vpx(), vpy(), vpz());
-			else
-				{
-					LOG_ERR(("getCameraViewPoint : cannot get camera ID [%d]",camID));
-				} 
+			LOG_ERR(("getCameraViewPoint : cannot get camera ID [%d]",camID));
 		}
+	}
 	else
-		{
-			if      (camID == 1) getCamera1ViewPoint(v);
-			else if (camID == 2) getCamera2ViewPoint(v);
-			/*
-			else if (camID == 3)   getCamera3ViewPoint(v);
-			else if (camID == 4)   getCamera4ViewPoint(v);
-			else if (camID == 5)   getCamera5ViewPoint(v);
-			else if (camID == 6)   getCamera6ViewPoint(v);
-			else if (camID == 7)   getCamera7ViewPoint(v);
-			else if (camID == 8)   getCamera8ViewPoint(v);
-			else if (camID == 9)   getCamera9ViewPoint(v);
-			*/
-			else
-				LOG_ERR(("getCameraViewPoint : cannot get Camera ID [%d]",camID));
-		}
+	{
+		if      (camID == 1) getCamera1ViewPoint(v);
+		else if (camID == 2) getCamera2ViewPoint(v);
+		/*
+		else if (camID == 3)   getCamera3ViewPoint(v);
+		else if (camID == 4)   getCamera4ViewPoint(v);
+		else if (camID == 5)   getCamera5ViewPoint(v);
+		else if (camID == 6)   getCamera6ViewPoint(v);
+		else if (camID == 7)   getCamera7ViewPoint(v);
+		else if (camID == 8)   getCamera8ViewPoint(v);
+		else if (camID == 9)   getCamera9ViewPoint(v);
+		*/
+		else
+			LOG_ERR(("getCameraViewPoint : cannot get Camera ID [%d]",camID));
+	}
 	return v;
 }
 
@@ -1001,7 +1001,7 @@ void SimObj::setPosition(double x, double y, double z)
 
 	char *sendBuff = new char[sendSize];
 	char *p = sendBuff;
-  
+
 	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_SET_ENTITY_POSITION);
 	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
 
@@ -1043,7 +1043,7 @@ bool SimObj::getIsGrasped()
 	// Prepare header
 	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_GET_ISGRASPED);
 	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
-  
+
 	memcpy(p, msg.c_str(), msg.size());
 
 	if (!SocketUtil::sendData(sock, sendBuff, sendSize)) {
@@ -1060,7 +1060,7 @@ bool SimObj::getIsGrasped()
 		//delete [] recvBuff; //comment out by Tetsunari Inamura on 2014-01-03
 		return false;
 	}
-  
+
 	p = recvBuff;
 	bool result = BINARY_GET_BOOL_INCR(p);
 
@@ -1094,11 +1094,11 @@ void SimObj::setAxisAndAngle(double ax, double ay, double az, double angle, doub
 {
 	Super::setAxisAndAngle(ax, ay, az, angle, direct);
 	m_ops |= OP_SET_ROTATION;
-    
+
 	Rotation r;
 	r.setAxisAndAngle(ax, ay, az, angle);
 	dReal *q = (dReal *)r.q();
-  
+
 	setEntityQuaternion(q, false);
 }
 
@@ -1106,7 +1106,7 @@ void SimObj::setRotation(const Rotation &r)
 {
 	Super::setRotation(r);
 	m_ops |= OP_SET_ROTATION;
-  
+
 	dReal *q = (dReal *)r.q();
 	setEntityQuaternion(q, true);
 }
@@ -1122,7 +1122,7 @@ bool SimObj::setEntityQuaternion(dReal *qua, bool abs)
 {
 	Controller *con = (Controller*)m_sender;
 	ControllerImpl *conim = (ControllerImpl*)con;
-  
+
 	SOCKET sock = conim->getDataSock();
 
 	std::string msg;
@@ -1133,7 +1133,7 @@ bool SimObj::setEntityQuaternion(dReal *qua, bool abs)
 
 	char *sendBuff = new char[sendSize];
 	char *p = sendBuff;
-  
+
 	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_SET_ENTITY_ROTATION);
 	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
 
@@ -1151,7 +1151,7 @@ bool SimObj::setEntityQuaternion(dReal *qua, bool abs)
 		return false;
 	}
 	delete [] sendBuff;
-  
+
 	return true;
 }
 
@@ -1435,7 +1435,7 @@ void SimObj::setAngularVelocityToJoint(const char *jointName, double v, double m
 	  CommRequestSetAngularVelocityToJointEncoder enc(name(), jointName, v, max);
 	  m_sender->send(enc);
 	*/
-  
+
 	Controller *con       = (Controller*)m_sender;
 	ControllerImpl *conim = (ControllerImpl*)con;
 
@@ -1465,7 +1465,6 @@ void SimObj::setAngularVelocityToJoint(const char *jointName, double v, double m
 		return;
 	}
 	delete [] sendBuff;
-
 }
 
 
@@ -1518,11 +1517,11 @@ double SimObj::getJointAngle(const char *jointName)
 		delete [] recvBuff;
 		return false;
 	}
-  
+
 	char *p = recvBuff;
 	bool success = BINARY_GET_BOOL_INCR(p);
 	double angle = BINARY_GET_DOUBLE_INCR(p);
-  
+
 	delete [] recvBuff; // add by Tetsunari Inamura on 2014-01-03
 	return angle;
 }
@@ -1532,16 +1531,16 @@ double SimObj::getJointAngle(const char *jointName)
 std::map<std::string, double> SimObj::getAllJointAngles()
 {
 	std::map<std::string, double> alljoints;
-  
+
 	std::string msg;
 	const char *myName = name();
 	msg += std::string(myName) + ",";
 	//msg += std::string(jointName) + ",";
-  
+
 	if (!sendRequest(msg, REQUEST_GET_ALL_JOINT_ANGLES)) {
 		LOG_ERR(("getAllJointAngles: cannot send request"));
 	}
-  
+
 	Controller *con = (Controller*)m_sender;
 	ControllerImpl *conim = (ControllerImpl*)con;
 
@@ -1564,11 +1563,11 @@ std::map<std::string, double> SimObj::getAllJointAngles()
 		delete [] recvBuff;
 		return alljoints;
 	}
-  
+
 	p = recvBuff;
 
 	for (int i = 0; i < jointSize; i++) {
-    
+
 		std::string name;
 		if (i == 0) {
 			name = strtok(p,",");
@@ -1625,7 +1624,7 @@ bool SimObj::getJointPosition( Vector3d &pos, const char *jointName)
 		delete [] recvBuff;
 		return false;
 	}
-  
+
 	p = recvBuff;
 	double x = BINARY_GET_DOUBLE_INCR(p);
 	double y = BINARY_GET_DOUBLE_INCR(p);
@@ -1678,7 +1677,7 @@ bool SimObj::getPartsPosition(Vector3d &pos, const char *partsName)
 		delete [] recvBuff;
 		return false;
 	}
-  
+
 	p = recvBuff;
 	double x = BINARY_GET_DOUBLE_INCR(p);
 	double y = BINARY_GET_DOUBLE_INCR(p);
@@ -1732,12 +1731,12 @@ bool SimObj::getPartsQuaternion(double &w,double &x,double &y,double &z, const c
 		delete [] recvBuff;
 		return false;
 	}
-  
+
 	p = recvBuff;
-	 w = BINARY_GET_DOUBLE_INCR(p);
-	 x = BINARY_GET_DOUBLE_INCR(p);
-	 y = BINARY_GET_DOUBLE_INCR(p);
-	 z = BINARY_GET_DOUBLE_INCR(p);
+	w = BINARY_GET_DOUBLE_INCR(p);
+	x = BINARY_GET_DOUBLE_INCR(p);
+	y = BINARY_GET_DOUBLE_INCR(p);
+	z = BINARY_GET_DOUBLE_INCR(p);
 	bool success = BINARY_GET_BOOL_INCR(p);
 
 	//pos.set(x, y, z);
@@ -1907,7 +1906,7 @@ bool SimObj::getPointingVector(Vector3d &vec, const char *joint1, const char *jo
 		delete [] recvBuff;
 		return false;
 	}
-  
+
 	p = recvBuff;
 	double x = BINARY_GET_DOUBLE_INCR(p);
 	double y = BINARY_GET_DOUBLE_INCR(p);
@@ -1937,8 +1936,7 @@ inline bool NULL_STRING(const char *str)
 	return (str == NULL || strlen(str) <= 0)? true: false;
 }
 
-void SimObj::connectJoint(const char *jointName, const char *myParts,
-		     const char *targetName, const char *targetParts)
+void SimObj::connectJoint(const char *jointName, const char *myParts, const char *targetName, const char *targetParts)
 {
 	if (NULL_STRING(jointName)) {
 		LOG_ERR(("connectJoint : no joint name"));
@@ -1948,12 +1946,11 @@ void SimObj::connectJoint(const char *jointName, const char *myParts,
 		LOG_ERR(("connectJoint : no target name"));
 		return;
 	}
-	CommRequestConnectJointEncoder enc(jointName,
-					   name(), myParts,
-					   targetName, targetParts);
-	m_sender->send(enc);
+	CommRequestConnectJointEncoder enc(jointName, name(), myParts, targetName, targetParts);
 
+	m_sender->send(enc);
 }
+
 void SimObj::releaseJoint(const char *jointName)
 {
 	if (NULL_STRING(jointName)) {
@@ -1966,7 +1963,6 @@ void SimObj::releaseJoint(const char *jointName)
 
 bool SimObj::sendRequest(std::string msg, int type)
 {
-
 	Controller *con = (Controller*)m_sender;
 	ControllerImpl *conim = (ControllerImpl*)con;
 
@@ -1998,14 +1994,14 @@ Command * SimObj::createJointControlCommand()
 	typedef JointValueM M;
 	M &m = m_jointValues;
 	for (M::iterator i=m.begin(); i!=m.end(); i++) {
-		S name = i->first;
+		std::string name = i->first;
 		double v = i->second;
 		cmd->set(name.c_str(), v);
 	}
 	return cmd;
 }
 #endif
-#endif //	CONTROLLER
+#endif //  CONTROLLER
 
 
 
@@ -2016,18 +2012,18 @@ bool RobotObj::setWheel(double wheelRadius, double wheelDistance)
 
 	Controller *con = (Controller*)m_sender;
 	ControllerImpl *conim = (ControllerImpl*)con;
-  
+
 	SOCKET sock = conim->getDataSock();
-  
+
 	std::string msg;
 	const char *myName = name();
 	msg += std::string(myName) + ",";
-  
+
 	int sendSize = msg.size() + sizeof(unsigned short) * 2 + sizeof(double) * 2;
-  
+
 	char *sendBuff = new char[sendSize];
 	char *p = sendBuff;
-  
+
 	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_SET_WHEEL);
 	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
 
@@ -2052,25 +2048,25 @@ bool RobotObj::setWheelVelocity(double left, double right)
 
 	Controller *con = (Controller*)m_sender;
 	ControllerImpl *conim = (ControllerImpl*)con;
-  
+
 	SOCKET sock = conim->getDataSock();
-  
+
 	std::string msg;
 	const char *myName = name();
 	msg += std::string(myName) + ",";
-  
+
 	int sendSize = msg.size() + sizeof(unsigned short) * 2 + sizeof(double) * 2;
-  
+
 	char *sendBuff = new char[sendSize];
 	char *p = sendBuff;
-  
+
 	BINARY_SET_DATA_S_INCR(p, unsigned short, REQUEST_SET_WHEEL_VELOCITY);
 	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
 
 	BINARY_SET_DOUBLE_INCR(p, left);
 	BINARY_SET_DOUBLE_INCR(p, right);
 
-	memcpy(p, msg.c_str(), msg.size());  
+	memcpy(p, msg.c_str(), msg.size());
 
 	if (!SocketUtil::sendData(sock, sendBuff, sendSize)) {
 		LOG_ERR(("setWheelVelocity: cannot send request"));

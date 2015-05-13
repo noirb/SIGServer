@@ -23,13 +23,14 @@ SimWorld::SimWorld(const char *name_)
 
 void SimWorld::push(SimObjBase *obj)
 {
-  m_objs[obj->name()] = obj;
+	m_objs[obj->name()] = obj;
 }
 
 // add by sekikawa (2007/10/3)
 SimObjBase * SimWorld::getObjById(SimObjBase::Id id)
 {
-	M::iterator i;
+	std::map<std::string, SimObjBase*>::iterator i;
+
 	for (i=m_objs.begin(); i!=m_objs.end(); i++) {
 		SimObjBase *obj = i->second;
 		if (obj->id() == id) return obj;
@@ -39,7 +40,8 @@ SimObjBase * SimWorld::getObjById(SimObjBase::Id id)
 
 void SimWorld::free_()
 {
-	M::iterator i;
+	std::map<std::string, SimObjBase*>::iterator i;
+
 	for (i=m_objs.begin(); i!=m_objs.end(); i++) {
 		SimObjBase *obj = i->second;
 		delete obj;
@@ -49,7 +51,7 @@ void SimWorld::free_()
 
 void SimWorld::dump()
 {
-	for (M::iterator i=m_objs.begin(); i!=m_objs.end(); i++) {
+	for (std::map<std::string, SimObjBase*>::iterator i=m_objs.begin(); i!=m_objs.end(); i++) {
 		i->second->dump();
 	}
 }
@@ -58,7 +60,8 @@ int SimWorld::getAllEntitiesDataSize()
 {
 	int size = 0;
 
-	M::iterator i;
+	std::map<std::string, SimObjBase*>::iterator i;
+
 	for (i=m_objs.begin(); i!=m_objs.end(); i++) {
 		// name
 		size += i->first.size();
@@ -76,7 +79,7 @@ void SimWorld::draw(GLContext &c)
 	assert(m_ground);
 	m_ground->draw(c);
 
-	for (M::iterator i=m_objs.begin(); i!=m_objs.end(); i++) {
+	for (std::map<std::string, SimObjBase*>::iterator i=m_objs.begin(); i!=m_objs.end(); i++) {
 		SimObjBase *obj = i->second;
 		obj->draw(c);
 	}
