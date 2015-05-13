@@ -39,11 +39,10 @@ class BodyParser
 private:
 	TransformStack m_transform;
 	SSimObjBuilder m_b;
-		
+
 public:
 	BodyParser(SSimObjBuilder &b) : m_b(b)
 	{
-
 	}
 	void parse(DOMNode &n);
 private:
@@ -57,14 +56,15 @@ void BodyParser::parse(DOMNode &target)
 {
 	DOMNode *curr = target.getFirstChild();
 
-	Eval::M	dict;
+	std::map<std::string, std::string> dict;
 	
 	while (curr) {
 		char *name = XMLString::transcode(curr->getNodeName());
+
 		if (strcmp(name, "joint") == 0) {
 			Eval eval(&dict);
-			JointParser parse(m_transform.curr(), m_b);
-			parse(*curr, eval);
+			JointParser parser(m_transform.curr(), m_b);
+			parser.parse(*curr, eval);
 		} else if (strcmp(name, "define-param") == 0) {
 			char *n = XMLUtils::getAttribute(*curr, "name");
 			char *v = XMLUtils::getAttribute(*curr, "value");
@@ -94,6 +94,7 @@ bool BodyXMLReader::read(const char *fname)
 	DOMElement *root = doc->getDocumentElement();
 	char *name = XMLString::transcode(root->getNodeName());
 	DUMP1(("%s\n", name));
+
 	if (strcmp("body", name) == 0) {
 		try {
 			BodyParser bparser(b);
@@ -117,7 +118,6 @@ bool BodyXMLReader::read(const char *fname)
 
 int main(int argc, char **argv)
 {
-
 	xercesc::XMLPlatformUtils::Initialize();
 
 	//	char *defaultfname = "conf/robot-body.xml";
@@ -126,7 +126,7 @@ int main(int argc, char **argv)
 	if (argc == 2) {
 		fname = argv[1];
 	}
-	       
+
 
 	SSimObj obj;
 	ODEWorld *w = ODEWorld::create(ODEWorld::Gravity(0, -9.8, 0), 0);

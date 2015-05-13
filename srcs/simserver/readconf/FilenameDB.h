@@ -10,16 +10,14 @@
 
 class FilenameDB
 {
-	typedef std::string S;
-	typedef std::vector<S> C;
 private:
-	C	m_dirs;
+	std::vector<std::string> m_dirs;
 public:
-	bool 		pushDirectory(const char *dir);
-	const char * 	getPath(const char *fname, char *buf);
+	bool pushDirectory(const char *dir);
+	const char * getPath(const char *fname, char *buf);
 
-	int		getSize() { return m_dirs.size(); }
-	const char *	getDirectory(int i) { return m_dirs[i].c_str(); }
+	int getSize() { return m_dirs.size(); }
+	const char * getDirectory(int i) { return m_dirs[i].c_str(); }
 };
 
 #endif // FilenameDB_h

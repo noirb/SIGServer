@@ -44,9 +44,8 @@ public:
 
 	void setReadTaskContainer(ReadTaskContainer *tc);
 
-
 	bool read(const char *fname);
-	bool operator()(const char *fname) { return read(fname); }
+//	bool operator()(const char *fname) { return read(fname); }
 };
 
 #endif

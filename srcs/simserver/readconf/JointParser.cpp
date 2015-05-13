@@ -32,13 +32,17 @@ void JointParser::parse(DOMNode &target, Eval &eval)
 	m_transform.push();
 
 	DOMNode *p = target.getFirstChild();
+
 	while (p) {
 		char *s = XMLString::transcode(p->getNodeName());
 		//		printf("%s\n", s);
+
 		if (strcmp(s, "type") == 0) {
+
 			char *type = XMLUtils::parseJointType(*p);
 			DUMP1(("type=\"%s\"\n", type));
 			Joint *j = 0;
+
 			if (strcmp(type, "fixed") == 0) {
 				j = new FixedJoint(name);
 			} else if (strcmp(type, "ball") == 0) {
@@ -86,7 +90,6 @@ void JointParser::parse(DOMNode &target, Eval &eval)
 			} else {
 				DUMP1(("no joint type"));
 			}
-				
 
 		} else if (strcmp(s, "children") == 0) {
 			DUMP1(("JOINT TRANSFORM TEST \n"));
@@ -117,16 +120,15 @@ void JointParser::parse(DOMNode &target, Eval &eval)
 
 void JointParser::parseChildren(xercesc::DOMNode &target, Eval &eval)
 {
-	typedef std::vector<DOMNode *> C;
-	C joints;
+	std::vector<DOMNode *> joints;
 	
 	DOMNode *curr = target.getFirstChild();
 	while (curr) {
 		char *s = XMLString::transcode(curr->getNodeName());
 
 		if (strcmp(s, "segment") == 0) {
-			SegmentParser parse(m_transform.curr(), eval);
-			SParts *p = parse(*curr);
+			SegmentParser parser(m_transform.curr(), eval);
+			SParts *p = parser.parse(*curr);
 			if (p) {
 				m_parts = p;
 				m_f.addParts(p);
@@ -139,14 +141,14 @@ void JointParser::parseChildren(xercesc::DOMNode &target, Eval &eval)
 	}
 
 	// Parse joints
-	for (C::iterator i=joints.begin(); i!=joints.end(); i++) {
+	for (std::vector<DOMNode *>::iterator i=joints.begin(); i!=joints.end(); i++) {
 		DOMNode *node = *i;
 		SParts *parts = m_parts? m_parts: m_parentParts;
 			
-		JointParser parse(m_transform.curr(), m_f, parts);
-		parse(*node, eval);
-		SParts *child = parse.getParts();
-		Joint *j = parse.getJoint();
+		JointParser parser(m_transform.curr(), m_f, parts);
+		parser.parse(*node, eval);
+		SParts *child = parser.getParts();
+		Joint *j = parser.getJoint();
 		if (parts && child && j) {
 			m_f.connect(j, parts, child);
 		}

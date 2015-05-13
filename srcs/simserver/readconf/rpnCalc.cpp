@@ -8,14 +8,14 @@
 #include <stack>
 #include <stdlib.h>
 
-#define TERMINATOR 		'\0'
-#define CHAR_ZERO		'0'
-#define CHAR_TO_NUMBER(c)	((c) - CHAR_ZERO)
+#define TERMINATOR '\0'
+#define CHAR_ZERO  '0'
+#define CHAR_TO_NUMBER(c)  ((c) - CHAR_ZERO)
 
-#define CHAR_PLUS	'+'
-#define CHAR_MINUS	'-'
-#define CHAR_MULTI	'*'
-#define CHAR_DIV	'/'
+#define CHAR_PLUS   '+'
+#define CHAR_MINUS  '-'
+#define CHAR_MULTI  '*'
+#define CHAR_DIV    '/'
 
 
 #define is_operator(c)	\
@@ -27,24 +27,24 @@
 static double calc(double a, double b, char op)
 {
 	switch(op) {
-	case CHAR_PLUS:
-		return (a + b);
-	case CHAR_MINUS:
-		return (a - b);
-	case CHAR_MULTI:
-		return (a * b);
-	case CHAR_DIV:
-		return (a / b);
-	default:
-		assert(0);
+		case CHAR_PLUS:
+			return (a + b);
+		case CHAR_MINUS:
+			return (a - b);
+		case CHAR_MULTI:
+			return (a * b);
+		case CHAR_DIV:
+			return (a / b);
+		default:
+			assert(0);
 	}
 	return 0.0;
 }
 
 int rpnCalc(char *equation, double *value)
 {
-	int	ret = 0;
-	char 	*p;
+	int  ret = 0;
+	char *p;
 
 	std::stack<double> stack;
 	for (p = equation; *p != TERMINATOR; p++) {

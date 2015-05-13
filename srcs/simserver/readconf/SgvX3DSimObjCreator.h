@@ -35,10 +35,7 @@ namespace Sgv
 
 #if 1
 // FIX20110421(ExpSS)
-		bool createSSimObjFromX3D(
-			const char *x3dFileName,
-			const char *entClassName,
-			bool bGenSimpleShapeFromX3D);
+		bool createSSimObjFromX3D(const char *x3dFileName, const char *entClassName, bool bGenSimpleShapeFromX3D);
 
 		bool loadX3DFromFile(const char *x3dFileName);
 #else
@@ -130,12 +127,13 @@ namespace Sgv
 
 	enum NodeType {
 		NODE_TYPE_NOT_SET = -1,
-		NODE_TYPE_JOINT,	 
-		NODE_TYPE_SEGMENT,	 
-		NODE_TYPE_TRANSFORM, 
-		NODE_TYPE_SHAPE,	 
+		NODE_TYPE_JOINT,
+		NODE_TYPE_SEGMENT,
+		NODE_TYPE_TRANSFORM,
+		NODE_TYPE_SHAPE,
 		NODE_TYPE_DUMMY_SEGMENT,
 	};
+
 	class TestNode
 	{
 	public:
@@ -169,7 +167,8 @@ namespace Sgv
 			}
 		}
 
-		void setJointType(SFString *type) {
+		void setJointType(SFString *type)
+		{
 			if (type) {
 				const char *v = type->getValue();
 				if (v) {
@@ -178,7 +177,8 @@ namespace Sgv
 			}
 		}
 
-		void setJointAxis(SFVec3f *v) {
+		void setJointAxis(SFVec3f *v)
+		{
 			if (v) {
 				m_jointAxis.set(v->x(), v->y(), v->z());
 			}
@@ -200,7 +200,8 @@ namespace Sgv
 
 		Rotation &getOrientation() { return m_rot; }
 
-		const char * getJointType() {
+		const char * getJointType()
+		{
 			return m_jointType.length() > 0? m_jointType.c_str(): NULL;
 		}
 
@@ -213,8 +214,9 @@ namespace Sgv
 		bool isRoot() { return m_parent == NULL? true: false; }
 
 		SParts * createDummyParts(BodyFactory &f, const Position &pos);
+
 	private:
-		NodeType	m_type;
+		NodeType m_type;
 
 		std::string m_name;
 		TestNode *m_parent;
@@ -228,12 +230,12 @@ namespace Sgv
 		std::string m_jointType;
 		Vector3d m_jointAxis;
 
-		Joint	*m_joint;
-		SParts	 *m_parts;
-		SParts	 *m_dummyParts;
+		Joint  *m_joint;
+		SParts *m_parts;
+		SParts *m_dummyParts;
 	public:
-		Joint *getJoint() { return m_joint; }
-		SParts * getSParts() { return m_parts; }
+		Joint  *getJoint()  { return m_joint; }
+		SParts *getSParts() { return m_parts; }
 	};
 
 	void printIndentSpace(int indent);

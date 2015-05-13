@@ -38,7 +38,6 @@ public:
 	virtual Position & applyScaleP(Position &) = 0;
 
 	virtual Size & applyScaleS(Size &) = 0;
-
 };
 
 

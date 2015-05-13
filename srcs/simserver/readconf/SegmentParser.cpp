@@ -26,8 +26,10 @@ void SegmentParser::parseTransform(DOMNode &target)
 {
 	DOMNode *p = target.getFirstChild();
 	m_transform.push();
+
 	while (p) {
 		char *s = XMLString::transcode(p->getNodeName());
+
 		if (strcmp(s, "translation") == 0) {
 			double *v = XMLUtils::parseTranslation(*p, m_eval);
 			m_transform.curr().push(Vector3d(v[0], v[1], v[2]));
@@ -52,13 +54,15 @@ void SegmentParser::parseTransform(DOMNode &target)
 void SegmentParser::parseNode(DOMNode &target)
 {
 	DOMNode *p = target.getFirstChild();
+
 	while (p) {
 		char *s = XMLString::transcode(p->getNodeName());
+
 		if (strcmp(s, "transform") == 0) {
 			parseTransform(*p);
-		} else 	if (strcmp(s, "geometry") == 0) {
-			GeometryParser parse(m_name.c_str(), m_transform.curr());
-			SParts *parts = parse(*p, m_eval);
+		} else if (strcmp(s, "geometry") == 0) {
+			GeometryParser parser(m_name.c_str(), m_transform.curr());
+			SParts *parts = parser.parse(*p, m_eval);
 			if (parts) {
 				m_parts = parts;
 			}

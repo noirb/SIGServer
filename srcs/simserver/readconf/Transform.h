@@ -17,11 +17,12 @@ public:
 	Transform(double x, double y, double z) : m_v(x, y, z) { }
 	Transform(const Transform &o) : m_rot(o.m_rot), m_v(o.m_v) {;}
 
-	void	push(const Vector3d &v) {
+	void push(const Vector3d &v)
+	{
 		m_v.shift(v);
 	}
 		
-	void 	push(const Rotation &r)
+	void push(const Rotation &r)
 	{
 		Rotation rr(r);
 		rr *= m_rot;

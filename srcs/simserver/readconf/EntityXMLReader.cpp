@@ -57,8 +57,7 @@ static std::string filename(std::string dirname, std::string fname)
 	return f;
 }
 
-static std::string createKey(const char *agentName, const char *partsName,
-				 const char *stateName, const char *stateValue)
+static std::string createKey(const char *agentName, const char *partsName, const char *stateName, const char *stateValue)
 {
 	std::string key = agentName;
 	key += ":";
@@ -85,11 +84,10 @@ inline bool ZERO_STRING(std::string s)
 START_NS(NS);
 
 struct X3D {
-	typedef std::string S;
-	S	partsName;
-	S	stateName;
-	S	stateValue;
-	S	fileName;
+	std::string partsName;
+	std::string stateName;
+	std::string stateValue;
+	std::string fileName;
 };
 
 // =========================================
@@ -172,29 +170,28 @@ private:
 struct Handler : public xercesc::HandlerBase
 {
 	typedef xercesc::HandlerBase Super;
-	typedef std::string S;
 
-	S	m_fname;
-	FilenameDB &m_fdb;
-	SSimObj &m_obj;
-	ODEWorld &m_w;
+	std::string  m_fname;
+	FilenameDB  &m_fdb;
+	SSimObj     &m_obj;
+	ODEWorld    &m_w;
 	ReadTaskContainer *m_tasks;
-	int	m_depth;
-	S	m_classname;
+	int          m_depth;
+	std::string  m_classname;
 
 #if 1
 // FIX20110421(ExpSS)
-	X3DDB &	m_x3ddb;
-	bool m_bInsideFileNameTag;
-	S m_x3dFileName;
-	bool m_bGenSimpleShapeFromX3D;
-	bool m_bFirstX3DTag;
+	X3DDB       &m_x3ddb;
+	bool         m_bInsideFileNameTag;
+	std::string  m_x3dFileName;
+	bool         m_bGenSimpleShapeFromX3D;
+	bool         m_bFirstX3DTag;
 
 	// for simpleShape/simpleShapeFile tag
 	SimpleShapeDB& m_ssdb;
-	bool m_bInsideSimpleShapeTag;
-	bool m_bInsideSimpleShapeFileTag;
-	S m_simpleShapeFileName;
+	bool           m_bInsideSimpleShapeTag;
+	bool           m_bInsideSimpleShapeFileTag;
+	std::string    m_simpleShapeFileName;
 	SimpleShapeElem::SS_TYPE m_type;
 	double m_x, m_y, m_z;
 	double m_sx, m_sy, m_sz;
@@ -203,12 +200,12 @@ struct Handler : public xercesc::HandlerBase
 #else
 // orig
 	// for x3d tag
-	X3DDB &	m_db;
-	bool	m_tagFilename;
+	X3DDB & m_db;
+	bool    m_tagFilename;
 #endif
-	X3D *	m_x3d;
+	X3D *   m_x3d;
 
-	int	failed;
+	int failed;
 
 #if 1
 // FIX20110421(ExpSS)
@@ -235,12 +232,12 @@ struct Handler : public xercesc::HandlerBase
 	Handler(FilenameDB &fdb, SSimObj &obj, ODEWorld &w, X3DDB &db)
 		: Super(),
 		  m_fdb(fdb), m_obj(obj), m_tasks(NULL),
-		   m_w(w) ,
+		  m_w(w) ,
 		  m_depth(0), m_db(db), m_x3d(NULL), m_tagFilename(false), failed(0) {}
 #endif
 
 	std::string setFilename(const char *fname) {
-		S tmp = m_fname;
+		std::string tmp = m_fname;
 		m_fname = fname;
 		return tmp;
 	}
@@ -311,8 +308,8 @@ struct Handler : public xercesc::HandlerBase
 		else if (strcmp(tagName, "body") == 0)
 		{
 #if 1
-			// sekikawa 20110328
-			start_Body(attrs);
+		// sekikawa 20110328
+		start_Body(attrs);
 #endif
 		}
 		else if (strcmp(tagName, "x3d") == 0)
@@ -470,14 +467,14 @@ struct Handler : public xercesc::HandlerBase
 		char *fname = GET_VALUE(attrs, "filename");
 		if (fname)
 		{
-			BodyXMLReader read(m_obj, m_w);
+			BodyXMLReader reader(m_obj, m_w);
 			//S f = filename(m_xmldir, fname);
 
 			char buf[4096];
 			const char *f = m_fdb.getPath(fname, buf);
 			if (f != NULL)
 			{
-				read(f);
+				reader.read(f);
 			}
 			else
 			{
@@ -778,12 +775,12 @@ DUMP(("end_X3D\n"));
 			if (m_x3d->fileName.length() > 0)
 			{
 DUMP(("m_x3d->fileName=(%s)\n", m_x3d->fileName.c_str()));
- 
-                           std::string key = createKey(
-				        m_classname.c_str(),
-			                m_x3d->partsName.c_str(),
-					m_x3d->stateName.c_str(),
-					m_x3d->stateValue.c_str());
+
+				std::string key = createKey(
+				m_classname.c_str(),
+				m_x3d->partsName.c_str(),
+				m_x3d->stateName.c_str(),
+				m_x3d->stateValue.c_str());
 				// printf("key : %s\n", key.c_str());
 
 				m_x3ddb.set(key.c_str(), m_x3d->fileName.c_str());
@@ -827,8 +824,7 @@ DUMP(("push task : className=(%s)\n", m_classname.c_str()));
 		{
 			case SimpleShapeElem::SS_TYPE_BOX:
 			{
-				SimpleShapeElem *s = new SimpleShapeElem(
-					SimpleShapeElem::SS_TYPE_BOX);
+				SimpleShapeElem *s = new SimpleShapeElem(SimpleShapeElem::SS_TYPE_BOX);
 				s->setPosition(m_x, m_y, m_z);
 				s->setSize(m_sx, m_sy, m_sz);
 				m_ssdb.set(m_classname.c_str(), "body", s);
@@ -837,8 +833,7 @@ DUMP(("push task : className=(%s)\n", m_classname.c_str()));
 
 			case SimpleShapeElem::SS_TYPE_CYLINDER:
 			{
-				SimpleShapeElem *s = new SimpleShapeElem(
-					SimpleShapeElem::SS_TYPE_CYLINDER);
+				SimpleShapeElem *s = new SimpleShapeElem(SimpleShapeElem::SS_TYPE_CYLINDER);
 				s->setPosition(m_x, m_y, m_z);
 				s->setRadius(m_r);
 				s->setHeight(m_h);
@@ -848,8 +843,7 @@ DUMP(("push task : className=(%s)\n", m_classname.c_str()));
 
 			case SimpleShapeElem::SS_TYPE_SPHERE:
 			{
-				SimpleShapeElem *s = new SimpleShapeElem(
-					SimpleShapeElem::SS_TYPE_SPHERE);
+				SimpleShapeElem *s = new SimpleShapeElem(SimpleShapeElem::SS_TYPE_SPHERE);
 				s->setPosition(m_x, m_y, m_z);
 				s->setRadius(m_r);
 				m_ssdb.set(m_classname.c_str(), "body", s);
@@ -874,11 +868,13 @@ DUMP(("push task : className=(%s)\n", m_classname.c_str()));
 	{
 		char *tagName = XMLString::transcode(name);
 
-			//printf("start element(%s)\n", tagName);
+		//printf("start element(%s)\n", tagName);
 		// XMLUtils::dumpAttributeList(attrs);
 
 		if (strcmp(tagName, "define-class") == 0) {
+
 			char *xmlfile = GET_VALUE(attrs, "inherit");
+
 			if (xmlfile) {
 				char buf[4096];
 				const char *f = m_fdb.getPath(xmlfile, buf);
@@ -1058,7 +1054,7 @@ DUMP(("push task : className=(%s)\n", m_classname.c_str()));
 
 END_NS();
 
-#if 1	// {
+#if 1 // {
 // begin(FIX20110421(ExpSS))
 // =========================================
 //	EntityXMLReader
@@ -1153,7 +1149,7 @@ bool EntityXMLReader::read(const char *fname)
 	}
 }
 // end(orig)
-#endif	// }
+#endif // }
 
 #ifdef EntityXMLReader_test
 

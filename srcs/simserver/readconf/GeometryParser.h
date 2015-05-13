@@ -21,10 +21,10 @@ private:
 public:
 	GeometryParser(const char *name, const Transform &t) : m_name(name), m_t(t) {;}
 public:
-	SParts * operator()(xercesc::DOMNode &n, Eval &eval)
-	{
-		return parse(n, eval);
-	}
+//	SParts * operator()(xercesc::DOMNode &n, Eval &eval)
+//	{
+//		return parse(n, eval);
+//	}
 	SParts * parse(xercesc::DOMNode &target, Eval &);
 };
 

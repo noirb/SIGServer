@@ -16,9 +16,9 @@ class SParts;
 class SSimObjBuilder : public BodyFactory
 {
 private:
-	SSimObj &m_obj;
+	SSimObj  &m_obj;
 	ODEWorld &m_world;
-	Vector3d m_scale;
+	Vector3d  m_scale;
 public:
 	SSimObjBuilder(SSimObj &o, ODEWorld &w);
 	ODEWorld & getODEWorld(){return m_world;}

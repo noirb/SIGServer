@@ -15,11 +15,11 @@ private:
 	ODEWorld &m_w;
 public:
 	BodyXMLReader(SSimObj &obj, ODEWorld &w) : m_obj(obj), m_w(w) { ; }
-	bool	read(const char *fname);
-	bool	operator()(const char *fname)
-	{
-		return read(fname);
-	}
+	bool read(const char *fname);
+//	bool operator()(const char *fname)
+//	{
+//		return read(fname);
+//	}
 };
 
 

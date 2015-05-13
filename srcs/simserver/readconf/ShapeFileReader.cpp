@@ -46,9 +46,10 @@ bool ShapeFileReader::createRobotObj(CX3DParser *parser)
 		// Creation of root body
 		dBodyID body = dBodyCreate(world);
 		//m_rentity->setRootBody(body);
-      
+
 		// Assumption of only one (node?)
 		CX3DOpenHRPHumanoidNode *hnode =(CX3DOpenHRPHumanoidNode*)humanoid->getNode(0);
+
 		if (hnode) {
 			// -----------------------------------------
 			//   Extract a value in HumanoidBody field
@@ -56,29 +57,29 @@ bool ShapeFileReader::createRobotObj(CX3DParser *parser)
 			MFNode *hbody = hnode->getHumanoidBody();
 
 			// Get the number of nodes which are included in humanoidBody
-				int nbody = hbody->count();
-				for (int i = 0; i < nbody; i++) {
-					// Extract i-th node
-					CX3DNode *pNode = hbody->getNode(i);
-					if (pNode) {
-						switch(pNode->getNodeType())
+			int nbody = hbody->count();
+			for (int i = 0; i < nbody; i++) {
+				// Extract i-th node
+				CX3DNode *pNode = hbody->getNode(i);
+				if (pNode) {
+					switch(pNode->getNodeType())
+						{
+						// In case of Joint node
+						case OPENHRP_JOINT_NODE:
 							{
-							// In case of Joint node
-							case OPENHRP_JOINT_NODE:
-								{
-									// No translation and orientation
-									Vector3d trans(0.0, 0.0, 0.0);
-									CX3DOpenHRPJointNode *jNode = (CX3DOpenHRPJointNode *)pNode;
-									createRobotJoint(jNode, trans, "RootJoint");
-									break;
-								}
-							case BASE_NODE:
-								{
-									break;
-								}
-							default:
+								// No translation and orientation
+								Vector3d trans(0.0, 0.0, 0.0);
+								CX3DOpenHRPJointNode *jNode = (CX3DOpenHRPJointNode *)pNode;
+								createRobotJoint(jNode, trans, "RootJoint");
 								break;
 							}
+						case BASE_NODE:
+							{
+								break;
+							}
+						default:
+							break;
+						}
 					}
 				}
 			}
@@ -148,7 +149,7 @@ bool ShapeFileReader::createRobotJoint(CX3DOpenHRPJointNode *jNode, Vector3d tra
 
 		// Creation of joint
 		joint->joint = dJointCreateHinge(world, 0);
-    
+
 		// Central point
 		dJointSetHingeAnchor(joint->joint, atrans.x(), atrans.y(), atrans.z());
 
@@ -161,17 +162,17 @@ bool ShapeFileReader::createRobotJoint(CX3DOpenHRPJointNode *jNode, Vector3d tra
 		dJointSetHingeParam(joint->joint, dParamStopCFM, 0.0000000001);
 		LOG_MSG(("joint:%d axis(%f, %f, %f)",joint->joint,axis->x(), axis->y(), axis->z()));
 	}
-  
+
 	// HingeJoint
 	if (strcmp(jtype->getValue(), "fixed") == 0) {
 		// Creation of fixedjoint
 		joint->joint = dJointCreateFixed(world, 0);
 	}
 	// tmp_joint.push_back(joint);
-  
+
 	// Get children field
 	MFNode *children = jNode->getChildren();
-  
+
 	// The number of segments
 	int segmentNum = 0;
 
@@ -180,90 +181,92 @@ bool ShapeFileReader::createRobotJoint(CX3DOpenHRPJointNode *jNode, Vector3d tra
 
 	// Creation of ODE shape
 	for (int i = 0; i < children->count(); i++) {
+
 		// m_shapeCount = 0;
 		// Get child node
 		CX3DNode *childNode = children->getNode(i);
+
 		switch(childNode->getNodeType())
-			{
+		{
 			case OPENHRP_JOINT_NODE:
-				{
-					if (!addedJoint) {
-						// Add joint
-						m_rentity->addJoint(joint);
-						addedJoint = true;
-					}
-					CX3DOpenHRPJointNode *child = (CX3DOpenHRPJointNode *)childNode;
-					createRobotJoint(child, atrans, jname.c_str());
-					break;
+			{
+				if (!addedJoint) {
+					// Add joint
+					m_rentity->addJoint(joint);
+					addedJoint = true;
 				}
-			case OPENHRP_SEGMENT_NODE:
-				{
-					// Initialization of parts
-					m_entity->initObjParts();
-
-					m_shapeCount = 0;
-					CX3DOpenHRPSegmentNode *child = ( CX3DOpenHRPSegmentNode *)childNode;
-	    
-					createRobotSegment(child, atrans);
-					segmentNum++;
-
-					if (segmentNum > 1) 
-						LOG_ERR(("cannot set two segment at joint"));
-	    
-					// Get and configure the created parts
-					SSimObjParts parts = m_entity->getObjParts();
-
-					// Set parts to joint
-					joint->robotParts.objParts.mass = parts.mass;
-					joint->robotParts.objParts.body = parts.body;
-					LOG_MSG(("added body %d", parts.body));
-					joint->robotParts.objParts.pos  = parts.pos;
-
-					// Set displacement from the joint
-					SFVec3f *com = child->getCenterOfMass();
-					joint->robotParts.com.set(com->x(), com->y(), com->z());
-
-					// link name
-					joint->robotParts.name = child->getName()->getValue();
-
-					// mass
-					joint->robotParts.objParts.mass = child->getMass()->getValue();
-					//LOG_MSG(("body = %d", parts.body));
-
-					int psize = parts.geoms.size();
-					for (int i = 0; i < psize; i++) {
-						joint->robotParts.objParts.geoms.push_back(parts.geoms[i]);
-						ODEObjectContainer::getInstance()->
-							m_allEntities.insert(std::map<dGeomID,SSimRobotEntity*>::value_type(parts.geoms[i],m_rentity));
-								      
-						LOG_MSG(("added geom %d", parts.geoms[i]));
-					}
-	    
-					joint->has_geom = true;
-
-					// Is the max number of segment is 1?
-					if (!addedJoint) {
-						// Add joint
-						m_rentity->addJoint(joint);
-						addedJoint = true;
-					}
-					break;
-				}
-			default:
-				{
-					//CX3DParser::printLog("Could not create this node type.");
-					break;
-				}
+				CX3DOpenHRPJointNode *child = (CX3DOpenHRPJointNode *)childNode;
+				createRobotJoint(child, atrans, jname.c_str());
+				break;
 			}
+			case OPENHRP_SEGMENT_NODE:
+			{
+				// Initialization of parts
+				m_entity->initObjParts();
+
+				m_shapeCount = 0;
+				CX3DOpenHRPSegmentNode *child = ( CX3DOpenHRPSegmentNode *)childNode;
+
+				createRobotSegment(child, atrans);
+				segmentNum++;
+
+				if (segmentNum > 1)
+					LOG_ERR(("cannot set two segment at joint"));
+
+				// Get and configure the created parts
+				SSimObjParts parts = m_entity->getObjParts();
+
+				// Set parts to joint
+				joint->robotParts.objParts.mass = parts.mass;
+				joint->robotParts.objParts.body = parts.body;
+				LOG_MSG(("added body %d", parts.body));
+				joint->robotParts.objParts.pos  = parts.pos;
+
+				// Set displacement from the joint
+				SFVec3f *com = child->getCenterOfMass();
+				joint->robotParts.com.set(com->x(), com->y(), com->z());
+
+				// link name
+				joint->robotParts.name = child->getName()->getValue();
+
+				// mass
+				joint->robotParts.objParts.mass = child->getMass()->getValue();
+				//LOG_MSG(("body = %d", parts.body));
+
+				int psize = parts.geoms.size();
+				for (int i = 0; i < psize; i++) {
+					joint->robotParts.objParts.geoms.push_back(parts.geoms[i]);
+					ODEObjectContainer::getInstance()->
+						m_allEntities.insert(std::map<dGeomID,SSimRobotEntity*>::value_type(parts.geoms[i],m_rentity));
+
+					LOG_MSG(("added geom %d", parts.geoms[i]));
+				}
+
+				joint->has_geom = true;
+
+				// Is the max number of segment is 1?
+				if (!addedJoint) {
+					// Add joint
+					m_rentity->addJoint(joint);
+					addedJoint = true;
+				}
+				break;
+			}
+			default:
+			{
+				//CX3DParser::printLog("Could not create this node type.");
+				break;
+			}
+		}
 	}
-  
+
 	// A joint that doesn't have segment, also does not have geometory.
 	//if (segmentNum == 0)
 	//joint.has_geom = false;
 	return true;
 }
 
-bool    ShapeFileReader::createRobotSegment(CX3DOpenHRPSegmentNode *sNode, Vector3d trans)
+bool ShapeFileReader::createRobotSegment(CX3DOpenHRPSegmentNode *sNode, Vector3d trans)
 {
 	SFVec3f *com = sNode->getCenterOfMass();
 	Vector3d vec(com->x(), com->y(), com->z());
@@ -295,28 +298,28 @@ bool    ShapeFileReader::createRobotSegment(CX3DOpenHRPSegmentNode *sNode, Vecto
 		// get child node
 		CX3DNode *childNode = children->getNode(i);
 		switch(childNode->getNodeType())
-			{
+		{
 			case TRANSFORM_NODE:
-				{
-					CX3DTransformNode *child = (CX3DTransformNode *)childNode;
-					createTransform(child, atrans);
-					break;
-				}
-			case SHAPE_NODE:
-				{
-					CX3DShapeNode *child = (CX3DShapeNode *)childNode;
-					// No translation and rotation
-					Vector3d trans(0.0, 0.0, 0.0);
-					dReal rot[4] = {0.0, 0.0, 0.0, 0.0};
-					createShape(child, shapeNum, trans, rot);
-					break;
-				}
-			default:
-				{
-					//CX3DParser::printLog("Could not create this node type. %d", childNode->getNodeType());
-					break;
-				}
+			{
+				CX3DTransformNode *child = (CX3DTransformNode *)childNode;
+				createTransform(child, atrans);
+				break;
 			}
+			case SHAPE_NODE:
+			{
+				CX3DShapeNode *child = (CX3DShapeNode *)childNode;
+				// No translation and rotation
+				Vector3d trans(0.0, 0.0, 0.0);
+				dReal rot[4] = {0.0, 0.0, 0.0, 0.0};
+				createShape(child, shapeNum, trans, rot);
+				break;
+			}
+			default:
+			{
+				//CX3DParser::printLog("Could not create this node type. %d", childNode->getNodeType());
+				break;
+			}
+		}
 	}
 	//m_rentity->addParts(name.c_str());
 	return true;
@@ -325,7 +328,6 @@ bool    ShapeFileReader::createRobotSegment(CX3DOpenHRPSegmentNode *sNode, Vecto
 
 bool ShapeFileReader::createObj(CX3DParser *parser)
 {
-
 	if (!computeCenterOfMass(parser)) {
 		LOG_ERR(("failed to comute center of mass"));
 	}
@@ -336,6 +338,7 @@ bool ShapeFileReader::createObj(CX3DParser *parser)
 
 	// In case of Group node exists
 	if (groupNum > 0) {
+
 		// Loop for the number of Groups nodes (if Group nodes exist)
 		for (int i = 0; i < groupNum; i++) {
 			CX3DGroupNode *pGroup = (CX3DGroupNode *)(groupNodes->getNode(i));
@@ -394,8 +397,6 @@ bool ShapeFileReader::createObj(CX3DParser *parser)
 				if (!createTransform(pTrans, vec)) {
 					break; // For confirmation
 				}
-
-
 			}
 		} 
 		// Finding Shape node if there is no Transform node
@@ -409,13 +410,13 @@ bool ShapeFileReader::createObj(CX3DParser *parser)
 				// No translation and rotation
 				Vector3d trans(0.0, 0.0, 0.0);
 				dReal rot[4] = {0.0, 0.0, 0.0, 0.0};
+
 				for (int i = 0; i < shapeNum; i++) {
 					CX3DShapeNode *pShape = (CX3DShapeNode*)shape->getNode(i);
 
 					if (!createShape(pShape, shapeNum, trans, rot)) {
 						break; 
 					}
-
 				}
 			}
 			// Returen false if Shape nodes also don't exist
@@ -427,13 +428,14 @@ bool ShapeFileReader::createObj(CX3DParser *parser)
 	return true;
 }
 
+
 bool ShapeFileReader::createTransform(CX3DTransformNode *trans, Vector3d utrans)
 {
 	// Finding Shape nodes which is included by Transform node
 	MFNode *shape = trans->searchNodesFromDirectChildren("Shape");
-  
+
 	// Get Translation and Rotation of Transform node
-	SFVec3f    *t = trans->getTranslation();
+	SFVec3f *t = trans->getTranslation();
 
 	Vector3d translation;
 	//translation.set(t->x() + utrans.x(), t->y() + utrans.y(), t->z() + utrans.z());
@@ -446,7 +448,7 @@ bool ShapeFileReader::createTransform(CX3DTransformNode *trans, Vector3d utrans)
 	rotation[2] = rot->z();
 	rotation[3] = rot->rot();
 
-  
+
 	//LOG_MSG(("rot->rot() = %f",rot->rot()));
 	// In case of no shape node
 	if (!shape) {
@@ -458,6 +460,7 @@ bool ShapeFileReader::createTransform(CX3DTransformNode *trans, Vector3d utrans)
 	else {
 		// Loop for each shape node
 		for (int i = 0; i < shape->count(); i++) {
+
 			CX3DShapeNode *pShape = (CX3DShapeNode *)shape->getNode(i);
 			// Fail to get shape node
 			if (!pShape) {
@@ -502,7 +505,7 @@ bool ShapeFileReader::createShape(CX3DShapeNode *shape, int shapeNum, Vector3d t
 	// Automatic Recognition of shape
 	else {
 		sshape = CSimplifiedShapeFactory::calcAutoFromShapeNode(shape, CSimplifiedShape::BOX);
-	}      
+	}
 	// Get ODE world
 	dWorldID world = m_entity->getWorld();
 
@@ -547,10 +550,10 @@ bool ShapeFileReader::createShape(CX3DShapeNode *shape, int shapeNum, Vector3d t
 	}
 	// Creation of ODE geometry according to the result of automatic recognition of shape
 	switch (type) {
-	case CSimplifiedShape::SPHERE:
+		case CSimplifiedShape::SPHERE:
 		{
 			CSimplifiedSphere *sphere = (CSimplifiedSphere *)sshape;
-	  
+
 			// Relative position from CoG
 			float cx = (sphere->x() - m_gx) * scale.x();
 			float cy = (sphere->y() - m_gy) * scale.y();
@@ -558,16 +561,16 @@ bool ShapeFileReader::createShape(CX3DShapeNode *shape, int shapeNum, Vector3d t
 			//pos.set(cx, cy, cz);
 
 			float r = sphere->radius();
-	  
+
 			// Calculate average of scale
 			double mean = (scale.x() + scale.y() + scale.z()) / 3.0;
 			r = r * mean;
-	  
+
 			// LOG_SYS(("Creating ODE shape \"sphere\""));
 			// Creation of geometry
-      
+
 			dGeomID g = dCreateSphere(0, r);
-      
+
 			dGeomTransformSetGeom(newgeom, g);
 
 			//dGeomSetPosition(g, cx + trans.x(), cy + trans.y(), cz + trans.z());
@@ -579,7 +582,7 @@ bool ShapeFileReader::createShape(CX3DShapeNode *shape, int shapeNum, Vector3d t
 			break;
 		} // case CSimplifiedShape::SPHERE:
 
-	case CSimplifiedShape::CYLINDER:
+		case CSimplifiedShape::CYLINDER:
 		{
 			CSimplifiedCylinder *cylinder = (CSimplifiedCylinder *)sshape;
 			float cx = (cylinder->x() - m_gx) * scale.x();
@@ -628,7 +631,7 @@ bool ShapeFileReader::createShape(CX3DShapeNode *shape, int shapeNum, Vector3d t
 
 			break;
 		} // case CSimplifiedShape::CYLINDER:
-	case CSimplifiedShape::BOX:
+		case CSimplifiedShape::BOX:
 		{
 
 			CSimplifiedBox *bx = (CSimplifiedBox *)sshape;
@@ -668,7 +671,6 @@ bool ShapeFileReader::createShape(CX3DShapeNode *shape, int shapeNum, Vector3d t
 			//dGeomSetPosition(g, cx, cy, cz );
 			//LOG_MSG(("geom pos (%f, %f, %f)",cx+tx, cy+ty, cz+tz));	    
 
-
 			// Calculation of Quaternion from rotational axis and angle
 			LOG_MSG(("rot[3] = %f",rot[3]));
 			float a = cos(rot[3]/2);
@@ -678,10 +680,10 @@ bool ShapeFileReader::createShape(CX3DShapeNode *shape, int shapeNum, Vector3d t
 			dGeomSetQuaternion(g,qua);
 
 			m_entity->addGeom(newgeom);
-      
-      
+
 		} // case CSimplifiedShape::BOX:
 	} // switch (sshape->getType()) {
+
 	delete sshape;
 	return true;
 }
@@ -694,61 +696,61 @@ CSimplifiedShape *ShapeFileReader::createSimpleShape(int ntype, int *stype, CX3D
 	//LOG_MSG(("test"));
 	//int type = geo->getNodeType();
 	switch(ntype)
-		{
+	{
 		case SPHERE_NODE:
-			{
-				CX3DSphereNode *sphereNode = (CX3DSphereNode*)geo;
-				float r = sphereNode->getRadius()->getValue();
-				CSimplifiedSphere *sphere = new CSimplifiedSphere();
-				sphere->radius(r);
+		{
+			CX3DSphereNode *sphereNode = (CX3DSphereNode*)geo;
+			float r = sphereNode->getRadius()->getValue();
+			CSimplifiedSphere *sphere = new CSimplifiedSphere();
+			sphere->radius(r);
 
-				// Set position to 0(temporal)
-				sphere->x(0.0);
-				sphere->y(0.0);
-				sphere->z(0.0);
+			// Set position to 0(temporal)
+			sphere->x(0.0);
+			sphere->y(0.0);
+			sphere->z(0.0);
 
-				*stype = CSimplifiedShape::SPHERE;
-				return sphere;
-				break;
-			}
-		case BOX_NODE:
-			{
-				CX3DBoxNode *boxNode = (CX3DBoxNode*)geo;
-
-				float x, y, z;
-				boxNode->getSize()->getValue(x, y, z);
-				CSimplifiedBox *box = new CSimplifiedBox();
-				box->sx(x);
-				box->sy(y);
-				box->sz(z);
-				// Set position to 0(temporal)
-				box->x(0.0);
-				box->y(0.0);
-				box->z(0.0);
-
-				*stype = CSimplifiedShape::BOX;
-				return box;
-				break;
-			}
-		case CYLINDER_NODE:
-			{
-				CX3DCylinderNode *cylinderNode = (CX3DCylinderNode*)geo;
-				float rad = cylinderNode->getRadius()->getValue();
-				float height = cylinderNode->getHeight()->getValue();
-				CSimplifiedCylinder *cylinder = new CSimplifiedCylinder();
-				cylinder->radius(rad);
-				cylinder->height(height);
-				LOG_MSG(("height = %f, radius = %f",height, rad));
-
-				cylinder->x(0.0);
-				cylinder->y(0.0);
-				cylinder->z(0.0);
-
-				*stype = CSimplifiedShape::CYLINDER;
-				return cylinder;
-				break;
-			}
+			*stype = CSimplifiedShape::SPHERE;
+			return sphere;
+			break;
 		}
+		case BOX_NODE:
+		{
+			CX3DBoxNode *boxNode = (CX3DBoxNode*)geo;
+
+			float x, y, z;
+			boxNode->getSize()->getValue(x, y, z);
+			CSimplifiedBox *box = new CSimplifiedBox();
+			box->sx(x);
+			box->sy(y);
+			box->sz(z);
+			// Set position to 0(temporal)
+			box->x(0.0);
+			box->y(0.0);
+			box->z(0.0);
+
+			*stype = CSimplifiedShape::BOX;
+			return box;
+			break;
+		}
+		case CYLINDER_NODE:
+		{
+			CX3DCylinderNode *cylinderNode = (CX3DCylinderNode*)geo;
+			float rad = cylinderNode->getRadius()->getValue();
+			float height = cylinderNode->getHeight()->getValue();
+			CSimplifiedCylinder *cylinder = new CSimplifiedCylinder();
+			cylinder->radius(rad);
+			cylinder->height(height);
+			LOG_MSG(("height = %f, radius = %f",height, rad));
+
+			cylinder->x(0.0);
+			cylinder->y(0.0);
+			cylinder->z(0.0);
+
+			*stype = CSimplifiedShape::CYLINDER;
+			return cylinder;
+			break;
+		}
+	}
 
 	return shape;
 }
@@ -771,6 +773,7 @@ bool ShapeFileReader::computeCenterOfMass(CX3DParser *parser)
   
 	// [ToDo] What should the system do in case of transform exist?
 	for (int i = 0; i < indsize; i++) {
+
 		CX3DIndexedFaceSetNode *index_node = (CX3DIndexedFaceSetNode *)ind->getNode(i);
 		CX3DCoordinateNode *Coord = (CX3DCoordinateNode *)(index_node->getCoord()->getNode());
 
@@ -794,7 +797,6 @@ bool ShapeFileReader::computeCenterOfMass(CX3DParser *parser)
 			if      (max_z < z) max_z = z;
 			else if (z < min_z) min_z = z;
 		}
-
 	}
 
 	// Calculation of center
@@ -810,7 +812,6 @@ bool ShapeFileReader::computeCenterOfMass(CX3DParser *parser)
 
 bool ShapeFileReader::COPFromMFNode(MFNode *node)
 {
-
 	int size = node->count();
 	if (size == 0) return true;
 	int allPt = 0;
@@ -853,10 +854,12 @@ bool ShapeFileReader::MinMaxFromIndexedNode(CX3DCoordinateNode* Coord,
 
 	// Get max and min
 	for (int i = 0; i < numPt; i++) {
+
 		SFVec3f vec = coord->getValue(i);
 		double x = vec.x();
 		double y = vec.y();
 		double z = vec.z();
+
 		//LOG_MSG(("vec(%f, %f, %f)", x, y, z));
 		if      (*max_x < x) *max_x = x;
 		else if (x < *min_x) *min_x = x;
@@ -881,90 +884,93 @@ bool ShapeFileReader::MinMaxFromMFNode(MFNode *node,
 	for (int i = 0; i < size; i++) {
 		// Get child node
 		CX3DNode *childNode = node->getNode(i);
+
 		switch(childNode->getNodeType())
-			{
+		{
 			case TRANSFORM_NODE:
-				{
+			{
 
-					CX3DTransformNode *child = (CX3DTransformNode *)childNode;
-					// Get Translation and Rotation of Transform node
-					SFVec3f    *t = child->getTranslation();
-					// Get children field
-					MFNode *children = child->getChildren();
+				CX3DTransformNode *child = (CX3DTransformNode *)childNode;
+				// Get Translation and Rotation of Transform node
+				SFVec3f    *t = child->getTranslation();
+				// Get children field
+				MFNode *children = child->getChildren();
 
-					MinMaxFromMFNode(children, min_x, min_y, min_z, max_x, max_y, max_z);
+				MinMaxFromMFNode(children, min_x, min_y, min_z, max_x, max_y, max_z);
 
-					break;
-				}
-			case SHAPE_NODE:
-				{
-
-					CX3DShapeNode *child = (CX3DShapeNode *)childNode;
-
-					// Get Geometry
-					CX3DNode *geoNode = child->getGeometry()->getNode();
-					if (!geoNode)
-						{
-							LOG_ERR(("could not get geometry field"));
-							return false;
-						}
-	  
-					int nodeType = geoNode->getNodeType();
-	  
-					// simple shape
-					if (nodeType != INDEXED_FACE_SET_NODE) {
-						switch(nodeType)
-							{
-							case SPHERE_NODE:
-								{
-									CX3DSphereNode *sphereNode = (CX3DSphereNode*)geoNode;
-									float r = sphereNode->getRadius()->getValue();
-									*min_x = *min_y = *min_z = -r;
-									*max_x = *max_y = *max_z = r;
-									break;
-								}
-							case BOX_NODE:
-								{
-									CX3DBoxNode *boxNode = (CX3DBoxNode*)geoNode;
-									float x, y, z;
-									boxNode->getSize()->getValue(x, y, z);
-									*min_x = -x;
-									*min_y = -y;
-									*min_z = -z;
-									*max_x = x;
-									*max_y = y;
-									*max_z = z;
-									break;
-								}
-							case CYLINDER_NODE:
-								{
-									CX3DCylinderNode *cylinderNode = (CX3DCylinderNode*)geoNode;
-									float rad = cylinderNode->getRadius()->getValue();
-									float height = cylinderNode->getHeight()->getValue();
-									*min_x = *min_z = -rad;
-									*max_x = *max_z = rad;
-									*min_y  = -height/2;
-									*max_y  = height/2;
-								}
-							default:
-								break;
-							}
-					}
-					else {
-						// Get IndexedFaceSetNode
-						CX3DIndexedFaceSetNode *index_node = (CX3DIndexedFaceSetNode *)geoNode;
-						if (index_node) {
-							// Get vertex coordinate (Shape cannot be created without this)
-							CX3DCoordinateNode *Coord = (CX3DCoordinateNode *)(index_node->getCoord()->getNode());
-							if (Coord) {
-								MinMaxFromIndexedNode(Coord, min_x, min_y, min_z, max_x, max_y, max_z);
-							}
-						}
-					}
-					break;
-				}
-			default:
 				break;
 			}
+			case SHAPE_NODE:
+			{
+				CX3DShapeNode *child = (CX3DShapeNode *)childNode;
+
+				// Get Geometry
+				CX3DNode *geoNode = child->getGeometry()->getNode();
+				if (!geoNode)
+					{
+						LOG_ERR(("could not get geometry field"));
+						return false;
+					}
+
+				int nodeType = geoNode->getNodeType();
+
+				// simple shape
+				if (nodeType != INDEXED_FACE_SET_NODE) {
+
+					switch(nodeType)
+					{
+						case SPHERE_NODE:
+						{
+							CX3DSphereNode *sphereNode = (CX3DSphereNode*)geoNode;
+							float r = sphereNode->getRadius()->getValue();
+							*min_x = *min_y = *min_z = -r;
+							*max_x = *max_y = *max_z = r;
+							break;
+						}
+						case BOX_NODE:
+						{
+							CX3DBoxNode *boxNode = (CX3DBoxNode*)geoNode;
+							float x, y, z;
+							boxNode->getSize()->getValue(x, y, z);
+							*min_x = -x;
+							*min_y = -y;
+							*min_z = -z;
+							*max_x = x;
+							*max_y = y;
+							*max_z = z;
+							break;
+						}
+						case CYLINDER_NODE:
+						{
+							CX3DCylinderNode *cylinderNode = (CX3DCylinderNode*)geoNode;
+							float rad = cylinderNode->getRadius()->getValue();
+							float height = cylinderNode->getHeight()->getValue();
+							*min_x = *min_z = -rad;
+							*max_x = *max_z = rad;
+							*min_y  = -height/2;
+							*max_y  = height/2;
+						}
+						default:
+							break;
+					}
+				}
+				else {
+					// Get IndexedFaceSetNode
+					CX3DIndexedFaceSetNode *index_node = (CX3DIndexedFaceSetNode *)geoNode;
+
+					if (index_node) {
+						// Get vertex coordinate (Shape cannot be created without this)
+						CX3DCoordinateNode *Coord = (CX3DCoordinateNode *)(index_node->getCoord()->getNode());
+
+						if (Coord) {
+							MinMaxFromIndexedNode(Coord, min_x, min_y, min_z, max_x, max_y, max_z);
+						}
+					}
+				}
+				break;
+			}
+			default:
+				break;
+		}
 	}
 }

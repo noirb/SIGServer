@@ -57,13 +57,13 @@ static std::string filename(std::string dirname, std::string fname)
 #define NOATTR_ERR(NODE,ATTR, ALIST) { m_failed++; LOG_ERR(("%s : <%s> : no \"%s\" attribute\n", this->m_currfname.c_str(), NODE, ATTR)); XMLUtils::dumpAttributeList(ALIST); }
 #define NOFILE_ERR(FNAME) { m_failed++; LOG_ERR(("no such file : %s", FNAME)); }
 
-void WorldXMLReader::startElement(const XMLCh * const tagName_,
-								  xercesc::AttributeList &attrs)
+void WorldXMLReader::startElement(const XMLCh * const tagName_, xercesc::AttributeList &attrs)
 {
 	char *tagName = XMLString::transcode(tagName_);
 	// std::cout << tagName << std::endl;
 
 	if (strcmp(tagName, "world") == 0 || strcmp(tagName, "World") == 0) {
+
 		if (!m_world) {
 			if (char *n = GET_VALUE(attrs, "name")) {
 				m_world = new SSimWorld(n);
@@ -72,7 +72,6 @@ void WorldXMLReader::startElement(const XMLCh * const tagName_,
 			else {
 				NOATTR_ERR("world", "name", attrs);
 			}
-
 		}
 
 		if (char *fname = GET_VALUE(attrs, "inherit")) {
@@ -82,7 +81,7 @@ void WorldXMLReader::startElement(const XMLCh * const tagName_,
 			char buf[4096];
 			const char *fpath = m_fdb.getPath(fname, buf);
 			if (fpath != NULL) {
-				S last = setFilename(fpath);
+				std::string last = setFilename(fpath);
 				parser->parse(fpath);
 				delete parser;
 				setFilename(last);
@@ -93,6 +92,7 @@ void WorldXMLReader::startElement(const XMLCh * const tagName_,
 			RELEASE(fname);
 		}
 	} else if (strcmp(tagName, "gravity") == 0 || strcmp(tagName, "Gravity") == 0) {
+
 		if (m_world) {
 			dReal x=0.0, y=0.0, z=0.0;
 			char *p;
@@ -110,7 +110,7 @@ void WorldXMLReader::startElement(const XMLCh * const tagName_,
 			} else {
 				NOATTR_ERR("gravity", "y", attrs);
 			}
-      
+
 			p = GET_VALUE(attrs, "z");
 			if (p) {
 				z = atof(p);
@@ -127,6 +127,7 @@ void WorldXMLReader::startElement(const XMLCh * const tagName_,
 		}
 	}
 	else if (strcmp(tagName, "worldparam") == 0 || strcmp(tagName, "worldParam") == 0) {
+
 		char *erp = GET_VALUE(attrs, "erp");
 		if (erp) {
 			m_world->setERP(atof(erp));
@@ -196,10 +197,9 @@ void WorldXMLReader::startElement(const XMLCh * const tagName_,
 			m_world->setCollisionParam("bounce_vel", atof(bounce_vel));
 			RELEASE(bounce);
 		} 
-
-
 	}
 	else if (strcmp(tagName, "instanciate") == 0) {
+
 		ODEWorld *w = m_world->odeWorld();
 		SSimObj *obj;
 
@@ -224,11 +224,10 @@ void WorldXMLReader::startElement(const XMLCh * const tagName_,
 
 			// Read contents of the entity from XML file
 			// EntityXMLReader read(m_fdb, *obj, *w, m_x3ddb);
-			EntityXMLReader read(m_fdb, *obj, *w, m_x3ddb, m_ssdb);
+			EntityXMLReader reader(m_fdb, *obj, *w, m_x3ddb, m_ssdb);
 
-			read.setReadTaskContainer(this);
-			read(fname);
-
+			reader.setReadTaskContainer(this);
+			reader.read(fname);
 		} 
 		
 		else {
@@ -237,6 +236,7 @@ void WorldXMLReader::startElement(const XMLCh * const tagName_,
 		m_currobj = obj;
 	}
 	else if (strcmp(tagName, "set-attr-value") == 0) {
+
 		if (m_currobj) {
 			char *n = GET_VALUE(attrs, "name");
 			char *v = GET_VALUE(attrs, "value");
@@ -253,6 +253,7 @@ void WorldXMLReader::startElement(const XMLCh * const tagName_,
 	}
 	// Creation of new entity
 	else if (strcmp(tagName, "entity") == 0 || strcmp(tagName, "Entity") == 0) {
+
 		ODEWorld *w = m_world->odeWorld();
 
 		// Set a new version flag later than v2.1
@@ -291,10 +292,11 @@ void WorldXMLReader::startElement(const XMLCh * const tagName_,
 	}
 
 	else if (strcmp(tagName, "x3d") == 0 || strcmp(tagName, "X3D") == 0) {
+
 		if (m_current != NULL) {
 
 			char *scale = GET_VALUE(attrs, "scale");
-	    
+
 			Vector3d sc(1.0, 1.0, 1.0);
 			if (scale) {
 				char *scalex = strtok(scale, " ");
@@ -308,7 +310,7 @@ void WorldXMLReader::startElement(const XMLCh * const tagName_,
 					sc.set(atof(scalex), atof(scaley), atof(scalez));
 				}
 			}
-	    
+
 			m_current->setScale(sc);
 		}
 
@@ -355,7 +357,7 @@ void WorldXMLReader::startElement(const XMLCh * const tagName_,
 		ShapeFileReader sread(m_current);
 		LOG_SYS(("Creating object \"%s\"",m_current->name().c_str()));
 		LOG_SYS(("Reading shape file [%s]", fname.c_str())); 
-    
+
 		if (m_current->isRobot()) {
 			if (!sread.createRobotObj(&parser)) {
 				LOG_ERR(("Failed to read robot shape file [%s]", fname.c_str())); 
@@ -369,13 +371,14 @@ void WorldXMLReader::startElement(const XMLCh * const tagName_,
 
 	} //   else if (strcmp(tagName, "x3d") == 0 || strcmp(tagName, "X3D") == 0) {
 	else if (strcmp(tagName, "attribute") == 0 || strcmp(tagName, "Attribute") == 0) {
+
 		if (m_current) {
 			char *position  = GET_VALUE(attrs, "position");	 // entity position
 			char *direction = GET_VALUE(attrs, "direction");	 // entity direction
 			char *mass      = GET_VALUE(attrs, "mass");	 // entity mass
 			char *collision = GET_VALUE(attrs, "collision");	 // collision detection flag
 			char *quaternion= GET_VALUE(attrs, "quaternion");	 // quaternion
-      
+
 			if (position) {
 				char *x = strtok(position, " ");
 				char *y = strtok(NULL, " ");
@@ -416,6 +419,7 @@ void WorldXMLReader::startElement(const XMLCh * const tagName_,
 	// Added by okamoto on 2012-08-11
 	// Reading and setting of camera parameter
 	else if (strcmp(tagName, "camera") == 0 || strcmp(tagName, "Camera") == 0) {
+
 		if (m_currobj) {
 			char *cid  = GET_VALUE(attrs, "id");          // id number 
 			char *link = GET_VALUE(attrs, "link");        // link name 
@@ -455,8 +459,8 @@ void WorldXMLReader::startElement(const XMLCh * const tagName_,
 			std::string sas   = "aspectRatio" + id;
 			std::string slink = "elnk"        + id;
 			vfov ->setString(sfov. c_str());
-			vas  ->setString(sas.  c_str());	    
-			vlink->setString(slink.c_str());	    
+			vas  ->setString(sas.  c_str());
+			vlink->setString(slink.c_str());
 
 			// Add attribution info to entity
 			m_currobj->push(new Attribute(sfov, vfov, "camera"));
@@ -480,17 +484,17 @@ void WorldXMLReader::startElement(const XMLCh * const tagName_,
 				m_currobj->setAttrValue(slink.c_str(), "body");// default value
 
 			char *position = GET_VALUE(attrs, "position");
-	    
+
 			std::string epx = "epx" + id;
 			std::string epy = "epy" + id;
 			std::string epz = "epz" + id;
-	    
+
 			if (position) {
 				std::string x = strtok(position, " ");
 				std::string y = strtok(NULL, " ");
 				std::string z = strtok(NULL, "");
 				Vector3d pos(atof(x.c_str()), atof(y.c_str()), atof(z.c_str()));
-	      
+
 				if (iid > 2) {
 					Value *v_x = new DoubleValue();
 					Value *v_y = new DoubleValue();
@@ -558,31 +562,31 @@ void WorldXMLReader::startElement(const XMLCh * const tagName_,
 				}
 				m_currobj->setAttrValue(evx.c_str(), vx.c_str());
 				m_currobj->setAttrValue(evy.c_str(), vy.c_str());
-				m_currobj->setAttrValue(evz.c_str(), vz.c_str());	      
+				m_currobj->setAttrValue(evz.c_str(), vz.c_str());
 				RELEASE(direction);
 			}
 			else {
 				Vector3d dir(0.0, 0.0, 1.0);
 				m_currobj->setAttrValue(evx.c_str(), "0.0");
 				m_currobj->setAttrValue(evy.c_str(), "0.0");
-				m_currobj->setAttrValue(evz.c_str(), "1.0");	      
+				m_currobj->setAttrValue(evz.c_str(), "1.0");
 			}
 
 			Value *q_w = new DoubleValue();
 			Value *q_x = new DoubleValue();
 			Value *q_y = new DoubleValue();
 			Value *q_z = new DoubleValue();
-      
+
 			q_w->setString(quw.c_str());
 			q_x->setString(qux.c_str());
 			q_y->setString(quy.c_str());
 			q_z->setString(quz.c_str());
-      
+
 			m_currobj->push(new Attribute(quw, q_w, "camera"));
 			m_currobj->push(new Attribute(qux, q_x, "camera"));
 			m_currobj->push(new Attribute(quy, q_y, "camera"));
 			m_currobj->push(new Attribute(quz, q_z, "camera"));
-      
+
 			if (quaternion) {
 				std::string qw = strtok(quaternion, " ");
 				std::string qx = strtok(NULL, " ");
@@ -592,7 +596,7 @@ void WorldXMLReader::startElement(const XMLCh * const tagName_,
 				m_currobj->setAttrValue(quw.c_str(), qw.c_str());
 				m_currobj->setAttrValue(qux.c_str(), qx.c_str());
 				m_currobj->setAttrValue(quy.c_str(), qy.c_str());
-				m_currobj->setAttrValue(quz.c_str(), qz.c_str());	      
+				m_currobj->setAttrValue(quz.c_str(), qz.c_str());
 				RELEASE(quaternion);
 			}
 			else {
@@ -615,12 +619,13 @@ void WorldXMLReader::startElement(const XMLCh * const tagName_,
 void WorldXMLReader::endElement(const XMLCh * const tagName_)
 {
 	char *tagName = XMLString::transcode(tagName_);
+
 	if (strcmp(tagName, "instanciate") == 0) {
 		if (m_currobj) {
 			// There is no required attribution
 			if (!m_currobj->checkAttrs()) {
 				m_failed++;
-			}	  
+			}
 			else {
 				m_currobj->addId();
 				m_world->push(m_currobj);
@@ -629,12 +634,10 @@ void WorldXMLReader::endElement(const XMLCh * const tagName_)
 			}
 		}
 		else{
-
 		}
 		m_currobj = 0;
 	}
-	else if (strcmp(tagName, "entity") == 0 ||
-			 strcmp(tagName, "Entity") == 0) {
+	else if (strcmp(tagName, "entity") == 0 || strcmp(tagName, "Entity") == 0) {
 
 		m_world->addSSimEntity(m_current->name(),m_current);
 		m_current = 0;
@@ -681,6 +684,7 @@ bool WorldXMLReader::read(const char *fname)
 	try {
 		char buf[4096];
 		const char *fpath = m_fdb.getPath(fname, buf);
+
 		if (fpath != NULL) {
 			setFilename(fpath);
 
@@ -705,26 +709,27 @@ bool WorldXMLReader::read(const char *fname)
 	// Loading of X3D file is executed here
 	c = 0;
 	for (TaskC::iterator i=m_tasks.begin(); i!=m_tasks.end(); i++)
-		{
-			std::vector<ReadTask *> taskCol = i->second;
-			std::vector<ReadTask *>::iterator j;
-			for (j=taskCol.begin(); j!=taskCol.end(); j++)
-				{
-					ReadTask *t = *j;
-					if (t)
-						{
-							//				printf("[%d] calling X3DReadTask ... \n", c++);
-							t->execute();
-							// Process of the execution
-							// --> EntityXMLReader.cpp: X3DReadTask::execute()
-							// ----> X3DFileReader::read()
-							// ------> X3DSimObjCreator::createSSimObjFromX3D()
-							// The last line actually loads X3D file
-						}
+	{
+		std::vector<ReadTask *> taskCol = i->second;
+		std::vector<ReadTask *>::iterator j;
 
-					delete t;
-				}
+		for (j=taskCol.begin(); j!=taskCol.end(); j++)
+		{
+			ReadTask *t = *j;
+			if (t)
+			{
+				// printf("[%d] calling X3DReadTask ... \n", c++);
+				t->execute();
+				// Process of the execution
+				// --> EntityXMLReader.cpp: X3DReadTask::execute()
+				// ----> X3DFileReader::read()
+				// ------> X3DSimObjCreator::createSSimObjFromX3D()
+				// The last line actually loads X3D file
+			}
+
+			delete t;
 		}
+	}
 	m_tasks.clear();	
 #else
 	// orig
@@ -736,8 +741,8 @@ bool WorldXMLReader::read(const char *fname)
 #endif
 	m_tasks.clear();
 
-	//	printf("\n***** world dump (2) [%s:%d] *****\n", __FILE__, __LINE__);
-	//	m_world->dump();
+	// printf("\n***** world dump (2) [%s:%d] *****\n", __FILE__, __LINE__);
+	// m_world->dump();
 
 	if (m_world) {
 		m_world->setup();

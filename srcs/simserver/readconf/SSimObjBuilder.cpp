@@ -96,10 +96,13 @@ bool SSimObjBuilder::addParts(SParts *parts)
 		// Setting of collision condition: added by okamoto on 2012-03-19
 		SimObjBase* sobj = parts->getParent();
 		DUMP(("\t(%s) step 4", __FILE__));
+
 		if(m_obj.isAttr("collision")) {
+
 			DUMP(("\t(%s) step 5", __FILE__));
 			bool col = sobj->collision();
 			DUMP(("\t(%s) step 6", __FILE__));
+
 			if(!col) {
 				parts->setCollisionEnable(false);
 				DUMP(("\t(%s) step 6.true", __FILE__));
@@ -109,12 +112,14 @@ bool SSimObjBuilder::addParts(SParts *parts)
 		}
 
 		DUMP(("\t(%s) step 7", __FILE__));
+
 		// Setting of mass after the creation of ODE object
 		if(strcmp(parts->name(),"body") == 0) {
-		    if(m_obj.isAttr("mass")){
+
+			if(m_obj.isAttr("mass")){
 				double mass = m_obj.mass();
 				parts->setMass(mass);
-		    }
+			}
 		}
 		else {
 			// Set default mass when the mass is not specified

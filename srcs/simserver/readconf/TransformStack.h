@@ -15,15 +15,15 @@ class TransformStack
 private:
 	typedef std::stack<Transform*> Stack;
 private:
-	Stack    m_stack;
-	Transform	*m_curr;
+	Stack      m_stack;
+	Transform *m_curr;
 public:
 	TransformStack();
 	TransformStack(const Transform &t);
 	~TransformStack();
 
-	void	push();
-	void	pop();
+	void push();
+	void pop();
 	
 	Transform & curr() { return *m_curr; }
 };

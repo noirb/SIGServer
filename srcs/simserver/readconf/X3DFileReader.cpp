@@ -24,6 +24,7 @@ bool X3DFileReader::read(
 	bool b;
 
 	char *cfg = getenv("SIGVERSE_X3DPARSER_CONFIG");
+
 	if (cfg == NULL || strlen(cfg) == 0)
 	{
 		fprintf(stderr, "read ./X3DParser.cfg\n");
@@ -51,6 +52,7 @@ bool X3DFileReader::read(
 bool X3DFileReader::read(const char *fname)
 {
 	char *cfg = getenv("SIGVERSE_X3DPARSER_CONFIG");
+
 	bool b;
 	if (cfg == NULL || strlen(cfg) == 0) {
 		fprintf(stderr, "read ./X3DParser.cfg\n");

@@ -37,10 +37,13 @@ bool FilenameDB::pushDirectory(const char *dir)
 
 const char * FilenameDB::getPath(const char *fname, char *buf)
 {
-	C::iterator i;
+	std::vector<std::string>::iterator i;
+
 	for (i=m_dirs.begin(); i!=m_dirs.end(); i++) {
-		S dir = *i;
-		S fpath = dir + fname;
+
+		std::string dir = *i;
+		std::string fpath = dir + fname;
+
 		if (fileExist(fpath.c_str())) {
 			strcpy(buf, fpath.c_str());
 			return buf;

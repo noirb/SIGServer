@@ -26,10 +26,10 @@ public:
 	bool read(const char *x3dFileName, const char *entClassName, bool bGenSimpleShapeFromX3D);
 #else
 // orig
-		X3DFileReader(SSimObj &obj, ODEWorld &w) : m_obj(obj), m_w(w) { ; }
+	X3DFileReader(SSimObj &obj, ODEWorld &w) : m_obj(obj), m_w(w) { ; }
 
-	bool	read(const char *fname);
-	bool	operator()(const char *fname)
+	bool read(const char *fname);
+	bool operator()(const char *fname)
 	{
 		return read(fname);
 	}

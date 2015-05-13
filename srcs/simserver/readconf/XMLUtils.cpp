@@ -23,6 +23,7 @@ XERCES_CPP_NAMESPACE_USE
 static char * getChildText(DOMNode &n)
 {
 	DOMNode *p = n.getFirstChild();
+
 	while (p) {
 
 		if (p->getNodeType() == DOMNode::TEXT_NODE) {
@@ -38,13 +39,10 @@ static char * getChildText(DOMNode &n)
 class Splitter
 {
 private:
-	typedef std::vector<std::string> C;
-private:
-	C	m_strs;
+	std::vector<std::string> m_strs;
 public:
 	int split(char *str)
 	{
-
 		while (true) {
 			char *p = strtok(str, " \t\n\r");
 			if (!p) { break; }
@@ -53,8 +51,7 @@ public:
 		}
 		return m_strs.size();
 	}
-		
-			
+
 	const char *operator[](int i)
 	{
 		return m_strs[i].c_str();
@@ -69,13 +66,14 @@ public:
 		return atof(p);
 	}
 };
-			    
+
 template<int N, class EVAL> double * getTextDouble(DOMNode &n, EVAL &eval)
 {
 	static double v[N];
 	char *text = getChildText(n);
 	if (!text) { return NULL; }
 	Splitter sp;
+
 	if (sp.split(text) != N) {
 		XMLString::release(&text);
 		return NULL;
@@ -170,9 +168,8 @@ char * XMLUtils::getAttribute(DOMNode &n, const char *attrname)
 		ret = XMLString::transcode(nameNode->getNodeValue());
 		XMLString::release(&xmlstr);
 		return ret;
-
 	}
- err:
+err:
 	char *p = XMLString::transcode(n.getNodeName());
 	char buf[128];
 	strcpy(buf, p);
@@ -200,7 +197,8 @@ void XMLUtils::Exception::set(const char *fmt, ...)
 	m_msg = buf;
 }
 
-void XMLUtils::dumpAttributeList(const xercesc::AttributeList &attrs) {
+void XMLUtils::dumpAttributeList(const xercesc::AttributeList &attrs)
+{
 	for (int i=0; i<attrs.getLength(); i++) {
 		char *text = XMLString::transcode(attrs.getName(i));
 		char *value = XMLString::transcode(attrs.getValue(i));

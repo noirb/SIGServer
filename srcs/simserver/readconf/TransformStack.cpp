@@ -24,18 +24,17 @@ TransformStack::~TransformStack()
 		Transform *p = m_stack.top();
 		m_stack.pop();
 		delete p;
-			
 	}
 	delete m_curr;
 }
-		
-void	TransformStack::push()
+
+void TransformStack::push()
 {
 	Transform *t = new Transform(*m_curr);
 	m_stack.push(t);
 }
 
-void	TransformStack::pop()
+void TransformStack::pop()
 {
 	assert(!m_stack.empty());
 	delete m_curr;

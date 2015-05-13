@@ -19,9 +19,9 @@ class SegmentParser
 {
 	TransformStack m_transform;
 private:
-	std::string	m_name;
-	SParts *	m_parts;
-	Eval &		m_eval;
+	std::string m_name;
+	SParts *    m_parts;
+	Eval &      m_eval;
 public:
 	SegmentParser(const Transform &t, Eval &eval)
 		: m_transform(t), m_parts(NULL), m_eval(eval)
@@ -34,9 +34,10 @@ public:
 
 	SParts * parse(xercesc::DOMNode &);
 
-        SParts * operator()(xercesc::DOMNode &n) {
-		return parse(n);
-	}
+//	SParts * operator()(xercesc::DOMNode &n)
+//	{
+//		return parse(n);
+//	}
 private:
 	void parseNode(xercesc::DOMNode &);
 	void parseTransform(xercesc::DOMNode &);

@@ -33,8 +33,10 @@ SParts * GeometryParser::parse(DOMNode &target, Eval &eval)
 	double radius = -1;
 	Size *sz = NULL;
 	DOMNode *p = target.getFirstChild();
+
 	while (p) {
 		char *s = XMLString::transcode(p->getNodeName());
+
 		if (strcmp(s, "size") == 0) {
 			double *v = XMLUtils::parseSize(*p, eval);
 			DUMP1(("size = (%f, %f, %f)\n", v[0], v[1], v[2]));
@@ -45,9 +47,12 @@ SParts * GeometryParser::parse(DOMNode &target, Eval &eval)
 		XMLString::release(&s);
 		p = p->getNextSibling();
 	}
+
 	if (m_name.length() > 0) {
+
 		const Rotation &r = m_t.rotation();
 		const Vector3d &v = m_t.translation();
+
 		if (strcmp(type, "box") == 0)  {
 			DUMP(("box"));
 			if (!sz) {

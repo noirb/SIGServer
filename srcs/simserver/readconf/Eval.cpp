@@ -35,7 +35,7 @@ int main()
 {
 
 	char *p = "2.5 + 1.75 * FOO1_FO0";
-	Eval::M dict;
+	Eval::std::map<std::string, std::string> dict;
 	dict["FOO1_FOO"] = "2.0";
 
 	Eval eval(&dict);
