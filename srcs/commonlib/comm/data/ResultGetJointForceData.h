@@ -10,13 +10,13 @@ class ResultGetJointForceData
 public:
 	enum { JOINT_FORCE_NUM = 2, };
 private:
-	bool		m_success;
-	JointForce 	m_jf[JOINT_FORCE_NUM];
+	bool       m_success;
+	JointForce m_jf[JOINT_FORCE_NUM];
 public:
 	ResultGetJointForceData() : m_success(false) {}
 	
-	void	success(bool b) { m_success = b; }
-	bool	success() { return m_success; }
+	void success(bool b) { m_success = b; }
+	bool success()       { return m_success; }
 
 	JointForce * getJointForces() {
 		return m_jf;
@@ -25,4 +25,3 @@ public:
 
 
 #endif // ResultGetJointForceData_h
- 

@@ -7,18 +7,16 @@
 class RequestConnectJointData
 {
 public:
-	typedef std::string S;
-public:
-	S	jointName;
-	S	agentName;
-	S	agentParts;
-	S	targetName;
-	S	targetParts;
+	std::string jointName;
+	std::string agentName;
+	std::string agentParts;
+	std::string targetName;
+	std::string targetParts;
 
 public:
 	RequestConnectJointData() {}
-	RequestConnectJointData(const char *jointName_, const char *agentName_,const char *agentParts_, 
-				const char *targetName_, const char *targetParts_) {
+	RequestConnectJointData(const char *jointName_, const char *agentName_,const char *agentParts_, const char *targetName_, const char *targetParts_)
+	{
 		if (jointName_) {
 			jointName = jointName_;
 		}
