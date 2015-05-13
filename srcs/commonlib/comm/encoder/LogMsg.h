@@ -13,7 +13,7 @@ class LogMsg : public Encoder
 {
 	enum { BUFSIZE = 1024, }; //TODO: Magic number
 private:
-	short	m_level;
+	short       m_level;
 	std::string m_msg;
 public:
 	LogMsg(int level, const char *msg)

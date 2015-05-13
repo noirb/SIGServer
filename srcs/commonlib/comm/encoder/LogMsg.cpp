@@ -28,7 +28,6 @@ char *CommLogMsgEncoder::encode(int seq, int &sz)
 	sz = p - m_buf;
 	setPacketSize(m_buf, sz);
 	return m_buf;
-
 }
 
 END_NS_COMMDATA();

@@ -16,7 +16,7 @@ BEGIN_NS_COMMDATA();
 char *AddForceRequest::encode(int seq, int &sz)
 {
 	char *p = m_buf;
-  
+
 	p = setHeader(p, seq);
 	{
 		BINARY_SET_STRING_INCR(p, m_name);
@@ -25,9 +25,9 @@ char *AddForceRequest::encode(int seq, int &sz)
 	BINARY_SET_DOUBLE_INCR(p, m_y);
 	BINARY_SET_DOUBLE_INCR(p, m_z);
 	BINARY_SET_BOOL_INCR(p, m_relf);
-  
+
 	p = setFooter(p);
-  
+
 	sz = p - m_buf;
 	setPacketSize(m_buf, sz);
 	return m_buf;
@@ -36,7 +36,7 @@ char *AddForceRequest::encode(int seq, int &sz)
 char *AddForceAtPosRequest::encode(int seq, int &sz)
 {
 	char *p = m_buf;
-  
+
 	p = setHeader(p, seq);
 	{
 		BINARY_SET_STRING_INCR(p, m_name);
@@ -51,7 +51,7 @@ char *AddForceAtPosRequest::encode(int seq, int &sz)
 	BINARY_SET_BOOL_INCR(p, m_relf);
 
 	p = setFooter(p);
-  
+
 	sz = p - m_buf;
 	setPacketSize(m_buf, sz);
 	return m_buf;
@@ -60,7 +60,7 @@ char *AddForceAtPosRequest::encode(int seq, int &sz)
 char *AddTorqueRequest::encode(int seq, int &sz)
 {
 	char *p = m_buf;
-  
+
 	p = setHeader(p, seq);
 	{
 		BINARY_SET_STRING_INCR(p, m_name);
@@ -69,9 +69,9 @@ char *AddTorqueRequest::encode(int seq, int &sz)
 	BINARY_SET_DOUBLE_INCR(p, m_y);
 	BINARY_SET_DOUBLE_INCR(p, m_z);
 	BINARY_SET_BOOL_INCR(p, m_relf);
-  
+
 	p = setFooter(p);
-  
+
 	sz = p - m_buf;
 	setPacketSize(m_buf, sz);
 	return m_buf;
@@ -80,15 +80,15 @@ char *AddTorqueRequest::encode(int seq, int &sz)
 char *SetMassRequest::encode(int seq, int &sz)
 {
 	char *p = m_buf;
-  
+
 	p = setHeader(p, seq);
 	{
 		BINARY_SET_STRING_INCR(p, m_name);
 	}
 	BINARY_SET_DOUBLE_INCR(p, m_mass);
-  
+
 	p = setFooter(p);
-  
+
 	sz = p - m_buf;
 	setPacketSize(m_buf, sz);
 	return m_buf;
@@ -97,14 +97,14 @@ char *SetMassRequest::encode(int seq, int &sz)
 char *GetAngularVelocityRequest::encode(int seq, int &sz)
 {
 	char *p = m_buf;
-  
+
 	p = setHeader(p, seq);
 	{
 		BINARY_SET_STRING_INCR(p, m_name);
 	}
-  
+
 	p = setFooter(p);
-  
+
 	sz = p - m_buf;
 	setPacketSize(m_buf, sz);
 	return m_buf;
@@ -113,7 +113,7 @@ char *GetAngularVelocityRequest::encode(int seq, int &sz)
 char *GetAngularVelocityResult::encode(int seq, int &sz)
 {
 	char *p = m_buf;
-  
+
 	p = setHeader(p, seq);
 	BINARY_SET_STRING_INCR(p, m_name);
 	BINARY_SET_DOUBLE_INCR(p, m_x);
@@ -121,7 +121,7 @@ char *GetAngularVelocityResult::encode(int seq, int &sz)
 	BINARY_SET_DOUBLE_INCR(p, m_z);
 
 	p = setFooter(p);
-  
+
 	sz = p - m_buf;
 	setPacketSize(m_buf, sz);
 	return m_buf;
@@ -130,14 +130,14 @@ char *GetAngularVelocityResult::encode(int seq, int &sz)
 char *GetLinearVelocityRequest::encode(int seq, int &sz)
 {
 	char *p = m_buf;
-  
+
 	p = setHeader(p, seq);
 	{
 		BINARY_SET_STRING_INCR(p, m_name);
 	}
-  
+
 	p = setFooter(p);
-  
+
 	sz = p - m_buf;
 	setPacketSize(m_buf, sz);
 	return m_buf;
@@ -146,7 +146,7 @@ char *GetLinearVelocityRequest::encode(int seq, int &sz)
 char *GetLinearVelocityResult::encode(int seq, int &sz)
 {
 	char *p = m_buf;
-  
+
 	p = setHeader(p, seq);
 	BINARY_SET_STRING_INCR(p, m_name);
 	BINARY_SET_DOUBLE_INCR(p, m_x);
@@ -154,7 +154,7 @@ char *GetLinearVelocityResult::encode(int seq, int &sz)
 	BINARY_SET_DOUBLE_INCR(p, m_z);
 
 	p = setFooter(p);
-  
+
 	sz = p - m_buf;
 	setPacketSize(m_buf, sz);
 	return m_buf;
@@ -165,16 +165,16 @@ char *GetLinearVelocityResult::encode(int seq, int &sz)
 char *SetLinearVelocityRequest::encode(int seq, int &sz)
 {
 	char *p = m_buf;
-  
+
 	p = setHeader(p, seq);
 
 	BINARY_SET_STRING_INCR(p, m_name);
 	BINARY_SET_DOUBLE_INCR(p, m_x);
 	BINARY_SET_DOUBLE_INCR(p, m_y);
 	BINARY_SET_DOUBLE_INCR(p, m_z);
-  
+
 	p = setFooter(p);
-  
+
 	sz = p - m_buf;
 	setPacketSize(m_buf, sz);
 	return m_buf;
@@ -184,7 +184,7 @@ char *SetLinearVelocityRequest::encode(int seq, int &sz)
 char *AddForceToPartsRequest::encode(int seq, int &sz)
 {
 	char *p = m_buf;
-  
+
 	p = setHeader(p, seq);
 	BINARY_SET_STRING_INCR(p, m_name);
 	BINARY_SET_STRING_INCR(p, m_parts);
@@ -192,9 +192,9 @@ char *AddForceToPartsRequest::encode(int seq, int &sz)
 	BINARY_SET_DOUBLE_INCR(p, m_x);
 	BINARY_SET_DOUBLE_INCR(p, m_y);
 	BINARY_SET_DOUBLE_INCR(p, m_z);
-  
+
 	p = setFooter(p);
-  
+
 	sz = p - m_buf;
 	setPacketSize(m_buf, sz);
 	return m_buf;
@@ -203,13 +203,13 @@ char *AddForceToPartsRequest::encode(int seq, int &sz)
 char *SetGravityModeRequest::encode(int seq, int &sz)
 {
 	char *p = m_buf;
-  
+
 	p = setHeader(p, seq);
 	BINARY_SET_STRING_INCR(p, m_name);
 	BINARY_SET_BOOL_INCR(p, m_gravity);
 
 	p = setFooter(p);
-  
+
 	sz = p - m_buf;
 	setPacketSize(m_buf, sz);
 	return m_buf;
@@ -218,12 +218,12 @@ char *SetGravityModeRequest::encode(int seq, int &sz)
 char *GetGravityModeRequest::encode(int seq, int &sz)
 {
 	char *p = m_buf;
-  
+
 	p = setHeader(p, seq);
 	BINARY_SET_STRING_INCR(p, m_name);
 
 	p = setFooter(p);
-  
+
 	sz = p - m_buf;
 	setPacketSize(m_buf, sz);
 	return m_buf;
@@ -232,13 +232,13 @@ char *GetGravityModeRequest::encode(int seq, int &sz)
 char *GetGravityModeResult::encode(int seq, int &sz)
 {
 	char *p = m_buf;
-  
+
 	p = setHeader(p, seq);
 	BINARY_SET_STRING_INCR(p, m_name);
 	BINARY_SET_BOOL_INCR(p, m_gravity);
 
 	p = setFooter(p);
-  
+
 	sz = p - m_buf;
 	setPacketSize(m_buf, sz);
 	return m_buf;
@@ -247,13 +247,13 @@ char *GetGravityModeResult::encode(int seq, int &sz)
 char *SetDynamicsModeRequest::encode(int seq, int &sz)
 {
 	char *p = m_buf;
-  
+
 	p = setHeader(p, seq);
 	BINARY_SET_STRING_INCR(p, m_name);
 	BINARY_SET_BOOL_INCR(p, m_dynamics);
 
 	p = setFooter(p);
-  
+
 	sz = p - m_buf;
 	setPacketSize(m_buf, sz);
 	return m_buf;

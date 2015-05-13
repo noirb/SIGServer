@@ -4,7 +4,7 @@
 
 BEGIN_NS_COMMDATA()
 
-char *	RequestReleaseJoint::encode(int seq, int &sz)
+char * RequestReleaseJoint::encode(int seq, int &sz)
 {
 	char *p = m_buf;
 
@@ -18,7 +18,6 @@ char *	RequestReleaseJoint::encode(int seq, int &sz)
 	sz = p - m_buf;
 	setPacketSize(m_buf, sz);
 	return m_buf;
-
 }
 
 END_NS_COMMDATA();

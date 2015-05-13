@@ -10,7 +10,7 @@
 
 BEGIN_NS_COMMDATA();
 
-char *	RequestSoundRecog::getDataHeader(int &sz)
+char * RequestSoundRecog::getDataHeader(int &sz)
 {
 	char *p = m_dataHeaderBuf;
 	RawSoundHeader & h = m_sound.getHeader();
@@ -25,18 +25,18 @@ char *	RequestSoundRecog::getDataHeader(int &sz)
 	return m_dataHeaderBuf;
 }
 
-int 	RequestSoundRecog::getDataLen()
+int RequestSoundRecog::getDataLen()
 {
 	return m_sound.getDataLen();
 }
 
-char *	RequestSoundRecog::getData()
+char * RequestSoundRecog::getData()
 {
 	return m_sound.getData();
 }
 
 
-char *	ResultSoundRecog::encode(int seq, int &sz)
+char * ResultSoundRecog::encode(int seq, int &sz)
 {
 	char *p = m_buf;
 
@@ -52,8 +52,6 @@ char *	ResultSoundRecog::encode(int seq, int &sz)
 	setPacketSize(m_buf, sz);
 	return m_buf;
 }
-
-
 
 
 END_NS_COMMDATA();

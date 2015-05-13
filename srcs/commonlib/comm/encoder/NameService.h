@@ -68,10 +68,10 @@ public:
 
 } // namespace
 
-typedef CommData::NSQueryRequest CommRequestNSQueryEncoder;
-typedef CommData::NSQueryResult CommResultNSQueryEncoder;
+typedef CommData::NSQueryRequest  CommRequestNSQueryEncoder;
+typedef CommData::NSQueryResult   CommResultNSQueryEncoder;
 typedef CommData::NSPingerRequest CommRequestNSPingerEncoder;
-typedef CommData::NSPingerResult CommResultNSPingerEncoder;
+typedef CommData::NSPingerResult  CommResultNSPingerEncoder;
 
 #endif // NameService_h
  

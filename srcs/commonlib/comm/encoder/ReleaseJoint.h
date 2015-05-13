@@ -15,17 +15,15 @@ class RequestReleaseJoint : public Encoder
 {
 	enum { BUFSIZE = 256, }; //TODO: Magic number
 private:
-	typedef std::string S;
-private:
-	S	m_agentName;
-	S	m_jointName;
+	std::string m_agentName;
+	std::string m_jointName;
 public:
 	RequestReleaseJoint(const char *agentName, const char *jointName) :
 		Encoder(COMM_REQUEST_RELEASE_JOINT, BUFSIZE),
 		m_agentName(agentName), m_jointName(jointName) {}
 
-	int 	packetNum() { return 1; }
-	char *	encode(int seq, int &);
+	int     packetNum() { return 1; }
+	char *  encode(int seq, int &);
 };
 
 } // namespace

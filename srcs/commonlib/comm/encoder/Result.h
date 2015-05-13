@@ -15,7 +15,7 @@ private:
 	enum { BUFSIZE = 128, };
 private:
 	CommResultType m_result;
-	std::string 	m_msg;
+	std::string    m_msg;
 public:
 	Result(CommDataType type, CommResultType r, const char *msg)
 		: Encoder(type, BUFSIZE), m_result(r)

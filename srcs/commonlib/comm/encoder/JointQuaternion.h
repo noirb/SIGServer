@@ -18,16 +18,16 @@ private:
 private:
 	JointQuaternionData m_data;
 public:
- SetJointQuaternionRequest(const char *aName, const char *jName, double qw, double qx, double qy, double qz, bool b) : Encoder(COMM_REQUEST_SET_JOINT_QUATERNION, BUFSIZE)
-{
-  m_data.agentName(aName);
-  m_data.jointName(jName); 
-  m_data.qw(qw);
-  m_data.qx(qx);
-  m_data.qy(qy);
-  m_data.qz(qz);
-  m_data.offset(b);
-}
+	SetJointQuaternionRequest(const char *aName, const char *jName, double qw, double qx, double qy, double qz, bool b) : Encoder(COMM_REQUEST_SET_JOINT_QUATERNION, BUFSIZE)
+	{
+		m_data.agentName(aName);
+		m_data.jointName(jName);
+		m_data.qw(qw);
+		m_data.qx(qx);
+		m_data.qy(qy);
+		m_data.qz(qz);
+		m_data.offset(b);
+	}
 
 	int packetNum() { return 1; }
 	char *encode(int seq, int &);

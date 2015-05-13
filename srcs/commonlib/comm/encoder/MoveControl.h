@@ -28,7 +28,7 @@ private:
 	double m_z;
 	bool m_relf;
 public:
- AddForceRequest(const char *name, double x, double y, double z, bool relf) : Encoder(COMM_REQUEST_ADD_FORCE, BUFSIZE),m_name(name), m_x(x), m_y(y), m_z(z), m_relf(relf) {}
+	AddForceRequest(const char *name, double x, double y, double z, bool relf) : Encoder(COMM_REQUEST_ADD_FORCE, BUFSIZE),m_name(name), m_x(x), m_y(y), m_z(z), m_relf(relf) {}
 
 	int packetNum() { return 1; }
 	char *encode(int seq, int &);
@@ -51,7 +51,7 @@ private:
 	bool   m_relf; 
 
 public:
- AddForceAtPosRequest(const char *name, double x, double y, double z, double px, double py, double pz, bool rel, bool relf) : Encoder(COMM_REQUEST_ADD_FORCE_ATPOS, BUFSIZE),m_name(name), m_x(x), m_y(y), m_z(z), m_px(px), m_py(py), m_pz(pz), m_rel(rel), m_relf(relf) {}
+	AddForceAtPosRequest(const char *name, double x, double y, double z, double px, double py, double pz, bool rel, bool relf) : Encoder(COMM_REQUEST_ADD_FORCE_ATPOS, BUFSIZE),m_name(name), m_x(x), m_y(y), m_z(z), m_px(px), m_py(py), m_pz(pz), m_rel(rel), m_relf(relf) {}
 
 	
 	int packetNum() { return 1; }
@@ -70,7 +70,7 @@ private:
 	double m_z;
 	bool m_relf;
 public:
- AddTorqueRequest(const char *name, double x, double y, double z, bool relf) : Encoder(COMM_REQUEST_ADD_TORQUE, BUFSIZE),m_name(name), m_x(x), m_y(y), m_z(z), m_relf(relf) {}
+	AddTorqueRequest(const char *name, double x, double y, double z, bool relf) : Encoder(COMM_REQUEST_ADD_TORQUE, BUFSIZE),m_name(name), m_x(x), m_y(y), m_z(z), m_relf(relf) {}
 
 	int packetNum() { return 1; }
 	char *encode(int seq, int &);
@@ -85,9 +85,8 @@ private:
 	const char *m_name;
 	double m_mass;
 public:
- SetMassRequest(const char *name, double mass) : Encoder(COMM_REQUEST_SET_MASS, BUFSIZE),m_name(name), m_mass(mass) {}
+	SetMassRequest(const char *name, double mass) : Encoder(COMM_REQUEST_SET_MASS, BUFSIZE),m_name(name), m_mass(mass) {}
 
-	
 	int packetNum() { return 1; }
 	char *encode(int seq, int &);
 };
@@ -100,9 +99,8 @@ private:
 private:
 	const char *m_name;
 public:
- GetAngularVelocityRequest(const char *name) : Encoder(COMM_REQUEST_GET_ANGULAR_VELOCITY, BUFSIZE),m_name(name) {}
+	GetAngularVelocityRequest(const char *name) : Encoder(COMM_REQUEST_GET_ANGULAR_VELOCITY, BUFSIZE),m_name(name) {}
 
-	
 	int packetNum() { return 1; }
 	char *encode(int seq, int &);
 };
@@ -119,7 +117,7 @@ private:
 	double m_y;
 	double m_z;
 public:
- GetAngularVelocityResult(const char* name, double x, double y, double z) : Encoder(COMM_RESULT_GET_ANGULAR_VELOCITY, BUFSIZE), m_name(name), m_x(x), m_y(y), m_z(z) {}
+	GetAngularVelocityResult(const char* name, double x, double y, double z) : Encoder(COMM_RESULT_GET_ANGULAR_VELOCITY, BUFSIZE), m_name(name), m_x(x), m_y(y), m_z(z) {}
 	
 	int packetNum() { return 1; }
 	char *encode(int seq, int &);
@@ -134,9 +132,8 @@ private:
 private:
 	const char *m_name;
 public:
- GetLinearVelocityRequest(const char *name) : Encoder(COMM_REQUEST_GET_LINEAR_VELOCITY, BUFSIZE),m_name(name) {}
+	GetLinearVelocityRequest(const char *name) : Encoder(COMM_REQUEST_GET_LINEAR_VELOCITY, BUFSIZE),m_name(name) {}
 
-	
 	int packetNum() { return 1; }
 	char *encode(int seq, int &);
 };
@@ -145,16 +142,16 @@ public:
 // Changed to LinearVelocity by Tetsunari Inamura on 2013-12-29
 class GetLinearVelocityResult : public Encoder
 {
- private:
+private:
 	enum { BUFSIZE = 128, };
 	const char *m_name;
- private:
+private:
 	double m_x;
 	double m_y;
 	double m_z;
- public:
- GetLinearVelocityResult(const char* name, double x, double y, double z) : Encoder(COMM_RESULT_GET_LINEAR_VELOCITY, BUFSIZE), m_name(name), m_x(x), m_y(y), m_z(z) {}
-  
+public:
+	GetLinearVelocityResult(const char* name, double x, double y, double z) : Encoder(COMM_RESULT_GET_LINEAR_VELOCITY, BUFSIZE), m_name(name), m_x(x), m_y(y), m_z(z) {}
+
 	int packetNum() { return 1; }
 	char *encode(int seq, int &);
 };
@@ -171,7 +168,7 @@ private:
 	double m_y;
 	double m_z;
 public:
- SetLinearVelocityRequest(const char *name, double x, double y, double z) : Encoder(COMM_REQUEST_SET_LINEAR_VELOCITY, BUFSIZE),m_name(name), m_x(x), m_y(y), m_z(z) {}
+	SetLinearVelocityRequest(const char *name, double x, double y, double z) : Encoder(COMM_REQUEST_SET_LINEAR_VELOCITY, BUFSIZE),m_name(name), m_x(x), m_y(y), m_z(z) {}
 
 	int packetNum() { return 1; }
 	char *encode(int seq, int &);
@@ -190,7 +187,7 @@ private:
 	double m_y;
 	double m_z;
 public:
- AddForceToPartsRequest(const char *name, const char* parts,double x, double y, double z) : Encoder(COMM_REQUEST_ADD_FORCE_TOPARTS, BUFSIZE),m_name(name), m_parts(parts), m_x(x), m_y(y), m_z(z) {}
+	AddForceToPartsRequest(const char *name, const char* parts,double x, double y, double z) : Encoder(COMM_REQUEST_ADD_FORCE_TOPARTS, BUFSIZE),m_name(name), m_parts(parts), m_x(x), m_y(y), m_z(z) {}
 
 	
 	int packetNum() { return 1; }
@@ -205,7 +202,7 @@ private:
 	const char *m_name;
 	bool m_gravity;
 public:
- SetGravityModeRequest(const char *name, bool gravity) : Encoder(COMM_REQUEST_SET_GRAVITY_MODE, BUFSIZE),m_name(name), m_gravity(gravity) {}
+	SetGravityModeRequest(const char *name, bool gravity) : Encoder(COMM_REQUEST_SET_GRAVITY_MODE, BUFSIZE),m_name(name), m_gravity(gravity) {}
 
 	int packetNum() { return 1; }
 	char *encode(int seq, int &);
@@ -218,7 +215,7 @@ private:
 private:
 	const char *m_name;
 public:
- GetGravityModeRequest(const char *name) : Encoder(COMM_REQUEST_GET_GRAVITY_MODE, BUFSIZE),m_name(name) {}
+	GetGravityModeRequest(const char *name) : Encoder(COMM_REQUEST_GET_GRAVITY_MODE, BUFSIZE),m_name(name) {}
 
 	int packetNum() { return 1; }
 	char *encode(int seq, int &);
@@ -232,7 +229,7 @@ private:
 	const char *m_name;
 	bool m_gravity;
 public:
- GetGravityModeResult(const char *name, bool gravity) : Encoder(COMM_RESULT_GET_GRAVITY_MODE, BUFSIZE),m_name(name), m_gravity(gravity) {}
+	GetGravityModeResult(const char *name, bool gravity) : Encoder(COMM_RESULT_GET_GRAVITY_MODE, BUFSIZE),m_name(name), m_gravity(gravity) {}
 
 	int packetNum() { return 1; }
 	char *encode(int seq, int &);
@@ -246,7 +243,7 @@ private:
 	const char *m_name;
 	bool m_dynamics;
 public:
- SetDynamicsModeRequest(const char *name, bool dynamics) : Encoder(COMM_REQUEST_SET_DYNAMICS_MODE, BUFSIZE),m_name(name), m_dynamics(dynamics) {}
+	SetDynamicsModeRequest(const char *name, bool dynamics) : Encoder(COMM_REQUEST_SET_DYNAMICS_MODE, BUFSIZE),m_name(name), m_dynamics(dynamics) {}
 
 	int packetNum() { return 1; }
 	char *encode(int seq, int &);

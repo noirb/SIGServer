@@ -19,14 +19,14 @@ private:
 	enum { DATA_HEADER_BUFSIZE = 256, }; //TODO: Magic number
 private:
 	RawSound &m_sound;
-	char	m_dataHeaderBuf[DATA_HEADER_BUFSIZE];
+	char     m_dataHeaderBuf[DATA_HEADER_BUFSIZE];
 public:
 	RequestSoundRecog(RawSound &sound) : RawDataEncoder(COMM_REQUEST_SOUND_RECOG), m_sound(sound) {}
 
 private:
-	char *	getDataHeader(int &);
-	int 	getDataLen();
-	char *	getData();
+	char *  getDataHeader(int &);
+	int     getDataLen();
+	char *  getData();
 };
 
 class ResultSoundRecog : public Encoder
@@ -40,9 +40,8 @@ public:
 		: Encoder(COMM_RESULT_SOUND_RECOG, BUFSIZE),
 		  m_data(encode, text) {}
 
-
-	int 	packetNum() { return 1; }
-	char *	encode(int seq, int &);
+	int     packetNum() { return 1; }
+	char *  encode(int seq, int &);
 };
 
 
