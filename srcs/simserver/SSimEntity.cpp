@@ -28,7 +28,7 @@ bool SSimEntity::getPosition(Vector3d &pos, bool pre)
 		return false;
 	}
 	// if it is moved
-	else{
+	else {
 		// Position for motion detection is reset
 		if (pre) {
 			m_px = p[0];
@@ -57,7 +57,7 @@ bool SSimEntity::getQuaternion(dQuaternion q, bool pre)
 		return false;
 	}
 	// if it is rotated
-	else{
+	else {
 		return true;
 	}
 }
@@ -149,8 +149,10 @@ void SSimEntity::setMass(double mass)
 //! Add ODE parts with fixed joint
 void SSimEntity::setCollision(bool col)
 {
-	if (col)m_collision = true;
-	else m_collision = false;
+	if (col)
+		m_collision = true;
+	else
+		m_collision = false;
 
 	// if a part is already added
 	int geomNum = getGeomNum();
@@ -161,7 +163,7 @@ void SSimEntity::setCollision(bool col)
 			if (col) {
 				dGeomEnable(geom);
 			}
-			else{
+			else {
 				dGeomDisable(geom);
 			}
 		}
@@ -169,7 +171,8 @@ void SSimEntity::setCollision(bool col)
 }
 
 //! setting of scale
-void SSimEntity::setScale(Vector3d scale) {
+void SSimEntity::setScale(Vector3d scale)
+{
 	m_scale.set(scale.x(), scale.y(), scale.z());
 
 	// if a part is already added
@@ -254,7 +257,7 @@ void SSimRobotEntity::addJoint(SSimJoint *joint)
 		//LOG_MSG(("dummy body %d",joint->robotParts.objParts.body));
 	}
 	// setting mass
-	else{
+	else {
 		double mass = joint->robotParts.objParts.mass; 
 		this->setMass(&(joint->robotParts.objParts), mass);
 
@@ -460,10 +463,12 @@ void SSimRobotEntity::setMass(SSimObjParts *parts, double mass)
 
 
 //! Setting of flag for collision detection
-void SSimRobotEntity::setCollision(bool col) {
-
-	if (col)m_collision = true;
-	else m_collision = false;
+void SSimRobotEntity::setCollision(bool col)
+{
+	if (col)
+		m_collision = true;
+	else
+		m_collision = false;
 
 	// Setting all of the parts
 	int pSize = m_allParts.size();
