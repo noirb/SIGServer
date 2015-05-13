@@ -12,12 +12,12 @@
 struct CommDataHeader
 {
 	unsigned short packetSize;
-	CommDataType type;
+	CommDataType   type;
 	unsigned short packetNum;
 	unsigned short seq;
 	unsigned short forwardFlags;
 	std::string    forwardTo;
-	double	       forwardReachRadius;
+	double         forwardReachRadius;
 };
 
 namespace CommData {
