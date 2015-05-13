@@ -28,7 +28,7 @@
 
 static bool fileExist(const char *fname)
 {
-  return true;
+	return true;
 }
 
 #define ARRAY_SIZE(ARY) (int)(sizeof(ARY)/sizeof(ARY[0]))
@@ -60,20 +60,19 @@ static void quit(int )
 
 static bool runControllers(SSimWorld &w, int port)
 {
-	typedef SSimWorld::M M;
-	//	const M &objs = w.objs();
+	//	const std::map<std::string, SimObjBase*> &objs = w.objs();
 	char *runprog = getenv("SIGVERSE_RUNAC");
 
-	typedef SSimWorld::C C;
-	C objs;
+	std::vector<SSimObj*> objs;
 	w.copyObjs(objs);
+
 	if (objs.size() > 0 && !runprog) {
 		LOG_ERR(("Cannot get SIGVERSE_RUNAC parameter"));
 		LOG_ERR(("Fail to create model processes"));
 		return false;
 	}
 
-	for (C::iterator j=objs.begin(); j!=objs.end(); j++) {
+	for (std::vector<SSimObj*>::iterator j=objs.begin(); j!=objs.end(); j++) {
 
 		SSimObj *obj = *j;
 
@@ -84,7 +83,6 @@ static bool runControllers(SSimWorld &w, int port)
 			for (int i=0; i<ARRAY_SIZE(attrs); i++) {
 				Attribute &attr = obj->getAttr(attrs[i]);
 				values[i] = attr.value().getString();
-
 			}
 		} catch(SSimObj::NoAttributeException &) {;}
 
@@ -142,31 +140,31 @@ static bool  createWorld(int port)
 #ifndef _DEBUG
 	try
 #endif
-		{
-			s_db.clear();
+	{
+		s_db.clear();
 
-			// XML reader
-			WorldXMLReader read(s_fdb, s_db, s_ssdb);
+		// XML reader
+		WorldXMLReader reader(s_fdb, s_db, s_ssdb);
 
-			// Reading the world file
-			if (!read(s_worldfile.c_str())) {
-				fprintf(stderr, "cannot read world file : %s\n", s_worldfile.c_str());
+		// Reading the world file
+		if (!reader.read(s_worldfile.c_str())) {
+			fprintf(stderr, "cannot read world file : %s\n", s_worldfile.c_str());
+			return false;
+		}
+		// Construction of SIGVerse world from reading result
+		SSimWorld *w = reader.release();
+
+		if (w && port >= 0) {
+			// Initialization of controller
+			if (!runControllers(*w, port)) {
+				delete w;
 				return false;
 			}
-			// Construction of SIGVerse world from reading result
-			SSimWorld *w = read.release();
-
-			if (w && port >= 0) {
-				// Initialization of controller
-				if (!runControllers(*w, port)) {
-					delete w;
-					return false;
-				}
-				delete s_world;
-			}
-			s_world = w;
+			delete s_world;
+		}
+		s_world = w;
 #ifndef _DEBUG
-		} catch(SSimObj::Exception &e) {
+	} catch(SSimObj::Exception &e) {
 		fprintf(stderr, "%s\n", e.msg());
 		return false;
 #endif
@@ -175,7 +173,7 @@ static bool  createWorld(int port)
 }
 
 
-static bool  createWorld()
+static bool createWorld()
 {
 	return createWorld(-1);
 }
@@ -251,6 +249,7 @@ int main(int argc, char **argv)
 #endif
 	int ch;
 	extern char *optarg;
+
 	while ((ch = getopt(argc, argv, "p:v:c:w:t:")) != -1) {
 		switch(ch) {
 
@@ -265,7 +264,7 @@ int main(int argc, char **argv)
 			int v = atoi(optarg);
 			LOG_LEVEL_INCR(loglevel, v);
 		}
-		break;
+			break;
 
 		// Directory of configuration files such as world file
 		case 'c':
@@ -273,7 +272,7 @@ int main(int argc, char **argv)
 				fprintf(stderr, "%s is not directory\n", optarg);
 				return 1;
 			}
-		break;
+			break;
 		case 'w': {
 			s_worldfile = optarg;
 			// get a directory of world file from optarg
@@ -296,10 +295,11 @@ int main(int argc, char **argv)
 				s_worldfile = fname;
 			}
 		}
-		break;
+			break;
 		// Get the time to be terminated
 		case 't':
-			endT = atof(optarg); break;
+			endT = atof(optarg);
+			break;
 		default:
 			printUsage();
 			return 1;
@@ -308,6 +308,7 @@ int main(int argc, char **argv)
 
 	// Get directory from the environmental variable SIGVERSE_DATADIR
 	char *dir = getenv("SIGVERSE_DATADIR");
+
 	if (dir != NULL) {
 		std::string d = dir;
 		d += "/xml";
@@ -330,7 +331,7 @@ int main(int argc, char **argv)
 	addr.sin_family = AF_INET;
 	addr.sin_addr.s_addr = INADDR_ANY;
 	addr.sin_port = htons(port);
-  
+
 	// avoid "Address already in use"
 	setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, NULL, 0);
 
@@ -343,7 +344,7 @@ int main(int argc, char **argv)
 				addr.sin_port = htons(port);
 				//return 1;
 			}
-			else  connect = true;
+			else connect = true;
 		}
 		LOG_SYS(("///////////////////////////////////////////////////////////"));
 		LOG_SYS(("////////////// World number %d  (port %d) ///////////////", (port - SIGSERVER_DEFAULT_PORT_NUM)/SIGSERVER_DEFAULT_PORT_BAND, port));
@@ -354,7 +355,7 @@ int main(int argc, char **argv)
 			perror("cannot bind socket");
 		}
 	}
-  
+
 	// Use bigger queue for listen
 	listen(sock, 20); //TODO: Magic number should be removed: by inamura
 
@@ -399,7 +400,7 @@ int main(int argc, char **argv)
 
 #if 0
 	// konao
-	//	s_ssdb.dump();
+	// s_ssdb.dump();
 	if (s_world)
 		{
 			printf("**** world dump ****\n");
@@ -409,10 +410,10 @@ int main(int argc, char **argv)
 #endif
 
 	if (bWorldCreated)
-		{
-			LOG_SYS(("waiting for connection..."));
-			s_sim->loop(endT);
-		}
+	{
+		LOG_SYS(("waiting for connection..."));
+		s_sim->loop(endT);
+	}
 
 	accept.close();
 	delete s_sim; s_sim = NULL;

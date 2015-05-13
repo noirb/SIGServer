@@ -18,7 +18,7 @@ void SSimEntity::addGeom(dGeomID geom)
 bool SSimEntity::getPosition(Vector3d &pos, bool pre)
 {
 	const dReal *p = dBodyGetPosition(m_parts.body);
-  
+
 	// Get the gap of position between SIGVerse and ODE
 	Vector3d opos = m_parts.pos;
 	pos.set(p[0], p[1], p[2]);
@@ -34,7 +34,6 @@ bool SSimEntity::getPosition(Vector3d &pos, bool pre)
 			m_px = p[0];
 			m_py = p[1];
 			m_pz = p[2];
-
 		}
 		return true;
 	}
@@ -54,9 +53,9 @@ bool SSimEntity::getQuaternion(dQuaternion q, bool pre)
 	q[3] = tmp_qu[3];
 
 	// return false if it is not rotated
-	if (m_qw == q[0] && m_qx == q[1] && m_qy == q[2] && m_qz == q[3])
+	if (m_qw == q[0] && m_qx == q[1] && m_qy == q[2] && m_qz == q[3]){
 		return false;
-
+	}
 	// if it is rotated
 	else{
 		return true;
@@ -103,14 +102,14 @@ void SSimEntity::setMass(double mass)
 				dReal radius = dGeomSphereGetRadius(geom);
 				dMassSetSphereTotal(&m2, ms, radius);
 			}
-      
+
 			// box
 			else if (type == 1) {
 				dVector3 size;
 				dGeomBoxGetLengths(geom, size);
 				dMassSetBoxTotal(&m2, ms, size[0], size[1], size[2]);
 			}
-      
+
 			// cylinder
 			else if (type == 3) {
 				dReal radius = 0.0;
@@ -144,7 +143,6 @@ void SSimEntity::setMass(double mass)
 		dBodySetMass(body, &m);
 		dBodySetDamping(body, 0.8, 0.8); // added by inamura on 2014-01-29 for test
 	} // if (partsNum != 0) {
-
 }
 
 
@@ -189,7 +187,7 @@ void SSimEntity::setScale(Vector3d scale) {
 
 			// Reflection of scale
 			dGeomSetPosition(geom, pos[0]*scale.x(), pos[1]*scale.y(), pos[2]*scale.z());
-      
+
 			// Refer the type of the geometory
 			int type = dGeomGetClass(geom);
 
@@ -206,7 +204,7 @@ void SSimEntity::setScale(Vector3d scale) {
 				// reflection of scale
 				dGeomSphereSetRadius(geom, radius*mean);
 			}
-      
+
 			// box
 			else if (type == 1) {
 				// refer the size
@@ -228,7 +226,6 @@ void SSimEntity::setScale(Vector3d scale) {
 				// TODO: confirm: is 2 suitable for long axis?
 				dGeomCylinderSetParams(geom, radius*mean, length*scale.y());
 			}
-
 		} //  for (int i = 0; i < partsNum; i++) {
 	}
 }
@@ -264,14 +261,14 @@ void SSimRobotEntity::addJoint(SSimJoint *joint)
 		// add robot parts which have geometry to member variables
 		m_allParts.push_back(joint->robotParts);
 	}
-  
+
 	// add joint to member variables
 	m_allJoints.push_back(joint);
-  
+
 	// refer the joint ID and body ID
 	dJointID myJoint = joint->joint;
 	dBodyID  cbody   = joint->robotParts.objParts.body;
-  
+
 	if (joint->isRoot) {
 		// connect with root body
 		//dJointAttach(myJoint, cbody, m_rootBody);  //TODO!
@@ -305,14 +302,14 @@ void SSimRobotEntity::addJoint(SSimJoint *joint)
 	/*
 	// if geommetry exists
 	if (joint.has_geom) {
-  
+
 	/*
-    ////// search the parent part to be connected
-    // refer the parent joint
-    std::string parent = joint.parent_joint;
-    
-    while (1) {
-      
+	////// search the parent part to be connected
+	// refer the parent joint
+	std::string parent = joint.parent_joint;
+
+	while (1) {
+
 	// get joint structure from joint name
 	SSimJoint pjoint = getJoint(parent);
 
@@ -331,15 +328,17 @@ void SSimRobotEntity::addJoint(SSimJoint *joint)
 	// Search the parents in addition
 	parent = pjoint.parent_name;
 	}
-    }
-    */
+	}
+	 */
 }
 
 
 void SSimRobotEntity::setInitPosition(Vector3d pos)
 {
 	int jsize = m_allJoints.size();
+
 	for (int i = 0; i < jsize; i++) {
+
 		SSimJoint *sjoint = m_allJoints[i];
 		SSimRobotParts rparts = sjoint->robotParts;
 		//dBodyID  body  = m_allJoints[i]->robotParts.objParts.body;
@@ -410,7 +409,8 @@ void SSimRobotEntity::setMass(SSimObjParts *parts, double mass)
 
 		dMass m;
 		dMass m2;
-		dMassSetZero(&m);    dMassSetZero(&m2);
+		dMassSetZero(&m);
+		dMassSetZero(&m2);
 
 		for (int i = 0; i < geomNum; i++) {
 
@@ -424,14 +424,14 @@ void SSimRobotEntity::setMass(SSimObjParts *parts, double mass)
 				dReal radius = dGeomSphereGetRadius(geom);
 				dMassSetSphereTotal(&m2, ms, radius);
 			}
-      
+
 			// box
 			else if (type == 1) {
 				dVector3 size;
 				dGeomBoxGetLengths(geom, size);
 				dMassSetBoxTotal(&m2, ms, size[0], size[1], size[2]);
 			}
-      
+
 			// cylinder
 			else if (type == 3) {
 				dReal radius = 0.0;
@@ -447,7 +447,6 @@ void SSimRobotEntity::setMass(SSimObjParts *parts, double mass)
 			dMassAdd(&m, &m2);
 		}
 
-
 		// adjustment of the gap between CoG
 		//const dReal *p = dBodyGetPosition(body);
 		//dBodySetPosition(body,p[0]+m.c[0], p[1]+m.c[1], p[2]+m.c[2]);    
@@ -457,7 +456,6 @@ void SSimRobotEntity::setMass(SSimObjParts *parts, double mass)
 		dBodySetMass(body, &m);
 		dBodySetDamping(body, 0.8, 0.8); // added by inamura on 2014-01-29 for test
 	} // if (partsNum != 0) {
-
 }
 
 
@@ -466,11 +464,14 @@ void SSimRobotEntity::setCollision(bool col) {
 
 	if (col)m_collision = true;
 	else m_collision = false;
-  
+
 	// Setting all of the parts
 	int pSize = m_allParts.size();
+
 	for (int i = 0; i < pSize; i++) {
+
 		int gSize = m_allParts[i].objParts.geoms.size();
+
 		for (int j = 0; j < gSize; j++) {
 			// reference of the geometry
 			dGeomID geom = m_allParts[i].objParts.geoms[j];
