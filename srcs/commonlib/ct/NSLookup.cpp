@@ -63,7 +63,7 @@ SOCKET NSLookup::Provider::sock()
 
 NSLookup::~NSLookup()
 {
-	for (C::iterator i=m_providers.begin(); i!=m_providers.end(); i++) {
+	for (std::vector<Provider*>::iterator i=m_providers.begin(); i!=m_providers.end(); i++) {
 		Provider *p = *i;
 		delete p;
 	}
@@ -73,7 +73,7 @@ NSLookup::~NSLookup()
 
 NSLookup::Provider *NSLookup::find(Service::Kind kind)
 {
-	for (C::iterator i=m_providers.begin(); i!=m_providers.end(); i++) {
+	for (std::vector<Provider*>::iterator i=m_providers.begin(); i!=m_providers.end(); i++) {
 		Provider *p = *i;
 		if (p->service().kind() & kind) {
 			if (p->active()) {

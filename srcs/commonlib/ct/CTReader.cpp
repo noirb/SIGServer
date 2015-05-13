@@ -61,14 +61,14 @@ bool CTReader::read()
 		double tmp_time = (double)(now.tv_sec - eoa.tv_sec) + (double)(now.tv_usec - eoa.tv_usec) * 0.001 * 0.001;
 		if (tmp_time >= timewidth) {
 			ActionEvent aevt;
-      
+
 			double nowtime = (double)(now.tv_sec - start.tv_sec) + (double)(now.tv_usec - start.tv_usec) * 0.001 * 0.001;
 
 			nowtime += server_startTime;
 			aevt.setTime(nowtime);
-      
+
 			timewidth = con->onAction(aevt);
-      
+
 			gettimeofday(&eoa, NULL);
 
 			Controller *conn = (Controller*)con;
@@ -86,6 +86,7 @@ bool CTReader::read()
 	ControllerImpl* coni = (ControllerImpl*)con;
 	std::map<std::string, SOCKET> ssocks = coni->getSrvSocks();
 	std::map<std::string, SOCKET>::iterator it = ssocks.begin();
+
 	while (it != ssocks.end()) {
 		FD_SET((*it).second, &rfds);
 		it++;
@@ -93,13 +94,13 @@ bool CTReader::read()
 	tv.tv_sec = 0;
 	//tv.tv_usec = 100000;
 	tv.tv_usec = 1000; 
-  
+
 	int ret = select(FD_SETSIZE, &rfds, NULL, NULL, &tv);
 	if (ret == -1) {
 		perror("select");
 		return false;
 	}
-  
+
 	else if (ret == 0) {
 		return true;
 	}
@@ -168,11 +169,11 @@ bool CTReader::read()
 							server_startTime = BINARY_GET_DOUBLE(tmpBuff);
 
 							gettimeofday(&start, NULL);
-	    
+
 							ControllerInf *con = m_decoder.getController();
 
 							con->setSimState(true);
-	    
+
 							if (!start_onInit) {
 								InitEvent evt;
 								con->onInit(evt);
@@ -198,6 +199,7 @@ bool CTReader::read()
 					}
 
 					else if (token == STOP_SIM) {
+
 						start_sim = false;
 
 						ControllerInf *con = m_decoder.getController();
@@ -245,7 +247,6 @@ bool CTReader::read()
 			}
 			else {
 				rbytes = m_buf->read(s);
-      
 #if 1
 				// sekikawa(FIX20100826)
 				if (rbytes < 0) {
@@ -291,22 +292,26 @@ bool CTReader::read()
 		} //if (FD_ISSET(s, &rfds)) {
 		else{
 			std::map<std::string, SOCKET>::iterator it = ssocks.begin();
+
 			while (it != ssocks.end()) {
+
 				SOCKET sock = (*it).second;  
-				std::string srv_name = (*it).first.c_str(); 
+				std::string srv_name = (*it).first.c_str();
+
 				if (FD_ISSET(sock, &rfds)) {
+
 					char tmp[4]; 
 					char *p = tmp;
-	  
+
 					if (!recvData(sock, tmp, 4)) {
 						LOG_SYS(("disconnected from service [%s]", srv_name.c_str()));
 						coni->deleteService(srv_name);
 						it++;
 						continue;
-					} 
+					}
 
 					unsigned short n = BINARY_GET_DATA_S_INCR(p, unsigned short);
-	  
+
 					int size = BINARY_GET_DATA_S_INCR(p, unsigned short);
 
 					if (n == 4) {
@@ -315,21 +320,21 @@ bool CTReader::read()
 						//m_connected = false;
 						//goto error;
 					} // switch(n) {
-      
-					size -= 4;      
+
+					size -= 4;
 
 					if (size == 0) 
 						continue;
-	  
+
 					char *recvBuff = new char[size];
 					if (!recvData(sock, recvBuff, size)) {
 						coni->deleteService(srv_name);
 						delete [] recvBuff;
-					}    
+					}
 
 					switch(n) {
 
-					case 2:
+						case 2:
 						{
 							if (con->getSimState()) {
 								RecvMsgEvent msg;
@@ -373,7 +378,6 @@ CommDataDecoder::Result * CTReader::readSync()
 		int rbytes;
 		if (m_buf->datasize() == 0) {
 			rbytes = m_buf->read(s, 4);
-
 #if 1
 			// sekikawa(FIX20100826)
 			if (rbytes < 0) {
@@ -385,7 +389,6 @@ CommDataDecoder::Result * CTReader::readSync()
 				throw ConnectionClosedException();
 			}
 #endif
-
 			if (rbytes > 0) {
 				char *data = m_buf->data();
 				char *p = data;
@@ -507,8 +510,10 @@ int CTReader::Buffer::read(SOCKET s, int bytes)
 	return rbytes;
 }
 
-void CTReader::Buffer::setDecodedByte(int decoded) {
+void CTReader::Buffer::setDecodedByte(int decoded)
+{
 	int left = datasize() - decoded;
+
 	if (left > 0) {
 		LOG_DEBUG1(("%d bytes left", left));
 		char *currbuf = m_buf[m_curr];
@@ -523,21 +528,21 @@ void CTReader::Buffer::setDecodedByte(int decoded) {
 	}
 }
 
-bool CTReader::recvData(SOCKET sock, char* msg, int size) {
+bool CTReader::recvData(SOCKET sock, char* msg, int size)
+{
 	int recieved = 0;
 	while (1) {
 
 		int r = recv(sock, msg + recieved, size - recieved, 0);
 		if (r < 0) 
-			{
-				if (errno == EAGAIN ||
-					errno == EWOULDBLOCK) {
-					sleep(0.1);
-					continue;
-				}
-				LOG_ERR(("Controller: Failed to recieve data. erro[%d]",r));
-				return false;
+		{
+			if (errno == EAGAIN || errno == EWOULDBLOCK) {
+				sleep(0.1);
+				continue;
 			}
+			LOG_ERR(("Controller: Failed to recieve data. erro[%d]",r));
+			return false;
+		}
 
 		recieved += r;
 

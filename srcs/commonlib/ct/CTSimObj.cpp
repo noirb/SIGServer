@@ -124,13 +124,13 @@ bool CTSimObj::detectEntities(EntityNameC &v, int id)
 		// sekikawa(FIX20100906)
 		Result *result = NULL;
 		try
-			{
-				result = r.readSync();
-			}
+		{
+			result = r.readSync();
+		}
 		catch(CTReader::ConnectionClosedException &e)
-			{
-				break;
-			}
+		{
+			break;
+		}
 #else
 		// orig
 		Result *result = r.readSync();
@@ -198,10 +198,10 @@ Text * CTSimObj::getText(RawSound &rawSound)
 		int status = enc->send(sock);
 		delete enc;
 		if (status < 0)
-			{
-				prov->close();
-				return false;
-			}
+		{
+			prov->close();
+			return false;
+		}
 #else
 		// orig
 		enc->send(sock);
@@ -220,13 +220,13 @@ Text * CTSimObj::getText(RawSound &rawSound)
 		// sekikawa(FIX20100906)
 		Result *result = NULL;
 		try
-			{
-				result = r->readSync();
-			}
+		{
+			result = r->readSync();
+		}
 		catch(CTReader::ConnectionClosedException &e)
-			{
-				break;
-			}
+		{
+			break;
+		}
 #else
 		// orig
 		Result *result = r->readSync();
@@ -288,10 +288,10 @@ ViewImage * CTSimObj::captureView(ColorBitType cbtype, ImageDataSize size, int i
 		int status = enc->send(sock);
 		delete enc;
 		if (status < 0)
-			{
-				prov->close();
-				return false;
-			}
+		{
+			prov->close();
+			return false;
+		}
 #else
 		// orig
 		enc->send(sock);
@@ -315,13 +315,13 @@ ViewImage * CTSimObj::captureView(ColorBitType cbtype, ImageDataSize size, int i
 		// sekikawa(FIX20100906)
 		Result *result = NULL;
 		try
-			{
-				result = r->readSync();
-			}
+		{
+			result = r->readSync();
+		}
 		catch(CTReader::ConnectionClosedException &e)
-			{
-				break;
-			}
+		{
+			break;
+		}
 #else
 		// orig
 		Result *result = r->readSync();
@@ -392,14 +392,14 @@ unsigned char CTSimObj::distanceSensor(double start, double end, int id)
 	while  (true) {
 		Result *result = NULL;
 		try
-			{
-				result = r->readSync();
-			}
+		{
+			result = r->readSync();
+		}
 		catch(CTReader::ConnectionClosedException &e)
-			{
-				break;
-			}
-    
+		{
+			break;
+		}
+
 		if (!result) {
 			if (retry <= 0) {
 				// add(sekikawa)(2010/08/10)
@@ -418,7 +418,7 @@ unsigned char CTSimObj::distanceSensor(double start, double end, int id)
 			}
 		}
 		if (result->type() == COMM_RESULT_DISTANCE_SENSOR) {
-      
+
 			ResultDistanceSensorEvent *evt = (ResultDistanceSensorEvent*)result->data();
 			distance = evt->getDistance();
 		}
@@ -428,7 +428,6 @@ unsigned char CTSimObj::distanceSensor(double start, double end, int id)
 
 	prov->close();
 	return distance;
-  
 }
 
 
@@ -450,14 +449,14 @@ ViewImage *CTSimObj::distanceSensorD(double start, double end, int id, bool map)
 	CommRequestDistanceSensorEncoder *enc; 
 
 	if(map == false)
-		{
-			enc = new CommRequestDistanceSensorEncoder(myname(), start, end, id, 1);
-		}
+	{
+		enc = new CommRequestDistanceSensorEncoder(myname(), start, end, id, 1);
+	}
 	else
-		{
-			// Encoder for 2D distance sensor
-			enc = new CommRequestDistanceSensorEncoder(myname(), start, end, id, 2);
-		}
+	{
+		// Encoder for 2D distance sensor
+		enc = new CommRequestDistanceSensorEncoder(myname(), start, end, id, 2);
+	}
 	//	CommRequestDistanceSensorEncoder enc(myname(), id);
 	int status = enc->send(sock);
 
@@ -474,17 +473,17 @@ ViewImage *CTSimObj::distanceSensorD(double start, double end, int id, bool map)
 		retry = 20;
 	Reader *r = new Reader(sock, d, 100000);
 
-	while  (true) {
+	while (true) {
 		Result *result = NULL;
 		try
-			{
-				result = r->readSync();
-			}
+		{
+			result = r->readSync();
+		}
 		catch(CTReader::ConnectionClosedException &e)
-			{
-				break;
-			}
-    
+		{
+			break;
+		}
+
 		if (!result) {
 			if (retry <= 0) {
 				// add(sekikawa)(2010/08/10)
@@ -503,13 +502,13 @@ ViewImage *CTSimObj::distanceSensorD(double start, double end, int id, bool map)
 			}
 		}
 		if (result->type() == COMM_RESULT_CAPTURE_VIEW_IMAGE) {
-      
+
 			ResultCaptureViewImageEvent *evt = (ResultCaptureViewImageEvent*)result->data();
 			img = evt->release();
 		}
 		/*
 		  if (result->type() == COMM_RESULT_DISTANCE_SENSOR1D) {
-      
+
 		  ResultDistanceSensor1DEvent *evt = (ResultDistanceSensor1DEvent*)result->data();
 		  distance = evt->getDistance();
 		  }
@@ -527,7 +526,8 @@ void CTSimObj::sendText(double t, const char *to, const char *text)
 	sendText(t, to, text, -1);
 }
 
-void CTSimObj::sendText(double t, const char *to, const char *text, double reachRadius) {
+void CTSimObj::sendText(double t, const char *to, const char *text, double reachRadius)
+{
 	CommInvokeMethodOnRecvTextEncoder enc(t, myname(), to, text, ENCODE_ASCII, reachRadius);
 
 	enc.send(m_sock);
@@ -558,8 +558,10 @@ static Result *getResult(SOCKET sock, int bufsize, int retry)
 	CommDataDecoder d;
 	typedef CTReader Reader;
 	Reader *r = new Reader(sock, d, bufsize);
+
 	while  (true) {
 		Result *result = r->readSync();
+
 		if (!result) {
 			if (retry <= 0) {
 				break;
@@ -577,7 +579,6 @@ static Result *getResult(SOCKET sock, int bufsize, int retry)
 		return result;
 	}
 	return NULL;
-
 }
 
 

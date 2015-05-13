@@ -27,10 +27,8 @@ public:
 		void close();
 	};
 private:
-	typedef std::vector<Provider*> C;
-private:
-	SOCKET		m_sock;
-	C 		m_providers;
+	SOCKET  m_sock;
+	std::vector<Provider*> m_providers;
 private:
 	Provider * find(Service::Kind kind);
 public:
