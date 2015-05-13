@@ -7,7 +7,7 @@
 class ActionEvent : public ControllerEvent
 {
 public:
-	bool	set(int packetNum, int seq, char *data, int n);
+	bool set(int packetNum, int seq, char *data, int n);
 };
 
 
