@@ -11,7 +11,6 @@
 
 ControllerLib::ControllerLib() : m_lib(0), m_model(0), m_create(0)
 {
-
 }
 
 ControllerLib::~ControllerLib()

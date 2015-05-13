@@ -19,7 +19,7 @@ public:
 	
 	ControllerLib();
 	~ControllerLib();
-	bool	load(const char *libname);
+	bool load(const char *libname);
 	Controller & getController();
 };
 

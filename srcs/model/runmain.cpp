@@ -24,20 +24,21 @@ int main(int argc, char **argv)
 
 	int opt;
 	while ((opt = getopt(argc, argv, "l:h:p:n:s")) != -1) {
+
 		switch(opt) {
-		case 'l':
-			libname = optarg; break;
-		case 'h':
-			server = optarg; break;
-		case 'p':
-			port = atoi(optarg); break;
-		case 'n':
-			name = optarg; break;
-		case 's':
-			silent = true; break;
-		default:
-			printUsage(argv[0]);
-			return 1;
+			case 'l':
+				libname = optarg; break;
+			case 'h':
+				server = optarg; break;
+			case 'p':
+				port = atoi(optarg); break;
+			case 'n':
+				name = optarg; break;
+			case 's':
+				silent = true; break;
+			default:
+				printUsage(argv[0]);
+				return 1;
 		}
 	}
 	if (!name) {
@@ -71,5 +72,5 @@ int main(int argc, char **argv)
 
 	delete lib;
 	return 0;
-}	
+}
 
