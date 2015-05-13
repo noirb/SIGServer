@@ -18,16 +18,13 @@ class SSimObj;
 class JointControlCommand : public Command
 {
 private:
-	typedef std::string S;
-	typedef std::map<S, double> M;
-private:
-	M	m_values;
+	std::map<std::string, double> m_values;
 public:
 	JointControlCommand(const char *target_)
 		: Command(COMMAND_JOINT_CONTROL, target_) {;}
 		
 public:
-	void	set(const char *name, double v)
+	void set(const char *name, double v)
 	{
 		m_values[name] = v;
 	}

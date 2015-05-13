@@ -17,7 +17,7 @@ class SSimObj;
 class MoveCommand : public Command
 {
 private:
-        Vector3d m_dest;
+	Vector3d m_dest;
 	double	m_vel;
 public:
 	MoveCommand(const char *target_, const Vector3d &dest, double vel)

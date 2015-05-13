@@ -17,8 +17,8 @@ char *JointControlCommand::toBinary(int &n)
 
 	unsigned num = m_values.size();
 	BINARY_SET_DATA_S_INCR(p, unsigned short, num);
-	for (M::iterator i=m_values.begin(); i!=m_values.end(); i++) {
-		S name = i->first;
+	for (std::map<std::string, double>::iterator i=m_values.begin(); i!=m_values.end(); i++) {
+		std::string name = i->first;
 		double v = i->second;
 		BINARY_SET_STRING_INCR(p, name.c_str());
 		BINARY_SET_DOUBLE_INCR(p, v);
@@ -36,8 +36,8 @@ void JointControlCommand::dump()
 	printf("type : %d\n", m_type);
 	printf("target agent name : \"%s\"\n", target());
 
-	for (M::iterator i=m_values.begin(); i!=m_values.end(); i++) {
-		S name = i->first;
+	for (std::map<std::string, double>::iterator i=m_values.begin(); i!=m_values.end(); i++) {
+		std::string name = i->first;
 		double v = i->second;
 		printf("\t\"%s\" = %f\n", name.c_str(), v);
 	}
