@@ -10,16 +10,13 @@
 
 BEGIN_NS_COMMDATA();
 
-char *	GetPointedObjectRequestEncoder::encode(int seq, int &sz)
+char * GetPointedObjectRequestEncoder::encode(int seq, int &sz)
 {
 	char *p = m_buf;
 
 	p = setHeader(p, seq);
 
-
 	BINARY_SET_STRING_INCR(p, m_speakerName.c_str());
-
-
 	BINARY_SET_STRING_INCR(p, m_SStr1.c_str());
 	BINARY_SET_STRING_INCR(p, m_SStr2.c_str());
 
@@ -31,7 +28,6 @@ char *	GetPointedObjectRequestEncoder::encode(int seq, int &sz)
 		BINARY_SET_STRING_INCR(p, "-1");
 	}
 
-
 	p = setFooter(p);
 
 	sz = p - m_buf;
@@ -40,7 +36,7 @@ char *	GetPointedObjectRequestEncoder::encode(int seq, int &sz)
 }
 
 
-char *	GetPointedObjectResultEncoder::encode(int seq, int &sz)
+char * GetPointedObjectResultEncoder::encode(int seq, int &sz)
 {
 	char *p = m_buf;
 
@@ -49,6 +45,7 @@ char *	GetPointedObjectResultEncoder::encode(int seq, int &sz)
 	char *pCnt = p;
 	BINARY_SET_DATA_S_INCR(p, short, 0);
 	short cnt = 0;
+
 	for (std::vector<std::string>::iterator i=m_candidateNameVec.begin(); i!=m_candidateNameVec.end(); i++) {
 		std::string name = *i;
 
@@ -67,7 +64,6 @@ char *	GetPointedObjectResultEncoder::encode(int seq, int &sz)
 	sz = p - m_buf;
 	setPacketSize(m_buf, sz);
 	return m_buf;
-
 }
 
 END_NS_COMMDATA();

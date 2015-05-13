@@ -17,8 +17,8 @@ private:
 	short m_color;
 	std::string m_msg;
 public:
- DisplayText(int fs, int color, const char *msg)
-   : Encoder(COMM_DISPLAY_TEXT, BUFSIZE), m_fs(fs), m_color(color), m_msg(msg) {;}
+	DisplayText(int fs, int color, const char *msg)
+		: Encoder(COMM_DISPLAY_TEXT, BUFSIZE), m_fs(fs), m_color(color), m_msg(msg) {;}
 	
 	int packetNum() { return 1;}
 	char *encode(int seq, int &sz);

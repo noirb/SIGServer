@@ -49,8 +49,8 @@ char * DetectEntitiesResult::encode(int seq, int &sz)
 
 	short cnt = 0;
 	// modified by noma@tome (2012/02/20)
-	for (C::iterator i=m_detected.begin(); i!=m_detected.end(); i++) {
-		S name = *i;
+	for (std::vector<std::string>::iterator i=m_detected.begin(); i!=m_detected.end(); i++) {
+		std::string name = *i;
 		
 		int left = BUFSIZE - (p-m_buf + name.length()+2);
 		if (left <= COMM_DATA_FOOTER_SIZE) {

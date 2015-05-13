@@ -10,7 +10,7 @@
 
 BEGIN_NS_COMMDATA();
 
-char *	InvokeOnRecvSound::getDataHeader(int &sz)
+char * InvokeOnRecvSound::getDataHeader(int &sz)
 {
 	char *p = m_dataHeaderBuf;
 	BINARY_SET_DOUBLE_INCR(p, m_time);
@@ -27,12 +27,12 @@ char *	InvokeOnRecvSound::getDataHeader(int &sz)
 	return m_dataHeaderBuf;
 }
 
-int 	InvokeOnRecvSound::getDataLen()
+int InvokeOnRecvSound::getDataLen()
 {
 	return m_sound.getDataLen();
 }
 
-char *	InvokeOnRecvSound::getData()
+char * InvokeOnRecvSound::getData()
 {
 	return m_sound.getData();
 }

@@ -16,7 +16,7 @@ namespace CommData {
 class InvokeOnInit : public NoDataEncoder
 {
 public:
-        InvokeOnInit() : NoDataEncoder(COMM_INVOKE_CONTROLLER_ON_INIT) {;}
+	InvokeOnInit() : NoDataEncoder(COMM_INVOKE_CONTROLLER_ON_INIT) {;}
 };
 
 class InvokeOnAction : public Encoder
@@ -34,19 +34,16 @@ public:
 };
 
 
-
 class InvokeOnRecvText : public Encoder
 {
 private:
 	enum { BUFSIZE = 1024, }; //TODO: Magic number
 private:
-	typedef std::string S;
-private:
 	double  m_time;
-	S	m_caller;
-	S	m_target;
-	S	m_text;
-	Encode	m_encode;
+	std::string m_caller;
+	std::string m_target;
+	std::string m_text;
+	Encode      m_encode;
 public:
 	InvokeOnRecvText(double t, const char *caller, const char *target, const char *text, Encode e, double reachRadius)
 		: Encoder(COMM_INVOKE_CONTROLLER_ON_RECV_TEXT, BUFSIZE),
@@ -63,19 +60,18 @@ public:
 class InvokeOnRecvMessage : public Encoder
 {
 	enum { BUFSIZE = 2048, }; //TODO: Magic number
-	typedef std::string S;
-	typedef std::vector<S> C;
 private:
-	S	m_from;
-	C 	m_msgs;
+	std::string m_from;
+	std::vector<std::string> m_msgs;
 public:
 	InvokeOnRecvMessage(const char *from, const char * target, int msgc, char **msgv)
 		: Encoder(COMM_INVOKE_CONTROLLER_ON_RECV_MESSAGE, BUFSIZE)
 	{
 		setForwardTo(target, false);
 		if (from) { m_from = from; }
+
 		for (int i=0; i<msgc; i++) {
-			m_msgs.push_back(S(msgv[i]));
+			m_msgs.push_back(std::string(msgv[i]));
 		}
 	}
 	
@@ -85,13 +81,12 @@ public:
 
 class InvokeOnCollision : public Encoder
 {
-	typedef std::vector<std::string> C;
 	enum { BUFSIZE = 4096, }; //TODO: Magic number
 private:
-	double	m_time;
-	const C &m_with;
+	double m_time;
+	const std::vector<std::string> &m_with;
 public:
-	InvokeOnCollision(double t, const C & with)
+	InvokeOnCollision(double t, const std::vector<std::string> & with)
 		: Encoder(COMM_INVOKE_CONTROLLER_ON_COLLISION, BUFSIZE),
 		  m_time(t), m_with(with) {}
 

@@ -17,12 +17,10 @@ class InvokeOnRecvSound : public RawDataEncoder
 {
 	enum { DATA_HEADER_BUFSIZE = 256, }; //TODO: Magic number
 private:
-	typedef std::string S;
-private:
-	double	m_time;
-	S	m_caller;
-	RawSound &m_sound;
-	char	m_dataHeaderBuf[DATA_HEADER_BUFSIZE];
+	double      m_time;
+	std::string m_caller;
+	RawSound    &m_sound;
+	char        m_dataHeaderBuf[DATA_HEADER_BUFSIZE];
 	
 public:
 	InvokeOnRecvSound(double t, const char *caller, const char *target, RawSound & sound)
@@ -33,9 +31,9 @@ public:
 	}
 
 private:
-	char *	getDataHeader(int &);
-	int 	getDataLen();
-	char *	getData();
+	char * getDataHeader(int &);
+	int    getDataLen();
+	char * getData();
 };
 
 } // namespace

@@ -8,7 +8,7 @@
 BEGIN_NS_COMMDATA();
 
 
-char *	GetObjectNamesRequest::encode(int seq, int &sz)
+char * GetObjectNamesRequest::encode(int seq, int &sz)
 {
 	int n;
 	char *p = m_buf;
@@ -31,7 +31,7 @@ char *	GetObjectNamesRequest::encode(int seq, int &sz)
 	return m_buf;
 }
 
-int 	GetObjectNamesResult::packetNum()
+int GetObjectNamesResult::packetNum()
 {
 	return m_names.size()/50+1; //TODO: Magic number
 }
@@ -41,7 +41,7 @@ inline int MIN(int v1, int v2)
 	return v1<v2? v1:v2;
 }
 
-char *	GetObjectNamesResult::encode(int seq, int &sz)
+char * GetObjectNamesResult::encode(int seq, int &sz)
 {
 	int n;
 	char *p = m_buf;
@@ -59,7 +59,7 @@ char *	GetObjectNamesResult::encode(int seq, int &sz)
 		BINARY_SET_DATA_S_INCR(p, unsigned short, n_);
 
 		for (int i=si; i<ei; i++) {
-			S s = m_names[i];
+			std::string s = m_names[i];
 			BINARY_SET_STRING_INCR(p, s.c_str());
 		}
 	}

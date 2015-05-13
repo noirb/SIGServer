@@ -20,19 +20,16 @@
 class CommDataEncoder
 {
 private:
-	typedef std::string S;
-
-private:
 	CommDataType    m_type;
 	unsigned short  m_forwardFlags;
-	S               m_forwardTo;
+	std::string     m_forwardTo;
 	double          m_forwardReachRadius;
 protected:
 	char *          m_buf;
 	int             m_bufsize;
 protected:
-	//int		bufleft(char *p) { return m_bufsize - (p-m_buf); }
-	char *		bufresize(int add, char *ptr)
+	//int  bufleft(char *p) { return m_bufsize - (p-m_buf); }
+	char * bufresize(int add, char *ptr)
 	{
 		int idx = ptr - m_buf;
 		
@@ -50,8 +47,8 @@ protected:
 	{
 		m_buf = new char[bufsize];
 	}
-	void	setForwardTo(const char *to, bool returnImmediate, double reachRadius);
-	void	setForwardTo(const char *to, bool returnImmediate)
+	void setForwardTo(const char *to, bool returnImmediate, double reachRadius);
+	void setForwardTo(const char *to, bool returnImmediate)
 	{
 		setForwardTo(to, returnImmediate, -1);
 	}
@@ -68,18 +65,20 @@ public:
 		m_buf = 0;
 		return tmp;
 	}
-	int	send(SOCKET sock);
+
+	int send(SOCKET sock);
 
 	typedef int (SendProc)(SOCKET, const char *, int);
-	static	void setSendProc(SendProc *p) { s_sendProc = p; }
+	static void setSendProc(SendProc *p) { s_sendProc = p; }
+
 private:
 	static SendProc *s_sendProc;
 
 protected:
-	char *	getHeader(int seq, int &n);
-	char *	getFooter(int &n);
+	char * getHeader(int seq, int &n);
+	char * getFooter(int &n);
 
-	void	setPacketSize(char *data, unsigned short n);
+	void setPacketSize(char *data, unsigned short n);
 
 protected:
 	char *  setHeader(char *buf, int seq);
@@ -95,8 +94,10 @@ typedef CommDataEncoder Encoder;
 class NoDataEncoder : public Encoder
 {
 	enum { BUFSIZE = COMM_DATA_HEADER_MAX_SIZE + COMM_DATA_FOOTER_SIZE, };
+
 protected:
 	NoDataEncoder(CommDataType t) : Encoder(t, BUFSIZE) {;}
+
 public:
 	int packetNum() { return 1; }
 	char *encode(int seq, int &sz);
@@ -105,22 +106,21 @@ public:
 class RawDataEncoder : public Encoder
 {
 private:
-	enum { UNIT_DATA_SIZE  = 10000, };
-	enum { THIS_BUFSIZSE = UNIT_DATA_SIZE + sizeof(unsigned short), };
-	enum { BUFSIZE =
-	       COMM_DATA_HEADER_MAX_SIZE + COMM_DATA_FOOTER_SIZE + THIS_BUFSIZSE, };
+	enum { UNIT_DATA_SIZE = 10000, };
+	enum { THIS_BUFSIZSE  = UNIT_DATA_SIZE + sizeof(unsigned short), };
+	enum { BUFSIZE        = COMM_DATA_HEADER_MAX_SIZE + COMM_DATA_FOOTER_SIZE + THIS_BUFSIZSE, };
 
 private:
-	int 	 m_packetNum;	
+	int  m_packetNum;
 public:
 	RawDataEncoder(CommDataType t) : Encoder(t, BUFSIZE), m_packetNum(-1) {;}
 
-	int 	packetNum();
-	char *	encode(int seq, int &);
+	int packetNum();
+	char * encode(int seq, int &);
 protected:
-	virtual char *	getDataHeader(int &) = 0;
-	virtual int 	getDataLen() = 0;
-	virtual char *	getData() = 0;
+	virtual char * getDataHeader(int &) = 0;
+	virtual int    getDataLen() = 0;
+	virtual char * getData() = 0;
 };
 
 //END_NS_COMMDATA();

@@ -17,10 +17,11 @@ private:
 	RequestConnectJointData m_data;
 public:
 	RequestConnectJoint(
-			    const char *jointName, const char *agentName,const char *agentParts, 
-			    const char *targetName, const char *targetParts) :
+		const char *jointName, const char *agentName,const char *agentParts,
+		const char *targetName, const char *targetParts) :
 		Encoder(COMM_REQUEST_CONNECT_JOINT, BUFSIZE),
-		m_data(jointName, agentName, agentParts, targetName, targetParts) {}
+		m_data(jointName, agentName, agentParts, targetName, targetParts
+	) {}
 
 private:
 	int packetNum() { return 1; }

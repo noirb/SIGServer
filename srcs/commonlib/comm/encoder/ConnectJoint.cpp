@@ -7,7 +7,7 @@
 
 BEGIN_NS_COMMDATA()
 
-char *	RequestConnectJoint::encode(int seq, int &sz)
+char * RequestConnectJoint::encode(int seq, int &sz)
 {
 	char *p = m_buf;
 

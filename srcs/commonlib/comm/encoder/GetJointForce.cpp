@@ -4,7 +4,7 @@
 
 BEGIN_NS_COMMDATA();
 
-char *	RequestGetJointForce::encode(int seq, int &sz)
+char * RequestGetJointForce::encode(int seq, int &sz)
 {
 	char *p = m_buf;
 
@@ -20,7 +20,7 @@ char *	RequestGetJointForce::encode(int seq, int &sz)
 	return m_buf;
 }
 
-char *	ResultGetJointForce::encode(int seq, int &sz)
+char * ResultGetJointForce::encode(int seq, int &sz)
 {
 	char *p = m_buf;
 
@@ -28,8 +28,10 @@ char *	ResultGetJointForce::encode(int seq, int &sz)
 
 	unsigned short b = m_data.success()? 1: 0;
 	BINARY_SET_DATA_S_INCR(p, unsigned short, b);
+
 	if (b) {
 		JointForce *jfs = m_data.getJointForces();
+
 		for (int i=0; i<ResultGetJointForceData::JOINT_FORCE_NUM; i++) {
 			JointForce *jf = &jfs[i];
 
@@ -53,7 +55,6 @@ char *	ResultGetJointForce::encode(int seq, int &sz)
 	sz = p - m_buf;
 	setPacketSize(m_buf, sz);
 	return m_buf;
-
 }
 
 END_NS_COMMDATA();

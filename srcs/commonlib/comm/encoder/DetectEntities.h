@@ -18,16 +18,16 @@ class DetectEntitiesRequest : public Encoder
 private:
 	enum { BUFSIZE = 256, }; //TODO: Magic number
 private:
-	std::string	m_name;
-	int               m_id;
+	std::string m_name;
+	int         m_id;
 public:
- DetectEntitiesRequest(const char *agentName, int id)
-   : Encoder(COMM_REQUEST_DETECT_ENTITIES, BUFSIZE), m_name(agentName), m_id(id)
+	DetectEntitiesRequest(const char *agentName, int id)
+		: Encoder(COMM_REQUEST_DETECT_ENTITIES, BUFSIZE), m_name(agentName), m_id(id)
 	{
 	}
 
-	int 	packetNum() { return 1; }
-	char *	encode(int seq, int &);
+	int    packetNum() { return 1; }
+	char * encode(int seq, int &);
 };
 
 
@@ -36,10 +36,7 @@ class DetectEntitiesResult : public Encoder
 private:
 	enum { BUFSIZE = 1024, }; //TODO: Magic number
 private:
-	typedef std::string S;
-	typedef std::vector<S> C;
-private:
-	C		m_detected;
+	std::vector<std::string> m_detected;
 public:
 #ifdef DEPRECATED
 	DetectEntitiesResult(const char *controllerName)
@@ -51,12 +48,12 @@ public:
 	DetectEntitiesResult()
 		: Encoder(COMM_RESULT_DETECT_ENTITIES, BUFSIZE) {}
 
-	void	pushDetectedEntity(const char *name)
+	void pushDetectedEntity(const char *name)
 	{
 		m_detected.push_back(name);
 	}
-	int	packetNum() { return 1; }
-	char *	encode(int seq, int &);
+	int packetNum() { return 1; }
+	char * encode(int seq, int &);
 };
 	
 } // namespace 

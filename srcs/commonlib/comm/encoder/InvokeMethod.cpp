@@ -99,7 +99,7 @@ char *InvokeOnCollision::encode(int seq, int &sz)
 	BINARY_SET_DOUBLE_INCR(p, m_time);
 	BINARY_SET_DATA_S_INCR(p, unsigned short, m_with.size());
 	
-	for (C::const_iterator i=m_with.begin(); i!=m_with.end(); i++) {
+	for (std::vector<std::string>::const_iterator i=m_with.begin(); i!=m_with.end(); i++) {
 		BINARY_SET_STRING_INCR(p, i->c_str());
 	}
 

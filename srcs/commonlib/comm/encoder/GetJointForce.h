@@ -22,8 +22,8 @@ public:
 		: Encoder(COMM_REQUEST_GET_JOINT_FORCE, BUFSIZE),
 		  m_agentName(agentName), m_jointName(jointName) {}
 
-	int 	packetNum() { return 1; }
-	char *	encode(int seq, int &);
+	int     packetNum() { return 1; }
+	char *  encode(int seq, int &);
 };
 
 class ResultGetJointForce : public Encoder
@@ -33,13 +33,14 @@ private:
 	ResultGetJointForceData m_data;
 public:
 	ResultGetJointForce() : Encoder(COMM_RESULT_GET_JOINT_FORCE, BUFSIZE) {}
-	void	success(bool b) { m_data.success(b); }
+	void  success(bool b) { m_data.success(b); }
+
 	JointForce * getJointForces() {
 		return m_data.getJointForces();
 	}
 
-	int 	packetNum() { return 1; }
-	char *	encode(int seq, int &);
+	int     packetNum() { return 1; }
+	char *  encode(int seq, int &);
 };
 
 } // namespace

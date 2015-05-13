@@ -24,11 +24,11 @@ class SendEndities : public Encoder
 {
 private:
 	enum { BUFSIZE = 1024, RESIZE = BUFSIZE, }; //TODO: Magic number
+
 private:
-	typedef std::vector<SimObjBase *> C;
-private:
-	double	m_time;
-	C	m_objs;
+	double m_time;
+	std::vector<SimObjBase *> m_objs;
+
 public:
 	SendEndities(CommDataType type, double t)
 		: Encoder(type, BUFSIZE), m_time(t) {}

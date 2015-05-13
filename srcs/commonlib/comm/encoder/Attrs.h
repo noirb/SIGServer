@@ -17,10 +17,7 @@ class GetAttributesRequest : public Encoder
 public:
 	enum { BUFSIZE = 2048, }; //TODO: Magic number
 private:
-	typedef std::string S;
-	typedef std::vector<S> C;
-private:
-	C 	m_attrNames;
+	std::vector<std::string> m_attrNames;
 public:
 	GetAttributesRequest() : Encoder(COMM_REQUEST_GET_ATTRIBUTES, BUFSIZE) {}
 
@@ -44,15 +41,12 @@ class GetAttributesResult : public Encoder
 private:
 	enum { BUFSIZE = 5*GetAttributesRequest::BUFSIZE };
 private:
-	typedef std::string S;
-	typedef std::vector<Attribute*> C;
-private:
-	C 	m_attrs;
+	std::vector<Attribute*> m_attrs;
 public:
 	// added by sekikawa (2009/02/20)
 	GetAttributesResult() : Encoder(COMM_RESULT_GET_ATTRIBUTES, BUFSIZE) {}
 
-	bool 	push(Attribute *attr) {
+	bool push(Attribute *attr) {
 		m_attrs.push_back(attr);
 		return true;
 	}

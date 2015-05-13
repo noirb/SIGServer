@@ -33,9 +33,9 @@ char *SendEndities::encode(int seq, int &sz)
 	memcpy(p, pp, n);
 	p += n;
 #else
-	
-	const C &objs = m_objs;
-	for (C::const_iterator i=objs.begin(); i!=objs.end(); i++) {
+
+	const std::vector<SimObjBase *> &objs = m_objs;
+	for (std::vector<SimObjBase *>::const_iterator i=objs.begin(); i!=objs.end(); i++) {
 		SimObjBase *obj = *i;
 		char *pp = obj->toBinary(n);
 
@@ -64,9 +64,9 @@ char *SendEndities::encode(int seq, int &sz)
 GetAllEntitiesResult::GetAllEntitiesResult(const SimWorld &w)
 	: Super(COMM_RESULT_GET_ALL_ENTITIES, w.time())
 {
-	typedef SimWorld::M M;
-	const M &objs = w.objs();
-	for (M::const_iterator i=objs.begin(); i!=objs.end(); i++) {
+	const std::map<std::string, SimObjBase*> &objs = w.objs();
+
+	for (std::map<std::string, SimObjBase*>::const_iterator i=objs.begin(); i!=objs.end(); i++) {
 		SimObjBase *p = i->second;
 		push(p);
 	}

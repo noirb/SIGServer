@@ -19,7 +19,7 @@ char *GetAttributesRequest::encode(int seq, int &sz)
 	unsigned short attrNum = m_attrNames.size();
 	BINARY_SET_DATA_S_INCR(p, unsigned short, attrNum);
 	
-	for (C::iterator i=m_attrNames.begin(); i!=m_attrNames.end(); i++) {
+	for (std::vector<std::string>::iterator i=m_attrNames.begin(); i!=m_attrNames.end(); i++) {
 		const char *str = i->c_str();
 		BINARY_SET_STRING_INCR(p, str);
 	}
@@ -34,13 +34,5 @@ char *GetAttributesRequest::encode(int seq, int &sz)
 	
 	return m_buf;
 }
-
-
-/*
-char * GetAttributesResult::encode(int seq, int &)
-{
-
-}
-*/
 
 END_NS_COMMDATA();

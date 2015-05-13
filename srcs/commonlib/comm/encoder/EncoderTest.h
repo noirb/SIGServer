@@ -11,7 +11,7 @@ template <class ENC, class EVT>
 class EncoderTest
 {
 public:
-	bool	operator()(ENC &enc, EVT &evt)
+	bool operator()(ENC &enc, EVT &evt)
 	{
 		int n = enc.packetNum();
 		for (int i=0; i<n; i++) {
@@ -20,6 +20,7 @@ public:
 			CommDataHeader h;
 			int r = CommData::getHeader(p, bytes, h);
 			printf("%d/%d", h.seq, h.packetNum);
+
 			if (evt.set(h.packetNum, h.seq, p+r, bytes-r)) {
 				printf(" -> ok\n");
 			}  else {

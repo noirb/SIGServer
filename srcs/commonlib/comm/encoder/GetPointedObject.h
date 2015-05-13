@@ -34,12 +34,13 @@ private:
 public:
 	GetPointedObjectResultEncoder() : Encoder(COMM_RESULT_GET_POINTED_OBJECT, BUFSIZE) {}
 
-	void	push(const char *name) {
+	void push(const char *name) {
 		if (name != NULL && strlen(name) > 0) {
 			m_candidateNameVec.push_back(std::string(name));
 		}
 	}
-	void	push(const std::vector<std::string> &o) {
+
+	void push(const std::vector<std::string> &o) {
 		std::vector<std::string>::const_iterator i;
 		for (i=o.begin(); i!=o.end(); i++) {
 			std::string  name = *i;
@@ -47,8 +48,8 @@ public:
 		}
 	}
 
-	int 	packetNum() { return 1; }
-	char *	encode(int seq, int &);
+	int     packetNum() { return 1; }
+	char *  encode(int seq, int &);
 };
 
 

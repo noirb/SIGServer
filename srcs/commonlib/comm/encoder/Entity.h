@@ -22,7 +22,6 @@ public:
 		: Encoder(COMM_REQUEST_GET_ENTITY, BUFSIZE), m_name(name) {;}
 	int packetNum()	{ return 1; }
 	char *encode(int seq, int &sz);
-
 };
 
 class GetEntityResult : public Encoder

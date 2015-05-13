@@ -5,12 +5,12 @@
 #ifdef WIN32
 #ifdef SIGVERSE_OGRE_CLIENT
 #include "SgvLog.h"
-#endif	// SIGVERSE_OGRE_CLIENT
+#endif // SIGVERSE_OGRE_CLIENT
 
 #ifdef IRWAS_OGRE_CLIENT
 #include "IrcApp.h"
-#endif	// IRWAS_OGRE_CLIENT
-#endif	// WIN32
+#endif // IRWAS_OGRE_CLIENT
+#endif // WIN32
 
 BEGIN_NS_COMMDATA();
 
@@ -25,11 +25,11 @@ char *CaptureViewImageRequest::encode(int seq, int &sz)
 	}
 
 	BINARY_SET_STRING_INCR(p, m_agentName.c_str());
-	BINARY_SET_DATA_S_INCR(p, ImageDataType, m_info.getDataType());
-	BINARY_SET_DATA_S_INCR(p, ColorBitType, m_info.getColorBitType());
+	BINARY_SET_DATA_S_INCR(p, ImageDataType,  m_info.getDataType());
+	BINARY_SET_DATA_S_INCR(p, ColorBitType,   m_info.getColorBitType());
 	BINARY_SET_DATA_S_INCR(p, unsigned short, m_info.getWidth());
 	BINARY_SET_DATA_S_INCR(p, unsigned short, m_info.getHeight());
-	BINARY_SET_DATA_S_INCR(p, short, m_id);
+	BINARY_SET_DATA_S_INCR(p, short,          m_id);
 	{
 		char *f = getFooter(n);
 		memcpy(p, f, n);
@@ -63,11 +63,11 @@ char *	CaptureViewImageResult::getDataHeader(int &sz)
 	char *p = m_dataHeaderBuf;
 	const ViewImageInfo & info = m_img.getInfo();
 
-	BINARY_SET_DATA_S_INCR(p, ImageDataType, info.getDataType());
-	BINARY_SET_DATA_S_INCR(p, ColorBitType, info.getColorBitType());
+	BINARY_SET_DATA_S_INCR(p, ImageDataType,  info.getDataType());
+	BINARY_SET_DATA_S_INCR(p, ColorBitType,   info.getColorBitType());
 	BINARY_SET_DATA_S_INCR(p, unsigned short, info.getWidth());
 	BINARY_SET_DATA_S_INCR(p, unsigned short, info.getHeight());
-	BINARY_SET_DATA_L_INCR(p, unsigned,  m_img.getBufferLength());
+	BINARY_SET_DATA_L_INCR(p, unsigned,       m_img.getBufferLength());
 	sz = p - m_dataHeaderBuf;
 	assert (sz == DATA_HEADER_SIZE);
 	return m_dataHeaderBuf;
@@ -89,7 +89,6 @@ END_NS_COMMDATA();
 
 int main()
 {
-
 	ViewImageInfo info(IMAGE_DATA_TYPE_ANY, COLORBIT_ANY, IMAGE_320X240);
 	CommData::CaptureViewImageRequest enc("foo", info);
 

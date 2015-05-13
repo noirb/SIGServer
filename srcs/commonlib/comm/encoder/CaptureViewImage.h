@@ -25,13 +25,13 @@ class CaptureViewImageRequest : public Encoder
 	enum { BUFSIZE  =
 	       COMM_DATA_HEADER_MAX_SIZE + COMM_DATA_FOOTER_SIZE + THIS_DATASIZE, };
 private:
-	std::string	m_agentName;
+	std::string   m_agentName;
 	ViewImageInfo m_info;
 	int           m_id;
 public:
  CaptureViewImageRequest(const char *agentName, const ViewImageInfo &info, int id)
 		: Encoder(COMM_REQUEST_CAPTURE_VIEW_IMAGE, BUFSIZE),
-	  m_agentName(agentName), m_info(info), m_id(id)
+		  m_agentName(agentName), m_info(info), m_id(id)
 	{
 	}
 	
@@ -43,9 +43,9 @@ class CaptureViewImageResult : public RawDataEncoder
 {
 	enum { DATA_HEADER_SIZE = 12, }; //TODO: Magic number
 private:
-	ViewImage	&m_img;
-	int		m_packetNum;
-	char		m_dataHeaderBuf[DATA_HEADER_SIZE];
+	ViewImage &m_img;
+	int   m_packetNum;
+	char  m_dataHeaderBuf[DATA_HEADER_SIZE];
 public:
 	CaptureViewImageResult(ViewImage &img);
 #ifdef DEPRECATED
@@ -54,9 +54,9 @@ public:
 #endif
 
 private:
-	char *	getDataHeader(int &);
-	int 	getDataLen();
-	char *	getData();
+	char * getDataHeader(int &);
+	int    getDataLen();
+	char * getData();
 };
 
 } // namespace 
