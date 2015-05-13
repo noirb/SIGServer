@@ -177,7 +177,7 @@ public:
 private:
 	/**
 	 * @brief send distanceSensor request to service provider
-	 * @param type  Request type (Dimension of data to receive）
+	 * @param type  Request type (Dimension of data to receive)
 	 * @param start Minimum distance (returns as 0)
 	 * @param end   Maximum distance (returns as 255)
 	 * @param camID Camera ID

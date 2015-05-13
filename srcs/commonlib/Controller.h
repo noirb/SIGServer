@@ -44,7 +44,7 @@ public:
 	 * @param rightWheelMaxSpeed     Maximum angular velocity of the right wheel (rad/s)
 	 * @param rightWheelSpeedUnit    Unit of velocity set at wb_differential_wheels_set_speed (rad/s)
 	 * @param rightSlipNoise         Uniformly-distributed slip of the right wheel (0.0 - 1.0)
-	 * @param rightEncoderResolution Slip degree per rad for the rihgt wheel
+	 * @param rightEncoderResolution Slip degree per rad for the right wheel
 	 * @param rightMaxForce          Maximum torque of the right wheel
 	 * @param axleLength Distance between the wheels
 	 */
@@ -317,29 +317,29 @@ protected:
 	double getRightWheelRadius(const char *simObjName);
 
 	/**
-	 * Gets the accumulation of the enocder noise of own left wheel
+	 * Gets the accumulation of the encoder noise of own left wheel
 	 */
 	double getLeftEncoderNoise();
 
 	/**
-	 * Gets the accumulation of the enocder noise of the left wheel
+	 * Gets the accumulation of the encoder noise of the left wheel
 	 */
 	double getLeftEncoderNoise(const char *simObjName);
 
 	/**
-	 * Gets the accumulation of the enocder noise of own right wheel
+	 * Gets the accumulation of the v noise of own right wheel
 	 */
 	double getRightEncoderNoise();
 
 	/**
-	 * Gets the accumulation of the enocder noise of the right wheel
+	 * Gets the accumulation of the encoder noise of the right wheel
 	 */
 	double getRightEncoderNoise(const char *simObjName);
 
 	/**
 	 * Sets different velocity to own each wheel
-	 * @param left Angular veloccity of the left wheel
-	 * @param right Angular veloccity of the right wheel
+	 * @param left Angular velocity of the left wheel
+	 * @param right Angular velocity of the right wheel
 	 */
 	void differentialWheelsSetSpeed(double left,double right);
 
@@ -409,7 +409,7 @@ protected:
 	 * 
 	 * @param v Container for entity names
 	 * @retval true Success
-	 * @retval false Faiure
+	 * @retval false Failure
 	 */
 	bool getAllEntities(std::vector<std::string> &v);
 
@@ -460,33 +460,33 @@ private:
 
 	//
 	// Slips the left wheel
-	// The slip is calcurated from leftSlipNoise
+	// The slip is calculated from leftSlipNoise
 	//
 	//void slipLeftWheel();
 
 	//
 	// Slips the right wheel
-	// The Slip is calcurated from rightSlipNoise
+	// The Slip is calculated from rightSlipNoise
 	//
 	//void slipRightWheel();
 
 	//
-	// Calculates torque from angular verocity and power
+	// Calculates torque from angular velocity and power
 	// Equation is as follows
 	// 
-	// P = F・rω = ーー ・ rω = 2πTf
+	// P = F*rw = -- * rw = 2*pi*Tf
 	// 
 	// P : Power consumption [W]
 	// F : Force acting on wheel[N]
 	// r : Radius of wheel[m]
-	//ω : Angular frequency [rad/sec]
-	// T : Torque[N・m]
+	// w : Angular frequency [rad/sec]
+	// T : Torque[N m]
 	// f : Frequency(Number of rotation)[Hz]
 	//
 	// @param motorConsumption Moter consumption [W]
 	// @param radius Radius of the wheel [m]
 	// @param wheelSpeed Angular velocity of the wheel[rad/sec]
-	// @return Torque of the wheel [N・m]
+	// @return Torque of the wheel [N m]
 	//
 	//double getTorqueFromMotor(double motorConsumption,double radius,double wheelSpeed);
 
