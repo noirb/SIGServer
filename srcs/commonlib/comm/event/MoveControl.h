@@ -14,22 +14,23 @@
 
 class RequestAddForceEvent 
 {
- private:
+private:
 	const char* m_name;
 	double      m_x;
 	double      m_y;
 	double      m_z;
 	double      m_relf;
- public:
-	bool	set(int packetNum, int seq, char *data, int n);
- public:
+public:
+	bool set(int packetNum, int seq, char *data, int n);
+public:
 	~RequestAddForceEvent() {
 		delete m_name;
-    }
+	}
 	
 	const char * getAgentName() { 
 		return m_name;
 	}
+
 	double x() { return m_x; }
 	double y() { return m_y; }
 	double z() { return m_z; }
@@ -39,7 +40,7 @@ class RequestAddForceEvent
 
 class RequestAddForceAtPosEvent 
 {
- private:
+private:
 	const char* m_name;
 	double m_x;
 	double m_y;
@@ -49,12 +50,12 @@ class RequestAddForceAtPosEvent
 	double m_pz;
 	bool   m_rel;
 	bool   m_relf;
- public:
+public:
 	bool   set(int packetNum, int seq, char *data, int n);
- public:
+public:
 	~RequestAddForceAtPosEvent() {
 		delete m_name;
-    }
+	}
 	
 	const char * getAgentName() { 
 		return m_name;
@@ -75,18 +76,18 @@ class RequestAddForceAtPosEvent
 // Added by Tetsunari Inamura on 2014-02-26
 class RequestAddTorqueEvent 
 {
- private:
+private:
 	const char* m_name;
 	double      m_x;
 	double      m_y;
 	double      m_z;
 	double      m_relf;
- public:
-	bool	set(int packetNum, int seq, char *data, int n);
- public:
+public:
+	bool set(int packetNum, int seq, char *data, int n);
+public:
 	~RequestAddTorqueEvent() {
 		delete m_name;
-    }
+	}
 	
 	const char * getAgentName() { 
 		return m_name;
@@ -100,15 +101,15 @@ class RequestAddTorqueEvent
 
 class RequestSetMassEvent 
 {
- private:
+private:
 	const char* m_name;
 	double m_mass;
- public:
-	bool	set(int packetNum, int seq, char *data, int n);
- public:
+public:
+	bool set(int packetNum, int seq, char *data, int n);
+public:
 	~RequestSetMassEvent() {
 		delete m_name;
-    }
+	}
 	const char * getAgentName() { 
 		return m_name;
 	}
@@ -118,14 +119,14 @@ class RequestSetMassEvent
 
 class RequestGetAngularVelocityEvent 
 {
- private:
+private:
 	const char* m_name;
- public:
+public:
 	bool set(int packetNum, int seq, char *data, int n);
- public:
+public:
 	~RequestGetAngularVelocityEvent() {
 		delete m_name;
-    }
+	}
 	const char * getAgentName() { 
 		return m_name;
 	}
@@ -134,14 +135,14 @@ class RequestGetAngularVelocityEvent
 
 class ResultGetAngularVelocityEvent 
 {
- private:
+private:
 	const char* m_name;
 	double      m_x;
 	double      m_y;
 	double      m_z;
- public:
-	bool	set(int packetNum, int seq, char *data, int n);
- public:
+public:
+	bool set(int packetNum, int seq, char *data, int n);
+public:
 	~ResultGetAngularVelocityEvent() {
 		delete m_name;
     }
@@ -157,15 +158,15 @@ class ResultGetAngularVelocityEvent
 // Modified by Tetsunari Inamura: change GetVelocity to GetLinearVelocity
 class RequestGetLinearVelocityEvent 
 {
- private:
+private:
 	const char* m_name;
- public:
+public:
 	bool set(int packetNum, int seq, char *data, int n);
- public:
+public:
 	~RequestGetLinearVelocityEvent() {
 		delete m_name;
-    }
-  
+	}
+
 	const char * getAgentName() { 
 		return m_name;
 	}
@@ -175,17 +176,17 @@ class RequestGetLinearVelocityEvent
 // Modified by Tetsunari Inamura: change GetVelocity to GetLinearVelocity
 class ResultGetLinearVelocityEvent 
 {
- private:
+private:
 	const char* m_name;
 	double      m_x;
 	double      m_y;
 	double      m_z;
- public:
+public:
 	bool set(int packetNum, int seq, char *data, int n);
- public:
+public:
 	~ResultGetLinearVelocityEvent() {
 		delete m_name;
-    }
+	}
 	const char * getAgentName() { 
 		return m_name;
 	}
@@ -198,17 +199,17 @@ class ResultGetLinearVelocityEvent
 // Add by inamura on 2014-01-06
 class RequestSetLinearVelocityEvent 
 {
- private:
+private:
 	const char* m_name;
 	double      m_x;
 	double      m_y;
 	double      m_z;
- public:
-	bool	set(int packetNum, int seq, char *data, int n);
- public:
+public:
+	bool set(int packetNum, int seq, char *data, int n);
+public:
 	~RequestSetLinearVelocityEvent() {
 		delete m_name;
-    }
+	}
 	
 	const char * getAgentName() { 
 		return m_name;
@@ -223,16 +224,16 @@ class RequestSetLinearVelocityEvent
 
 class RequestAddForceToPartsEvent 
 {
- private:
+private:
 	const char* m_name;
 	const char* m_parts;
 	double      m_x;
 	double      m_y;
 	double      m_z;
 
- public:
+public:
 	bool set(int packetNum, int seq, char *data, int n);
- public:
+public:
 	~RequestAddForceToPartsEvent() {
 		delete m_name;
 		delete m_parts;
@@ -253,15 +254,15 @@ class RequestAddForceToPartsEvent
 
 class RequestSetGravityModeEvent 
 {
- private:
+private:
 	const char* m_name;
 	bool m_gravity;
- public:
-	bool	set(int packetNum, int seq, char *data, int n);
- public:
+public:
+	bool set(int packetNum, int seq, char *data, int n);
+public:
 	~RequestSetGravityModeEvent() {
 		delete m_name;
-    }
+	}
 	
 	const char * getAgentName() { 
 		return m_name;
@@ -273,15 +274,15 @@ class RequestSetGravityModeEvent
 
 class RequestGetGravityModeEvent 
 {
- private:
+private:
 	const char* m_name;
 	bool m_gravity;
- public:
-	bool	set(int packetNum, int seq, char *data, int n);
- public:
+public:
+	bool set(int packetNum, int seq, char *data, int n);
+public:
 	~RequestGetGravityModeEvent() {
 		delete m_name;
-    }
+	}
 	
 	const char * getAgentName() { 
 		return m_name;
@@ -293,15 +294,15 @@ class RequestGetGravityModeEvent
 
 class ResultGetGravityModeEvent 
 {
- private:
+private:
 	const char* m_name;
 	bool m_gravity;
- public:
-	bool	set(int packetNum, int seq, char *data, int n);
- public:
+public:
+	bool set(int packetNum, int seq, char *data, int n);
+public:
 	~ResultGetGravityModeEvent() {
 		delete m_name;
-    }
+	}
 	
 	const char * getAgentName() { 
 		return m_name;
@@ -313,20 +314,20 @@ class ResultGetGravityModeEvent
 
 class RequestSetDynamicsModeEvent 
 {
- private:
+private:
 	const char* m_name;
 	bool m_dynamics;
- public:
-	bool	set(int packetNum, int seq, char *data, int n);
- public:
+public:
+	bool set(int packetNum, int seq, char *data, int n);
+public:
 	~RequestSetDynamicsModeEvent() {
 		delete m_name;
-    }
+	}
 	
 	const char * getAgentName() { 
 		return m_name;
 	}
-  bool dynamics() { return m_dynamics;}
+	bool dynamics() { return m_dynamics;}
 };
 
 

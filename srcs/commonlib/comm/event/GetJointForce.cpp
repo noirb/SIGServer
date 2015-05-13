@@ -30,8 +30,10 @@ bool ResultGetJointForceEvent::set(int packetNum, int seq, char *data, int n)
 	unsigned short nn = BINARY_GET_DATA_S_INCR(p, unsigned short);
 	bool b = (nn != 0)? true: false;
 	m_data.success(b);
+
 	if (b) {
 		JointForce *jfs = m_data.getJointForces();
+
 		for (int i=0; i<ResultGetJointForceData::JOINT_FORCE_NUM; i++) {
 			char *partsName = BINARY_GET_STRING_INCR(p);
 			Vector3d f;
@@ -51,7 +53,6 @@ bool ResultGetJointForceEvent::set(int packetNum, int seq, char *data, int n)
 			JointForce *jf = &jfs[i];
 			jf->set(partsName, f, tq);
 			BINARY_FREE_STRING(partsName);
-
 		}
 	}
 	return true;

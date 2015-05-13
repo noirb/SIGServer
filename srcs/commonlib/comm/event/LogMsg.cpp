@@ -7,6 +7,7 @@ bool LogMsgEvent::set(int packetNum, int seq, char *data, int n)
 	char *p = data;
 	m_level = BINARY_GET_DATA_S_INCR(p, short);
 	char *msg = BINARY_GET_STRING_INCR(p);
+
 	if (msg) {
 		m_msg = msg;
 	}

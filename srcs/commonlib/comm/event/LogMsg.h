@@ -7,14 +7,13 @@
 
 class LogMsgEvent
 {
-	typedef std::string S;
 private:
-	short	m_level;
-	S 	m_msg;
+	short m_level;
+	std::string m_msg;
 public:
-	bool 	set(int packetNum, int seq, char *data, int n);
+	bool set(int packetNum, int seq, char *data, int n);
 
-	int	level() { return m_level; }
+	int level() { return m_level; }
 	const char *msg() { return m_msg.c_str(); }
 };
 	

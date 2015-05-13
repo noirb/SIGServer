@@ -10,21 +10,21 @@ class RequestConnectJointEvent
 private:
 	RequestConnectJointData m_data;
 private:
-	const char *getString(RequestConnectJointData::S s) {
+	const char *getString(std::string s) {
 		return s.length() > 0? s.c_str(): NULL;
 	}
 public:
-	bool	set(int packetNum, int seq, char *data, int n);
+	bool set(int packetNum, int seq, char *data, int n);
 
 public:
-	const char * getJointName() { return getString(m_data.jointName); }
-	const char * getAgentName() { return getString(m_data.agentName); }
+	const char * getJointName()      { return getString(m_data.jointName); }
+	const char * getAgentName()      { return getString(m_data.agentName); }
 	const char * getAgentPartsName() { return getString(m_data.agentParts); }
-	const char * getTargetName() { return getString(m_data.targetName); }
-	const char * getTargetPartsName() { return getString(m_data.targetParts); }
+	const char * getTargetName()     { return getString(m_data.targetName); }
+	const char * getTargetPartsName(){ return getString(m_data.targetParts); }
 };
 
 
 #endif // Comm_Event_ConnectJoint_h
- 
+
 

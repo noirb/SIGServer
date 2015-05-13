@@ -10,11 +10,11 @@ class ViewImageInfo;
 class RequestCaptureViewImageEvent
 {
 private:
-	std::string	m_agentName;
-	ViewImageInfo *m_info;
-	int            m_id;
+	std::string     m_agentName;
+	ViewImageInfo * m_info;
+	int             m_id;
 private:
-	void	free_();
+	void free_();
 public:
 	RequestCaptureViewImageEvent() : m_info(0) {;}
 	~RequestCaptureViewImageEvent() { free_(); }
@@ -23,7 +23,7 @@ public:
 
 	const char *getAgentName() { return m_agentName.c_str(); }
 	const ViewImageInfo & getImageInfo() { return *m_info; }
-	int getId() { return m_id; }	
+	int getId() { return m_id; }
 };
 
 

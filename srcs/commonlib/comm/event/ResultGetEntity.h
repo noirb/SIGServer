@@ -11,13 +11,14 @@ private:
 	double m_time;
 	SimObj *m_obj;
 public:
-	bool 	set(int packetNum, int seq, char *data, int n);
+	bool set(int packetNum, int seq, char *data, int n);
 private:
-	void	free_();
+	void free_();
 public:
 	ResultGetEntityEvent() :  m_time(-1), m_obj(0) {;}
 	~ResultGetEntityEvent() { free_(); }
 	double time() { return m_time; }
+
 	SimObj *release()
 	{
 		SimObj *tmp = m_obj;

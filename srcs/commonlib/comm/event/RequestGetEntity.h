@@ -10,7 +10,7 @@ class RequestGetEntityEvent
 private:
 	std::string m_name;
 public:
-	bool 	set(int packetNum, int seq, char *data, int n);
+	bool set(int packetNum, int seq, char *data, int n);
 public:
 	const char *name() { return m_name.c_str(); }
 };

@@ -15,7 +15,7 @@ private:
 	std::string    m_errmsg;
 	X3DDB *m_db;
 public:
-	bool	set(int packetNum, int seq, char *data, int n);
+	bool set(int packetNum, int seq, char *data, int n);
 public:
 	ResultAttachViewEvent() : m_db(NULL) {}
 	~ResultAttachViewEvent();
@@ -23,12 +23,12 @@ public:
 	CommResultType result() { return m_result; }
 	const char *errmsg() { return m_errmsg.length() > 0? m_errmsg.c_str(): 0; }
 	X3DDB *getX3DDB() { return m_db; }
+
 	X3DDB *releaseX3DDb() {
 		X3DDB *tmp = m_db;
 		m_db = NULL;
 		return tmp;
 	}
-		
 };
 
 

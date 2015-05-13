@@ -8,14 +8,14 @@
 class RequestNSQueryEvent
 {
 private:
-  Service::Kind 	m_kind;
-  
+	Service::Kind m_kind;
+
 public:
 	RequestNSQueryEvent() : m_kind(Service::SERVICE_KIND_NOT_SET) {;}
 
 	Service::Kind kind() { return m_kind; }
 
-	bool	set(int, int, char *, int);
+	bool set(int, int, char *, int);
 };
 
 
@@ -33,7 +33,7 @@ public:
 		return tmp;
 	}
 public:
-	bool	set(int, int, char *, int);
+	bool set(int, int, char *, int);
 };
 
 
@@ -45,18 +45,18 @@ public:
 	RequestNSPingerEvent() : m_kind(Service::SERVICE_KIND_NOT_SET) {;}
 	Service::Kind kind() { return m_kind; }
 public:
-	bool	set(int, int, char *, int);
+	bool set(int, int, char *, int);
 };
 
 class ResultNSPingerEvent
 {
 private:
-	bool	m_active;
+	bool m_active;
 public:
 	ResultNSPingerEvent() : m_active(false) {}
-	bool	active() { return m_active; }
+	bool active() { return m_active; }
 public:
-	bool	set(int, int, char *, int);
+	bool set(int, int, char *, int);
 };
 
 #endif // Comm_Event_NameService_h

@@ -8,12 +8,10 @@
 class RequestDetectEntitiesEvent
 {
 private:
-	typedef std::string S;
-private:
-	S	m_agentName;
-	int            m_id;
+	std::string m_agentName;
+	int         m_id;
 public:
-	bool	set(int packetNum, int seq, char *data, int n);
+	bool set(int packetNum, int seq, char *data, int n);
 
 	const char *getAgentName() { return m_agentName.c_str(); }
 	int getId() { return m_id; }
@@ -22,27 +20,23 @@ public:
 class ResultDetectEntitiesEvent
 {
 private:
-	typedef std::string S;
-	typedef std::vector<S> C;
-private:
-	C	m_detected;
+	std::vector<std::string> m_detected;
 public:
-	bool	set(int packetNum, int seq, char *data, int n);
+	bool set(int packetNum, int seq, char *data, int n);
 public:
-	int	getDetectedCount() { return m_detected.size(); }
+	int getDetectedCount() { return m_detected.size(); }
 	const char *getDetected(int i)
 	{
 		if (i < 0 || i >= getDetectedCount()) { return 0; }
 		return m_detected[i].c_str();
 	}
-	void	copy(C &o)
+	void copy(std::vector<std::string> &o)
 	{
-		for (C::iterator i=m_detected.begin(); i!=m_detected.end(); i++) {
-			S s = *i;
+		for (std::vector<std::string>::iterator i=m_detected.begin(); i!=m_detected.end(); i++) {
+			std::string s = *i;
 			o.push_back(s);
 		}
 	}
-	
 };
 
 #endif // Comm_Event_DetectEntities_h

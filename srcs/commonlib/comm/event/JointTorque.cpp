@@ -49,8 +49,8 @@ bool RequestSetAngularVelocityToJointEvent::set(int packetNum, int seq, char *da
 		char *name = BINARY_GET_STRING_INCR(p);
 		if (name != NULL) {
 			m_data.jointName(name);
-	}
-	BINARY_FREE_STRING(name);
+		}
+		BINARY_FREE_STRING(name);
 	}
 	double velocity = BINARY_GET_DOUBLE_INCR(p);
 	m_data.angular_velocity(velocity);

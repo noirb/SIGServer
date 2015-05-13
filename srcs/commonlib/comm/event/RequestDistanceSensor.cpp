@@ -15,13 +15,14 @@ bool RequestDistanceSensorEvent::set(int packetNum, int seq, char *data, int n)
 	BINARY_FREE_STRING(name);
 
 	double start = BINARY_GET_DOUBLE_INCR(p);	
-	double end = BINARY_GET_DOUBLE_INCR(p);	
-	int id = BINARY_GET_DATA_S_INCR(p, short);
-	int dim = BINARY_GET_DATA_S_INCR(p, short);
+	double end   = BINARY_GET_DOUBLE_INCR(p);
+	int    id    = BINARY_GET_DATA_S_INCR(p, short);
+	int    dim   = BINARY_GET_DATA_S_INCR(p, short);
+
 	m_start = start;
-	m_end = end;
-	m_id = id;
-	m_dim = dim;
+	m_end   = end;
+	m_id    = id;
+	m_dim   = dim;
 
 	return true;
 }

@@ -7,12 +7,10 @@
 class RequestReleaseJointEvent
 {
 private:
-	typedef std::string S;
-private:
-	S	m_agentName;
-	S	m_jointName;
+	std::string m_agentName;
+	std::string m_jointName;
 public:
-	bool	set(int packetNum, int seq, char *data, int n);
+	bool set(int packetNum, int seq, char *data, int n);
 
 	const char *getAgentName() {
 		return m_agentName.length() > 0? m_agentName.c_str(): NULL;

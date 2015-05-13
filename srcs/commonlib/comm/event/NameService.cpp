@@ -16,6 +16,7 @@ bool ResultNSQueryEvent::set(int packetNum, int seq, char *data, int n)
 	char *p = data;
 
 	unsigned short found = BINARY_GET_DATA_S_INCR(p, unsigned short);
+
 	if (found) {
 		char *name = BINARY_GET_STRING_INCR(p);
 		

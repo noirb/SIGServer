@@ -5,7 +5,6 @@
 
 bool RequestSetJointQuaternionEvent::set(int packetNum, int seq, char *data, int n)
 {
-
 	char *p = data;
 
 	{
@@ -53,10 +52,9 @@ bool RequestSetJointQuaternionEvent::set(int packetNum, int seq, char *data, int
 	}
 
 	{
-	  bool offset = BINARY_GET_BOOL_INCR(p);
-	      m_data.offset(offset);
-        }
-
+		bool offset = BINARY_GET_BOOL_INCR(p);
+		m_data.offset(offset);
+	}
 
 	return true;
 }

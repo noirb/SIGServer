@@ -50,8 +50,6 @@ bool ResultGetPointedObjectEvent::set(int packetNum, int seq, char *data, int n)
 		BINARY_FREE_STRING(s);
 	}
 
-
-
 	return true;
 }
 

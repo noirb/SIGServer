@@ -10,26 +10,21 @@
 class RequestGetObjectNamesEvent
 {
 private:
-	typedef CommData::GetObjectNamesRequest E;
-private:
-	E::Type m_type;
+	CommData::GetObjectNamesRequest::Type m_type;
 public:
-	bool	set(int packetNum, int seq, char *data, int n);
+	bool set(int packetNum, int seq, char *data, int n);
 public:
-	bool	getAgents() { return true; }
-	bool	getEntities() { return true; }
+	bool getAgents() { return true; }
+	bool getEntities() { return true; }
 };
 
 class ResultGetObjectNamesEvent
 {
 private:
-	typedef std::string S;
-	typedef std::vector<S> C;
-private:
-	C	m_names;
+	std::vector<std::string> m_names;
 public:
-	bool	set(int packetNum, int seq, char *data, int n);
-	int 	copy(C &o) {
+	bool set(int packetNum, int seq, char *data, int n);
+	int  copy(std::vector<std::string> &o) {
 		o = m_names;
 		return o.size();
 	}

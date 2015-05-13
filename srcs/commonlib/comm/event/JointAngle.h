@@ -10,7 +10,7 @@ class RequestSetJointAngleEvent
 private:
 	JointAngleData m_data;
 public:
-	bool	set(int packetNum, int seq, char *data, int n);
+	bool set(int packetNum, int seq, char *data, int n);
 public:
 	const char * getAgentName() { return m_data.agentName(); }
 	const char * getJointName() { return m_data.jointName(); }

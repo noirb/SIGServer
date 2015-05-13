@@ -10,14 +10,14 @@ class SimObj;
 class RecvEntitiesEvent
 {
 private:
-	double	m_time;
+	double m_time;
 protected:
 	RecvEntitiesEvent() : m_time(-1) {;}
 public:
 	virtual ~RecvEntitiesEvent() {;}
 public:
-	bool	set(int packetNum, int seq, char *data, int n);
-	double	time() { return m_time; }
+	bool   set(int packetNum, int seq, char *data, int n);
+	double time() { return m_time; }
 private:
 	virtual void push(SimObj *obj) = 0;
 };
@@ -25,7 +25,7 @@ private:
 class RequestGetAllEntitiesEvent
 {
 public:
-	bool	set(int, int, char *, int) { return true; }
+	bool set(int, int, char *, int) { return true; }
 };
 
 class ResultGetAllEntitiesEvent : public RecvEntitiesEvent
@@ -44,14 +44,12 @@ public:
 
 class RequestUpdateEntitiesEvent : public RecvEntitiesEvent
 {
-public:
-	typedef std::vector<SimObj *> C;
 private:
-	C	m_objs;
+	std::vector<SimObj *> m_objs;
 private:
 	void push(SimObj *p) { m_objs.push_back(p); }
 public:
-	const C & objs() { return m_objs; }
+	const std::vector<SimObj *> & objs() { return m_objs; }
 };
 
 

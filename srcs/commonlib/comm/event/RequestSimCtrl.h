@@ -9,10 +9,9 @@ class RequestSimCtrlEvent
 private:
 	SimCtrlCmdType m_cmd;
 public:
-	bool	set(int packetNum, int seq, char *data, int n);
+	bool set(int packetNum, int seq, char *data, int n);
 public:
 	SimCtrlCmdType getCtrlCmd() { return m_cmd; }
-
 };
 
 #endif // RequestSimCtrl_h

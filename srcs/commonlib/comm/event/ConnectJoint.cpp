@@ -7,8 +7,7 @@
     if (str_) { MEMBER = str_; } \
     BINARY_FREE_STRING(str_); \
 }
- 
-	    
+
 
 bool RequestConnectJointEvent::set(int packetNum, int seq, char *data, int n)
 {

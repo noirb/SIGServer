@@ -21,14 +21,15 @@ bool ResultCaptureViewImageEvent::set(int packetNum, int seq, char *data, int n)
 		if (n < (int)(sizeof(unsigned short)*4 + sizeof(unsigned))) {
 			return false;
 		}
-		ImageDataType dataType = BINARY_GET_DATA_S_INCR(p,  ImageDataType);
-		ColorBitType cbType = BINARY_GET_DATA_S_INCR(p, ColorBitType);
+		ImageDataType dataType = BINARY_GET_DATA_S_INCR(p, ImageDataType);
+		ColorBitType  cbType   = BINARY_GET_DATA_S_INCR(p, ColorBitType);
 		unsigned short w = BINARY_GET_DATA_S_INCR(p, unsigned short);
 		unsigned short h = BINARY_GET_DATA_S_INCR(p, unsigned short);
 		int datalen = BINARY_GET_DATA_L_INCR(p, unsigned);
 		
 		ViewImageInfo info(dataType, cbType, w, h);
 		m_imgtmp = new ViewImage(info);
+
 		if (datalen != m_imgtmp->getBufferLength()) {
 			return false;
 		}
@@ -47,7 +48,6 @@ bool ResultCaptureViewImageEvent::set(int packetNum, int seq, char *data, int n)
 			m_img = m_imgtmp;
 			m_imgtmp = 0;
 		}
-
 	}
 
 	// printf("%s(%d) : %d/%d OK\n", __FILE__, __LINE__, seq, packetNum);

@@ -15,7 +15,7 @@ private:
 	CommResultType m_result;
 	std::string    m_errmsg;
 public:
-	bool	set(int packetNum, int seq, char *data, int n);
+	bool set(int packetNum, int seq, char *data, int n);
 public:
 	CommResultType result() { return m_result; }
 	const char *errmsg() { return m_errmsg.length() > 0? m_errmsg.c_str(): 0; }

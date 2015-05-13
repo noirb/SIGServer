@@ -21,6 +21,7 @@ bool ResultAttachViewEvent::set(int packetNum, int seq, char *data, int n)
 
 	if (m_result == COMM_RESULT_OK) {
 		short num = BINARY_GET_DATA_S_INCR(p, short);
+
 		if (num > 0) {
 			m_db = new X3DDB();
 

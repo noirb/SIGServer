@@ -17,7 +17,7 @@ class RequestAddJointTorqueEvent
 private:
 	JointTorqueData m_data;
 public:
-	bool	set(int packetNum, int seq, char *data, int n);
+	bool set(int packetNum, int seq, char *data, int n);
 public:
 	const char * getAgentName() { return m_data.agentName(); }
 	const char * getJointName() { return m_data.jointName(); }
@@ -30,7 +30,7 @@ class RequestSetAngularVelocityToJointEvent
 private:
 	AngularVelocityToJointData m_data;
 public:
-	bool	set(int packetNum, int seq, char *data, int n);
+	bool set(int packetNum, int seq, char *data, int n);
 public:
 	const char * getAgentName() { return m_data.agentName(); }
 	const char * getJointName() { return m_data.jointName(); }
@@ -45,7 +45,7 @@ class RequestSetAngularVelocityToPartsEvent
 private:
 	AngularVelocityToPartsData m_data;
 public:
-	bool	set(int packetNum, int seq, char *data, int n);
+	bool set(int packetNum, int seq, char *data, int n);
 public:
 	const char * getAgentName() { return m_data.agentName(); }
 	const char * getPartsName() { return m_data.objectName(); }
@@ -56,25 +56,23 @@ public:
 
 class RequestGetJointAngleEvent
 {
- private:
-  GetJointAngleData m_data;
- public:
-  bool	set(int packetNum, int seq, char *data, int n);
- public:
-  const char * getAgentName() { return m_data.agentName(); }
-  const char * getJointName() { return m_data.jointName(); }
+private:
+	GetJointAngleData m_data;
+public:
+	bool set(int packetNum, int seq, char *data, int n);
+public:
+	const char * getAgentName() { return m_data.agentName(); }
+	const char * getJointName() { return m_data.jointName(); }
 };
 
 class ResultGetJointAngleEvent
 {
- private:
-  ResultGetJointAngleData m_data;
- public:
-  bool	set(int packetNum, int seq, char *data, int n);
- public:
-  double getAngle() { return m_data.angle(); }
-
-
+private:
+	ResultGetJointAngleData m_data;
+public:
+	bool set(int packetNum, int seq, char *data, int n);
+public:
+	double getAngle() { return m_data.angle(); }
 };
 
 #endif // JointTorque_h

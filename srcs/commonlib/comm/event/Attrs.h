@@ -11,17 +11,14 @@
 class RequestGetAttributesEvent
 {
 private:
-	typedef std::string S;
-	typedef std::vector<S> C;
-private:
-	C m_attrNames;
+	std::vector<std::string> m_attrNames;
 public:
-	bool 	set(int packetNum, int seq, char *data, int n);
+	bool set(int packetNum, int seq, char *data, int n);
 
-	int	getAttrNum() {
+	int getAttrNum() {
 		return m_attrNames.size();
 	}
-	const char *	getAttrName(int i) {
+	const char * getAttrName(int i) {
 		return m_attrNames[i].c_str();
 	}
 };

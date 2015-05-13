@@ -10,14 +10,14 @@ class ResultCaptureViewImageEvent
 private:
 	ViewImage *m_img;
 	ViewImage *m_imgtmp;
-	char	*m_curr;
-	int	m_prevSeq;
+	char      *m_curr;
+	int       m_prevSeq;
 private:
 	void free_();
 public:
 	ResultCaptureViewImageEvent() : m_img(0), m_imgtmp(0), m_curr(0), m_prevSeq(-1) {;}
 	~ResultCaptureViewImageEvent() { free_(); }
-	bool	set(int packetNum, int seq, char *data, int n);
+	bool set(int packetNum, int seq, char *data, int n);
 
 	ViewImage *release()
 	{

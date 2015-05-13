@@ -9,6 +9,7 @@ bool RequestGetAttributesEvent::set(int packetNum, int seq, char *data, int n)
 {
 	char *p = data;
 	unsigned short attrNum = BINARY_GET_DATA_S_INCR(p, unsigned short);
+
 	for (int i=0; i<attrNum; i++) {
 		char *str = BINARY_GET_STRING_INCR(p);
 		if (str) {
