@@ -40,7 +40,7 @@ private:
 	double surfaceBounce;
 
 public:
- ODEObj(
+	ODEObj(
 		dWorldID world,
 		dGeomID geom_,
 		double surfaceMu1,
@@ -64,24 +64,24 @@ public:
 		m_world = world;
 	}
 
- ODEObj(dWorldID world, dGeomID geom_) : m_geom(geom_)
+	ODEObj(dWorldID world, dGeomID geom_) : m_geom(geom_)
 	{
 		m_body = dBodyCreate(world);
 		dGeomSetBody(geom_, m_body);
 		m_world = world;
 	}
 
- ODEObj(dGeomID geom, dBodyID body, dJointID joint) : m_body(body), m_geom(geom), m_joint(joint)
+	ODEObj(dGeomID geom, dBodyID body, dJointID joint) : m_body(body), m_geom(geom), m_joint(joint)
 	{
 	}
 
- ODEObj(dWorldID world) : m_geom(0)
+	ODEObj(dWorldID world) : m_geom(0)
 	{
 		m_body = dBodyCreate(world);
 		m_world = world;
 	}
 
- ~ODEObj()
+	~ODEObj()
 	{
 		// 070821 yoshi@msi cause segmentation fault
 		/*
@@ -104,42 +104,23 @@ public:
 	/**
 	 * Get dGeomID
 	 */
-	dGeomID geom() {
+	dGeomID geom()
+	{
 		return m_geom;
 	}
 
-	dWorldID world() {
+	dWorldID world()
+	{
 		return m_world;
 	}
 
-	double getMu1() {
-		return surfaceMu1;
-	}
-
-	double getMu2() {
-		return surfaceMu2;
-	}
-
-	double getSlip1() {
-		return surfaceSlip1;
-	}
-
-	double getSlip2() {
-		return surfaceSlip2;
-	}
-
-	double getSoftErp() {
-		return surfaceSoftErp;
-	}
-
-	double getSoftCfm() {
-		return surfaceSoftCfm;
-	}
-
-	double getBounce() {
-		return surfaceBounce;
-	}
-
+	double getMu1()    { return surfaceMu1; }
+	double getMu2()    { return surfaceMu2; }
+	double getSlip1()  { return surfaceSlip1; }
+	double getSlip2()  { return surfaceSlip2; }
+	double getSoftErp(){ return surfaceSoftErp; }
+	double getSoftCfm(){ return surfaceSoftCfm; }
+	double getBounce() { return surfaceBounce; }
 };
 
 #endif // USE_ODE

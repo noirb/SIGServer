@@ -26,11 +26,11 @@ class LogTransfer : public Logger::Listener
 	typedef std::vector<Entry *> EntryC;
 private:
 	ServerAcceptProc &m_accept;
-	EntryC	m_entries;
+	EntryC            m_entries;
 public:
 	LogTransfer(ServerAcceptProc &a) : m_accept(a) {;}
 
-	void	flush(const std::vector<Connection *> &clients);
+	void flush(const std::vector<Connection *> &clients);
 private:
 	void print(int level, const char *msg)
 	{

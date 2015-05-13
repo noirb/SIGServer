@@ -32,12 +32,12 @@ struct Camera
 
 class SSimObj : public SimObjBase
 {
- private:
+private:
 	typedef SimObjBase Super;
- public:
-	typedef std::map<S, SParts*> PartsM;
-	typedef std::map<S, Joint*>  JointM;
- private:
+public:
+	typedef std::map<std::string, SParts*> PartsM;
+	typedef std::map<std::string, Joint*>  JointM;
+private:
 	PartsM                m_parts;
 	JointM	              m_joints;
 	dSpaceID              m_space;
@@ -50,9 +50,9 @@ class SSimObj : public SimObjBase
 	std::map<std::string, double> m_jvel;
 	bool                  m_grasped;
 	
- protected:
+protected:
 	int                   m_type;
- public:
+public:
 	SSimObj(dSpaceID parent);
 	virtual ~SSimObj();
 
@@ -62,21 +62,24 @@ class SSimObj : public SimObjBase
 		return m_space;
 	}
 
-	void	setAttached(bool b)
+	void setAttached(bool b)
 	{
 		m_attached = b;
 	}
 
-	void	addId();
-	void 	push(Joint *p);
+	void addId();
+	void push(Joint *p);
 
-	void	addCamera(int id, Camera cam) {
+	void addCamera(int id, Camera cam)
+	{
 		m_vcams.insert( std::map<int, Camera>::value_type(id, cam));
 	}
 
-	void	setCamera(int id, Camera cam) {
+	void setCamera(int id, Camera cam)
+	{
 		std::map<int, Camera>::iterator it;
 		it = m_vcams.find(id);
+
 		if(it != m_vcams.end()) {
 			(*it).second = cam;
 		}
@@ -85,15 +88,18 @@ class SSimObj : public SimObjBase
 		}
 	}
 
-	std::map<int, Camera> getCamera() {
+	std::map<int, Camera> getCamera()
+			{
 		return m_vcams;
 	}
 
-	void	setShape(std::string shape) {
+	void setShape(std::string shape)
+	{
 		m_currShape = shape;
 	}
 
-	std::string    getShape() {
+	std::string getShape()
+	{
 		return m_currShape;
 	}
 
@@ -101,22 +107,24 @@ class SSimObj : public SimObjBase
 
 	bool getIsGrasped(){return m_grasped;}
 
-	void 	push(SParts *p)
+	void push(SParts *p)
 	{
-		m_parts[S(p->name())] = p;
+		m_parts[std::string(p->name())] = p;
 		p->setParent(this);
 	}
 
-	void	push(Attribute *attr)
+	void push(Attribute *attr)
 	{
 		Super::push(attr);
 	}
 
 	SParts * getSBody() { return getSParts("body"); }
-	Parts * getBody() { return getSParts("body"); }
+	Parts  * getBody()  { return getSParts("body"); }
 
-	SParts*   getSParts(const char *name) {
+	SParts* getSParts(const char *name)
+	{
 		PartsM::iterator i = m_parts.find(name);
+
 		return i != m_parts.end()? i->second: NULL;
 	}
 
@@ -129,56 +137,64 @@ class SSimObj : public SimObjBase
 //	}
 
 	// Set parameters to ODE Object
-	void	applyParams(bool init, double step);
+	void applyParams(bool init, double step);
 	// Load parameters from ODE Object
-	void	loadParams();
+	void loadParams();
 
 	int getJointSize();
 
-	PartsM  getAllParts() {
+	PartsM getAllParts()
+	{
 		return m_parts;
 	}
 
 	void setGMode(bool g){ m_gmode = g;}
 	bool getGMode(){return m_gmode;}
 
-	void setVPosition(Vector3d pos) {
+	void setVPosition(Vector3d pos)
+	{
 		m_vpos.x(pos.x());
 		m_vpos.y(pos.y());
 		m_vpos.z(pos.z());
 	}
 
-	void setVPosition(double x, double y, double z) {
+	void setVPosition(double x, double y, double z)
+	{
 		m_vpos.x(x);
 		m_vpos.y(y);
 		m_vpos.z(z);
 	}
 
-	void getVPosition(Vector3d *pos) {
+	void getVPosition(Vector3d *pos)
+	{
 		pos->x(m_vpos.x());
 		pos->y(m_vpos.y());
 		pos->z(m_vpos.z());
 	}
 
-	void setVRotation(Rotation rot) {
+	void setVRotation(Rotation rot)
+	{
 		m_vrot.setQuaternion(rot.qw(), rot.qx(), rot.qy(), rot.qz());
 	}
 
-	void setVRotation(double qw, double qx, double qy, double qz) {
+	void setVRotation(double qw, double qx, double qy, double qz)
+	{
 		m_vrot.setQuaternion(qw, qx, qy, qz);
 	}
 
-	void getVRotation(Rotation *rot) {
+	void getVRotation(Rotation *rot)
+	{
 		rot->setQuaternion(m_vrot.qw(), m_vrot.qx(), m_vrot.qy(), m_vrot.qz());
 	}
 
-	JointM* getJointMap() {
+	JointM* getJointMap()
+	{
 		return &m_joints;
 	}
 
 	Joint * getJoint(const char *s);
 
-	bool	removeJoint(Joint *j);
+	bool removeJoint(Joint *j);
 
 	//! Set angular velocity in dynamics mode on
 	// modified by inamura: changed from addJointVelocity
@@ -197,24 +213,23 @@ class SSimObj : public SimObjBase
 		}
 		// if the target joint name is not regisered
 		else {
-		  m_jvel.insert(JMAP::value_type(jname, vel));
+			m_jvel.insert(JMAP::value_type(jname, vel));
 		}
 	}
 
 #ifdef _DUBUG
-	void	dump();
+	void dump();
 #else
-	void	dump() {}
+	void dump() {}
 #endif
  private:
-	class Iterator : public PartsIterator {
+	class Iterator : public PartsIterator
+	{
 	private:
-		typedef std::map<S, SParts*> M;
-	private:
-		M &m_map;
-		M::iterator m_i;
+		std::map<std::string, SParts*> &m_map;
+		std::map<std::string, SParts*>::iterator m_i;
 	public:
-		Iterator(M &map) : m_map(map)
+		Iterator(std::map<std::string, SParts*> &map) : m_map(map)
 		{
 			m_i = m_map.begin();
 		}
@@ -226,10 +241,11 @@ class SSimObj : public SimObjBase
 			return p;
 		}
 	};
+
 	PartsIterator * getPartsIterator() {
 		return new Iterator(m_parts);
 	}
- private:
+private:
 	static unsigned s_cnt;
 public:
 	static void initCounter() { s_cnt = 0; }
@@ -237,19 +253,21 @@ public:
 
 class SRobotObj : public SSimObj
 {
- public:
-
-  //SRobotObj(){}
-	SRobotObj(dSpaceID parent) : SSimObj(parent), m_onMove(false) {
+public:
+	//SRobotObj(){}
+	SRobotObj(dSpaceID parent) : SSimObj(parent), m_onMove(false)
+	{
 		m_type = 1;
 	}
 
-	bool setWheel(double wheelRadius, double wheelDistance) {
+	bool setWheel(double wheelRadius, double wheelDistance)
+	{
 		m_wheelRadius   = wheelRadius;
 		m_wheelDistance = wheelDistance;
 	}
 
-	bool setWheelVelocity(double left, double right) {
+	bool setWheelVelocity(double left, double right)
+	{
 		m_leftWheelVel  = left;
 		m_rightWheelVel = right;
 		if(m_leftWheelVel != 0.0 && m_rightWheelVel != 0.0) {
@@ -261,7 +279,9 @@ class SRobotObj : public SSimObj
 	bool   getOnMove(){return m_onMove;}
 	double getWheelRadius(){return m_wheelRadius;}
 	double getWheelDistance(){return m_wheelDistance;}
-	void   getWheelVelocity(double &left, double &right) {
+
+	void   getWheelVelocity(double &left, double &right)
+	{
 		left  = m_leftWheelVel;
 		right = m_rightWheelVel;
 	}

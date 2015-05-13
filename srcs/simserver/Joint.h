@@ -17,6 +17,8 @@
 #ifdef USE_ODE
 #include <ode/ode.h>
 
+#define F_SCHOLAR(V) sqrt(V[0]*V[0] + V[1]*V[1] + V[2]*V[2])
+
 class JointForce;
 class SParts;
 class HingeJoint;
@@ -48,18 +50,18 @@ protected:
 	bool            m_fixed;
 
 	// state
-	Rotation	m_rot;
+	Rotation m_rot;
 
 	// Rotation value which is the latest value sent to SIGViewer (for detection of value change)
 	// TODO: v is too short to explain the 'sent to viewer'. More friendly naming is requierd.: by inamura
-	Rotation	m_vrot;
+	Rotation m_vrot;
 
 	// Initial joint angle
-	Rotation	m_inirot;
+	Rotation m_inirot;
 
 	// The latest initial orientation that is sent to the Viewer
 	// TODO: v is too short to explain the 'sent to viewer'. More friendly naming is requierd.: by inamura
-	Rotation	m_inivrot;
+	Rotation m_inivrot;
 
 public:
 	/**
@@ -82,14 +84,14 @@ public:
 	dJointID     joint() { return m_joint; }
 
 	//! Set the World objects in ODE
-	void	setWorld(dWorldID w);
+	void setWorld(dWorldID w);
 
 	/**
 	 *  @brief Set Body objects which is connected by the joint
 	 * 
 	 *  Max # of objects to be added is 2
 	 */
-	void	pushBody(dBodyID body);
+	void pushBody(dBodyID body);
 
 	/**
 	 * @brief Implementation of joint according to configuration
@@ -98,10 +100,10 @@ public:
 	 * @param r Rotational matrix of the first part
 	 * @param dynamics flag for dynamics simulation
 	 */
-	void	build(const Vector3d &v, const Rotation &r, bool dynamics);
+	void build(const Vector3d &v, const Rotation &r, bool dynamics);
 
 	//! Set anchor position of the joint
-	void	setAnchor(dReal x, dReal y, dReal z)
+	void setAnchor(dReal x, dReal y, dReal z)
 	{
 		m_anchor.set(x, y, z);
 	}
@@ -151,13 +153,13 @@ public:
 	//! Set the latest orientation that is sent to viewer
 	void setVQuaternion(double qw, double qx, double qy, double qz)
 	{
-	  m_vrot.setQuaternion(qw, qx, qy, qz);
+		m_vrot.setQuaternion(qw, qx, qy, qz);
 	}
 
 	//! Set the latest initial orientation that is sent to viewer
 	void setIniVQuaternion(double qw, double qx, double qy, double qz)
 	{
-	  m_inivrot.setQuaternion(qw, qx, qy, qz);
+		m_inivrot.setQuaternion(qw, qx, qy, qz);
 	}
 
 	/**
@@ -173,7 +175,7 @@ public:
 	 * @brief Set joint angle
 	 * @param d joint angle (radian)
 	 */
-	virtual void	setAngle(double d) = 0;
+	virtual void setAngle(double d) = 0;
 
 	//added by okamoto (2011/2/18)
 	/**
@@ -183,7 +185,7 @@ public:
 	 * @param qy qy y element
 	 * @param qz qz z element
 	 */
-	void	setQuaternion(double qw, double qx, double qy, double qz) ;
+	void setQuaternion(double qw, double qx, double qy, double qz) ;
 
 	//added by okamoto (2011/2/18)
 	/**
@@ -195,7 +197,7 @@ public:
 	 * @param iniAnchor Anchor position of the rotated joint
 	 * @param cnt counter for the child joints
 	 */
-	void	setOffsetQuaternion(double qw, double qx, double qy, double qz, Vector3d iniAnchor, int cnt = 0) ;
+	void setOffsetQuaternion(double qw, double qx, double qy, double qz, Vector3d iniAnchor, int cnt = 0) ;
 
 	//added by okamoto (2011/3/4)
 	/**
@@ -205,23 +207,23 @@ public:
 	virtual void addTorque(double t) = 0;
 
 #ifdef _DEBUG
-	void	dump();
+	void dump();
 #else
-	void	dump() {}
+	void dump() {}
 #endif
 protected:
 	/**
 	 * @brief Set Anchor position
 	 */
-	virtual void	applyAnchor(dReal x, dReal y, dReal z) = 0;
+	virtual void applyAnchor(dReal x, dReal y, dReal z) = 0;
 
- public:	
+ public:
 	/**
 	 * @brief Create joint object in ODE
 	 * @param b1 The first part
 	 * @param b2 The second part
 	 */
-	virtual dJointID	createJoint(dBodyID b1, dBodyID b2) = 0;
+	virtual dJointID createJoint(dBodyID b1, dBodyID b2) = 0;
 };
 
 
@@ -241,17 +243,17 @@ public:
 	}
 
 private:
-	void	applyAnchor(dReal x, dReal y, dReal z) {;}
+	void applyAnchor(dReal x, dReal y, dReal z) {;}
 
-	dJointID	createJoint(dBodyID b1, dBodyID b2)
+	dJointID createJoint(dBodyID b1, dBodyID b2)
 	{
 		dJointID j = dJointCreateFixed(m_world, 0);
 		dJointAttach(j, b1, b2);
 		return j;
 	}
 
-	void	setAngle(double d);
-	void	addTorque(double t);
+	void setAngle(double d);
+	void addTorque(double t);
 
 	//added by noma@tome (2012/02/27)
 	/**
@@ -275,19 +277,19 @@ public:
 	BallJoint(const char *name) : Joint(TYPE_BALL, name) {;}
 
 private:
-	void	applyAnchor(dReal x, dReal y, dReal z)
+	void applyAnchor(dReal x, dReal y, dReal z)
 	{
 		dJointSetBallAnchor(m_joint, x, y, z);
 	}
 
-	dJointID	createJoint(dBodyID b1, dBodyID b2)
+	dJointID createJoint(dBodyID b1, dBodyID b2)
 	{
 		dJointID j = dJointCreateBall(m_world, 0);
 		dJointAttach(j, b1, b2);
 		return j;
 	}
-	void	setAngle(double d);
-	void	addTorque(double d);
+	void setAngle(double d);
+	void addTorque(double d);
 
 	//added by noma@tome (2012/02/27)
 	Vector3d getCurrentAnchorPosition();
@@ -301,7 +303,7 @@ class HingeJoint : public Joint
 {
 private:
 	Vector3d m_axis;
-	double	 m_angle;
+	double   m_angle;
 
 	bool     m_mirror;
 public:
@@ -311,24 +313,30 @@ public:
 	 * @param name joint name
 	 * @param axis rotational axis
 	 */
- HingeJoint(const char *name, const Vector3d &axis) : Joint(TYPE_HINGE, name), m_axis(axis), m_angle(-10), m_mirror(false) {;}
+	HingeJoint(const char *name, const Vector3d &axis) : Joint(TYPE_HINGE, name), m_axis(axis), m_angle(-10), m_mirror(false)
+	{;}
 
-	~HingeJoint() {
+	~HingeJoint()
+	{
 	}
 
 	//! Set rotational axis
-	void setAxis(double ax, double ay, double az) {
+	void setAxis(double ax, double ay, double az)
+	{
 		m_axis.set(ax, ay, az);
 	}
 
 	//! Get rotational axis
-	double getAxisX() {
+	double getAxisX()
+	{
 		return m_axis.x();
 	}
-	double getAxisY() {
+	double getAxisY()
+	{
 		return m_axis.y();
 	}
-	double getAxisZ() {
+	double getAxisZ()
+	{
 		return m_axis.z();
 	}
 
@@ -336,14 +344,15 @@ public:
 	 * @brief  Get rotational (angle) value
 	 * @return angle value (radian)
 	 */	 
-	double	getAngle() {
+	double	getAngle()
+	{
 		// right-handed system or left-handed system
 		if(m_mirror) return  dJointGetHingeAngle(m_joint);
 		else         return -dJointGetHingeAngle(m_joint);
 	}
 
-	void	setAngle(double angle);
-	void	addTorque(double t);
+	void setAngle(double angle);
+	void addTorque(double t);
 	
 
 	/**
@@ -353,7 +362,7 @@ public:
 	 */
 	//modified by okamoto@tome (2011/3/9)
 	//modified by inamura on 2013-12-30 from setVelocity
-	void	setAngularVelocityMaxTorque(dReal v, dReal max)
+	void setAngularVelocityMaxTorque(dReal v, dReal max)
 	{
 		dJointSetHingeParam(m_joint, dParamVel, -v);
 		dJointSetHingeParam(m_joint, dParamFMax, max);
@@ -361,9 +370,9 @@ public:
 
 
 private:
-	void	applyAnchor(dReal x, dReal y, dReal z);
+	void applyAnchor(dReal x, dReal y, dReal z);
 
-	dJointID	createJoint(dBodyID b1, dBodyID b2);
+	dJointID createJoint(dBodyID b1, dBodyID b2);
 
 	//added by noma@tome (2012/02/27)
 	Vector3d getCurrentAnchorPosition();
@@ -373,5 +382,5 @@ private:
 #endif // USE_ODE
 
 #endif // Joint_h
- 
+
 

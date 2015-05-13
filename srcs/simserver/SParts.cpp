@@ -458,14 +458,10 @@ void SParts::dump()
 	char *typestrs[] = { (char *)"box", (char *)"cylinder", (char *)"sphere", };
 
 	// Parts ID, name, type
-	printf("\tparts(%d): %s(%s)\n",
-		id(),
-		name(),
-		typestrs[m_type]);
+	printf("\tparts(%d): %s(%s)\n", id(), name(), typestrs[m_type]);
 
 	// position
-	printf("\t\tpos(%f, %f, %f)\n",
-		m_pos.x(), m_pos.y(), m_pos.z());
+	printf("\t\tpos(%f, %f, %f)\n", m_pos.x(), m_pos.y(), m_pos.z());
 
 	// size
 	PartsCmpnt *c = extdata();
@@ -576,17 +572,18 @@ DUMP(("[SBoxParts::set] ODE geom created (hx, hy, hz)=(%f, %f, %f) [%s:%d]\n", h
 	if(hx == 0) hx = 0.001;
 
 	dGeomID geom = dCreateBox(0, hx, hy, hz);
-	m_odeobj = ODEObjectContainer::getInstance()->createODEObj(
-                                                               w,
-                                                               geom,
-                                                               0.9,
-                                                               0.01,
-                                                               0.5,
-                                                               0.5,
-                                                               0.8,
-                                                               0.001,
-                                                               0.0
-                                                               );
+	m_odeobj = ODEObjectContainer::getInstance()->createODEObj
+	(
+		w,
+		geom,
+		0.9,
+		0.01,
+		0.5,
+		0.5,
+		0.8,
+		0.001,
+		0.0
+	);
 
 	dBodyID body = m_odeobj->body();
 	dMass m;
@@ -656,26 +653,26 @@ void SCylinderParts::initializeAngle(double x,double y,double z)
 
 	// Rotate -90[deg] around y axis if the (x,y,z) is on x axis
 	if(fabs(y) < 0.01 && fabs(z) < 0.01)
-		{
-			lx = 0.0;
-			ly = -1.0;
-			lz = 0.0;
-		}
+	{
+		lx = 0.0;
+		ly = -1.0;
+		lz = 0.0;
+	}
 	// Rotate -90[deg] around x axis if the (x,y,z) is on y axis
 	if(fabs(x) < 0.01 && fabs(z) < 0.01)
-		{
-			lx = 1.0;
-			ly = 0.0;
-			lz = 0.0;
-		}
+	{
+		lx = 1.0;
+		ly = 0.0;
+		lz = 0.0;
+	}
 	// Do not rotate if the (x,y,z) is on z axis
 	else if(fabs(x) < 0.01 && fabs(y) < 0.01)
-		{
-			lx = 0.0;
-			ly = 0.0;
-			lz = 1.0;
-			angle = 0.0;
-		}
+	{
+		lx = 0.0;
+		ly = 0.0;
+		lz = 1.0;
+		angle = 0.0;
+	}
 	// set normalized value
 	double vectorLength = sqrt( (lx*lx + ly*ly + lz*lz) );
 	x_axis = lx / vectorLength;
@@ -690,7 +687,6 @@ void SCylinderParts::set(dWorldID w, dSpaceID space)
 	double radius = m_cmpnt.radius();
 	double length = m_cmpnt.length();
 
-
 // konao
 	//LOG_MSG(("[SCylinderParts::set] ODE geom created (r, l)=(%f, %f) [%s:%d]\n", radius, length, __FILE__, __LINE__))
 	// TODO: Ideally, cylinder should be constructed here. However, collision detection
@@ -700,17 +696,18 @@ void SCylinderParts::set(dWorldID w, dSpaceID space)
 	//dGeomID geom = dCreateCapsule(0, radius, length);
 	dGeomID geom = dCreateCylinder(0, radius, length);
 
-	m_odeobj = ODEObjectContainer::getInstance()->createODEObj(
-	                                                           w,
-	                                                           geom,
-	                                                           0.9,
-	                                                           0.01,
-	                                                           0.5,
-	                                                           0.5,
-	                                                           0.8,
-	                                                           0.001,
-	                                                           0.0
-	                                                           );
+	m_odeobj = ODEObjectContainer::getInstance()->createODEObj
+	(
+		w,
+		geom,
+		0.9,
+		0.01,
+		0.5,
+		0.5,
+		0.8,
+		0.001,
+		0.0
+	);
 
 
 	dBodyID body = m_odeobj->body();
@@ -776,29 +773,27 @@ double SCylinderParts::getCubicRootOfVolume(void)
 
 
 
-
-
-
 void SSphereParts::set(dWorldID w, dSpaceID space)
 {
 	double rad = m_cmpnt.radius();
 
-// konao
-DUMP(("[SSphereParts::set] ODE geom created (r=%f) [%s:%d]\n", rad, __FILE__, __LINE__));
+	// konao
+	DUMP(("[SSphereParts::set] ODE geom created (r=%f) [%s:%d]\n", rad, __FILE__, __LINE__));
 
 	dGeomID geom = dCreateSphere(0, rad);
 
-	m_odeobj = ODEObjectContainer::getInstance()->createODEObj(
-	                                                           w,
-	                                                           geom,
-	                                                           0.9,
-	                                                           0.01,
-	                                                           0.5,
-	                                                           0.5,
-	                                                           0.8,
-	                                                           0.001,
-	                                                           0.0
-	                                                           );
+	m_odeobj = ODEObjectContainer::getInstance()->createODEObj
+	(
+		w,
+		geom,
+		0.9,
+		0.01,
+		0.5,
+		0.5,
+		0.8,
+		0.001,
+		0.0
+	);
 
 	dBodyID body = m_odeobj->body();
 	dMass m;
@@ -850,17 +845,18 @@ void SBlindParts::set(dWorldID w, dSpaceID space)
 	double rad = 1.0;
 	dGeomID geom = dCreateSphere(0, rad);
 
-	m_odeobj = ODEObjectContainer::getInstance()->createODEObj(
-	                                                           w,
-	                                                           geom,
-	                                                           0.9,
-	                                                           0.01,
-	                                                           0.5,
-	                                                           0.5,
-	                                                           0.8,
-	                                                           0.001,
-	                                                           0.0
-	                                                           );
+	m_odeobj = ODEObjectContainer::getInstance()->createODEObj
+	(
+		w,
+		geom,
+		0.9,
+		0.01,
+		0.5,
+		0.5,
+		0.8,
+		0.001,
+		0.0
+	);
 
 	dBodyID body = m_odeobj->body();
 

@@ -40,26 +40,26 @@ bool SimViewPoint::setKey(unsigned char key)
 		break;
 
 	case 'f':
-		{
-			Position &p = m_pos;
-			double rad = -m_roty*M_PI/180;
-			double dx = 0.2*sin(rad);
-			double dz = 0.2*cos(rad);
-			p.x(inRange(p.x() + dx));
-			p.z(inRange(p.z() + dz));
-			break;
-		}
+	{
+		Position &p = m_pos;
+		double rad = -m_roty*M_PI/180;
+		double dx = 0.2*sin(rad);
+		double dz = 0.2*cos(rad);
+		p.x(inRange(p.x() + dx));
+		p.z(inRange(p.z() + dz));
+		break;
+	}
 
 	case 'd':
-		{
-			Position &p = m_pos;
-			double rad = -m_roty*M_PI/180;
-			double dx = 0.2*sin(rad);
-			double dz = 0.2*cos(rad);
-			p.x(inRange(p.x() - dx));
-			p.z(inRange(p.z() - dz));
-			break;
-		}
+	{
+		Position &p = m_pos;
+		double rad = -m_roty*M_PI/180;
+		double dx = 0.2*sin(rad);
+		double dz = 0.2*cos(rad);
+		p.x(inRange(p.x() - dx));
+		p.z(inRange(p.z() - dz));
+		break;
+	}
 	case 'q':
 		exit(0);
 	default:

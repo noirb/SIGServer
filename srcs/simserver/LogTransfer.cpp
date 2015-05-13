@@ -8,10 +8,14 @@
 void LogTransfer::flush(const std::vector<Connection*> &clients)
 {
 	m_accept.lock();
+
 	for (EntryC::const_iterator i=m_entries.begin(); i!=m_entries.end(); i++) {
+
 		Entry *e = *i;
 		CommLogMsgEncoder enc(e->level, e->msg.c_str());
-		for (ServerAcceptProc::C::const_iterator j=clients.begin(); j!=clients.end(); j++) {
+
+		for (ServerAcceptProc::ConC::const_iterator j=clients.begin(); j!=clients.end(); j++) {
+
 			Connection *con = *j;
 			Source *source = con->source;
 			if (source->isView()) {

@@ -33,7 +33,7 @@ class Joint;
  */
 class SParts : public Parts
 {
- public:
+public:
 	struct Child
 	{
 		Joint  *currj;
@@ -43,7 +43,7 @@ class SParts : public Parts
 		Child(Joint *cj, Joint *nj, SParts *np) : currj(cj), nextj(nj), nextp(np) {}
 	};
 	typedef std::vector<Child *> ChildC;
- protected:
+protected:
 	ODEObj *     m_odeobj;
 	SimObjBase * m_parent;
 	Joint *      m_parentJoint;
@@ -66,7 +66,7 @@ public:
 	virtual ~SParts();
 
 	//! Set parent joint
-	void	setParentJoint(Joint *j)
+	void setParentJoint(Joint *j)
 	{
 		m_parentJoint = j;
 	}
@@ -83,24 +83,24 @@ public:
 	 * @param nextj
 	 * @param nextp
 	 */
-	void	pushChild(Joint *currj, Joint *nextj, SParts *nextp)
+	void pushChild(Joint *currj, Joint *nextj, SParts *nextp)
 	{
 		m_children.push_back(new Child(currj, nextj, nextp));
 	}
 
-	void	graspObj(std::string objName);
+	void graspObj(std::string objName);
 
-	void	releaseObj() 
+	void releaseObj()
 	{
-	  m_graspObj.clear();
-	  m_onGrasp = false;
-	  m_gini[0] = 1.0;
-	  m_gini[1] = 0.0;
-	  m_gini[2] = 0.0;
-	  m_gini[3] = 0.0;
+		m_graspObj.clear();
+		m_onGrasp = false;
+		m_gini[0] = 1.0;
+		m_gini[1] = 0.0;
+		m_gini[2] = 0.0;
+		m_gini[3] = 0.0;
 	}
 
-	bool	getOnGrasp(){return m_onGrasp;}
+	bool getOnGrasp(){return m_onGrasp;}
 
 	/**
 	 * @brief Set child joint/parts
@@ -111,24 +111,24 @@ public:
 	 * @param nextj
 	 * @param nextp
 	 */
-	void	pushChild(Joint *nextj, SParts *nextp)
+	void pushChild(Joint *nextj, SParts *nextp)
 	{
 		m_children.push_back(new Child(m_parentJoint, nextj, nextp));
 	}
 
 	//! Remove the child joint
-	bool	removeChild(Joint *nextj);
+	bool removeChild(Joint *nextj);
 
 	//! Set entity which is configured by this parts
-	void	setParent(SimObjBase *p) { m_parent = p; }
+	void setParent(SimObjBase *p) { m_parent = p; }
 
-	SimObjBase *	getParent() { return m_parent; }
+	SimObjBase * getParent() { return m_parent; }
 
 	//added by okamoto@tome (2011/2/18)
 	//! Get child joint
-	ChildC		getChild()
+	ChildC getChild()
 	{
-	  return m_children;
+		return m_children;
 	}
 	//added by okamoto@tome (2011/10/4)
 	//! Set position of ODE object
@@ -146,10 +146,10 @@ public:
 		pos.z(m_posz);
 	}
 	//! Check whether the both of parts belonged to the same entity
-	bool	sameParent(const SParts &o);
+	bool sameParent(const SParts &o);
 
 	//! Get the mass
-	double	getMass();
+	double getMass();
 	
 	//added by okamoto @tome (2011/10/5)
 	//! Set the mass
@@ -162,7 +162,7 @@ private:
 	// currj: the previous joint
 	// anchorV: absolute position of previous joint anchor
 	// R: rotation (whole)
-	void	calcPosition(Joint *currj, Joint *nextj, const Vector3d &anchorV, const Rotation &R);
+	void calcPosition(Joint *currj, Joint *nextj, const Vector3d &anchorV, const Rotation &R);
 
 	//dReal maxAngularVel;
 public:
@@ -173,32 +173,30 @@ public:
 	 * @param r	 orientation of the agent (world coordinate)
 	 * @dynamics flag for dynamics calculation
 	 */
-	void	build(const Vector3d &v, const Rotation &r, bool dynamics);
+	void build(const Vector3d &v, const Rotation &r, bool dynamics);
+
 	/**
 	 * @brief Calculation of position and orientation of parts
 	 *
 	 * Available only when the dynamics mode is off
 	 */
-	void	calcPosture();
+	void calcPosture();
 
 	//! Get wrapper class of ODE Body
 	ODEObj &odeobj() { return *m_odeobj; }
 
 	//! Switch the dynamics mode
-	void	enableDynamics(bool b);
+	void enableDynamics(bool b);
 
 	//added by noma@tome 20120223
 	/**
 	 * @brief Get radius of circum sphere
-	 *
 	 */
 	virtual double getCircumRadius(void) = 0;
 	/**
 	 * @brief Calculate cube root of the volume
-	 *
 	 */
 	virtual double getCubicRootOfVolume(void) = 0;
-
 
 
 	// --------------------------------------------------------
@@ -210,21 +208,21 @@ public:
 	// call of build() is required to be reflected in ODE world.
 	// --------------------------------------------------------
 	//! Set initial position of parts (agent coordinate)
-	void	setInitialPosition(double x, double y, double z)
+	void setInitialPosition(double x, double y, double z)
 	{
 		m_pos.set(x, y, z);
 	}
 	//! Set initial position of parts (agent coordinate)
-	void	setInitialPosition(const Vector3d &v)
+	void setInitialPosition(const Vector3d &v)
 	{
 		m_pos.set(v.x(), v.y(), v.z());
 	}
 
 	//! Set initial orientation (by quaternion) of the parts (agent coordinate)
-	void	setInitialQuaternion(dReal q0, dReal q1, dReal q2, dReal q3);
+	void setInitialQuaternion(dReal q0, dReal q1, dReal q2, dReal q3);
 
 	//! Set initial orientation (by rotation matrix) of the parts (agent coordinate)
-	void	setInitialQuaternion(Rotation &r)
+	void setInitialQuaternion(Rotation &r)
 	{
 		const dReal *q = r.q();
 		setInitialQuaternion(q[0], q[1], q[2], q[3]);
@@ -235,39 +233,39 @@ public:
 	// -----------------------------------------------------
 
 	//! Set position in world coordinate (Only for BODY)
-	void	setPosition(const Vector3d &v);
+	void setPosition(const Vector3d &v);
 
 	//! Set Force added to the parts
-	void	setForce(dReal fx, dReal fy, dReal fz);
+	void setForce(dReal fx, dReal fy, dReal fz);
 	
 	// added by okamoto@tome(2011/12/21)
 	//! Set Force added to the parts (global coordinate)
-	void	addForce(dReal fx, dReal fy, dReal fz);
+	void addForce(dReal fx, dReal fy, dReal fz);
 	//! Set Force added to the parts (parts coordinate)
-	void	addRelForce(dReal fx, dReal fy, dReal fz);
+	void addRelForce(dReal fx, dReal fy, dReal fz);
 	//! Set force and point of action for the parts (global coordinate)
-	void	addForceAtPos(dReal fx, dReal fy, dReal fz, dReal px, dReal py, dReal pz);
+	void addForceAtPos(dReal fx, dReal fy, dReal fz, dReal px, dReal py, dReal pz);
 	//! Set force (parts coordinate) and point of action (global coordinate)
-	void	addRelForceAtPos(dReal fx, dReal fy, dReal fz, dReal px, dReal py, dReal pz);
+	void addRelForceAtPos(dReal fx, dReal fy, dReal fz, dReal px, dReal py, dReal pz);
 	//! Set force and point of action (parts coordinate)
-	void	addForceAtRelPos(dReal fx, dReal fy, dReal fz, dReal px, dReal py, dReal pz);
+	void addForceAtRelPos(dReal fx, dReal fy, dReal fz, dReal px, dReal py, dReal pz);
 	//! Set force (parts coordinate) and point of action (parts coordinate)
-	void	addRelForceAtRelPos(dReal fx, dReal fy, dReal fz, dReal px, dReal py, dReal pz);
+	void addRelForceAtRelPos(dReal fx, dReal fy, dReal fz, dReal px, dReal py, dReal pz);
 	//! Get angular velocity of the parts
-	void	getAngularVelocity(Vector3d &v);
+	void getAngularVelocity(Vector3d &v);
 	//! Get velocity of the parts // Changed from getVelocity: by inamura on 2013-12-30
-	void	getLinearVelocity(Vector3d &v);
+	void getLinearVelocity(Vector3d &v);
 	//! Set Torque added to the parts (global coordinate)
-	void	addTorque(dReal fx, dReal fy, dReal fz);
+	void addTorque(dReal fx, dReal fy, dReal fz);
 	//! Set flag whether gravity is given to the parts
-	void	setGravityMode(bool gravity);
+	void setGravityMode(bool gravity);
 
 	// added by okamoto@tome(2012/3/16)
 	//! Set flag whether collision detection is valid
-	void    setCollisionEnable(bool collision);
+	void setCollisionEnable(bool collision);
 
 	//! Set torque to the parts
-	void	setTorque(dReal tx, dReal ty, dReal tz);
+	void setTorque(dReal tx, dReal ty, dReal tz);
 
 	/**
 	 * Set linear velocity of the parts
@@ -280,7 +278,7 @@ public:
 
 	/**
 	 * Set maximum angular velocity
-	 */	
+	 */
 	//void setAngularMaxVelocity(dReal max);
 
 	/**
@@ -292,24 +290,24 @@ public:
 	void setAngularVelocity(dReal x,dReal y,dReal z);
 
 	//! Set orientation (rotate matrix) in global coordinate
-	void	setRotation(const Rotation &r)
+	void setRotation(const Rotation &r)
 	{
 		const dReal *q = r.q();
 		SParts::setQuaternion(q[0], q[1], q[2], q[3]);
 	}
 	//! Set orientation (quaternion) in global coordinate
-	void	setQuaternion(const dReal *q)
+	void setQuaternion(const dReal *q)
 	{
 		SParts::setQuaternion(q[0], q[1], q[2], q[3]);
 	}
 	//! Set orientation (quaternion) in global coordinate
-	void	setQuaternion(dReal, dReal, dReal, dReal);
+	void setQuaternion(dReal, dReal, dReal, dReal);
 
 	//! Set flag to check collision detection
-	void    setOnCollision(bool flag){m_onCollision = flag;}
+	void setOnCollision(bool flag){m_onCollision = flag;}
 
 	//! Get the result of collision detection
-	bool    getOnCollision(){return m_onCollision;}
+	bool getOnCollision(){return m_onCollision;}
 
 	//! Get the current position
 	const dReal * getPosition();
@@ -372,12 +370,11 @@ public:
 	//added by noma@tome 20120223
 	/**
 	 * @brief Get radius of circum sphere
-	 *
 	 */
 	double getCircumRadius(void);
+
 	/**
 	 * @brief Get cube root of volume
-	 *
 	 */
 	double getCubicRootOfVolume(void);
 
@@ -554,6 +551,7 @@ public:
 	 * @brief Get radius of circum sphere
 	 */
 	double getCircumRadius(void);
+
 	/**
 	 * @brief Calculate cube root of the volume
 	 */

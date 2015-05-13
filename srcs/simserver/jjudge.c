@@ -14,17 +14,17 @@ void jjudge_init(jjudge_t *judge) { judge->ascii = 1; }
 int jjudge_equal(jjudge_t *judge, unsigned char jc, unsigned char c)
 {
 #if defined(WIN32)
-  if (judge->ascii && JJUDGE_IN_SJIS1_RANGE(jc)) {
-    judge->ascii = 0; return 0;
-  } else if (!judge->ascii && JJUDGE_IN_SJIS2_RANGE(jc)) {
-    judge->ascii = 1; return 0;
-  } else if (judge->ascii && jc == c) {
-    return 1;
-  }
+	if (judge->ascii && JJUDGE_IN_SJIS1_RANGE(jc)) {
+		judge->ascii = 0; return 0;
+	} else if (!judge->ascii && JJUDGE_IN_SJIS2_RANGE(jc)) {
+		judge->ascii = 1; return 0;
+	} else if (judge->ascii && jc == c) {
+		return 1;
+	}
 #else
-  if (jc == c) { return 1; }
+	if (jc == c) { return 1; }
 #endif
-  return 0;
+	return 0;
 }
 
 int jjudge_equal_preserve(jjudge_t *judge, unsigned char jc, unsigned char c)
@@ -32,42 +32,23 @@ int jjudge_equal_preserve(jjudge_t *judge, unsigned char jc, unsigned char c)
 #if defined(WIN32)
 	if (judge->ascii && jc == c) { return 1; }
 #else
-  if (jc == c) { return 1; }
+	if (jc == c) { return 1; }
 #endif
-  return 0;
+	return 0;
 }
 
 char *jjudge_replace_char(char *buf, int from, int to)
 {
-  char *p = buf;
+	char *p = buf;
 
-  jjudge_t judger;
-  jjudge_init(&judger);
+	jjudge_t judger;
+	jjudge_init(&judger);
 
-  while (*p) {
-    unsigned char jc = *p;
-    unsigned char c = from;
-    if (jjudge_equal(&judger, jc, c)) *p = to;
-    p++;
-  }
-  return buf;
+	while (*p) {
+		unsigned char jc = *p;
+		unsigned char c = from;
+		if (jjudge_equal(&judger, jc, c)) *p = to;
+		p++;
+	}
+	return buf;
 }
-  
-
-#ifdef DEBUG_jjudge_pgm
-
-int main(void)
-{
-  char buf[100];
-
-  strcpy(buf, "•\Ž¦\\•\Ž¦\\•\Ž¦\\");
-  jjudge_replace_char(buf, '\\', '/');
-  printf("%s\n", buf);
-  jjudge_replace_char(buf, '\\', '/');
-  printf("%s\n", buf);
-
-  return 0;
-}
-  
-#endif
-

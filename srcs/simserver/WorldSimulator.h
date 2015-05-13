@@ -35,12 +35,12 @@ class ServiceNameServer;
 class WorldSimulator
 {
 private:
-	ServerAcceptProc &  m_accept;
-	SimWorldProvider &  m_provider;
-	ServiceNameServer & m_ns;
-	DecoderListener *   m_l;
-	PacketForward *     m_forward;
-	LogTransfer *       m_log;
+	ServerAcceptProc   &m_accept;
+	SimWorldProvider   &m_provider;
+	ServiceNameServer  &m_ns;
+	DecoderListener    *m_l;
+	PacketForward      *m_forward;
+	LogTransfer        *m_log;
 	bool                m_loop;
 
 	// Step counter of inner timer. It starts from when the simulation was started.
@@ -49,7 +49,8 @@ private:
 	// Time step width in micro second
 	double m_stepTime;
 
-	enum ControllerDataType{ 
+	enum ControllerDataType
+	{
 		SEND_MESSAGE = 0x0001,    	// Send a message to controller
 	};
 
@@ -75,8 +76,8 @@ public:
 	//! Destructor
 	~WorldSimulator() { free_(); }
 private:
-	bool 	runStep();
-	void	free_();
+	bool runStep();
+	void free_();
 	std::string DoubleToString(double x);
 	std::string IntToString(int x);
 public:

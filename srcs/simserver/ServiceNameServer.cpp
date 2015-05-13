@@ -9,7 +9,7 @@
 
 ServiceNameServer::~ServiceNameServer()
 {
-	for (C::iterator i=m_services.begin(); i!=m_services.end(); i++) {
+	for (std::vector<NSService*>::iterator i=m_services.begin(); i!=m_services.end(); i++) {
 		NSService *s = *i;
 		delete s;
 	}
@@ -17,8 +17,8 @@ ServiceNameServer::~ServiceNameServer()
 }
 
 
-bool ServiceNameServer::ping(Service &s, Service::Kind kind) {
-
+bool ServiceNameServer::ping(Service &s, Service::Kind kind)
+{
 	typedef CommRequestNSPingerEncoder Enc;
 	typedef CommDataDecoder::Result Result;
 
@@ -38,8 +38,10 @@ bool ServiceNameServer::ping(Service &s, Service::Kind kind) {
 
 	bool ret = false;
 	CTReader *r = new CTReader(sock, d, 256);
+
 	while (retry > 0) {
 		Result *result = r->readSync();
+
 		if (result != NULL) {
 			if (result->type() == COMM_NS_PINGER_RESULT) {
 				ResultNSPingerEvent *evt = (ResultNSPingerEvent*)result->data();
@@ -67,16 +69,20 @@ bool ServiceNameServer::registerService(Service *s)
 	return true;
 }
 
-Service * ServiceNameServer::lookup(Service::Kind kind) {
+Service * ServiceNameServer::lookup(Service::Kind kind)
+{
 	m_locker.lock();
 	NSService *target = NULL;
-	C::iterator i;
+	std::vector<NSService*>::iterator i;
+
 	for (i=m_services.begin(); i!=m_services.end(); i++) {
+
 		NSService *nss = *i;
 		if (nss->isDead()) { continue; }
 		Service *s = nss->service();
 		LOG_DEBUG1(("service provider : %s:%d ", s->hostname(), s->port()));
 		LOG_DEBUG1(("kind : %#x ", s->kind()));
+
 		if (s->kind() & kind) {
 			if (target != NULL) {
 				if (nss->count() < target->count()) {
@@ -87,24 +93,25 @@ Service * ServiceNameServer::lookup(Service::Kind kind) {
 			}
 		}
 	}
+
 	Service *service = NULL;
 	if (!target) {
 		goto ret;
 	}
 	target->incr();
+
 	service = target->service();
+
 	if (!ping(*service, kind)) {
-		LOG_SYS(("%s(%s:%d) is not available",
-			 service->name(), service->hostname(), service->port()));
+		LOG_SYS(("%s(%s:%d) is not available", service->name(), service->hostname(), service->port()));
 		target->dead();
 		service = NULL;
 		goto ret;
 	} else {
-		LOG_DEBUG1(("%s(%s:%d) is active",
-				service->name(), service->hostname(), service->port()));
+		LOG_DEBUG1(("%s(%s:%d) is active", service->name(), service->hostname(), service->port()));
 	}
 
- ret:
+ret:
 	m_locker.unlock();
 	return service;
 }

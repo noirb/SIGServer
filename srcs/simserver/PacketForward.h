@@ -29,9 +29,7 @@ private:
 public:
 	PacketForward(ServerAcceptProc &a, SimWorldProvider &w) : Super(), m_accept(a), m_world(w) {;}
 private:
-	void forward(Source &from, CommDataType cmdType,
-		     const char *to, int bytes, char *data,
-		     bool returnImmediate, double reachRadius);
+	void forward(Source &from, CommDataType cmdType, const char *to, int bytes, char *data, bool returnImmediate, double reachRadius);
 };
 
 #endif // IRWAS_SIMSERVER

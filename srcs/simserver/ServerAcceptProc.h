@@ -33,19 +33,18 @@ class ServiceNameServer;
 struct Connection
 {
 	Source *source;
-  
+
 	CommDataDecoder decoder;
-	Connection(Source *s,
-			   CommDataDecoder::Listener *l,
-			   CommDataDecoder::PacketSender *sender) : source(s)
+	Connection(Source *s, CommDataDecoder::Listener *l, CommDataDecoder::PacketSender *sender) : source(s)
 	{
 		if(source->type() != SOURCE_TYPE_NEW_VIEW)
-			{
-				decoder.setListener(l);
-				decoder.setPacketSender(sender);
-			}
+		{
+			decoder.setListener(l);
+			decoder.setPacketSender(sender);
+		}
 	}
-	~Connection() {
+	~Connection()
+	{
 		source->close();
 		delete source;
 	}
@@ -54,24 +53,21 @@ struct Connection
 
 class ServerAcceptProc : public CommDataDecoder::Listener
 {
-private:
-	typedef std::string S;
-		
-private:
+public:
 	typedef std::vector<Connection*> ConC;
+private:
 	typedef std::vector<Source*> SourceC;
 #ifdef DEPRECATED
 	typedef std::queue<Command*> CommandQ;
-	typedef std::map<S, CommandQ*> CommandHash;
+	typedef std::map<std::string, CommandQ*> CommandHash;
 #endif
-public:
-	typedef ConC C;
+
 private:
-	int	m_sock;
+	int m_sock;
 	
 	std::vector<Connection *> m_clients;
 	std::vector<Connection *> m_messages; 
-	std::vector<Source*>	m_noneeded;
+	std::vector<Source*>      m_noneeded;
 	Locker  m_locker;
 #ifdef DEPRECATED
 	CommandHash m_commandH;
@@ -79,17 +75,17 @@ private:
 
 	bool m_startReq;
 private:
-	CommDataDecoder::Listener *m_decoderL;
+	CommDataDecoder::Listener     *m_decoderL;
 	CommDataDecoder::PacketSender *m_sender;
-	SimWorldProvider &m_wProvider;
-	ServiceNameServer &m_ns;
+	SimWorldProvider              &m_wProvider;
+	ServiceNameServer             &m_ns;
 private:
 #ifdef DEPRECATED
 	CommandQ & getCommandQ(const char *name);
 #endif
-	void	free_();
+	void free_();
 public:
- ServerAcceptProc(int sock, SimWorldProvider &provider, ServiceNameServer &ns) : m_sock(sock), m_wProvider(provider), m_ns(ns), m_startReq(true) {;}
+	ServerAcceptProc(int sock, SimWorldProvider &provider, ServiceNameServer &ns) : m_sock(sock), m_wProvider(provider), m_ns(ns), m_startReq(true) {;}
 	~ServerAcceptProc() { free_(); }
 
 	void setDecoderListener(CommDataDecoder::Listener *l) { m_decoderL = l; }
@@ -98,41 +94,42 @@ public:
 	void lock() { m_locker.lock(); }
 	void unlock() { m_locker.unlock(); }
 
-	const C	&clients() {
+	const ConC &clients()
+	{
 		eraseNoNeeded();
 		return m_clients;
 	}
 
-	const C	&messages() {
+	const ConC &messages()
+	{
 		return m_messages;
 	}
-	int	clientNum() const { return m_clients.size(); }
+
+	int clientNum() const { return m_clients.size(); }
 	Source * get(const char *name, SourceType type);
 
 	std::vector<Source*> getAllClients();
-
 	std::vector<Source*> getAllCtlClients();
-
 	std::vector<Source*> getAllSrvClients();
 
 	Source * get(int sock);
 	
 	Source * getByType(SourceType type);
 
-	void	pushNoNeeded(Source *source)
+	void pushNoNeeded(Source *source)
 	{
 		m_noneeded.push_back(source);
 	}
 	
 
 #ifdef DEPRECATED
-	void    push(Command *cmd);
-	void	applyCommands(SSimWorld &w);
+	void push(Command *cmd);
+	void applyCommands(SSimWorld &w);
 #endif
-	void	eraseNoNeeded();
-	void 	run();
+	void eraseNoNeeded();
+	void run();
 
-	void	close();
+	void close();
 private:
 	/*
 	 * CommDataDecoder::Listener implementation
@@ -232,7 +229,6 @@ private:
 class AcceptThread : public Thread<ServerAcceptProc *>
 {
 private:
-	typedef Thread<ServerAcceptProc *> Super;
 	static void * thread_func(void *param)
 	{
 		ServerAcceptProc *proc = (ServerAcceptProc*)param;
@@ -242,7 +238,7 @@ private:
 public:
 	void run(ServerAcceptProc *proc)
 	{
-		Super::run(thread_func, proc);
+		Thread<ServerAcceptProc *>::run(thread_func, proc);
 	}
 };
 

@@ -47,6 +47,7 @@ void ServerAcceptProc::run()
 		Source *src = new Source(s, hostname);
 
 		if(strncmp(buf, "SIGViewer", 9) == 0) {
+
 			char *p = buf;
 			char *tmp = strtok(p,",");
 			
@@ -82,6 +83,7 @@ void ServerAcceptProc::run()
 			int size = m_messages.size();
 			
 			std::vector<SOCKET> socks;
+
 			if(size > 0) {
 				for(int i = 0; i < size; i++) {
 					
@@ -116,7 +118,6 @@ void ServerAcceptProc::run()
 				LOG_ERR(("Service name \"%s\" already exist.", sname.c_str()));
 				LOG_ERR(("Service: \"%s\" cannot connect", sname.c_str()));
 
-
 				BINARY_SET_DATA_S(result, unsigned char, 0); 
 				//BINARY_SET_DATA_S_INCR(p, unsigned short, 4); 	  
 				//sleep(1000);
@@ -138,11 +139,12 @@ void ServerAcceptProc::run()
 			int decoded;
 			typedef CommDataDecoder::Result Result;
 			Result *res = decoder.push(*src, buf, r, decoded);
+
 			if (decoded > 0) {
 				if (res) {
 					assert(res->forwarded());
 					assert(res->type() == COMM_INVOKE_CONTROLLER_ON_RECV_MESSAGE);
-	    
+
 					//LOG_SYS(("data forwarded"));
 					delete src;
 					::close(s);
@@ -182,8 +184,9 @@ void ServerAcceptProc::free_()
 #endif // DEPRECATED
 }
 
-void ServerAcceptProc::close() {
-	for (C::iterator i=m_clients.begin(); i!=m_clients.end(); i++) {
+void ServerAcceptProc::close()
+{
+	for (ConC::iterator i=m_clients.begin(); i!=m_clients.end(); i++) {
 		Connection *con = *i;
 		delete con;
 	}
@@ -192,7 +195,7 @@ void ServerAcceptProc::close() {
 
 Source * ServerAcceptProc::get(const char *name, SourceType type)
 {
-	for (C::iterator i=m_clients.begin(); i!=m_clients.end(); i++) {
+	for (ConC::iterator i=m_clients.begin(); i!=m_clients.end(); i++) {
 		Connection *con = *i;
 		Source *client = con->source; 
 		if (client->type() == type &&
@@ -201,7 +204,7 @@ Source * ServerAcceptProc::get(const char *name, SourceType type)
 		}
 	}
 
-	for (C::iterator i=m_messages.begin(); i!=m_messages.end(); i++) {
+	for (ConC::iterator i=m_messages.begin(); i!=m_messages.end(); i++) {
 		Connection *con = *i;
 		Source *client = con->source; 
 		if (client->type() == type &&
@@ -212,11 +215,12 @@ Source * ServerAcceptProc::get(const char *name, SourceType type)
 
 	return 0;
 }
+
 std::vector<Source*> ServerAcceptProc::getAllClients()
 {
 	std::vector<Source*> srcs;
 
-	for (C::iterator i=m_clients.begin(); i!=m_clients.end(); i++) {
+	for (ConC::iterator i=m_clients.begin(); i!=m_clients.end(); i++) {
 		Connection *con = *i;
 		Source *client = con->source; 
 		if(client->type() == SOURCE_TYPE_CONTROLLER_CMD) {
@@ -224,7 +228,7 @@ std::vector<Source*> ServerAcceptProc::getAllClients()
 		}
 	}
 
-	for (C::iterator i=m_messages.begin(); i!=m_messages.end(); i++) {
+	for (ConC::iterator i=m_messages.begin(); i!=m_messages.end(); i++) {
 		Connection *con = *i;
 		srcs.push_back(con->source);
 	}
@@ -235,7 +239,7 @@ std::vector<Source*> ServerAcceptProc::getAllCtlClients()
 {
 	std::vector<Source*> srcs;
  
-	for (C::iterator i=m_clients.begin(); i!=m_clients.end(); i++) {
+	for (ConC::iterator i=m_clients.begin(); i!=m_clients.end(); i++) {
 		Connection *con = *i;
 		Source *client = con->source; 
 		if(client->type() == SOURCE_TYPE_CONTROLLER_CMD) {
@@ -250,7 +254,7 @@ std::vector<Source*> ServerAcceptProc::getAllSrvClients()
 {
 	std::vector<Source*> srcs;
  
-	for (C::iterator i=m_messages.begin(); i!=m_messages.end(); i++) {
+	for (ConC::iterator i=m_messages.begin(); i!=m_messages.end(); i++) {
 		Connection *con = *i;
 		srcs.push_back(con->source);
 	}
@@ -259,7 +263,7 @@ std::vector<Source*> ServerAcceptProc::getAllSrvClients()
 
 Source * ServerAcceptProc::get(int sock)
 {
-	for (C::iterator i=m_clients.begin(); i!=m_clients.end(); i++) {
+	for (ConC::iterator i=m_clients.begin(); i!=m_clients.end(); i++) {
 		Connection *con = *i;
 		Source *client = con->source;
 		if (client->equals(sock)) {
@@ -271,7 +275,7 @@ Source * ServerAcceptProc::get(int sock)
 
 Source * ServerAcceptProc::getByType(SourceType type)
 {
-	for (C::iterator i=m_clients.begin(); i!=m_clients.end(); i++) {
+	for (ConC::iterator i=m_clients.begin(); i!=m_clients.end(); i++) {
 		Connection *con = *i;
 		Source *client = con->source;
 		if (client->type() == type) {
@@ -288,8 +292,10 @@ void ServerAcceptProc::eraseNoNeeded()
 	//LOG_SYSTEM(("erase %d socks", (int)m_noneeded.size()));
 
 	for (SourceC::iterator i=m_noneeded.begin(); i!=m_noneeded.end(); i++) {
+
 		Source *source = *i;
 		for (ConC::iterator j=m_clients.begin();j!=m_clients.end(); j++) {
+
 			Connection *con = *j;
 			if (con->source == source) {
 				/*
@@ -312,10 +318,10 @@ void ServerAcceptProc::eraseNoNeeded()
 		}
 
 		for (ConC::iterator j=m_messages.begin();j!=m_messages.end(); j++) {
+
 			Connection *con = *j;
 			if (con->source == source) {
-				LOG_SYSTEM(("erase service of %s",
-							source->name()));
+				LOG_SYSTEM(("erase service of %s", source->name()));
 
 				if (source->isControllerCmd()) {
 					SSimWorld * w = m_wProvider.get();
@@ -331,10 +337,7 @@ void ServerAcceptProc::eraseNoNeeded()
 				break;
 			}
 		}
-
-
 	}
-
 
 	//LOG_SYSTEM(("connection %d left", m_clients.size()));
 	m_noneeded.clear();
@@ -348,7 +351,7 @@ void ServerAcceptProc::applyCommands(SSimWorld &w)
 	if (h.size() <= 0) { return; }
 	double t = w.time();
 	for (H::iterator i=h.begin(); i!=h.end(); i++) {
-		S name = i->first;
+		std::string name = i->first;
 		CommandQ *q = i->second;
 		if (q->empty()) { continue; }
 		Command *cmd = q->front();
@@ -362,7 +365,6 @@ void ServerAcceptProc::applyCommands(SSimWorld &w)
 			q->pop();
 			delete cmd;
 		}
-
 	}
 }
 
@@ -372,10 +374,10 @@ ServerAcceptProc::CommandQ & ServerAcceptProc::getCommandQ(const char *name)
 	typedef CommandHash H;
 	H &h = m_commandH;
 
-	CommandQ *q = h[S(name)];
+	CommandQ *q = h[std::string(name)];
 	if (!q) {
 		q = new CommandQ;
-		h[S(name)] = q;
+		h[std::string(name)] = q;
 	}
 	return *q;
 }
@@ -397,14 +399,15 @@ void ServerAcceptProc::recvRequestAttachController(Source &from, RequestAttachCo
 {
 	//added by okamoto@tome (2011/12/13)
 	if(m_startReq)
-		{
-			sleep(1);
-			m_startReq = false;
-		}
+	{
+		sleep(1);
+		m_startReq = false;
+	}
 
 	const char *agentName = evt.getAgentName();
 	Source *client = get(agentName, SOURCE_TYPE_CONTROLLER_CMD);
 	CommResultType r;
+
 	if (client) {
 		r = COMM_RESULT_ERROR;
 		LOG_ERR(("\"%s\" : Controller is already attached", agentName));
@@ -454,8 +457,10 @@ void ServerAcceptProc::recvRequestProvideService(Source &from, RequestProvideSer
 {
 	LOG_DEBUG1(("service provider\n"))
 		from.set(SOURCE_TYPE_SERVICE_PROVIDER, evt.getProviderName());
+
 	CommResultEncoder enc(COMM_RESULT_PROVIDE_SERVICE, COMM_RESULT_OK, 0);
 	from.send(enc);
+
 	Service *service = evt.releaseService();
 	if (service) {
 		if (service->hostname() == NULL) {
@@ -467,7 +472,6 @@ void ServerAcceptProc::recvRequestProvideService(Source &from, RequestProvideSer
 				 service->port(),
 				 evt.getProviderName()));
 	}
-
 }
 
 void ServerAcceptProc::recvRequestConnectDataPort(Source &from, RequestConnectDataPortEvent &evt)

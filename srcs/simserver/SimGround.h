@@ -16,7 +16,7 @@ class SimGround
 {
 #ifdef EXEC_SIMULATION
 private:
-	dGeomID	 m_geom;
+	dGeomID m_geom;
 
 public:
 	SimGround(dSpaceID s)

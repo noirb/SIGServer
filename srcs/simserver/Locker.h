@@ -17,7 +17,6 @@ public:
 	~Locker()     { pthread_mutex_destroy(&m_mutex); }
 	void lock()   { pthread_mutex_lock(&m_mutex);    }
 	void unlock() { pthread_mutex_unlock(&m_mutex);  }
-			
 };
 
 #endif // Locker_h

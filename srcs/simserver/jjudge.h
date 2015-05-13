@@ -9,8 +9,9 @@
 extern "C" {
 #endif
 
-typedef struct jjudge_s {
-  int ascii;
+typedef struct jjudge_s
+{
+	int ascii;
 } jjudge_t;
 
 extern void jjudge_init(jjudge_t *judge);

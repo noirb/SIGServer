@@ -7,74 +7,76 @@
 
 char *fname_as_file(char *buf)
 {
-  char *mark = NULL;
-  char *p = buf;
+	char *mark = NULL;
+	char *p = buf;
 
-  jjudge_t judger;
-  jjudge_init(&judger);
+	jjudge_t judger;
+	jjudge_init(&judger);
 
-  while (*p) {
-    unsigned char c = *p;
-    if (jjudge_equal(&judger, c, FNAME_FS_CHAR)) { if (!mark) mark = p; }
-    else mark = NULL;
-    p++;
-  }
+	while (*p) {
+		unsigned char c = *p;
+		if (jjudge_equal(&judger, c, FNAME_FS_CHAR)) { if (!mark) mark = p; }
+		else mark = NULL;
+		p++;
+	}
 
-  if (mark) *mark = '\0';
-  return buf;
+	if (mark) *mark = '\0';
+	return buf;
 }
 
 char *fname_as_dir(char *buf)
 { 
-  return strcat(fname_as_file(buf), FNAME_FS_CSTR);
+	return strcat(fname_as_file(buf), FNAME_FS_CSTR);
 }
 
 char *fname_get_parent(char *buf)
 {
-  char *mark = NULL;
-  char *p = buf;
-  int conti = 0;
+	char *mark = NULL;
+	char *p = buf;
+	int conti = 0;
 
-  jjudge_t judger;
-  jjudge_init(&judger);
+	jjudge_t judger;
+	jjudge_init(&judger);
 
-  fname_as_file(buf);
+	fname_as_file(buf);
 
-  while (*p) {
-    unsigned char c = *p;
-    if (jjudge_equal(&judger, c, FNAME_FS_CHAR)) {
-      if (!conti) { mark = p; conti++; }
-    } else conti = 0;
-    p++;
-  }
+	while (*p) {
+		unsigned char c = *p;
+		if (jjudge_equal(&judger, c, FNAME_FS_CHAR))
+		{
+			if (!conti) { mark = p; conti++; }
+		}
+		else conti = 0;
+		p++;
+	}
 
-  if (mark) { *mark = '\0'; return buf; }
-  return NULL;
+	if (mark) { *mark = '\0'; return buf; }
+	return NULL;
 }
 
 char *fname_get_file(char *buf)
 {
-  char *mark = NULL;
-  char *p = buf;
+	char *mark = NULL;
+	char *p = buf;
 
-  jjudge_t judger;
-  jjudge_init(&judger);
+	jjudge_t judger;
+	jjudge_init(&judger);
 
-  fname_as_file(buf);
+	fname_as_file(buf);
 
-  while (*p) {
-    unsigned char c = *p;
-    if (jjudge_equal(&judger, c, FNAME_FS_CHAR)) { mark = p; }
-    p++;
-  }
+	while (*p) {
+		unsigned char c = *p;
+		if (jjudge_equal(&judger, c, FNAME_FS_CHAR)) { mark = p; }
+		p++;
+	}
 
-  if (mark) {
-    mark++;
-    p = buf;
-    while ((*p++ = *mark++));
-  }
+	if (mark) {
+		mark++;
+		p = buf;
+		while ((*p++ = *mark++));
+	}
 
-  return buf;
+	return buf;
 }
 
 #ifdef DEBUG_fname_pgm
@@ -82,45 +84,15 @@ char *fname_get_file(char *buf)
 #if defined(WIN32)
 int main(void)
 {
-  char buf[100] = "表\\\\\\";
-  printf("%s\n", fname_as_file(buf));
-  printf("%s\n", fname_as_file(buf));
-
+  char buf[100];
   strcpy(buf, "c:\\foo\\bar\\baz\\");
   printf("%s\n", fname_as_file(buf));
   printf("%s\n", fname_as_file(buf));
   printf("\n");
 
-  strcpy(buf, "c:\\foo\\bar\\表\\\\");
-  printf("%s\n", fname_as_dir(buf));
-  printf("%s\n", fname_as_file(buf));
-  printf("%s\n", fname_as_dir(buf));
-  printf("\n");
-
-  strcpy(buf, "c:\\表\\表示\\表\\\\");
-  printf("%s\n", fname_get_parent(buf));
-  printf("%s\n", fname_get_parent(buf));
-  printf("%s\n", fname_get_parent(buf));
-  printf("%s\n", fname_get_parent(buf));
-  printf("%s\n", fname_get_parent(buf));
-  printf("\n");
-
-  strcpy(buf, "表\\\\");
-  printf("%s\n", (fname_get_parent(buf) == NULL) ? "" : buf);
-
   strcpy(buf, "aaaa");
   printf("%s\n", (fname_get_parent(buf) == NULL) ? "" : buf);
-
   printf("\n");
-
-  strcpy(buf, "c:\\表\\表示\\表\\\\");
-  printf("%s\n", fname_get_file(buf));
-
-  strcpy(buf, "c:\\表\\表示");
-  printf("%s\n", fname_get_file(buf));
-
-  strcpy(buf, "表");
-  printf("%s\n", fname_get_file(buf));
 
   strcpy(buf, "abc");
   printf("%s\n", fname_get_file(buf));

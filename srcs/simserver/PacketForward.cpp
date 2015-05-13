@@ -13,24 +13,22 @@
 #include "CommUtil.h"
 #include "SimWorldProvider.h"
 
-void PacketForward::forward(Source &from, CommDataType cmdType,
-			    const char *to, int bytes, char *data,
-			    bool returnImmediate, double reachRadius)
+void PacketForward::forward(Source &from, CommDataType cmdType, const char *to, int bytes, char *data, bool returnImmediate, double reachRadius)
 {
 	LOG_DEBUG1(("forward start\n"));
 	Source *target = 0;
-	switch(cmdType) {
-	case COMM_REQUEST_CAPTURE_VIEW_IMAGE:
-	case COMM_REQUEST_DISTANCE_SENSOR:
-	case COMM_REQUEST_DETECT_ENTITIES:
-		LOG_ERR(("Forwarding to service provider is not supported no more"));
-		return;
-	default:
-
-		if (to) {
-			target = m_accept.get(to, SOURCE_TYPE_CONTROLLER_CMD);
-		}
-		break;
+	switch(cmdType)
+	{
+		case COMM_REQUEST_CAPTURE_VIEW_IMAGE:
+		case COMM_REQUEST_DISTANCE_SENSOR:
+		case COMM_REQUEST_DETECT_ENTITIES:
+			LOG_ERR(("Forwarding to service provider is not supported no more"));
+			return;
+		default:
+			if (to) {
+				target = m_accept.get(to, SOURCE_TYPE_CONTROLLER_CMD);
+			}
+			break;
 	}
 	if (to && !target) {
 		LOG_ERR(("Cannot forward packet : no agent \"%s\"", to));
@@ -51,6 +49,7 @@ void PacketForward::forward(Source &from, CommDataType cmdType,
 			char *buf = new char[bufsize];
 			char *pool = new char[poolsize];
 			char *poolh = pool;
+
 			while (true) {
 				fd_set	fds;
 				FD_ZERO(&fds);
@@ -93,11 +92,12 @@ void PacketForward::forward(Source &from, CommDataType cmdType,
 		target->ignore(false);
 
 	} else {
-		typedef ServerAcceptProc::C C;
 		m_accept.lock();
-		C clients(m_accept.clients());
+		ServerAcceptProc::ConC clients(m_accept.clients());
 		m_accept.unlock();
-		for (C::iterator i=clients.begin(); i!=clients.end(); i++) {
+
+		for (ServerAcceptProc::ConC::iterator i=clients.begin(); i!=clients.end(); i++) {
+
 			Connection *conn = *i;
 			Source *source = conn->source;
 			if (!source->isControllerCmd()) { continue; }
@@ -106,6 +106,7 @@ void PacketForward::forward(Source &from, CommDataType cmdType,
 			LOG_DEBUG2(("distance between %s and %s is %f\n", from.name(), source->name(), dist));
 			LOG_DEBUG2(("reachRadius = %f\n", reachRadius));
 			bool send = true;
+
 			if (reachRadius < 0 ||
 			    (reachRadius > 0 && dist > 0 && dist < reachRadius)) {
 				source->send(data, bytes);

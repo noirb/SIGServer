@@ -45,7 +45,6 @@ SParts * Joint::getParts(int idx)
 	}
 }
 
-		
 
 void Joint::build(const Vector3d &v, const Rotation &r, bool dynamics)
 {
@@ -89,9 +88,6 @@ void Joint::setQuaternion(double qw, double qx, double qy, double qz)
 {
 	m_rot.setQuaternion(qw, qx, qy, qz);
 }
-
-
-#define F_SCHOLAR(V) sqrt(V[0]*V[0] + V[1]*V[1] + V[2]*V[2])
 
 
 bool Joint::getJointForces(JointForce *jfs)
@@ -154,13 +150,12 @@ dJointID HingeJoint::createJoint(dBodyID b1, dBodyID b2)
 
 	return j;
 }
- 
+
 void HingeJoint::setAngle(double angle)
 {
 	LOG_DEBUG1(("Joint (%s)", name()));
 	LOG_DEBUG1(("HingeJoint::setAngle (%f, %f, %f, %f)", m_axis.x(), m_axis.y(), m_axis.z(), angle));
 	m_rot.setAxisAndAngle(m_axis.x(), m_axis.y(), m_axis.z(), angle);
-
 }
 
 //! Refer the current anchor position in world coordinate

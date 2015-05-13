@@ -72,6 +72,7 @@ Joint * SSimObj::getJoint(const char *s)
 bool SSimObj::removeJoint(Joint *j)
 {
 	JointM::iterator i;
+
 	for (i=m_joints.begin(); i!=m_joints.end(); i++) {
 		Joint *p = i->second;
 		if (p == j) {
@@ -93,6 +94,7 @@ void SSimObj::applyParams(bool init, double stepWidth)
 	dBodyID dbody = body->odeobj().body();
 
 	for (PartsM::iterator i=m_parts.begin(); i!=m_parts.end(); i++) {
+
 		SParts *sp = i->second;
 		if(sp->getOnCollision()){
 			sp->setOnCollision(false);

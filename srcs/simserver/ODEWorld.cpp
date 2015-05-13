@@ -8,6 +8,7 @@
 #include "ODEObj.h"
 #ifdef USE_ODE
 #include <assert.h>
+#include <vector>
 #include "SParts.h"
 #include "SimObjBase.h"
 #include "Logger.h"
@@ -59,35 +60,34 @@ ODEWorld *ODEWorld::get()
 
 static void nearCB(void *data, dGeomID o1, dGeomID o2);
 
-typedef std::map<std::string, bool> M;
-static M s_chash;
-static ODEWorld::CollisionC s_collisions;
+static std::map<std::string, bool> s_chash;
+static std::vector<ODEWorld::Collision> s_collisions;
 
 #define SEP_STR "-+-"
 
 static std::string chash_key(const char * name1, const char * name2)
 {
-	typedef std::string S;
 	if (!name1 || strlen(name1) <= 0){ return ""; }
 	if (!name2 || strlen(name2) <= 0){ return ""; }
+
 	if (strcmp(name1, name2) < 0) {
-		return S(name1) + S(SEP_STR) + S(name2);
+		return std::string(name1) + std::string(SEP_STR) + std::string(name2);
 	} else {
-		return S(name2) + S(SEP_STR) + S(name1);
+		return std::string(name2) + std::string(SEP_STR) + std::string(name1);
 	}
 }
 
 static bool chash_find(std::string key)
 {
-	M::iterator i = s_chash.find(key);
+	std::map<std::string, bool>::iterator i = s_chash.find(key);
 	return i != s_chash.end()? true: false;
 }
 
 
-int ODEWorld::collideWith(const char *name, WithC &c)
+int ODEWorld::collideWith(const char *name, std::vector<std::string> &c)
 {
-	typedef CollisionC C;
-	for (C::iterator i=s_collisions.begin(); i!=s_collisions.end(); i++) {
+	for (std::vector<Collision>::iterator i=s_collisions.begin(); i!=s_collisions.end(); i++) {
+
 		// Store the 'other body' + 'other's parts' + 'my parts'
 		if (strcmp(i->body1.c_str(), name) == 0) {
 			std::string bp = i->body2 + ":" + i->parts2 + ":" + i->parts1 + ":";
@@ -190,7 +190,6 @@ double ODEWorld::getCollisionParam(std::string name)
 
 static void collideCB(void *data, dGeomID o1, dGeomID o2)
 {
-
 	ODEObj *odeobj1 = ODEObjectContainer::getInstance()->getODEObjFromGeomID(o1);
 	ODEObj *odeobj2 = ODEObjectContainer::getInstance()->getODEObjFromGeomID(o2);
 
@@ -199,13 +198,14 @@ static void collideCB(void *data, dGeomID o1, dGeomID o2)
 	dContact contacts[N];
 
 	int n = dCollide(o1, o2, N, &(contacts[0].geom),  sizeof(contacts[0]));
+
 	if (n > 0) {
 
 		ODEWorld *world = ODEWorld::get();
+
 		for (int i=0; i<n; i++) {
 
 			dContact *c = &contacts[i];
-
 
 			c->surface.mode = dContactSlip1 | dContactSlip2 | dContactSoftERP | dContactSoftCFM | dContactApprox1 | dContactBounce;
 			//
@@ -235,7 +235,6 @@ static void collideCB(void *data, dGeomID o1, dGeomID o2)
 			dJointAttach(cj, dGeomGetBody(o1), dGeomGetBody(o2));
 		}
 	}
-
 }
 
 
@@ -271,6 +270,7 @@ static void nearCB(void *data, dGeomID o1, dGeomID o2)
 			return; 
 		}
 	}
+
 	if (b1) {
 		void *d = dBodyGetData(b1);
 		if (d) {
@@ -294,17 +294,19 @@ static void nearCB(void *data, dGeomID o1, dGeomID o2)
 		return;
 	}
 
-
 #define F_SCHOLAR(V) sqrt(V[0]*V[0] + V[1]*V[1] + V[2]*V[2])
 
 	static dJointFeedback fb;
 
 #define MAX_COLLISION 32
+
 	const int N = MAX_COLLISION;
 	dContact contacts[N];
 	int n = dCollide(o1, o2, N, &(contacts[0].geom),  sizeof(contacts[0]));
+
 	if (n > 0) {
 		ODEWorld *world = ODEWorld::get();
+
 		for (int i=0; i<n; i++) {
 			dContact *c = &contacts[i];
 			dContactGeom &g = c->geom;
@@ -369,7 +371,6 @@ static void nearCB(void *data, dGeomID o1, dGeomID o2)
 			c->surface.bounce   = SPARTS_BOUNCE; // is a little smaller than ball
 			c->surface.bounce_vel = 0.0;
 #endif
-
 			dJointID cj = dJointCreateContact(world->world(), world->jointGroup(), c);
 			//dJointAttach(cj, dGeomGetBody(o1), dGeomGetBody(o2));  //by MSI
 			dJointAttach(cj, dGeomGetBody(c->geom.g1), dGeomGetBody(c->geom.g2)); // by Demura.net
@@ -408,17 +409,7 @@ ODEObj *ODEObjectContainer::createODEObj(
 	double surceBounce
 )
 {
-	ODEObj *pObj = new ODEObj(
-	                          world,
-	                          geom_,
-	                          surfaceMu1,
-	                          surfaceMu2,
-	                          surfaceSlip1,
-	                          surfaceSlip2,
-	                          surfaceSoftErp,
-	                          surfaceSoftCfm,
-	                          surceBounce
-	                          );
+	ODEObj *pObj = new ODEObj(world, geom_, surfaceMu1, surfaceMu2, surfaceSlip1, surfaceSlip2, surfaceSoftErp, surfaceSoftCfm, surceBounce);
 
 	odeObjTable[geom_] = pObj;
 	return pObj;
@@ -448,6 +439,7 @@ ODEObj *ODEObjectContainer::getODEObjFromGeomID(dGeomID geom_)
 SSimRobotEntity *ODEObjectContainer::getSSimRobotEntityFromGeomID(dGeomID geom_)
 {
 	std::map<dGeomID,SSimRobotEntity*>::iterator itr = m_allEntities.find(geom_);
+
 	if (itr != m_allEntities.end()) {
 		return m_allEntities[geom_];
 	}

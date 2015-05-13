@@ -13,15 +13,15 @@
 class SimViewPoint
 {
 private:
-	Position	m_pos;
-	int	m_roty;
-	int	m_rotz;
+	Position m_pos;
+	int m_roty;
+	int m_rotz;
 public:
 	SimViewPoint(const Position &pos) : m_pos(pos), m_roty(0), m_rotz(0) {;}
-#ifdef IMPLEMENT_DRAWER	
-	void	draw(DrawContext &c);
+#ifdef IMPLEMENT_DRAWER
+	void draw(DrawContext &c);
 #endif
-	bool	setKey(unsigned char key);
+	bool setKey(unsigned char key);
 };
 
 #endif

@@ -25,37 +25,36 @@ public:
 	struct Gravity
 	{
 		dReal x, y, z;
-		Gravity(dReal x_, dReal y_, dReal z_) :
-			x(x_), y(y_), z(z_) {;}
+		Gravity(dReal x_, dReal y_, dReal z_) : x(x_), y(y_), z(z_) {;}
 	};
 
-	typedef std::string S;
-	struct Collision {
-		S body1;
-		S body2;
-		S parts1;
-		S parts2;
-	Collision(S b1, S b2, S p1, S p2) : body1(b1), body2(b2), parts1(p1), parts2(p2) {}
+	struct Collision
+	{
+		std::string body1;
+		std::string body2;
+		std::string parts1;
+		std::string parts2;
+		Collision(std::string b1, std::string b2, std::string p1, std::string p2) : body1(b1), body2(b2), parts1(p1), parts2(p2){}
 	};
-	typedef std::vector<Collision> CollisionC;
+
 private:
-	dWorldID	m_world;
-	dSpaceID	m_space;
-	dJointGroupID	m_jgroup;
-	double		m_timeStep;
-	double          m_nowtime;  
-	unsigned	m_itrCnt;
-	dGeomID         m_ground;
-	bool            m_quickStep;
+	dWorldID      m_world;
+	dSpaceID      m_space;
+	dJointGroupID m_jgroup;
+	double        m_timeStep;
+	double        m_nowtime;
+	unsigned      m_itrCnt;
+	dGeomID       m_ground;
+	bool          m_quickStep;
 
-	double          m_mu;
-	double          m_mu2;
-	double          m_slip1;
-	double          m_slip2;
-	double          m_soft_erp;
-	double          m_soft_cfm;
-	double          m_bounce;
-	double          m_bounce_vel;
+	double  m_mu;
+	double  m_mu2;
+	double  m_slip1;
+	double  m_slip2;
+	double  m_soft_erp;
+	double  m_soft_cfm;
+	double  m_bounce;
+	double  m_bounce_vel;
 	
 private:
 	ODEWorld(const Gravity &g, dReal erp);
@@ -65,12 +64,12 @@ public:
 	dWorldID world() { return m_world; }
 	dSpaceID space() { return m_space; }
 	dJointGroupID jointGroup() { return m_jgroup; }
-	void    nextStep();
-	void    nextStep(double stepsize, bool quick = false);
-	void	resetTime() { m_itrCnt = 0; }
-	double	time() const {  return m_nowtime; }
+	void   nextStep();
+	void   nextStep(double stepsize, bool quick = false);
+	void   resetTime() { m_itrCnt = 0; }
+	double time() const { return m_nowtime; }
 
-	double	step() const { return m_timeStep; }
+	double step() const { return m_timeStep; }
 
 	void setStepSize(double stepsize) { m_timeStep = stepsize; }
 
@@ -90,8 +89,7 @@ public:
 
 	double getCollisionParam(std::string name);
 
-	typedef std::vector<std::string> WithC;
-        int collideWith(const char *, WithC &);
+	int collideWith(const char *, std::vector<std::string> &);
 
 private:
 	static ODEWorld *s_inst;
@@ -99,8 +97,6 @@ public:
 	static ODEWorld *create(const Gravity &g, dReal erp);
 	static ODEWorld *get();
 };
-
-
 
 
 
@@ -133,11 +129,8 @@ private:
 };
 
 
-
-
-
 #endif
 
 #endif // ODEWorld_h
- 
+
 
