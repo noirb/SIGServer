@@ -55,6 +55,7 @@ bool RawSound::loadWaveFile(const char *waveFile)
 		OPEN_EXISTING,
 		FILE_ATTRIBUTE_NORMAL,
 		NULL);
+
 	if (fh==INVALID_HANDLE_VALUE)
 	{
 #ifdef SIGVERSE_OGRE_CLIENT
@@ -65,7 +66,7 @@ bool RawSound::loadWaveFile(const char *waveFile)
 #endif // IRWAS_OGRE_CLIENT
 #endif // SIGVERSE_OGRE_CLIENT
 		return false;
-    }
+	}
 
 	// alloc memory for contents of file
 	m_datalen = (int)GetFileSize(fh, NULL);

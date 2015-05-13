@@ -45,8 +45,6 @@ void CommDataDecoder::clear()
 
 class DecoderException {};
 
-typedef CommDataDecoder::Listener L;
-
 static bool LAST_PACKET_DECODED(CommDataDecoder::DecoderBase &d, CommDataHeader &h, char *p, int bytes)
 {
 	return d.set(h, p, bytes) && (h.seq + 1 == h.packetNum)? true: false;
@@ -67,7 +65,7 @@ int CommDataDecoder::push(Source &from, char *data, int n)
 	return readBytes;
 }
 
-		
+
 CommDataDecoder::Result* CommDataDecoder::push(Source &from, char *data, int bytes, int &readBytes)
 {
 	char *curr = data;
@@ -103,6 +101,7 @@ CommDataDecoder::Result* CommDataDecoder::push(Source &from, char *data, int byt
 			double radius = h.forwardReachRadius;
 			m_sender->forward(from, h.type, to,  h.packetSize, curr, immediate, radius);
 			ret = new Result(h.type, h.seq, h.packetNum);
+
 		} else {
 			char *p = curr;
 
@@ -135,7 +134,6 @@ CommDataDecoder::Result* CommDataDecoder::push(Source &from, char *data, int byt
 			} catch(DecoderException &) {
 				goto err;
 			}
-
 		}
 
 		// Recognize as 'reading is finished' if the header and packet is existed
@@ -144,9 +142,9 @@ CommDataDecoder::Result* CommDataDecoder::push(Source &from, char *data, int byt
 		bytes = nbytes;
 		curr = next;
 	}
-		
+
 	return ret;
- err:
+err:
 	FREE(m_decoder);
 	readBytes = -1;
 	return NULL;
@@ -162,14 +160,14 @@ public:
 	};
 private:
 	E * m_evt;
-	int 	m_prev;
+	int m_prev;
 public:
 	Decoder() : CommDataDecoder::DecoderBase(), m_evt(NULL), m_prev(-1) {}
 	virtual ~Decoder() {
 		FREE(m_evt);
 	}
 public:
-	bool	set(CommDataHeader &h, char *data, int n)
+	bool set(CommDataHeader &h, char *data, int n)
 	{
 		if (m_prev != h.seq -1) {
 			throw DecoderException();
@@ -188,8 +186,8 @@ public:
 		return h.seq +1 == h.packetNum && b;
 	}
 	
-	E *	getEvent() { return m_evt; }
-	E *	releaseEvent() {
+	E * getEvent() { return m_evt; }
+	E * releaseEvent() {
 		E *tmp = m_evt;
 		m_evt = NULL;
 		return tmp;
@@ -202,10 +200,10 @@ class ListenerInvokeDecoder : public Decoder<TYPE_, E>
 {
 private:
 	typedef Decoder<TYPE_, E> Super;
-	typedef void (L::*Method)(Source &, E &);
+	typedef void (CommDataDecoder::Listener::*Method)(Source &, E &);
 private:
-	L	*m_listener;
-	Method  m_method;
+	CommDataDecoder::Listener *m_listener;
+	Method    m_method;
 private:
 	static void free_data(void *data) {
 		E *e = (E*)data;
@@ -218,13 +216,14 @@ public:
 	CommDataType dataType() { return TYPE_; }
 	CommDataDecoder::DataFreeFunc dataFreeFunc() { return free_data; }
 
-	void	setCallback(L *l, Method m)
+	void setCallback(CommDataDecoder::Listener *l, Method m)
 	{
 		m_listener = l;
 		m_method = m;
 	}
 	
-	void *   invoke(Source &from) {
+	void * invoke(Source &from)
+	{
 		if (m_listener && m_method) {
 			E *evt = Super::getEvent();
 			(m_listener->*m_method)(from, *evt);
@@ -344,25 +343,24 @@ template <CommDataType TYPE_, class E>
 class ControllerInvokeDecoder : public Decoder<TYPE_, E>
 {
 	typedef Decoder<TYPE_, E> Super;
-	typedef ControllerInf C;
-	typedef void (C::*Method)(E &);
+	typedef void (ControllerInf::*Method)(E &);
 protected:
-	C	*m_ctrl;
-	Method  m_method;
+	ControllerInf   *m_ctrl;
+	Method           m_method;
 	CommDataDecoder *m_decoder;
 public:
 	ControllerInvokeDecoder() : Super(), m_ctrl(0), m_method(0), m_decoder(0) {;}
-	void	setCallback(C *ctrl, Method m)
+	void setCallback(ControllerInf *ctrl, Method m)
 	{
 		m_ctrl = ctrl;
 		m_method = m;
 	}
-	void	setDecoder(CommDataDecoder *d) { m_decoder = d; }
+	void setDecoder(CommDataDecoder *d) { m_decoder = d; }
 
 	CommDataType dataType() { assert(0); return TYPE_; }
 	CommDataDecoder::DataFreeFunc dataFreeFunc() { assert(0); return NULL; }
 
-	void *   invoke(Source &from)
+	void * invoke(Source &from)
 	{
 		if (!m_ctrl->isProcessing()) {
 			m_ctrl->onPreEvent();
@@ -371,7 +369,6 @@ public:
 		}
 		return NULL;
 	}
-
 };
 
 class InvokeOnActionD : public ControllerInvokeDecoder<COMM_INVOKE_CONTROLLER_ON_ACTION, ActionEvent>
@@ -379,7 +376,7 @@ class InvokeOnActionD : public ControllerInvokeDecoder<COMM_INVOKE_CONTROLLER_ON
 private:
 	typedef ControllerInvokeDecoder<COMM_INVOKE_CONTROLLER_ON_ACTION, ActionEvent> Super;
 public:
-	void *   invoke(Source &from)
+	void * invoke(Source &from)
 	{
 		if (m_ctrl->isProcessing()) {
 			printf("onAction is processing. ignored\n");
@@ -388,6 +385,7 @@ public:
 
 		ActionEvent *evt = Super::getEvent();
 		double t = evt->time();
+
 		if (t >= m_decoder->getNextTime()) {
 			m_ctrl->onPreEvent();
 			double step = m_ctrl->onAction(*evt);
@@ -405,7 +403,7 @@ class InvokeOnInitD : public ControllerInvokeDecoder<COMM_INVOKE_CONTROLLER_ON_I
 private:
 	typedef ControllerInvokeDecoder<COMM_INVOKE_CONTROLLER_ON_INIT, InitEvent> Super;
 public:
-	void *   invoke(Source &from)
+	void * invoke(Source &from)
 	{
 		Super::invoke(from);
 		m_decoder->setNextTime(0.0);
@@ -420,7 +418,6 @@ typedef ControllerInvokeDecoder<COMM_INVOKE_CONTROLLER_ON_COLLISION,    Collisio
 
 CommDataDecoder::DecoderBase *CommDataDecoder::createDecoder(CommDataType type)
 {
-	typedef Listener L;
 #define CREATE_L_DECODER(DECODER, CB) \
 	 if (type == DECODER::TYPE) {     \
 	     DECODER *d = new DECODER();  \
@@ -436,93 +433,93 @@ CommDataDecoder::DecoderBase *CommDataDecoder::createDecoder(CommDataType type)
 	    return (CommDataDecoder::DecoderBase*)d; \
 	}
 
-	CREATE_L_DECODER(ReqGetAllEntitiesD,     &L::recvRequestGetAllEntities); // not tested
-	CREATE_L_DECODER(ResGetAllEntitiesD,     &L::recvResultGetAllEntities);  // not tested
-	CREATE_L_DECODER(ReqUpdateEntitiesD,     &L::recvRequestUpdateEntities); // not tested
+	CREATE_L_DECODER(ReqGetAllEntitiesD,     &CommDataDecoder::Listener::recvRequestGetAllEntities); // not tested
+	CREATE_L_DECODER(ResGetAllEntitiesD,     &CommDataDecoder::Listener::recvResultGetAllEntities);  // not tested
+	CREATE_L_DECODER(ReqUpdateEntitiesD,     &CommDataDecoder::Listener::recvRequestUpdateEntities); // not tested
 
-	CREATE_L_DECODER(ReqGetEntityD,          &L::recvRequestGetEntity);
-	CREATE_L_DECODER(ResGetEntityD,          &L::recvResultGetEntity);
+	CREATE_L_DECODER(ReqGetEntityD,          &CommDataDecoder::Listener::recvRequestGetEntity);
+	CREATE_L_DECODER(ResGetEntityD,          &CommDataDecoder::Listener::recvResultGetEntity);
 	
-	CREATE_L_DECODER(ReqSimCtrlD,            &L::recvRequestSimCtrl);
+	CREATE_L_DECODER(ReqSimCtrlD,            &CommDataDecoder::Listener::recvRequestSimCtrl);
 
-	CREATE_L_DECODER(ReqAttachControllerD,   &L::recvRequestAttachController);
-	CREATE_L_DECODER(ResAttachControllerD,   &L::recvResultAttachController);
-	CREATE_L_DECODER(ReqAttachViewD,         &L::recvRequestAttachView);
-	CREATE_L_DECODER(ResAttachViewD,         &L::recvResultAttachView);
+	CREATE_L_DECODER(ReqAttachControllerD,   &CommDataDecoder::Listener::recvRequestAttachController);
+	CREATE_L_DECODER(ResAttachControllerD,   &CommDataDecoder::Listener::recvResultAttachController);
+	CREATE_L_DECODER(ReqAttachViewD,         &CommDataDecoder::Listener::recvRequestAttachView);
+	CREATE_L_DECODER(ResAttachViewD,         &CommDataDecoder::Listener::recvResultAttachView);
 
-	CREATE_L_DECODER(ReqConnectDataPortD,    &L::recvRequestConnectDataPort); // not tested
-	CREATE_L_DECODER(ReqProvideServiceD,     &L::recvRequestProvideService);  // not tested
-	CREATE_L_DECODER(CommLogMsgD,            &L::recvLogMsg);
+	CREATE_L_DECODER(ReqConnectDataPortD,    &CommDataDecoder::Listener::recvRequestConnectDataPort); // not tested
+	CREATE_L_DECODER(ReqProvideServiceD,     &CommDataDecoder::Listener::recvRequestProvideService);  // not tested
+	CREATE_L_DECODER(CommLogMsgD,            &CommDataDecoder::Listener::recvLogMsg);
 
 	//added by okamoto@tome (2011/8/2)
-	CREATE_L_DECODER(CommDisplayTextD,       &L::recvDisplayText);
+	CREATE_L_DECODER(CommDisplayTextD,       &CommDataDecoder::Listener::recvDisplayText);
 
-	CREATE_L_DECODER(ReqCaptureViewImageD,   &L::recvRequestCaptureViewImage);
-	CREATE_L_DECODER(ResCaptureViewImageD,   &L::recvResultCaptureViewImage);
+	CREATE_L_DECODER(ReqCaptureViewImageD,   &CommDataDecoder::Listener::recvRequestCaptureViewImage);
+	CREATE_L_DECODER(ResCaptureViewImageD,   &CommDataDecoder::Listener::recvResultCaptureViewImage);
 		
-	CREATE_L_DECODER(ReqDetectEntitiesD,     &L::recvRequestDetectEntities);
-	CREATE_L_DECODER(ResDetectEntitiesD,     &L::recvResultDetectEntities);
+	CREATE_L_DECODER(ReqDetectEntitiesD,     &CommDataDecoder::Listener::recvRequestDetectEntities);
+	CREATE_L_DECODER(ResDetectEntitiesD,     &CommDataDecoder::Listener::recvResultDetectEntities);
 
-	CREATE_L_DECODER(ReqDistanceSensorD,     &L::recvRequestDistanceSensor);
-	CREATE_L_DECODER(ResDistanceSensorD,     &L::recvResultDistanceSensor);
+	CREATE_L_DECODER(ReqDistanceSensorD,     &CommDataDecoder::Listener::recvRequestDistanceSensor);
+	CREATE_L_DECODER(ResDistanceSensorD,     &CommDataDecoder::Listener::recvResultDistanceSensor);
 
 	CREATE_L_DECODER(ReqGetAttrsD, NULL);
 
-	CREATE_L_DECODER(ReqNSQueryD,            &L::recvRequestNSQuery);
-	CREATE_L_DECODER(ResNSQueryD,            &L::recvResultNSQuery);
-	CREATE_L_DECODER(ReqNSPingerD,           &L::recvRequestNSPinger);
-	CREATE_L_DECODER(ResNSPingerD,           &L::recvResultNSPinger);
+	CREATE_L_DECODER(ReqNSQueryD,            &CommDataDecoder::Listener::recvRequestNSQuery);
+	CREATE_L_DECODER(ResNSQueryD,            &CommDataDecoder::Listener::recvResultNSQuery);
+	CREATE_L_DECODER(ReqNSPingerD,           &CommDataDecoder::Listener::recvRequestNSPinger);
+	CREATE_L_DECODER(ResNSPingerD,           &CommDataDecoder::Listener::recvResultNSPinger);
 
-	CREATE_L_DECODER(ReqSetJointAngleD,      &L::recvRequestSetJointAngle);
+	CREATE_L_DECODER(ReqSetJointAngleD,      &CommDataDecoder::Listener::recvRequestSetJointAngle);
 
 	//added by okamoto@tome (2011/2/18)
-	CREATE_L_DECODER(ReqSetJointQuaternionD, &L::recvRequestSetJointQuaternion);
+	CREATE_L_DECODER(ReqSetJointQuaternionD, &CommDataDecoder::Listener::recvRequestSetJointQuaternion);
 
 	//added by okamoto@tome (2011/3/3)
-	CREATE_L_DECODER(ReqAddJointTorqueD,     &L::recvRequestAddJointTorque);
+	CREATE_L_DECODER(ReqAddJointTorqueD,     &CommDataDecoder::Listener::recvRequestAddJointTorque);
 
 	//added by okamoto@tome (2011/3/9)
 	//modified by inamura on 2013-12-30
-	CREATE_L_DECODER(ReqSetAngularVelocityToJointD,  &L::recvRequestSetAngularVelocityToJoint);
-	CREATE_L_DECODER(ReqSetAngularVelocityToPartsD,  &L::recvRequestSetAngularVelocityToParts);
+	CREATE_L_DECODER(ReqSetAngularVelocityToJointD,  &CommDataDecoder::Listener::recvRequestSetAngularVelocityToJoint);
+	CREATE_L_DECODER(ReqSetAngularVelocityToPartsD,  &CommDataDecoder::Listener::recvRequestSetAngularVelocityToParts);
 
 	//added by okamoto@tome (2011/3/9)
-	CREATE_L_DECODER(ReqGetJointAngleD,      &L::recvRequestGetJointAngle);
-	CREATE_L_DECODER(ResGetJointAngleD,      &L::recvResultGetJointAngle);
+	CREATE_L_DECODER(ReqGetJointAngleD,      &CommDataDecoder::Listener::recvRequestGetJointAngle);
+	CREATE_L_DECODER(ResGetJointAngleD,      &CommDataDecoder::Listener::recvResultGetJointAngle);
 
 	//added by okamoto@tome (2011/12/19)
-	CREATE_L_DECODER(ReqAddForceD,           &L::recvRequestAddForce);
-	CREATE_L_DECODER(ReqAddForceAtPosD,      &L::recvRequestAddForceAtPos);
-	CREATE_L_DECODER(ReqSetMassD,            &L::recvRequestSetMass);
-	CREATE_L_DECODER(ReqGetAngularVelocityD, &L::recvRequestGetAngularVelocity);
-	CREATE_L_DECODER(ResGetAngularVelocityD, &L::recvResultGetAngularVelocity);
-	CREATE_L_DECODER(ReqGetLinearVelocityD,  &L::recvRequestGetLinearVelocity);
-	CREATE_L_DECODER(ResGetLinearVelocityD,  &L::recvResultGetLinearVelocity);
-	CREATE_L_DECODER(ReqSetLinearVelocityD,  &L::recvRequestSetLinearVelocity); // added by inamura on 2014-01-06
-	CREATE_L_DECODER(ReqAddForceToPartsD,    &L::recvRequestAddForceToParts);
-	CREATE_L_DECODER(ReqAddTorqueD,          &L::recvRequestAddTorque);         // added by inamura on 2014-02-26
+	CREATE_L_DECODER(ReqAddForceD,           &CommDataDecoder::Listener::recvRequestAddForce);
+	CREATE_L_DECODER(ReqAddForceAtPosD,      &CommDataDecoder::Listener::recvRequestAddForceAtPos);
+	CREATE_L_DECODER(ReqSetMassD,            &CommDataDecoder::Listener::recvRequestSetMass);
+	CREATE_L_DECODER(ReqGetAngularVelocityD, &CommDataDecoder::Listener::recvRequestGetAngularVelocity);
+	CREATE_L_DECODER(ResGetAngularVelocityD, &CommDataDecoder::Listener::recvResultGetAngularVelocity);
+	CREATE_L_DECODER(ReqGetLinearVelocityD,  &CommDataDecoder::Listener::recvRequestGetLinearVelocity);
+	CREATE_L_DECODER(ResGetLinearVelocityD,  &CommDataDecoder::Listener::recvResultGetLinearVelocity);
+	CREATE_L_DECODER(ReqSetLinearVelocityD,  &CommDataDecoder::Listener::recvRequestSetLinearVelocity); // added by inamura on 2014-01-06
+	CREATE_L_DECODER(ReqAddForceToPartsD,    &CommDataDecoder::Listener::recvRequestAddForceToParts);
+	CREATE_L_DECODER(ReqAddTorqueD,          &CommDataDecoder::Listener::recvRequestAddTorque);         // added by inamura on 2014-02-26
 
-	CREATE_L_DECODER(ReqSetGravityModeD,     &L::recvRequestSetGravityMode);
-	CREATE_L_DECODER(ReqGetGravityModeD,     &L::recvRequestGetGravityMode);
-	CREATE_L_DECODER(ResGetGravityModeD,     &L::recvResultGetGravityMode);
-	CREATE_L_DECODER(ReqSetDynamicsModeD,    &L::recvRequestSetDynamicsMode);
+	CREATE_L_DECODER(ReqSetGravityModeD,     &CommDataDecoder::Listener::recvRequestSetGravityMode);
+	CREATE_L_DECODER(ReqGetGravityModeD,     &CommDataDecoder::Listener::recvRequestGetGravityMode);
+	CREATE_L_DECODER(ResGetGravityModeD,     &CommDataDecoder::Listener::recvResultGetGravityMode);
+	CREATE_L_DECODER(ReqSetDynamicsModeD,    &CommDataDecoder::Listener::recvRequestSetDynamicsMode);
 
-	CREATE_L_DECODER(ReqSoundRecogD,         &L::recvRequestSoundRecog);
-	CREATE_L_DECODER(ResSoundRecogD,         &L::recvResultSoundRecog);
-	CREATE_L_DECODER(ReqGetJointForceD,      &L::recvRequestGetJointForce);
-	CREATE_L_DECODER(ResGetJointForceD,      &L::recvResultGetJointForce);
-	CREATE_L_DECODER(ReqConnectJointD,       &L::recvRequestConnectJoint);
-	CREATE_L_DECODER(ReqReleaseJointD,       &L::recvRequestReleaseJoint);
+	CREATE_L_DECODER(ReqSoundRecogD,         &CommDataDecoder::Listener::recvRequestSoundRecog);
+	CREATE_L_DECODER(ResSoundRecogD,         &CommDataDecoder::Listener::recvResultSoundRecog);
+	CREATE_L_DECODER(ReqGetJointForceD,      &CommDataDecoder::Listener::recvRequestGetJointForce);
+	CREATE_L_DECODER(ResGetJointForceD,      &CommDataDecoder::Listener::recvResultGetJointForce);
+	CREATE_L_DECODER(ReqConnectJointD,       &CommDataDecoder::Listener::recvRequestConnectJoint);
+	CREATE_L_DECODER(ReqReleaseJointD,       &CommDataDecoder::Listener::recvRequestReleaseJoint);
 
-	CREATE_L_DECODER(ReqGetObjectNamesD,     &L::recvRequestGetObjectNames);
-	CREATE_L_DECODER(ResGetObjectNamesD,     &L::recvResultGetObjectNames);
+	CREATE_L_DECODER(ReqGetObjectNamesD,     &CommDataDecoder::Listener::recvRequestGetObjectNames);
+	CREATE_L_DECODER(ResGetObjectNamesD,     &CommDataDecoder::Listener::recvResultGetObjectNames);
 
 	//added by noma@tome(2012/02/20)
-	CREATE_L_DECODER(ReqGetPointedObjectD,   &L::recvRequestGetPointedObject);
-	CREATE_L_DECODER(ResGetPointedObjectD,   &L::recvResultGetPointedObject);
+	CREATE_L_DECODER(ReqGetPointedObjectD,   &CommDataDecoder::Listener::recvRequestGetPointedObject);
+	CREATE_L_DECODER(ResGetPointedObjectD,   &CommDataDecoder::Listener::recvResultGetPointedObject);
 
 #ifdef DEPRECATED
-	CREATE_L_DECODER(CtrlCmdD,               &L::recvControllerCommand);
+	CREATE_L_DECODER(CtrlCmdD,               &CommDataDecoder::Listener::recvControllerCommand);
 #endif
 
 	CREATE_M_DECODER(InvokeOnActionD,        0);

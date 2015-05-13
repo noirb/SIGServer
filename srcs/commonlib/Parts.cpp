@@ -19,7 +19,7 @@ const dReal *Parts::getPosition()
 
 const dReal * Parts::getRotation()
 {
-#ifdef USE_ODE	// taku
+#ifdef USE_ODE  // taku
 	return m_rot.matrix();
 #else
 	return NULL;

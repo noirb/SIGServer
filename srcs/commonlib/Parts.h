@@ -61,14 +61,12 @@ class Parts
 public:
 	typedef unsigned Id;
 private:
-	static	Id	s_cnt;
+	static Id s_cnt;
 public:
-	static void	initCounter() { s_cnt = 0; }
-private:
-	typedef std::string S;
+	static void initCounter() { s_cnt = 0; }
 protected:
-	PartsType m_type;
-	S         m_name;
+	PartsType   m_type;
+	std::string m_name;
 
 	Position m_pos;
 	Rotation m_rot;
@@ -100,7 +98,7 @@ public:
 	 *
 	 * ID is unique number for parts
 	 */
-	void	setId(Id id) { m_id = id; }
+	void setId(Id id) { m_id = id; }
 
 	/**
 	 * @brief Sets ID automatically

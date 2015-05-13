@@ -65,8 +65,8 @@ class CommDataDecoder
 {
 public:
 	typedef CommDataListener Listener;
-	typedef CommDataListener L;
-	typedef CommDataResult 	 Result;
+	typedef CommDataResult   Result;
+
 	typedef CommDataResult::DataFreeFunc DataFreeFunc;
 
 	/**
@@ -108,10 +108,10 @@ public:
 		 * @param data data itself
 		 * @param n    size of data area
 		 */
-		virtual bool 	set (CommDataHeader &h, char *data, int n) = 0;
+		virtual bool set (CommDataHeader &h, char *data, int n) = 0;
 
 		//! Call of corresponding CommDataListener method or get of decoded data
-		virtual void *   invoke(Source &from) = 0;
+		virtual void * invoke(Source &from) = 0;
 
 		//! Refer the data type
 		virtual CommDataType dataType() = 0;
@@ -123,13 +123,13 @@ public:
 		Result *createResult(void *);
 	};
 private:
-	L	*m_l;
+	Listener      *m_l;
 	ControllerInf *m_ctrl;
-	PacketSender *m_sender;
-	double	m_nextTime;
-	DecoderBase *m_decoder;
+	PacketSender  *m_sender;
+	double         m_nextTime;
+	DecoderBase   *m_decoder;
 private:
-	void	free_();
+	void free_();
 	DecoderBase *createDecoder(CommDataType type);
 public:
 	//! Constructor
@@ -142,10 +142,10 @@ public:
 	 *
 	 * Implimentation of CommDataListener which has implementation of process of transport result
 	 */
-	void	setListener(Listener *l) { m_l = l; }
+	void setListener(Listener *l) { m_l = l; }
 
 	//! Configuration of controller
-	void	setController(ControllerInf *c) { m_ctrl = c; }
+	void setController(ControllerInf *c) { m_ctrl = c; }
 
 	//! Refer controller
 	ControllerInf  *getController() { return m_ctrl; }
@@ -181,16 +181,16 @@ public:
 	Result * push(Source &from, char *data, int n, int &decodedBytes);
 	
 	//! Finilization of decode
-	void	clear();
+	void clear();
 
 	//! Set of next time (used in inner side)
-	void	setNextTime(double t)
+	void setNextTime(double t)
 	{
 		m_nextTime = t;
 	}
 
 	//! Set of next time (used in inner side)
-	double	getNextTime() { return m_nextTime; }
+	double getNextTime() { return m_nextTime; }
 };
 
 #endif // CommDataDecoder_h

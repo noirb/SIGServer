@@ -110,7 +110,7 @@ protected:
 	std::vector<ViewImage*> m_images;
 
 	// Distance data
-	unsigned char         m_distance;
+	unsigned char m_distance;
 
 	// Result of detectEntities
 	std::vector<std::string> m_detectedNames;
@@ -118,14 +118,11 @@ protected:
 
 class ViewService : public BaseService
 {
-
-
 public:
-
 	ViewService(){;} 
 	
 	ViewService(std::string name, unsigned short port, SOCKET sock) 
-	  : BaseService(name, port, sock) {;}
+		: BaseService(name, port, sock) {;}
 
 	/**
 	 * @brief Detects entities in view (Using the functions of service provider)
@@ -135,7 +132,7 @@ public:
 	 * @retval true Success
 	 * @retval false Failure
 	 */
-	bool  detectEntities(std::vector<std::string> &v, int id = 1);
+	bool detectEntities(std::vector<std::string> &v, int id = 1);
 
 	/**
 	 * @brief Gets the viewpoint image of an agent
@@ -203,18 +200,18 @@ private:
 
 private:
 	std::string m_server;
-	int m_port;
+	int         m_port;
 	std::string m_myname;
 
 	bool      m_isAttached;
 	CTSimObj *m_ctSimObj;
 
 protected:
-	SOCKET                m_cmdSock;
-	SOCKET                m_dataSock;
-	SOCKET                m_srvSock; // for service provider
-	unsigned short        m_srvPort; // port number for service provider
-	SOCKET                m_tmpSock;
+	SOCKET          m_cmdSock;
+	SOCKET          m_dataSock;
+	SOCKET          m_srvSock; // for service provider
+	unsigned short  m_srvPort; // port number for service provider
+	SOCKET          m_tmpSock;
 
 	// Save sockets of each service provider
 	std::map<std::string, SOCKET> m_srvSocks; 
@@ -272,7 +269,7 @@ public:
 	static void *serviceThread(void *pParam);
 
 protected:
-	void	close_();
+	void close_();
 
 protected:
 	//! Constructor
@@ -286,7 +283,7 @@ protected:
 		m_tmpSock(-1),
 		m_connected(false),
 		m_connectService(false)
-			{;}
+	{;}
 
 	//! Destructor
 	~ControllerImpl() {
@@ -295,16 +292,16 @@ protected:
 
 public:
 	// Check whether controller is connected to service provider
-	bool connected() {return m_connected;}
+	bool connected() { return m_connected;}
 
 	// Set temporary socket
-	void setTmpSock(SOCKET sock) {m_tmpSock = sock;}
+	void setTmpSock(SOCKET sock) { m_tmpSock = sock;}
 
 	//! Get the map of connected service and its socket
 	std::map<std::string, SOCKET> getSrvSocks() { return m_srvSocks; }
 
 	// Set connecting condition of service provider
-	void setConnected(bool connected) {m_connected = connected;}
+	void setConnected(bool connected) { m_connected = connected;}
 
 	//! Get a server name
 	const char * server() { return m_server.c_str(); }
@@ -428,17 +425,20 @@ public:
 	bool broadcast(std::string msg, double distance, int to);
 
 	// Delete the last-connected service
-	void deleteLastService() {
+	void deleteLastService()
+	{
 		BaseService* srv = m_services.back();
 		delete srv;
 		m_services.pop_back();
 	}
 
 	// Delete designated service which is connected
-	void deleteService(std::string sname) {
+	void deleteService(std::string sname)
+	{
 		std::vector<BaseService*>::iterator it;
 		it = m_services.begin();
 		while (it != m_services.end()) {
+
 			std::string name = (*it)->getName();
 			if (name == sname) {
 				delete *it;
@@ -452,6 +452,7 @@ public:
 		std::map<std::string, SOCKET>::iterator mit;
 		mit = m_srvSocks.begin();
 		while (mit != m_srvSocks.end()) {
+
 			if ((*mit).first == sname) {
 				m_srvSocks.erase(mit);
 				return;
@@ -462,16 +463,19 @@ public:
 	}
 
 	//! Get the last-connected service
-	BaseService* getLastService() {
+	BaseService* getLastService()
+	{
 		return m_services.back();
 	}
 
 	//! Gets designated service which is connected
-	BaseService* getService(std::string sname) {
+	BaseService* getService(std::string sname)
+	{
 		std::vector<BaseService*>::iterator it;
 		it = m_services.begin();
 
 		while (it != m_services.end()) {
+
 			std::string name = (*it)->getName();
 			if (name == sname) {
 				return (*it);
@@ -481,8 +485,6 @@ public:
 		LOG_ERR(("getService: cannot find %s", sname.c_str()));
 		return NULL;
 	}
-
-
 };
 
 #endif // ControllerImpl_h

@@ -28,11 +28,11 @@ int Attribute::binarySize() const
 	n += sizeof(DataLengthType); // value data len
 	n += m_value->binaryLength(); // value data
 	return n;
-
 }
 
-const char *Attribute::toString() {
-	static S buf;
+const char *Attribute::toString()
+{
+	static std::string buf;
 	buf = name();
 	buf += "(";
 	buf += value().getTypeString();

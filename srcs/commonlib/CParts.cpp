@@ -11,13 +11,12 @@
 
 const dReal *CParts::getPosition()
 {
-
 	return m_pos.values();
 }
 
 const dReal * CParts::getRotation()
 {
-#ifdef USE_ODE	// taku // TODO: what's this taku? by inamura
+#ifdef USE_ODE  // taku // TODO: what's this taku? by inamura
 	return m_rot.matrix();
 #else
 	return NULL;
@@ -29,13 +28,13 @@ const dReal * CParts::getQuaternion()
 	return m_rot.q();
 }
 
-  // added by Guezout (2015/1/28)
+// added by Guezout (2015/1/28)
 bool CParts::getQuaternion(double &w,double &x,double &y,double &z)
 {
-	  /*
-	v.set(m_pos.x(), m_pos.y(), m_pos.z());
-	return v;
-  */
+	/*
+		v.set(m_pos.x(), m_pos.y(), m_pos.z());
+		return v;
+	 */
 
 	// Sending owner and parts name
 	std::string msg;
@@ -67,10 +66,10 @@ bool CParts::getQuaternion(double &w,double &x,double &y,double &z)
 		return false;
 	}
 	p = recvBuff;
-	 w = BINARY_GET_DOUBLE_INCR(p);
-	 x = BINARY_GET_DOUBLE_INCR(p);
-	 y = BINARY_GET_DOUBLE_INCR(p);
-	 z = BINARY_GET_DOUBLE_INCR(p);
+	w = BINARY_GET_DOUBLE_INCR(p);
+	x = BINARY_GET_DOUBLE_INCR(p);
+	y = BINARY_GET_DOUBLE_INCR(p);
+	z = BINARY_GET_DOUBLE_INCR(p);
 	bool success = BINARY_GET_BOOL_INCR(p);
 
 	if(!success) return false;
@@ -83,10 +82,10 @@ bool CParts::getQuaternion(double &w,double &x,double &y,double &z)
 // TODO: Almost all the codes are identical to SimObj::getPartsPosition. They should be integrated
 bool CParts::getPosition(Vector3d &v)
 {
-  /*
-	v.set(m_pos.x(), m_pos.y(), m_pos.z());
-	return v;
-  */
+	/*
+		v.set(m_pos.x(), m_pos.y(), m_pos.z());
+		return v;
+	 */
 
 	// Sending owner and parts name
 	std::string msg;
@@ -138,8 +137,8 @@ bool CParts::getPosition(Vector3d &v)
 bool CParts::graspObj(std::string objName)
 {
 	/*
-	v.set(m_pos.x(), m_pos.y(), m_pos.z());
-	return v;
+		v.set(m_pos.x(), m_pos.y(), m_pos.z());
+		return v;
 	*/
 
 	// Sending the owner name, parts name and object name which should be grasped
@@ -327,8 +326,7 @@ Size BoxParts::getSize()
 	return m_cmpnt->size();
 }
 
-CylinderParts::CylinderParts(const char *name,
-	      const Position &pos, dReal rad, dReal len)
+CylinderParts::CylinderParts(const char *name, const Position &pos, dReal rad, dReal len)
 	: CParts(PARTS_TYPE_CYLINDER, name, pos), m_cmpnt(NULL)
 {
 	m_cmpnt = new CylinderPartsCmpnt(rad, len);

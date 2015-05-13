@@ -32,7 +32,6 @@ public:
 private:
 	// File for a time log
 	FILE *tdebug;
-	
 };
 
 #endif // CommUtil_h

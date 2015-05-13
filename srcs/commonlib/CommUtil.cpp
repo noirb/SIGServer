@@ -60,7 +60,7 @@ SOCKET CommUtil::connectServer(const char *hostname, int port, int retry)
 			{
 				fprintf(stderr, "connect failed. retrying .. (%d) [%s:%d]\n", retry, __FILE__, __LINE__);
 
-				usleep(1000000);	// microsec
+				usleep(1000000);  // microsec
 				continue;
 			}
 			else
@@ -68,7 +68,6 @@ SOCKET CommUtil::connectServer(const char *hostname, int port, int retry)
 				// retry failed
 				perror("cannot connect server");
 				return -1;
-
 			}
 		}
 		else
@@ -85,13 +84,14 @@ SOCKET CommUtil::connectServer(const char *hostname, int port, int retry)
 
 void CommUtil::disconnectServer(SOCKET sock)
 {
-		close(sock);
+	close(sock);
 }
 
 int CommUtil::sendData(SOCKET sock, const char *data, int bytes)
 {
 	int sent = 0;
 	while (sent < bytes) {
+
 		const char *h = data + sent;
 		// linux socket has easy non-blocking mode flag (MSG_DONTWAIT)
 		int r = send(sock, h, bytes - sent, MSG_DONTWAIT);

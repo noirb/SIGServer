@@ -58,9 +58,9 @@ public:
 class RawSound
 {
 private:
-	RawSoundHeader	m_header;
-	int     m_datalen;
-	char *  m_data;	
+	RawSoundHeader m_header;
+	int            m_datalen;
+	char          *m_data;
 public:
 	/**
 	 * @brief Constructor

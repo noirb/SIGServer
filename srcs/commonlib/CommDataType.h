@@ -18,7 +18,7 @@ enum {
 
 	// server request and result
 	COMM_REQUEST_SIM_CTRL,  // 0
- 
+
 	COMM_REQUEST_GET_ALL_ENTITIES,
 	COMM_RESULT_GET_ALL_ENTITIES,
 
@@ -151,7 +151,6 @@ typedef unsigned short CommResultType;
  * COMM_RESULT_SIM_CTRL
  *
  */
-
 enum {
 	SIM_CTRL_COMMAND_NOT_SET = -1,
 	SIM_CTRL_COMMAND_START,

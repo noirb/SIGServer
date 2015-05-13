@@ -59,20 +59,17 @@ public:
 	};
 	
 private:
-	typedef std::vector<OutStream*> C;
-private:
-	C   m_streams;
+	std::vector<OutStream*> m_streams;
 	int m_level;
 	int m_outlevel;
 private:
 	void push(OutStream *o) { m_streams.push_back(o); }
 	void free_();
-private:
 	Logger() : m_level(LOG_MSG), m_outlevel(LOG_MSG) {;}
 public:
 	//! Destructor
 	~Logger() { free_(); }
-public:
+
 	//! Push standard output to destination
 	void pushSTDOUT();
 	//! Push a flie to destination
@@ -95,10 +92,10 @@ public:
 	static Logger & get();
 };
 
-   
-#define LOG_STDOUT() Logger::get().pushSTDOUT()
+
+#define LOG_STDOUT()    Logger::get().pushSTDOUT()
 #define LOG_FILE(FNAME) Logger::get().pushFile(FNAME)
-#define LOG_SOCKET(S) Logger::get().pushSocket(S)
+#define LOG_SOCKET(S)   Logger::get().pushSocket(S)
 #define LOG_LISTENER(S) Logger::get().pushListener(S)
 
 #define LOG_OUTPUT_LEVEL(L) Logger::get().setOutputLevel(L)
@@ -108,12 +105,12 @@ public:
 
 #define LOG_PRINT(L, MSG) { Logger &l_ = Logger::get(); l_.setLevel(L); l_.print MSG; }
 
-#define LOG_ERR(MSG) 	LOG_PRINT(LOG_ERRMSG, MSG)
-#define LOG_ERROR 	LOG_ERR
+#define LOG_ERR(MSG) LOG_PRINT(LOG_ERRMSG, MSG)
+#define LOG_ERROR    LOG_ERR
 
-#define LOG_MSG(MSG) 	LOG_PRINT(LOG_MSG, MSG)
+#define LOG_MSG(MSG)    LOG_PRINT(LOG_MSG, MSG)
 #define LOG_SYSTEM(MSG) LOG_PRINT(LOG_SYSTEM, MSG)
-#define LOG_SYS 	LOG_SYSTEM
+#define LOG_SYS         LOG_SYSTEM
 
 #define LOG_DEBUG1(MSG) LOG_PRINT(LOG_DEBUG1, MSG)
 #define LOG_DEBUG2(MSG) LOG_PRINT(LOG_DEBUG2, MSG)
@@ -122,6 +119,6 @@ public:
 #define LOG_DISPLAY(MSG) LOG_PRINT(LOG_DISPLAY, MSG)
 
 #endif // Logger_h
- 
+
 
 

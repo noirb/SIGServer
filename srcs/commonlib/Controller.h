@@ -26,8 +26,6 @@ class RawSound;
 
 
 
-
-
 class DynamicsController {
 public:
 	DynamicsController();
@@ -116,7 +114,7 @@ public:
 	double getCurrentLeftWheelSpeed();
 
 	/**
-	 * Gets the current speed of the rihgt wheel
+	 * Gets the current speed of the right wheel
 	 */
 	double getCurrentRightWheelSpeed();
 
@@ -189,23 +187,22 @@ class Controller : public ControllerImpl, public SimObj::RequestSender
 {
 private:
 	typedef ControllerImpl Super;
-	typedef std::string S;
-	typedef std::map<S, SimObj*> M;
 	
 private:
-	M		m_objs;
-	bool		m_in;
+	std::map<std::string, SimObj*> m_objs;
+	bool m_in;
+
 private:
-	SimObj *	find(const char *name)
+	SimObj * find(const char *name)
 	{
-	  return m_objs[name];
+		return m_objs[name];
 	}
  public:
-	void	updateObjs();
-	void	clearObjs();
+	void updateObjs();
+	void clearObjs();
 private:
-	bool			send(CommDataEncoder &);
-	CommDataResult *	recv(int bufsize);
+	bool send(CommDataEncoder &);
+	CommDataResult * recv(int bufsize);
 	SOCKET getControllerSocket() { SOCKET sock; return sock; }
 
 protected:
@@ -358,42 +355,42 @@ protected:
 	 * @brief Gets specified entity
 	 * @param name Entity name
 	 */
-	SimObj *	getObj(const char *name);
+	SimObj * getObj(const char *name);
 
 	/**
 	 * @brief Gets simulation time
 	 */
-	double          getSimulationTime();
+	double  getSimulationTime();
 
 	/**
 	 * @brief robotGets entity
 	 * @param name Entity name
 	 */
-	RobotObj *	getRobotObj(const char *name);
+	RobotObj  * getRobotObj(const char *name);
 
 	// old
-	ViewImage * 	captureView(ColorBitType cbtype, ImageDataSize size);
+	ViewImage * captureView(ColorBitType cbtype, ImageDataSize size);
 
 	// old
-	ViewImage * 	captureView(ColorBitType cbtype, ImageDataSize size, int id);
+	ViewImage * captureView(ColorBitType cbtype, ImageDataSize size, int id);
 
 	// old
-	bool	       	detectEntities(std::vector<std::string> &v);
+	bool detectEntities(std::vector<std::string> &v);
 
 	// old
-	bool	       	detectEntities(std::vector<std::string> &v, int id);
+	bool detectEntities(std::vector<std::string> &v, int id);
 
 	/**
 	 * @brief Updates SIGVerse world to the next step
 	 * @param stepsize Step size (sec)
 	 */
-	void            worldStep(double stepsize);
+	void worldStep(double stepsize);
 
 	/**
 	 * @brief Updates SIGVerse world to the next step (Its speed is higher than worldStep, but its accuracy is less)
 	 * @param stepsize Step size(sec)
 	 */
-	void            worldQuickStep(double stepsize);
+	void worldQuickStep(double stepsize);
 
 	/**
 	 * @brief Process voice data through the speech recognition service
@@ -405,7 +402,7 @@ protected:
 	 * @retval !=NULL Success
 	 * @retval NULL Failure
 	 */
-	Text *		getText(RawSound &sound);
+	Text * getText(RawSound &sound);
 
 	/**
 	 * @brief Gets the names of all existing entities in the simulation world
@@ -414,7 +411,7 @@ protected:
 	 * @retval true Success
 	 * @retval false Faiure
 	 */
-	bool		getAllEntities(std::vector<std::string> &v);
+	bool getAllEntities(std::vector<std::string> &v);
 
 	/**
 	 * @brief  Connects to service
@@ -423,37 +420,36 @@ protected:
 	 * @retval true Success
 	 * @retval false Failure
 	 */
-	//bool		connectToService(std::string name);
+	//bool connectToService(std::string name);
 
 
-	bool	isProcessing()
+	bool isProcessing()
 	{
 		return m_in;
 	}
-	void	onPreEvent()
+	void onPreEvent()
 	{
 		m_in = true;
 	}
-	void	onPostEvent()
+	void onPostEvent()
 	{
-	  //updateObjs();
-	  //clearObjs();
-	  m_in = false;
+		//updateObjs();
+		//clearObjs();
+		m_in = false;
 	}
 
 private:
 	typedef std::map<std::string, DynamicsController*> DYNAMICS_CONTROLLER_LIST;
 	DYNAMICS_CONTROLLER_LIST dynamicsDataList;
 
-
-	void	add(SimObj *obj);
+	void add(SimObj *obj);
 
 	/**
 	 * Whether to use or not dynamics for vehicles
 	 */
 	enum{
 		MODE_NOT_USE_WHEEL = 0,	
-		MODE_USE_WHEEL		
+		MODE_USE_WHEEL
 	};
 	/**
 	 * Flag of the dynamics mode for vehicles
@@ -510,11 +506,10 @@ public:
 	 * @param server  Simulation server (IP adress or host name)
 	 * @param port    Port number of the simulation server
 	 * @param myname  Agent name
-	 * 
 	 */
-	bool	attach(const char *server, int port, const char *myname);
+	bool attach(const char *server, int port, const char *myname);
 	//! Loop function for controller
-	void	loopMain();
+	void loopMain();
 
 	//!! Init function for controller
 	static void init();
@@ -522,6 +517,5 @@ public:
 
 
 #endif // Controller_h
- 
 
 

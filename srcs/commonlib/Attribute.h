@@ -15,34 +15,32 @@
  *
  * represents the attribute of an agent
  */
-   
 class Attribute
 {
-	typedef std::string S;
 private:
-	S	m_name;
-	Value * m_value;
-	S	m_group;
-	char  * m_buf;
-	int	m_bufsize;
-	int	m_voffset;
+	std::string  m_name;
+	Value       *m_value;
+	std::string  m_group;
+	char        *m_buf;
+	int  m_bufsize;
+	int  m_voffset;
 private:
-	int	binarySize() const;
-	void	free_();
+	int  binarySize() const;
+	void free_();
 public:
 	/**
 	 * @brief constructor
 	 * @param n attribute name
 	 * @param v value
 	 */
-	Attribute(S n, Value *v) : m_name(n), m_value(v), m_buf(0), m_bufsize(0) {;}
+	Attribute(std::string n, Value *v) : m_name(n), m_value(v), m_buf(0), m_bufsize(0) {;}
 	/**
 	 * @brief constructor
 	 * @param n attribute name
 	 * @param v value
 	 * @param g attribute group name
 	 */
-	Attribute(S n, Value *v, S g) : m_name(n), m_value(v), m_group(g), m_buf(0), m_bufsize(0)  {;}
+	Attribute(std::string n, Value *v, std::string g) : m_name(n), m_value(v), m_group(g), m_buf(0), m_bufsize(0)  {;}
 	/**
 	 * @brief default constructor
 	 */
@@ -73,7 +71,7 @@ public:
 	/**
 	 * @brief returns the attribute value of double data type
 	 */
-	double	getDouble() const { return value().getDouble(); }
+	double getDouble() const { return value().getDouble(); }
 
 	/**
 	 * @brief stringize the contents of an object 
@@ -85,17 +83,17 @@ public:
 	 * @param n size of binary data
 	 * @return binary data
 	 */
-	char *	toBinary(int &n);
+	char * toBinary(int &n);
 	/**
 	 * @brief reconverts from binary data
 	 * @param data binary attribute data
 	 * @param n size of binary data
 	 */
-	int	setBinary(char *data, int n);
+	int setBinary(char *data, int n);
 	/**
 	 * @brief dump method (for debug)
 	 */
-	void	dump();
+	void dump();
 };
 
 #endif // Attribute_h

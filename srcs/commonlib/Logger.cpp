@@ -53,7 +53,7 @@ private:
 class SocketStream : public Super
 {
 private:
-	SOCKET	m_sock;
+	SOCKET m_sock;
 public:
 	SocketStream(SOCKET sock) : Super(), m_sock(sock) {;}
 private:
@@ -73,7 +73,8 @@ END_NS(LoggerNS);
 
 void Logger::free_()
 {
-	for (C::iterator i=m_streams.begin(); i!=m_streams.end(); i++) {
+	for (std::vector<OutStream*>::iterator i=m_streams.begin(); i!=m_streams.end(); i++) {
+
 		OutStream *p = *i;
 		if (p->release()) {
 			delete p;
@@ -130,7 +131,7 @@ void Logger::print(const char *fmt, ...)
 	vsprintf(p, fmt, args);
 	va_end(args);
 
-	for (C::iterator i=m_streams.begin(); i!=m_streams.end(); i++) {
+	for (std::vector<OutStream*>::iterator i=m_streams.begin(); i!=m_streams.end(); i++) {
 		OutStream *out = *i;
 		out->print(m_level, out->noHeader()? p: buf);
 	}

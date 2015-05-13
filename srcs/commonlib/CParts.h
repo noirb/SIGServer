@@ -39,7 +39,7 @@ protected:
 	// Object name which has the parts
 	std::string m_owner;
 private:
-	void 	setQuaternion(dReal q0, dReal q1, dReal q2, dReal q3)
+	void setQuaternion(dReal q0, dReal q1, dReal q2, dReal q3)
 	{
 		m_rot.setQuaternion(q0, q1, q2, q3);
 	}
@@ -92,7 +92,7 @@ public:
 	 * @brief Decode of binalized parts data
 	 */
 	static CParts * decode(char *);
-#endif	// SIGVERSE_OGRE_CLIENT
+#endif  // SIGVERSE_OGRE_CLIENT
 };
 
 class BoxPartsCmpnt;

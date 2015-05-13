@@ -33,9 +33,7 @@ public:
 	const Vector3d &getTorque() { return m_tq; }
 	
 	//! Sets each value
-	void	set(const char *partsName,
-		    const Vector3d &f,
-		    const Vector3d &tq)
+	void set(const char *partsName, const Vector3d &f, const Vector3d &tq)
 	{
 		assert(partsName != NULL);
 		m_partsName = partsName;

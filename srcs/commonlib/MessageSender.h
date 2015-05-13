@@ -20,11 +20,9 @@
 class MessageSender
 {
 private:
-	typedef std::string	S;
-private:
-	S      m_name;
-	SOCKET m_sock;
-	bool   m_close;
+	std::string m_name;
+	SOCKET      m_sock;
+	bool        m_close;
 public:
 	/**
 	 * @brief Constructor
@@ -78,11 +76,9 @@ public:
 class SoundSender
 {
 private:
-	typedef std::string	S;
-
-	S m_name;
-	SOCKET m_sock;
-	bool m_close;
+	std::string m_name;
+	SOCKET      m_sock;
+	bool        m_close;
 
 public:
 	/**

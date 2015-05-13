@@ -58,7 +58,7 @@
 
 #else
 #define LOG(MSG)
-#endif	// WIN32
+#endif  // WIN32
 
 #include <assert.h>
 
@@ -144,16 +144,16 @@ void ControllerImpl::close_()
 	m_ctSimObj = NULL;
 
 	if (m_cmdSock >= 0)
-		{
-			close(m_cmdSock);
-			m_cmdSock = -1;
-		}
+	{
+		close(m_cmdSock);
+		m_cmdSock = -1;
+	}
 
 	if (m_dataSock >= 0)
-		{
-			close(m_dataSock);
-			m_dataSock = -1;
-		}
+	{
+		close(m_dataSock);
+		m_dataSock = -1;
+	}
 }
 
 #ifndef WIN32	// just for debug (substitute attach() and sendText() is at IrcViewController)
@@ -206,6 +206,7 @@ bool BaseService::sendMsgToSrv(std::string msg)
 	BINARY_SET_DATA_S_INCR(p, unsigned short, 0x0001); //TODO: Magic number
 	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
 	memcpy(p, sendMsg.c_str(), sendMsg.size());
+
 	if (!sendData(m_clientSock, sendBuff, sendSize)) {
 		LOG_ERR(("sendMsgToSrv: cannot send message [%s, %s].", __FILE__, __LINE__));
 		delete [] sendBuff;
@@ -236,6 +237,7 @@ ViewImage* ViewService::captureView(int camID, ColorBitType ctype, ImageDataSize
 
 	m_getData = false;
 	memcpy(p, sendMsg.c_str(), sendMsg.size());
+
 	if (!sendData(m_clientSock, sendBuff, sendSize)) {
 		LOG_ERR(("captureView: cannot send request [%s, %d].", __FILE__, __LINE__));
 		delete [] sendBuff;
@@ -262,7 +264,7 @@ ViewImage* ViewService::captureView(int camID, ColorBitType ctype, ImageDataSize
 	// Receive image data
 	// Size is defined by the data type
 	switch(ssize) {
-	case 1: 
+		case 1:
 		{
 			ssize = 230400; // 320*240*3; TODO: Magic number
 			break;
@@ -315,6 +317,7 @@ bool  ViewService::detectEntities(std::vector<std::string> &v, int camID)
 	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
 
 	memcpy(p, sendMsg.c_str(), sendMsg.size());
+
 	if (!sendData(m_clientSock, sendBuff, sendSize)) {
 		LOG_ERR(("detectEntities: cannot send request [%s, %d].", __FILE__, __LINE__));
 		delete [] sendBuff;
@@ -379,7 +382,7 @@ unsigned char ViewService::distanceSensor(double start, double end, int camID, C
 
 	// Header infomation
 	unsigned short head  = BINARY_GET_DATA_S_INCR(p, unsigned short); 
-	int ssize            = BINARY_GET_DATA_S_INCR(p, unsigned short);      
+	int ssize            = BINARY_GET_DATA_S_INCR(p, unsigned short);
 
 	if (head != 3) //TODO: Magic number
 		LOG_ERR(("distanceSensor: cannot get distance data [%s, %d].", __FILE__, __LINE__));
@@ -387,7 +390,7 @@ unsigned char ViewService::distanceSensor(double start, double end, int camID, C
 	// Receive image data
 	// Size is defined by the received data type
 	switch(ssize) {
-	case 2: 
+		case 2:
 		{
 			ssize = 1;
 			break;
@@ -431,7 +434,7 @@ ViewImage* ViewService::distanceSensor1D(double start, double end, int camID, Co
 	// Receive image data
 	// Size is defined by the received data type
 	switch(ssize) {
-	case 3: 
+		case 3:
 		{
 			ssize = 320;
 			break;
@@ -488,7 +491,7 @@ ViewImage* ViewService::distanceSensor2D(double start, double end, int camID, Co
 	// Receive image data
 	// Size is defined by the received data type
 	switch(ssize) {
-	case 4: 
+		case 4:
 		{
 			ssize = 76800; // 320*240; TODO: Magic number
 			break;
@@ -546,6 +549,7 @@ bool ViewService::sendDSRequest(int type, double start, double end, int camID, C
 
 	m_getData = false;
 	memcpy(p, sendMsg.c_str(), sendMsg.size());
+
 	if (!sendData(m_clientSock, sendBuff, sendSize)) {
 		LOG_ERR(("distanceSensor: cannot send request [%s, %d].", __FILE__, __LINE__));
 		delete [] sendBuff;
@@ -591,7 +595,7 @@ void* ControllerImpl::serviceThread(void *pParam)
 		//////////////Data containing only header//////////////
 		switch (n) {
 			// Success in connection
-		case 1:
+			case 1:
 			{
 				// Set the client socket
 				con->setConnected(true);
@@ -601,7 +605,7 @@ void* ControllerImpl::serviceThread(void *pParam)
 				break;
 			}
 
-		case 4:
+			case 4:
 			{
 				LOG_SYS(("failed to connect service"));
 				// Failure or request of disconnection
@@ -614,7 +618,7 @@ void* ControllerImpl::serviceThread(void *pParam)
 error:
 	// Server socket
 	if (sock != -1) { //Changed from NULL to -1 by inamura on 2014-02-28
-		close(sock);    
+		close(sock);
 		sock = -1;  //Changed from NULL to -1 by inamura on 2014-02-28
 	}
 	/*
@@ -659,6 +663,7 @@ BaseService* ControllerImpl::connectToService(std::string name)
 		int count = 0;
 		// Repeat until free port is found
 		while (bind(sock0, (struct sockaddr *)&addr, sizeof(addr)) != 0) {
+
 			// Break when free port could not be found 10 times
 			if (count == 10) {
 				LOG_ERR(("Controller could not get port for service [%s, %s].", __FILE__, __LINE__));
@@ -668,7 +673,7 @@ BaseService* ControllerImpl::connectToService(std::string name)
 			//int tmp = rand() % 5000;
 			//portNum = 25000 + tmp;
 			portNum += 1;
-    
+
 			addr.sin_port = htons(portNum);
 			count++;
 		}
@@ -731,6 +736,7 @@ BaseService* ControllerImpl::connectToService(std::string name)
 	int count = 0;
 	// Wait until connection completion
 	while (!m_connected) {
+
 		usleep(1000); //TODO: Magic number
 		count++;
 		// Time out when the socket is closed or the count is over 1.5 sec.
@@ -763,15 +769,16 @@ BaseService* ControllerImpl::connectToService(std::string name, unsigned short p
 {
 	static bool first = false;
 	SOCKET sock0;
+
 	if (!first) {
 		struct sockaddr_in addr;
-    
+
 		sock0 = socket(AF_INET, SOCK_STREAM, 0);
 		if (sock0 < 0) {
 			perror("socket");
 			return NULL;
 		}
-    
+
 		unsigned short portNum = port;
 
 		addr.sin_family = AF_INET;
@@ -844,6 +851,7 @@ BaseService* ControllerImpl::connectToService(std::string name, unsigned short p
 	int count = 0;
 	// Wait until connection completion
 	while (!m_connected) {
+
 		usleep(1000);
 		count++;
 		// Time out when the socket is closed or the count is over 1 sec.
@@ -1023,7 +1031,6 @@ void ControllerImpl::sendDisplayText(double t, const char *to, const char *text,
 	else                                col = 0;
 	CommDisplayTextEncoder enc(fs, col, text);
 	enc.send(m_cmdSock);
-
 }
 
 
@@ -1049,7 +1056,6 @@ void ControllerImpl::displayText(const char *text, int fs, const char *color, do
 	else                                col = 0;
 	CommDisplayTextEncoder enc( fs, col, text);
 	enc.send(m_cmdSock);
-
 }
 
 
@@ -1176,7 +1182,6 @@ void ControllerImpl::sendDisplayMessage(const char *to, int argc, char **argv, i
 	const char *text = argv[0];
 	CommDisplayTextEncoder enc(fs, col, text);
 	enc.send(m_cmdSock);
-
 }
 
 void ControllerImpl::broadcastMessage(int argc, char **argv)

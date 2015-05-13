@@ -108,22 +108,22 @@ void DynamicsController::setWheelProperty(
 	double rightMaxForce
 )
 {
-	this->leftWheelName = leftWheelName;
-	this->leftMotorConsumption = leftMotorConsumption;
-	this->leftWheelMaxSpeed = leftWheelMaxSpeed;
-	this->leftWheelSpeedUnit = leftWheelSpeedUnit;
-	this->leftSlipNoise = leftSlipNoise;
-	//this->leftEncoderNoise = leftEncoderNoise;//[TODO]
-	this->leftEncoderResolution = leftEncoderResolution;
-	this->leftMaxForce = leftMaxForce;
-	this->rightWheelName = rightWheelName;
-	this->rightMotorConsumption = rightMotorConsumption;
-	this->rightWheelMaxSpeed = rightWheelMaxSpeed;
-	this->rightWheelSpeedUnit = rightWheelSpeedUnit;
-	this->rightSlipNoise = rightSlipNoise;
-	//this->rightEncoderNoise = rightEncoderNoise;//[TODO]
+	this->leftWheelName          = leftWheelName;
+	this->leftMotorConsumption   = leftMotorConsumption;
+	this->leftWheelMaxSpeed      = leftWheelMaxSpeed;
+	this->leftWheelSpeedUnit     = leftWheelSpeedUnit;
+	this->leftSlipNoise          = leftSlipNoise;
+	//this->leftEncoderNoise       = leftEncoderNoise;//[TODO]
+	this->leftEncoderResolution  = leftEncoderResolution;
+	this->leftMaxForce           = leftMaxForce;
+	this->rightWheelName         = rightWheelName;
+	this->rightMotorConsumption  = rightMotorConsumption;
+	this->rightWheelMaxSpeed     = rightWheelMaxSpeed;
+	this->rightWheelSpeedUnit    = rightWheelSpeedUnit;
+	this->rightSlipNoise         = rightSlipNoise;
+	//this->rightEncoderNoise      = rightEncoderNoise;//[TODO]
 	this->rightEncoderResolution = rightEncoderResolution;
-	this->rightMaxForce = rightMaxForce;
+	this->rightMaxForce          = rightMaxForce;
 
 	// Finds positon of SimObj
 	//Vector3d leftWheelPos;
@@ -152,10 +152,8 @@ void DynamicsController::setWheelProperty(
  * @param left Angular velocity of the left wheel
  * @param right Angular velocity of the right wheel
  */
-
 void DynamicsController::differentialWheelsSetSpeed(SimObj *my,double left,double right)
 {
-
 	// Refect the maximum angular values of left wheel
 	if (leftWheelMaxSpeed < left) {
 		left = leftWheelMaxSpeed;
@@ -166,6 +164,7 @@ void DynamicsController::differentialWheelsSetSpeed(SimObj *my,double left,doubl
 
 	// Round down the value smaller than the unit
 	if (leftWheelSpeedUnit > ACCURACY) {
+
 		double leftAbs = fabs(left);
 		double residue = fmod(leftAbs,leftWheelSpeedUnit);
 		if (left > 0) {
@@ -186,6 +185,7 @@ void DynamicsController::differentialWheelsSetSpeed(SimObj *my,double left,doubl
 
 	// Round down the value smaller than the unit
 	if (rightWheelSpeedUnit > ACCURACY) {
+
 		double rightAbs = fabs(right);
 		double residue = fmod(rightAbs,leftWheelSpeedUnit);
 		if (right > 0) {
@@ -359,7 +359,6 @@ Controller::Controller() : m_in(false)
 	dynamicsMode = MODE_NOT_USE_WHEEL;
 
 	srand((unsigned) time(NULL));
-
 }
 
 
@@ -641,7 +640,6 @@ void Controller::slipWheel()
 
 		++it;
 	}
-
 }
 
 
@@ -719,6 +717,7 @@ SimObj *Controller::getObj(const char *name)
 		Reader *r = new Reader(s, d, 8192); //TODO: Magic number
 		int wait = 1000;
 		int retry = 0;
+
 		while  (retry < 5) {
 			Result *result = r->readSync();
 			if (!result) {
@@ -740,15 +739,12 @@ SimObj *Controller::getObj(const char *name)
 		else{
 		}
 		delete r;
-
-	  
 	}
 	return obj;
 }
 
 RobotObj *Controller::getRobotObj(const char *name)
 {
-
 	// Refer to the server when object is not found
 	if (!name || strlen(name) <= 0) { 
 		return 0;
@@ -757,8 +753,9 @@ RobotObj *Controller::getRobotObj(const char *name)
 	SimObj *obj = find(name);
 
 	if (!obj) {
-	  
-	  int s = m_dataSock;
+
+		int s = m_dataSock;
+
 		CommRequestGetEntityEncoder enc(name);
 		enc.send(s);
 
@@ -767,6 +764,7 @@ RobotObj *Controller::getRobotObj(const char *name)
 		Reader *r = new Reader(s, d, 8192); //TODO: Magic number
 		int wait = 1000;
 		int retry = 0;
+
 		while  (retry < 5) {
 			Result *result = r->readSync();
 			if (!result) {
@@ -775,7 +773,7 @@ RobotObj *Controller::getRobotObj(const char *name)
 				wait *= 2;
 				continue;
 			}
-			
+
 			if (result->type() == COMM_RESULT_GET_ENTITY) {
 				ResultGetEntityEvent *evt = (ResultGetEntityEvent*)result->data();
 				obj = evt->release();
@@ -789,7 +787,6 @@ RobotObj *Controller::getRobotObj(const char *name)
 		}
 		delete r;
 
-	  
 	}
 	RobotObj* robj = dynamic_cast<RobotObj*>(obj);
 	return robj;
@@ -802,6 +799,7 @@ ViewImage * Controller::captureView(ColorBitType cbtype, ImageDataSize size)
 	CTSimObj & obj = getCTSimObj();
 	return obj.captureView(cbtype, size);
 }
+
 //added by okamoto@tome(2011/8/26)
 ViewImage * Controller::captureView(ColorBitType cbtype, ImageDataSize size, int id)
 {
@@ -927,10 +925,10 @@ double Controller::getSimulationTime()
 	if (!SocketUtil::recvData(m_cmdSock, recvBuff, recvSize)) {
 		LOG_ERR(("getSimulationTime: cannot get result from server"));
 		return 0.0;
-	}	  
+	}
 	p = recvBuff;
 	double time = BINARY_GET_DOUBLE_INCR(p); 
-  
+
 	return time;
 }
 
@@ -944,8 +942,10 @@ void Controller::updateObjs()
 
 		double t = 0;
 		CommRequestUpdateEntitiesEncoder enc(t);
+
 		int cnt = 0;
-		for (M::iterator i=m_objs.begin(); i!=m_objs.end(); i++) {
+		for (std::map<std::string, SimObj*>::iterator i=m_objs.begin(); i!=m_objs.end(); i++) {
+
 			SimObj *obj = i->second;
 			if (obj) {
 				enc.push(obj);
@@ -959,7 +959,7 @@ void Controller::updateObjs()
 		}
 
 #ifdef DEPRECATED
-		for (M::iterator i=m_objs.begin(); i!=m_objs.end(); i++) {
+		for (std::map<std::string, SimObj*>::iterator i=m_objs.begin(); i!=m_objs.end(); i++) {
 			SimObj *obj = i->second;
 			if (!obj) { continue; }
 			if (Command *cmd = obj->createJointControlCommand()) {
@@ -974,7 +974,8 @@ void Controller::updateObjs()
 
 void Controller::clearObjs()
 {
-	for (M::iterator i=m_objs.begin(); i!=m_objs.end(); i++) {
+	for (std::map<std::string, SimObj*>::iterator i=m_objs.begin(); i!=m_objs.end(); i++) {
+
 		SimObj *obj = i->second;
 		delete obj;
 	}
@@ -998,7 +999,7 @@ void Controller::loopMain()
 
 	CTReader read(sock, d, 30000); // TODO: Magic number should be removed
 
-	fd_set	rfds;
+	fd_set rfds;
 	struct timeval tv;
 	s_loop = true;
 	signal(SIGINT, quit);
@@ -1009,7 +1010,8 @@ void Controller::loopMain()
 			read.read();
 		} catch(CTReader::ConnectionClosedException &e) {
 			break;
-		} 
+		}
+
 		/*
 		 * Wait a fixed time to reduce the load of CPU
 		 */

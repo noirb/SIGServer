@@ -27,7 +27,6 @@
  *
  * Represents position in the simulation world
  * Variable data type is based on ODE when using ODE, if not, data is data type is used
- * 
  */
 class Position
 {

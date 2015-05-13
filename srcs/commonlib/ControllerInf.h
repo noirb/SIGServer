@@ -22,7 +22,6 @@ class CollisionEvent;
 class ControllerInf
 {
 public:
-
 	ControllerInf(): m_startSim(false), m_excon(false) {;}
 
 	//! Destructor
@@ -33,7 +32,7 @@ public:
 	 *
 	 * This function is called in onset of the simulation
 	 */
-	virtual void 	onInit(InitEvent &evt) {}
+	virtual void onInit(InitEvent &evt) {}
 	
 	/**
 	 * @brief Action callback function
@@ -42,30 +41,30 @@ public:
 	 *
 	 * @return Time interval
 	 */
-	virtual double 	onAction(ActionEvent &evt) { return 0.0; }
+	virtual double onAction(ActionEvent &evt) { return 0.0; }
 
 	//! Callback function for receiving text
-	virtual void 	onRecvText(RecvTextEvent &evt) {}
+	virtual void onRecvText(RecvTextEvent &evt) {}
 	//! Callback function for receiving sounds
-	virtual void	onRecvSound(RecvSoundEvent &evt) {}
+	virtual void onRecvSound(RecvSoundEvent &evt) {}
 	//old
-	virtual void	onRecvMessage(RecvMessageEvent &evt) {}
+	virtual void onRecvMessage(RecvMessageEvent &evt) {}
 	//! Callback function for receiving messages (added on 2012-09-10)
-	virtual void	onRecvMsg(RecvMsgEvent &evt) {}
+	virtual void onRecvMsg(RecvMsgEvent &evt) {}
 	//! Callback function for detecting collision
-	virtual void 	onCollision(CollisionEvent &evt) {}
+	virtual void onCollision(CollisionEvent &evt) {}
 
 #ifndef UNIT_TEST
 	//! Whether controller is in processing
-	virtual	bool	isProcessing() = 0;
+	virtual bool isProcessing() = 0;
 	//! Implements process before calling callback function
-	virtual void	onPreEvent() = 0;
+	virtual void onPreEvent() = 0;
 	//! Implements process after calling callback function
-	virtual void	onPostEvent() = 0;
+	virtual void onPostEvent() = 0;
 #else
-	virtual	bool	isProcessing() { return false; };
-	virtual void	onPreEvent() {};
-	virtual void	onPostEvent() {};
+	virtual bool isProcessing() { return false; };
+	virtual void onPreEvent() {};
+	virtual void onPostEvent() {};
 #endif
 
 

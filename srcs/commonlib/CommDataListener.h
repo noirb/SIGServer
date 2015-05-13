@@ -25,7 +25,6 @@ class Source;
  *    <li>first augment (from) is source adress of data</li>
  *    <li>second augment (evt) includes reconstructed data (Some callback include not the data but only the signal)</li>
  * </ol>
- *
  */
 class CommDataListener
 {

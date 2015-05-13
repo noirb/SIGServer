@@ -13,7 +13,7 @@ char * binary_get_string_incr(char **ptr)
 	return buf;
 }
 
-void	binary_free_string(char **p)
+void binary_free_string(char **p)
 {
 	if (*p) {
 		delete [] *p;

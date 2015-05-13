@@ -11,9 +11,7 @@
 
 /** 
  * @brief Class for getting the reconstructed data as a return value from CommDataDecoder
- *
  */
-
 class CommDataResult
 {
 public:
@@ -21,8 +19,8 @@ public:
 	typedef void (*DataFreeFunc)(void*);
 private:
 	CommDataType m_type;
-	int	m_seq;
-	int	m_num;
+	int m_seq;
+	int m_num;
 	void * m_data;
 	DataFreeFunc m_free_func;
 public:
@@ -48,18 +46,17 @@ public:
 	 * 
 	 * @retval != NULL Reconstructed data depending on the data type
 	 * @retval =NULL   e.g. when packets are forwarded without reconstructing data (Forward method returns true)
-	 *
 	 */
 	void * data() { return m_data; }
 
-	bool	forwarded() { return m_num > 0? true: false; }
+	bool forwarded() { return m_num > 0? true: false; }
 
-	bool	forwardCompleted()
+	bool forwardCompleted()
 	{
 		return m_seq == m_num -1? true: false;
 	}
-	int	seq() { return m_seq; }
-	int	packetNum() { return m_num; }
+	int seq() { return m_seq; }
+	int packetNum() { return m_num; }
 public:
 	CommDataResult(CommDataType t, void *d, DataFreeFunc func)
 		: m_type(t), m_seq(-1), m_num(-1), m_data(d), m_free_func(func) {;}
@@ -78,6 +75,5 @@ public:
 
 
 #endif // CommDataResult_h
- 
 
 
