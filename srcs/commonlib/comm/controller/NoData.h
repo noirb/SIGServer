@@ -5,7 +5,7 @@
 class NoDataEvent
 {
 public:
-	bool	set(int packetNum, int seq, char *data, int n) { return true;} 
+	bool set(int packetNum, int seq, char *data, int n) { return true; }
 };
 
 class InitEvent : public NoDataEvent {};

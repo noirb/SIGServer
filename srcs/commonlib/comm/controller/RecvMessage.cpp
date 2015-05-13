@@ -18,7 +18,7 @@ bool RecvMessageEvent::set(int packetNum, int seq, char *data, int len)
 	for (unsigned i=0; i<n; i++) {
 		char *str = BINARY_GET_STRING_INCR(p);
 		if (!str) { return false; }
-		m_strs.push_back(S(str));
+		m_strs.push_back(std::string(str));
 		BINARY_FREE_STRING(str);
 	}
 	return true;
@@ -27,26 +27,26 @@ bool RecvMessageEvent::set(int packetNum, int seq, char *data, int len)
 
 bool RecvMsgEvent::setData(std::string data, int size)
 {
-  int strPos1 = 0;
-  int strPos2;
-  std::string tmpss;
+	int strPos1 = 0;
+	int strPos2;
+	std::string tmpss;
 
-  strPos2 = data.find(",", strPos1);
-  m_from.assign(data, strPos1, strPos2-strPos1);
+	strPos2 = data.find(",", strPos1);
+	m_from.assign(data, strPos1, strPos2-strPos1);
 
-  strPos1 = strPos2 + 1;
-  
-  strPos2 = data.find(",", strPos1);
-  tmpss.assign(data, strPos1, strPos2-strPos1);
-  int msgSize = atoi(tmpss.c_str());
+	strPos1 = strPos2 + 1;
 
-  strPos1 = strPos2 + 1;
-  m_msg.assign(data, strPos1, msgSize);
-  
-  /*
-  m_from = strtok(data,",");
-  m_msg = strtok(NULL,",");
-  */
-  return true;
+	strPos2 = data.find(",", strPos1);
+	tmpss.assign(data, strPos1, strPos2-strPos1);
+	int msgSize = atoi(tmpss.c_str());
+
+	strPos1 = strPos2 + 1;
+	m_msg.assign(data, strPos1, msgSize);
+
+	/*
+	m_from = strtok(data,",");
+	m_msg = strtok(NULL,",");
+	 */
+	return true;
 }
 

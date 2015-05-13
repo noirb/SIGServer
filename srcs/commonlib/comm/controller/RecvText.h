@@ -11,16 +11,14 @@
 class RecvTextEvent : public ControllerEvent
 {
 private:
-	typedef std::string S;
-private:
-	S	m_caller;
-	S	m_text;
-	Encode  m_encode;
+	std::string m_caller;
+	std::string m_text;
+	Encode      m_encode;
 public:
-	bool	set(int packetNum, int seq, char *data, int n);
-	const char *	getCaller() { return m_caller.c_str(); }
-	const char *	getText() { return m_text.c_str(); }
-	Encode  	getEncode() { return m_encode; }
+	bool set(int packetNum, int seq, char *data, int n);
+	const char * getCaller() { return m_caller.c_str(); }
+	const char * getText()   { return m_text.c_str(); }
+	Encode       getEncode() { return m_encode; }
 };
 
 

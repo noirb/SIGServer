@@ -1,4 +1,6 @@
-/* $Id: Collision.h,v 1.4 2012-03-19 07:04:45 okamoto Exp $ */ 
+/*
+ * Modified by okamoto on 2012-03-19
+ */
 #ifndef CommController_Collision_h
 #define CommController_Collision_h
 
@@ -10,25 +12,22 @@
 
 class CollisionEvent : public ControllerEvent
 {
-public:
-	typedef std::vector<std::string> WithC;
 private:
-	WithC m_with;
-	
-	//衝突相手のパーツと衝突した自分のパーツ 2012/3/19
-	WithC m_withParts;
-	WithC m_myParts;
+	std::vector<std::string> m_other_entitiesname;
+	std::vector<std::string> m_other_partsname;
+	std::vector<std::string> m_self_partsname;
 public:
-	bool	set(int packetNum, int seq, char *data, int n);
-	//! 衝突した相手の名前を得る
-	const WithC & getWith() { return m_with; }
+	bool set(int packetNum, int seq, char *data, int n);
+
+	//! get other colliding entities name list.
+	const std::vector<std::string> & getWith() { return m_other_entitiesname; }
 
 	//added by okamoto@tome 2012/3/19
-	//! 衝突した相手のパーツ名を得る(相手がEntityの場合はbodyを取得)
-	const WithC & getWithParts() { return m_withParts; }
+	//! get other colliding parts name list.(If it is Entity, get body)
+	const std::vector<std::string> & getWithParts() { return m_other_partsname; }
 
-	//! 衝突した自分のパーツ名を得る
-	const WithC & getMyParts() { return m_myParts; }
+	//! get own colliding parts name list.
+	const std::vector<std::string> & getMyParts() { return m_self_partsname; }
 };
 
 

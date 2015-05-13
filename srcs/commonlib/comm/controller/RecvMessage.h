@@ -9,13 +9,10 @@
 class RecvMessageEvent
 {
 private:
-	typedef std::string S;
-	typedef std::vector<S> C;
-private:
-	S	m_from;
-	C	m_strs;
+	std::string m_from;
+	std::vector<std::string> m_strs;
 public:
-	bool	set(int packetNum, int seq, char *data, int n);
+	bool set(int packetNum, int seq, char *data, int n);
 
 	const char *getSender() { return m_from.c_str(); }
 
@@ -28,14 +25,14 @@ public:
 class RecvMsgEvent
 {
 private:
-  std::string	m_from;
-  std::string	m_msg;
+	std::string m_from;
+	std::string m_msg;
 public:
-  bool	setData(std::string data, int size);
-  
-  const char *getSender() { return m_from.c_str(); }
-  
-  const char *getMsg() { return m_msg.c_str(); }
+	bool setData(std::string data, int size);
+
+	const char *getSender() { return m_from.c_str(); }
+
+	const char *getMsg() { return m_msg.c_str(); }
 };
 
 

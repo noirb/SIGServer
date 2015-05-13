@@ -51,9 +51,7 @@ bool RecvSoundEvent::set(int packetNum, int seq, char *data, int n)
 			m_sound = m_soundTmp;
 			m_soundTmp = 0;
 		}
-
 	}
 	m_prevSeq = seq;
 	return true;
 }
-	

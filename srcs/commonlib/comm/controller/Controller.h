@@ -8,10 +8,9 @@ protected:
 	double m_currTime; 
 
 public:
-	double	time() { return m_currTime; }
+	double time() { return m_currTime; }
 
-	void setTime(double time) { m_currTime = time; } 
-	
+	void setTime(double time) { m_currTime = time; }
 };
 
 #endif // CommController_Controller_h

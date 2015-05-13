@@ -13,24 +13,25 @@ class RawSound;
 class RecvSoundEvent : public ControllerEvent
 {
 private:
-	typedef std::string S;
+	std::string m_caller;
+	RawSound *  m_sound;
+	RawSound *  m_soundTmp;
+	int         m_prevSeq;
+	char *      m_curr;
 private:
-	S		m_caller;
-	RawSound *	m_sound;
-	RawSound *	m_soundTmp;
-	int		m_prevSeq;
-	char *		m_curr;
-private:
-	void	free_();
+	void free_();
 public:
 	RecvSoundEvent() :
 		ControllerEvent(),
 		m_sound(0), m_soundTmp(0),
 		m_prevSeq(-1), m_curr(0) {;}
+
 	~RecvSoundEvent() { free_(); }
-	bool	set(int packetNum, int seq, char *data, int n);
+
+	bool set(int packetNum, int seq, char *data, int n);
 	const char *getCaller() { return m_caller.c_str(); }
 	RawSound   *getRawSound() { return m_sound; }
+
 	RawSound   *releaseRawSound() {
 		RawSound *tmp = m_sound;
 		m_sound = 0;
