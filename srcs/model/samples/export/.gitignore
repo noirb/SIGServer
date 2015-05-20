@@ -1,3 +1,6 @@
 *.cpp
 *.h
 
+Makefile
+Makefile.controller
+
