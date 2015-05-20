@@ -21,7 +21,6 @@ SRCS = Attach.cpp \
 	CaptureViewImage.cpp \
 	DetectEntities.cpp \
 	InvokeOnRecvSound.cpp \
-	ControllerCommand.cpp \
 	NameService.cpp \
 	JointAngle.cpp \
 	JointQuaternion.cpp \

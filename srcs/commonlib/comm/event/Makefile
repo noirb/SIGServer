@@ -18,7 +18,6 @@ SRCS = RecvEntities.cpp \
 	RequestCaptureViewImage.cpp \
 	ResultCaptureViewImage.cpp \
 	DetectEntities.cpp \
-	ControllerCommand.cpp \
 	Attrs.cpp \
 	NameService.cpp \
 	JointAngle.cpp \
