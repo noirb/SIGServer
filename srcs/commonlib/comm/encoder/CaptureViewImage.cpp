@@ -49,14 +49,6 @@ CaptureViewImageResult::CaptureViewImageResult(ViewImage &img)
 	
 }
 
-#ifdef DEPRECATED
-CaptureViewImageResult::CaptureViewImageResult(const char *agentName, ViewImage &img)
-	: RawDataEncoder(COMM_RESULT_CAPTURE_VIEW_IMAGE),
-	 m_img(img)
-{
-
-}
-#endif
 
 char *	CaptureViewImageResult::getDataHeader(int &sz)
 {
@@ -84,47 +76,4 @@ char * CaptureViewImageResult::getData()
 }
 
 END_NS_COMMDATA();
-
-#ifdef CaptureViewImage_test
-
-int main()
-{
-	ViewImageInfo info(IMAGE_DATA_TYPE_ANY, COLORBIT_ANY, IMAGE_320X240);
-	CommData::CaptureViewImageRequest enc("foo", info);
-
-	int n;
-	char *p = enc.encode(0, n);
-	return 0;
-}
-#endif
-
-
-#ifdef CaptureViewImage_test1
-
-#include "EncoderTest.h"
-#include "../event/ResultCaptureViewImage.h" 
-
-int main()
-{
-	typedef CommData::CaptureViewImageResult Enc;
-	typedef ResultCaptureViewImageEvent Evt;
-	typedef EncoderTest<Enc, Evt> Test;
-
-
-	ViewImage *vi = ViewImage::createSample();
-	Enc enc("agent", *vi);
-	Evt evt;
-
-	Test test;
-	test(enc, evt);
-	
-	ViewImage *v = evt.release();
-	if (v) {
-		printf("(%d, %d)\n", v->getWidth(), v->getHeight());
-	}
-
-	
-	return 0;
-}
-#endif
 

@@ -1,1 +1,0 @@
-../../../commonlib/tests/soundrecog_res.cpp

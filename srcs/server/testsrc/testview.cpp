@@ -1,1 +1,0 @@
-../../simserver/testsrc/testview.cpp

@@ -1,1 +1,0 @@
-../../simserver/testsrc/xmltest.cpp

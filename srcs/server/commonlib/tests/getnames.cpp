@@ -1,1 +1,0 @@
-../../../commonlib/tests/getnames.cpp

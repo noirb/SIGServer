@@ -1,1 +1,0 @@
-../../../commonlib/tests/SimObj.cpp

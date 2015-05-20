@@ -1,1 +1,0 @@
-../../../simserver/readconf/tests/body.cpp
