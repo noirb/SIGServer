@@ -17,7 +17,7 @@ LD = $(CXX)
 .cpp.so:
 	$(LD) -shared -o $@  $(CXXFLAGS) -fPIC $<
 
-MODEL_SRCS = SendMsg.cpp onRecvMsg.cpp Robot.cpp Gravity.cpp GoRound.cpp Capture.cpp DetectEntities.cpp SendText.cpp CallBackText.cpp Move.cpp JointTest.cpp onRecvText.cpp onRecvSound.cpp SetPosition.cpp SetJointAngle.cpp onAction.cpp Watcher.cpp MovingArm.cpp NiiRobotOkonomi.cpp NiiManOkonomi.cpp GetJointForce.cpp SetForce.cpp SetTorque.cpp SetAccel.cpp ConnectJoint.cpp ReleaseJoint.cpp GetParts.cpp scMove.cpp scDetectEntities.cpp scCaptureView.cpp scVoiceRecog.cpp scTV_blink.cpp Arm.cpp Attrs.cpp GetAllEntities.cpp scSetAttr.cpp onCollision.cpp scSendText.cpp scSendSound.cpp
+MODEL_SRCS = SendMsg.cpp onRecvMsg.cpp Robot.cpp Gravity.cpp GoRound.cpp Capture.cpp DetectEntities.cpp SendText.cpp CallBackText.cpp JointTest.cpp onRecvText.cpp onRecvSound.cpp SetPosition.cpp SetJointAngle.cpp onAction.cpp Watcher.cpp MovingArm.cpp NiiRobotOkonomi.cpp NiiManOkonomi.cpp GetJointForce.cpp SetForce.cpp SetTorque.cpp SetAccel.cpp ConnectJoint.cpp ReleaseJoint.cpp GetParts.cpp scMove.cpp scDetectEntities.cpp scCaptureView.cpp scVoiceRecog.cpp scTV_blink.cpp Arm.cpp Attrs.cpp GetAllEntities.cpp scSetAttr.cpp onCollision.cpp scSendText.cpp scSendSound.cpp
 
 SRCS = $(MODEL_SRCS)
 
