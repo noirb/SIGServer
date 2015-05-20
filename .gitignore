@@ -15,5 +15,8 @@
 
 *~
 /release_sigserver/
+/release_sigrunac/
+/autom4te.cache/
+/Makefile
 *.log
 
