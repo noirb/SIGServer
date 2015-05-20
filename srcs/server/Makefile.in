@@ -50,8 +50,8 @@ am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(bindir)" \
 	"$(DESTDIR)$(sigetcdir)"
 PROGRAMS = $(bin_PROGRAMS)
 am_sigserver_OBJECTS = SSimObj.$(OBJEXT) Joint.$(OBJEXT) \
-	ODEWorld.$(OBJEXT) Command_Move.$(OBJEXT) \
-	Command_JointControl.$(OBJEXT) SParts.$(OBJEXT) \
+	ODEWorld.$(OBJEXT)  \
+	SParts.$(OBJEXT) \
 	ServerAcceptProc.$(OBJEXT) LogTransfer.$(OBJEXT) \
 	SSimWorld.$(OBJEXT) PacketForward.$(OBJEXT) \
 	WorldSimulator.$(OBJEXT) ServiceNameServer.$(OBJEXT) \
@@ -250,8 +250,6 @@ bin_SCRIPTS = sigserver.sh sigkill.sh sigcreate.sh
 sigserver_SOURCES = SSimObj.cpp \
 	Joint.cpp \
 	ODEWorld.cpp \
-	Command_Move.cpp \
-	Command_JointControl.cpp \
 	SParts.cpp \
 	ServerAcceptProc.cpp \
 	LogTransfer.cpp \
@@ -395,8 +393,6 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Command_JointControl.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Command_Move.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Joint.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/LogTransfer.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ODEWorld.Po@am__quote@
