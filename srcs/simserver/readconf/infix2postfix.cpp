@@ -164,21 +164,3 @@ char *infix2postfix(char *equation, std::map<std::string, std::string> *dict)
 	return s_buf;
 }
 
-#ifdef TEST
-#include <stdio.h>
-int main()
-{
-/*	char *eq = "5*3+4";*/
-//	char *eq = "5.0*(27+3*7/2*3) + 22 + FOO";
-	char *eq = "-1";
-	char *postfix;
-	M dict;
-	dict["FOO"] = "1.2";
-	if (postfix = infix2postfix(eq, &dict)) {
-		printf("%s\n", postfix);
-	}
-	return 0;
-}
-
-#endif
-

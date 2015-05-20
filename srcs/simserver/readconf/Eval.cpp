@@ -30,24 +30,3 @@ double Eval::eval(const char *eq_)
 	return v;
 }
 
-#ifdef Eval_test
-int main()
-{
-
-	char *p = "2.5 + 1.75 * FOO1_FO0";
-	Eval::std::map<std::string, std::string> dict;
-	dict["FOO1_FOO"] = "2.0";
-
-	Eval eval(&dict);
-	try {
-		double v = eval(p);
-		printf("%s = %f\n", p, v);
-	} catch(Eval::Exception &) {
-		fprintf(stderr, "exception\n");
-		return 1;
-	}
-	return 0;
-
-}
-#endif
-

@@ -111,29 +111,3 @@ bool BodyXMLReader::read(const char *fname)
 	return ret;
 }
 
-
-#ifdef BodyXMLReader_test
-
-#include <xercesc/util/PlatformUtils.hpp>
-
-int main(int argc, char **argv)
-{
-	xercesc::XMLPlatformUtils::Initialize();
-
-	//	char *defaultfname = "conf/robot-body.xml";
-	char *defaultfname = "conf/nii-demo/robot.xml";
-	char *fname = defaultfname;
-	if (argc == 2) {
-		fname = argv[1];
-	}
-
-
-	SSimObj obj;
-	ODEWorld *w = ODEWorld::create(ODEWorld::Gravity(0, -9.8, 0), 0);
-	BodyXMLReader r(obj, *w);
-	r.read(fname);
-
-	return 0;
-}
-#endif
-

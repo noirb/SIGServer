@@ -1151,32 +1151,6 @@ bool EntityXMLReader::read(const char *fname)
 // end(orig)
 #endif // }
 
-#ifdef EntityXMLReader_test
-
-#include <xercesc/util/PlatformUtils.hpp>
-
-int main(int argc, char **argv)
-{
-	dInitODE();
-	xercesc::XMLPlatformUtils::Initialize();
-
-	//
-	Parts::initCounter();
-	SSimObj::initCounter();
-
-	char *fname = "Desk.xml";
-	if (argc == 2) {
-		fname = argv[1];
-	}
-	SSimObj *obj = new SSimObj();
-	ODEWorld *w = ODEWorld::create(ODEWorld::Gravity(0, -9.8, 0), 0);
-	EntityXMLReader read("../conf", *obj, *w);
-	read(fname);
-	obj->dump();
-	return 0;
-}
-
-#endif
 
 #endif // USE_XERCES && EXEC_SIMULATION
 
