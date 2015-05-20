@@ -20,9 +20,6 @@
 #include "comm/encoder/DistanceSensor.h"
 //added by okamoto@tome (2011/12/19)
 #include "comm/encoder/MoveControl.h"
-#ifdef DEPRECATED
-#include "comm/encoder/ControllerCommand.h"
-#endif
 #include "comm/encoder/NameService.h"
 #include "comm/encoder/GetObjectNames.h"
 

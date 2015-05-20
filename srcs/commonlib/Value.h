@@ -75,11 +75,6 @@ private:
 	bool m_value;
 public:
 	BoolValue() : Value(VALUE_TYPE_BOOL) {;}
-#ifdef UNIT_TEST
-	BoolValue(bool b) : Value(VALUE_TYPE_BOOL) {
-		setBool(b);
-	}
-#endif
 
 private:
 	double getDouble() const { return (double)m_value; }
@@ -120,9 +115,7 @@ private:
 
 public:
 	DoubleValue() : Super(VALUE_TYPE_DOUBLE), m_value(0.0) {;}
-#ifdef UNIT_TEST
-	DoubleValue(double v) : Super(VALUE_TYPE_DOUBLE), m_value(v) {;}
-#endif
+
 private:
 	double getDouble() const { return m_value; }
 	int getInt() const { return (int)m_value; }

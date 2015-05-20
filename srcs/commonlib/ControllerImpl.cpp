@@ -27,17 +27,15 @@
 #include <pthread.h>
 #include <stdio.h>
 
-#include "CommandImpl.h"
-
 #ifdef WIN32
 #ifdef SIGVERSE_OGRE_CLIENT
 #include "SgvLog.h"
-#endif	// SIGVERSE_OGRE_CLIENT
+#endif // SIGVERSE_OGRE_CLIENT
 
 #ifdef IRWAS_OGRE_CLIENT
 #include "IrcApp.h"
-#endif	// IRWAS_OGRE_CLIENT
-#endif	// WIN32
+#endif // IRWAS_OGRE_CLIENT
+#endif // WIN32
 
 #ifdef WIN32
 
@@ -968,20 +966,6 @@ bool ControllerImpl::attach(const char *server, int port, const char *myname)
 	return false;
 }
 
-
-#ifdef DEPRECATED
-void ControllerImpl::moveTo(double x, double z, double velocity)
-{
-	MoveCommand cmd(myname(), Vector3d(x, 0, z), velocity);
-	send(cmd);
-}
-
-void ControllerImpl::send(Command &cmd)
-{
-	ControllerCommandEncoder enc(cmd);
-	enc.send(m_dataSock);
-}
-#endif
 
 
 CTSimObj & ControllerImpl::getCTSimObj()

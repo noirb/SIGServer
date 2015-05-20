@@ -212,15 +212,3 @@ ViewImage *ViewImage::createSample()
 #endif
 
 
-#ifdef ViewImage_test
-#include <string.h>
-
-int main()
-{
-	ViewImage *img = ViewImage::createSample();
-	img->saveAsWindowsBMP("foo.bmp");
-	return 0;
-}
-
-#endif
-

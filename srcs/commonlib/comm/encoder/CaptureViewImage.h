@@ -48,10 +48,6 @@ private:
 	char  m_dataHeaderBuf[DATA_HEADER_SIZE];
 public:
 	CaptureViewImageResult(ViewImage &img);
-#ifdef DEPRECATED
-	// deprecated 090303 yoshi
-	CaptureViewImageResult(const char *agentName, ViewImage &img);
-#endif
 
 private:
 	char * getDataHeader(int &);

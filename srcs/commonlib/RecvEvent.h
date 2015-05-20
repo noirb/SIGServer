@@ -21,7 +21,6 @@
 #include "comm/event/RequestDistanceSensor.h"
 #include "comm/event/ResultDistanceSensor.h"
 
-#include "comm/event/ControllerCommand.h"
 #include "comm/event/NameService.h"
 
 #include "comm/event/Attrs.h"

@@ -88,26 +88,3 @@ int Attribute::setBinary(char *data, int n)
 	return datalen;
 }
 
-
-#ifdef Attribute_test
-int main()
-{
-	{
-		Value *v = new StringValue();
-		v->setString("foo");
-		Attribute attr("namestring", v, "general");
-		int n;
-		char *p = attr.toBinary(n);
-
-		//		fwrite(p, 1, n, stdout);
-		Attribute decoded;
-		if (decoded.setBinary(p, n) < 0) {
-			fprintf(stderr, "cannot decode");
-			return 1;
-		}
-		printf("%s\n", decoded.toString());
-	}
-	return 0;
-
-}
-#endif

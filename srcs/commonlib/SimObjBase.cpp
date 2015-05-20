@@ -296,11 +296,6 @@ char *SimObjBase::toBinary(int &n)
 			int head = p - buf;
 			//Parts *parts = i->second;
 
-// added by sekikawa (2007/12/4)
-#ifdef TAKU_TEST
-			parts->calcAbsPos(this);
-#endif
-
 			int nn;
 			char *pp = parts->toBinary(nn);
 			if (head + nn >= bufsize) {

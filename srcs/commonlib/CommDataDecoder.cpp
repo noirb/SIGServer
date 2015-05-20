@@ -326,9 +326,6 @@ typedef ListenerInvokeDecoder<COMM_LOG_MSG,                      LogMsgEvent>   
 //added by okamoto@tome (2011/8/2)
 typedef ListenerInvokeDecoder<COMM_DISPLAY_TEXT,                 DisplayTextEvent>               CommDisplayTextD;
 
-#ifdef DEPRECATED
-typedef ListenerInvokeDecoder<COMM_CONTROLLER_COMMAND,           ControllerCommandEvent>         CtrlCmdD;
-#endif
 
 typedef ListenerInvokeDecoder<COMM_REQUEST_GET_OBJECT_NAMES,     RequestGetObjectNamesEvent>     ReqGetObjectNamesD;
 typedef ListenerInvokeDecoder<COMM_RESULT_GET_OBJECT_NAMES,      ResultGetObjectNamesEvent>      ResGetObjectNamesD;
@@ -518,9 +515,6 @@ CommDataDecoder::DecoderBase *CommDataDecoder::createDecoder(CommDataType type)
 	CREATE_L_DECODER(ReqGetPointedObjectD,   &CommDataDecoder::Listener::recvRequestGetPointedObject);
 	CREATE_L_DECODER(ResGetPointedObjectD,   &CommDataDecoder::Listener::recvResultGetPointedObject);
 
-#ifdef DEPRECATED
-	CREATE_L_DECODER(CtrlCmdD,               &CommDataDecoder::Listener::recvControllerCommand);
-#endif
 
 	CREATE_M_DECODER(InvokeOnActionD,        0);
 	CREATE_M_DECODER(InvokeOnInitD,          &ControllerInf::onInit);
@@ -531,66 +525,4 @@ CommDataDecoder::DecoderBase *CommDataDecoder::createDecoder(CommDataType type)
 	
 	return NULL;
 }
-
-#ifdef Decoder_test
-
-#undef getHeader
-
-#include "command/Move.h"
-#include "command/JointControl.h"
-#include "comm/encoder/ControllerCommand.h"
-#include "comm/Header.h"
-#include "Source.h"
-
-static Command * create()
-{
-	//return new MoveCommand("foo", Vector3d(1, 2, 3), 5);
-	JointControlCommand *cmd = new JointControlCommand("foo");
-	cmd->set("JOINT1", 1.0);
-	cmd->set("JOINT2", -1.0);
-	return cmd;
-}
-
-class Listener : public CommDataDecoder::Listener
-{
-	void recvControllerCommand(Source &from, ControllerCommandEvent &evt)
-	{
-		printf("recvControllerCommand called\n");
-	}
-};
-
-int main(int argc, char **argv)
-{
-	Source source(1, "localhost");
-	Command *cmd = create();
-	ControllerCommandEncoder enc(*cmd);
-	int n;
-	char *buf = enc.encode(0, n);
-	printf("data bytes = %d\n", n);
-	if (buf) {
-		CommDataDecoder decoder;
-		Listener l;
-		decoder.setListener(&l);
-		int read = 0;
-
-		int nn = 20;
-		while (read < n) {
-			int left = n - read;
-			char *p = buf + read;
-			printf("to read = %d\n", nn);
-			int ret = decoder.push(source, p, nn);
-			printf("ret = %d\n", ret);
-			if (ret == nn) {
-				break;
-			} else if (ret >= 0) {
-				read += ret;
-				nn += 20;
-			}
-		}
-	}
-
-	return 0;
-
-}
-#endif
 

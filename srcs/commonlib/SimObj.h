@@ -21,9 +21,6 @@
 #include "Value.h"
 
 class Vector3d;
-#ifdef DEPRECATED
-class Command;
-#endif
 
 class CommDataEncoder;
 class JointForce;
@@ -369,20 +366,8 @@ private:
 
 public:
 
-	
-#ifdef DEPRECATED
-	Command * createJointControlCommand();
-#endif // DEPRECATED
 
 #endif // CONTROLLER
-
-
-#ifdef DEPRECATED
-private:
-	typedef std::map<std::string, double> JointValueM;
-	JointValueM m_jointValues;
-#endif // DEPRECATED
-
 
 };
 

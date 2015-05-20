@@ -39,34 +39,3 @@ char * InvokeOnRecvSound::getData()
 
 END_NS_COMMDATA();
 
-#ifdef InvokeOnRecvSound_test
-
-#include "EncoderTest.h"
-#include "../controller/RecvSound.h"
-
-int main()
-{
-	typedef CommData::InvokeOnRecvSound Enc;
-	typedef RecvSoundEvent Evt;
-	typedef EncoderTest<Enc, Evt> Test;
-
-
-	RawSoundHeader h(2, 16000, 16, RAW_SOUND_LITTLE_ENDIAN); //TODO: Magic number
-	RawSound sound(h, 50000); //TODO: Magic number
-	Enc enc(1.000, "me", "you", sound);
-	Evt evt;
-	Test test;
-
-	if (test(enc, evt)) {
-		printf("time : %f\n", evt.time());
-		printf("callter : %s\n", evt.getCaller());
-		RawSound *s = evt.getRawSound();
-		RawSoundHeader &h = s->getHeader();
-		printf("channel num : %d\n", h.getChannelNum());
-		printf("sampling rate : %d\n", h.getSamplingRate());
-		printf("bits per sample : %d\n", h.getBitPerSample());
-	}
-	return 0;
-}
-
-#endif

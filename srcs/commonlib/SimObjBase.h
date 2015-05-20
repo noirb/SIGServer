@@ -344,9 +344,6 @@ private:
 
 public:
 	void dump();
-#ifdef UNIT_TEST
-	Operation ops() { return m_ops; }
-#endif
 #ifdef IMPLEMENT_DRAWER
 	void draw(DrawContext &c);
 #endif

@@ -143,24 +143,4 @@ Logger & Logger::get()
 	return l;
 }
 
-#ifdef Logger_test
-int main()
-{
-	LOG_STDOUT();
-	LOG_FILE("foo.log");
-
-	for (int i=0; i<5; i++) {
-		LOG_OUTPUT_LEVEL(i);
-		LOG_PRINT(LOG_ERRMSG, ("error[%d]", i));
-		LOG_PRINT(LOG_MSG, ("msg"));
-		LOG_PRINT(LOG_DEBUG1, ("debug1"));
-		LOG_PRINT(LOG_DEBUG2, ("debug2"));
-		LOG_PRINT(LOG_DEBUG3, ("debug3"));
-		LOG_PRINT(LOG_DISPLAY, ("display"));
-	}
-	return 0;
-}
-
-#endif
-
 

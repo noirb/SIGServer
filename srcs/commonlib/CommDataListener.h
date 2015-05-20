@@ -57,9 +57,6 @@ public:
 		
 	virtual void recvLogMsg                    (Source &from, LogMsgEvent &evt) = 0;
 
-#ifdef DEPRECATED
-	virtual void recvControllerCommand         (Source &from, ControllerCommandEvent &evt) = 0;
-#endif
 
 	virtual void recvRequestNSQuery            (Source &from, RequestNSQueryEvent &) = 0;
 	virtual void recvResultNSQuery             (Source &from, ResultNSQueryEvent &) = 0;
@@ -166,9 +163,7 @@ public:
 
 	//! COMM_LOG_MSG
 	virtual void recvDisplayText               (Source &from, DisplayTextEvent &evt) {};
-#ifdef DEPRECATED
-	virtual void recvControllerCommand         (Source &from, ControllerCommandEvent &evt) {};
-#endif
+
 	//! COMM_NS_QUERY_REQUEST
 	virtual void recvRequestNSQuery            (Source &from, RequestNSQueryEvent &) {};
 	//! COMM_NS_QUERY_RESULT

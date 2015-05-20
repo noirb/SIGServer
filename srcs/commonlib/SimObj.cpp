@@ -740,8 +740,6 @@ void SimObj::setCamLink(std::string link, int camID)
 
 #ifdef CONTROLLER
 
-#include "CommandImpl.h"
-
 
 // fixed a memory leak bug by Tetsunari Inamura on 2014-01-03
 Vector3d & SimObj::getPosition(Vector3d &v)
@@ -1984,23 +1982,6 @@ bool SimObj::sendRequest(std::string msg, int type)
 	return true;
 }
 
-
-#ifdef DEPRECATED
-Command * SimObj::createJointControlCommand()
-{
-	if (m_jointValues.size() == 0) { return 0; }
-	JointControlCommand *cmd = new JointControlCommand(name());
-
-	typedef JointValueM M;
-	M &m = m_jointValues;
-	for (M::iterator i=m.begin(); i!=m.end(); i++) {
-		std::string name = i->first;
-		double v = i->second;
-		cmd->set(name.c_str(), v);
-	}
-	return cmd;
-}
-#endif
 #endif //  CONTROLLER
 
 

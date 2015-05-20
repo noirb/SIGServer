@@ -244,12 +244,3 @@ void DoubleValue::setString(const char *str)
 	}
 }
 
-#ifdef Value_test
-int main()
-{
-	Value *v = new DoubleValue();
-	v->setString("[-1.0, 1.0]");
-	printf("%f\n", v->getDouble());
-	return 0;
-}
-#endif

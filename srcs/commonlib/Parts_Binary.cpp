@@ -22,11 +22,7 @@ char *	Parts::toBinary(int &n)
 	BINARY_SET_DATA_S_INCR(p, PartsType, m_type);
 	BINARY_SET_STRING_INCR(p, m_name.c_str());
 
-#ifdef TAKU_TEST
-	const dReal *pos = getAbsPosition();
-#else
 	const dReal *pos = getPosition();
-#endif
 
 	for (int i=0; i<3; i++) {
 		double v = pos[i];
@@ -35,11 +31,7 @@ char *	Parts::toBinary(int &n)
 	
 	BINARY_SET_DATA_S_INCR(p, RotationType, ROTATION_TYPE_QUATERNION);
 
-#ifdef TAKU_TEST
-	const dReal *q = getAbsQuaternion();
-#else
 	const dReal *q = getQuaternion();
-#endif
 
 	for (int i=0; i<4; i++) {
 		double v = q[i];

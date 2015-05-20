@@ -957,17 +957,6 @@ void Controller::updateObjs()
 		if (cnt > 0) {
 			enc.send(m_dataSock);
 		}
-
-#ifdef DEPRECATED
-		for (std::map<std::string, SimObj*>::iterator i=m_objs.begin(); i!=m_objs.end(); i++) {
-			SimObj *obj = i->second;
-			if (!obj) { continue; }
-			if (Command *cmd = obj->createJointControlCommand()) {
-				Super::send(*cmd);
-			}
-		}
-#endif
-
 	}
 }
 

@@ -38,13 +38,6 @@ private:
 private:
 	std::vector<std::string> m_detected;
 public:
-#ifdef DEPRECATED
-	DetectEntitiesResult(const char *controllerName)
-		: Encoder(COMM_RESULT_DETECT_ENTITIES, BUFSIZE) 
-	{
-		// setForwardTo(controllerName, false);
-	}
-#endif
 	DetectEntitiesResult()
 		: Encoder(COMM_RESULT_DETECT_ENTITIES, BUFSIZE) {}
 

@@ -410,11 +410,6 @@ public:
 	//! Send data
 	bool sendData(SOCKET sock, const char *msg, int size);
 
-#ifdef DEPRECATED
-	void send(Command &cmd);
-	void moveTo(double x, double z, double velocity);
-#endif
-
 	/**
 	 * @brief Boadcasts a message
 	 *

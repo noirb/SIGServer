@@ -17,10 +17,6 @@
 #include "ode/ode.h"
 #endif
 
-#ifdef UNIT_TEST
-#include <math.h>
-#include <float.h>
-#endif
 
 /**
  * @brief 3D position class
@@ -99,16 +95,6 @@ private:
 	}
 
 public:
-#ifdef UNIT_TEST
-	bool operator==(const Position &o) {
-		for (int i=0; i<DIMENSION; i++) {
-			if (fabs(m_values[i] - o.m_values[i]) > DBL_EPSILON) {
-				return false;
-			}
-		}
-		return true;
-	}
-#endif
 };
 
 
