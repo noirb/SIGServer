@@ -55,21 +55,6 @@ private:
 	};
 
 
-#ifdef CONTROLLER_LOCAL_TEST
-	// Just for a test codes
-	enum{
-		TEST_ONINIT = 0,
-		TEST_ONACTION
-	};
-
-	int m_testState;
-	//TestController controllerForTest;
-	DynamicsData testDynamics;
-	void test_Control();
-	void test_onInit();
-#endif
-
-
 public:
 	//! Constructor
 	WorldSimulator(ServerAcceptProc &accept, SimWorldProvider &provider, ServiceNameServer &ns);

@@ -57,10 +57,6 @@ public:
 	typedef std::vector<Connection*> ConC;
 private:
 	typedef std::vector<Source*> SourceC;
-#ifdef DEPRECATED
-	typedef std::queue<Command*> CommandQ;
-	typedef std::map<std::string, CommandQ*> CommandHash;
-#endif
 
 private:
 	int m_sock;
@@ -69,9 +65,6 @@ private:
 	std::vector<Connection *> m_messages; 
 	std::vector<Source*>      m_noneeded;
 	Locker  m_locker;
-#ifdef DEPRECATED
-	CommandHash m_commandH;
-#endif
 
 	bool m_startReq;
 private:
@@ -80,9 +73,6 @@ private:
 	SimWorldProvider              &m_wProvider;
 	ServiceNameServer             &m_ns;
 private:
-#ifdef DEPRECATED
-	CommandQ & getCommandQ(const char *name);
-#endif
 	void free_();
 public:
 	ServerAcceptProc(int sock, SimWorldProvider &provider, ServiceNameServer &ns) : m_sock(sock), m_wProvider(provider), m_ns(ns), m_startReq(true) {;}
@@ -122,10 +112,6 @@ public:
 	}
 	
 
-#ifdef DEPRECATED
-	void push(Command *cmd);
-	void applyCommands(SSimWorld &w);
-#endif
 	void eraseNoNeeded();
 	void run();
 
@@ -167,9 +153,6 @@ private:
 
 	void recvLogMsg                          (Source &from, LogMsgEvent &evt) {};
 
-#ifdef DEPRECATED
-	void recvControllerCommand               (Source &from, ControllerCommandEvent &evt) {}
-#endif
 
 	void recvRequestNSQuery                  (Source &from, RequestNSQueryEvent &) {}
 	void recvResultNSQuery                   (Source &from, ResultNSQueryEvent &) {}

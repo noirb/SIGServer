@@ -244,9 +244,6 @@ int main(int argc, char **argv)
 	bool setPort = false;
 
 	// Time measurement
-#ifdef TDEBUG  
-	file = fopen("tdebug.txt","w");
-#endif
 	int ch;
 	extern char *optarg;
 
@@ -420,9 +417,6 @@ int main(int argc, char **argv)
 
 	//thread.terminate();
 	//thread.wait();
-#ifdef TDEBUG
-	fclose(tdebug);
-#endif
 
 	exit(1);
 	//close(sock);

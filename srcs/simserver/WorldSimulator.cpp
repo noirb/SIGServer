@@ -29,9 +29,6 @@
 #include "X3DDB.h"
 //#include "SimObjBase.h"
 
-#ifdef DEPRECATED
-#include "Command.h"
-#endif
 #include "SimObj.h"
 #include "Joint.h"
 #include "ServiceNameServer.h"
@@ -491,15 +488,6 @@ private:
 		}
 	}
 
-#ifdef DEPRECATED
-	void recvControllerCommand(Source &from, ControllerCommandEvent &evt)
-	{
-		Command *cmd = evt.release();
-		if (cmd) {
-			m_accept.push(cmd);
-		}
-	}
-#endif
 	void recvRequestNSQuery(Source &from, RequestNSQueryEvent &evt)
 	{
 		LOG_DEBUG1(("WorldSimulator::recvRequestNSQuery"));
@@ -993,57 +981,8 @@ WorldSimulator::WorldSimulator(ServerAcceptProc &accept, SimWorldProvider &provi
 	// Instance of log transport class
 	m_log = new LogTransfer(accept);
 	LOG_LISTENER(m_log);
-
-#ifdef CONTROLLER_LOCAL_TEST
-	m_testState = TEST_ONINIT;
-#endif
 }
 
-#ifdef CONTROLLER_LOCAL_TEST
-void WorldSimulator::test_Control()
-{
-	switch(m_testState) {
-	case TEST_ONINIT:
-		test_onInit();
-		m_testState = TEST_ONACTION;
-		break;
-	case TEST_ONACTION:
-		break;
-	}
-}
-
-
-void WorldSimulator::test_onInit()
-{
-	printf("\t\t***onInit()\n");
-
-	testDynamics.setWheelProperty( "JOINT2",  // char   *leftWheelName,
-	                               0.0,       // double leftMotorConsumption,
-	                               10.0,      // double leftWheelRadius,
-	                               2000.0,    // double leftWheelMaxSpeed,
-	                               1.0,       // double leftWheelSpeedUnit,
-	                               0.0,       // double leftSlipNoise,
-	                               0.0,       // double leftEncoderNoise,
-	                               0.0,       // double leftEncoderResolution,
-	                               2000.0,    // double leftMaxForce,
-	                               "JOINT1",  // char   *rightWheelName,
-	                               0.0,       // double rightMotorConsumption,
-	                               10.0,      // double rightWheelRadius,
-	                               2000.0,    // double rightWheelMaxSpeed,
-	                               1.0,       // double rightWheelSpeedUnit,
-	                               0.0,       // double rightSlipNoise,
-	                               0.0,       // double rightEncoderNoise,
-	                               0.0,       // double rightEncoderResolution,
-	                               2000.0,    // double rightMaxForce,
-	                               100        // double axleLength
-	                               );
-
-	SSimWorld *w = m_provider.get();
-	SSimObj *my = w->getSObj("Robot1");
-}
-
-
-#endif
 
 
 #define FREE(P) if (P) { delete P; P = 0; }
@@ -2566,10 +2505,6 @@ bool WorldSimulator::runStep()
 
 	// Refer the instance of ODE simulation
 	SSimWorld *w = m_provider.get();
-  
-#ifdef DEPRECATED
-	m_accept.applyCommands(*w);
-#endif
 
 	bool autostep = w->getAutoStep();
 

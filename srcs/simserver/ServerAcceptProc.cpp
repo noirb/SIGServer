@@ -13,9 +13,6 @@
 #include "SSimObj.h"
 #include "binary.h"
 
-#ifdef DEPRECATED
-#include "Command.h"
-#endif
 
 #include "ServiceNameServer.h"
 
@@ -169,19 +166,6 @@ void ServerAcceptProc::run()
 
 void ServerAcceptProc::free_()
 {
-#ifdef DEPRECATED
-	typedef CommandHash H;
-	for (H::iterator i=m_commandH.begin(); i!=m_commandH.end(); i++) {
-		CommandQ *q = i->second;
-		while (!q->empty()) {
-			Command *c = q->front();
-			q->pop();
-			delete c;
-		}
-		delete q;
-	}
-	m_commandH.clear();
-#endif // DEPRECATED
 }
 
 void ServerAcceptProc::close()
@@ -343,57 +327,6 @@ void ServerAcceptProc::eraseNoNeeded()
 	m_noneeded.clear();
 }
 
-#ifdef DEPRECATED
-void ServerAcceptProc::applyCommands(SSimWorld &w)
-{
-	typedef CommandHash H;
-	H &h = m_commandH;
-	if (h.size() <= 0) { return; }
-	double t = w.time();
-	for (H::iterator i=h.begin(); i!=h.end(); i++) {
-		std::string name = i->first;
-		CommandQ *q = i->second;
-		if (q->empty()) { continue; }
-		Command *cmd = q->front();
-		SSimObj *obj = w.getSObj(name.c_str());
-		if (obj == 0) {
-			LOG_ERR(("no agent : \"%s\"", name.c_str()));
-			continue;
-		}
-		if (cmd->apply(t, *obj)) {
-			//cmd->dump();
-			q->pop();
-			delete cmd;
-		}
-	}
-}
-
-
-ServerAcceptProc::CommandQ & ServerAcceptProc::getCommandQ(const char *name)
-{
-	typedef CommandHash H;
-	H &h = m_commandH;
-
-	CommandQ *q = h[std::string(name)];
-	if (!q) {
-		q = new CommandQ;
-		h[std::string(name)] = q;
-	}
-	return *q;
-}
-
-void ServerAcceptProc::push(Command *cmd)
-{
-	CommandQ &q = getCommandQ(cmd->target());
-	if (q.size() >= 100) {
-		LOG_ERR(("Command to %s : Queue is full. Ignored", cmd->target()));
-		delete cmd;
-		return;
-	}
-	q.push(cmd);
-}
-
-#endif // DEPRECATED
 
 void ServerAcceptProc::recvRequestAttachController(Source &from, RequestAttachControllerEvent &evt)
 {

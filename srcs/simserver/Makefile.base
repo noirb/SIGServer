@@ -38,8 +38,6 @@ VIEW_SRCS = glview.cpp GLDraw.cpp SimViewPoint.cpp SimGround.cpp gltools.cpp
 SERVER_SRCS = SSimObj.cpp \
 	Joint.cpp \
 	ODEWorld.cpp \
-	Command_Move.cpp \
-	Command_JointControl.cpp \
 	SParts.cpp \
 	ServerAcceptProc.cpp \
 	LogTransfer.cpp \
@@ -63,12 +61,6 @@ glview: always
 	$(MAKE) "DIRS=$(CLIENT_SUBDIRS)" dirs
 	$(MAKE) srcs
 	$(LD) -o $@ $(CXXFLAGS) $(INCLUDE) $(DEFINE) $(OBJS) $(CLIENT_LDFLAGS) 
-
-xmltest : $(OBJS) testsrc/WorldXMLReaderTest.cpp
-	$(LD) -o $@ $(CXXFLAGS) -I. -D USE_XERCES testsrc/WorldXMLReaderTest.cpp $(OBJS) $(LDFLAGS) 
-
-commtest: $(OBJS) testsrc/CommDataEncoder.cpp 
-	$(LD) -o $@ $(CXXFLAGS) -I. testsrc/CommDataCommDataEncoderTest.cpp $(OBJS) $(LDFLAGS)
 
 simserver: always
 	$(MAKE) "DIRS=$(SERVER_SUBDIRS)" dirs

@@ -4,8 +4,6 @@ bin_SCRIPTS = sigserver.sh sigkill.sh sigcreate.sh
 sigserver_SOURCES = SSimObj.cpp \
 	Joint.cpp \
 	ODEWorld.cpp \
-	Command_Move.cpp \
-	Command_JointControl.cpp \
 	SParts.cpp \
 	ServerAcceptProc.cpp \
 	LogTransfer.cpp \

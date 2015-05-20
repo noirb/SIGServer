@@ -185,17 +185,6 @@ void SParts::calcPosition(Joint *currj, Joint *nextj, const Vector3d &anchorv, c
 		if (currj) {
 			rr *= currj->getRotation();
 		}
-#ifdef DEBUG
-		{
-			const dReal *q = currj->getRotation().q();
-			DUMP(("currj q = (%f, %f, %f, %f)\n", q[0], q[1], q[2], q[3]));
-		}
-
-		{
-			const dReal *q = rr.q();
-			DUMP(("rr q = (%f, %f, %f, %f)\n", q[0], q[1], q[2], q[3]));
-		}
-#endif
 
 		v.rotate(rr);
 		DUMP(("v2 = (%f, %f, %f)\n", v.x(), v.y(), v.z()));
