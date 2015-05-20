@@ -9,9 +9,9 @@ INCLUDE = -I ./
 #CXXFLAGS = -Wall -g
 CXXFLAGS = $(CFLAGS) $(DEFINE) $(INCLUDE)
 
-SUBDIRS = comm comm/encoder comm/event comm/controller command ct
+SUBDIRS = comm comm/encoder comm/event comm/controller ct
 
-SUBDIRS_OBJS = comm/encoder/*.o comm/event/*.o comm/controller/*.o comm/*.o command/*.o ct/*.o
+SUBDIRS_OBJS = comm/encoder/*.o comm/event/*.o comm/controller/*.o comm/*.o ct/*.o
 
 ARCHIVE_A = libirwas-common.a
 ARCHIVE_SO = libirwas-common.so
