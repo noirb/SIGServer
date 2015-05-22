@@ -1,13 +1,14 @@
 /*
  * Modified by sekikawa on 2007-10-12
  * Modified by yahara   on 2012-02-27
+ * Modified by yamada@tome on 2015-05-20
  */
 
 #ifndef ViewImage_h
 #define ViewImage_h
 
 #include <stdlib.h>
-
+#include <string.h>
 #include "ViewImageInfo.h"
 
 class ViewImage
@@ -42,7 +43,11 @@ public:
 	int    getWidth()  const { return m_info.getWidth(); }
 	int    getHeight() const { return m_info.getHeight(); }
 	char  *getBuffer() const { return m_buf; }
-	void   setBuffer(char *buf) { m_buf = buf; }
+	void   copyBuffer(char *buf, int size)
+	{
+		if(size>m_buflen){ size=m_buflen; };
+		memcpy(m_buf, buf, size);
+	}
 	int    getBufferLength() const { return m_buflen; }
 	void   setFOVy(double fov){ m_fov = fov;} 
 	void   setAspectRatio(double ar){ m_ar = ar;}

@@ -249,7 +249,7 @@ ViewImage* ViewService::captureView(int camID, ColorBitType ctype, ImageDataSize
 
 	if (!recvData(m_clientSock, tmp, 4)) {
 		LOG_ERR(("captureView: cannot get capture data [%s, %d].", __FILE__, __LINE__));
-		return false;
+		return NULL;
 	}
 
 	// Header information
@@ -274,7 +274,7 @@ ViewImage* ViewService::captureView(int camID, ColorBitType ctype, ImageDataSize
 	if (!recvData(m_clientSock, recvBuff, ssize)) {
 		//LOG_ERR(("disconnected service [%s]", m_name.c_str()));
 		delete [] recvBuff;
-		return false;
+		return NULL;
 	}
 
 	ColorBitType cb;
@@ -291,7 +291,9 @@ ViewImage* ViewService::captureView(int camID, ColorBitType ctype, ImageDataSize
 	// Create instance of the image class
 	ViewImage* tmp_img = new ViewImage(viewinfo);
 
-	tmp_img->setBuffer(recvBuff); //TODO: Danger: buffer created in this function is given to others
+	tmp_img->copyBuffer(recvBuff, ssize);
+	delete [] recvBuff;
+
 	return tmp_img;
 	// CAUTION: Delete of the object should be done by users
 }
@@ -419,7 +421,7 @@ ViewImage* ViewService::distanceSensor1D(double start, double end, int camID, Co
 
 	if (!recvData(m_clientSock, tmp, 4)) { //TODO: Magic number
 		LOG_ERR(("distanceSensor1D: cannot get distance data [%s, %d].", __FILE__, __LINE__));
-		return false;
+		return NULL;
 	}
 
 	// Header information
@@ -460,7 +462,9 @@ ViewImage* ViewService::distanceSensor1D(double start, double end, int camID, Co
 	// Create instance of the image class
 	ViewImage* tmp_img = new ViewImage(viewinfo);
 
-	tmp_img->setBuffer(recvBuff); //TODO: Danger: buffer created in this function is given to others
+	tmp_img->copyBuffer(recvBuff, ssize);
+	delete [] recvBuff;
+
 	return tmp_img;
 }
 
@@ -476,7 +480,7 @@ ViewImage* ViewService::distanceSensor2D(double start, double end, int camID, Co
 
 	if (!recvData(m_clientSock, tmp, 4)) {
 		LOG_ERR(("distanceSensor2D: cannot get distance data [%s, %d].", __FILE__, __LINE__));
-		return false;
+		return NULL;
 	}
 
 	// Header information
@@ -518,7 +522,9 @@ ViewImage* ViewService::distanceSensor2D(double start, double end, int camID, Co
 	// Create instance of the image class
 	ViewImage* tmp_img = new ViewImage(viewinfo);
 
-	tmp_img->setBuffer(recvBuff); //TODO: Danger: buffer created in this function is given to others
+	tmp_img->copyBuffer(recvBuff, ssize);
+	delete [] recvBuff;
+
 	return tmp_img;
 	// Delete of the object should be done by users
 }
