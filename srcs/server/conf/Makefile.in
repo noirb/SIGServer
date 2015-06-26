@@ -180,6 +180,7 @@ PACKAGE_TARNAME = @PACKAGE_TARNAME@
 PACKAGE_URL = @PACKAGE_URL@
 PACKAGE_VERSION = @PACKAGE_VERSION@
 PATH_SEPARATOR = @PATH_SEPARATOR@
+RANLIB = @RANLIB@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
 STRIP = @STRIP@
@@ -202,6 +203,7 @@ builddir = @builddir@
 confdir = @confdir@
 datadir = @datadir@
 datarootdir = @datarootdir@
+dictkitdir = @dictkitdir@
 docdir = @docdir@
 dvidir = @dvidir@
 exec_prefix = @exec_prefix@
@@ -663,3 +665,4 @@ uninstall-am: uninstall-sigdatashapeDATA uninstall-sigdataxmlDATA
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:
+
