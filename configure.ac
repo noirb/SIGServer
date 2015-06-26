@@ -59,35 +59,6 @@ AC_CHECK_LIB([pthread], [main])
 
 # Checks for library functions.
 
-#
-# for julius
-#
-
-AC_ARG_WITH(julius,
-	AC_HELP_STRING([--with-julius=@<:@juliusbin@:>@], [julius executable]),
-	juliusbin="$withval", juliusbin="")
-AC_SUBST(juliusbin)
-
-AC_ARG_WITH(dictkit,
-	AC_HELP_STRING([--with-dictkit=@<:@dictkitpath@:>@], [julius dictation kit directory]),
-	dictkitdir="$withval", dictkitdir="")
-AC_SUBST(dictkitdir)
-
-juliusbin="/usr/bin"
-tmp_dictkitdir=`find /usr/local -name "fast.jconf" | sed -n '$p'`
-dictkitdir=${tmp_dictkitdir%/*}
-
-if ! test -z $juliusbin
-then
-	AC_CHECK_FILE($juliusbin,,AC_MSG_ERROR(Cannot find julius executable. Use --with-julius option))
-	if ! test -z $dictkitdir
-	then
-		AC_CHECK_FILE("$dictkitdir/fast.jconf",,AC_MSG_ERROR(Cannot find julius dictation kit. Use --with-dictkit option))
-		AC_CHECK_FILE("$dictkitdir/model",,AC_MSG_ERROR(Cannot find julius dictation kit. Use --with-dictkit option))
-	fi
-
-fi
-
 
 #
 # for jdk libjvm.so
@@ -118,9 +89,6 @@ AC_CONFIG_FILES([
 		srcs/model/include/Makefile
 		srcs/model/samples/export/Makefile
 		srcs/model/samples/export/Makefile.controller
-		srcs/julius-sp/Makefile
-		srcs/julius-sp/sigjsp.sh
-		srcs/julius-sp/sigjsp.conf
 		])
              
 AC_OUTPUT

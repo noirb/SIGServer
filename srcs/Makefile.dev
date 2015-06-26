@@ -3,7 +3,7 @@ MAKEFILE = Makefile.dev
 SHELL = /bin/sh
 #OBJDIRS = server glview
 OBJDIRS = server
-TARGETDIRS = $(OBJDIRS) model julius-sp
+TARGETDIRS = $(OBJDIRS) model 
 SRCDIRS = ./ ./commonlib ./readconf
 X3DDIR = ./x3d/parser/cpp/X3DParser
 
@@ -14,7 +14,6 @@ all: compile-x3d
 init:
 	$(MAKE) -f $(MAKEFILE) init-objdirs
 	$(MAKE) -f $(MAKEFILE) init-model
-	$(MAKE) -f $(MAKEFILE) init-julius-sp
 
 init-objdirs:
 	@echo init directory; \
@@ -45,9 +44,6 @@ init-model:
 	$(MAKE) -f $(MAKEFILE) init-commonlib "DIR=model"
 	$(MAKE) -C model/include -f Makefile.link
 
-init-julius-sp:
-	$(MAKE) -f $(MAKEFILE) init-commonlib "DIR=julius-sp" 
-
 compile-x3d:
 	$(MAKE) -C $(X3DDIR)
 
@@ -62,5 +58,4 @@ clean:
 clean-all:
 	$(MAKE) -C model -f Makefile.dev clean-all
 	$(MAKE) -C commonlib clean
-	rm -rf julius-sp/commonlib
 	rm -rf $(OBJDIRS)

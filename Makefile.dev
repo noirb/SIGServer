@@ -11,6 +11,6 @@ release:
 	$(MAKE) -C man/controller
 
 clean-all:
-	rm -rf autom4te.cache .deps srcs/server srcs/model/commonlib srcs/julius-sp/commonlib
+	rm -rf autom4te.cache .deps srcs/server srcs/model/commonlib 
 	rm -f install-sh missing stamp-h1 depcomp aclocal.m4 config.h config.h.in config.log config.status 
 	rm -f Makefile configure Makefile.dep Makefile.in *.log config.guess config.sub
