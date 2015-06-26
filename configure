@@ -571,7 +571,6 @@ LTLIBOBJS
 LIBOBJS
 LIBJVMDIR
 dictkitdir
-juliusbin
 X3DPARSER_CFG
 samplesdir
 confdir
@@ -670,8 +669,6 @@ ac_subst_files=''
 ac_user_opts='
 enable_option_checking
 enable_dependency_tracking
-with_julius
-with_dictkit
 with_jvm
 '
       ac_precious_vars='build_alias
@@ -1307,10 +1304,6 @@ Optional Features:
 Optional Packages:
   --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
   --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)
-  --with-julius=[juliusbin]
-                          julius executable
-  --with-dictkit=[dictkitpath]
-                          julius dictation kit directory
   --with-jvm=[PATH]       jdk path for libjvm.so(ex.
                           <jdkdir>/jre/lib/<arch>/server)
 
@@ -3973,7 +3966,7 @@ fi
 
 
 
-ac_config_files="$ac_config_files Makefile jar/Makefile srcs/Makefile srcs/server/Makefile srcs/server/sigserver.sh srcs/server/X3DParser.cfg srcs/server/conf/Makefile srcs/model/Makefile srcs/model/siggenac srcs/model/include/Makefile srcs/model/samples/export/Makefile srcs/model/samples/export/Makefile.controller srcs/julius-sp/Makefile srcs/julius-sp/sigjsp.sh srcs/julius-sp/sigjsp.conf"
+ac_config_files="$ac_config_files Makefile jar/Makefile srcs/Makefile srcs/server/Makefile srcs/server/sigserver.sh srcs/server/X3DParser.cfg srcs/server/conf/Makefile srcs/model/Makefile srcs/model/siggenac srcs/model/include/Makefile srcs/model/samples/export/Makefile srcs/model/samples/export/Makefile.controller"
 
 
 cat >confcache <<\_ACEOF
@@ -4723,9 +4716,6 @@ do
     "srcs/model/include/Makefile") CONFIG_FILES="$CONFIG_FILES srcs/model/include/Makefile" ;;
     "srcs/model/samples/export/Makefile") CONFIG_FILES="$CONFIG_FILES srcs/model/samples/export/Makefile" ;;
     "srcs/model/samples/export/Makefile.controller") CONFIG_FILES="$CONFIG_FILES srcs/model/samples/export/Makefile.controller" ;;
-    "srcs/julius-sp/Makefile") CONFIG_FILES="$CONFIG_FILES srcs/julius-sp/Makefile" ;;
-    "srcs/julius-sp/sigjsp.sh") CONFIG_FILES="$CONFIG_FILES srcs/julius-sp/sigjsp.sh" ;;
-    "srcs/julius-sp/sigjsp.conf") CONFIG_FILES="$CONFIG_FILES srcs/julius-sp/sigjsp.conf" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
   esac
