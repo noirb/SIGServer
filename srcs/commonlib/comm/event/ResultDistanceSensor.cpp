@@ -10,7 +10,7 @@ bool ResultDistanceSensorEvent::set(int packetNum, int seq, char *data, int n)
 {
 	char *p = data;
 
-	unsigned char dis = BINARY_GET_DATA_S_INCR(p, short);
+	unsigned char dis = (unsigned char)BINARY_GET_DATA_S_INCR(p, short);
 	m_distance = dis;
 	return true;
 }

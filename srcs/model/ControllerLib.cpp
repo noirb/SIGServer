@@ -3,13 +3,8 @@
  */
 
 #include "ControllerLib.h"
-#include "Controller.h"
-#include "modelerr.h"
 
-#include <dlfcn.h>
-#include <assert.h>
-
-ControllerLib::ControllerLib() : m_lib(0), m_model(0), m_create(0)
+ControllerLib::ControllerLib() : m_lib(NULL), m_model(NULL), m_create(NULL)
 {
 }
 
@@ -18,13 +13,18 @@ ControllerLib::~ControllerLib()
 	delete m_model;
 	m_model = 0;
 	if (m_lib) {
+#ifndef WIN32
 		dlclose(m_lib);
-		m_lib = 0;
+#else
+		FreeLibrary(m_lib);
+#endif
+		m_lib = NULL;
 	}
 }
 
 bool ControllerLib::load(const char *libname)
 {
+#ifndef WIN32
 	void *lib = dlopen(libname, RTLD_LAZY);
 	if (!lib) {
 		err(("Loading shared library : %s\n", dlerror()));
@@ -37,6 +37,20 @@ bool ControllerLib::load(const char *libname)
 		dlclose(lib);
 		return false;
 	}
+#else
+	HMODULE lib = LoadLibrary(libname);
+	if(lib == NULL){
+		err(("Loading shared library : %s(%d)\n", libname, GetLastError()));
+		return false;
+	}
+	m_create = (CreateFunc)GetProcAddress(lib, "createController");
+	if (m_create == NULL) {
+		err(("cannot load create symbol\n"));
+		FreeLibrary(lib);
+		return false;
+	}
+
+#endif
 	m_lib = lib;
 
 	return true;

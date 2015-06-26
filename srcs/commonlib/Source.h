@@ -3,8 +3,8 @@
  * Added comments by Tetsunari Inamura on 2014-02-28
  */
 
-#ifndef Source_h
-#define Source_h
+#ifndef __Source_h__
+#define __Source_h__
 
 #include "systemdef.h"
 
@@ -18,7 +18,7 @@
 #endif
 
 #ifdef EXEC_SIMULATION
-#include <pthread.h>
+#include "pthread_dep.h"
 
 class CommDataEncoder;
 #endif
@@ -173,6 +173,6 @@ public:
 	}
 };
 
-#endif // Source_h
+#endif // __Source_h__
  
 

@@ -167,8 +167,9 @@ private:
 
 #define NOFILE_ERR(FNAME) { this->failed++; LOG_ERR(("no such file : \"%s\"", FNAME)); }
 
-struct Handler : public xercesc::HandlerBase
+class Handler : public xercesc::HandlerBase
 {
+public:
 	typedef xercesc::HandlerBase Super;
 
 	std::string  m_fname;
@@ -249,7 +250,11 @@ struct Handler : public xercesc::HandlerBase
 
 #if 1
 // FIX20110421(ExpSS)
+#ifndef WIN32
 	void characters(const XMLCh *const chars, const unsigned int length)
+#else
+	void characters(const XMLCh *const chars, const XMLSize_t length)
+#endif
 	{
 		char *text = XMLString::transcode(chars);
 

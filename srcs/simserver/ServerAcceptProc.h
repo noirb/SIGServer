@@ -30,8 +30,9 @@ class SSimWorld;
 class SimWorldProvider;
 class ServiceNameServer;
 
-struct Connection
+class Connection
 {
+public:
 	Source *source;
 
 	CommDataDecoder decoder;

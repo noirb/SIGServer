@@ -5,11 +5,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
+#ifndef WIN32
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <netdb.h>
 #include <unistd.h>
+
+#define SOCKET int
+#endif
 #include "binary.h"
 
 int main(int argc, char **argv)
@@ -37,8 +41,17 @@ int main(int argc, char **argv)
 	}
 
 	struct sockaddr_in server;
-	int sock;
-	int n;
+	SOCKET sock;
+	
+#ifdef WIN32
+	WSADATA data;
+	int result = WSAStartup(MAKEWORD(2, 0), &data);
+
+	if (result < 0){
+		fprintf(stderr, "%d\n", GetLastError());
+		exit(1);
+	}
+#endif
 
 	sock = socket(AF_INET, SOCK_STREAM, 0);
 
@@ -55,7 +68,7 @@ int main(int argc, char **argv)
 		}
 		server.sin_addr.s_addr = *(unsigned int *)host->h_addr_list[0];
 	}
-  
+
 	// Connecting to the server
 	int ret = connect(sock, (struct sockaddr *)&server, sizeof(server));
 	if (ret < 0) {
@@ -67,8 +80,11 @@ int main(int argc, char **argv)
 
 	char sendBuf[4];
 	char *p = sendBuf;
-
+#ifndef WIN32
 	sleep(1);
+#else
+	Sleep(1000);
+#endif
 
 	//TODO: Magic numbers around the following lines should be removed
 	BINARY_SET_DATA_S_INCR(p, unsigned short, 2);

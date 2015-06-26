@@ -1,8 +1,8 @@
 #ifndef _CX3DFIELD_H_
 #define _CX3DFIELD_H_
 
-//#include "CX3DNode.h"
-class CX3DNode;
+#include "CX3DNode.h"
+//class CX3DNode;
 
 //#include "CVRMLFieldData.h"
 class CVRMLFieldData;

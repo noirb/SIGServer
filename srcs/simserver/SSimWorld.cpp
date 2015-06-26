@@ -84,7 +84,7 @@ void SSimWorld::nextStep(double stepsize, bool quick)
 	}
 }
 
-SSimWorld::NameC & SSimWorld::copyNames(bool needEntities, NameC &v)
+void SSimWorld::copyNames(bool needEntities, NameC &v)
 {
 	for (std::map<std::string, SimObjBase*>::iterator i=m_objs.begin(); i!=m_objs.end(); i++) {
 

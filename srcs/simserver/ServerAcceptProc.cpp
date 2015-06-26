@@ -15,18 +15,26 @@
 
 
 #include "ServiceNameServer.h"
-
+#ifndef WIN32
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <sys/time.h>
+#endif
+
+#ifndef MSG_DONTWAIT
+#define MSG_DONTWAIT 0
+#endif
 
 void ServerAcceptProc::run()
 {
 	for (;;) {
 		struct sockaddr_in addr;
+#ifndef WIN32
 		socklen_t len;
-
+#else
+		int len = sizeof(struct sockaddr_in);
+#endif
 		// waiting for the connection request
 		int s = accept(m_sock, (sockaddr*)&addr, &len);
 		if (s < 0) {
@@ -38,7 +46,11 @@ void ServerAcceptProc::run()
 		char buf[1024]; // TODO: Magic number should be removed
 
 		// Recieving message
+#ifndef WIN32
 		int r = read(s, buf, sizeof(buf));
+#else
+		int r = recv(s, buf, sizeof(buf), 0);
+#endif
 		if (r <= 0) { continue; }
 
 		Source *src = new Source(s, hostname);
@@ -68,7 +80,9 @@ void ServerAcceptProc::run()
 			char* p = buf;
 			char *tmp = strtok(p,",");
 			std::string sname = strtok(NULL,",");
+#ifndef WIN32
 			sname[sname.size()] = '\0';
+#endif
 			
 			const char *name = sname.c_str();
 			
@@ -110,12 +124,12 @@ void ServerAcceptProc::run()
 				}
 			}
 
-			char result[1];	
+//			char result[1];
 			if (same_name) {
 				LOG_ERR(("Service name \"%s\" already exist.", sname.c_str()));
 				LOG_ERR(("Service: \"%s\" cannot connect", sname.c_str()));
 
-				BINARY_SET_DATA_S(result, unsigned char, 0); 
+//				BINARY_SET_DATA_S(result, unsigned char, 0);
 				//BINARY_SET_DATA_S_INCR(p, unsigned short, 4); 	  
 				//sleep(1000);
 				send(s, "FAIL", 4, MSG_DONTWAIT);
@@ -125,7 +139,7 @@ void ServerAcceptProc::run()
 				m_messages.push_back(con);
 				if(sname != "SIGEND")
 					LOG_SYS(("Service: \"%s\" is available", sname.c_str()));
-				BINARY_SET_DATA_S(result, unsigned char, 1); 
+//				BINARY_SET_DATA_S(result, unsigned char, 1);
 				send(s, "SUCC", 4, MSG_DONTWAIT);
 			}
 		} 
@@ -144,7 +158,11 @@ void ServerAcceptProc::run()
 
 					//LOG_SYS(("data forwarded"));
 					delete src;
+#ifndef WIN32
 					::close(s);
+#else
+					closesocket(s);
+#endif
 					continue;
 				}
 	  
@@ -157,7 +175,11 @@ void ServerAcceptProc::run()
 			} else {
 				LOG_SYS(("%s connection refused : no type", src->hostname()));
 				delete src;
+#ifndef WIN32
 				::close(s);
+#else
+				closesocket(s);
+#endif
 			}
 		}
 	}
@@ -333,7 +355,11 @@ void ServerAcceptProc::recvRequestAttachController(Source &from, RequestAttachCo
 	//added by okamoto@tome (2011/12/13)
 	if(m_startReq)
 	{
+#ifndef WIN32
 		sleep(1);
+#else
+		Sleep(1000);
+#endif
 		m_startReq = false;
 	}
 

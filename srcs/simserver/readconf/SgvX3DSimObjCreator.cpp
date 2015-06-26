@@ -173,13 +173,13 @@ namespace Sgv
 				SSimObj &obj = getBodyFactory().getSObj();
 
 				Sgv::Log::println("*** jointNames ***");
-				for (int i=0; i<jointNames.size(); i++)
+				for (unsigned int i=0; i<jointNames.size(); i++)
 				{
 					Sgv::Log::println("[%d] %s", i, jointNames[i].c_str());
 				}
 
 				Sgv::Log::println("*** partsNames ***");
-				for (int i=0; i<partsNames.size(); i++)
+				for (unsigned int i=0; i<partsNames.size(); i++)
 				{
 					Sgv::Log::println("[%d] %s", i, partsNames[i].c_str());
 				}
@@ -623,6 +623,7 @@ q
 		      createSSimObjFromOpenHRP_JointNode(node, NULL, pJointNode, /* NULL,*/ jointNames, partsNames, indent+1);
 		    }
 		}
+		return joint;
 	}
 
 	SParts * X3DSimObjCreator::createSSimObjFromOpenHRP_SegmentNode(
@@ -1357,7 +1358,7 @@ DUMP(("\tsize (sx=\"%f\" sy=\"%f\" sz=\"%f\")\n", sse->sx(), sse->sy(), sse->sz(
 				strcpy(buf, "D");
 				break;
 
-			defalut:
+			default:
 				strcpy(buf, "U");	// unknown
 		}
 

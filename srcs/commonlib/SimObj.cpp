@@ -137,7 +137,7 @@ int SimObj::setBinary(char *data, int size)
 	BINARY_SKIP_STRING(p); // name
 	BINARY_SKIP_STRING(p); // class
 	short attached  = BINARY_GET_DATA_S_INCR(p, short);
-	m_attached = (bool)(attached);
+	m_attached = (bool)(attached != false);
 	m_ops = BINARY_GET_DATA_L_INCR(p, Operation);
 
 	DataOffsetType offset;
@@ -584,6 +584,7 @@ bool SimObj::setCamDir(Vector3d vec,int camID)
 		return false;
 	}
 	delete [] sendBuff;
+	return true;
 }
 
 
@@ -745,9 +746,9 @@ void SimObj::setCamLink(std::string link, int camID)
 Vector3d & SimObj::getPosition(Vector3d &v)
 {
 	Controller *con = (Controller*)m_sender;
-	ControllerImpl *conim = (ControllerImpl*)con;
+	//ControllerImpl *conim = (ControllerImpl*)con;
 
-	SOCKET sock = conim->getDataSock();
+	SOCKET sock = con->getDataSock();
 
 	std::string msg;
 	const char *myName = name();
@@ -762,7 +763,6 @@ Vector3d & SimObj::getPosition(Vector3d &v)
 	BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
 
 	memcpy(p, msg.c_str(), msg.size());
-
 	if (!SocketUtil::sendData(sock, sendBuff, sendSize)) {
 		LOG_ERR(("getPosition: cannot send request"));
 		delete [] sendBuff;
@@ -1926,6 +1926,8 @@ bool SimObj::getPointingVector(Vector3d &vec, int lrFrag)
 		return getPointingVector(vec, "LARM_JOINT4", "LARM_JOINT7");
 	else if (lrFrag == 1)
 		return getPointingVector(vec, "RARM_JOINT4", "RARM_JOINT7");
+
+	return false;
 }
 
 

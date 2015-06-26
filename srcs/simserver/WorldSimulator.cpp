@@ -38,7 +38,38 @@
 
 #include <sys/types.h>
 #include <errno.h>
+
+#ifndef WIN32
 #include <sys/time.h>
+#else
+
+
+void gettimeofday(struct timeval *tv, struct timezone *tz);
+
+int wait_socket_to_read(SOCKET sock, int msec)
+{
+	int nfds;
+	fd_set socks;
+	int stat;
+	struct timeval tv;
+
+	FD_ZERO(&socks);
+	FD_SET(sock, &socks);
+	nfds = sock+1;
+
+	tv.tv_sec = msec / 1000;
+	tv.tv_usec = (msec - tv.tv_sec * 1000) * 1000;
+
+	stat = select(nfds, &socks, 0, 0, &tv);
+
+	return stat;
+}
+
+#endif
+
+#ifndef MSG_DONTWAIT
+#define MSG_DONTWAIT	0
+#endif
 
 static bool s_restart = false;
 
@@ -139,7 +170,8 @@ private:
 
 		const std::vector<SimObj *> &objs = evt.objs();
 
-		for (std::vector<SimObj *>::const_iterator i=objs.begin(); i!=objs.end(); i++) {
+		for (std::vector<SimObj *>::const_iterator i=objs.begin(); i!=objs.end(); i++)
+		{
 			SimObj *changed = *i;
 			SSimObj *obj = w->getSObj(changed->name());
 			assert(obj);
@@ -544,7 +576,7 @@ private:
 		}
 
 		//set OffsetQuaternion
-		bool offset = evt.getoffset();
+		bool offset = (evt.getoffset() != false);
 		if (offset == true) {
 			Vector3d ini;
 			j->setOffsetQuaternion(evt.getqw(), evt.getqx(), evt.getqy(), evt.getqz(),ini);
@@ -1000,12 +1032,18 @@ static void wait(int usec)
 {
 	// 070807 yoshi
 	// sleep based on select. usleep is not accurate
+#ifndef WIN32
 	fd_set	fds;
 	FD_ZERO(&fds);
 	struct timeval tv;
 	tv.tv_sec = 0;
 	tv.tv_usec = usec;
 	select(0, &fds, 0, 0, &tv);
+#else
+	int msec = usec/1000;
+	if(msec > 0){ Sleep(msec); }
+	return;
+#endif
 }
 
 std::string WorldSimulator::DoubleToString(double x)
@@ -1033,17 +1071,29 @@ bool WorldSimulator::sendData(SOCKET sock, const char* msg, int size)
 
 	// Response to a case in which the data could not be sent once
 	while(1) {
-
+#ifndef WIN32
 		int r = send(sock, msg + sended, size - sended, MSG_DONTWAIT);
 		// Sending failed
 		if (r < 0) {
 			if ( errno == EAGAIN || errno == EWOULDBLOCK ) {
+
 				usleep(100);
+
 				continue;
 			}
 			LOG_ERR(("Failed to send data. erro[%d] [%s:%d]", r,  __FILE__, __LINE__ ));
 			return false;
 		}
+#else
+		int r = send(sock, msg + sended, size - sended, 0);
+		// Sending failed
+		if ( r ==  SOCKET_ERROR) {
+			int err = WSAGetLastError();
+			fprintf(stderr, "Error in sendData with error ; %d\n", err);
+			LOG_ERR(("Failed to send data. erro[%d] [%s:%d]", r,  __FILE__, __LINE__ ));
+			return false;
+		}
+#endif
 		// The number of bytes already sent
 		sended += r;
 
@@ -1053,6 +1103,25 @@ bool WorldSimulator::sendData(SOCKET sock, const char* msg, int size)
 	return true;
 }
 
+int recv_nonblock(SOCKET sock, char *msg, int size)
+{
+#ifndef WIN32
+	return recv(sock, msg, size, MSG_DONTWAIT);
+#else
+	int ret = wait_socket_to_read(sock, 1);
+
+	if(ret == 0){
+		return -1;
+	}else if (ret == SOCKET_ERROR){
+		return 0;
+	}else if (ret > 0){
+		return recv(sock, msg, size, 0);
+	}else{
+		fprintf(stderr, "== Unknown error ==\n");
+	}
+	return 0;
+#endif
+}
 
 bool WorldSimulator::recvData(SOCKET sock, char* msg, int size)
 {
@@ -1061,17 +1130,31 @@ bool WorldSimulator::recvData(SOCKET sock, char* msg, int size)
 	// Response to a case in which the data could not be sent once
 	while(1) {
 		// Sending
-		int r = recv(sock, msg + recieved, size - recieved, MSG_DONTWAIT);
-		// Sending failed
+		int r = recv_nonblock(sock, msg + recieved, size - recieved);
+
+#ifndef WIN32
 		if (r < 0) {
+
 			// In case the socket is not available
 			if ( errno == EAGAIN || errno == EWOULDBLOCK ) {
+
 				usleep(1000);
+
 				continue;
 			}
+
 			LOG_ERR(("Failed to recieve data. erro[%d]",r));
 			return false;
 		}
+#else
+		if (r < 0) {
+			Sleep(1);
+
+			continue;
+//			LOG_ERR(("Failed to recieve data. erro[%d]",r));
+//			return false;
+		}
+#endif
 		// The number of bytes already sent
 		recieved += r;
 		// Check whether all of the data is sent
@@ -2415,7 +2498,7 @@ bool WorldSimulator::sendMoveEntities(SOCKET sock, bool update)
 		}//     while(enit != enmap.end()) {
 
 		int nbyte = 0;
-		char bsize[6];
+//		char bsize[6];
 
 		msg = IntToString(entSize) + msg;
 
@@ -2469,6 +2552,7 @@ bool WorldSimulator::sendShapeFile(SOCKET sock, std::string name)
 
 	// end of file
 	char eof = htons(0x1a);
+
 	msg += eof;
 
 	// Add data size on the header
@@ -2552,12 +2636,12 @@ bool WorldSimulator::runStep()
 		  continue; 
 		}
 
-		int s = message->socket();
+		SOCKET s = message->socket();
 		char *pbuf = s_buf;
 		int r;
 
 		// Skip the first five bytes in the begining of the received data, and read
-		r = recv(s, pbuf, 5, MSG_DONTWAIT);
+		r = recv_nonblock(s, pbuf, 5);
 
 		if (r == 5 || r == 0) {
 
@@ -2622,7 +2706,7 @@ bool WorldSimulator::runStep()
 			continue;
 		}
 		// Socket for the source
-		int s = client->socket();
+		SOCKET s = client->socket();
 
 		// try to read
 		int waitTime = 1000;
@@ -2634,7 +2718,7 @@ bool WorldSimulator::runStep()
 
 		// Skip the first four bytes in the begining of the received data, and read
 		int firstRead = COMM_DATA_PACKET_TOKEN_DATASIZE_BYTES;
-		r = recv(s, pbuf, firstRead, MSG_DONTWAIT);
+		r = recv_nonblock(s, pbuf, firstRead);
 
 		// If the four bytes existed
 		if (r == firstRead) {
@@ -2670,7 +2754,11 @@ bool WorldSimulator::runStep()
 						for (int i = 0; i < size; i++) {
 							// Buffer for the message sending
 							int dataSize = sizeof(unsigned short) * 2;
+#ifndef WIN32
 							char sendBuff[dataSize];
+#else
+							char sendBuff[4];
+#endif
 							char *p = sendBuff;
 		
 							// Notice the 'simulation stop' event to the target controller
@@ -2707,7 +2795,7 @@ bool WorldSimulator::runStep()
 
 					char name[128];  // TODO: Magic number
 					memset(name, '\0', sizeof(name));
-					if (!recv(s, name, size, MSG_DONTWAIT)) {
+					if (!recv_nonblock(s, name, size)) {
 						LOG_ERR(("Could not recieve shape file name."));
 						continue;
 					}
@@ -2736,7 +2824,12 @@ bool WorldSimulator::runStep()
 				{
 					w->stop();
 					LOG_SYS(("****Quit Simulation****"));
+#ifndef WIN32
 					close(s);
+#else
+					closesocket(s);
+					//WSACleanup();
+#endif
 					//exit(1);
 					return false;
 				}
@@ -2855,7 +2948,6 @@ bool WorldSimulator::runStep()
 						delete [] recvBuff;
 						goto again;
 					}
-
 					char *pp     = recvBuff;
 					char *name   = strtok(pp, ",");
 					char *jname  = strtok(NULL, ",");
@@ -2905,12 +2997,12 @@ bool WorldSimulator::runStep()
 					size -= 4;
 					
 					char *recvBuff = new char[size];
+
 					if (!recvData(s, recvBuff, size)) {
 						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
 						delete [] recvBuff;
 						continue;
 					}
-
 					char *pp = recvBuff;
 
 					// Reference of the quaternion
@@ -2921,7 +3013,7 @@ bool WorldSimulator::runStep()
 
 					char *agentName = strtok(pp, ",");
 					char *jName     = strtok(NULL, ",");
-					bool offset     = atoi(strtok(NULL, ","));
+					bool offset     = (atoi(strtok(NULL, ",")) != false);
 
 					SSimObj *obj = w->getSObj(agentName);
 					if (!obj) {
@@ -2971,6 +3063,7 @@ bool WorldSimulator::runStep()
 					size -= 4;
 
 					char *recvBuff = new char[size];
+
 					if (!recvData(s, recvBuff, size)) {
 						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
 						delete [] recvBuff;
@@ -3048,6 +3141,7 @@ bool WorldSimulator::runStep()
 					size -= 4;
 
 					char *recvBuff = new char[size];
+
 					if (!recvData(s, recvBuff, size)) {
 						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
 						delete [] recvBuff;
@@ -3163,11 +3257,13 @@ bool WorldSimulator::runStep()
 					size -= 4;
 
 					char *recvBuff = new char[size];
+
 					if (!recvData(s, recvBuff, size)) {
 						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
 						delete [] recvBuff;
 						continue;
 					}
+
 					char *pp = recvBuff;
 
 					// Reference of the position
@@ -3203,6 +3299,7 @@ bool WorldSimulator::runStep()
 					size -= 4;
 
 					char *recvBuff = new char[size];
+
 					if (!recvData(s, recvBuff, size)) {
 						LOG_ERR(("Failed to check service [%s, %d]", __FILE__, __LINE__));
 						delete [] recvBuff;
@@ -3245,6 +3342,7 @@ bool WorldSimulator::runStep()
 					size -= 4;
 
 					char *recvBuff = new char[size];
+
 					if (!recvData(s, recvBuff, size)) {
 						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
 						delete [] recvBuff;
@@ -3303,6 +3401,7 @@ bool WorldSimulator::runStep()
 					unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
 					size -= 4;
 					char *recvBuff = new char[size];
+
 					if (!recvData(s, recvBuff, size)) {
 						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
 						delete [] recvBuff;
@@ -3371,6 +3470,7 @@ bool WorldSimulator::runStep()
 					size -= 4;
 
 					char *recvBuff = new char[size];
+
 					if (!recvData(s, recvBuff, size)) {
 						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
 						delete [] recvBuff;
@@ -3414,7 +3514,6 @@ bool WorldSimulator::runStep()
 					}
 					delete [] recvBuff;
 					delete [] sendBuff;
-
 					//return true;
 					goto again;
 				} // end of case REQUEST_GET_ENTITY_ROTATION:
@@ -3427,6 +3526,7 @@ bool WorldSimulator::runStep()
 					size -= 4;
 
 					char *recvBuff = new char[size];
+
 					if (!recvData(s, recvBuff, size)) {
 						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
 						delete [] recvBuff;
@@ -3474,6 +3574,7 @@ bool WorldSimulator::runStep()
 					size -= 4;
 
 					char *recvBuff = new char[size];
+
 					if (!recvData(s, recvBuff, size)) {
 						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
 						delete [] recvBuff;
@@ -3532,6 +3633,7 @@ bool WorldSimulator::runStep()
 					size -= 4;
 
 					char *recvBuff = new char[size];
+
 					if (!recvData(s, recvBuff, size)) {
 						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
 						delete [] recvBuff;
@@ -3601,6 +3703,7 @@ bool WorldSimulator::runStep()
 					size -= 4;
 
 					char *recvBuff = new char[size];
+
 					if (!recvData(s, recvBuff, size)) {
 						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
 						delete [] recvBuff;
@@ -3657,6 +3760,7 @@ bool WorldSimulator::runStep()
 					size -= 4;
 
 					char *recvBuff = new char[size];
+
 					if (!recvData(s, recvBuff, size)) {
 						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
 						delete [] recvBuff;
@@ -3726,6 +3830,7 @@ bool WorldSimulator::runStep()
 					size -= 4;
 
 					char *recvBuff = new char[size];
+
 					if (!recvData(s, recvBuff, size)) {
 						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
 						delete [] recvBuff;
@@ -3771,6 +3876,7 @@ bool WorldSimulator::runStep()
 					size -= 4;
 
 					char *recvBuff = new char[size];
+
 					if (!recvData(s, recvBuff, size)) {
 						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
 						delete [] recvBuff;
@@ -3816,6 +3922,7 @@ bool WorldSimulator::runStep()
 					size -= 4;
 
 					char *recvBuff = new char[size];
+
 					if (!recvData(s, recvBuff, size)) {
 						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
 						delete [] recvBuff;
@@ -3850,11 +3957,13 @@ bool WorldSimulator::runStep()
 					size -= 4;
 
 					char *recvBuff = new char[size];
+
 					if (!recvData(s, recvBuff, size)) {
 						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
 						delete [] recvBuff;
 						continue;
 					}
+
 					char *pp = recvBuff;
 
 					double left  = BINARY_GET_DOUBLE_INCR(pp);
@@ -3877,6 +3986,7 @@ bool WorldSimulator::runStep()
 					}
 					//LOG_MSG(("setWheelVeclity!"));
 					delete [] recvBuff;
+
 					goto again;
 				}
 
@@ -3889,6 +3999,7 @@ bool WorldSimulator::runStep()
 					size -= 4;
 
 					char *recvBuff = new char[size];
+
 					if (!recvData(s, recvBuff, size)) {
 						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
 						delete [] recvBuff;
@@ -4003,6 +4114,7 @@ bool WorldSimulator::runStep()
 					size -= 4;
 
 					char *recvBuff = new char[size];
+
 					if (!recvData(s, recvBuff, size)) {
 						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
 						delete [] recvBuff;
@@ -4111,6 +4223,7 @@ bool WorldSimulator::runStep()
 					size -= 4;
 
 					char *recvBuff = new char[size];
+
 					if (!recvData(s, recvBuff, size)) {
 						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
 						delete [] recvBuff;
@@ -4146,6 +4259,7 @@ bool WorldSimulator::runStep()
 					size -= 4;
 
 					char *recvBuff = new char[size];
+
 					if (!recvData(s, recvBuff, size)) {
 						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
 						delete [] recvBuff;
@@ -4204,6 +4318,7 @@ bool WorldSimulator::runStep()
 					size -= 4;
 
 					char *recvBuff = new char[size];
+
 					if (!recvData(s, recvBuff, size)) {
 						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
 						delete [] recvBuff;
@@ -4231,6 +4346,7 @@ bool WorldSimulator::runStep()
 					size -= 4;
 
 					char *recvBuff = new char[size];
+
 					if (!recvData(s, recvBuff, size)) {
 						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
 						delete [] recvBuff;
@@ -4257,6 +4373,7 @@ bool WorldSimulator::runStep()
 					size -= 4;
 
 					char *recvBuff = new char[size];
+
 					if (!recvData(s, recvBuff, size)) {
 						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
 						delete [] recvBuff;
@@ -4289,6 +4406,7 @@ bool WorldSimulator::runStep()
 					size -= 4;
 
 					char *recvBuff = new char[size];
+
 					if (!recvData(s, recvBuff, size)) {
 						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
 						delete [] recvBuff;
@@ -4317,7 +4435,7 @@ bool WorldSimulator::runStep()
 					char *p = sendBuff;
 
 					BINARY_SET_DOUBLE_INCR(p, now);
-
+					
 					int sendSize = sizeof(double);
 
 					if (!sendData(s, sendBuff, sendSize)) {
@@ -4332,6 +4450,7 @@ bool WorldSimulator::runStep()
 					size -= 4;
 
 					char *recvBuff = new char[size];
+
 					if (!recvData(s, recvBuff, size)) {
 						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
 						delete [] recvBuff;
@@ -4368,7 +4487,7 @@ bool WorldSimulator::runStep()
 				{
 					// Irregular data (trash data?)
 					char tmp[256];  // TODO: magic number
-					recv(s, tmp, sizeof(tmp), MSG_DONTWAIT);
+					recv_nonblock(s, tmp, sizeof(tmp));
 				}
 	  
 				} // switch(n) {
@@ -4380,10 +4499,9 @@ bool WorldSimulator::runStep()
 				packetSize = BINARY_GET_DATA_S_INCR(p, unsigned short);
 
 				if (packetSize > firstRead) {
-					r = recv(s,
+					r = recv_nonblock(s,
 					         pbuf + firstRead,
-					         packetSize - firstRead,
-					         MSG_DONTWAIT);
+					         packetSize - firstRead);
 				}
 			}
 		}
@@ -4393,8 +4511,6 @@ bool WorldSimulator::runStep()
 
 			CommDataResult *result = clients[i]->decoder.push(*client, s_buf, packetSize, decoded);
 			Source *client = clients[i]->source;
-
-			//printf("s_buf = %s packetSize = %d\n",s_buf,packetSize);
 
 			if (decoded < 0) {
 
@@ -4461,11 +4577,14 @@ bool WorldSimulator::runStep()
 			//}
 		}
 
-		if (r == -1 &&
-		    (!errno || errno == EAGAIN)) { // connection is alive
+		if (r == -1
+#ifndef WIN32
+				&& (!errno || errno == EAGAIN)
+#endif
+			) { // connection is alive
 
-			for (EncC::iterator ei=encoders.begin(); ei!=encoders.end(); ei++) {
-
+			for (EncC::iterator ei=encoders.begin(); ei!=encoders.end(); ei++)
+			{
 				CommDataEncoder *target = *ei;
 				int r = client->send(*target);
 
@@ -4478,7 +4597,8 @@ bool WorldSimulator::runStep()
 				}
 			}
 		}
-#if 1
+
+#ifndef WIN32
 		// sekikawa(FIX20100826)
 		else if (r < 0) {
 			// detach client only when error occurred.
@@ -4489,9 +4609,10 @@ bool WorldSimulator::runStep()
 			m_accept.pushNoNeeded(client);
 		}
 #else
-    // orig
 		else {
-			m_accept.pushNoNeeded(client);
+			if (r == 0) {
+				m_accept.pushNoNeeded(client);
+			}
 		}
 #endif
 
@@ -4527,7 +4648,7 @@ void WorldSimulator::startSimulation(SSimWorld *w)
 				char *p = sendBuff;
 
 				// Notice the start to each controller
-				BINARY_SET_DATA_S_INCR(p, unsigned short, 0x0002);  //TODO: magic number
+				BINARY_SET_DATA_S_INCR(p, unsigned short, 0x0002);  //TODO: magic number( enum ControllerDataType.START_SIM )
 				BINARY_SET_DATA_S_INCR(p, unsigned short, dataSize);     
 
 				// Sending the current time
@@ -4592,13 +4713,13 @@ void WorldSimulator::loop(double endt)
 
 			// Wait for 1 step time width in SIGVerse simulation. 
 			if (stepCount == 0) {
+
 				wait((int)m_stepTime);
 			}
 			else {
 				// Fit the actual time of realworld and SIGVerse simulator time
 				double rad = m_stepTime - (time - (stepCount * m_stepTime));
 				//LOG_DEBUG1(("m_stepTime = %f, rad = %f",m_stepTime ,rad));
-	
 				if (rad < 0) rad = 0;
 				wait((int)rad);
 			}

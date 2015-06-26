@@ -12,7 +12,11 @@ double Eval::eval(const char *eq_)
 	assert(eq_);
 	assert(strlen(eq_) > 0);
 
+#ifndef WIN32
 	char *eq = strdup(eq_);
+#else
+	char *eq = _strdup(eq_);
+#endif
 	char *post = infix2postfix(eq, m_dict);
 	if (!post) {
 		free(eq);

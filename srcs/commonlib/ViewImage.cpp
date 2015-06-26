@@ -1,7 +1,9 @@
 /* $Id: ViewImage.cpp,v 1.12 2011-10-25 07:39:58 okamoto Exp $ */
 #ifdef WIN32
 #include <windows.h>
+#ifndef _USE_MATH_DEFINES
 #define _USE_MATH_DEFINES
+#endif
 #endif
 
 #include <math.h>
@@ -58,7 +60,6 @@ struct BITMAPINFOHEADER
 
 bool ViewImage::saveAsWindowsBMP(const char *fname)
 {
-#ifndef WIN32
 	assert(m_info.getDataType() == IMAGE_DATA_WINDOWS_BMP);
 	
 	FILE *fp = fopen(fname, "wb");
@@ -69,7 +70,8 @@ bool ViewImage::saveAsWindowsBMP(const char *fname)
 	
 	BITMAPINFOHEADER bi = {0};
 	
-	char tmp[m_buflen*3];
+	char *tmp = new char[m_buflen*3];
+
 	bi.biSize = sizeof(BITMAPINFOHEADER);
 	bi.biWidth = getWidth();
 	bi.biHeight = -getHeight();
@@ -137,17 +139,18 @@ bool ViewImage::saveAsWindowsBMP(const char *fname)
 		fwrite(getBuffer(), size, 1, fp);
 	}
 	fclose(fp);
-#endif
+	delete tmp;
+
 	return true;
 }
 
 #ifdef WIN32
 void ViewImage::setBitImageAsWindowsBMP(unsigned char *bitImage)
 {
-	if (!bitImage) return;
+	if (!bitImage){ return; }
 
 	int width, height;
-	int widthByteSize, imageByteSize;
+	int widthByteSize;
 	int x, y;
 
 	width = getWidth();

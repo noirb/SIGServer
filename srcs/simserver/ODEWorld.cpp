@@ -185,6 +185,7 @@ double ODEWorld::getCollisionParam(std::string name)
 	else if (name == "bounce")     return m_bounce;
 	else if (name == "bounce_vel") return m_bounce_vel;
 	else LOG_ERR(("<%s> getCollisionParam: No such parameter %s", __FILE__, name.c_str()));
+	return 0.0;
 }
 
 

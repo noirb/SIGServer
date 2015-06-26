@@ -587,14 +587,14 @@ CSimplifiedSphere *CSimplifiedShapeFactory::calcSphere(std::vector<SFVec3f>& vec
 	// degree of distortion = sum of gap^2 between (distance between each point and CoM)=pr and r
 	// If all of the points are on the ideal sphere, the degree will be zero.
 	// If the shape of the points differs from ideal sphere, the degree will be increased.
-	float hizumi = CSimplifiedShapeFactory::calcHizumiWithSphere(ar, gx, gy, gz, vecPos);
+	double hizumi = CSimplifiedShapeFactory::calcHizumiWithSphere(ar, gx, gy, gz, vecPos);
 
 	// Set the return value
 	retValue->x(gx);
 	retValue->y(gy);
 	retValue->z(gz);
 	retValue->radius(ar);
-	retValue->hizumi(hizumi);
+	retValue->hizumi((float)hizumi);
 
 	return retValue;
 }
@@ -713,7 +713,7 @@ CSimplifiedCylinder *CSimplifiedShapeFactory::calcCylinder(std::vector<SFVec3f>&
 	//gy = (maxy + miny)/2 ;
 	//gy = -100;
 	// Calculation of distortion value
-	float hizumi = calcHizumiWithCylinder(ar, gx, gz, vecPos);
+	double hizumi = calcHizumiWithCylinder(ar, gx, gz, vecPos);
 
 	// Set in return value
 	retValue->x(gx);
@@ -721,7 +721,7 @@ CSimplifiedCylinder *CSimplifiedShapeFactory::calcCylinder(std::vector<SFVec3f>&
 	retValue->z(gz);
 	retValue->radius(ar);
 	retValue->height(maxy - miny);
-	retValue->hizumi(hizumi);
+	retValue->hizumi((float)hizumi);
 
 	return retValue;
 }
@@ -729,7 +729,7 @@ CSimplifiedCylinder *CSimplifiedShapeFactory::calcCylinder(std::vector<SFVec3f>&
 
 CSimplifiedCylinder *CSimplifiedShapeFactory::calcCylinder(CX3DCylinderNode *pCylinderNode)
 {
-	int i;
+//	int i;
 	printf("\t\t[Start calcCylinder]\n");
 
 	if (!pCylinderNode) return NULL;
@@ -897,7 +897,11 @@ double CSimplifiedShapeFactory::calcHizumiWithCylinder(float r, float cx, float 
 		// the distortion value gained difference between the volume of an ideal cylinder and an inscribed cube
 		double hizumi = hizumiSum/n;
 		if(n <= 30)
+#ifndef WIN32
 			hizumi += r*r*r*(1/sqrt(2)*M_PI - 8/3/sqrt(3));
+#else
+			hizumi += r*r*r*(1/sqrtf(2)*M_PI - 8/3/sqrtf(3));
+#endif
 		return hizumi;
 	}
 	else
@@ -949,7 +953,7 @@ CSimplifiedBox *CSimplifiedShapeFactory::calcBox(std::vector<SFVec3f>& vecPos)
 		}
 	}
 
-	float hizumi = calcHizumiWithBox(x1, y1, z1, x2, y2, z2, vecPos);
+	double hizumi = calcHizumiWithBox(x1, y1, z1, x2, y2, z2, vecPos);
 
 	// The following lines are remained to deal with old version
 	retValue->x1(x1);retValue->x2(x2);
@@ -966,7 +970,7 @@ CSimplifiedBox *CSimplifiedShapeFactory::calcBox(std::vector<SFVec3f>& vecPos)
 	retValue->y((y1+y2)/2);
 	retValue->z((z1+z2)/2);
 	
-	retValue->hizumi(hizumi);
+	retValue->hizumi((float)hizumi);
 
 	return retValue;
 }
@@ -1208,8 +1212,8 @@ CSimplifiedCylinder *CSimplifiedShapeFactory::calcCylinder2(std::vector<SFVec3f>
 	retValue->y(gy);
 	retValue->z(gz);
 	retValue->radius(radius);
-	retValue->height(length);
-	retValue->hizumi(hizumi);
+	retValue->height((float)length);
+	retValue->hizumi((float)hizumi);
   
 	return retValue;
 }

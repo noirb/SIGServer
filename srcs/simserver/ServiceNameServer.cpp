@@ -5,7 +5,9 @@
 #include "CommDataDecoder.h"
 #include "ct/CTReader.h"
 #include "CommUtil.h"
+#ifndef WIN32
 #include <unistd.h>
+#endif
 
 ServiceNameServer::~ServiceNameServer()
 {
@@ -52,10 +54,18 @@ bool ServiceNameServer::ping(Service &s, Service::Kind kind)
 		retry--;
 
 		// add(sekikawa)(FIX20100826)
-		usleep(10000);	// microsec
+#ifndef WIN32
+		usleep(10000);  // microsec
+#else
+		Sleep(10);
+#endif
 		LOG_DEBUG1(("ping retry (%d) [%s:%d]", retry, __FILE__, __LINE__));
 	}
+#ifndef WIN32
 	close(sock);
+#else
+	closesocket(sock);
+#endif
 	return ret;
 }
 

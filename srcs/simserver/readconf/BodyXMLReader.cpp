@@ -90,7 +90,7 @@ bool BodyXMLReader::read(const char *fname)
 	parser.setDoNamespaces(true);
 
 	parser.parse(fname);
-	DOMDocument *doc = parser.getDocument();
+	XERCES_CPP_NAMESPACE::DOMDocument *doc = parser.getDocument();
 	DOMElement *root = doc->getDocumentElement();
 	char *name = XMLString::transcode(root->getNodeName());
 	DUMP1(("%s\n", name));

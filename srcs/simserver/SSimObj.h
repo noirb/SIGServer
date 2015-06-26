@@ -264,6 +264,7 @@ public:
 	{
 		m_wheelRadius   = wheelRadius;
 		m_wheelDistance = wheelDistance;
+		return true;
 	}
 
 	bool setWheelVelocity(double left, double right)
@@ -274,6 +275,8 @@ public:
 			m_onMove = true;
 		}
 		else m_onMove = false;
+
+		return m_onMove;
 	}
 
 	bool   getOnMove(){return m_onMove;}

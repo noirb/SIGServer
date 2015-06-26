@@ -7,15 +7,16 @@
 
 #include "CX3DNode.h"
 #include "CJNIUtil.h"
+#include <string>
 #include <vector>
 #include <jni.h>
 #include <stdio.h>
 #include <stdlib.h>
 
 #ifdef WIN32
-typedef __int64		_CVRML_LONG_;
+typedef __int64    _CVRML_LONG_;
 #else
-typedef long long	_CVRML_LONG_;
+typedef long long  _CVRML_LONG_;
 #endif
 
 enum CVRMLFieldDataType
@@ -27,8 +28,8 @@ enum CVRMLFieldDataType
 	FLOAT_DATA         = 4,
 	DOUBLE_DATA        = 5,
 
-	STRING_DATA        = 6,	// *
-	NODE_DATA          = 7,	// *
+	STRING_DATA        = 6, // *
+	NODE_DATA          = 7, // *
 
 	BOOLEAN_ARRAY_DATA = 8,
 	INT_ARRAY_DATA     = 9,

@@ -19,7 +19,7 @@ private:
 	double      m_x;
 	double      m_y;
 	double      m_z;
-	double      m_relf;
+	bool        m_relf;
 public:
 	bool set(int packetNum, int seq, char *data, int n);
 public:
@@ -81,7 +81,7 @@ private:
 	double      m_x;
 	double      m_y;
 	double      m_z;
-	double      m_relf;
+	bool        m_relf;
 public:
 	bool set(int packetNum, int seq, char *data, int n);
 public:

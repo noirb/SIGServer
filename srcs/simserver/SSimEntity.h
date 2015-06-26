@@ -259,6 +259,7 @@ public:
 			it++;
 		}
 		LOG_ERR(("cannot find joint %d",jname.c_str()));
+		return NULL;
 	}
 
 	//! Set of mass

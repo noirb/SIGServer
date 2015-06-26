@@ -428,7 +428,7 @@ void WorldXMLReader::startElement(const XMLCh * const tagName_, xercesc::Attribu
 			int iid    = -1;
 
 			std::string id = cid;
-			double dfov, das;
+//			double dfov, das;
 			// Whether value is specified by users
 			bool isid   = false;
 			bool islink = false;

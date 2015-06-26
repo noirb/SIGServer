@@ -24,7 +24,11 @@ class DepthImage;
 class Text;
 class RawSound;
 
-
+#ifdef WIN32
+#define EXPORT_FUNC __declspec(dllexport)
+#else
+#define EXPORT_FUNC
+#endif
 
 class DynamicsController {
 public:
@@ -205,7 +209,7 @@ private:
 	CommDataResult * recv(int bufsize);
 	SOCKET getControllerSocket() { SOCKET sock; return sock; }
 
-protected:
+public:
 	//! Constructor
 	Controller();
 
@@ -474,7 +478,7 @@ private:
 	// Calculates torque from angular velocity and power
 	// Equation is as follows
 	// 
-	// P = F*rw = -- * rw = 2*pi*Tf
+	// P = F*rw = 2*pi*Tf
 	// 
 	// P : Power consumption [W]
 	// F : Force acting on wheel[N]

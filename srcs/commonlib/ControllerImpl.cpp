@@ -16,15 +16,17 @@
 #include "Logger.h"
 #include "ct/CTSimObj.h"
 #include "binary.h"
-#include "ThreadPthread.h"
+#include "Thread.h"
 #include "comm/controller/RecvMessage.h"
 
 #include <sys/types.h>
 #include <errno.h>
+#ifndef WIN32
 #include <sys/time.h>
 #include <sys/socket.h>
+#endif
 #include <time.h>
-#include <pthread.h>
+//#include <pthread.h>
 #include <stdio.h>
 
 #ifdef WIN32
@@ -38,6 +40,7 @@
 #endif // WIN32
 
 #ifdef WIN32
+
 
 #define close closesocket
 
@@ -70,17 +73,35 @@ bool SocketUtil::sendData(SOCKET sock, const char* msg, int size)
 	while (1) {
 		// Send
 		int r = send(sock, msg + sended, size - sended, 0);
-
+#ifndef WIN32
 		if (r < 0) {
 		// Fail to send
 			if ( errno == EAGAIN ||
 				 errno == EWOULDBLOCK ) {
+
 				usleep(100);
+
 				continue;
 			}
 			LOG_ERR(("Failed to send data. erro[%d] [%s:%d]", r,  __FILE__, __LINE__ ));
 			return false;
 		}
+#else
+		if (r == SOCKET_ERROR) {
+		// Fail to send
+			int err = WSAGetLastError();
+			if ( err == WSAEINTR ||
+				 err == WSAEINPROGRESS ||
+				 err == WSAEWOULDBLOCK ) {
+
+				Sleep(1);
+
+				continue;
+			}
+			LOG_ERR(("Failed to send data. erro[%d] [%s:%d]", r,  __FILE__, __LINE__ ));
+			return false;
+		}
+#endif
 		// Number of sent bytes
 		sended += r;
 
@@ -91,28 +112,51 @@ bool SocketUtil::sendData(SOCKET sock, const char* msg, int size)
 }
 
 
-bool SocketUtil::recvData(SOCKET sock, char* msg, int size)
+bool SocketUtil::recvData(SOCKET sock, char* msg, int ln)
 {
 	int recieved = 0;
+	int r;
 
 	// Deal with a case when all the data cannot be sent at once
 	while (1) {
 
-		// Receive
-		int r = recv(sock, msg + recieved, size - recieved, 0);
 
+#ifndef WIN32
+		// Receive
+		r = recv(sock, msg + recieved, ln - recieved, 0);
 		// Failed to Receive
 		if (r < 0) {
 			//LOG_SYS(("stop recieve data from Service. erro[%d]",r));
 			return false;
 		}
-
 		// Number of received bytes
 		recieved += r;
+#else
+		// Receive
+		r = recv(sock, msg + recieved, ln - recieved, 0);
+		if (r == SOCKET_ERROR) {
+			fprintf(stderr, "====== ERROR in SocketUtil::recvData ======\n");
+			int err = WSAGetLastError();
+			if ( err == WSAEINTR ||
+				 err == WSAEINPROGRESS ||
+				 err == WSAEWOULDBLOCK ) {
+				 Sleep(100);
+				 continue;
+			}
+			//LOG_SYS(("stop recieve data from Service. erro[%d]",r));
+			return false;
+		}
+
+		if (r > 0){
+			// Number of received bytes
+			recieved += r;
+		}
+#endif
 
 		// Check whether all of the data is received or not
-		if (size == recieved) break;
+		if (ln == recieved) break;
 	}
+	
 	return true;
 }
 
@@ -154,11 +198,11 @@ void ControllerImpl::close_()
 	}
 }
 
-#ifndef WIN32	// just for debug (substitute attach() and sendText() is at IrcViewController)
 
 //! Start the loop of a service provider
 bool BaseService::startServiceLoop(ControllerImpl *con)
 {
+	return false;
 }
 
 //! End the loop of a service provider
@@ -565,13 +609,16 @@ bool ViewService::sendDSRequest(int type, double start, double end, int camID, C
 }
 
 
-void* ControllerImpl::serviceThread(void *pParam)
+THREAD_RET_VAL ControllerImpl::serviceThread(void *pParam)
 {
 	ControllerImpl *con = (ControllerImpl*)pParam;
 	SOCKET sock = con->getSrvSock();
 	struct sockaddr_in client;
+#ifndef WIN32
 	socklen_t len;
-
+#else
+	int len;
+#endif
 	// Client socket
 	SOCKET s;
 
@@ -621,10 +668,18 @@ void* ControllerImpl::serviceThread(void *pParam)
 // Close socket
 error:
 	// Server socket
+#ifndef WIN32
 	if (sock != -1) { //Changed from NULL to -1 by inamura on 2014-02-28
+
 		close(sock);
 		sock = -1;  //Changed from NULL to -1 by inamura on 2014-02-28
 	}
+#else
+	if (sock != INVALID_SOCKET) { // Changed by I.Hara.
+		closesocket(sock);
+		sock = INVALID_SOCKET;
+	}
+#endif
 	/*
 	// Client socket
 	if(m_clientSock != NULL) {
@@ -632,9 +687,22 @@ error:
 		m_clientSock = NULL;
 	}
 	*/
-	return NULL; 
+	return THREAD_RET_VAL_NULL;
 }
 
+#ifdef WIN32
+int Pthread_Create(HANDLE *hT, void *attr, void (*func)(void *), void *arg)
+{
+	uintptr_t tp;
+	tp = _beginthread(func, NULL, arg);
+	if(tp == -1L){
+		*hT = (HANDLE)NULL;
+		return -1;
+	}
+	*hT = (HANDLE)tp;
+	return 0;
+}
+#endif
 
 BaseService* ControllerImpl::connectToService(std::string name)
 {
@@ -720,11 +788,18 @@ BaseService* ControllerImpl::connectToService(std::string name)
 	///Create a new thread for receiving data before sending request
 	//////////////////////////////////////////////
 	if (!first) {
+#ifndef WIN32
 		pthread_t tid1;
 		pthread_mutex_t mutex;
 
 		pthread_mutex_init(&mutex, NULL);
 		pthread_create(&tid1, NULL, ControllerImpl::serviceThread, reinterpret_cast<void*>(this));
+
+#else
+		HANDLE tid1;
+		HANDLE mutex = CreateMutex(NULL, FALSE, NULL);
+		Pthread_Create(&tid1, NULL, ControllerImpl::serviceThread, reinterpret_cast<void*>(this));
+#endif
 		first = true;
 	}
 
@@ -741,7 +816,11 @@ BaseService* ControllerImpl::connectToService(std::string name)
 	// Wait until connection completion
 	while (!m_connected) {
 
+#ifndef WIN32
 		usleep(1000); //TODO: Magic number
+#else
+		Sleep(1);
+#endif
 		count++;
 		// Time out when the socket is closed or the count is over 1.5 sec.
 		if (count > 2000 || service->getSocket() < 0) {
@@ -835,11 +914,17 @@ BaseService* ControllerImpl::connectToService(std::string name, unsigned short p
 	///Create a new thread for receiving data before sending request
 	//////////////////////////////////////////////
 	if (!first) {
+#ifndef WIN32
 		pthread_t tid1;
 		pthread_mutex_t mutex;
 
 		pthread_mutex_init(&mutex, NULL);
 		pthread_create(&tid1, NULL, ControllerImpl::serviceThread, reinterpret_cast<void*>(this));
+#else
+		HANDLE tid1;
+		HANDLE mutex = CreateMutex(NULL, FALSE, NULL);
+		Pthread_Create(&tid1, NULL, ControllerImpl::serviceThread, reinterpret_cast<void*>(this));
+#endif
 		first = true;
 	}
 	//////////////////////////////////////////////
@@ -856,7 +941,11 @@ BaseService* ControllerImpl::connectToService(std::string name, unsigned short p
 	// Wait until connection completion
 	while (!m_connected) {
 
+#ifndef WIN32
 		usleep(1000);
+#else
+		Sleep(1);
+#endif
 		count++;
 		// Time out when the socket is closed or the count is over 1 sec.
 		if (count > 1000 || service->getSocket() == -1) { //Changed from NULL to -1 by inamura
@@ -925,7 +1014,7 @@ bool ControllerImpl::checkService(std::string name)
 	unsigned short result  = BINARY_GET_DATA_S_INCR(p, unsigned short); 
 
 	// bool result = true;
-	return result;
+	return (result != false);
 }
 
 
@@ -935,8 +1024,12 @@ bool ControllerImpl::attach(const char *server, int port, const char *myname)
 
 	{
 		SOCKET s = CommUtil::connectServer(server, port);
-		if (s < 0) { return false; }
 
+#ifndef WIN32
+		if (s < 0) { return false; }
+#else
+		if (s < 0 || s == INVALID_SOCKET) { return false; }
+#endif
 		CommData::AttachControllerRequest enc(myname);
 		enc.send(s);
 
@@ -947,9 +1040,12 @@ bool ControllerImpl::attach(const char *server, int port, const char *myname)
 
 	{
 		SOCKET s = CommUtil::connectServer(server, port);
-		if (s < 0) {
-			goto err;
-		}
+
+#ifndef WIN32
+		if (s < 0) { goto err; }
+#else
+		if (s < 0 || s == INVALID_SOCKET) { goto err; }
+#endif
 
 		CommData::ConnectDataPortRequest enc(myname);
 		enc.send(s);
@@ -1235,18 +1331,40 @@ bool ControllerImpl::sendData(SOCKET sock, const char* msg, int size)
 	while (1) {
 
 		// Sending
+#ifndef WIN32
 		int r = send(sock, msg + sended, size - sended, 0);
 
 		// Sending failed
 		if (r < 0) {
 			if ( errno == EAGAIN ||
 				 errno == EWOULDBLOCK ) {
+
 				sleep(0.01);
+
 				continue;
 			}
 			LOG_ERR(("Failed to send data. erro[%d]",errno));
 			return false;
 		}
+
+#else
+		int r = send(sock, msg + sended, size - sended, 0);
+
+		// Sending failed
+		if (r == SOCKET_ERROR) {
+			int err = WSAGetLastError();
+			if ( err == WSAEINTR ||
+				 err == WSAEINPROGRESS ||
+				 err == WSAEWOULDBLOCK ) {
+
+				Sleep(1);
+
+				continue;
+			}
+			LOG_ERR(("Failed to send data. erro[%d]",errno));
+			return false;
+		}
+#endif
 		// Number of already sent bytes
 		sended += r;
 
@@ -1310,6 +1428,5 @@ bool ControllerImpl::broadcast(std::string msg, double distance, int to)
 	return true;
 }
 
-#endif	// WIN32
 
 

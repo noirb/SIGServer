@@ -5,11 +5,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
+#ifndef WIN32
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <netdb.h>
 #include <unistd.h>
+
+#define SOCKET int
+#else
+#include <Windows.h>
+#endif
 
 int main(int argc, char **argv)
 {
@@ -36,10 +42,19 @@ int main(int argc, char **argv)
 	}
 
 	struct sockaddr_in server;
-	int sock;
+	SOCKET sock;
 	char buf[32];
-	int n;
+//	int n;
 
+#ifdef WIN32
+	WSADATA data;
+	int result = WSAStartup(MAKEWORD(2, 0), &data);
+
+	if (result < 0){
+		fprintf(stderr, "%d\n", GetLastError());
+		exit(1);
+	}
+#endif
 	sock = socket(AF_INET, SOCK_STREAM, 0);
 
 	// Preparation of structure for the socket connection
