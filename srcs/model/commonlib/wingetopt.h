@@ -1,1 +1,1 @@
-/home/sigverse/gitrepo/SIGServer/srcs/commonlib/wingetopt.h
+../../commonlib/wingetopt.h
