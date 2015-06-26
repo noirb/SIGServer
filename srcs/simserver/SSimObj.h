@@ -39,7 +39,7 @@ public:
 	typedef std::map<std::string, Joint*>  JointM;
 private:
 	PartsM                m_parts;
-	JointM	              m_joints;
+	JointM                m_joints;
 	dSpaceID              m_space;
 	bool                  m_gmode;
 	Vector3d              m_vpos;
@@ -89,7 +89,7 @@ public:
 	}
 
 	std::map<int, Camera> getCamera()
-			{
+	{
 		return m_vcams;
 	}
 

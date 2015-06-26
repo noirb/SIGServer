@@ -1033,7 +1033,7 @@ static void wait(int usec)
 	// 070807 yoshi
 	// sleep based on select. usleep is not accurate
 #ifndef WIN32
-	fd_set	fds;
+	fd_set fds;
 	FD_ZERO(&fds);
 	struct timeval tv;
 	tv.tv_sec = 0;
@@ -1942,9 +1942,9 @@ bool WorldSimulator::sendMoveEntities(SOCKET sock, bool update)
 		EMap emap = w->objs(); 
 
 		EMap::iterator it = emap.begin();
-    
+
 		std::string msg = "";
-    
+
 		if (w->isRunning()) msg += "1,";
 		else                msg += "0,";
 
@@ -1952,7 +1952,7 @@ bool WorldSimulator::sendMoveEntities(SOCKET sock, bool update)
 		sprintf(tmp,"%.2f",w->time());
 		std::string str = std::string(tmp);
 		str += ",";
-    
+
 		msg += str;
 		int entSize = 0;
 		/////////////////////////////////
@@ -2030,7 +2030,7 @@ bool WorldSimulator::sendMoveEntities(SOCKET sock, bool update)
 							double x = hJoint->getAxisX();
 							double y = hJoint->getAxisY();
 							double z = hJoint->getAxisZ();
-	      
+
 							rot.setAxisAndAngle(x,y,z,angle);
 						}
 					}
@@ -2891,13 +2891,13 @@ bool WorldSimulator::runStep()
 							LOG_ERR(("Could not find service provider [%s] [%s, %d]", service.c_str(), __FILE__, __LINE__));
 							// Notice the controller that the service is not found
 							BINARY_SET_DATA_S_INCR(ppp, unsigned short, 0x0000);
-							BINARY_SET_DATA_S_INCR(ppp, unsigned short, 4);      
+							BINARY_SET_DATA_S_INCR(ppp, unsigned short, 4);
 							continue;
 						}
 						else {
 							// Notice the controller that the service exist
 							BINARY_SET_DATA_S_INCR(ppp, unsigned short, 0x0001);
-							BINARY_SET_DATA_S_INCR(ppp, unsigned short, 4);      
+							BINARY_SET_DATA_S_INCR(ppp, unsigned short, 4);
 							//sendData(s, result, 4);
 						}
 
@@ -2909,9 +2909,9 @@ bool WorldSimulator::runStep()
 						char *p = sendBuff;
 
 						// Add header and data size
-						BINARY_SET_DATA_S_INCR(p, unsigned short, 0x0003);      
-						BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);      
-						BINARY_SET_DATA_S_INCR(p, unsigned short, port);      
+						BINARY_SET_DATA_S_INCR(p, unsigned short, 0x0003);
+						BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
+						BINARY_SET_DATA_S_INCR(p, unsigned short, port);
 
 						memcpy(p, sendMsg.c_str(), sendMsg.size());
 
