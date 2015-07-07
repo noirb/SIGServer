@@ -18,6 +18,9 @@
 
 #include <assert.h>
 
+#define DENSITY 0.05
+
+
 /**
  * @brief Constructor
  * @param t     parts type
@@ -99,7 +102,7 @@ const dReal * SParts::getTorque()
 
 void SParts::setPosition(const Vector3d &v)
 {
-  dBodySetPosition(m_odeobj->body(), v.x(), v.y(), v.z());
+	dBodySetPosition(m_odeobj->body(), v.x(), v.y(), v.z());
 }
 
 
@@ -402,8 +405,7 @@ void SParts::setAngularVelocity(dReal x,dReal y,dReal z)
 	//TODO: using maxAngularVel
 	// call API of the ODE
 	dBodySetAngularVel(m_odeobj->body(),x,y,z);
-	const dReal *dat = dBodyGetAngularVel(m_odeobj->body());
-	//TODO: this function does not set the value: by inamura on 2013-12-29
+	//const dReal *dat = dBodyGetAngularVel(m_odeobj->body());
 }
 
 
@@ -467,6 +469,7 @@ void SParts::dump()
 		printf("\t\todeQ(%f, %f, %f, %f)\n", odeQ[0], odeQ[1], odeQ[2], odeQ[3]);
 	}
 }
+
 
 
 void SParts::dumpConnectionInfo(int level)
@@ -539,7 +542,6 @@ void SParts::printIndent(int level)
 }
 #endif
 
-#define DENSITY 0.05
 
 void SBoxParts::set(dWorldID w, dSpaceID space)
 {
@@ -553,12 +555,12 @@ void SBoxParts::set(dWorldID w, dSpaceID space)
 	dReal hy = sz.y();
 	dReal hz = sz.z();
 
-// konao
-DUMP(("[SBoxParts::set] ODE geom created (hx, hy, hz)=(%f, %f, %f) [%s:%d]\n", hx, hy, hz, __FILE__, __LINE__));
+	// konao
+	DUMP(("[SBoxParts::set] ODE geom created (hx, hy, hz)=(%f, %f, %f) [%s:%d]\n", hx, hy, hz, __FILE__, __LINE__));
 
-	if(hz == 0) hz = 0.001;
-	if(hy == 0) hy = 0.001;
-	if(hx == 0) hx = 0.001;
+	if (hz == 0) hz = 0.001;
+	if (hy == 0) hy = 0.001;
+	if (hx == 0) hx = 0.001;
 
 	dGeomID geom = dCreateBox(0, hx, hy, hz);
 	m_odeobj = ODEObjectContainer::getInstance()->createODEObj
@@ -755,7 +757,6 @@ double SCylinderParts::getCircumRadius(void)
 //added by noma@tome 20120223
 double SCylinderParts::getCubicRootOfVolume(void)
 {
-	//const double pi = 3.14159265358979323846; //TODO: why M_PI is not used?
 	double volume = M_PI * m_cmpnt.radius()*m_cmpnt.radius() * m_cmpnt.length();
 	return pow(volume, 1/3.0);
 }
@@ -810,7 +811,6 @@ double SSphereParts::getCircumRadius(void)
 //added by noma@tome 20120223
 double SSphereParts::getCubicRootOfVolume(void)
 {
-	//const double pi = 3.14159265358979323846; //TODO: why M_PI is not used?
 	double tmpFactor = 4 * M_PI/3.0;
 	return pow(tmpFactor, 1/3.0) * m_cmpnt.radius();
 }
