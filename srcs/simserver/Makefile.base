@@ -1,4 +1,3 @@
-# $Id: Makefile.base,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $
 SHELL = /bin/sh
 MAKEFILE = Makefile
 DEPFILE = Makefile.dep
@@ -16,10 +15,10 @@ X3DCPPDIR = ../x3d/parser/cpp/X3DParser
 DEBUG_CFLAGS = -g -Wall
 
 SERVER_SUBDIRS = ./commonlib ./readconf
-SERVER_LDFLAGS = $(LIBRARIES) -L ./commonlib -lirwas-common   -L ./readconf -lreadconf -L $(X3DCPPDIR) -lx3dc++ -L $(JRELIBDIR) -ljvm
+SERVER_LDFLAGS = $(LIBRARIES) -L ./commonlib -lsigverse-common   -L ./readconf -lreadconf -L $(X3DCPPDIR) -lx3dc++ -L $(JRELIBDIR) -ljvm
 
 CLIENT_SUBDIRS = commonlib
-CLIENT_LDFLAGS = $(LIBRARIES) -L ./commonlib -lirwas-common
+CLIENT_LDFLAGS = $(LIBRARIES) -L ./commonlib -lsigverse-common
 
 
 INCLUDE = -I ./commonlib -I ./readconf -I ./ 
@@ -31,7 +30,7 @@ CFLAGS += $(DEBUG_CFLAGS)
 CXXFLAGS = $(CFLAGS)
 
 
-ARCHIVE = libirwas.a
+ARCHIVE = libsigverse.a
 
 VIEW_SRCS = glview.cpp GLDraw.cpp SimViewPoint.cpp SimGround.cpp gltools.cpp 
 

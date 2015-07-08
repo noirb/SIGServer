@@ -1,4 +1,3 @@
-# $Id: Makefile,v 1.3 2011-04-05 09:06:19 kawamoto Exp $
 DEPFILE = Makefile.dep
 
 AR = ar -cr
@@ -13,8 +12,8 @@ SUBDIRS = comm comm/encoder comm/event comm/controller ct
 
 SUBDIRS_OBJS = comm/encoder/*.o comm/event/*.o comm/controller/*.o comm/*.o ct/*.o
 
-ARCHIVE_A = libirwas-common.a
-ARCHIVE_SO = libirwas-common.so
+ARCHIVE_A = libsigverse-common.a
+ARCHIVE_SO = libsigverse-common.so
 
 SRCS = Attribute.cpp \
 	CommDataDecoder.cpp \

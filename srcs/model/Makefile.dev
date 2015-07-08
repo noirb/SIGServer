@@ -15,7 +15,7 @@ CFLAGS = -pipe
 CXXFLAGS = $(CFLAGS) $(DEFINE) $(INCLUDE) $(DEBUG) 
 
 LD = $(CXX)
-LDFLAGS = -L./ -lac -L./commonlib -lirwas-common -ldl -lode
+LDFLAGS = -L./ -lac -L./commonlib -lsigverse-common -ldl -lode
 
 .SUFFIXES: .cpp .o
 

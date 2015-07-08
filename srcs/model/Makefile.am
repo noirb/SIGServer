@@ -13,7 +13,7 @@ CFLAGS = -g -Wall -pipe
 #CFLAGS = -pipe
 CXXFLAGS = $(CFLAGS) $(INCLUDE) $(DEFINE)
 
-COMMON_LDFLAGS = -L./commonlib -lirwas-common
+COMMON_LDFLAGS = -L./commonlib -lsigverse-common
 
 sigrunac_LDFLAGS = -rdynamic 
 sigrunac_LDADD = $(COMMON_LDFLAGS)  -ldl -lode  

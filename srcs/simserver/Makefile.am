@@ -33,7 +33,7 @@ CFLAGS = -pipe -g -Wall
 PWD_INCLUDE = -I ./commonlib -I ./readconf
 CXXFLAGS = $(CFLAGS) $(DEFINE) $(PWD_INCLUDE)
 X3DCPPDIR = X3DParser
-sigserver_LDADD = -lirwas-common -L ./commonlib -lreadconf -L ./readconf -lx3dc++ -L $(X3DCPPDIR) -ljvm -L $(LIBJVMDIR)
+sigserver_LDADD = -lsigverse-common -L ./commonlib -lreadconf -L ./readconf -lx3dc++ -L $(X3DCPPDIR) -ljvm -L $(LIBJVMDIR)
 SUBDIR_INCLUDE=-I ./ -I ../commonlib -I ../ -I ../../../ -I ../$(X3DCPPDIR)
 AM_MAKEFLAGS = "CFLAGS=$(CFLAGS)" "INCLUDE=$(SUBDIR_INCLUDE)" "DEFINE=$(DEFINE)"
 SUBDIRS = readconf commonlib X3DParser conf
