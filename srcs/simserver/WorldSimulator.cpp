@@ -15,8 +15,6 @@
  *    Added addTorque
  */
    
-#ifdef IRWAS_SIMSERVER
-
 #include "WorldSimulator.h"
 #include "ServerAcceptProc.h"
 #include "PacketForward.h"
@@ -4729,8 +4727,3 @@ void WorldSimulator::loop(double endt)
 			stepCount = 0;
 	}
 }
-
-
-
-#endif // IRWAS_SIMSERVER
-

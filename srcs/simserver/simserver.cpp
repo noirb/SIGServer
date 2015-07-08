@@ -5,9 +5,6 @@
  * Modified by inamura on 2013-12-29
  */
 
-// TODO: IRWAS related macro should be replaced: by inamura
-#ifdef IRWAS_SIMSERVER
-
 #ifndef WIN32
 #include <getopt.h>
 #include <arpa/inet.h>
@@ -479,5 +476,3 @@ int main(int argc, char **argv)
 	//close(sock);
 	return 0;
 }
-
-#endif  // #ifdef IRWAS_SIMSERVER

@@ -6,8 +6,6 @@
 #ifndef PacketForward_h
 #define PacketForward_h
 
-#ifdef IRWAS_SIMSERVER
-
 #include "CommDataDecoder.h"
 
 class ServerAcceptProc;
@@ -32,8 +30,7 @@ private:
 	void forward(Source &from, CommDataType cmdType, const char *to, int bytes, char *data, bool returnImmediate, double reachRadius);
 };
 
-#endif // IRWAS_SIMSERVER
-
 #endif // PacketForward_h
+
 
 

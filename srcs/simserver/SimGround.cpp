@@ -1,4 +1,3 @@
-/* $Id: SimGround.cpp,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */ 
 #include "SimGround.h"
 
 #ifdef USE_OPENGL

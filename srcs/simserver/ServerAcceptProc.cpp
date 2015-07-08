@@ -3,7 +3,6 @@
  * Modified by Tetsunari Inamura on 2013-12-31
  *    Add English comments
  */
-#ifdef IRWAS_SIMSERVER
 
 #include "ServerAcceptProc.h"
 #include "CommDataEncoder.h"
@@ -442,6 +441,3 @@ void ServerAcceptProc::recvRequestConnectDataPort(Source &from, RequestConnectDa
 
 	LOG_SYS(("%s : dataport", evt.getName()));
 }
-
-#endif
-

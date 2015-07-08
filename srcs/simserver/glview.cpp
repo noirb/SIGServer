@@ -1,4 +1,3 @@
-/* $Id: glview.cpp,v 1.2 2011-09-09 07:38:05 okamoto Exp $ */
 #include "systemdef.h"
 
 #ifdef USE_OPENGL
@@ -376,13 +375,13 @@ int main(int argc, char **argv)
 	LOG_OUTPUT_LEVEL(level);
 	LOG_STDOUT();
 	
-#ifdef EXEC_SIMULATION
+
 	const char *worldfile = "MyWorld.xml";
 	WorldXMLReader read("./conf");
 	read(worldfile);
 	s_world = read.release();
 	s_world->start();
-#endif
+
 	s_viewpoint = new SimViewPoint(Position(0.0, -0.5, -15.0));
 	
 	glutInit(&argc, argv);
@@ -412,5 +411,3 @@ int main(int argc, char **argv)
 }
 
 #endif
-
-

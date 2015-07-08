@@ -63,7 +63,7 @@ int SSimObj::getJointSize()
  */
 Joint * SSimObj::getJoint(const char *s)
 {
-	if(m_joints.find(s) != m_joints.end()) 
+	if (m_joints.find(s) != m_joints.end()) 
 		return m_joints[s];
 	else
 		return NULL;
@@ -96,7 +96,7 @@ void SSimObj::applyParams(bool init, double stepWidth)
 	for (PartsM::iterator i=m_parts.begin(); i!=m_parts.end(); i++) {
 
 		SParts *sp = i->second;
-		if(sp->getOnCollision()){
+		if (sp->getOnCollision()){
 			sp->setOnCollision(false);
 		}
 	}
@@ -144,7 +144,7 @@ void SSimObj::applyParams(bool init, double stepWidth)
 		// movement in dynamics off mode
 		if (!dyn) {
 			// Find the rorating joint
-			if(m_jvel.size() > 0) {
+			if (m_jvel.size() > 0) {
 				std::map<std::string, double>::iterator it = m_jvel.begin();
 				while(it != m_jvel.end()) {
 					HingeJoint *joint = (HingeJoint*)getJoint((*it).first.c_str());
@@ -157,12 +157,12 @@ void SSimObj::applyParams(bool init, double stepWidth)
 			}
 
 			// In a case of wheel based mobile robot
-			if(m_type == 1) {
+			if (m_type == 1) {
 				//SRobotObj *robj = dynamic_cast<SRobotObj*>(this);
 				SRobotObj *robj = (SRobotObj*)this;
 
 				// Check whether the robot is moving
-				if(robj != NULL && robj->getOnMove()) {
+				if (robj != NULL && robj->getOnMove()) {
 					// Refer wheel's angular velocity
 					double lvel, rvel;
 					robj->getWheelVelocity(lvel, rvel);
@@ -174,7 +174,7 @@ void SSimObj::applyParams(bool init, double stepWidth)
 					Rotation rot(qua[0], qua[1], qua[2], qua[3]);
 
 					// When the right and left wheel velocities are the same
-					if(lvel == rvel) {
+					if (lvel == rvel) {
 						// Transfer the direction of movement in global coordinate
 						Vector3d ini(0.0, 0.0, 1.0);
 						Vector3d direction = ini.rotate(rot);
@@ -233,19 +233,19 @@ void SSimObj::applyParams(bool init, double stepWidth)
 
 			/*
 			//	Set of linear velocity of the parts
-			if(m_ops & OP_SET_VELOCITY)			body->setVelocity(vx(),vy(),vz());
+			if (m_ops & OP_SET_VELOCITY)			body->setVelocity(vx(),vy(),vz());
 			//	Set of angular velocity of the parts
-			if(m_ops & OP_SET_ANGULAR_VELOCITY)	body->setAngularVelocity(avx(),avy(),avz());
+			if (m_ops & OP_SET_ANGULAR_VELOCITY)	body->setAngularVelocity(avx(),avy(),avz());
 			*/
 		}
 		// set linear velocity of the parts
 		// Changed from setVelocity: by inamura on 2013-12-30
-		if(m_ops & OP_SET_LINEAR_VELOCITY) {
+		if (m_ops & OP_SET_LINEAR_VELOCITY) {
 			// Set linear velocity at ODE world
 			body->setLinearVelocity(vx(),vy(),vz());  // body is an instance of SParts class
 		}
 		// set Angular velocity of the parts
-		if(m_ops & OP_SET_ANGULAR_VELOCITY) {
+		if (m_ops & OP_SET_ANGULAR_VELOCITY) {
 			body->setAngularVelocity(avx(),avy(),avz());
 		}
 		// Force
@@ -304,5 +304,3 @@ void SSimObj::dump()
 	}
 }
 #endif
-
-

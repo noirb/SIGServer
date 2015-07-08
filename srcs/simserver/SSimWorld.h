@@ -130,5 +130,3 @@ public:
 
 #endif // SSimWorld_h
  
-
-

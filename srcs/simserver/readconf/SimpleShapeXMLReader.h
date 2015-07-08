@@ -7,7 +7,7 @@
 
 #include "systemdef.h"
 
-#if (defined USE_XERCES && defined EXEC_SIMULATION)
+#if (defined USE_XERCES)
 
 #include "SimpleShapeDB.h"
 #include <xercesc/sax/HandlerBase.hpp>
@@ -41,7 +41,7 @@ private:
 	void endElement(const XMLCh *const tagName_);
 };
 
-#endif	// USE_XERCES && EXEC_SIMULATION
+#endif	// USE_XERCES
 
 #endif	// _SIMPLE_SHAPE_XML_READER_H_
 

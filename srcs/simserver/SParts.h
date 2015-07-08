@@ -7,7 +7,6 @@
 #ifndef Parts_Server_h
 #define Parts_Server_h
 
-#ifdef EXEC_SIMULATION
 #include <vector>
 #include "Logger.h"
 #include <math.h>
@@ -563,7 +562,5 @@ private:
 	// Parts implementation
 	PartsCmpnt * extdata() { return NULL; }
 };
-
-#endif
 
 #endif // Parts_Server_h

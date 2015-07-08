@@ -17,11 +17,9 @@
 #include <sys/socket.h>
 #endif
 
-#ifdef EXEC_SIMULATION
 #include "pthread_dep.h"
 
 class CommDataEncoder;
-#endif
 
 enum {
 	SOURCE_TYPE_NOT_SET = -1,
@@ -42,7 +40,6 @@ typedef signed SourceType;
 class Source
 {
 private:
-#ifdef EXEC_SIMULATION
 	class Locker
 	{
 	private:
@@ -54,7 +51,7 @@ private:
 		void lock()   { pthread_mutex_lock(&m_mutex); }
 		void unlock() { pthread_mutex_unlock(&m_mutex); }
 	};
-#endif
+
 private:
 	SourceType    m_type;
 	std::string   m_name;
@@ -62,10 +59,7 @@ private:
 	std::string   m_hostname;
 	bool          m_ignore;
 	std::map<std::string, std::string> m_properties;
-
-#ifdef EXEC_SIMULATION
 	Locker        m_locker;
-#endif
 	
 public:
 	/**
@@ -101,7 +95,6 @@ public:
 	//! Return socket descripter
 	SOCKET socket() { return m_sock; }
 
-#ifdef EXEC_SIMULATION
 	int send(CommDataEncoder &);
 	int send(char *, int);
 
@@ -109,7 +102,6 @@ public:
 	{
 		return m_sock == sock? true: false;
 	}
-#endif
 
 	//! Refer connection name
 	const char *name() const { return m_name.length() > 0? m_name.c_str(): ""; }
@@ -174,5 +166,3 @@ public:
 };
 
 #endif // __Source_h__
- 
-

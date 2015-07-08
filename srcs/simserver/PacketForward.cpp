@@ -4,8 +4,6 @@
  */
 // This file was used in old version (ver.1). Just keeping for the reference in ver.2
 
-#ifdef IRWAS_SIMSERVER
-
 #include "PacketForward.h"
 #include "ServerAcceptProc.h"
 #include "Source.h"
@@ -116,5 +114,3 @@ void PacketForward::forward(Source &from, CommDataType cmdType, const char *to, 
 
 	LOG_DEBUG1(("forward end\n"));
 };
-
-#endif

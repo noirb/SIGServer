@@ -4,7 +4,6 @@
 
 #include "Source.h"
 
-#ifdef EXEC_SIMULATION
 #include "CommDataEncoder.h"
 #include "CommUtil.h"
 
@@ -25,5 +24,3 @@ int Source::send(char *data , int bytes)
 	m_locker.unlock();
 	return r;
 }
-
-#endif

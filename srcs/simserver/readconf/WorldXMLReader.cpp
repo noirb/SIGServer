@@ -4,7 +4,7 @@
 
 #include "systemdef.h"
 
-#if (defined USE_XERCES && defined EXEC_SIMULATION)
+#if (defined USE_XERCES)
 #include "WorldXMLReader.h"
 
 #include "SimWorld.h"
@@ -759,5 +759,4 @@ bool WorldXMLReader::read(const char *fname)
 	return ret;
 }
 
-#endif // USE_XERCES && EXEC_SIMULATION
-
+#endif // USE_XERCES

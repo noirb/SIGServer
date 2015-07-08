@@ -8,8 +8,6 @@
 
 #include "systemdef.h"
 
-#ifdef EXEC_SIMULATION
-
 #include "SParts.h"
 #include "ODEWorld.h"
 #include "ODEObj.h"
@@ -888,4 +886,3 @@ void SParts::printJointDataList() {
 }
 */
 
-#endif

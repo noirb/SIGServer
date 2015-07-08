@@ -13,7 +13,6 @@
 #ifndef ServerAcceptProc_h
 #define ServerAcceptProc_h
 
-#ifdef IRWAS_SIMSERVER
 #include "systemdef.h"
 #include "Source.h"
 #include "CommDataDecoder.h"
@@ -38,7 +37,7 @@ public:
 	CommDataDecoder decoder;
 	Connection(Source *s, CommDataDecoder::Listener *l, CommDataDecoder::PacketSender *sender) : source(s)
 	{
-		if(source->type() != SOURCE_TYPE_NEW_VIEW)
+		if (source->type() != SOURCE_TYPE_NEW_VIEW)
 		{
 			decoder.setListener(l);
 			decoder.setPacketSender(sender);
@@ -226,8 +225,4 @@ public:
 	}
 };
 
-#endif // IRWAS_SIMSERVER
-
 #endif // ServerAcceptProc_h
- 
-

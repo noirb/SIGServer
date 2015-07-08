@@ -7,7 +7,7 @@
 
 #include "systemdef.h"
 
-#if (defined USE_XERCES && defined EXEC_SIMULATION)
+#if (defined USE_XERCES)
 
 #include <xercesc/sax/HandlerBase.hpp>
 
@@ -120,5 +120,4 @@ public:
 
 #endif // WorldXMLReader_h
 
-#endif // USE_XERCES && EXEC_SIMULATION
-
+#endif // USE_XERCES

@@ -1,6 +1,6 @@
-/* $Id: SSimWorld.cpp,v 1.5 2012-06-14 01:48:07 okamoto Exp $ */
 #include "SSimWorld.h"
 #include "SimGround.h"
+
 
 #define FREE(P) if (P) { delete P; P = 0; }
 
@@ -13,9 +13,7 @@ void SSimWorld::free_()
 {
 	Super::free_();
 
-#if (defined USE_OPENGL) || (defined EXEC_SIMULATION)
 	FREE(m_ground);
-#endif
 }
 
 double SSimWorld::time() const { return m_odeWorld->time(); }
@@ -109,5 +107,3 @@ void SSimWorld::print()
 		printf("@@@%s\n",obj->name());
 	}
 }
-
-

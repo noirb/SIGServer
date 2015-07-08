@@ -52,9 +52,7 @@ public:
 
 	virtual double time() const { return m_time; }
 
-#ifndef EXEC_SIMULATION
 	void time(double t) { m_time = t; }
-#endif
 
 	void push(SimObjBase *obj);
 #ifdef IMPLEMENT_DRAWER 
@@ -65,5 +63,3 @@ public:
 };
 
 #endif // SimWorld_h
-
-

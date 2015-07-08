@@ -10,7 +10,7 @@
 
 #include <xercesc/sax/HandlerBase.hpp>
 
-#if (defined EXEC_SIMULATION && defined USE_XERCES)
+#if (defined USE_XERCES)
 
 #include "X3DDB.h"
 #include "SimpleShapeDB.h"	// FIX20110421(ExpSS)
@@ -51,5 +51,3 @@ public:
 #endif
 
 #endif // EntityXMLReader_h
-
-

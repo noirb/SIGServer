@@ -1,6 +1,3 @@
-/* $Id: LogTransfer.cpp,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */ 
-#ifdef IRWAS_SIMSERVER
-
 #include "LogTransfer.h"
 #include "ServerAcceptProc.h"
 #include "CommDataEncoder.h"
@@ -27,5 +24,3 @@ void LogTransfer::flush(const std::vector<Connection*> &clients)
 	m_entries.clear();
 	m_accept.unlock();
 }
-
-#endif // IRWAS_SIMSERVER

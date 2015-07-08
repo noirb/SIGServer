@@ -9,8 +9,6 @@
 #ifndef WorldSimulator_h
 #define WorldSimulator_h
 
-#ifdef IRWAS_SIMSERVER
-
 #include "CommDataDecoder.h"
 #include "Controller.h"
 #include "SSimWorld.h"
@@ -29,7 +27,6 @@ class LogTransfer;
 class PacketForward;
 class DecoderListener;
 class ServiceNameServer;
-
 
 
 class WorldSimulator
@@ -100,9 +97,4 @@ public:
 	void startSimulation(SSimWorld *w);
 };
 
-
-#endif // IRWAS_SIMSERVER
-
 #endif // WorldSimulator_h
- 
-

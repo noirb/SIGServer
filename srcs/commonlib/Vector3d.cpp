@@ -7,7 +7,7 @@
 #include "Logger.h"
 
 //#ifndef IRWAS_OGRE_CLIENT
-#if (defined EXEC_SIMULATION || defined IRWAS_TEST_CLIENT || defined CONTROLLER)
+
 Vector3d & Vector3d::rotate(const Rotation &r)
 {
 	Vector3d rv;
@@ -16,7 +16,6 @@ Vector3d & Vector3d::rotate(const Rotation &r)
 	return *this;
 }
 
-#endif
 
 /*
 void Vector3d::rotateByQuaternion(double qw, double qx, double qy, double qz)

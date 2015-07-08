@@ -5,8 +5,6 @@
 #ifndef LogTransfer_h
 #define LogTransfer_h
 
-#ifdef IRWAS_SIMSERVER
-
 #include "Logger.h"
 
 #include <string>
@@ -38,8 +36,4 @@ private:
 	}
 };
 
-#endif // IRWAS_SIMSERVER
-
 #endif // LogTransfer_h
- 
-

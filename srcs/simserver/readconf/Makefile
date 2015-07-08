@@ -1,10 +1,8 @@
-# $Id: Makefile,v 1.2 2011-05-12 08:33:55 msi Exp $
-
 DEPFILE = Makefile.dep
 
 CXXFLAGS = $(CFLAGS)
 #INCLUDE = -I ../../commonlib -I ./ -I ../
-#DEFINE = -D USE_ODE -D EXEC_SIMULATION -D dDOUBLE -D USE_XERCES
+#DEFINE = -D USE_ODE -D dDOUBLE -D USE_XERCES
 # DEFINE += -D BodyXMLReader_test
 # DEFINE += -D EntityXMLReader_test -D NO_WORLD
 

@@ -8,13 +8,10 @@
 #include "systemdef.h"
 #include "Logger.h"
 
-#ifdef EXEC_SIMULATION
 #include <ode/ode.h>
-#endif
 
 class SimGround
 {
-#ifdef EXEC_SIMULATION
 private:
 	dGeomID m_geom;
 
@@ -25,7 +22,6 @@ public:
 	}
 	dGeomID getGeom(){return m_geom;}
 
-#endif
 public:
 #ifdef IMPLEMENT_DRAWER
 	void draw(DrawContext &c);
@@ -33,5 +29,3 @@ public:
 };
 
 #endif // SimGround_h
- 
-

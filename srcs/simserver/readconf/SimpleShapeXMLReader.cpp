@@ -4,7 +4,7 @@
 
 #include "systemdef.h"
 
-#if (defined USE_XERCES && defined EXEC_SIMULATION)
+#if (defined USE_XERCES)
 
 #include "SimpleShapeXMLReader.h"
 #include "SimpleShapeDB.h"
@@ -338,5 +338,5 @@ bool SimpleShapeXMLReader::read(const char *entClassName, const char *simpleShap
 	return ret;
 }
 
-#endif // USE_XERCES && EXEC_SIMULATION
+#endif // USE_XERCES
 

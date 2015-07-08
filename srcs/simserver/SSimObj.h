@@ -299,5 +299,3 @@ public:
 
 
 #endif // SSimObj_h
-
-

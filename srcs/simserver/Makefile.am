@@ -1,4 +1,3 @@
-# $Id: Makefile.am,v 1.3 2011-05-12 08:33:53 msi Exp $
 bin_PROGRAMS = sigserver
 bin_SCRIPTS = sigserver.sh sigkill.sh sigcreate.sh
 sigserver_SOURCES = SSimObj.cpp \
@@ -23,11 +22,11 @@ sigetc_DATA = X3DParser.cfg
 
 # -----------------------------------------------------
 # Release mode setting
-#DEFINE = -D IRWAS_SIMSERVER -D dDOUBLE -D STRICT_INTERFACE
+#DEFINE = -D dDOUBLE -D STRICT_INTERFACE
 #CFLAGS = -pipe
 # -----------------------------------------------------
 # Debug mode setting
-DEFINE = -D IRWAS_SIMSERVER -D dDOUBLE -D STRICT_INTERFACE -D _DEBUG
+DEFINE = -D dDOUBLE -D STRICT_INTERFACE -D _DEBUG
 CFLAGS = -pipe -g -Wall
 # -----------------------------------------------------
 

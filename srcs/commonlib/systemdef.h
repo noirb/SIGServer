@@ -16,9 +16,9 @@
 #define USE_ODE
 #endif
 
-#ifndef EXEC_SIMULATION
-#define EXEC_SIMULATION
-#endif
+//#ifndef EXEC_SIMULATION
+//#define EXEC_SIMULATION
+//#endif
 
 #ifndef USE_XERCES
 #define USE_XERCES
@@ -38,21 +38,23 @@
 #define IMPLEMENT_DRAWER
 #endif
 
-#elif (defined IRWAS_SIMSERVER)
+#endif //#if (defined IRWAS_STANDALONE)
+
+
 
 #ifndef USE_ODE
 #define USE_ODE
 #endif
 
-#ifndef EXEC_SIMULATION
-#define EXEC_SIMULATION
-#endif
+//#ifndef EXEC_SIMULATION
+//#define EXEC_SIMULATION
+//#endif
 
 #ifndef USE_XERCES
 #define USE_XERCES
 #endif
 
-#endif
+
 
 #ifdef USE_ODE
 #include <ode/ode.h>

@@ -4,7 +4,7 @@
 
 #include "systemdef.h"
 
-#if (defined EXEC_SIMULATION && defined USE_XERCES)
+#if (defined USE_XERCES)
 
 #include "EntityXMLReader.h"
 #include "BodyXMLReader.h"
@@ -1151,7 +1151,4 @@ bool EntityXMLReader::read(const char *fname)
 // end(orig)
 #endif // }
 
-
-#endif // USE_XERCES && EXEC_SIMULATION
-
-
+#endif // USE_XERCES
