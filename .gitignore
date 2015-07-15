@@ -24,3 +24,11 @@ stamp-h1
 /Makefile
 *.log
 
+#for eclipse
+.settings/
+.cproject
+.project
+
+*.dat
+
+
