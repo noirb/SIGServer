@@ -12,6 +12,7 @@
 #include "CommDataDecoder.h"
 #include "Controller.h"
 #include "SSimWorld.h"
+#include "DecoderListener.h"
 //#include "DynamicsData.h"
 //#include "./comm/controller/NoData.h"
 

@@ -54,6 +54,7 @@ am_sigserver_OBJECTS = SSimObj.$(OBJEXT) Joint.$(OBJEXT) \
 	SParts.$(OBJEXT) \
 	ServerAcceptProc.$(OBJEXT) LogTransfer.$(OBJEXT) \
 	SSimWorld.$(OBJEXT) PacketForward.$(OBJEXT) \
+	DecoderListener.$(OBJEXT) \
 	WorldSimulator.$(OBJEXT) ServiceNameServer.$(OBJEXT) \
 	simserver.$(OBJEXT) fname.$(OBJEXT) jjudge.$(OBJEXT) \
 	SSimEntity.$(OBJEXT)
@@ -254,6 +255,7 @@ sigserver_SOURCES = SSimObj.cpp \
 	LogTransfer.cpp \
 	SSimWorld.cpp \
 	PacketForward.cpp \
+	DecoderListener.cpp \
 	WorldSimulator.cpp \
 	ServiceNameServer.cpp \
 	simserver.cpp fname.c jjudge.c \
@@ -402,6 +404,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SSimWorld.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ServerAcceptProc.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ServiceNameServer.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DecoderListener.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/WorldSimulator.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/fname.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/jjudge.Po@am__quote@
