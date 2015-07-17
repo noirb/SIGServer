@@ -198,12 +198,12 @@ int recv_nonblock(SOCKET sock, char *msg, int size)
 
 bool WorldSimulator::recvData(SOCKET sock, char* msg, int size)
 {
-	int recieved = 0;
+	int received = 0;
 
 	// Response to a case in which the data could not be sent once
 	while(1) {
 		// Sending
-		int r = recv_nonblock(sock, msg + recieved, size - recieved);
+		int r = recv_nonblock(sock, msg + received, size - received);
 
 #ifndef WIN32
 		if (r < 0) {
@@ -216,7 +216,7 @@ bool WorldSimulator::recvData(SOCKET sock, char* msg, int size)
 				continue;
 			}
 
-			LOG_ERR(("Failed to recieve data. erro[%d]",r));
+			LOG_ERR(("Failed to receive data. erro[%d]",r));
 			return false;
 		}
 #else
@@ -224,14 +224,14 @@ bool WorldSimulator::recvData(SOCKET sock, char* msg, int size)
 			Sleep(1);
 
 			continue;
-//			LOG_ERR(("Failed to recieve data. erro[%d]",r));
+//			LOG_ERR(("Failed to receive data. erro[%d]",r));
 //			return false;
 		}
 #endif
 		// The number of bytes already sent
-		recieved += r;
+		received += r;
 		// Check whether all of the data is sent
-		if (size == recieved) break;
+		if (size == received) break;
 	}
 	return true;
 }
@@ -1653,6 +1653,1755 @@ bool WorldSimulator::sendShapeFile(SOCKET sock, std::string name)
 }
 
 
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestGetAllEntitiesfirst(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	if (!sendAllEntities(s, p)) {
+		LOG_ERR(("sendAllEntities failed."));
+	}
+	return NEXT_CLIENT;
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestStartSimulation(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	startSimulation(w);
+	return NEXT_STEP;
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestStopSimulation(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	if (w && w->isRunning())
+	{
+		// Notice the 'simulation stop' event to every controller
+		std::vector<Source*> srcs = m_accept.getAllCtlClients();
+		int size = srcs.size();
+		for (int i = 0; i < size; i++)
+		{
+			// Buffer for the message sending
+			int dataSize = sizeof(unsigned short) * 2;
+#ifndef WIN32
+			char sendBuff[dataSize];
+#else
+			char sendBuff[4];
+#endif
+			char *p = sendBuff;
+
+			// Notice the 'simulation stop' event to the target controller
+			BINARY_SET_DATA_S_INCR(p, unsigned short, 0x0003); // TODO: Magic number should be removed
+			BINARY_SET_DATA_S_INCR(p, unsigned short, dataSize);
+			// Send request of stop the simulation to the controller
+			if (!sendData(srcs[i]->socket(), sendBuff, dataSize)) {
+				LOG_ERR(("cannot send simulation stop message to controller."));
+			}
+		}
+		LOG_SYS(("****SIMULATION STOP****"));
+		w->stop();
+	}
+	return NEXT_CLIENT;
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestGetMoveEntities(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	// Update the data after the last Viewer's request
+	int tmp_size = clients.size();
+	bool update = false;
+	if (i == tmp_size - 1) update = true;
+	if (!sendMoveEntities(s,update)) {
+		LOG_ERR(("sendMoveEntities failed."));
+	}
+	packetSize = 0;
+
+	return NEXT_CLIENT;
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestDownloadShape(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	// size of the file name of the shape file
+	unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
+
+	char name[128];  // TODO: Magic number
+	memset(name, '\0', sizeof(name));
+
+	if (!recv_nonblock(s, name, size)) {
+		LOG_ERR(("Could not receive shape file name."));
+		return NEXT_CLIENT;
+	}
+	std::string sname = std::string(name);
+
+	// Sending file name data
+	if (!sendShapeFile(s, name)) {
+		LOG_ERR(("Could not send shape file."));
+		return NEXT_CLIENT;
+	}
+
+	packetSize = 0;
+	return NEXT_CLIENT;
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestDisconnect(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	Source *client_ = clients[i]->source;
+	if (strcmp(client_->name(), "SIGSTART") != 0)
+		LOG_SYS(("Disconnected %s", client_->name()));
+	m_accept.pushNoNeeded(client_);
+	return NEXT_CLIENT;
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestQuit(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	w->stop();
+	LOG_SYS(("****Quit Simulation****"));
+#ifndef WIN32
+	close(s);
+#else
+	closesocket(s);
+	//WSACleanup();
+#endif
+	//exit(1);
+	return RETURN_FALSE;
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestSendmsgFromController(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	// Get the size of data (excluding the header size)
+	unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
+	size -= 4;  // This is the size of header, TODO: magic number should be removed
+
+	char *recvBuff = new char[size];
+	if (!recvData(s, recvBuff, size)) {
+		LOG_ERR(("Failed to receive message"));
+		delete [] recvBuff;
+		return NEXT_CLIENT;
+	}
+
+	std::string from = client->name();
+
+	// Forwarding the message
+	if (!sendOnMsg(s, recvBuff, from))
+		LOG_ERR(("Failed to send message."));
+
+	delete [] recvBuff;
+	//return NEXT_CLIENT;
+	return NEXT_MESSAGE;
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestConnectService(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	// Get the size of data (excluding the header size)
+	unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
+	size -= 4; // TODO
+
+	char *recvBuff = new char[size];
+	if (!recvData(s, recvBuff, size)) {
+		LOG_ERR(("Failed to connect service [%s, %d]", __FILE__, __LINE__));
+		delete [] recvBuff;
+		return NEXT_CLIENT;
+	}
+
+	char *pp = recvBuff;
+	// Get the size of data (excluding the header size)
+	unsigned short port = BINARY_GET_DATA_S_INCR(pp, unsigned short);
+
+	std::string service = strtok(pp, ",");
+	std::string name = strtok(NULL, ",");
+	std::string host = client->hostname();
+
+	// Check whether the controller is executed in the localhost
+	if (host == "127.0.0.1" || host == "0.0.0.0") {
+
+		// Get the target service
+		Source *src = m_accept.get(service.c_str(), SOURCE_TYPE_MESSAGE);
+		char result[4];     // Used in sending the result to controller
+		char *ppp = result;
+
+		if (!src) {
+			LOG_ERR(("Could not find service provider [%s] [%s, %d]", service.c_str(), __FILE__, __LINE__));
+			// Notice the controller that the service is not found
+			BINARY_SET_DATA_S_INCR(ppp, unsigned short, 0x0000);
+			BINARY_SET_DATA_S_INCR(ppp, unsigned short, 4);
+			return NEXT_CLIENT;
+		}
+		else {
+			// Notice the controller that the service exist
+			BINARY_SET_DATA_S_INCR(ppp, unsigned short, 0x0001);
+			BINARY_SET_DATA_S_INCR(ppp, unsigned short, 4);
+			//sendData(s, result, 4);
+		}
+
+		std::string sendMsg = name + ",";
+
+		// Create buffer for the sending
+		int sendSize =  sendMsg.size() + sizeof(unsigned short) * 3;
+		char *sendBuff = new char[sendSize];
+		char *p = sendBuff;
+
+		// Add header and data size
+		BINARY_SET_DATA_S_INCR(p, unsigned short, 0x0003);
+		BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
+		BINARY_SET_DATA_S_INCR(p, unsigned short, port);
+
+		memcpy(p, sendMsg.c_str(), sendMsg.size());
+
+		// Send connection request to the target service
+		if (!sendData(src->socket(), sendBuff, sendSize)) {
+		  LOG_ERR(("Failed to send connect request to [%s] [%s, %d]", service.c_str(),  __FILE__, __LINE__));
+		}
+	}
+
+	// [ToDo]
+	else {
+	}
+
+	delete [] recvBuff;
+	//return NEXT_MESSAGE;
+	return NEXT_STEP;
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestGetJointPosition(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	if (!client->isControllerData()) {
+		LOG_MSG(("no controllerData"));
+		return NEXT_STEP;
+	}
+
+	// Get the size of data (excluding the header size)
+	unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
+	size -= 4;
+
+	char *recvBuff = new char[size];
+	if (!recvData(s, recvBuff, size)) {
+		LOG_ERR(("Failed to receive data [%s, %d]", __FILE__, __LINE__));
+		delete [] recvBuff;
+		return NEXT_MESSAGE;
+	}
+	char *pp     = recvBuff;
+	char *name   = strtok(pp, ",");
+	char *jname  = strtok(NULL, ",");
+	SSimObj *my  = w->getSObj(name);
+	Joint *joint = my->getJoint(jname);
+
+	bool success = false;
+	if (joint == NULL) {
+		LOG_ERR(("getJointPosition: cannot find joint [%s]", joint));
+	}
+	else success = true;
+
+	delete [] recvBuff;
+
+	// Refer the position of the joint
+	Vector3d pos(0.0, 0.0, 0.0);
+	if (success)
+		pos = joint->getCurrentAnchorPosition();
+
+	// Buffer for position of joints
+	int sendSize = sizeof(double) * 3 + sizeof(bool);
+	char *sendBuff = new char[sendSize];
+	char *sp = sendBuff;
+
+	// Add position data in the buffer
+	BINARY_SET_DOUBLE_INCR(sp, pos.x());
+	BINARY_SET_DOUBLE_INCR(sp, pos.y());
+	BINARY_SET_DOUBLE_INCR(sp, pos.z());
+
+	// Flag for the reference success
+	BINARY_SET_BOOL_INCR(sp, success);
+
+	// Sending the result to controller
+	if (!sendData(s, sendBuff, sendSize)) {
+		LOG_ERR(("Failed to send data [%s, %d]", __FILE__, __LINE__));
+	}
+	delete [] sendBuff;
+	return NEXT_MESSAGE;;
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestGetJointQuaternion(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	if (!client->isControllerData()) {
+		return NEXT_STEP;
+	}
+	unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
+	size -= 4;
+
+	char *recvBuff = new char[size];
+
+	if (!recvData(s, recvBuff, size)) {
+		LOG_ERR(("Failed to receive data [%s, %d]", __FILE__, __LINE__));
+		delete [] recvBuff;
+		return NEXT_CLIENT;
+	}
+	char *pp = recvBuff;
+
+	// Reference of the quaternion
+	double qw = BINARY_GET_DOUBLE_INCR(pp);
+	double qx = BINARY_GET_DOUBLE_INCR(pp);
+	double qy = BINARY_GET_DOUBLE_INCR(pp);
+	double qz = BINARY_GET_DOUBLE_INCR(pp);
+
+	char *agentName = strtok(pp, ",");
+	char *jName     = strtok(NULL, ",");
+	bool offset     = (atoi(strtok(NULL, ",")) != false);
+
+	SSimObj *obj = w->getSObj(agentName);
+	if (!obj) {
+		LOG_ERR(("SetJointQuaternion : no agent \"%s\"", agentName));
+		delete [] recvBuff;
+		return NEXT_MESSAGE;
+	}
+
+	//const char *jName = evt.getJointName(); //Get the joint name specified by the event.
+	Joint *j = obj->getJoint(jName);		  //Get the joint from the joint name.
+	if (!j) {
+		LOG_ERR(("SetJointQuaternion : %s does NOT have joint \"%s\"", agentName, jName));
+		delete [] recvBuff;
+		return NEXT_MESSAGE;
+	}
+	// Cannot execute in dynamic on mode
+	if (obj->dynamics()) {
+		LOG_ERR(("Cannot Set Joint Quaternion. dynamics is true")) ;
+		delete [] recvBuff;
+		return NEXT_MESSAGE;
+	}
+
+	//set OffsetQuaternion
+	//bool offset = evt.getoffset();
+	if (offset) {
+		Vector3d ini;
+		j->setOffsetQuaternion(qw, qx, qy, qz,ini);
+	}
+
+	//set Quaternion
+	else
+		j->setQuaternion(qw, qx, qy, qz);
+
+	delete [] recvBuff;
+	return NEXT_MESSAGE;
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestGetPointingVector(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	//if (!client->isControllerData())   return NEXT_STEP;
+	if (!client->isControllerData()) {
+		return NEXT_STEP;
+	}
+
+	unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
+	size -= 4;
+
+	char *recvBuff = new char[size];
+
+	if (!recvData(s, recvBuff, size)) {
+		LOG_ERR(("Failed to receive data [%s, %d]", __FILE__, __LINE__));
+		delete [] recvBuff;
+		return NEXT_CLIENT;
+	}
+
+	char *pp = recvBuff;
+
+	char *agentName = strtok(pp, ",");
+	char *jName1    = strtok(NULL, ",");
+	char *jName2    = strtok(NULL, ",");
+
+	SSimObj *obj = w->getSObj(agentName);
+	bool success = true;
+	if (!obj) {
+		LOG_ERR(("getPointingVector : no agent \"%s\"", agentName));
+		success = false;
+	}
+
+	//Get the joint1 from the joint name.
+	Joint *j1 = obj->getJoint(jName1);
+	Joint *j2 = obj->getJoint(jName2);
+	if (!j1) {
+		LOG_ERR(("getPointingVector : %s does NOT have joint \"%s\"", agentName, jName1));
+		success = false;
+	}
+	else if (!j2) {
+		LOG_ERR(("getPointingVector : %s does NOT have joint \"%s\"", agentName, jName2));
+		success = false;
+	}
+
+	Vector3d pos1(0.0, 0.0, 0.0);
+	Vector3d pos2(0.0, 0.0, 0.0);
+
+	// Refer the position of joints
+	if (success) {
+		pos1 = j1->getCurrentAnchorPosition();
+		pos2 = j2->getCurrentAnchorPosition();
+	}
+	// Vector from the start position to the destination
+	pos2 -= pos1;
+
+	// Normalization
+	double tmp = sqrt(pos2.x()*pos2.x() + pos2.y()*pos2.y() + pos2.z()*pos2.z());
+	pos2.set(pos2.x()/tmp, pos2.y()/tmp, pos2.z()/tmp);
+
+	// Create buffer
+	int sendSize = sizeof(double) * 3 + sizeof(bool);
+	char *sendBuff = new char[sendSize];
+	char *sp = sendBuff;
+
+	// Add the pointing vector to the buffer
+	BINARY_SET_DOUBLE_INCR(sp, pos2.x());
+	BINARY_SET_DOUBLE_INCR(sp, pos2.y());
+	BINARY_SET_DOUBLE_INCR(sp, pos2.z());
+
+	// Flag of the result
+	BINARY_SET_BOOL_INCR(sp, success);
+
+	// Sending the result to controller
+	if (!sendData(s, sendBuff, sendSize)) {
+		LOG_ERR(("Failed to send data [%s, %d]", __FILE__, __LINE__));
+	}
+	delete [] recvBuff;
+	delete [] sendBuff;
+	return NEXT_MESSAGE;
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestGetPartsPosition(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	if (!client->isControllerData()) {
+		return NEXT_STEP;
+	}
+	unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
+	size -= 4;
+
+	char *recvBuff = new char[size];
+
+	if (!recvData(s, recvBuff, size)) {
+		LOG_ERR(("Failed to receive data [%s, %d]", __FILE__, __LINE__));
+		delete [] recvBuff;
+		return NEXT_MESSAGE;
+	}
+
+	char *pp = recvBuff;
+	char *name = strtok(pp, ",");
+	char *pname = strtok(NULL, ",");
+
+	SSimObj *my = w->getSObj(name);
+	SParts *parts = my->getSParts(pname);
+
+	bool success = false;
+	if (parts == NULL) {
+		LOG_ERR(("getPartsPosition: cannot find joint [%s]", pname));
+	}
+	else success = true;
+
+	// Reference of the parts position
+	const dReal *pos;
+	if (success)
+		pos = parts->getPosition();
+
+	// Creation of buffer
+	int sendSize = sizeof(double) * 3 + sizeof(bool);
+	char *sendBuff = new char[sendSize];
+	char *sp = sendBuff;
+
+	// Add position data to the buffer
+	BINARY_SET_DOUBLE_INCR(sp, pos[0]);
+	BINARY_SET_DOUBLE_INCR(sp, pos[1]);
+	BINARY_SET_DOUBLE_INCR(sp, pos[2]);
+
+	// Flag of the result
+	BINARY_SET_BOOL_INCR(sp, success);
+
+	// Sending the result to controller
+	if (!sendData(s, sendBuff, sendSize)) {
+		LOG_ERR(("Failed to send data [%s, %d]", __FILE__, __LINE__));
+	}
+
+	delete [] recvBuff;
+	delete [] sendBuff;
+	return NEXT_MESSAGE;
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestGetPartsQuaternion(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	if (!client->isControllerData()) {
+		return NEXT_STEP;
+	}
+	unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
+	size -= 4;
+
+	char *recvBuff = new char[size];
+	if (!recvData(s, recvBuff, size)) {
+		LOG_ERR(("Failed to receive data [%s, %d]", __FILE__, __LINE__));
+		delete [] recvBuff;
+		return NEXT_MESSAGE;
+	}
+
+	char *pp = recvBuff;
+	char *name = strtok(pp, ",");
+	char *pname = strtok(NULL, ",");
+
+	SSimObj *my = w->getSObj(name);
+	SParts *parts = my->getSParts(pname);
+
+	bool success = false;
+	if (parts == NULL) {
+		LOG_ERR(("getPartsQuaternion: cannot find joint [%s]", pname));
+	}
+	else success = true;
+
+	// Reference of the parts position
+	const dReal *qt;
+	if (success)
+		qt = parts->getQuaternion();
+
+	// Creation of buffer
+	int sendSize = sizeof(double) * 4 + sizeof(bool);
+	char *sendBuff = new char[sendSize];
+	char *sp = sendBuff;
+
+	// Add position data to the buffer
+	BINARY_SET_DOUBLE_INCR(sp, qt[0]);
+	BINARY_SET_DOUBLE_INCR(sp, qt[1]);
+	BINARY_SET_DOUBLE_INCR(sp, qt[2]);
+	BINARY_SET_DOUBLE_INCR(sp, qt[3]);
+
+	// Flag of the result
+	BINARY_SET_BOOL_INCR(sp, success);
+
+	// Sending the result to controller
+	if (!sendData(s, sendBuff, sendSize)) {
+		LOG_ERR(("Failed to send data [%s, %d]", __FILE__, __LINE__));
+	}
+
+	delete [] recvBuff;
+	delete [] sendBuff;
+	return NEXT_MESSAGE;
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestSetEntityPosition(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	// Check wheter the request is sent from controller
+	if (!client->isControllerData()) {
+		return NEXT_STEP;
+	}
+
+	unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
+	size -= 4;
+
+	char *recvBuff = new char[size];
+
+	if (!recvData(s, recvBuff, size)) {
+		LOG_ERR(("Failed to receive data [%s, %d]", __FILE__, __LINE__));
+		delete [] recvBuff;
+		return NEXT_CLIENT;
+	}
+
+	char *pp = recvBuff;
+
+	// Reference of the position
+	double x = BINARY_GET_DOUBLE_INCR(pp);
+	double y = BINARY_GET_DOUBLE_INCR(pp);
+	double z = BINARY_GET_DOUBLE_INCR(pp);
+
+	char *agentName = strtok(pp, ",");
+	SSimObj *obj = w->getSObj(agentName);
+	//SimObj *sobj = (SimObj*)obj;
+	if (!obj) {
+		LOG_ERR(("setPosition : no agent \"%s\"", agentName));
+		delete [] recvBuff;
+		return NEXT_MESSAGE;
+	}
+
+	SParts *parts = obj->getSBody();
+	ODEObj oobj   = parts->odeobj();
+	dBodyID body  = oobj.body();
+
+	// Set the position of the entity in ODE world
+	dBodySetPosition(body, x, y, z);
+
+	delete [] recvBuff;
+	//return RETURN_TRUE;
+
+	return NEXT_MESSAGE;
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestCheckService(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
+	size -= 4;
+
+	char *recvBuff = new char[size];
+
+	if (!recvData(s, recvBuff, size)) {
+		LOG_ERR(("Failed to check service [%s, %d]", __FILE__, __LINE__));
+		delete [] recvBuff;
+		return NEXT_CLIENT;
+	}
+
+	char *pp = recvBuff;
+	std::string service = strtok(pp, ",");
+
+	// Get the target service
+	Source *src = m_accept.get(service.c_str(), SOURCE_TYPE_MESSAGE);
+
+	char result[4]; // Used when sending the result
+	pp = result;
+
+	// If the target service is not found
+	if (!src) {
+		BINARY_SET_DATA_S_INCR(pp, unsigned short, 0x0000);
+	}
+	// If the target service is found
+	else {
+		BINARY_SET_DATA_S_INCR(pp, unsigned short, 0x0001);
+	}
+	BINARY_SET_DATA_S_INCR(pp, unsigned short, 4);
+	//sendData(s, result, 4);
+	send(s, result, 4, 0);
+	delete [] recvBuff;
+	return NEXT_MESSAGE;
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestGetEntityPosition(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	// Check whether the request is sent from controller
+	if (!client->isControllerData()) {
+		return NEXT_STEP;
+	}
+
+	bool success = true;
+	unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
+	size -= 4;
+
+	char *recvBuff = new char[size];
+
+	if (!recvData(s, recvBuff, size)) {
+		LOG_ERR(("Failed to receive data [%s, %d]", __FILE__, __LINE__));
+		delete [] recvBuff;
+		return NEXT_CLIENT;
+	}
+	char *pp = recvBuff;
+
+	char *agentName = strtok(pp, ",");
+	SSimObj *obj = w->getSObj(agentName);
+	//SimObj *sobj = (SimObj*)obj;
+	if (!obj) {
+		LOG_ERR(("getPosition : no agent \"%s\"", agentName));
+		delete [] recvBuff;
+		success = false;
+	}
+
+	const dReal *pos;
+	if (success) {
+		SParts *parts = obj->getSBody();
+		ODEObj oobj = parts->odeobj();
+		dBodyID body = oobj.body();
+
+		// Reference of position data to ODE world
+		pos = dBodyGetPosition(body);
+	}
+	// Buffer for sending the data
+	int sendSize = sizeof(double) * 3 + sizeof(bool);
+	char *sendBuff = new char[sendSize];
+	char *sp = sendBuff;
+
+	// Flag of the result
+	BINARY_SET_BOOL_INCR(sp, success);
+
+	// Add position data to the buffer
+	BINARY_SET_DOUBLE_INCR(sp, pos[0]);
+	BINARY_SET_DOUBLE_INCR(sp, pos[1]);
+	BINARY_SET_DOUBLE_INCR(sp, pos[2]);
+
+	// Sending result to controller
+	if (!sendData(s, sendBuff, sendSize)) {
+		LOG_ERR(("getPosition: Failed to send data [%s, %d]", __FILE__, __LINE__));
+	}
+	delete [] recvBuff;
+	delete [] sendBuff;
+
+	//return RETURN_TRUE;
+	return NEXT_MESSAGE;
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestSetEntityRotation(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	// Check whether the request is sent from controller
+	if (!client->isControllerData()) {
+		return NEXT_STEP;
+	}
+	unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
+	size -= 4;
+	char *recvBuff = new char[size];
+
+	if (!recvData(s, recvBuff, size)) {
+		LOG_ERR(("Failed to receive data [%s, %d]", __FILE__, __LINE__));
+		delete [] recvBuff;
+		return NEXT_CLIENT;
+	}
+	char *pp = recvBuff;
+
+	unsigned short abs = BINARY_GET_DATA_S_INCR(pp, unsigned short);
+
+	// Get orientation (quaternion) data from the buffer
+	double qw = BINARY_GET_DOUBLE_INCR(pp);
+	double qx = BINARY_GET_DOUBLE_INCR(pp);
+	double qy = BINARY_GET_DOUBLE_INCR(pp);
+	double qz = BINARY_GET_DOUBLE_INCR(pp);
+
+	char *agentName = strtok(pp, ",");
+	SSimObj *obj = w->getSObj(agentName);
+	SimObj *sobj = (SimObj*)obj;
+	if (!obj) {
+		LOG_ERR(("SetRotation : no agent \"%s\"", agentName));
+		delete [] recvBuff;
+		return NEXT_MESSAGE;
+	}
+
+	SParts *parts = obj->getSBody();
+	ODEObj oobj = parts->odeobj();
+	dBodyID body = oobj.body();
+
+	dReal qua[4];
+	// Abusolute orientation
+	if (abs) {
+		qua[0] = qw;
+		qua[1] = qx;
+		qua[2] = qy;
+		qua[3] = qz;
+	}
+	// Relative orientation
+	else {
+		const dReal tmp_qua[] = {qw, qx, qy, qz};
+		// Multiplication of quaternion
+		const dReal *now_qua = dBodyGetQuaternion(body);
+		dQMultiply0(qua, now_qua, tmp_qua);
+	}
+	// Set the new orientation to the SimObj instance (for the confirmation)
+	sobj->qw(qua[0]);
+	sobj->qx(qua[1]);
+	sobj->qy(qua[2]);
+	sobj->qz(qua[3]);
+	// Set the new orientation to the ODE world
+	dBodySetQuaternion(body, qua);
+
+	delete [] recvBuff;
+	//return RETURN_TRUE;
+	return NEXT_MESSAGE;
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestGetEntityRotation(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	// Check whether the request is sent from controller
+	if (!client->isControllerData()) {
+		return NEXT_STEP;
+	}
+
+	bool success = true;
+	unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
+	size -= 4;
+
+	char *recvBuff = new char[size];
+
+	if (!recvData(s, recvBuff, size)) {
+		LOG_ERR(("Failed to receive data [%s, %d]", __FILE__, __LINE__));
+		delete [] recvBuff;
+		return NEXT_CLIENT;
+	}
+	char *pp = recvBuff;
+
+	char *agentName = strtok(pp, ",");
+	SSimObj *obj = w->getSObj(agentName);
+	//SimObj *sobj = (SimObj*)obj;
+	if (!obj) {
+		LOG_ERR(("getRotation : no agent \"%s\"", agentName));
+		delete [] recvBuff;
+		success = false;
+	}
+
+	const dReal *qua;
+	if (success) {
+		SParts *parts = obj->getSBody();
+		ODEObj oobj = parts->odeobj();
+		dBodyID body = oobj.body();
+		// Reference of orientation data to ODE world
+		qua = dBodyGetQuaternion(body);
+	}
+	// Buffer for the result sending
+	int sendSize = sizeof(double) * 4 + sizeof(bool);
+	char *sendBuff = new char[sendSize];
+	char *sp = sendBuff;
+
+	// Flag of the result
+	BINARY_SET_BOOL_INCR(sp, success);
+	// Add orientation data to the buffer
+	BINARY_SET_DOUBLE_INCR(sp, qua[0]);
+	BINARY_SET_DOUBLE_INCR(sp, qua[1]);
+	BINARY_SET_DOUBLE_INCR(sp, qua[2]);
+	BINARY_SET_DOUBLE_INCR(sp, qua[3]);
+
+	// Sending the result to controller
+	if (!sendData(s, sendBuff, sendSize)) {
+		LOG_ERR(("getRotation: Failed to send data [%s, %d]", __FILE__, __LINE__));
+	}
+	delete [] recvBuff;
+	delete [] sendBuff;
+	//return RETURN_TRUE;
+	return NEXT_MESSAGE;
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestCheckEntity(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	unsigned short success = 1;
+	unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
+	size -= 4;
+
+	char *recvBuff = new char[size];
+
+	if (!recvData(s, recvBuff, size)) {
+		LOG_ERR(("Failed to receive data [%s, %d]", __FILE__, __LINE__));
+		delete [] recvBuff;
+		return NEXT_CLIENT;
+	}
+
+	char *pp = recvBuff;
+
+	char *agentName = strtok(pp, ",");
+
+	SSimObj *obj = w->getSObj(agentName);
+
+	//SimObj *sobj = (SimObj*)obj;
+
+	if (!obj) {
+		LOG_ERR(("getObj : no agent \"%s\"", agentName));
+		delete [] recvBuff;
+		success = 0;
+	}
+
+	// Buffer for sending
+	int sendSize = sizeof(unsigned short);
+	char *sendBuff = new char[sendSize];
+	char *sp = sendBuff;
+
+	BINARY_SET_DATA_S_INCR(sp, unsigned short, success);
+
+	// Sending the result to controller
+	if (!sendData(s, sendBuff, sendSize)) {
+		LOG_ERR(("getObj: Failed to send data [%s, %d]", __FILE__, __LINE__));
+	}
+	delete [] recvBuff;
+	delete [] sendBuff;
+
+	//return RETURN_TRUE;
+	return NEXT_MESSAGE;
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestSetCameraPosition(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	if (!client->isControllerData()) {
+		return NEXT_STEP;
+	}
+	unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
+	size -= 4;
+
+	char *recvBuff = new char[size];
+
+	if (!recvData(s, recvBuff, size)) {
+		LOG_ERR(("Failed to receive data [%s, %d]", __FILE__, __LINE__));
+		delete [] recvBuff;
+		return NEXT_CLIENT;
+	}
+	char *pp = recvBuff;
+
+	// Get Camera ID from the received message
+	unsigned short camID = BINARY_GET_DATA_S_INCR(pp, unsigned short);
+	// Get position data from the received message
+	double x = BINARY_GET_DOUBLE_INCR(pp);
+	double y = BINARY_GET_DOUBLE_INCR(pp);
+	double z = BINARY_GET_DOUBLE_INCR(pp);
+
+	// Get agent name from the received message
+	char *agentName = strtok(pp, ",");
+	SSimObj *obj = w->getSObj(agentName);
+	SimObj *sobj = (SimObj*)obj;
+	if (!obj) {
+		LOG_ERR(("setCamPos : no agent \"%s\"", agentName));
+		delete [] recvBuff;
+		return NEXT_MESSAGE;
+	}
+
+	char tmpx[6];
+	char tmpy[6];
+	char tmpz[6];
+
+	sprintf(tmpx,"epx%d",camID);
+	sprintf(tmpy,"epy%d",camID);
+	sprintf(tmpz,"epz%d",camID);
+
+	if (!sobj->isAttr(tmpx) || !sobj->isAttr(tmpy) || !sobj->isAttr(tmpz)) {
+		LOG_ERR(("setCamPos: Cannot find camera id [%d]", camID));
+		return RETURN_FALSE;
+	}
+	else {
+		sobj->getAttr(tmpx).value().setDouble(x);
+		sobj->getAttr(tmpy).value().setDouble(y);
+		sobj->getAttr(tmpz).value().setDouble(z);
+	}
+
+	delete [] recvBuff;
+	//return RETURN_TRUE;
+	return NEXT_MESSAGE;
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestGetCameraPosition(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	if (!client->isControllerData()) {
+		return NEXT_STEP;
+	}
+
+	bool success = true;
+	unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
+	size -= 4;
+
+	char *recvBuff = new char[size];
+
+	if (!recvData(s, recvBuff, size)) {
+		LOG_ERR(("Failed to receive data [%s, %d]", __FILE__, __LINE__));
+		delete [] recvBuff;
+		return NEXT_CLIENT;
+	}
+	char *pp = recvBuff;
+
+	unsigned short camID = BINARY_GET_DATA_S_INCR(pp, unsigned short);
+
+	char *agentName = strtok(pp, ",");
+	SSimObj *obj = w->getSObj(agentName);
+	SimObj *sobj = (SimObj*)obj;
+	if (!obj) {
+		LOG_ERR(("getCamPos : no agent \"%s\"", agentName));
+		delete [] recvBuff;
+		success = false;
+	}
+	delete [] recvBuff;
+
+	char tmpx[6];
+	char tmpy[6];
+	char tmpz[6];
+
+	sprintf(tmpx,"epx%d",camID);
+	sprintf(tmpy,"epy%d",camID);
+	sprintf(tmpz,"epz%d",camID);
+
+	double x=0.0;
+	double y=0.0;
+	double z=0.0;
+
+	if (!sobj->isAttr(tmpx) || !sobj->isAttr(tmpy) || !sobj->isAttr(tmpz)) {
+		LOG_ERR(("getCamPos: Cannot find camera id [%d]", camID));
+		success = false;
+	}
+	else {
+		x = sobj->getAttr(tmpx).value().getDouble();
+		y = sobj->getAttr(tmpy).value().getDouble();
+		z = sobj->getAttr(tmpz).value().getDouble();
+	}
+
+	int sendSize = sizeof(double) * 3 + sizeof(bool);
+	char *sendBuff = new char[sendSize];
+	char *sp = sendBuff;
+
+	BINARY_SET_BOOL_INCR(sp, success);
+
+	BINARY_SET_DOUBLE_INCR(sp, x);
+	BINARY_SET_DOUBLE_INCR(sp, y);
+	BINARY_SET_DOUBLE_INCR(sp, z);
+
+	if (!sendData(s, sendBuff, sendSize)) {
+		LOG_ERR(("getCamPos: Failed to send data [%s, %d]", __FILE__, __LINE__));
+	}
+	delete [] sendBuff;
+
+	//return RETURN_TRUE;
+	return NEXT_MESSAGE;
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestSetCameraDirection(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	if (!client->isControllerData()) {
+		return NEXT_STEP;
+	}
+	unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
+	size -= 4;
+
+	char *recvBuff = new char[size];
+
+	if (!recvData(s, recvBuff, size)) {
+		LOG_ERR(("Failed to receive data [%s, %d]", __FILE__, __LINE__));
+		delete [] recvBuff;
+		return NEXT_CLIENT;
+	}
+	char *pp = recvBuff;
+
+	unsigned short camID = BINARY_GET_DATA_S_INCR(pp, unsigned short);
+
+	double x = BINARY_GET_DOUBLE_INCR(pp);
+	double y = BINARY_GET_DOUBLE_INCR(pp);
+	double z = BINARY_GET_DOUBLE_INCR(pp);
+
+	char *agentName = strtok(pp, ",");
+	SSimObj *obj = w->getSObj(agentName);
+	SimObj *sobj = (SimObj*)obj;
+	if (!obj) {
+		LOG_ERR(("setCamDir : no agent \"%s\"", agentName));
+		delete [] recvBuff;
+		return NEXT_MESSAGE;
+	}
+
+	char tmpx[6];
+	char tmpy[6];
+	char tmpz[6];
+
+	sprintf(tmpx,"evx%d",camID);
+	sprintf(tmpy,"evy%d",camID);
+	sprintf(tmpz,"evz%d",camID);
+
+	if (!sobj->isAttr(tmpx) || !sobj->isAttr(tmpy) || !sobj->isAttr(tmpz)) {
+		LOG_ERR(("setCamDir: Cannot find camera id [%d]", camID));
+		return RETURN_FALSE;
+	}
+	else {
+		sobj->getAttr(tmpx).value().setDouble(x);
+		sobj->getAttr(tmpy).value().setDouble(y);
+		sobj->getAttr(tmpz).value().setDouble(z);
+	}
+
+	delete [] recvBuff;
+	//return RETURN_TRUE;
+	return NEXT_MESSAGE;
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestGetCameraDirection(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	if (!client->isControllerData()) {
+		return NEXT_STEP;
+	}
+
+	bool success = true;
+	unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
+	size -= 4;
+
+	char *recvBuff = new char[size];
+
+	if (!recvData(s, recvBuff, size)) {
+		LOG_ERR(("Failed to receive data [%s, %d]", __FILE__, __LINE__));
+		delete [] recvBuff;
+		return NEXT_CLIENT;
+	}
+	char *pp = recvBuff;
+
+	unsigned short camID = BINARY_GET_DATA_S_INCR(pp, unsigned short);
+
+	char *agentName = strtok(pp, ",");
+	SSimObj *obj = w->getSObj(agentName);
+	SimObj *sobj = (SimObj*)obj;
+	if (!obj) {
+		LOG_ERR(("getCamDir : no agent \"%s\"", agentName));
+		delete [] recvBuff;
+		success = false;
+	}
+	delete [] recvBuff;
+
+	char tmpx[6];
+	char tmpy[6];
+	char tmpz[6];
+
+	sprintf(tmpx,"evx%d",camID);
+	sprintf(tmpy,"evy%d",camID);
+	sprintf(tmpz,"evz%d",camID);
+
+	double x=0.0;
+	double y=0.0;
+	double z=0.0;
+
+	if (!sobj->isAttr(tmpx) || !sobj->isAttr(tmpy) || !sobj->isAttr(tmpz)) {
+		LOG_ERR(("getCamPos: Cannot find camera id [%d]", camID));
+		success = false;
+	}
+	else {
+		x = sobj->getAttr(tmpx).value().getDouble();
+		y = sobj->getAttr(tmpy).value().getDouble();
+		z = sobj->getAttr(tmpz).value().getDouble();
+	}
+
+	int sendSize = sizeof(double) * 3 + sizeof(bool);
+	char *sendBuff = new char[sendSize];
+	char *sp = sendBuff;
+
+	BINARY_SET_BOOL_INCR(sp, success);
+
+	BINARY_SET_DOUBLE_INCR(sp, x);
+	BINARY_SET_DOUBLE_INCR(sp, y);
+	BINARY_SET_DOUBLE_INCR(sp, z);
+
+	if (!sendData(s, sendBuff, sendSize)) {
+		LOG_ERR(("getCamDir: Failed to send data [%s, %d]", __FILE__, __LINE__));
+	}
+	delete [] sendBuff;
+
+	//return RETURN_TRUE;
+	return NEXT_MESSAGE;
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestSetCameraFov(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	if (!client->isControllerData()) {
+		return NEXT_STEP;
+	}
+	unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
+	size -= 4;
+
+	char *recvBuff = new char[size];
+
+	if (!recvData(s, recvBuff, size)) {
+		LOG_ERR(("Failed to receive data [%s, %d]", __FILE__, __LINE__));
+		delete [] recvBuff;
+		return NEXT_CLIENT;
+	}
+	char *pp = recvBuff;
+
+	unsigned short camID = BINARY_GET_DATA_S_INCR(pp, unsigned short);
+
+	double fov = BINARY_GET_DOUBLE_INCR(pp);
+
+	char *agentName = strtok(pp, ",");
+	SSimObj *obj = w->getSObj(agentName);
+	SimObj *sobj = (SimObj*)obj;
+	if (!obj) {
+		LOG_ERR(("setCamFOV : no agent \"%s\"", agentName));
+		delete [] recvBuff;
+		return NEXT_MESSAGE;
+	}
+
+	char tmp[6];
+
+	sprintf(tmp,"FOV%d",camID);
+
+	if (!sobj->isAttr(tmp)) {
+		LOG_ERR(("setCamFOV: Cannot find camera id [%d]", camID));
+		return RETURN_FALSE;
+	}
+	else {
+		sobj->getAttr(tmp).value().setDouble(fov);
+	}
+
+	delete [] recvBuff;
+	return NEXT_MESSAGE;
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestSetCameraAspectratio(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	if (!client->isControllerData()) {
+		return NEXT_STEP;
+	}
+	unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
+	size -= 4;
+
+	char *recvBuff = new char[size];
+
+	if (!recvData(s, recvBuff, size)) {
+		LOG_ERR(("Failed to receive data [%s, %d]", __FILE__, __LINE__));
+		delete [] recvBuff;
+		return NEXT_CLIENT;
+	}
+	char *pp = recvBuff;
+
+	unsigned short camID = BINARY_GET_DATA_S_INCR(pp, unsigned short);
+
+	double ar = BINARY_GET_DOUBLE_INCR(pp);
+
+	char *agentName = strtok(pp, ",");
+	SSimObj *obj = w->getSObj(agentName);
+	SimObj *sobj = (SimObj*)obj;
+	if (!obj) {
+		LOG_ERR(("setCamAS : no agent \"%s\"", agentName));
+		delete [] recvBuff;
+		return NEXT_MESSAGE;
+	}
+
+	char tmp[14];
+
+	sprintf(tmp,"aspectRatio%d",camID);
+
+	if (!sobj->isAttr(tmp)) {
+		LOG_ERR(("setCamAS: Cannot find camera id [%d]", camID));
+		return RETURN_FALSE;
+	}
+	else {
+		sobj->getAttr(tmp).value().setDouble(ar);
+	}
+
+	delete [] recvBuff;
+	return NEXT_MESSAGE;
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestSetWheel(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	if (!client->isControllerData()) {
+		return NEXT_STEP;
+	}
+	unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
+	size -= 4;
+
+	char *recvBuff = new char[size];
+
+	if (!recvData(s, recvBuff, size)) {
+		LOG_ERR(("Failed to receive data [%s, %d]", __FILE__, __LINE__));
+		delete [] recvBuff;
+		return NEXT_CLIENT;
+	}
+	char *pp = recvBuff;
+
+	double wheelRadius   = BINARY_GET_DOUBLE_INCR(pp);
+	double wheelDistance = BINARY_GET_DOUBLE_INCR(pp);
+
+	char *agentName = strtok(pp, ",");
+	SSimObj *obj = w->getSObj(agentName);
+	SRobotObj *robj = dynamic_cast<SRobotObj*>(obj);
+	if (robj == NULL) {
+		LOG_ERR(("setWheel: %s is not ROBOT object",agentName));
+		return NEXT_CLIENT;
+	}
+	else {
+		robj->setWheel(wheelRadius, wheelDistance);
+	}
+	delete [] recvBuff;
+	return NEXT_MESSAGE;
+	//LOG_MSG(("%s (%f, %f)", agentName, wheelRadius, wheelDistance));
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestSetWheelVelocity(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	if (!client->isControllerData()) {
+		return NEXT_STEP;
+	}
+	unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
+	size -= 4;
+
+	char *recvBuff = new char[size];
+
+	if (!recvData(s, recvBuff, size)) {
+		LOG_ERR(("Failed to receive data [%s, %d]", __FILE__, __LINE__));
+		delete [] recvBuff;
+		return NEXT_CLIENT;
+	}
+
+	char *pp = recvBuff;
+
+	double left  = BINARY_GET_DOUBLE_INCR(pp);
+	double right = BINARY_GET_DOUBLE_INCR(pp);
+
+	char *agentName = strtok(pp, ",");
+	SSimObj *obj = w->getSObj(agentName);
+	SRobotObj *robj = dynamic_cast<SRobotObj*>(obj);
+	if (robj == NULL) {
+		LOG_ERR(("setWheelVelocity: %s is not ROBOT object",agentName));
+		return NEXT_CLIENT;
+	}
+
+	else if (robj->getWheelRadius() == 0.0 || robj->getWheelDistance() == 0.0) {
+		LOG_ERR(("setWheelVelocity: %s need to set wheel property",agentName));
+		return NEXT_CLIENT;
+	}
+	else {
+		robj->setWheelVelocity(left, right);
+	}
+	//LOG_MSG(("setWheelVeclity!"));
+	delete [] recvBuff;
+
+	return NEXT_MESSAGE;
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestGetJointAngle(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	if (!client->isControllerData()) {
+		return NEXT_STEP;
+	}
+	unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
+	size -= 4;
+
+	char *recvBuff = new char[size];
+
+	if (!recvData(s, recvBuff, size)) {
+		LOG_ERR(("Failed to receive data [%s, %d]", __FILE__, __LINE__));
+		delete [] recvBuff;
+		return NEXT_CLIENT;
+	}
+	char *pp = recvBuff;
+
+	char *agentName = strtok(pp, ",");
+	char *jointName = strtok(NULL, ",");
+
+	SSimObj *obj = w->getSObj(agentName);
+	Joint *j = obj->getJoint(jointName);
+
+	bool success = true;
+	double angle = 0.0;
+	if (!j) {
+		LOG_MSG(("getJointAngle : %s does NOT have joint \"%s\"",
+		         agentName, jointName));
+		success = false;
+	}
+	else if (j->type() == Joint::TYPE_HINGE) {
+
+		HingeJoint* hj = (HingeJoint*)j;
+		angle = hj->getAngle();
+	}
+	else {
+		LOG_MSG(("getJointAngle : %s is NOT hinge joint", jointName));
+		success = false;
+	}
+
+	int sendSize = sizeof(double) + sizeof(bool);
+	char *sendBuff = new char[sendSize];
+	char *sp = sendBuff;
+
+	BINARY_SET_BOOL_INCR(sp, success);
+	BINARY_SET_DOUBLE_INCR(sp, angle);
+
+	if (!sendData(s, sendBuff, sendSize)) {
+		LOG_ERR(("Failed to send data [%s, %d]", __FILE__, __LINE__));
+	}
+	delete [] recvBuff;
+	delete [] sendBuff;
+	return NEXT_MESSAGE;
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestSetJointVelocity(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	if (!client->isControllerData()) {
+		return NEXT_STEP;
+	}
+	unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
+	size -= 4;
+
+	char *recvBuff = new char[size];
+	if (!recvData(s, recvBuff, size)) {
+		LOG_ERR(("Failed to receive data [%s, %d]", __FILE__, __LINE__));
+		delete [] recvBuff;
+		return NEXT_CLIENT;
+	}
+	char *pp = recvBuff;
+	// Get angular velocity and max torque from the received message
+	double velocity  = BINARY_GET_DOUBLE_INCR(pp);
+	double max       = BINARY_GET_DOUBLE_INCR(pp);
+	char *agentName  = strtok(pp, ",");   // Name of the target agent
+	char *jointName  = strtok(NULL, ",");
+
+	SSimObj *obj     = w->getSObj(agentName);
+	Joint *j         = obj->getJoint(jointName); // Name of the target joint
+	double angle     = 0.0;
+
+	HingeJoint *hj;
+	if (!j) {
+		LOG_MSG(("setJointVelocity : %s does NOT have joint \"%s\"",
+		         agentName, jointName));
+		return NEXT_MESSAGE;
+	}
+	else if (j->type() == Joint::TYPE_HINGE) {
+		hj = (HingeJoint*)j;
+		angle = hj->getAngle();
+		// TODO: this angle seems not to be used...
+	}
+	else {
+		LOG_MSG(("setJointVelocity : %s is NOT hinge joint", jointName));
+		delete [] recvBuff;
+		return NEXT_MESSAGE;
+	}
+
+	if (!obj->dynamics()) {
+		// when dynamics mode is off
+		// modified by inamura: changed from addJointVelocity
+		obj->setAngularVelocityToJoint(jointName, velocity);
+	}
+	else {
+		// when dynamics mode is on
+		// modified by inamura: changed from setVelocity
+		hj->setAngularVelocityMaxTorque(velocity,max);
+	}
+	delete [] recvBuff;
+	return NEXT_MESSAGE;
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestGraspObject(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	if (!client->isControllerData()) {
+		return NEXT_STEP;
+	}
+
+	unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
+	size -= 4;
+
+	char *recvBuff = new char[size];
+
+	if (!recvData(s, recvBuff, size)) {
+		LOG_ERR(("Failed to receive data [%s, %d]", __FILE__, __LINE__));
+		delete [] recvBuff;
+		return NEXT_CLIENT;
+	}
+	char *pp = recvBuff;
+	// Get name of agent and parts from the received message
+	char *agentName = strtok(pp, ",");
+	char *partsName = strtok(NULL, ",");
+	char *target    = strtok(NULL, ",");
+
+	// 0: Success
+	// 1: Target is not found
+	// 2: Grasping now
+	// 3: It is alread grasped by other
+	// 4: It is not graspable object
+	// 5: The target is too far, grasping fail
+	unsigned short result = 0;
+	SSimObj *obj  = w->getSObj(agentName);
+	SSimObj *tobj = w->getSObj(target);
+
+	SimObjBase *tobj_b = (SimObjBase*)tobj;
+	bool graspable = tobj_b->graspable();
+
+	if (!tobj) {
+		// Target is not found
+		result = 1;
+		//LOG_ERR(("graspObj: cannot find object %s [%s, %d]",target , __FILE__, __LINE__));
+	}
+	else {
+		SParts *myParts     = obj    ->getSParts(partsName);// Get the target of grasping
+		SParts *targetParts = tobj   ->getSBody();          // Get the target parts
+		bool state          = myParts->getOnGrasp();
+		bool isgrasped      = tobj   ->getIsGrasped();
+		double radius       = tobj_b ->graspRadius();
+
+		if (state) {
+			// It's grasping now
+			std::string gname = myParts->getGraspingObject();
+			//LOG_ERR(("graspObj:%s's %s is already grasping %s",agentName, partsName, gname.c_str()));
+			result = 2;
+		}
+		else if (isgrasped) {
+			// It is alread grasped by other
+			result = 3;
+		}
+		else if (!graspable) {
+			// It is not graspable object
+			result = 4;
+		}
+		else {
+			dBodyID body1 = myParts    ->odeobj().body();
+			dBodyID body2 = targetParts->odeobj().body();
+
+			const dReal *p1 = dBodyGetPosition(body1);
+			const dReal *p2 = dBodyGetPosition(body2);
+
+			// Claculate distance to the target object
+			double tmp1 = p1[0] - p2[0];
+			double tmp2 = p1[1] - p2[1];
+			double tmp3 = p1[2] - p2[2];
+			double distance = sqrt(tmp1*tmp1 + tmp2*tmp2 + tmp3*tmp3);
+
+			// If the target is further than threshold, grasping failed
+			if (distance > radius) {
+				result = 5;
+			}
+			else {
+				// Execution of grasping
+				dWorldID world = m_provider.get()->odeWorld()->world();
+				// Connect with fix joint
+				dJointID joint = dJointCreateFixed(world, 0);
+				dJointAttach(joint, body1, body2);
+
+				// Start of grasping
+				myParts->graspObj(target);
+
+				// Set the flag of grasping object to true
+				tobj->setIsGrasped(true);
+			}
+		}
+	}
+	// Buffer for sending
+	int sendSize = sizeof(unsigned short);
+	char *sendBuff = new char[sendSize];
+	char *sp = sendBuff;
+
+	BINARY_SET_DATA_S_INCR(sp, unsigned short, result);
+	// Sending the result to controller
+	if (!sendData(s, sendBuff, sendSize)) {
+		LOG_ERR(("Failed to send data [%s, %d]", __FILE__, __LINE__));
+	}
+	delete [] recvBuff;
+	delete [] sendBuff;
+
+	return NEXT_MESSAGE;
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestReleaseObject(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	if (!client->isControllerData()) {
+		return NEXT_STEP;
+	}
+
+	unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
+	size -= 4;
+
+	char *recvBuff = new char[size];
+
+	if (!recvData(s, recvBuff, size)) {
+		LOG_ERR(("Failed to receive data [%s, %d]", __FILE__, __LINE__));
+		delete [] recvBuff;
+		return NEXT_CLIENT;
+	}
+	char *pp = recvBuff;
+
+	char *agentName = strtok(pp, ",");
+	char *partsName = strtok(NULL, ",");
+
+	SSimObj *obj = w->getSObj(agentName);
+	SParts  *myParts = obj->getSParts(partsName);  // Get part of the target
+
+	// set the grasping flag to off
+	std::string target = myParts->getGraspingObject();
+	myParts->releaseObj();
+	if (!target.empty()) {
+		SSimObj *tobj = w->getSObj(target.c_str());
+		tobj->setIsGrasped(false);
+	}
+
+	delete [] recvBuff;
+	return NEXT_STEP;
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestGetAllJointAngles(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	if (!client->isControllerData()) {
+		return NEXT_STEP;
+	}
+
+	unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
+	size -= 4;
+
+	char *recvBuff = new char[size];
+
+	if (!recvData(s, recvBuff, size)) {
+		LOG_ERR(("Failed to receive data [%s, %d]", __FILE__, __LINE__));
+		delete [] recvBuff;
+		return NEXT_CLIENT;
+	}
+	char *pp = recvBuff;
+
+	char *agentName = strtok(pp, ",");
+	SSimObj *obj = w->getSObj(agentName);
+	std::map<std::string, Joint*> *joints = obj->getJointMap();
+	std::map<std::string, Joint*>::iterator it = joints->begin();
+
+	std::string tmpMsg = "";
+	// The number of joints
+	int jointNum = 0;
+
+	while(it != joints->end()) {
+		if ((*it).second->type() == 2) {
+			// Get joint angles
+			HingeJoint* hj = (HingeJoint*)((*it).second);
+			double angle = hj->getAngle();
+
+			// Add the value to the string
+			tmpMsg += std::string((*it).second->name()) + ",";
+			tmpMsg += DoubleToString(angle);
+			jointNum++;
+		}
+		it++;
+	}
+
+	int sendSize = sizeof(unsigned short)*2 + tmpMsg.size();
+	char *sendBuff = new char[sendSize];
+	char *sp = sendBuff;
+
+	// Data size
+	BINARY_SET_DATA_S_INCR(sp, unsigned short, sendSize);
+
+	// The number of joints
+	BINARY_SET_DATA_S_INCR(sp, unsigned short, jointNum);
+	memcpy(sp, tmpMsg.c_str(), tmpMsg.size());
+
+	// Sending the result to controller
+	if (!sendData(s, sendBuff, sendSize)) {
+		LOG_ERR(("Failed to send data [%s, %d]", __FILE__, __LINE__));
+	}
+	delete [] recvBuff;
+	delete [] sendBuff;
+
+	//LOG_MSG(("msg = %s", tmpMsg.c_str()));
+	return NEXT_STEP;
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestWorldStep(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
+	size -= 4;
+
+	char *recvBuff = new char[size];
+
+	if (!recvData(s, recvBuff, size)) {
+		LOG_ERR(("Failed to receive data [%s, %d]", __FILE__, __LINE__));
+		delete [] recvBuff;
+		return NEXT_CLIENT;
+	}
+	char *pp = recvBuff;
+
+	double stepsize = BINARY_GET_DOUBLE_INCR(pp);
+	delete [] recvBuff;
+
+	if (w->getAutoStep()) {
+		LOG_ERR(("worldStep: cannot step world. autostep mode ON"));
+	}
+	else {
+		// Progress the simulation step
+		w->nextStep(stepsize);
+	}
+
+	return NEXT_STEP;
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestWorldQuickStep(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
+	size -= 4;
+
+	char *recvBuff = new char[size];
+
+	if (!recvData(s, recvBuff, size)) {
+		LOG_ERR(("Failed to receive data [%s, %d]", __FILE__, __LINE__));
+		delete [] recvBuff;
+		return NEXT_CLIENT;
+	}
+	char *pp = recvBuff;
+
+	double stepsize = BINARY_GET_DOUBLE_INCR(pp);
+	delete [] recvBuff;
+
+	if (w->getAutoStep()) {
+		LOG_ERR(("worldQuickStep: cannot step world. autostep mode ON"));
+	}
+	else {
+		// Progress the simulation in quick mode (in ODE)
+		w->nextStep(stepsize,true);
+	}
+	return NEXT_STEP;
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestGetIsGrasped(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
+	size -= 4;
+
+	char *recvBuff = new char[size];
+
+	if (!recvData(s, recvBuff, size)) {
+		LOG_ERR(("Failed to receive data [%s, %d]", __FILE__, __LINE__));
+		delete [] recvBuff;
+		return NEXT_CLIENT;
+	}
+	char *pp = recvBuff;
+	std::string name = strtok(pp, ",");
+	delete [] recvBuff;
+
+	SSimObj *tobj = w->getSObj(name.c_str());
+
+	bool grasped = tobj->getIsGrasped();
+
+	int sendSize = sizeof(bool);
+	//char *sendBuff = new char[sendSize];
+	char sendBuff[8];
+	char *ppp = sendBuff;
+
+	BINARY_SET_BOOL_INCR(ppp, grasped);
+
+	if (!sendData(s, sendBuff, sendSize)) {
+	  LOG_ERR(("Failed to send data [%s, %d]", __FILE__, __LINE__));
+	}
+	return NEXT_STEP;
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestSetCollisionable(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
+	size -= 4;
+
+	char *recvBuff = new char[size];
+
+	if (!recvData(s, recvBuff, size)) {
+		LOG_ERR(("Failed to receive data [%s, %d]", __FILE__, __LINE__));
+		delete [] recvBuff;
+		return NEXT_CLIENT;
+	}
+	char *pp = recvBuff;
+	bool flag = BINARY_GET_BOOL_INCR(pp);
+
+	std::string name = strtok(pp, ",");
+	SSimObj *obj = w->getSObj(name.c_str());
+
+	std::map<std::string, SParts*> allj = obj->getAllParts();
+	std::map<std::string, SParts*>::iterator it = allj.begin();
+	while(it != allj.end()) {
+		(*it).second->setCollisionEnable(flag);
+		it++;
+	}
+	return NEXT_STEP;
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestGetSimulationTime(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	double now = w->time();
+
+	char sendBuff[16];
+	char *pp = sendBuff;
+
+	BINARY_SET_DOUBLE_INCR(pp, now);
+
+	int sendSize = sizeof(double);
+
+	if (!sendData(s, sendBuff, sendSize)) {
+		LOG_ERR(("Failed to send data [%s, %d]", __FILE__, __LINE__));
+	}
+	return NEXT_STEP;
+}
+
+WorldSimulator::RequestMethodReturnType WorldSimulator::requestGetCollisionState(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i)
+{
+	unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
+	size -= 4;
+
+	char *recvBuff = new char[size];
+
+	if (!recvData(s, recvBuff, size)) {
+		LOG_ERR(("Failed to receive data [%s, %d]", __FILE__, __LINE__));
+		delete [] recvBuff;
+		return NEXT_CLIENT;
+	}
+
+	char *pp = recvBuff;
+
+	std::string name = strtok(pp, ",");
+	std::string parts = strtok(NULL, ",");
+	SSimObj *obj = w->getSObj(name.c_str());
+	SParts *sparts = obj->getSParts(parts.c_str());
+
+	bool state = sparts->getOnCollision();
+
+	int sendSize = sizeof(bool);
+	char sendBuff[8];
+	char *ppp = sendBuff;
+
+	BINARY_SET_BOOL_INCR(ppp, state);
+
+	if (!sendData(s, sendBuff, sendSize)) {
+		LOG_ERR(("Failed to send data [%s, %d]", __FILE__, __LINE__));
+	}
+
+	delete [] recvBuff;
+	return NEXT_STEP;
+}
+
+
+
 static char s_buf[50000];  // TODO: magic number should be removed. position is strange by inamura on 2013-12-25
 
 
@@ -1714,7 +3463,7 @@ bool WorldSimulator::runStep()
 		}
 		// No type or it can be ignored
 		if (message->noType() || message->ignore()) {
-		  continue; 
+		  continue;
 		}
 
 		SOCKET s = message->socket();
@@ -1735,7 +3484,7 @@ bool WorldSimulator::runStep()
 			if (size == -1 || r == 0) {
 				LOG_SYS(("Service \"%s\" disconnected from SIGVerse server.", message->name()));
 
-				// Notice the disconnection to other services 
+				// Notice the disconnection to other services
 				for (int j = 0; j < (int)messages.size(); j++) {
 					// Do not send to myself
 					if (i == j) continue;
@@ -1766,7 +3515,7 @@ bool WorldSimulator::runStep()
 
 			// Get message data
 			if (!recvData(s, tmpBuff, size)) {
-				LOG_ERR(("Failed to recieve Message"));
+				LOG_ERR(("Failed to receive Message"));
 			}
 			// Get message source
 			std::string from = std::string(message->name());
@@ -1792,1916 +3541,219 @@ bool WorldSimulator::runStep()
 		// try to read
 		int waitTime = 1000;
 		bool forwarding = false;
-	again:
-		char *pbuf = s_buf;
-		unsigned short packetSize = 0;
-		int r;
 
-		// Skip the first four bytes in the begining of the received data, and read
-		int firstRead = COMM_DATA_PACKET_TOKEN_DATASIZE_BYTES;
-		r = recv_nonblock(s, pbuf, firstRead);
+		while(true)
+		{
+			char *pbuf = s_buf;
+			unsigned short packetSize = 0;
+			int r;
 
-		// If the four bytes existed
-		if (r == firstRead) {
-			char *p = pbuf;
+			// Skip the first four bytes in the beginning of the received data, and read
+			int firstRead = COMM_DATA_PACKET_TOKEN_DATASIZE_BYTES;
+			r = recv_nonblock(s, pbuf, firstRead);
 
-			// Get request type
-			int n = BINARY_GET_DATA_S_INCR(p, unsigned short);
+			// If the four bytes existed
+			if (r == firstRead) {
+				char *p = pbuf;
 
-			// Sending to SIGViewer (add by Okamoto on 2012-07-02)
-			if (0 < n && n < REQUEST_SIZE) {
-				switch(n) {
-				// Request to get all of the entity data (hwne SIGViewer has just been attached)
-				case REQUEST_GET_ALL_ENTITIES_FIRST:
+				// Get request type
+				int n = BINARY_GET_DATA_S_INCR(p, unsigned short);
+
+				// Sending to SIGViewer (add by Okamoto on 2012-07-02)
+				if (0 < n && n < REQUEST_SIZE)
 				{
-					if (!sendAllEntities(s, pbuf)) {
-						LOG_ERR(("sendAllEntities failed."));
-					}
-					continue;
-				}
-				// Simulation Start
-				case REQUEST_START_SIMULATION:
-				{
-					startSimulation(w);
-					break;
-				}
-				// Simulation stop
-				case REQUEST_STOP_SIMULATION:
-				{
-					if (w && w->isRunning()) {
-						// Notice the 'simulation stop' event to every controller
-						std::vector<Source*> srcs = m_accept.getAllCtlClients();
-						int size = srcs.size();
-						for (int i = 0; i < size; i++) {
-							// Buffer for the message sending
-							int dataSize = sizeof(unsigned short) * 2;
-#ifndef WIN32
-							char sendBuff[dataSize];
-#else
-							char sendBuff[4];
-#endif
-							char *p = sendBuff;
-		
-							// Notice the 'simulation stop' event to the target controller
-							BINARY_SET_DATA_S_INCR(p, unsigned short, 0x0003); // TODO: Magic number should be removed
-							BINARY_SET_DATA_S_INCR(p, unsigned short, dataSize);
-							// Send request of stop the simulation to the controller
-							if (!sendData(srcs[i]->socket(), sendBuff, dataSize)) {
-								LOG_ERR(("cannot send simulation stop message to controller."));
-							}
+					RequestMethodReturnType returnType;
+
+					switch(n)
+					{
+						case REQUEST_GET_ALL_ENTITIES_FIRST:  { returnType = this->requestGetAllEntitiesfirst   (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_START_SIMULATION:        { returnType = this->requestStartSimulation       (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_STOP_SIMULATION:         { returnType = this->requestStopSimulation        (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_GET_MOVE_ENTITIES:       { returnType = this->requestGetMoveEntities       (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_DOWNLOAD_SHAPE:          { returnType = this->requestDownloadShape         (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_DISCONNECT:              { returnType = this->requestDisconnect            (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_QUIT:                    { returnType = this->requestQuit                  (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_SENDMSG_FROM_CONTROLLER: { returnType = this->requestSendmsgFromController (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_CONNECT_SERVICE:         { returnType = this->requestConnectService        (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_GET_JOINT_POSITION:      { returnType = this->requestGetJointPosition      (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_SET_JOINT_QUATERNION:    { returnType = this->requestGetJointQuaternion    (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_GET_POINTING_VECTOR:     { returnType = this->requestGetPointingVector     (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_GET_PARTS_POSITION:      { returnType = this->requestGetPartsPosition      (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_GET_PARTS_QUATERNION:    { returnType = this->requestGetPartsQuaternion    (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_SET_ENTITY_POSITION:     { returnType = this->requestSetEntityPosition     (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_CHECK_SERVICE:           { returnType = this->requestCheckService          (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_GET_ENTITY_POSITION:     { returnType = this->requestGetEntityPosition     (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_SET_ENTITY_ROTATION:     { returnType = this->requestSetEntityRotation     (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_GET_ENTITY_ROTATION:     { returnType = this->requestGetEntityRotation     (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_CHECK_ENTITY:            { returnType = this->requestCheckEntity           (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_SET_CAMERA_POSITION:     { returnType = this->requestSetCameraPosition     (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_GET_CAMERA_POSITION:     { returnType = this->requestGetCameraPosition     (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_SET_CAMERA_DIRECTION:    { returnType = this->requestSetCameraDirection    (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_GET_CAMERA_DIRECTION:    { returnType = this->requestGetCameraDirection    (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_SET_CAMERA_FOV:          { returnType = this->requestSetCameraFov          (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_SET_CAMERA_ASPECTRATIO:  { returnType = this->requestSetCameraAspectratio  (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_SET_WHEEL:               { returnType = this->requestSetWheel              (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_SET_WHEEL_VELOCITY:      { returnType = this->requestSetWheelVelocity      (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_GET_JOINT_ANGLE:         { returnType = this->requestGetJointAngle         (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_SET_JOINT_VELOCITY:      { returnType = this->requestSetJointVelocity      (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_GRASP_OBJECT:            { returnType = this->requestGraspObject           (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_RELEASE_OBJECT:          { returnType = this->requestReleaseObject         (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_GET_ALL_JOINT_ANGLES:    { returnType = this->requestGetAllJointAngles     (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_WORLD_STEP:              { returnType = this->requestWorldStep             (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_WORLD_QUICK_STEP:        { returnType = this->requestWorldQuickStep        (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_GET_ISGRASPED:           { returnType = this->requestGetIsGrasped          (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_SET_COLLISIONABLE:       { returnType = this->requestSetCollisionable      (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_GET_SIMULATION_TIME:     { returnType = this->requestGetSimulationTime     (w, clients, client, s, p, packetSize, i); break; }
+						case REQUEST_GET_COLLISION_STATE:     { returnType = this->requestGetCollisionState     (w, clients, client, s, p, packetSize, i); break; }
+						///////////////////////////////////////
+						/////////// add new case here!!////////
+						///////////////////////////////////////
+						default :
+						{
+							// Irregular data (trash data?)
+							char tmp[256];  // TODO: magic number
+							recv_nonblock(s, tmp, sizeof(tmp));
+							returnType = NEXT_STEP;
 						}
-						LOG_SYS(("****SIMULATION STOP****"));
-						w->stop();
-					}
-					continue;
-				}
-				// Request to get moved entity data
-				case REQUEST_GET_MOVE_ENTITIES:
+					} // switch(n) {
+
+					if(returnType==NEXT_CLIENT) { break; }
+					if(returnType==NEXT_MESSAGE){ continue; }
+					if(returnType==NEXT_STEP)   { ; }
+					if(returnType==RETURN_TRUE) { return true; }
+					if(returnType==RETURN_FALSE){ return false; }
+
+				} // if (0 < n && n < REQUEST_SIZE) {
+				// if the 2bytes data is 0xabcd (request from SIGViewer)
+				else if (n == COMM_DATA_PACKET_START_TOKEN)
 				{
-					// Update the data after the last Viewer's request
-					int tmp_size = clients.size();
-					bool update = false;
-					if (i == tmp_size - 1) update = true;
-					if (!sendMoveEntities(s,update)) {
-						LOG_ERR(("sendMoveEntities failed."));
-					}
-					packetSize = 0;
-					continue;
-				}
-				// Sending shape file information to the request of download shape file
-				case REQUEST_DOWNLOAD_SHAPE:
-				{
-					// size of the file name of the shape file
-					unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
-
-					char name[128];  // TODO: Magic number
-					memset(name, '\0', sizeof(name));
-					if (!recv_nonblock(s, name, size)) {
-						LOG_ERR(("Could not recieve shape file name."));
-						continue;
-					}
-					std::string sname = std::string(name);
-
-					// Sending file name data
-					if (!sendShapeFile(s, name)) {
-						LOG_ERR(("Could not send shape file."));
-						continue;
-					}
-
-					packetSize = 0;
-					continue;
-				}
-				// Dealing with disconnect request
-				case REQUEST_DISCONNECT:
-				{
-					Source *client = clients[i]->source;
-					if (strcmp(client->name(), "SIGSTART") != 0)
-						LOG_SYS(("Disconnected %s", client->name()));
-					m_accept.pushNoNeeded(client);
-					continue;
-				}
-				// Dealing with quit request
-				case REQUEST_QUIT:
-				{
-					w->stop();
-					LOG_SYS(("****Quit Simulation****"));
-#ifndef WIN32
-					close(s);
-#else
-					closesocket(s);
-					//WSACleanup();
-#endif
-					//exit(1);
-					return false;
-				}
-				// Dealing with the sent message from controllers
-				case REQUEST_SENDMSG_FROM_CONTROLLER:
-				{
-					// Get the size of data (excluding the header size)
-					unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
-					size -= 4;  // This is the size of header, TODO: magic number should be removed
-
-					char *recvBuff = new char[size];
-					if (!recvData(s, recvBuff, size)) {
-						LOG_ERR(("Failed to recieve message"));
-						delete [] recvBuff;
-						continue;
-					}
-
-					std::string from = client->name();
-
-					// Forwarding the message
-					if (!sendOnMsg(s, recvBuff, from))
-						LOG_ERR(("Failed to send message."));
-
-					delete [] recvBuff;
-					//continue;
-					goto again;
-				}
-
-				case REQUEST_CONNECT_SERVICE:
-				{
-					// Get the size of data (excluding the header size)
-					unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
-					size -= 4; // TODO
-
-					char *recvBuff = new char[size];
-					if (!recvData(s, recvBuff, size)) {
-						LOG_ERR(("Failed to connect service [%s, %d]", __FILE__, __LINE__));
-						delete [] recvBuff;
-						continue;
-					}
-
-					char *pp = recvBuff;
-					// Get the size of data (excluding the header size)
-					unsigned short port = BINARY_GET_DATA_S_INCR(pp, unsigned short);
-
-					std::string service = strtok(pp, ",");
-					std::string name = strtok(NULL, ",");
-					std::string host = client->hostname();
-
-					// Check whether the controller is executed in the localhost
-					if (host == "127.0.0.1" || host == "0.0.0.0") {
-
-						// Get the target service
-						Source *src = m_accept.get(service.c_str(), SOURCE_TYPE_MESSAGE);
-						char result[4];     // Used in sending the result to controller
-						char *ppp = result;
-
-						if (!src) {
-							LOG_ERR(("Could not find service provider [%s] [%s, %d]", service.c_str(), __FILE__, __LINE__));
-							// Notice the controller that the service is not found
-							BINARY_SET_DATA_S_INCR(ppp, unsigned short, 0x0000);
-							BINARY_SET_DATA_S_INCR(ppp, unsigned short, 4);
-							continue;
-						}
-						else {
-							// Notice the controller that the service exist
-							BINARY_SET_DATA_S_INCR(ppp, unsigned short, 0x0001);
-							BINARY_SET_DATA_S_INCR(ppp, unsigned short, 4);
-							//sendData(s, result, 4);
-						}
-
-						std::string sendMsg = name + ",";
-
-						// Create buffer for the sending
-						int sendSize =  sendMsg.size() + sizeof(unsigned short) * 3;
-						char *sendBuff = new char[sendSize];
-						char *p = sendBuff;
-
-						// Add header and data size
-						BINARY_SET_DATA_S_INCR(p, unsigned short, 0x0003);
-						BINARY_SET_DATA_S_INCR(p, unsigned short, sendSize);
-						BINARY_SET_DATA_S_INCR(p, unsigned short, port);
-
-						memcpy(p, sendMsg.c_str(), sendMsg.size());
-
-						// Send connection request to the target service
-						if (!sendData(src->socket(), sendBuff, sendSize)) {
-						  LOG_ERR(("Failed to send connect request to [%s] [%s, %d]", service.c_str(),  __FILE__, __LINE__));
-						}
-					}
-
-					// [ToDo]
-					else {
-					}
-
-					delete [] recvBuff;
-					//goto again;
-					break;
-				}
-
-				// Dealing with a request to get joint position
-				case REQUEST_GET_JOINT_POSITION:
-				{
-					if (!client->isControllerData()) {
-						LOG_MSG(("no controllerData"));
-						break;
-					}
-
-					// Get the size of data (excluding the header size)
-					unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
-					size -= 4;
-
-					char *recvBuff = new char[size];
-					if (!recvData(s, recvBuff, size)) {
-						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
-						delete [] recvBuff;
-						goto again;
-					}
-					char *pp     = recvBuff;
-					char *name   = strtok(pp, ",");
-					char *jname  = strtok(NULL, ",");
-					SSimObj *my  = w->getSObj(name);
-					Joint *joint = my->getJoint(jname);
-
-					bool success = false;
-					if (joint == NULL) {
-						LOG_ERR(("getJointPosition: cannot find joint [%s]", joint));
-					}
-					else success = true;
-					
-					delete [] recvBuff;
-
-					// Refer the position of the joint
-					Vector3d pos(0.0, 0.0, 0.0);
-					if (success)
-						pos = joint->getCurrentAnchorPosition();
-
-					// Buffer for position of joints
-					int sendSize = sizeof(double) * 3 + sizeof(bool);
-					char *sendBuff = new char[sendSize];
-					char *sp = sendBuff;
-
-					// Add position data in the buffer
-					BINARY_SET_DOUBLE_INCR(sp, pos.x());
-					BINARY_SET_DOUBLE_INCR(sp, pos.y());
-					BINARY_SET_DOUBLE_INCR(sp, pos.z());
-
-					// Flag for the reference success
-					BINARY_SET_BOOL_INCR(sp, success);
-
-					// Sending the result to controller
-					if (!sendData(s, sendBuff, sendSize)) {
-						LOG_ERR(("Failed to send data [%s, %d]", __FILE__, __LINE__));
-					}
-					delete [] sendBuff;
-					goto again;
-				}
-
-				case REQUEST_SET_JOINT_QUATERNION:
-				{
-					if (!client->isControllerData()) {
-						break;
-					}
-					unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
-					size -= 4;
-					
-					char *recvBuff = new char[size];
-
-					if (!recvData(s, recvBuff, size)) {
-						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
-						delete [] recvBuff;
-						continue;
-					}
-					char *pp = recvBuff;
-
-					// Reference of the quaternion
-					double qw = BINARY_GET_DOUBLE_INCR(pp);
-					double qx = BINARY_GET_DOUBLE_INCR(pp);
-					double qy = BINARY_GET_DOUBLE_INCR(pp);
-					double qz = BINARY_GET_DOUBLE_INCR(pp);
-
-					char *agentName = strtok(pp, ",");
-					char *jName     = strtok(NULL, ",");
-					bool offset     = (atoi(strtok(NULL, ",")) != false);
-
-					SSimObj *obj = w->getSObj(agentName);
-					if (!obj) {
-						LOG_ERR(("SetJointQuaternion : no agent \"%s\"", agentName));
-						delete [] recvBuff;
-						goto again;
-					}
-					
-					//const char *jName = evt.getJointName(); //Get the joint name specified by the event.
-					Joint *j = obj->getJoint(jName);		  //Get the joint from the joint name.
-					if (!j) {
-						LOG_ERR(("SetJointQuaternion : %s does NOT have joint \"%s\"", agentName, jName));
-						delete [] recvBuff;
-						goto again;
-					}
-					// Cannot execute in dynamic on mode
-					if (obj->dynamics()) {
-						LOG_ERR(("Cannot Set Joint Quaternion. dynamics is true")) ;
-						delete [] recvBuff;
-						goto again;
-					}
-
-					//set OffsetQuaternion
-					//bool offset = evt.getoffset();
-					if (offset) {
-						Vector3d ini;
-						j->setOffsetQuaternion(qw, qx, qy, qz,ini);
-					}
-
-					//set Quaternion
-					else
-						j->setQuaternion(qw, qx, qy, qz);
-
-					delete [] recvBuff;
-					goto again;
-				} // 	case REQUEST_SET_JOINT_QUATERNION: {
-	
-				// Dealing with a request to get vector of pointing gesture
-				case REQUEST_GET_POINTING_VECTOR:
-				{
-					//if (!client->isControllerData())   break;
-					if (!client->isControllerData()) {
-						break;
-					}
-
-					unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
-					size -= 4;
-
-					char *recvBuff = new char[size];
-
-					if (!recvData(s, recvBuff, size)) {
-						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
-						delete [] recvBuff;
-						continue;
-					}
-
-					char *p = recvBuff;
-
-					char *agentName = strtok(p, ",");
-					char *jName1    = strtok(NULL, ",");
-					char *jName2    = strtok(NULL, ",");
-
-					SSimObj *obj = w->getSObj(agentName);
-					bool success = true;
-					if (!obj) {
-						LOG_ERR(("getPointingVector : no agent \"%s\"", agentName));
-						success = false;
-					}
-
-					//Get the joint1 from the joint name.
-					Joint *j1 = obj->getJoint(jName1);  
-					Joint *j2 = obj->getJoint(jName2);  
-					if (!j1) {
-						LOG_ERR(("getPointingVector : %s does NOT have joint \"%s\"", agentName, jName1));
-						success = false;
-					}
-					else if (!j2) {
-						LOG_ERR(("getPointingVector : %s does NOT have joint \"%s\"", agentName, jName2));
-						success = false;
-					}
-
-					Vector3d pos1(0.0, 0.0, 0.0);
-					Vector3d pos2(0.0, 0.0, 0.0);
-
-					// Refer the position of joints
-					if (success) {
-						pos1 = j1->getCurrentAnchorPosition();
-						pos2 = j2->getCurrentAnchorPosition();
-					}
-					// Vector from the start position to the destination
-					pos2 -= pos1;
-
-					// Normalization
-					double tmp = sqrt(pos2.x()*pos2.x() + pos2.y()*pos2.y() + pos2.z()*pos2.z());
-					pos2.set(pos2.x()/tmp, pos2.y()/tmp, pos2.z()/tmp);
-
-					// Create buffer
-					int sendSize = sizeof(double) * 3 + sizeof(bool);
-					char *sendBuff = new char[sendSize];
-					char *sp = sendBuff;
-
-					// Add the pointing vector to the buffer
-					BINARY_SET_DOUBLE_INCR(sp, pos2.x());
-					BINARY_SET_DOUBLE_INCR(sp, pos2.y());
-					BINARY_SET_DOUBLE_INCR(sp, pos2.z());
-
-					// Flag of the result
-					BINARY_SET_BOOL_INCR(sp, success);
-
-					// Sending the result to controller
-					if (!sendData(s, sendBuff, sendSize)) {
-						LOG_ERR(("Failed to send data [%s, %d]", __FILE__, __LINE__));
-					}
-					delete [] recvBuff;
-					delete [] sendBuff;
-					goto again;
-				} //    end of case REQUEST_GET_POINTING_VECTOR:
-
-				case REQUEST_GET_PARTS_POSITION:
-				{
-					if (!client->isControllerData()) {
-						break;
-					}
-					unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
-					size -= 4;
-
-					char *recvBuff = new char[size];
-
-					if (!recvData(s, recvBuff, size)) {
-						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
-						delete [] recvBuff;
-						goto again;
-					}
-
-					char *pp = recvBuff;
-					char *name = strtok(pp, ",");
-					char *pname = strtok(NULL, ",");
-
-					SSimObj *my = w->getSObj(name);
-					SParts *parts = my->getSParts(pname);
-
-					bool success = false;
-					if (parts == NULL) {
-						LOG_ERR(("getPartsPosition: cannot find joint [%s]", pname));
-					}
-					else success = true;
-
-					// Reference of the parts position
-					const dReal *pos;
-					if (success)
-						pos = parts->getPosition();
-	
-					// Creation of buffer
-					int sendSize = sizeof(double) * 3 + sizeof(bool);
-					char *sendBuff = new char[sendSize];
-					char *sp = sendBuff;
-
-					// Add position data to the buffer
-					BINARY_SET_DOUBLE_INCR(sp, pos[0]);
-					BINARY_SET_DOUBLE_INCR(sp, pos[1]);
-					BINARY_SET_DOUBLE_INCR(sp, pos[2]);
-
-					// Flag of the result
-					BINARY_SET_BOOL_INCR(sp, success);
-
-					// Sending the result to controller
-					if (!sendData(s, sendBuff, sendSize)) {
-						LOG_ERR(("Failed to send data [%s, %d]", __FILE__, __LINE__));
-					}
-
-					delete [] recvBuff;
-					delete [] sendBuff;
-					goto again;
-				} // end of case REQUEST_GET_PARTS_POSITION:
-
-				case REQUEST_GET_PARTS_QUATERNION: //added by Guezout (2015/1/28)
-				{
-					if (!client->isControllerData()) {
-						break;
-					}
-					unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
-					size -= 4;
-
-					char *recvBuff = new char[size];
-					if (!recvData(s, recvBuff, size)) {
-						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
-						delete [] recvBuff;
-						goto again;
-					}
-
-					char *pp = recvBuff;
-					char *name = strtok(pp, ",");
-					char *pname = strtok(NULL, ",");
-
-					SSimObj *my = w->getSObj(name);
-					SParts *parts = my->getSParts(pname);
-
-					bool success = false;
-					if (parts == NULL) {
-						LOG_ERR(("getPartsQuaternion: cannot find joint [%s]", pname));
-					}
-					else success = true;
-
-					// Reference of the parts position
-					const dReal *qt;
-					if (success)
-						qt = parts->getQuaternion();
-	
-					// Creation of buffer
-					int sendSize = sizeof(double) * 4 + sizeof(bool);
-					char *sendBuff = new char[sendSize];
-					char *sp = sendBuff;
-
-					// Add position data to the buffer
-					BINARY_SET_DOUBLE_INCR(sp, qt[0]);
-					BINARY_SET_DOUBLE_INCR(sp, qt[1]);
-					BINARY_SET_DOUBLE_INCR(sp, qt[2]);
-					BINARY_SET_DOUBLE_INCR(sp, qt[3]);
-
-					// Flag of the result
-					BINARY_SET_BOOL_INCR(sp, success);
-
-					// Sending the result to controller
-					if (!sendData(s, sendBuff, sendSize)) {
-						LOG_ERR(("Failed to send data [%s, %d]", __FILE__, __LINE__));
-					}
-
-					delete [] recvBuff;
-					delete [] sendBuff;
-					goto again;
-				} // end of case REQUEST_GET_PARTS_QUATERNION:
-
-				case REQUEST_SET_ENTITY_POSITION: 
-				{
-					// Check wheter the request is sent from controller
-					if (!client->isControllerData()) {
-						break;
-					}
-					
-					unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
-					size -= 4;
-
-					char *recvBuff = new char[size];
-
-					if (!recvData(s, recvBuff, size)) {
-						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
-						delete [] recvBuff;
-						continue;
-					}
-
-					char *pp = recvBuff;
-
-					// Reference of the position
-					double x = BINARY_GET_DOUBLE_INCR(pp);
-					double y = BINARY_GET_DOUBLE_INCR(pp);
-					double z = BINARY_GET_DOUBLE_INCR(pp);
-
-					char *agentName = strtok(pp, ",");
-					SSimObj *obj = w->getSObj(agentName);
-					//SimObj *sobj = (SimObj*)obj; 
-					if (!obj) {
-						LOG_ERR(("setPosition : no agent \"%s\"", agentName));
-						delete [] recvBuff;
-						goto again;
-					}
-					
-					SParts *parts = obj->getSBody();
-					ODEObj oobj   = parts->odeobj();
-					dBodyID body  = oobj.body();
-
-					// Set the position of the entity in ODE world
-					dBodySetPosition(body, x, y, z);
-
-					delete [] recvBuff;
-					//return true;
-
-					goto again;
-				} // end of case REQUEST_SET_JOINT_QUATERNION:
-
-				case REQUEST_CHECK_SERVICE:
-				{
-					unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
-					size -= 4;
-
-					char *recvBuff = new char[size];
-
-					if (!recvData(s, recvBuff, size)) {
-						LOG_ERR(("Failed to check service [%s, %d]", __FILE__, __LINE__));
-						delete [] recvBuff;
-						continue;
-					}
-
-					char *pp = recvBuff;
-					std::string service = strtok(pp, ",");
-
-					// Get the target service
-					Source *src = m_accept.get(service.c_str(), SOURCE_TYPE_MESSAGE);
-
-					char result[4]; // Used when sending the result
-					pp = result;
-
-					// If the target service is not found
-					if (!src) {
-						BINARY_SET_DATA_S_INCR(pp, unsigned short, 0x0000);
-					}
-					// If the target service is found
-					else {
-						BINARY_SET_DATA_S_INCR(pp, unsigned short, 0x0001);
-					}
-					BINARY_SET_DATA_S_INCR(pp, unsigned short, 4);
-					//sendData(s, result, 4);
-					send(s, result, 4, 0);
-					delete [] recvBuff;
-					goto again;
-				}// end of case REQUEST_CHECK_SERVICE:
-
-				case REQUEST_GET_ENTITY_POSITION:
-				{
-					// Check whether the request is sent from controller
-					if (!client->isControllerData()) {
-						break;
-					}
-
-					bool success = true;
-					unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
-					size -= 4;
-
-					char *recvBuff = new char[size];
-
-					if (!recvData(s, recvBuff, size)) {
-						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
-						delete [] recvBuff;
-						continue;
-					}
-					char *pp = recvBuff;
-
-					char *agentName = strtok(pp, ",");
-					SSimObj *obj = w->getSObj(agentName);
-					//SimObj *sobj = (SimObj*)obj; 
-					if (!obj) {
-						LOG_ERR(("getPosition : no agent \"%s\"", agentName));
-						delete [] recvBuff;
-						success = false;
-					}
-
-					const dReal *pos;
-					if (success) {
-						SParts *parts = obj->getSBody();
-						ODEObj oobj = parts->odeobj();
-						dBodyID body = oobj.body();
-
-						// Reference of position data to ODE world
-						pos = dBodyGetPosition(body);
-					}
-					// Buffer for sending the data
-					int sendSize = sizeof(double) * 3 + sizeof(bool);
-					char *sendBuff = new char[sendSize];
-					char *sp = sendBuff;
-
-					// Flag of the result
-					BINARY_SET_BOOL_INCR(sp, success);
-
-					// Add position data to the buffer
-					BINARY_SET_DOUBLE_INCR(sp, pos[0]);
-					BINARY_SET_DOUBLE_INCR(sp, pos[1]);
-					BINARY_SET_DOUBLE_INCR(sp, pos[2]);
-
-					// Sending result to controller
-					if (!sendData(s, sendBuff, sendSize)) {
-						LOG_ERR(("getPosition: Failed to send data [%s, %d]", __FILE__, __LINE__));
-					}
-					delete [] recvBuff;
-					delete [] sendBuff;
-
-					//return true;
-					goto again;
-				}
-
-				case REQUEST_SET_ENTITY_ROTATION:
-				{
-					// Check whether the request is sent from controller	  
-					if (!client->isControllerData()) {
-						break;
-					}
-					unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
-					size -= 4;
-					char *recvBuff = new char[size];
-
-					if (!recvData(s, recvBuff, size)) {
-						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
-						delete [] recvBuff;
-						continue;
-					}
-					char *pp = recvBuff;
-
-					unsigned short abs = BINARY_GET_DATA_S_INCR(pp, unsigned short);
-
-					// Get orientation (quaternion) data from the buffer
-					double qw = BINARY_GET_DOUBLE_INCR(pp);
-					double qx = BINARY_GET_DOUBLE_INCR(pp);
-					double qy = BINARY_GET_DOUBLE_INCR(pp);
-					double qz = BINARY_GET_DOUBLE_INCR(pp);
-
-					char *agentName = strtok(pp, ",");
-					SSimObj *obj = w->getSObj(agentName);
-					SimObj *sobj = (SimObj*)obj; 
-					if (!obj) {
-						LOG_ERR(("SetRotation : no agent \"%s\"", agentName));
-						delete [] recvBuff;
-						goto again;
-					}
-
-					SParts *parts = obj->getSBody();
-					ODEObj oobj = parts->odeobj();
-					dBodyID body = oobj.body();
-
-					dReal qua[4];
-					// Abusolute orientation
-					if (abs) {
-						qua[0] = qw;
-						qua[1] = qx;
-						qua[2] = qy;
-						qua[3] = qz;
-					}
-					// Relative orientation
-					else {
-						const dReal tmp_qua[] = {qw, qx, qy, qz};
-						// Multiplication of quaternion
-						const dReal *now_qua = dBodyGetQuaternion(body);
-						dQMultiply0(qua, now_qua, tmp_qua);
-					}
-					// Set the new orientation to the SimObj instance (for the confirmation)
-					sobj->qw(qua[0]);
-					sobj->qx(qua[1]);
-					sobj->qy(qua[2]);
-					sobj->qz(qua[3]);
-					// Set the new orientation to the ODE world
-					dBodySetQuaternion(body, qua);
-
-					delete [] recvBuff;
-					//return true;
-					goto again;
-				}
-
-				case REQUEST_GET_ENTITY_ROTATION:
-				{
-					// Check whether the request is sent from controller	  
-					if (!client->isControllerData()) {
-						break;
-					}
-
-					bool success = true;
-					unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
-					size -= 4;
-
-					char *recvBuff = new char[size];
-
-					if (!recvData(s, recvBuff, size)) {
-						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
-						delete [] recvBuff;
-						continue;
-					}
-					char *pp = recvBuff;
-
-					char *agentName = strtok(pp, ",");
-					SSimObj *obj = w->getSObj(agentName);
-					//SimObj *sobj = (SimObj*)obj; 
-					if (!obj) {
-						LOG_ERR(("getRotation : no agent \"%s\"", agentName));
-						delete [] recvBuff;
-						success = false;
-					}
-
-					const dReal *qua;
-					if (success) {
-						SParts *parts = obj->getSBody();
-						ODEObj oobj = parts->odeobj();
-						dBodyID body = oobj.body();
-						// Reference of orientation data to ODE world
-						qua = dBodyGetQuaternion(body);
-					}
-					// Buffer for the result sending
-					int sendSize = sizeof(double) * 4 + sizeof(bool);
-					char *sendBuff = new char[sendSize];
-					char *sp = sendBuff;
-
-					// Flag of the result
-					BINARY_SET_BOOL_INCR(sp, success);
-					// Add orientation data to the buffer
-					BINARY_SET_DOUBLE_INCR(sp, qua[0]);
-					BINARY_SET_DOUBLE_INCR(sp, qua[1]);
-					BINARY_SET_DOUBLE_INCR(sp, qua[2]);
-					BINARY_SET_DOUBLE_INCR(sp, qua[3]);
-
-					// Sending the result to controller
-					if (!sendData(s, sendBuff, sendSize)) {
-						LOG_ERR(("getRotation: Failed to send data [%s, %d]", __FILE__, __LINE__));
-					}
-					delete [] recvBuff;
-					delete [] sendBuff;
-					//return true;
-					goto again;
-				} // end of case REQUEST_GET_ENTITY_ROTATION:
-
-				// Check whether the entity exist?
-				case REQUEST_CHECK_ENTITY:
-				{
-					unsigned short success = 1;
-					unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
-					size -= 4;
-
-					char *recvBuff = new char[size];
-
-					if (!recvData(s, recvBuff, size)) {
-						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
-						delete [] recvBuff;
-						continue;
-					}
-
-					char *pp = recvBuff;
-
-					char *agentName = strtok(pp, ",");
-
-					SSimObj *obj = w->getSObj(agentName);
-
-					//SimObj *sobj = (SimObj*)obj; 
-
-					if (!obj) {
-						LOG_ERR(("getObj : no agent \"%s\"", agentName));
-						delete [] recvBuff;
-						success = 0;
-					}
-
-					// Buffer for sending
-					int sendSize = sizeof(unsigned short);
-					char *sendBuff = new char[sendSize];
-					char *sp = sendBuff;	  
-
-					BINARY_SET_DATA_S_INCR(sp, unsigned short, success);
-
-					// Sending the result to controller
-					if (!sendData(s, sendBuff, sendSize)) {
-						LOG_ERR(("getObj: Failed to send data [%s, %d]", __FILE__, __LINE__));
-					}
-					delete [] recvBuff;
-					delete [] sendBuff;
-
-					//return true;
-					goto again;
-				}
-
-				case REQUEST_SET_CAMERA_POSITION:
-				{
-					if (!client->isControllerData()) {
-						break;
-					}
-					unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
-					size -= 4;
-
-					char *recvBuff = new char[size];
-
-					if (!recvData(s, recvBuff, size)) {
-						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
-						delete [] recvBuff;
-						continue;
-					}
-					char *pp = recvBuff;
-
-					// Get Camera ID from the received message
-					unsigned short camID = BINARY_GET_DATA_S_INCR(pp, unsigned short);
-					// Get position data from the received message
-					double x = BINARY_GET_DOUBLE_INCR(pp);
-					double y = BINARY_GET_DOUBLE_INCR(pp);
-					double z = BINARY_GET_DOUBLE_INCR(pp);
-
-					// Get agent name from the received message
-					char *agentName = strtok(pp, ",");
-					SSimObj *obj = w->getSObj(agentName);
-					SimObj *sobj = (SimObj*)obj; 
-					if (!obj) {
-						LOG_ERR(("setCamPos : no agent \"%s\"", agentName));
-						delete [] recvBuff;
-						goto again;
-					}
-
-					char tmpx[6];
-					char tmpy[6];
-					char tmpz[6];
-
-					sprintf(tmpx,"epx%d",camID);
-					sprintf(tmpy,"epy%d",camID);
-					sprintf(tmpz,"epz%d",camID);
-
-					if (!sobj->isAttr(tmpx) || !sobj->isAttr(tmpy) || !sobj->isAttr(tmpz)) {
-						LOG_ERR(("setCamPos: Cannot find camera id [%d]", camID));
-						return false;
-					}
-					else {
-						sobj->getAttr(tmpx).value().setDouble(x);
-						sobj->getAttr(tmpy).value().setDouble(y);
-						sobj->getAttr(tmpz).value().setDouble(z);
-					}
-
-					delete [] recvBuff;
-					//return true;
-					goto again;
-				}
-
-				case REQUEST_GET_CAMERA_POSITION:
-				{
-					if (!client->isControllerData()) {
-						break;
-					}
-
-					bool success = true;
-					unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
-					size -= 4;
-
-					char *recvBuff = new char[size];
-
-					if (!recvData(s, recvBuff, size)) {
-						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
-						delete [] recvBuff;
-						continue;
-					}
-					char *pp = recvBuff;
-
-					unsigned short camID = BINARY_GET_DATA_S_INCR(pp, unsigned short);
-
-					char *agentName = strtok(pp, ",");
-					SSimObj *obj = w->getSObj(agentName);
-					SimObj *sobj = (SimObj*)obj; 
-					if (!obj) {
-						LOG_ERR(("getCamPos : no agent \"%s\"", agentName));
-						delete [] recvBuff;
-						success = false;
-					}
-					delete [] recvBuff;
-
-					char tmpx[6];
-					char tmpy[6];
-					char tmpz[6];
-
-					sprintf(tmpx,"epx%d",camID);
-					sprintf(tmpy,"epy%d",camID);
-					sprintf(tmpz,"epz%d",camID);
-
-					double x=0.0;
-					double y=0.0;
-					double z=0.0;
-
-					if (!sobj->isAttr(tmpx) || !sobj->isAttr(tmpy) || !sobj->isAttr(tmpz)) {
-						LOG_ERR(("getCamPos: Cannot find camera id [%d]", camID));
-						success = false;
-					}
-					else {
-						x = sobj->getAttr(tmpx).value().getDouble();
-						y = sobj->getAttr(tmpy).value().getDouble();
-						z = sobj->getAttr(tmpz).value().getDouble();
-					}
-
-					int sendSize = sizeof(double) * 3 + sizeof(bool);
-					char *sendBuff = new char[sendSize];
-					char *sp = sendBuff;
+					packetSize = BINARY_GET_DATA_S_INCR(p, unsigned short);
 
-					BINARY_SET_BOOL_INCR(sp, success);
-
-					BINARY_SET_DOUBLE_INCR(sp, x);
-					BINARY_SET_DOUBLE_INCR(sp, y);
-					BINARY_SET_DOUBLE_INCR(sp, z);
-
-					if (!sendData(s, sendBuff, sendSize)) {
-						LOG_ERR(("getCamPos: Failed to send data [%s, %d]", __FILE__, __LINE__));
-					}
-					delete [] sendBuff;
-
-					//return true;
-					goto again;
-				}
-
-				case REQUEST_SET_CAMERA_DIRECTION:
-				{
-					if (!client->isControllerData()) {
-						break;
-					}
-					unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
-					size -= 4;
-
-					char *recvBuff = new char[size];
-
-					if (!recvData(s, recvBuff, size)) {
-						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
-						delete [] recvBuff;
-						continue;
-					}
-					char *pp = recvBuff;
-
-					unsigned short camID = BINARY_GET_DATA_S_INCR(pp, unsigned short);
-
-					double x = BINARY_GET_DOUBLE_INCR(pp);
-					double y = BINARY_GET_DOUBLE_INCR(pp);
-					double z = BINARY_GET_DOUBLE_INCR(pp);
-
-					char *agentName = strtok(pp, ",");
-					SSimObj *obj = w->getSObj(agentName);
-					SimObj *sobj = (SimObj*)obj; 
-					if (!obj) {
-						LOG_ERR(("setCamDir : no agent \"%s\"", agentName));
-						delete [] recvBuff;
-						goto again;
-					}
-
-					char tmpx[6];
-					char tmpy[6];
-					char tmpz[6];
-
-					sprintf(tmpx,"evx%d",camID);
-					sprintf(tmpy,"evy%d",camID);
-					sprintf(tmpz,"evz%d",camID);
-
-					if (!sobj->isAttr(tmpx) || !sobj->isAttr(tmpy) || !sobj->isAttr(tmpz)) {
-						LOG_ERR(("setCamDir: Cannot find camera id [%d]", camID));
-						return false;
-					}
-					else {
-						sobj->getAttr(tmpx).value().setDouble(x);
-						sobj->getAttr(tmpy).value().setDouble(y);
-						sobj->getAttr(tmpz).value().setDouble(z);
-					}
-
-					delete [] recvBuff;
-					//return true;
-					goto again;
-				}
-
-				case REQUEST_GET_CAMERA_DIRECTION:
-				{
-					if (!client->isControllerData()) {
-						break;
-					}
-
-					bool success = true;
-					unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
-					size -= 4;
-
-					char *recvBuff = new char[size];
-
-					if (!recvData(s, recvBuff, size)) {
-						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
-						delete [] recvBuff;
-						continue;
-					}
-					char *pp = recvBuff;
-
-					unsigned short camID = BINARY_GET_DATA_S_INCR(pp, unsigned short);
-
-					char *agentName = strtok(pp, ",");
-					SSimObj *obj = w->getSObj(agentName);
-					SimObj *sobj = (SimObj*)obj; 
-					if (!obj) {
-						LOG_ERR(("getCamDir : no agent \"%s\"", agentName));
-						delete [] recvBuff;
-						success = false;
-					}
-					delete [] recvBuff;
-
-					char tmpx[6];
-					char tmpy[6];
-					char tmpz[6];
-
-					sprintf(tmpx,"evx%d",camID);
-					sprintf(tmpy,"evy%d",camID);
-					sprintf(tmpz,"evz%d",camID);
-
-					double x=0.0;
-					double y=0.0;
-					double z=0.0;
-
-					if (!sobj->isAttr(tmpx) || !sobj->isAttr(tmpy) || !sobj->isAttr(tmpz)) {
-						LOG_ERR(("getCamPos: Cannot find camera id [%d]", camID));
-						success = false;
-					}
-					else {
-						x = sobj->getAttr(tmpx).value().getDouble();
-						y = sobj->getAttr(tmpy).value().getDouble();
-						z = sobj->getAttr(tmpz).value().getDouble();
-					}
-
-					int sendSize = sizeof(double) * 3 + sizeof(bool);
-					char *sendBuff = new char[sendSize];
-					char *sp = sendBuff;
-
-					BINARY_SET_BOOL_INCR(sp, success);
-
-					BINARY_SET_DOUBLE_INCR(sp, x);
-					BINARY_SET_DOUBLE_INCR(sp, y);
-					BINARY_SET_DOUBLE_INCR(sp, z);
-
-					if (!sendData(s, sendBuff, sendSize)) {
-						LOG_ERR(("getCamDir: Failed to send data [%s, %d]", __FILE__, __LINE__));
-					}
-					delete [] sendBuff;
-
-					//return true;
-					goto again;
-				}
-
-				case REQUEST_SET_CAMERA_FOV:
-				{
-					if (!client->isControllerData()) {
-						break;
-					}
-					unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
-					size -= 4;
-
-					char *recvBuff = new char[size];
-
-					if (!recvData(s, recvBuff, size)) {
-						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
-						delete [] recvBuff;
-						continue;
-					}
-					char *pp = recvBuff;
-
-					unsigned short camID = BINARY_GET_DATA_S_INCR(pp, unsigned short);
-
-					double fov = BINARY_GET_DOUBLE_INCR(pp);
-
-					char *agentName = strtok(pp, ",");
-					SSimObj *obj = w->getSObj(agentName);
-					SimObj *sobj = (SimObj*)obj; 
-					if (!obj) {
-						LOG_ERR(("setCamFOV : no agent \"%s\"", agentName));
-						delete [] recvBuff;
-						goto again;
-					}
-
-					char tmp[6];
-
-					sprintf(tmp,"FOV%d",camID);
-					
-					if (!sobj->isAttr(tmp)) {
-						LOG_ERR(("setCamFOV: Cannot find camera id [%d]", camID));
-						return false;
-					}
-					else {
-						sobj->getAttr(tmp).value().setDouble(fov);
-					}
-
-					delete [] recvBuff;
-					goto again;
-				}
-
-				case REQUEST_SET_CAMERA_ASPECTRATIO:
-				{
-					if (!client->isControllerData()) {
-						break;
-					}
-					unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
-					size -= 4;
-
-					char *recvBuff = new char[size];
-
-					if (!recvData(s, recvBuff, size)) {
-						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
-						delete [] recvBuff;
-						continue;
-					}
-					char *pp = recvBuff;
-
-					unsigned short camID = BINARY_GET_DATA_S_INCR(pp, unsigned short);
-
-					double ar = BINARY_GET_DOUBLE_INCR(pp);
-
-					char *agentName = strtok(pp, ",");
-					SSimObj *obj = w->getSObj(agentName);
-					SimObj *sobj = (SimObj*)obj; 
-					if (!obj) {
-						LOG_ERR(("setCamAS : no agent \"%s\"", agentName));
-						delete [] recvBuff;
-						goto again;
-					}
-
-					char tmp[14];
-
-					sprintf(tmp,"aspectRatio%d",camID);
-
-					if (!sobj->isAttr(tmp)) {
-						LOG_ERR(("setCamAS: Cannot find camera id [%d]", camID));
-						return false;
-					}
-					else {
-						sobj->getAttr(tmp).value().setDouble(ar);
-					}
-
-					delete [] recvBuff;
-					goto again;
-				}
-
-				case REQUEST_SET_WHEEL:
-				{
-					if (!client->isControllerData()) {
-						break;
-					}
-					unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
-					size -= 4;
-
-					char *recvBuff = new char[size];
-
-					if (!recvData(s, recvBuff, size)) {
-						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
-						delete [] recvBuff;
-						continue;
-					}
-					char *pp = recvBuff;
-
-					double wheelRadius   = BINARY_GET_DOUBLE_INCR(pp);
-					double wheelDistance = BINARY_GET_DOUBLE_INCR(pp);
-
-					char *agentName = strtok(pp, ",");
-					SSimObj *obj = w->getSObj(agentName);
-					SRobotObj *robj = dynamic_cast<SRobotObj*>(obj); 
-					if (robj == NULL) {
-						LOG_ERR(("setWheel: %s is not ROBOT object",agentName));
-						continue;
-					}
-					else {
-						robj->setWheel(wheelRadius, wheelDistance);
-					}
-					delete [] recvBuff;
-					goto again;
-					//LOG_MSG(("%s (%f, %f)", agentName, wheelRadius, wheelDistance));
-				}
-
-				case REQUEST_SET_WHEEL_VELOCITY:
-				{
-					if (!client->isControllerData()) {
-						break;
-					}
-					unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
-					size -= 4;
-
-					char *recvBuff = new char[size];
-
-					if (!recvData(s, recvBuff, size)) {
-						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
-						delete [] recvBuff;
-						continue;
-					}
-
-					char *pp = recvBuff;
-
-					double left  = BINARY_GET_DOUBLE_INCR(pp);
-					double right = BINARY_GET_DOUBLE_INCR(pp);
-
-					char *agentName = strtok(pp, ",");
-					SSimObj *obj = w->getSObj(agentName);
-					SRobotObj *robj = dynamic_cast<SRobotObj*>(obj); 
-					if (robj == NULL) {
-						LOG_ERR(("setWheelVelocity: %s is not ROBOT object",agentName));
-						continue;
-					}
-
-					else if (robj->getWheelRadius() == 0.0 || robj->getWheelDistance() == 0.0) {
-						LOG_ERR(("setWheelVelocity: %s need to set wheel property",agentName));
-						continue;
-					}
-					else {
-						robj->setWheelVelocity(left, right);
-					}
-					//LOG_MSG(("setWheelVeclity!"));
-					delete [] recvBuff;
-
-					goto again;
-				}
-
-				case REQUEST_GET_JOINT_ANGLE:
-				{
-					if (!client->isControllerData()) {
-						break;
-					}
-					unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
-					size -= 4;
-
-					char *recvBuff = new char[size];
-
-					if (!recvData(s, recvBuff, size)) {
-						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
-						delete [] recvBuff;
-						continue;
-					}
-					char *pp = recvBuff;
-
-					char *agentName = strtok(pp, ",");
-					char *jointName = strtok(NULL, ",");
-
-					SSimObj *obj = w->getSObj(agentName);
-					Joint *j = obj->getJoint(jointName);
-
-					bool success = true;
-					double angle = 0.0;
-					if (!j) {
-						LOG_MSG(("getJointAngle : %s does NOT have joint \"%s\"",
-						         agentName, jointName));
-						success = false;
-					}
-					else if (j->type() == Joint::TYPE_HINGE) {
-
-						HingeJoint* hj = (HingeJoint*)j;
-						angle = hj->getAngle();
-					}
-					else {
-						LOG_MSG(("getJointAngle : %s is NOT hinge joint", jointName));
-						success = false;
-					}
-
-					int sendSize = sizeof(double) + sizeof(bool);
-					char *sendBuff = new char[sendSize];
-					char *sp = sendBuff;
-
-					BINARY_SET_BOOL_INCR(sp, success);
-					BINARY_SET_DOUBLE_INCR(sp, angle);
-
-					if (!sendData(s, sendBuff, sendSize)) {
-						LOG_ERR(("Failed to send data [%s, %d]", __FILE__, __LINE__));
-					}
-					delete [] recvBuff;
-					delete [] sendBuff;
-					goto again;
-				}
-
-				// Current status, the max has two meaning; max torque and max angular velocity
-				// Now, the meaning of max angular velocity is comment out, but it is dangerous
-				// Be careful is the max angular velocity will be used. by inamura on 2013-12-30
-				case REQUEST_SET_JOINT_VELOCITY:
-				{
-					if (!client->isControllerData()) {
-						break;
-					}
-					unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
-					size -= 4;
-
-					char *recvBuff = new char[size];
-					if (!recvData(s, recvBuff, size)) {
-						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
-						delete [] recvBuff;
-						continue;
-					}
-					char *pp = recvBuff;
-					// Get angular velocity and max torque from the received message
-					double velocity  = BINARY_GET_DOUBLE_INCR(pp);
-					double max       = BINARY_GET_DOUBLE_INCR(pp);
-					char *agentName  = strtok(pp, ",");   // Name of the target agent
-					char *jointName  = strtok(NULL, ","); 
-
-					SSimObj *obj     = w->getSObj(agentName);
-					Joint *j         = obj->getJoint(jointName); // Name of the target joint
-					double angle     = 0.0;
-
-					HingeJoint *hj;
-					if (!j) {
-						LOG_MSG(("setJointVelocity : %s does NOT have joint \"%s\"",
-						         agentName, jointName));
-						goto again;
-					}
-					else if (j->type() == Joint::TYPE_HINGE) {
-						hj = (HingeJoint*)j;
-						angle = hj->getAngle();
-						// TODO: this angle seems not to be used...
-					}
-					else {
-						LOG_MSG(("setJointVelocity : %s is NOT hinge joint", jointName));
-						delete [] recvBuff;
-						goto again;
-					}
-
-					if (!obj->dynamics()) {
-						// when dynamics mode is off
-						// modified by inamura: changed from addJointVelocity
-						obj->setAngularVelocityToJoint(jointName, velocity);
-					}
-					else {
-						// when dynamics mode is on
-						// modified by inamura: changed from setVelocity
-						hj->setAngularVelocityMaxTorque(velocity,max);
-					}
-					delete [] recvBuff;
-					goto again;
-				}
-
-				case REQUEST_GRASP_OBJECT:
-				{
-					if (!client->isControllerData()) {
-						break;
-					}
-
-					unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
-					size -= 4;
-
-					char *recvBuff = new char[size];
-
-					if (!recvData(s, recvBuff, size)) {
-						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
-						delete [] recvBuff;
-						continue;
-					}
-					char *pp = recvBuff;
-					// Get name of agent and parts from the received message
-					char *agentName = strtok(pp, ",");
-					char *partsName = strtok(NULL, ",");
-					char *target    = strtok(NULL, ",");
-
-					// 0: Success
-					// 1: Target is not found
-					// 2: Grasping now
-					// 3: It is alread grasped by other
-					// 4: It is not graspable object
-					// 5: The target is too far, grasping fail
-					unsigned short result = 0;
-					SSimObj *obj  = w->getSObj(agentName); 
-					SSimObj *tobj = w->getSObj(target);
-
-					SimObjBase *tobj_b = (SimObjBase*)tobj;
-					bool graspable = tobj_b->graspable();
-
-					if (!tobj) {
-						// Target is not found
-						result = 1;
-						//LOG_ERR(("graspObj: cannot find object %s [%s, %d]",target , __FILE__, __LINE__));
-					}
-					else {
-						SParts *myParts     = obj    ->getSParts(partsName);// Get the target of grasping
-						SParts *targetParts = tobj   ->getSBody();          // Get the target parts
-						bool state          = myParts->getOnGrasp();
-						bool isgrasped      = tobj   ->getIsGrasped();
-						double radius       = tobj_b ->graspRadius();
-
-						if (state) {
-							// It's grasping now
-							std::string gname = myParts->getGraspingObject();
-							//LOG_ERR(("graspObj:%s's %s is already grasping %s",agentName, partsName, gname.c_str()));
-							result = 2;
-						}
-						else if (isgrasped) {
-							// It is alread grasped by other
-							result = 3;
-						}
-						else if (!graspable) {
-							// It is not graspable object
-							result = 4;
-						}
-						else {
-							dBodyID body1 = myParts    ->odeobj().body();
-							dBodyID body2 = targetParts->odeobj().body();
-
-							const dReal *p1 = dBodyGetPosition(body1);
-							const dReal *p2 = dBodyGetPosition(body2);
-							
-							// Claculate distance to the target object
-							double tmp1 = p1[0] - p2[0];
-							double tmp2 = p1[1] - p2[1];
-							double tmp3 = p1[2] - p2[2];
-							double distance = sqrt(tmp1*tmp1 + tmp2*tmp2 + tmp3*tmp3);
-
-							// If the target is further than threshold, grasping failed
-							if (distance > radius) {
-								result = 5;
-							}
-							else {
-								// Execution of grasping
-								dWorldID world = m_provider.get()->odeWorld()->world();	      
-								// Connect with fix joint
-								dJointID joint = dJointCreateFixed(world, 0);
-								dJointAttach(joint, body1, body2);
-		
-								// Start of grasping
-								myParts->graspObj(target);
-
-								// Set the flag of grasping object to true
-								tobj->setIsGrasped(true);
-							}
-						}
-					}
-					// Buffer for sending
-					int sendSize = sizeof(unsigned short);
-					char *sendBuff = new char[sendSize];
-					char *sp = sendBuff;
-
-					BINARY_SET_DATA_S_INCR(sp, unsigned short, result);
-					// Sending the result to controller
-					if (!sendData(s, sendBuff, sendSize)) {
-						LOG_ERR(("Failed to send data [%s, %d]", __FILE__, __LINE__));
-					}
-					delete [] recvBuff;
-					delete [] sendBuff;
-
-					goto again;
-				}
-
-				case REQUEST_RELEASE_OBJECT:
-				{
-					if (!client->isControllerData()) {
-						break;
-					}
-
-					unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
-					size -= 4;
-
-					char *recvBuff = new char[size];
-
-					if (!recvData(s, recvBuff, size)) {
-						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
-						delete [] recvBuff;
-						continue;
-					}
-					char *pp = recvBuff;
-
-					char *agentName = strtok(pp, ",");
-					char *partsName = strtok(NULL, ",");
-
-					SSimObj *obj = w->getSObj(agentName); 
-					SParts  *myParts = obj->getSParts(partsName);  // Get part of the target
-
-					// set the grasping flag to off
-					std::string target = myParts->getGraspingObject();
-					myParts->releaseObj();
-					if (!target.empty()) {
-						SSimObj *tobj = w->getSObj(target.c_str());
-						tobj->setIsGrasped(false);
-					}
-
-					delete [] recvBuff;
-					break;
-				}
-
-				case REQUEST_GET_ALL_JOINT_ANGLES:
-				{
-					if (!client->isControllerData()) {
-						break;
-					}
-
-					unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
-					size -= 4;
-
-					char *recvBuff = new char[size];
-
-					if (!recvData(s, recvBuff, size)) {
-						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
-						delete [] recvBuff;
-						continue;
-					}
-					char *pp = recvBuff;
-
-					char *agentName = strtok(pp, ",");
-					SSimObj *obj = w->getSObj(agentName);
-					std::map<std::string, Joint*> *joints = obj->getJointMap();
-					std::map<std::string, Joint*>::iterator it = joints->begin();
-
-					std::string tmpMsg = "";
-					// The number of joints
-					int jointNum = 0;
-
-					while(it != joints->end()) {
-						if ((*it).second->type() == 2) {
-							// Get joint angles
-							HingeJoint* hj = (HingeJoint*)((*it).second);
-							double angle = hj->getAngle();
-
-							// Add the value to the string
-							tmpMsg += std::string((*it).second->name()) + ",";
-							tmpMsg += DoubleToString(angle);
-							jointNum++;
-						}
-						it++;
-					}
-
-					int sendSize = sizeof(unsigned short)*2 + tmpMsg.size();
-					char *sendBuff = new char[sendSize];
-					char *sp = sendBuff;
-
-					// Data size
-					BINARY_SET_DATA_S_INCR(sp, unsigned short, sendSize);      
-
-					// The number of joints
-					BINARY_SET_DATA_S_INCR(sp, unsigned short, jointNum);
-					memcpy(sp, tmpMsg.c_str(), tmpMsg.size());
-
-					// Sending the result to controller
-					if (!sendData(s, sendBuff, sendSize)) {
-						LOG_ERR(("Failed to send data [%s, %d]", __FILE__, __LINE__));
-					}
-					delete [] recvBuff;
-					delete [] sendBuff;
-
-					//LOG_MSG(("msg = %s", tmpMsg.c_str()));
-					break;
-				}
-
-				case REQUEST_WORLD_STEP:
-				{
-					unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
-					size -= 4;
-
-					char *recvBuff = new char[size];
-
-					if (!recvData(s, recvBuff, size)) {
-						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
-						delete [] recvBuff;
-						continue;
-					}
-					char *pp = recvBuff;
-
-					double stepsize = BINARY_GET_DOUBLE_INCR(pp);
-					delete [] recvBuff;
-
-					if (w->getAutoStep()) {
-						LOG_ERR(("worldStep: cannot step world. autostep mode ON"));
-					}
-					else {
-						// Progress the simulation step
-						w->nextStep(stepsize);
-					}
-					
-					break;
-				}
-
-				case REQUEST_WORLD_QUICK_STEP:
-				{
-					unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
-					size -= 4;
-
-					char *recvBuff = new char[size];
-
-					if (!recvData(s, recvBuff, size)) {
-						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
-						delete [] recvBuff;
-						continue;
-					}
-					char *pp = recvBuff;
-
-					double stepsize = BINARY_GET_DOUBLE_INCR(pp);
-					delete [] recvBuff;
-
-					if (w->getAutoStep()) {
-						LOG_ERR(("worldQuickStep: cannot step world. autostep mode ON"));
-					}
-					else {
-						// Progress the simulation in quick mode (in ODE)
-						w->nextStep(stepsize,true);
-					}
-					break;
-				}
-
-				case REQUEST_GET_ISGRASPED:
-				{
-					unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
-					size -= 4;
-
-					char *recvBuff = new char[size];
-
-					if (!recvData(s, recvBuff, size)) {
-						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
-						delete [] recvBuff;
-						continue;
-					}
-					char *pp = recvBuff;
-					std::string name = strtok(pp, ",");
-					delete [] recvBuff;
-
-					SSimObj *tobj = w->getSObj(name.c_str());
-
-					bool grasped = tobj->getIsGrasped();
-
-					int sendSize = sizeof(bool);
-					//char *sendBuff = new char[sendSize];
-					char sendBuff[8];
-					char *p = sendBuff;
-
-					BINARY_SET_BOOL_INCR(p, grasped);
-
-					if (!sendData(s, sendBuff, sendSize)) {
-					  LOG_ERR(("Failed to send data [%s, %d]", __FILE__, __LINE__));
-					}
-					break;
-				}
-
-				case REQUEST_SET_COLLISIONABLE:
-				{
-					unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
-					size -= 4;
-
-					char *recvBuff = new char[size];
-
-					if (!recvData(s, recvBuff, size)) {
-						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
-						delete [] recvBuff;
-						continue;
-					}
-					char *pp = recvBuff;
-					bool flag = BINARY_GET_BOOL_INCR(pp);
-
-					std::string name = strtok(pp, ",");
-					SSimObj *obj = w->getSObj(name.c_str());
-
-					std::map<std::string, SParts*> allj = obj->getAllParts();
-					std::map<std::string, SParts*>::iterator it = allj.begin();
-					while(it != allj.end()) {
-						(*it).second->setCollisionEnable(flag);
-						it++;
-					}
-					break;
-				}
-				
-				case REQUEST_GET_SIMULATION_TIME:
-				{
-					double now = w->time();
-
-					char sendBuff[16];
-					char *p = sendBuff;
-
-					BINARY_SET_DOUBLE_INCR(p, now);
-					
-					int sendSize = sizeof(double);
-
-					if (!sendData(s, sendBuff, sendSize)) {
-						LOG_ERR(("Failed to send data [%s, %d]", __FILE__, __LINE__));
+					if (packetSize > firstRead) {
+						r = recv_nonblock(s,
+								 pbuf + firstRead,
+								 packetSize - firstRead);
 					}
-					break;
-				}
-
-				case REQUEST_GET_COLLISION_STATE:
-				{
-					unsigned short size = BINARY_GET_DATA_S_INCR(p, unsigned short);
-					size -= 4;
-
-					char *recvBuff = new char[size];
-
-					if (!recvData(s, recvBuff, size)) {
-						LOG_ERR(("Failed to recieve data [%s, %d]", __FILE__, __LINE__));
-						delete [] recvBuff;
-						continue;
-					}
-
-					char *pp = recvBuff;
-
-					std::string name = strtok(pp, ",");
-					std::string parts = strtok(NULL, ",");
-					SSimObj *obj = w->getSObj(name.c_str());
-					SParts *sparts = obj->getSParts(parts.c_str());
-
-					bool state = sparts->getOnCollision();
-
-					int sendSize = sizeof(bool);
-					char sendBuff[8];
-					char *p = sendBuff;
-
-					BINARY_SET_BOOL_INCR(p, state);
-
-					if (!sendData(s, sendBuff, sendSize)) {
-						LOG_ERR(("Failed to send data [%s, %d]", __FILE__, __LINE__));
-					}
-					
-					delete [] recvBuff;
-					break;
-				}
-				///////////////////////////////////////
-				/////////// add new case here!!////////
-				///////////////////////////////////////
-
-				default :
-				{
-					// Irregular data (trash data?)
-					char tmp[256];  // TODO: magic number
-					recv_nonblock(s, tmp, sizeof(tmp));
-				}
-	  
-				} // switch(n) {
-
-			} // if (0 < n && n < REQUEST_SIZE) {
-			// if the 2bytes data is 0xabcd (request from SIGViewer)
-			else if (n == COMM_DATA_PACKET_START_TOKEN)
-			{
-				packetSize = BINARY_GET_DATA_S_INCR(p, unsigned short);
-
-				if (packetSize > firstRead) {
-					r = recv_nonblock(s,
-					         pbuf + firstRead,
-					         packetSize - firstRead);
 				}
 			}
-		}
 
-		if (packetSize > 0) {
-			int decoded;
+			if (packetSize > 0) {
+				int decoded;
 
-			CommDataResult *result = clients[i]->decoder.push(*client, s_buf, packetSize, decoded);
-			Source *client = clients[i]->source;
+				CommDataResult *result = clients[i]->decoder.push(*client, s_buf, packetSize, decoded);
+				Source *client = clients[i]->source;
 
-			if (decoded < 0) {
+				if (decoded < 0) {
 
-				LOG_ERROR(("bad backet : from = %s recv = %d, size=%d, type=%d\n",
-						   client->name(),
-						   packetSize,
-						   *(unsigned short*)s_buf,
-						   *(CommDataType*)(s_buf + 2)));
-			} 
-			else if (result != NULL) {
-
-				assert(result->forwarded());
-				bool completed = result->forwardCompleted();
-				LOG_DEBUG1(("forwarded(%s)", completed?"completed":"not completed"));
-
-				if (!completed) {
-					LOG_DEBUG1(("packet(%d/%d)", result->seq(), result->packetNum()));
+					LOG_ERROR(("bad packet : from = %s recv = %d, size=%d, type=%d\n",
+							   client->name(),
+							   packetSize,
+							   *(unsigned short*)s_buf,
+							   *(CommDataType*)(s_buf + 2)));
 				}
-				delete result;
-				if (!completed) {
-					forwarding = true;
+				else if (result != NULL) {
 
-					wait(waitTime);
+					assert(result->forwarded());
+					bool completed = result->forwardCompleted();
+					LOG_DEBUG1(("forwarded(%s)", completed?"completed":"not completed"));
 
-					// FIX20110614(BIG-PACKET-RESPONSE-SLOW)
-					// if the packet size of the forwarding message is huge, the response time was increased.
-					// For exame, sending huge wave file from SIGViewer. It seems like a freezing
-					// Modified no to wait more than 10 seconds
-					if (waitTime < 10000) waitTime *= 2;
+					if (!completed) {
+						LOG_DEBUG1(("packet(%d/%d)", result->seq(), result->packetNum()));
+					}
+					delete result;
+					if (!completed) {
+						forwarding = true;
 
-					goto again;
+						wait(waitTime);
+
+						// FIX20110614(BIG-PACKET-RESPONSE-SLOW)
+						// if the packet size of the forwarding message is huge, the response time was increased.
+						// For exame, sending huge wave file from SIGViewer. It seems like a freezing
+						// Modified no to wait more than 10 seconds
+						if (waitTime < 10000) waitTime *= 2;
+
+						continue;
+					}
+					else {
+						forwarding = false;
+					}
 				}
-				else {
-					forwarding = false;
-				}
-			}
-			// Check whether other data comes
-			goto again;
-		} // if (packetSize > 0) 
-		else {
-			if (forwarding) {
-				goto again;
-			}
-		}
-		// Encoding multiple data, and sending
-		typedef std::vector<CommDataEncoder*> EncC;
-		EncC encoders;
-
-		std::vector<std::string> with;
-
-		if (client->isControllerCmd()) {
-
-			// Get result of collision detection
-			const char *name = client->name();
-
-			if (odeWorld->collideWith(name, with) > 0) {
-				// Call of onCollision event handler
-				encoders.push_back(new CommInvokeMethodOnCollisionEncoder(currTime, with));
-				// TODO: check whether the memory free is not required
-			}
-			// Time is always sent. Is it required? TODO
-			//if (running) {
-			//encoders.push_back(new CommInvokeMethodOnActionEncoder(currTime));
-			//}
-		}
-
-		if (r == -1
-#ifndef WIN32
-				&& (!errno || errno == EAGAIN)
-#endif
-			) { // connection is alive
-
-			for (EncC::iterator ei=encoders.begin(); ei!=encoders.end(); ei++)
-			{
-				CommDataEncoder *target = *ei;
-				int r = client->send(*target);
-
-				if (r < 0) {
-					LOG_ERR(("send error"));
-				} else if (r == 0) {
-					LOG_SYSTEM(("connection closed"));
-					m_accept.pushNoNeeded(client);
-					break;
+				// Check whether other data comes
+				continue;
+			} // if (packetSize > 0)
+			else {
+				if (forwarding) {
+					continue;
 				}
 			}
-		}
+			// Encoding multiple data, and sending
+			typedef std::vector<CommDataEncoder*> EncC;
+			EncC encoders;
 
-#ifndef WIN32
-		// sekikawa(FIX20100826)
-		else if (r < 0) {
-			// detach client only when error occurred.
-			//LOG_ERR(("r=%d: socket error (errno=%d, name=%s) [%s:%d]", r, errno, client->name(), __FILE__, __LINE__));
-			//LOG_MSG(("ERR"));
-			perror("Socket");
-			//LOG_SYS(("Errno : %d",errno));
-			m_accept.pushNoNeeded(client);
-		}
-#else
-		else {
-			if (r == 0) {
+			std::vector<std::string> with;
+
+			if (client->isControllerCmd()) {
+
+				// Get result of collision detection
+				const char *name = client->name();
+
+				if (odeWorld->collideWith(name, with) > 0) {
+					// Call of onCollision event handler
+					encoders.push_back(new CommInvokeMethodOnCollisionEncoder(currTime, with));
+					// TODO: check whether the memory free is not required
+				}
+				// Time is always sent. Is it required? TODO
+				//if (running) {
+				//encoders.push_back(new CommInvokeMethodOnActionEncoder(currTime));
+				//}
+			}
+
+			if (r == -1
+	#ifndef WIN32
+					&& (!errno || errno == EAGAIN)
+	#endif
+				) { // connection is alive
+
+				for (EncC::iterator ei=encoders.begin(); ei!=encoders.end(); ei++)
+				{
+					CommDataEncoder *target = *ei;
+					int r = client->send(*target);
+
+					if (r < 0) {
+						LOG_ERR(("send error"));
+					} else if (r == 0) {
+						LOG_SYSTEM(("connection closed"));
+						m_accept.pushNoNeeded(client);
+						return true;
+					}
+				}
+			}
+
+	#ifndef WIN32
+			// sekikawa(FIX20100826)
+			else if (r < 0) {
+				// detach client only when error occurred.
+				//LOG_ERR(("r=%d: socket error (errno=%d, name=%s) [%s:%d]", r, errno, client->name(), __FILE__, __LINE__));
+				//LOG_MSG(("ERR"));
+				perror("Socket");
+				//LOG_SYS(("Errno : %d",errno));
 				m_accept.pushNoNeeded(client);
 			}
-		}
-#endif
+	#else
+			else {
+				if (r == 0) {
+					m_accept.pushNoNeeded(client);
+				}
+			}
+	#endif
 
-		for (EncC::iterator ei=encoders.begin(); ei!=encoders.end(); ei++) {
-			CommDataEncoder *p = *ei;
-			FREE(p);
+			for (EncC::iterator ei=encoders.begin(); ei!=encoders.end(); ei++) {
+				CommDataEncoder *p = *ei;
+				FREE(p);
+			}
+
+			break; // Escape while(true).
 		}
-		
 	}
 	return true;
 }

@@ -52,6 +52,14 @@ private:
 		SEND_MESSAGE = 0x0001,    	// Send a message to controller
 	};
 
+	enum RequestMethodReturnType
+	{
+		NEXT_CLIENT,
+		NEXT_MESSAGE,
+		NEXT_STEP,
+		RETURN_TRUE,
+		RETURN_FALSE,
+	};
 
 public:
 	//! Constructor
@@ -96,6 +104,46 @@ public:
 
 	// Start the simulation
 	void startSimulation(SSimWorld *w);
+
+	RequestMethodReturnType requestGetAllEntitiesfirst  (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *pbuf, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestStartSimulation      (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestStopSimulation       (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestGetMoveEntities      (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestDownloadShape        (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestDisconnect           (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestQuit                 (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestSendmsgFromController(SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestConnectService       (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestGetJointPosition     (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestGetJointQuaternion   (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestGetPointingVector    (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestGetPartsPosition     (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestGetPartsQuaternion   (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestSetEntityPosition    (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestCheckService         (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestGetEntityPosition    (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestSetEntityRotation    (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestGetEntityRotation    (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestCheckEntity          (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestSetCameraPosition    (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestGetCameraPosition    (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestSetCameraDirection   (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestGetCameraDirection   (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestSetCameraFov         (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestSetCameraAspectratio (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestSetWheel             (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestSetWheelVelocity     (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestGetJointAngle        (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestSetJointVelocity     (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestGraspObject          (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestReleaseObject        (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestGetAllJointAngles    (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestWorldStep            (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestWorldQuickStep       (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestGetIsGrasped         (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestSetCollisionable     (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestGetSimulationTime    (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
+	RequestMethodReturnType requestGetCollisionState    (SSimWorld *w, const std::vector<Connection*> &clients, Source *client, SOCKET &s, char *p, unsigned short &packetSize, int &i);
 };
 
 #endif // WorldSimulator_h
