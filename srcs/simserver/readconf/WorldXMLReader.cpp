@@ -254,6 +254,10 @@ void WorldXMLReader::startElement(const XMLCh * const tagName_, xercesc::Attribu
 	// Creation of new entity
 	else if (strcmp(tagName, "entity") == 0 || strcmp(tagName, "Entity") == 0) {
 
+		LOG_ERR(("New version (Using entity tag) is incomplete."));
+		exit(EXIT_FAILURE);
+
+#if 0
 		ODEWorld *w = m_world->odeWorld();
 
 		// Set a new version flag later than v2.1
@@ -289,6 +293,7 @@ void WorldXMLReader::startElement(const XMLCh * const tagName_, xercesc::Attribu
 			ent->setIsAgent(true);
 		}
 		m_current = ent;
+#endif // if 0
 	}
 
 	else if (strcmp(tagName, "x3d") == 0 || strcmp(tagName, "X3D") == 0) {

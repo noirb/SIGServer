@@ -1372,9 +1372,10 @@ bool WorldSimulator::sendAllEntities(SOCKET sock, const char* buf)
 
 	// Version check
 	bool ver = w->getV21();
+
 	// Old version
 	if (w && !ver) {
-	  // Get the map for object name and SimObjBase
+		// Get the map for object name and SimObjBase
 		typedef std::map<std::string, SimObjBase*> EMap;
 		EMap emap = w->objs(); 
 
@@ -1448,7 +1449,7 @@ bool WorldSimulator::sendAllEntities(SOCKET sock, const char* buf)
 				std::string classname = obj->classname();
 				std::string cname = classname + ":::";
 
-				// In case of object which change the shape file accordnig to its state
+				// In case of object which change the shape file according to its state
 				std::string attrname = obj->getAttr("visStateAttrName").value().getString();
 				std::string tmp_shapes = "";
 
@@ -1592,10 +1593,10 @@ bool WorldSimulator::sendAllEntities(SOCKET sock, const char* buf)
 						continue;
 					}
 					msg += (*it).first + ",";
-	  
+
 					ODEObj odeobj = (*it).second->odeobj();
 					dGeomID geom = odeobj.geom();
- 	 
+
 					Vector3d opos;
 					(*it).second->getODEPos(opos);
 					msg += DoubleToString(opos.x());
@@ -1606,7 +1607,7 @@ bool WorldSimulator::sendAllEntities(SOCKET sock, const char* buf)
 					int geomtype = dGeomGetClass(geom);
 					msg += IntToString(geomtype);
 					//LOG_MSG(("type = %d", geomtype ));
-	  
+
 					// sphere
 					if (geomtype == 0) {
 						double radius = dGeomSphereGetRadius(geom);
@@ -1634,7 +1635,6 @@ bool WorldSimulator::sendAllEntities(SOCKET sock, const char* buf)
 					pNum++;
 				}// while
 				//msg += IntToString(pNum);
-
 			}
 			//const dReal *gpos = dGeomGetPosition(geom);
 			//LOG_MSG(("pos = (%f, %f, %f)",gpos[0], gpos[1], gpos[2]));
@@ -1673,7 +1673,7 @@ bool WorldSimulator::sendAllEntities(SOCKET sock, const char* buf)
 							tmp_camera += IntToString(id);
 							// Link name
 							tmp_camera += link + ",";
-	  
+
 							// Relative position of camera from link local coordinate
 							Vector3d pos;
 							sim->getCamPos(pos, camID, false);
@@ -1755,7 +1755,7 @@ bool WorldSimulator::sendAllEntities(SOCKET sock, const char* buf)
 						camID++;
 					}
 				}
-	
+
 				// Add # of cameras
 				msg += IntToString(camID - 1) + tmp_camera;
 			} // if (isAttached()) {
@@ -1774,12 +1774,16 @@ bool WorldSimulator::sendAllEntities(SOCKET sock, const char* buf)
 
 		// Sending the data
 		if (!sendData(sock, msg.c_str(), nbyte)) {
-		  return false;
+			return false;
 		}
 	} // end of if (w && !ver)
 
-	// New version (later than v2.2? TODO: to be confirmed by inamura on 2013-12-24)
+	// New version (TODO: to be confirmed by inamura on 2013-12-24)
 	else if (w && ver) {
+
+		LOG_ERR(("New version (Using entity tag) is incomplete."));
+		exit(EXIT_FAILURE);
+#if 0
 		LOG_MSG(("new!!"));
 
 		// prepare of message
@@ -1918,10 +1922,10 @@ bool WorldSimulator::sendAllEntities(SOCKET sock, const char* buf)
 
 		// Sending data
 		if (!sendData(sock, msg.c_str(), nbyte)) {
-		  return false;
+			return false;
 		}
 		////////////////////////////////
-
+#endif // if 0
 	}
 	return true;
 }
@@ -1937,7 +1941,7 @@ bool WorldSimulator::sendMoveEntities(SOCKET sock, bool update)
 	if (w && !ver) {
 
 		typedef std::map<std::string, SimObjBase*> EMap;
-		EMap emap = w->objs(); 
+		EMap emap = w->objs();
 
 		EMap::iterator it = emap.begin();
 
@@ -2076,7 +2080,7 @@ bool WorldSimulator::sendMoveEntities(SOCKET sock, bool update)
 				double fov = sim->getCamFOV(id);
 				double as  = sim->getCamAS(id);
 				std::string link= sim->getCamLink(id);
- 
+
 				std::map<int, Camera>::iterator it;
 				it = cams.find(id);
 				Vector3d vpos = (*it).second.pos;
@@ -2086,10 +2090,10 @@ bool WorldSimulator::sendMoveEntities(SOCKET sock, bool update)
 				std::string vlink = (*it).second.link;
 
 				if (vpos  != pos ||
-				   vdir  != dir ||
-				   vfov  != fov ||
-				   vas   != as  ||
-				   vlink != link) {
+				    vdir  != dir ||
+				    vfov  != fov ||
+				    vas   != as  ||
+				    vlink != link) {
 
 					tmp_camera += IntToString(id);
 					tmp_camera += link + ",";
@@ -2299,7 +2303,10 @@ bool WorldSimulator::sendMoveEntities(SOCKET sock, bool update)
 
 	else if (w && ver) {
 
-		// new2
+		LOG_ERR(("New version (Using entity tag) is incomplete."));
+		exit(EXIT_FAILURE);
+
+#if 0
 		////////////////////////////////////////////
 		typedef std::map<std::string, SSimEntity*> ENMap;
 		ENMap enmap = w->getAllSSimEntities();
@@ -2307,7 +2314,7 @@ bool WorldSimulator::sendMoveEntities(SOCKET sock, bool update)
 		std::string msg = "";
 
 		if (w->isRunning()) msg += "1,";
-		else               msg += "0,"; 
+		else                msg += "0,";
 
 		char tmp[32];
 		sprintf(tmp,"%.2f",w->time());
@@ -2394,7 +2401,7 @@ bool WorldSimulator::sendMoveEntities(SOCKET sock, bool update)
 	
 				int jointSize = joints.size();
 				for (int i = 0; i < jointSize; i++) {
-	  
+
 					dJointID joint = joints[i]->joint;
 					dReal angle = 0.0;
 					//dVector3 axis;
@@ -2515,6 +2522,7 @@ bool WorldSimulator::sendMoveEntities(SOCKET sock, bool update)
 			return false;
 		}
 		delete [] sendBuff;
+#endif // if 0
 	}
 
 	return true;
