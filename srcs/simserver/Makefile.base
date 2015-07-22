@@ -42,6 +42,7 @@ SERVER_SRCS = SSimObj.cpp \
 	LogTransfer.cpp \
 	SSimWorld.cpp \
 	PacketForward.cpp \
+	DecoderListener.cpp \
 	WorldSimulator.cpp \
 	ServiceNameServer.cpp \
 	simserver.cpp

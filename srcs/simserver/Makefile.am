@@ -8,6 +8,7 @@ sigserver_SOURCES = SSimObj.cpp \
 	LogTransfer.cpp \
 	SSimWorld.cpp \
 	PacketForward.cpp \
+	DecoderListener.cpp \
 	WorldSimulator.cpp \
 	ServiceNameServer.cpp \
 	simserver.cpp fname.c jjudge.c \
