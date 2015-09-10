@@ -9,11 +9,11 @@
 #ifndef SSimObj_h
 #define SSimObj_h
 
-#include "systemdef.h"
-#include "SimObjBase.h"
-#include "SParts.h"
-#include "Vector3d.h"
-#include "Rotation.h"
+#include <sigverse/commonlib/systemdef.h>
+#include <sigverse/commonlib/SimObjBase.h>
+#include <sigverse/simserver/SParts.h>
+#include <sigverse/commonlib/Vector3d.h>
+#include <sigverse/commonlib/Rotation.h>
 
 class Joint;
 

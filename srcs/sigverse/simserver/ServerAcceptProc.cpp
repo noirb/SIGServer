@@ -4,16 +4,15 @@
  *    Add English comments
  */
 
-#include "ServerAcceptProc.h"
-#include "CommDataEncoder.h"
-#include "Logger.h"
-#include "SimWorldProvider.h"
-#include "SSimWorld.h"
-#include "SSimObj.h"
-#include "binary.h"
+#include <sigverse/simserver/ServerAcceptProc.h>
+#include <sigverse/commonlib/CommDataEncoder.h>
+#include <sigverse/commonlib/Logger.h>
+#include <sigverse/simserver/SimWorldProvider.h>
+#include <sigverse/simserver/SSimWorld.h>
+#include <sigverse/simserver/SSimObj.h>
+#include <sigverse/commonlib/binary.h>
+#include <sigverse/simserver/ServiceNameServer.h>
 
-
-#include "ServiceNameServer.h"
 #ifndef WIN32
 #include <sys/socket.h>
 #include <netinet/in.h>

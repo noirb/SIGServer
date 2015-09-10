@@ -1,5 +1,5 @@
 /* $Id: GLDraw.cpp,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */
-#include "systemdef.h"
+#include <sigverse/commonlib/systemdef.h>
 
 #ifdef USE_OPENGL
 

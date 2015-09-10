@@ -2,7 +2,7 @@
 
 #include <string.h>
 #include <stdio.h>
-#include "jjudge.h"
+#include <sigverse/simserver/jjudge.h>
 
 void jjudge_init(jjudge_t *judge) { judge->ascii = 1; }
 

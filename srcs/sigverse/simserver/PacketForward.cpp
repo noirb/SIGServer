@@ -4,12 +4,12 @@
  */
 // This file was used in old version (ver.1). Just keeping for the reference in ver.2
 
-#include "PacketForward.h"
-#include "ServerAcceptProc.h"
-#include "Source.h"
-#include "Logger.h"
-#include "CommUtil.h"
-#include "SimWorldProvider.h"
+#include <sigverse/simserver/PacketForward.h>
+#include <sigverse/simserver/ServerAcceptProc.h>
+#include <sigverse/commonlib/Source.h>
+#include <sigverse/commonlib/Logger.h>
+#include <sigverse/commonlib/CommUtil.h>
+#include <sigverse/simserver/SimWorldProvider.h>
 
 void PacketForward::forward(Source &from, CommDataType cmdType, const char *to, int bytes, char *data, bool returnImmediate, double reachRadius)
 {

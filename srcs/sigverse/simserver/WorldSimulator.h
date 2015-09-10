@@ -9,10 +9,10 @@
 #ifndef WorldSimulator_h
 #define WorldSimulator_h
 
-#include "CommDataDecoder.h"
-#include "Controller.h"
-#include "SSimWorld.h"
-#include "DecoderListener.h"
+#include <sigverse/commonlib/CommDataDecoder.h>
+#include <sigverse/commonlib/Controller.h>
+#include <sigverse/simserver/SSimWorld.h>
+#include <sigverse/simserver/DecoderListener.h>
 //#include "DynamicsData.h"
 //#include "./comm/controller/NoData.h"
 

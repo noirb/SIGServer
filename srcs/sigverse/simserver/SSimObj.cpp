@@ -6,11 +6,11 @@
  *   Change setVelocity to setLinearVelocity
  */
 
-#include "SSimObj.h"
-#include "SimObjBase.h"
-#include "ODEObj.h"
-#include "Joint.h"
-#include "Logger.h"
+#include <sigverse/simserver/SSimObj.h>
+#include <sigverse/commonlib/SimObjBase.h>
+#include <sigverse/simserver/ODEObj.h>
+#include <sigverse/simserver/Joint.h>
+#include <sigverse/commonlib/Logger.h>
 
 SSimObj::SSimObj(dSpaceID parent) : Super() , m_space(0), m_gmode(true), m_ID(0), m_type(0), m_grasped(false)
 {

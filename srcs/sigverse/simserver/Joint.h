@@ -8,9 +8,9 @@
 #ifndef Joint_h
 #define Joint_h
 
-#include "systemdef.h"
-#include "Vector3d.h"
-#include "Rotation.h"
+#include <sigverse/commonlib/systemdef.h>
+#include <sigverse/commonlib/Vector3d.h>
+#include <sigverse/commonlib/Rotation.h>
 
 #include <string>
 

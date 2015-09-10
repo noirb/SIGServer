@@ -5,7 +5,7 @@
 #ifndef LogTransfer_h
 #define LogTransfer_h
 
-#include "Logger.h"
+#include <sigverse/commonlib/Logger.h>
 
 #include <string>
 #include <vector>

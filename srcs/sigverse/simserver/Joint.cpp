@@ -4,10 +4,10 @@
  *    Add English comments (Translation from v2.2.0 is finished)
  *    Add TODO comments
  */
-#include "Joint.h"
-#include "Logger.h"
-#include "SParts.h"
-#include "JointForce.h"
+#include <sigverse/simserver/Joint.h>
+#include <sigverse/commonlib/Logger.h>
+#include <sigverse/simserver/SParts.h>
+#include <sigverse/commonlib/JointForce.h>
 #include <assert.h>
 
 

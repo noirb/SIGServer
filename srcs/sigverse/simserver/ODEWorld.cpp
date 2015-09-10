@@ -4,14 +4,14 @@
  *    Add English comments (Translation from v2.2.0 is finished)
  */
 
-#include "ODEWorld.h"
-#include "ODEObj.h"
+#include <sigverse/simserver/ODEWorld.h>
+#include <sigverse/simserver/ODEObj.h>
 #ifdef USE_ODE
 #include <assert.h>
 #include <vector>
-#include "SParts.h"
-#include "SimObjBase.h"
-#include "Logger.h"
+#include <sigverse/simserver/SParts.h>
+#include <sigverse/commonlib/SimObjBase.h>
+#include <sigverse/commonlib/Logger.h>
 
 
 ODEWorld *ODEWorld::s_inst = 0;

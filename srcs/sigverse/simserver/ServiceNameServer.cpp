@@ -1,10 +1,10 @@
 /* $Id: ServiceNameServer.cpp,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */
-#include "ServiceNameServer.h"
-#include "Logger.h"
-#include "CommDataEncoder.h"
-#include "CommDataDecoder.h"
-#include "ct/CTReader.h"
-#include "CommUtil.h"
+#include <sigverse/simserver/ServiceNameServer.h>
+#include <sigverse/commonlib/Logger.h>
+#include <sigverse/commonlib/CommDataEncoder.h>
+#include <sigverse/commonlib/CommDataDecoder.h>
+#include <sigverse/commonlib/ct/CTReader.h>
+#include <sigverse/commonlib/CommUtil.h>
 #ifndef WIN32
 #include <unistd.h>
 #endif

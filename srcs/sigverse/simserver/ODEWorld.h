@@ -5,7 +5,7 @@
 #ifndef ODEWorld_h
 #define ODEWorld_h
 
-#include "systemdef.h"
+#include <sigverse/commonlib/systemdef.h>
 
 #include <string>
 #include <vector>
@@ -13,9 +13,9 @@
 #ifdef USE_ODE
 
 #include <ode/ode.h>
-#include "ODEObj.h"
-#include "SimGround.h"
-#include "SSimEntity.h"
+#include <sigverse/simserver/ODEObj.h>
+#include <sigverse/simserver/SimGround.h>
+#include <sigverse/simserver/SSimEntity.h>
 
 //static dGeomID _ground;
 

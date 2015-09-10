@@ -1,11 +1,11 @@
 /* $Id: gltools.cpp,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */ 
-#include "systemdef.h"
+#include <sigverse/commonlib/systemdef.h>
 #ifdef USE_OPENGL
 #include <GL/glut.h>
 #include <math.h>
 
 void glBox(double x, double y, double z)
-{
+
 	GLdouble hx = x*0.5;
 	GLdouble hy = y*0.5;
 	GLdouble hz = z*0.5;

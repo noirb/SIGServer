@@ -5,7 +5,7 @@
 #ifndef __Locker_h__
 #define __Locker_h__
 
-#include "pthread_dep.h"
+#include <sigverse/commonlib/pthread_dep.h>
 
 
 class Locker

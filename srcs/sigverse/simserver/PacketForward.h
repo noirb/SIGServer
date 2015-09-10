@@ -6,7 +6,7 @@
 #ifndef PacketForward_h
 #define PacketForward_h
 
-#include "CommDataDecoder.h"
+#include <sigverse/commonlib/CommDataDecoder.h>
 
 class ServerAcceptProc;
 class SimWorldProvider;

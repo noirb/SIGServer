@@ -13,12 +13,12 @@
 #ifndef ServerAcceptProc_h
 #define ServerAcceptProc_h
 
-#include "systemdef.h"
-#include "Source.h"
-#include "CommDataDecoder.h"
-#include "Thread.h"
-#include "Locker.h"
-#include "Logger.h"
+#include <sigverse/commonlib/systemdef.h>
+#include <sigverse/commonlib/Source.h>
+#include <sigverse/commonlib/CommDataDecoder.h>
+#include <sigverse/commonlib/Thread.h>
+#include <sigverse/simserver/Locker.h>
+#include <sigverse/commonlib/Logger.h>
 
 #include <string>
 #include <vector>

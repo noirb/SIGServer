@@ -7,7 +7,7 @@
 #define ODEObj_h
 
 
-#include "systemdef.h"
+#include <sigverse/commonlib/systemdef.h>
 
 #ifdef USE_ODE
 

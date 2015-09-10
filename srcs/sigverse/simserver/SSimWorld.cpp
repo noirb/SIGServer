@@ -1,5 +1,5 @@
-#include "SSimWorld.h"
-#include "SimGround.h"
+#include <sigverse/simserver/SSimWorld.h>
+#include <sigverse/simserver/SimGround.h>
 
 
 #define FREE(P) if (P) { delete P; P = 0; }

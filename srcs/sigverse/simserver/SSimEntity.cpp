@@ -3,8 +3,8 @@
  *    Remove Japanese comments
  */
 
-#include "SSimEntity.h"
-#include "Logger.h"
+#include <sigverse/simserver/SSimEntity.h>
+#include <sigverse/commonlib/Logger.h>
 
 //! add geometry
 void SSimEntity::addGeom(dGeomID geom)

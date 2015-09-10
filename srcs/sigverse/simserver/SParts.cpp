@@ -6,13 +6,13 @@
  *   Change setVelocity to setLinearVelocity
  */
 
-#include "systemdef.h"
+#include <sigverse/commonlib/systemdef.h>
 
-#include "SParts.h"
-#include "ODEWorld.h"
-#include "ODEObj.h"
-#include "Joint.h"
-#include "SSimObj.h"
+#include <sigverse/simserver/SParts.h>
+#include <sigverse/simserver/ODEWorld.h>
+#include <sigverse/simserver/ODEObj.h>
+#include <sigverse/simserver/Joint.h>
+#include <sigverse/simserver/SSimObj.h>
 
 #include <assert.h>
 

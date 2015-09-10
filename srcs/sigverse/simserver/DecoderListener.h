@@ -5,15 +5,15 @@
 #ifndef SIGVERSE_DECODER_LISTENER_H
 #define SIGVERSE_DECODER_LISTENER_H
 
-#include "ServerAcceptProc.h"
-#include "CommDataEncoder.h"
-#include "SSimWorld.h"
-#include "CommUtil.h"
-#include "SimWorldProvider.h"
+#include <sigverse/simserver/ServerAcceptProc.h>
+#include <sigverse/commonlib/CommDataEncoder.h>
+#include <sigverse/simserver/SSimWorld.h>
+#include <sigverse/commonlib/CommUtil.h>
+#include <sigverse/simserver/SimWorldProvider.h>
 
-#include "SimObj.h"
-#include "Joint.h"
-#include "ServiceNameServer.h"
+#include <sigverse/commonlib/SimObj.h>
+#include <sigverse/simserver/Joint.h>
+#include <sigverse/simserver/ServiceNameServer.h>
 
 static bool s_restart = false;
 

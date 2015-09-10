@@ -6,8 +6,8 @@
 #include <string>
 #include <vector>
 #include <ode/ode.h>
-#include "Vector3d.h"
-#include "Logger.h"
+#include <sigverse/commonlib/Vector3d.h>
+#include <sigverse/commonlib/Logger.h>
 
 //struct SSimRobotParts;
 

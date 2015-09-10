@@ -2,8 +2,8 @@
 
 #include <string.h>
 #include <stdio.h>
-#include "jjudge.h"
-#include "fname.h"
+#include <sigverse/simserver/jjudge.h>
+#include <sigverse/simserver/fname.h>
 
 char *fname_as_file(char *buf)
 {

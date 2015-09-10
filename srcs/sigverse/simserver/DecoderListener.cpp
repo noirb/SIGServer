@@ -2,7 +2,7 @@
  * Moved from WorldSimulator.cpp.
  */
 
-#include "DecoderListener.h"
+#include <sigverse/simserver/DecoderListener.h>
 
 DecoderListener::DecoderListener(ServerAcceptProc &a, SimWorldProvider &p, ServiceNameServer &ns)
 		: m_accept(a), m_provider(p), m_ns(ns)

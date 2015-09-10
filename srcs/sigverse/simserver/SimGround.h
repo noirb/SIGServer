@@ -5,8 +5,8 @@
 #ifndef SimGround_h
 #define SimGround_h
 
-#include "systemdef.h"
-#include "Logger.h"
+#include <sigverse/commonlib/systemdef.h>
+#include <sigverse/commonlib/Logger.h>
 
 #include <ode/ode.h>
 

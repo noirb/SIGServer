@@ -1,6 +1,6 @@
-#include "LogTransfer.h"
-#include "ServerAcceptProc.h"
-#include "CommDataEncoder.h"
+#include <sigverse/simserver/LogTransfer.h>
+#include <sigverse/simserver/ServerAcceptProc.h>
+#include <sigverse/commonlib/CommDataEncoder.h>
 
 void LogTransfer::flush(const std::vector<Connection*> &clients)
 {

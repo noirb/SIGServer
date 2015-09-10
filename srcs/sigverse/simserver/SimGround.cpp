@@ -1,4 +1,4 @@
-#include "SimGround.h"
+#include <sigverse/simserver/SimGround.h>
 
 #ifdef USE_OPENGL
 #include <GL/glut.h>

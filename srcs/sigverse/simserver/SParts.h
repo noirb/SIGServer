@@ -8,11 +8,11 @@
 #define Parts_Server_h
 
 #include <vector>
-#include "Logger.h"
+#include <sigverse/commonlib/Logger.h>
 #include <math.h>
 
-#include "Parts.h"
-#include "PartsCmpnt.h"
+#include <sigverse/commonlib/Parts.h>
+#include <sigverse/commonlib/PartsCmpnt.h>
 
 #define SPARTS_MU1     dInfinity
 #define SPARTS_MU2     dInfinity

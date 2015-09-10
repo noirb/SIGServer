@@ -8,11 +8,11 @@
 #include <vector>
 #include <map>
 
-#include "SimWorld.h"
-#include "ODEWorld.h"
-#include "SSimObj.h"
-#include "Vector3d.h"
-#include "SSimEntity.h"
+#include <sigverse/commonlib/SimWorld.h>
+#include <sigverse/simserver/ODEWorld.h>
+#include <sigverse/simserver/SSimObj.h>
+#include <sigverse/commonlib/Vector3d.h>
+#include <sigverse/simserver/SSimEntity.h>
 
 
 class SSimWorld : public SimWorld

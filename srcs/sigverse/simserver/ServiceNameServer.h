@@ -8,8 +8,8 @@
 #include <string>
 #include <vector>
 
-#include "Service.h"
-#include "Locker.h"
+#include <sigverse/commonlib/Service.h>
+#include <sigverse/simserver/Locker.h>
 
 class ServiceNameServer
 {

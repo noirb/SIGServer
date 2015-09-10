@@ -15,18 +15,18 @@
 #include <sys/types.h>
 #include <signal.h>
 
-#include "SSimWorld.h"
-#include "WorldXMLReader.h"
-#include "CommDataEncoder.h"
-#include "CommUtil.h"
-#include "../x3d/parser/cpp/X3DParser/CJNIUtil.h"
-#include "Logger.h"
-#include "ServerAcceptProc.h"
-#include "SimWorldProvider.h"
-#include "WorldSimulator.h"
-#include "ServiceNameServer.h"
-#include "fname.h"
-#include "FilenameDB.h"
+#include <sigverse/simserver/SSimWorld.h>
+#include <sigverse/simserver/readconf/WorldXMLReader.h>
+#include <sigverse/commonlib/CommDataEncoder.h>
+#include <sigverse/commonlib/CommUtil.h>
+#include <sigverse/x3d/parser/cpp/X3DParser/CJNIUtil.h>
+#include <sigverse/commonlib/Logger.h>
+#include <sigverse/simserver/ServerAcceptProc.h>
+#include <sigverse/simserver/SimWorldProvider.h>
+#include <sigverse/simserver/WorldSimulator.h>
+#include <sigverse/simserver/ServiceNameServer.h>
+#include <sigverse/simserver/fname.h>
+#include <sigverse/simserver/readconf/FilenameDB.h>
 
 static bool fileExist(const char *fname)
 {
