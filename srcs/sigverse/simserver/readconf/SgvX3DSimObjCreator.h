@@ -5,16 +5,16 @@
 #ifndef _SGV_X3D_SIMOBJ_CREATOR_H_
 #define _SGV_X3D_SIMOBJ_CREATOR_H_
 
-#include "CX3DParser.h"
-#include "CX3DShapeNode.h"
-#include "CX3DTransformNode.h"
-#include "CX3DIndexedFaceSetNode.h"
-#include "CSimplifiedShape.h"
-#include "SSimObj.h"
-#include "SParts.h"
-#include "BodyFactory.h"
+#include <sigverse/x3d/parser/cpp/X3DParser/CX3DParser.h>
+#include <sigverse/x3d/parser/cpp/X3DParser/CX3DShapeNode.h>
+#include <sigverse/x3d/parser/cpp/X3DParser/CX3DTransformNode.h>
+#include <sigverse/x3d/parser/cpp/X3DParser/CX3DIndexedFaceSetNode.h>
+#include <sigverse/x3d/parser/cpp/X3DParser/CSimplifiedShape.h>
+#include <sigverse/simserver/SSimObj.h>
+#include <sigverse/simserver/SParts.h>
+#include <sigverse/simserver/readconf/BodyFactory.h>
 
-#include "SimpleShapeDB.h"
+#include <sigverse/simserver/readconf/SimpleShapeDB.h>
 
 namespace Sgv
 {

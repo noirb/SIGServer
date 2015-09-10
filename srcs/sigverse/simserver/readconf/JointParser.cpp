@@ -2,13 +2,13 @@
  * Modified by Okamoto on 2011-03-25
  */
 
-#include "JointParser.h"
-#include "Transform.h"
-#include "XMLUtils.h"
-#include "Joint.h"
-#include "SParts.h"
-#include "SegmentParser.h"
-#include "BodyFactory.h"
+#include <sigverse/simserver/readconf/JointParser.h>
+#include <sigverse/simserver/readconf/Transform.h>
+#include <sigverse/simserver/readconf/XMLUtils.h>
+#include <sigverse/simserver/Joint.h>
+#include <sigverse/simserver/SParts.h>
+#include <sigverse/simserver/readconf/SegmentParser.h>
+#include <sigverse/simserver/readconf/BodyFactory.h>
 
 #include <vector>
 #include <xercesc/dom/DOMNode.hpp>
@@ -22,7 +22,7 @@ XERCES_CPP_NAMESPACE_USE
 #define ENABLE_DUMP
 #define ENABLE_DUMP1
 #endif
-#include "ParserDump.h"
+#include <sigverse/simserver/readconf/ParserDump.h>
 
 void JointParser::parse(DOMNode &target, Eval &eval)
 {

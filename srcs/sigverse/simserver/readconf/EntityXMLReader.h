@@ -6,14 +6,14 @@
 #define EntityXMLReader_h
 
 
-#include "systemdef.h"
+#include <sigverse/commonlib/systemdef.h>
 
 #include <xercesc/sax/HandlerBase.hpp>
 
 #if (defined USE_XERCES)
 
-#include "X3DDB.h"
-#include "SimpleShapeDB.h"	// FIX20110421(ExpSS)
+#include <sigverse/commonlib/X3DDB.h>
+#include <sigverse/simserver/readconf/SimpleShapeDB.h> // FIX20110421(ExpSS)
 
 class SSimObj;
 class ODEWorld;

@@ -2,17 +2,17 @@
  * Modified by Okamoto on 2012-02-14
  */
 
-#include "SgvX3DSimObjCreator.h"
-#include "SSimWorld.h"
-#include "ODEWorld.h"
-#include "Joint.h"
-#include "Rotation.h"
+#include <sigverse/simserver/readconf/SgvX3DSimObjCreator.h>
+#include <sigverse/simserver/SSimWorld.h>
+#include <sigverse/simserver/ODEWorld.h>
+#include <sigverse/simserver/Joint.h>
+#include <sigverse/commonlib/Rotation.h>
 //#include "SgvLog.h"
 //#include "CX3DNodeType.h"
 #include <stdarg.h>
 
 //#define ENABLE_DUMP // if you want to enable DUMP, you should remove the comment of this line
-#include "ParserDump.h"
+#include <sigverse/simserver/readconf/ParserDump.h>
 
 
 // This definition should be used in a case that the simple shape information calculated automatically

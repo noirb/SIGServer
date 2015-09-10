@@ -2,9 +2,9 @@
  * Modified by Okamoto on 2011-03-25
  */
 
-#include "Eval.h"
-#include "infix2postfix.h"
-#include "rpnCalc.h"
+#include <sigverse/simserver/readconf/Eval.h>
+#include <sigverse/simserver/readconf/infix2postfix.h>
+#include <sigverse/simserver/readconf/rpnCalc.h>
 #include <assert.h>
 
 double Eval::eval(const char *eq_)

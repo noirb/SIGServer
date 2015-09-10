@@ -2,28 +2,28 @@
  * Modified by Okamoto on 2011-05-19
  */
 
-#include "systemdef.h"
+#include <sigverse/commonlib/systemdef.h>
 
 #if (defined USE_XERCES)
-#include "WorldXMLReader.h"
+#include <sigverse/simserver/readconf/WorldXMLReader.h>
 
-#include "SimWorld.h"
-#include "SSimWorld.h"
-#include "SSimObj.h"
-#include "SimObjBase.h"
-#include "Parts.h"
-#include "EntityXMLReader.h"
-#include "Logger.h"
-#include "CJNIUtil.h"
-#include "FilenameDB.h"
-#include "SimpleShapeDB.h"
-#include "XMLUtils.h"
-#include "Attribute.h"
-#include "Value.h"
-#include "ShapeFileReader.h"
-#include "CX3DParser.h"
-#include "SSimObjBuilder.h"
-#include "SSimEntity.h"
+#include <sigverse/commonlib/SimWorld.h>
+#include <sigverse/simserver/SSimWorld.h>
+#include <sigverse/simserver/SSimObj.h>
+#include <sigverse/commonlib/SimObjBase.h>
+#include <sigverse/commonlib/Parts.h>
+#include <sigverse/simserver/readconf/EntityXMLReader.h>
+#include <sigverse/commonlib/Logger.h>
+#include <sigverse/x3d/parser/cpp/X3DParser/CJNIUtil.h>
+#include <sigverse/simserver/readconf/FilenameDB.h>
+#include <sigverse/simserver/readconf/SimpleShapeDB.h>
+#include <sigverse/simserver/readconf/XMLUtils.h>
+#include <sigverse/commonlib/Attribute.h>
+#include <sigverse/commonlib/Value.h>
+#include <sigverse/simserver/readconf/ShapeFileReader.h>
+#include <sigverse/x3d/parser/cpp/X3DParser/CX3DParser.h>
+#include <sigverse/simserver/readconf/SSimObjBuilder.h>
+#include <sigverse/simserver/SSimEntity.h>
 #include <iostream>
 
 #include <xercesc/sax/AttributeList.hpp>

@@ -7,7 +7,7 @@
 
 #include <xercesc/dom/DOMNode.hpp>
 
-#include "TransformStack.h"
+#include <sigverse/simserver/readconf/TransformStack.h>
 
 class Joint;
 class SParts;

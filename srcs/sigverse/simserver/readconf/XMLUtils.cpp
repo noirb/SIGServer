@@ -3,9 +3,9 @@
  */
 
 
-#include "XMLUtils.h"
-#include "Eval.h"
-#include "Logger.h"
+#include <sigverse/simserver/readconf/XMLUtils.h>
+#include <sigverse/simserver/readconf/Eval.h>
+#include <sigverse/commonlib/Logger.h>
 
 #include <stdarg.h>
 

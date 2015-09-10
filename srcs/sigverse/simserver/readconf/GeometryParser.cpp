@@ -2,13 +2,13 @@
  * Modified by Okamoto on 2011-03-25
  */
 
-#include "GeometryParser.h"
-#include "XMLUtils.h"
-#include "Size.h"
-#include "Rotation.h"
-#include "Vector3d.h"
-#include "SParts.h"
-#include "Transform.h"
+#include <sigverse/simserver/readconf/GeometryParser.h>
+#include <sigverse/simserver/readconf/XMLUtils.h>
+#include <sigverse/commonlib/Size.h>
+#include <sigverse/commonlib/Rotation.h>
+#include <sigverse/commonlib/Vector3d.h>
+#include <sigverse/simserver/SParts.h>
+#include <sigverse/simserver/readconf/Transform.h>
 
 #include <xercesc/dom/DOMNode.hpp>
 #include <xercesc/util/XMLString.hpp>
@@ -19,7 +19,7 @@ XERCES_CPP_NAMESPACE_USE
 #define ENABLE_DUMP
 #define ENABLE_DUMP1
 #endif
-#include "ParserDump.h"
+#include <sigverse/simserver/readconf/ParserDump.h>
 
 SParts * GeometryParser::parse(DOMNode &target, Eval &eval)
 {

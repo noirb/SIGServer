@@ -5,7 +5,7 @@
 #ifndef WorldXMLReader_h
 #define WorldXMLReader_h
 
-#include "systemdef.h"
+#include <sigverse/commonlib/systemdef.h>
 
 #if (defined USE_XERCES)
 
@@ -15,11 +15,11 @@
 #include <vector>
 #include <map>
 
-#include "X3DDB.h"
-#include "SimpleShapeDB.h"
-#include "ReadTask.h"
-#include "SimObjBase.h"
-#include "SSimEntity.h"
+#include <sigverse/commonlib/X3DDB.h>
+#include <sigverse/simserver/readconf/SimpleShapeDB.h>
+#include <sigverse/simserver/readconf/ReadTask.h>
+#include <sigverse/commonlib/SimObjBase.h>
+#include <sigverse/simserver/SSimEntity.h>
 
 class SSimWorld;
 class SSimObj;

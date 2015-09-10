@@ -5,11 +5,11 @@
 #ifndef _SIMPLE_SHAPE_XML_READER_H_
 #define _SIMPLE_SHAPE_XML_READER_H_
 
-#include "systemdef.h"
+#include <sigverse/commonlib/systemdef.h>
 
 #if (defined USE_XERCES)
 
-#include "SimpleShapeDB.h"
+#include <sigverse/simserver/readconf/SimpleShapeDB.h>
 #include <xercesc/sax/HandlerBase.hpp>
 #include <string>
 #include <map>

@@ -2,8 +2,8 @@
  * Modified by Tetsunari Inamura on 2014-02-25
  */
 
-#include "FilenameDB.h"
-#include "fname.h"
+#include <sigverse/simserver/readconf/FilenameDB.h>
+#include <sigverse/simserver/fname.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <string.h>

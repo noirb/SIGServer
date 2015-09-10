@@ -5,7 +5,7 @@
 
 #ifndef BodyFactory_h
 #define BodyFactory_h
-#include "ODEWorld.h"
+#include <sigverse/simserver/ODEWorld.h>
 
 class Joint;
 class SParts;

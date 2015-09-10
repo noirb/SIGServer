@@ -2,10 +2,10 @@
  * Modified by MSI on 2011-05-12
  */
 
-#include "X3DFileReader.h"
-#include "SSimObjBuilder.h"
-#include "SgvX3DSimObjCreator.h"
-#include "CJNIUtil.h"
+#include <sigverse/simserver/readconf/X3DFileReader.h>
+#include <sigverse/simserver/readconf/SSimObjBuilder.h>
+#include <sigverse/simserver/readconf/SgvX3DSimObjCreator.h>
+#include <sigverse/x3d/parser/cpp/X3DParser/CJNIUtil.h>
 #include <stdlib.h>
 #include <string.h>
 

@@ -2,8 +2,8 @@
  * Modified by Okamoto on 2011-03-25
  */
 
-#include "TransformStack.h"
-#include "Transform.h"
+#include <sigverse/simserver/readconf/TransformStack.h>
+#include <sigverse/simserver/readconf/Transform.h>
 #include <assert.h>
 
 TransformStack::TransformStack() : m_curr(NULL)

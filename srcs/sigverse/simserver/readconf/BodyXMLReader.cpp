@@ -2,18 +2,18 @@
  * Modified by Okamoto on 2011-03-25
  */
 
-#include "BodyXMLReader.h"
-#include "TransformStack.h"
-#include "XMLUtils.h"
-#include "JointParser.h"
-#include "Joint.h"
-#include "BodyFactory.h"
-#include "SParts.h"
-#include "SSimObj.h"
-#include "ODEWorld.h"
-#include "ODEObj.h"
-#include "Eval.h"
-#include "SSimObjBuilder.h"
+#include <sigverse/simserver/readconf/BodyXMLReader.h>
+#include <sigverse/simserver/readconf/TransformStack.h>
+#include <sigverse/simserver/readconf/XMLUtils.h>
+#include <sigverse/simserver/readconf/JointParser.h>
+#include <sigverse/simserver/Joint.h>
+#include <sigverse/simserver/readconf/BodyFactory.h>
+#include <sigverse/simserver/SParts.h>
+#include <sigverse/simserver/SSimObj.h>
+#include <sigverse/simserver/ODEWorld.h>
+#include <sigverse/simserver/ODEObj.h>
+#include <sigverse/simserver/readconf/Eval.h>
+#include <sigverse/simserver/readconf/SSimObjBuilder.h>
 
 #include <stdio.h>
 
@@ -32,7 +32,7 @@ XERCES_CPP_NAMESPACE_USE
 #ifdef CONF_DUMP
 #define ENABLE_DUMP
 #endif
-#include "ParserDump.h"
+#include <sigverse/simserver/readconf/ParserDump.h>
 
 class BodyParser
 {

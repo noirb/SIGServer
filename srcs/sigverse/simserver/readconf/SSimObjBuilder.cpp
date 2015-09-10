@@ -2,16 +2,16 @@
  * Modified by Okamoto on 2012-03-19
  */
 
-#include "SSimObjBuilder.h"
-#include "SSimObj.h"
-#include "ODEWorld.h"
-#include "Joint.h"
-#include "ODEObj.h"
-#include "Position.h"
-#include "Logger.h"
+#include <sigverse/simserver/readconf/SSimObjBuilder.h>
+#include <sigverse/simserver/SSimObj.h>
+#include <sigverse/simserver/ODEWorld.h>
+#include <sigverse/simserver/Joint.h>
+#include <sigverse/simserver/ODEObj.h>
+#include <sigverse/commonlib/Position.h>
+#include <sigverse/commonlib/Logger.h>
 
 //#define ENABLE_DUMP
-#include "ParserDump.h"
+#include <sigverse/simserver/readconf/ParserDump.h>
 
 SSimObjBuilder::SSimObjBuilder(SSimObj &o, ODEWorld &w) : m_obj(o), m_world(w)
 {

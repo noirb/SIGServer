@@ -4,7 +4,7 @@
  *    Reduction of warning
  */
 
-#include "ShapeFileReader.h"
+#include <sigverse/simserver/readconf/ShapeFileReader.h>
 #include "CSimplifiedShape.h"
 #include "SSimObj.h"
 #include "Joint.h"

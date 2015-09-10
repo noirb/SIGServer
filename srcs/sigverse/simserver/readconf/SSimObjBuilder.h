@@ -5,8 +5,8 @@
 #ifndef SSimObjBuilder_h
 #define SSimObjBuilder_h
 
-#include "BodyFactory.h"
-#include "Vector3d.h"
+#include <sigverse/simserver/readconf/BodyFactory.h>
+#include <sigverse/commonlib/Vector3d.h>
 
 class SSimObj;
 class ODEWorld;

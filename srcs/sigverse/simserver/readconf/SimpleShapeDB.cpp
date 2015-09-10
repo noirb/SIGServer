@@ -2,7 +2,7 @@
  * Modified by MSI on 2011-05-12
  */
 
-#include "SimpleShapeDB.h"
+#include <sigverse/simserver/readconf/SimpleShapeDB.h>
 
 ///////////////////////////////////////////////////////////////
 //

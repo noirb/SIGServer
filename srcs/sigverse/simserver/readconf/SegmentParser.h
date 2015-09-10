@@ -5,7 +5,7 @@
 #ifndef SegmentParser_h
 #define SegmentParser_h
 
-#include "TransformStack.h"
+#include <sigverse/simserver/readconf/TransformStack.h>
 
 #include <string>
 

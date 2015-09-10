@@ -2,15 +2,15 @@
  * Modified by MSI on 2011-05-12
  */
 
-#include "systemdef.h"
+#include <sigverse/commonlib/systemdef.h>
 
 #if (defined USE_XERCES)
 
-#include "SimpleShapeXMLReader.h"
-#include "SimpleShapeDB.h"
-#include "FilenameDB.h"
-#include "Logger.h"
-#include "XMLUtils.h"
+#include <sigverse/simserver/readconf/SimpleShapeXMLReader.h>
+#include <sigverse/simserver/readconf/SimpleShapeDB.h>
+#include <sigverse/simserver/readconf/FilenameDB.h>
+#include <sigverse/commonlib/Logger.h>
+#include <sigverse/simserver/readconf/XMLUtils.h>
 #include <stdio.h>
 
 #include <xercesc/sax/AttributeList.hpp>

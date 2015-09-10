@@ -2,22 +2,22 @@
  * Modified by MSI on 2011-05-19
  */
 
-#include "systemdef.h"
+#include <sigverse/commonlib/systemdef.h>
 
 #if (defined USE_XERCES)
 
-#include "EntityXMLReader.h"
-#include "BodyXMLReader.h"
-#include "SimpleShapeXMLReader.h"
-#include "SSimObj.h"
-#include "Value.h"
-#include "Attribute.h"
-#include "ODEWorld.h"
-#include "X3DFileReader.h"
-#include "ReadTask.h"
-#include "Logger.h"
-#include "FilenameDB.h"
-#include "SimpleShapeDB.h"
+#include <sigverse/simserver/readconf/EntityXMLReader.h>
+#include <sigverse/simserver/readconf/BodyXMLReader.h>
+#include <sigverse/simserver/readconf/SimpleShapeXMLReader.h>
+#include <sigverse/simserver/SSimObj.h>
+#include <sigverse/commonlib/Value.h>
+#include <sigverse/commonlib/Attribute.h>
+#include <sigverse/simserver/ODEWorld.h>
+#include <sigverse/simserver/readconf/X3DFileReader.h>
+#include <sigverse/simserver/readconf/ReadTask.h>
+#include <sigverse/commonlib/Logger.h>
+#include <sigverse/simserver/readconf/FilenameDB.h>
+#include <sigverse/simserver/readconf/SimpleShapeDB.h>
 #include "XMLUtils.h"
 
 #include <string>

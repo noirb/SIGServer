@@ -7,12 +7,12 @@
 #ifndef ShapeFileReader_h
 #define ShapeFileReader_h
 
-#include "Logger.h"
-#include "SSimEntity.h"
-#include "CX3DParser.h"
-#include "SParts.h"
-#include "CSimplifiedShape.h"
-#include "Vector3d.h"
+#include <sigverse/commonlib/Logger.h>
+#include <sigverse/simserver/SSimEntity.h>
+#include <sigverse/x3d/parser/cpp/X3DParser/CX3DParser.h>
+#include <sigverse/simserver/SParts.h>
+#include <sigverse/x3d/parser/cpp/X3DParser/CSimplifiedShape.h>
+#include <sigverse/commonlib/Vector3d.h>
 
 class ShapeFileReader
 {
