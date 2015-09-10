@@ -6,7 +6,7 @@
 #ifndef CommUtil_h
 #define CommUtil_h
 
-#include "systemdef.h"
+#include <sigverse/commonlib/systemdef.h>
 #include <stdio.h>
 
 class CommUtil

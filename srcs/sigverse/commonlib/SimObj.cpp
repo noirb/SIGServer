@@ -10,16 +10,16 @@
  *    Delete major magic numbers
  */
 
-#include "SimObj.h"
-#include "Parts.h"
-#include "CommDataEncoder.h"
-#include "JointForce.h"
-#include "Logger.h"
-#include "CommDataResult.h"
-#include "Controller.h"
-#include "ControllerImpl.h"
-#include "RecvEvent.h"
-#include "binary.h"
+#include <sigverse/commonlib/SimObj.h>
+#include <sigverse/commonlib/Parts.h>
+#include <sigverse/commonlib/CommDataEncoder.h>
+#include <sigverse/commonlib/JointForce.h>
+#include <sigverse/commonlib/Logger.h>
+#include <sigverse/commonlib/CommDataResult.h>
+#include <sigverse/commonlib/Controller.h>
+#include <sigverse/commonlib/ControllerImpl.h>
+#include <sigverse/commonlib/RecvEvent.h>
+#include <sigverse/commonlib/binary.h>
 
 #ifdef WIN32
 

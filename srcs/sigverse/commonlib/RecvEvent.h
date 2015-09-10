@@ -6,49 +6,49 @@
 #ifndef RecvEvent_h
 #define RecvEvent_h
 
-#include "comm/event/LogMsg.h"
-#include "comm/event/RecvEntities.h"
-#include "comm/event/RequestAttach.h"
-#include "comm/event/RequestGetEntity.h"
-#include "comm/event/RequestSimCtrl.h"
-#include "comm/event/ResultGetEntity.h"
-#include "comm/event/Result.h"
-#include "comm/event/RequestCaptureViewImage.h"
-#include "comm/event/ResultCaptureViewImage.h"
-#include "comm/event/DetectEntities.h"
+#include <sigverse/commonlib/comm/event/LogMsg.h>
+#include <sigverse/commonlib/comm/event/RecvEntities.h>
+#include <sigverse/commonlib/comm/event/RequestAttach.h>
+#include <sigverse/commonlib/comm/event/RequestGetEntity.h>
+#include <sigverse/commonlib/comm/event/RequestSimCtrl.h>
+#include <sigverse/commonlib/comm/event/ResultGetEntity.h>
+#include <sigverse/commonlib/comm/event/Result.h>
+#include <sigverse/commonlib/comm/event/RequestCaptureViewImage.h>
+#include <sigverse/commonlib/comm/event/ResultCaptureViewImage.h>
+#include <sigverse/commonlib/comm/event/DetectEntities.h>
 
 // added by okamoto@tome (2011/9/9)
-#include "comm/event/RequestDistanceSensor.h"
-#include "comm/event/ResultDistanceSensor.h"
+#include <sigverse/commonlib/comm/event/RequestDistanceSensor.h>
+#include <sigverse/commonlib/comm/event/ResultDistanceSensor.h>
 
-#include "comm/event/NameService.h"
+#include <sigverse/commonlib/comm/event/NameService.h>
 
-#include "comm/event/Attrs.h"
-#include "comm/event/JointAngle.h"
+#include <sigverse/commonlib/comm/event/Attrs.h>
+#include <sigverse/commonlib/comm/event/JointAngle.h>
 
 // added by okamoto@tome (2011/2/18)
-#include "comm/event/JointQuaternion.h"
+#include <sigverse/commonlib/comm/event/JointQuaternion.h>
 
 // added by okamoto@tome (2011/3/3)
-#include "comm/event/JointTorque.h"
+#include <sigverse/commonlib/comm/event/JointTorque.h>
 
-#include "comm/event/SoundRecog.h"
-#include "comm/event/GetJointForce.h"
-#include "comm/event/ResultAttach.h"
+#include <sigverse/commonlib/comm/event/SoundRecog.h>
+#include <sigverse/commonlib/comm/event/GetJointForce.h>
+#include <sigverse/commonlib/comm/event/ResultAttach.h>
 
-#include "comm/event/ConnectJoint.h"
-#include "comm/event/ReleaseJoint.h"
+#include <sigverse/commonlib/comm/event/ConnectJoint.h>
+#include <sigverse/commonlib/comm/event/ReleaseJoint.h>
 
-#include "comm/event/GetObjectNames.h"
+#include <sigverse/commonlib/comm/event/GetObjectNames.h>
 
 // added by okamoto@tome (2011/8/2)
-#include "comm/event/DisplayText.h"
+#include <sigverse/commonlib/comm/event/DisplayText.h>
 
 // added by noma@tome (2012/02/20)
-#include "comm/event/GetPointedObject.h"
+#include <sigverse/commonlib/comm/event/GetPointedObject.h>
 
 
-#include "comm/event/MoveControl.h"
+#include <sigverse/commonlib/comm/event/MoveControl.h>
 
 
 

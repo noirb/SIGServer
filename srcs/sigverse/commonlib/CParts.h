@@ -7,9 +7,9 @@
 #ifndef CParts_h
 #define CParts_h
 
-#include "systemdef.h"
-#include "Parts.h"
-//#include "SimObj.h"
+#include <sigverse/commonlib/systemdef.h>
+#include <sigverse/commonlib/Parts.h>
+//#include <sigverse/commonlib/SimObj.h>
 
 /**
  * @brief Class for entity in Client side

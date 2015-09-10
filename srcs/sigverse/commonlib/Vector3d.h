@@ -6,8 +6,8 @@
 #define Vector3d_h
 
 #include <math.h>
-#include "Logger.h"
-#include "Position.h"
+#include <sigverse/commonlib/Logger.h>
+#include <sigverse/commonlib/Position.h>
 //#include "Rotation.h"
 
 class Rotation;

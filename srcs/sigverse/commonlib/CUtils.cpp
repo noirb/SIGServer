@@ -6,12 +6,11 @@ AT&T Public License
 Code given out at the 1985 UNIFORUM conference in Dallas.  
 */
 
-
+#ifdef WIN32
 #include "fname.c"
 #include "jjudge.c"
 #include "wingetopt.c"
 
-#ifdef WIN32
 #include <Windows.h>
 #include <process.h>
 

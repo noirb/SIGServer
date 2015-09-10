@@ -2,9 +2,9 @@
  * written by okamoto on 2011-03-31
  */
 
-#include "Attribute.h"
-#include "Value.h"
-#include "binary.h"
+#include <sigverse/commonlib/Attribute.h>
+#include <sigverse/commonlib/Value.h>
+#include <sigverse/commonlib/binary.h>
 
 
 Attribute::Attribute(const Attribute &o) :

@@ -7,10 +7,10 @@
  *   Change setVelocity to setLinearVelocity
  */
 
-#include "SimObjBase.h"
-#include "Parts.h"
-#include "binary.h"
-#include "Logger.h"
+#include <sigverse/commonlib/SimObjBase.h>
+#include <sigverse/commonlib/Parts.h>
+#include <sigverse/commonlib/binary.h>
+#include <sigverse/commonlib/Logger.h>
 #include <iostream>
 
 #ifdef SIGVERSE_OGRE_CLIENT

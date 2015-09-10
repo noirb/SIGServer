@@ -13,7 +13,7 @@
 #ifndef CommDataListener_h
 #define CommDataListener_h
 
-#include "RecvEvent.h"
+#include <sigverse/commonlib/RecvEvent.h>
 
 class Source;
 

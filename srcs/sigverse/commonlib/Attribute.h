@@ -8,7 +8,7 @@
 #define Attribute_h
 
 #include <string>
-#include "Value.h"
+#include <sigverse/commonlib/Value.h>
 
 /**
  * @brief Attribute Class

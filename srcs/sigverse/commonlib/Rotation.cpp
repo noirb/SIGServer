@@ -2,7 +2,7 @@
  * Written by okamoto on 2011-03-31
  */
 
-#include "Rotation.h"
+#include <sigverse/commonlib/Rotation.h>
 #include <math.h>
 
 Rotation::Rotation()

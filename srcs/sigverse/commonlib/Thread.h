@@ -11,7 +11,7 @@
 
 #else
 
-#include "ThreadPthread.h"
+#include <sigverse/commonlib/ThreadPthread.h>
 
 #endif
 

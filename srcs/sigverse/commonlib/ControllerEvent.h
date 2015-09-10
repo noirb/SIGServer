@@ -5,13 +5,13 @@
 #ifndef ControllerEvent_h
 #define ControllerEvent_h
 
-#include "comm/controller/Action.h"
-#include "comm/controller/Controller.h"
-#include "comm/controller/NoData.h"
-#include "comm/controller/RecvText.h"
-#include "comm/controller/RecvSound.h"
-#include "comm/controller/RecvMessage.h"
-#include "comm/controller/Collision.h"
+#include <sigverse/commonlib/comm/controller/Action.h>
+#include <sigverse/commonlib/comm/controller/Controller.h>
+#include <sigverse/commonlib/comm/controller/NoData.h>
+#include <sigverse/commonlib/comm/controller/RecvText.h>
+#include <sigverse/commonlib/comm/controller/RecvSound.h>
+#include <sigverse/commonlib/comm/controller/RecvMessage.h>
+#include <sigverse/commonlib/comm/controller/Collision.h>
 
 #endif // ControllerEvent_h
  

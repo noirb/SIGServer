@@ -1,7 +1,7 @@
 /*
  * Modified indent by Yoshiaki Mizuchi on 2014-01-29
  */
-#include "RawSound.h"
+#include <sigverse/commonlib/RawSound.h>
 
 #ifdef WIN32
 #include <windows.h>

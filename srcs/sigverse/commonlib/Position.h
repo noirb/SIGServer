@@ -7,14 +7,14 @@
 #ifndef Position_h
 #define Position_h
 
-#include "systemdef.h"
+#include <sigverse/commonlib/systemdef.h>
 
 // added by sekikawa (2009/3/24)
 // compile error occurred (memcpy() not found) when USE_ODE not defined.
 #include <string.h>
 
 #ifdef USE_ODE
-#include "ode/ode.h"
+#include <ode/ode.h>
 #endif
 
 

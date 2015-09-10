@@ -9,7 +9,7 @@
 
 #include <stdlib.h>
 #include <string.h>
-#include "ViewImageInfo.h"
+#include <sigverse/commonlib/ViewImageInfo.h>
 
 class ViewImage
 {

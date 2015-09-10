@@ -9,9 +9,9 @@
 #include <string>
 #include <map>
 
-#include "CommDataDef.h"
-#include "CommDataListener.h"
-#include "CommDataResult.h"
+#include <sigverse/commonlib/CommDataDef.h>
+#include <sigverse/commonlib/CommDataListener.h>
+#include <sigverse/commonlib/CommDataResult.h>
 
 class Source;
 class ControllerInf;

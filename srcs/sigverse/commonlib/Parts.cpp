@@ -1,7 +1,7 @@
 /* $Id: Parts.cpp,v 1.2 2011-03-31 08:15:57 okamoto Exp $ */
-#include "Parts.h"
-#include "Position.h"
-#include "Size.h"
+#include <sigverse/commonlib/Parts.h>
+#include <sigverse/commonlib/Position.h>
+#include <sigverse/commonlib/Size.h>
 #include <assert.h>
 
 Parts::Id Parts::s_cnt = 0;

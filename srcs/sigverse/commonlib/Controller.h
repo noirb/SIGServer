@@ -12,9 +12,9 @@
 #include <vector>
 #include <map>
 
-#include "ControllerImpl.h"
-#include "ViewImageInfo.h"
-#include "SimObj.h"
+#include <sigverse/commonlib/ControllerImpl.h>
+#include <sigverse/commonlib/ViewImageInfo.h>
+#include <sigverse/commonlib/SimObj.h>
 
 //#include "DynamicsController.h"
 

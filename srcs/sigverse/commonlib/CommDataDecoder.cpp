@@ -10,15 +10,15 @@
  * Added addTorque by Tetsunari Inamura on 2014-02-26
  */
 
-#include "CommDataDecoder.h"
-#include "CommDataDef.h"
-#include "comm/Header.h"
-#include "binary.h"
-#include "SimObj.h"
-#include "SimWorld.h"
+#include <sigverse/commonlib/CommDataDecoder.h>
+#include <sigverse/commonlib/CommDataDef.h>
+#include <sigverse/commonlib/comm/Header.h>
+#include <sigverse/commonlib/binary.h>
+#include <sigverse/commonlib/SimObj.h>
+#include <sigverse/commonlib/SimWorld.h>
 
-#include "ControllerInf.h"
-#include "ControllerEvent.h"
+#include <sigverse/commonlib/ControllerInf.h>
+#include <sigverse/commonlib/ControllerEvent.h>
 
 #include <vector>
 

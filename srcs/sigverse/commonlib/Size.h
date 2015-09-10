@@ -5,7 +5,7 @@
 #ifndef Size_h
 #define Size_h
 
-#include "Position.h"
+#include <sigverse/commonlib/Position.h>
 
 class Size : public Position
 {

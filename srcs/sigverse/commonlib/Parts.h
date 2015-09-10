@@ -7,7 +7,7 @@
 #ifndef Parts_h
 #define Parts_h
 
-#include "systemdef.h"
+#include <sigverse/commonlib/systemdef.h>
 
 #ifdef USE_ODE
 #include <ode/ode.h>

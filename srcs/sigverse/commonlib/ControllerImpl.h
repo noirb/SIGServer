@@ -9,11 +9,11 @@
 #ifndef ControllerImpl_h
 #define ControllerImpl_h
 
-#include "ControllerInf.h"
-#include "RawSound.h"
-#include "systemdef.h"
-#include "Logger.h"
-#include "ViewImage.h"
+#include <sigverse/commonlib/ControllerInf.h>
+#include <sigverse/commonlib/RawSound.h>
+#include <sigverse/commonlib/systemdef.h>
+#include <sigverse/commonlib/Logger.h>
+#include <sigverse/commonlib/ViewImage.h>
 #include <vector>
 #include <map>
 #include <string>

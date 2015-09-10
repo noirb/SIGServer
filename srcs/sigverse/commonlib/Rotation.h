@@ -5,14 +5,14 @@
 #ifndef Rotation_h
 #define Rotation_h
 
-#include "systemdef.h"
+#include <sigverse/commonlib/systemdef.h>
 #include <string.h>
 
 #ifdef USE_ODE
 #include <ode/ode.h>
 #endif
 
-#include "Vector3d.h"
+#include <sigverse/commonlib/Vector3d.h>
 
 enum {
 	ROTATION_TYPE_NOT_SET = -1,

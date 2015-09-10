@@ -7,7 +7,7 @@
 #ifndef Logger_h
 #define Logger_h
 
-#include "systemdef.h"
+#include <sigverse/commonlib/systemdef.h>
 
 #include <vector>
 

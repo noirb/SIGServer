@@ -14,10 +14,10 @@
 #include <map>
 #include <vector>
 
-#include "systemdef.h"
-#include "Attribute.h"
-#include "Vector3d.h"
-#include "Logger.h"
+#include <sigverse/commonlib/systemdef.h>
+#include <sigverse/commonlib/Attribute.h>
+#include <sigverse/commonlib/Vector3d.h>
+#include <sigverse/commonlib/Logger.h>
 
 
 class Parts;
@@ -236,7 +236,7 @@ public:
 	bool NAME() const { return getAttr(TOKEN).value().getBool(); }  \
 	void NAME(bool b) { getAttr(TOKEN).value().setBool(b); }
 
-#include "SimObjBaseAttrs.h"
+#include <sigverse/commonlib/SimObjBaseAttrs.h>
 
 #undef DEFINE_ATTR_DOUBLE
 #undef DEFINE_ATTR_BOOL

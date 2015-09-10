@@ -7,7 +7,7 @@
 #ifndef CommDataResult_h
 #define CommDataResult_h
 
-#include "CommDataType.h"
+#include <sigverse/commonlib/CommDataType.h>
 
 /** 
  * @brief Class for getting the reconstructed data as a return value from CommDataDecoder

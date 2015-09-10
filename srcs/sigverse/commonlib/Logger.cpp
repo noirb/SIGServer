@@ -2,9 +2,9 @@
  * Written by okamoto on 2011-08-10
  */
 
-#include "Logger.h"
-#include "CommDataEncoder.h"
-#include "CommUtil.h"
+#include <sigverse/commonlib/Logger.h>
+#include <sigverse/commonlib/CommDataEncoder.h>
+#include <sigverse/commonlib/CommUtil.h>
 
 #include <string>
 

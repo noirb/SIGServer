@@ -9,9 +9,9 @@
 #include <map>
 #include <assert.h>
 
-#include "Vector3d.h"
-#include "systemdef.h"
-#include "SimObjBase.h"
+#include <sigverse/commonlib/Vector3d.h>
+#include <sigverse/commonlib/systemdef.h>
+#include <sigverse/commonlib/SimObjBase.h>
 
 class SimGround;
 

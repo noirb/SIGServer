@@ -4,10 +4,10 @@
  *   Add English comments (Translation from v2.2.0 is finished)
  */
 
-#include "CParts.h"
-#include "PartsCmpnt.h"
-#include "binary.h"
-#include "ControllerImpl.h"
+#include <sigverse/commonlib/CParts.h>
+#include <sigverse/commonlib/PartsCmpnt.h>
+#include <sigverse/commonlib/binary.h>
+#include <sigverse/commonlib/ControllerImpl.h>
 
 const dReal *CParts::getPosition()
 {

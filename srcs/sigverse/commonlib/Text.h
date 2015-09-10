@@ -5,7 +5,7 @@
 #ifndef Text_h
 #define Text_h
 
-#include "Encode.h"
+#include <sigverse/commonlib/Encode.h>
 
 #include <string>
 

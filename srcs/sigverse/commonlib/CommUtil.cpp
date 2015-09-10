@@ -5,8 +5,8 @@
  *    Modify indent
  */
 
-#include "CommUtil.h"
-#include "Logger.h"
+#include <sigverse/commonlib/CommUtil.h>
+#include <sigverse/commonlib/Logger.h>
 
 #include <sys/types.h>
 #ifndef WIN32

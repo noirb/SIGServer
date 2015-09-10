@@ -11,7 +11,7 @@
 #include <assert.h>
 #include <string>
 
-#include "Vector3d.h"
+#include <sigverse/commonlib/Vector3d.h>
 
 /**
  * @brief Class for force acting on parts

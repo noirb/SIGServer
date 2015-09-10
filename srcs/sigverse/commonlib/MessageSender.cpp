@@ -1,8 +1,8 @@
 /* $Id: MessageSender.cpp,v 1.3 2011-05-12 08:33:50 msi Exp $ */
-#include "MessageSender.h"
-#include "CommDataEncoder.h"
-#include "CommUtil.h"
-#include "Logger.h"
+#include <sigverse/commonlib/MessageSender.h>
+#include <sigverse/commonlib/CommDataEncoder.h>
+#include <sigverse/commonlib/CommUtil.h>
+#include <sigverse/commonlib/Logger.h>
 
 ////////////////////////////////////////////////////
 //

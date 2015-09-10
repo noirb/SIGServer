@@ -7,9 +7,9 @@
 #endif
 
 #include <math.h>
-#include "ViewImage.h"
+#include <sigverse/commonlib/ViewImage.h>
 #include <stdio.h>
-#include "Logger.h"
+#include <sigverse/commonlib/Logger.h>
 
 int ViewImage::getWidthBytes(int width, int bytesPerOnePixel)
 {

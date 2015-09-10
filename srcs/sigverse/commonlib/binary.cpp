@@ -1,4 +1,4 @@
-#include "binary.h"
+#include <sigverse/commonlib/binary.h>
 #include <assert.h>
 #include <string.h>
 

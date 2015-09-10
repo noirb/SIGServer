@@ -7,7 +7,7 @@
 #ifndef PartsCmpnt_h
 #define PartsCmpnt_h
 
-#include "Parts.h"
+#include <sigverse/commonlib/Parts.h>
 
 /**
  * @brief Parts data class of boxy components

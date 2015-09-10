@@ -2,9 +2,9 @@
  * Written by okamoto on 2011-03-31
  */
 
-#include "SimWorld.h"
-#include "X3DDB.h"
-#include "Logger.h"
+#include <sigverse/commonlib/SimWorld.h>
+#include <sigverse/commonlib/X3DDB.h>
+#include <sigverse/commonlib/Logger.h>
 
 #include <algorithm>
 #include <functional>

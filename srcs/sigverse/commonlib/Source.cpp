@@ -2,10 +2,10 @@
  * Modified by okamoto on 2011-03-31
  */
 
-#include "Source.h"
+#include <sigverse/commonlib/Source.h>
 
-#include "CommDataEncoder.h"
-#include "CommUtil.h"
+#include <sigverse/commonlib/CommDataEncoder.h>
+#include <sigverse/commonlib/CommUtil.h>
 
 int Source::send(CommDataEncoder &enc)
 {

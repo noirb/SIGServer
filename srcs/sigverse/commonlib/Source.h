@@ -6,7 +6,7 @@
 #ifndef __Source_h__
 #define __Source_h__
 
-#include "systemdef.h"
+#include <sigverse/commonlib/systemdef.h>
 
 #include <string>
 #include <map>
@@ -17,7 +17,7 @@
 #include <sys/socket.h>
 #endif
 
-#include "pthread_dep.h"
+#include <sigverse/commonlib/pthread_dep.h>
 
 class CommDataEncoder;
 

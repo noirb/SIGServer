@@ -1,7 +1,7 @@
 /* $Id: Parts_Binary.cpp,v 1.2 2011-03-31 08:15:57 okamoto Exp $ */
-#include "CParts.h"
-#include "PartsCmpnt.h"
-#include "binary.h"
+#include <sigverse/commonlib/CParts.h>
+#include <sigverse/commonlib/PartsCmpnt.h>
+#include <sigverse/commonlib/binary.h>
 #include <assert.h>
 
 #ifdef IRWAS_OGRE_CLIENT

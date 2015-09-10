@@ -14,11 +14,11 @@
 #include <iostream>
 #include <vector>
 
-#include "systemdef.h"
-#include "SimObjBase.h"
-#include "Attribute.h"
-#include "CParts.h"
-#include "Value.h"
+#include <sigverse/commonlib/systemdef.h>
+#include <sigverse/commonlib/SimObjBase.h>
+#include <sigverse/commonlib/Attribute.h>
+#include <sigverse/commonlib/CParts.h>
+#include <sigverse/commonlib/Value.h>
 
 class Vector3d;
 

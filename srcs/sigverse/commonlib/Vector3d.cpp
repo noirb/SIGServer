@@ -2,9 +2,9 @@
  * Written by okamoto on 2011-03-31
  */
 
-#include "Vector3d.h"
-#include "Rotation.h"
-#include "Logger.h"
+#include <sigverse/commonlib/Vector3d.h>
+#include <sigverse/commonlib/Rotation.h>
+#include <sigverse/commonlib/Logger.h>
 
 //#ifndef IRWAS_OGRE_CLIENT
 

@@ -9,15 +9,15 @@
  * TODO: Too many magic numbers are still remained
  */
 
-#include "ControllerImpl.h"
-#include "Controller.h"
-#include "CommDataEncoder.h"
-#include "CommUtil.h"
-#include "Logger.h"
-#include "ct/CTSimObj.h"
-#include "binary.h"
-#include "Thread.h"
-#include "comm/controller/RecvMessage.h"
+#include <sigverse/commonlib/ControllerImpl.h>
+#include <sigverse/commonlib/Controller.h>
+#include <sigverse/commonlib/CommDataEncoder.h>
+#include <sigverse/commonlib/CommUtil.h>
+#include <sigverse/commonlib/Logger.h>
+#include <sigverse/commonlib/ct/CTSimObj.h>
+#include <sigverse/commonlib/binary.h>
+#include <sigverse/commonlib/Thread.h>
+#include <sigverse/commonlib/comm/controller/RecvMessage.h>
 
 #include <sys/types.h>
 #include <errno.h>
