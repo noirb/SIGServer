@@ -2,8 +2,8 @@
  * Created by okamoto on 2011-03-25
  */
 
-#include "GetJointForce.h"
-#include "binary.h"
+#include <sigverse/commonlib/comm/event/GetJointForce.h>
+#include <sigverse/commonlib/binary.h>
 
 bool RequestGetJointForceEvent::set(int packetNum, int seq, char *data, int n)
 {

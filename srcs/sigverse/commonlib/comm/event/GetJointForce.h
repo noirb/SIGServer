@@ -5,7 +5,7 @@
 #ifndef Comm_Event_GetJointForce_h
 #define Comm_Event_GetJointForce_h
 
-#include "comm/data/ResultGetJointForceData.h"
+#include <sigverse/commonlib/comm/data/ResultGetJointForceData.h>
 
 class RequestGetJointForceEvent 
 {

@@ -2,7 +2,7 @@
 #ifndef Comm_Event_NameService_h
 #define Comm_Event_NameService_h
 
-#include "Service.h"
+#include <sigverse/commonlib/Service.h>
 
 
 class RequestNSQueryEvent

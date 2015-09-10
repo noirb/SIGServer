@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 
-#include "comm/encoder/GetObjectNames.h"
+#include <sigverse/commonlib/comm/encoder/GetObjectNames.h>
 
 class RequestGetObjectNamesEvent
 {

@@ -2,8 +2,8 @@
  * Created by okamoto on 2011-03-25
  */
 
-#include "Attrs.h"
-#include "binary.h"
+#include <sigverse/commonlib/comm/event/Attrs.h>
+#include <sigverse/commonlib/binary.h>
 
 bool RequestGetAttributesEvent::set(int packetNum, int seq, char *data, int n)
 {

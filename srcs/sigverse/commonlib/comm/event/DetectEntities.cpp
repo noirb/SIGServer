@@ -1,6 +1,6 @@
 /* $Id: DetectEntities.cpp,v 1.2 2011-08-15 05:34:46 okamoto Exp $ */
-#include "DetectEntities.h"
-#include "binary.h"
+#include <sigverse/commonlib/comm/event/DetectEntities.h>
+#include <sigverse/commonlib/binary.h>
 
 bool RequestDetectEntitiesEvent::set(int packetNum, int seq, char *data, int n)
 {

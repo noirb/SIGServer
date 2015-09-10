@@ -1,7 +1,7 @@
 /* $Id: JointQuaternion.cpp,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */
-#include "JointQuaternion.h"
-#include "binary.h"
-#include "Logger.h"
+#include <sigverse/commonlib/comm/event/JointQuaternion.h>
+#include <sigverse/commonlib/binary.h>
+#include <sigverse/commonlib/Logger.h>
 
 bool RequestSetJointQuaternionEvent::set(int packetNum, int seq, char *data, int n)
 {

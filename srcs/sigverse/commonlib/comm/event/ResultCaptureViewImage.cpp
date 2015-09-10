@@ -1,7 +1,7 @@
 /* $Id: ResultCaptureViewImage.cpp,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */
-#include "ResultCaptureViewImage.h"
-#include "binary.h"
-#include "ViewImage.h"
+#include <sigverse/commonlib/comm/event/ResultCaptureViewImage.h>
+#include <sigverse/commonlib/binary.h>
+#include <sigverse/commonlib/ViewImage.h>
 
 #include <string.h>
 #include <stdio.h>

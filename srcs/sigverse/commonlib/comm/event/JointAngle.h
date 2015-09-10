@@ -2,8 +2,7 @@
 #ifndef JointAngle_h
 #define JointAngle_h
 
-#include "comm/data/JointAngleData.h"
-
+#include <sigverse/commonlib/comm/data/JointAngleData.h>
 
 class RequestSetJointAngleEvent 
 {

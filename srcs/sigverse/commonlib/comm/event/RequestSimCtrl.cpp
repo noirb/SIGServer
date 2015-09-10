@@ -1,8 +1,8 @@
 /* $Id: RequestSimCtrl.cpp,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */ 
-#include "RequestSimCtrl.h"
-#include "binary.h"
-#include "CommDataDef.h"
-#include "Header.h"
+#include <sigverse/commonlib/comm/event/RequestSimCtrl.h>
+#include <sigverse/commonlib/binary.h>
+#include <sigverse/commonlib/CommDataDef.h>
+#include <sigverse/commonlib/comm/Header.h>
 
 bool RequestSimCtrlEvent::set(int packetNum, int seq, char *data, int n)
 {

@@ -1,8 +1,8 @@
 /* $Id: ResultDistanceSensor.cpp,v 1.12 2011-09-26 05:30:54 okamoto Exp $ */ 
-#include "ResultDistanceSensor.h"
-#include "CommDataType.h"
-#include "binary.h"
-#include "SimObj.h"
+#include <sigverse/commonlib/comm/event/ResultDistanceSensor.h>
+#include <sigverse/commonlib/CommDataType.h>
+#include <sigverse/commonlib/binary.h>
+#include <sigverse/commonlib/SimObj.h>
 
 #define FREE(P) if (P) { delete P; P = 0; }
 

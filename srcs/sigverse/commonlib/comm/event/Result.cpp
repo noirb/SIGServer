@@ -2,8 +2,8 @@
  * Created by okamoto on 2011-03-25
  */
 
-#include "Result.h"
-#include "binary.h"
+#include <sigverse/commonlib/comm/event/Result.h>
+#include <sigverse/commonlib/binary.h>
 
 bool ResultEvent::set(int packetNum, int seq, char *data, int n)
 {

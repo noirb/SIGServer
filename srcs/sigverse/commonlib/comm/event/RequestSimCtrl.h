@@ -2,7 +2,7 @@
 #ifndef RequestSimCtrl_h
 #define RequestSimCtrl_h
 
-#include "CommDataType.h"
+#include <sigverse/commonlib/CommDataType.h>
 
 class RequestSimCtrlEvent
 {

@@ -1,6 +1,6 @@
 /* $Id: DisplayText.cpp,v 1.2 2011-08-10 02:52:14 okamoto Exp $ */ 
-#include "DisplayText.h"
-#include "binary.h"
+#include <sigverse/commonlib/comm/event/DisplayText.h>
+#include <sigverse/commonlib/binary.h>
 
 bool DisplayTextEvent::set(int packetNum, int seq, char *data, int n)
 {

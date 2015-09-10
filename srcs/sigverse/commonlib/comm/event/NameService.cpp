@@ -1,6 +1,6 @@
 /* $Id: NameService.cpp,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */
-#include "NameService.h"
-#include "binary.h"
+#include <sigverse/commonlib/comm/event/NameService.h>
+#include <sigverse/commonlib/binary.h>
 #include <assert.h>
 
 bool RequestNSQueryEvent::set(int packetNum, int seq, char *data, int n)

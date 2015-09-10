@@ -7,9 +7,9 @@
  * Added addTorque by Tetsunari Inamura on 2014-02-26
  */
 
-#include "MoveControl.h"
-#include "binary.h"
-#include "Logger.h"
+#include <sigverse/commonlib/comm/event/MoveControl.h>
+#include <sigverse/commonlib/binary.h>
+#include <sigverse/commonlib/Logger.h>
 
 bool RequestAddForceEvent::set(int packetNum, int seq, char *data, int n)
 {

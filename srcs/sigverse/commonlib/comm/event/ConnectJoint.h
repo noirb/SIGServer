@@ -2,7 +2,7 @@
 #ifndef Comm_Event_ConnectJoint_h
 #define Comm_Event_ConnectJoint_h
 
-#include "comm/data/RequestConnectJointData.h"
+#include <sigverse/commonlib/comm/data/RequestConnectJointData.h>
 
 
 class RequestConnectJointEvent

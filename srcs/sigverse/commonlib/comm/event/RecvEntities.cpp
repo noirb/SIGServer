@@ -1,9 +1,9 @@
 /* $Id: RecvEntities.cpp,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */ 
-#include "RecvEntities.h"
-#include "binary.h"
-#include "SimObj.h"
-#include "SimWorld.h"
-#include "Header.h"
+#include <sigverse/commonlib/comm/event/RecvEntities.h>
+#include <sigverse/commonlib/binary.h>
+#include <sigverse/commonlib/SimObj.h>
+#include <sigverse/commonlib/SimWorld.h>
+#include <sigverse/commonlib/comm/Header.h>
 
 bool RecvEntitiesEvent::set(int packetNum, int seq, char *data, int n)
 {

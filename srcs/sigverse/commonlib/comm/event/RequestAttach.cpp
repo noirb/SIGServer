@@ -1,7 +1,7 @@
 /* $Id: RequestAttach.cpp,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */ 
-#include "RequestAttach.h"
-#include "binary.h"
-#include "Service.h"
+#include <sigverse/commonlib/comm/event/RequestAttach.h>
+#include <sigverse/commonlib/binary.h>
+#include <sigverse/commonlib/Service.h>
 
 bool RequestAttachEvent::set(int packetNum, int seq, char *data, int n)
 {

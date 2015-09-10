@@ -1,6 +1,6 @@
 /* $Id: ConnectJoint.cpp,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */ 
-#include "comm/event/ConnectJoint.h"
-#include "binary.h"
+#include <sigverse/commonlib/comm/event/ConnectJoint.h>
+#include <sigverse/commonlib/binary.h>
 
 #define ASSIGN_STR(P, MEMBER) { \
     char *str_ = BINARY_GET_STRING_INCR(P); \

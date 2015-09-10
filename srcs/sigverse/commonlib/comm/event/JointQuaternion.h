@@ -2,7 +2,7 @@
 #ifndef JointQuaternion_h
 #define JointQuaternion_h
 
-#include "comm/data/JointQuaternionData.h"
+#include <sigverse/commonlib/comm/data/JointQuaternionData.h>
 
 
 class RequestSetJointQuaternionEvent 

@@ -1,8 +1,8 @@
 /* $Id: RequestDistanceSensor.cpp,v 1.3 2011-09-22 06:39:25 okamoto Exp $ */
-#include "RequestDistanceSensor.h"
-#include "binary.h"
-#include "ViewImageInfo.h"
-#include "Header.h"
+#include <sigverse/commonlib/comm/event/RequestDistanceSensor.h>
+#include <sigverse/commonlib/binary.h>
+#include <sigverse/commonlib/ViewImageInfo.h>
+#include <sigverse/commonlib/comm/Header.h>
 
 #define FREE(P) if (P) { delete P; P = 0; }
 

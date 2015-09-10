@@ -10,7 +10,7 @@
 #ifndef MoveControl_h
 #define MoveControl_h
 
-#include "Logger.h"
+#include <sigverse/commonlib/Logger.h>
 
 class RequestAddForceEvent 
 {

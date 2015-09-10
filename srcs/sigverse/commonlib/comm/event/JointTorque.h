@@ -10,7 +10,7 @@
 #ifndef JointTorque_h
 #define JointTorque_h
 
-#include "comm/data/JointTorqueData.h"
+#include <sigverse/commonlib/comm/data/JointTorqueData.h>
 
 class RequestAddJointTorqueEvent 
 {

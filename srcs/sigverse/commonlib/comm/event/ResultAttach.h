@@ -3,8 +3,8 @@
 #define Comm_Event_ResultAttach_h
 
 #include <string>
-#include "CommDataType.h"
-#include "Result.h"
+#include <sigverse/commonlib/CommDataType.h>
+#include <sigverse/commonlib/comm/event/Result.h>
 
 class X3DDB;
 

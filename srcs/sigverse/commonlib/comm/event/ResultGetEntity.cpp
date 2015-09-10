@@ -1,8 +1,8 @@
 /* $Id: ResultGetEntity.cpp,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */ 
-#include "ResultGetEntity.h"
-#include "CommDataType.h"
-#include "binary.h"
-#include "SimObj.h"
+#include <sigverse/commonlib/comm/event/ResultGetEntity.h>
+#include <sigverse/commonlib/CommDataType.h>
+#include <sigverse/commonlib/binary.h>
+#include <sigverse/commonlib/SimObj.h>
 
 #define FREE(P) if (P) { delete P; P = 0; }
 

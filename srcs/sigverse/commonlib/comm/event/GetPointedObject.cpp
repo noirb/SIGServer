@@ -1,7 +1,5 @@
-#include "GetPointedObject.h"
-#include "binary.h"
-
-
+#include <sigverse/commonlib/comm/event/GetPointedObject.h>
+#include <sigverse/commonlib/binary.h>
 
 bool RequestGetPointedObjectEvent::set(int packetNum, int seq, char *data, int n)
 {

@@ -1,6 +1,6 @@
 /* $Id: ReleaseJoint.cpp,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */ 
-#include "comm/event/ReleaseJoint.h"
-#include "binary.h"
+#include <sigverse/commonlib/commevent/ReleaseJoint.h>
+#include <sigverse/commonlib/binary.h>
 
 bool RequestReleaseJointEvent::set(int packetNum, int seq, char *data, int n)
 {

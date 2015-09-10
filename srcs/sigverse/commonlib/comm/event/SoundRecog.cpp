@@ -1,8 +1,8 @@
 /* $Id: SoundRecog.cpp,v 1.2 2011-03-31 08:16:37 okamoto Exp $ */
-#include "SoundRecog.h"
-#include "RawSound.h"
-#include "binary.h"
-#include "Header.h"
+#include <sigverse/commonlib/comm/event/SoundRecog.h>
+#include <sigverse/commonlib/RawSound.h>
+#include <sigverse/commonlib/binary.h>
+#include <sigverse/commonlib/comm/Header.h>
 #include <assert.h>
 #include <string.h>
 

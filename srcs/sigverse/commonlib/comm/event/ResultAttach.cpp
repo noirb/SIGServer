@@ -1,7 +1,7 @@
 /* $Id: ResultAttach.cpp,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $ */ 
-#include "ResultAttach.h"
-#include "binary.h"
-#include "X3DDB.h"
+#include <sigverse/commonlib/comm/event/ResultAttach.h>
+#include <sigverse/commonlib/binary.h>
+#include <sigverse/commonlib/X3DDB.h>
 
 ResultAttachViewEvent::~ResultAttachViewEvent()
 {

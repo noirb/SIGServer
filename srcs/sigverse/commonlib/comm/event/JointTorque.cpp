@@ -5,8 +5,8 @@
  *    Change RequestSetOjbectVelocityEvent to RequestSetAngularVelocityToPartsEvent
  */
 
-#include "JointTorque.h"
-#include "binary.h"
+#include <sigverse/commonlib/comm/event/JointTorque.h>
+#include <sigverse/commonlib/binary.h>
 
 bool RequestAddJointTorqueEvent::set(int packetNum, int seq, char *data, int n)
 {
