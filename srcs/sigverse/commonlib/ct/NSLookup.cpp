@@ -3,13 +3,13 @@
  * Modified by Okamoto on 2011-03-25
  */
 
-#include "NSLookup.h"
-#include "CommUtil.h"
-#include "CommDataEncoder.h"
-#include "CommDataDecoder.h"
-#include "CTReader.h"
-#include "Service.h"
-#include "Logger.h"
+#include <sigverse/commonlib/ct/NSLookup.h>
+#include <sigverse/commonlib/CommUtil.h>
+#include <sigverse/commonlib/CommDataEncoder.h>
+#include <sigverse/commonlib/CommDataDecoder.h>
+#include <sigverse/commonlib/ct/CTReader.h>
+#include <sigverse/commonlib/Service.h>
+#include <sigverse/commonlib/Logger.h>
 #include <assert.h>
 
 #ifndef WIN32

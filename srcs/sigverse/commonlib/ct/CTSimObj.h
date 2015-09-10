@@ -5,10 +5,10 @@
 #ifndef CTSimObj_h
 #define CTSimObj_h
 
-#include "systemdef.h"
-#include "ViewImage.h"
-#include "ct/NSLookup.h"
-#include "Service.h"
+#include <sigverse/commonlib/systemdef.h>
+#include <sigverse/commonlib/ViewImage.h>
+#include <sigverse/commonlib/ct/NSLookup.h>
+#include <sigverse/commonlib/Service.h>
 
 #include <string>
 #include <vector>

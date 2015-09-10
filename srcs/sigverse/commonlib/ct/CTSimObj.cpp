@@ -2,15 +2,16 @@
  * Modified by Okamoto on 2011-11-18
  */
 
-#include "CTSimObj.h"
-#include "CommDataEncoder.h"
-#include "CommDataDecoder.h"
-#include "CTReader.h"
-#include "Logger.h"
-#include "CommUtil.h"
-#include "MessageSender.h"
-#include "NSLookup.h"
-#include "Text.h"
+#include <sigverse/commonlib/ct/CTSimObj.h>
+#include <sigverse/commonlib/CommDataEncoder.h>
+#include <sigverse/commonlib/CommDataDecoder.h>
+#include <sigverse/commonlib/ct/CTReader.h>
+#include <sigverse/commonlib/Logger.h>
+#include <sigverse/commonlib/CommUtil.h>
+#include <sigverse/commonlib/MessageSender.h>
+#include <sigverse/commonlib/ct/NSLookup.h>
+#include <sigverse/commonlib/Text.h>
+
 #ifndef WIN32
 #include <unistd.h>
 #endif

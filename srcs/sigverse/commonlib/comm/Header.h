@@ -7,7 +7,7 @@
 
 #include <string>
 
-#include "CommDataType.h"
+#include <sigverse/commonlib/CommDataType.h>
 
 class CommDataHeader
 {

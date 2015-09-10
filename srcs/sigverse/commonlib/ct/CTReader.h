@@ -5,9 +5,9 @@
 #ifndef CTReader_h
 #define CTReader_h
 
-#include "systemdef.h"
-#include "Source.h"
-#include "CommDataDecoder.h"
+#include <sigverse/commonlib/systemdef.h>
+#include <sigverse/commonlib/Source.h>
+#include <sigverse/commonlib/CommDataDecoder.h>
 #include <iostream>
 
 class CTReader

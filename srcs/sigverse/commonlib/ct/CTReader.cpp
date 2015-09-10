@@ -2,15 +2,15 @@
  * Created by Okamoto on 2011-03-25
  */
 
-#include "CTReader.h"
-#include "CommDataEncoder.h"
-#include "Logger.h"
-#include "binary.h"
-#include "ControllerInf.h"
-#include "Controller.h"
-#include "comm/controller/RecvMessage.h"
-#include "comm/controller/NoData.h"
-#include "comm/controller/Action.h"
+#include <sigverse/commonlib/ct/CTReader.h>
+#include <sigverse/commonlib/CommDataEncoder.h>
+#include <sigverse/commonlib/Logger.h>
+#include <sigverse/commonlib/binary.h>
+#include <sigverse/commonlib/ControllerInf.h>
+#include <sigverse/commonlib/Controller.h>
+#include <sigverse/commonlib/comm/controller/RecvMessage.h>
+#include <sigverse/commonlib/comm/controller/NoData.h>
+#include <sigverse/commonlib/comm/controller/Action.h>
 
 #ifndef WIN32
 #include <sys/socket.h>

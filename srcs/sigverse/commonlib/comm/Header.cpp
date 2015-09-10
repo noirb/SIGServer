@@ -2,9 +2,9 @@
  * Created by okamoto on 2011-03-25
  */
 
-#include "Header.h"
-#include "binary.h"
-#include "CommDataDef.h"
+#include <sigverse/commonlib/comm/Header.h>
+#include <sigverse/commonlib/binary.h>
+#include <sigverse/commonlib/CommDataDef.h>
 
 namespace CommData {
 

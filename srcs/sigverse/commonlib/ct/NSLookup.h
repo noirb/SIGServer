@@ -7,8 +7,8 @@
 
 #include <vector>
 
-#include "systemdef.h"
-#include "Service.h"
+#include <sigverse/commonlib/systemdef.h>
+#include <sigverse/commonlib/Service.h>
 
 class NSLookup
 {
