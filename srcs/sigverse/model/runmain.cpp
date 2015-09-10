@@ -8,10 +8,10 @@
 #include <getopt.h>
 #endif
 
-#include "Controller.h"
-#include "ControllerLib.h"
-#include "modelerr.h"
-#include "Logger.h"
+#include <sigverse/commonlib/Controller.h>
+#include <sigverse/commonlib/ControllerLib.h>
+#include <sigverse/commonlib/modelerr.h>
+#include <sigverse/commonlib/Logger.h>
 
 static void printUsage(const char *prog)
 {

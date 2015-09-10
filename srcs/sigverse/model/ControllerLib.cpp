@@ -2,7 +2,7 @@
  * Created by okamoto on 2011-03-25
  */
 
-#include "ControllerLib.h"
+#include <sigverse/model/ControllerLib.h>
 
 ControllerLib::ControllerLib() : m_lib(NULL), m_model(NULL), m_create(NULL)
 {

@@ -14,7 +14,7 @@
 
 #define SOCKET int
 #endif
-#include "binary.h"
+#include <sigverse/commonlib/binary.h>
 
 int main(int argc, char **argv)
 {

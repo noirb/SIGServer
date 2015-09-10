@@ -5,8 +5,8 @@
 #ifndef ControllerLib_h
 #define ControllerLib_h
 
-#include "Controller.h"
-#include "modelerr.h"
+#include <sigverse/commonlib/Controller.h>
+#include <sigverse/commonlib/modelerr.h>
 
 #include <assert.h>
 

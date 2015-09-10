@@ -2,7 +2,7 @@
  * Modified by okamoto on 2011-03-25
  */
 
-#include "MessageSender.h"
+#include <sigverse/commonlib/MessageSender.h>
 
 #ifdef WIN32
 #include <windows.h>	// for winsock
