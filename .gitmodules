@@ -1,0 +1,3 @@
+[submodule "srcs/sigverse/x3d"]
+	path = srcs/sigverse/x3d
+	url = https://github.com/SIGVerse/x3d.git
