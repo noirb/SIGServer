@@ -30,7 +30,7 @@ public:
 	}
 };
 
-#include "Text.h"
+#include <sigverse/commonlib/Text.h>
 
 class ResultSoundRecogEvent
 {
