@@ -1,6 +1,6 @@
-#include "Controller.h"
-#include "ControllerEvent.h"
-#include "Logger.h"
+#include <sigverse/Controller.h>
+#include <sigverse/ControllerEvent.h>
+#include <sigverse/Logger.h>
 
 class AgentController: public Controller {
 public:
