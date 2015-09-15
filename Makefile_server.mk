@@ -4,7 +4,6 @@
 
 FILE_NAME           = Makefile_server.mk
 SRC_DIR             = ./srcs
-COMMONLIB_DIR       = ./srcs/sigverse/commonlib
 SERVER_DIR          = ./srcs/sigverse/simserver
 JAVA_LIB            = /usr/lib/jvm/java-6-openjdk-amd64/jre/lib/amd64/server
 
@@ -12,7 +11,7 @@ JAVA_LIB            = /usr/lib/jvm/java-6-openjdk-amd64/jre/lib/amd64/server
 OUTDIR   = ./release
 TARGET   = $(OUTDIR)/sigserver
 INCLUDES = -I$(SRC_DIR)
-LDFLAGS  = -lm -ldl -lode -lpthread -lxerces-c -L$(OUTDIR) -lsigverse-x3d -L$(JAVA_LIB) -ljvm 
+LDFLAGS  = -L$(OUTDIR) -lsigverse-x3d -lsigverse-commonlib -lm -ldl -lode -lpthread -lxerces-c -L$(JAVA_LIB) -ljvm 
 NOMAKEDIR= .git% 
 OBJDIR   = $(OUTDIR)/simserver
 
@@ -23,7 +22,7 @@ CFLAGS = -MMD -MP -std=c++11 -D__cplusplus=201103L -DdDOUBLE -DUSE_ODE -DUSE_XER
 # Don't change the following
 #---------------------------------------------------------------
 
-CPPS = $(shell find $(COMMONLIB_DIR)/* $(SERVER_DIR)/* -name *.cpp )
+CPPS = $(shell find $(SERVER_DIR)/* -name *.cpp )
 SRCS = $(filter-out $(NOMAKEDIR), $(CPPS))
 DIRS = $(dir $(SRCS))
 BINDIRS = $(addprefix $(OBJDIR)/, $(DIRS))
