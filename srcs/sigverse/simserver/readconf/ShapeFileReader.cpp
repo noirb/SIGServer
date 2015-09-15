@@ -5,12 +5,12 @@
  */
 
 #include <sigverse/simserver/readconf/ShapeFileReader.h>
-#include "CSimplifiedShape.h"
-#include "SSimObj.h"
-#include "Joint.h"
-#include "ODEObj.h"
-#include "SSimObjBuilder.h"
-#include "ODEWorld.h"
+#include <sigverse/x3d/parser/cpp/X3DParser/CSimplifiedShape.h>
+#include <sigverse/simserver/SSimObj.h>
+#include <sigverse/simserver/Joint.h>
+#include <sigverse/simserver/ODEObj.h>
+#include <sigverse/simserver/readconf/SSimObjBuilder.h>
+#include <sigverse/simserver/ODEWorld.h>
 
 #include <map>
 #include <string>
