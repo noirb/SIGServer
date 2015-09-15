@@ -9,7 +9,7 @@
 extern "C" {
 #endif
 
-#if defined(unix)
+#if defined(__linux__)
 #define FNAME_FS_CHAR    '/'
 #elif defined(WIN32)
 #define FNAME_FS_CHAR    '\\'
@@ -17,7 +17,7 @@ extern "C" {
 #define FNAME_FS_CHAR    '\0'
 #endif
 
-#if defined(unix)
+#if defined(__linux__)
 #define FNAME_FS_CSTR    "/"
 #elif defined(WIN32)
 #define FNAME_FS_CSTR    "\\"
