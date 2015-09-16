@@ -1,6 +1,0 @@
-
-all:
-	$(MAKE) view -f Makefile.client;\
-	$(MAKE) clean -f Makefile.client;\
-	$(MAKE) simserver -f Makefile.server;\
-	$(MAKE) clean -f Makefile.server;\
