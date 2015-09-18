@@ -11,7 +11,7 @@ JAVA_LIB            = /usr/lib/jvm/java-6-openjdk-amd64/jre/lib/amd64/server
 OUTDIR   = ./release
 TARGET   = $(OUTDIR)/sigserver
 INCLUDES = -I$(SRC_DIR)
-LDFLAGS  = -L$(OUTDIR) -lsigverse-x3d -lsigverse-commonlib -lm -ldl -lode -lpthread -lxerces-c -L$(JAVA_LIB) -ljvm 
+LDFLAGS  = -L$(OUTDIR) -Wl,-rpath,$(SIGVERSE_PATH)/bin -lsigverse-x3d -lsigverse-commonlib -lm -ldl -lode -lpthread -lxerces-c -L$(JAVA_LIB) -ljvm 
 NOMAKEDIR= .git% 
 OBJDIR   = $(OUTDIR)/simserver
 
@@ -50,7 +50,7 @@ all : $(TARGET)
 #	echo $(patsubst %.cpp, %.o, $(SRCS))
 	
 $(TARGET): $(OBJS) 
-	$(GCC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
+	$(GCC) $(CFLAGS) $(INCLUDES) -o $@ $^ $(LDFLAGS)
 
 $(OBJDIR)/%.o: %.cpp
 	$(GCC) $(CFLAGS) $(INCLUDES) -o $@ -c $<
