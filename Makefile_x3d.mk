@@ -8,13 +8,13 @@ X3D_DIR             = ./srcs/sigverse/x3d/parser/cpp/X3DParser
 AR                  = ar -cr
 
 OUTDIR   = ./release
-TARGET   = $(OUTDIR)/libsigverse-x3d.so
+TARGET   = $(OUTDIR)/libsigverse-x3d.a
 INCLUDES = 
-LDFLAGS  = -shared 
+LDFLAGS  = 
 NOMAKEDIR= .git% ./srcs/sigverse/x3d/parser/cpp/X3DParserTest%
 OBJDIR   = $(OUTDIR)/x3d
 
-GCC = g++ -fPIC
+GCC = g++
 CFLAGS = -MMD -MP -std=c++11 -D__cplusplus=201103L -DdDOUBLE
 
 #---------------------------------------------------------------
@@ -48,14 +48,18 @@ all : $(TARGET)
 #print :
 #	echo $(patsubst %.cpp, %.o, $(SRCS))
 	
-$(TARGET): $(OBJS) 
-	$(GCC) $(CFLAGS) $(INCLUDES) -o $@ $^ $(LDFLAGS)
+lib : $(OBJS) 
+	$(AR) $(ARCHIVE) $(OBJS)
+	
+$(TARGET): 
+	$(MAKE) -f $(FILE_NAME) lib "ARCHIVE=$(TARGET)"
 
 $(OBJDIR)/%.o: %.cpp
-	$(GCC) $(CFLAGS) $(INCLUDES) -o $@ -c $<
+	$(GCC) $(CFLAGS) $(INCLUDES) -o $@ -c $< -L$(JAVA_LIB) -ljvm 
 
 clean:
 	@rm -rf $(TARGET) $(TILS) $(OBJDIR)
 
 -include $(DEPS)
+
 

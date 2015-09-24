@@ -8,13 +8,13 @@ COMMONLIB_DIR       = ./srcs/sigverse/commonlib
 AR                  = ar -cr
 
 OUTDIR   = ./release
-TARGET   = $(OUTDIR)/libsigverse-commonlib.so
+TARGET   = $(OUTDIR)/libsigverse-commonlib.a
 INCLUDES = -I$(SRC_DIR)
-LDFLAGS  = -shared 
+LDFLAGS  = 
 NOMAKEDIR= .git%
 OBJDIR   = $(OUTDIR)/commonlib
 
-GCC = g++ -fPIC
+GCC = g++
 CFLAGS = -MMD -MP -std=c++11 -D__cplusplus=201103L -DdDOUBLE
 
 #---------------------------------------------------------------
@@ -48,8 +48,11 @@ all : $(TARGET)
 #print :
 #	echo $(patsubst %.cpp, %.o, $(SRCS))
 	
-$(TARGET): $(OBJS) 
-	$(GCC) $(CFLAGS) $(INCLUDES) -o $@ $^ $(LDFLAGS)
+lib : $(OBJS) 
+	$(AR) $(ARCHIVE) $(OBJS)
+	
+$(TARGET): 
+	$(MAKE) -f $(FILE_NAME) lib "ARCHIVE=$(TARGET)"
 
 $(OBJDIR)/%.o: %.cpp
 	$(GCC) $(CFLAGS) $(INCLUDES) -o $@ -c $<
@@ -58,4 +61,5 @@ clean:
 	@rm -rf $(TARGET) $(TILS) $(OBJDIR)
 
 -include $(DEPS)
+
 

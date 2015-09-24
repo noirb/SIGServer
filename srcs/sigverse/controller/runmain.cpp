@@ -9,7 +9,7 @@
 #endif
 
 #include <sigverse/commonlib/Controller.h>
-#include <sigverse/model/ControllerLib.h>
+#include <sigverse/controller/ControllerLib.h>
 #include <sigverse/commonlib/modelerr.h>
 #include <sigverse/commonlib/Logger.h>
 

@@ -4,15 +4,19 @@
 
 FILE_NAME           = Makefile_controller.mk
 SRC_DIR             = ./srcs
-CONTROLLER_SRCS     = ./srcs/sigverse/model/runmain.cpp ./srcs/sigverse/model/ControllerLib.cpp 
+COMMONLIB_DIR       = ./srcs/sigverse/commonlib
+X3D_DIR             = ./srcs/sigverse/x3d/parser/cpp/X3DParser
+CONTROLLER_SRCS     = ./srcs/sigverse/controller/runmain.cpp ./srcs/sigverse/controller/ControllerLib.cpp
 JAVA_LIB            = /usr/lib/jvm/java-6-openjdk-amd64/jre/lib/amd64/server
 
 
 OUTDIR   = ./release
 TARGET   = $(OUTDIR)/sigrunac
 INCLUDES = -I$(SRC_DIR)
-LDFLAGS  = -L$(OUTDIR) -Wl,-rpath,$(SIGVERSE_PATH)/bin -lsigverse-x3d -lsigverse-commonlib -lm -ldl -lode -lpthread -lxerces-c -L$(JAVA_LIB) -ljvm 
-NOMAKEDIR= .git% 
+#LDFLAGS  = -lm -ldl -lode -lpthread -lxerces-c -L$(OUTDIR) -lsigverse-x3d -L$(JAVA_LIB) -ljvm 
+LDFLAGS  = -lm -ldl -lode -lpthread -lxerces-c -L$(JAVA_LIB) -ljvm 
+#LDFLAGS  = -lm -ldl -lode -lpthread -lxerces-c -ljvm 
+NOMAKEDIR= .git%  ./srcs/sigverse/x3d/parser/cpp/X3DParserTest%
 OBJDIR   = $(OUTDIR)/model
 
 GCC = g++
@@ -22,7 +26,7 @@ CFLAGS = -MMD -MP -std=c++11 -D__cplusplus=201103L -DdDOUBLE -DUSE_ODE -DUSE_XER
 # Don't change the following
 #---------------------------------------------------------------
 
-CPPS = $(shell find $(CONTROLLER_SRCS) -name *.cpp )
+CPPS = $(shell find $(CONTROLLER_SRCS) $(COMMONLIB_DIR)/* $(X3D_DIR)/* -name *.cpp )
 SRCS = $(filter-out $(NOMAKEDIR), $(CPPS))
 DIRS = $(dir $(SRCS))
 BINDIRS = $(addprefix $(OBJDIR)/, $(DIRS))
@@ -50,7 +54,7 @@ all : $(TARGET)
 #	echo $(patsubst %.cpp, %.o, $(SRCS))
 	
 $(TARGET): $(OBJS) 
-	$(GCC) $(CFLAGS) $(INCLUDES) -o $@ $^ $(LDFLAGS)
+	$(GCC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
 $(OBJDIR)/%.o: %.cpp
 	$(GCC) $(CFLAGS) $(INCLUDES) -o $@ -c $<
