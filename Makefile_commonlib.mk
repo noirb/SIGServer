@@ -15,7 +15,7 @@ NOMAKEDIR= .git%
 OBJDIR   = $(OUTDIR)/commonlib
 
 GCC = g++
-CFLAGS = -MMD -MP -std=c++11 -D__cplusplus=201103L -DdDOUBLE
+CFLAGS = -pipe -g -Wall -DdDOUBLE -DSTRICT_INTERFACE -D_DEBUG -DUSE_ODE -DUSE_XERCES -std=c++11 -D__cplusplus=201103L -MMD -MP
 
 #---------------------------------------------------------------
 # Don't change the following
