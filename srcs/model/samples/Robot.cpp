@@ -16,8 +16,6 @@ public:
 
 #define ARRARY_SIZE(ARY) (int)(sizeof(ARY)/sizeof(ARY[0]))
 
-#define PI 3.14159265359
-
 double RobotController::onAction(ActionEvent &evt)
 {
 	LOG_MSG(("\ncurrent time : %f", evt.time()));
@@ -38,7 +36,7 @@ double RobotController::onAction(ActionEvent &evt)
 			LOG_MSG(("Q (%f, %f, %f, %f)", my->qw(), my->qx(), my->qy(), my->qz()));
 
 			if (!my->dynamics()) {
-				double angle = 2*PI*cnt*10/360;
+				double angle = 2*M_PI*cnt*10/360;
 				double xx = 5.0*sin(angle);
 				double yy = 1.1;
 				double zz = 5.0*cos(angle);

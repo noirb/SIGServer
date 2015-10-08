@@ -14,8 +14,6 @@ public:
 	double onAction(ActionEvent &evt);
 };
 
-#define PI 3.1415926536
-
 double Watcher::onAction(ActionEvent &evt)
 {
 	static int cnt = 0;
@@ -41,14 +39,14 @@ double Watcher::onAction(ActionEvent &evt)
 		}
 
 		const double R = 5.0;
-		double angle = 2*PI*cnt*0.01;
+		double angle = 2*M_PI*cnt*0.01;
 		double xx = R*sin(angle);
 		double yy = my->y();
 		double zz = R*cos(angle);
 		
 		LOG_MSG(("pos (%f, %f, %f)", xx, yy, zz));
 		my->setPosition(xx, yy, zz);
-		my->setAxisAndAngle(0.0, 1.0, 0.0, angle+PI/2);
+		my->setAxisAndAngle(0.0, 1.0, 0.0, angle+M_PI/2);
 
 		
 	} catch(SimObj::Exception &e) {

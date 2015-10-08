@@ -25,8 +25,6 @@ private:
 	double m_xDest, m_yDest, m_zDest;
 };
 
-#define PI 3.14159265359
-
 double MoveController::onAction(ActionEvent &evt)
 {
 	static int cnt = 0;

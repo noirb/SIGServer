@@ -10,9 +10,7 @@ public:
 	double 	onAction(ActionEvent &evt);
 };
 
-#define PI 3.141592
-
-#define DEG2RAD(DEG) ( (PI) * (DEG) / 180.0 )
+#define DEG2RAD(DEG) ( (M_PI) * (DEG) / 180.0 )
 
 
 double AgentController::onAction(ActionEvent &evt)
@@ -47,7 +45,7 @@ double AgentController::onAction(ActionEvent &evt)
 		deg += 45;
 
 		static int cnt = 0;
-		double angle = 2*PI*cnt*0.01;
+		double angle = 2*M_PI*cnt*0.01;
 
 		double xx = 5*sin(angle);
 		double yy = 0.5;

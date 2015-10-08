@@ -12,8 +12,6 @@ public:
 	double onAction(ActionEvent &evt);
 };
 
-#define PI 3.14159265359
-
 double RobotController::onAction(ActionEvent &evt)
 {
 	LOG_MSG(("\ncurrent time : %f", evt.time()));
@@ -26,7 +24,7 @@ double RobotController::onAction(ActionEvent &evt)
 		obj->dump();
 		if (!obj->dynamics()) {
 
-			double angle = 2*PI*cnt*0.01;
+			double angle = 2*M_PI*cnt*0.01;
 
 			double xx = 5*sin(angle);
 			double yy = 0.5;

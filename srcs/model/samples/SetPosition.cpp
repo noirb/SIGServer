@@ -9,8 +9,7 @@ public:
 	double 	onAction(ActionEvent &evt);
 };
 
-#define PI 3.1415926536
-#define DEG2RAD(DEG) ( (PI)*(DEG)/180.0 )
+#define DEG2RAD(DEG) ( (M_PI)*(DEG)/180.0 )
 
 double AgentController::onAction(ActionEvent &evt)
 {

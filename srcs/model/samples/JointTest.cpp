@@ -35,9 +35,7 @@ static int curr = 0;
 
 #define ARRAY_SIZE(ARY) (int)(sizeof(ARY)/sizeof(ARY[0]))
 
-#define PI 3.14159265359
-
-#define DEG2RAD(DEG) ( ( (DEG)*(PI) ) / 180.0 )
+#define DEG2RAD(DEG) ( ( (DEG)*(M_PI) ) / 180.0 )
 
 double RobotController::onAction(ActionEvent &evt)
 {
