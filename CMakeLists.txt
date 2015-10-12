@@ -1,23 +1,27 @@
 #
+# SIGVerse
 #
 
 cmake_minimum_required(VERSION 2.8)
 
 PROJECT(SIGVerse CXX)
 
-set(SIGV_MAJOR_VERSION 2) 
-set(SIGV_MINOR_VERSION 3)
-set(SIGV_PATCH_VERSION 1)
-set(SIGV_VERSION ${SIGV_MAJOR_VERSION}.${SIGV_MINOR_VERSION})
-set(SIGV_FULL_VERSION ${SIGV_MAJOR_VERSION}.${SIGV_MINOR_VERSION}.${SIGV_PATCH_VERSION})
-
-add_subdirectory(srcs/commonlib)
-add_subdirectory(srcs/simserver)
-add_subdirectory(srcs/x3d)
-add_subdirectory(srcs/model)
-
 include("${PROJECT_SOURCE_DIR}/cmake/SIGVerse_Env.cmake")
+
+include("${PROJECT_SOURCE_DIR}/cmake/SIGVerse_commonlib.cmake")
+#add_subdirectory(srcs/sigverse/commonlib)
+add_subdirectory(srcs/sigverse/x3d/parser/cpp/X3DParser)
+add_subdirectory(srcs/sigverse/controller)
+add_subdirectory(srcs/sigverse/simserver)
+add_subdirectory(srcs/sigverse/tools)
+
 
 install(DIRECTORY jar DESTINATION share/sigverse
    FILES_MATCHING PATTERN "*.jar"
 )
+
+
+message(STATUS "SIGVERSE_ROOT_DIR:" ${SIGVERSE_ROOT_DIR})
+message(STATUS "ODE_ROOT_DIR:" ${ODE_ROOT_DIR})
+message(STATUS "XERCES_ROOT_DIR:" ${XERCES_ROOT_DIR})
+
