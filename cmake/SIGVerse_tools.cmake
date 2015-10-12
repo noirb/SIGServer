@@ -9,18 +9,25 @@ PROJECT(sigstart CXX)
 PROJECT(sigend CXX)
 
 
-include("${CMAKE_SOURCE_DIR}/cmake/SIGVerse_Env.cmake")
+#include("${CMAKE_SOURCE_DIR}/cmake/SIGVerse_Env.cmake")
+if(WIN32)
+#add_definitions(-DWIN32 -DIRWAS_SIMSERVER -DdDOUBLE -DSTRICT_INTERFACE -D_USE_MATH_DEFINES -D_CRT_SECURE_NO_WARNINGS)
+add_definitions(-DWIN32 -DdDOUBLE -DSTRICT_INTERFACE -DX3DPARSER_DISABLE_DEBUG_LOG -D_USE_MATH_DEFINES -D_CRT_SECURE_NO_WARNINGS)
+else()
+#add_definitions(-DIRWAS_SIMSERVER -DdDOUBLE -DSTRICT_INTERFACE)
+add_definitions(-DdDOUBLE -DSTRICT_INTERFACE -DX3DPARSER_DISABLE_DEBUG_LOG )
+endif()
 
 #message(STATUS "バイナリパス："  ${CMAKE_BINARY_DIR}/lib)
 #message(STATUS "CMAKE_CXX_FLAGS_RELWITHDEBINFO:" "${CMAKE_CXX_FLAGS_RELWITHDEBINFO}")
 
-  set(sendmsg_srcs sendmsg.cpp)
+  set(sendmsg_srcs    "${CMAKE_SOURCE_DIR}/srcs/sigverse/tools/sendmsg.cpp")
   set(sendmsg_headers "")
 
-  set(sigstart_srcs sigstart.cpp)
+  set(sigstart_srcs    "${CMAKE_SOURCE_DIR}/srcs/sigverse/tools/sigstart.cpp")
   set(sigstart_headers "")
 
-  set(sigend_srcs sigend.cpp)
+  set(sigend_srcs    "${CMAKE_SOURCE_DIR}/srcs/sigverse/tools/sigend.cpp")
   set(sigend_headers "")
 
 
@@ -76,3 +83,5 @@ SET_TARGET_PROPERTIES(sigend
  RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
  LINKER_LANGUAGE CXX)
 
+
+remove_definitions()

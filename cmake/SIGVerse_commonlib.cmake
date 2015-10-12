@@ -6,14 +6,18 @@ cmake_minimum_required(VERSION 2.8)
 
 PROJECT(commonlib CXX)
 
-include("${CMAKE_SOURCE_DIR}/cmake/SIGVerse_model_Env.cmake")
+#include("${CMAKE_SOURCE_DIR}/cmake/SIGVerse_model_Env.cmake")
+if(WIN32)
+#add_definitions(-DWIN32 -DIRWAS_SIMSERVER -DdDOUBLE -DSTRICT_INTERFACE -D_USE_MATH_DEFINES -D_CRT_SECURE_NO_WARNINGS)
+add_definitions(-DWIN32 -DdDOUBLE -DSTRICT_INTERFACE -DX3DPARSER_DISABLE_DEBUG_LOG -D_USE_MATH_DEFINES -D_CRT_SECURE_NO_WARNINGS)
+else()
+#add_definitions(-DIRWAS_SIMSERVER -DdDOUBLE -DSTRICT_INTERFACE)
+add_definitions(-DdDOUBLE -DSTRICT_INTERFACE -DX3DPARSER_DISABLE_DEBUG_LOG )
+endif()
 
 
 file(GLOB_RECURSE srcs    "${CMAKE_SOURCE_DIR}/srcs/sigverse/commonlib/*.cpp")
 file(GLOB_RECURSE headers "${CMAKE_SOURCE_DIR}/srcs/sigverse/commonlib/*.h")
-
-message(${CMAKE_SOURCE_DIR})
-message(${srcs})
 
 ADD_LIBRARY(commonlib STATIC
  ${srcs}
@@ -47,3 +51,5 @@ file(GLOB ode_headers "${ODE_ROOT_DIR}/include/ode/*.h")
 install(FILES ${ode_headers} DESTINATION include/ode)
 
 install(FILES "${ODE_ROOT_DIR}/lib/${VCVER}/Release/ode.lib" DESTINATION lib)
+
+remove_definitions()

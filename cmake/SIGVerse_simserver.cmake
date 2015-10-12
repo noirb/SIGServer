@@ -6,11 +6,19 @@ cmake_minimum_required(VERSION 2.8)
 
 PROJECT(sigserver CXX)
 
-include("${CMAKE_SOURCE_DIR}/cmake/SIGVerse_Env.cmake")
+#include("${CMAKE_SOURCE_DIR}/cmake/SIGVerse_Env.cmake")
+if(WIN32)
+#add_definitions(-DWIN32 -DIRWAS_SIMSERVER -DdDOUBLE -DSTRICT_INTERFACE -D_USE_MATH_DEFINES -D_CRT_SECURE_NO_WARNINGS)
+add_definitions(-DWIN32 -DdDOUBLE -DSTRICT_INTERFACE -DX3DPARSER_DISABLE_DEBUG_LOG -D_USE_MATH_DEFINES -D_CRT_SECURE_NO_WARNINGS)
+else()
+#add_definitions(-DIRWAS_SIMSERVER -DdDOUBLE -DSTRICT_INTERFACE)
+add_definitions(-DdDOUBLE -DSTRICT_INTERFACE -DX3DPARSER_DISABLE_DEBUG_LOG )
+endif()
 
-file(GLOB_RECURSE srcs "*.cpp")
-file(GLOB_RECURSE headers "*.h")
+file(GLOB_RECURSE srcs    "${CMAKE_SOURCE_DIR}/srcs/sigverse/simserver/*.cpp")
+file(GLOB_RECURSE headers "${CMAKE_SOURCE_DIR}/srcs/sigverse/simserver/*.h")
 
+if(WIN32)
 include_directories("${PROJECT_SOURCE_DIR}"
   "${SIGVERSE_ROOT_DIR}/srcs/commonlib"
   "${PROJECT_SOURCE_DIR}/readconf"
@@ -21,6 +29,7 @@ include_directories("${PROJECT_SOURCE_DIR}"
   "${XERCES_ROOT_DIR}/include"
   "${SIGVERSE_ROOT_DIR}/srcs/x3d/parser/cpp/X3DParser"
  )
+endif()
 
 if(WIN32)
     message(STATUS "VERSION ${VCVER}")
@@ -89,3 +98,5 @@ install(FILES ${data_xml} DESTINATION share/sigverse/data/xml
 )
 install(FILES ${data_wrl} ${data_x3d} DESTINATION share/sigverse/data/shape
 )
+
+remove_definitions()
