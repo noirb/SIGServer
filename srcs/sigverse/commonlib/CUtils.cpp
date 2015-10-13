@@ -7,9 +7,9 @@ Code given out at the 1985 UNIFORUM conference in Dallas.
 */
 
 #ifdef WIN32
-#include "fname.c"
-#include "jjudge.c"
-#include "wingetopt.c"
+#include "fname.cpp"
+#include "jjudge.cpp"
+#include "wingetopt.cpp"
 
 #include <Windows.h>
 #include <process.h>

@@ -16,9 +16,9 @@
 #include <string>
 #include <stdio.h>
 
-#include "Position.h"
-#include "Size.h"
-#include "Rotation.h"
+#include <sigverse/commonlib/Position.h>
+#include <sigverse/commonlib/Size.h>
+#include <sigverse/commonlib/Rotation.h>
 
 class ODEObj;
 class ODEWorld;

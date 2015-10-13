@@ -18,7 +18,7 @@
 #include <sigverse/commonlib/Logger.h>
 #include <sigverse/simserver/readconf/FilenameDB.h>
 #include <sigverse/simserver/readconf/SimpleShapeDB.h>
-#include "XMLUtils.h"
+#include <sigverse/simserver/readconf/XMLUtils.h>
 
 #include <string>
 #include <iostream>
