@@ -1,9 +1,9 @@
 #include <unistd.h>
-#include <sigverse/Controller.h>
-#include <sigverse/ControllerEvent.h>
-#include <sigverse/RawSound.h>
-#include <sigverse/Logger.h>
-#include <sigverse/Text.h>
+#include <sigverse/commonlib/Controller.h>
+#include <sigverse/commonlib/ControllerEvent.h>
+#include <sigverse/commonlib/RawSound.h>
+#include <sigverse/commonlib/Logger.h>
+#include <sigverse/commonlib/Text.h>
 
 class VoiceRecogController : public Controller
 {

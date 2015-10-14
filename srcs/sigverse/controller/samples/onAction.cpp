@@ -1,8 +1,8 @@
 /* $Id: onAction.cpp,v 1.1.1.1 2011-03-25 02:18:46 okamoto Exp $ */
 
-#include <sigverse/Controller.h>
-#include <sigverse/ControllerEvent.h>
-#include <sigverse/SimObj.h>
+#include <sigverse/commonlib/Controller.h>
+#include <sigverse/commonlib/ControllerEvent.h>
+#include <sigverse/commonlib/SimObj.h>
 
 class AgentController : public Controller
 {

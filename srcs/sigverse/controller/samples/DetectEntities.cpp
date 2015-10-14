@@ -1,6 +1,6 @@
-#include <sigverse/Controller.h>
-#include <sigverse/SimObj.h>
-#include <sigverse/Logger.h>
+#include <sigverse/commonlib/Controller.h>
+#include <sigverse/commonlib/SimObj.h>
+#include <sigverse/commonlib/Logger.h>
 
 
 class RobotController : public Controller

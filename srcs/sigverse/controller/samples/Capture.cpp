@@ -1,7 +1,7 @@
 /* $Id: Capture.cpp,v 1.1.1.1 2011-03-25 02:18:46 okamoto Exp $ */ 
-#include <sigverse/Controller.h>
-#include <sigverse/Logger.h>
-#include <sigverse/ViewImage.h>
+#include <sigverse/commonlib/Controller.h>
+#include <sigverse/commonlib/Logger.h>
+#include <sigverse/commonlib/ViewImage.h>
 #include <math.h>
 
 

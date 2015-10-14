@@ -1,8 +1,8 @@
-#include <sigverse/Controller.h>
-#include <sigverse/ControllerEvent.h>
-#include <sigverse/modelerr.h>
-#include <sigverse/SimObj.h>
-#include <sigverse/Logger.h>
+#include <sigverse/commonlib/Controller.h>
+#include <sigverse/commonlib/ControllerEvent.h>
+#include <sigverse/commonlib/modelerr.h>
+#include <sigverse/commonlib/SimObj.h>
+#include <sigverse/commonlib/Logger.h>
 #include <math.h>
 #include <string>
 

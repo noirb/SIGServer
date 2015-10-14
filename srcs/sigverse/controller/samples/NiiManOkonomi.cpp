@@ -2,9 +2,9 @@
  * Modified by okamoto on 2011-03-25
  */
 
-#include <sigverse/Controller.h>
-#include <sigverse/ControllerEvent.h>
-#include <sigverse/SimObj.h>
+#include <sigverse/commonlib/Controller.h>
+#include <sigverse/commonlib/ControllerEvent.h>
+#include <sigverse/commonlib/SimObj.h>
 
 
 

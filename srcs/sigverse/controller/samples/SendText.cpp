@@ -1,6 +1,6 @@
 /* $Id: SendText.cpp,v 1.1.1.1 2011-03-25 02:18:46 okamoto Exp $ */ 
-#include <sigverse/Controller.h>
-#include <sigverse/ControllerEvent.h>
+#include <sigverse/commonlib/Controller.h>
+#include <sigverse/commonlib/ControllerEvent.h>
 
 
 class RobotController : public Controller

@@ -2,54 +2,18 @@
 # SIGVerse commonlib
 #
 
-cmake_minimum_required(VERSION 2.8)
+file(GLOB_RECURSE commonlib_srcs    "${CMAKE_SOURCE_DIR}/srcs/sigverse/commonlib/*.cpp")
+file(GLOB_RECURSE commonlib_headers "${CMAKE_SOURCE_DIR}/srcs/sigverse/commonlib/*.h")
 
-PROJECT(commonlib CXX)
-
-#include("${CMAKE_SOURCE_DIR}/cmake/SIGVerse_model_Env.cmake")
-if(WIN32)
-#add_definitions(-DWIN32 -DIRWAS_SIMSERVER -DdDOUBLE -DSTRICT_INTERFACE -D_USE_MATH_DEFINES -D_CRT_SECURE_NO_WARNINGS)
-add_definitions(-DWIN32 -DdDOUBLE -DSTRICT_INTERFACE -DX3DPARSER_DISABLE_DEBUG_LOG -D_USE_MATH_DEFINES -D_CRT_SECURE_NO_WARNINGS)
-else()
-#add_definitions(-DIRWAS_SIMSERVER -DdDOUBLE -DSTRICT_INTERFACE)
-add_definitions(-DdDOUBLE -DSTRICT_INTERFACE -DX3DPARSER_DISABLE_DEBUG_LOG )
-endif()
-
-
-file(GLOB_RECURSE srcs    "${CMAKE_SOURCE_DIR}/srcs/sigverse/commonlib/*.cpp")
-file(GLOB_RECURSE headers "${CMAKE_SOURCE_DIR}/srcs/sigverse/commonlib/*.h")
-
-ADD_LIBRARY(commonlib STATIC
- ${srcs}
- ${headers}
-)
-
-#source_group("Source Files\\command"  FILES ${command_srcs})
-#source_group("Header Files\\command"  FILES ${command_headers})
+add_library(commonlib STATIC ${commonlib_srcs} ${commonlib_headers})
 
 if(WIN32)
-SET( CMAKE_STATIC_LINKER_FLAGS  "${CMAKE_SHARED_LINKER_FLAGS}  /LTCG /NODEFAULTLIB:MSVCRT" )
+    set( CMAKE_STATIC_LINKER_FLAGS  "${CMAKE_SHARED_LINKER_FLAGS}  /LTCG /NODEFAULTLIB:MSVCRT" )
     target_link_libraries(commonlib Ws2_32)
     target_link_libraries(commonlib debug oded optimized ode)
 endif()
 
-SET_TARGET_PROPERTIES(commonlib
-  PROPERTIES
-  RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
-  ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
-  LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
-  LINKER_LANGUAGE CXX)
+set_target_properties(commonlib PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib" LINKER_LANGUAGE CXX)
 
 install(FILES  ${headers} DESTINATION include/sigverse)
 
-
-#
-#  ODE
-#
-file(GLOB ode_headers "${ODE_ROOT_DIR}/include/ode/*.h")
-
-install(FILES ${ode_headers} DESTINATION include/ode)
-
-install(FILES "${ODE_ROOT_DIR}/lib/${VCVER}/Release/ode.lib" DESTINATION lib)
-
-remove_definitions()

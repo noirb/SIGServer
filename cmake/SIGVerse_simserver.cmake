@@ -2,18 +2,6 @@
 # SIGVerse sigserver
 #
 
-cmake_minimum_required(VERSION 2.8)
-
-PROJECT(sigserver CXX)
-
-#include("${CMAKE_SOURCE_DIR}/cmake/SIGVerse_Env.cmake")
-if(WIN32)
-#add_definitions(-DWIN32 -DIRWAS_SIMSERVER -DdDOUBLE -DSTRICT_INTERFACE -D_USE_MATH_DEFINES -D_CRT_SECURE_NO_WARNINGS)
-add_definitions(-DWIN32 -DdDOUBLE -DSTRICT_INTERFACE -DX3DPARSER_DISABLE_DEBUG_LOG -D_USE_MATH_DEFINES -D_CRT_SECURE_NO_WARNINGS)
-else()
-#add_definitions(-DIRWAS_SIMSERVER -DdDOUBLE -DSTRICT_INTERFACE)
-add_definitions(-DdDOUBLE -DSTRICT_INTERFACE -DX3DPARSER_DISABLE_DEBUG_LOG )
-endif()
 
 file(GLOB_RECURSE srcs    "${CMAKE_SOURCE_DIR}/srcs/sigverse/simserver/*.cpp")
 file(GLOB_RECURSE headers "${CMAKE_SOURCE_DIR}/srcs/sigverse/simserver/*.h")
@@ -54,14 +42,14 @@ link_directories(
 )
 endif()
 
-ADD_EXECUTABLE(sigserver ${srcs} ${headers})
+add_executable(sigserver ${srcs} ${headers})
 
 
 
 if(WIN32)
 #  SET( CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS}" )
-  SET( CMAKE_EXE_LINKER_FLAGS_RELEASE  "/LTCG ${CMAKE_EXE_LINKER_FLAGS}" )
-  SET( CMAKE_EXE_LINKER_FLAGS_DEBUG  "${CMAKE_EXE_LINKER_FLAGS}" )
+  set( CMAKE_EXE_LINKER_FLAGS_RELEASE  "/LTCG ${CMAKE_EXE_LINKER_FLAGS}" )
+  set( CMAKE_EXE_LINKER_FLAGS_DEBUG  "${CMAKE_EXE_LINKER_FLAGS}" )
   target_link_libraries(sigserver Ws2_32 jvm libx3d)
   target_link_libraries(sigserver debug oded  optimized ode)
   target_link_libraries(sigserver debug xerces-c_3D  optimized xerces-c_3)
@@ -78,7 +66,7 @@ else()
 endif()
 
 
-SET_TARGET_PROPERTIES(sigserver
+set_target_properties(sigserver
  PROPERTIES
  RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
  ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
@@ -99,4 +87,3 @@ install(FILES ${data_xml} DESTINATION share/sigverse/data/xml
 install(FILES ${data_wrl} ${data_x3d} DESTINATION share/sigverse/data/shape
 )
 
-remove_definitions()

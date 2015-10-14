@@ -1,8 +1,8 @@
 /* $Id: scSendSound.cpp,v 1.2 2011-05-12 08:33:53 msi Exp $ */
-#include <sigverse/Controller.h>
-#include <sigverse/ControllerEvent.h>
-#include <sigverse/RawSound.h>
-#include <sigverse/Logger.h>
+#include <sigverse/commonlib/Controller.h>
+#include <sigverse/commonlib/ControllerEvent.h>
+#include <sigverse/commonlib/RawSound.h>
+#include <sigverse/commonlib/Logger.h>
 
 
 class RobotController : public Controller

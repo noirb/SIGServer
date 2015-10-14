@@ -1,8 +1,8 @@
 /* $Id: GetParts.cpp,v 1.2 2011-06-08 10:07:57 msi Exp $ */
-#include <sigverse/Controller.h>
-#include <sigverse/ControllerEvent.h>
-#include <sigverse/SimObj.h>
-#include <sigverse/Logger.h>
+#include <sigverse/commonlib/Controller.h>
+#include <sigverse/commonlib/ControllerEvent.h>
+#include <sigverse/commonlib/SimObj.h>
+#include <sigverse/commonlib/Logger.h>
 
 class AgentController : public Controller
 {
