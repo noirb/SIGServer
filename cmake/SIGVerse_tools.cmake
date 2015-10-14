@@ -2,17 +2,17 @@
 # SIGVerse tools
 #
 
-set(sendmsg_srcs    "${CMAKE_SOURCE_DIR}/srcs/sigverse/tools/sendmsg.cpp")
+set(sendmsg_srcs    "${PROJECT_SOURCE_DIR}/srcs/sigverse/tools/sendmsg.cpp")
 set(sendmsg_headers "")
 
-set(sigstart_srcs    "${CMAKE_SOURCE_DIR}/srcs/sigverse/tools/sigstart.cpp")
+set(sigstart_srcs    "${PROJECT_SOURCE_DIR}/srcs/sigverse/tools/sigstart.cpp")
 set(sigstart_headers "")
 
-set(sigend_srcs    "${CMAKE_SOURCE_DIR}/srcs/sigverse/tools/sigend.cpp")
+set(sigend_srcs    "${PROJECT_SOURCE_DIR}/srcs/sigverse/tools/sigend.cpp")
 set(sigend_headers "")
 
 
-link_directories("${CMAKE_BINARY_DIR}/lib" "${ODE_ROOT_DIR}/lib/${VCVER}")
+link_directories("${PROJECT_BINARY_DIR}/lib" "${ODE_ROOT_DIR}/lib/${VCVER}")
 
 add_executable(sendmsg  ${sendmsg_srcs}  ${sendmsg_headers} )
 add_executable(sigstart ${sigstart_srcs} ${sigstart_headers} )
@@ -32,16 +32,22 @@ if(WIN32)
     configure_file(${PROJECT_SOURCE_DIR}/sigmake.bat.in ${CMAKE_BINARY_DIR}/sigmake.bat)
     configure_file(${PROJECT_SOURCE_DIR}/mkdll.nmake.in ${CMAKE_BINARY_DIR}/mkdll.nmake)
     configure_file(${PROJECT_SOURCE_DIR}/sigcreate.bat.in ${CMAKE_BINARY_DIR}/sigcreate.bat)
+    
     install(FILES ${CMAKE_BINARY_DIR}/sigmake.bat ${CMAKE_BINARY_DIR}/sigcreate.bat DESTINATION bin)
     install(FILES ${CMAKE_BINARY_DIR}/mkdll.nmake DESTINATION share/sigverse/etc)
 else()
-    target_link_libraries(sendmsg  commonlib ${JAVA_JVM_LIBRARY} m dl ode pthread xerces-c )
-    target_link_libraries(sigstart commonlib ${JAVA_JVM_LIBRARY} m dl ode pthread xerces-c )
-    target_link_libraries(sigend   commonlib ${JAVA_JVM_LIBRARY} m dl ode pthread xerces-c )
+    target_link_libraries(sendmsg  commonlib ${JAVA_JVM_LIBRARY} m dl ode pthread xerces-c)
+    target_link_libraries(sigstart commonlib ${JAVA_JVM_LIBRARY} m dl ode pthread xerces-c)
+    target_link_libraries(sigend   commonlib ${JAVA_JVM_LIBRARY} m dl ode pthread xerces-c)
+    
+    configure_file(${PROJECT_SOURCE_DIR}/srcs/sigverse/tools/sigcreate.sh ${PROJECT_BINARY_DIR}/bin/sigcreate.sh)
+    configure_file(${PROJECT_SOURCE_DIR}/srcs/sigverse/tools/sigkill.sh   ${PROJECT_BINARY_DIR}/bin/sigkill.sh)
 endif()
 
 
-set_target_properties(sendmsg  PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin" LINKER_LANGUAGE CXX)
-set_target_properties(sigstart PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin" LINKER_LANGUAGE CXX)
-set_target_properties(sigend   PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin" LINKER_LANGUAGE CXX)
+set_target_properties(sendmsg  PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin" LINKER_LANGUAGE CXX)
+set_target_properties(sigstart PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin" LINKER_LANGUAGE CXX)
+set_target_properties(sigend   PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin" LINKER_LANGUAGE CXX)
 
+install(FILES ${PROJECT_BINARY_DIR}/bin/sigcreate.sh DESTINATION "${INSTALL_DIR}/bin")
+install(FILES ${PROJECT_BINARY_DIR}/bin/sigkill.sh   DESTINATION "${INSTALL_DIR}/bin")

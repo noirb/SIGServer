@@ -8,9 +8,15 @@ project(SIGVerse CXX)
 
 set(SIGSERVER_MAJOR_VERSION 2) 
 set(SIGSERVER_MINOR_VERSION 3)
-set(SIGSERVER_PATCH_VERSION 1)
+set(SIGSERVER_PATCH_VERSION 2)
 set(SIGSERVER_VERSION ${SIGSERVER_MAJOR_VERSION}.${SIGSERVER_MINOR_VERSION})
 set(SIGSERVER_FULL_VERSION ${SIGSERVER_MAJOR_VERSION}.${SIGSERVER_MINOR_VERSION}.${SIGSERVER_PATCH_VERSION})
+
+set(CMAKE_INSTALL_PREFIX "~")
+set(INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/sigverse-${SIGSERVER_FULL_VERSION})
+
+message(STATUS "CMAKE_INSTALL_PREFIX:" ${CMAKE_INSTALL_PREFIX})
+message(STATUS "INSTALL_DIR:" ${INSTALL_DIR})
 
 if(MSVC10)
     set(VCVER "vs2010")
@@ -35,9 +41,9 @@ else()
     add_definitions(-DdDOUBLE -DSTRICT_INTERFACE -DX3DPARSER_DISABLE_DEBUG_LOG)
 endif()
 
-include("${CMAKE_SOURCE_DIR}/cmake/SIGVerse_find_libs.cmake")
+include("${PROJECT_SOURCE_DIR}/cmake/SIGVerse_find_libs.cmake")
 
-include_directories("${CMAKE_SOURCE_DIR}/srcs" "${ODE_ROOT_DIR}/include")
+include_directories("${PROJECT_SOURCE_DIR}/srcs" "${ODE_ROOT_DIR}/include")
 
 
 include("${PROJECT_SOURCE_DIR}/cmake/SIGVerse_commonlib.cmake")
@@ -60,8 +66,13 @@ if(WIN32)
     install(FILES "${ODE_ROOT_DIR}/lib/${VCVER}/Release/ode.lib" DESTINATION lib)
 endif()
 
+file(GLOB_RECURSE sigverse_headers "${PROJECT_SOURCE_DIR}/srcs/sigverse/*.h")
+install(FILES ${sigverse_headers} DESTINATION "${INSTALL_DIR}/include/sigverse")
+
 
 message(STATUS "SIGVERSE_ROOT_DIR:" ${SIGVERSE_ROOT_DIR})
 message(STATUS "ODE_ROOT_DIR:" ${ODE_ROOT_DIR})
 message(STATUS "XERCES_ROOT_DIR:" ${XERCES_ROOT_DIR})
 
+message(STATUS "CMAKE_INSTALL_PREFIX:" ${CMAKE_INSTALL_PREFIX})
+message(STATUS "INSTALL_DIR:" ${INSTALL_DIR})
