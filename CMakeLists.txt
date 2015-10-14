@@ -4,9 +4,7 @@
 
 cmake_minimum_required(VERSION 2.8)
 
-PROJECT(SIGVerse CXX)
-
-#include("${PROJECT_SOURCE_DIR}/cmake/SIGVerse_Env.cmake")
+project(SIGVerse CXX)
 
 set(SIGSERVER_MAJOR_VERSION 2) 
 set(SIGSERVER_MINOR_VERSION 3)
@@ -15,20 +13,27 @@ set(SIGSERVER_VERSION ${SIGSERVER_MAJOR_VERSION}.${SIGSERVER_MINOR_VERSION})
 set(SIGSERVER_FULL_VERSION ${SIGSERVER_MAJOR_VERSION}.${SIGSERVER_MINOR_VERSION}.${SIGSERVER_PATCH_VERSION})
 
 if(MSVC10)
-  set(VCVER "vs2010")
-  set(VCVER_S "VC10")
+    set(VCVER "vs2010")
+    set(VCVER_S "VC10")
 elseif(MSVC11)
-  set(VCVER "vs2012")
-  set(VCVER_S "VC11")
+    set(VCVER "vs2012")
+    set(VCVER_S "VC11")
 elseif(MSVC12)
-  set(VCVER "vs2013")
-  set(VCVER_S "VC12")
+    set(VCVER "vs2013")
+    set(VCVER_S "VC12")
 else()
-  set(VCVER "")
-  set(VCVER "")
+    set(VCVER "")
+    set(VCVER_s "")
 endif()
 
-add_definitions( -std=c++11 -D__cplusplus=201103L )
+
+add_compile_options(-std=c++11 -D__cplusplus=201103L)
+
+if(WIN32)
+    add_definitions(-DWIN32 -DdDOUBLE -DSTRICT_INTERFACE -DX3DPARSER_DISABLE_DEBUG_LOG -D_USE_MATH_DEFINES -D_CRT_SECURE_NO_WARNINGS)
+else()
+    add_definitions(-DdDOUBLE -DSTRICT_INTERFACE -DX3DPARSER_DISABLE_DEBUG_LOG)
+endif()
 
 include("${CMAKE_SOURCE_DIR}/cmake/SIGVerse_find_libs.cmake")
 
@@ -43,9 +48,17 @@ include("${PROJECT_SOURCE_DIR}/cmake/SIGVerse_tools.cmake")
 
 
 
-install(DIRECTORY jar DESTINATION share/sigverse
-   FILES_MATCHING PATTERN "*.jar"
-)
+install(DIRECTORY "${PROJECT_SOURCE_DIR}/srcs/sigverse/x3d/jars" DESTINATION share/sigverse FILES_MATCHING PATTERN "*.jar")
+
+#
+#  ODE
+#
+if(WIN32)
+    file(GLOB ode_headers "${ODE_ROOT_DIR}/include/ode/*.h")
+    
+    install(FILES ${ode_headers} DESTINATION include/ode)
+    install(FILES "${ODE_ROOT_DIR}/lib/${VCVER}/Release/ode.lib" DESTINATION lib)
+endif()
 
 
 message(STATUS "SIGVERSE_ROOT_DIR:" ${SIGVERSE_ROOT_DIR})
