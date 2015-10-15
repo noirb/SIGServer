@@ -46,3 +46,5 @@ set_target_properties(sigrunac PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BI
 file(GLOB sample_ctrl "${PROJECT_SOURCE_DIR}/srcs/sigverse/controller/samples/*.cpp")
 install(FILES ${sample_ctrl} DESTINATION "${INSTALL_DIR}/share/samples" )
 
+install(FILES "${PROJECT_BINARY_DIR}/bin/sigrunac" DESTINATION "${INSTALL_DIR}/bin")
+

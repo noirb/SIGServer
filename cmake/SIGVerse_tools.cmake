@@ -39,9 +39,6 @@ else()
     target_link_libraries(sendmsg  commonlib ${JAVA_JVM_LIBRARY} m dl ode pthread xerces-c)
     target_link_libraries(sigstart commonlib ${JAVA_JVM_LIBRARY} m dl ode pthread xerces-c)
     target_link_libraries(sigend   commonlib ${JAVA_JVM_LIBRARY} m dl ode pthread xerces-c)
-    
-    configure_file(${PROJECT_SOURCE_DIR}/srcs/sigverse/tools/sigcreate.sh ${PROJECT_BINARY_DIR}/bin/sigcreate.sh)
-    configure_file(${PROJECT_SOURCE_DIR}/srcs/sigverse/tools/sigkill.sh   ${PROJECT_BINARY_DIR}/bin/sigkill.sh)
 endif()
 
 
@@ -49,5 +46,9 @@ set_target_properties(sendmsg  PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BI
 set_target_properties(sigstart PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin" LINKER_LANGUAGE CXX)
 set_target_properties(sigend   PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin" LINKER_LANGUAGE CXX)
 
-install(FILES ${PROJECT_BINARY_DIR}/bin/sigcreate.sh DESTINATION "${INSTALL_DIR}/bin")
-install(FILES ${PROJECT_BINARY_DIR}/bin/sigkill.sh   DESTINATION "${INSTALL_DIR}/bin")
+install(FILES ${PROJECT_SOURCE_DIR}/srcs/sigverse/tools/sigcreate.sh DESTINATION "${INSTALL_DIR}/bin")
+install(FILES ${PROJECT_SOURCE_DIR}/srcs/sigverse/tools/sigkill.sh   DESTINATION "${INSTALL_DIR}/bin")
+
+install(FILES "${PROJECT_BINARY_DIR}/bin/sendmsg"  DESTINATION "${INSTALL_DIR}/bin")
+install(FILES "${PROJECT_BINARY_DIR}/bin/sigstart" DESTINATION "${INSTALL_DIR}/bin")
+install(FILES "${PROJECT_BINARY_DIR}/bin/sigend"   DESTINATION "${INSTALL_DIR}/bin")

@@ -62,14 +62,15 @@ else()
 endif()
 
 
-set_target_properties(sigserver PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin" LINKER_LANGUAGE CXX)
+set_target_properties(sigserver PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin" LINKER_LANGUAGE CXX)
 
 
 file(GLOB data_xml "${PROJECT_SOURCE_DIR}/shapes/*.xml")
 file(GLOB data_wrl "${PROJECT_SOURCE_DIR}/shapes/*.wrl")
 file(GLOB data_x3d "${PROJECT_SOURCE_DIR}/shapes/*.x3d")
 
-install(FILES ${PROJECT_BINARY_DIR}/sigserver.sh DESTINATION "${INSTALL_DIR}/bin")
-install(FILES ${data_xml}                        DESTINATION "${INSTALL_DIR}/share/data/xml")
-install(FILES ${data_wrl} ${data_x3d}            DESTINATION "${INSTALL_DIR}/share/data/shape")
+install(FILES ${PROJECT_BINARY_DIR}/bin/sigserver.sh DESTINATION "${INSTALL_DIR}/bin")
+install(FILES ${data_xml}                            DESTINATION "${INSTALL_DIR}/share/data/xml")
+install(FILES ${data_wrl} ${data_x3d}                DESTINATION "${INSTALL_DIR}/share/data/shape")
 
+install(FILES "${PROJECT_BINARY_DIR}/bin/sigserver" DESTINATION "${INSTALL_DIR}/bin")

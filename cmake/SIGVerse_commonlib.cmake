@@ -15,5 +15,3 @@ endif()
 
 set_target_properties(commonlib PROPERTIES ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib" LINKER_LANGUAGE CXX)
 
-#install(FILES ${commonlib_headers} DESTINATION "include/sigverse")
-
