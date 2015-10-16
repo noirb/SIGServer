@@ -37,8 +37,9 @@ else()
     )
 endif()
 
-add_executable(sigserver ${sigserver_srcs} ${sigserver_headers})
+add_executable(sigserver ${sigserver_srcs} ${sigserver_headers} ${commonlib_srcs} ${commonlib_headers})
 
+set_target_properties(sigserver PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin" LINKER_LANGUAGE CXX)
 
 
 if(WIN32)
@@ -57,20 +58,9 @@ if(WIN32)
     file(GLOB xerces_dll2 "${XERCES_ROOT_DIR}/bin/xerces-c*.dll")
     install(FILES ${xerces_dll} ${xerces_dll2} DESTINATION bin)
 else()
-    target_link_libraries(sigserver commonlib x3dparser ${JAVA_JVM_LIBRARY} m dl ode pthread xerces-c )
-    configure_file(${PROJECT_SOURCE_DIR}/srcs/sigverse/simserver/sigserver.sh.in ${PROJECT_BINARY_DIR}/bin/sigserver.sh)
+    target_link_libraries(sigserver x3dparser ${JAVA_JVM_LIBRARY} dl ode xerces-c pthread m)
 endif()
 
 
-set_target_properties(sigserver PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin" LINKER_LANGUAGE CXX)
 
-
-file(GLOB data_xml "${PROJECT_SOURCE_DIR}/shapes/*.xml")
-file(GLOB data_wrl "${PROJECT_SOURCE_DIR}/shapes/*.wrl")
-file(GLOB data_x3d "${PROJECT_SOURCE_DIR}/shapes/*.x3d")
-
-install(FILES ${PROJECT_BINARY_DIR}/bin/sigserver.sh DESTINATION "${INSTALL_DIR}/bin")
-install(FILES ${data_xml}                            DESTINATION "${INSTALL_DIR}/share/data/xml")
-install(FILES ${data_wrl} ${data_x3d}                DESTINATION "${INSTALL_DIR}/share/data/shape")
-
-install(FILES "${PROJECT_BINARY_DIR}/bin/sigserver" DESTINATION "${INSTALL_DIR}/bin")
+install(FILES "${PROJECT_BINARY_DIR}/bin/sigserver" DESTINATION "${INSTALL_DIR}/bin" PERMISSIONS ${PERMISSION755})

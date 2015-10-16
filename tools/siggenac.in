@@ -21,54 +21,51 @@ cat << EOF
  *
  *   To compile to create shared library, type
  *
- *    % g++ -shared -o $1.so -I @includedir@ -DUSE_ODE -DCONTROLLER -DdDOUBLE -fPIC $1.cpp
+ *    % g++ -shared -o $1.so -I @INSTALL_DIR@/include -DUSE_ODE -DCONTROLLER -DdDOUBLE -fPIC $1.cpp
  *
- *   Or copy and use @samplesdir@/Makefile.controller.
+ *   Or copy and use @INSTALL_DIR@/share/samples/Makefile.controller.
  *
  */
 
-#include <sigverse/Controller.h>
-#include <sigverse/ControllerEvent.h>
-//#include <sigverse/Logger.h>
-//#include <sigverse/SimObj.h>
-//#include <sigverse/ViewImage.h>
-//#include <sigverse/RawSound.h>
-//#include <sigverse/Logger.h>
-//#include <sigverse/Text.h>
+#include <sigverse/commonlib/Controller.h>
+#include <sigverse/commonlib/ControllerEvent.h>
+//#include <sigverse/commonlib/Logger.h>
+//#include <sigverse/commonlib/SimObj.h>
+//#include <sigverse/commonlib/ViewImage.h>
 
 
 class $1 : public Controller
 {
 public:
-	void 	onInit(InitEvent &evt);
-	double 	onAction(ActionEvent &evt);
-	void 	onRecvText(RecvTextEvent &evt);
-	void	onRecvSound(RecvSoundEvent &evt);
-	void	onRecvMessage(RecvMessageEvent &evt);
+	void    onInit(InitEvent &evt);
+	double  onAction(ActionEvent &evt);
+	void    onRecvText(RecvTextEvent &evt);
+	void    onRecvSound(RecvSoundEvent &evt);
+	void    onRecvMessage(RecvMessageEvent &evt);
 };
 
 
-void 	 $1::onInit(InitEvent &evt)
+void $1::onInit(InitEvent &evt)
 {
 
 }
 
-double 	 $1::onAction(ActionEvent &evt)
+double $1::onAction(ActionEvent &evt)
 {
 
 }
 
-void 	 $1::onRecvText(RecvTextEvent &evt)
+void $1::onRecvText(RecvTextEvent &evt)
 {
 
 }
 
-void	 $1::onRecvSound(RecvSoundEvent &evt)
+void $1::onRecvSound(RecvSoundEvent &evt)
 {
 
 }
 
-void	 $1::onRecvMessage(RecvMessageEvent &evt)
+void $1::onRecvMessage(RecvMessageEvent &evt)
 {
 
 }

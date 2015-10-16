@@ -2,4 +2,4 @@
 
 java.library.path=/tmp
 
-java.class.path=@jardir@/X3DParser.jar:@jardir@/xj3d-all.jar
+java.class.path=@INSTALL_DIR@/share/jars/X3DParser.jar:@INSTALL_DIR@/share/jars/xj3d-all.jar
