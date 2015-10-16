@@ -5,6 +5,7 @@ if(WIN32)
     list(APPEND LIB_SEARCH_PATH_WIN32 
         "C:/Program Files (x86)/*"
         "C:/Program Files/*"
+        "C:/*/*" 
         "C:/*" 
         "D:/*/*/*"
         "D:/*/*"
@@ -12,6 +13,8 @@ if(WIN32)
         "E:/*/*/*"
         "E:/*/*"
         "E:/*"
+        "C:/SIGVerse/ext/Java/*"
+        "C:/Program Files (x86)/Java/*"
     )
     find_path(SIGVERSE_ROOT_DIR docs/sig_server       HINTS ${LIB_SEARCH_PATH_WIN32})
     find_path(ODE_ROOT_DIR      ode.pc.in             HINTS ${LIB_SEARCH_PATH_WIN32})

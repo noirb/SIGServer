@@ -2,18 +2,13 @@
 # SIGVerse sigrunac
 #
 
-if(WIN32)
-    set(sigrunac_srcs runmain.cpp ControllerLib.cpp wingetopt.cpp)
-    set(sigrunac_headers ControllerLib.h wingetopt.h)
-else()
-    file(GLOB_RECURSE sigrunac_srcs    "${PROJECT_SOURCE_DIR}/srcs/sigverse/controller/*.cpp")
-    file(GLOB_RECURSE sigrunac_headers "${PROJECT_SOURCE_DIR}/srcs/sigverse/controller/*.h")
+file(GLOB_RECURSE sigrunac_srcs    "${PROJECT_SOURCE_DIR}/srcs/sigverse/controller/*.cpp")
+file(GLOB_RECURSE sigrunac_headers "${PROJECT_SOURCE_DIR}/srcs/sigverse/controller/*.h")
 
-    file(GLOB_RECURSE exclude_files "${PROJECT_SOURCE_DIR}/srcs/sigverse/controller/samples/*")
+file(GLOB_RECURSE exclude_files "${PROJECT_SOURCE_DIR}/srcs/sigverse/controller/samples/*")
     
-    list(REMOVE_ITEM sigrunac_srcs ${exclude_files})
-    list(REMOVE_ITEM sigrunac_headers ${exclude_files})
-endif()
+list(REMOVE_ITEM sigrunac_srcs ${exclude_files})
+list(REMOVE_ITEM sigrunac_headers ${exclude_files})
 
 
 link_directories("${PROJECT_BINARY_DIR}/lib" "${ODE_ROOT_DIR}/lib/${VCVER}")
@@ -27,7 +22,7 @@ set_target_properties(sigrunac PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BI
 if(WIN32)
     set( CMAKE_EXE_LINKER_FLAGS_RELEASE  "/LTCG ${CMAKE_EXE_LINKER_FLAGS}" )
     set( CMAKE_EXE_LINKER_FLAGS_DEBUG  "${CMAKE_EXE_LINKER_FLAGS}" )
-    target_link_libraries(sigrunac commonlib x3dparser)
+    target_link_libraries(sigrunac x3dparser ${JAVA_JVM_LIBRARY} dl ode xerces-c pthread m)
 
     file(TO_NATIVE_PATH ${CMAKE_INSTALL_PREFIX} CMAKE_INSTALL_PREFIX)
 else()
