@@ -9,7 +9,7 @@
 #include <getopt.h>
 #include <arpa/inet.h>
 #else
-#include "wingetopt.h"
+#include <sigverse/commonlib/wingetopt.h>
 #include <sstream>
 #endif
 #include <sys/types.h>

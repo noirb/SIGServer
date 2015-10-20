@@ -8,7 +8,7 @@ Code given out at the 1985 UNIFORUM conference in Dallas.
 
 #ifndef __GNUC__
 
-#include "wingetopt.h"
+#include <sigverse/commonlib/wingetopt.h>
 #include <stdio.h>
 
 #define NULL 0

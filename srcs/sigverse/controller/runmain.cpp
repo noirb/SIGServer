@@ -3,7 +3,7 @@
  */
 
 #ifdef WIN32
-#include "wingetopt.h"
+#include <sigverse/commonlib/wingetopt.h>
 #else
 #include <getopt.h>
 #endif
