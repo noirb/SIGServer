@@ -11,7 +11,6 @@ list(REMOVE_ITEM sigrunac_srcs ${exclude_files})
 list(REMOVE_ITEM sigrunac_headers ${exclude_files})
 
 
-#link_directories("${PROJECT_BINARY_DIR}/lib" "${ODE_ROOT_DIR}/lib/Release")
 if(WIN32)
     include_directories(
         "${XERCES_ROOT_DIR}/src"
@@ -33,7 +32,7 @@ else()
     )
 endif()
 
-add_executable(sigrunac ${sigrunac_srcs} ${sigrunac_headers} ${commonlib_srcs} ${commonlib_headers})
+add_executable(sigrunac ${sigrunac_srcs} ${sigrunac_headers})
 
 set_target_properties(sigrunac PROPERTIES COMPILE_DEFINITIONS "CONTROLLER")
 set_target_properties(sigrunac PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin" LINKER_LANGUAGE CXX)
@@ -50,14 +49,14 @@ if(WIN32)
 
 #    file(TO_NATIVE_PATH ${CMAKE_INSTALL_PREFIX} CMAKE_INSTALL_PREFIX)
 else()
-    target_link_libraries(sigrunac x3dparser ${JAVA_JVM_LIBRARY} dl ode xerces-c pthread m)
+    target_link_libraries(sigrunac commonlib_controller x3dparser ${JAVA_JVM_LIBRARY} dl ode xerces-c pthread m)
 endif()
 
 
 
 #
 #
-install(DIRECTORY "${PROJECT_SOURCE_DIR}/srcs/sigverse/controller/samples" DESTINATION "${INSTALL_DIR}/share" FILES_MATCHING PATTERN "*.cpp")
+install(DIRECTORY "${PROJECT_SOURCE_DIR}/srcs/sigverse/controller/samples" DESTINATION "${INSTALL_DIR}/share" FILES_MATCHING PATTERN "*")
 
 if(WIN32)
     install(FILES "${PROJECT_BINARY_DIR}/bin/${CMAKE_CONFIGURATION_TYPES}/sigrunac.exe" DESTINATION "${INSTALL_DIR}/bin")

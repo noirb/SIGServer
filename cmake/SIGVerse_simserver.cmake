@@ -26,7 +26,7 @@ else()
     )
 endif()
 
-add_executable(sigserver ${sigserver_srcs} ${sigserver_headers} ${commonlib_srcs} ${commonlib_headers})
+add_executable(sigserver ${sigserver_srcs} ${sigserver_headers})
 
 set_target_properties(sigserver PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin" LINKER_LANGUAGE CXX)
 
@@ -46,7 +46,7 @@ if(WIN32)
     file(GLOB xerces_dll2 "${XERCES_ROOT_DIR}/bin/xerces-c*.dll")
     install(FILES ${xerces_dll} ${xerces_dll2} DESTINATION bin)
 else()
-    target_link_libraries(sigserver x3dparser ${JAVA_JVM_LIBRARY} dl ode xerces-c pthread m)
+    target_link_libraries(sigserver commonlib_server x3dparser ${JAVA_JVM_LIBRARY} dl ode xerces-c pthread m)
 endif()
 
 

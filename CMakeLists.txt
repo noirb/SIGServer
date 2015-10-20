@@ -64,7 +64,10 @@ install(FILES ${data_xml}             DESTINATION "${INSTALL_DIR}/share/data/xml
 install(FILES ${data_wrl} ${data_x3d} DESTINATION "${INSTALL_DIR}/share/data/shape")
 
 # Install Headers
-install(DIRECTORY "${PROJECT_SOURCE_DIR}/srcs/sigverse" DESTINATION "${INSTALL_DIR}/include" FILES_MATCHING PATTERN "*.h")
+file(GLOB header_commonlib "${PROJECT_SOURCE_DIR}/srcs/sigverse/commonlib/*.h")
+file(GLOB header_controller "${PROJECT_SOURCE_DIR}/srcs/sigverse/commonlib/comm/controller/*.h")
+install(FILES ${header_commonlib}  DESTINATION "${INSTALL_DIR}/include/sigverse/commonlib/")
+install(FILES ${header_controller} DESTINATION "${INSTALL_DIR}/include/sigverse/commonlib/comm/controller/")
 
 
 #

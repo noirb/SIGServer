@@ -1,4 +1,29 @@
+@echo off
 
-mkdir %1
-copy ${CMAKE_INSTALL_PREFIX}\bin\sigmake.bat %1
-copy ${CMAKE_INSTALL_PREFIX}\bin\sigserver.bat %1
+if "%1" == "" (
+    set TARGET_DIR=%~dp0..\work
+) else (
+    set TARGET_DIR=%1
+)
+
+mkdir %TARGET_DIR%
+
+type nul > %1\sigmake.bat
+
+setlocal ENABLEDELAYEDEXPANSION
+
+for /f "delims=" %%A in (%~dp0sigmake.bat.txt) do (
+    set line=%%A
+    echo !line:"installed_dir"=%~dp0..\!>>%TARGET_DIR%\sigmake.bat
+)
+
+for /f "delims=" %%A in (%~dp0sigserver.bat.txt) do (
+    set line=%%A
+    echo !line:"installed_dir"=%~dp0..\!>>%TARGET_DIR%\sigserver.bat
+)
+
+endlocal
+
+copy %~dp0ControllerTempl.cpp %TARGET_DIR%
+@echo on
+

@@ -5,7 +5,7 @@ CXX = g++
 DEBUG = -g -Wall
 DEFINE = -DUSE_ODE -DCONTROLLER -DdDOUBLE -D_DEBUG
 #DEFINE = -DUSE_ODE -DCONTROLLER -DdDOUBLE
-INCLUDE = -I @includedir@ -I @sigincludedir@
+INCLUDE = -I @INSTALL_DIR@/include
 CXXFLAGS = $(INCLUDE) $(DEFINE) $(DEBUG)
 
 LD = $(CXX)

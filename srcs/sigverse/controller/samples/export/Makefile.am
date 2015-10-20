@@ -1,5 +1,0 @@
-# $Id: Makefile.am,v 1.3 2011-12-16 08:39:58 okamoto Exp $
-SRCS = Arm.cpp Attrs.cpp CallBackText.cpp Capture.cpp ConnectJoint.cpp DetectEntities.cpp GetJointForce.cpp GetParts.cpp GoRound.cpp Gravity.cpp JointTest.cpp MovingArm.cpp NiiManOkonomi.cpp NiiRobotOkonomi.cpp ReleaseJoint.cpp Robot.cpp SendMsg.cpp SendText.cpp SetAccel.cpp SetForce.cpp SetJointAngle.cpp SetPosition.cpp SetTorque.cpp Watcher.cpp motion.cpp onAction.cpp onRecvMsg.cpp onRecvSound.cpp onRecvText.cpp scCaptureView.cpp scDetectEntities.cpp scMove.cpp scTV_blink.cpp scVoiceRecog.cpp onCollision.cpp scSendText.cpp scSendSound.cpp
-LIBS = Arm.so Attrs.so CallBackText.so Capture.so ConnectJoint.so DetectEntities.so GetJointForce.so GetParts.so GoRound.so Gravity.so JointTest.so MovingArm.so NiiManOkonomi.so NiiRobotOkonomi.so ReleaseJoint.so Robot.so SendMsg.so SendText.so SetAccel.so SetForce.so SetJointAngle.so SetPosition.so SetTorque.so Watcher.so onAction.so onRecvMsg.so onRecvSound.so onRecvText.so scCaptureView.so scDetectEntities.so scMove.so scTV_blink.so scVoiceRecog.so onCollision.so scSendText.so scSendSound.so
-samples_DATA = $(SRCS) Makefile.controller
-samples_SCRIPTS = $(LIBS)
