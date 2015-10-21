@@ -1,0 +1,9 @@
+@if NOT DEFINED SIGVERSE_ROOT @set PATH=${JRE_ROOT_DIR}\bin\client;%PATH%
+
+@set SIGVERSE_ROOT=${INSTALL_DIR}
+
+@set SIGVERSE_X3DPARSER_CONFIG=%SIGVERSE_ROOT%\share\etc\X3DParser.cfg
+@set SIGVERSE_RUNAC=%SIGVERSE_ROOT%\bin\sigrunac.exe
+@set SIGVERSE_DATADIR=%SIGVERSE_ROOT%\share\data
+
+%SIGVERSE_ROOT%\bin\simserver.exe %*

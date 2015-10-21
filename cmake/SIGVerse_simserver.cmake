@@ -2,56 +2,27 @@
 # SIGVerse sigserver
 #
 
+# Sources
 file(GLOB_RECURSE sigserver_srcs    "${PROJECT_SOURCE_DIR}/srcs/sigverse/simserver/*.cpp")
 file(GLOB_RECURSE sigserver_headers "${PROJECT_SOURCE_DIR}/srcs/sigverse/simserver/*.h")
 
-if(WIN32)
-    include_directories(
-        "${XERCES_ROOT_DIR}/src"
-        "${XERCES_ROOT_DIR}/include"
-        "${JDK_ROOT_DIR}/include/win32"
-        "${JDK_ROOT_DIR}/include"
-    )
-#    message(STATUS "VERSION ${VCVER}")
-    
-    link_directories(
-        "${PROJECT_BINARY_DIR}/lib"
-        "${ODE_ROOT_DIR}/lib/Release"
-        "${XERCES_ROOT_DIR}/lib/Release"
-        "${JDK_ROOT_DIR}/lib"
-    )
-else()
-    link_directories(
-        "${PROJECT_BINARY_DIR}/lib"
-    )
-endif()
 
+# Libraries
 add_executable(sigserver ${sigserver_srcs} ${sigserver_headers})
 
+
+# Compile options
 set_target_properties(sigserver PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin" LINKER_LANGUAGE CXX)
 
-
 if(WIN32)
-    set( CMAKE_EXE_LINKER_FLAGS_RELEASE  "/LTCG ${CMAKE_EXE_LINKER_FLAGS}" )
-    set( CMAKE_EXE_LINKER_FLAGS_DEBUG  "${CMAKE_EXE_LINKER_FLAGS}" )
-
-    target_link_libraries(sigserver Ws2_32 x3dparser jvm)
-    target_link_libraries(sigserver debug oded optimized ode)
-    target_link_libraries(sigserver debug xerces-c_3D  optimized xerces-c_3)
-
-#    file(TO_NATIVE_PATH ${CMAKE_INSTALL_PREFIX} CMAKE_INSTALL_PREFIX)
-#    file(TO_NATIVE_PATH ${JRE_ROOT_DIR} JRE_ROOT_DIR)
- 
-    file(GLOB xerces_dll  "${XERCES_ROOT_DIR}/lib/Release/xerces-c*.dll")
-    file(GLOB xerces_dll2 "${XERCES_ROOT_DIR}/bin/xerces-c*.dll")
-    install(FILES ${xerces_dll} ${xerces_dll2} DESTINATION bin)
+    target_link_libraries(sigserver Ws2_32 commonlib_server x3dparser jvm optimized ode optimized xerces-c_3)
 else()
     target_link_libraries(sigserver commonlib_server x3dparser ${JAVA_JVM_LIBRARY} dl ode xerces-c pthread m)
 endif()
 
 
-
-if(WIN32)
+# Install
+if(WIN32) 
     install(FILES "${PROJECT_BINARY_DIR}/bin/${CMAKE_CONFIGURATION_TYPES}/sigserver.exe" DESTINATION "${INSTALL_DIR}/bin")
 else()
     install(FILES "${PROJECT_BINARY_DIR}/bin/sigserver" DESTINATION "${INSTALL_DIR}/bin" PERMISSIONS ${PERMISSION755})
