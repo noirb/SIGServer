@@ -35,15 +35,15 @@ set_target_properties(sigstart PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BI
 set_target_properties(sigend   PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin" LINKER_LANGUAGE CXX)
 
 # Compile options (for scripts)
-configure_file("${PROJECT_SOURCE_DIR}/tools/X3DParser.cfg.in" "${PROJECT_BINARY_DIR}/share/etc/X3DParser.cfg")
-
 if(WIN32)
     configure_file("${PROJECT_SOURCE_DIR}/tools/win/sigserver.bat.in" "${PROJECT_BINARY_DIR}/bin/sigserver.bat")
     configure_file("${PROJECT_SOURCE_DIR}/tools/win/sigmake.bat.in"   "${PROJECT_BINARY_DIR}/bin/sigmake.bat")
     configure_file("${PROJECT_SOURCE_DIR}/tools/win/mkdll.nmake.in"   "${PROJECT_BINARY_DIR}/etc/mkdll.nmake")
+    configure_file("${PROJECT_SOURCE_DIR}/tools/win/X3DParser.cfg.in" "${PROJECT_BINARY_DIR}/share/etc/X3DParser.cfg")
 else()
     configure_file("${PROJECT_SOURCE_DIR}/tools/linux/sigserver.sh.in"  "${PROJECT_BINARY_DIR}/bin/sigserver.sh")
     configure_file("${PROJECT_SOURCE_DIR}/tools/linux/siggenac.in"      "${PROJECT_BINARY_DIR}/bin/siggenac")
+    configure_file("${PROJECT_SOURCE_DIR}/tools/linux/X3DParser.cfg.in" "${PROJECT_BINARY_DIR}/share/etc/X3DParser.cfg")
 endif()
 
 
@@ -60,7 +60,8 @@ if(WIN32)
     install(FILES "${PROJECT_BINARY_DIR}/etc/mkdll.nmake"   DESTINATION "${INSTALL_DIR}/share/etc")
     
     install(FILES "${PROJECT_SOURCE_DIR}/tools/win/sigcreate.bat"       DESTINATION "${INSTALL_DIR}/bin")
-    install(FILES "${PROJECT_SOURCE_DIR}/tools/win/ControllerTempl.cpp" DESTINATION "${INSTALL_DIR}/bin")
+    install(FILES "${PROJECT_SOURCE_DIR}/tools/win/WinController.cpp"   DESTINATION "${INSTALL_DIR}/bin")
+    install(FILES "${PROJECT_SOURCE_DIR}/tools/win/WinWorld.xml"        DESTINATION "${INSTALL_DIR}/bin")
 
 else()
     install(FILES "${PROJECT_BINARY_DIR}/bin/sendmsg"  DESTINATION "${INSTALL_DIR}/bin" PERMISSIONS ${PERMISSION755})

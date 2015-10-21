@@ -8,9 +8,10 @@ if "%1" == "" (
 
 mkdir %TARGET_DIR%
 
-copy %~dp0sigmake.bat         %TARGET_DIR%
-copy %~dp0sigserver.bat       %TARGET_DIR%
-copy %~dp0ControllerTempl.cpp %TARGET_DIR%
+copy %~dp0sigmake.bat       %TARGET_DIR%
+copy %~dp0sigserver.bat     %TARGET_DIR%
+copy %~dp0WinController.cpp %TARGET_DIR%
+copy %~dp0WinWorld.xml      %TARGET_DIR%
 
 @echo on
 
