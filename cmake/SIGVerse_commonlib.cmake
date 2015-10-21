@@ -20,3 +20,8 @@ set_target_properties(commonlib_controller PROPERTIES COMPILE_DEFINITIONS "CONTR
 
 set_target_properties(commonlib_controller PROPERTIES ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib" LINKER_LANGUAGE CXX)
 set_target_properties(commonlib_server     PROPERTIES ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib" LINKER_LANGUAGE CXX)
+
+# Install
+if(WIN32)
+    install(FILES "${PROJECT_BINARY_DIR}/lib/${CMAKE_CONFIGURATION_TYPES}/commonlib_controller.lib" DESTINATION "${INSTALL_DIR}/lib")
+endif()

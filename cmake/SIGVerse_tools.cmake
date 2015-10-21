@@ -38,7 +38,6 @@ set_target_properties(sigend   PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BI
 configure_file("${PROJECT_SOURCE_DIR}/tools/X3DParser.cfg.in" "${PROJECT_BINARY_DIR}/share/etc/X3DParser.cfg")
 
 if(WIN32)
-    configure_file("${PROJECT_SOURCE_DIR}/tools/win/sigcreate.bat.in" "${PROJECT_BINARY_DIR}/bin/sigcreate.bat")
     configure_file("${PROJECT_SOURCE_DIR}/tools/win/sigserver.bat.in" "${PROJECT_BINARY_DIR}/bin/sigserver.bat")
     configure_file("${PROJECT_SOURCE_DIR}/tools/win/sigmake.bat.in"   "${PROJECT_BINARY_DIR}/bin/sigmake.bat")
     configure_file("${PROJECT_SOURCE_DIR}/tools/win/mkdll.nmake.in"   "${PROJECT_BINARY_DIR}/etc/mkdll.nmake")
@@ -56,10 +55,13 @@ if(WIN32)
     install(FILES "${PROJECT_BINARY_DIR}/bin/${CMAKE_CONFIGURATION_TYPES}/sigstart.exe" DESTINATION "${INSTALL_DIR}/bin")
     install(FILES "${PROJECT_BINARY_DIR}/bin/${CMAKE_CONFIGURATION_TYPES}/sigend.exe"   DESTINATION "${INSTALL_DIR}/bin")
     
-    install(FILES "${PROJECT_BINARY_DIR}/bin/sigcreate.bat" DESTINATION "${INSTALL_DIR}/bin")
     install(FILES "${PROJECT_BINARY_DIR}/bin/sigserver.bat" DESTINATION "${INSTALL_DIR}/bin")
     install(FILES "${PROJECT_BINARY_DIR}/bin/sigmake.bat"   DESTINATION "${INSTALL_DIR}/bin")
     install(FILES "${PROJECT_BINARY_DIR}/etc/mkdll.nmake"   DESTINATION "${INSTALL_DIR}/share/etc")
+    
+    install(FILES "${PROJECT_SOURCE_DIR}/tools/win/sigcreate.bat"       DESTINATION "${INSTALL_DIR}/bin")
+    install(FILES "${PROJECT_SOURCE_DIR}/tools/win/ControllerTempl.cpp" DESTINATION "${INSTALL_DIR}/bin")
+
 else()
     install(FILES "${PROJECT_BINARY_DIR}/bin/sendmsg"  DESTINATION "${INSTALL_DIR}/bin" PERMISSIONS ${PERMISSION755})
     install(FILES "${PROJECT_BINARY_DIR}/bin/sigstart" DESTINATION "${INSTALL_DIR}/bin" PERMISSIONS ${PERMISSION755})

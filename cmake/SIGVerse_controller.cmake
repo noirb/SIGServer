@@ -22,8 +22,6 @@ set_target_properties(sigrunac PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BI
 
 if(WIN32)
     target_link_libraries(sigrunac Ws2_32 commonlib_controller x3dparser jvm optimized ode optimized xerces-c_3)
-
-#    file(TO_NATIVE_PATH ${CMAKE_INSTALL_PREFIX} CMAKE_INSTALL_PREFIX)
 else()
     target_link_libraries(sigrunac commonlib_controller x3dparser ${JAVA_JVM_LIBRARY} dl ode xerces-c pthread m)
 endif()

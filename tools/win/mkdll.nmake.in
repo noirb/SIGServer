@@ -12,8 +12,8 @@ TARGET_OBJS=$(TARGET).obj # wingetopt.obj
 ##### for controler
 ODE_FLAGS= /D "USE_ODE"
 ODE_LIB= "ode.lib"
-ODE_LIB_PATH= /LIBPATH:"${CMAKE_INSTALL_PREFIX}\lib"
-ODE_INC_PATH= /I"${CMAKE_INSTALL_PREFIX}\include"
+ODE_LIB_PATH= /LIBPATH:"${INSTALL_DIR}\lib"
+ODE_INC_PATH= /I"${INSTALL_DIR}\include"
 TARGET_OBJS=$(TARGET_OBJS)
 #else
 #ODE_FLAGS= 
@@ -23,7 +23,7 @@ TARGET_OBJS=$(TARGET_OBJS)
 
 
 CPPFLAGS= /LD /GS /TP /analyze- /W3 /Zc:wchar_t  /Gm- /O2 /Ob2 /errorReport:prompt /WX- /Zc:forScope /GR /Gd /Oy- /MD /EHsc /nologo
-INC_DIRS= /I"." /I"${CMAKE_INSTALL_PREFIX}\include\sigverse" /I"${CMAKE_INSTALL_PREFIX}\include\sigverse\comm" $(ODE_INC_PATH)
+INC_DIRS= /I"." /I"${INSTALL_DIR}\include" $(ODE_INC_PATH)
 CPP_DEFS= /D "WIN32" /D "_WINDOWS" /D "NDEBUG" /D "_MBCS"  /D "dDOUBLE" /D "CONTROLLER"  $(ODE_FLAGS)
 
 
@@ -32,9 +32,9 @@ CPPFLAGS=$(CPPFLAGS) $(INC_DIRS) $(CPP_DEFS)
 LINK_FLAGS= /DLL /MANIFEST:NO /NXCOMPAT /DYNAMICBASE  /MACHINE:X86 /SAFESEH /SUBSYSTEM:CONSOLE /ERRORREPORT:PROMPT /NOLOGO  /TLBID:1 
 LINK_FLAGS=$(LINK_FLAGS) /LTCG
 
-DEP_LIBS="kernel32.lib" "user32.lib" "gdi32.lib" "winspool.lib" "shell32.lib" "ole32.lib" "oleaut32.lib" "uuid.lib" "comdlg32.lib" "advapi32.lib" "Ws2_32.lib" "commonlib.lib" $(ODE_LIB)
+DEP_LIBS="kernel32.lib" "user32.lib" "gdi32.lib" "winspool.lib" "shell32.lib" "ole32.lib" "oleaut32.lib" "uuid.lib" "comdlg32.lib" "advapi32.lib" "Ws2_32.lib" "commonlib_controller.lib" $(ODE_LIB)
 
-LIB_DIRS= /LIBPATH:"${CMAKE_INSTALL_PREFIX}\lib" $(ODE_LIB_PATH)
+LIB_DIRS= /LIBPATH:"${INSTALL_DIR}\lib" $(ODE_LIB_PATH)
 
 
 all: $(TARGET).dll
