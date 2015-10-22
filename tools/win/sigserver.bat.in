@@ -6,4 +6,4 @@
 @set SIGVERSE_RUNAC=%SIGVERSE_ROOT%\bin\sigrunac.exe
 @set SIGVERSE_DATADIR=%SIGVERSE_ROOT%\share\data
 
-%SIGVERSE_ROOT%\bin\sigserver.exe %*
+"%SIGVERSE_ROOT%\bin\sigserver.exe" %*
