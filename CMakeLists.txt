@@ -17,7 +17,7 @@ set(SIGSERVER_FULL_VERSION ${SIGSERVER_MAJOR_VERSION}.${SIGSERVER_MINOR_VERSION}
 if(NOT SIG_INSTALL_PREFIX)
     if(WIN32)
         set(SIG_INSTALL_PREFIX "C:/SIGVerse")
-    elseif()
+    else()
         set(SIG_INSTALL_PREFIX $ENV{HOME})
     endif()
 endif()
