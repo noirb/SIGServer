@@ -96,10 +96,25 @@ install(FILES ${data_xml}             DESTINATION "${INSTALL_DIR}/share/data/xml
 install(FILES ${data_wrl} ${data_x3d} DESTINATION "${INSTALL_DIR}/share/data/shape")
 
 # Install Headers
-file(GLOB header_commonlib "${PROJECT_SOURCE_DIR}/srcs/sigverse/commonlib/*.h")
-file(GLOB header_controller "${PROJECT_SOURCE_DIR}/srcs/sigverse/commonlib/comm/controller/*.h")
-install(FILES ${header_commonlib}  DESTINATION "${INSTALL_DIR}/include/sigverse/commonlib/")
-install(FILES ${header_controller} DESTINATION "${INSTALL_DIR}/include/sigverse/commonlib/comm/controller/")
+list(APPEND header_controller_list
+    "Attribute.h" "ControllerEvent.h" "Controller.h" "ControllerImpl.h" "ControllerInf.h"
+    "CParts.h" "Encode.h" "JointForce.h" "Logger.h" "modelerr.h"
+    "Parts.h" "Position.h" "RawSound.h" "Rotation.h" "SimObjBaseAttrs.h"
+    "SimObjBase.h" "SimObj.h" "Size.h" "systemdef.h" "Text.h"
+    "Value.h" "Vector3d.h" "ViewImage.h" "ViewImageInfo.h"
+)
+
+foreach(header_controller_file_name IN LISTS header_controller_list)
+    install(FILES "${PROJECT_SOURCE_DIR}/srcs/sigverse/commonlib/${header_controller_file_name}" DESTINATION "${INSTALL_DIR}/include/sigverse/commonlib/")
+    
+    if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
+        install(CODE "execute_process(COMMAND ln -f -s \"./sigverse/commonlib/${header_controller_file_name}\" \"${INSTALL_DIR}/include/${header_controller_file_name}\")")
+    endif()
+endforeach()
+
+file(GLOB header_comm_controller "${PROJECT_SOURCE_DIR}/srcs/sigverse/commonlib/comm/controller/*.h")
+install(FILES ${header_comm_controller} DESTINATION "${INSTALL_DIR}/include/sigverse/commonlib/comm/controller/")
+
 
 # Install libraries
 if(WIN32)
