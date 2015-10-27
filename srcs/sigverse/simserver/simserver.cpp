@@ -127,7 +127,7 @@ static bool runControllers(SSimWorld &w, int port)
 				exit(1);
 			}
 #else
-			fprintf(stderr, "Not implemented..., run controlller proc: \"%s\" -> %s\n", obj->name(), ctrl.c_str());
+			fprintf(stdout, "run controlller proc: \"%s\" -> %s\n", obj->name(), ctrl.c_str());
 			STARTUPINFO si;
 			PROCESS_INFORMATION pi;
 
