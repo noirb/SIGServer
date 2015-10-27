@@ -1,0 +1,6 @@
+[submodule "srcs/sigverse/x3d"]
+	path = srcs/sigverse/x3d
+	url = https://github.com/SIGVerse/x3d.git
+[submodule "model"]
+	path = model
+	url = https://github.com/SIGVerse/model.git

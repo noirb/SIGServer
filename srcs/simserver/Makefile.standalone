@@ -1,7 +1,0 @@
-# $Id: Makefile.standalone,v 1.1.1.1 2011-03-25 02:18:50 okamoto Exp $
-
-#DEFINE = -D USE_OPENGL -D USE_ODE -D USE_XERCES -D dDOUBLE
-DEFINE = -D IRWAS_STANDALONE -D dDOUBLE
-LIBRARIES = -lxerces-c -lode -lGL -lglut
-
-include Makefile.base

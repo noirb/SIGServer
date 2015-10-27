@@ -1,1 +1,0 @@
-../simserver/sigkill.sh
