@@ -92,12 +92,14 @@ namespace Sgv
 			const std::string &parentName,
 			std::vector<std::string> &partsNames,
 			SFRotation *rot,
-			int indent);
+			int indent,
+			SFVec3f *scal);
 
 #if 1
 // FIX20110421(ExpSS)
 		SParts *genSPartsFromCX3DShapeNode(CX3DShapeNode *pShapeNode, const char *partsName, int indent);
-		SParts *genSPartsFromSimplifiedShape(CSimplifiedShape *ss, const char *partsName);
+		SParts *genSPartsFromSimplifiedShape(CSimplifiedShape *ss, const char *partsName,SFVec3f  *scal);
+		//SParts *genSPartsFromSimplifiedShape(CSimplifiedShape *ss, const char *partsName);
 		SParts *genSPartsFromSimpleShapeDB(const char *entClassName, const char *partsName);
 #endif
 		// ------------------------------------------

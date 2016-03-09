@@ -77,7 +77,8 @@ namespace Sgv
 					CX3DShapeNode *sh = (CX3DShapeNode*)shape->getNode(0);
 					CX3DNode *pG = sh->getGeometry()->getNode();
 					int type = pG->getNodeType();
-					
+					//SFNode *geometry = shape->getGeometry();
+					SFVec3f    *scal = tNode->getScale();
 					// Create simple ODE geometry from X3D shape information : added by okamoto on 2011-10-11
 					switch(type) {
 					case CYLINDER_NODE: {
@@ -127,7 +128,14 @@ namespace Sgv
 						// Automatic generation of simple shape
 						// ------------------------------------
 						CSimplifiedShape *ss = CSimplifiedShapeFactory::calcAutoFromTree(m_pStaticNodes);
-						parts = genSPartsFromSimplifiedShape(ss, "body"); // Name of the parts is fixed
+						SFNode *geometry = sh->getGeometry();
+						CX3DTransformNode *tNode = (CX3DTransformNode *)geometry->getNode();
+		                //SFVec3f    *scal = tNode->getScale();
+		                CX3DTransformNode *ttNode = (CX3DTransformNode *)m_pStaticNodes->getNode(m_pStaticNodes->count()-1);
+                        SFVec3f    *scal = ttNode->getScale();
+                        printf("The Scale Ichi  iiiiiiis box!! (%f, %f, %f)\n", scal->x(), scal->y(), scal->z());
+                        printf("The  INDEXED_FACE_SET_NODE 0 ......... \n");
+						parts = genSPartsFromSimplifiedShape(ss, "body",scal); // Name of the parts is fixed
 						break;
 					}
 					}
@@ -785,7 +793,8 @@ q
 			// -------------------------------------------
 			// -------------------------------------------
 			CX3DNode *pNode = children->getNode(i);
-
+		    CX3DTransformNode *ppTransNode = (CX3DTransformNode *)pNode;
+		    SFVec3f    *scal = pTransNode->getScale();
 			// -------------------------------------------
 			// -------------------------------------------
 			switch (pNode->getNodeType())
@@ -808,7 +817,7 @@ q
 					// -------------------------------------------
 					// -------------------------------------------
 					CX3DShapeNode *pShapeNode = (CX3DShapeNode *)pNode;
-					SParts *p = createSSimObjFromOpenHRP_ShapeNode(node, pShapeNode, /* NULL, */ parentName, partsNames, rot,indent+1);
+					SParts *p = createSSimObjFromOpenHRP_ShapeNode(node, pShapeNode, /* NULL, */ parentName, partsNames, rot,indent+1, scal);
 					if (p) {
 						parts = p;
 						//assert(!parts);
@@ -829,7 +838,8 @@ q
 		const std::string &parentName,
 		std::vector<std::string> &partsNames,
 		SFRotation *rot,
-		int indent)
+		int indent,
+		 SFVec3f *scal)
 	{
 
 		if (!parent || !pShapeNode) return NULL;
@@ -922,7 +932,13 @@ q
 		    // ----------------------------------
 		    // ----------------------------------
 		    CSimplifiedShape *ss = CSimplifiedShapeFactory::calcAutoFromShapeNode(pShapeNode, CSimplifiedShape::BOX);
-		    parts = genSPartsFromSimplifiedShape(ss, partsName.c_str());
+
+		    //CX3DTransformNode *ttNode = (CX3DTransformNode *)pShapeNode->getNode(6);
+            //SFVec3f    *scal = ttNode->getScale();
+		    //parts = genSPartsFromSimplifiedShape(ss, partsName.c_str(),scal);
+		    printf("The  INDEXED_FACE_SET_NODE 00 test for result ......... \n");
+		    printf("The Scale for SIMPLE_SHAPE_GEN_MSI (%f, %f, %f)\n", scal->x(), scal->y(), scal->z());
+		    parts = genSPartsFromSimplifiedShape(ss, partsName.c_str(),scal);
 
 #else
 		    parts = genSPartsFromCX3DShapeNode(pShapeNode, partsName.c_str(), indent);
@@ -976,6 +992,10 @@ q
 			// -----------------------------------------
 			CX3DNode *pNodeData = geometry->getNode();
 
+		CX3DTransformNode *tNode = (CX3DTransformNode *)geometry->getNode();
+		//MFNode *shape = tNode->searchNodesFromDirectChildren("Shape");
+		
+		SFVec3f    *scal = tNode->getScale();
 			//CSimplifiedShapeFactory::isCylinder(pNodeData);
 
 			if (pNodeData)
@@ -1002,9 +1022,38 @@ q
 					float cx = (x1+x2)/2;
 					float cy = (y1+y2)/2;
 					float cz = (z1+z2)/2;
-					float sx = (float)fabs(x2-x1);
-					float sy = (float)fabs(y2-y1);
-					float sz = (float)fabs(z2-z1);
+					//float sx = (float)fabs(x2-x1);
+					//float sy = (float)fabs(y2-y1);
+					//float sz = (float)fabs(z2-z1);
+
+
+				    float sx_m = (float)fabs(scal->x());
+				    float sy_m = (float)fabs(scal->y());
+				    float sz_m = (float)fabs(scal->z());
+
+                   // printf("The Scale Ichi  iiiiiiis box!! (%f, %f, %f)\n", sx_m, sy_m, sz_m);
+                   printf("The  genSPartsFromCX3DShapeNode 1 ......... \n");
+                float sx;
+				float sy;
+				float sz;
+				if(sx_m == 0  || sy_m == 0 || sz_m == 0 )
+				{
+				 sx = (float)fabs(x2-x1);
+				 sy = (float)fabs(y2-y1);
+				 sz = (float)fabs(z2-z1);
+
+                 }
+
+                 if(sx_m != 0  && sy_m != 0 && sz_m != 0 )
+				{
+				 sx = (float)fabs(x2-x1)*sx_m;
+				 sy = (float)fabs(y2-y1)*sy_m;
+				 sz = (float)fabs(z2-z1)*sz_m;
+
+	
+                }
+
+
 
 					Position pos(cx, cy, cz);
 					getBodyFactory().applyScaleP(pos);
@@ -1073,12 +1122,21 @@ q
 		return parts;
 	}
 
-	SParts *X3DSimObjCreator::genSPartsFromSimplifiedShape(CSimplifiedShape *ss, const char *partsName)
+ SParts *X3DSimObjCreator::genSPartsFromSimplifiedShape(CSimplifiedShape *ss, const char *partsName,SFVec3f  *scal)
+	//SParts *X3DSimObjCreator::genSPartsFromSimplifiedShape(CSimplifiedShape *ss, const char *partsName)
 	{
 		if (!ss) return NULL;
 
 		SParts *parts = NULL;
+		//CX3DTransformNode *tNode = (CX3DTransformNode *)m_pStaticNodes->getNode(0);
+		//MFNode *shape = tNode->searchNodesFromDirectChildren("Shape");
+		//SFVec3f    *scal = tNode->getScale();
 
+
+		//CX3DTransformNode *tNode = (CX3DTransformNode *)geometry->getNode();
+		//MFNode *shape = tNode->searchNodesFromDirectChildren("Shape");
+		
+		//SFVec3f    *scal = tNode->getScale();
 		if (m_fp)
 		{
 			fprintf(m_fp, "\t<parts name=\"%s\" ", partsName ? partsName : "");
@@ -1157,22 +1215,42 @@ DUMP(("\tr=\"%f\", h=\"%f\"\n", r, h));
 				float x2 = bx->x2();
 				float y2 = bx->y2();
 				float z2 = bx->z2();
+				float sx_m = (float)fabs(scal->x());
+				float sy_m = (float)fabs(scal->y());
+				float sz_m = (float)fabs(scal->z());
+				//printf("The Scale iiiiiiis box1(%f, %f, %f)\n", sx_m, sy_m, sz_m);
 				// printf("estimate box1(%f, %f, %f)\n", x1, y1, z1);
 				// printf("estimate box2(%f, %f, %f)\n", x2, y2, z2);
-
+                printf("The  genSPartsFromSimplifiedShape 2  ......... \n");
 				float cx = (x1+x2)/2;
 				float cy = (y1+y2)/2;
 				float cz = (z1+z2)/2;
-				float sx = (float)fabs(x2-x1);
-				float sy = (float)fabs(y2-y1);
-				float sz = (float)fabs(z2-z1);
+
+				float sx;
+				float sy;
+				float sz;
+				if(sx_m == 0  || sy_m == 0 || sz_m == 0 )
+				{
+				 sx = (float)fabs(x2-x1);
+				 sy = (float)fabs(y2-y1);
+				 sz = (float)fabs(z2-z1);
+
+                 }
+
+                 if(sx_m != 0  && sy_m != 0 && sz_m != 0 )
+				{
+				 sx = (float)fabs(x2-x1)*sx_m;
+				 sy = (float)fabs(y2-y1)*sy_m;
+				 sz = (float)fabs(z2-z1)*sz_m;
+
+	
+                }
 
 				Position pos(cx, cy, cz);
 				m_bodyF.applyScaleP(pos);	
 
 				Size size(sx, sy, sz);
-				m_bodyF.applyScaleS(size);	
-
+				m_bodyF.applyScaleS(size);
 				if (m_fp)
 				{
 					fprintf(m_fp, "type=\"box\">\n");
