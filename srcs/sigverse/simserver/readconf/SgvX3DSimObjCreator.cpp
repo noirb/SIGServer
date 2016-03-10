@@ -1,7 +1,3 @@
-/*
- * Modified by Okamoto on 2012-02-14
- */
-
 #include <sigverse/simserver/readconf/SgvX3DSimObjCreator.h>
 #include <sigverse/simserver/SSimWorld.h>
 #include <sigverse/simserver/ODEWorld.h>
@@ -53,8 +49,7 @@ namespace Sgv
 		}
 	}
 
-#if 1
-// FIX20110421(ExpSS)
+
 	bool X3DSimObjCreator::createSSimObjFromX3D(const char *x3dFileName, const char *entClassName, bool bGenSimpleShapeFromX3D)
 	{
 		DUMP(("loading %s ... (entClassName=%s)", x3dFileName, entClassName));
@@ -195,7 +190,6 @@ namespace Sgv
 				Sgv::Log::println("*** calling calcPartsAbsPos() [%s:%d] ***", __FILE__, __LINE__);
 				root->calcPartsAbsPos(&obj, getBodyFactory());
 
-// konao
 				Sgv::Log::println("*** root node dump [%s:%d] ***", __FILE__, __LINE__);
 				root->dump();
 
@@ -220,61 +214,9 @@ namespace Sgv
 		DUMP(("all done.\n"));
 		return true;
 	}
-#else
-// orig
-	bool X3DSimObjCreator::test1(X3DSimObjCreator &creator, const char *x3dOpenHRPFileName)
-	{
-		//X3DSimObjCreator creator;
 
-		bool isHumanoid = creator.loadOpenHRPFromFile(x3dOpenHRPFileName);
 
-		if (!isHumanoid)
-		{
-q
-!q
-		std::vector<std::string> jointNames;
-		std::vector<std::string> partsNames;
-		Sgv::TestNode *node = NULL;
 
-			//creator.createSSimObjFromWrl("testSSimObj", jointNames, partsNames, NULL, &node);
-			DUMP(("all done."));
-
-			return false;
-		}
-		else
-		{
-			std::vector<std::string> jointNames;
-			std::vector<std::string> partsNames;
-			Sgv::TestNode *node = NULL;
-
-			if (creator.createSSimObjFromOpenHRP("testSSimObj", jointNames, partsNames, NULL, &node))
-			{
-				SSimObj &obj = creator.getBodyFactory().getSObj();
-				printf("jointSize = %d\n",obj.getJointSize());
-				printf("*** jointNames ***\n");
-				for (int i=0; i<jointNames.size(); i++)
-				{
-					printf("[%d] %s\n", i, jointNames[i].c_str());
-				}
-
-				printf("*** partsNames ***\n");
-				for (int i=0; i<partsNames.size(); i++)
-				{
-					printf("[%d] %s\n", i, partsNames[i].c_str());
-				}
-
-				printf("*** node dump ***\n");
-				node->dump();
-
-				printf("*** parts abs info ***\n");
-				node->calcPartsAbsPos(&obj, creator.getBodyFactory());
-			}
-
-			DUMP(("all done."));
-			return true;
-		}
-	}
-#endif
 
 #if 1
 // FIX20110421(ExpSS)
@@ -345,7 +287,6 @@ q
 
 			return false;
 		}
-
 		//m_pParser->print();
 
 		if (m_pHumanoidNodes)
@@ -356,7 +297,6 @@ q
 
 		m_pHumanoidNodes = m_pParser->searchNodesFromAllChildrenOfRoot("Humanoid");
 
-		// bugfix(sekikawa)(2009/4/10)
 		if (!m_pHumanoidNodes) {
 			DUMP( ("[Error @X3DSimObjCreator::loadOpenHRPFromFile()]\n") );
 			return false;
@@ -388,7 +328,6 @@ q
 
 		m_pHumanoidNodes = m_pParser->getChildrenOfRootNode();
 
-
 		int parentNodeNum = m_pHumanoidNodes->count();
 		for(int n=0;n<parentNodeNum;n++) {
 			CX3DNode *pNode = m_pHumanoidNodes->getNode(n);
@@ -406,14 +345,11 @@ q
 						CX3DNode *child = children->releaseNode(j);
 						int childNodeType = child->getNodeType();
 					}
-
 					delete children;
 					children = NULL;
 				}
-
 			}
 		}
-
 		*ppNode = root;
 
 		return true;
@@ -841,7 +777,6 @@ q
 		int indent,
 		 SFVec3f *scal)
 	{
-
 		if (!parent || !pShapeNode) return NULL;
 
 		Sgv::printIndentSpace(indent);
@@ -862,119 +797,112 @@ q
 
 		if (m_bGenSimpleShapeFromX3D)
 		{
-// konao
+
 //////////////////////
 
-		  //CX3DShapeNode *sh = pShapeNode->getNode(0);
-		  CX3DNode *pG = pShapeNode->getGeometry()->getNode();
-		  int type = pG->getNodeType();
+			//CX3DShapeNode *sh = pShapeNode->getNode(0);
+			CX3DNode *pG = pShapeNode->getGeometry()->getNode();
+			int type = pG->getNodeType();
 
-		  switch(type) {
+			switch(type) {
 		    
-		  case CYLINDER_NODE:{
+			case CYLINDER_NODE:{
 		    
-		    CVRMLFieldData *data = pG->createFieldValue("radius");
-		    CVRMLFieldData *data2 = pG->createFieldValue("height");
-		    CVRMLFloatData *dat = (CVRMLFloatData*)data;
-		    CVRMLFloatData *dat2 = (CVRMLFloatData*)data2;
-		    double rad = dat->getValue();
-		    double height = dat2->getValue();
-		    //Position pos(10, 10, 10);
-		    Position pos(0, 0, 0);
+				CVRMLFieldData *data = pG->createFieldValue("radius");
+				CVRMLFieldData *data2 = pG->createFieldValue("height");
+				CVRMLFloatData *dat = (CVRMLFloatData*)data;
+				CVRMLFloatData *dat2 = (CVRMLFloatData*)data2;
+				double rad = dat->getValue();
+				double height = dat2->getValue();
+				//Position pos(10, 10, 10);
+				Position pos(0, 0, 0);
 
-		    Rotation rotation;		    
-		    rotation.setAxisAndAngle(rot->x(), rot->y(), rot->z(), rot->rot());
-		    parts = (SParts *)(new SCylinderParts(partsName.c_str(), pos, rad, height, rotation));
+				Rotation rotation;  
+				rotation.setAxisAndAngle(rot->x(), rot->y(), rot->z(), rot->rot());
+				parts = (SParts *)(new SCylinderParts(partsName.c_str(), pos, rad, height, rotation));
 
-		    break;
-		  }
+				break;
+			}
 		    
-		  case BOX_NODE:{
+			case BOX_NODE:{
 		    
-		    CVRMLFieldData *data = pG->createFieldValue("size");
+				CVRMLFieldData *data = pG->createFieldValue("size");
+				//int dattype = data->getFieldType();
+				//LOG_MSG(("dattype = %d",dattype));
+				CVRMLFloatArrayData *dat = (CVRMLFloatArrayData*)data;
 		    
-		    //int dattype = data->getFieldType();
-		    //LOG_MSG(("dattype = %d",dattype));
+				double x = dat->getValue(0);
+				double y = dat->getValue(1);
+				double z = dat->getValue(2);
 		    
-		    CVRMLFloatArrayData *dat = (CVRMLFloatArrayData*)data;
-		    
-		    double x = dat->getValue(0);
-		    double y = dat->getValue(1);
-		    double z = dat->getValue(2);
-		    
-		    Position pos(0, 0, 0);
-		    Size     size(x,y,z);
+				Position pos(0, 0, 0);
+				Size     size(x,y,z);
 
-		    Rotation rotation;		    
-		    rotation.setAxisAndAngle(rot->x(), rot->y(), rot->z(), rot->rot());
+				Rotation rotation;    
+				rotation.setAxisAndAngle(rot->x(), rot->y(), rot->z(), rot->rot());
 
-		    parts = (SParts *)(new SBoxParts(partsName.c_str(), pos, size, rotation));
-		    break;
-		  }
+				parts = (SParts *)(new SBoxParts(partsName.c_str(), pos, size, rotation));
+				break;
+			}
 		    
-		  case SPHERE_NODE:{
+			case SPHERE_NODE:{
 
-		    CVRMLFieldData *data = pG->createFieldValue("radius");
-		    CVRMLFloatData *dat = (CVRMLFloatData*)data;
-		    double rad = dat->getValue();
-		    Position pos(0, 0, 0);
+				CVRMLFieldData *data = pG->createFieldValue("radius");
+				CVRMLFloatData *dat = (CVRMLFloatData*)data;
+				double rad = dat->getValue();
+				Position pos(0, 0, 0);
 
-		    parts = (SParts *)(new SSphereParts(partsName.c_str(), pos, rad));
-		    break;
-		  }
+				parts = (SParts *)(new SSphereParts(partsName.c_str(), pos, rad));
+				break;
+			}
 		    
-		  case INDEXED_FACE_SET_NODE:{	
-		    ///////////////
-		    DUMP(("*** SimpleShape: Auto generate mode ***\n"));
+			case INDEXED_FACE_SET_NODE:{	
+				///////////////
+				DUMP(("*** SimpleShape: Auto generate mode ***\n"));
 		    
 #define SIMPLE_SHAPE_GEN_MSI
 #ifdef SIMPLE_SHAPE_GEN_MSI
-		    // ----------------------------------
-		    // ----------------------------------
-		    CSimplifiedShape *ss = CSimplifiedShapeFactory::calcAutoFromShapeNode(pShapeNode, CSimplifiedShape::BOX);
+				// ----------------------------------
+				// ----------------------------------
+				CSimplifiedShape *ss = CSimplifiedShapeFactory::calcAutoFromShapeNode(pShapeNode, CSimplifiedShape::BOX);
 
-		    //CX3DTransformNode *ttNode = (CX3DTransformNode *)pShapeNode->getNode(6);
-            //SFVec3f    *scal = ttNode->getScale();
-		    //parts = genSPartsFromSimplifiedShape(ss, partsName.c_str(),scal);
-		    printf("The  INDEXED_FACE_SET_NODE 00 test for result ......... \n");
-		    printf("The Scale for SIMPLE_SHAPE_GEN_MSI (%f, %f, %f)\n", scal->x(), scal->y(), scal->z());
-		    parts = genSPartsFromSimplifiedShape(ss, partsName.c_str(),scal);
-
+				//CX3DTransformNode *ttNode = (CX3DTransformNode *)pShapeNode->getNode(6);
+				//SFVec3f    *scal = ttNode->getScale();
+				//parts = genSPartsFromSimplifiedShape(ss, partsName.c_str(),scal);
+				printf("The  INDEXED_FACE_SET_NODE 00 test for result ......... \n");
+				printf("The Scale for SIMPLE_SHAPE_GEN_MSI (%f, %f, %f)\n", scal->x(), scal->y(), scal->z());
+				parts = genSPartsFromSimplifiedShape(ss, partsName.c_str(),scal);
 #else
-		    parts = genSPartsFromCX3DShapeNode(pShapeNode, partsName.c_str(), indent);
+				parts = genSPartsFromCX3DShapeNode(pShapeNode, partsName.c_str(), indent);
 #endif
-		    break;
-		  }
-		  }
+				break;
+			}
+			}
 		}
 		else
-		  {
-		    // konao
-		    DUMP(("*** SimpleShape: Manual setting mode ***\n"));
+			{
+				DUMP(("*** SimpleShape: Manual setting mode ***\n"));
 		    
-		    // ----------------------------------------
-		    // ----------------------------------------
-		    parts = genSPartsFromSimpleShapeDB(m_entClassName.c_str(), partsName.c_str());
-		    if (!parts)
-		      {
-			LOG_ERR(("no SimpleShape found (className=(%s) partsName=(%s))\n", m_entClassName.c_str(), partsName.c_str()));
-			exit(1);
-		      }
-		  }
+				// ----------------------------------------
+				// ----------------------------------------
+				parts = genSPartsFromSimpleShapeDB(m_entClassName.c_str(), partsName.c_str());
+				if (!parts)
+					{
+						LOG_ERR(("no SimpleShape found (className=(%s) partsName=(%s))\n", m_entClassName.c_str(), partsName.c_str()));
+						exit(1);
+					}
+			}
 
 		if (parts)
-		  {
-		    // konao
-		    DUMP(("*** calling addParts (%s) [%s:%d] ***\n", partsName.c_str(), __FILE__, __LINE__));
-		    getBodyFactory().addParts(parts);	
-		    parts = NULL;
-		  }
-		
+			{
+				DUMP(("*** calling addParts (%s) [%s:%d] ***\n", partsName.c_str(), __FILE__, __LINE__));
+				getBodyFactory().addParts(parts);	
+				parts = NULL;
+			}
 		return parts;
 	}
 
-#if 1
-// FIX20110421(ExpSS)
+
 	SParts *X3DSimObjCreator::genSPartsFromCX3DShapeNode(CX3DShapeNode *pShapeNode, const char *partsName, int indent)
 	{
 		SParts *parts = NULL;
@@ -987,142 +915,132 @@ q
 
 		if (geometry)
 		{
-
 			// -----------------------------------------
 			// -----------------------------------------
 			CX3DNode *pNodeData = geometry->getNode();
 
-		CX3DTransformNode *tNode = (CX3DTransformNode *)geometry->getNode();
-		//MFNode *shape = tNode->searchNodesFromDirectChildren("Shape");
+			CX3DTransformNode *tNode = (CX3DTransformNode *)geometry->getNode();
+			//MFNode *shape = tNode->searchNodesFromDirectChildren("Shape");
 		
-		SFVec3f    *scal = tNode->getScale();
+			SFVec3f    *scal = tNode->getScale();
 			//CSimplifiedShapeFactory::isCylinder(pNodeData);
 
 			if (pNodeData)
-			{
-				//
-				//
-				int nodeType = pNodeData->getNodeType();
-				switch(nodeType) {
-				case INDEXED_FACE_SET_NODE:
 				{
-					Sgv::printIndentSpace(indent);
-					Sgv::Log::println("INDEXED_FACE_SET");
 					//
 					//
-					CSimplifiedBox *bx = CSimplifiedShapeFactory::calcBox( (CX3DIndexedFaceSetNode*)pNodeData );
+					int nodeType = pNodeData->getNodeType();
+					switch(nodeType) {
+					case INDEXED_FACE_SET_NODE:
+						{
+							Sgv::printIndentSpace(indent);
+							Sgv::Log::println("INDEXED_FACE_SET");
+							//
+							//
+							CSimplifiedBox *bx = CSimplifiedShapeFactory::calcBox( (CX3DIndexedFaceSetNode*)pNodeData );
 
-					float x1 = bx->x1();
-					float y1 = bx->y1();
-					float z1 = bx->z1();
-					float x2 = bx->x2();
-					float y2 = bx->y2();
-					float z2 = bx->z2();
+							float x1 = bx->x1();
+							float y1 = bx->y1();
+							float z1 = bx->z1();
+							float x2 = bx->x2();
+							float y2 = bx->y2();
+							float z2 = bx->z2();
 
-					float cx = (x1+x2)/2;
-					float cy = (y1+y2)/2;
-					float cz = (z1+z2)/2;
-					//float sx = (float)fabs(x2-x1);
-					//float sy = (float)fabs(y2-y1);
-					//float sz = (float)fabs(z2-z1);
+							float cx = (x1+x2)/2;
+							float cy = (y1+y2)/2;
+							float cz = (z1+z2)/2;
+							//float sx = (float)fabs(x2-x1);
+							//float sy = (float)fabs(y2-y1);
+							//float sz = (float)fabs(z2-z1);
 
+							float sx_m = (float)fabs(scal->x());
+							float sy_m = (float)fabs(scal->y());
+							float sz_m = (float)fabs(scal->z());
 
-				    float sx_m = (float)fabs(scal->x());
-				    float sy_m = (float)fabs(scal->y());
-				    float sz_m = (float)fabs(scal->z());
+							// printf("The Scale Ichi  iiiiiiis box!! (%f, %f, %f)\n", sx_m, sy_m, sz_m);
+							printf("The  genSPartsFromCX3DShapeNode 1 ......... \n");
+							float sx;
+							float sy;
+							float sz;
+							if(sx_m == 0  || sy_m == 0 || sz_m == 0 ) {
+								sx = (float)fabs(x2-x1);
+								sy = (float)fabs(y2-y1);
+								sz = (float)fabs(z2-z1);
+							}
+							if(sx_m != 0  && sy_m != 0 && sz_m != 0 ) {
+								sx = (float)fabs(x2-x1)*sx_m;
+								sy = (float)fabs(y2-y1)*sy_m;
+								sz = (float)fabs(z2-z1)*sz_m;
+							}
 
-                   // printf("The Scale Ichi  iiiiiiis box!! (%f, %f, %f)\n", sx_m, sy_m, sz_m);
-                   printf("The  genSPartsFromCX3DShapeNode 1 ......... \n");
-                float sx;
-				float sy;
-				float sz;
-				if(sx_m == 0  || sy_m == 0 || sz_m == 0 )
-				{
-				 sx = (float)fabs(x2-x1);
-				 sy = (float)fabs(y2-y1);
-				 sz = (float)fabs(z2-z1);
+							Position pos(cx, cy, cz);
+							getBodyFactory().applyScaleP(pos);
 
-                 }
+							Size sz_(sx, sy, sz);
+							getBodyFactory().applyScaleS(sz_);
 
-                 if(sx_m != 0  && sy_m != 0 && sz_m != 0 )
-				{
-				 sx = (float)fabs(x2-x1)*sx_m;
-				 sy = (float)fabs(y2-y1)*sy_m;
-				 sz = (float)fabs(z2-z1)*sz_m;
+							float radius;
+							float height;
+							float xAxis[2];
+							float yAxis[2];
+							float zAxis[2];
+							bool isCylinder = CSimplifiedShapeFactory::isCylinder(
+																				  (CX3DIndexedFaceSetNode*)pNodeData,
+																				  radius,
+																				  height,
+																				  xAxis,
+																				  yAxis,
+																				  zAxis
+																				  );
 
-	
-                }
+							if(isCylinder) {
+								pos.x( ( (xAxis[0] + xAxis[1]) / 2.0 ) );
+								pos.y( ( (yAxis[0] + yAxis[1]) / 2.0 ) );
+								pos.z( ( (zAxis[0] + zAxis[1]) / 2.0 ) );
+								
+								parts = (SParts *)( new SCylinderParts(partsName, pos, radius,height) );
+								double vecX = xAxis[1] - xAxis[0];
+								double vecY = yAxis[1] - yAxis[0];
+								double vecZ = zAxis[1] - zAxis[0];
+								((SCylinderParts*)parts)->initializeAngle(vecX,vecY,vecZ);
 
+							}
+							else {
+								parts = (SParts *)(new SBoxParts(partsName, pos, sz_));
+							}
+							break;
+						}
+					case CYLINDER_NODE:
+						{
+							//
+							//
+							CSimplifiedCylinder *cy = CSimplifiedShapeFactory::calcCylinder( (CX3DCylinderNode *)pNodeData );
 
+							const char *partsCylinderName = partsName;
+							Position pos(cy->x(),cy->y(),cy->z());
+							getBodyFactory().applyScaleP(pos);
 
-					Position pos(cx, cy, cz);
-					getBodyFactory().applyScaleP(pos);
+							Size sz_(cy->radius(), cy->radius(), cy->height());
+							getBodyFactory().applyScaleS(sz_);
 
-					Size sz_(sx, sy, sz);
-					getBodyFactory().applyScaleS(sz_);
+							float radius = cy->radius();
+							float height = cy->height();
 
-					float radius;
-					float height;
-					float xAxis[2];
-					float yAxis[2];
-					float zAxis[2];
-					bool isCylinder = CSimplifiedShapeFactory::isCylinder(
-												(CX3DIndexedFaceSetNode*)pNodeData,
-												radius,
-												height,
-												xAxis,
-												yAxis,
-												zAxis
-											);
-
-					if(isCylinder) {
-						pos.x( ( (xAxis[0] + xAxis[1]) / 2.0 ) );
-						pos.y( ( (yAxis[0] + yAxis[1]) / 2.0 ) );
-						pos.z( ( (zAxis[0] + zAxis[1]) / 2.0 ) );
-
-						parts = (SParts *)( new SCylinderParts(partsName, pos, radius,height) );
-						double vecX = xAxis[1] - xAxis[0];
-						double vecY = yAxis[1] - yAxis[0];
-						double vecZ = zAxis[1] - zAxis[0];
-						((SCylinderParts*)parts)->initializeAngle(vecX,vecY,vecZ);
-
+							parts = (SParts *)( new SCylinderParts(partsName, pos, radius,height) );
+							((SCylinderParts*)parts)->initializeAngle(0.0,0.0,1.0);
+							break;
+						}
+					default:
+						break;
 					}
-					else {
-						parts = (SParts *)(new SBoxParts(partsName, pos, sz_));
-					}
-
-					break;
 				}
-				case CYLINDER_NODE:
-				{
-					//
-					//
-					CSimplifiedCylinder *cy = CSimplifiedShapeFactory::calcCylinder( (CX3DCylinderNode *)pNodeData );
-
-					const char *partsCylinderName = partsName;
-					Position pos(cy->x(),cy->y(),cy->z());
-					getBodyFactory().applyScaleP(pos);
-
-					Size sz_(cy->radius(), cy->radius(), cy->height());
-					getBodyFactory().applyScaleS(sz_);
-
-					float radius = cy->radius();
-					float height = cy->height();
-
-					parts = (SParts *)( new SCylinderParts(partsName, pos, radius,height) );
-					((SCylinderParts*)parts)->initializeAngle(0.0,0.0,1.0);
-					break;
-				}
-				default:
-					break;
-				}
-			}
 		}
-
 		return parts;
 	}
 
- SParts *X3DSimObjCreator::genSPartsFromSimplifiedShape(CSimplifiedShape *ss, const char *partsName,SFVec3f  *scal)
+
+
+	SParts *X3DSimObjCreator::genSPartsFromSimplifiedShape(CSimplifiedShape *ss, const char *partsName,SFVec3f  *scal)
 	//SParts *X3DSimObjCreator::genSPartsFromSimplifiedShape(CSimplifiedShape *ss, const char *partsName)
 	{
 		if (!ss) return NULL;
@@ -1163,11 +1081,11 @@ q
 //					fprintf(m_fp, "\t\t<size r=\"%f\"/>\n", r);
 					fprintf(m_fp, "\t\t<size r=\"%f\"/>\n", r/5);
 				}
-// konao
+
 #if 1
-DUMP(("\tshapeType=Sphere\n"));
-DUMP(("\tpos (x=\"%f\" y=\"%f\" z=\"%f\")\n", pos.x(), pos.y(), pos.z()));
-DUMP(("\tr=\"%f\"\n", r));
+				DUMP(("\tshapeType=Sphere\n"));
+				DUMP(("\tpos (x=\"%f\" y=\"%f\" z=\"%f\")\n", pos.x(), pos.y(), pos.z()));
+				DUMP(("\tr=\"%f\"\n", r));
 #endif
 
 				parts = (SParts *)(new SSphereParts(partsName, pos, r));
@@ -1194,11 +1112,10 @@ DUMP(("\tr=\"%f\"\n", r));
 //					fprintf(m_fp, "\t\t<size r=\"%f\" h=\"%f\"/>\n", r, h);
 					fprintf(m_fp, "\t\t<size r=\"%f\" h=\"%f\"/>\n", r/5, h/5);
 				}
-// konao
 #if 1
-DUMP(("\tshapeType=Sylinder\n"));
-DUMP(("\tpos (x=\"%f\" y=\"%f\" z=\"%f\")\n", pos.x(), pos.y(), pos.z()));
-DUMP(("\tr=\"%f\", h=\"%f\"\n", r, h));
+				DUMP(("\tshapeType=Sylinder\n"));
+				DUMP(("\tpos (x=\"%f\" y=\"%f\" z=\"%f\")\n", pos.x(), pos.y(), pos.z()));
+				DUMP(("\tr=\"%f\", h=\"%f\"\n", r, h));
 #endif
 
 				parts = (SParts *)(new SCylinderParts(partsName, pos, r, h));
@@ -1229,21 +1146,16 @@ DUMP(("\tr=\"%f\", h=\"%f\"\n", r, h));
 				float sx;
 				float sy;
 				float sz;
-				if(sx_m == 0  || sy_m == 0 || sz_m == 0 )
-				{
-				 sx = (float)fabs(x2-x1);
-				 sy = (float)fabs(y2-y1);
-				 sz = (float)fabs(z2-z1);
+				if(sx_m == 0  || sy_m == 0 || sz_m == 0 ) {
+					sx = (float)fabs(x2-x1);
+					sy = (float)fabs(y2-y1);
+					sz = (float)fabs(z2-z1);
+				}
 
-                 }
-
-                 if(sx_m != 0  && sy_m != 0 && sz_m != 0 )
-				{
-				 sx = (float)fabs(x2-x1)*sx_m;
-				 sy = (float)fabs(y2-y1)*sy_m;
-				 sz = (float)fabs(z2-z1)*sz_m;
-
-	
+				if(sx_m != 0  && sy_m != 0 && sz_m != 0 ) {
+					sx = (float)fabs(x2-x1)*sx_m;
+					sy = (float)fabs(y2-y1)*sy_m;
+					sz = (float)fabs(z2-z1)*sz_m;
                 }
 
 				Position pos(cx, cy, cz);
@@ -1258,11 +1170,11 @@ DUMP(("\tr=\"%f\", h=\"%f\"\n", r, h));
 //					fprintf(m_fp, "\t\t<size sx=\"%f\" sy=\"%f\" sz=\"%f\"/>\n", size.x(), size.y(), size.z());
 					fprintf(m_fp, "\t\t<size sx=\"%f\" sy=\"%f\" sz=\"%f\"/>\n", size.x()/50, size.y()/50, size.z()/50);
 				}
-// konao
+
 #if 1
-DUMP(("\tshapeType=Box\n"));
-DUMP(("\tpos (x=\"%f\" y=\"%f\" z=\"%f\")\n", pos.x(), pos.y(), pos.z()));
-DUMP(("\tsize (sx=\"%f\" sy=\"%f\" sz=\"%f\")\n", size.x(), size.y(), size.z()));
+				DUMP(("\tshapeType=Box\n"));
+				DUMP(("\tpos (x=\"%f\" y=\"%f\" z=\"%f\")\n", pos.x(), pos.y(), pos.z()));
+				DUMP(("\tsize (sx=\"%f\" sy=\"%f\" sz=\"%f\")\n", size.x(), size.y(), size.z()));
 #endif
 
 				parts = (SParts *)(new SBoxParts(partsName, pos, size));
@@ -1292,11 +1204,11 @@ DUMP(("\tsize (sx=\"%f\" sy=\"%f\" sz=\"%f\")\n", size.x(), size.y(), size.z()))
 				{
 					case SimpleShapeElem::SS_TYPE_SPHERE:
 					{
-// konao
+
 #if 1
-DUMP(("genSPartsFromSimpleShapeDB() (type=sphere) [%s:%d]\n", __FILE__, __LINE__));
-DUMP(("\tpos (x=\"%f\" y=\"%f\" z=\"%f\")\n", sse->x(), sse->y(), sse->z()));
-DUMP(("\tr=\"%f\"\n", sse->r()));
+						DUMP(("genSPartsFromSimpleShapeDB() (type=sphere) [%s:%d]\n", __FILE__, __LINE__));
+						DUMP(("\tpos (x=\"%f\" y=\"%f\" z=\"%f\")\n", sse->x(), sse->y(), sse->z()));
+						DUMP(("\tr=\"%f\"\n", sse->r()));
 #endif
 						Position pos(sse->x(), sse->y(), sse->z());
 						parts = (SParts *)(new SSphereParts(partsName, pos, sse->r()));
@@ -1306,11 +1218,11 @@ DUMP(("\tr=\"%f\"\n", sse->r()));
 
 					case SimpleShapeElem::SS_TYPE_CYLINDER:
 					{
-// konao
+
 #if 1
-DUMP(("genSPartsFromSimpleShapeDB() (type=cylinder) [%s:%d]\n", __FILE__, __LINE__));
-DUMP(("\tpos (x=\"%f\" y=\"%f\" z=\"%f\")\n", sse->x(), sse->y(), sse->z()));
-DUMP(("\tr=\"%f\", h=\"%f\"\n", sse->r(), sse->h()));
+						DUMP(("genSPartsFromSimpleShapeDB() (type=cylinder) [%s:%d]\n", __FILE__, __LINE__));
+						DUMP(("\tpos (x=\"%f\" y=\"%f\" z=\"%f\")\n", sse->x(), sse->y(), sse->z()));
+						DUMP(("\tr=\"%f\", h=\"%f\"\n", sse->r(), sse->h()));
 #endif
 						Position pos(sse->x(), sse->y(), sse->z());
 						parts = (SParts *)(new SCylinderParts(partsName, pos, sse->r(), sse->h()));
@@ -1320,11 +1232,11 @@ DUMP(("\tr=\"%f\", h=\"%f\"\n", sse->r(), sse->h()));
 
 					case SimpleShapeElem::SS_TYPE_BOX:
 					{
-// konao
+
 #if 1
-DUMP(("genSPartsFromSimpleShapeDB() (type=box) [%s:%d]\n", __FILE__, __LINE__));
-DUMP(("\tpos (x=\"%f\" y=\"%f\" z=\"%f\")\n", sse->x(), sse->y(), sse->z()));
-DUMP(("\tsize (sx=\"%f\" sy=\"%f\" sz=\"%f\")\n", sse->sx(), sse->sy(), sse->sz()));
+						DUMP(("genSPartsFromSimpleShapeDB() (type=box) [%s:%d]\n", __FILE__, __LINE__));
+						DUMP(("\tpos (x=\"%f\" y=\"%f\" z=\"%f\")\n", sse->x(), sse->y(), sse->z()));
+						DUMP(("\tsize (sx=\"%f\" sy=\"%f\" sz=\"%f\")\n", sse->sx(), sse->sy(), sse->sz()));
 #endif
 						Position pos(sse->x(), sse->y(), sse->z());
 						Size size(sse->sx(), sse->sy(), sse->sz());
@@ -1338,7 +1250,8 @@ DUMP(("\tsize (sx=\"%f\" sy=\"%f\" sz=\"%f\")\n", sse->sx(), sse->sy(), sse->sz(
 
 		return parts;
 	}
-#endif
+
+
 
 	////////////////////////////////////////////////////////////////
 	//
@@ -1603,8 +1516,8 @@ DUMP(("\tsize (sx=\"%f\" sy=\"%f\" sz=\"%f\")\n", sse->sx(), sse->sy(), sse->sz(
 					m_parts = new SBlindParts(m_name.c_str(), pos_);
 				}
 
-// konao
-DUMP(("*** calling addParts (dummy) (%s) [%s:%d] ***\n", m_name.c_str(), __FILE__, __LINE__));
+
+				DUMP(("*** calling addParts (dummy) (%s) [%s:%d] ***\n", m_name.c_str(), __FILE__, __LINE__));
 				f.addParts(m_parts);
 			}
 			break;
@@ -1643,25 +1556,19 @@ DUMP(("*** calling addParts (dummy) (%s) [%s:%d] ***\n", m_name.c_str(), __FILE_
 				}
 			}
 
-			f.connect(m_joint,
-				   sibPartsNode->getSParts(),
-				   childPartsNode->getSParts());
+			f.connect(m_joint, sibPartsNode->getSParts(), childPartsNode->getSParts());
 
 			bool b = false;
 			for (int i=0; i<count(); i++) {
 				TestNode *p = getChild(i);
 				if (p && p->getJoint()) {
 					b =true;
-					f.connect2(m_joint, p->getJoint(),
-						   sibPartsNode->getSParts(),
-						   childPartsNode->getSParts());
+					f.connect2(m_joint, p->getJoint(), sibPartsNode->getSParts(), childPartsNode->getSParts());
 				}
 			}
 
 			if (!b) {
-				f.connect2(m_joint, NULL,
-					   sibPartsNode->getSParts(),
-					   childPartsNode->getSParts());
+				f.connect2(m_joint, NULL, sibPartsNode->getSParts(), childPartsNode->getSParts());
 			}
 		}
 	}
@@ -1689,5 +1596,59 @@ DUMP(("*** calling addParts (dummy) (%s) [%s:%d] ***\n", m_name.c_str(), __FILE_
 #endif
 	}
 };
+
+
+#if 0
+	// Old function of createSSimObjFromX3D
+	bool X3DSimObjCreator::test1(X3DSimObjCreator &creator, const char *x3dOpenHRPFileName)
+	{
+		//X3DSimObjCreator creator;
+
+		bool isHumanoid = creator.loadOpenHRPFromFile(x3dOpenHRPFileName);
+
+		if (!isHumanoid)
+			{
+				std::vector<std::string> jointNames;
+				std::vector<std::string> partsNames;
+				Sgv::TestNode *node = NULL;
+
+				//creator.createSSimObjFromWrl("testSSimObj", jointNames, partsNames, NULL, &node);
+				DUMP(("all done."));
+
+				return false;
+			}
+		else
+			{
+				std::vector<std::string> jointNames;
+				std::vector<std::string> partsNames;
+				Sgv::TestNode *node = NULL;
+
+				if (creator.createSSimObjFromOpenHRP("testSSimObj", jointNames, partsNames, NULL, &node))
+					{
+						SSimObj &obj = creator.getBodyFactory().getSObj();
+						printf("jointSize = %d\n",obj.getJointSize());
+						printf("*** jointNames ***\n");
+						for (int i=0; i<jointNames.size(); i++)
+							{
+								printf("[%d] %s\n", i, jointNames[i].c_str());
+							}
+
+						printf("*** partsNames ***\n");
+						for (int i=0; i<partsNames.size(); i++)
+							{
+								printf("[%d] %s\n", i, partsNames[i].c_str());
+							}
+
+						printf("*** node dump ***\n");
+						node->dump();
+
+						printf("*** parts abs info ***\n");
+						node->calcPartsAbsPos(&obj, creator.getBodyFactory());
+					}
+				DUMP(("all done."));
+				return true;
+			}
+	}
+#endif
 
 
