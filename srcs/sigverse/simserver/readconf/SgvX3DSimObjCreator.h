@@ -1,7 +1,3 @@
-/*
- * Modified by Okamoto on 2011-05-12
- */
-
 #ifndef _SGV_X3D_SIMOBJ_CREATOR_H_
 #define _SGV_X3D_SIMOBJ_CREATOR_H_
 
@@ -28,20 +24,12 @@ namespace Sgv
 	class X3DSimObjCreator
 	{
 	public:
-// FIX20110421(ExpSS)
-//		X3DSimObjCreator(BodyFactory &f);
 		X3DSimObjCreator(BodyFactory &f, SimpleShapeDB &ssdb);
 		virtual ~X3DSimObjCreator();
 
-#if 1
-// FIX20110421(ExpSS)
 		bool createSSimObjFromX3D(const char *x3dFileName, const char *entClassName, bool bGenSimpleShapeFromX3D);
-
 		bool loadX3DFromFile(const char *x3dFileName);
-#else
-// orig
-		bool loadOpenHRPFromFile(const char *x3dFileName);
-#endif
+		//bool loadOpenHRPFromFile(const char *x3dFileName);
 
 		bool createSSimObjFromWrl(
 			const std::string &objName,
@@ -52,17 +40,14 @@ namespace Sgv
 
 	private:
 		bool createSSimObjFromOpenHRP(
-//			const std::string &objName,
 			std::vector<std::string> &jointNames,
 			std::vector<std::string> &partsNames,
-//			SSimObj *pObj,
 			TestNode **ppNode);
 
 		Joint * createSSimObjFromOpenHRP_JointNode(
 			TestNode *parent,
 			SParts *parentParts,
 			CX3DOpenHRPJointNode *pJointNode,
-//			SSimObj *o,
 			std::vector<std::string> &jointNames,
 			std::vector<std::string> &partsNames,
 			int indent);
@@ -70,7 +55,6 @@ namespace Sgv
 		SParts * createSSimObjFromOpenHRP_SegmentNode(
 			TestNode *parent,
 			CX3DOpenHRPSegmentNode *pSegmentNode,
-//			SSimObj *o,
 			std::vector<std::string> &jointNames,
 			std::vector<std::string> &partsNames,
 			int indent);
@@ -79,7 +63,6 @@ namespace Sgv
 			TestNode *parent,
 			TestNode *sparent,
 			CX3DTransformNode *pTransNode,
-//			SSimObj *o,
 			const std::string &parentName,
 			std::vector<std::string> &jointNames,
 			std::vector<std::string> &partsNames,
@@ -88,18 +71,16 @@ namespace Sgv
 		SParts * createSSimObjFromOpenHRP_ShapeNode(
 			TestNode *parent,
 			CX3DShapeNode *pShapeNode,
-//			SSimObj *o,
 			const std::string &parentName,
 			std::vector<std::string> &partsNames,
 			SFRotation *rot,
-			int indent);
+			int indent,
+			SFVec3f *scal);
 
-#if 1
-// FIX20110421(ExpSS)
 		SParts *genSPartsFromCX3DShapeNode(CX3DShapeNode *pShapeNode, const char *partsName, int indent);
-		SParts *genSPartsFromSimplifiedShape(CSimplifiedShape *ss, const char *partsName);
+		SParts *genSPartsFromSimplifiedShape(CSimplifiedShape *ss, const char *partsName, SFVec3f *scal);
 		SParts *genSPartsFromSimpleShapeDB(const char *entClassName, const char *partsName);
-#endif
+
 		// ------------------------------------------
 		//
 		// ------------------------------------------
@@ -114,16 +95,12 @@ namespace Sgv
 		CX3DParser *m_pParser;
 		MFNode *m_pHumanoidNodes;
 
-#if 1
-// FIX20110421(ExpSS)
 		SimpleShapeDB &m_ssdb;
 		MFNode *m_pStaticNodes;	
 		std::string m_entClassName;
 		bool m_bGenSimpleShapeFromX3D;
 		FILE *m_fp;
-#endif
 	};
-
 
 	enum NodeType {
 		NODE_TYPE_NOT_SET = -1,
