@@ -50,9 +50,11 @@ protected:
 	double       m_posx, m_posy, m_posz;
 	double       m_mass;
 	std::string  m_graspObj;
-	bool         m_onGrasp;     // flag whether it is grasped
-	dQuaternion  m_gini;        // quaternion of the parts when the grasp is started
-	bool         m_onCollision; // flag whether it is cllided
+	bool         m_onGrasp;       // flag whether it is grasped
+	dJointID     m_grasp_jointID; // JointID of the generated joint when the grasp is started.
+	dQuaternion  m_gini;          // quaternion of the parts when the grasp is started
+	bool         m_onCollision;   // flag whether it is collided
+
 protected:
 	/**
 	 * @brief Constructor
@@ -87,17 +89,9 @@ public:
 		m_children.push_back(new Child(currj, nextj, nextp));
 	}
 
-	void graspObj(std::string objName);
+	void graspObj(std::string objName, dJointID &jointID);
 
-	void releaseObj()
-	{
-		m_graspObj.clear();
-		m_onGrasp = false;
-		m_gini[0] = 1.0;
-		m_gini[1] = 0.0;
-		m_gini[2] = 0.0;
-		m_gini[3] = 0.0;
-	}
+	void releaseObj();
 
 	bool getOnGrasp(){return m_onGrasp;}
 

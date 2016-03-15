@@ -3106,11 +3106,11 @@ WorldSimulator::RequestMethodReturnType WorldSimulator::requestGraspObject(SSimW
 				// Execution of grasping
 				dWorldID world = m_provider.get()->odeWorld()->world();
 				// Connect with fix joint
-				dJointID joint = dJointCreateFixed(world, 0);
-				dJointAttach(joint, body1, body2);
+				dJointID jointID = dJointCreateFixed(world, 0);
+				dJointAttach(jointID, body1, body2);
 
 				// Start of grasping
-				myParts->graspObj(target);
+				myParts->graspObj(target, jointID);
 
 				// Set the flag of grasping object to true
 				tobj->setIsGrasped(true);

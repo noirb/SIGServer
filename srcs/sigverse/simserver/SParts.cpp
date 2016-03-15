@@ -34,6 +34,7 @@ SParts::SParts(PartsType t, const char *name, const Position &pos) : Parts(t, na
                m_posz(0),
                m_mass(1.0),
                m_onGrasp(false),
+               m_grasp_jointID(NULL),
                m_onCollision(false)
 {
 }
@@ -427,10 +428,11 @@ void SParts::setMass(double mass)
 }
 
 
-void SParts::graspObj(std::string objName)
+void SParts::graspObj(std::string objName, dJointID &jointID)
 {
 	m_graspObj = objName;
 	m_onGrasp = true;
+	m_grasp_jointID = jointID;
 
 	// keep the orientation when the grasp is started
 	const dReal *qua = dBodyGetQuaternion(m_odeobj->body());
@@ -438,6 +440,19 @@ void SParts::graspObj(std::string objName)
 	m_gini[1] = qua[1];
 	m_gini[2] = qua[2];
 	m_gini[3] = qua[3];
+}
+
+
+void SParts::releaseObj()
+{
+	m_graspObj.clear();
+	dJointDestroy(m_grasp_jointID);
+	m_grasp_jointID = NULL;
+	m_onGrasp = false;
+	m_gini[0] = 1.0;
+	m_gini[1] = 0.0;
+	m_gini[2] = 0.0;
+	m_gini[3] = 0.0;
 }
 
 
