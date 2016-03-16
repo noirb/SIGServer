@@ -96,7 +96,7 @@ namespace Sgv
 		MFNode *m_pHumanoidNodes;
 
 		SimpleShapeDB &m_ssdb;
-		MFNode *m_pStaticNodes;	
+		MFNode *m_pStaticNodes;
 		std::string m_entClassName;
 		bool m_bGenSimpleShapeFromX3D;
 		FILE *m_fp;
