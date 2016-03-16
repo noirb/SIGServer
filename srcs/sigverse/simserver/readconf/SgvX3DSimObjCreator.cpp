@@ -64,10 +64,10 @@ namespace Sgv
 			// Static parts is loaded
 			SParts *parts = NULL;
 
-			if (bGenSimpleShapeFromX3D)	{
+			if (bGenSimpleShapeFromX3D) {
 				CX3DTransformNode *tNode = (CX3DTransformNode *)m_pStaticNodes->getNode(0);
 				MFNode *shape = tNode->searchNodesFromDirectChildren("Shape");
-				if(shape) {
+				if (shape) {
 					// Refer the type of shape node
 					CX3DShapeNode *sh = (CX3DShapeNode*)shape->getNode(0);
 					CX3DNode *pG = sh->getGeometry()->getNode();
@@ -125,16 +125,14 @@ namespace Sgv
 						CSimplifiedShape *ss = CSimplifiedShapeFactory::calcAutoFromTree(m_pStaticNodes);
 						SFNode *geometry = sh->getGeometry();
 						CX3DTransformNode *tNode = (CX3DTransformNode *)geometry->getNode();
-		                //SFVec3f    *scal = tNode->getScale();
-		                CX3DTransformNode *ttNode = (CX3DTransformNode *)m_pStaticNodes->getNode(m_pStaticNodes->count()-1);
-                        SFVec3f    *scal = ttNode->getScale();
-                        printf("The Scale Ichi  iiiiiiis box!! (%f, %f, %f)\n", scal->x(), scal->y(), scal->z());
-                        printf("The  INDEXED_FACE_SET_NODE 0 ......... \n");
+						//SFVec3f    *scal = tNode->getScale();
+						CX3DTransformNode *ttNode = (CX3DTransformNode *)m_pStaticNodes->getNode(m_pStaticNodes->count()-1);
+						SFVec3f    *scal = ttNode->getScale();
 						parts = genSPartsFromSimplifiedShape(ss, "body",scal); // Name of the parts is fixed
 						break;
 					}
 					}
-			    }
+				}
 				else {
 					LOG_ERR(("there is no shape node."));
 				}
@@ -144,8 +142,8 @@ namespace Sgv
 				// ----------------------------------------------
 				// Use simple shape which is specified explicitly
 				// ----------------------------------------------
-			    parts = genSPartsFromSimpleShapeDB(entClassName, "body");	
-			    if (!parts)
+				parts = genSPartsFromSimpleShapeDB(entClassName, "body");
+				if (!parts)
 					{
 						LOG_ERR(("no SimpleShape found (className=(%s) partsName=(%s))", entClassName, "body"));
 						exit(1);
@@ -161,11 +159,8 @@ namespace Sgv
 		}
 		else if (m_pHumanoidNodes && m_pHumanoidNodes->count() > 0)
 		{
-
 			std::vector<std::string> jointNames;
-
 			std::vector<std::string> partsNames;
-
 			Sgv::TestNode *root = NULL;
 
 			m_entClassName = entClassName;
@@ -214,8 +209,6 @@ namespace Sgv
 		DUMP(("all done.\n"));
 		return true;
 	}
-
-
 
 
 #if 1
@@ -335,7 +328,7 @@ namespace Sgv
 
 			if (pNode) {
 
-				if( pNode->getNodeType()== SHAPE_NODE ) {
+				if (pNode->getNodeType()== SHAPE_NODE) {
 				}
 
 				MFNode *children = pNode->searchNodesFromAllChildren(pNode->getNodeName());
@@ -356,10 +349,10 @@ namespace Sgv
 	}
 
 	bool X3DSimObjCreator::createSSimObjFromOpenHRP(
-//		const std::string &objName,
+		//const std::string &objName,
 		std::vector<std::string> &jointNames,
 		std::vector<std::string> &partsNames,
-//		SSimObj *,
+		//SSimObj *,
 		TestNode **ppNode)
 	{
 		if (!ppNode) return false;
@@ -450,7 +443,7 @@ namespace Sgv
 		TestNode *parent,
 		SParts *parentParts,
 		CX3DOpenHRPJointNode *pJointNode,
-//		SSimObj *,
+		//SSimObj *,
 		std::vector<std::string> &jointNames,
 		std::vector<std::string> &partsNames,
 		int indent)
@@ -551,21 +544,19 @@ namespace Sgv
 		}
 		// -----------------------------------------
 		// -----------------------------------------
-		for (int i=0; i<n; i++)
-		{
-		  // -------------------------------------------
-		  // -------------------------------------------
-		  CX3DNode *pNode = children->getNode(i);
-		  
-		  // -------------------------------------------
-		  // -------------------------------------------
-		  if (pNode->getNodeType() == OPENHRP_JOINT_NODE)
-		    {
-		      // -------------------------------------------
-		      // -------------------------------------------
-		      CX3DOpenHRPJointNode *pJointNode = (CX3DOpenHRPJointNode *)pNode;
-		      createSSimObjFromOpenHRP_JointNode(node, NULL, pJointNode, /* NULL,*/ jointNames, partsNames, indent+1);
-		    }
+		for (int i=0; i<n; i++) {
+			// -------------------------------------------
+			// -------------------------------------------
+			CX3DNode *pNode = children->getNode(i);
+			
+			// -------------------------------------------
+			// -------------------------------------------
+			if (pNode->getNodeType() == OPENHRP_JOINT_NODE) {
+				// -------------------------------------------
+				// -------------------------------------------
+				CX3DOpenHRPJointNode *pJointNode = (CX3DOpenHRPJointNode *)pNode;
+				createSSimObjFromOpenHRP_JointNode(node, NULL, pJointNode, /* NULL,*/ jointNames, partsNames, indent+1);
+			}
 		}
 		return joint;
 	}
@@ -573,7 +564,7 @@ namespace Sgv
 	SParts * X3DSimObjCreator::createSSimObjFromOpenHRP_SegmentNode(
 		TestNode *parent,
 		CX3DOpenHRPSegmentNode *pSegmentNode,
-//		SSimObj *,
+		//SSimObj *,
 		std::vector<std::string> &jointNames,
 		std::vector<std::string> &partsNames,
 		int indent)
@@ -625,7 +616,7 @@ namespace Sgv
 					// -------------------------------------------
 					CX3DTransformNode *pTransNode = (CX3DTransformNode *)pNode;
 
-				        if(createS) break;
+					if (createS) break;
 					
 					SParts *p = createSSimObjFromOpenHRP_TransformNode(parent, node, pTransNode, /* NULL,*/ segmentName, jointNames, partsNames, indent+1);	
 					createS = true;
@@ -663,7 +654,7 @@ namespace Sgv
 		TestNode *parent,
 		TestNode *sparent,
 		CX3DTransformNode *pTransNode,
-//		SSimObj *,
+		//SSimObj *,
 		const std::string &parentName,
 		std::vector<std::string> &jointNames,
 		std::vector<std::string> &partsNames,
@@ -697,7 +688,7 @@ namespace Sgv
 		//sparent->setOrientation(rot);
 
 		/*
-		if(sparent->getJointType() == "fixed"){
+		if (sparent->getJointType() == "fixed"){
 		  LOG_MSG(("fixed"));
 		  sparent->setOrientation(rot);
 		}
@@ -869,8 +860,6 @@ namespace Sgv
 				//CX3DTransformNode *ttNode = (CX3DTransformNode *)pShapeNode->getNode(6);
 				//SFVec3f    *scal = ttNode->getScale();
 				//parts = genSPartsFromSimplifiedShape(ss, partsName.c_str(),scal);
-				printf("The  INDEXED_FACE_SET_NODE 00 test for result ......... \n");
-				printf("The Scale for SIMPLE_SHAPE_GEN_MSI (%f, %f, %f)\n", scal->x(), scal->y(), scal->z());
 				parts = genSPartsFromSimplifiedShape(ss, partsName.c_str(),scal);
 #else
 				parts = genSPartsFromCX3DShapeNode(pShapeNode, partsName.c_str(), indent);
@@ -882,7 +871,6 @@ namespace Sgv
 		else
 			{
 				DUMP(("*** SimpleShape: Manual setting mode ***\n"));
-		    
 				// ----------------------------------------
 				// ----------------------------------------
 				parts = genSPartsFromSimpleShapeDB(m_entClassName.c_str(), partsName.c_str());
@@ -957,17 +945,15 @@ namespace Sgv
 							float sy_m = (float)fabs(scal->y());
 							float sz_m = (float)fabs(scal->z());
 
-							// printf("The Scale Ichi  iiiiiiis box!! (%f, %f, %f)\n", sx_m, sy_m, sz_m);
-							printf("The  genSPartsFromCX3DShapeNode 1 ......... \n");
 							float sx;
 							float sy;
 							float sz;
-							if(sx_m == 0  || sy_m == 0 || sz_m == 0 ) {
+							if (sx_m == 0  || sy_m == 0 || sz_m == 0 ) {
 								sx = (float)fabs(x2-x1);
 								sy = (float)fabs(y2-y1);
 								sz = (float)fabs(z2-z1);
 							}
-							if(sx_m != 0  && sy_m != 0 && sz_m != 0 ) {
+							if (sx_m != 0  && sy_m != 0 && sz_m != 0 ) {
 								sx = (float)fabs(x2-x1)*sx_m;
 								sy = (float)fabs(y2-y1)*sy_m;
 								sz = (float)fabs(z2-z1)*sz_m;
@@ -993,7 +979,7 @@ namespace Sgv
 																				  zAxis
 																				  );
 
-							if(isCylinder) {
+							if (isCylinder) {
 								pos.x( ( (xAxis[0] + xAxis[1]) / 2.0 ) );
 								pos.y( ( (yAxis[0] + yAxis[1]) / 2.0 ) );
 								pos.z( ( (zAxis[0] + zAxis[1]) / 2.0 ) );
@@ -1078,7 +1064,6 @@ namespace Sgv
 				{
 					fprintf(m_fp, "type=\"sphere\">\n");
 					fprintf(m_fp, "\t\t<position x=\"%f\" y=\"%f\" z=\"%f\"/>\n", pos.x(), pos.y(), pos.z());
-//					fprintf(m_fp, "\t\t<size r=\"%f\"/>\n", r);
 					fprintf(m_fp, "\t\t<size r=\"%f\"/>\n", r/5);
 				}
 
@@ -1109,7 +1094,6 @@ namespace Sgv
 				{
 					fprintf(m_fp, "type=\"cylinder\">\n");
 					fprintf(m_fp, "\t\t<position x=\"%f\" y=\"%f\" z=\"%f\"/>\n", pos.x(), pos.y(), pos.z());
-//					fprintf(m_fp, "\t\t<size r=\"%f\" h=\"%f\"/>\n", r, h);
 					fprintf(m_fp, "\t\t<size r=\"%f\" h=\"%f\"/>\n", r/5, h/5);
 				}
 #if 1
@@ -1135,10 +1119,7 @@ namespace Sgv
 				float sx_m = (float)fabs(scal->x());
 				float sy_m = (float)fabs(scal->y());
 				float sz_m = (float)fabs(scal->z());
-				//printf("The Scale iiiiiiis box1(%f, %f, %f)\n", sx_m, sy_m, sz_m);
-				// printf("estimate box1(%f, %f, %f)\n", x1, y1, z1);
-				// printf("estimate box2(%f, %f, %f)\n", x2, y2, z2);
-                printf("The  genSPartsFromSimplifiedShape 2  ......... \n");
+
 				float cx = (x1+x2)/2;
 				float cy = (y1+y2)/2;
 				float cz = (z1+z2)/2;
@@ -1146,20 +1127,20 @@ namespace Sgv
 				float sx;
 				float sy;
 				float sz;
-				if(sx_m == 0  || sy_m == 0 || sz_m == 0 ) {
+				if (sx_m == 0  || sy_m == 0 || sz_m == 0 ) {
 					sx = (float)fabs(x2-x1);
 					sy = (float)fabs(y2-y1);
 					sz = (float)fabs(z2-z1);
 				}
 
-				if(sx_m != 0  && sy_m != 0 && sz_m != 0 ) {
+				if (sx_m != 0  && sy_m != 0 && sz_m != 0 ) {
 					sx = (float)fabs(x2-x1)*sx_m;
 					sy = (float)fabs(y2-y1)*sy_m;
 					sz = (float)fabs(z2-z1)*sz_m;
-                }
+				}
 
 				Position pos(cx, cy, cz);
-				m_bodyF.applyScaleP(pos);	
+				m_bodyF.applyScaleP(pos);
 
 				Size size(sx, sy, sz);
 				m_bodyF.applyScaleS(size);
@@ -1167,7 +1148,6 @@ namespace Sgv
 				{
 					fprintf(m_fp, "type=\"box\">\n");
 					fprintf(m_fp, "\t\t<position x=\"%f\" y=\"%f\" z=\"%f\"/>\n", pos.x(), pos.y(), pos.z());
-//					fprintf(m_fp, "\t\t<size sx=\"%f\" sy=\"%f\" sz=\"%f\"/>\n", size.x(), size.y(), size.z());
 					fprintf(m_fp, "\t\t<size sx=\"%f\" sy=\"%f\" sz=\"%f\"/>\n", size.x()/50, size.y()/50, size.z()/50);
 				}
 
@@ -1451,8 +1431,7 @@ namespace Sgv
 				} else if (strcmp(jointType, "rotate") == 0) {
 					Vector3d &axis = m_jointAxis;
 					Sgv::printIndentSpace(level);
-					Sgv::Log::println("jointAxis = (%f, %f, %f)",
-							  axis.x(), axis.y(), axis.z());
+					Sgv::Log::println("jointAxis = (%f, %f, %f)", axis.x(), axis.y(), axis.z());
 					m_joint = new HingeJoint(m_name.c_str(), axis);
 				} else if (strcmp(jointType, "sphere") == 0) {
 					m_joint = new BallJoint(m_name.c_str());
@@ -1480,8 +1459,7 @@ namespace Sgv
 				c += m_center;
 
 				Sgv::printIndentSpace(level);
-				Sgv::Log::println("Parts pos = (%f, %f, %f)",
-						  c.x(), c.y(), c.z());
+				Sgv::Log::println("Parts pos = (%f, %f, %f)", c.x(), c.y(), c.z());
 				f.applyScaleV(c);
 				parts->setInitialPosition(c);
 				parts->setInitialQuaternion(m_rot);
