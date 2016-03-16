@@ -3157,12 +3157,18 @@ WorldSimulator::RequestMethodReturnType WorldSimulator::requestReleaseObject(SSi
 	SSimObj *obj = w->getSObj(agentName);
 	SParts  *myParts = obj->getSParts(partsName);  // Get part of the target
 
-	// set the grasping flag to off
-	std::string target = myParts->getGraspingObject();
-	myParts->releaseObj();
-	if (!target.empty()) {
-		SSimObj *tobj = w->getSObj(target.c_str());
-		tobj->setIsGrasped(false);
+	if(myParts->getOnGrasp())
+	{
+		myParts->releaseObj();
+
+		// set the grasping flag to off
+		std::string target = myParts->getGraspingObject();
+
+		if (!target.empty())
+		{
+			SSimObj *tobj = w->getSObj(target.c_str());
+			tobj->setIsGrasped(false);
+		}
 	}
 
 	delete [] recvBuff;
