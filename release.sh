@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# <Usage>
+# $ git clone https://github.com/SIGVerse/SIGServer.git
+# $ ./SIGServer/release.sh
+
 if [ ! `echo $0 | grep 'release.sh'` ] ; then
   echo '[Error] Please execute the shell script file directly without the dot or the source command.'
   return 2>&- || exit
