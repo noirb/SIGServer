@@ -8,6 +8,10 @@ fi
 # Go to the directory of this shell file.
 cd `dirname $0`
 
+BASENAME=`basename \`pwd\``
+VERSION_STR=`head -n 1 version.txt | tr -d " "`
+
+
 # Update the git submodules.
 echo 'updating the git submodules...'
 git submodule init
@@ -19,21 +23,18 @@ rm -rf build/
 rm -rf .git/
 rm -f .gitignore
 rm -f .gitmodules
-rm -f model/.git
-rm -f model/.gitignore
-rm -f srcs/sigverse/x3d/.git
-rm -f srcs/sigverse/x3d/.gitignore
 rm -f release.sh
 rm -f *~
 
 # Create a release file.
 echo 'compressing...'
 cd ..
-tar cfz SIGServer-X.X.X.tar.gz SIGServer/
+mv ${BASENAME}/ SIGServer-${VERSION_STR}/
+tar cfz SIGServer-${VERSION_STR}.tar.gz SIGServer-${VERSION_STR}/
 
 # Delete the original directory.
 echo 'deleting the original directory...'
-rm -rf SIGServer/
+rm -rf SIGServer-${VERSION_STR}/
 
 echo 'finished.'
 
