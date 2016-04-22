@@ -19,6 +19,9 @@
 .cproject
 .project
 
+# CLion
+.idea
+
 # etc
 *.dat
 
