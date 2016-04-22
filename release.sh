@@ -8,12 +8,21 @@ fi
 # Go to the directory of this shell file.
 cd `dirname $0`
 
+# Update the git submodules.
+echo 'updating the git submodules...'
+git submodule init
+git submodule update
+
 # Delete the unnecessary files.
 echo 'deleting the unnecessary files...'
 rm -rf build/
 rm -rf .git/
 rm -f .gitignore
 rm -f .gitmodules
+rm -f model/.git
+rm -f model/.gitignore
+rm -f srcs/sigverse/x3d/.git
+rm -f srcs/sigverse/x3d/.gitignore
 rm -f release.sh
 rm -f *~
 
