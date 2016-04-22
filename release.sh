@@ -11,10 +11,10 @@ cd `dirname $0`
 # Delete the unnecessary files.
 echo 'deleting the unnecessary files...'
 rm -rf build/
-rm -r .git/
-rm .gitignore
-rm .gitmodules
-rm release.sh
+rm -rf .git/
+rm -f .gitignore
+rm -f .gitmodules
+rm -f release.sh
 rm -f *~
 
 # Create a release file.
