@@ -3820,6 +3820,10 @@ void WorldSimulator::loop(double endt)
 	//int ms = (int)(1000000*step);
 	//m_loop = true;
 
+    /// HACK: Ensures parsing of XML data works correctly on machines with
+    ///       numeric locales that format numbers like 1.000,00
+    setlocale(LC_NUMERIC, "C");
+
 	// Start of the main loop
 	while (m_loop) {
 
