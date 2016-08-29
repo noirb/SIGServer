@@ -1533,7 +1533,6 @@ std::map<std::string, double> SimObj::getAllJointAngles()
 	std::string msg;
 	const char *myName = name();
 	msg += std::string(myName) + ",";
-	//msg += std::string(jointName) + ",";
 
 	if (!sendRequest(msg, REQUEST_GET_ALL_JOINT_ANGLES)) {
 		LOG_ERR(("getAllJointAngles: cannot send request"));
@@ -1553,6 +1552,12 @@ std::map<std::string, double> SimObj::getAllJointAngles()
 	unsigned short recvSize  = BINARY_GET_DATA_S_INCR(p, unsigned short);
 	unsigned short jointSize = BINARY_GET_DATA_S_INCR(p, unsigned short);
 	recvSize -= 4;
+
+    // if there are no joints, return empty list
+    if (recvSize == 0)
+    {
+        return alljoints;
+    }
 
 	char *recvBuff = new char[recvSize];
 
